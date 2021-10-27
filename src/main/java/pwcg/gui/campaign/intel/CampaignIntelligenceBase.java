@@ -58,7 +58,6 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         this.setOpaque(false);
 
         this.campaign = PWCGContext.getInstance().getCampaign();
-		this.referencePlayer = campaign.findReferencePlayer();
 	}    
 
     protected void makePanel(Side side) throws PWCGException
@@ -228,6 +227,17 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         return intelBuffer.toString();
     }
 
+    private void formHeader(Squadron squadron, StringBuffer intelBuffer) throws PWCGException
+    {
+        intelBuffer.append(".\n");
+        intelBuffer.append(".\n");
+        intelBuffer.append("        "  + squadron.determineDisplayName(campaign.getDate()));          
+        intelBuffer.append(".\n");
+        intelBuffer.append("          at " + squadron.determineCurrentAirfieldName(campaign.getDate()));          
+        intelBuffer.append(".\n");
+        intelBuffer.append("\n        Callsign: " + squadron.determineCurrentCallsign(campaign.getDate()) + ".\n");
+    }
+
     private void formPersonnel(int squadronId, StringBuffer intelBuffer) throws PWCGException
     {
         intelBuffer.append("\n        Personnel:\n");          
@@ -240,17 +250,6 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
             intelBuffer.append("            " + squadronMember.getNameAndRank());          
             intelBuffer.append(".\n");          
         }
-    }
-
-    private void formHeader(Squadron squadron, StringBuffer intelBuffer) throws PWCGException
-    {
-        intelBuffer.append(".\n");
-        intelBuffer.append(".\n");
-        intelBuffer.append("        "  + squadron.determineDisplayName(campaign.getDate()));          
-        intelBuffer.append(".\n");
-        intelBuffer.append("          at " + squadron.determineCurrentAirfieldName(campaign.getDate()));          
-        intelBuffer.append(".\n");
-        intelBuffer.append("\n        Callsign: " + squadron.determineCurrentCallsign(campaign.getDate()) + ".\n");
     }
 
     private void formAircraftInventory(Squadron squadron, StringBuffer intelBuffer) throws PWCGException

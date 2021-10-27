@@ -118,7 +118,6 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		JPanel transferButtonPanel = new JPanel(new GridLayout(0,1));
 		transferButtonPanel.setOpaque(false);
 		
-		
         acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Transfer", "Accept Transfer", "Transfer to a new unit", this);
         transferButtonPanel.add(acceptButton);
         
@@ -155,8 +154,6 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         transferCenterPanel.setLayout(new BorderLayout());
         transferCenterPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
-        Color buttonBG = ColorMap.PAPER_BACKGROUND;
-
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
         GridBagLayout transferLayout = new GridBagLayout();
@@ -177,6 +174,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         components.add(PWCGLabelFactory.makeDummyLabel());
         rowNum = addRow(transferPanel, components, rowNum);
 
+        Color buttonBG = ColorMap.PAPER_BACKGROUND;
         rowNum = makeServiceChooser(buttonBG, font, transferPanel, components, rowNum);
         
         components.clear();

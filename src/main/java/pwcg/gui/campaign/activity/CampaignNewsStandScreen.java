@@ -20,7 +20,6 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.newspapers.Newspaper;
-import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -66,7 +65,6 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
 
     private JPanel makeNewsLeftPanel() throws PWCGException  
     {
-
         JPanel squadronLogPanel = new JPanel(new BorderLayout());
         squadronLogPanel.setOpaque(false);
 

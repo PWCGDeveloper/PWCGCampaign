@@ -20,7 +20,6 @@ public class InternationalizationManager
         
         initialize(internationalizationCode);
         
-        instance.logMissingTranslation(english);
         return instance.getTranslationFromConfiguredInternationalization(english);
     }
 
@@ -30,17 +29,6 @@ public class InternationalizationManager
         if (!internationalizationRecords.isInitialized())
         {
             internationalizationRecords = InternationalizationRecordsIO.readJson(internationalizationFile);
-        }
-    }
-
-    private void logMissingTranslation(String english)
-    {
-        if (!english.isEmpty())
-        {
-            if (!internationalizationRecords.hasTranslation(english))
-            {
-                System.out.println("English=" + english);
-            }
         }
     }
     
