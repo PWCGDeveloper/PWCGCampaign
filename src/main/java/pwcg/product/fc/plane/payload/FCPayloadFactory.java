@@ -86,6 +86,10 @@ public class FCPayloadFactory implements IPayloadFactory
         {
             return new AircoDH4Payload(planeType, date);
         }
+        else if (attributeMapping == FCPlaneAttributeMapping.BREGUET14)
+        {
+            return new Breguet14Payload(planeType, date);
+        }
         else if (attributeMapping == FCPlaneAttributeMapping.BRISTOLF2BF2)
         {
             return new BristolF2B2Payload(planeType, date);
