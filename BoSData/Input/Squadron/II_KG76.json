@@ -125,11 +125,11 @@
 					},
 					{
 						"role": "ROLE_ANTI_SHIPPING",
-						"weight": 30
+						"weight": 10
 					},
 					{
 						"role": "ROLE_TRAIN_BUSTER",
-						"weight": 20
+						"weight": 10
 					},
 					{
 						"role": "ROLE_RAIDER",

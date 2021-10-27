@@ -302,6 +302,14 @@
     "Top Aces: Exclude Historical": "Топ тузы: Исключить исторические",
     "Top Aces: Service": "Высшие тузы: Служба",
     "Victory descriptions": "Описания побед",
-    "Waypoint type names": "Названия типов путевых точек"
+    "Waypoint type names": "Названия типов путевых точек",
+    "Aircraft On Inventory": "Самолеты на инвентаризации",
+    "Call Sign": "Позывной",
+    "Enemy": "Враг",
+    "Friendly": "Дружественный",
+    "Recon Squadrons": "Эскадрильи разведки",
+    "Show Enemy Squadrons": "Показать вражеские эскадрильи",
+    "Show Friendly Squadrons": "Показать дружественные эскадрильи",
+    "Stationed At": "Размещено в"
 	}
 }

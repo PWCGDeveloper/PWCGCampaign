@@ -302,6 +302,14 @@
     "Top Aces: Exclude Historical": "Top As : Exclure l'historique",
     "Top Aces: Service": "Top Aces : Service",
     "Victory descriptions": "Descriptions des victoires",
-    "Waypoint type names": "Noms des types de points de passage"
+    "Waypoint type names": "Noms des types de points de passage",
+    "Aircraft On Inventory": "Avions en inventaire",
+    "Call Sign": "Indicatif d'appel",
+    "Enemy": "Ennemi",
+    "Friendly": "Ami",
+    "Recon Squadrons": "Escadrons de reconnaissance",
+    "Show Enemy Squadrons": "Afficher les escadrilles ennemies",
+    "Show Friendly Squadrons": "Afficher les escadrons amis",
+    "Stationed At": "Stationné à"
 	}
 }

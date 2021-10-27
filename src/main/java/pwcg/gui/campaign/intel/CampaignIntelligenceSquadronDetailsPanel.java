@@ -19,6 +19,7 @@ import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
@@ -141,13 +142,16 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
 
     private String formSquadronHeaderDesc(Squadron squadron) throws PWCGException
     {
+        String stationedAtText = InternationalizationManager.getTranslation("Stationed At");
+        String callSignText = InternationalizationManager.getTranslation("Call Sign");
+
         StringBuffer intelBuffer = new StringBuffer("");
         intelBuffer.append("\n");
         intelBuffer.append("        "  + squadron.determineDisplayName(campaign.getDate()));          
         intelBuffer.append("\n");
-        intelBuffer.append("        Stationed At: " + squadron.determineCurrentAirfieldName(campaign.getDate()));          
+        intelBuffer.append("        " + stationedAtText + ": " + squadron.determineCurrentAirfieldName(campaign.getDate()));          
         intelBuffer.append("\n");
-        intelBuffer.append("        Call Sign: " + squadron.determineCurrentCallsign(campaign.getDate()));
+        intelBuffer.append("        " + callSignText + ": " + squadron.determineCurrentCallsign(campaign.getDate()));
         intelBuffer.append("\n");
         return intelBuffer.toString();
     }
@@ -169,7 +173,9 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
     
     private void formPersonnel(int squadronId, StringBuffer intelBuffer) throws PWCGException
     {
-        intelBuffer.append("\n        Personnel\n");          
+        String personnelText = InternationalizationManager.getTranslation("Personnel");
+
+        intelBuffer.append("\n        " + personnelText + "\n");        
         intelBuffer.append("        ----------------------------------------\n");          
 
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
@@ -189,7 +195,9 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
 
     private void formAircraftInventory(Squadron squadron, StringBuffer intelBuffer) throws PWCGException
     {
-        intelBuffer.append("\n        Aircraft On Inventory\n");        
+        String aircraftInventoryText = InternationalizationManager.getTranslation("Aircraft On Inventory");
+
+        intelBuffer.append("\n        " + aircraftInventoryText + "\n");        
         intelBuffer.append("        ----------------------------------------\n");          
         Map<Integer, EquippedPlane> aircraftOnInventory = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId()).getActiveEquippedPlanes();
         List<EquippedPlane> sortedAircraftOnInventory = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(aircraftOnInventory.values()));

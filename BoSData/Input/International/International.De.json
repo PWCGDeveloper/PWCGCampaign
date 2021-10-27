@@ -302,6 +302,14 @@
     "Top Aces: Exclude Historical": "Top Asse: Historische ausschließen",
     "Top Aces: Service": "Top Asse: Dienst",
     "Victory descriptions": "Beschreibungen der Siege",
-    "Waypoint type names": "Wegpunkttyp-Namen"
+    "Waypoint type names": "Wegpunkttyp-Namen",
+    "Aircraft On Inventory": "Flugzeuge im Inventar",
+    "Call Sign": "Rufzeichen",
+    "Enemy": "Feindliche",
+    "Friendly": "Freundlich",
+    "Recon Squadrons": "Aufklärungsstaffeln",
+    "Show Enemy Squadrons": "Feindliche Staffeln anzeigen",
+    "Show Friendly Squadrons": "Freundliche Staffeln anzeigen",
+    "Stationed At": "Stationiert bei"
 	}
 }

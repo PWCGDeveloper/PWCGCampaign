@@ -138,15 +138,27 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
         List<Squadron> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(campaign.getDate());
         for (Squadron squadron : squadronsForMap)
         {
-            if (squadron.determineSquadronPrimaryRoleCategory(campaign.getDate()) == roleCategory)
+            if (includeSquadron(squadron, roleCategory))
             {
-                if (squadron.determineSide() == side)
-                {
-                    squadronsWithPrimaryRole.add(squadron);
-                }
+                squadronsWithPrimaryRole.add(squadron);
             }
         }
         
         return squadronsWithPrimaryRole;
+    }
+    
+    private boolean includeSquadron(Squadron squadron, PwcgRoleCategory roleCategory) throws PWCGException
+    {
+        if (squadron.determineSquadronPrimaryRoleCategory(campaign.getDate()) != roleCategory)
+        {
+            return false;
+        }
+        
+        if (squadron.determineSide() != side)
+        {
+            return false;
+        }
+        
+        return true;
     }
 }

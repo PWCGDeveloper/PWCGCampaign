@@ -86,7 +86,6 @@ public class PWCGButtonFactory extends JButton
     public static  JButton makeTranslucentMenuButton(String displayText, String commandText, String toolTipText, ActionListener listener) throws PWCGException
     {
         displayText = InternationalizationManager.getTranslation(displayText);
-        toolTipText = InternationalizationManager.getTranslation(toolTipText);
 
         PWCGJButton button = ImageButton.makeTranslucentButton("TranslucentButton.png");
         Color fgColor = ColorMap.CHALK_FOREGROUND;
@@ -100,14 +99,15 @@ public class PWCGButtonFactory extends JButton
         button.setActionCommand(commandText);
         button.addActionListener(listener);
 
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
         ToolTipManager.setToolTip(button, toolTipText);
+
         return button;
     }
 
     public static  JButton makeTranslucentMenuButtonGrayMenu(String displayText, String commandText, String toolTipText, ActionListener listener) throws PWCGException
     {
         displayText = InternationalizationManager.getTranslation(displayText);
-        toolTipText = InternationalizationManager.getTranslation(toolTipText);
 
         PWCGJButton button = ImageButton.makeTranslucentButton("TranslucentButtonGrayMenu.png");
         Color fgColor = ColorMap.CHALK_FOREGROUND;
@@ -121,14 +121,14 @@ public class PWCGButtonFactory extends JButton
         button.setActionCommand(commandText);
         button.addActionListener(listener);
 
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
         ToolTipManager.setToolTip(button, toolTipText);
+
         return button;
     }
 
     public static PWCGJButton makeImageButton(ImageIcon imageIcon, Color background, String commandText, String noIcontext, String toolTipText, ActionListener listener) throws PWCGException
     {
-        toolTipText = InternationalizationManager.getTranslation(toolTipText);
-
         PWCGJButton pilotPictureButton = null;
         if (imageIcon != null)
         {
@@ -144,7 +144,10 @@ public class PWCGButtonFactory extends JButton
         pilotPictureButton.setBorderPainted(false);
         pilotPictureButton.setFocusPainted(false);
         pilotPictureButton.setActionCommand(commandText);
+
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
         ToolTipManager.setToolTip(pilotPictureButton, toolTipText);
+        
         return pilotPictureButton;
     }
 
@@ -168,6 +171,7 @@ public class PWCGButtonFactory extends JButton
         button.setFocusPainted(false);
         button.setHorizontalAlignment(SwingConstants.LEFT );
 
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
         ToolTipManager.setToolTip(button, toolTipText);
 
         return button;
@@ -242,6 +246,7 @@ public class PWCGButtonFactory extends JButton
         button.setHorizontalAlignment(SwingConstants.LEFT);
         button.addActionListener(actionListener);
 
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
         ToolTipManager.setToolTip(button, toolTipText);
         
         return button;
@@ -270,6 +275,7 @@ public class PWCGButtonFactory extends JButton
         Border raisedBorder = BorderFactory.createSoftBevelBorder(BevelBorder.RAISED);
         button.setBorder(raisedBorder);
         
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
         ToolTipManager.setToolTip(button, toolTipText);
 
         return button;

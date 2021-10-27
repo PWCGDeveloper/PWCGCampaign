@@ -92,7 +92,7 @@
     "Emergency Resupply": "Reabastecimiento de emergencia",
     "Enter Coop Username": "Introduzca el nombre de usuario de la cooperativa",
     "Equipment Request": "Solicitud de equipo",
-    "Exit": "Salir de",
+    "Exit": "Salir",
     "Fighter": "Cazas",
     "Fighter Mission Types": "Tipos de misiones de caza",
     "Fighter Squadrons": "Escuadrones de caza",
@@ -216,7 +216,7 @@
     "Role": "Papel",
     "Roster": "Lista",
     "Save and Leave": "Guardar y dejar",
-    "Scrub Mission": "Misión de limpieza",
+    "Scrub Mission": "Generar otra  Misión",
     "Scrub this mission": "Borrar esta misión",
     "Scrub this mission and return to campaign home screen": "Borrar esta misión y volver a la pantalla de inicio de la campaña",
     "Select Admin Action": "Seleccionar la acción de administración",
@@ -302,6 +302,14 @@
     "Top Aces: Exclude Historical": "Top Ases: Excluir históricos",
     "Top Aces: Service": "Top Ases: Servicio",
     "Victory descriptions": "Descripciones de victorias",
-    "Waypoint type names": "Nombres de tipos de balizas"
+    "Waypoint type names": "Nombres de tipos de balizas",
+    "Aircraft On Inventory": "Aviones en inventario",
+    "Call Sign": "Indicativo de llamada",
+    "Enemy": "Enemigo",
+    "Friendly": "Amigo",
+    "Recon Squadrons": "Escuadrones de reconocimiento",
+    "Show Enemy Squadrons": "Mostrar escuadrones enemigos",
+    "Show Friendly Squadrons": "Mostrar escuadrones amigos",
+    "Stationed At": "Estacionados en"
 	}
 }

@@ -14,15 +14,13 @@ import java.util.List;
 import pwcg.core.config.InternationalizationRecords;
 
 public class InternationalizationFileBuilder
-{
-    private static final String language ="En";
-    
+{    
     public static void main(String[] args)
     {
         try
         {
             InternationalizationFileBuilder internationalizationFileBuilder = new InternationalizationFileBuilder();
-            internationalizationFileBuilder.buildFileForMissingRecords();
+            internationalizationFileBuilder.buildFileForMissingRecordsAllFiles();
         }
         catch (Exception e)
         {
@@ -30,11 +28,20 @@ public class InternationalizationFileBuilder
         }
     }
     
-    public void buildFileForMissingRecords() throws Exception 
+    public void buildFileForMissingRecordsAllFiles() throws Exception 
+    {
+        buildFileForMissingRecords("De");
+        buildFileForMissingRecords("En");
+        buildFileForMissingRecords("Es");
+        buildFileForMissingRecords("Fr");
+        buildFileForMissingRecords("Ru");
+    }
+    
+    public void buildFileForMissingRecords(String language) throws Exception 
     {
         String filename = "International." + language + ".json";
                 
-        InternationalizationRecords internationalization = readLogFile();
+        InternationalizationRecords internationalization = readLogFile(language);
         
         Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename), StandardCharsets.UTF_8));       
         for (String key : internationalization.getTranslations().keySet())
@@ -46,7 +53,7 @@ public class InternationalizationFileBuilder
         out.close();
     }
 
-    private InternationalizationRecords readLogFile() throws Exception
+    private InternationalizationRecords readLogFile(String language) throws Exception
     {
         InternationalizationRecords internationalization = new InternationalizationRecords();
         
