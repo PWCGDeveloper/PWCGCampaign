@@ -104,7 +104,7 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
         JLabel headerLabel = PWCGLabelFactory.makePaperLabelLarge(roleCategory.getRoleCategoryDescription() + " Squadrons \n");
         squadronRoleGrid.add(headerLabel);
 
-        List<Squadron> squadrons = getSquadronsForIntel(roleCategory, side);
+        List<Squadron> squadrons = getSquadronsForIntel(roleCategory);
         for (Squadron squadron : squadrons)
         {
             if (SquadronViability.isSquadronViable(squadron, campaign))
@@ -131,7 +131,7 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
         return squadronRolePanel;
     }
 
-    private List<Squadron> getSquadronsForIntel(PwcgRoleCategory roleCategory, Side side) throws PWCGException
+    private List<Squadron> getSquadronsForIntel(PwcgRoleCategory roleCategory) throws PWCGException
     {
         List<Squadron> squadronsWithPrimaryRole = new ArrayList<>();
 

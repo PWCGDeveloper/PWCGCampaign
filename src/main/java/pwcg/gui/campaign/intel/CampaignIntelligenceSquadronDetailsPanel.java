@@ -169,7 +169,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
     
     private void formPersonnel(int squadronId, StringBuffer intelBuffer) throws PWCGException
     {
-        intelBuffer.append("\n        Personnel:\n");          
+        intelBuffer.append("\n        Personnel\n");          
         intelBuffer.append("        ----------------------------------------\n");          
 
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
@@ -189,7 +189,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
 
     private void formAircraftInventory(Squadron squadron, StringBuffer intelBuffer) throws PWCGException
     {
-        intelBuffer.append("\n        Aircraft on inventory are:\n");        
+        intelBuffer.append("\n        Aircraft On Inventory\n");        
         intelBuffer.append("        ----------------------------------------\n");          
         Map<Integer, EquippedPlane> aircraftOnInventory = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId()).getActiveEquippedPlanes();
         List<EquippedPlane> sortedAircraftOnInventory = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(aircraftOnInventory.values()));

@@ -1,6 +1,5 @@
 package pwcg.gui.campaign.intel;
 
-import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -8,7 +7,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
@@ -21,8 +19,6 @@ import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.PWCGLabelFactory;
 
 public class CampaignIntelligenceReportScreen extends ImageResizingPanel implements ActionListener
 {
@@ -30,6 +26,8 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 
 	private Campaign campaign;
 	private CampaignIntelligenceSquadronDetailsPanel squadronDetailsRightPanel;
+	private Side side;
+	private JPanel contentPanel;
 	
 	public CampaignIntelligenceReportScreen(Campaign campaign)
 	{
@@ -39,6 +37,16 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 
         this.campaign = campaign;
         this.setOpaque(false);
+        
+        try 
+        {
+            SquadronMember referencePlayer = campaign.findReferencePlayer();
+            side = referencePlayer.determineCountry(campaign.getDate()).getSide();
+        }
+        catch (Exception  e)
+        {
+            side = Side.ALLIED;
+        }
 	}
 
 	public void makePanels() throws PWCGException  
@@ -57,49 +65,42 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
         constraints.weightx = 0.1;
         constraints.gridx = 1;
         constraints.gridy = 0;
-        this.add(formSquadronDetails(), constraints);
+        this.add(makeContentPanels(), constraints);
 	}
-
-    private JPanel formSquadronDetails() throws PWCGException
-    {
-        JPanel squadronIntelPanel = new JPanel(new GridLayout(0, 2));
-        squadronIntelPanel.setOpaque(false);
-
-        JPanel squadronListPanel = makeCenterPanel();
-        squadronIntelPanel.add(squadronListPanel);
-
-        JPanel squadronDetailsPanel = makeRightPanel();
-        squadronIntelPanel.add(squadronDetailsPanel);
-        
-        return squadronIntelPanel;
-    }
 
     private JPanel makeNavigatePanel() throws PWCGException  
     {       
-        JPanel navPanel = new JPanel(new BorderLayout());
-        navPanel.setOpaque(false);
-        navPanel.setLayout(new BorderLayout());
-        navPanel.setOpaque(false);
-
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
-        buttonPanel.setOpaque(false);
-        
-        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
-        JButton finished = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "IntelFinished", "Leave Intel", this);
-        buttonPanel.add(finished);
-        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
-        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
-        
-        navPanel.add(buttonPanel, BorderLayout.NORTH);
-        
+        CampaignIntelligenceControlPanel navPanel = new CampaignIntelligenceControlPanel(this);
+        navPanel.makeIntelNavPanel();
         return navPanel;
+    }
+
+    private JPanel makeContentPanels() throws PWCGException
+    {
+        contentPanel = new JPanel(new GridLayout(0, 2));
+        contentPanel.setOpaque(false);
+
+        makeContent();
+        
+        return contentPanel;
+    }
+
+    private void makeContent() throws PWCGException
+    {
+        contentPanel.removeAll();
+        
+        JPanel squadronListPanel = makeCenterPanel();
+        contentPanel.add(squadronListPanel);
+
+        JPanel squadronDetailsPanel = makeRightPanel();
+        contentPanel.add(squadronDetailsPanel);
+        
+        this.revalidate();
+        this.repaint();
     }
 
     private JPanel makeCenterPanel() throws PWCGException  
     {
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        Side side = referencePlayer.determineCountry(campaign.getDate()).getSide().getOppositeSide();
-        
         CampaignIntelligenceSquadronListPanel squadronSelectionCenterPanel = new CampaignIntelligenceSquadronListPanel(campaign, this,side);
         squadronSelectionCenterPanel.makePanel();
         return squadronSelectionCenterPanel;
@@ -141,6 +142,18 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
                 String squadronIdString = action.substring(beginIndex).trim();
                 int squadronId = Integer.valueOf(squadronIdString).intValue();
                 squadronDetailsRightPanel.setSquadronIntelText(squadronId);
+            }
+            else if (action.contains("Friendly"))
+            {
+                SquadronMember referencePlayer = campaign.findReferencePlayer();
+                side = referencePlayer.determineCountry(campaign.getDate()).getSide();
+                makeContent();
+            }
+            else if (action.contains("Enemy"))
+            {
+                SquadronMember referencePlayer = campaign.findReferencePlayer();
+                side = referencePlayer.determineCountry(campaign.getDate()).getSide().getOppositeSide();
+                makeContent();
             }
         }
         catch (Exception e)
