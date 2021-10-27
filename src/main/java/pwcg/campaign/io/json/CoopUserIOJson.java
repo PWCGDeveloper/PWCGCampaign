@@ -49,7 +49,7 @@ public class CoopUserIOJson
 			}
 			catch (Exception e)
 			{
-			    PWCGLogger.log(LogLevel.DEBUG, "Fubar " + jsonFile.getName());
+			    PWCGLogger.log(LogLevel.ERROR, "Fubar " + jsonFile.getName());
 			}
 		}
 		

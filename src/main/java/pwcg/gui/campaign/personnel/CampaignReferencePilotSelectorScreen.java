@@ -138,6 +138,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
                 if (referencePlayer != null)
                 {
                     campaign.getCampaignData().setReferencePlayerSerialNumber(referencePlayer.getSerialNumber());
+                    campaign.write();
                 }
                 
                 campaignHomeGui.refreshInformation();

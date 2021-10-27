@@ -4,6 +4,8 @@ Internationalization
 - Most buttons and labels
 - Not complete.  Output to mission files and several complex items like combat reports and victory statements remain English only.
 Improved leave,transfer equipment request, depot report such that the document image stretching is minimal.
+Improved the intel report layout
+Fixed issue where reference pilot change may not be saved
 
 13.3.0
 Added SPAD VII 180 HP
