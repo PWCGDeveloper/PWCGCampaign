@@ -88,7 +88,7 @@ public class CampaignIOJsonTest
         ArmedService belgianArmedService = armedServiceManager.getArmedServiceByName(FCServiceManager.AVIATION_MILITAIRE_BELGE_NAME, campaign.getDate());
         PersonnelReplacementsService belgianReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(belgianArmedService.getServiceId());
         assert(belgianReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
-        assert(belgianReplacements.getDailyReplacementRate() == 1);
+        assert(belgianReplacements.getDailyReplacementRate() == 3);
     }
 
     private void validateReconSquadronMembers(Campaign campaign) throws PWCGException
