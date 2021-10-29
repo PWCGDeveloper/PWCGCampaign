@@ -30,12 +30,15 @@ dependencies {
 }
 
 jar {
-	outputs.upToDateWhen { false }
     archiveFileName = "PWCG.jar"
     
  	manifest {
         attributes 'Main-Class': 'pwcg.gui.maingui.PwcgMain'
     }
+    
+	from {
+    	configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  	}
 }
 
 task copyJar(type: Exec) {
