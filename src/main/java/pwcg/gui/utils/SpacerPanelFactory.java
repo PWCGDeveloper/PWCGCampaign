@@ -1,12 +1,10 @@
 package pwcg.gui.utils;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.core.exception.PWCGException;
@@ -27,8 +25,7 @@ public class SpacerPanelFactory
             int pixelsNeeded = Double.valueOf(widthNeeded).intValue();
             spacerGrid.setBorder(BorderFactory.createEmptyBorder(0, pixelsNeeded, 0, 0));
 
-            JLabel spacer1 = PWCGLabelFactory.makePaperLabelLarge(" ");
-            spacerGrid.add(spacer1);
+            spacerGrid.add(PWCGLabelFactory.makeDummyLabel());
 
             spacerPanel.add(spacerGrid, BorderLayout.NORTH);
 
@@ -48,9 +45,7 @@ public class SpacerPanelFactory
             spacerGrid.setOpaque(false);
             spacerGrid.setPreferredSize(new Dimension(widthNeeded, 300));
             
-            JLabel spacer1 = PWCGLabelFactory.makePaperLabelLarge("   ");
-            spacer1.setForeground(Color.BLACK);
-            spacerGrid.add(spacer1);
+            spacerGrid.add(PWCGLabelFactory.makeDummyLabel());
 
             return spacerGrid;
     }
@@ -85,8 +80,7 @@ public class SpacerPanelFactory
         }
         spacerGrid.setBorder(BorderFactory.createEmptyBorder(0,pixelsNeededAdjusted, 0, 0));
 
-        JLabel spacer1 = PWCGLabelFactory.makePaperLabelLarge(" ");
-        spacerGrid.add(spacer1);
+        spacerGrid.add(PWCGLabelFactory.makeDummyLabel());
 
         spacerPanel.add(spacerGrid, BorderLayout.NORTH);
 

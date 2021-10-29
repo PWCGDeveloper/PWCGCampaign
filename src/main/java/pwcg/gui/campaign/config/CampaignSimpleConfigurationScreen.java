@@ -170,12 +170,8 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", CommonUIActions.ACTION_CANCEL, "Cancel configuration changes", this);
         buttonPanel.add(cancelButton);
 
-        JLabel spacer1 = PWCGLabelFactory.makePaperLabelLarge("   ");
-        buttonPanel.add(spacer1);
-
-        JLabel spacer2
-        = PWCGLabelFactory.makePaperLabelLarge("   ");
-        buttonPanel.add(spacer2);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton resetButton = PWCGButtonFactory.makeTranslucentMenuButton("Reset", CommonUIActions.ACTION_RESET, "Reset all configurations to default", this);
         buttonPanel.add(resetButton);

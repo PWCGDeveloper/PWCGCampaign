@@ -90,8 +90,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
         JLabel summaryLabel = PWCGLabelFactory.makePaperLabelLarge("Mission Summary");
         editableLabelPanel.add(summaryLabel);
         
-        JLabel spacer = PWCGLabelFactory.makePaperLabelLarge("  ");
-        editableLabelPanel.add(spacer);
+        editableLabelPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         return editableLabelPanel;
     }

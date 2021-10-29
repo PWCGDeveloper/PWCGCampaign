@@ -9,6 +9,10 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import edu.cmu.relativelayout.Binding;
+import edu.cmu.relativelayout.BindingFactory;
+import edu.cmu.relativelayout.RelativeConstraints;
+import edu.cmu.relativelayout.RelativeLayout;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.SquadronMemberFilter;
@@ -25,6 +29,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeRightPanelFactory;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.UIUtils;
@@ -35,12 +40,13 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
     
     private SkinSessionManager skinSessionManager = new SkinSessionManager();
     private Campaign campaign;
-    private JPanel centerPanel;
+    private CampaignSkinConfigurationPilotPanel skinControlPanel;
+    private CampaignSkinConfigurationSelectionPanel skinSelectionPanel;
 
     public CampaignSkinConfigurationScreen(Campaign campaign) 
     {
         super("");
-        this.setLayout(new BorderLayout());
+        this.setLayout(new RelativeLayout());
 
         this.campaign = campaign;
     }
@@ -52,10 +58,31 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         this.setImageFromName(imagePath);
 
         SquadronMember referencePlayer = campaign.findReferencePlayer();
+        skinSessionManager.setPilot(referencePlayer);
 
-        this.add(BorderLayout.WEST, makeLeftPanel());
-        this.add(BorderLayout.CENTER, createCenterPanel(referencePlayer));
-        this.add(BorderLayout.EAST, createRightPanel());
+        makeMainPanelForPilot(referencePlayer);
+    }
+
+    private void makeMainPanelForPilot(SquadronMember pilot) throws PWCGException
+    {        
+        JPanel navPanel  = makeLeftPanel();
+        createSkinSelectionPanel();
+        createSkinControlPanel(pilot);
+
+        Binding navPanelBinding = BindingFactory.getBindingFactory().directLeftEdge();
+        RelativeConstraints navPanelConstraints = new RelativeConstraints();
+        navPanelConstraints.addBinding(navPanelBinding);
+        this.add(navPanel, navPanelConstraints);
+        
+        Binding centerPanelBinding = BindingFactory.getBindingFactory().directlyRightOf(navPanel);
+        RelativeConstraints centerPanelConstraints = new RelativeConstraints();
+        centerPanelConstraints.addBinding(centerPanelBinding);
+        this.add(skinControlPanel, centerPanelConstraints);
+
+        Binding skinListPanelBinding = BindingFactory.getBindingFactory().directlyRightOf(skinControlPanel);
+        RelativeConstraints skinListPanelConstraints = new RelativeConstraints();
+        skinListPanelConstraints.addBinding(skinListPanelBinding);
+        this.add(skinSelectionPanel, skinListPanelConstraints);
     }
 
     private JPanel makeLeftPanel() throws PWCGException 
@@ -67,36 +94,31 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         buttonPanel.setOpaque(false);
 
         makePlainButtons(buttonPanel);
-
         campaignButtonPanel.add (buttonPanel, BorderLayout.NORTH);
 
-        add (campaignButtonPanel, BorderLayout.WEST);
+        JPanel pilotSelectionPanel  = createPilotSelectionPanel();
+        campaignButtonPanel.add (pilotSelectionPanel, BorderLayout.CENTER);
 
         return campaignButtonPanel;
     }
 
-    private JPanel createCenterPanel(SquadronMember pilot) throws PWCGException
+    private void createSkinControlPanel(SquadronMember pilot) throws PWCGException
     {
-        if (centerPanel != null)
-        {
-            this.remove(centerPanel);
-        }
-
-        centerPanel = new JPanel(new BorderLayout());
-        centerPanel.setOpaque(false);
-        
-        skinSessionManager.setPilot(pilot);
-        CampaignSkinConfigurationForPilotPanel campaignSquadronSkinPilotPanel = new CampaignSkinConfigurationForPilotPanel(campaign, skinSessionManager);
-        campaignSquadronSkinPilotPanel.makePanels();
-        
-        centerPanel.add(BorderLayout.CENTER, campaignSquadronSkinPilotPanel);
-                
-        centerPanel.revalidate();
-        centerPanel.repaint();
-        return centerPanel;
+        skinControlPanel = new CampaignSkinConfigurationPilotPanel(campaign, this);
+        skinControlPanel.makePanels();
+                        
+        ImageToDisplaySizer.setDocumentSize(skinControlPanel);
     }
 
-    private JPanel createRightPanel() throws PWCGException, PWCGException
+    private void createSkinSelectionPanel() throws PWCGException
+    {
+        skinSelectionPanel = new CampaignSkinConfigurationSelectionPanel(this);
+        skinSelectionPanel.makePanels();
+
+        ImageToDisplaySizer.setDocumentSize(skinSelectionPanel);
+    }
+
+    private JPanel createPilotSelectionPanel() throws PWCGException, PWCGException
     {
         List<SquadronMember> pilotsNoAces = makePilotList();
         JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomePilotsRightPanel(this, pilotsNoAces);
@@ -132,8 +154,12 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
             {
                 return;
             }
-            
-            this.add(BorderLayout.CENTER, createCenterPanel(pilot));
+
+            this.removeAll();
+
+            skinSessionManager.setPilot(pilot);
+            skinSessionManager.clearSkinCategorySelectedFlags();
+            makeMainPanelForPilot(pilot);
             this.revalidate();
             this.repaint();
         }
@@ -172,6 +198,19 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
             ErrorDialog.internalError(e.getMessage());
         }
     }
-    
- 
- }
+
+    public SkinSessionManager getSkinSessionManager()
+    {
+        return skinSessionManager;
+    }
+
+    public CampaignSkinConfigurationPilotPanel getSkinControlPanel()
+    {
+        return skinControlPanel;
+    }
+
+    public CampaignSkinConfigurationSelectionPanel getSkinSelectionPanel()
+    {
+        return skinSelectionPanel;
+    }
+}

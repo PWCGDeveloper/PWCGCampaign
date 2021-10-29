@@ -8,10 +8,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import edu.cmu.relativelayout.Binding;
+import edu.cmu.relativelayout.BindingFactory;
+import edu.cmu.relativelayout.RelativeConstraints;
+import edu.cmu.relativelayout.RelativeLayout;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
@@ -29,6 +32,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 
@@ -42,7 +46,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
     public CampaignPlayerAdminScreen(Campaign campaign)
     {
         super("");
-        this.setLayout(new BorderLayout());
+        this.setLayout(new RelativeLayout());
         this.setOpaque(false);
 
         this.campaign = campaign;
@@ -54,10 +58,23 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignCoopAdminScreen);
             this.setImageFromName(imagePath);
+            
+            Binding navPanelBinding = BindingFactory.getBindingFactory().directLeftEdge();
+            RelativeConstraints navPanelConstraints = new RelativeConstraints();
+            navPanelConstraints.addBinding(navPanelBinding);
+            JPanel navPanel  = makeNavigatePanel();
+            this.add(navPanel, navPanelConstraints);
+            
+            Binding centerPanelBinding = BindingFactory.getBindingFactory().directlyRightOf(navPanel);
+            RelativeConstraints centerPanelConstraints = new RelativeConstraints();
+            centerPanelConstraints.addBinding(centerPanelBinding);
+            JPanel centerPanel  = makeCenterPanel();
+            this.add(centerPanel, centerPanelConstraints);
 
-            this.add(BorderLayout.WEST, makeNavigatePanel());
-            this.add(BorderLayout.CENTER, makeCenterPanel());
-            this.add(BorderLayout.EAST, makeRightPanel());
+            Binding rightPanelBinding = BindingFactory.getBindingFactory().directRightEdge();
+            RelativeConstraints rightPanelConstraints = new RelativeConstraints();
+            rightPanelConstraints.addBinding(rightPanelBinding);
+            this.add(makeRightPanel(), rightPanelConstraints);
         }
         catch (Throwable e)
         {
@@ -66,10 +83,11 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         }
     }
 
-    public JPanel makeCenterPanel()
+    public JPanel makeCenterPanel() throws PWCGException
     {
         personaInfoPanel = new CampaignAdminPilotPanel(campaign, this);
         personaInfoPanel.makePanels();
+        ImageToDisplaySizer.setDocumentSizePlusExtra(personaInfoPanel, 300);
         return personaInfoPanel;
     }
 
@@ -78,6 +96,9 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
+        
         JButton finishedAndSave = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished save results of coop administration", this);
         buttonPanel.add(finishedAndSave);
 
@@ -97,8 +118,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
-        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Select Admin Action");
-        buttonPanel.add(label);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         buttonPanel.add(makeActionButton("Add Pilot", "Add a coop persona to the campaign"));
         if (getSquadronMemberForSelectedPilot() != null)

@@ -14,7 +14,22 @@
   "airfields": {
     "19170601": "Sercus"
   },
-  "skins": [],
+	"skins": [
+		{
+			"skinName": "breguet14_skin_03",
+			"planeType": "breguet14",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 304003,
+			"country": "Belgium",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "BLACK"
+		}
+	],
   "squadHistory": {
     "squadHistoryEntries": []
   },

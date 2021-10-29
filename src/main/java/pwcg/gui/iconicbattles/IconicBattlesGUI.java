@@ -74,7 +74,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         buttonPanel.setOpaque(false);
         
         buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("Iconic Mission Squadrons"));
-        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleKey());
         
@@ -88,9 +88,9 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
             countriesInBattle.add(squadron.getCountry().getCountry());
         }
         
-        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("Iconic Mission Vehicles"));
-        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         Date battleDate = DateUtils.getDateYYYYMMDD(iconicMission.getDateString());        
         List<VehicleDefinition> matchingTrucks = getVehicleDefinitionsOfType(VehicleClass.TruckAAAPlayer, countriesInBattle, battleDate);

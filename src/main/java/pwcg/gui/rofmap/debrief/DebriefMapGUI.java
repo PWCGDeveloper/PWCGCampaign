@@ -212,8 +212,12 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		debriefTextPanel.setOpaque(false);
 		debriefTextPanel.setBackground(buttonBG);
 
-        JLabel eventTextLabel = PWCGLabelFactory.makePaperLabelLarge("Mission Events:");
-        debriefTextPanel.add(eventTextLabel, BorderLayout.NORTH);
+        JLabel eventHeaderLabel = PWCGLabelFactory.makePaperLabelLarge("Mission Events");
+        JLabel eventHeaderDivider = PWCGLabelFactory.makePaperLabelLarge("==================================================");
+        JPanel headerPanel = new JPanel(new GridLayout(0,1));
+        headerPanel.add(eventHeaderLabel);
+        headerPanel.add(eventHeaderDivider);
+        debriefTextPanel.add(headerPanel, BorderLayout.NORTH);
 
 		eventTextPane.setBackground(buttonBG);
 		eventTextPane.setFont(font);

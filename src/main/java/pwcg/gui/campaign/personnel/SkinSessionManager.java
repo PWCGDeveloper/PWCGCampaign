@@ -268,4 +268,13 @@ public class SkinSessionManager
         this.looseSkinsSelected = looseSkinsSelected;
     }
     
+
+    public void clearSkinCategorySelectedFlags()
+    {
+        this.looseSkinsSelected = false;
+        this.squadronSkinsSelected = false;
+        this.nonSquadronSkinsSelected = false;
+    }
+
+    
 }

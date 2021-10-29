@@ -6,6 +6,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
@@ -62,26 +63,69 @@ public class Breguet14Payload extends PlanePayload implements IPlanePayload
 
     protected int selectPayload(IFlight flight)
     {
-        return 12;
+        int selectedPayloadId = 4;
+        
+        int diceRoll = RandomNumberGenerator.getRandom(100);
+        if (diceRoll < 40)
+        {
+            selectedPayloadId = 2;
+        }
+        else if (diceRoll < 60)
+        {
+            selectedPayloadId = 4;
+        }
+        else if (diceRoll < 80)
+        {
+            selectedPayloadId = 6;
+        }
+        else if (diceRoll < 90)
+        {
+            selectedPayloadId = 3;
+        }
+        else if (diceRoll < 95)
+        {
+            selectedPayloadId = 5;
+        }
+        else if (diceRoll < 100)
+        {
+            selectedPayloadId = 7;
+        }
+        
+        return selectedPayloadId;
     }
 
     protected int selectReconPayload(IFlight flight)
     {
-        this.selectModification(PayloadElement.CAMERA);
-        return 0;
+        return selectNonOrdnancePayload();
     }
 
     protected int selectArtillerySpotPayload(IFlight flight)
     {
-        this.selectModification(PayloadElement.RADIO);
-        return 0;
+        return selectNonOrdnancePayload();
+    }
+
+    protected int selectNonOrdnancePayload()
+    {
+        int selectedPayloadId = 1;
+        
+        int diceRoll = RandomNumberGenerator.getRandom(100);
+        if (diceRoll < 85)
+        {
+            selectedPayloadId = 0;
+        }
+        else
+        {
+            selectedPayloadId = 1;
+        }
+
+        return selectedPayloadId;
     }
 
     @Override
     public boolean isOrdnance()
     {
         int selectedPayloadId = this.getSelectedPayload();
-        if (selectedPayloadId > 0)
+        if (selectedPayloadId > 1)
         {
             return true;
         }

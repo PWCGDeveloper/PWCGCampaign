@@ -42,8 +42,15 @@ public class ImageToDisplaySizer
 
         return imagePanelDimensions;
     }
-
-
+    
+    public static void setDocumentSizePlusExtra(JPanel centerPanel,int extraWidth) throws PWCGException
+    {
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+        BufferedImage documentImage = ImageCache.getImageFromFile(imagePath);
+        Dimension imagePanelDimensions = ImageToDisplaySizer.getDimensionsForScreen(documentImage);
+        centerPanel.setPreferredSize(new Dimension(imagePanelDimensions.width + extraWidth, imagePanelDimensions.height));
+    }
+    
     public static void setDocumentSize(JPanel centerPanel) throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);

@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -58,14 +57,12 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacer1 = PWCGLabelFactory.makePaperLabelLarge("   ");
-        buttonPanel.add(spacer1);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
         buttonPanel.add(finishedButton);
 
-        JLabel spacer2 = PWCGLabelFactory.makePaperLabelLarge("   ");
-        buttonPanel.add(spacer2);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton intellMapButton = PWCGButtonFactory.makeTranslucentMenuButton("Intel Map", "CampIntelMap", "View intelligence maps", this);
         buttonPanel.add(intellMapButton);
@@ -76,8 +73,7 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
         JButton equipmentDepotButton = PWCGButtonFactory.makeTranslucentMenuButton("Depot Report", "EquipmentDepotReport", "View equipment depot report", this);
         buttonPanel.add(equipmentDepotButton);
 
-        JLabel spacer3 = PWCGLabelFactory.makePaperLabelLarge("   ");
-        buttonPanel.add(spacer3);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton emergencyResupplyButton = PWCGButtonFactory.makeTranslucentMenuButton("Emergency Resupply", "EmergencyResupply", "Resupply depleted units", this);
         buttonPanel.add(emergencyResupplyButton);
