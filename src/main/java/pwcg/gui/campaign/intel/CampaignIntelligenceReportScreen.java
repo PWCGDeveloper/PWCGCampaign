@@ -1,14 +1,15 @@
 package pwcg.gui.campaign.intel;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import edu.cmu.relativelayout.Binding;
+import edu.cmu.relativelayout.BindingFactory;
+import edu.cmu.relativelayout.RelativeConstraints;
+import edu.cmu.relativelayout.RelativeLayout;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -32,7 +33,7 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 	public CampaignIntelligenceReportScreen(Campaign campaign)
 	{
         super("");
-        this.setLayout(new GridBagLayout());
+        this.setLayout(new RelativeLayout());
         this.setOpaque(false);
 
         this.campaign = campaign;
@@ -54,18 +55,18 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignIntelligenceReportScreen);
         this.setImageFromName(imagePath);
 
+        JPanel navPanel  = makeNavigatePanel();
+        JPanel contentPanels  = makeContentPanels();
+
+        Binding navPanelBinding = BindingFactory.getBindingFactory().directLeftEdge();
+        RelativeConstraints navPanelConstraints = new RelativeConstraints();
+        navPanelConstraints.addBinding(navPanelBinding);
+        this.add(navPanel, navPanelConstraints);
         
-        GridBagConstraints constraints = initializeGridbagConstraints();
-
-        constraints.weightx = 0.1;
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        this.add(makeNavigatePanel(), constraints);
-
-        constraints.weightx = 0.1;
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        this.add(makeContentPanels(), constraints);
+        Binding centerPanelBinding = BindingFactory.getBindingFactory().directlyRightOf(navPanel);
+        RelativeConstraints centerPanelConstraints = new RelativeConstraints();
+        centerPanelConstraints.addBinding(centerPanelBinding);
+        this.add(contentPanels, centerPanelConstraints);
 	}
 
     private JPanel makeNavigatePanel() throws PWCGException  
@@ -111,17 +112,6 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
         squadronDetailsRightPanel = new CampaignIntelligenceSquadronDetailsPanel(campaign);
         squadronDetailsRightPanel.makePanel();
         return squadronDetailsRightPanel;
-    }
-
-    private GridBagConstraints initializeGridbagConstraints()
-    {
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.ipadx = 3;
-        constraints.ipady = 3;
-        constraints.anchor = GridBagConstraints.NORTHWEST;
-        Insets margins = new Insets(0, 50, 50, 0);
-        constraints.insets = margins;
-        return constraints;
     }
 
     public void actionPerformed(ActionEvent ae)

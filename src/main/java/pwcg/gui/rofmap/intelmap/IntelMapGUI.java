@@ -89,7 +89,6 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         IntelMapPanel mapPanel = new IntelMapPanel(this, campaign);
         mapScroll = new MapScroll(mapPanel);  
         mapPanel.setData();
-        mapPanel.setMapBackground(100);
 
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         makeMapPanelPoints(campaign.getDate());
@@ -243,7 +242,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         
         mapPanel.add(mapGrid, BorderLayout.NORTH);
 
-        JLabel mapLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose Map");
+        JLabel mapLabel = PWCGLabelFactory.makePaperLabelLarge("Choose Map");
         mapGrid.add(mapLabel);
         
         Campaign campaign = PWCGContext.getInstance().getCampaign();
@@ -331,6 +330,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
                 String mapName = action.substring(indexOfMapName);
                 FrontMapIdentifier mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
                 PWCGContext.getInstance().changeContext(mapIdentifier);
+                
                 JPanel mapCenterPanel = createMapPanel();
                 this.add(BorderLayout.CENTER, mapCenterPanel); 
 

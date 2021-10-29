@@ -31,6 +31,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.HelpDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -267,18 +268,25 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         SoundManager.getInstance().playSound("Stapling.WAV");
 
         int leaveTimeDays = getLeaveTime();
-        boolean isNewsWorthy = false;
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        LeaveEvent leaveEvent = new LeaveEvent(campaign, leaveTimeDays, referencePlayer.getSquadronId(), referencePlayer.getSerialNumber(), campaign.getDate(),
-                isNewsWorthy);
-        parent.campaignTimePassedForLeave(leaveEvent.getLeaveTime());
+        if (leaveTimeDays > 0)
+        {
+            boolean isNewsWorthy = false;
+            SquadronMember referencePlayer = campaign.findReferencePlayer();
+            LeaveEvent leaveEvent = new LeaveEvent(campaign, leaveTimeDays, referencePlayer.getSquadronId(), referencePlayer.getSerialNumber(), campaign.getDate(),
+                    isNewsWorthy);
+            parent.campaignTimePassedForLeave(leaveEvent.getLeaveTime());
+        }
+        else
+        {
+            new  HelpDialog("Enter leave in days continuing");
+        }
     }
 
     public int getLeaveTime() throws PWCGUserException, Exception
     {
         if (tLeaveTime.getText() == null || tLeaveTime.getText().length() == 0)
         {
-            throw new PWCGUserException("Enter leave in weeks continuing");
+            return 0;
         }
 
         int leaveTime = Integer.valueOf(tLeaveTime.getText()).intValue();

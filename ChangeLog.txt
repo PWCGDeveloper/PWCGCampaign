@@ -1,3 +1,11 @@
+13.4.1
+Improved layout of skin selection UI
+Improved appearance reference pilot selection and player admin screen to minimize image stretching
+Fixed layout of intel screen - control buttons not displaying on some monitors
+Fixed Breguet payload issue
+Fixed overly small area for text in debrief
+Fixed leave error message.  Weeks should be days.  Changed dialogfromerror to help.
+
 13.4.0
 Internationalization
 - English, German, Spanish, French

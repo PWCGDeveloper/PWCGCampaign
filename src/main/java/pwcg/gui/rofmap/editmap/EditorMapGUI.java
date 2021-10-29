@@ -211,7 +211,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         
         mapPanel.add(mapGrid, BorderLayout.NORTH);
 
-        JLabel mapLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose Map");
+        JLabel mapLabel = PWCGLabelFactory.makePaperLabelLarge("Choose Map");
         mapGrid.add(mapLabel);
         
         if (PWCGContext.getProduct() == PWCGProduct.BOS)

@@ -61,16 +61,22 @@ public class CampaignIntelligenceControlPanel extends JPanel
         JPanel selectorPanel = new JPanel(new BorderLayout());
         selectorPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        JPanel buttonPanel = new JPanel(new GridLayout(0,3));
         buttonPanel.setOpaque(false);
         
         JRadioButton friendly = PWCGButtonFactory.makeRadioButton("Friendly", "Friendly", "Show Friendly Squadrons", null, ColorMap.CHALK_FOREGROUND, true, parent);       
-        buttonPanel.add(friendly);
         buttonGroup.add(friendly);
+
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
+        buttonPanel.add(friendly);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         JRadioButton enemy = PWCGButtonFactory.makeRadioButton("Enemy", "Enemy", "Show Enemy Squadrons", null, ColorMap.CHALK_FOREGROUND, false, parent);       
-        buttonPanel.add(enemy);
         buttonGroup.add(enemy);
+
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
+        buttonPanel.add(enemy);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         selectorPanel.add(buttonPanel, BorderLayout.NORTH);
         

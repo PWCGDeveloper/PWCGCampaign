@@ -67,8 +67,7 @@ public class IntelMapPanel extends MapPanelBase
 	    
 	    setMapBackground(100);
 	    
-		makeVisible(false);
-		makeVisible(true);
+        repaint();
 	}
 
 	public void paintComponent(Graphics g)
