@@ -252,9 +252,6 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
 
     public void refreshInformation() throws PWCGException
     {
-        this.remove(personaActionsPanel);
-        this.add(BorderLayout.EAST, makeRightPanel());
-
         personaInfoPanel.refreshInformation();
         
         refresh();
