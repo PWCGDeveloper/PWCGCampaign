@@ -6,14 +6,9 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
+mainClassName = 'pwcg.gui.maingui.PwcgMain'
 
 applicationName = 'PWCG'
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(8)
-    }
-}
 
 repositories {
     mavenCentral()
@@ -35,12 +30,17 @@ dependencies {
 }
 
 jar {
-    destinationDirectory.set(file("/PWCG/Deploy"))
+	outputs.upToDateWhen { false }
     archiveFileName = "PWCG.jar"
     
  	manifest {
         attributes 'Main-Class': 'pwcg.gui.maingui.PwcgMain'
     }
+}
+
+task copyJar(type: Exec) {
+    workingDir "$projectDir"
+    commandLine 'cmd', '/c', ' cp build/libs/PWCG.jar D:/PWCG/Deploy/PWCG.jar'
 }
 
 task deploy(type:JavaExec) {
@@ -68,7 +68,8 @@ task zipFC(type: Exec) {
     commandLine 'cmd', '/c', ' D:/Utils/7Zip/7-zip/7z.exe a -tzip D:/PWCG/Deploy/PWCGFC.zip D:/PWCG/Deploy/PWCGFC'
 }
 
-tasks.named("build") { finalizedBy("deploy") }
+tasks.named("build") { finalizedBy("copyJar") }
+tasks.named("copyJar") { finalizedBy("deploy") }
 tasks.named("deploy") { finalizedBy("buildBoS") }
 tasks.named("buildBoS") { finalizedBy("zipBoS") }
 tasks.named("zipBoS") { finalizedBy("buildFC") }
