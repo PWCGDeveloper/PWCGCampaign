@@ -316,7 +316,7 @@ public class Squadron
 	{
 		String squadronDescription = "";
 		
-		squadronDescription += "Squadron " + determineDisplayName(date) + "\n\n";
+		squadronDescription += "\nSquadron: " + determineDisplayName(date) + "\n\n";
 		
         String status = determineSkillDescription();
         if (status != null && status.length() > 0)
@@ -330,12 +330,12 @@ public class Squadron
             squadronDescription += "Callsign: " + callsign + "\n\n";
         }
 
-		squadronDescription += "Stationed at\n";
+		squadronDescription += "Stationed at: ";
 		String fieldName = determineCurrentAirfieldName(date);
-		squadronDescription += "    " + fieldName + "\n\n";
+		squadronDescription += fieldName + "\n\n";
 		
 		List<PlaneType> planes = determineCurrentAircraftList(date);
-		squadronDescription += "Flying the \n";
+		squadronDescription += "Flying the:\n";
 		for (PlaneType plane : planes)
 		{
 			squadronDescription += "    " + plane.getDisplayName() + "\n";
@@ -345,7 +345,7 @@ public class Squadron
 		List<Ace> aces =  PWCGContext.getInstance().getAceManager().
 		                getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), campaign.getDate(), getSquadronId());
 
-		squadronDescription += "\nAces on staff \n";
+		squadronDescription += "\nAces on staff:\n";
 		for (Ace ace : aces)
 		{
 			squadronDescription += "    " + ace.getNameAndRank() + "\n";

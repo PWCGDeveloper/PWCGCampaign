@@ -2,6 +2,7 @@ package pwcg.gui.rofmap.debrief;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Point;
@@ -44,6 +45,7 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
@@ -213,10 +215,8 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		debriefTextPanel.setBackground(buttonBG);
 
         JLabel eventHeaderLabel = PWCGLabelFactory.makePaperLabelLarge("Mission Events");
-        JLabel eventHeaderDivider = PWCGLabelFactory.makePaperLabelLarge("==================================================");
         JPanel headerPanel = new JPanel(new GridLayout(0,1));
         headerPanel.add(eventHeaderLabel);
-        headerPanel.add(eventHeaderDivider);
         debriefTextPanel.add(headerPanel, BorderLayout.NORTH);
 
 		eventTextPane.setBackground(buttonBG);
@@ -228,6 +228,9 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	    JScrollPane eventScrollPane = ScrollBarWrapper.makeScrollPane(eventTextPane);
 	    
         debriefTextPanel.add(eventScrollPane, BorderLayout.CENTER);
+        
+        Dimension imagePanelDimensions = ImageToDisplaySizer.getTextAreaDimensionsForScreen(600);
+        debriefTextPanel.setPreferredSize(new Dimension(imagePanelDimensions.width, imagePanelDimensions.height));
 
 		return debriefTextPanel;
 	}

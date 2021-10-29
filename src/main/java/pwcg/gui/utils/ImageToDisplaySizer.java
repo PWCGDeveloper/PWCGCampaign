@@ -42,6 +42,25 @@ public class ImageToDisplaySizer
 
         return imagePanelDimensions;
     }
+
+    public static Dimension getTextAreaDimensionsForScreen(int maxSize)
+    {
+        Dimension pwcgDimensions = PWCGMonitorSupport.getPWCGFrameSize();
+        Double height = (pwcgDimensions.getHeight() * .95);
+        Double widthDouble = Double.valueOf(pwcgDimensions.getWidth()) * .30;
+        int width = widthDouble.intValue();
+        if (width < 300)
+        {
+            width = 300;
+        }
+        else if (width > maxSize)
+        {
+            width = maxSize;
+        }
+        Dimension imagePanelDimensions = new Dimension(width, height.intValue());
+
+        return imagePanelDimensions;
+    }
     
     public static void setDocumentSizePlusExtra(JPanel centerPanel,int extraWidth) throws PWCGException
     {
