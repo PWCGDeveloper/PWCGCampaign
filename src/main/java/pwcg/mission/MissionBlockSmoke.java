@@ -110,7 +110,7 @@ public class MissionBlockSmoke
     {
         for (FixedPosition fixedPosition : fixedPositions)
         {
-            if (mission.getMissionBattleManager().isNearAnyBattle(fixedPosition.getPosition()))
+            if (mission.getBattleManager().isNearAnyBattle(fixedPosition.getPosition()))
             {
                 createSmokeForStructure(fixedPosition.getPosition(), SmokeEffect.SMOKE_CITY);
             }
@@ -131,7 +131,7 @@ public class MissionBlockSmoke
 
     private void createSmokeForStructure(Coordinate position, SmokeEffect smokeEffect) throws PWCGException
     {
-        List<Integer> triggerPlanes = mission.getMissionFlights().getPlayersInMission();
+        List<Integer> triggerPlanes = mission.getFlights().getPlayersInMission();
         List<Integer> triggerAAATrucks = mission.getMissionAAATrucks().getPlayerVehicleIds();
         
         List<Integer> smoketriggers = new ArrayList<>();

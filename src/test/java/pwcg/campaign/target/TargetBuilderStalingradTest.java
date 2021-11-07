@@ -59,7 +59,7 @@ public class TargetBuilderStalingradTest
         {
             mocked.when(() -> TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-            IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
+            IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
 
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
@@ -77,7 +77,7 @@ public class TargetBuilderStalingradTest
         {
             mocked.when(() -> TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-            IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
+            IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
 
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
@@ -94,7 +94,7 @@ public class TargetBuilderStalingradTest
         {
             mocked.when(() -> TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-            IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
+            IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
 
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
@@ -111,7 +111,7 @@ public class TargetBuilderStalingradTest
         {
             mocked.when(() -> TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-            IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
+            IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
 
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
@@ -128,7 +128,7 @@ public class TargetBuilderStalingradTest
         {
             mocked.when(() -> TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-            IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
+            IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
 
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
@@ -145,7 +145,7 @@ public class TargetBuilderStalingradTest
         {
             mocked.when(() -> TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-            IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
+            IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
 
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 

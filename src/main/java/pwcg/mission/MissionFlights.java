@@ -312,15 +312,18 @@ public class MissionFlights
         return null;
     }
 
-    public List<Coordinate> getTargetCoordinatesForMission() throws PWCGException
+    public List<Coordinate> getTargetCoordinatesForPlayerFlights() throws PWCGException
     {
         List<Coordinate> missionTargetCoordiinates = new ArrayList<>();
         for (IFlight flight : flights)
         {
-            if (FlightTypes.isBombingFlight(flight.getFlightType()))
+            if (flight.isPlayerFlight())
             {
-                MissionPoint targetArea = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_ATTACK);
-                missionTargetCoordiinates.add(targetArea.getPosition());
+                if (FlightTypes.isBombingFlight(flight.getFlightType()))
+                {
+                    MissionPoint targetArea = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_ATTACK);
+                    missionTargetCoordiinates.add(targetArea.getPosition());
+                }
             }
         }
         return missionTargetCoordiinates;

@@ -18,7 +18,7 @@ public class MissionFreeHuntTriggerBuilder
 
     public void buildFreeHuntTriggers() throws PWCGException
     {
-        for (IFlight playerFlight : mission.getMissionFlights().getPlayerFlights())
+        for (IFlight playerFlight : mission.getFlights().getPlayerFlights())
         {
             if (playerFlight.getFlightInformation().getFlightType() == FlightTypes.GROUND_HUNT)
             {
@@ -31,7 +31,7 @@ public class MissionFreeHuntTriggerBuilder
     {
         Side enemySide = playerFlight.getSquadron().determineEnemySide();
         TargetType targetType = playerFlight.getTargetDefinition().getTargetType();
-        for (GroundUnitCollection groundUnitCollection : mission.getMissionGroundUnitBuilder().getGroundUnitsForSide(enemySide))
+        for (GroundUnitCollection groundUnitCollection : mission.getGroundUnitBuilder().getGroundUnitsForSide(enemySide))
         {
             groundUnitCollection.addFreeHuntTargetingFlight(playerFlight, targetType);
         }

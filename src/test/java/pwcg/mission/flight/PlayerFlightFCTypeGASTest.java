@@ -48,7 +48,7 @@ public class PlayerFlightFCTypeGASTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.BALLOON_BUST, MissionProfile.DAY_TACTICAL_MISSION);
-        BalloonBustFlight flight = (BalloonBustFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        BalloonBustFlight flight = (BalloonBustFlight) mission.getFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);
@@ -67,7 +67,7 @@ public class PlayerFlightFCTypeGASTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.BALLOON_DEFENSE, MissionProfile.DAY_TACTICAL_MISSION);
-        BalloonDefenseFlight flight = (BalloonDefenseFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        BalloonDefenseFlight flight = (BalloonDefenseFlight) mission.getFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);
@@ -86,7 +86,7 @@ public class PlayerFlightFCTypeGASTest
 	{
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.INTERCEPT, MissionProfile.DAY_TACTICAL_MISSION);
-        InterceptFlight flight = (InterceptFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        InterceptFlight flight = (InterceptFlight) mission.getFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);

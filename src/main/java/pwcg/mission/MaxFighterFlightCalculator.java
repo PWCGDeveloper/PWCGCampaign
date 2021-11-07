@@ -24,7 +24,7 @@ public class MaxFighterFlightCalculator
         int maxFighterToKeepIfGroundCampaign = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiFighterFlightsForGroundCampaignMaxKey);
         int maxFighterToKeepIfFighterCampaign = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiFighterFlightsForFighterCampaignMaxKey);
         int numFighterFlightsToKeep = 0;
-        if (mission.getMissionFlights().hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER)))
+        if (mission.getFlights().hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER)))
         {
             numFighterFlightsToKeep =  maxFighterToKeepIfFighterCampaign;
         }

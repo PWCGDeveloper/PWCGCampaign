@@ -27,7 +27,7 @@ public class AAATruckPositionBuilder
 
     public void buildTruckPosition(Side truckSide) throws PWCGException
     {
-        mission.getMissionFlights().removePlayerFlights();
+        mission.getFlights().removePlayerFlights();
         getBestTruckPosition(truckSide);
     }
 
@@ -86,7 +86,7 @@ public class AAATruckPositionBuilder
         Coordinate missionCenter = mission.getMissionBorders().getCenter();
         double closestUnitDistance = 1000000000.0;
         IGroundUnit friendlyUnitClosestToMissionCenter = null;
-        for (GroundUnitCollection groundUnitCollection : mission.getMissionGroundUnitBuilder().getAssaults())
+        for (GroundUnitCollection groundUnitCollection : mission.getGroundUnitBuilder().getAssaults())
         {
             for (IGroundUnit friendlyGroundUnit : groundUnitCollection.getGroundUnitsForSide(truckSide))
             {

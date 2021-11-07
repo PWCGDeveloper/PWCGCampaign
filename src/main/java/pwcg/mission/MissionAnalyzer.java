@@ -39,7 +39,7 @@ public class MissionAnalyzer
 
             writer.write("Player flights");
             writer.newLine();
-            for (IFlight playerFlight: mission.getMissionFlights().getPlayerFlights())
+            for (IFlight playerFlight: mission.getFlights().getPlayerFlights())
             {
             	analyzeFlight (writer, playerFlight, false);
             }
@@ -47,7 +47,7 @@ public class MissionAnalyzer
             writer.newLine();
             writer.newLine();
 
-            List<IFlight> alliedFlights = mission.getMissionFlights().getAiFlights();
+            List<IFlight> alliedFlights = mission.getFlights().getAiFlights();
             for (int i = 1; i < alliedFlights.size(); ++i)
             {
             	writer.write("IFlight");

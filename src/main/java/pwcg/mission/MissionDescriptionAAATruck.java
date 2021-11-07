@@ -58,7 +58,7 @@ public class MissionDescriptionAAATruck implements IMissionDescription
         buildTitleDescription(campaign.getCampaignData().getName(), "AAA");
 
         HashMap<String, IFlight> squadronMap = new HashMap<String, IFlight>();
-        for (IFlight flight : mission.getMissionFlights().getAiFlights())
+        for (IFlight flight : mission.getFlights().getAiFlights())
         {
             squadronMap.put(flight.getSquadron().determineDisplayName(campaign.getDate()), flight);
         }

@@ -18,7 +18,7 @@ public class PositionEvaluator
         Coordinate missionCenter = mission.getMissionBorders().getCenter();
 
         boolean failed = false;
-        for (IFlight aiFlight : mission.getMissionFlights().getAiFlights())
+        for (IFlight aiFlight : mission.getFlights().getAiFlights())
         {
             verifyWaypointAltitude(aiFlight);
 

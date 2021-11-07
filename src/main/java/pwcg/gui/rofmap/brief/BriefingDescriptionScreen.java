@@ -94,7 +94,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
         buttonGrid.setLayout(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
             
-        if (mission.isFinalized())
+        if (mission.getFinalizer().isFinalized())
         {
             buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
             JButton backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");

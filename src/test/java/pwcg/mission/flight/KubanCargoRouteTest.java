@@ -64,7 +64,7 @@ public class KubanCargoRouteTest
         Assertions.assertTrue (mission.getSkirmish().getSkirmishName().startsWith("Cargo"));
         Assertions.assertTrue (mission.getSkirmish().getAttackerAir() == Side.AXIS);
         boolean shipsFound = false;
-        for (GroundUnitCollection groundUnitCollection : mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : mission.getGroundUnitBuilder().getAllMissionGroundUnits())
         {
             if (groundUnitCollection.getTargetType() == TargetType.TARGET_SHIPPING)
             {

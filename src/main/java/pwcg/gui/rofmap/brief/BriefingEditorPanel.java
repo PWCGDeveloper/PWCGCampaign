@@ -150,7 +150,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
         cbMissionTime.setSelectedItem(briefingData.getMissionTime());
         
         cbMissionTime.addActionListener(this);
-        if (mission.isFinalized())
+        if (mission.getFinalizer().isFinalized())
         {
             cbMissionTime.setEnabled(false);
         }
@@ -178,7 +178,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 		cbFuel.setSelectedIndex(getIndexForFuel());
 		cbFuel.setActionCommand("ChangeFuel");
 		cbFuel.addActionListener(this);
-		if (mission.isFinalized())
+		if (mission.getFinalizer().isFinalized())
 		{
 			cbFuel.setEnabled(false);
 		}

@@ -32,7 +32,7 @@ public class TargetDefinitionBuilderAAATruck implements ITargetDefinitionBuilder
     {
         double closestUnitDistance = 1000000000.0;
         IGroundUnit unitClosestToMissionCenter = null;
-        for (GroundUnitCollection groundUnitCollection : flightInformation.getMission().getMissionGroundUnitBuilder().getAssaults())
+        for (GroundUnitCollection groundUnitCollection : flightInformation.getMission().getGroundUnitBuilder().getAssaults())
         {
             for (IGroundUnit friendlyGroundUnit : groundUnitCollection.getGroundUnitsForSide(enemyUnitSide))
             {

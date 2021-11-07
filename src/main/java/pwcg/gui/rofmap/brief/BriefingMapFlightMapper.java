@@ -28,12 +28,12 @@ public class BriefingMapFlightMapper
         Mission mission = briefingMissionHandler.getMission();
         mapPanel.clearVirtualPoints();
 
-        for (IFlight playerFlight : mission.getMissionFlights().getPlayerFlights())
+        for (IFlight playerFlight : mission.getFlights().getPlayerFlights())
         {
             mapPanel.makeMapPanelVirtualPoints(playerFlight);
         }
 
-        for (IFlight flight : mission.getMissionFlights().getAiFlights())
+        for (IFlight flight : mission.getFlights().getAiFlights())
         {
             mapFlightAndLinkedFlights(flight);
         }

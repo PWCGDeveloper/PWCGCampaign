@@ -25,7 +25,7 @@ public class MissionAirfieldIconBuilder
         }
         else
         {
-            Side side = mission.getMissionFlights().getReferencePlayerFlight().getSquadron().getCountry().getSide();
+            Side side = mission.getFlights().getReferencePlayerFlight().getSquadron().getCountry().getSide();
             createAirfieldIconsForSide(campaign, mission, side);
         }
     }

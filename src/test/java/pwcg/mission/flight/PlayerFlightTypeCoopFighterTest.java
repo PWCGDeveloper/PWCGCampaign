@@ -62,7 +62,7 @@ public class PlayerFlightTypeCoopFighterTest
     {
         Mission mission = generateMission(campaign, FlightTypes.PATROL);
 
-        PatrolFlight flight = (PatrolFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        PatrolFlight flight = (PatrolFlight) mission.getFlights().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         Assertions.assertTrue (flight.getFlightType() == FlightTypes.PATROL);
@@ -84,7 +84,7 @@ public class PlayerFlightTypeCoopFighterTest
     {
         Mission mission = generateMission(campaign, FlightTypes.LOW_ALT_PATROL);
 
-        PatrolFlight flight = (PatrolFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        PatrolFlight flight = (PatrolFlight) mission.getFlights().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         Assertions.assertTrue (flight.getFlightType() == FlightTypes.LOW_ALT_PATROL);        
@@ -106,7 +106,7 @@ public class PlayerFlightTypeCoopFighterTest
     {
         Mission mission = generateMission(campaign, FlightTypes.LOW_ALT_CAP);
 
-        CAPFlight flight = (CAPFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        CAPFlight flight = (CAPFlight) mission.getFlights().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         Assertions.assertTrue (flight.getFlightType() == FlightTypes.LOW_ALT_CAP);
@@ -128,7 +128,7 @@ public class PlayerFlightTypeCoopFighterTest
     {
         Mission mission = generateMission(campaign, FlightTypes.INTERCEPT);
 
-        InterceptFlight flight = (InterceptFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        InterceptFlight flight = (InterceptFlight) mission.getFlights().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         Assertions.assertTrue (flight.getFlightType() == FlightTypes.INTERCEPT);        
@@ -150,7 +150,7 @@ public class PlayerFlightTypeCoopFighterTest
     {
         Mission mission = generateMission(campaign, FlightTypes.OFFENSIVE);
         
-        OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        OffensiveFlight flight = (OffensiveFlight) mission.getFlights().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         Assertions.assertTrue (flight.getFlightType() == FlightTypes.OFFENSIVE);        
@@ -167,11 +167,11 @@ public class PlayerFlightTypeCoopFighterTest
     
     private int verifyEnemyFlights(Campaign campaign,Mission mission) throws PWCGException 
     {
-        Side enemySide = mission.getMissionFlights().getPlayerFlights().get(0).getSquadron().determineEnemySide();
+        Side enemySide = mission.getFlights().getPlayerFlights().get(0).getSquadron().determineEnemySide();
         
         boolean enemyFlightFound = false;
         int numEnemyFlights = 0;
-        for (IFlight flight: mission.getMissionFlights().getAllAerialFlights())
+        for (IFlight flight: mission.getFlights().getAllAerialFlights())
         {
             if(flight.getSquadron().determineSide() == enemySide)
             {
@@ -182,11 +182,11 @@ public class PlayerFlightTypeCoopFighterTest
         
         if (!enemyFlightFound)
         {
-            System.out.println("!!!!!No Enemy flights found for campaign " + campaign.getCampaignData().getName() + "  Mission " + mission.getMissionFlights().getPlayerFlights().get(0).getFlightType());
+            System.out.println("!!!!!No Enemy flights found for campaign " + campaign.getCampaignData().getName() + "  Mission " + mission.getFlights().getPlayerFlights().get(0).getFlightType());
         }
         else
         {
-            System.out.println("Enemy flights found is " + numEnemyFlights + " for campaign " + campaign.getCampaignData().getName() + "  Mission " + mission.getMissionFlights().getPlayerFlights().get(0).getFlightType());
+            System.out.println("Enemy flights found is " + numEnemyFlights + " for campaign " + campaign.getCampaignData().getName() + "  Mission " + mission.getFlights().getPlayerFlights().get(0).getFlightType());
         }
 
         assert(enemyFlightFound);

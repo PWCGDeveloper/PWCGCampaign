@@ -1,3 +1,7 @@
+13.4.2
+Fix flight targets nearest bridge
+Fix bad airfield assignment for No 20 Squadron (FC)
+
 13.4.1
 Improved layout of skin selection UI
 Improved appearance reference pilot selection and player admin screen to minimize image stretching

@@ -23,8 +23,8 @@ public class AAATruckMissionPostProcessor
 
     private void removePlayerFlight() throws PWCGException
     {
-        mission.getMissionFlights().removePlayerFlights();
-        mission.getMissionWaypointIconBuilder().removeWaypointIcons();
+        mission.getFlights().removePlayerFlights();
+        mission.getFinalizer().getWaypointIconBuilder().removeWaypointIcons();
     }
 
     private void removeStructuresOutsideOfRange() throws PWCGException
@@ -34,6 +34,6 @@ public class AAATruckMissionPostProcessor
 
     private void removeUnitsOutsideOfRange() throws PWCGException
     {
-        mission.getMissionGroundUnitBuilder().removeExtraUnits(mission.getMissionAAATrucks().getPosition(), KEEP_RADIUS);
+        mission.getGroundUnitBuilder().removeExtraUnits(mission.getMissionAAATrucks().getPosition(), KEEP_RADIUS);
     }
 }

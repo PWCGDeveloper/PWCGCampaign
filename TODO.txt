@@ -1,31 +1,31 @@
-https://github.com/PWCGDeveloper/PWCG.git
-
-Add destroyed for certain ground objects
-Bridges bridge
-Railroads (starts with rw)
-Hangars (contains hangar)
-Churches (contains church)
-Port Facilities (starts with port)
-Factories industrial
-Depot (contains warehouse - will start with industrial)
-Fuel Depot (contains fuel - will start with industrial)
-Static planes and vehicles
+Bugs
 
 
+AAR problem:Lightning202111052111979.zip
 
-3. Assign level bombing missions to these targets
-- new target type list (reuse Strategic?) 
+AAR problem: KubanCoop202111042211784.zip
 
-4. Add new category building or structure (in addition to air and ground)
-5. Find destroyed structures
-6. Award to same as ground units
-7. Treat as ground victories
-- identify buildings
-- Identify parked planes
-- Identify parked vehicles
+AAR error:OP Market Garden202109200909607.zip
 
-Done
-1. Make such facilities have a linked entity and a country
+Yak 1B not recognized: Ace of Aces202110272010358.zip
+
+Ju87 not on runway correctly: PWCGm7.rar
+
+Little oversight in text fields content. Latest FC version.  Pilot creation screen shows pilot name in all fields.
+
+In the administer pilots in a coop campaign, now I only have add pilot button, the activate pilot and transfer are gone. 
+Also, had to resize the fonts, since the buttons to choose the pilot were cut out from the screen no matter other options.
+
+Flying a Stuka campaign and we've been re-located to the Kuban map. We just had a mission over one of the ports to hit a rail facility, 
+but whilst there, we noticed that none of the Docks are included. Lots of cranes and buildings, just no concrete docks.
+
+Pat, more often than not, in my missions huge cities are entirely missing even if the objective is located right in them (Lille in my case, for Flying Circus).
+That's with the latest version but I had this issue before... it would seem to be more frequent in case of long-distance missions but I am not sure.
+All density options are set to High with no other custom values elsewhere.
+Is there a way to brutally force PWCG to load up the entire map's structures?
+
+A small issue we've noticed is that when setting a fuel load in the Flying Circus generator, it is not passed on to the Aircraft.
+We're flying Sopwith Camels in a campaign and I've put a 60% load in the generator a few times now, but in the plane config in game, it's always at 100%.
 
 
 Future
@@ -36,7 +36,6 @@ New Events
 Add text to indicate squadron status.
 Adjust pilot progress to squadron status. 
 Add exceptionally difficult missions with accept/reject button.
-Tank statistics are kept separately
 
 Add skin configuration screen
 Add ace configuration screen

@@ -56,7 +56,7 @@ public class OptionalFlightKeeper
 
     private int calculateFlightsToKeepForSide(Side side, int configuredFlightsToKeep) throws PWCGException
     {
-        List<IFlight> playerFlights = mission.getMissionFlights().getPlayerFlightsForSide(side);
+        List<IFlight> playerFlights = mission.getFlights().getPlayerFlightsForSide(side);
         int aiFlightsToKeep = configuredFlightsToKeep - playerFlights.size();
         if (aiFlightsToKeep < 0)
         {

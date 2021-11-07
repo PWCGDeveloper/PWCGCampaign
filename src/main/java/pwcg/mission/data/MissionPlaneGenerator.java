@@ -22,7 +22,7 @@ public class MissionPlaneGenerator
     
     public List<PwcgGeneratedMissionPlaneData> generateMissionPlaneData() throws PWCGException
     {
-        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
+        for (IFlight flight : mission.getFlights().getAllAerialFlights())
         {
             makePlaneEntriesForFlight(flight);
             if (flight.getFlightInformation().isVirtual())

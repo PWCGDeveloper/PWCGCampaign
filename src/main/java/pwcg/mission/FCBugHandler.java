@@ -7,7 +7,7 @@ public class FCBugHandler
 {
     public static void fcBugs(Mission mission)
     {
-        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
+        for (IFlight flight : mission.getFlights().getAllAerialFlights())
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {

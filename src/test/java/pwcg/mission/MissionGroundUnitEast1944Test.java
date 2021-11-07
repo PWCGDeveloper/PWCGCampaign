@@ -38,7 +38,7 @@ public class MissionGroundUnitEast1944Test
         List<Side> sides = Arrays.asList(Side.ALLIED, Side.AXIS);
         for (Side side : sides)
         {
-            List<TargetType> availableGroundUnitTypes = mission.getMissionGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
+            List<TargetType> availableGroundUnitTypes = mission.getGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
             
             List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_INFANTRY, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN);
             boolean allExist = validateExpectedGroundUnits(side , availableGroundUnitTypes, expectedGroundUnitTypes);

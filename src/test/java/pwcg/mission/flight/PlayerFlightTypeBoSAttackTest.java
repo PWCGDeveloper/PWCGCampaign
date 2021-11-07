@@ -45,7 +45,7 @@ public class PlayerFlightTypeBoSAttackTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
-        GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);
@@ -61,7 +61,7 @@ public class PlayerFlightTypeBoSAttackTest
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
         
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
         

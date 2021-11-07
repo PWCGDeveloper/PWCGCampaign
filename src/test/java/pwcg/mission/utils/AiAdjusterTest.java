@@ -44,7 +44,7 @@ public class AiAdjusterTest
         mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
 
-        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
+        for (IFlight flight : mission.getFlights().getAllAerialFlights())
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
@@ -70,7 +70,7 @@ public class AiAdjusterTest
         mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
 
-        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
+        for (IFlight flight : mission.getFlights().getAllAerialFlights())
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
@@ -96,7 +96,7 @@ public class AiAdjusterTest
         mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
 
-        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
+        for (IFlight flight : mission.getFlights().getAllAerialFlights())
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
@@ -112,7 +112,7 @@ public class AiAdjusterTest
             }
         }
 
-        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
+        for (IFlight flight : mission.getFlights().getAllAerialFlights())
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getPlayerPlanes())
             {
@@ -131,7 +131,7 @@ public class AiAdjusterTest
         mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
 
-        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
+        for (IFlight flight : mission.getFlights().getAllAerialFlights())
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {

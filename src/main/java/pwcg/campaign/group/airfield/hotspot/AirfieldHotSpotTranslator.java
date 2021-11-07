@@ -106,7 +106,7 @@ public class AirfieldHotSpotTranslator
     {
         int numAAHotSpots = 4;
 
-        IFlight flight = mission.getMissionFlights().getFlightForAirfield(airfield);
+        IFlight flight = mission.getFlights().getFlightForAirfield(airfield);
         if (flight != null)
         {
             ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();

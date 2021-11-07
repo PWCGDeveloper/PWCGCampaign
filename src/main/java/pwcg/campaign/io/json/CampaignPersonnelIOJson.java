@@ -12,6 +12,8 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class CampaignPersonnelIOJson 
 {
@@ -82,10 +84,16 @@ public class CampaignPersonnelIOJson
         
         int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-        SquadronPersonnel squadronPersonnel = new SquadronPersonnel(campaign, squadron);
-        squadronPersonnel.setSquadronMembers(squadronMembers);
-        
-        campaign.getPersonnelManager().addPersonnelForSquadron(squadronPersonnel);
+        if (squadron != null)
+        {
+            SquadronPersonnel squadronPersonnel = new SquadronPersonnel(campaign, squadron);
+            squadronPersonnel.setSquadronMembers(squadronMembers);
+            campaign.getPersonnelManager().addPersonnelForSquadron(squadronPersonnel);
+        }
+        else
+        {
+            PWCGLogger.log(LogLevel.ERROR, "No squadron found for squadron id " + squadronId);
+        }
     }
 
     private static void readReplacements(Campaign campaign) throws PWCGException

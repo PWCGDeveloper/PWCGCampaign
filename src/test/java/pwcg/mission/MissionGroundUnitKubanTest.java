@@ -42,7 +42,7 @@ public class MissionGroundUnitKubanTest
     private void verifyAllied(Mission mission) throws PWCGException
     {
         Side side = Side.ALLIED;
-        List<TargetType> availableGroundUnitTypes = mission.getMissionGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
+        List<TargetType> availableGroundUnitTypes = mission.getGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
         
         List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_INFANTRY, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN);
         boolean allExist = validateExpectedGroundUnits(side , availableGroundUnitTypes, expectedGroundUnitTypes);
@@ -56,7 +56,7 @@ public class MissionGroundUnitKubanTest
     private void verifyAxis(Mission mission) throws PWCGException
     {
         Side side = Side.AXIS;
-        List<TargetType> availableGroundUnitTypes = mission.getMissionGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
+        List<TargetType> availableGroundUnitTypes = mission.getGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
         
         List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_INFANTRY, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN, TargetType.TARGET_DRIFTER);
         boolean allExist = validateExpectedGroundUnits(side , availableGroundUnitTypes, expectedGroundUnitTypes);

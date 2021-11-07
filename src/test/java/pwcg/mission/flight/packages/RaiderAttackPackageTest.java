@@ -67,7 +67,7 @@ public class RaiderAttackPackageTest extends PwcgTestBase
         mission.generate(playerFlightTypes);
 
         campaign.setCurrentMission(mission);
-        return mission.getMissionFlights();
+        return mission.getFlights();
     }
 
     private void verifyLowAltitude(IFlight flight) throws PWCGException

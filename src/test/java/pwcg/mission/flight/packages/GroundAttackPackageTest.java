@@ -98,6 +98,6 @@ public class GroundAttackPackageTest
         mission.generate(playerFlightTypes);
 
         campaign.setCurrentMission(mission);
-        return mission.getMissionFlights();
+        return mission.getFlights();
     }
 }

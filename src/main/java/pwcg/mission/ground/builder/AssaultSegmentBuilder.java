@@ -271,7 +271,7 @@ public class AssaultSegmentBuilder
 
     private IFlight getTriggeringFlight(Side side)
     {
-        for (IFlight playerFlight : mission.getMissionFlights().getPlayerFlights())
+        for (IFlight playerFlight : mission.getFlights().getPlayerFlights())
         {
             if (playerFlight.getSquadron().getCountry().getSide() == side)
             {

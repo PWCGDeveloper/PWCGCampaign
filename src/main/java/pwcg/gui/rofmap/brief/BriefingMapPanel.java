@@ -82,7 +82,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
     private void drawAssaults(Graphics g) throws PWCGException
     {                
-        for (AssaultDefinition assaultDefinition : mission.getMissionBattleManager().getMissionAssaultDefinitions())
+        for (AssaultDefinition assaultDefinition : mission.getBattleManager().getMissionAssaultDefinitions())
         {
             BufferedImage arrowImage = null;
             String imagePath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Overlay\\";
@@ -293,7 +293,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
 	public void mouseMovedCallback(MouseEvent e) 
 	{
-		if (mission.isFinalized())
+		if (mission.getFinalizer().isFinalized())
 		{
 			return;			
 		}
@@ -316,7 +316,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	{
 	    if (!movementEnabled)
 	    {
-	        if (!mission.isFinalized())
+	        if (!mission.getFinalizer().isFinalized())
 	        {
 	            BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
     	    	BriefingMapPoint selectedMapPoint = briefingFlightParameters.getSelectedMapPoint();
@@ -347,7 +347,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
 	public void leftClickCallback(MouseEvent mouseEvent)
 	{
-		if (mission.isFinalized())
+		if (mission.getFinalizer().isFinalized())
 		{
             super.leftClickCallback(mouseEvent);
 		}
@@ -382,7 +382,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
 	public void centerClickCallback(MouseEvent e)
 	{
-		if (!mission.isFinalized())
+		if (!mission.getFinalizer().isFinalized())
 		{
     		int selectedMapPointIndex = determineSelectedWaypointIndex(e.getX(), e.getY());
             BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
@@ -416,7 +416,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	{		
 		super.leftClickReleasedCallback(mouseEvent);
 
-		if (mission.isFinalized())
+		if (mission.getFinalizer().isFinalized())
 		{
 			return;			
 		}
@@ -439,7 +439,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
 	public void rightClickReleasedCallback(MouseEvent e) 
 	{
-		if (mission.isFinalized())
+		if (mission.getFinalizer().isFinalized())
 		{
 			return;			
 		}

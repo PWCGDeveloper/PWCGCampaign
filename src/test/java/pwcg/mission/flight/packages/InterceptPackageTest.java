@@ -59,7 +59,7 @@ public class InterceptPackageTest extends PwcgTestBase
         mission.generate(playerFlightTypes);
 
         campaign.setCurrentMission(mission);
-        return mission.getMissionFlights();
+        return mission.getFlights();
     }
 
     private void verifyInterceptOpposingIsCloseToPlayer(IFlight flight, IFlight opposingFlight)

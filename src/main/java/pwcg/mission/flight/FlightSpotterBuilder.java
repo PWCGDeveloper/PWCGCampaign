@@ -56,7 +56,7 @@ public class FlightSpotterBuilder
                 playerFlight.getSquadron().getCountry());
         if (spotter != null)
         {
-            playerFlight.getMission().getMissionGroundUnitBuilder().addFlightSpecificGroundUnit(spotter);
+            playerFlight.getMission().getGroundUnitBuilder().addFlightSpecificGroundUnit(spotter);
         }
     }
 

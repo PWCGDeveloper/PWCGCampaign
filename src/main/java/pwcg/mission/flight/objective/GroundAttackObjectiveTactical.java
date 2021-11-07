@@ -25,7 +25,7 @@ public class GroundAttackObjectiveTactical
         {
             Coordinate flightTargetPosition = targetWaypoints.get(0).getPosition();
             Side enemySide = flight.getSquadron().determineEnemySide();
-            GroundUnitCollection groundUnitCollection = flight.getMission().getMissionGroundUnitBuilder().getClosestGroundUnitForSide(flightTargetPosition, enemySide);
+            GroundUnitCollection groundUnitCollection = flight.getMission().getGroundUnitBuilder().getClosestGroundUnitForSide(flightTargetPosition, enemySide);
             for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {
                 if (!groundUnit.getCountry().isSameSide(flight.getFlightInformation().getCountry()))

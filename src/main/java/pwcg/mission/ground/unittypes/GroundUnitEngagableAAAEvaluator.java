@@ -20,7 +20,7 @@ public class GroundUnitEngagableAAAEvaluator
 
     public static void setAAUnitsEngageableStatus(Mission mission)
     {
-        for (GroundUnitCollection groundUnitCollection : mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : mission.getGroundUnitBuilder().getAllMissionGroundUnits())
         {
             for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {

@@ -57,7 +57,7 @@ public class ArdennesFlightTest
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
         Assertions.assertTrue (mission.getSkirmish() != null);
-        for (AssaultDefinition assaultDefinition : mission.getMissionBattleManager().getMissionAssaultDefinitions())
+        for (AssaultDefinition assaultDefinition : mission.getBattleManager().getMissionAssaultDefinitions())
         {
             Assertions.assertTrue (assaultDefinition.getAssaultingCountry().getSide() == side);
 
@@ -85,7 +85,7 @@ public class ArdennesFlightTest
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
         Assertions.assertTrue (mission.getSkirmish() != null);
-        for (AssaultDefinition assaultDefinition : mission.getMissionBattleManager().getMissionAssaultDefinitions())
+        for (AssaultDefinition assaultDefinition : mission.getBattleManager().getMissionAssaultDefinitions())
         {
             Assertions.assertTrue (assaultDefinition.getAssaultingCountry().getCountry() == Country.GERMANY);
 

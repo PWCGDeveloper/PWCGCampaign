@@ -19,17 +19,17 @@ public class GroundUnitPositionVerifier
     {
         GroundUnitPositionDuplicateDetector duplicateDetector = new GroundUnitPositionDuplicateDetector();
         boolean noDuplicates = duplicateDetector.verifyMissionGroundUnitPositionsNotDuplicated(
-                mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits(), mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits());
+                mission.getGroundUnitBuilder().getAllMissionGroundUnits(), mission.getGroundUnitBuilder().getAllMissionGroundUnits());
         Assertions.assertTrue (noDuplicates);
     }
     
 
     private static void verifyProperBattlePlacement(Mission mission) throws PWCGException
     {
-        if (!mission.getMissionGroundUnitBuilder().getAssaults().isEmpty())
+        if (!mission.getGroundUnitBuilder().getAssaults().isEmpty())
         {
             boolean oneAssaultIsInBox = false;
-            for (GroundUnitCollection assault : mission.getMissionGroundUnitBuilder().getAssaults())
+            for (GroundUnitCollection assault : mission.getGroundUnitBuilder().getAssaults())
             {
                 if (mission.getMissionBorders().isInBox(assault.getPosition()))
                 {

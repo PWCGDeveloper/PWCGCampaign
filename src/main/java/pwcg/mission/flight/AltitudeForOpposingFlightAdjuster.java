@@ -8,7 +8,7 @@ public class AltitudeForOpposingFlightAdjuster
     public static double getAltitudeForOpposingFlights(Mission mission) throws PWCGException
     {
         double highestOpposingAltitude = 0.0;
-        for (IFlight flight : mission.getMissionFlights().getNecessaryFlightsByType(NecessaryFlightType.OPPOSING_FLIGHT))
+        for (IFlight flight : mission.getFlights().getNecessaryFlightsByType(NecessaryFlightType.OPPOSING_FLIGHT))
         {
             if (flight.getFlightInformation().getAltitude() > highestOpposingAltitude)
             {

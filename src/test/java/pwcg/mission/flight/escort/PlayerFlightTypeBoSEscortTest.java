@@ -39,10 +39,10 @@ public class PlayerFlightTypeBoSEscortTest
         mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
         
-        PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getFlights().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
-        PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(mission.getMissionFlights());
+        PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(mission.getFlights());
         escortFlightValidator.validateEscortFlight();
         Assertions.assertTrue (flight.getFlightType() == FlightTypes.ESCORT);
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())

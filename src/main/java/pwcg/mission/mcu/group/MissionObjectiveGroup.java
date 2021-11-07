@@ -32,7 +32,7 @@ public class MissionObjectiveGroup
 
     public void createSuccessMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
     {
-        IFlight playerFlight = mission.getMissionFlights().getReferencePlayerFlight();
+        IFlight playerFlight = mission.getFlights().getReferencePlayerFlight();
         Coordinate squadronLocation = playerFlight.getSquadron().determineCurrentPosition(campaign.getDate());
         missionBeginUnit = new MissionBeginUnit(squadronLocation.copy());            
                 
@@ -47,7 +47,7 @@ public class MissionObjectiveGroup
 
     public void createFailureMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
     {
-        IFlight playerFlight = mission.getMissionFlights().getReferencePlayerFlight();
+        IFlight playerFlight = mission.getFlights().getReferencePlayerFlight();
         Coordinate squadronLocation = playerFlight.getSquadron().determineCurrentPosition(campaign.getDate());
         missionBeginUnit = new MissionBeginUnit(squadronLocation.copy());            
 
@@ -55,7 +55,7 @@ public class MissionObjectiveGroup
         missionObjective.setPosition(squadronLocation);
         missionObjective.setSuccess(0);
 
-        PlaneMcu referencePlane = mission.getMissionFlights().getReferencePlayerFlight().getFlightPlanes().getPlayerPlanes().get(0);
+        PlaneMcu referencePlane = mission.getFlights().getReferencePlayerFlight().getFlightPlanes().getPlayerPlanes().get(0);
         referencePlane.setOnMessages(
                         McuMessage.ONKILL,
                         missionBeginUnit.getStartTimeindex(),

@@ -60,7 +60,7 @@ public class GroundAttackAntiArmorPackageTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        MissionFlights missionFlights = mission.getMissionFlights();
+        MissionFlights missionFlights = mission.getFlights();
         
         IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
         assert(playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_ARMOR);

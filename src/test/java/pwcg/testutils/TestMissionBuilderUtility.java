@@ -52,7 +52,7 @@ public class TestMissionBuilderUtility
         mission.generate(playerFlightTypes);
 
         campaign.setCurrentMission(mission);
-        return mission.getMissionFlights();
+        return mission.getFlights();
     }
 
     public static MissionHumanParticipants buildTestParticipatingHumans(Campaign campaign) throws PWCGException

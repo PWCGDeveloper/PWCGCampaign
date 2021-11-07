@@ -64,7 +64,7 @@ public class KubanShippingZoneTest
         Assertions.assertTrue (mission.getSkirmish().getSkirmishName().startsWith("Ship Encounter"));
         boolean axisShipsFound = false;
         boolean alliedShipsFound = false;
-        for (GroundUnitCollection groundUnitCollection : mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : mission.getGroundUnitBuilder().getAllMissionGroundUnits())
         {
             if (groundUnitCollection.getTargetType() == TargetType.TARGET_SHIPPING)
             {

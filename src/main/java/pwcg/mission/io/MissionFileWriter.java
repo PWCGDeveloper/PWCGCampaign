@@ -85,7 +85,7 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeWindStopSequences(BufferedWriter writer) throws PWCGException
     {
-        for (StopAttackingNearAirfieldSequence stopAttackingNearAirfieldSequence : mission.getStopSequenceForMission())
+        for (StopAttackingNearAirfieldSequence stopAttackingNearAirfieldSequence : mission.getFinalizer().getStopSequenceForMission())
         {
             stopAttackingNearAirfieldSequence.write(writer);
         }
@@ -143,8 +143,8 @@ public class MissionFileWriter implements IMissionFile
     {
         if (!mission.getCampaign().isCoop())
         {
-            mission.getMissionObjectiveSuccess().write(writer);
-            mission.getMissionObjectiveFailure().write(writer);
+            mission.getFinalizer().getMissionObjectiveSuccess().write(writer);
+            mission.getFinalizer().getMissionObjectiveFailure().write(writer);
         }
     }
 
@@ -166,16 +166,16 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeIcons(BufferedWriter writer) throws PWCGException
     {
-        mission.getMissionWaypointIconBuilder().write(writer);            
-        mission.getMissionFrontLineIconBuilder().write(writer);
-        mission.getMissionAirfieldIconBuilder().write(writer);
-        mission.getMissionSquadronIconBuilder().write(writer);
-        mission.getMissionAssaultIconBuilder().write(writer);
+        mission.getFinalizer().getWaypointIconBuilder().write(writer);            
+        mission.getFinalizer().getFrontLineIconBuilder().write(writer);
+        mission.getFinalizer().getAirfieldIconBuilder().write(writer);
+        mission.getFinalizer().getSquadronIconBuilder().write(writer);
+        mission.getFinalizer().getAssaultIconBuilder().write(writer);
     }
 
     private void writeMissionGroundUnits(BufferedWriter writer) throws PWCGException
     {
-        MissionGroundUnitBuilder groundUnitBuilder = mission.getMissionGroundUnitBuilder();
+        MissionGroundUnitBuilder groundUnitBuilder = mission.getGroundUnitBuilder();
         groundUnitBuilder.write(writer);
     }
 
@@ -190,7 +190,7 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeWindSock(BufferedWriter writer) throws PWCGException
     {
-    	for (IFlight playerFlight: mission.getMissionFlights().getPlayerFlights())
+    	for (IFlight playerFlight: mission.getFlights().getPlayerFlights())
     	{
 	        WindSock windSock = WindSock.createWindSock(playerFlight);
 	        if (windSock != null)
@@ -240,7 +240,7 @@ public class MissionFileWriter implements IMissionFile
     {
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            for (IFlight playerFlight:  mission.getMissionFlights().getPlayerFlights())
+            for (IFlight playerFlight:  mission.getFlights().getPlayerFlights())
             {
                 IVehicle radioBeacon = VehicleFactory.createVehicle(
                         playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.RadioBeacon);
@@ -272,7 +272,7 @@ public class MissionFileWriter implements IMissionFile
     {
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            for (IFlight playerFlight:  mission.getMissionFlights().getPlayerFlights())
+            for (IFlight playerFlight:  mission.getFlights().getPlayerFlights())
             {
                 IVehicle landCanvas = VehicleFactory.createVehicle(
                         playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.LandCanvas);

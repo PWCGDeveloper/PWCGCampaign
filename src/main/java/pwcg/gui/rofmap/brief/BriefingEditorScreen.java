@@ -78,7 +78,7 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         buttonGrid.setLayout(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
         
-        if (mission.isFinalized())
+        if (mission.getFinalizer().isFinalized())
         {
             buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
             JButton backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");

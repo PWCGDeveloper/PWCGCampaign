@@ -14,24 +14,27 @@ public class FCPlaneAttributeFactory
 {
     public static FCPlaneAttributeMapping createPlaneAttributeMap(String planeTypeName) throws PWCGException
     {
- 	   List<FCPlaneAttributeMapping> FCPlaneAttributeMappingsList = Arrays.asList(FCPlaneAttributeMapping.values());
- 	   Map<String, FCPlaneAttributeMapping> FCPlaneAttributeMappings = new HashMap<>();;
- 	   for (FCPlaneAttributeMapping FCPlaneAttributeMapping : FCPlaneAttributeMappingsList)
+ 	   List<FCPlaneAttributeMapping> fcPlaneAttributeMappingsList = Arrays.asList(FCPlaneAttributeMapping.values());
+ 	   Map<String, FCPlaneAttributeMapping> fcPlaneAttributeMappings = new HashMap<>();
+ 	   for (FCPlaneAttributeMapping fcPlaneAttributeMapping : fcPlaneAttributeMappingsList)
  	   {
- 		  FCPlaneAttributeMappings.put(FCPlaneAttributeMapping.getPlaneType(), FCPlaneAttributeMapping);
+ 		  fcPlaneAttributeMappings.put(fcPlaneAttributeMapping.getPlaneType(), fcPlaneAttributeMapping);
  	   }
  	   
- 	   return FCPlaneAttributeMappings.get(planeTypeName);
+ 	   return fcPlaneAttributeMappings.get(planeTypeName);
     }
 
 	public static IStaticPlane getStaticPlane(String planeType) throws PWCGException 
 	{
-		IPlaneAttributeMapping FCPlaneAttributeMapping = createPlaneAttributeMap(planeType);
-		String[] staticPlaneMatches = FCPlaneAttributeMapping.getStaticPlaneMatches();
-		if (staticPlaneMatches.length > 0)
+		IPlaneAttributeMapping fcPlaneAttributeMapping = createPlaneAttributeMap(planeType);
+		if (fcPlaneAttributeMapping != null)
 		{
-    		int index = RandomNumberGenerator.getRandom(staticPlaneMatches.length);
-    		return new FCStaticPlane(staticPlaneMatches[index]);
+    		String[] staticPlaneMatches = fcPlaneAttributeMapping.getStaticPlaneMatches();
+    		if (staticPlaneMatches.length > 0)
+    		{
+        		int index = RandomNumberGenerator.getRandom(staticPlaneMatches.length);
+        		return new FCStaticPlane(staticPlaneMatches[index]);
+    		}
 		}
 		return null;
 	}

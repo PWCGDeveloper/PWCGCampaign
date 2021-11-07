@@ -107,7 +107,7 @@ public class TargetLocatorAir
 
     public Coordinate getBalloonCoordinate(Side oppositeSide) throws PWCGException
     {
-        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
+        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getGroundUnitBuilder().getAllMissionGroundUnits();
         for (GroundUnitCollection groundUnit : shuffledGroundUnits)
         {
             if (groundUnit.getTargetType() == TargetType.TARGET_BALLOON)
@@ -121,7 +121,7 @@ public class TargetLocatorAir
 
     public Coordinate getBattleCoordinate() throws PWCGException
     {
-        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getBattleMissionGroundUnits();
+        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getGroundUnitBuilder().getBattleMissionGroundUnits();
         Coordinate battleCoordinate = shuffledGroundUnits.get(0).getPosition().copy();
         FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
         Coordinate targetCoordinate = frontLinesForMap.findClosestFrontCoordinateForSide(battleCoordinate, flightInformation.getCountry().getSide());

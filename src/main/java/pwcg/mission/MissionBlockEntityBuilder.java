@@ -21,7 +21,7 @@ public class MissionBlockEntityBuilder
 
     public void buildEntitiesForTargetStructures(MissionBlocks missionBlocks) throws PWCGException
     {
-        List<Coordinate> missionTargetCoordiinates = mission.getMissionFlights().getTargetCoordinatesForMission();
+        List<Coordinate> missionTargetCoordiinates = mission.getFlights().getTargetCoordinatesForPlayerFlights();
         for (FixedPosition structure : missionBlocks.getAllStructuresForMission())
         {
             if (isNearTarget(structure, missionTargetCoordiinates))

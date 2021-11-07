@@ -30,7 +30,7 @@ public class TargetVicinityValidator
         System.out.println("Attack Position at " + attackPosition);
 
         boolean groundAttackCloseToTarget = false;
-        for (GroundUnitCollection groundUnitCollection : flight.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : flight.getMission().getGroundUnitBuilder().getAllMissionGroundUnits())
         {
             for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {

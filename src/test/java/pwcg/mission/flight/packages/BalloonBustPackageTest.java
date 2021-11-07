@@ -58,7 +58,7 @@ public class BalloonBustPackageTest extends PwcgTestBase
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
         mission.generate(playerFlightTypes);
 
-        return mission.getMissionFlights().getPlayerFlights().get(0);
+        return mission.getFlights().getPlayerFlights().get(0);
     }
 
     private void verifyBalloonPosition(IFlight flight) throws PWCGException
@@ -101,7 +101,7 @@ public class BalloonBustPackageTest extends PwcgTestBase
     private List<BalloonUnit> getBalloonUnits(IFlight flight) throws PWCGException
     {
         List<BalloonUnit> balloons = new ArrayList<>();
-        for (GroundUnitCollection groundUnitCollection : flight.getMission().getMissionGroundUnitBuilder().getBalloonUnits())
+        for (GroundUnitCollection groundUnitCollection : flight.getMission().getGroundUnitBuilder().getBalloonUnits())
         {
             for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {

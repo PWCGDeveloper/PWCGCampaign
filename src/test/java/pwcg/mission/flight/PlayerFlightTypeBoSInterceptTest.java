@@ -68,7 +68,7 @@ public class PlayerFlightTypeBoSInterceptTest
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.STRATEGIC_INTERCEPT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
         
-        IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
+        IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
         if (playerFlight.getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             playerFlight = null;
@@ -76,7 +76,7 @@ public class PlayerFlightTypeBoSInterceptTest
 	
         Assertions.assertTrue (playerFlight.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT);
 
-        List<IFlight> aiFlights = mission.getMissionFlights().getAiFlights();
+        List<IFlight> aiFlights = mission.getFlights().getAiFlights();
         Assertions.assertTrue (aiFlights.size() == expectedFlights);
 
         int actualBombers = 0;

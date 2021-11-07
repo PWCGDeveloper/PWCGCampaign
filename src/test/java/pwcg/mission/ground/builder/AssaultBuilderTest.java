@@ -62,7 +62,7 @@ public class AssaultBuilderTest
         playerFlightPlanes.add(playerPlane);
         
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
-        Mockito.when(mission.getMissionFlights()).thenReturn(missionFlightBuilder);
+        Mockito.when(mission.getFlights()).thenReturn(missionFlightBuilder);
         Mockito.when(missionFlightBuilder.getPlayerFlights()).thenReturn(playerFlights);
         Mockito.when(squadron.getCountry()).thenReturn(country);
         Mockito.when(playerFlight.getSquadron()).thenReturn(squadron);

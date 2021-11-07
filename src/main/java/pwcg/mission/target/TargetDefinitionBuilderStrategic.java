@@ -49,7 +49,7 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
     private TargetDefinition findStrategicTarget(List<TargetDefinition> availableTargets) throws PWCGException
     {
         List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorStrategic.getTargetTypePriorities(flightInformation);
-        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
+        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getGroundUnitBuilder().getAllMissionGroundUnits();
         Collections.shuffle(shuffledGroundUnits);
 
         FrontLinesForMap frontlines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());

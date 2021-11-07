@@ -17,8 +17,6 @@ public class Bridge extends FixedPosition
 	{
 		try
         {
-            buildEntity();
-
             writer.write("Bridge");
             writer.newLine();
             writer.write("{");

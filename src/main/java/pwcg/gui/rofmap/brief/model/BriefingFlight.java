@@ -144,7 +144,7 @@ public class BriefingFlight
 
     private void initializeFuel()
     {
-        IFlight flight = mission.getMissionFlights().getPlayerFlightForSquadron(squadronId);
+        IFlight flight = mission.getFlights().getPlayerFlightForSquadron(squadronId);
         this.selectedFuel = flight.getFlightPlanes().getFlightLeader().getFuel();
     }
 }

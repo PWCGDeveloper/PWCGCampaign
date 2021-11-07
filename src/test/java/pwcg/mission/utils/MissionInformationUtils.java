@@ -12,7 +12,7 @@ public class MissionInformationUtils
 
     public static boolean verifyFlightTargets(Mission mission, FlightTypes expectedFlightType, TargetType expectedTargetType, Side side) throws PWCGException
     {
-        for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(side))
+        for (IFlight flight : mission.getFlights().getAiFlightsForSide(side))
         {
             if (flight.getFlightType() == expectedFlightType)
             {
@@ -28,7 +28,7 @@ public class MissionInformationUtils
 
     public static boolean verifyFlightTypeInMission(Mission mission, FlightTypes flightType, Side side) throws PWCGException
     {
-        for (IFlight flight : mission.getMissionFlights().getFlightsForSide(side))
+        for (IFlight flight : mission.getFlights().getFlightsForSide(side))
         {
             if (flight.getFlightInformation().getFlightType() == flightType)
             {

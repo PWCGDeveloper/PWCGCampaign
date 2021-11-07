@@ -13,7 +13,7 @@ public class MissionDescriptionFactory
 	    }
 	    else
 	    {
-            return new MissionDescriptionSinglePlayer(campaign, mission, mission.getMissionFlights().getReferencePlayerFlight());
+            return new MissionDescriptionSinglePlayer(campaign, mission, mission.getFlights().getReferencePlayerFlight());
 	    }
 	}
 

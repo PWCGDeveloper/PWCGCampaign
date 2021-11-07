@@ -39,7 +39,7 @@ public class FlightAiSettingsValidator
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
-        GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         validatePlaneAI(mission);
@@ -52,7 +52,7 @@ public class FlightAiSettingsValidator
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
-        GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         validatePlaneAI(mission);
@@ -65,7 +65,7 @@ public class FlightAiSettingsValidator
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.BOMB, MissionProfile.DAY_TACTICAL_MISSION);
-        BombingFlight flight = (BombingFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        BombingFlight flight = (BombingFlight) mission.getFlights().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
 		validatePlaneAI(mission);
@@ -78,7 +78,7 @@ public class FlightAiSettingsValidator
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
-        PatrolFlight flight = (PatrolFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        PatrolFlight flight = (PatrolFlight) mission.getFlights().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
         validatePlaneAI(mission);
@@ -91,7 +91,7 @@ public class FlightAiSettingsValidator
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.INTERCEPT, MissionProfile.DAY_TACTICAL_MISSION);
-        InterceptFlight flight = (InterceptFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        InterceptFlight flight = (InterceptFlight) mission.getFlights().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
         validatePlaneAI(mission);
@@ -104,7 +104,7 @@ public class FlightAiSettingsValidator
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.BALLOON_DEFENSE, MissionProfile.DAY_TACTICAL_MISSION);
-        IFlight flight = (IFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        IFlight flight = (IFlight) mission.getFlights().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         validatePlaneAI(mission);
@@ -112,7 +112,7 @@ public class FlightAiSettingsValidator
 
     private void validatePlaneAI(Mission mission) throws PWCGException
     {
-        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
+        for (IFlight flight : mission.getFlights().getAllAerialFlights())
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {

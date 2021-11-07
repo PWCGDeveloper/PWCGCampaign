@@ -14,7 +14,7 @@ public class MissionCheckZoneTriggerBuilder
     
     public void triggerGroundUnits() throws PWCGException
     {
-        for (GroundUnitCollection groundUnit: mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnit: mission.getGroundUnitBuilder().getAllMissionGroundUnits())
         {
             groundUnit.triggerGroundUnitCollection(mission);
         }

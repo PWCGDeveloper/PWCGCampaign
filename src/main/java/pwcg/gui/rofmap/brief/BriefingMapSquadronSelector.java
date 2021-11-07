@@ -70,7 +70,7 @@ public class BriefingMapSquadronSelector implements ActionListener
         JButton checkBoxNone = PWCGButtonFactory.makeTranslucentMenuButton("No Squadrons", "" + NO_SQUADRONS, "Show flight path for only your squadron", this);
         squadronSelectorGrid.add(checkBoxNone);
 
-        for (IFlight aiflight : mission.getMissionFlights().getAiFlights())
+        for (IFlight aiflight : mission.getFlights().getAiFlights())
         {
             Squadron squadron = aiflight.getSquadron();
             Side squadronSide = squadron.getCountry().getSide();
@@ -153,7 +153,7 @@ public class BriefingMapSquadronSelector implements ActionListener
 
     private void addSquadronToSelected(int squadronId) throws PWCGException
     {
-        IFlight flight = mission.getMissionFlights().getAiFlightForSquadron(squadronId);
+        IFlight flight = mission.getFlights().getAiFlightForSquadron(squadronId);
         Squadron squadron = flight.getSquadron();
         selectedSquadrons.put(squadronId, squadron.determineDisplayName(mission.getCampaign().getDate()));
     }

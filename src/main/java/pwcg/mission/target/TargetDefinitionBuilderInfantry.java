@@ -23,7 +23,7 @@ public class TargetDefinitionBuilderInfantry
 
     public List<TargetDefinition> findInfantryGroundUnits() throws PWCGException
     {
-        for (GroundUnitCollection groundUnitCollection : flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : flightInformation.getMission().getGroundUnitBuilder().getAllMissionGroundUnits())
         {
             List<TargetDefinition> targetDefinitionsForCollection = createTargetDefinitionFromGroundUnit(groundUnitCollection);
             targetDefinitions.addAll(targetDefinitionsForCollection);
