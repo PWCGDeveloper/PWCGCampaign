@@ -11,10 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import edu.cmu.relativelayout.Binding;
-import edu.cmu.relativelayout.BindingFactory;
-import edu.cmu.relativelayout.RelativeConstraints;
-import edu.cmu.relativelayout.RelativeLayout;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
@@ -40,13 +36,13 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
 {
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
-    private CampaignAdminPilotPanel personaInfoPanel;
+    private CampaignPlayerAdminPilotPanel personaInfoPanel;
     private JPanel personaActionsPanel;
 
     public CampaignPlayerAdminScreen(Campaign campaign)
     {
         super("");
-        this.setLayout(new RelativeLayout());
+        this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         this.campaign = campaign;
@@ -59,22 +55,14 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignCoopAdminScreen);
             this.setImageFromName(imagePath);
             
-            Binding navPanelBinding = BindingFactory.getBindingFactory().directLeftEdge();
-            RelativeConstraints navPanelConstraints = new RelativeConstraints();
-            navPanelConstraints.addBinding(navPanelBinding);
             JPanel navPanel  = makeNavigatePanel();
-            this.add(navPanel, navPanelConstraints);
+            this.add(navPanel, BorderLayout.WEST);
             
-            Binding centerPanelBinding = BindingFactory.getBindingFactory().directlyRightOf(navPanel);
-            RelativeConstraints centerPanelConstraints = new RelativeConstraints();
-            centerPanelConstraints.addBinding(centerPanelBinding);
             JPanel centerPanel  = makeCenterPanel();
-            this.add(centerPanel, centerPanelConstraints);
+            this.add(centerPanel, BorderLayout.CENTER);
 
-            Binding rightPanelBinding = BindingFactory.getBindingFactory().directRightEdge();
-            RelativeConstraints rightPanelConstraints = new RelativeConstraints();
-            rightPanelConstraints.addBinding(rightPanelBinding);
-            this.add(makeRightPanel(), rightPanelConstraints);
+            makeRightPanel();
+            this.add(personaActionsPanel, BorderLayout.EAST);
         }
         catch (Throwable e)
         {
@@ -85,7 +73,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
 
     public JPanel makeCenterPanel() throws PWCGException
     {
-        personaInfoPanel = new CampaignAdminPilotPanel(campaign, this);
+        personaInfoPanel = new CampaignPlayerAdminPilotPanel(campaign, this);
         personaInfoPanel.makePanels();
         ImageToDisplaySizer.setDocumentSizePlusExtra(personaInfoPanel, 300);
         return personaInfoPanel;
@@ -114,7 +102,11 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
 
     public JPanel makeRightPanel() throws PWCGException
     {
-
+        if (personaActionsPanel != null)
+        {
+            this.remove(personaActionsPanel);
+        }
+        
         JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
@@ -254,6 +246,9 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
     {
         personaInfoPanel.refreshInformation();
         
+        makeRightPanel();
+        this.add(personaActionsPanel, BorderLayout.EAST);
+
         refresh();
     }
 

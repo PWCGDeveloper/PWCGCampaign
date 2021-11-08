@@ -3,7 +3,9 @@ package pwcg.gui.campaign.personnel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -37,10 +39,9 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGLabelFactory;
-import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
-public class CampaignAdminPilotPanel extends ImageResizingPanel implements ActionListener, IRefreshableParentUI
+public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements ActionListener, IRefreshableParentUI
 {
     private static final long serialVersionUID = 1L;
     private List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
@@ -54,7 +55,7 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
     private IRefreshableParentUI parentScreen;
     private Campaign campaign;
 
-    public CampaignAdminPilotPanel(Campaign campaign, IRefreshableParentUI parentScreen)
+    public CampaignPlayerAdminPilotPanel(Campaign campaign, IRefreshableParentUI parentScreen)
     {
         super("");
         this.setLayout(new BorderLayout());
@@ -67,11 +68,9 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
     {
         try
         {
-            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+            String imagePath = UiImageResolver.getImage(ScreenIdentifier.BlankDocument);
             this.setImageFromName(imagePath);
-            this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
-
-            this.add(makeDisplay(), BorderLayout.NORTH);
+            this.add(makeDisplay(), BorderLayout.CENTER);
         }
         catch (Throwable e)
         {
@@ -86,14 +85,20 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
         
         loadCoopRecords();
 
-        JPanel recordListPanel = new JPanel(new GridLayout(0, 4));
-        if (campaign.isCoop())
-        {
-            recordListPanel = new JPanel(new GridLayout(0, 5));
-        }
+        JPanel recordListPanel = new JPanel(new GridBagLayout());
         
         recordListPanel.setOpaque(false);
 
+        GridBagConstraints constraints = initializeGridbagConstraints();
+
+        constraints.weightx = 0.05;
+        constraints.weighty = 0.1;
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        constraints.gridheight = 1;
+        recordListPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
+
+        int rowNumber = 2;
         for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecords)
         {
             JRadioButton pilotSelector = makeRadioButton(coopDisplayRecord);
@@ -107,20 +112,48 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
             JLabel squadronNameLabel = PWCGLabelFactory.makeTransparentLabel(
                     "     " + coopDisplayRecord.getSquadronName(), ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
 
-            recordListPanel.add(pilotSelector);
-            recordListPanel.add(campaignNameLabel);
+            pilotButtonModels.put(coopDisplayRecord.getPilotSerialNumber(), pilotSelector.getModel());
+            userSelectors.put(coopDisplayRecord.getPilotSerialNumber(), userSelector);
             
+            constraints.weightx = 0.05;
+            constraints.weighty = 0.1;
+            constraints.gridx = 1;
+            constraints.gridy = rowNumber;
+            constraints.gridheight = 1;
+            recordListPanel.add(pilotSelector, constraints);
+
+            constraints.weightx = 0.01;
+            constraints.weighty = 0.1;
+            constraints.gridx = 2;
+            constraints.gridy = rowNumber;
+            constraints.gridheight = 1;
+            recordListPanel.add(campaignNameLabel, constraints);
+            
+            constraints.weightx = 0.01;
+            constraints.weighty = 0.1;
+            constraints.gridx = 3;
+            constraints.gridy = rowNumber;
+            constraints.gridheight = 1;
+            recordListPanel.add(pilotStatusLabel, constraints);
+            
+            constraints.weightx = 0.01;
+            constraints.weighty = 0.1;
+            constraints.gridx = 4;
+            constraints.gridy = rowNumber;
+            constraints.gridheight = 1;
+            recordListPanel.add(squadronNameLabel, constraints);
             
             if (campaign.isCoop())
             {
-                recordListPanel.add(userSelector);
+                constraints.weightx = 0.01;
+                constraints.weighty = 0.1;
+                constraints.gridx = 5;
+                constraints.gridy = rowNumber;
+                constraints.gridheight = 1;
+                recordListPanel.add(userSelector, constraints);
             }
-            
-            recordListPanel.add(pilotStatusLabel);
-            recordListPanel.add(squadronNameLabel);
-            
-            pilotButtonModels.put(coopDisplayRecord.getPilotSerialNumber(), pilotSelector.getModel());
-            userSelectors.put(coopDisplayRecord.getPilotSerialNumber(), userSelector);
+
+            ++rowNumber;
         }
 
 
@@ -128,12 +161,22 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
         
         centerPanel = new JPanel();
         centerPanel.setOpaque(false);
-        centerPanel.add(planeListScroll, BorderLayout.NORTH);
+        centerPanel.add(planeListScroll, BorderLayout.CENTER);
 
         return centerPanel;
     }
 
-    
+    private GridBagConstraints initializeGridbagConstraints()
+    {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.ipadx = 3;
+        constraints.ipady = 3;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        Insets margins = new Insets(0, 5, 5, 0);
+        constraints.insets = margins;
+        return constraints;
+    }
+
     private JComboBox<String> makeUserSelector(String username) throws PWCGException
     {
         JComboBox<String> userSelector = new JComboBox<>();
@@ -231,7 +274,7 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
     public void refreshInformation() throws PWCGException
     {
         this.remove(centerPanel);
-        this.add(makeDisplay(), BorderLayout.NORTH);
+        this.add(makeDisplay(), BorderLayout.CENTER);
         
         CoopDisplayRecord coopDisplayRecord = getSelectedPilot();
         if (coopDisplayRecord != null)
