@@ -13,9 +13,6 @@ Ju87 not on runway correctly: PWCGm7.rar
 
 Little oversight in text fields content. Latest FC version.  Pilot creation screen shows pilot name in all fields.
 
-In the administer pilots in a coop campaign, now I only have add pilot button, the activate pilot and transfer are gone. 
-Also, had to resize the fonts, since the buttons to choose the pilot were cut out from the screen no matter other options.
-
 Flying a Stuka campaign and we've been re-located to the Kuban map. We just had a mission over one of the ports to hit a rail facility, 
 but whilst there, we noticed that none of the Docks are included. Lots of cranes and buildings, just no concrete docks.
 

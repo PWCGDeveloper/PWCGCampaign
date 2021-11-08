@@ -1,3 +1,8 @@
+13.4.3
+Fixed pilot admin layout
+Fixed pilot admin not showing action buttons when pilot selected
+Fixed incorrect info displayed on page 2 of campaign creation
+
 13.4.2
 Fix flight targets nearest bridge
 Fix bad airfield assignment for No 20 Squadron (FC)

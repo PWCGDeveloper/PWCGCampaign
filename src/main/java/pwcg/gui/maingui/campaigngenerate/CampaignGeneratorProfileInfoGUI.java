@@ -78,13 +78,13 @@ public class CampaignGeneratorProfileInfoGUI extends JPanel
         campaignProfileInfoGridPanel.add(campaignNameLabel); 
         
         String campaignModeText = InternationalizationManager.getTranslation("Campaign Mode");
-        campaignModeText += ": " + parent.getCampaignGeneratorDO().getCampaignName();
+        campaignModeText += ": " + parent.getCampaignGeneratorDO().getCampaignMode().getCampaignModeName();
         JLabel campaignModeLabel = PWCGLabelFactory.makeTransparentLabel(
                 campaignModeText, ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
         campaignProfileInfoGridPanel.add(campaignModeLabel); 
 
         String serviceText = InternationalizationManager.getTranslation("Service");
-        serviceText += ": " + parent.getCampaignGeneratorDO().getCampaignName();
+        serviceText += ": " + parent.getCampaignGeneratorDO().getService().getName();
         JLabel serviceLabel = PWCGLabelFactory.makeTransparentLabel(
                 serviceText, ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
         campaignProfileInfoGridPanel.add(serviceLabel); 
