@@ -92,7 +92,7 @@ public class CampaignPersonnelIOJson
         }
         else
         {
-            PWCGLogger.log(LogLevel.ERROR, "No squadron found for squadron id " + squadronId);
+            PWCGLogger.log(LogLevel.ERROR, "No squadron found for squadron id " + squadronId + " in campaign " + campaign.getName());
         }
     }
 
