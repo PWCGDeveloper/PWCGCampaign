@@ -1,8 +1,8 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
-import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.event.IAType12;
 
 public class LogGroundUnit extends LogAIEntity
 {

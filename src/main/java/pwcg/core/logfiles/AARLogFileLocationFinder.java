@@ -1,4 +1,4 @@
-package pwcg.aar;
+package pwcg.core.logfiles;
 
 import java.io.File;
 

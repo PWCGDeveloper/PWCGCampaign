@@ -44,7 +44,7 @@ import pwcg.mission.flight.plane.PlaneMcu;
 public class BriefingPilotSelectionScreen extends ImageResizingPanel implements ActionListener, MouseWheelListener, IFlightChanged
 {
     private static final long serialVersionUID = 1L;
-    
+
     private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Campaign campaign;
     private Mission mission;
@@ -59,11 +59,11 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         super("");
         this.setLayout(new BorderLayout());
-        
+
         this.campaignHomeGuiBriefingWrapper = campaignHomeGuiBriefingWrapper;
-        
-        this.briefingData =  BriefingContext.getInstance().getBriefingData();
-        this.mission =  briefingData.getMission();
+
+        this.briefingData = BriefingContext.getInstance().getBriefingData();
+        this.mission = briefingData.getMission();
         this.campaign = mission.getCampaign();
     }
 
@@ -73,13 +73,13 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingPilotSelectionScreen);
             this.setImageFromName(imagePath);
-            
+
             briefingFlightChooser = new BriefingFlightChooser(mission, this);
             briefingFlightChooser.createBriefingSquadronSelectPanel();
 
             this.add(BorderLayout.WEST, makeLeftPanel());
             this.add(BorderLayout.CENTER, createCenterPanel());
-            
+
             this.addMouseWheelListener(this);
         }
         catch (Exception e)
@@ -89,7 +89,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         }
     }
 
-    private JPanel makeLeftPanel() throws PWCGException 
+    private JPanel makeLeftPanel() throws PWCGException
     {
         JPanel leftPanel = new JPanel(new BorderLayout());
         leftPanel.setLayout(new BorderLayout());
@@ -111,7 +111,8 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
         buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
 
-        JButton scrubButton = PWCGButtonFactory.makeTranslucentMenuButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen", this);
+        JButton scrubButton = PWCGButtonFactory.makeTranslucentMenuButton("Scrub Mission", "Scrub Mission",
+                "Scrub this mission and return to campaign home screen", this);
         buttonGrid.add(scrubButton);
 
         buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
@@ -123,17 +124,20 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
         if (!mission.getFinalizer().isFinalized())
         {
-            JButton acceptMissionButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Mission", "Accept Mission", "The mission will be written fow use in game", this);
+            JButton acceptMissionButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Mission", "Accept Mission",
+                    "The mission will be written fow use in game", this);
             buttonGrid.add(acceptMissionButton);
         }
         else
         {
-            JButton backToCampaignButton = PWCGButtonFactory.makeTranslucentMenuButton("Return To Campaign", "Return To Campaign", "Return to campaign home screen", this);
+            JButton backToCampaignButton = PWCGButtonFactory.makeTranslucentMenuButton("Return To Campaign", "Return To Campaign",
+                    "Return to campaign home screen", this);
             buttonGrid.add(backToCampaignButton);
         }
         buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
-        
-        JButton payloadAsLeaderButton = PWCGButtonFactory.makeTranslucentMenuButton("Synchronize Payload", "Synchronize Payload", "Make flight payload the same as the leaders", this);
+
+        JButton payloadAsLeaderButton = PWCGButtonFactory.makeTranslucentMenuButton("Synchronize Payload", "Synchronize Payload",
+                "Make flight payload the same as the leaders", this);
         buttonGrid.add(payloadAsLeaderButton);
         buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
 
@@ -148,14 +152,14 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         {
             this.remove(briefingMapCenterPanel);
         }
-        
+
         briefingMapCenterPanel = new JPanel(new BorderLayout());
         briefingMapCenterPanel.setOpaque(false);
 
         pilotPanel = new BriefingPilotChalkboard(briefingData, this);
         pilotPanel.makePanel();
         briefingMapCenterPanel.add(pilotPanel, BorderLayout.CENTER);
-        
+
         return briefingMapCenterPanel;
     }
 
@@ -295,7 +299,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.movePilotDown(squadronMember.getSerialNumber());
             refreshPilotDisplay();
-        }        
+        }
     }
 
     private void changePayloadForPlane(String action) throws PWCGException
@@ -327,7 +331,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             refreshPilotDisplay();
         }
     }
-    
+
     public void addPlaneModification(int pilotSerialNumber, BriefingPlaneModificationsPicker planeModification)
     {
         planeModifications.put(pilotSerialNumber, planeModification);
@@ -427,7 +431,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         campaign.setCurrentMission(mission);
         this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 
-        campaignHomeGuiBriefingWrapper.refreshCampaignPage();        
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
@@ -436,15 +440,15 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
-    
+
     private boolean ensurePlayerIsInMission() throws PWCGException
     {
-    	if (mission.getCampaign().isCoop())
-    	{
-    		return true;
-    	}
-    	
-    	IFlight playerFlight = briefingData.getSelectedFlight();
+        if (mission.getCampaign().isCoop())
+        {
+            return true;
+        }
+
+        IFlight playerFlight = briefingData.getSelectedFlight();
         List<PlaneMcu> playerPlanes = playerFlight.getFlightPlanes().getPlayerPlanes();
         for (PlaneMcu playerPlane : playerPlanes)
         {
@@ -468,13 +472,14 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             {
                 for (CrewPlanePayloadPairing crewPlanePair : briefingFlight.getCrews())
                 {
-                    SquadronMember  pilot = crewPlanePair.getPilot();
+                    SquadronMember pilot = crewPlanePair.getPilot();
                     if (pilot.isPlayer())
                     {
                         EquippedPlane playerPlane = crewPlanePair.getPlane();
                         if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))
                         {
-                            ErrorDialog.userError("Player does not own his assigned plane: " + playerPlane.getDisplayName() + ".  Mission will not be written.");
+                            ErrorDialog
+                                    .userError("Player does not own his assigned plane: " + playerPlane.getDisplayName() + ".  Mission will not be written.");
                             return false;
                         }
                     }
@@ -508,11 +513,11 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         try
         {
             int notches = event.getWheelRotation();
-            if (notches < 0) 
+            if (notches < 0)
             {
                 movePilotUp();
-            } 
-            else 
+            }
+            else
             {
                 movePilotDown();
             }

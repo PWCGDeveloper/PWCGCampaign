@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.aar.AARLogFileLocationFinder;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARLogFileLocationFinder;
 import pwcg.core.utils.DirectoryReader;
 
 public class AARLogFileSetFactory

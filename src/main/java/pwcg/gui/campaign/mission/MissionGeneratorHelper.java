@@ -18,12 +18,8 @@ import pwcg.mission.MissionHumanParticipants;
 public class MissionGeneratorHelper
 {
 
-
-    public static void showBriefingMap(
-            Campaign campaign, 
-            CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper,
-            MissionHumanParticipants participatingPlayers,
-            Map<Integer, PwcgRole> squadronRoleOverride) throws PWCGException 
+    public static void showBriefingMap(Campaign campaign, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper,
+            MissionHumanParticipants participatingPlayers, Map<Integer, PwcgRole> squadronRoleOverride) throws PWCGException
     {
         MusicManager.playMissionBriefingTheme();
         SoundManager.getInstance().playSound("Typewriter.WAV");
@@ -38,16 +34,16 @@ public class MissionGeneratorHelper
 
     public static void scrubMission(Campaign campaign, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper) throws PWCGException
     {
-        campaign.setCurrentMission(null);        
+        campaign.setCurrentMission(null);
         campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
-    
+
     static MissionHumanParticipants buildParticipatingPlayersSinglePlayer(Campaign campaign) throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(referencePlayer);        
+        participatingPlayers.addSquadronMember(referencePlayer);
         return participatingPlayers;
     }
 }

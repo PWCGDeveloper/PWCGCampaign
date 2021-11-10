@@ -225,6 +225,21 @@ public class DateUtils
         }
     }
 
+    static public Date getDateDashDelimitedYYYYMMDD(String dateString) throws PWCGException
+    {
+        try
+        {
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = df.parse(dateString);
+    
+            return date;
+        }
+        catch (ParseException e)
+        {
+            throw new PWCGException (e.getMessage());
+        }
+    }
+
     public static Date getEndOfWar() throws PWCGException
     {
         if (PWCGContext.getProduct() == PWCGProduct.FC)

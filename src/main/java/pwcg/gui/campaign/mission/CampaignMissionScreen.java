@@ -27,6 +27,7 @@ import pwcg.gui.rofmap.brief.BriefingCoopPersonaChooser;
 import pwcg.gui.rofmap.brief.BriefingRoleChooser;
 import pwcg.gui.rofmap.brief.CampaignHomeGuiBriefingWrapper;
 import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionScreen;
+import pwcg.gui.sound.ProceedWithMission;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -114,6 +115,12 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
             String action = ae.getActionCommand();
             if (action.equalsIgnoreCase(CAMP_MISSION) || action.equalsIgnoreCase(CAMP_MISSION_ROLE))
             {
+                boolean shouldProceed = ProceedWithMission.shouldProceedWithMission(campaign, "Existing mission results detected.  Creating a mission will prevent an AAR.  Proceed?");
+                if (!shouldProceed)
+                {
+                    return;
+                }
+                
                 if (campaign.isCoop() && campaign.getCurrentMission() == null)
                 {
                     createCoopMission(action);
@@ -122,10 +129,6 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
                 {
                     createSinglePlayerMission(action);
                 }
-            }
-            else if (action.equalsIgnoreCase("CampLeave"))
-            {
-                showLeavePage();
             }
             else if (action.equalsIgnoreCase("CampFlowCombatReport"))
             {
@@ -183,17 +186,6 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
         BriefingRoleChooser briefingRoleChooser = new BriefingRoleChooser(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers);
         briefingRoleChooser.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingRoleChooser);
-    }
-
-
-    private void showLeavePage() throws PWCGException 
-    {
-        SoundManager.getInstance().playSound("Typewriter.WAV");
-
-        CampaignLeaveScreen leaveDisplay = new CampaignLeaveScreen(campaignHome);
-        leaveDisplay.makePanels();
-        
-        CampaignGuiContextManager.getInstance().pushToContextStack(leaveDisplay);
     }
 
     private void showAAR() throws PWCGException 

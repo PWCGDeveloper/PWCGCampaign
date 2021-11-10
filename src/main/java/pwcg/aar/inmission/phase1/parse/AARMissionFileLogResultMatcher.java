@@ -2,17 +2,18 @@ package pwcg.aar.inmission.phase1.parse;
 
 import java.util.List;
 
-import pwcg.aar.prelim.AARHeaderParser;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileHeaderParser;
 
 public class AARMissionFileLogResultMatcher
 {
     private Campaign campaign;
-    private AARHeaderParser aarHeaderParser;        
+    private LogFileHeaderParser aarHeaderParser;        
 
-    public AARMissionFileLogResultMatcher(Campaign campaign, AARHeaderParser aarHeaderParser)
+    public AARMissionFileLogResultMatcher(Campaign campaign, LogFileHeaderParser aarHeaderParser)
     {
         this.campaign = campaign;
         this.aarHeaderParser = aarHeaderParser;

@@ -7,9 +7,6 @@ import java.util.Map;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
-import pwcg.aar.inmission.phase1.parse.event.AType12;
-import pwcg.aar.inmission.phase1.parse.event.AType3;
-import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -23,6 +20,9 @@ import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.event.AType12;
+import pwcg.core.logfiles.event.AType3;
+import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class MissionLogEventsBuilder

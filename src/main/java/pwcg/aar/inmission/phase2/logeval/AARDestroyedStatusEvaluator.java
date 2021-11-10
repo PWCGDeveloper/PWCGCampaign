@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
-import pwcg.aar.inmission.phase1.parse.event.IAType3;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.event.IAType3;
 
 
 public class AARDestroyedStatusEvaluator 

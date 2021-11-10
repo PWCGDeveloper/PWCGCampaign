@@ -13,13 +13,13 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
-import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
-import pwcg.aar.prelim.AARLogSetFinder;
 import pwcg.aar.prelim.AARMostRecentLogSetFinder;
 import pwcg.aar.prelim.AARPwcgMissionFinder;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
 
@@ -29,7 +29,7 @@ public class AARMostRecentLogSetFinderTest
 {
 
     @Mock private AARMissionFileLogResultMatcher matcher;
-    @Mock private AARLogSetFinder logSetFinder;
+    @Mock private LogSetFinder logSetFinder;
     @Mock private AARPwcgMissionFinder pwcgMissionFinder;
     @Mock private PwcgMissionData evalPwcgMissionData1;
     @Mock private PwcgMissionData evalPwcgMissionData2;

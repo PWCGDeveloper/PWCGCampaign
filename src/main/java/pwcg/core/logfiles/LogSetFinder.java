@@ -1,4 +1,4 @@
-package pwcg.aar.prelim;
+package pwcg.core.logfiles;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,11 +9,11 @@ import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 
-public class AARLogSetFinder
+public class LogSetFinder
 {
     private DirectoryReader directoryReader;
 
-    public AARLogSetFinder(DirectoryReader directoryReader)
+    public LogSetFinder(DirectoryReader directoryReader)
     {
         this.directoryReader = directoryReader;
     }

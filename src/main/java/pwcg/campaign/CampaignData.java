@@ -6,7 +6,6 @@ import pwcg.campaign.squadmember.SerialNumber;
 
 public class CampaignData
 {
-
 	private Date date = null;
 	private String name = "";
     private boolean isCoop = false;

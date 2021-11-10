@@ -2,8 +2,8 @@ package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 
 import java.util.List;
 
-import pwcg.aar.inmission.phase1.parse.event.IAType2;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.core.logfiles.event.IAType2;
 
 public class AARPilotStatusWoundedEvaluator
 {

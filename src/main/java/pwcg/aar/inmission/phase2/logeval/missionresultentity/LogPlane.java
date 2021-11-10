@@ -1,6 +1,5 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
-import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
@@ -8,6 +7,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;

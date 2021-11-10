@@ -27,7 +27,7 @@ import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.aaatruck.AAATruckMissionPostProcessor;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
-import pwcg.mission.io.MissionFileWriter;
+import pwcg.mission.io.MissionFileNameBuilder;
 
 public class IconicBattlesGenerator 
 {
@@ -49,7 +49,7 @@ public class IconicBattlesGenerator
                 validateAAATruckMission();
                 Mission mission = generateMission(campaign);
                 finishAAATruckMission(mission);
-                new  HelpDialog("AAA vehicle mission has been saved:" + MissionFileWriter.getMissionFileName(campaign));
+                new  HelpDialog("AAA vehicle mission has been saved:" + MissionFileNameBuilder.buildMissionFileName(campaign));
             }
             else
             {

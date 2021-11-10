@@ -7,7 +7,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.io.MissionFileWriter;
+import pwcg.mission.io.MissionFileNameBuilder;
 
 public class MissionHeaderGenerator
 {
@@ -21,7 +21,7 @@ public class MissionHeaderGenerator
         
         MissionHeader missionHeader = new MissionHeader();
         
-        String missionFileName = MissionFileWriter.getMissionFileName(campaign) ;
+        String missionFileName = MissionFileNameBuilder.buildMissionFileName(campaign) ;
         missionHeader.setMissionFileName(missionFileName);
         
         missionHeader.setAirfield(mySquadron.determineCurrentAirfieldName(campaign.getDate()));

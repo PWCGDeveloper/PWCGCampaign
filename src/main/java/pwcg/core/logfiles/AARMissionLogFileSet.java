@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase1.parse;
+package pwcg.core.logfiles;
 
 import pwcg.core.exception.PWCGException;
 

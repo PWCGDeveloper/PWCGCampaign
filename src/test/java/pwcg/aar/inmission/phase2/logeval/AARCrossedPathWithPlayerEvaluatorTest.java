@@ -10,8 +10,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.aar.inmission.phase1.parse.event.AType17;
-import pwcg.aar.inmission.phase1.parse.event.IAType17;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
@@ -19,6 +17,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.event.AType17;
+import pwcg.core.logfiles.event.IAType17;
 
 @ExtendWith(MockitoExtension.class)
 public class AARCrossedPathWithPlayerEvaluatorTest

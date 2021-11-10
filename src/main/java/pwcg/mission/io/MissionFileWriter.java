@@ -21,7 +21,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.AsyncJobRunner;
-import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
@@ -107,7 +106,7 @@ public class MissionFileWriter implements IMissionFile
         int buildConfigFile = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.BuildBinaryMissionFileKey);
         if (buildConfigFile != 0)
         {
-            runner.add("Generating binary mission file...", () -> MissionFileBinaryBuilder.buildMissionBinaryFile(mission.getCampaign(), getMissionFileName(mission.getCampaign())));
+            runner.add("Generating binary mission file...", () -> MissionFileBinaryBuilder.buildMissionBinaryFile(mission.getCampaign(), MissionFileNameBuilder.buildMissionFileName(mission.getCampaign())));
         }
     }
 
@@ -119,7 +118,7 @@ public class MissionFileWriter implements IMissionFile
 
     private BufferedWriter createWriter() throws PWCGException, IOException
     {
-        String filename = getMissionFileName(mission.getCampaign()) ;
+        String filename = MissionFileNameBuilder.buildMissionFileName(mission.getCampaign()) ;
         String filePsth = getMissionFullFilePath(filename);
         BufferedWriter writer = new BufferedWriter(new FileWriter(filePsth));
         return writer;
@@ -204,14 +203,6 @@ public class MissionFileWriter implements IMissionFile
 	{
         String filepath = PWCGDirectorySimulatorManager.getInstance().getMissionFilePath(mission.getCampaign());        
 		return filepath + fileName +  ".mission";
-	}
-
-	public static String getMissionFileName(Campaign campaign) 
-	{
-		String dateStr = DateUtils.getDateStringDashDelimitedYYYYMMDD(campaign.getDate());
-		String filename = campaign.getCampaignData().getName() + " " + dateStr;
-		
-		return filename;
 	}
 	
     private void writeProductSpecific(BufferedWriter writer) throws PWCGException

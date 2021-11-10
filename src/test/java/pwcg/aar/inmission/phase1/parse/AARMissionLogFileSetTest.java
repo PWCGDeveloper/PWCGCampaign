@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARMissionLogFileSet;
 
 @ExtendWith(MockitoExtension.class)
 public class AARMissionLogFileSetTest

@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.aar.inmission.phase1.parse.event.GreatBattlesFileParseUtils;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
+import pwcg.core.logfiles.event.GreatBattlesFileParseUtils;
 
 public class ModAvailabilityReader
 {

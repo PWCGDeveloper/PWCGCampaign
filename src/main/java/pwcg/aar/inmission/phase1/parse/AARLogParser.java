@@ -3,6 +3,7 @@ package pwcg.aar.inmission.phase1.parse;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARMissionLogFileSet;
 
 public class AARLogParser 
 {

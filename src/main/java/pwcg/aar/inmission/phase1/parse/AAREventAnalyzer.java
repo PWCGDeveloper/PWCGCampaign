@@ -1,7 +1,7 @@
 package pwcg.aar.inmission.phase1.parse;
 
-import pwcg.aar.inmission.phase1.parse.event.IAType12;
-import pwcg.aar.inmission.phase1.parse.event.IAType3;
+import pwcg.core.logfiles.event.IAType12;
+import pwcg.core.logfiles.event.IAType3;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 

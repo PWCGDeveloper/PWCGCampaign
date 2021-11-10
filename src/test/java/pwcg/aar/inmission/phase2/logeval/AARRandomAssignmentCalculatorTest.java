@@ -11,17 +11,17 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.aar.inmission.phase1.parse.event.AType17;
-import pwcg.aar.inmission.phase1.parse.event.AType3;
-import pwcg.aar.inmission.phase1.parse.event.IAType17;
-import pwcg.aar.inmission.phase1.parse.event.IAType3;
-import pwcg.aar.inmission.phase1.parse.event.IATypeBase;
 import pwcg.aar.inmission.phase2.logeval.victory.AARAreaOfCombat;
 import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignmentCalculator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.event.AType17;
+import pwcg.core.logfiles.event.AType3;
+import pwcg.core.logfiles.event.IAType17;
+import pwcg.core.logfiles.event.IAType3;
+import pwcg.core.logfiles.event.IATypeBase;
 
 @ExtendWith(MockitoExtension.class)
 public class AARRandomAssignmentCalculatorTest

@@ -21,7 +21,7 @@ public class MissionDescriptionFile
 	{
 		try
         {
-            String filename = MissionFileWriter.getMissionFileName(campaign);
+            String filename = MissionFileNameBuilder.buildMissionFileName(campaign);
             String filePath = getMissionFilePath(campaign, filename) + ".eng";
             OutputStream ostream = new FileOutputStream(filePath);
             OutputStreamWriter writer = new OutputStreamWriter(ostream, "UTF-16LE");

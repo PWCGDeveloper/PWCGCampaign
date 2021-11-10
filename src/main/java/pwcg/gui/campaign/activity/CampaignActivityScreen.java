@@ -17,6 +17,7 @@ import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.sound.ProceedWithMission;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -139,6 +140,12 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
 
     private void showTransfer() throws PWCGException 
     {
+        boolean shouldProceed = ProceedWithMission.shouldProceedWithMission(campaign, "Existing mission results detected.  Transferring will prevent an AAR.  Proceed?");
+        if (!shouldProceed)
+        {
+            return;
+        }
+        
         SoundManager.getInstance().playSound("Typewriter.WAV");
         SquadronMember referencePlayer = campaign.findReferencePlayer();
         
@@ -151,6 +158,12 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
 
     private void showLeavePage() throws PWCGException 
     {
+        boolean shouldProceed = ProceedWithMission.shouldProceedWithMission(campaign, "Existing mission results detected.  Taking leave will prevent an AAR.  Proceed?");
+        if (!shouldProceed)
+        {
+            return;
+        }
+        
         SoundManager.getInstance().playSound("Typewriter.WAV");
 
         CampaignLeaveScreen leaveDisplay = new CampaignLeaveScreen(campaignHome);

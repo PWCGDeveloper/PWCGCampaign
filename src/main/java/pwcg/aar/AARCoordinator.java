@@ -6,12 +6,12 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.aar.inmission.phase1.parse.AARLogSetValidator;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
-import pwcg.aar.inmission.phase1.parse.event.ATypeBase;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.prelim.AARPhase0Preliminary;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.event.ATypeBase;
 import pwcg.core.utils.PWCGLogger;
 
 public class AARCoordinator

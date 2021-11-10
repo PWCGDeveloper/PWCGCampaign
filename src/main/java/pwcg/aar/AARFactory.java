@@ -9,22 +9,22 @@ import pwcg.aar.inmission.phase2.logeval.AARBotVehicleMapper;
 import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
 import pwcg.aar.inmission.phase2.logeval.AARVehiclePlaneLanded;
 import pwcg.aar.outofmission.phase2.awards.CampaignMemberAwardsGenerator;
-import pwcg.aar.prelim.AARHeaderParser;
-import pwcg.aar.prelim.AARLogSetFinder;
 import pwcg.aar.prelim.AARMostRecentLogSetFinder;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.AARPwcgMissionFinder;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogFileHeaderParser;
+import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DirectoryReader;
 
 public class AARFactory
 {
     public static AARMostRecentLogSetFinder makeMostRecentLogSetFinder(Campaign campaign) throws PWCGException
     {
-        AARLogSetFinder logSetFinder = makeLogSorter();
-        AARHeaderParser aarHeaderParser = new AARHeaderParser();        
+        LogSetFinder logSetFinder = makeLogSorter();
+        LogFileHeaderParser aarHeaderParser = new LogFileHeaderParser();        
         AARPwcgMissionFinder pwcgMissionFinder = new AARPwcgMissionFinder(campaign);
         AARMissionFileLogResultMatcher matcher = new AARMissionFileLogResultMatcher(campaign, aarHeaderParser);
         return new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
@@ -38,10 +38,10 @@ public class AARFactory
         return new AARVehicleBuilder(botPlaneMapper, landedMapper, pwcgMissionDataEvaluator);
     }
 
-    public static AARLogSetFinder makeLogSorter() throws PWCGException
+    public static LogSetFinder makeLogSorter() throws PWCGException
     {
         DirectoryReader directoryReader = new DirectoryReader();
-        AARLogSetFinder logSetFinder = new AARLogSetFinder(directoryReader);
+        LogSetFinder logSetFinder = new LogSetFinder(directoryReader);
         return logSetFinder;
     }
     

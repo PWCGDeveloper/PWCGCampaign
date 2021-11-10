@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.aar.inmission.phase1.parse.event.GreatBattlesFileParseUtils;
+import pwcg.core.logfiles.event.GreatBattlesFileParseUtils;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 
 public class PlaneModSetReader

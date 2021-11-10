@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase1.parse.event;
+package pwcg.core.logfiles.event;
 
 public interface IAType0 extends IATypeBase
 {

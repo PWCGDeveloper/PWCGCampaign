@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import pwcg.aar.inmission.phase1.parse.event.IAType12;
-import pwcg.aar.inmission.phase1.parse.event.IAType17;
-import pwcg.aar.inmission.phase1.parse.event.IAType18;
-import pwcg.aar.inmission.phase1.parse.event.IAType2;
-import pwcg.aar.inmission.phase1.parse.event.IAType3;
-import pwcg.aar.inmission.phase1.parse.event.IAType6;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.event.IAType12;
+import pwcg.core.logfiles.event.IAType17;
+import pwcg.core.logfiles.event.IAType18;
+import pwcg.core.logfiles.event.IAType2;
+import pwcg.core.logfiles.event.IAType3;
+import pwcg.core.logfiles.event.IAType6;
 
 public class AARLogLineParserTest
 {

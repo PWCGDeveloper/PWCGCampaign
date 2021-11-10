@@ -1,24 +1,18 @@
-package pwcg.aar.prelim;
+package pwcg.core.logfiles;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import pwcg.aar.AARLogFileLocationFinder;
-import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
-import pwcg.aar.inmission.phase1.parse.event.AType;
-import pwcg.aar.inmission.phase1.parse.event.IAType0;
-import pwcg.aar.inmission.phase1.parse.event.LogEventFactory;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.event.AType;
+import pwcg.core.logfiles.event.IAType0;
+import pwcg.core.logfiles.event.LogEventFactory;
 import pwcg.core.utils.PWCGLogger;
 
-public class AARHeaderParser
+public class LogFileHeaderParser
 {
-    public AARHeaderParser()
-    {
-    }
-
     public String parseHeaderOnly(String campaignName, String logFileName) throws PWCGException, PWCGException 
     {
         String missionFileName = AARMissionLogFileSet.NOT_AVAILABLE;

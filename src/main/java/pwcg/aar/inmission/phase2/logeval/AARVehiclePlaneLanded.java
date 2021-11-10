@@ -3,9 +3,9 @@ package pwcg.aar.inmission.phase2.logeval;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
-import pwcg.aar.inmission.phase1.parse.event.IAType3;
-import pwcg.aar.inmission.phase1.parse.event.IAType6;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.core.logfiles.event.IAType3;
+import pwcg.core.logfiles.event.IAType6;
 
 public class AARVehiclePlaneLanded 
 {

@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.aar.inmission.phase1.parse.event.AType2;
-import pwcg.aar.inmission.phase1.parse.event.IAType2;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.event.AType2;
+import pwcg.core.logfiles.event.IAType2;
 
 @ExtendWith(MockitoExtension.class)
 public class AARPilotStatusWoundedEvaluatorTest

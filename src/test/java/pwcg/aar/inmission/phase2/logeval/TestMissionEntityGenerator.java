@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
-import pwcg.aar.inmission.phase1.parse.event.AType12;
-import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.event.AType12;
+import pwcg.core.logfiles.event.IAType12;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 import pwcg.testutils.TestATypeFactory;
 

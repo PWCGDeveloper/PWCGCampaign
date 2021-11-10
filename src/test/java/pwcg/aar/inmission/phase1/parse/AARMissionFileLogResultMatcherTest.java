@@ -14,13 +14,14 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.aar.prelim.AARHeaderParser;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileHeaderParser;
 import pwcg.mission.data.MissionHeader;
 
 @ExtendWith(MockitoExtension.class)
@@ -30,7 +31,7 @@ public class AARMissionFileLogResultMatcherTest
     @Mock private CampaignData campaignData;
     @Mock private PwcgMissionData pwcgMissionData;       
     @Mock private MissionHeader missionHeader;
-    @Mock private AARHeaderParser aarHeaderParser;        
+    @Mock private LogFileHeaderParser aarHeaderParser;        
     
     @InjectMocks
     AARMissionFileLogResultMatcher missionFileLogResultMatcher;

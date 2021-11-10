@@ -4,21 +4,22 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
-import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DateUtils;
 
 public class AARMostRecentLogSetFinder
 {
     private AARMissionFileLogResultMatcher matcher;
-    private AARLogSetFinder logSetFinder;
+    private LogSetFinder logSetFinder;
     private AARPwcgMissionFinder pwcgMissionFinder;
     private AARMissionLogFileSet aarLogFileMissionFile;
     private PwcgMissionData pwcgMissionData;
     private Campaign campaign;
 
-    public AARMostRecentLogSetFinder(Campaign campaign, AARMissionFileLogResultMatcher matcher, AARLogSetFinder logSetFinder,AARPwcgMissionFinder pwcgMissionFinder)
+    public AARMostRecentLogSetFinder(Campaign campaign, AARMissionFileLogResultMatcher matcher, LogSetFinder logSetFinder,AARPwcgMissionFinder pwcgMissionFinder)
     {
         this.campaign = campaign;
         this.matcher = matcher;

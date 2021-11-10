@@ -14,8 +14,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
-import pwcg.aar.inmission.phase1.parse.event.AType3;
-import pwcg.aar.inmission.phase1.parse.event.IAType2;
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
@@ -35,6 +33,8 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.event.AType3;
+import pwcg.core.logfiles.event.IAType2;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
 

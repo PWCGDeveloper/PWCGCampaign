@@ -1,4 +1,11 @@
 13.4.3
+Added warning when player does something to advance time when an AAR is pending.
+- New mission
+- Leave
+- Transfer
+- warning says "Existing mission results detected ... Proceed?"
+- Yes means proceed and don't do the AAR
+- No means do not proceed,giving you a chance to submit an AAR.
 Fixed pilot admin layout
 Fixed pilot admin not showing action buttons when pilot selected
 Fixed incorrect info displayed on page 2 of campaign creation

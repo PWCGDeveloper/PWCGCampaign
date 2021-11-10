@@ -18,7 +18,6 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
@@ -38,6 +37,7 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.AARMissionLogFileSet;
 import pwcg.product.fc.country.FCCountry;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;

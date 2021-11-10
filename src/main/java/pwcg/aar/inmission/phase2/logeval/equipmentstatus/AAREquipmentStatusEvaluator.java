@@ -1,7 +1,6 @@
 package pwcg.aar.inmission.phase2.logeval.equipmentstatus;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
-import pwcg.aar.inmission.phase1.parse.event.IAType3;
 import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
@@ -9,6 +8,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.event.IAType3;
 
 public class AAREquipmentStatusEvaluator
 {

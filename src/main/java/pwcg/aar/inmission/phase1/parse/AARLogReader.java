@@ -10,6 +10,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARMissionLogFileSet;
 import pwcg.core.utils.PWCGLogger;
 
 public class AARLogReader 

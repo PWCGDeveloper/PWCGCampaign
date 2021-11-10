@@ -3,8 +3,8 @@ package pwcg.aar.inmission.phase1.parse;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.aar.inmission.phase1.parse.event.AType;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.event.AType;
 
 public class AARLogKeeper
 {

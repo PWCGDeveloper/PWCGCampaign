@@ -9,8 +9,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.aar.prelim.AARLogSetFinder;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DirectoryReader;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,7 +28,7 @@ public class AARLogSetFinderTest
         sortedLogSets.add("LogSet3");
         Mockito.when(directoryReader.getSortedFilesWithFilter("[0].txt")).thenReturn(sortedLogSets);
 
-        AARLogSetFinder logSetFinderTest = new AARLogSetFinder(directoryReader);
+        LogSetFinder logSetFinderTest = new LogSetFinder(directoryReader);
         List<String> returnSortedLogSets = logSetFinderTest.getSortedLogFileSets();
         assert(returnSortedLogSets.size() == 3);
     }

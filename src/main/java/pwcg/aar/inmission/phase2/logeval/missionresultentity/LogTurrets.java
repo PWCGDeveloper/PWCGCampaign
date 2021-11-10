@@ -3,8 +3,8 @@ package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.event.IAType12;
 
 public class LogTurrets
 {

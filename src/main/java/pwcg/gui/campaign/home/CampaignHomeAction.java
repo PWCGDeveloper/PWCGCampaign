@@ -18,6 +18,7 @@ import pwcg.gui.campaign.mission.CampaignMissionScreen;
 import pwcg.gui.campaign.personnel.CampaignPersonnelScreen;
 import pwcg.gui.campaign.pilot.CampaignPilotScreen;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.sound.ProceedWithMission;
 import pwcg.gui.utils.UIUtils;
 
 public class CampaignHomeAction

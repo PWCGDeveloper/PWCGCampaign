@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
-import pwcg.aar.inmission.phase1.parse.event.IAType2;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.event.IAType2;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
 
