@@ -1,8 +1,5 @@
 package pwcg.core.logfiles.event;
 
-import java.io.BufferedWriter;
-import java.util.HashMap;
-
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
@@ -10,13 +7,11 @@ import pwcg.core.utils.PWCGLogger;
 public abstract class ATypeBase 
 {	
     private static int sequenceNumCounter = 0;
-    private static HashMap<String,Integer> generations = new HashMap<>();
 	private int sequenceNum = 0;
 	private AType atype;
 	
 	public static void reset()
 	{
-	    generations = new HashMap<>();
 	}
 
 	public ATypeBase (AType atype)
@@ -100,22 +95,9 @@ public abstract class ATypeBase
 		return value;
 	}
 
-	protected String getNewId(String line, String startTag, String endTag)
-	{
-	    String raw_id = getString(line, startTag, endTag);
-	    int generation = generations.getOrDefault(raw_id, 0);
-	    generation++;
-	    generations.put(raw_id, generation);
-	    return raw_id + "@" + generation;
-	}
-
 	protected String getId(String line, String startTag, String endTag)
 	{
-        String raw_id = getString(line, startTag, endTag);
-	    if (raw_id.equals("-1"))
-	        return raw_id;
-        // Eject events can be emitted before their spawn event, so assume first generation
-        return raw_id + "@" + generations.getOrDefault(raw_id, 1);
+        return getString(line, startTag, endTag);
 	}
 
 	public int getSequenceNum() 
@@ -127,6 +109,4 @@ public abstract class ATypeBase
     {
         return atype;
     }
-
-    public abstract void write(BufferedWriter writer) throws PWCGException;
 }

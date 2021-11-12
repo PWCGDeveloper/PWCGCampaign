@@ -1,7 +1,5 @@
 package pwcg.core.logfiles.event;
 
-import java.io.BufferedWriter;
-
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -75,11 +73,6 @@ public class AType0 extends ATypeBase implements IAType0
     public String getMissionFileName()
     {
         return missionFileName;
-    }
-
-    @Override
-    public void write(BufferedWriter writer) throws PWCGException 
-    {
     }
 
     @Override

@@ -1,66 +1,46 @@
 package pwcg.aar.inmission.phase2.logeval;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 
 public class AARDamageStatus
 {
-    private Map<String, List<LogDamage>> vehicleDamaged = new HashMap<>();
-    
-    public AARDamageStatus()
+    String vehicleId;
+    Map<String, Double> damageByVictor = new HashMap<>(); 
+        
+    public AARDamageStatus (String vehicleId)
     {
+        this.vehicleId = vehicleId;
     }
     
     public void addDamage(String victorId, LogDamage damageRecord)
     {
-        if (!vehicleDamaged.containsKey(victorId))
+        if (!damageByVictor.containsKey(victorId))
         {
-            vehicleDamaged.put(victorId, new ArrayList<>());
+            damageByVictor.put(victorId, 0.0);
         }
-        vehicleDamaged.get(victorId).add(damageRecord);
+        
+        Double accumulatedDamageByVictor = damageByVictor.get(victorId);
+        accumulatedDamageByVictor += damageRecord.getDamageLevel();
+        damageByVictor.put(victorId, accumulatedDamageByVictor);
     }
 
     public String getVictorBasedOnDamage()
-    {
-        Map<String, Double> accumulatedDamageByVictor = accumulateDamageByVictor();
-        String selectedVictor = AARLogParser.UNKNOWN_MISSION_LOG_ENTITY;
-        double selectedVictorDamage = 0.0;
-        for (String victorId : accumulatedDamageByVictor.keySet())
+    { 
+        Double maxDamageByVictor = 0.0;
+        String selectedVictor = "";
+        for (String victorId : damageByVictor.keySet())
         {
-            double damageByVictor = accumulatedDamageByVictor.get(victorId);
-            if (damageByVictor > selectedVictorDamage)
+            double damage = damageByVictor.get(victorId);
+            if (damage > maxDamageByVictor)
             {
-                selectedVictor = victorId;
-                selectedVictorDamage = damageByVictor;
+                maxDamageByVictor = damage;
+                selectedVictor = victorId;                
             }
         }
         
         return selectedVictor;
-    }
-
-    private Map<String, Double> accumulateDamageByVictor()
-    {
-        Map<String, Double> accumulatedDamageByVictor = new HashMap<>();
-        for (String victorId : vehicleDamaged.keySet())
-        {
-            if (!accumulatedDamageByVictor.containsKey(victorId))
-            {
-                accumulatedDamageByVictor.put(victorId, Double.valueOf(0.0));
-            }
-            
-            List<LogDamage> logDamageList = vehicleDamaged.get(victorId);
-            double accumulatedDamage = 0;
-            for (LogDamage logDamage : logDamageList)
-            {
-                accumulatedDamage += logDamage.getDamageLevel();
-            }
-            accumulatedDamageByVictor.put(victorId, accumulatedDamage);
-        }
-        return accumulatedDamageByVictor;
     }
 }
