@@ -157,7 +157,6 @@ public class AARInMissionResultGeneratorTest
         resultVictory.setLocation(new Coordinate(100.0, 0.0, 100.0));
         resultVictory.setVictor(victor);
         resultVictory.setVictim(victim);
-        resultVictory.setCrossedPlayerPath(true);
         firmVictories.add(resultVictory);
     }
 

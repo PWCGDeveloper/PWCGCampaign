@@ -97,7 +97,6 @@ public class LogVictoryHelper
         resultVictory.setLocation(new Coordinate(100.0, 0.0, 100.0));
         resultVictory.setVictor(victor);
         resultVictory.setVictim(victim);
-        resultVictory.setCrossedPlayerPath(true);
         logVictories.add(resultVictory);
     }
 

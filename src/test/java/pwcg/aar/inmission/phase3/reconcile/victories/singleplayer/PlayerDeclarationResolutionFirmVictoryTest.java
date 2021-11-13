@@ -194,7 +194,6 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictor(victor);
         resultVictory.setVictim(victim);
-        resultVictory.setCrossedPlayerPath(true);
         
         firmVictories.add(resultVictory);
     }
@@ -214,7 +213,6 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictor(victor);
         resultVictory.setVictim(victim);
-        resultVictory.setCrossedPlayerPath(true);
         
         firmVictories.add(resultVictory);
     }

@@ -13,44 +13,39 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.event.IAType3;
 
-
-public class AARDestroyedStatusEvaluator 
+public class AARDestroyedStatusEvaluator
 {
-    private List <LogVictory> deadLogVehicles = new ArrayList <>();
-    private Map <Integer, LogPilot> deadLogPilots = new HashMap <>();
+    private List<LogVictory> deadLogVehicles = new ArrayList<>();
+    private Map<Integer, LogPilot> deadLogPilots = new HashMap<>();
 
     private AARVehicleBuilder vehicleBuilder;
-    private AARDamageStatusEvaluator damageStatusEvaluator;
     private AARLogEventData logEventData;
-    private AARCrossedPathWithPlayerEvaluator aarCrossedPathWithPlayerEvaluator = new AARCrossedPathWithPlayerEvaluator();
-    
-    public AARDestroyedStatusEvaluator(
-                    AARLogEventData logEventData, 
-                    AARVehicleBuilder aarVehicleBuilder, 
-                    AARDamageStatusEvaluator damageStatusEvaluator)
+    private AARDamageStatusEvaluator damageStatusEvaluator;
+
+    public AARDestroyedStatusEvaluator(AARLogEventData logEventData, AARVehicleBuilder aarVehicleBuilder, AARDamageStatusEvaluator damageStatusEvaluator)
     {
-        this.logEventData = logEventData;        
+        this.logEventData = logEventData;
         this.vehicleBuilder = aarVehicleBuilder;
         this.damageStatusEvaluator = damageStatusEvaluator;
     }
 
-    public void buildDeadLists() throws PWCGException 
+    public void buildDeadLists() throws PWCGException
     {
         for (IAType3 atype3 : logEventData.getDestroyedEvents())
-        {
+        {                    
             LogAIEntity logVictor = vehicleBuilder.getVehicle(atype3.getVictor());
             LogAIEntity logVictim = vehicleBuilder.getVehicle(atype3.getVictim());
-            
+
             LogVictory logVictory = new LogVictory(atype3.getSequenceNum());
             logVictory.setLocation(atype3.getLocation());
-            
+
             if (logVictim != null)
             {
-                addDeadVehicle(logVictor, logVictim, logVictory);                
+                addDeadVehicle(logVictor, logVictim, logVictory);
             }
             else
             {
-            	addDeadPilot(atype3);
+                addDeadPilot(atype3);
             }
         }
     }
@@ -62,24 +57,25 @@ public class AARDestroyedStatusEvaluator
         {
             logVictory.setVictor(logVictor);
         }
-        else 
+        else
         {
-            determineVictorByDamage(logVictim, logVictory);
+            addDamagedByInformation(logVictory, logVictim);
         }
-
-        setCrossedPathWithPlayer(logVictory);
 
         deadLogVehicles.add(logVictory);
     }
-    
-    private void determineVictorByDamage(LogAIEntity logVictim, LogVictory logVictory) throws PWCGException
+
+    private void addDamagedByInformation(LogVictory logVictory, LogAIEntity logVictim) throws PWCGException
     {
-        LogAIEntity logVictor = damageStatusEvaluator.getVictorByDamage(logVictim);
-        if (logVictor != null)
+        AARDamageStatus damageStatus = damageStatusEvaluator.getDamageStatusForVehicle(logVictim.getId());
+        if (damageStatus != null)
         {
-            logVictory.setVictor(logVictor);
+            logVictory.setDamageInformation(damageStatus);
         }
-        
+        else
+        {
+            logVictory.setDamageInformation(new AARDamageStatus(logVictim.getId()));
+        }
     }
 
     private void addDeadPilot(IAType3 atype3)
@@ -87,45 +83,22 @@ public class AARDestroyedStatusEvaluator
         LogPilot deadPilot = matchDeadBotToCrewMember(atype3);
         if (deadPilot != null)
         {
-        	deadLogPilots.put(deadPilot.getSerialNumber(), deadPilot);
+            deadLogPilots.put(deadPilot.getSerialNumber(), deadPilot);
         }
     }
-    
+
     private LogPilot matchDeadBotToCrewMember(IAType3 atype3)
     {
-    	for (LogPlane planeEntity : vehicleBuilder.getLogPlanes().values())
-    	{
-    	    LogPilot crewMemberEntity = planeEntity.getLogPilot();
+        for (LogPlane planeEntity : vehicleBuilder.getLogPlanes().values())
+        {
+            LogPilot crewMemberEntity = planeEntity.getLogPilot();
             if (crewMemberEntity.getBotId().equals(atype3.getVictim()))
             {
                 return crewMemberEntity;
             }
-    	}
-    	
-    	return null;
-    }
+        }
 
-    private void setCrossedPathWithPlayer(LogVictory victoryResult)
-    {
-        AARPlayerLocator aarPlayerLocator = new AARPlayerLocator(logEventData, vehicleBuilder);
-        aarPlayerLocator.evaluatePlayerLocation();
-
-        boolean crossedPathWithPlayer = aarCrossedPathWithPlayerEvaluator.isCrossedPathWithPlayerFlight(
-                        victoryResult, 
-                        aarPlayerLocator,
-                        logEventData.getWaypointEvents());
-        
-        victoryResult.setCrossedPlayerPath(crossedPathWithPlayer);
-    }
-    
-    public void setAarCrossedPathWithPlayerEvaluator(AARCrossedPathWithPlayerEvaluator aarCrossedPathWithPlayerEvaluator)
-    {
-        this.aarCrossedPathWithPlayerEvaluator = aarCrossedPathWithPlayerEvaluator;
-    }
-
-    public List<LogVictory> getDeadLogVehicleList()
-    {
-        return deadLogVehicles;
+        return null;
     }
 
     public boolean didCrewMemberDie(int serialNumber)
@@ -134,8 +107,12 @@ public class AARDestroyedStatusEvaluator
         {
             return true;
         }
-        
+
         return false;
     }
-}
 
+    public List<LogVictory> getDeadLogVehicleList()
+    {
+        return deadLogVehicles;
+    }
+}

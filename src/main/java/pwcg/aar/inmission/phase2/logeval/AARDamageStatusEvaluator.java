@@ -131,5 +131,10 @@ public class AARDamageStatusEvaluator
         }
         return logVictor;
     }
+
+    public AARDamageStatus getDamageStatusForVehicle(String victimId) throws PWCGException
+    {
+        return vehiclesDamaged.get(victimId);
+    }
 }
 

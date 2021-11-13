@@ -127,7 +127,6 @@ public class AiDeclarationResolutionFuzzyTest
         
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
-        resultVictory.setCrossedPlayerPath(true);
         fuzzyVictories.add(resultVictory);
    }
     

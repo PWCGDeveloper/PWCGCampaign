@@ -43,4 +43,9 @@ public class AARDamageStatus
         
         return selectedVictor;
     }
+    
+    public boolean didPilotDamagePlane(String victorId)
+    {
+        return damageByVictor.containsKey(victorId);
+    }
 }

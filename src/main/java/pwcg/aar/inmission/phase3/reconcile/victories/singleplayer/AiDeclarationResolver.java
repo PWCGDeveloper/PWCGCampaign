@@ -80,13 +80,10 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
         {
             if (resultVictory.getVictor() instanceof LogUnknown)
             {
-                if (resultVictory.isCrossedPlayerPath())
+                SquadronMember pilotVictor = flightMemberForVictory(resultVictory);
+                if (pilotVictor != null)
                 {
-                    SquadronMember pilotVictor = flightMemberForVictory(resultVictory);
-                    if (pilotVictor != null)
-                    {
-                        createAiVictory(resultVictory, pilotVictor);
-                    }
+                    createAiVictory(resultVictory, pilotVictor);
                 }
             }
         }

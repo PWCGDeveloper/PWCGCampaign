@@ -118,7 +118,6 @@ public class AiDeclarationResolutionRandomTest
         
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
-        resultVictory.setCrossedPlayerPath(true);
 
         LogUnknown unknownVictor = new LogUnknown();
         unknownVictor.setUnknownVictoryAssignment(unknownVictoryAssignment);

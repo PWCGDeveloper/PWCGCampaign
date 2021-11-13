@@ -1,14 +1,15 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
+import pwcg.aar.inmission.phase2.logeval.AARDamageStatus;
 import pwcg.core.location.Coordinate;
 
 public class LogVictory extends LogBase
 {
     private LogAIEntity victor = new LogUnknown();
     private LogAIEntity victim = new LogUnknown();
+    private AARDamageStatus damageInformation;
     private Coordinate location;
     private boolean confirmed = false;
-    private boolean crossedPlayerPath = false;
     
     public LogVictory(int sequenceNumber)
     {
@@ -55,13 +56,17 @@ public class LogVictory extends LogBase
         this.confirmed = confirmed;
     }
 
-    public boolean isCrossedPlayerPath()
+    public boolean didPilotDamagePlane(String victorId)
     {
-        return crossedPlayerPath;
+        if(damageInformation == null)
+        {
+            return false;
+        }
+        return damageInformation.didPilotDamagePlane(victorId);
     }
 
-    public void setCrossedPlayerPath(boolean crossedPlayerPath)
+    public void setDamageInformation(AARDamageStatus damageInformation)
     {
-        this.crossedPlayerPath = crossedPlayerPath;
-    }    
+        this.damageInformation = damageInformation;
+    }
 }
