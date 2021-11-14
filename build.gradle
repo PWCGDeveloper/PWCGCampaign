@@ -27,6 +27,12 @@ dependencies {
 	testImplementation('org.junit.jupiter:junit-jupiter')
 	testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.12.2'
 	testImplementation group: 'org.mockito', name: 'mockito-inline', version: '3.12.2'
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.2')
+}
+
+test {
+    useJUnitPlatform()
+    maxParallelForks = Runtime.runtime.availableProcessors()
 }
 
 jar {
