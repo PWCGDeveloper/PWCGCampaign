@@ -1,4 +1,6 @@
-13.4.3
+13.5.0
+Changes to awarding player victories
+- Adds damage check to victories not confirmed in logs.  You will not get a victory for something you didn't shoot.
 Added warning when player does something to advance time when an AAR is pending.
 - New mission
 - Leave
