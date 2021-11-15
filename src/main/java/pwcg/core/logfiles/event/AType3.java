@@ -35,23 +35,6 @@ public class AType3 extends ATypeBase implements IAType3
         location = findCoordinate(line, "POS(");
     }
 
-    public void write(BufferedWriter writer) throws PWCGException
-    {
-        try
-        {
-            String format = "T:14605 AType:3 AID:%s TID:%s POS(%.1f,%.1f,%.1f)";
-
-            String atype = String.format(format, victor.split("@")[0], victim.split("@")[0], location.getXPos(), location.getYPos(), location.getZPos());
-            writer.write(atype);
-            writer.newLine();
-        }
-        catch (IOException e)
-        {
-            PWCGLogger.logException(e);
-            throw new PWCGException(e.getMessage());
-        }
-    }
-
     public String getVictor()
     {
         return victor;
@@ -65,5 +48,22 @@ public class AType3 extends ATypeBase implements IAType3
     public Coordinate getLocation()
     {
         return location;
+    }
+
+    public void write(BufferedWriter writer) throws PWCGException
+    {
+        try
+        {
+            String format = "T:14605 AType:3 AID:%s TID:%s POS(%.1f,%.1f,%.1f)";
+
+            String atype = String.format(format, victor, victim, location.getXPos(), location.getYPos(), location.getZPos());
+            writer.write(atype);
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGException(e.getMessage());
+        }
     }
 }

@@ -1,9 +1,13 @@
 package pwcg.core.logfiles.event;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.PWCGLogger;
 
 // T:15 AType:12 ID:302079 TYPE:He 111 H-6 COUNTRY:201 NAME:Obltn Heinkel Mann PID:-1 POS(64429.594,174.325,41093.000)
 public class AType12 extends ATypeBase implements IAType12
@@ -33,7 +37,8 @@ public class AType12 extends ATypeBase implements IAType12
             String type, 
             String name, 
             ICountry country,
-            String pid) throws PWCGException
+            String pid,
+            Coordinate position) throws PWCGException
     {    
         super(AType.ATYPE12);
         this.id = id;
@@ -41,6 +46,7 @@ public class AType12 extends ATypeBase implements IAType12
         this.name = name;
         this.country = country;
         this.pid = pid;
+        this.position = position;
     }
 
     private void parse (String line) throws PWCGException 
@@ -103,5 +109,23 @@ public class AType12 extends ATypeBase implements IAType12
     public Coordinate getPosition()
     {
         return position;
+    }
+
+    @Override
+    public void write(BufferedWriter writer) throws PWCGException
+    {
+        try
+        {
+            String format1 = "AType:12 ID:%s TYPE:%s COUNTRY:%d NAME:%s PID:%s  POS(%.1f,%.1f,%.1f)";
+
+            String atype1 = String.format(format1, id, type, country.getCountryCode(), name, pid, position.getXPos(),position.getYPos(), position.getZPos());
+            writer.write(atype1);
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGException(e.getMessage());
+        }
     }
 }

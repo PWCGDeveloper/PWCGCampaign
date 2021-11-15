@@ -1,5 +1,8 @@
 package pwcg.core.logfiles.event;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
@@ -86,4 +89,22 @@ public class AType10 extends ATypeBase implements IAType10
 	{
 		return location;
 	}
+
+    @Override
+    public void write(BufferedWriter writer) throws PWCGException 
+    {
+        try
+        {
+            String format = "AType:10 PLID:130047 PID:131071 BUL:1850 SH:0 BOMB:0 RCT:0 (%.1f,%.1f,%.1f) IDS:a1e32593-94c5-4e1a-a4ac-a583aaee570e LOGIN:580c2eb7-fc7f-4d4e-b25f-098946515ce1 NAME:PatrickAWilson TYPE:%s COUNTRY:%d FORM:1 FIELD:0 INAIR:0 PARENT:-1 PAYLOAD:5 FUEL:1.000 SKIN: WM:1";
+            
+            String atype = String.format(format, location.getXPos(),location.getYPos(), location.getZPos(), type, country.getCountryCode());
+            writer.write(atype);
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGException(e.getMessage());
+        }
+    }
 }

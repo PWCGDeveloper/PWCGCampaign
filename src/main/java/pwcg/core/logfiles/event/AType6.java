@@ -31,7 +31,7 @@ public class AType6 extends ATypeBase implements IAType6
         {
             String format = "T:14605 AType:6 PID:%s POS(%.1f,%.1f,%.1f)";
             
-            String atype = String.format(format, pid.split("@")[0], location.getXPos(),location.getYPos(), location.getZPos());
+            String atype = String.format(format, pid, location.getXPos(),location.getYPos(), location.getZPos());
             writer.write(atype);
             writer.newLine();
         }

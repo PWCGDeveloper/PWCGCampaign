@@ -1,5 +1,8 @@
 package pwcg.core.logfiles.event;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -17,6 +20,12 @@ public class AType0 extends ATypeBase implements IAType0
         super(AType.ATYPE0);
         this.campaignName = campaignName;
         parse(line);
+    }
+
+    public AType0(String campaignName)  throws PWCGException
+    {
+        super(AType.ATYPE0);
+        this.campaignName = campaignName;
     }
     
     private void parse (String line)  throws PWCGException
@@ -73,6 +82,26 @@ public class AType0 extends ATypeBase implements IAType0
     public String getMissionFileName()
     {
         return missionFileName;
+    }
+    
+    public void setMissionFileName(String missionFileName)
+    {
+        this.missionFileName = missionFileName;
+    }
+
+    @Override
+    public void write(BufferedWriter writer) throws PWCGException 
+    {
+        try
+        {
+            writer.write("T:0 AType:0 GDate:1917.7.1 GTime:16:30:0 MFile:Missions/" + missionFileName + "  MID: GType:0 CNTRS:0:0,101:1,102:1,103:1,104:1,105:1,501:2,502:2,600:3 SETTS:01010100100100010000000110 MODS:1 PRESET:");
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGException(e.getMessage());
+        }
     }
 
     @Override

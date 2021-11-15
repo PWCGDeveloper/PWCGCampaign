@@ -99,7 +99,8 @@ public class MissionLogEventsBuilder
                     planeType.getDisplayName(),
                     pilot.getNameAndRank(),
                     pilot.determineCountry(campaign.getDate()),
-                    "-1");
+                    "-1",
+                    new Coordinate(500000, 0, 50000));
             
             logEventData.addVehicle(planeSpawn.getId(), planeSpawn);
             serialNumberToPlaneId.put(pilot.getSerialNumber(), planeSpawn.getId());
@@ -118,7 +119,8 @@ public class MissionLogEventsBuilder
                     "Truck",
                     "",
                     russia,
-                    "-1");
+                    "-1",
+                    new Coordinate(500000, 0, 50000));
             
             logEventData.addVehicle(truckSpawn.getId(), truckSpawn);
         }
@@ -131,7 +133,8 @@ public class MissionLogEventsBuilder
                 "BotPilot",
                 planeSpawn.getName(),
                 planeSpawn.getCountry(),
-                planeSpawn.getId());
+                planeSpawn.getId(),
+                new Coordinate(500000, 0, 50000));
         
         logEventData.addBot(botSpawn.getId(), botSpawn);
     }

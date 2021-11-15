@@ -209,7 +209,8 @@ public class PlayerDeclarationResolution
     private boolean didPlayerDamagePlane(Integer playerSerialNumber, LogVictory resultVictory) throws PWCGException
     {
         LogPlane playerPlane = evaluationData.getPlaneInMissionBySerialNumber(playerSerialNumber);
-        return resultVictory.didPilotDamagePlane(playerPlane.getId());
+        boolean didPlayerDamagePlane = resultVictory.didPilotDamagePlane(playerPlane.getId());
+        return didPlayerDamagePlane;
     }
 
     private void generatePlayerVictoryIfNotAlreadyConfirmed(Integer playerSerialNumber, PlayerVictoryDeclaration victoryDeclaration, LogVictory resultVictory, String shotDownPlaneName) throws PWCGException

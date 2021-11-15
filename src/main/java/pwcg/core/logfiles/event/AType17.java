@@ -1,7 +1,11 @@
 package pwcg.core.logfiles.event;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.PWCGLogger;
 
 
 // T:14605 AType:17 ID:129023 POS(97132.141,1781.138,133919.984)
@@ -28,6 +32,24 @@ public class AType17 extends ATypeBase implements IAType17
 		id = getId(line, "AType:17 ID:", " POS(");
 		location = findCoordinate(line, "POS(");		
 	}
+	
+    @Override
+    public void write(BufferedWriter writer) throws PWCGException 
+    {
+        try
+        {
+            String format = "T:14605 AType:17 ID:%s POS(%.1f,%.1f,%.1f)";
+            
+            String atype = String.format(format, id, location.getXPos(),location.getYPos(), location.getZPos());
+            writer.write(atype);
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGException(e.getMessage());
+        }
+    }   
 
 	@Override
     public String getId() 

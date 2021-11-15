@@ -46,7 +46,7 @@ public class AARDamageStatusEvaluator
 
         LogDamage logDamage;
         logDamage = createDamageRecord(atype2);
-        if (uselessLog(atype2))
+        if (uselessLog(atype2) || victimId == null || victorId == null)
         {
             return;
         }

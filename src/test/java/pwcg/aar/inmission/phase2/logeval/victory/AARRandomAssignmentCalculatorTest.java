@@ -45,7 +45,7 @@ public class AARRandomAssignmentCalculatorTest
         chronologicalAType.add(crash);
         
         AARRandomAssignmentCalculator randomAssignmentCalculator = new AARRandomAssignmentCalculator(areaOfCombat);
-        boolean markedForAssignment = randomAssignmentCalculator.shouldBeMarkedForRandomAssignment(chronologicalAType, "35839@1");
+        boolean markedForAssignment = randomAssignmentCalculator.shouldBeMarkedForRandomAssignment(chronologicalAType, "35839");
         
         assert(markedForAssignment == true);
     }
@@ -62,7 +62,7 @@ public class AARRandomAssignmentCalculatorTest
         Mockito.when(areaOfCombat.isNearAreaOfCombat(ArgumentMatchers.<Coordinate>any())).thenReturn(true);
 
         AARRandomAssignmentCalculator randomAssignmentCalculator = new AARRandomAssignmentCalculator(areaOfCombat);
-        boolean markedForAssignment = randomAssignmentCalculator.shouldBeMarkedForRandomAssignment(chronologicalAType, "35839@1");
+        boolean markedForAssignment = randomAssignmentCalculator.shouldBeMarkedForRandomAssignment(chronologicalAType, "35839");
         
         assert(markedForAssignment == true);
     }

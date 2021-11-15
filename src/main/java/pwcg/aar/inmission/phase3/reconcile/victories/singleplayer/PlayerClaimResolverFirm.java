@@ -60,16 +60,20 @@ public class PlayerClaimResolverFirm
         {
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                PwcgRoleCategory victimApproximateRole = resultVictory.getVictim().getRoleCategory();
-                
-                PlaneType declaredPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
-                if (declaredPlane != null)
+                LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
+                if (PlayerVictoryResolver.isPlayerVictory(player, victorPlanePlane.getPilotSerialNumber()))
                 {
-                    PwcgRoleCategory declarationApproximateRole = declaredPlane.determinePrimaryRoleCategory();
+                    PwcgRoleCategory victimApproximateRole = resultVictory.getVictim().getRoleCategory();
                     
-                    if (declarationApproximateRole == victimApproximateRole)
+                    PlaneType declaredPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+                    if (declaredPlane != null)
                     {
-                        shotDownPlaneDisplayName = claimPlaneNameFinder.getShotDownPlaneDisplayName(playerDeclaration, resultVictory);
+                        PwcgRoleCategory declarationApproximateRole = declaredPlane.determinePrimaryRoleCategory();
+                        
+                        if (declarationApproximateRole == victimApproximateRole)
+                        {
+                            shotDownPlaneDisplayName = claimPlaneNameFinder.getShotDownPlaneDisplayName(playerDeclaration, resultVictory);
+                        }
                     }
                 }
             }

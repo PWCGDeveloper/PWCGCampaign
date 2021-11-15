@@ -194,7 +194,7 @@ public class VictoryBuilderTest
         logVictor.intializePilot(victor.getSerialNumber());
         logVictor.getLogPilot().setStatus(SquadronMemberStatus.STATUS_ACTIVE);
 
-        AType12 atype12 = new AType12("200", "Turret_Ju88A4_1", "Turret_Ju88A4_1", logVictor.getCountry(), logVictor.getId());
+        AType12 atype12 = new AType12("200", "Turret_Ju88A4_1", "Turret_Ju88A4_1", logVictor.getCountry(), logVictor.getId(), new Coordinate(500000, 0, 50000));
         LogTurret logVictorTurret = logVictor.createTurret(atype12);
 
         LogPlane logVictim = new LogPlane(3);
