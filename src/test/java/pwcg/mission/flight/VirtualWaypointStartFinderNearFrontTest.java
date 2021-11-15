@@ -45,6 +45,7 @@ public class VirtualWaypointStartFinderNearFrontTest
         Mockito.when(flight.getCampaign()).thenReturn(campaign);
         Mockito.when(squadron.determineSide()).thenReturn(Side.AXIS);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
+        PWCGContext.getInstance().setCampaign(campaign);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.STALINGRAD_MAP);
     }
 
@@ -74,8 +75,8 @@ public class VirtualWaypointStartFinderNearFrontTest
         plotCoordinates.add(vwpCoordinate6);
 
         int startPositionNearFront = VirtualWaypointStartFinder.findStartVwpProximityToFront(flight, plotCoordinates);
-        assert(startPositionNearFront == 2);
         int endPositionNearFront = VirtualWaypointStartFinder.findEndVwpProximityToFront(flight, plotCoordinates);
+        assert(startPositionNearFront == 2);
         assert(endPositionNearFront == 5);
     }
 
