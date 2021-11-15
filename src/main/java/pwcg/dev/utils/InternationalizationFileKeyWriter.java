@@ -34,7 +34,6 @@ public class InternationalizationFileKeyWriter
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("International.Keys.txt")));       
         for (String key : existingInternationalizationRecord.getTranslations().keySet())
         {
-            System.out.println(key);
             out.write(key);
             out.newLine();
         }

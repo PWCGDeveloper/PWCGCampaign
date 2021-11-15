@@ -8,7 +8,7 @@ public class GroundObjectIOJson
 {
     public static void writeJson(GroundStructureGroup groundStructureGroup, String mapName, String filename) throws PWCGException
     {
-        JsonWriter<GroundStructureGroup> jsonWriter = new JsonWriter<>();         
+        PwcgJsonWriter<GroundStructureGroup> jsonWriter = new PwcgJsonWriter<>();         
         String mapDir = formPath(mapName);
         jsonWriter.writeAsJson(groundStructureGroup, mapDir, filename + ".json");
     }

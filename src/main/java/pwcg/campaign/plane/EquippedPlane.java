@@ -6,6 +6,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class EquippedPlane extends PlaneType
 {
@@ -53,7 +55,7 @@ public class EquippedPlane extends PlaneType
 
                 if(this.roleCategories.size() == 0)
                 {
-                    System.out.println("Equipped plane update did not work");
+                    PWCGLogger.log(LogLevel.INFO, "Backwards compatibility for 13.2 and earlier.  Equipped plane update did not work");
                 }
             }
         }

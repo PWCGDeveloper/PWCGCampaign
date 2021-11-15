@@ -21,7 +21,7 @@ public class VehicleDefinitionIOJson
 
     public static void writeJson(VehicleDefinition vehicleDefinition) throws PWCGException
 	{
-		JsonWriter<VehicleDefinition> jsonWriter = new JsonWriter<>();
+		PwcgJsonWriter<VehicleDefinition> jsonWriter = new PwcgJsonWriter<>();
 		String vehicleDir = PWCGContext.getInstance().getDirectoryManager().getPwcgVehiclesDir();
 		jsonWriter.writeAsJson(vehicleDefinition, vehicleDir, vehicleDefinition.getVehicleType() + ".json");
 	}

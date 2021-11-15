@@ -43,7 +43,7 @@ public class CampaignEquipmentIOJson
     {
         Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronId);
 
-        JsonWriter<Equipment> jsonWriterEquipment = new JsonWriter<>();
+        PwcgJsonWriter<Equipment> jsonWriterEquipment = new PwcgJsonWriter<>();
         String campaignEquipmentReplacementDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\";
         jsonWriterEquipment.writeAsJson(squadronEquipment, campaignEquipmentReplacementDir, squadronId + ".json");
     }
@@ -51,7 +51,7 @@ public class CampaignEquipmentIOJson
     private static void writeReplacements(Campaign campaign) throws PWCGException
     {
         String campaignEquipmentReplacementDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\Replacements\\";
-        JsonWriter<EquipmentDepot> jsonWriterReplacements = new JsonWriter<>();
+        PwcgJsonWriter<EquipmentDepot> jsonWriterReplacements = new PwcgJsonWriter<>();
         for (Integer serviceId : campaign.getEquipmentManager().getServiceIdsForDepots())
         {
             EquipmentDepot replacementEquipment = campaign.getEquipmentManager().getEquipmentDepotForService(serviceId);

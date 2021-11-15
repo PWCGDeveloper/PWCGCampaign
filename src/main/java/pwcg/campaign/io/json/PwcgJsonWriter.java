@@ -11,7 +11,7 @@ import com.google.gson.GsonBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
-public class JsonWriter<T>
+public class PwcgJsonWriter<T>
 {
 
     public void writeAsJson(T javaObject, String directory, String filename) throws PWCGException

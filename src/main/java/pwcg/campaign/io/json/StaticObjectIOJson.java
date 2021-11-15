@@ -21,7 +21,7 @@ public class StaticObjectIOJson
 
     public static void writeJson(VehicleDefinition vehicleDefinition) throws PWCGException
 	{
-		JsonWriter<VehicleDefinition> jsonWriter = new JsonWriter<>();
+		PwcgJsonWriter<VehicleDefinition> jsonWriter = new PwcgJsonWriter<>();
 		String staticObjectDir = PWCGContext.getInstance().getDirectoryManager().getPwcgStaticObjectDir();
 		jsonWriter.writeAsJson(vehicleDefinition, staticObjectDir, vehicleDefinition.getVehicleType() + ".json");
 	}

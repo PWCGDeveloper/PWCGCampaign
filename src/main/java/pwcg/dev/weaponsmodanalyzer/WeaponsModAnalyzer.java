@@ -28,7 +28,7 @@ public class WeaponsModAnalyzer
 
     private void analyze() throws Exception
     {
-        ModAvailabilityReader availabilityReader = new ModAvailabilityReader();
+        WeaponsModAvailabilityReader availabilityReader = new WeaponsModAvailabilityReader();
         rawModLimitations  = availabilityReader.readMapModificationAvailabilityFiles();
 
         PlaneModSetReader planeModSetReader = new PlaneModSetReader();

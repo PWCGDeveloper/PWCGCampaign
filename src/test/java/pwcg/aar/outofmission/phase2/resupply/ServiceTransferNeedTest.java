@@ -76,9 +76,7 @@ public class ServiceTransferNeedTest
                 squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
                 Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 9);
                 squadronMember.setInactiveDate(inactiveDate);
-                ++numInactivated;
-                
-                System.out.println(squadronMember.getName() + " deactivated for test");
+                ++numInactivated;                
             }
             
             if (numInactivated == 3)

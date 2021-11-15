@@ -78,10 +78,15 @@ public class AssaultBuilderTest
     @Test
     public void createLargeAssaultWithoutBattleTest () throws PWCGException 
     {
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
-        createLargeAssaultTest ();
-        GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
-        validate(groundUnitGroup, Country.GERMANY, Country.RUSSIA);
+        try (MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class)) 
+        {
+            mocked.when(() -> RandomNumberGenerator.getRandom(100)).thenReturn(49);
+    
+            Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
+            createLargeAssaultTest ();
+            GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
+            validate(groundUnitGroup, Country.GERMANY, Country.RUSSIA);
+        }
     }
 
     @Test
@@ -148,7 +153,7 @@ public class AssaultBuilderTest
                 }
                 else
                 {
-                    throw new PWCGException("Unexpected unit type");
+                    throw new PWCGException("Unexpected unit type: " + groundUnit.getVehicleClass());
                 }
             }
             else if (groundUnit.getCountry().getCountry() == defender)
@@ -179,12 +184,12 @@ public class AssaultBuilderTest
                 }
                 else
                 {
-                    throw new PWCGException("Unexpected unit type");
+                    throw new PWCGException("Unexpected unit type: " + groundUnit.getVehicleClass());
                 }
             }
             else
             {
-                throw new PWCGException("Unit from unidentified nation in assault");
+                throw new PWCGException("Unit from unidentified nation in assault: " + groundUnit.getCountry().getCountry());
             }
         }
     }

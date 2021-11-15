@@ -42,7 +42,6 @@ public class InternationalizationFileMerger
             value = value.trim();
             if (!value.isEmpty())
             {
-                System.out.println(value);
                 internationalizationRecords.add(value, value);
             }
         }

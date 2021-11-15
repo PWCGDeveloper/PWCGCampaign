@@ -25,7 +25,7 @@ public class CoopUserIOJson
 	{
         verifyCoopDirs();
         
-		JsonWriter<CoopUser> jsonWriter = new JsonWriter<>();
+		PwcgJsonWriter<CoopUser> jsonWriter = new PwcgJsonWriter<>();
         String coopUserDir = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir();                    
 		jsonWriter.writeAsJson(coopUser, coopUserDir, coopUser.getUsername() + ".json");
 	}

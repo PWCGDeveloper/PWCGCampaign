@@ -7,7 +7,7 @@ public class AirfieldDescriptorIOJson
 {
 	public static void writeJson(String directoryName, String filename, AirfieldDescriptorSet descSet) throws PWCGException
 	{
-		JsonWriter<AirfieldDescriptorSet> jsonWriter = new JsonWriter<>();
+		PwcgJsonWriter<AirfieldDescriptorSet> jsonWriter = new PwcgJsonWriter<>();
 		jsonWriter.writeAsJson(descSet, directoryName, filename + ".json");
 	}
 

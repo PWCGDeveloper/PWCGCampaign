@@ -42,6 +42,8 @@ public abstract class CampaignCacheBase implements ICampaignCache
         initialize();
         if (campaignProfiles.containsKey(profile.getKey()))
         {
+            System.out.println("Create Test Campaign " + profile.getKey());
+
             CampaignGeneratorModel model = campaignProfiles.get(profile.getKey());
             Campaign campaign = makeCampaignFromModel(model);
             

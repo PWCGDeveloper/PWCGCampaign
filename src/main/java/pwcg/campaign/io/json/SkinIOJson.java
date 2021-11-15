@@ -25,7 +25,7 @@ public class SkinIOJson
 
     public static void writeJson(String planeType, SkinSet skinSet) throws PWCGException
 	{
-		JsonWriter<SkinSet> jsonWriter = new JsonWriter<>();
+		PwcgJsonWriter<SkinSet> jsonWriter = new PwcgJsonWriter<>();
 		String skinDir = PWCGContext.getInstance().getDirectoryManager().getPwcgSkinsDir() + skinSet.getSkinSetType().getSkinSetName() + "\\";
 		jsonWriter.writeAsJson(skinSet, skinDir, planeType + ".json");
 	}

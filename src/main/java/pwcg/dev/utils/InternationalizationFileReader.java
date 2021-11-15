@@ -32,9 +32,6 @@ public class InternationalizationFileReader
         String fromFile = in.readLine();
         in.close();
 
-        System.out.println(hardCoded);
-        System.out.println(fromFile);
-
         Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("International.test.txt"), StandardCharsets.UTF_8));       
         out.append(hardCoded);
         out.append("\n");

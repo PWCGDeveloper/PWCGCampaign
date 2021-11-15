@@ -7,7 +7,7 @@ public class FixedPositionIOJson {
 
 	public static void writeJson(FixedPositions fixedPositions, String directory, String filename) throws PWCGException
 	{
-		JsonWriter<FixedPositions> jsonWriter = new JsonWriter<>();			
+		PwcgJsonWriter<FixedPositions> jsonWriter = new PwcgJsonWriter<>();			
 		jsonWriter.writeAsJson(fixedPositions, directory, filename + ".json");
 	}
 

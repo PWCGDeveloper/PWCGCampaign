@@ -7,7 +7,7 @@ public class LocationIOJson
 {
 	public static void writeJson(String directoryName, String filename, LocationSet locationSet) throws PWCGException
 	{
-		JsonWriter<LocationSet> jsonWriter = new JsonWriter<>();
+		PwcgJsonWriter<LocationSet> jsonWriter = new PwcgJsonWriter<>();
 		jsonWriter.writeAsJson(locationSet, directoryName, filename + ".json");
 	}
 

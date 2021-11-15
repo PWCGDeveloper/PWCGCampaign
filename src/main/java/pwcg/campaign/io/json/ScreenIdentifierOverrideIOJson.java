@@ -7,7 +7,7 @@ public class ScreenIdentifierOverrideIOJson
 {
     public static void writeJson(String directoryName, String filename, ScreenIdentifierOverrideSet screenIdentifierOverrideSet) throws PWCGException
     {
-        JsonWriter<ScreenIdentifierOverrideSet> jsonWriter = new JsonWriter<>();
+        PwcgJsonWriter<ScreenIdentifierOverrideSet> jsonWriter = new PwcgJsonWriter<>();
         jsonWriter.writeAsJson(screenIdentifierOverrideSet, directoryName, filename + ".json");
     }
 

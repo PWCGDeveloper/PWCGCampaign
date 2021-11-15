@@ -20,13 +20,13 @@ public class CampaignIOJson
         String campaignDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\";
         FileUtils.createDirIfNeeded(campaignDir);
         
-        JsonWriter<CampaignData> jsonCampaignDataWriter = new JsonWriter<>();
+        PwcgJsonWriter<CampaignData> jsonCampaignDataWriter = new PwcgJsonWriter<>();
         jsonCampaignDataWriter.writeAsJson(campaign.getCampaignData(), campaignDir, "Campaign.json");
         
-        JsonWriter<CampaignAces> jsonAcesWriter = new JsonWriter<>();
+        PwcgJsonWriter<CampaignAces> jsonAcesWriter = new PwcgJsonWriter<>();
         jsonAcesWriter.writeAsJson(campaign.getPersonnelManager().getCampaignAces(), campaignDir, "CampaignAces.json");
         
-        JsonWriter<CampaignLogs> jsonCampaignLogsWriter = new JsonWriter<>();
+        PwcgJsonWriter<CampaignLogs> jsonCampaignLogsWriter = new PwcgJsonWriter<>();
         jsonCampaignLogsWriter.writeAsJson(campaign.getCampaignLogs(), campaignDir, "CampaignLog.json");
 
         CampaignPersonnelIOJson.writeJson(campaign);

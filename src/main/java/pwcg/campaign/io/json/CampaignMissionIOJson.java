@@ -16,7 +16,7 @@ public class CampaignMissionIOJson
     public static void writeJson(Campaign campaign, PwcgMissionData pwcgMissionData) throws PWCGException
 	{
         String missionDataPath = buildMissionDataPath(campaign);
-		JsonWriter<PwcgMissionData> jsonWriter = new JsonWriter<>();
+		PwcgJsonWriter<PwcgMissionData> jsonWriter = new PwcgJsonWriter<>();
 		jsonWriter.writeAsJson(pwcgMissionData, missionDataPath, pwcgMissionData.getMissionHeader().getMissionFileName() + MISSION_DATA_SUFFIX);
 	}
 

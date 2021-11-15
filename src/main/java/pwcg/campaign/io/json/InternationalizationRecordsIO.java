@@ -28,7 +28,7 @@ public class InternationalizationRecordsIO
 
     public static void writeJson(InternationalizationRecords internationalizationRecords, String filename) throws PWCGException
     {
-        JsonWriter<InternationalizationRecords> jsonWriter = new JsonWriter<>();
+        PwcgJsonWriter<InternationalizationRecords> jsonWriter = new PwcgJsonWriter<>();
         String directory = PWCGContext.getInstance().getDirectoryManager().getPwcgInternationalizationDir();
         jsonWriter.writeAsJson(internationalizationRecords, directory, filename);
     }

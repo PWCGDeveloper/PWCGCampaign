@@ -10,7 +10,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.logfiles.event.GreatBattlesFileParseUtils;
 
-public class ModAvailabilityReader
+public class WeaponsModAvailabilityReader
 {
     private static String MAP_DIR = "D:\\PWCG\\GTP\\unzip\\scg\\scripts";
     private static String MOSCOW_MAP_FILE = "13planes-to-missions.cfg";

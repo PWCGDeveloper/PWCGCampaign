@@ -14,7 +14,7 @@ public class ConfigurationIOJson
 {
     public static void writeJsonConfigSet(String directory, ConfigSet configSet) throws PWCGException
 	{
-		JsonWriter<ConfigSet> jsonWriter = new JsonWriter<>();
+		PwcgJsonWriter<ConfigSet> jsonWriter = new PwcgJsonWriter<>();
 		jsonWriter.writeAsJson(configSet, directory, configSet.getConfigSetName() + ".json");
 	}
 

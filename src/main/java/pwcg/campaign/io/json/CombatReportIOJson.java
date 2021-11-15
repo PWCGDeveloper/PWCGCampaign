@@ -21,7 +21,7 @@ public class CombatReportIOJson
         String combatReportPath = buildCombatReportPath(campaign, combatReport.getPilotSerialNumber());
         FileUtils.createDirIfNeeded(combatReportPath);
         
-        JsonWriter<CombatReport> jsonWriter = new JsonWriter<>();
+        PwcgJsonWriter<CombatReport> jsonWriter = new PwcgJsonWriter<>();
         jsonWriter.writeAsJson(combatReport, combatReportPath, DateUtils.getDateStringYYYYMMDD(combatReport.getDate()) + COMBAT_REPORT_SUFFIX);
 	}
 

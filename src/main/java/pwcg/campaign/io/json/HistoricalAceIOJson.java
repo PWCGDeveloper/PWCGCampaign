@@ -13,7 +13,7 @@ public class HistoricalAceIOJson
 {
     public static void writeJson(HistoricalAce historicalAce) throws PWCGException
     {
-        JsonWriter<HistoricalAce> jsonWriter = new JsonWriter<>();
+        PwcgJsonWriter<HistoricalAce> jsonWriter = new PwcgJsonWriter<>();
         jsonWriter.writeAsJson(historicalAce, PWCGContext.getInstance().getDirectoryManager().getPwcgAcesDir(), historicalAce.getName() + ".json");
     }
 

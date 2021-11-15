@@ -37,7 +37,6 @@ public class AARDepeletionTest
     {
         for (int i = 0; i < 180; ++i)
         {
-            System.out.println("Iteration " + (i+1));
             System.out.println(DateUtils.getDateStringPretty(campaign.getDate()));
 
             aarCoordinator.reset(campaign);
@@ -53,9 +52,7 @@ public class AARDepeletionTest
                     Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());
                     int numActivePlanes = squadronEquipment.getActiveEquippedPlanes().size();
                     
-                    System.out.println("    " + squadron.getSquadronId() + " " + squadron.determineDisplayName(campaign.getDate()));
-                    System.out.println("        Pilots: " + numActivePilots);
-                    System.out.println("        Planes: " + numActivePlanes);
+                    printIterationResults(squadron, numActivePilots, numActivePlanes);
                     
                     ++numDepeletedSquadrons;
                 }
@@ -64,6 +61,11 @@ public class AARDepeletionTest
             assert(numDepeletedSquadrons < 15);
         }
     }
-    
-    
+
+    private void printIterationResults(Squadron squadron, int numActivePilots, int numActivePlanes) throws PWCGException
+    {
+        System.out.println("    " + squadron.getSquadronId() + " " + squadron.determineDisplayName(campaign.getDate()));
+        System.out.println("        Pilots: " + numActivePilots);
+        System.out.println("        Planes: " + numActivePlanes);
+    } 
 }

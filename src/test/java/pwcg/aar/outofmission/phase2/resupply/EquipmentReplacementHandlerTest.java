@@ -114,9 +114,7 @@ public class EquipmentReplacementHandlerTest
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadron.getSquadronId());
             if (squadron.getSquadronId() == equippedPlane.getSquadronId())
-            {
-                System.out.println("Deactivate: " + equippedPlane.getSerialNumber() + " for " + equippedPlane.getSquadronId());
-                
+            {                
                 equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
                 equippedPlane.setDateRemovedFromService(inactiveDate);
                 ++numInactivated;

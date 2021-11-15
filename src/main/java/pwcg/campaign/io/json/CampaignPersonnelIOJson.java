@@ -47,14 +47,14 @@ public class CampaignPersonnelIOJson
         SquadronMembers squadronMembersToWrite = squadronPersonnel.getSquadronMembers();
 
         String campaignPersonnelDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
-        JsonWriter<SquadronMembers> jsonWriterSquadrons = new JsonWriter<>();
+        PwcgJsonWriter<SquadronMembers> jsonWriterSquadrons = new PwcgJsonWriter<>();
         jsonWriterSquadrons.writeAsJson(squadronMembersToWrite, campaignPersonnelDir, squadronPersonnel.getSquadron().getSquadronId() + ".json");
     }
 
     private static void writeReplacements(Campaign campaign) throws PWCGException
     {
         String campaignReplacementDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\Replacements\\";
-        JsonWriter<PersonnelReplacementsService> jsonWriterReplacements = new JsonWriter<>();
+        PwcgJsonWriter<PersonnelReplacementsService> jsonWriterReplacements = new PwcgJsonWriter<>();
         for (PersonnelReplacementsService replacements : campaign.getPersonnelManager().getAllPersonnelReplacements())
         {
             jsonWriterReplacements.writeAsJson(replacements, campaignReplacementDir, replacements.getServiceId() + ".json");
