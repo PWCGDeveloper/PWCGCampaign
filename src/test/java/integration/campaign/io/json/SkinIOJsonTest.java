@@ -1,4 +1,4 @@
-package pwcg.campaign.io.json;
+package integration.campaign.io.json;
 
 import java.util.Map;
 
@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.io.json.SkinIOJson;
 import pwcg.campaign.skin.SkinSet;
 import pwcg.campaign.skin.SkinSetType;
 import pwcg.core.exception.PWCGException;

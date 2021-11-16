@@ -1,25 +1,28 @@
-package pwcg.campaign.io.json;
+package integration.campaign.io.json;
+
+import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.skirmish.Skirmishes;
+import pwcg.campaign.io.json.SkirmishProfileIOJson;
+import pwcg.campaign.skirmish.SkirmishProfile;
+import pwcg.campaign.skirmish.SkirmishProfileType;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)
-public class SkirmishIOJsonTest
+public class SkirmishProfileIOJsonTest
 {
     @Test
     public void readJsonBoSTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance();
-        Skirmishes skirmishes = SkirmishIOJson.readJson(FrontMapIdentifier.BODENPLATTE_MAP.getMapName());
-        Assertions.assertTrue (skirmishes.getSkirmishes().size() > 0);
+        Map<SkirmishProfileType, SkirmishProfile> skirmishProfiles = SkirmishProfileIOJson.readJson();
+        Assertions.assertTrue (skirmishProfiles.size() == 9);
     }
 }

@@ -1,4 +1,4 @@
-package pwcg.campaign.io.json;
+package integration.campaign.io.json;
 
 import java.util.Date;
 import java.util.List;
@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;

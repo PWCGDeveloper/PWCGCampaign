@@ -1,4 +1,4 @@
-package pwcg.campaign.io.json;
+package integration.campaign.io.json;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,6 +9,7 @@ import pwcg.campaign.battle.Battles;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.io.json.BattleIOJson;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)

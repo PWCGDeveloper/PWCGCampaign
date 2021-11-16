@@ -1,4 +1,4 @@
-package pwcg.campaign.io.json;
+package integration.campaign.io.json;
 
 import java.util.Map;
 
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import pwcg.campaign.io.json.ConfigurationIOJson;
 import pwcg.core.config.ConfigSet;
 import pwcg.core.exception.PWCGException;
 

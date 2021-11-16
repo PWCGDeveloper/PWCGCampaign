@@ -48,9 +48,16 @@ task copyJar(type: Exec) {
 }
 
 test {
+  if (System.properties['test.profile'] != 'integration') {
     useJUnitPlatform()
     maxParallelForks = Runtime.runtime.availableProcessors()
+    exclude '**/*integration*'
+  } else {
+    useJUnitPlatform()
+    exclude '**/*pwcg/*'
+  }
 }
+
 
 task deploy(type:JavaExec) {
 	main = "pwcg.dev.deploy.DeployPwcg"

@@ -1,4 +1,4 @@
-package pwcg.campaign.io.json;
+package integration.campaign.io.json;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ import pwcg.campaign.SquadHistory;
 import pwcg.campaign.SquadHistoryEntry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.io.json.PwcgJsonWriter;
+import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;

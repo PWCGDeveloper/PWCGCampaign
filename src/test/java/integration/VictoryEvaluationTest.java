@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase2.logeval.victory;
+package integration;
 
 import java.io.BufferedWriter;
 import java.io.File;

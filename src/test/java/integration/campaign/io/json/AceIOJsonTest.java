@@ -1,4 +1,4 @@
-package pwcg.campaign.io.json;
+package integration.campaign.io.json;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.io.json.HistoricalAceIOJson;
 import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.core.exception.PWCGException;
 

@@ -1,4 +1,4 @@
-package pwcg.core.config;
+package integration;
 
 import java.util.Map;
 
@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerGlobal;
+import pwcg.core.config.ConfigSet;
+import pwcg.core.config.ConfigSetKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 

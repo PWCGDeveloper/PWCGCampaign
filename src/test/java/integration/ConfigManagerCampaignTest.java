@@ -1,4 +1,4 @@
-package pwcg.core.config;
+package integration;
 
 import java.util.Map;
 
@@ -10,6 +10,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CampaignIOJson;
+import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSet;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;

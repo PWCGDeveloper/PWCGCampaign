@@ -1,4 +1,4 @@
-package pwcg.coop;
+package integration;
 
 import java.io.File;
 import java.util.List;
@@ -17,6 +17,7 @@ import pwcg.campaign.io.json.CoopUserIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberReplacer;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
