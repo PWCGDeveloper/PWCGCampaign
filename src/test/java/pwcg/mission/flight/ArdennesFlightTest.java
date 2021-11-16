@@ -50,7 +50,7 @@ public class ArdennesFlightTest
         verifyAntiArmorOnDate(fg362Campaign, DateUtils.getDateYYYYMMDD("19441230"), Side.ALLIED);
     }
 
-    private void verifyAntiArmorOnDate(Campaign campaign, Date date, Side side) throws PWCGException
+    private void verifyAntiArmorOnDate(Campaign campaign, Date date, Side attackingSide) throws PWCGException
     {
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
@@ -59,16 +59,12 @@ public class ArdennesFlightTest
         Assertions.assertTrue (mission.getSkirmish() != null);
         for (AssaultDefinition assaultDefinition : mission.getBattleManager().getMissionAssaultDefinitions())
         {
-            Assertions.assertTrue (assaultDefinition.getAssaultingCountry().getSide() == side);
+            Assertions.assertTrue (assaultDefinition.getAssaultingCountry().getSide() == attackingSide);
 
         }
 
-        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, side));
-        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.LOW_ALT_CAP, side));
-
-        boolean armorAttackFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_ARMOR, side);
-        boolean infantryAttackFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, side);
-        assert(armorAttackFound || infantryAttackFound);
+        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, attackingSide.getOppositeSide()));
+        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.LOW_ALT_CAP, attackingSide));
     }
 
     @Test
