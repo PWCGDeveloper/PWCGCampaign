@@ -30,11 +30,6 @@ dependencies {
     testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.2')
 }
 
-test {
-    useJUnitPlatform()
-    maxParallelForks = Runtime.runtime.availableProcessors()
-}
-
 jar {
     archiveFileName = "PWCG.jar"
     
@@ -50,6 +45,11 @@ jar {
 task copyJar(type: Exec) {
     workingDir "$projectDir"
     commandLine 'cmd', '/c', ' cp build/libs/PWCG.jar D:/PWCG/Deploy/PWCG.jar'
+}
+
+test {
+    useJUnitPlatform()
+    maxParallelForks = Runtime.runtime.availableProcessors()
 }
 
 task deploy(type:JavaExec) {
@@ -83,3 +83,4 @@ tasks.named("deploy") { finalizedBy("buildBoS") }
 tasks.named("buildBoS") { finalizedBy("zipBoS") }
 tasks.named("zipBoS") { finalizedBy("buildFC") }
 tasks.named("buildFC") { finalizedBy("zipFC") }
+

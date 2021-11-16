@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import pwcg.aar.AARCoordinator;
@@ -49,13 +50,19 @@ public class VictoryEvaluationTest
     private int ENEMY_START_PLANE_ID = 301000;
     private int GERMAN_START_PLANE_ID = 401000;
 
+    private Campaign campaign;
+    
+    @BeforeEach
+    public void testSetup() throws Exception
+    {
+        PWCGContext.setProduct(PWCGProduct.FC);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
+        campaign.write();
+    }
+    
     @Test
     public void testSingleVictoryClaimedAndAwarded() throws Exception
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
-        campaign.write();
-
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
@@ -97,10 +104,6 @@ public class VictoryEvaluationTest
     @Test
     public void testTwoVictoriesClaimedAndAwardedWithOneFuzzyVictory() throws Exception
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
-        campaign.write();
-
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
@@ -150,10 +153,6 @@ public class VictoryEvaluationTest
     @Test
     public void testTwoVictoriesClaimedOneAwardedBecauseNoDamage() throws Exception
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
-        campaign.write();
-
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
@@ -200,10 +199,6 @@ public class VictoryEvaluationTest
     @Test
     public void testNoVictoriesClaimedAndAwarded() throws Exception
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
-        campaign.write();
-
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();

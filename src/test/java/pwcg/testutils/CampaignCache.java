@@ -27,6 +27,7 @@ public class CampaignCache
         }
         
         PWCGContext.getInstance().setCampaign(campaign);
+        PWCGContext.getInstance().changeContext(campaignProfile.getMapIdentifier());
         return campaign;
     }
 }
