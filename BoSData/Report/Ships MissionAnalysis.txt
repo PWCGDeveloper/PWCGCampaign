@@ -1,0 +1,40 @@
+Player flights
+  Mission type: GROUND_ATTACK
+  Airfield    : Severskaya
+  Aircraft    : a20b
+  Player Contact    : -1
+
+
+
+IFlight
+  Mission type: GROUND_ATTACK
+  Airfield    : Holmskaya
+  Aircraft    : il2m43
+  Player Contact    : 15
+
+
+
+IFlight
+  Mission type: GROUND_ATTACK
+  Airfield    : Gostagaevskaya
+  Aircraft    : hs129b2
+  Player Contact    : 11
+
+
+
+IFlight
+  Mission type: GROUND_ATTACK
+  Airfield    : Myshako
+  Aircraft    : fw190a3
+  Player Contact    : 10
+
+
+
+IFlight
+  Mission type: GROUND_ATTACK
+  Airfield    : Myshako
+  Aircraft    : fw190a6
+  Player Contact    : 7
+
+
+

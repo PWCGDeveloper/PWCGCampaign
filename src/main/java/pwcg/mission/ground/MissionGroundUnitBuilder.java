@@ -184,10 +184,6 @@ public class MissionGroundUnitBuilder
     {
         List<GroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
         allMissionGroundUnits.addAll(missionBattles);
-        if (allMissionGroundUnits.size() == 0)
-        {
-            allMissionGroundUnits.addAll(AAA);
-        }
         return allMissionGroundUnits;
     }
     

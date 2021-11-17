@@ -1,0 +1,40 @@
+Player flights
+  Mission type: LOW_ALT_CAP
+  Airfield    : Volkel
+  Aircraft    : spitfiremkixe
+  Player Contact    : -1
+
+
+
+IFlight
+  Mission type: LOW_ALT_BOMB
+  Airfield    : LeCulot East
+  Aircraft    : a20b
+  Player Contact    : 5
+
+
+
+IFlight
+  Mission type: RAID
+  Airfield    : Arnhem Deelen
+  Aircraft    : fw190a8
+  Player Contact    : 6
+
+
+
+IFlight
+  Mission type: GROUND_ATTACK
+  Airfield    : Bonninghardt-Sud
+  Aircraft    : bf110g2
+  Player Contact    : 14
+
+
+
+IFlight
+  Mission type: RAID
+  Airfield    : Krefeld
+  Aircraft    : me262a
+  Player Contact    : 5
+
+
+

@@ -55,6 +55,10 @@ public class IngressWaypointNearFront implements IIngressWaypoint
             {
                 return getBestIngressPositionForEscortRendezvous();
             }
+            else if (flight.getFlightType() == FlightTypes.PATROL)
+            {
+                return getBestIngressPositionForPatrol();
+            }
             else
             {
                 return getBestIngressPositionBehindFriendlyLines();
@@ -74,6 +78,30 @@ public class IngressWaypointNearFront implements IIngressWaypoint
 
         int distanceBehindFrontForIngress = getDistanceFromFront();
         Coordinate ingressCoordinate = MathUtils.calcNextCoord(closestFrontLinesToTarget, angleFromFrontToHome, distanceBehindFrontForIngress);
+        return ingressCoordinate;
+    }
+
+    private Coordinate getBestIngressPositionForPatrol() throws PWCGException 
+    {
+        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+
+        Coordinate closestFrontLinesToBase = frontLinesForMap.findClosestFrontCoordinateForSide(
+                flight.getSquadron().determineCurrentPosition(campaign.getDate()), 
+                flight.getSquadron().determineSide());
+        
+        Coordinate closestFriendlyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
+                flight.getTargetDefinition().getPosition(), 
+                flight.getSquadron().determineSide());
+
+        double distanceBetweenBaseAndTarget = MathUtils.calcDist(closestFrontLinesToBase, closestFriendlyFrontLinesToTarget);
+        double angleBetweenbaseAndTarget = MathUtils.calcAngle(closestFrontLinesToBase, closestFriendlyFrontLinesToTarget);
+        Coordinate positionBetweenbaseAndTarget = MathUtils.calcNextCoord(closestFrontLinesToBase, angleBetweenbaseAndTarget, (distanceBetweenBaseAndTarget / 2));
+        
+        Coordinate flightHomeCoordinates = flight.getSquadron().determineCurrentPosition(campaign.getDate());
+        double angleFromFrontToHome = MathUtils.calcAngle(positionBetweenbaseAndTarget, flightHomeCoordinates);
+
+        int distanceBehindFrontForIngress = getDistanceFromFront();
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(positionBetweenbaseAndTarget, angleFromFrontToHome, distanceBehindFrontForIngress);
         return ingressCoordinate;
     }
 

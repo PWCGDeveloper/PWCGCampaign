@@ -122,9 +122,16 @@ public class TargetLocatorAir
     public Coordinate getBattleCoordinate() throws PWCGException
     {
         List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getGroundUnitBuilder().getBattleMissionGroundUnits();
-        Coordinate battleCoordinate = shuffledGroundUnits.get(0).getPosition().copy();
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
-        Coordinate targetCoordinate = frontLinesForMap.findClosestFrontCoordinateForSide(battleCoordinate, flightInformation.getCountry().getSide());
-        return targetCoordinate;
+        if (!shuffledGroundUnits.isEmpty())
+        {
+            Coordinate battleCoordinate = shuffledGroundUnits.get(0).getPosition().copy();
+            FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
+            Coordinate targetCoordinate = frontLinesForMap.findClosestFrontCoordinateForSide(battleCoordinate, flightInformation.getCountry().getSide());
+            return targetCoordinate;
+        }
+        else
+        {
+            return getFrontCoordinate();
+        }
     }
 }

@@ -39,6 +39,10 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         {
             return targetLocatorAir.getBattleCoordinate();
         }
+        else if (flightInformation.getFlightType() == FlightTypes.PATROL)
+        {
+            return targetLocatorAir.getBattleCoordinate();
+        }
         else if (flightInformation.getFlightType() == FlightTypes.INTERCEPT || flightInformation.getFlightType() == FlightTypes.RECON)
         {
             return targetLocatorAir.getInterceptCoordinate();
