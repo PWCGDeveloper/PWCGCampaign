@@ -13,7 +13,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.io.json.CampaignIOJson;
 import pwcg.campaign.io.json.CombatReportIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -30,8 +29,7 @@ public class CombatReportIOJsonTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-        CampaignIOJson.writeJson(campaign);
+        campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test

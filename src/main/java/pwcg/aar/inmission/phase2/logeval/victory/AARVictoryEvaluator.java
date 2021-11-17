@@ -65,21 +65,21 @@ public class AARVictoryEvaluator
     {
         for (LogVictory logVictory : aarDestroyedStatusEvaluator.getDeadLogVehicleList())
         {
-            if (logVictory.getVictim() instanceof LogPlane)
-            {
-                determinePlaneCrashedInReportingRangeOfLines(logVictory);
-            }
+            determinePlaneCrashedInReportingRangeOfLines(logVictory);
         }
     }
 
     private void determinePlaneCrashedInReportingRangeOfLines(LogVictory missionResultVictory) throws PWCGException
     {
-        LogPlane victimPlane = (LogPlane)missionResultVictory.getVictim();
-        BehindEnemyLines pilotCapture = new BehindEnemyLines(campaign.getDate());
-        String missionMapName = pwcgMissionData.getMissionHeader().getMapName();
-        FrontMapIdentifier mapId = FrontMapIdentifier.getFrontMapIdentifierForName(missionMapName);
-        boolean inReportingRange = pilotCapture.inReportingRange(mapId, missionResultVictory.getLocation(), victimPlane.getCountry().getSide());
-        victimPlane.setCrashedInSight(inReportingRange);
+        if (missionResultVictory.getVictim() instanceof LogPlane)
+        {
+            LogPlane victimPlane = (LogPlane)missionResultVictory.getVictim();
+            BehindEnemyLines pilotCapture = new BehindEnemyLines(campaign.getDate());
+            String missionMapName = pwcgMissionData.getMissionHeader().getMapName();
+            FrontMapIdentifier mapId = FrontMapIdentifier.getFrontMapIdentifierForName(missionMapName);
+            boolean inReportingRange = pilotCapture.inReportingRange(mapId, missionResultVictory.getLocation(), victimPlane.getCountry().getSide());
+            victimPlane.setCrashedInSight(inReportingRange);
+        }
     }
 
 

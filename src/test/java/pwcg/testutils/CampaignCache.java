@@ -13,9 +13,6 @@ public class CampaignCache
 
     public static Campaign makeCampaign(SquadronTestProfile campaignProfile) throws PWCGException
     {
-        CampaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);
-        System.out.println("Remove Test Campaign");
-
         Campaign campaign;
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
@@ -28,6 +25,17 @@ public class CampaignCache
         
         PWCGContext.getInstance().setCampaign(campaign);
         PWCGContext.getInstance().changeContext(campaignProfile.getMapIdentifier());
+        return campaign;
+    }
+
+    public static Campaign makeCampaignOnDisk(SquadronTestProfile campaignProfile) throws PWCGException
+    {
+        CampaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);
+        System.out.println("Remove Test Campaign");
+
+        Campaign campaign = makeCampaign(campaignProfile);
+        campaign.write();
+
         return campaign;
     }
 }

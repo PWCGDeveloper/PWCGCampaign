@@ -45,7 +45,7 @@ public class CampaignIOJsonTest
 
     private void writeCampaign() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.JASTA_11_PROFILE);
         CampaignIOJson.writeJson(campaign);
     }
 

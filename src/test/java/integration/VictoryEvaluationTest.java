@@ -56,8 +56,7 @@ public class VictoryEvaluationTest
     public void testSetup() throws Exception
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
-        campaign.write();
+        campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.JASTA_11_PROFILE);
     }
     
     @Test

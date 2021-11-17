@@ -63,7 +63,7 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
             SquadronMember squadronMemberVictor = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getPilotSerialNumber());
             if (squadronMemberVictor != null)
             {
-                if (!PlayerVictoryResolver.isPlayerVictory(squadronMemberVictor, victorPlanePlane.getPilotSerialNumber()))
+                if (!PlayerVictoryResolver.isPlayerVictory(squadronMemberVictor, resultVictory.getVictor()))
                 {
                     if (!resultVictory.isConfirmed())
                     {

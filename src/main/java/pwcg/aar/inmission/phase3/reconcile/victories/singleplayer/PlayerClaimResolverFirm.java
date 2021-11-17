@@ -24,8 +24,7 @@ public class PlayerClaimResolverFirm
             {
                 if (resultVictory.getVictor() instanceof LogPlane)
                 {
-                    LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-                    if (PlayerVictoryResolver.isPlayerVictory(player, victorPlanePlane.getPilotSerialNumber()))
+                    if (PlayerVictoryResolver.isPlayerVictory(player, resultVictory.getVictor()))
                     {
                         if (resultVictory.getVictim() instanceof LogPlane)
                         {
@@ -60,8 +59,7 @@ public class PlayerClaimResolverFirm
         {
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-                if (PlayerVictoryResolver.isPlayerVictory(player, victorPlanePlane.getPilotSerialNumber()))
+                if (PlayerVictoryResolver.isPlayerVictory(player, resultVictory.getVictor()))
                 {
                     PwcgRoleCategory victimApproximateRole = resultVictory.getVictim().getRoleCategory();
                     

@@ -34,8 +34,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_354_BODENPLATTE_PROFILE);
-        campaign.write();
+        campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.FG_354_BODENPLATTE_PROFILE);
     }
 
     @Test

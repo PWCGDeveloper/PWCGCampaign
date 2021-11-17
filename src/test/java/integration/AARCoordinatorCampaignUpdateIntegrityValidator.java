@@ -36,7 +36,7 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test

@@ -1,9 +1,10 @@
-package pwcg.aar;
+package integration;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
@@ -28,7 +29,7 @@ public class AARDepeletionTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.BODENPLATTE_MAP);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
+        campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.RAF_184_PROFILE);
         aarCoordinator = AARCoordinator.getInstance();
     }
 

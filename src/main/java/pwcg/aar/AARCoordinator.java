@@ -114,7 +114,7 @@ public class AARCoordinator
         return aarContext;
     }
     
-    void reset(Campaign campaign) throws PWCGException
+    public void reset(Campaign campaign) throws PWCGException
     {
         this.campaign = campaign;
         errorBundleFileName = "";

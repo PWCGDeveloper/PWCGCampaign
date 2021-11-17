@@ -38,7 +38,7 @@ class PlayerVictoryReassigner
             {
                 LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
                 SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getPilotSerialNumber());
-                if (PlayerVictoryResolver.isPlayerVictory(squadronMember, victorPlanePlane.getPilotSerialNumber()))
+                if (PlayerVictoryResolver.isPlayerVictory(squadronMember, resultVictory.getVictor()))
                 {
                     LogUnknown markedForAssignment = new LogUnknown();
                     markedForAssignment.setUnknownVictoryAssignment(UnknownVictoryAssignments.RANDOM_ASSIGNMENT);

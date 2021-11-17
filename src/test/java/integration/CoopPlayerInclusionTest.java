@@ -1,7 +1,8 @@
-package pwcg.mission.flight;
+package integration;
 
 import java.util.List;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,8 @@ import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorDO;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
+import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -37,6 +40,11 @@ public class CoopPlayerInclusionTest
         coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         generateCoopUsers();
         generateHumanPilots();
+    }
+
+    @AfterAll
+    public void teardownSuite() throws Exception
+    {
         removeCoopUsers();
     }
 
