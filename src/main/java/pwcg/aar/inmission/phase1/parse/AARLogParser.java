@@ -3,6 +3,8 @@ package pwcg.aar.inmission.phase1.parse;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.AARLogLineParser;
 import pwcg.core.logfiles.AARMissionLogFileSet;
 
 public class AARLogParser 
@@ -16,7 +18,7 @@ public class AARLogParser
         this.aarLogFileMissionFile = aarLogFileMissionFile;
     }
 
-    public AARMissionLogRawData parseLogFilesForMission(Campaign campaign) throws PWCGException 
+    public AARLogEventData parseLogFilesForMission(Campaign campaign) throws PWCGException 
     {
         AARLogReader logReader = new AARLogReader(aarLogFileMissionFile);
         AARLogLineParser logLineParser = new AARLogLineParser();
@@ -24,9 +26,7 @@ public class AARLogParser
         
         debugLogData(logEventData);
         
-        AARMissionLogRawData missionLogRawData = new AARMissionLogRawData(); 
-        missionLogRawData.setLogEventData(logEventData);
-        return missionLogRawData;
+        return logEventData;
     }
 
     private void debugLogData(AARLogEventData logEventData)

@@ -3,8 +3,8 @@ package pwcg.aar.inmission.phase2.logeval;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogWaypoint;
+import pwcg.core.logfiles.AARLogEventData;
 import pwcg.core.logfiles.event.IAType17;
 
 public class AARWaypointBuilder

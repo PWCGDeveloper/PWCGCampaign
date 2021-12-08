@@ -2,7 +2,6 @@ package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 
 import java.util.List;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
@@ -15,6 +14,7 @@ import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.AARLogEventData;
 import pwcg.core.logfiles.event.IAType2;
 import pwcg.core.logfiles.event.IAType3;
 

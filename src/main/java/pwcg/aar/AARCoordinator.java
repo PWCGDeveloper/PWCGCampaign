@@ -5,12 +5,12 @@ import java.util.Map;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.aar.inmission.phase1.parse.AARLogSetValidator;
-import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.prelim.AARPhase0Preliminary;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARLogEventData;
 import pwcg.core.logfiles.event.ATypeBase;
 import pwcg.core.utils.PWCGLogger;
 
@@ -131,7 +131,7 @@ public class AARCoordinator
     void parseLogs() throws PWCGException
     {
         AARLogParser logParser = new AARLogParser(aarContext.getPreliminaryData().getMissionLogFileSet());
-        AARMissionLogRawData missionLogRawData = logParser.parseLogFilesForMission(campaign);
-        aarContext.setMissionLogRawData(missionLogRawData);
+        AARLogEventData logEventData = logParser.parseLogFilesForMission(campaign);
+        aarContext.setLogEventData(logEventData);
     }
 }

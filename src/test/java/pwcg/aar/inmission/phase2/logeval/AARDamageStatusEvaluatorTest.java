@@ -13,13 +13,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARLogEventData;
 import pwcg.core.logfiles.event.AType2;
 import pwcg.core.logfiles.event.IAType2;
 

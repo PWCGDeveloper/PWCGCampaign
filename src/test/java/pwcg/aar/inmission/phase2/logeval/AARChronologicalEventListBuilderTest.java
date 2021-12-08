@@ -11,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
@@ -22,6 +21,7 @@ import pwcg.aar.inmission.phase2.logeval.victory.AARVictoryEvaluator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARLogEventData;
 
 
 @ExtendWith(MockitoExtension.class)

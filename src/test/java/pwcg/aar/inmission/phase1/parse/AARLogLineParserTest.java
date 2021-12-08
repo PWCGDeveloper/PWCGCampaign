@@ -6,6 +6,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.AARLogLineParser;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.logfiles.event.IAType17;
 import pwcg.core.logfiles.event.IAType18;

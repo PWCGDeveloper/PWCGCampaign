@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
-import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -20,6 +18,7 @@ import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.AARLogEventData;
 import pwcg.core.logfiles.event.AType12;
 import pwcg.core.logfiles.event.AType3;
 import pwcg.core.logfiles.event.IAType12;
@@ -29,7 +28,6 @@ public class MissionLogEventsBuilder
 {
     private Campaign campaign;
     private AARPreliminaryData preliminaryData;
-    private AARMissionLogRawData missionLogRawData = new AARMissionLogRawData(); 
     private AARLogEventData logEventData = new AARLogEventData();
     private int nextMissionLogId = 400000;
     private Map<Integer, String> serialNumberToPlaneId = new HashMap<>();
@@ -43,10 +41,9 @@ public class MissionLogEventsBuilder
         this.campaign = campaign;
         this.preliminaryData = preliminaryData;
         this.expectedResults = expectedResults;
-        this.missionLogRawData.setLogEventData(logEventData);
     }
 
-    public AARMissionLogRawData makeLogEvents() throws PWCGException
+    public AARLogEventData makeLogEvents() throws PWCGException
     {
         makePilotsForVictories();
         makePlanes();
@@ -57,7 +54,7 @@ public class MissionLogEventsBuilder
         makeSquadronMateLostEvents();
         makeDamagedEvents();
         makeLandingEvents();
-        return missionLogRawData;
+        return logEventData;
     }
 
     private void makePilotsForVictories() throws PWCGException

@@ -12,12 +12,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.AARLogEventData;
 import pwcg.core.logfiles.event.AType3;
 import pwcg.core.logfiles.event.AType6;
 import pwcg.core.logfiles.event.IAType3;

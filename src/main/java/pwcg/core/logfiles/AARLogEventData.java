@@ -1,10 +1,11 @@
-package pwcg.aar.inmission.phase1.parse;
+package pwcg.core.logfiles;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.logfiles.event.IAType17;
 import pwcg.core.logfiles.event.IAType18;

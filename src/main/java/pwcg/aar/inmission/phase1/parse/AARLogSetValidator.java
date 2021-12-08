@@ -6,6 +6,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.AARLogEventData;
 
 public class AARLogSetValidator
 {
@@ -13,20 +14,19 @@ public class AARLogSetValidator
     public void isLogSetValid(Campaign campaign, AARPreliminaryData preliminaryData) throws PWCGException
     {
         AARLogParser logParser = new AARLogParser(preliminaryData.getMissionLogFileSet());
-        AARMissionLogRawData missionLogRawData = logParser.parseLogFilesForMission(campaign);
-        AARLogEventData logEventData = missionLogRawData.getLogEventData();
+        AARLogEventData logEventData = logParser.parseLogFilesForMission(campaign);
         if (logEventData.getVehicles().isEmpty())
         {
             throw new PWCGException("Could not find any vehicle spawns in log set " + preliminaryData.getMissionLogFileSet().getLogFileName());
         }
         
-        isReferencePilotInMission(campaign, preliminaryData, missionLogRawData);
+        isReferencePilotInMission(campaign, preliminaryData, logEventData);
     }
 
-    private void isReferencePilotInMission(Campaign campaign, AARPreliminaryData preliminaryData, AARMissionLogRawData missionLogRawData) throws PWCGException
+    private void isReferencePilotInMission(Campaign campaign, AARPreliminaryData preliminaryData, AARLogEventData logEventData) throws PWCGException
     {
-        AARVehicleBuilder vehicleBuilder = AARFactory.makeAARVehicleBuilder(campaign, preliminaryData, missionLogRawData.getLogEventData());
-        vehicleBuilder.buildVehicleListsByVehicleType(missionLogRawData.getLogEventData());
+        AARVehicleBuilder vehicleBuilder = AARFactory.makeAARVehicleBuilder(campaign, preliminaryData, logEventData);
+        vehicleBuilder.buildVehicleListsByVehicleType(logEventData);
         
         boolean referencePlayerFound = false;
         for (LogPlane logPlane : vehicleBuilder.getLogPlanes().values())
