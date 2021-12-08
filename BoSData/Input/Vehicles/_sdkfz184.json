@@ -10,5 +10,6 @@
   "startDate": "19430501",
   "endDate": "19460724",
   "rarityWeight": 80,
-  "vehicleClass": "TankPlayer"
+  "vehicleClass": "Tank",
+  "playerDrivable": true
 }

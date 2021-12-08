@@ -22,6 +22,7 @@ import pwcg.gui.colors.VVSColorMap;
 
 public class BoSServiceManager extends ArmedServiceManager implements IArmedServiceManager 
 {
+    
     public static int VVS = 10101;
     public static int USAAF = 10102;
     public static int RAF = 10103;
@@ -31,24 +32,29 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
     public static int LUFTWAFFE = 20101;
     public static int REGIA_AERONAUTICA = 20202;
         
-    private static String LUFTWAFFE_NAME = "Luftwaffe";
-    private static String REGIA_AERONAUTICA_NAME ="Regia Aeronautica";
-    private static String VVS_NAME ="Voyenno-Vozdushnye Sily";
-    private static String USAAF_NAME ="United States Army Air Force";
-    private static String RAF_NAME ="Royal Air Force";
-    private static String RCAF_NAME ="Royal Canadian Air Force";
-    private static String NORMANDIE_NAME = "Normandie";
-    private static String FREE_FRENCH_NAME ="Free French";
-    
-    private static String LUFTWAFFE_ICON ="ServiceLuftwaffe";
-    private static String REGIA_AERONAUTICA_ICON ="ServiceRA";
-    private static String VVS_ICON ="ServiceVVS";
-    private static String USAAF_ICON ="ServiceUSAAF";
-    private static String RAF_ICON ="ServiceRAF";
-    private static String RCAF_ICON ="ServiceRCAF";
-    private static String NORMANDIE_ICON ="ServiceNormandie";
-    private static String FREE_FRENCH_NAME_ICON ="ServiceFreeFrench";
-    
+    public static String REGIA_AERONAUTICA_NAME ="Regia Aeronautica";
+    public static String USAAF_NAME ="United States Army Air Force";
+    public static String RAF_NAME ="Royal Air Force";
+    public static String RCAF_NAME ="Royal Canadian Air Force";
+    public static String FREE_FRENCH_NAME ="Free French";
+
+    public static String REGIA_AERONAUTICA_ICON ="ServiceRA";
+    public static String USAAF_ICON ="ServiceUSAAF";
+    public static String RAF_ICON ="ServiceRAF";
+    public static String RCAF_ICON ="ServiceRCAF";
+    public static String FREE_FRENCH_NAME_ICON ="ServiceFreeFrench";
+
+    public static int WEHRMACHT = 20111;
+    public static int RUSSIAN_ARMY = 10112;
+    public static int US_ARMY = 10113;
+    public static int BRITISH_ARMY = 10114;
+
+    public static String US_ARMY_NAME ="United States Army";
+    public static String BRITISH_ARMY_NAME ="British Army";
+
+    public static String US_ARMY_ICON = "ServiceUnitedStatesArmy";
+    public static String BRITISH_ARMY_ICON ="ServiceBritishArmy";
+
     private static BoSServiceManager instance;
     
     public static BoSServiceManager getInstance()
@@ -75,118 +81,28 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
             createItalianAirServices();
             createAmericanAirServices();
             createBritishAirServices();
+            
+            createRussianArmyServices();
+            createGermanArmyServices();
+            createAmericanArmyServices();
+            createBritishArmyServices();
         }
         catch (Exception e)
         {
             PWCGLogger.logException(e);
         }
     }
-
-	private void createRussianAirServices() throws PWCGException
-	{
-		List <ArmedService> russianServices = new ArrayList<ArmedService>();
-		armedServicesByCountry.put(BoSCountry.RUSSIA_CODE, russianServices);
-   
-        createVVS(russianServices);
-        createNormandie(russianServices);
-	}
-
-    private void createVVS(List<ArmedService> russianServices) throws PWCGException
+    
+    private void createRussianAirServices() throws PWCGException
     {
-        ArmedService vvs = new ArmedService();
-		vvs.setServiceId(VVS);
-        vvs.setCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        vvs.setNameCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
-		vvs.setName(VVS_NAME);
-		vvs.setServiceIcon(VVS_ICON);
-		vvs.setStartDate(DateUtils.getBeginningOfGame());
-		vvs.setEndDate(DateUtils.getEndOfWar());
-		vvs.setServiceColorMap(new VVSColorMap());
-		vvs.setGeneralRankForService("General-lieutenant");
-        vvs.setDailyPersonnelReplacementRatePerSquadron(2.2);
-        vvs.setDailyEquipmentReplacementRatePerSquadron(3.0);
-
-		List<String> irasPics = new ArrayList<String>();
-		irasPics.add("Russian");
-		vvs.setPicDirs(irasPics);
-		
-		vvs.addServiceQuality(DateUtils.getDateYYYYMMDD("19390101"), 10);
-		vvs.addServiceQuality(DateUtils.getDateYYYYMMDD("19420101"), 20);
-        vvs.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 40);
-        vvs.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 50);
-        
-        vvs.setAirVictoriesForgreatAce(20);
-        vvs.setGroundVictoriesForgreatAce(100);
-
-		russianServices.add(vvs);
+        armedServicesByCountry.put(BoSCountry.RUSSIA_CODE, RussianServiceBuilder.createRussianAirServices());
     }
-
-    private void createNormandie(List<ArmedService> russianServices) throws PWCGException
+    
+    private void createGermanAirServices() throws PWCGException
     {
-        ArmedService normandie = new ArmedService();
-        normandie.setServiceId(NORMANDIE);
-        normandie.setCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        normandie.setNameCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
-        normandie.setName(NORMANDIE_NAME);
-        normandie.setServiceIcon(NORMANDIE_ICON);
-        normandie.setStartDate(DateUtils.getDateYYYYMMDD("19420801"));
-        normandie.setEndDate(DateUtils.getEndOfWar());
-        normandie.setServiceColorMap(new FrenchColorMap());
-        normandie.setGeneralRankForService("General-lieutenant");
-        normandie.setDailyPersonnelReplacementRatePerSquadron(1.0);
-        normandie.setDailyEquipmentReplacementRatePerSquadron(2.5);
-
-        List<String> irasPics = new ArrayList<String>();
-        irasPics.add("Russian");
-        normandie.setPicDirs(irasPics);
-        
-        normandie.addServiceQuality(DateUtils.getDateYYYYMMDD("19390101"), 20);
-        normandie.addServiceQuality(DateUtils.getDateYYYYMMDD("19420101"), 30);
-        normandie.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 50);
-        normandie.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 50);
-        
-        normandie.setAirVictoriesForgreatAce(20);
-        normandie.setGroundVictoriesForgreatAce(100);
-
-        russianServices.add(normandie);
+        armedServicesByCountry.put(BoSCountry.GERMANY_CODE, GermanServiceBuilder.createGermanAirServices());
     }
-
-	private void createGermanAirServices() throws PWCGException
-	{
-		List <ArmedService> germanServices = new ArrayList<ArmedService>();
-		armedServicesByCountry.put(BoSCountry.GERMANY_CODE, germanServices);
-   
-		ArmedService luftwaffe = new ArmedService();
-		luftwaffe.setServiceId(LUFTWAFFE);
-		luftwaffe.setCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
-		luftwaffe.setNameCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
-		luftwaffe.setName(LUFTWAFFE_NAME);
-		luftwaffe.setServiceIcon(LUFTWAFFE_ICON);
-
-		luftwaffe.setStartDate(DateUtils.getBeginningOfGame());
-		luftwaffe.setEndDate(DateUtils.getEndOfWar());
-		luftwaffe.setServiceColorMap(new GermanColorMap());
-		luftwaffe.setGeneralRankForService("Generalleutnant");
-
-		List<String> luftwaffePics = new ArrayList<String>();
-		luftwaffePics.add("German");
-		luftwaffe.setPicDirs(luftwaffePics);
-		
-		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19390101"), 50);
-		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19400101"), 60);
-		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19410101"), 70);
-		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19420101"), 90);
-        luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
-        luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19440601"), 50);
-		luftwaffe.setDailyPersonnelReplacementRatePerSquadron(1.3);
-		luftwaffe.setDailyEquipmentReplacementRatePerSquadron(1.0);
-        
-		luftwaffe.setAirVictoriesForgreatAce(50);
-		luftwaffe.setGroundVictoriesForgreatAce(150);
-
-		germanServices.add(luftwaffe);
-	}
-
+    
 	private void createItalianAirServices() throws PWCGException
 	{
 		List <ArmedService> italianServices = new ArrayList<ArmedService>();

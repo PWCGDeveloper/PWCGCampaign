@@ -10,5 +10,6 @@
   "startDate": "19390901",
   "endDate": "19460724",
   "rarityWeight": 100,
-  "vehicleClass": "TruckAAAPlayer"
+  "vehicleClass": "TruckAA",
+  "playerDrivable": true
 }

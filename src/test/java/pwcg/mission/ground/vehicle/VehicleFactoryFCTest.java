@@ -37,16 +37,6 @@ public class VehicleFactoryFCTest
                 continue;
             }
             
-            if (vehicleClass == VehicleClass.TankPlayer)
-            {
-                continue;
-            }
-            
-            if (vehicleClass == VehicleClass.TruckAAAPlayer)
-            {
-                continue;
-            }
-            
             IVehicle vehicle = VehicleFactory.createVehicle(country, date, vehicleClass);
             assert(vehicle != null);
         }

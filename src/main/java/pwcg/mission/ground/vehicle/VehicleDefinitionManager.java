@@ -128,11 +128,40 @@ public class VehicleDefinitionManager
         return matchingDefinitions.get(index);
     }
     
-    public List<VehicleDefinition> getVehicleDefinitionsOfTypeBySide(VehicleClass vehicleClass, Set<Country> countriesInBattle, Date battleDate) throws PWCGException
+    
+    public List<VehicleDefinition> getPlayerVehicleDefinitionsOfTypeForCountries(VehicleClass vehicleClass, Set<Country> countries, Date battleDate) throws PWCGException
+    {
+        List<VehicleDefinition> playerVehiclesOfType = new ArrayList<>();
+        List<VehicleDefinition> vehiclesOfType = getVehicleDefinitionsOfTypeForCountries(vehicleClass, countries, battleDate);
+        for (VehicleDefinition vehicleDefinition : vehiclesOfType)
+        {
+            if (vehicleDefinition.isPlayerDrivable())
+            {
+                playerVehiclesOfType.add(vehicleDefinition);
+            }
+        }
+        return playerVehiclesOfType;
+    }
+    
+    public List<VehicleDefinition> getNonPlayerVehicleDefinitionsOfTypeForCountries(VehicleClass vehicleClass, Set<Country> countries, Date battleDate) throws PWCGException
+    {
+        List<VehicleDefinition> nonPlayerVehiclesOfType = new ArrayList<>();
+        List<VehicleDefinition> vehiclesOfType = getVehicleDefinitionsOfTypeForCountries(vehicleClass, countries, battleDate);
+        for (VehicleDefinition vehicleDefinition : vehiclesOfType)
+        {
+            if (!vehicleDefinition.isPlayerDrivable())
+            {
+                nonPlayerVehiclesOfType.add(vehicleDefinition);
+            }
+        }
+        return nonPlayerVehiclesOfType;
+    }
+
+    private List<VehicleDefinition> getVehicleDefinitionsOfTypeForCountries(VehicleClass vehicleClass, Set<Country> countries, Date battleDate) throws PWCGException
     {
         Map<String, VehicleDefinition> matchingVehiclesAllied = new TreeMap<>();
         Map<String, VehicleDefinition> matchingVehiclesAxis = new TreeMap<>();
-        for (Country country : countriesInBattle)
+        for (Country country : countries)
         {
             VehicleRequestDefinition vehicleRequestDefinition = new VehicleRequestDefinition(country, battleDate, vehicleClass);
             for (VehicleDefinition vehicleDefinition : getAllVehicleDefinitions())

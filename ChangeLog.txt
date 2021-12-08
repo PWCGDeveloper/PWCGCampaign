@@ -1,3 +1,7 @@
+13.5.1
+Improved front patrol flight routing
+- start patrol closer to base
+
 13.5.0
 Changes to awarding player victories
 - Adds damage check to victories not confirmed in logs.  You will not get a victory for something you didn't shoot.

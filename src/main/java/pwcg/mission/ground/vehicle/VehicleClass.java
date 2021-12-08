@@ -32,9 +32,6 @@ public enum VehicleClass implements IWeight
     TruckAAA(false, "Truck AA", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_TRANSPORT, 0),
     TruckAmmo(false, "Truck Ammo", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_TRANSPORT, 0),
 
-    TruckAAAPlayer(false, "Truck AA Player", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_TRANSPORT, 0),
-    TankPlayer(false, "Tank Player", GroundUnitType.TANK_UNIT, TargetType.TARGET_ARMOR, 0),
-
     Drifter(false, "Barge", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_DRIFTER, 1),
     ShipLandingCraft(false, "Landing Craft", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_SHIPPING, 0),
     ShipCargo(false, "Cargo Ship", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_SHIPPING, 0),

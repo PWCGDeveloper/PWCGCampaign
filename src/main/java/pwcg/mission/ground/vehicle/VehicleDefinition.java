@@ -22,6 +22,7 @@ public class VehicleDefinition implements IWeight
     private VehicleClass vehicleClass;
     private String associatedBlock;
     private int vehicleLength;
+    private boolean isPlayerDrivable = false;
 
     public String getScriptDir()
     {
@@ -117,4 +118,9 @@ public class VehicleDefinition implements IWeight
         }
         return false;
     }
+
+    public boolean isPlayerDrivable()
+    {
+        return isPlayerDrivable;
+    }    
 }

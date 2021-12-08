@@ -93,10 +93,10 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         Date battleDate = DateUtils.getDateYYYYMMDD(iconicMission.getDateString());        
-        List<VehicleDefinition> matchingTrucks = getVehicleDefinitionsOfType(VehicleClass.TruckAAAPlayer, countriesInBattle, battleDate);
+        List<VehicleDefinition> matchingTrucks = getPlayerVehicleDefinitionsOfType(VehicleClass.TruckAAA, countriesInBattle, battleDate);
         addVehicleRadioButtons(buttonPanel, matchingTrucks);
 
-        List<VehicleDefinition> matchingTanks = getVehicleDefinitionsOfType(VehicleClass.TankPlayer, countriesInBattle, battleDate);
+        List<VehicleDefinition> matchingTanks = getPlayerVehicleDefinitionsOfType(VehicleClass.Tank, countriesInBattle, battleDate);
         addVehicleRadioButtons(buttonPanel, matchingTanks);
         
         add (buttonPanel);
@@ -124,9 +124,9 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         }
     }
     
-    List<VehicleDefinition> getVehicleDefinitionsOfType(VehicleClass vehicleClass, Set<Country> countriesInBattle, Date battleDate) throws PWCGException
+    private List<VehicleDefinition> getPlayerVehicleDefinitionsOfType(VehicleClass vehicleClass, Set<Country> countriesInBattle, Date battleDate) throws PWCGException
     {
-        return PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionsOfTypeBySide(vehicleClass, countriesInBattle, battleDate);
+        return PWCGContext.getInstance().getVehicleDefinitionManager().getPlayerVehicleDefinitionsOfTypeForCountries(vehicleClass, countriesInBattle, battleDate);
     }
 
     private String formDescription(Integer squadronId) throws PWCGException

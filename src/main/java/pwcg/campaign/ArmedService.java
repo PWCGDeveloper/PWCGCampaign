@@ -31,6 +31,7 @@ public class ArmedService
     private ICountry nameCountry = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
     private int airVictoriesForgreatAce = 30;
     private int groundVictoriesForgreatAce = 100;
+    private ArmedServiceType armedServiceType = ArmedServiceType.ARMED_SERVICE_AIR;
 
     public ArmedService() throws PWCGException 
     {
@@ -206,5 +207,15 @@ public class ArmedService
     public void setGroundVictoriesForgreatAce(int groundVictoriesForgreatAce)
     {
         this.groundVictoriesForgreatAce = groundVictoriesForgreatAce;
+    }
+
+    public ArmedServiceType getArmedServiceType()
+    {
+        return armedServiceType;
+    }
+
+    public void setArmedServiceType(ArmedServiceType armedServiceType)
+    {
+        this.armedServiceType = armedServiceType;
     }
 }
