@@ -14,14 +14,14 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.AType17;
 import pwcg.core.logfiles.event.IAType17;
 
 @ExtendWith(MockitoExtension.class)
 public class AARWaypointBuilderTest
 {
-    @Mock private AARLogEventData logEventData;
+    @Mock private LogEventData logEventData;
     @Mock private AType17 wpEvent;
     
     public AARWaypointBuilderTest() throws PWCGException

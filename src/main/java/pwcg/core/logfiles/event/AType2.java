@@ -3,16 +3,16 @@ package pwcg.core.logfiles.event;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.LogParser;
 import pwcg.core.utils.PWCGLogger;
 
 // T:80867 AType:2 DMG:0.082 AID:302079 TID:1351679 POS(155995.594,172.822,21908.119)
 public class AType2  extends ATypeBase implements IAType2
 {
-	private String aid = AARLogParser.UNKNOWN_MISSION_LOG_ENTITY;
-	private String tid = AARLogParser.UNKNOWN_MISSION_LOG_ENTITY;
+	private String aid = LogParser.UNKNOWN_MISSION_LOG_ENTITY;
+	private String tid = LogParser.UNKNOWN_MISSION_LOG_ENTITY;
 	private double damageLevel = 0.0;
 	protected Coordinate location;
 

@@ -26,7 +26,7 @@ import pwcg.campaign.plane.PlaneStatus;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.AType3;
 import pwcg.core.utils.DateUtils;
 
@@ -34,7 +34,7 @@ import pwcg.core.utils.DateUtils;
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class AAREquipmentStatusEvaluatorTest
 {
-    @Mock private AARLogEventData logEventData;
+    @Mock private LogEventData logEventData;
     @Mock private AARVehicleBuilder aarVehicleBuilder;
     @Mock private Campaign campaign;
     

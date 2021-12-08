@@ -14,7 +14,7 @@ import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType2;
 import pwcg.core.logfiles.event.IAType3;
 
@@ -22,13 +22,13 @@ public class AARPilotStatusEvaluator
 {
     private Campaign campaign;
     private PwcgMissionData pwcgMissionData;
-    private AARLogEventData logEventData;
+    private LogEventData logEventData;
     private AARVehicleBuilder aarVehicleBuilder;
     private AARPilotStatusDeadEvaluator pilotStatusDeadEvaluator;
     private AARPilotStatusCapturedEvaluator pilotStatusCapturedEvaluator;
     private AARPilotStatusWoundedEvaluator pilotStatusWoundedEvaluator;
     
-    public AARPilotStatusEvaluator(Campaign campaign, PwcgMissionData pwcgMissionData, AARDestroyedStatusEvaluator destroyedStatusEvaluator, AARLogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
+    public AARPilotStatusEvaluator(Campaign campaign, PwcgMissionData pwcgMissionData, AARDestroyedStatusEvaluator destroyedStatusEvaluator, LogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
     {
         this.campaign = campaign;
         this.pwcgMissionData = pwcgMissionData;

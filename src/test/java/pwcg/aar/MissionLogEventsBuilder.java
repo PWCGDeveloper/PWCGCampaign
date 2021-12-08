@@ -18,7 +18,7 @@ import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.AType12;
 import pwcg.core.logfiles.event.AType3;
 import pwcg.core.logfiles.event.IAType12;
@@ -28,7 +28,7 @@ public class MissionLogEventsBuilder
 {
     private Campaign campaign;
     private AARPreliminaryData preliminaryData;
-    private AARLogEventData logEventData = new AARLogEventData();
+    private LogEventData logEventData = new LogEventData();
     private int nextMissionLogId = 400000;
     private Map<Integer, String> serialNumberToPlaneId = new HashMap<>();
     private List<String> destroyedPlanes = new ArrayList<>();
@@ -43,7 +43,7 @@ public class MissionLogEventsBuilder
         this.expectedResults = expectedResults;
     }
 
-    public AARLogEventData makeLogEvents() throws PWCGException
+    public LogEventData makeLogEvents() throws PWCGException
     {
         makePilotsForVictories();
         makePlanes();

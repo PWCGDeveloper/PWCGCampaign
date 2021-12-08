@@ -6,15 +6,16 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
+import pwcg.core.logfiles.LogParser;
 
 public class AARLogSetValidator
 {
 
     public void isLogSetValid(Campaign campaign, AARPreliminaryData preliminaryData) throws PWCGException
     {
-        AARLogParser logParser = new AARLogParser(preliminaryData.getMissionLogFileSet());
-        AARLogEventData logEventData = logParser.parseLogFilesForMission(campaign);
+        LogParser logParser = new LogParser(preliminaryData.getMissionLogFileSet());
+        LogEventData logEventData = logParser.parseLogFilesForMission(campaign);
         if (logEventData.getVehicles().isEmpty())
         {
             throw new PWCGException("Could not find any vehicle spawns in log set " + preliminaryData.getMissionLogFileSet().getLogFileName());
@@ -23,7 +24,7 @@ public class AARLogSetValidator
         isReferencePilotInMission(campaign, preliminaryData, logEventData);
     }
 
-    private void isReferencePilotInMission(Campaign campaign, AARPreliminaryData preliminaryData, AARLogEventData logEventData) throws PWCGException
+    private void isReferencePilotInMission(Campaign campaign, AARPreliminaryData preliminaryData, LogEventData logEventData) throws PWCGException
     {
         AARVehicleBuilder vehicleBuilder = AARFactory.makeAARVehicleBuilder(campaign, preliminaryData, logEventData);
         vehicleBuilder.buildVehicleListsByVehicleType(logEventData);

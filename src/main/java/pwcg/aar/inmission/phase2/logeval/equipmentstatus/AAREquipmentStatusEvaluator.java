@@ -7,16 +7,16 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType3;
 
 public class AAREquipmentStatusEvaluator
 {
     private Campaign campaign;
-    private AARLogEventData logEventData;
+    private LogEventData logEventData;
     private AARVehicleBuilder aarVehicleBuilder;
 
-    public AAREquipmentStatusEvaluator(Campaign campaign, AARLogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
+    public AAREquipmentStatusEvaluator(Campaign campaign, LogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
     {
         this.campaign = campaign;
         this.logEventData = logEventData;

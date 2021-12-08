@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase1.parse;
+package pwcg.core.logfiles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +42,7 @@ public class AARLogFileSetFactoryTest
         filenames.add("missionReport(2016-08-25-22-51-08)[1].txt");
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
 
-        AARLogFileSetFactory aarLogFileSetFactory = new AARLogFileSetFactory();
+        LogFileSetFactory aarLogFileSetFactory = new LogFileSetFactory();
         aarLogFileSetFactory.setDirectoryReader(directoryReader);
         
         aarLogFileSetFactory.determineMissionResultsFileForRequestedFileSet("missionReport(2016-10-25-22-51-08)");

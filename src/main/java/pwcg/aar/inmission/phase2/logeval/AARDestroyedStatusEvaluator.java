@@ -10,7 +10,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType3;
 
 public class AARDestroyedStatusEvaluator
@@ -19,10 +19,10 @@ public class AARDestroyedStatusEvaluator
     private Map<Integer, LogPilot> deadLogPilots = new HashMap<>();
 
     private AARVehicleBuilder vehicleBuilder;
-    private AARLogEventData logEventData;
+    private LogEventData logEventData;
     private AARDamageStatusEvaluator damageStatusEvaluator;
 
-    public AARDestroyedStatusEvaluator(AARLogEventData logEventData, AARVehicleBuilder aarVehicleBuilder, AARDamageStatusEvaluator damageStatusEvaluator)
+    public AARDestroyedStatusEvaluator(LogEventData logEventData, AARVehicleBuilder aarVehicleBuilder, AARDamageStatusEvaluator damageStatusEvaluator)
     {
         this.logEventData = logEventData;
         this.vehicleBuilder = aarVehicleBuilder;

@@ -1,6 +1,6 @@
 package pwcg.aar.inmission.phase1.parse;
 
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.logfiles.event.IAType3;
 import pwcg.core.utils.PWCGLogger;
@@ -8,9 +8,9 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AAREventAnalyzer
 {
-    private AARLogEventData logEventData = new AARLogEventData();
+    private LogEventData logEventData = new LogEventData();
 
-    public AAREventAnalyzer(AARLogEventData logEventData)
+    public AAREventAnalyzer(LogEventData logEventData)
     {
         this.logEventData = logEventData;
     }

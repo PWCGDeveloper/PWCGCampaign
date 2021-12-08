@@ -19,7 +19,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.AType2;
 import pwcg.core.logfiles.event.IAType2;
 
@@ -38,7 +38,7 @@ public class AARDamageStatusEvaluatorTest
     private LogPlane damagedVictor1 = new LogPlane(1);
     private LogPlane damagedVictor2 = new LogPlane(1);
     
-    @Mock private AARLogEventData logEventData;
+    @Mock private LogEventData logEventData;
     @Mock private AARVehicleBuilder aarVehicleBuilder;
     
     @BeforeEach

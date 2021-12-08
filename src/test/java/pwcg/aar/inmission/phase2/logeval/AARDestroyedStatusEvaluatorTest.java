@@ -19,7 +19,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.AType3;
 import pwcg.core.logfiles.event.IAType3;
 
@@ -33,7 +33,7 @@ public class AARDestroyedStatusEvaluatorTest
     private static final String VICTIM_3 = "102";
     @Mock private AARDamageStatusEvaluator aarDamageStatusEvaluator;
     @Mock private LogAIEntity destroyedVictim1;
-    @Mock private AARLogEventData logEventData;
+    @Mock private LogEventData logEventData;
     @Mock private AARVehicleBuilder aarVehicleBuilder;
     @Mock private AType3 logDestroyedEvent1;
     @Mock private AType3 logDestroyedEvent2;

@@ -5,7 +5,7 @@ import java.util.List;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileSet;
 import pwcg.core.logfiles.LogFileHeaderParser;
 
 public class AARMissionFileLogResultMatcher
@@ -19,7 +19,7 @@ public class AARMissionFileLogResultMatcher
         this.aarHeaderParser = aarHeaderParser;
     }
 
-    public AARMissionLogFileSet matchMissionFileAndLogFile(PwcgMissionData pwcgMissionData, List<String> sortedLogSets) throws PWCGException 
+    public LogFileSet matchMissionFileAndLogFile(PwcgMissionData pwcgMissionData, List<String> sortedLogSets) throws PWCGException 
     {
     	for (String logFileName : sortedLogSets)
     	{
@@ -27,7 +27,7 @@ public class AARMissionFileLogResultMatcher
             String missionFileNameFromPwcg = pwcgMissionData.getMissionHeader().getMissionFileName();
             if (missionFileNameFromPwcg.toLowerCase().equalsIgnoreCase(missionFileNameFromLogs.toLowerCase()))
             {
-                AARMissionLogFileSet logFileMissionFileSet = makeMissionLogFileSet(logFileName, pwcgMissionData);
+                LogFileSet logFileMissionFileSet = makeMissionLogFileSet(logFileName, pwcgMissionData);
                 return logFileMissionFileSet;
             }
     	}
@@ -35,9 +35,9 @@ public class AARMissionFileLogResultMatcher
         throw new PWCGException("Unable to find matching logs set for " + pwcgMissionData.getMissionHeader().getMissionFileName());
     }
 
-    private AARMissionLogFileSet makeMissionLogFileSet(String logFileName, PwcgMissionData pwcgMissionData) throws PWCGException
+    private LogFileSet makeMissionLogFileSet(String logFileName, PwcgMissionData pwcgMissionData) throws PWCGException
     {
-        AARMissionLogFileSet logFileMissionFile = new AARMissionLogFileSet();
+        LogFileSet logFileMissionFile = new LogFileSet();
         logFileMissionFile.setLogFileName(logFileName);                    
         return logFileMissionFile;
     }

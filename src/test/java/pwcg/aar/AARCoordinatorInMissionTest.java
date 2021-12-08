@@ -18,7 +18,7 @@ import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -89,7 +89,7 @@ public class AARCoordinatorInMissionTest
     {
         MissionLogEventsBuilder missionLogEventsBuilder = new MissionLogEventsBuilder(campaign, 
                 aarCoordinator.getAarContext().getPreliminaryData(), expectedResults);
-        AARLogEventData missionLogRawData = missionLogEventsBuilder.makeLogEvents();
+        LogEventData missionLogRawData = missionLogEventsBuilder.makeLogEvents();
         aarCoordinator.getAarContext().setLogEventData(missionLogRawData);
     }
     

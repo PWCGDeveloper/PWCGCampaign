@@ -20,7 +20,7 @@ import pwcg.campaign.CampaignData;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileSet;
 import pwcg.core.logfiles.LogFileHeaderParser;
 import pwcg.mission.data.MissionHeader;
 
@@ -53,7 +53,7 @@ public class AARMissionFileLogResultMatcherTest
         List<String>logFileSets = new ArrayList<>();
         logFileSets.add("missionReport(2018-05-05_18-20-11)[0]");
         
-        AARMissionLogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
+        LogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
         Assertions.assertTrue (aarLogFileMissionFile.getLogFileName().equals("missionReport(2018-05-05_18-20-11)[0]"));
     }
     
@@ -71,7 +71,7 @@ public class AARMissionFileLogResultMatcherTest
         logFileSets.add("missionReport(2018-05-05_18-20-10)[0]");
         logFileSets.add("missionReport(2018-05-05_18-20-09)[0]");
         
-        AARMissionLogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
+        LogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
         Assertions.assertTrue (aarLogFileMissionFile.getLogFileName().equals("missionReport(2018-05-05_18-20-11)[0]"));
     }
 

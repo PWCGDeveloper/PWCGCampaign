@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
+import pwcg.core.logfiles.LogParser;
 import pwcg.core.logfiles.event.IAType2;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -20,9 +20,9 @@ public class AARDamageStatusEvaluator
     private List <LogDamage> allDamageEventsInOrder = new ArrayList<>();
 
     private AARVehicleBuilder aarVehicleBuilder = null;
-    private AARLogEventData logEventData = null;
+    private LogEventData logEventData = null;
 
-    public AARDamageStatusEvaluator(AARLogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
+    public AARDamageStatusEvaluator(LogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
     {
         this.logEventData = logEventData;        
         this.aarVehicleBuilder = aarVehicleBuilder;
@@ -85,7 +85,7 @@ public class AARDamageStatusEvaluator
             return true;
         }
 
-        if (victorId.equals(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY) || victimId.equals(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY))
+        if (victorId.equals(LogParser.UNKNOWN_MISSION_LOG_ENTITY) || victimId.equals(LogParser.UNKNOWN_MISSION_LOG_ENTITY))
         {
             return true;
         }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.core.location.Coordinate;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType2;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
@@ -13,11 +13,11 @@ import pwcg.core.utils.PositionFinder;
 public class AARPlayerLocator
 {
     private AARVehicleBuilder aarVehicleBuilder = null;
-    private AARLogEventData logEventData = null;
+    private LogEventData logEventData = null;
     private List<LogPlane> playerPlanes = new ArrayList<>();
     private List<Coordinate> playerLocations = new ArrayList<>();
 
-    public AARPlayerLocator(AARLogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
+    public AARPlayerLocator(LogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
     {
         this.logEventData = logEventData;        
         this.aarVehicleBuilder = aarVehicleBuilder; 

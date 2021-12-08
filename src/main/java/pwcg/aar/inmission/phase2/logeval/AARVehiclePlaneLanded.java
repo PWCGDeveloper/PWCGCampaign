@@ -3,15 +3,15 @@ package pwcg.aar.inmission.phase2.logeval;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType3;
 import pwcg.core.logfiles.event.IAType6;
 
 public class AARVehiclePlaneLanded 
 {
-    private AARLogEventData logEventData;
+    private LogEventData logEventData;
     
-    public AARVehiclePlaneLanded (AARLogEventData logEventData)
+    public AARVehiclePlaneLanded (LogEventData logEventData)
     {
         this.logEventData = logEventData;
     }

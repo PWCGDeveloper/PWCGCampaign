@@ -32,7 +32,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.AType3;
 import pwcg.core.logfiles.event.IAType2;
 import pwcg.core.utils.DateUtils;
@@ -41,7 +41,7 @@ import pwcg.mission.data.MissionHeader;
 @ExtendWith(MockitoExtension.class)
 public class AARPilotStatusEvaluatorTest
 {
-    @Mock private AARLogEventData logEventData;
+    @Mock private LogEventData logEventData;
     @Mock private AARVehicleBuilder aarVehicleBuilder;
     @Mock private AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator;
     @Mock private AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator;

@@ -23,7 +23,7 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType12;
 
 @ExtendWith(MockitoExtension.class)
@@ -44,7 +44,7 @@ public class AARVehicleBuilderTest
     private SquadronMember squadronMember;
     
     @Mock
-    private AARLogEventData logEventData;
+    private LogEventData logEventData;
 
     @Mock
     private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;

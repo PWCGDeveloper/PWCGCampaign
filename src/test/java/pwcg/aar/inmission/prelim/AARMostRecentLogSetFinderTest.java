@@ -18,7 +18,7 @@ import pwcg.aar.prelim.AARPwcgMissionFinder;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileSet;
 import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
@@ -35,7 +35,7 @@ public class AARMostRecentLogSetFinderTest
     @Mock private PwcgMissionData evalPwcgMissionData2;
     @Mock private MissionHeader missionHeader1;
     @Mock private MissionHeader missionHeader2;
-    @Mock private AARMissionLogFileSet aarLogFileMissionFile;
+    @Mock private LogFileSet aarLogFileMissionFile;
 
     @Mock private Campaign campaign;
     

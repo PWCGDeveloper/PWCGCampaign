@@ -13,7 +13,7 @@ import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.tabulate.combatreport.UICombatReportData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 
 public class AARContext
 {
@@ -23,7 +23,7 @@ public class AARContext
     private Date newDate;
 
     // Inputs
-    private AARLogEventData logEventData = new AARLogEventData();
+    private LogEventData logEventData = new LogEventData();
     private AARMissionEvaluationData missionEvaluationData = new AARMissionEvaluationData();
 
     // Outputs
@@ -44,7 +44,7 @@ public class AARContext
 
     public void resetContextForNextTimeIncrement() throws PWCGException
     {
-        this.logEventData = new AARLogEventData();
+        this.logEventData = new LogEventData();
         this.missionEvaluationData = new AARMissionEvaluationData();
         this.dailyData = new AARContextDailyData();
     }
@@ -66,7 +66,7 @@ public class AARContext
         return preliminaryData;
     }
 
-    public AARLogEventData getLogEventData()
+    public LogEventData getLogEventData()
     {
         return logEventData;
     }
@@ -126,7 +126,7 @@ public class AARContext
         this.preliminaryData = preliminaryData;
     }
 
-    public void setLogEventData(AARLogEventData logEventData)
+    public void setLogEventData(LogEventData logEventData)
     {
         this.logEventData = logEventData;        
     }

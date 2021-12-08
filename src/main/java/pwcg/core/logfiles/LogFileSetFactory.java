@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase1.parse;
+package pwcg.core.logfiles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,15 +6,15 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogFileLocationFinder;
+import pwcg.core.logfiles.LogFileLocationFinder;
 import pwcg.core.utils.DirectoryReader;
 
-public class AARLogFileSetFactory
+public class LogFileSetFactory
 {
     private Map<Integer, String> logFileSetsAvailable = new TreeMap<Integer, String>();
     private DirectoryReader directoryReader = new DirectoryReader();
     
-    public AARLogFileSetFactory()
+    public LogFileSetFactory()
     {    
     }
 
@@ -27,7 +27,7 @@ public class AARLogFileSetFactory
     private void getMissionResultsFileSetForDirectory(String rootLogFileName) throws PWCGException
     {
         String fileSetIdentifier = extractMissionDateFromMissionLogFileName(rootLogFileName);
-        String logFileDir = AARLogFileLocationFinder.determineLogFileLocation(rootLogFileName);
+        String logFileDir = LogFileLocationFinder.determineLogFileLocation(rootLogFileName);
         directoryReader.sortFilesInDir(logFileDir);
         for (String logFileName : directoryReader.getFiles()) 
         {
@@ -40,7 +40,7 @@ public class AARLogFileSetFactory
 
     private void addLogFileToResultSet(String rootLogFileName) throws PWCGException
     {
-        String logFileDir = AARLogFileLocationFinder.determineLogFileLocation(rootLogFileName);
+        String logFileDir = LogFileLocationFinder.determineLogFileLocation(rootLogFileName);
         int fileIndex = extractMissionSequenceFromMissionLogFileName(rootLogFileName);
         String filepath = logFileDir + rootLogFileName;
         logFileSetsAvailable.put(fileIndex, filepath);

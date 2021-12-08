@@ -12,7 +12,7 @@ import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignmentCalculator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARVictoryEvaluator;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 
 public class AAREvaluator 
 {
@@ -95,7 +95,7 @@ public class AAREvaluator
         return new AARFuzzyVictoryEvaluator(aarVehicleBuilder, fuzzyByPlayerDamaged, randomAssignment);        
     }
     
-    private AARRandomAssignment createAARRandomAssignment(AARLogEventData logEventData, AARAreaOfCombat areaOfCombat)
+    private AARRandomAssignment createAARRandomAssignment(LogEventData logEventData, AARAreaOfCombat areaOfCombat)
     {
         AARRandomAssignmentCalculator randomAssignmentCalculator = new AARRandomAssignmentCalculator(areaOfCombat);
         return new AARRandomAssignment(logEventData, randomAssignmentCalculator);

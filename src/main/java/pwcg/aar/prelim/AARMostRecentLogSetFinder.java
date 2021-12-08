@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileSet;
 import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DateUtils;
 
@@ -15,7 +15,7 @@ public class AARMostRecentLogSetFinder
     private AARMissionFileLogResultMatcher matcher;
     private LogSetFinder logSetFinder;
     private AARPwcgMissionFinder pwcgMissionFinder;
-    private AARMissionLogFileSet aarLogFileMissionFile;
+    private LogFileSet aarLogFileMissionFile;
     private PwcgMissionData pwcgMissionData;
     private Campaign campaign;
 
@@ -51,12 +51,12 @@ public class AARMostRecentLogSetFinder
         return null;
     }
 
-    public AARMissionLogFileSet getAarLogFileMissionFile()
+    public LogFileSet getAarLogFileMissionFile()
     {
         return aarLogFileMissionFile;
     }
 
-    public void setAarLogFileMissionFile(AARMissionLogFileSet aarLogFileMissionFile)
+    public void setAarLogFileMissionFile(LogFileSet aarLogFileMissionFile)
     {
         this.aarLogFileMissionFile = aarLogFileMissionFile;
     }

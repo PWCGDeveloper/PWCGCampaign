@@ -1,6 +1,5 @@
 package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 
-import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
@@ -9,6 +8,7 @@ import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.LogParser;
 import pwcg.core.logfiles.event.IAType3;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -80,7 +80,7 @@ public class AARPilotStatusDeadEvaluator
         {
             if (destroyedEventForCrewmembersPlane.getVictor() != null)
             {
-                if (!destroyedEventForCrewmembersPlane.getVictor().equals(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY))
+                if (!destroyedEventForCrewmembersPlane.getVictor().equals(LogParser.UNKNOWN_MISSION_LOG_ENTITY))
                 {
                     return true;
                 }

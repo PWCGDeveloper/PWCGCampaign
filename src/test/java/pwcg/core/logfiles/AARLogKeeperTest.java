@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase1.parse;
+package pwcg.core.logfiles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class AARLogKeeperTest
         logLines.add("T:61999 AType:2 DMG:1.0000 AID:-1 TID:2312191 POS(149446.8906,1073.2948,170213.9844)");
         logLines.add("T:61999 AType:3 AID:-1 TID:2312191 POS(149446.8906,1073.2948,170213.9844)");
         
-        List<String> keptLines = AARLogKeeper.selectLogLinesToKeep(logLines);
+        List<String> keptLines = LogKeeper.selectLogLinesToKeep(logLines);
         int playerSpawnsFound = 0;
         int spawnsFound = 0;
         int destroyedFound = 0;
@@ -76,7 +76,7 @@ public class AARLogKeeperTest
         logLines.add("T:61999 AType:4 PLID:2357247 PID:2358271 BUL:0 SH:0 BOMB:0 RCT:0 (125867.7109,803.4151,96754.4375)");
         logLines.add("T:61999 AType:2 DMG:1.0000 AID:-1 TID:2312191 POS(149446.8906,1073.2948,170213.9844)");
         
-        List<String> keptLines = AARLogKeeper.selectLogLinesToKeep(logLines);
+        List<String> keptLines = LogKeeper.selectLogLinesToKeep(logLines);
         int playerSpawnsFound = 0;
         int spawnsFound = 0;
         int destroyedFound = 0;
@@ -122,7 +122,7 @@ public class AARLogKeeperTest
         logLines.add("T:61999 AType:4 PLID:2357247 PID:2358271 BUL:0 SH:0 BOMB:0 RCT:0 (125867.7109,803.4151,96754.4375)");
         logLines.add("T:61999 AType:2 DMG:1.0000 AID:-1 TID:2312191 POS(149446.8906,1073.2948,170213.9844)");
         
-        List<String> keptLines = AARLogKeeper.selectLogLinesToKeep(logLines);
+        List<String> keptLines = LogKeeper.selectLogLinesToKeep(logLines);
         int playerSpawnsFound = 0;
         int spawnsFound = 0;
         int destroyedFound = 0;

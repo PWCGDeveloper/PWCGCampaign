@@ -5,17 +5,17 @@ import java.util.Map;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AARBotVehicleMapper 
 {
-    private AARLogEventData logEventData;
+    private LogEventData logEventData;
     private Map <String, LogPlane> planeAiEntities;
     
-    public AARBotVehicleMapper (AARLogEventData logEventData)
+    public AARBotVehicleMapper (LogEventData logEventData)
     {
         this.logEventData = logEventData;
     }

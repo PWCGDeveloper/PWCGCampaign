@@ -2,7 +2,6 @@ package pwcg.core.logfiles;
 
 import java.util.List;
 
-import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.event.AType;
 import pwcg.core.logfiles.event.IAType12;
@@ -12,15 +11,15 @@ import pwcg.core.logfiles.event.IAType3;
 import pwcg.core.logfiles.event.IAType6;
 import pwcg.core.logfiles.event.LogEventFactory;
 
-public class AARLogLineParser
+public class LogLineParser
 {
-    private AARLogEventData logEventData = new AARLogEventData();
+    private LogEventData logEventData = new LogEventData();
 
-    public AARLogLineParser()
+    public LogLineParser()
     {
     }
 
-    public AARLogEventData parseLogLinesForMission(List<String> logLines) throws PWCGException 
+    public LogEventData parseLogLinesForMission(List<String> logLines) throws PWCGException 
     {
         for (String line : logLines)
         {
@@ -88,7 +87,7 @@ public class AARLogLineParser
         {
             logEventData.addBot(atype12.getId(), atype12);
         }
-        else if (atype12.getPid().contains(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY))
+        else if (atype12.getPid().contains(LogParser.UNKNOWN_MISSION_LOG_ENTITY))
         {
             logEventData.addVehicle(atype12.getId(), atype12);
         }

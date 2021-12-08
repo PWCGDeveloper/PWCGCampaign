@@ -11,7 +11,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.AType12;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
@@ -19,7 +19,7 @@ import pwcg.testutils.TestATypeFactory;
 
 public class TestMissionEntityGenerator
 {
-    private AARLogEventData logEventData;    
+    private LogEventData logEventData;    
     private List<IAType12> vehicles = new ArrayList<>();
     private Map<String, IAType12> pilotBots = new HashMap<>();
     private Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes = new HashMap<>();
@@ -54,7 +54,7 @@ public class TestMissionEntityGenerator
 
     private void formAARLogParser()
     {
-        logEventData = new AARLogEventData();
+        logEventData = new LogEventData();
         logEventData.setBots(pilotBots);
     }
 
@@ -166,7 +166,7 @@ public class TestMissionEntityGenerator
         return planeAiEntities;
     }
 
-    public AARLogEventData getAARLogEventData()
+    public LogEventData getAARLogEventData()
     {
         return logEventData;
     }

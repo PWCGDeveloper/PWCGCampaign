@@ -1,10 +1,10 @@
 package pwcg.testutils;
 
-import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.LogParser;
 import pwcg.core.logfiles.event.AType12;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.product.fc.country.FCCountry;
@@ -32,7 +32,7 @@ public class TestATypeFactory
     static public AType12 makeBalloon(ICountry country) throws PWCGException
     {
         ++id;
-        AType12 aType12 = new AType12(Integer.valueOf (id).toString(), "Balloon", "Balloon", country, AARLogParser.UNKNOWN_MISSION_LOG_ENTITY, new Coordinate(500000, 0, 50000));
+        AType12 aType12 = new AType12(Integer.valueOf (id).toString(), "Balloon", "Balloon", country, LogParser.UNKNOWN_MISSION_LOG_ENTITY, new Coordinate(500000, 0, 50000));
         return aType12;
     }
     
@@ -48,7 +48,7 @@ public class TestATypeFactory
         {
             country = new FCCountry(Country.GERMANY);            
         }
-        AType12 aType12 = new AType12(Integer.valueOf (id).toString(), "Truck", "Truck", country, AARLogParser.UNKNOWN_MISSION_LOG_ENTITY, new Coordinate(500000, 0, 50000));
+        AType12 aType12 = new AType12(Integer.valueOf (id).toString(), "Truck", "Truck", country, LogParser.UNKNOWN_MISSION_LOG_ENTITY, new Coordinate(500000, 0, 50000));
         return aType12;
     }
     

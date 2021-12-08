@@ -21,14 +21,14 @@ import pwcg.aar.inmission.phase2.logeval.victory.AARVictoryEvaluator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARLogEventData;
+import pwcg.core.logfiles.LogEventData;
 
 
 @ExtendWith(MockitoExtension.class)
 public class AARChronologicalEventListBuilderTest
 {
     @Mock private AAREvaluator evaluator;
-    @Mock private AARLogEventData logEventData;
+    @Mock private LogEventData logEventData;
     @Mock private AARWaypointBuilder aarWaypointBuilder;
     @Mock private AARVehicleBuilder aarVehicleBuilder;
     @Mock private AARVictoryEvaluator aarVictoryEvaluator;

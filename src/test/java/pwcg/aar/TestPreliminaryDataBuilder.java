@@ -17,7 +17,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileSet;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.data.MissionHeader;
@@ -68,7 +68,7 @@ public class TestPreliminaryDataBuilder
 
     private void makeMissionLogFileSet()
     {
-        AARMissionLogFileSet logFileSet = new AARMissionLogFileSet();
+        LogFileSet logFileSet = new LogFileSet();
         logFileSet.setLogFileName("missionReport(2018-05-07_21-17-16)");
         preliminaryData.setMissionLogFileSet(logFileSet);
     }
