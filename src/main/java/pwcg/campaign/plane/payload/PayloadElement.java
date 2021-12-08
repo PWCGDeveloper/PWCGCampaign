@@ -127,6 +127,7 @@ public enum PayloadElement
     FOUR_PLADE_PROP(PayloadElementCategory.MODIFICATION, "Four Blade Propellor", 10),
 
 
+    GUAGE_SET(PayloadElementCategory.MODIFICATION, "Guage Set", 0),
     AMMO_COUNTER(PayloadElementCategory.MODIFICATION, "Ammo Counter", 0),
     ALTITUDE_GUAGE(PayloadElementCategory.MODIFICATION, "Altitude Guage", 0),
     ATTITUDE_GUAGE(PayloadElementCategory.MODIFICATION, "Attitude Guage", 0),

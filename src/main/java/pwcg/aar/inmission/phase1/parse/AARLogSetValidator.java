@@ -14,11 +14,12 @@ public class AARLogSetValidator
 
     public void isLogSetValid(Campaign campaign, AARPreliminaryData preliminaryData) throws PWCGException
     {
-        LogParser logParser = new LogParser(preliminaryData.getMissionLogFileSet());
-        LogEventData logEventData = logParser.parseLogFilesForMission(campaign);
-        if (logEventData.getVehicles().isEmpty())
+        String logFileSetName = preliminaryData.getMissionLogFileSet().getLogFileName();
+        LogParser logParser = new LogParser();
+        LogEventData logEventData = logParser.parseLogFilesForMission(campaign, logFileSetName);
+        if (!logEventData.isValid())
         {
-            throw new PWCGException("Could not find any vehicle spawns in log set " + preliminaryData.getMissionLogFileSet().getLogFileName());
+            throw new PWCGException("Could not find any vehicle spawns in log set " + logFileSetName);
         }
         
         isReferencePilotInMission(campaign, preliminaryData, logEventData);

@@ -12,7 +12,7 @@
     }
   ],
   "airfields": {
-    "19170601": "Cambrai South"
+    "19170801": "Cambrai South"
   },
   "skins": [],
   "squadHistory": {
@@ -22,7 +22,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19170601",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {

@@ -130,8 +130,9 @@ public class AARCoordinator
 
     void parseLogs() throws PWCGException
     {
-        LogParser logParser = new LogParser(aarContext.getPreliminaryData().getMissionLogFileSet());
-        LogEventData logEventData = logParser.parseLogFilesForMission(campaign);
+        LogParser logParser = new LogParser();
+        String logFileSetName = aarContext.getPreliminaryData().getMissionLogFileSet().getLogFileName();
+        LogEventData logEventData = logParser.parseLogFilesForMission(campaign, logFileSetName);
         aarContext.setLogEventData(logEventData);
     }
 }

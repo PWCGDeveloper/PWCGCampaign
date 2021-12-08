@@ -253,4 +253,13 @@ public class LogEventData
     {
         this.bots = bots;
     }
+
+    public boolean isValid()
+    {
+        if (getVehicles().isEmpty())
+        {
+            return false;
+        }
+        return true;
+    }
 }

@@ -1,12 +1,15 @@
 package pwcg.aar.prelim;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.LogFileSet;
+import pwcg.core.logfiles.LogParser;
 import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DateUtils;
 
@@ -19,7 +22,11 @@ public class AARMostRecentLogSetFinder
     private PwcgMissionData pwcgMissionData;
     private Campaign campaign;
 
-    public AARMostRecentLogSetFinder(Campaign campaign, AARMissionFileLogResultMatcher matcher, LogSetFinder logSetFinder,AARPwcgMissionFinder pwcgMissionFinder)
+    public AARMostRecentLogSetFinder(
+            Campaign campaign, 
+            AARMissionFileLogResultMatcher matcher, 
+            LogSetFinder logSetFinder,
+            AARPwcgMissionFinder pwcgMissionFinder)
     {
         this.campaign = campaign;
         this.matcher = matcher;
@@ -33,8 +40,24 @@ public class AARMostRecentLogSetFinder
         if (pwcgMissionData != null)
         {
             List<String> sortedLogSets = logSetFinder.getSortedLogFileSets();
-            aarLogFileMissionFile = matcher.matchMissionFileAndLogFile(pwcgMissionData, sortedLogSets);
+            List<String> validLogSets = findValidLogSets(sortedLogSets);
+            aarLogFileMissionFile = matcher.matchMissionFileAndLogFile(pwcgMissionData, validLogSets);
         }
+    }
+
+    private List<String> findValidLogSets(List<String> sortedLogSets) throws PWCGException
+    {
+        List<String> validLogSets = new ArrayList<>();
+        LogParser logParser = new LogParser();
+        for (String logFileSetName : sortedLogSets)
+        {
+            LogEventData logEventData = logParser.parseLogFilesForMission(campaign, logFileSetName);
+            if (logEventData.isValid())
+            {
+                validLogSets.add(logFileSetName);
+            }
+        }
+        return validLogSets;
     }
 
     private PwcgMissionData getMissionDataForCampaignDate() throws PWCGException

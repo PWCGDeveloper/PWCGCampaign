@@ -1,5 +1,11 @@
 13.5.1
+Added DFW C.V
+- All FA squadrons fly DFW
+- Schlastas fly Halberstadts
+- Halberstadt start date moved back to August 1917
 Fixed equipment request screen
+Fix to handle issue where coop server could spew a bad log set
+
 
 13.5.0
 Changes to awarding player victories

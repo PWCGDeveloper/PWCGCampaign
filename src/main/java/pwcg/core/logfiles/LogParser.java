@@ -11,18 +11,11 @@ public class LogParser
 {
     public static String UNKNOWN_MISSION_LOG_ENTITY = "-1";
 
-    private LogFileSet aarLogFileMissionFile;
-
-    public LogParser(LogFileSet aarLogFileMissionFile)
-    {
-        this.aarLogFileMissionFile = aarLogFileMissionFile;
-    }
-
-    public LogEventData parseLogFilesForMission(Campaign campaign) throws PWCGException 
+    public LogEventData parseLogFilesForMission(Campaign campaign, String logFileName) throws PWCGException 
     {
         LogReader logReader = new LogReader();
         LogLineParser logLineParser = new LogLineParser();
-        List<String> logFileLines = logReader.readLogFilesForMission(campaign, aarLogFileMissionFile.getLogFileName());
+        List<String> logFileLines = logReader.readLogFilesForMission(campaign, logFileName);
         LogEventData logEventData = logLineParser.parseLogLinesForMission(logFileLines);
         
         debugLogData(logEventData);
