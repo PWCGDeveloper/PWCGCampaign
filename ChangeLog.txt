@@ -4,12 +4,10 @@ Added DFW C.V
 - Schlastas fly Halberstadts
 - Halberstadt start date moved back to August 1917
 Added new WWI vehicles 
+Incorporated Stonehouse's improvements for Typhoon skins and 193 Squadron roles
 Fixed equipment request screen
 Fix to handle issue where coop server could spew a bad log set
 
-
-To Do:
-Add new WWI vehicles
 
 
 13.5.0

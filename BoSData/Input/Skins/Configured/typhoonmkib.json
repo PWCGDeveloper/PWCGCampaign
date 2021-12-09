@@ -43,7 +43,9 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "SKY"			
 		},
 		"typhoonmkib_skin_04": {
 			"skinName": "typhoonmkib_skin_04",
