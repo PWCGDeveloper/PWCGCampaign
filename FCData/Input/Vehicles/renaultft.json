@@ -1,15 +1,15 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\mk5m\\",
-  "vehicleType": "mk5m",
-  "vehicleName": "MK.5M Tank",
+  "modelDir": "vehicles\\renaultft\\",
+  "vehicleType": "renaultft",
+  "vehicleName": "Renault LFT",
   "displayName": "Tank",
   "countries": [
-	"BELGIUM",
-    "BRITAIN"
+    "FRANCE",
+    "USA"
   ],
   "startDate": "19160801",
   "endDate": "19181201",
-  "rarityWeight": 50,
+  "rarityWeight": 100,
   "vehicleClass": "Tank"
 }

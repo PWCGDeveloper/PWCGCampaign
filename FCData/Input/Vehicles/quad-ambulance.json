@@ -1,8 +1,8 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\leyland3tonraf\\",
-  "vehicleType": "leyland3tonraf-ammo",
-  "vehicleName": "Leyland 3 Ton RAF Ammo",
+  "modelDir": "vehicles\\quad\\",
+  "vehicleType": "quad-ambulance",
+  "vehicleName": "Jeffery Quad Ambulance",
   "displayName": "truck",
   "countries": [
     "FRANCE",
@@ -12,6 +12,6 @@
   ],
   "startDate": "19140801",
   "endDate": "19181201",
-  "rarityWeight": 10,
-  "vehicleClass": "TruckAmmo"
+  "rarityWeight": 5,
+  "vehicleClass": "Truck"
 }

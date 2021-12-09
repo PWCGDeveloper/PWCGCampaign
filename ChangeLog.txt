@@ -1,10 +1,15 @@
-13.5.1
+13.6.0
 Added DFW C.V
 - All FA squadrons fly DFW
 - Schlastas fly Halberstadts
 - Halberstadt start date moved back to August 1917
+Added new WWI vehicles 
 Fixed equipment request screen
 Fix to handle issue where coop server could spew a bad log set
+
+
+To Do:
+Add new WWI vehicles
 
 
 13.5.0
@@ -32,7 +37,7 @@ Improved appearance reference pilot selection and player admin screen to minimiz
 Fixed layout of intel screen - control buttons not displaying on some monitors
 Fixed Breguet payload issue
 Fixed overly small area for text in debrief
-Fixed leave error message.  Weeks should be days.  Changed dialogfromerror to help.
+Fixed leave error message.  Weeks should be days.  Changed dialog from error to help.
 
 13.4.0
 Internationalization

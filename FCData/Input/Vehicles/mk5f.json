@@ -1,8 +1,8 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\mk5m\\",
-  "vehicleType": "mk5m",
-  "vehicleName": "MK.5M Tank",
+  "modelDir": "vehicles\\mk5f\\",
+  "vehicleType": "mk5f",
+  "vehicleName": "MK.5F Tank",
   "displayName": "Tank",
   "countries": [
 	"BELGIUM",

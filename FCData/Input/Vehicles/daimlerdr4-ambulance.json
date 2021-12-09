@@ -1,8 +1,8 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\daimlerm1914\\",
-  "vehicleType": "daimlerflak77-aa",
-  "vehicleName": "Daimler Flak77 Truck",
+  "modelDir": "vehicles\\daimlerdr4\\",
+  "vehicleType": "daimlerdr4-ambulance",
+  "vehicleName": "Daimler Truck",
   "displayName": "truck",
   "countries": [
     "GERMANY"
@@ -10,5 +10,5 @@
   "startDate": "19140801",
   "endDate": "19181201",
   "rarityWeight": 5,
-  "vehicleClass": "TruckAAA"
+  "vehicleClass": "Truck"
 }
