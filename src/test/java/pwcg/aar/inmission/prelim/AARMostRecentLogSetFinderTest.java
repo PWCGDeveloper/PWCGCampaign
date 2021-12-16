@@ -6,7 +6,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -21,7 +20,6 @@ import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.LogFileSet;
-import pwcg.core.logfiles.LogParser;
 import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
@@ -39,7 +37,6 @@ public class AARMostRecentLogSetFinderTest
     @Mock private MissionHeader missionHeader1;
     @Mock private MissionHeader missionHeader2;
     @Mock private LogFileSet aarLogFile;
-    @Mock private LogParser logParser;
     @Mock private LogEventData validLogEventData;
     @Mock private LogEventData invalidLogEventData;
     
@@ -84,9 +81,8 @@ public class AARMostRecentLogSetFinderTest
 
         List<String> validLogSets = new ArrayList<String>();
         validLogSets.addAll(sortedLogSets);
-        Mockito.when(logParser.parseLogFilesForMission(ArgumentMatchers.<Campaign>any(), ArgumentMatchers.<String>any())).thenReturn(validLogEventData);
 
-        AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, logParser, pwcgMissionFinder);
+        AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
         mostRecentogSetFinder.determineMostRecentAARLogFileMissionDataSetForCampaign();
         PwcgMissionData missionData = mostRecentogSetFinder.getPwcgMissionData();
         String missionDescription = missionData.getMissionDescription();
@@ -112,9 +108,8 @@ public class AARMostRecentLogSetFinderTest
 
         List<String> validLogSets = new ArrayList<String>();
         validLogSets.addAll(sortedLogSets);
-        Mockito.when(logParser.parseLogFilesForMission(ArgumentMatchers.<Campaign>any(), ArgumentMatchers.<String>any())).thenReturn(validLogEventData);
 
-        AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, logParser, pwcgMissionFinder);
+        AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
         mostRecentogSetFinder.determineMostRecentAARLogFileMissionDataSetForCampaign();
         PwcgMissionData missionData = mostRecentogSetFinder.getPwcgMissionData();
         String missionDescription = missionData.getMissionDescription();
@@ -140,9 +135,8 @@ public class AARMostRecentLogSetFinderTest
 
         List<String> validLogSets = new ArrayList<String>();
         validLogSets.addAll(sortedLogSets);
-        Mockito.when(logParser.parseLogFilesForMission(ArgumentMatchers.<Campaign>any(), ArgumentMatchers.<String>any())).thenReturn(validLogEventData);
 
-        AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, logParser, pwcgMissionFinder);
+        AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
         mostRecentogSetFinder.determineMostRecentAARLogFileMissionDataSetForCampaign();
         assert(mostRecentogSetFinder.isLogSetComplete() == false);
     }

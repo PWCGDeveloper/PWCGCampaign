@@ -8,8 +8,6 @@ Incorporated Stonehouse's improvements for Typhoon skins and 193 Squadron roles
 Fixed equipment request screen
 Fix to handle issue where coop server could spew a bad log set
 
-
-
 13.5.0
 Changes to awarding player victories
 - Adds damage check to victories not confirmed in logs.  You will not get a victory for something you didn't shoot.

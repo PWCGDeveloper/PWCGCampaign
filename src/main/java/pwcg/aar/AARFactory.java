@@ -16,6 +16,7 @@ import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.LogFileHeaderParser;
+import pwcg.core.logfiles.LogParser;
 import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DirectoryReader;
 
@@ -24,9 +25,10 @@ public class AARFactory
     public static AARMostRecentLogSetFinder makeMostRecentLogSetFinder(Campaign campaign) throws PWCGException
     {
         LogSetFinder logSetFinder = makeLogSorter();
-        LogFileHeaderParser aarHeaderParser = new LogFileHeaderParser();        
         AARPwcgMissionFinder pwcgMissionFinder = new AARPwcgMissionFinder(campaign);
-        AARMissionFileLogResultMatcher matcher = new AARMissionFileLogResultMatcher(campaign, aarHeaderParser);
+        LogFileHeaderParser logHeaderParser = new LogFileHeaderParser();        
+        LogParser logParser = new LogParser();
+        AARMissionFileLogResultMatcher matcher = new AARMissionFileLogResultMatcher(campaign, logHeaderParser, logParser);
         return new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
     }
     
