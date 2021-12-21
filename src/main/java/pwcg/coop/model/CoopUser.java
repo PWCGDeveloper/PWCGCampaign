@@ -84,5 +84,13 @@ public class CoopUser
     public String getFormatVersion()
     {
         return formatVersion;
+    }
+
+    public void validate()
+    {
+        if (campaignPersonas == null)
+        {
+            campaignPersonas = new HashMap<>();
+        }
     }    
 }
