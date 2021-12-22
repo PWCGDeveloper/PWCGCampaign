@@ -5,8 +5,10 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -42,8 +44,8 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
     private int selectedPilotPanel  = 0;
     private List<CampaignPlayerAdminPilotPanel> personaInfoPanels = new ArrayList<>();
     private CampaignPlayerAdminPilotPanel selectedPersonaInfoPanel = null;
+    private TreeMap<String, CoopDisplayRecord> coopDisplayRecords = new TreeMap<>(Collections.reverseOrder());
     private JPanel personaActionsPanel;
-    private List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
     private int pilotsPerPanel  = 12;
     private JButton nextPage;
     private JButton previousPage;
@@ -132,10 +134,13 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
             endRecord = coopDisplayRecords.size();
         }
         
+        List<CoopDisplayRecord> allCoopDisplayRecords = new ArrayList<>();
+        allCoopDisplayRecords.addAll(coopDisplayRecords.values());
+        
         List<CoopDisplayRecord> coopDisplayRecordsForPage = new ArrayList<>();
         for (int i = startRecord; i < endRecord;++i)
         {
-            coopDisplayRecordsForPage.add(coopDisplayRecords.get(i));
+            coopDisplayRecordsForPage.add(allCoopDisplayRecords.get(i));
         }
         return coopDisplayRecordsForPage;
     }
@@ -395,7 +400,8 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         List<CoopDisplayRecord> coopDisplayRecordsForCampaign = coopPersonaDataBuilder.getPlayerSquadronMembersForUser(campaign);
         for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecordsForCampaign)
         {
-            coopDisplayRecords.add(coopDisplayRecord);
+            String key = coopDisplayRecord.getPilotStatus() + coopDisplayRecord.getPilotNameAndRank();
+            coopDisplayRecords.put(key, coopDisplayRecord);
         }
     }
 }
