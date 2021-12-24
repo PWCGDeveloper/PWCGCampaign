@@ -1,3 +1,11 @@
+13.6.1
+Fixed and improved pilot admin screen
+- Made multiple pages to deal with larger coop campaigns
+- Ordered pilots by status so active pilots will be first
+Consolidated some medals to display only highest order awarded
+- Knights Cross, DSO, DFC, DSC, Croix de Guerre, Wound Badges 
+Fixed case where French WWI pilots could be awarded British medals.
+
 13.6.0
 Added DFW C.V
 - All FA squadrons fly DFW

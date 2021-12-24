@@ -18,6 +18,14 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public abstract class MedalManager implements IMedalManager 
 {
+    protected static int MEDAL_NOT_FOUND = 0;
+    protected static final String CROIX_DE_GUERRE_NAME = "Croix de Guerre";
+    protected static final String DISTINGUISHED_FLYING_CROSS_NAME = "Distinguished Flying Cross";
+    protected static final String DISTINGUISHED_SERVICE_CROSS_NAME = "Distinguished Service Cross";
+    protected static final String DISTINGUISHED_SERVICE_ORDER_NAME = "Distinguished Service Order";
+    protected static final String KNIGHTS_CROSS_NAME = "Knights Cross";
+    protected static final String GERMAN_WOUND_BADGE = "Wound Badge";
+
 	protected Map<Integer, Medal> medals = new TreeMap<Integer, Medal>();
 
 	protected abstract Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException ;
@@ -102,7 +110,7 @@ public abstract class MedalManager implements IMedalManager
 		return hasMedal;
 	}
 
-	public Medal getMedalFromManager(String type)
+    public Medal getMedalFromManager(String type)
     {
         Medal medal = null;
         for (Medal thisMedal : medals.values())
@@ -131,4 +139,76 @@ public abstract class MedalManager implements IMedalManager
 	{
 		return new ArrayList<>(medals.values());
 	}
+
+    @Override
+    public List<Medal> getMedalsWithHighestOrderOnly(List<Medal> medalsAwarded) throws PWCGException
+    {
+        Map<Integer, Medal> consolidatedMedals = new TreeMap<>();
+        for (Medal medal : medalsAwarded)
+        {
+            Medal highestOrderOfMedal = medal;
+            if (medal.getMedalName().contains(CROIX_DE_GUERRE_NAME))
+            {
+                highestOrderOfMedal = getHighestOrderMedal(medalsAwarded, CROIX_DE_GUERRE_NAME);
+            }
+
+            if (medal.getMedalName().contains(DISTINGUISHED_FLYING_CROSS_NAME))
+            {
+                highestOrderOfMedal = getHighestOrderMedal(medalsAwarded, DISTINGUISHED_FLYING_CROSS_NAME);
+            }
+
+            if (medal.getMedalName().contains(DISTINGUISHED_SERVICE_ORDER_NAME))
+            {
+                highestOrderOfMedal = getHighestOrderMedal(medalsAwarded, DISTINGUISHED_SERVICE_ORDER_NAME);
+            }
+
+            if (medal.getMedalName().contains(KNIGHTS_CROSS_NAME))
+            {
+                highestOrderOfMedal = getHighestOrderMedal(medalsAwarded, KNIGHTS_CROSS_NAME);
+            }
+
+            if (medal.getMedalName().contains(GERMAN_WOUND_BADGE))
+            {
+                highestOrderOfMedal = getHighestOrderMedal(medalsAwarded, GERMAN_WOUND_BADGE);
+            }
+            
+            // Counts on highest order of medal overwriting such that only the highest order is in the map
+            int medalKey = getMedalKey(highestOrderOfMedal);
+            if (medalKey != MEDAL_NOT_FOUND)
+            {
+                consolidatedMedals.put(medalKey, highestOrderOfMedal);
+            }
+        }
+        
+        return new ArrayList<>(consolidatedMedals.values());
+    }
+    
+
+    private Medal getHighestOrderMedal(List<Medal> medals, String medalRoot) throws PWCGException
+    {
+        Medal highestOrderOfMedal = null;
+        for (Medal medal : medals)
+        {
+            if (medal.getMedalName().contains(medalRoot))
+            {
+                highestOrderOfMedal = medal;
+            }
+        }
+
+        return highestOrderOfMedal;
+    }
+
+    private int getMedalKey(Medal medalToConsolidate)
+    {
+        for (int medalKey : medals.keySet())
+        {
+            Medal medal = medals.get(medalKey);
+            if (medal.getMedalName().equalsIgnoreCase(medalToConsolidate.getMedalName()))
+            {
+                return medalKey;
+            }
+        }
+        
+        return MEDAL_NOT_FOUND;
+    }
 }

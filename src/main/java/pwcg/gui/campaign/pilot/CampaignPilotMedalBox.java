@@ -6,15 +6,19 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.factory.MedalManagerFactory;
+import pwcg.campaign.medals.IMedalManager;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -38,16 +42,18 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 
     private CampaignMedalScreen campaignMedalScreen;
     private int medalsPerRow = 5;
-	private SquadronMember pilot = null;
+    private Campaign campaign;
+	private SquadronMember pilot;
 	private Map<String, Medal> medals = new HashMap<>();
 
-	public CampaignPilotMedalBox(CampaignMedalScreen campaignMedalScreen, SquadronMember pilot)
+	public CampaignPilotMedalBox(CampaignMedalScreen campaignMedalScreen, Campaign campaign, SquadronMember pilot)
 	{
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         this.campaignMedalScreen = campaignMedalScreen;
+        this.campaign = campaign;
         this.pilot = pilot;
         this.medalsPerRow = calcMedalsPerRow();
 	}
@@ -102,9 +108,11 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 		
 		Color bg = ColorMap.PAPER_BACKGROUND;
 
-		for (Medal medal : pilot.getMedals())
+        ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
+        IMedalManager medalManager = MedalManagerFactory.createMedalManager(country, campaign);
+        List<Medal> highestOrderMedals = medalManager.getMedalsWithHighestOrderOnly(pilot.getMedals());
+        for (Medal medal : highestOrderMedals)
 		{
-		    ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());			
 			if (medal != null)
 			{
 				String medalSide = "Axis";

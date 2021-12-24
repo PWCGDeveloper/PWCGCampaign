@@ -5,9 +5,12 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.factory.MedalManagerFactory;
+import pwcg.campaign.medals.IMedalManager;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -20,13 +23,15 @@ import pwcg.gui.utils.PwcgBorderFactory;
 public class CampaignPaperDollPanel extends ImageResizingPanel
 {
     private static final long serialVersionUID = 1L;
+    private Campaign campaign;
     private SquadronMember pilot;
 
-    public CampaignPaperDollPanel(SquadronMember pilot)
+    public CampaignPaperDollPanel(Campaign campaign, SquadronMember pilot)
     {
         super("");
         this.setLayout(new BorderLayout());
 
+        this.campaign = campaign;
         this.pilot = pilot;
     }
 
@@ -80,8 +85,7 @@ public class CampaignPaperDollPanel extends ImageResizingPanel
         String paperDollDirectory = ContextSpecificImages.imagesPaperDoll() + country.getCountryName();
 
         paperDoll = addRank(paperDollDirectory, paperDoll, pilot.getMedals());
-        paperDoll = addDefaultMedals(paperDollDirectory, paperDoll, pilot.getMedals());
-        paperDoll = addKnightsCross(paperDollDirectory, paperDoll, pilot.getMedals());
+        paperDoll = addMedals(paperDollDirectory, paperDoll, pilot.getMedals());
         paperDoll = addFauxCollar(paperDollDirectory, paperDoll, pilot.getMedals());
         this.setImage(paperDoll);
         this.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
@@ -109,33 +113,14 @@ public class CampaignPaperDollPanel extends ImageResizingPanel
         return paperDoll;
     }
 
-    private BufferedImage addDefaultMedals(String paperDollDirectory, BufferedImage paperDoll, List<Medal> medals)
+    private BufferedImage addMedals(String paperDollDirectory, BufferedImage paperDoll, List<Medal> medals) throws PWCGException
     {
-        for (Medal medal : pilot.getMedals())
+        ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
+        IMedalManager medalManager = MedalManagerFactory.createMedalManager(country, campaign);
+        List<Medal> highestOrderMedals = medalManager.getMedalsWithHighestOrderOnly(pilot.getMedals());
+        for (Medal medal : highestOrderMedals)
         {
-            if (!medal.getMedalName().contains("Knights Cross"))
-            {
-                paperDoll = addPaperDollElement(paperDollDirectory, paperDoll, medal.getMedalName());
-            }
-        }
-
-        return paperDoll;
-    }
-
-    private BufferedImage addKnightsCross(String paperDollDirectory, BufferedImage paperDoll, List<Medal> medals)
-    {
-        Medal knightCross = null;
-        for (Medal medal : pilot.getMedals())
-        {
-            if (medal.getMedalName().contains("Knights Cross"))
-            {
-                knightCross = medal;
-            }
-        }
-
-        if (knightCross != null)
-        {
-            paperDoll = addPaperDollElement(paperDollDirectory, paperDoll, knightCross.getMedalName());
+            paperDoll = addPaperDollElement(paperDollDirectory, paperDoll, medal.getMedalName());
         }
 
         return paperDoll;

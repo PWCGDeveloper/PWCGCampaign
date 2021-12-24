@@ -41,9 +41,6 @@ public class GermanMedalManager extends FCMedalManager
 	public static int WOUND_BADGE_BLACK = 51;
 	public static int WOUND_BADGE_SILVER = 52;
 
-	public static int NAVAL_WOUND_BADGE_BLACK = 53;
-	public static int NAVAL_WOUND_BADGE_SILVER = 54;
-
 	public GermanMedalManager (Campaign campaign)
     {
         super(campaign);
@@ -70,12 +67,9 @@ public class GermanMedalManager extends FCMedalManager
 
 		medals.put(P_WAR_MERIT_MEDAL, new Medal ("War Merit Medal", 			"P_WMM.jpg"));
 		medals.put(P_MILITARY_MERIT_CROSS, new Medal ("Military Merit Cross", 	"P_MMC.jpg"));
-		
-		medals.put(WOUND_BADGE_BLACK, new Medal ("Wound Badge(Black)", 		"BWB.jpg"));
-		medals.put(WOUND_BADGE_SILVER, new Medal ("Wound Badge(Silver)", 	"SWB.jpg"));
-		
-		medals.put(NAVAL_WOUND_BADGE_BLACK, new Medal ("N. Wound Badge(Black)", 	"NBWB.jpg"));
-		medals.put(NAVAL_WOUND_BADGE_SILVER, new Medal ("N. Wound Badge(Silver)", 	"NSWB.jpg"));
+        
+        medals.put(WOUND_BADGE_BLACK, new Medal (GERMAN_WOUND_BADGE + " (Black)",       "BWB.png"));
+        medals.put(WOUND_BADGE_SILVER, new Medal (GERMAN_WOUND_BADGE + " (Silver)",     "SWB.png"));
 	} 
 
 	public Medal awardWoundedAward(SquadronMember pilot, ArmedService service) 

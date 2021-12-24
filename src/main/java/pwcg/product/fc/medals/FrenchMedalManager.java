@@ -20,20 +20,20 @@ public class FrenchMedalManager extends FCMedalManager
 	public static int MEDAILLE_DE_HONNEUR = 9;
 	public static int LEGION_DE_HONNEUR = 10;
 
-	public static int BEL_CROIX_DE_GUERRE = 17;
-	public static int BEL_ORDRE_DE_LA_COURONNE = 18;
-	public static int BEL_ORDRE_DE_LEOPOLD = 19;
+	public static int BEL_CROIX_DE_GUERRE = 20;
+	public static int BEL_ORDRE_DE_LA_COURONNE = 21;
+	public static int BEL_ORDRE_DE_LEOPOLD = 22;
 
-	public static int DFC = 9;
-	public static int DFC_BAR_1 = 10;
-	public static int DFC_BAR_2 = 11;
-	public static int DSO = 12;
-	public static int DSO_BAR = 13;
-	public static int DSC =14;  // Naval medal.  Not given out but used for historical aces
-	public static int VC = 15;
-	public static int MC = 16;
+	public static int DFC = 30;
+	public static int DFC_BAR_1 = 31;
+	public static int DFC_BAR_2 = 32;
+	public static int DSO = 33;
+	public static int DSO_BAR = 34;
+	public static int DSC =35;  // Naval medal.  Not given out but used for historical aces
+	public static int VC = 36;
+	public static int MC = 37;
 	
-	public static int IBM = 30;
+	public static int IBM = 99;
 	
 
 	public FrenchMedalManager (Campaign campaign)
@@ -42,28 +42,25 @@ public class FrenchMedalManager extends FCMedalManager
 
         medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                             "fr_pb.jpg"));
 		medals.put(MILITARY_MEDAL, new Medal ("Medaille Militaire", 							"MM.jpg"));
-		medals.put(CROIX_DE_GUERRE, new Medal ("Croix de Guerre", 								"CdG.jpg"));
-		medals.put(CROIX_DE_GUERRE_BRONZE_STAR, new Medal ("Croix de Guerre with Bronze Star", 	"cdg_bronze_star.jpg"));
-		medals.put(CROIX_DE_GUERRE_SILVER_STAR, new Medal ("Croix de Guerre with Silver Star", 	"cdg _silver_star.jpg"));
-		medals.put(CROIX_DE_GUERRE_GILT_STAR, new Medal ("Croix de Guerre with Gilt Star", 		"cdg_gilt_star.jpg"));
-		medals.put(CROIX_DE_GUERRE_BRONZE_PALM, new Medal ("Croix de Guerre with Bronze Palm", 	"cdg_bronze_palm.jpg"));
-		medals.put(CROIX_DE_GUERRE_SILVER_PALM, new Medal ("Croix de Guerre with Silver Palm", 	"cdg_silver_palm.jpg"));
-		medals.put(MEDAILLE_DE_HONNEUR, new Medal ("Medaille d' Honneur", 						"MdH.jpg"));
-		medals.put(LEGION_DE_HONNEUR, new Medal ("Legion d' Honneur", 							"LdH.jpg"));
+        medals.put(CROIX_DE_GUERRE, new Medal (CROIX_DE_GUERRE_NAME,                            "CdG.jpg"));
+        medals.put(CROIX_DE_GUERRE_BRONZE_STAR, new Medal (CROIX_DE_GUERRE_NAME + " with Bronze Star",  "cdg_bronze_star.jpg"));
+        medals.put(CROIX_DE_GUERRE_SILVER_STAR, new Medal (CROIX_DE_GUERRE_NAME + " with Silver Star",  "cdg _silver_star.jpg"));
+        medals.put(CROIX_DE_GUERRE_GILT_STAR, new Medal (CROIX_DE_GUERRE_NAME + " with Gilt Star",      "cdg_gilt_star.jpg"));
+        medals.put(CROIX_DE_GUERRE_BRONZE_PALM, new Medal (CROIX_DE_GUERRE_NAME + " with Bronze Palm",  "cdg_bronze_palm.jpg"));
+        medals.put(CROIX_DE_GUERRE_SILVER_PALM, new Medal (CROIX_DE_GUERRE_NAME + " with Silver Palm",  "cdg_silver_palm.jpg"));
+        medals.put(MEDAILLE_DE_HONNEUR, new Medal ("Medaille d' Honneur",                       "MdH.jpg"));
+        medals.put(LEGION_DE_HONNEUR, new Medal ("Legion d' Honneur",                           "LdH.jpg"));
 		
-		medals.put(DFC, new Medal ("Distinguished Flying Cross", 					"dfc.jpg"));
-		medals.put(DFC_BAR_1, new Medal ("Distinguished Flying Cross With Bar", 	"dfc_bar.jpg"));
-		medals.put(DFC_BAR_2, new Medal ("Distinguished Flying Cross With 2 Bars", 	"dfc_bar2.jpg"));
-		medals.put(DSO, new Medal ("Distinguished Service Order", 					"dso.jpg"));
-		medals.put(DSO_BAR, new Medal ("Distinguished Service Order With Bar", 		"dso_bar.jpg"));
-		medals.put(DSC, new Medal ("Distinguished Service Cross", 					"dsc.jpg"));
-		medals.put(VC, new Medal ("Victoria Cross", 								"vc.jpg"));
-		medals.put(MC, new Medal ("Military Cross", 								"mc.jpg"));
+        medals.put(DFC, new Medal (DISTINGUISHED_FLYING_CROSS_NAME,                     "dfc.jpg"));
+        medals.put(DFC_BAR_1, new Medal (DISTINGUISHED_FLYING_CROSS_NAME + " With Bar",     "dfc_bar.jpg"));
+        medals.put(DFC_BAR_2, new Medal (DISTINGUISHED_FLYING_CROSS_NAME + " With 2 Bars",  "dfc_bar2.jpg"));
+        medals.put(DSO, new Medal (DISTINGUISHED_SERVICE_ORDER_NAME,                    "dso.jpg"));
+        medals.put(DSO_BAR, new Medal (DISTINGUISHED_SERVICE_ORDER_NAME + " With Bar",      "dso_bar.jpg"));
+        medals.put(DSC, new Medal ("Distinguished Service Cross",                   "dsc.jpg"));
+        medals.put(VC, new Medal ("Victoria Cross",                                 "vc.jpg"));
+        medals.put(MC, new Medal ("Military Cross",                                 "mc.jpg"));
 
 		medals.put(BEL_CROIX_DE_GUERRE, new Medal ("Croix de Guerre", 			"belcdg.jpg"));
-		medals.put(BEL_ORDRE_DE_LA_COURONNE, new Medal ("Ordre de la Couronne", "belCouronne.jpg"));
-		medals.put(BEL_ORDRE_DE_LEOPOLD, new Medal ("Ordre de Leopold", 		"belLeopold.jpg"));
-		
 		medals.put(BEL_ORDRE_DE_LA_COURONNE, new Medal ("Ordre de la Couronne", "belCouronne.jpg"));
 		medals.put(BEL_ORDRE_DE_LEOPOLD, new Medal ("Ordre de Leopold", 		"belLeopold.jpg"));
 		

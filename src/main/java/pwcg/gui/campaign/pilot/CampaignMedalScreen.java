@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalText;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -33,14 +34,16 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 {
     private static final long serialVersionUID = 1L;
 
+    private Campaign campaign;
     private SquadronMember pilot;
     private JTextArea medalTextArea;
 
-    public CampaignMedalScreen(SquadronMember pilot)
+    public CampaignMedalScreen(Campaign campaign, SquadronMember pilot)
     {
         super("");
         this.setLayout(new BorderLayout());
 
+        this.campaign = campaign;
         this.pilot = pilot;
 	}
 
@@ -89,7 +92,6 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
         openMedalBoxPanel.add(SpacerPanelFactory.createVerticalSpacerPanel(numSpacers), BorderLayout.NORTH);
         openMedalBoxPanel.add(makeMedalBox(), BorderLayout.CENTER);
         makeMedalTextPanelPanel();
-        //openMedalBoxPanel.add(makeMedalTextPanelPanel(), BorderLayout.SOUTH);
 
         return openMedalBoxPanel;
     }   
@@ -138,7 +140,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 
 	private JPanel makeMedalBox() throws PWCGException 
 	{
-		CampaignPilotMedalBox medalBoxPanel = new CampaignPilotMedalBox(this, pilot);
+		CampaignPilotMedalBox medalBoxPanel = new CampaignPilotMedalBox(this, campaign, pilot);
 		medalBoxPanel.makePanels();
 
         JPanel pilotMedalBoxPanel = new JPanel(new BorderLayout());
@@ -213,7 +215,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 
     private JPanel makePaperDollPanel() throws PWCGException
     {
-        CampaignPaperDollPanel paperDollPanel = new CampaignPaperDollPanel(pilot);
+        CampaignPaperDollPanel paperDollPanel = new CampaignPaperDollPanel(campaign, pilot);
         paperDollPanel.makePaperDollPanel();
         return paperDollPanel;
     }
