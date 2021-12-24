@@ -121,7 +121,6 @@ public class BoSBritishMedalManagerTest extends MedalManagerTestBase
     	for (Medal medal : medalManager.getAllAwardsForService())
     	{
 	        String medalPath = ContextSpecificImages.imagesMedals() + "Allied\\" + medal.getMedalImage();
-	        System.out.println(medalPath);
 	        ImageIcon medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
 	        Assertions.assertTrue (medalIcon != null);
     	}

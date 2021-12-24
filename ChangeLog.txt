@@ -4,6 +4,7 @@ Fixed and improved pilot admin screen
 - Ordered pilots by status so active pilots will be first
 Consolidated some medals to display only highest order awarded
 - Knights Cross, DSO, DFC, DSC, Croix de Guerre, Wound Badges 
+Fixed Heal Wounds not linking to leave page
 Fixed case where French WWI pilots could be awarded British medals.
 Fixed typo Royal Flying Corps
 

@@ -109,7 +109,7 @@ public class BoSGermanMedalManagerTest extends MedalManagerTestBase
         Assertions.assertEquals ("Iron Cross 1st Class", highestOrderMedals.get(2).getMedalName());
         Assertions.assertEquals ("German Cross Gold", highestOrderMedals.get(3).getMedalName());
         Assertions.assertEquals (MedalManager.KNIGHTS_CROSS_NAME + " with Diamonds", highestOrderMedals.get(4).getMedalName());
-        Assertions.assertEquals (MedalManager.GERMAN_WOUND_BADGE + " (Silver)", highestOrderMedals.get(5).getMedalName());
+        Assertions.assertEquals (MedalManager.GERMAN_WOUND_BADGE + "(Silver)", highestOrderMedals.get(5).getMedalName());
     }
 
     @Test

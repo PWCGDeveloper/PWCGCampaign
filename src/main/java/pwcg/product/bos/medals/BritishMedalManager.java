@@ -25,8 +25,8 @@ public class BritishMedalManager extends BoSMedalManager
         medals.put(PILOTS_BADGE, new Medal("Pilots Badge", "gb_pilots_badge.png"));
         medals.put(DFC, new Medal(DISTINGUISHED_FLYING_CROSS_NAME, "gb_distinguished_flying_cross.png"));
         medals.put(DFC_BAR_1, new Medal(DISTINGUISHED_FLYING_CROSS_NAME + " With Bar", "gb_distinguished_flying_cross_bar.png"));
-        medals.put(DSO, new Medal (DISTINGUISHED_SERVICE_ORDER_NAME,                    "gb_distinguished_service_order.jpg"));
-        medals.put(DSO_BAR, new Medal (DISTINGUISHED_SERVICE_ORDER_NAME + " With Bar",      "gb_distinguished_service_order_bar.jpg"));
+        medals.put(DSO, new Medal (DISTINGUISHED_SERVICE_ORDER_NAME,                    "gb_distinguished_service_order.png"));
+        medals.put(DSO_BAR, new Medal (DISTINGUISHED_SERVICE_ORDER_NAME + " With Bar",      "gb_distinguished_service_order_bar.png"));
         medals.put(VC, new Medal("Victoria Cross", "gb_victoria_cross.png"));
 
         medals.put(WOUND_STRIPE, new Medal("Wound Stripe", "gb_wound_chevron.png"));
