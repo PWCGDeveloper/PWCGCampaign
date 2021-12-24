@@ -5,6 +5,7 @@ Fixed and improved pilot admin screen
 Consolidated some medals to display only highest order awarded
 - Knights Cross, DSO, DFC, DSC, Croix de Guerre, Wound Badges 
 Fixed case where French WWI pilots could be awarded British medals.
+Fixed typo Royal Flying Corps
 
 13.6.0
 Added DFW C.V
