@@ -1,3 +1,8 @@
+13.6.2
+Fixed issue that could prevent FC AAR from June 1917 to August 12917.
+Fixed unconfigured skins for DFW C.V units.
+Fixed naming mismatch for FC wound badges
+
 13.6.1
 Fixed and improved pilot admin screen
 - Made multiple pages to deal with larger coop campaigns

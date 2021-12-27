@@ -11,9 +11,9 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
-public class DFWCVPayload extends PlanePayload implements IPlanePayload
+public class dfwc5Payload extends PlanePayload implements IPlanePayload
 {
-    public DFWCVPayload(PlaneType planeType, Date date)
+    public dfwc5Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -42,7 +42,7 @@ public class DFWCVPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        DFWCVPayload clone = new DFWCVPayload(getPlaneType(), getDate());
+        dfwc5Payload clone = new dfwc5Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 

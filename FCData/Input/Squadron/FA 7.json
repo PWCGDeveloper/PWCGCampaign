@@ -16,8 +16,22 @@
 	},
 	"skins": [
 		{
-			"skinName": "dfwcv_skin_01",
-			"planeType": "dfwcv",
+			"skinName": "dfwc5_skin_00",
+			"planeType": "dfwc5",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19180424",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "dfwc5_skin_01",
+			"planeType": "dfwc5",
 			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19180424",
@@ -30,8 +44,8 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "dfwcv_skin_05",
-			"planeType": "dfwcv",
+			"skinName": "dfwc5_skin_05",
+			"planeType": "dfwc5",
 			"archTypes": [],
 			"startDate": "19180424",
 			"endDate": "19181201",

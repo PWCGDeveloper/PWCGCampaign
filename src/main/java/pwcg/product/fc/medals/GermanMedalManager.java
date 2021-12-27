@@ -68,8 +68,8 @@ public class GermanMedalManager extends FCMedalManager
 		medals.put(P_WAR_MERIT_MEDAL, new Medal ("War Merit Medal", 			"P_WMM.jpg"));
 		medals.put(P_MILITARY_MERIT_CROSS, new Medal ("Military Merit Cross", 	"P_MMC.jpg"));
         
-        medals.put(WOUND_BADGE_BLACK, new Medal (GERMAN_WOUND_BADGE + " (Black)",       "BWB.jpg"));
-        medals.put(WOUND_BADGE_SILVER, new Medal (GERMAN_WOUND_BADGE + " (Silver)",     "SWB.jpg"));
+        medals.put(WOUND_BADGE_BLACK, new Medal (GERMAN_WOUND_BADGE + "(Black)",       "BWB.jpg"));
+        medals.put(WOUND_BADGE_SILVER, new Medal (GERMAN_WOUND_BADGE + "(Silver)",     "SWB.jpg"));
 	} 
 
 	public Medal awardWoundedAward(SquadronMember pilot, ArmedService service) 

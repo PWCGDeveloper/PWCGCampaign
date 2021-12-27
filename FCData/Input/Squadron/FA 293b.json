@@ -16,8 +16,8 @@
   },
   "skins": [
     	{
-			"skinName": "dfwcv_skin_08",
-			"planeType": "dfwcv",
+			"skinName": "dfwc5_skin_08",
+			"planeType": "dfwc5",
 			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19180424",
@@ -30,8 +30,8 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "dfwcv_skin_06",
-			"planeType": "dfwcv",
+			"skinName": "dfwc5_skin_06",
+			"planeType": "dfwc5",
 			"archTypes": [],
 			"startDate": "19180424",
 			"endDate": "19181201",
