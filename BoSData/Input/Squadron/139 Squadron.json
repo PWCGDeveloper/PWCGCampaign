@@ -7,6 +7,11 @@
 	"unitIdCode": "XD",
 	"planeAssignments": [
 		{
+			"archType": "a20",
+			"squadronIntroduction": "19390801",
+			"squadronWithdrawal": "19420801"
+		},
+		{
 			"archType": "b25",
 			"squadronIntroduction": "19420801",
 			"squadronWithdrawal": "19450601"

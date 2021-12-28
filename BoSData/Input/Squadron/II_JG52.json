@@ -9,7 +9,7 @@
 	"planeAssignments": [
 		{
 			"archType": "bf109",
-			"squadronIntroduction": "19411001",
+			"squadronIntroduction": "19390801",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -62,7 +62,7 @@
 			"skinName": "II_JG52",
 			"planeType": "bf109f2",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20112052,
 			"country": "Germany",
@@ -76,7 +76,7 @@
 			"skinName": "II_JG52",
 			"planeType": "bf109f4",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20112052,
 			"country": "Germany",
@@ -90,7 +90,7 @@
 			"skinName": "II_JG52",
 			"planeType": "bf109g2",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20112052,
 			"country": "Germany",
@@ -104,7 +104,7 @@
 			"skinName": "II_JG52",
 			"planeType": "bf109g6",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20112051,
 			"country": "Germany",
@@ -118,7 +118,7 @@
 			"skinName": "II_JG52",
 			"planeType": "bf109g14",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20112051,
 			"country": "Germany",
@@ -132,7 +132,7 @@
 			"skinName": "bf109k4_skin_04",
 			"planeType": "bf109k4",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20112052,
 			"country": "Germany",
@@ -150,7 +150,24 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19400101",
+				"startDate": "19390801",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 80
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19411001",
 				"weightedRoles": [
 					{
 						"role": "ROLE_STRATEGIC_INTERCEPT",

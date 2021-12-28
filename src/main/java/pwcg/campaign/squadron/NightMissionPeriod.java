@@ -5,7 +5,6 @@ import java.util.Date;
 public class NightMissionPeriod
 {
     private Date startDate;
-    private Date endDate;
     private Integer nightMissionOdds;
 
     public Date getStartDate()
@@ -16,16 +15,6 @@ public class NightMissionPeriod
     public void setStartDate(Date startDate)
     {
         this.startDate = startDate;
-    }
-
-    public Date getEndDate()
-    {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate)
-    {
-        this.endDate = endDate;
     }
 
     public Integer getNightMissionOdds()

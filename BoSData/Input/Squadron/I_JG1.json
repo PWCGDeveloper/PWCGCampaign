@@ -9,7 +9,7 @@
 	"planeAssignments": [
 		{
 			"archType": "fw190",
-			"squadronIntroduction": "19440901",
+			"squadronIntroduction": "19430801",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -71,7 +71,28 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19440901",
+				"startDate": "19430101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 50
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19440701",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

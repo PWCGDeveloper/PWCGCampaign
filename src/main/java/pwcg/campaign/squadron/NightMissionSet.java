@@ -14,15 +14,8 @@ public class NightMissionSet
         for (NightMissionPeriod nightPeriod : nightMissionPeriods)
         {
             Date startDate = nightPeriod.getStartDate();
-            Date endDate = nightPeriod.getEndDate();
 
-            if (date.before(startDate))
-            {
-            }
-            else if (date.after(endDate))
-            {
-            }
-            else
+            if (startDate.before(date))
             {
                 selectedNightMissionForPeriod = nightPeriod;
             }

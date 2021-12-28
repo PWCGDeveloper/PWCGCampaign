@@ -7,8 +7,18 @@
 	"unitIdCode": "US",
 	"planeAssignments": [
 		{
+			"archType": "hurricane",
+			"squadronIntroduction": "19390801",
+			"squadronWithdrawal": "19430101"
+		},
+		{
+			"archType": "typhoon",
+			"squadronIntroduction": "19430101",
+			"squadronWithdrawal": "19430331"
+		},
+		{
 			"archType": "tempest",
-			"squadronIntroduction": "19420801",
+			"squadronIntroduction": "19440401",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -30,7 +40,7 @@
 			"skinName": "tempestmkvs2_skin_08",
 			"planeType": "tempestmkvs2",
 			"archTypes": [],
-			"startDate": "19440601",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 103083182,
 			"country": "Britain",
@@ -45,6 +55,49 @@
 	"serviceId": 10103,
 	"squadronRoles": {
 		"squadronRolePeriods": [
+			{
+				"startDate": "19390801",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 20
+					}
+				]
+			},
+			{
+				"startDate": "19400605",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19410501",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 60
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 40
+					}
+				]
+			},
 			{
 				"startDate": "19440901",
 				"weightedRoles": [
@@ -79,9 +132,19 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19440901",
+				"startDate": "19390801",
 				"endDate": "19450601",
-				"nightMissionOdds": 7
+				"nightMissionOdds": 5
+			},
+			{
+				"startDate": "19400901",
+				"endDate": "19410501",
+				"nightMissionOdds": 50
+			},
+			{
+				"startDate": "19410501",
+				"endDate": "19450601",
+				"nightMissionOdds": 5
 			}
 		]
 	},

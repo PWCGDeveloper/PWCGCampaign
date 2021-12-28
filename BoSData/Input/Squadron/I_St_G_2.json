@@ -9,7 +9,7 @@
 	"planeAssignments": [
 		{
 			"archType": "ju87",
-			"squadronIntroduction": "19410801",
+			"squadronIntroduction": "19390801",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -77,7 +77,7 @@
 			"skinName": "I_St_G_2_W",
 			"planeType": "ju87d3",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19411001",
 			"endDate": "19450601",
 			"squadId": 20121002,
 			"country": "Germany",
@@ -103,7 +103,16 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19400101",
+				"startDate": "19390801",
+				"weightedRoles": [
+					{
+						"role": "ROLE_DIVE_BOMB",
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19411001",
 				"weightedRoles": [
 					{
 						"role": "ROLE_DIVE_BOMB",
