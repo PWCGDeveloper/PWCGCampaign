@@ -48,7 +48,7 @@ public class FCPayloadFactory implements IPayloadFactory
         }
         else if (attributeMapping == FCPlaneAttributeMapping.dfwc5)
         {
-            return new dfwc5Payload(planeType, date);
+            return new DFWCVPayload(planeType, date);
         }
         else if (attributeMapping == FCPlaneAttributeMapping.HALBERSTADTCLII)
         {
