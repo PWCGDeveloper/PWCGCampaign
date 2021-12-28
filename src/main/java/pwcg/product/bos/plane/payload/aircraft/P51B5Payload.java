@@ -10,9 +10,9 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
-public class P51D15Payload extends PlanePayload implements IPlanePayload
+public class P51B5Payload extends PlanePayload implements IPlanePayload
 {
-    public P51D15Payload(PlaneType planeType, Date date)
+    public P51B5Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -20,14 +20,21 @@ public class P51D15Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
-        setAvailablePayload(-4, "1000000000", PayloadElement.MIRROR);
-        setAvailablePayload(-3, "100000000", PayloadElement.MN28);
-        setAvailablePayload(-2, "10000000", PayloadElement.OCTANE_150_FUEL);
-	    setAvailablePayload(-1, "1000000", PayloadElement.P51_GUNSIGHT);
+        setAvailablePayload(-5, "100000000", PayloadElement.MIRROR);
+        setAvailablePayload(-4, "10000000", PayloadElement.MALCOLM_CANOPY);
+        setAvailablePayload(-3, "100000", PayloadElement.OCTANE_150_FUEL);
+        setAvailablePayload(-2, "10000", PayloadElement.PACKARD_ENGINE);
+        setAvailablePayload(-1, "1000", PayloadElement.P51_GUNSIGHT);
 	    
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.MG50CAL_4x);
-        setAvailablePayload(2, "101", PayloadElement.ADDITIONAL_AMMO);
+        setAvailablePayload(1, "11", PayloadElement.M64_X2);
+        setAvailablePayload(2, "11", PayloadElement.M65_X2);
+        setAvailablePayload(3, "11", PayloadElement.LB500x2);
+        setAvailablePayload(4, "11", PayloadElement.LB1000x2);
+        setAvailablePayload(5, "11", PayloadElement.M8_X6);
+        setAvailablePayload(6, "11", PayloadElement.M64_X2, PayloadElement.M8_X6);
+        
+        
         setAvailablePayload(4, "1001", PayloadElement.M64_X2);
         setAvailablePayload(8, "10001", PayloadElement.M65_X2);
         setAvailablePayload(12, "100001", PayloadElement.P51_ROCKETS);
@@ -37,7 +44,7 @@ public class P51D15Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        P51D15Payload clone = new P51D15Payload(getPlaneType(), getDate());
+        P51B5Payload clone = new P51B5Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
@@ -56,26 +63,26 @@ public class P51D15Payload extends PlanePayload implements IPlanePayload
 
     protected int selectGroundAttackPayload(IFlight flight)
     {
-        int selectedPayloadId = 4;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPayloadId = 4;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPayloadId = 12;
+            selectedPayloadId = 5;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPayloadId = 4;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPayloadId = 8;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPayloadId = 8;
+            selectedPayloadId = 2;
         }
         return selectedPayloadId;
     }
@@ -89,7 +96,7 @@ public class P51D15Payload extends PlanePayload implements IPlanePayload
         }
         
         int selectedPayloadId = this.getSelectedPayload();
-        if (selectedPayloadId <= 2)
+        if (selectedPayloadId == 0)
         {
             return false;
         }

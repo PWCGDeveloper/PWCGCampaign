@@ -78,6 +78,7 @@ public enum PayloadElement
     FW190G3(PayloadElementCategory.ORDNANCE_BOMB, "FW190 G3", 100),
 
     //WW II
+    MALCOLM_CANOPY(PayloadElementCategory.MODIFICATION, "Malcolm Canopy", 0),
     ERLA_CANOPY(PayloadElementCategory.MODIFICATION, "Erla Canopy", 0),
     BUBBLE_CANOPY(PayloadElementCategory.MODIFICATION, "Bubble Canopy", 0),
     REMOVE_HEADREST(PayloadElementCategory.MODIFICATION, "Remove Headrest", 0),
@@ -108,6 +109,7 @@ public enum PayloadElement
     FUG16_ZY(PayloadElementCategory.MODIFICATION, "FuG 16 ZY", 10),
     RPK10(PayloadElementCategory.MODIFICATION, "RPK 10", 100),
     M82F_ENGINE(PayloadElementCategory.MODIFICATION, "M82F Engine", 100),
+    PACKARD_ENGINE(PayloadElementCategory.MODIFICATION, "Packard engine", 0),
     MERLIN_ENGINE(PayloadElementCategory.MODIFICATION, "Merlin engine", 100),
     MERLIN_70_ENGINE(PayloadElementCategory.MODIFICATION, "Merlin 70 Engine", 100),
     DB605DC_ENGINE(PayloadElementCategory.MODIFICATION, "DB605DC engine", 100),
