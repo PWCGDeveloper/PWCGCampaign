@@ -1,8 +1,8 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"p51d15na_skin_00": {
-			"skinName": "p51d15na_skin_00",
+		"p51d15_skin_00_00": {
+			"skinName": "p51d15_skin_00_00",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -14,21 +14,21 @@
 			"useTacticalCodes": true,
 			"tacticalCodeColor": "BLACK"
 		},
-		"p51d15na_skin_01": {
-			"skinName": "p51d15na_skin_01",
+		"p51d15_skin_00_01": {
+			"skinName": "p51d15_skin_00_01",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",
-			"squadId": -1,
-			"country": "USA",
+			"squadId": -2,
+			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeColor": "SKY"
 		},
-		"p51d15na_skin_02": {
-			"skinName": "p51d15na_skin_02",
+		"p51d15_skin_00_02": {
+			"skinName": "p51d15_skin_00_02",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -38,8 +38,8 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"p51d15na_skin_03": {
-			"skinName": "p51d15na_skin_03",
+		"p51d15_skin_00_03": {
+			"skinName": "p51d15_skin_00_03",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -49,8 +49,8 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"p51d15na_skin_04": {
-			"skinName": "p51d15na_skin_04",
+		"p51d15_skin_00_04": {
+			"skinName": "p51d15_skin_00_04",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -60,8 +60,8 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"p51d15na_skin_05": {
-			"skinName": "p51d15na_skin_05",
+		"p51d15_skin_00_05": {
+			"skinName": "p51d15_skin_00_05",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -71,8 +71,8 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"p51d15na_skin_06": {
-			"skinName": "p51d15na_skin_06",
+		"p51d15_skin_00_06": {
+			"skinName": "p51d15_skin_00_06",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -82,8 +82,8 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"p51d15na_skin_08": {
-			"skinName": "p51d15na_skin_08",
+		"p51d15_skin_00_08": {
+			"skinName": "p51d15_skin_00_08",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -93,8 +93,8 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"p51d15na_skin_09": {
-			"skinName": "p51d15na_skin_09",
+		"p51d15_skin_00_09": {
+			"skinName": "p51d15_skin_00_09",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -104,8 +104,8 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"p51d15na_skin_10": {
-			"skinName": "p51d15na_skin_10",
+		"p51d15_skin_00_10": {
+			"skinName": "p51d15_skin_00_10",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -115,8 +115,8 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"p51d15na_skin_13": {
-			"skinName": "p51d15na_skin_13",
+		"p51d15_skin_00_13": {
+			"skinName": "p51d15_skin_00_13",
 			"planeType": "p51d15",
 			"startDate": "19400801",
 			"endDate": "19450601",

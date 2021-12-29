@@ -26,6 +26,34 @@
 	},
 	"skins": [
 		{
+			"skinName": "p51b5_skin_01",
+			"planeType": "p51b5",
+			"archTypes": [],
+			"startDate": "19400801",
+			"endDate": "19440501",
+			"squadId": 102362377,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "p51b5_skin_05",
+			"planeType": "p51b5",
+			"archTypes": [],
+			"startDate": "19440501",
+			"endDate": "19450601",
+			"squadId": 102352486,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK"
+		},
+		{
 			"skinName": "p51d15na_skin_00",
 			"planeType": "p51d15",
 			"archTypes": [],

@@ -1,4 +1,8 @@
-13.6.2
+13.7.1
+Configured in game P-51 B skins
+
+13.7.0
+Added P-51 B
 Fixed issue that could prevent FC AAR from June 1917 to August 12917.
 Fixed unconfigured skins for DFW C.V units.
 Fixed naming mismatch for FC wound badges
