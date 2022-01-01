@@ -1,0 +1,55 @@
+{
+	"country": "USA",
+	"squadronId": 102003005,
+	"name": "3rd Armored Division Easy Company",
+	"fileName": "3rd Armored Division Easy Company.json",
+	"skill": 60,
+	"unitIdCode": "",
+	"subUnitIdCode": "",
+	"tankAssignments": [
+		{
+			"archType": "sherman",
+			"introduction": "19400101",
+			"withdrawal": "19450601"
+		}
+	],
+	"bases": {
+		"19440901": "Diest",
+		"19440928": "St.Trond",
+		"19441101": "Ophoven",
+		"19441220": "Ophoven",
+		"19441225": "Ophoven",
+		"19441229": "Asch",
+		"19450207": "Asch",
+		"19450310": "Venlo",
+		"19450404": "Merzhausen"
+	},
+	"skins": [
+	],
+	"serviceId": 10113,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_MAIN_BATTLE_TANK",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+	}
+}

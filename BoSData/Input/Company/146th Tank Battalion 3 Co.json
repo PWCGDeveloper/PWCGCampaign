@@ -19,7 +19,7 @@
 		}
 	],
 	"bases": {
-		"19411001": "Grishin",
+		"19420801": "Grishin",
 		"19420906": "Grishin",
 		"19421011": "Rahinka",
 		"19421123": "Bol. Ivanovka",
@@ -52,7 +52,7 @@
 	},
 	"skins": [
 	],
-	"serviceId": 10102,
+	"serviceId": 10112,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

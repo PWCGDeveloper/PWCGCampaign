@@ -1,0 +1,56 @@
+{
+	"country": "GERMANY",
+	"squadronId": 201011001,
+	"name": "503rd Heavy Panzer Battalion, 1st Company",
+	"fileName": "503rd Heavy Panzer Battalion 1 Co.json",
+	"skill": 80,
+	"unitIdCode": "",
+	"subUnitIdCode": "",
+	"tankAssignments": [
+		{
+			"archType": "pzvi",
+			"introduction": "19420801",
+			"withdrawal": "19450601"
+		}
+	],
+	"bases": {
+		"19440901": "Gilze-Rijen",
+		"19440925": "Mill",
+		"19440928": "Arnhem Deelen",
+		"19441101": "Krefeld",
+		"19441220": "Dusseldorf-Lohausen",
+		"19441225": "Koln-Butzweilerhof",
+		"19441229": "Koln-Butzweilerhof",
+		"19450207": "Krefeld",
+		"19450310": "Kirchhellen",
+		"19450404": "Gelnhausen"
+	},
+	"skins": [],
+	"serviceId": 20111,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_MAIN_BATTLE_TANK",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		
+	}
+}
