@@ -7,6 +7,11 @@
 	"unitIdCode": "EB",
 	"planeAssignments": [
 		{
+			"archType": "spitfire",
+			"squadronIntroduction": "19390801",
+			"squadronWithdrawal": "19440831"
+		},
+		{
 			"archType": "spitfireGriffon",
 			"squadronIntroduction": "19440901",
 			"squadronWithdrawal": "19450601"
@@ -33,7 +38,7 @@
 			"skinName": "EB-A_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -45,7 +50,7 @@
 			"skinName": "EB-B_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -57,7 +62,7 @@
 			"skinName": "EB-E_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -69,7 +74,7 @@
 			"skinName": "EB-F_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -81,7 +86,7 @@
 			"skinName": "EB-K_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -93,7 +98,7 @@
 			"skinName": "EB-N_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -105,7 +110,7 @@
 			"skinName": "EB-O_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -117,7 +122,7 @@
 			"skinName": "EB-R_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -129,7 +134,7 @@
 			"skinName": "EB-V_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -141,7 +146,7 @@
 			"skinName": "EB-W_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -153,7 +158,7 @@
 			"skinName": "EB-X_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -165,7 +170,7 @@
 			"skinName": "EB-Z_44",
 			"planeType": "spitfiremkxiv",
 			"archTypes": [],
-			"startDate": "19440901",
+			"startDate": "19390801",
 			"endDate": "19450101",
 			"squadId": 103084041,
 			"country": "Britain",
@@ -325,7 +330,66 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19440901",
+				"startDate": "19390801",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 10
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19400605",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19410501",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 30
+					}
+				]
+			},
+			{
+				"startDate": "19440501",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -358,7 +422,17 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19440901",
+				"startDate": "19390801",
+				"endDate": "19450601",
+				"nightMissionOdds": 5
+			},
+			{
+				"startDate": "19400901",
+				"endDate": "19410501",
+				"nightMissionOdds": 50
+			},
+			{
+				"startDate": "19410501",
 				"endDate": "19450601",
 				"nightMissionOdds": 5
 			}

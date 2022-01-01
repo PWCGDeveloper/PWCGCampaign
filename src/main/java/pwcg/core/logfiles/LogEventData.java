@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase1.parse;
+package pwcg.core.logfiles;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import pwcg.core.logfiles.event.IAType3;
 import pwcg.core.logfiles.event.IAType6;
 import pwcg.core.logfiles.event.IATypeBase;
 
-public class AARLogEventData
+public class LogEventData
 {
     private List<IATypeBase> chronologicalATypes = new ArrayList<>();
     private List<IAType2> damageEvents = new ArrayList<>();
@@ -190,10 +190,10 @@ public class AARLogEventData
 
     public String getPlaneIdByBot(IAType12 atype12Bot)
     {
-        String planeId = AARLogParser.UNKNOWN_MISSION_LOG_ENTITY;
+        String planeId = LogParser.UNKNOWN_MISSION_LOG_ENTITY;
         String ownerId = atype12Bot.getPid();
 
-        if (planeId.equals(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY))
+        if (planeId.equals(LogParser.UNKNOWN_MISSION_LOG_ENTITY))
         {
             planeId = mapObjectToVehicle(ownerId);
         }
@@ -204,7 +204,7 @@ public class AARLogEventData
             planeId = mapObjectToVehicle(turret.getPid());
         }
         
-        if (planeId.equals(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY))
+        if (planeId.equals(LogParser.UNKNOWN_MISSION_LOG_ENTITY))
         {
             planeId = mapBotToBailout(atype12Bot, ownerId);
         }
@@ -233,7 +233,7 @@ public class AARLogEventData
                 return vehicle.getId();
             }
         }
-        return AARLogParser.UNKNOWN_MISSION_LOG_ENTITY;
+        return LogParser.UNKNOWN_MISSION_LOG_ENTITY;
     }
 
     private String mapBotToBailout(IAType12 atype12Bot, String planeId)
@@ -252,5 +252,14 @@ public class AARLogEventData
     public void setBots(Map<String, IAType12> bots)
     {
         this.bots = bots;
+    }
+
+    public boolean isValid()
+    {
+        if (getVehicles().isEmpty())
+        {
+            return false;
+        }
+        return true;
     }
 }

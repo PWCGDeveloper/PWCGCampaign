@@ -56,6 +56,13 @@ public abstract class MedalManagerTestBase
         medals.add(medal);
     }
 
+
+    protected void awardWoundedAward(SquadronMember pilot, ArmedService service) throws PWCGException
+    {
+        Medal medal = medalManager.awardWoundedAward(pilot, service);
+        medals.add(medal);
+    }
+
     protected void makeVictories(int numVictories)
     {
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(numVictories);

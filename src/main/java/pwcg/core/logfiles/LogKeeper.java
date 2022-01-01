@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase1.parse;
+package pwcg.core.logfiles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.event.AType;
 
-public class AARLogKeeper
+public class LogKeeper
 {
     public static List<String> selectLogLinesToKeep(List<String> logLines) throws PWCGException
     {

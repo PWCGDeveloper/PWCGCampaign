@@ -9,7 +9,7 @@
 	"planeAssignments": [
 		{
 			"archType": "ju52",
-			"squadronIntroduction": "19400101",
+			"squadronIntroduction": "19390801",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -33,7 +33,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19400101",
+				"startDate": "19390801",
 				"weightedRoles": [
 					{
 						"role": "ROLE_TRANSPORT",

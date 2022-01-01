@@ -18,4 +18,5 @@ public interface IMedalManager
 	List<Medal> getAllAwardsForService() throws PWCGException;
 	Medal getMedal(int medalId);
 	Map<Integer, Medal> getMedals();
+    List<Medal> getMedalsWithHighestOrderOnly(List<Medal> medalsAwarded) throws PWCGException;
 }

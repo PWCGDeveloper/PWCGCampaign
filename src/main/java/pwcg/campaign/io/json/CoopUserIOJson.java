@@ -42,6 +42,7 @@ public class CoopUserIOJson
 		{
 			JsonObjectReader<CoopUser> jsonReader = new JsonObjectReader<>(CoopUser.class);
 			CoopUser coopUser = jsonReader.readJsonFile(coopUserDir, jsonFile.getName()); 
+			coopUser.validate();
 			try 
 			{
 			    coopUser.getCoopCampaignPersonas();

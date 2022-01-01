@@ -6,6 +6,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogEventData;
+import pwcg.core.logfiles.LogLineParser;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.logfiles.event.IAType17;
 import pwcg.core.logfiles.event.IAType18;
@@ -38,8 +40,8 @@ public class AARLogLineParserTest
         
         logLines.add("T:44660 AType:6 PID:2507775 POS(150613.3438, 117.9657, 181307.1094)"); 
         
-        AARLogLineParser logLineParser = new AARLogLineParser();
-        AARLogEventData logEvents = logLineParser.parseLogLinesForMission(logLines);
+        LogLineParser logLineParser = new LogLineParser();
+        LogEventData logEvents = logLineParser.parseLogLinesForMission(logLines);
         
         List<IAType2> damagesEvents = logEvents.getDamageEvents();
         List<IAType3> destroyedEvents = logEvents.getDestroyedEvents();

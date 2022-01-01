@@ -312,7 +312,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
         SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
         if (pilot != null)
         {
-            CampaignMedalScreen pilotMedalPanel = new CampaignMedalScreen(pilot);
+            CampaignMedalScreen pilotMedalPanel = new CampaignMedalScreen(campaign, pilot);
             pilotMedalPanel.makePanels();
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotMedalPanel);
         }

@@ -37,7 +37,7 @@ public class AARPhase0Preliminary
         	throw new PWCGException ("Failed to find most recent log file data set");
         }
 
-        aarPreliminarytData.setMissionLogFileSet(mostRecentLogSetFinder.getAarLogFileMissionFile());
+        aarPreliminarytData.setMissionLogFileSet(mostRecentLogSetFinder.getAarLogFileSet());
         aarPreliminarytData.setPwcgMissionData(mostRecentLogSetFinder.getPwcgMissionData());
     }
     

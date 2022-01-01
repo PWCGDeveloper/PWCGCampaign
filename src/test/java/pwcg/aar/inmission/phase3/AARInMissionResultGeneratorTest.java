@@ -37,7 +37,7 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileSet;
 import pwcg.product.fc.country.FCCountry;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
@@ -63,7 +63,7 @@ public class AARInMissionResultGeneratorTest
     private LogPlane gerogesGuynemerPlaneVictor = new LogPlane(4);
 
     @Mock private AARMissionEvaluationData evaluationData;
-    @Mock private AARMissionLogFileSet missionLogFileSet;
+    @Mock private LogFileSet missionLogFileSet;
     @Mock private AARPreliminaryData preliminaryData;
     @Mock private PwcgMissionData pwcgMissionData;
 

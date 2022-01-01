@@ -9,7 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
-import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
@@ -21,6 +20,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.LogParser;
 import pwcg.core.logfiles.event.AType3;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,7 +28,7 @@ import pwcg.core.logfiles.event.AType3;
 public class AARPilotStatusDeadEvaluatorTest
 {
     @Mock private Campaign campaign;
-    @Mock private AARLogParser aarLogParser;
+    @Mock private LogParser aarLogParser;
     @Mock private Coordinate downAt;
     @Mock private LogPilot resultCrewmember;
     @Mock private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
@@ -146,7 +146,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
         
-        Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
+        Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(LogParser.UNKNOWN_MISSION_LOG_ENTITY);
         Mockito.when(destroyedStatusEvaluator.didCrewMemberDie(resultCrewmember.getSerialNumber())).thenReturn(true);
 
         Coordinate fieldAt = new Coordinate();
@@ -220,7 +220,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
         
-        Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
+        Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(LogParser.UNKNOWN_MISSION_LOG_ENTITY);
         Mockito.when(destroyedStatusEvaluator.didCrewMemberDie(resultCrewmember.getSerialNumber())).thenReturn(true);
 
         Coordinate fieldAt = new Coordinate();
@@ -248,7 +248,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
         
-        Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
+        Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(LogParser.UNKNOWN_MISSION_LOG_ENTITY);
         Mockito.when(destroyedStatusEvaluator.didCrewMemberDie(resultCrewmember.getSerialNumber())).thenReturn(true);
 
         Coordinate fieldAt = new Coordinate();

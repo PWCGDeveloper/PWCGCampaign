@@ -2,7 +2,6 @@ package pwcg.aar.inmission.phase2.logeval;
 
 import pwcg.aar.AARFactory;
 import pwcg.aar.data.AARContext;
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.equipmentstatus.AAREquipmentStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARAreaOfCombat;
@@ -13,6 +12,7 @@ import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignmentCalculator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARVictoryEvaluator;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogEventData;
 
 public class AAREvaluator 
 {
@@ -37,25 +37,25 @@ public class AAREvaluator
     public AARMissionEvaluationData determineMissionResults() throws PWCGException 
     {
         aarVehicleBuilder = createAARVehicleBuilder();
-        aarVehicleBuilder.buildVehicleListsByVehicleType(aarContext.getMissionLogRawData().getLogEventData());
+        aarVehicleBuilder.buildVehicleListsByVehicleType(aarContext.getLogEventData());
         
-        aarDamageStatusEvaluator = new AARDamageStatusEvaluator(aarContext.getMissionLogRawData().getLogEventData(), aarVehicleBuilder);
+        aarDamageStatusEvaluator = new AARDamageStatusEvaluator(aarContext.getLogEventData(), aarVehicleBuilder);
         aarDamageStatusEvaluator.buildDamagedList();
         
-        aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(aarContext.getMissionLogRawData().getLogEventData(), aarVehicleBuilder, aarDamageStatusEvaluator);
+        aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(aarContext.getLogEventData(), aarVehicleBuilder, aarDamageStatusEvaluator);
         aarDestroyedStatusEvaluator.buildDeadLists();
         
         aarPilotStatusEvaluator = new AARPilotStatusEvaluator(
-                campaign, aarContext.getPreliminaryData().getPwcgMissionData(), aarDestroyedStatusEvaluator, aarContext.getMissionLogRawData().getLogEventData(), aarVehicleBuilder);
+                campaign, aarContext.getPreliminaryData().getPwcgMissionData(), aarDestroyedStatusEvaluator, aarContext.getLogEventData(), aarVehicleBuilder);
         aarPilotStatusEvaluator.determineFateOfCrewsInMission();
         
-        aarEquipmentStatusEvaluator = new AAREquipmentStatusEvaluator(campaign, aarContext.getMissionLogRawData().getLogEventData(), aarVehicleBuilder);
+        aarEquipmentStatusEvaluator = new AAREquipmentStatusEvaluator(campaign, aarContext.getLogEventData(), aarVehicleBuilder);
         aarEquipmentStatusEvaluator.determineFateOfPlanesInMission();
         
         aarVictoryEvaluator = createAARVictoryEvaluator();
         aarVictoryEvaluator.evaluateVictories();
 
-        waypointBuilder = new AARWaypointBuilder(aarContext.getMissionLogRawData().getLogEventData());
+        waypointBuilder = new AARWaypointBuilder(aarContext.getLogEventData());
         aarChronologicalEventListBuilder = new AARChronologicalEventListBuilder(this, waypointBuilder);
         aarChronologicalEventListBuilder.buildChronologicalList();
                 
@@ -78,7 +78,7 @@ public class AAREvaluator
     
     private AARVehicleBuilder createAARVehicleBuilder() throws PWCGException
     {
-        return AARFactory.makeAARVehicleBuilder(campaign, aarContext.getPreliminaryData(), aarContext.getMissionLogRawData().getLogEventData());
+        return AARFactory.makeAARVehicleBuilder(campaign, aarContext.getPreliminaryData(), aarContext.getLogEventData());
     }
     
     private AARVictoryEvaluator createAARVictoryEvaluator()
@@ -91,11 +91,11 @@ public class AAREvaluator
     private AARFuzzyVictoryEvaluator createAARFuzzyVictoryEvaluator(AARAreaOfCombat areaOfCombat)
     {
         AARFuzzyByAccumulatedDamaged fuzzyByPlayerDamaged = new AARFuzzyByAccumulatedDamaged(aarDamageStatusEvaluator);
-        AARRandomAssignment randomAssignment = createAARRandomAssignment(aarContext.getMissionLogRawData().getLogEventData(), areaOfCombat);
+        AARRandomAssignment randomAssignment = createAARRandomAssignment(aarContext.getLogEventData(), areaOfCombat);
         return new AARFuzzyVictoryEvaluator(aarVehicleBuilder, fuzzyByPlayerDamaged, randomAssignment);        
     }
     
-    private AARRandomAssignment createAARRandomAssignment(AARLogEventData logEventData, AARAreaOfCombat areaOfCombat)
+    private AARRandomAssignment createAARRandomAssignment(LogEventData logEventData, AARAreaOfCombat areaOfCombat)
     {
         AARRandomAssignmentCalculator randomAssignmentCalculator = new AARRandomAssignmentCalculator(areaOfCombat);
         return new AARRandomAssignment(logEventData, randomAssignmentCalculator);

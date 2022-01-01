@@ -10,18 +10,18 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.UnknownVictoryAssignments;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IATypeBase;
 
 @ExtendWith(MockitoExtension.class)
 public class AARRandomAssignmentTest
 {
     @Mock
-    private AARLogEventData logEventData;
+    private LogEventData logEventData;
     
     @Mock
     private AARRandomAssignmentCalculator randomAssignmentCalculator;

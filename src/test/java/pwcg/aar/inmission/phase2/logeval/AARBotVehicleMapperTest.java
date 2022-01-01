@@ -13,7 +13,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
@@ -24,6 +23,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 
 @ExtendWith(MockitoExtension.class)
@@ -88,7 +88,7 @@ public class AARBotVehicleMapperTest
             pwcgMissionData.addMissionPlanes(missionPlane);
         }
         
-        AARLogEventData logEventData = testMissionEntityGenerator.getAARLogEventData();
+        LogEventData logEventData = testMissionEntityGenerator.getAARLogEventData();
         AARBotVehicleMapper aarBotVehicleMapper = new AARBotVehicleMapper(logEventData);
 
         Map <String, LogPlane> planeAiEntities = testMissionEntityGenerator.getPlaneAiEntities();

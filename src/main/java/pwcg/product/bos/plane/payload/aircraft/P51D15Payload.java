@@ -89,9 +89,7 @@ public class P51D15Payload extends PlanePayload implements IPlanePayload
         }
         
         int selectedPayloadId = this.getSelectedPayload();
-        if (selectedPayloadId == 0 || 
-            selectedPayloadId == 1 || 
-            selectedPayloadId == 2)
+        if (selectedPayloadId <= 2)
         {
             return false;
         }

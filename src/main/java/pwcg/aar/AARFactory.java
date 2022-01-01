@@ -3,7 +3,6 @@ package pwcg.aar;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAcheivements;
 import pwcg.aar.data.AARPersonnelAwards;
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
 import pwcg.aar.inmission.phase2.logeval.AARBotVehicleMapper;
 import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
@@ -15,7 +14,9 @@ import pwcg.aar.prelim.AARPwcgMissionFinder;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.LogFileHeaderParser;
+import pwcg.core.logfiles.LogParser;
 import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DirectoryReader;
 
@@ -24,13 +25,14 @@ public class AARFactory
     public static AARMostRecentLogSetFinder makeMostRecentLogSetFinder(Campaign campaign) throws PWCGException
     {
         LogSetFinder logSetFinder = makeLogSorter();
-        LogFileHeaderParser aarHeaderParser = new LogFileHeaderParser();        
         AARPwcgMissionFinder pwcgMissionFinder = new AARPwcgMissionFinder(campaign);
-        AARMissionFileLogResultMatcher matcher = new AARMissionFileLogResultMatcher(campaign, aarHeaderParser);
+        LogFileHeaderParser logHeaderParser = new LogFileHeaderParser();        
+        LogParser logParser = new LogParser();
+        AARMissionFileLogResultMatcher matcher = new AARMissionFileLogResultMatcher(campaign, logHeaderParser, logParser);
         return new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
     }
     
-    public static AARVehicleBuilder makeAARVehicleBuilder(Campaign campaign, AARPreliminaryData preliminaryData, AARLogEventData logEventData) throws PWCGException
+    public static AARVehicleBuilder makeAARVehicleBuilder(Campaign campaign, AARPreliminaryData preliminaryData, LogEventData logEventData) throws PWCGException
     {
         AARBotVehicleMapper botPlaneMapper = new AARBotVehicleMapper(logEventData);
         AARVehiclePlaneLanded landedMapper = new AARVehiclePlaneLanded(logEventData);

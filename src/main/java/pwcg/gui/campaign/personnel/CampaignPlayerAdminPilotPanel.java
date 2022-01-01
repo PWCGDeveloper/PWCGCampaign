@@ -24,12 +24,10 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.coop.CoopPersonaDataBuilder;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.IRefreshableParentUI;
 import pwcg.gui.ScreenIdentifier;
@@ -44,24 +42,25 @@ import pwcg.gui.utils.ScrollBarWrapper;
 public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements ActionListener, IRefreshableParentUI
 {
     private static final long serialVersionUID = 1L;
-    private List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
     private Map<Integer, JComboBox<String>> userSelectors = new HashMap<>();
     private ButtonGroup pilotButtonGroup = new ButtonGroup();
     private Map<Integer, ButtonModel> pilotButtonModels = new HashMap<>();
 
     private int selectedPilotSerialNumber;
     private JPanel centerPanel;
-    
+    private List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
+
     private IRefreshableParentUI parentScreen;
     private Campaign campaign;
 
-    public CampaignPlayerAdminPilotPanel(Campaign campaign, IRefreshableParentUI parentScreen)
+    public CampaignPlayerAdminPilotPanel(Campaign campaign, IRefreshableParentUI parentScreen, List<CoopDisplayRecord> coopDisplayRecords)
     {
         super("");
         this.setLayout(new BorderLayout());
 
         this.campaign = campaign;
         this.parentScreen = parentScreen;
+        this.coopDisplayRecords = coopDisplayRecords;
     }
     
     public void makePanels() 
@@ -83,7 +82,6 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
     {
         pilotButtonModels.clear();
         
-        loadCoopRecords();
 
         JPanel recordListPanel = new JPanel(new GridBagLayout());
         
@@ -213,17 +211,6 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
         pilotButtonGroup.add(button);
 
         return button;
-    }
-
-    private void loadCoopRecords() throws PWCGUserException, PWCGException
-    {
-        coopDisplayRecords.clear();
-        CoopPersonaDataBuilder coopPersonaDataBuilder = new CoopPersonaDataBuilder();
-        List<CoopDisplayRecord> coopDisplayRecordsForCampaign = coopPersonaDataBuilder.getPlayerSquadronMembersForUser(campaign);
-        for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecordsForCampaign)
-        {
-            coopDisplayRecords.add(coopDisplayRecord);
-        }
     }
     
     public void actionPerformed(ActionEvent ae)

@@ -52,7 +52,6 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign = null;
-    private JPanel centerPanel = null;
     private Map<Integer, JCheckBox> aircraftRetireChecklist = new TreeMap<>();
     private Map<Integer, JCheckBox> aircraftChangeChecklist = new TreeMap<>();
     private JComboBox<String> replacementAircraftTypeSelector;
@@ -78,11 +77,10 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         constraints.gridy = 0;
         this.add(makeNavPanel(), constraints);
 
-        centerPanel =  makeCenterPanel();
         constraints.weightx = 0.1;
         constraints.gridx = 1;
         constraints.gridy = 0;
-        this.add(centerPanel, constraints);
+        this.add(makeCenterPanel(), constraints);
         
         constraints.weightx = 0.5;
         constraints.gridx = 2;
@@ -111,14 +109,13 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel equipmentManagementPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        equipmentManagementPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
-        equipmentManagementPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
+        equipmentManagementPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         JPanel equipmentSelectionPanel = makeEquipmentSelectionPanel();
-        equipmentManagementPanel.add(equipmentSelectionPanel, BorderLayout.CENTER);
+        equipmentManagementPanel.add(equipmentSelectionPanel, BorderLayout.NORTH);
 
         JPanel equipmentReplaceConfirmationPanel = makeEquipmentSelectionConfirmationPanel();
-        equipmentManagementPanel.add(equipmentReplaceConfirmationPanel, BorderLayout.SOUTH);
+        equipmentManagementPanel.add(equipmentReplaceConfirmationPanel, BorderLayout.CENTER);
 
         ImageToDisplaySizer.setDocumentSize(equipmentManagementPanel);
 
@@ -151,7 +148,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         SquadronMember referencePlayer = campaign.getReferencePlayer();
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
 
-        JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Retire");
+        JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Retire (Requested Planes)");
         equipmentRetirementSelectionPanel.add(titleLabel);
 
         for (int serialNumber : equipment.getActiveEquippedPlanes().keySet())
@@ -201,7 +198,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         SquadronMember referencePlayer = campaign.getReferencePlayer();
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
 
-        JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Change");
+        JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Change (Assigned Planes)");
         equipmentChangeSelectionGrid.add(titleLabel);
 
         for (int serialNumber : equipment.getActiveEquippedPlanes().keySet())
@@ -285,7 +282,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
 
         equipmentChaneConfirmationPanel.add(PWCGLabelFactory.makeDummyLabel());
 
-        JButton finishedButton = PWCGButtonFactory.makePaperButtonWithBorder("Change Equipment", "ChangeEquipment", "Show change equipment screen",  this);
+        JButton finishedButton = PWCGButtonFactory.makePaperButtonWithBorder("Process Equipment Requests", "ChangeEquipment", "Show change equipment screen",  this);
         equipmentChaneConfirmationPanel.add(finishedButton);
 
         equipmentChaneConfirmationPanel.add(PWCGLabelFactory.makeDummyLabel());
@@ -378,10 +375,9 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         aircraftRetireChecklist.clear();
         aircraftChangeChecklist.clear();
         replacementAircraftTypeSelector = null;
-        this.remove(centerPanel);
 
-        centerPanel =  makeCenterPanel();
-        this.add(centerPanel, BorderLayout.CENTER);
+        this.removeAll();
+        makePanels();
         
         this.setVisible(false);
         this.setVisible(true);

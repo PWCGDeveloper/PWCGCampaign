@@ -1,0 +1,33 @@
+{
+	"type": "p51b5",
+	"archType": "p51",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"USA"
+	],
+	"stockModifications": [
+		"MIRROR",
+		"P51_GUNSIGHT",
+		"PACKARD_ENGINE",
+		"OCTANE_150_FUEL"
+	],
+	"tacticalCodeColor": "BLACK",
+	"displayName": "P-51B-5",
+	"script": "LuaScripts\\WorldObjects\\Planes\\p51b5.txt",
+	"model": "graphics\\planes\\p51b5\\p51b5.mgm",
+	"desc": "",
+	"cruisingSpeed": 380,
+	"climbOutRate": 2000,
+	"goodness": 85,
+	"range": 1000,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER",
+		"ATTACK"
+	],
+	"introduction": "19430601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

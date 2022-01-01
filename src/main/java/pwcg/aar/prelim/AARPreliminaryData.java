@@ -12,21 +12,21 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileSet;
 
 public class AARPreliminaryData
 {
-    private AARMissionLogFileSet missionLogFileSet = new AARMissionLogFileSet();
+    private LogFileSet missionLogFileSet = new LogFileSet();
     private AARClaimPanelData claimPanelData = new AARClaimPanelData();
     private PwcgMissionData pwcgMissionData = new PwcgMissionData();
     private SquadronMembers campaignMembersInMission = new SquadronMembers();
 
-    public AARMissionLogFileSet getMissionLogFileSet()
+    public LogFileSet getMissionLogFileSet()
 	{
 		return missionLogFileSet;
 	}
 
-	public void setMissionLogFileSet(AARMissionLogFileSet missionLogFileSet)
+	public void setMissionLogFileSet(LogFileSet missionLogFileSet)
 	{
 		this.missionLogFileSet = missionLogFileSet;
 	}

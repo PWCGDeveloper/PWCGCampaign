@@ -3,17 +3,17 @@ package pwcg.aar.inmission.phase2.logeval;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogWaypoint;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType17;
 
 public class AARWaypointBuilder
 {
     private List<LogWaypoint> waypointEventList = new ArrayList<LogWaypoint>();
 
-    private AARLogEventData logEventData;
+    private LogEventData logEventData;
     
-    public AARWaypointBuilder(AARLogEventData logEventData)
+    public AARWaypointBuilder(LogEventData logEventData)
     {
         this.logEventData = logEventData;
     }

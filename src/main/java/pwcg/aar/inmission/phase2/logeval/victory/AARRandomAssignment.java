@@ -1,17 +1,17 @@
 package pwcg.aar.inmission.phase2.logeval.victory;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.UnknownVictoryAssignments;
+import pwcg.core.logfiles.LogEventData;
 
 public class AARRandomAssignment 
 {
-    private AARLogEventData logEventData;
+    private LogEventData logEventData;
     private AARRandomAssignmentCalculator randomAssignmentCalculator;
     
     public AARRandomAssignment(
-                    AARLogEventData logEventData,
+                    LogEventData logEventData,
                     AARRandomAssignmentCalculator randomAssignmentCalculator)
     {
         this.logEventData = logEventData;

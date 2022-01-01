@@ -1,6 +1,7 @@
 package pwcg.campaign.medals;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 
@@ -79,6 +80,36 @@ public class BoSGermanMedalManagerTest extends MedalManagerTestBase
     	makeVictories(199);
         Medal medal = medalManager.award(campaign, player, service, 1);
         Assertions.assertTrue (medal == null);
+    }
+
+
+
+    @Test
+    public void testAwardConsolidation () throws PWCGException
+    {            
+        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
+        service = ArmedServiceFactory.createServiceManager().getArmedServiceById(BoSServiceManager.LUFTWAFFE, campaign.getDate());
+        Mockito.when(player.determineService(ArgumentMatchers.<Date>any())).thenReturn(service);
+
+        awardMedal(GermanMedalManager.PILOTS_BADGE, 0, 0);
+        awardMedal(GermanMedalManager.IRON_CROSS_2, 2, 1);
+        awardMedal(GermanMedalManager.IRON_CROSS_1, 10, 1);
+        awardWoundedAward(player, service);
+        awardMedal(GermanMedalManager.GERMAN_CROSS_GOLD, 25, 1);
+        awardMedal(GermanMedalManager.KNIGHTS_CROSS, 40, 1);
+        awardWoundedAward(player, service);
+        awardMedal(GermanMedalManager.KNIGHTS_CROSS_OAK_LEAVES, 100, 2);
+        awardMedal(GermanMedalManager.KNIGHTS_CROSS_SWORDS, 150, 2);
+        awardMedal(GermanMedalManager.KNIGHTS_CROSS_DIAMONDS, 200, 2);
+
+        List<Medal> highestOrderMedals = medalManager.getMedalsWithHighestOrderOnly(player.getMedals());
+        Assertions.assertEquals (6, highestOrderMedals.size());
+        Assertions.assertEquals ("Pilots Badge", highestOrderMedals.get(0).getMedalName());
+        Assertions.assertEquals ("Iron Cross 2nd Class", highestOrderMedals.get(1).getMedalName());
+        Assertions.assertEquals ("Iron Cross 1st Class", highestOrderMedals.get(2).getMedalName());
+        Assertions.assertEquals ("German Cross Gold", highestOrderMedals.get(3).getMedalName());
+        Assertions.assertEquals (MedalManager.KNIGHTS_CROSS_NAME + " with Diamonds", highestOrderMedals.get(4).getMedalName());
+        Assertions.assertEquals (MedalManager.GERMAN_WOUND_BADGE + "(Silver)", highestOrderMedals.get(5).getMedalName());
     }
 
     @Test

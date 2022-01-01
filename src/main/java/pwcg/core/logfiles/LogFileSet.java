@@ -2,12 +2,12 @@ package pwcg.core.logfiles;
 
 import pwcg.core.exception.PWCGException;
 
-public class AARMissionLogFileSet 
+public class LogFileSet 
 {
     public static final String NOT_AVAILABLE = "NotAVailable";
     private String logFileName = NOT_AVAILABLE;
 
-    public AARMissionLogFileSet()
+    public LogFileSet()
     {
     }
 

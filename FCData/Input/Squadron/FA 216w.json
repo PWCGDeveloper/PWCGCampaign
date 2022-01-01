@@ -6,7 +6,7 @@
   "skill": 25,
   "planeAssignments": [
     {
-      "archType": "halberstadtcl",
+      "archType": "dfw",
       "squadronIntroduction": "19170601",
       "squadronWithdrawal": "19181201"
     }
@@ -14,7 +14,36 @@
   "airfields": {
     "19170601": "Orchies"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "dfwc5_skin_03",
+			"planeType": "dfwc5",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19180424",
+			"squadId": 401416,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "dfwc5_skin_04",
+			"planeType": "dfwc5",
+			"archTypes": [],
+			"startDate": "19180424",
+			"endDate": "19181201",
+			"squadId": 401416,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "BLACK"
+		}
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

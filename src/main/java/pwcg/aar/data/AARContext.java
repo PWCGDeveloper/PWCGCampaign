@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.aar.data.ui.UIDebriefData;
-import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.outofmission.phase2.awards.HistoricalAceAwards;
 import pwcg.aar.outofmission.phase3.resupply.AARResupplyData;
@@ -14,6 +13,7 @@ import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.tabulate.combatreport.UICombatReportData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogEventData;
 
 public class AARContext
 {
@@ -23,7 +23,7 @@ public class AARContext
     private Date newDate;
 
     // Inputs
-    private AARMissionLogRawData missionLogRawData = new AARMissionLogRawData();
+    private LogEventData logEventData = new LogEventData();
     private AARMissionEvaluationData missionEvaluationData = new AARMissionEvaluationData();
 
     // Outputs
@@ -44,7 +44,7 @@ public class AARContext
 
     public void resetContextForNextTimeIncrement() throws PWCGException
     {
-        this.missionLogRawData = new AARMissionLogRawData();
+        this.logEventData = new LogEventData();
         this.missionEvaluationData = new AARMissionEvaluationData();
         this.dailyData = new AARContextDailyData();
     }
@@ -66,9 +66,9 @@ public class AARContext
         return preliminaryData;
     }
 
-    public AARMissionLogRawData getMissionLogRawData()
+    public LogEventData getLogEventData()
     {
-        return missionLogRawData;
+        return logEventData;
     }
 
     public AARMissionEvaluationData getMissionEvaluationData()
@@ -126,9 +126,9 @@ public class AARContext
         this.preliminaryData = preliminaryData;
     }
 
-    public void setMissionLogRawData(AARMissionLogRawData missionLogRawData)
+    public void setLogEventData(LogEventData logEventData)
     {
-        this.missionLogRawData = missionLogRawData;        
+        this.logEventData = logEventData;        
     }
 
     public void setNewDate(Date newDate)

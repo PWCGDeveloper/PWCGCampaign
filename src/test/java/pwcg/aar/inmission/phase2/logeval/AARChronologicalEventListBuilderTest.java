@@ -11,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
@@ -22,13 +21,14 @@ import pwcg.aar.inmission.phase2.logeval.victory.AARVictoryEvaluator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogEventData;
 
 
 @ExtendWith(MockitoExtension.class)
 public class AARChronologicalEventListBuilderTest
 {
     @Mock private AAREvaluator evaluator;
-    @Mock private AARLogEventData logEventData;
+    @Mock private LogEventData logEventData;
     @Mock private AARWaypointBuilder aarWaypointBuilder;
     @Mock private AARVehicleBuilder aarVehicleBuilder;
     @Mock private AARVictoryEvaluator aarVictoryEvaluator;

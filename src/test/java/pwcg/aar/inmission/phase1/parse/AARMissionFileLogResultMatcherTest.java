@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -20,8 +21,10 @@ import pwcg.campaign.CampaignData;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.LogFileHeaderParser;
+import pwcg.core.logfiles.LogFileSet;
+import pwcg.core.logfiles.LogParser;
 import pwcg.mission.data.MissionHeader;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,19 +34,26 @@ public class AARMissionFileLogResultMatcherTest
     @Mock private CampaignData campaignData;
     @Mock private PwcgMissionData pwcgMissionData;       
     @Mock private MissionHeader missionHeader;
-    @Mock private LogFileHeaderParser aarHeaderParser;        
+    @Mock private LogFileHeaderParser aarHeaderParser;
+    @Mock private LogParser logParser;
+    @Mock private LogEventData validLogEventData;
+    @Mock private LogEventData invalidLogEventData;
     
     @InjectMocks
     AARMissionFileLogResultMatcher missionFileLogResultMatcher;
     
-    public AARMissionFileLogResultMatcherTest() throws PWCGException
+    @BeforeAll
+    public static void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.setProduct(PWCGProduct.BOS);        
     }
     
     @Test
     public void testMissionResultFileMatch() throws PWCGException
     {        
+        Mockito.when (validLogEventData.isValid()).thenReturn(true);
+        Mockito.when(logParser.parseLogFilesForMission(ArgumentMatchers.<Campaign>any(), ArgumentMatchers.<String>any())).thenReturn(validLogEventData);
+
         Mockito.when(aarHeaderParser.parseHeaderOnly(ArgumentMatchers.<String>any(), ArgumentMatchers.<String>any())).thenReturn("Patrik Schorner 1941-10-02");
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         Mockito.when(missionHeader.getMissionFileName()).thenReturn("Patrik Schorner 1941-10-02");
@@ -53,13 +63,16 @@ public class AARMissionFileLogResultMatcherTest
         List<String>logFileSets = new ArrayList<>();
         logFileSets.add("missionReport(2018-05-05_18-20-11)[0]");
         
-        AARMissionLogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
+        LogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
         Assertions.assertTrue (aarLogFileMissionFile.getLogFileName().equals("missionReport(2018-05-05_18-20-11)[0]"));
     }
     
     @Test
     public void testMissionResultFileChooseLatest() throws PWCGException
     {        
+        Mockito.when (validLogEventData.isValid()).thenReturn(true);
+        Mockito.when(logParser.parseLogFilesForMission(ArgumentMatchers.<Campaign>any(), ArgumentMatchers.<String>any())).thenReturn(validLogEventData);
+
         Mockito.when(aarHeaderParser.parseHeaderOnly(ArgumentMatchers.<String>any(), ArgumentMatchers.<String>any())).thenReturn("Patrik Schorner 1941-10-02");
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         Mockito.when(missionHeader.getMissionFileName()).thenReturn("Patrik Schorner 1941-10-02");
@@ -71,8 +84,32 @@ public class AARMissionFileLogResultMatcherTest
         logFileSets.add("missionReport(2018-05-05_18-20-10)[0]");
         logFileSets.add("missionReport(2018-05-05_18-20-09)[0]");
         
-        AARMissionLogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
+        LogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
         Assertions.assertTrue (aarLogFileMissionFile.getLogFileName().equals("missionReport(2018-05-05_18-20-11)[0]"));
+    }
+    
+    @Test
+    public void testMissionResultFileSkipInvalid() throws PWCGException
+    {        
+        Mockito.when (validLogEventData.isValid()).thenReturn(true);
+        Mockito.when (invalidLogEventData.isValid()).thenReturn(false);
+        Mockito.when(logParser.parseLogFilesForMission(campaign, "missionReport(2018-05-05_18-20-11)[0]")).thenReturn(invalidLogEventData);
+        Mockito.when(logParser.parseLogFilesForMission(campaign, "missionReport(2018-05-05_18-20-10)[0]")).thenReturn(validLogEventData);
+        Mockito.when(logParser.parseLogFilesForMission(campaign, "missionReport(2018-05-05_18-20-09)[0]")).thenReturn(validLogEventData);
+
+        Mockito.when(aarHeaderParser.parseHeaderOnly(ArgumentMatchers.<String>any(), ArgumentMatchers.<String>any())).thenReturn("Patrik Schorner 1941-10-02");
+        Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
+        Mockito.when(missionHeader.getMissionFileName()).thenReturn("Patrik Schorner 1941-10-02");
+        Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
+        Mockito.when(campaignData.getName()).thenReturn("Patrik Schorner");
+        
+        List<String>logFileSets = new ArrayList<>();
+        logFileSets.add("missionReport(2018-05-05_18-20-11)[0]");
+        logFileSets.add("missionReport(2018-05-05_18-20-10)[0]");
+        logFileSets.add("missionReport(2018-05-05_18-20-09)[0]");
+        
+        LogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
+        Assertions.assertTrue (aarLogFileMissionFile.getLogFileName().equals("missionReport(2018-05-05_18-20-10)[0]"));
     }
 
     @Test
@@ -83,6 +120,9 @@ public class AARMissionFileLogResultMatcherTest
 
         assertThrows(PWCGException.class, () -> 
         {
+            Mockito.when (validLogEventData.isValid()).thenReturn(true);
+            Mockito.when(logParser.parseLogFilesForMission(ArgumentMatchers.<Campaign>any(), ArgumentMatchers.<String>any())).thenReturn(validLogEventData);
+
             Mockito.when(aarHeaderParser.parseHeaderOnly(ArgumentMatchers.<String>any(), ArgumentMatchers.<String>any())).thenReturn("Patrik Schorner 1941-10-02");
             Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
             Mockito.when(missionHeader.getMissionFileName()).thenReturn("Wrong File");

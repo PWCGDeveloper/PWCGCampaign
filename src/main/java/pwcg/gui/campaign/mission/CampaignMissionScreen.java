@@ -19,6 +19,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.activity.CampaignLeaveScreen;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
@@ -133,6 +134,10 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
             {
                 showAAR();
             }
+            else if (action.equalsIgnoreCase("CampLeave"))
+            {
+                showLeavePage();
+            }
             else if (action.equals(CommonUIActions.FINISHED))
             {
                 CampaignGuiContextManager.getInstance().popFromContextStack();
@@ -203,6 +208,16 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
         {
             new  HelpDialog("PWCG Could not perform AAR.  " + e.getMessage());
         }
+    }
+
+    private void showLeavePage() throws PWCGException 
+    {
+        SoundManager.getInstance().playSound("Typewriter.WAV");
+
+        CampaignLeaveScreen leaveDisplay = new CampaignLeaveScreen(campaignHome);
+        leaveDisplay.makePanels();
+        
+        CampaignGuiContextManager.getInstance().pushToContextStack(leaveDisplay);
     }
 
     private boolean isDisplayMissionButton() throws PWCGException

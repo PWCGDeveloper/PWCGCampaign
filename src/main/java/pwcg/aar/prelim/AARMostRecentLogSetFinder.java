@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileSet;
 import pwcg.core.logfiles.LogSetFinder;
 import pwcg.core.utils.DateUtils;
 
@@ -15,11 +15,15 @@ public class AARMostRecentLogSetFinder
     private AARMissionFileLogResultMatcher matcher;
     private LogSetFinder logSetFinder;
     private AARPwcgMissionFinder pwcgMissionFinder;
-    private AARMissionLogFileSet aarLogFileMissionFile;
+    private LogFileSet logFileSet;
     private PwcgMissionData pwcgMissionData;
     private Campaign campaign;
 
-    public AARMostRecentLogSetFinder(Campaign campaign, AARMissionFileLogResultMatcher matcher, LogSetFinder logSetFinder,AARPwcgMissionFinder pwcgMissionFinder)
+    public AARMostRecentLogSetFinder(
+            Campaign campaign, 
+            AARMissionFileLogResultMatcher matcher, 
+            LogSetFinder logSetFinder,
+            AARPwcgMissionFinder pwcgMissionFinder)
     {
         this.campaign = campaign;
         this.matcher = matcher;
@@ -33,7 +37,7 @@ public class AARMostRecentLogSetFinder
         if (pwcgMissionData != null)
         {
             List<String> sortedLogSets = logSetFinder.getSortedLogFileSets();
-            aarLogFileMissionFile = matcher.matchMissionFileAndLogFile(pwcgMissionData, sortedLogSets);
+            logFileSet = matcher.matchMissionFileAndLogFile(pwcgMissionData, sortedLogSets);
         }
     }
 
@@ -51,14 +55,14 @@ public class AARMostRecentLogSetFinder
         return null;
     }
 
-    public AARMissionLogFileSet getAarLogFileMissionFile()
+    public LogFileSet getAarLogFileSet()
     {
-        return aarLogFileMissionFile;
+        return logFileSet;
     }
 
-    public void setAarLogFileMissionFile(AARMissionLogFileSet aarLogFileMissionFile)
+    public void setAarLogFileMissionFile(LogFileSet aarLogFileMissionFile)
     {
-        this.aarLogFileMissionFile = aarLogFileMissionFile;
+        this.logFileSet = aarLogFileMissionFile;
     }
 
     public PwcgMissionData getPwcgMissionData()
@@ -73,7 +77,7 @@ public class AARMostRecentLogSetFinder
     
     public boolean isLogSetComplete()
     {
-        if (pwcgMissionData == null || aarLogFileMissionFile == null)
+        if (pwcgMissionData == null || logFileSet == null)
         {
             return false;
         }

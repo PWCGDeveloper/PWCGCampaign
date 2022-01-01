@@ -6,7 +6,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.core.exception.PWCGException;
 
-public class AARLogFileLocationFinder
+public class LogFileLocationFinder
 {
     public static String determineLogFileLocation(String rootLogFileName) throws PWCGException
     {

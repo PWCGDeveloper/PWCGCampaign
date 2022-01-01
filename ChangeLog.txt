@@ -1,6 +1,32 @@
-13.5.1
-Improved front patrol flight routing
-- start patrol closer to base
+13.7.1
+Configured in game P-51 B skins
+
+13.7.0
+Added P-51 B
+Fixed issue that could prevent FC AAR from June 1917 to August 12917.
+Fixed unconfigured skins for DFW C.V units.
+Fixed naming mismatch for FC wound badges
+
+13.6.1
+Fixed and improved pilot admin screen
+- Made multiple pages to deal with larger coop campaigns
+- Ordered pilots by status so active pilots will be first
+Consolidated some medals to display only highest order awarded
+- Knights Cross, DSO, DFC, DSC, Croix de Guerre, Wound Badges 
+Fixed Heal Wounds not linking to leave page
+Fixed case where French WWI pilots could be awarded British medals.
+Fixed typo Royal Flying Corps
+
+13.6.0
+Added DFW C.V
+- All FA squadrons fly DFW
+- Schlastas fly Halberstadts
+- Halberstadt start date moved back to August 1917
+Added new WWI vehicles 
+Incorporated Stonehouse's improvements for Typhoon skins and 193 Squadron roles
+Fixed equipment request screen
+Fix to handle issue where coop server could spew a bad log set
+>>>>>>> master
 
 13.5.0
 Changes to awarding player victories
@@ -27,7 +53,7 @@ Improved appearance reference pilot selection and player admin screen to minimiz
 Fixed layout of intel screen - control buttons not displaying on some monitors
 Fixed Breguet payload issue
 Fixed overly small area for text in debrief
-Fixed leave error message.  Weeks should be days.  Changed dialogfromerror to help.
+Fixed leave error message.  Weeks should be days.  Changed dialog from error to help.
 
 13.4.0
 Internationalization

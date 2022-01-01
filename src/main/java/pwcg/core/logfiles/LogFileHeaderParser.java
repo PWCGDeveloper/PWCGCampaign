@@ -15,10 +15,10 @@ public class LogFileHeaderParser
 {
     public String parseHeaderOnly(String campaignName, String logFileName) throws PWCGException, PWCGException 
     {
-        String missionFileName = AARMissionLogFileSet.NOT_AVAILABLE;
+        String missionFileName = LogFileSet.NOT_AVAILABLE;
         try
         {
-            String logFileDirDir = AARLogFileLocationFinder.determineLogFileLocation(logFileName);
+            String logFileDirDir = LogFileLocationFinder.determineLogFileLocation(logFileName);
             File logFileWithHeader = new File(logFileDirDir + logFileName);
             BufferedReader reader = new BufferedReader(new FileReader(logFileWithHeader));
             String line;

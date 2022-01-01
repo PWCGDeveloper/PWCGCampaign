@@ -247,6 +247,12 @@ public class CampaignCleaner
             {
                 for (Medal medal : squadronMember.getMedals())
                 {
+                    if (medal.getMedalName().contains("Wound Badge ("))
+                    {
+                        int afterIndex = medal.getMedalName().indexOf("(");
+                        String medalName = "Wound Badge" + medal.getMedalName().substring(afterIndex);
+                        medal.setMedalName(medalName);
+                    }
                     convertMedal(squadronMember, squadronMember.determineCountry(medal.getMedalDate()), medal);
                 }
             }

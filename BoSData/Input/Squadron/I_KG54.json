@@ -9,7 +9,7 @@
 	"planeAssignments": [
 		{
 			"archType": "ju88",
-			"squadronIntroduction": "19410801",
+			"squadronIntroduction": "19390801",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -31,7 +31,7 @@
 			"skinName": "I_KG54",
 			"planeType": "ju88a4",
 			"archTypes": [],
-			"startDate": "19410101",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20131054,
 			"country": "Germany",
@@ -47,7 +47,37 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19400101",
+				"startDate": "19390801",
+				"weightedRoles": [
+					{
+						"role": "ROLE_BOMB",
+						"weight": 50
+					},
+					{
+						"role": "ROLE_ANTI_SHIPPING",
+						"weight": 50
+					}
+				]
+			},
+			{
+				"startDate": "19401001",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRAT_BOMB",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_ANTI_SHIPPING",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 20
+					}
+				]
+			},
+			{
+				"startDate": "19411001",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -80,9 +110,16 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 25
+				"startDate": "19390801",
+				"nightMissionOdds": 10
+			},
+			{
+				"startDate": "19401001",
+				"nightMissionOdds": 50
+			},
+			{
+				"startDate": "19411001",
+				"nightMissionOdds": 10
 			}
 		]
 	},

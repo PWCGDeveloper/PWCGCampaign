@@ -8,7 +8,7 @@
 	"planeAssignments": [
 		{
 			"archType": "p47",
-			"squadronIntroduction": "19440901",
+			"squadronIntroduction": "19440401",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -59,9 +59,22 @@
 				"startDate": "19420801",
 				"weightedRoles": [
 					{
-						"role": "ROLE_RECON",
-						"weight": 5
+						"role": "ROLE_FIGHTER",
+						"weight": 60
 					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_TRAIN_BUSTER",
+						"weight": 30
+					}
+				]
+			},
+			{
+				"startDate": "19440601",
+				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
 						"weight": 50

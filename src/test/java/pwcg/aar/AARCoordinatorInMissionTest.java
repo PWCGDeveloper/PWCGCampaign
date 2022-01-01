@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
@@ -19,6 +18,7 @@ import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -89,8 +89,8 @@ public class AARCoordinatorInMissionTest
     {
         MissionLogEventsBuilder missionLogEventsBuilder = new MissionLogEventsBuilder(campaign, 
                 aarCoordinator.getAarContext().getPreliminaryData(), expectedResults);
-        AARMissionLogRawData missionLogRawData = missionLogEventsBuilder.makeLogEvents();
-        aarCoordinator.getAarContext().setMissionLogRawData(missionLogRawData);
+        LogEventData missionLogRawData = missionLogEventsBuilder.makeLogEvents();
+        aarCoordinator.getAarContext().setLogEventData(missionLogRawData);
     }
     
     public static SquadronPlaneAssignment getPlaneForSquadron(int SquadronId) throws PWCGException

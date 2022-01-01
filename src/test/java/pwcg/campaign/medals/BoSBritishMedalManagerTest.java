@@ -1,6 +1,7 @@
 package pwcg.campaign.medals;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 
@@ -91,13 +92,35 @@ public class BoSBritishMedalManagerTest extends MedalManagerTestBase
         Assertions.assertTrue (medal == null);
     }
 
+
+    @Test
+    public void testAwardConsolidation () throws PWCGException
+    {            
+        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19441001"));
+        service = ArmedServiceFactory.createServiceManager().getArmedServiceById(BoSServiceManager.RAF, campaign.getDate());
+        Mockito.when(player.determineService(ArgumentMatchers.<Date>any())).thenReturn(service);
+
+        awardMedal(BritishMedalManager.PILOTS_BADGE, 0, 0);
+        awardMedal(BritishMedalManager.DFC, 5, 1);
+        awardMedal(BritishMedalManager.DFC_BAR_1, 10, 1);
+        awardMedal(BritishMedalManager.DSO, 15, 1);
+        awardMedal(BritishMedalManager.DSO_BAR, 25, 1);
+        awardMedal(BritishMedalManager.VC, 40, 3);
+
+        List<Medal> highestOrderMedals = medalManager.getMedalsWithHighestOrderOnly(player.getMedals());
+        Assertions.assertEquals (4, highestOrderMedals.size());
+        Assertions.assertEquals ("Pilots Badge", highestOrderMedals.get(0).getMedalName());
+        Assertions.assertEquals (MedalManager.DISTINGUISHED_FLYING_CROSS_NAME + " With Bar", highestOrderMedals.get(1).getMedalName());
+        Assertions.assertEquals (MedalManager.DISTINGUISHED_SERVICE_ORDER_NAME + " With Bar", highestOrderMedals.get(2).getMedalName());
+        Assertions.assertEquals ("Victoria Cross", highestOrderMedals.get(3).getMedalName());
+    }
+
     @Test
     public void testImages () throws PWCGException
     {            
     	for (Medal medal : medalManager.getAllAwardsForService())
     	{
 	        String medalPath = ContextSpecificImages.imagesMedals() + "Allied\\" + medal.getMedalImage();
-	        System.out.println(medalPath);
 	        ImageIcon medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
 	        Assertions.assertTrue (medalIcon != null);
     	}

@@ -1,11 +1,10 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "artillery\\searchlightger\\",
-  "vehicleType": "searchlightger",
-  "vehicleName": "Search Light",
-  "displayName": "search light",
+  "modelDir": "vehicles\\quad\\",
+  "vehicleType": "quad-searchlight",
+  "vehicleName": "Jeffery Quad Searchlight",
+  "displayName": "truck",
   "countries": [
-    "GERMANY",
     "FRANCE",
     "USA",
 	"BELGIUM",
@@ -13,6 +12,6 @@
   ],
   "startDate": "19140801",
   "endDate": "19181201",
-  "rarityWeight": 80,
+  "rarityWeight": 5,
   "vehicleClass": "SearchLight"
 }

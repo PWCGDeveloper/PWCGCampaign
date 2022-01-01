@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase1.parse;
+package pwcg.core.logfiles;
 
 import java.util.List;
 
@@ -11,15 +11,15 @@ import pwcg.core.logfiles.event.IAType3;
 import pwcg.core.logfiles.event.IAType6;
 import pwcg.core.logfiles.event.LogEventFactory;
 
-public class AARLogLineParser
+public class LogLineParser
 {
-    private AARLogEventData logEventData = new AARLogEventData();
+    private LogEventData logEventData = new LogEventData();
 
-    public AARLogLineParser()
+    public LogLineParser()
     {
     }
 
-    public AARLogEventData parseLogLinesForMission(List<String> logLines) throws PWCGException 
+    public LogEventData parseLogLinesForMission(List<String> logLines) throws PWCGException 
     {
         for (String line : logLines)
         {
@@ -42,17 +42,9 @@ public class AARLogLineParser
         {
             parseLandingEvent(line);
         }
-        else if (line.contains(AType.ATYPE10.getAtypeLogIdentifier()))
-        {
-            parsePlayerSpawnEvent(line);
-        }
         else if (line.contains(AType.ATYPE12.getAtypeLogIdentifier()))
         {
             parseSpawnEvent(line);
-        }
-        else if (line.contains(AType.ATYPE17.getAtypeLogIdentifier()))
-        {
-            parseWaypointEvent(line);
         }
         else if (line.contains(AType.ATYPE18.getAtypeLogIdentifier()))
         {
@@ -78,14 +70,6 @@ public class AARLogLineParser
         logEventData.addLandingEvent(atype6);
     }
 
-    private void parsePlayerSpawnEvent(String line) throws PWCGException
-    {
-        // AType 10 currently triggers for any plane, not just player plane
-        //IAType10 atype10 = LogEventFactory.createAType10(line);
-        //IAType17 atype17 = new AType17(atype10);   
-        //logEventData.addWaypointEvent(atype17);
-    }
-
     private void parseSpawnEvent(String line) throws PWCGException
     {
         IAType12 atype12 = LogEventFactory.createAType12(line);
@@ -103,7 +87,7 @@ public class AARLogLineParser
         {
             logEventData.addBot(atype12.getId(), atype12);
         }
-        else if (atype12.getPid().contains(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY))
+        else if (atype12.getPid().contains(LogParser.UNKNOWN_MISSION_LOG_ENTITY))
         {
             logEventData.addVehicle(atype12.getId(), atype12);
         }
@@ -120,13 +104,6 @@ public class AARLogLineParser
             return false;
         }
         return true;
-    }
-
-    private void parseWaypointEvent(String line) throws PWCGException
-    {
-        // AType 17 is no longer logged
-        //IAType17 atype17 = LogEventFactory.createAType17(line);
-        //logEventData.addWaypointEvent(atype17);
     }
 
     private void parseBailoutEvent(String line) throws PWCGException

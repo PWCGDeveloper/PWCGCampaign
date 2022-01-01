@@ -34,7 +34,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
     
     public static String LAVIATION_MILITAIRE_NAME = "l'Aviation Militaire";
     public static String AVIATION_MILITAIRE_BELGE_NAME = "Aviation Militaire Belge";
-    public static String RFC_NAME = "Royal Flying Corp";
+    public static String RFC_NAME = "Royal Flying Corps";
     public static String RNAS_NAME = "Royal Naval Air Service";
     public static String RAF_NAME = "Royal Air Force";
     public static String USAS_NAME = "United States Air Service";

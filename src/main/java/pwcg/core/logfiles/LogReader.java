@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase1.parse;
+package pwcg.core.logfiles;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,26 +10,17 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARMissionLogFileSet;
 import pwcg.core.utils.PWCGLogger;
 
-public class AARLogReader 
+public class LogReader 
 {
-    private AARMissionLogFileSet aarLogFileMissionFile;
-    private AARLogFileSetFactory aarLogFileSetFactory = new AARLogFileSetFactory();
+    private LogFileSetFactory aarLogFileSetFactory = new LogFileSetFactory();
     private List<String> logLinesFromMission = new ArrayList<>();
 
-    public AARLogReader(AARMissionLogFileSet aarLogFileMissionFile)
-    {
-        this.aarLogFileMissionFile = aarLogFileMissionFile;
-    }
-
-    public List<String> readLogFilesForMission(Campaign campaign) throws PWCGException 
+    public List<String> readLogFilesForMission(Campaign campaign, String selectedFileSet) throws PWCGException 
     {
         try
-        {
-            String selectedFileSet = aarLogFileMissionFile.getLogFileName();
-                        
+        {                        
             aarLogFileSetFactory.determineMissionResultsFileForRequestedFileSet(selectedFileSet);
             List<String> aarLogFilesForThisSet = aarLogFileSetFactory.getLogFileSets();
             if (aarLogFilesForThisSet.size() == 0)
@@ -54,7 +45,7 @@ public class AARLogReader
         }
         else
         {
-            return AARLogKeeper.selectLogLinesToKeep(logLinesFromMission);        
+            return LogKeeper.selectLogLinesToKeep(logLinesFromMission);        
         }
     }
 

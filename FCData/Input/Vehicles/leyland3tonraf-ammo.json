@@ -2,7 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\leyland3tonraf\\",
   "vehicleType": "leyland3tonraf-ammo",
-  "vehicleName": "Leyland 3 Ton Truck Ammo",
+  "vehicleName": "Leyland 3 Ton RAF Ammo",
   "displayName": "truck",
   "countries": [
     "FRANCE",

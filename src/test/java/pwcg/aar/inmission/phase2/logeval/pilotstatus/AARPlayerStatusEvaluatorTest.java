@@ -13,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
@@ -33,6 +32,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.AType3;
 import pwcg.core.logfiles.event.IAType2;
 import pwcg.core.utils.DateUtils;
@@ -41,7 +41,7 @@ import pwcg.mission.data.MissionHeader;
 @ExtendWith(MockitoExtension.class)
 public class AARPlayerStatusEvaluatorTest
 {
-    @Mock private AARLogEventData logEventData;
+    @Mock private LogEventData logEventData;
     @Mock private AARVehicleBuilder aarVehicleBuilder;
     @Mock private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
     @Mock private AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator;

@@ -8,13 +8,8 @@
 	"subUnitIdCode": "",
 	"planeAssignments": [
 		{
-			"archType": "fw190",
-			"squadronIntroduction": "19440901",
-			"squadronWithdrawal": "19441001"
-		},
-		{
-			"archType": "fw190d",
-			"squadronIntroduction": "19441001",
+			"archType": "bf109",
+			"squadronIntroduction": "19430901",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -31,56 +26,7 @@
 		"19450310": "Dortmund",
 		"19450404": "Stormede"
 	},
-	"skins": [
-		{
-			"skinName": "I_JG27",
-			"planeType": "fw190a3",
-			"archTypes": [],
-			"startDate": "19411101",
-			"endDate": "19450601",
-			"squadId": 20111027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false
-		},
-		{
-			"skinName": "I_JG27",
-			"planeType": "fw190a5",
-			"archTypes": [],
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false
-		},
-		{
-			"skinName": "I_JG27",
-			"planeType": "fw190a8",
-			"archTypes": [],
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false
-		},
-		{
-			"skinName": "I_JG27",
-			"planeType": "fw190d9",
-			"archTypes": [],
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false
-		}
-	],
+	"skins": [],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
@@ -88,7 +34,28 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19410801",
+				"startDate": "19430101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 50
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "1944701",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

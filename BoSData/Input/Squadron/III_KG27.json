@@ -9,7 +9,7 @@
 	"planeAssignments": [
 		{
 			"archType": "he111",
-			"squadronIntroduction": "19410801",
+			"squadronIntroduction": "19390801",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -51,7 +51,7 @@
 			"skinName": "III_KG27",
 			"planeType": "he111h6",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19421101",
 			"squadId": 20133027,
 			"country": "Germany",
@@ -106,11 +106,33 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19400101",
+				"startDate": "19390801",
 				"weightedRoles": [
 					{
 						"role": "ROLE_BOMB",
-						"weight": 90
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19401001",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRAT_BOMB",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 30
+					}
+				]
+			},
+			{
+				"startDate": "19411001",
+				"weightedRoles": [
+					{
+						"role": "ROLE_BOMB",
+						"weight": 100
 					}
 				]
 			}
@@ -119,9 +141,16 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19400101",
-				"endDate": "19450601",
-				"nightMissionOdds": 20
+				"startDate": "19390801",
+				"nightMissionOdds": 10
+			},
+			{
+				"startDate": "19401001",
+				"nightMissionOdds": 80
+			},
+			{
+				"startDate": "19411001",
+				"nightMissionOdds": 10
 			}
 		]
 	},

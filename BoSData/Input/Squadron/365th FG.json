@@ -8,7 +8,7 @@
 	"planeAssignments": [
 		{
 			"archType": "p47",
-			"squadronIntroduction": "19440901",
+			"squadronIntroduction": "19430501",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -29,7 +29,7 @@
 			"skinName": "FG365",
 			"planeType": "p47d22",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19430101",
 			"endDate": "19450601",
 			"squadId": 102036022,
 			"country": "USA",
@@ -41,7 +41,7 @@
 			"skinName": "FG365",
 			"planeType": "p47d28",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19430101",
 			"endDate": "19450601",
 			"squadId": 102036022,
 			"country": "USA",
@@ -60,9 +60,22 @@
 				"startDate": "19420801",
 				"weightedRoles": [
 					{
-						"role": "ROLE_RECON",
-						"weight": 5
+						"role": "ROLE_FIGHTER",
+						"weight": 60
 					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_TRAIN_BUSTER",
+						"weight": 20
+					}
+				]
+			},
+			{
+				"startDate": "19440501",
+				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
 						"weight": 50

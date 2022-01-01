@@ -8,7 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.AARMissionLogFileSet;
+import pwcg.core.logfiles.LogFileSet;
 
 @ExtendWith(MockitoExtension.class)
 public class AARMissionLogFileSetTest
@@ -21,7 +21,7 @@ public class AARMissionLogFileSetTest
     @Test
     public void testDateParse() throws PWCGException
     {
-        AARMissionLogFileSet missionLogFileSet = new AARMissionLogFileSet();
+        LogFileSet missionLogFileSet = new LogFileSet();
         missionLogFileSet.setLogFileName("missionReport(2018-05-05_18-20-11)[0].txt");
         String dateString = missionLogFileSet.getFileSetTimeStamp();
         Assertions.assertTrue (dateString.equals("2018-05-05_18-20-11"));
