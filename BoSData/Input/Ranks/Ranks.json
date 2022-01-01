@@ -175,6 +175,146 @@
             "rankAbbrev": "Wt Off",
             "rankCountry": 103,
             "rankService": 10103
+        },
+        {
+            "rankId": 0,
+            "rankName": "Kapitan",
+            "rankAbbrev": "Kap",
+            "rankCountry": 101,
+            "rankService": 10112
+        },
+        {
+            "rankId": 1,
+            "rankName": "Starshyi Leyitenant",
+            "rankAbbrev": "SLt",
+            "rankCountry": 101,
+            "rankService": 10112
+        },
+        {
+            "rankId": 2,
+            "rankName": "Leyitenant",
+            "rankAbbrev": "Lt",
+            "rankCountry": 101,
+            "rankService": 10112
+        },
+        {
+            "rankId": 3,
+            "rankName": "Serzhant",
+            "rankAbbrev": "Szt",
+            "rankCountry": 101,
+            "rankService": 10112
+        },
+        {
+            "rankId": 4,
+            "rankName": "Yefreytor",
+            "rankAbbrev": "Yfr",
+            "rankCountry": 101,
+            "rankService": 10112
+        },
+        {
+            "rankId": 0,
+            "rankName": "Hauptmann",
+            "rankAbbrev": "Hptm",
+            "rankCountry": 201,
+            "rankService": 20111
+        },
+        {
+            "rankId": 1,
+            "rankName": "Oberleutnant",
+            "rankAbbrev": "Olt",
+            "rankCountry": 201,
+            "rankService": 20111
+        },
+        {
+            "rankId": 2,
+            "rankName": "Leutnant",
+            "rankAbbrev": "Ltn",
+            "rankCountry": 201,
+            "rankService": 20111
+        },
+        {
+            "rankId": 3,
+            "rankName": "Oberfeldwebel",
+            "rankAbbrev": "OFw",
+            "rankCountry": 201,
+            "rankService": 20111
+        },
+        {
+            "rankId": 4,
+            "rankName": "Gefreiter",
+            "rankAbbrev": "Gefr",
+            "rankCountry": 201,
+            "rankService": 20111
+        },
+        {
+            "rankId": 0,
+            "rankName": "Captain",
+            "rankAbbrev": "Capt",
+            "rankCountry": 102,
+            "rankService": 10113
+        },
+        {
+            "rankId": 1,
+            "rankName": "1st Lieutenant",
+            "rankAbbrev": "Lt",
+            "rankCountry": 102,
+            "rankService": 10113
+        },
+        {
+            "rankId": 2,
+            "rankName": "2nd Lieutenant",
+            "rankAbbrev": "2nd Lt",
+            "rankCountry": 102,
+            "rankService": 10113
+        },
+        {
+            "rankId": 3,
+            "rankName": "Sergeant",
+            "rankAbbrev": "Sgt",
+            "rankCountry": 102,
+            "rankService": 10113
+        },
+        {
+            "rankId": 4,
+            "rankName": "Corporal",
+            "rankAbbrev": "Cpl",
+            "rankCountry": 102,
+            "rankService": 10113
+        },
+		{
+            "rankId": 0,
+            "rankName": "Captain",
+            "rankAbbrev": "Capt",
+            "rankCountry": 102,
+            "rankService": 10114
+        },
+        {
+            "rankId": 1,
+            "rankName": "Lieutenant",
+            "rankAbbrev": "Lt",
+            "rankCountry": 102,
+            "rankService": 10114
+        },
+        {
+            "rankId": 2,
+            "rankName": "2nd Lieutenant",
+            "rankAbbrev": "2nd Lt",
+            "rankCountry": 102,
+            "rankService": 10114
+        },
+        {
+            "rankId": 3,
+            "rankName": "Sergeant",
+            "rankAbbrev": "Sgt",
+            "rankCountry": 102,
+            "rankService": 10114
+        },
+        {
+            "rankId": 4,
+            "rankName": "Corporal",
+            "rankAbbrev": "Cpl",
+            "rankCountry": 102,
+            "rankService": 10114
         }
     ]
 }

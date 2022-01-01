@@ -17,11 +17,16 @@ public class BoSRank implements IRankHelper
 {
     Map <Integer, Map<Integer, RankStruct>> ranksByService = new TreeMap <Integer, Map<Integer, RankStruct>>();
     
-    Map<Integer, RankStruct> ussr = new TreeMap<Integer, RankStruct>();
+    Map<Integer, RankStruct> vvs = new TreeMap<Integer, RankStruct>();
 	Map<Integer, RankStruct> luftwaffe = new TreeMap<Integer, RankStruct>();
     Map<Integer, RankStruct> iaf = new TreeMap<Integer, RankStruct>();
     Map<Integer, RankStruct> usaaf = new TreeMap<Integer, RankStruct>();
     Map<Integer, RankStruct> raf = new TreeMap<Integer, RankStruct>();
+
+    Map<Integer, RankStruct> svv = new TreeMap<Integer, RankStruct>();
+    Map<Integer, RankStruct> wehrmacht = new TreeMap<Integer, RankStruct>();
+    Map<Integer, RankStruct> usarmy = new TreeMap<Integer, RankStruct>();
+    Map<Integer, RankStruct> britisharmy = new TreeMap<Integer, RankStruct>();
 
 	public BoSRank ()
 	{
@@ -34,7 +39,7 @@ public class BoSRank implements IRankHelper
     	        RankStruct rankStruct = new RankStruct(rank.getRankName(), rank.getRankAbbrev());
     	        if (rank.getRankService() == BoSServiceManager.VVS || rank.getRankService() == BoSServiceManager.NORMANDIE)
     	        {
-    	            ussr.put(rank.getRankId(), rankStruct);
+    	            vvs.put(rank.getRankId(), rankStruct);
     	        }
                 else if (rank.getRankService() == BoSServiceManager.LUFTWAFFE)
                 {
@@ -52,17 +57,39 @@ public class BoSRank implements IRankHelper
                 {
                     raf.put(rank.getRankId(), rankStruct);
                 }
+                else if (rank.getRankService() == BoSServiceManager.WEHRMACHT)
+                {
+                    wehrmacht.put(rank.getRankId(), rankStruct);
+                }
+                else if (rank.getRankService() == BoSServiceManager.SVV)
+                {
+                    svv.put(rank.getRankId(), rankStruct);
+                }
+                else if (rank.getRankService() == BoSServiceManager.US_ARMY)
+                {
+                    usarmy.put(rank.getRankId(), rankStruct);
+                }
+                else if (rank.getRankService() == BoSServiceManager.BRITISH_ARMY)
+                {
+                    britisharmy.put(rank.getRankId(), rankStruct);
+                }
     	    }
     
             // Form a map of rank maps
-            ranksByService.put(BoSServiceManager.VVS, ussr);
-            ranksByService.put(BoSServiceManager.NORMANDIE, ussr);
+            ranksByService.put(BoSServiceManager.VVS, vvs);
+            ranksByService.put(BoSServiceManager.NORMANDIE, vvs);
             ranksByService.put(BoSServiceManager.LUFTWAFFE, luftwaffe);
             ranksByService.put(BoSServiceManager.REGIA_AERONAUTICA, iaf);
             ranksByService.put(BoSServiceManager.USAAF, usaaf);
             ranksByService.put(BoSServiceManager.RAF, raf);
             ranksByService.put(BoSServiceManager.FREE_FRENCH, raf);
             ranksByService.put(BoSServiceManager.RCAF, raf);
+            
+            ranksByService.put(BoSServiceManager.WEHRMACHT, wehrmacht);
+            ranksByService.put(BoSServiceManager.SVV, svv);
+            ranksByService.put(BoSServiceManager.US_ARMY, usarmy);
+            ranksByService.put(BoSServiceManager.BRITISH_ARMY, britisharmy);
+
 	    }
 	    catch (Exception e)
 	    {
@@ -127,7 +154,7 @@ public class BoSRank implements IRankHelper
             return abbrev;
         }
         
-        abbrev = getRankAbbrevByService (rank, ussr);
+        abbrev = getRankAbbrevByService (rank, vvs);
         if (abbrev.length() > 0)
         {
             return abbrev;
@@ -145,7 +172,7 @@ public class BoSRank implements IRankHelper
             return abbrev;
         }
 
-        abbrev = getRankAbbrevByService (rank, raf);
+        abbrev = getRankAbbrevByService (rank, wehrmacht);
         if (abbrev.length() > 0)
         {
             return abbrev;

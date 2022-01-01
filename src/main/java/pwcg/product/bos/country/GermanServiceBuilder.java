@@ -19,7 +19,7 @@ public class GermanServiceBuilder
     public static String WEHRMACHT_NAME = "Wehrmacht";
     public static String WEHRMACHT_ICON = "ServiceWehrmacht";
 
-    public static List <ArmedService> createGermanAirServices() throws PWCGException
+    public static List <ArmedService> createServices() throws PWCGException
     {
         List <ArmedService> germanServices = new ArrayList<ArmedService>();
         germanServices.add(createLuftwaffe());
@@ -86,7 +86,7 @@ public class GermanServiceBuilder
         wehrmacht.addServiceQuality(DateUtils.getDateYYYYMMDD("19410101"), 90);
         wehrmacht.addServiceQuality(DateUtils.getDateYYYYMMDD("19420101"), 90);
         wehrmacht.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
-        wehrmacht.addServiceQuality(DateUtils.getDateYYYYMMDD("19440601"), 70);
+        wehrmacht.addServiceQuality(DateUtils.getDateYYYYMMDD("19440601"), 60);
 
         wehrmacht.setDailyPersonnelReplacementRatePerSquadron(1.3);
         wehrmacht.setDailyEquipmentReplacementRatePerSquadron(1.0);

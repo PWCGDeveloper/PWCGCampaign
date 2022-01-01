@@ -15,14 +15,15 @@ import pwcg.gui.colors.VVSColorMap;
 public class RussianServiceBuilder
 {
     private static String VVS_NAME ="Voyenno-Vozdushnye Sily";
-    private static String NORMANDIE_NAME = "Normandie";
-    private static String RUSSIAN_ARMY_NAME ="Sovetskiye Sukhoputnye Voyska";
-    
     private static String VVS_ICON ="ServiceVVS";
+
+    private static String NORMANDIE_NAME = "Normandie";
     private static String NORMANDIE_ICON ="ServiceNormandie";
+
+    private static String RUSSIAN_ARMY_NAME ="Sovetskiye Sukhoputnye Voyska";
     private static String RUSSIAN_ARMY_ICON ="ServiceSSV";
 
-    public static List <ArmedService> createRussianAirServices() throws PWCGException
+    public static List <ArmedService> createServices() throws PWCGException
     {
         List <ArmedService> russianServices = new ArrayList<ArmedService>();
         russianServices.add(createVVS());
@@ -98,7 +99,7 @@ public class RussianServiceBuilder
     private static ArmedService createRussianArmy() throws PWCGException
     {
         ArmedService svv = new ArmedService();
-        svv.setServiceId(BoSServiceManager.RUSSIAN_ARMY);
+        svv.setServiceId(BoSServiceManager.SVV);
         svv.setCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         svv.setNameCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         svv.setName(RUSSIAN_ARMY_NAME);
