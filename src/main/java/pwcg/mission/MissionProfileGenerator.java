@@ -2,8 +2,7 @@ package pwcg.mission;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -27,31 +26,9 @@ public class MissionProfileGenerator
 
     private MissionProfile determineProfile() throws PWCGException
     {
-        boolean useTactical = useTacticalProfile();
-        if (useTactical)
-        {
-            return MissionProfile.DAY_TACTICAL_MISSION;
-        }
-        else 
-        {
-            return MissionProfile.DAY_STRATEGIC_MISSION;
-        }
+        return MissionProfile.DAY_TACTICAL_MISSION;
     }
 
-    private boolean useTacticalProfile() throws PWCGException
-    {
-        boolean useTactical = false;
-        for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
-        {
-            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            if (!(playerSquadron.isStrategicOnly(campaign.getDate())))
-            {
-                useTactical = true;
-            }
-        }
-        return useTactical;
-    }
-     
     private MissionProfile convertToNightMission(MissionProfile missionProfile) throws PWCGException
     {
         if (isMissionNightMission()) 
@@ -86,7 +63,7 @@ public class MissionProfileGenerator
         int nightMissionOdds = 100;
         for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
         {
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             int squadronNightOdds = squadron.getNightOdds(campaign.getDate());
             if (squadronNightOdds < nightMissionOdds)
             {

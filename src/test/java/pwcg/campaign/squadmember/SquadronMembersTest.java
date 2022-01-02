@@ -12,29 +12,32 @@ import org.mockito.quality.Strictness;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-public class SquadronMembersTest
+public class CrewMembersTest
 {
     @Mock
     private Campaign campaign;
     
     @Mock
-    private SquadronMember squadronMember1;
+    private CrewMember squadronMember1;
     
     @Mock
-    private SquadronMember squadronMember2;
+    private CrewMember squadronMember2;
     
     @Mock
-    private SquadronMember squadronMember3;
+    private CrewMember squadronMember3;
     
     @Mock
-    private SquadronMember squadronMember4;
+    private CrewMember squadronMember4;
     
-    private  SquadronMembers squadronMembers;
+    private  CrewMembers squadronMembers;
     
     @BeforeEach
     public void setupTest() throws PWCGException 
@@ -52,46 +55,46 @@ public class SquadronMembersTest
         Mockito.when(squadronMember3.getName()).thenReturn("Jimmy Page");
         Mockito.when(squadronMember4.getName()).thenReturn("Robert Plant");
 
-        squadronMembers = new SquadronMembers();
-        squadronMembers.addToSquadronMemberCollection(squadronMember1);
-        squadronMembers.addToSquadronMemberCollection(squadronMember2);
+        squadronMembers = new CrewMembers();
+        squadronMembers.addToCrewMemberCollection(squadronMember1);
+        squadronMembers.addToCrewMemberCollection(squadronMember2);
     }
 
     @Test
-    public void addSquadronMember() throws PWCGException 
+    public void addCrewMember() throws PWCGException 
     {
-        squadronMembers.addToSquadronMemberCollection(squadronMember3);
+        squadronMembers.addToCrewMemberCollection(squadronMember3);
         assert(squadronMembers.getActiveCount(campaign.getDate()) == 3);
     }
 
     @Test
-    public void removeAnySquadronMember() throws PWCGException 
+    public void removeAnyCrewMember() throws PWCGException 
     {
-        squadronMembers.addToSquadronMemberCollection(squadronMember3);
-        squadronMembers.addToSquadronMemberCollection(squadronMember4);
-        SquadronMember squadronMember = squadronMembers.findSquadronMember();
-        squadronMembers.removeSquadronMember(squadronMember.getSerialNumber());
+        squadronMembers.addToCrewMemberCollection(squadronMember3);
+        squadronMembers.addToCrewMemberCollection(squadronMember4);
+        CrewMember crewMember = squadronMembers.findCrewMember();
+        squadronMembers.removeCrewMember(crewMember.getSerialNumber());
         assert(squadronMembers.getActiveCount(campaign.getDate()) == 3);
     }
 
     @Test
-    public void removeSquadronMember() throws PWCGException 
+    public void removeCrewMember() throws PWCGException 
     {
-        squadronMembers.addToSquadronMemberCollection(squadronMember3);
-        squadronMembers.addToSquadronMemberCollection(squadronMember4);
-        SquadronMember squadronMember = squadronMembers.removeSquadronMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 3);
+        squadronMembers.addToCrewMemberCollection(squadronMember3);
+        squadronMembers.addToCrewMemberCollection(squadronMember4);
+        CrewMember crewMember = squadronMembers.removeCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 3);
         assert(squadronMembers.getActiveCount(campaign.getDate()) == 3);
-        assert(squadronMember.getSerialNumber() == (SerialNumber.AI_STARTING_SERIAL_NUMBER + 3));
+        assert(crewMember.getSerialNumber() == (SerialNumber.AI_STARTING_SERIAL_NUMBER + 3));
     }
 
     @Test
-    public void getSquadronMemberByName() throws PWCGException 
+    public void getCrewMemberByName() throws PWCGException 
     {
-        squadronMembers.addToSquadronMemberCollection(squadronMember3);
-        squadronMembers.addToSquadronMemberCollection(squadronMember4);
-        SquadronMember squadronMember = squadronMembers.getSquadronMemberByName("Jimmy Page");
+        squadronMembers.addToCrewMemberCollection(squadronMember3);
+        squadronMembers.addToCrewMemberCollection(squadronMember4);
+        CrewMember crewMember = squadronMembers.getCrewMemberByName("Jimmy Page");
         assert(squadronMembers.getActiveCount(campaign.getDate()) == 4);
-        assert(squadronMember.getSerialNumber() == (SerialNumber.AI_STARTING_SERIAL_NUMBER + 3));
+        assert(crewMember.getSerialNumber() == (SerialNumber.AI_STARTING_SERIAL_NUMBER + 3));
     }
 
 }

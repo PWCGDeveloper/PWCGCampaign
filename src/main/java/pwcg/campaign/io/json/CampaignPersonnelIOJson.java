@@ -6,10 +6,10 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -35,7 +35,7 @@ public class CampaignPersonnelIOJson
 
     private static void writeSquadrons(Campaign campaign) throws PWCGException
     {
-        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
             writeSquadron(campaign, squadronPersonnel.getSquadron().getSquadronId());
         }
@@ -43,11 +43,11 @@ public class CampaignPersonnelIOJson
 
     public static void writeSquadron(Campaign campaign, int squadronId) throws PWCGException
     {
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
-        SquadronMembers squadronMembersToWrite = squadronPersonnel.getSquadronMembers();
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadronId);
+        CrewMembers squadronMembersToWrite = squadronPersonnel.getCrewMembers();
 
         String campaignPersonnelDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
-        PwcgJsonWriter<SquadronMembers> jsonWriterSquadrons = new PwcgJsonWriter<>();
+        PwcgJsonWriter<CrewMembers> jsonWriterSquadrons = new PwcgJsonWriter<>();
         jsonWriterSquadrons.writeAsJson(squadronMembersToWrite, campaignPersonnelDir, squadronPersonnel.getSquadron().getSquadronId() + ".json");
     }
 
@@ -79,15 +79,15 @@ public class CampaignPersonnelIOJson
 
     private static void readSquadron(Campaign campaign, String campaignPersonnelDir, File jsonFile) throws PWCGException
     {
-        JsonObjectReader<SquadronMembers> jsoReader = new JsonObjectReader<>(SquadronMembers.class);
-        SquadronMembers squadronMembers = jsoReader.readJsonFile(campaignPersonnelDir, jsonFile.getName());
+        JsonObjectReader<CrewMembers> jsoReader = new JsonObjectReader<>(CrewMembers.class);
+        CrewMembers squadronMembers = jsoReader.readJsonFile(campaignPersonnelDir, jsonFile.getName());
         
         int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
         if (squadron != null)
         {
-            SquadronPersonnel squadronPersonnel = new SquadronPersonnel(campaign, squadron);
-            squadronPersonnel.setSquadronMembers(squadronMembers);
+            CompanyPersonnel squadronPersonnel = new CompanyPersonnel(campaign, squadron);
+            squadronPersonnel.setCrewMembers(squadronMembers);
             campaign.getPersonnelManager().addPersonnelForSquadron(squadronPersonnel);
         }
         else

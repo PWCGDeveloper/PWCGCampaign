@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -193,7 +193,7 @@ public class ImageCache
             return null;
         }
         
-        SquadronMember referencePlayer = campaign.getReferencePlayer();
+        CrewMember referencePlayer = campaign.getReferencePlayer();
         if (referencePlayer == null)
         {
             return null;

@@ -7,7 +7,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.skin.SkinFilter;
 import pwcg.campaign.skin.SkinManager;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -32,7 +32,7 @@ public class MissionSkinSetBuilder
         SkinManager skinManager = PWCGContext.getInstance().getSkinManager();
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            Squadron squadron = flight.getSquadron();
+            Company squadron = flight.getSquadron();
             Date date = flight.getCampaign().getDate();
 
             List<Skin> factorySkinsForPlane = skinManager.getSkinsBySquadronPlaneDate(plane.getType(), Skin.FACTORY_GENERIC, date);

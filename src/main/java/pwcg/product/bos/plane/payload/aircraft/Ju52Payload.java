@@ -38,15 +38,11 @@ public class Ju52Payload extends PlanePayload
     protected int createWeaponsPayloadForPlane(IFlight flight)
     {
         int selectedPayloadId = 0;
-        if (flight.getFlightType() == FlightTypes.TRANSPORT || flight.getFlightType() == FlightTypes.CARGO_DROP)
+        if (flight.getFlightType() == FlightTypes.CARGO_DROP)
         {
             selectedPayloadId = selectCargoPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.PARATROOP_DROP)
-        {
-            selectedPayloadId = selectParatroopPayload();
-        }
-        else if (flight.getFlightType() == FlightTypes.SPY_EXTRACT)
         {
             selectedPayloadId = selectParatroopPayload();
         }

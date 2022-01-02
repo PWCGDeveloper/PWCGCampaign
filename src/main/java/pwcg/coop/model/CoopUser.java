@@ -24,7 +24,7 @@ public class CoopUser
         return username;
     }
 
-    public void addPersona(String campaignName, int serialNumber, String pilotName)
+    public void addPersona(String campaignName, int serialNumber, String crewMemberName)
     {
         if (!campaignPersonas.containsKey(campaignName))
         {
@@ -33,7 +33,7 @@ public class CoopUser
         }
 
         CoopCampaignPersonas coopCampaignPersona = campaignPersonas.get(campaignName);
-        coopCampaignPersona.addPersona(serialNumber, pilotName);
+        coopCampaignPersona.addPersona(serialNumber, crewMemberName);
     }
     
     public void removePersona(String campaignName, int serialNumber)

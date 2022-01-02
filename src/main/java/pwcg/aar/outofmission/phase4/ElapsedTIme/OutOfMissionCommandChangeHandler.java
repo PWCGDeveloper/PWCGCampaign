@@ -2,9 +2,9 @@ package pwcg.aar.outofmission.phase4.ElapsedTIme;
 
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.core.exception.PWCGException;
 
 public class OutOfMissionCommandChangeHandler
@@ -20,17 +20,17 @@ public class OutOfMissionCommandChangeHandler
     {
         AARPersonnelLosses personnelLosses = new AARPersonnelLosses();
         
-        for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        for (CrewMember player : campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList())
         {
-            if (player.determineIsSquadronMemberCommander())
+            if (player.determineIsCrewMemberCommander())
             {
-            	SquadronPersonnel playerPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(player.getSquadronId());
-                for (SquadronMember squadronMember : playerPersonnel.getSquadronMembers().getSquadronMemberList())
+            	CompanyPersonnel playerPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(player.getCompanyId());
+                for (CrewMember crewMember : playerPersonnel.getCrewMembers().getCrewMemberList())
                 {
-                    if (!squadronMember.isPlayer() && squadronMember.determineIsSquadronMemberCommander())
+                    if (!crewMember.isPlayer() && crewMember.determineIsCrewMemberCommander())
                     {
-                        squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_TRANSFERRED, campaign.getDate(), null);
-                        personnelLosses.addPersonnelTransferredHome(squadronMember);
+                        crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_TRANSFERRED, campaign.getDate(), null);
+                        personnelLosses.addPersonnelTransferredHome(crewMember);
                     }
                 }
             }

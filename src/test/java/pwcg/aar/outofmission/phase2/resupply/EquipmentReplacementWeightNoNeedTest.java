@@ -17,7 +17,7 @@ import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.resupply.depot.EquipmentNeedForSquadronsCalculator;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -42,7 +42,7 @@ public class EquipmentReplacementWeightNoNeedTest
     {
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
         EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);
@@ -56,7 +56,7 @@ public class EquipmentReplacementWeightNoNeedTest
     {
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10101);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
         EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);
@@ -70,7 +70,7 @@ public class EquipmentReplacementWeightNoNeedTest
     {
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20202);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
         EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);

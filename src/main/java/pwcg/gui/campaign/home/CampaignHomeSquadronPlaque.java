@@ -11,7 +11,7 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -57,7 +57,7 @@ public class CampaignHomeSquadronPlaque extends JPanel
         descGridPanel.add(PWCGLabelFactory.makeDummyLabel());
         descGridPanel.add(PWCGLabelFactory.makeDummyLabel());
 
-        Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
 
         String assignedToString = InternationalizationManager.getTranslation("Assigned to");
         JLabel lAssignedTo = PWCGLabelFactory.makeTransparentLabel(assignedToString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);

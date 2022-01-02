@@ -3,14 +3,14 @@ package pwcg.gui.utils;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 
 public class ContextSpecificImages
 {
     public static String menuPathForNation(Campaign campaign) throws PWCGException 
     {
-		SquadronMember referencePlayer = campaign.findReferencePlayer();
+		CrewMember referencePlayer = campaign.findReferencePlayer();
         String nationality = referencePlayer.determineSquadron().getCountry().getNationality();
         String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Menus\\" + nationality + "\\";
         
@@ -74,9 +74,9 @@ public class ContextSpecificImages
         return picPath;
     }
 
-    public static String imagesPilotPictures() 
+    public static String imagesCrewMemberPictures() 
     {
-        String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "PilotPictures\\";
+        String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "CrewMemberPictures\\";
         
         return picPath;
     }

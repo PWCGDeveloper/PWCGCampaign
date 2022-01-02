@@ -18,6 +18,12 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.crewmember.Victory;
+import pwcg.campaign.crewmember.VictoryBuilder;
+import pwcg.campaign.crewmember.VictoryDescription;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -39,10 +45,10 @@ public class VictoryBuilderTest
     private CampaignPersonnelManager personnelManager;
     
     @Mock
-    private SquadronMember victor;
+    private CrewMember victor;
     
     @Mock
-    private SquadronMember victim;
+    private CrewMember victim;
 
     @BeforeEach
     public void setupTest() throws PWCGException
@@ -71,20 +77,20 @@ public class VictoryBuilderTest
         LogPlane logVictor = new LogPlane(1);
         logVictor.setCrashedInSight(true);
         logVictor.setName(victor.getNameAndRank());
-        logVictor.setPilotSerialNumber(victor.getSerialNumber());
+        logVictor.setCrewMemberSerialNumber(victor.getSerialNumber());
         logVictor.setVehicleType("Bf109 F-2");
         logVictor.setSquadronId(20111052);
-        logVictor.intializePilot(victor.getSerialNumber());
-        logVictor.getLogPilot().setStatus(SquadronMemberStatus.STATUS_ACTIVE);
+        logVictor.intializeCrewMember(victor.getSerialNumber());
+        logVictor.getLogCrewMember().setStatus(CrewMemberStatus.STATUS_ACTIVE);
 
         LogPlane logVictim = new LogPlane(2);
         logVictim.setCrashedInSight(true);
         logVictim.setName(victim.getNameAndRank());
-        logVictim.setPilotSerialNumber(victim.getSerialNumber());
+        logVictim.setCrewMemberSerialNumber(victim.getSerialNumber());
         logVictim.setVehicleType("Il-2 mod.1941");
         logVictim.setSquadronId(10121312);
-        logVictim.intializePilot(victim.getSerialNumber());
-        logVictim.getLogPilot().setStatus(SquadronMemberStatus.STATUS_CAPTURED);
+        logVictim.intializeCrewMember(victim.getSerialNumber());
+        logVictim.getLogCrewMember().setStatus(CrewMemberStatus.STATUS_CAPTURED);
 
         LogVictory logVictory = new LogVictory(10);
         logVictory.setLocation(new Coordinate (100000, 0, 100000));
@@ -94,8 +100,8 @@ public class VictoryBuilderTest
         VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
         Victory victory = victoryBuilder.buildVictory(DateUtils.getDateYYYYMMDD("19421103"), logVictory);
         
-        Assertions.assertTrue (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
-        Assertions.assertTrue (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictor().getCrewMemberName().equals(victor.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictim().getCrewMemberName().equals(victim.getNameAndRank()));
         
         VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
         String victoryDescriptionText = victoryDescription.createVictoryDescription();
@@ -111,20 +117,20 @@ public class VictoryBuilderTest
         LogPlane logVictor = new LogPlane(1);
         logVictor.setCrashedInSight(true);
         logVictor.setName(victor.getNameAndRank());
-        logVictor.setPilotSerialNumber(victor.getSerialNumber());
+        logVictor.setCrewMemberSerialNumber(victor.getSerialNumber());
         logVictor.setVehicleType("Bf109 F-2");
         logVictor.setSquadronId(20111052);
-        logVictor.intializePilot(victor.getSerialNumber());
-        logVictor.getLogPilot().setStatus(SquadronMemberStatus.STATUS_ACTIVE);
+        logVictor.intializeCrewMember(victor.getSerialNumber());
+        logVictor.getLogCrewMember().setStatus(CrewMemberStatus.STATUS_ACTIVE);
 
         LogPlane logVictim = new LogPlane(2);
         logVictim.setCrashedInSight(true);
         logVictim.setName(victim.getNameAndRank());
-        logVictim.setPilotSerialNumber(victim.getSerialNumber());
+        logVictim.setCrewMemberSerialNumber(victim.getSerialNumber());
         logVictim.setVehicleType("Il-2 mod.1941");
         logVictim.setSquadronId(10121312);
-        logVictim.intializePilot(victim.getSerialNumber());
-        logVictim.getLogPilot().setStatus(SquadronMemberStatus.STATUS_CAPTURED);
+        logVictim.intializeCrewMember(victim.getSerialNumber());
+        logVictim.getLogCrewMember().setStatus(CrewMemberStatus.STATUS_CAPTURED);
 
         LogVictory logVictory = new LogVictory(10);
         logVictory.setLocation(new Coordinate (100000, 0, 100000));
@@ -134,8 +140,8 @@ public class VictoryBuilderTest
         VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
         Victory victory = victoryBuilder.buildVictory(DateUtils.getDateYYYYMMDD("19421103"), logVictory);
         
-        Assertions.assertTrue (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
-        Assertions.assertTrue (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictor().getCrewMemberName().equals(victor.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictim().getCrewMemberName().equals(victim.getNameAndRank()));
         
         VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
         String victoryDescriptionText = victoryDescription.createVictoryDescription();
@@ -151,11 +157,11 @@ public class VictoryBuilderTest
         LogPlane logVictor = new LogPlane(1);
         logVictor.setCrashedInSight(true);
         logVictor.setName(victor.getNameAndRank());
-        logVictor.setPilotSerialNumber(victor.getSerialNumber());
+        logVictor.setCrewMemberSerialNumber(victor.getSerialNumber());
         logVictor.setVehicleType("Bf109 F-2");
         logVictor.setSquadronId(20111052);
-        logVictor.intializePilot(victor.getSerialNumber());
-        logVictor.getLogPilot().setStatus(SquadronMemberStatus.STATUS_ACTIVE);
+        logVictor.intializeCrewMember(victor.getSerialNumber());
+        logVictor.getLogCrewMember().setStatus(CrewMemberStatus.STATUS_ACTIVE);
 
         LogGroundUnit logVictim = new LogGroundUnit(1000);
         logVictim.setName(victim.getNameAndRank());
@@ -169,7 +175,7 @@ public class VictoryBuilderTest
         VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
         Victory victory = victoryBuilder.buildVictory(DateUtils.getDateYYYYMMDD("19421103"), logVictory);
         
-        Assertions.assertTrue (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictor().getCrewMemberName().equals(victor.getNameAndRank()));
         Assertions.assertTrue (victory.getVictim().getType().equals("gaz-aa"));
         
         VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
@@ -188,11 +194,11 @@ public class VictoryBuilderTest
         LogPlane logVictor = new LogPlane(1);
         logVictor.setCrashedInSight(true);
         logVictor.setName(victor.getNameAndRank());
-        logVictor.setPilotSerialNumber(victor.getSerialNumber());
+        logVictor.setCrewMemberSerialNumber(victor.getSerialNumber());
         logVictor.setVehicleType("Ju 88 A-4");
         logVictor.setSquadronId(20111052);
-        logVictor.intializePilot(victor.getSerialNumber());
-        logVictor.getLogPilot().setStatus(SquadronMemberStatus.STATUS_ACTIVE);
+        logVictor.intializeCrewMember(victor.getSerialNumber());
+        logVictor.getLogCrewMember().setStatus(CrewMemberStatus.STATUS_ACTIVE);
 
         AType12 atype12 = new AType12("200", "Turret_Ju88A4_1", "Turret_Ju88A4_1", logVictor.getCountry(), logVictor.getId(), new Coordinate(500000, 0, 50000));
         LogTurret logVictorTurret = logVictor.createTurret(atype12);
@@ -200,11 +206,11 @@ public class VictoryBuilderTest
         LogPlane logVictim = new LogPlane(3);
         logVictim.setCrashedInSight(true);
         logVictim.setName(victim.getNameAndRank());
-        logVictim.setPilotSerialNumber(victim.getSerialNumber());
+        logVictim.setCrewMemberSerialNumber(victim.getSerialNumber());
         logVictim.setVehicleType("Il-2 mod.1941");
         logVictim.setSquadronId(10121312);
-        logVictim.intializePilot(victim.getSerialNumber());
-        logVictim.getLogPilot().setStatus(SquadronMemberStatus.STATUS_CAPTURED);
+        logVictim.intializeCrewMember(victim.getSerialNumber());
+        logVictim.getLogCrewMember().setStatus(CrewMemberStatus.STATUS_CAPTURED);
 
         LogVictory logVictory = new LogVictory(10);
         logVictory.setLocation(new Coordinate (100000, 0, 100000));
@@ -214,9 +220,9 @@ public class VictoryBuilderTest
         VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
         Victory victory = victoryBuilder.buildVictory(DateUtils.getDateYYYYMMDD("19421103"), logVictory);
 
-        Assertions.assertTrue (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictor().getCrewMemberName().equals(victor.getNameAndRank()));
         Assertions.assertTrue (victory.getVictor().isGunner());
-        Assertions.assertTrue (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictim().getCrewMemberName().equals(victim.getNameAndRank()));
 
         VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
         String victoryDescriptionText = victoryDescription.createVictoryDescription();

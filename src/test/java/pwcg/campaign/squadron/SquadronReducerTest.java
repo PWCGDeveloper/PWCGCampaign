@@ -28,11 +28,11 @@ public class SquadronReducerTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_52_PROFILE_STALINGRAD);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        List<Squadron> allSquadrons = squadronManager.getAllSquadrons();
-        List<Squadron> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
+        List<Company> allSquadrons = squadronManager.getAllSquadrons();
+        List<Company> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
         
         assert(squadronsWithoutAnomalies.size() > 30);
-        for (Squadron squadron : squadronsWithoutAnomalies)
+        for (Company squadron : squadronsWithoutAnomalies)
         {
             Assertions.assertTrue (squadron.getSquadronId() != 20115021);
             Assertions.assertTrue (squadron.getSquadronId() != 20111051);
@@ -44,13 +44,13 @@ public class SquadronReducerTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        List<Squadron> allSquadrons = squadronManager.getAllSquadrons();
-        List<Squadron> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
+        List<Company> allSquadrons = squadronManager.getAllSquadrons();
+        List<Company> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
         
         boolean jg51Found = false;
         
         assert(squadronsWithoutAnomalies.size() > 30);
-        for (Squadron squadron : squadronsWithoutAnomalies)
+        for (Company squadron : squadronsWithoutAnomalies)
         {
             Assertions.assertTrue (squadron.getSquadronId() != 20115021);
             
@@ -69,14 +69,14 @@ public class SquadronReducerTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        List<Squadron> allSquadrons = squadronManager.getAllSquadrons();
-        List<Squadron> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
+        List<Company> allSquadrons = squadronManager.getAllSquadrons();
+        List<Company> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
         
         boolean gruppo21Found = false;
         boolean jg51Found = false;
         
         assert(squadronsWithoutAnomalies.size() > 30);
-        for (Squadron squadron : squadronsWithoutAnomalies)
+        for (Company squadron : squadronsWithoutAnomalies)
         {            
             if (squadron.getSquadronId() != 20115021)
             {

@@ -39,7 +39,7 @@ public class CampaignHomeGUILeftPanelBuilder
         buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         makeSpacedmenuItem(buttonPanel, "Mission", "CampMission", "Mission actions: new mission, lone wolf, combat report");        
-        makeSpacedmenuItem(buttonPanel, "Personnel", "CampPersonnel", "Personnel actions: add pilot, manage coop pilots, reference pilot, skin management");        
+        makeSpacedmenuItem(buttonPanel, "Personnel", "CampPersonnel", "Personnel actions: add crewMember, manage coop crewMembers, reference crewMember, skin management");        
         makeSpacedmenuItem(buttonPanel, "Activity", "CampActivity", "Campaign activities: leave, transfer, journal, squadron logs");        
         makeSpacedmenuItem(buttonPanel, "Intelligence", "CampIntel", "View intelligence: report, map, depot, emergency resupply");
         makeSpacedmenuItem(buttonPanel, "Configuration", "CampConfig", "Set configuration for this campaign: simple and advanced");

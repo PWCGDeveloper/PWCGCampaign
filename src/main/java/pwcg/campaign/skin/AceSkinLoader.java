@@ -4,7 +4,7 @@ import java.util.Map;
 
 import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.HistoricalAce;
+import pwcg.campaign.crewmember.HistoricalAce;
 import pwcg.core.exception.PWCGException;
 
 public class AceSkinLoader

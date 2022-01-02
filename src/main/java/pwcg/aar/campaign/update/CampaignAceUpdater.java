@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.TankAce;
+import pwcg.campaign.crewmember.Victory;
 
 public class CampaignAceUpdater 
 {
@@ -32,13 +32,13 @@ public class CampaignAceUpdater
 
     private void updateAceMissionsFlown()
     {
-        for (Ace ace : campaign.getPersonnelManager().getCampaignAces().getActiveCampaignAces().values())
+        for (TankAce ace : campaign.getPersonnelManager().getCampaignAces().getActiveCampaignAces().values())
 		{
-			if (ace.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
+			if (ace.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_ACTIVE)
 			{
-				int missionFlown = ace.getMissionFlown();
+				int missionFlown = ace.getBattlesFought();
 				missionFlown += 3;
-				ace.setMissionFlown(missionFlown);
+				ace.setBattlesFought(missionFlown);
 			}
 		}
     }
@@ -48,7 +48,7 @@ public class CampaignAceUpdater
     {
         for (Integer serialNumber : aceVictories.keySet())
 		{
-			Ace ace = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(serialNumber);
+			TankAce ace = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(serialNumber);
 			if (ace != null)
 			{
     			for (Victory victory : aceVictories.get(serialNumber)) 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
@@ -12,16 +12,16 @@ import pwcg.core.utils.PWCGLogger;
 
 public class CoopPersonaDataBuilder
 {
-    public List<CoopDisplayRecord> getPlayerSquadronMembersForUser(Campaign campaign) throws PWCGException
+    public List<CoopDisplayRecord> getPlayerCrewMembersForUser(Campaign campaign) throws PWCGException
     {
         List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
 
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+        for (CrewMember crewMember : campaign.getPersonnelManager().getAllPlayers().getCrewMemberList())
         {
             try
             {
-                CoopUser coopUser = CoopUserManager.getIntance().getCoopUserForSquadronMember(campaign.getName(), squadronMember.getSerialNumber());
-                CoopDisplayRecord coopDisplayRecord = formCoopDisplayRecordsForUser(campaign, coopUser, squadronMember);
+                CoopUser coopUser = CoopUserManager.getIntance().getCoopUserForCrewMember(campaign.getName(), crewMember.getSerialNumber());
+                CoopDisplayRecord coopDisplayRecord = formCoopDisplayRecordsForUser(campaign, coopUser, crewMember);
                 coopDisplayRecords.add(coopDisplayRecord);
             }
             catch (Exception e)
@@ -33,7 +33,7 @@ public class CoopPersonaDataBuilder
     }
     
     
-    private CoopDisplayRecord formCoopDisplayRecordsForUser(Campaign campaign, CoopUser coopUser, SquadronMember squadronMember) throws PWCGException
+    private CoopDisplayRecord formCoopDisplayRecordsForUser(Campaign campaign, CoopUser coopUser, CrewMember crewMember) throws PWCGException
     {
         String coopUsername = "Not Assigned";
         if (coopUser != null)
@@ -43,11 +43,11 @@ public class CoopPersonaDataBuilder
         
         CoopDisplayRecord coopDisplayRecord = new CoopDisplayRecord();
         coopDisplayRecord.setUsername(coopUsername);
-        coopDisplayRecord.setPilorNameAndRank(squadronMember.getNameAndRank());
+        coopDisplayRecord.setPilorNameAndRank(crewMember.getNameAndRank());
         coopDisplayRecord.setCampaignName(campaign.getCampaignData().getName());
-        coopDisplayRecord.setSquadronName(squadronMember.determineSquadron().determineDisplayName(campaign.getDate()));
-        coopDisplayRecord.setPilotStatus(squadronMember.getPilotActiveStatus());
-        coopDisplayRecord.setPilotSerialNumber(squadronMember.getSerialNumber());
+        coopDisplayRecord.setSquadronName(crewMember.determineSquadron().determineDisplayName(campaign.getDate()));
+        coopDisplayRecord.setCrewMemberStatus(crewMember.getCrewMemberActiveStatus());
+        coopDisplayRecord.setCrewMemberSerialNumber(crewMember.getSerialNumber());
 
         return coopDisplayRecord;
     }

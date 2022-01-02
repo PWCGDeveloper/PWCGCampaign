@@ -1,22 +1,22 @@
 package pwcg.aar.prelim;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 
 public class CampaignMembersInMissionFinder
 {
-    public SquadronMembers determineCampaignMembersInMission(Campaign campaign, PwcgMissionData pwcgMissionData) throws PWCGException
+    public CrewMembers determineCampaignMembersInMission(Campaign campaign, PwcgMissionData pwcgMissionData) throws PWCGException
     {
-        SquadronMembers campaignMembersInMission = new SquadronMembers();
+        CrewMembers campaignMembersInMission = new CrewMembers();
         for (PwcgGeneratedMissionPlaneData missionPlane : pwcgMissionData.getMissionPlanes().values())
         {
-            SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(missionPlane.getPilotSerialNumber());
-            if (pilot != null)
+            CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(missionPlane.getCrewMemberSerialNumber());
+            if (crewMember != null)
             {
-                campaignMembersInMission.addToSquadronMemberCollection(pilot);
+                campaignMembersInMission.addToCrewMemberCollection(crewMember);
             }
         }
 

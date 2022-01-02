@@ -17,7 +17,7 @@ import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -25,7 +25,7 @@ import pwcg.core.utils.DateUtils;
 public class SquadronMoveHandlerTest
 {
     @Mock private Campaign campaign;
-    @Mock Squadron squadron;
+    @Mock Company squadron;
     @Mock Airfield currentAirfield;
     @Mock Airfield newAirfield;
 

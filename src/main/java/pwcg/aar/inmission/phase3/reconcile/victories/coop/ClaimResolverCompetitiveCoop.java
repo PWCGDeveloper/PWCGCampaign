@@ -11,7 +11,7 @@ import pwcg.aar.inmission.phase3.reconcile.victories.common.GroundDeclarationRes
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictoryEventHandler;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.core.exception.PWCGException;
 
 public class ClaimResolverCompetitiveCoop implements IClaimResolver
@@ -34,7 +34,7 @@ public class ClaimResolverCompetitiveCoop implements IClaimResolver
         ConfirmedVictories verifiedAirMissionResultVictorys = createAirVictories(victorySorter);
         ConfirmedVictories verifiedGroundMissionResultVictorys = createGroundVictories(victorySorter);
         ConfirmedVictories verifiedMissionResultVictorys = mergeVictories(verifiedAirMissionResultVictorys, verifiedGroundMissionResultVictorys);
-        createVictoriesByPilot(verifiedMissionResultVictorys);
+        createVictoriesByCrewMember(verifiedMissionResultVictorys);
         return reconciledMissionData;
     }
 
@@ -67,7 +67,7 @@ public class ClaimResolverCompetitiveCoop implements IClaimResolver
         return verifiedMissionResultVictorys;
     }
 
-    private void createVictoriesByPilot(ConfirmedVictories verifiedMissionResultVictorys) throws PWCGException
+    private void createVictoriesByCrewMember(ConfirmedVictories verifiedMissionResultVictorys) throws PWCGException
     {
         VictoryEventHandler victoryHandler = new VictoryEventHandler(campaign);
         Map<Integer, List<Victory>> victories = victoryHandler.recordVictories(verifiedMissionResultVictorys);

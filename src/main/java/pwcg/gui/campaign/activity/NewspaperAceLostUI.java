@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -30,9 +30,9 @@ public class NewspaperAceLostUI extends JPanel
     private static int NEWSPAPER_IMAGE_HEIGHT = 1000;
     
     private static final long serialVersionUID = 1L;
-    private SquadronMember ace;
+    private CrewMember ace;
 
-    public NewspaperAceLostUI(SquadronMember ace)
+    public NewspaperAceLostUI(CrewMember ace)
     {
         this.setOpaque(false);
 
@@ -98,7 +98,7 @@ public class NewspaperAceLostUI extends JPanel
 
     private BufferedImage addAcePicture(BufferedImage newspaperImage) throws PWCGException
     {
-        BufferedImage acePicture = ace.getPilotPictureAsBufferedImage();
+        BufferedImage acePicture = ace.getCrewMemberPictureAsBufferedImage();
         if (acePicture != null)
         {
             BufferedImage result = new BufferedImage(newspaperImage.getWidth(), newspaperImage.getHeight(), BufferedImage.TRANSLUCENT);

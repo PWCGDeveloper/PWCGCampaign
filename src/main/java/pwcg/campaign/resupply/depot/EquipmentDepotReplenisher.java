@@ -9,7 +9,7 @@ import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
@@ -33,7 +33,7 @@ public class EquipmentDepotReplenisher
 
     private void replenishReplacementDepotForService(ArmedService service) throws PWCGException
     {
-        List<Squadron> squadronsForService = getSquadronsForService(service);
+        List<Company> squadronsForService = getSquadronsForService(service);
         if (squadronsForService.size() > 0)
         {
             EquipmentDepot depo = campaign.getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
@@ -41,7 +41,7 @@ public class EquipmentDepotReplenisher
         }
     }
 
-    private List<Squadron> getSquadronsForService(ArmedService service) throws PWCGException 
+    private List<Company> getSquadronsForService(ArmedService service) throws PWCGException 
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         return squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
@@ -49,7 +49,7 @@ public class EquipmentDepotReplenisher
 
     private void addReplacementPlanesForService(
             ArmedService service, 
-            List<Squadron> squadronsForService, 
+            List<Company> squadronsForService, 
             EquipmentDepot depot) throws PWCGException
     {
         replacePlanesInDepot(squadronsForService, depot);        
@@ -64,7 +64,7 @@ public class EquipmentDepotReplenisher
         depot.setEquipmentPoints(updatedEquipmentPoints);
     }
 
-    private void replacePlanesInDepot(List<Squadron> squadronsForService, EquipmentDepot equipmentDepot) throws PWCGException
+    private void replacePlanesInDepot(List<Company> squadronsForService, EquipmentDepot equipmentDepot) throws PWCGException
     {
         EquipmentReplacementCalculator equipmentReplacementCalculator = new EquipmentReplacementCalculator(campaign);
         equipmentReplacementCalculator.createArchTypeForReplacementPlane(squadronsForService);

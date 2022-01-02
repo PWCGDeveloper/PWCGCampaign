@@ -2,9 +2,9 @@ package pwcg.mission.flight.plane;
 
 import java.util.List;
 
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
 
@@ -44,10 +44,10 @@ public class FlightPlaneBuilder
     		targetPlanesInMission = flightInformation.getFlightParticipatingPlayers().size();
     	}
     	
-    	int numPilotsAvailable = calcActivePilotsAvailable();
-    	if (targetPlanesInMission > numPilotsAvailable)
+    	int numCrewMembersAvailable = calcActiveCrewMembersAvailable();
+    	if (targetPlanesInMission > numCrewMembersAvailable)
     	{
-    		targetPlanesInMission = numPilotsAvailable;
+    		targetPlanesInMission = numCrewMembersAvailable;
     	}
 
     	int numPlanesAvailable = calcNumPlanesAvailable();
@@ -59,12 +59,12 @@ public class FlightPlaneBuilder
 		return targetPlanesInMission;
     }
 
-	private int calcActivePilotsAvailable() throws PWCGException 
+	private int calcActiveCrewMembersAvailable() throws PWCGException 
     {
     	int squadronId = flightInformation.getSquadron().getSquadronId();
-    	SquadronPersonnel squadronPersonnel = flightInformation.getCampaign().getPersonnelManager().getSquadronPersonnel(squadronId);
-    	SquadronMembers activeAiSquadronMembers = squadronPersonnel.getActiveAiSquadronMembers();
-		return (activeAiSquadronMembers.getSquadronMemberList().size() + flightInformation.getFlightParticipatingPlayers().size());
+    	CompanyPersonnel squadronPersonnel = flightInformation.getCampaign().getPersonnelManager().getCompanyPersonnel(squadronId);
+    	CrewMembers activeAiCrewMembers = squadronPersonnel.getActiveAiCrewMembers();
+		return (activeAiCrewMembers.getCrewMemberList().size() + flightInformation.getFlightParticipatingPlayers().size());
 	}
     
     private int calcNumPlanesAvailable() 

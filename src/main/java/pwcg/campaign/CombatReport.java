@@ -6,9 +6,9 @@ import java.util.List;
 
 public class CombatReport 
 {
-    private List<String> flightPilots = new ArrayList<>();
-    private Integer pilotSerialNumber = 0;
-    private String reportPilotName = "";
+    private List<String> flightCrewMembers = new ArrayList<>();
+    private Integer crewMemberSerialNumber = 0;
+    private String reportCrewMemberName = "";
 	private String squadron = "";
 	private Date date;
 	private String time = "";
@@ -23,24 +23,24 @@ public class CombatReport
 	{
 	}
 	
-	public void addFlightPilot(String pilotName)
+	public void addFlightCrewMember(String crewMemberName)
 	{
-	    flightPilots.add(pilotName);
+	    flightCrewMembers.add(crewMemberName);
 	}
 
-	public Integer getPilotSerialNumber()
+	public Integer getCrewMemberSerialNumber()
     {
-        return pilotSerialNumber;
+        return crewMemberSerialNumber;
     }
 
-    public void setPilotSerialNumber(Integer pilotSerialNumber)
+    public void setCrewMemberSerialNumber(Integer crewMemberSerialNumber)
     {
-        this.pilotSerialNumber = pilotSerialNumber;
+        this.crewMemberSerialNumber = crewMemberSerialNumber;
     }
 
-    public List<String> getFlightPilots() 
+    public List<String> getFlightCrewMembers() 
 	{
-		return flightPilots;
+		return flightCrewMembers;
 	}
 
 	public String getSquadron()
@@ -53,14 +53,14 @@ public class CombatReport
 		this.squadron = squadron;
 	}
 
-	public String getReportPilotName() 
+	public String getReportCrewMemberName() 
 	{
-		return reportPilotName;
+		return reportCrewMemberName;
 	}
 
-	public void setReportPilotName(String reportPilotName) 
+	public void setReportCrewMemberName(String reportCrewMemberName) 
 	{
-		this.reportPilotName = reportPilotName;
+		this.reportCrewMemberName = reportCrewMemberName;
 	}
 
 	public Date getDate()

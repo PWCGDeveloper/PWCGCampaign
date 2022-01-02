@@ -6,29 +6,29 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.Victory;
 
 public class OutOfMissionVictoryData
 {
-    private Map<Integer, List<Victory>> victoryAwardsBySquadronMember = new HashMap<>();
-    private Map<Integer, SquadronMember> shotDownPilots = new HashMap<>();
+    private Map<Integer, List<Victory>> victoryAwardsByCrewMember = new HashMap<>();
+    private Map<Integer, CrewMember> shotDownCrewMembers = new HashMap<>();
     private Map<Integer, LogPlane> shotDownPlanes = new HashMap<>();
     
     public void merge(OutOfMissionVictoryData victoryData)
     {
-        for (Integer pilotSerialNumber : victoryData.getVictoryAwardsBySquadronMember().keySet())
+        for (Integer crewMemberSerialNumber : victoryData.getVictoryAwardsByCrewMember().keySet())
         {
-            List<Victory> victories = victoryData.getVictoryAwardsBySquadronMember().get(pilotSerialNumber);
+            List<Victory> victories = victoryData.getVictoryAwardsByCrewMember().get(crewMemberSerialNumber);
             for (Victory victory : victories)
             {
-                addVictoryAwards(pilotSerialNumber, victory);
+                addVictoryAwards(crewMemberSerialNumber, victory);
             }
         }
         
-        for (SquadronMember shotDownPilot : victoryData.getShotDownPilots().values())
+        for (CrewMember shotDownCrewMember : victoryData.getShotDownCrewMembers().values())
         {
-            addShotDownPilot(shotDownPilot);
+            addShotDownCrewMember(shotDownCrewMember);
         }
         
         for (LogPlane shotDownPlane : victoryData.getShotDownPlanes().values())
@@ -37,26 +37,26 @@ public class OutOfMissionVictoryData
         }
     }
     
-    public void addVictoryAwards(Integer pilotSerialNumber, Victory victory)
+    public void addVictoryAwards(Integer crewMemberSerialNumber, Victory victory)
     {
-        if (!victoryAwardsBySquadronMember.containsKey(pilotSerialNumber))
+        if (!victoryAwardsByCrewMember.containsKey(crewMemberSerialNumber))
         {
-            List<Victory> victoriesForSquadronMember = new ArrayList<>();
-            victoryAwardsBySquadronMember.put(pilotSerialNumber, victoriesForSquadronMember);
+            List<Victory> victoriesForCrewMember = new ArrayList<>();
+            victoryAwardsByCrewMember.put(crewMemberSerialNumber, victoriesForCrewMember);
         }
         
-        List<Victory> victoriesForSquadronMember = victoryAwardsBySquadronMember.get(pilotSerialNumber);
-        victoriesForSquadronMember.add(victory);
+        List<Victory> victoriesForCrewMember = victoryAwardsByCrewMember.get(crewMemberSerialNumber);
+        victoriesForCrewMember.add(victory);
     }
 
     public void addVictoryEvents(OutOfMissionVictoryData victoryEvents)
     {
-        victoryAwardsBySquadronMember.putAll(victoryEvents.getVictoryAwardsBySquadronMember());
+        victoryAwardsByCrewMember.putAll(victoryEvents.getVictoryAwardsByCrewMember());
     }
 
-    public void addShotDownPilot(SquadronMember shotDownPilot)
+    public void addShotDownCrewMember(CrewMember shotDownCrewMember)
     {
-        shotDownPilots.put(shotDownPilot.getSerialNumber(), shotDownPilot);
+        shotDownCrewMembers.put(shotDownCrewMember.getSerialNumber(), shotDownCrewMember);
     }
 
     public void addShotDownPlane(LogPlane shotDownPlane)
@@ -64,14 +64,14 @@ public class OutOfMissionVictoryData
         shotDownPlanes.put(shotDownPlane.getPlaneSerialNumber(), shotDownPlane);
     }
     
-    public Map<Integer, SquadronMember> getShotDownPilots()
+    public Map<Integer, CrewMember> getShotDownCrewMembers()
     {
-        return shotDownPilots;
+        return shotDownCrewMembers;
     }
 
-    public Map<Integer, List<Victory>> getVictoryAwardsBySquadronMember()
+    public Map<Integer, List<Victory>> getVictoryAwardsByCrewMember()
     {
-        return victoryAwardsBySquadronMember;
+        return victoryAwardsByCrewMember;
     }
 
     public Map<Integer, LogPlane> getShotDownPlanes()

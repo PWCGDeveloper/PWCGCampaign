@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.context.PWCGDirectoryUserManager;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.io.json.CoopUserIOJson;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.model.CoopCampaignPersonas;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
@@ -66,13 +66,13 @@ public class CoopUserManager
         return personasForCampaign;
     }
 
-    public boolean isSquadronMemberCoopPersona(String campaignName, SquadronMember squadronMember) throws PWCGException
+    public boolean isCrewMemberCoopPersona(String campaignName, CrewMember crewMember) throws PWCGException
     {
         for (CoopUser coopUser : coopUsers.values())
         {
             for (Integer campaignPersona : coopUser.getUserPersonas(campaignName))
             {
-                if (campaignPersona == squadronMember.getSerialNumber())
+                if (campaignPersona == crewMember.getSerialNumber())
                 {
                     return true;
                 }
@@ -81,7 +81,7 @@ public class CoopUserManager
         return false;
     }
 
-    public CoopUser getCoopUserForSquadronMember(String campaignName, int serialNumber) throws PWCGException
+    public CoopUser getCoopUserForCrewMember(String campaignName, int serialNumber) throws PWCGException
     {
         for (CoopUser coopUser : coopUsers.values())
         {
@@ -119,7 +119,7 @@ public class CoopUserManager
         }
     }
 
-    public void createCoopPersona(String campaignName, SquadronMember newSquadronMember, String coopUsername) throws PWCGException
+    public void createCoopPersona(String campaignName, CrewMember newCrewMember, String coopUsername) throws PWCGException
     {
         CoopUser coopUser = getCoopUser(coopUsername);
         if (coopUser == null)
@@ -135,7 +135,7 @@ public class CoopUserManager
                 coopCampaignPersona = new CoopCampaignPersonas(campaignName);
             }
             
-            coopCampaignPersona.addPersona(newSquadronMember.getSerialNumber(), newSquadronMember.getName());
+            coopCampaignPersona.addPersona(newCrewMember.getSerialNumber(), newCrewMember.getName());
             coopUser.addCoopCampaignPersonas(campaignName, coopCampaignPersona);
             writeUser(coopUser);
         }

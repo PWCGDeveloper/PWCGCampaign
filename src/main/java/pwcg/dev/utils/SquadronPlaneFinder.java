@@ -7,7 +7,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -39,12 +39,12 @@ public class SquadronPlaneFinder
     
     private void findPlane(String planeId, Date startDate, Date endDate) throws PWCGException  
     {       
-        List<Squadron> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
+        List<Company> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
         PWCGLogger.log(LogLevel.DEBUG, "PlaneType Id: " + planeId);
-        for (Squadron squad : allSq)
+        for (Company company : allSq)
         {
             boolean hasPlane = false;
-            for (SquadronPlaneAssignment planeAssignment : squad.getPlaneAssignments())
+            for (SquadronPlaneAssignment planeAssignment : company.getPlaneAssignments())
             {
                 if (planeAssignment.getArchType().equals(planeId))
                 {
@@ -57,20 +57,20 @@ public class SquadronPlaneFinder
 
             if (hasPlane)
             {
-                PWCGLogger.log(LogLevel.DEBUG, "" + squad.getSquadronId());
+                PWCGLogger.log(LogLevel.DEBUG, "" + company.getSquadronId());
             }
         }
     }
     
     private void printPlanes() throws PWCGException  
     {       
-        List<Squadron> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
+        List<Company> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        for (Squadron squad : allSq)
+        for (Company company : allSq)
         {
-            PWCGLogger.log(LogLevel.DEBUG, "Squadron: " + squad.getSquadronId());
+            PWCGLogger.log(LogLevel.DEBUG, "Squadron: " + company.getSquadronId());
             boolean hasPlane = false;
-            for (SquadronPlaneAssignment planeAssignment : squad.getPlaneAssignments())
+            for (SquadronPlaneAssignment planeAssignment : company.getPlaneAssignments())
             {
                 for (PlaneType plane : planeTypeFactory.createPlaneTypesForArchType(planeAssignment.getArchType()))
                 {
@@ -80,7 +80,7 @@ public class SquadronPlaneFinder
 
             if (hasPlane)
             {
-                PWCGLogger.log(LogLevel.DEBUG, "" + squad.getSquadronId());
+                PWCGLogger.log(LogLevel.DEBUG, "" + company.getSquadronId());
             }
         }
     }

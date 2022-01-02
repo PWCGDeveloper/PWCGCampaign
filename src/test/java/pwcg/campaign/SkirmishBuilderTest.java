@@ -9,9 +9,9 @@ import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.skirmish.SkirmishBuilder;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.MissionHumanParticipants;
@@ -71,8 +71,8 @@ public class SkirmishBuilderTest
     private MissionHumanParticipants makeParticipatingPlayers(Campaign campaign) throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        SquadronMember player = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(player);
+        CrewMember player = campaign.findReferencePlayer();
+        participatingPlayers.addCrewMember(player);
         return participatingPlayers;
     }
 

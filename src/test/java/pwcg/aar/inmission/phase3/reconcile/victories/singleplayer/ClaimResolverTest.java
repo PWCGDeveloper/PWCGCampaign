@@ -24,9 +24,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
@@ -38,8 +38,8 @@ public class ClaimResolverTest
 {
     @Mock private Campaign campaign;
     @Mock private CampaignPersonnelManager personnelManager;
-    @Mock private SquadronMembers playerMembers;
-    @Mock private SquadronMember pilot;
+    @Mock private CrewMembers playerMembers;
+    @Mock private CrewMember crewMember;
     @Mock private VerifiedVictoryGenerator verifiedVictoryGenerator;
     @Mock private ClaimDenier claimDenier;
 
@@ -67,9 +67,9 @@ public class ClaimResolverTest
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);
-        Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);
-        Mockito.when(pilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(crewMember);
+        Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(crewMember);
+        Mockito.when(crewMember.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(verifiedVictoryGenerator.createVerifiedictories(playerDeclarations)).thenReturn(verifiedVictories);
     }
 
@@ -79,14 +79,14 @@ public class ClaimResolverTest
         for (int i = 0; i < 3; ++i)
         {
             LogPlane victor = new LogPlane(10+1);
-            victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+            victor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
             victor.setSquadronId(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
-            victor.intializePilot(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+            victor.intializeCrewMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
             
             LogPlane victim = new LogPlane(100+i);
-            victim.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER);
+            victim.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER);
             victim.setSquadronId(302056);
-            victim.intializePilot(SerialNumber.AI_STARTING_SERIAL_NUMBER);
+            victim.intializeCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER);
 
             LogVictory missionResultVictory = new LogVictory(1000+i);
             missionResultVictory.setLocation(new Coordinate(100000.0, 0.0, 100000.0));
@@ -97,8 +97,8 @@ public class ClaimResolverTest
 
         IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         ReconciledMissionVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
-        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByPilot().size() == 1);
-        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByPilot().get(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER).size() == 3);
+        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByCrewMember().size() == 1);
+        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByCrewMember().get(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER).size() == 3);
         Assertions.assertTrue (reconciledMissionData.getPlayerClaimsDenied().size() == 0);
     }
 
@@ -107,7 +107,7 @@ public class ClaimResolverTest
     {
         IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         ReconciledMissionVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
-        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByPilot().size() == 0);
+        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByCrewMember().size() == 0);
         Assertions.assertTrue (reconciledMissionData.getPlayerClaimsDenied().size() == 0);
     }
 
@@ -121,7 +121,7 @@ public class ClaimResolverTest
 
         IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         ReconciledMissionVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
-        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByPilot().size() == 0);
+        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByCrewMember().size() == 0);
         Assertions.assertTrue (reconciledMissionData.getPlayerClaimsDenied().size() == 3);
     }
 

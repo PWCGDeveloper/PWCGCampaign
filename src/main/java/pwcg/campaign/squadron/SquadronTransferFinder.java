@@ -7,30 +7,30 @@ import java.util.Set;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class SquadronTransferFinder
 {
     private Campaign campaign;
-    private SquadronMember squadronMember;
+    private CrewMember crewMember;
     private List<Integer> bestFitSquadrons = new ArrayList<Integer>();
     private List<Integer> anySquadrons = new ArrayList<Integer>();
     
     
-    public SquadronTransferFinder(Campaign campaign, SquadronMember squadronMember)
+    public SquadronTransferFinder(Campaign campaign, CrewMember crewMember)
     {
         this.campaign = campaign;
-        this.squadronMember = squadronMember;
+        this.crewMember = crewMember;
     }
 
     public int chooseSquadronForTransfer() throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
        
-        for (Squadron possibleSquadron : squadronManager.getActiveSquadrons(campaign.getDate()))
+        for (Company possibleSquadron : squadronManager.getActiveSquadrons(campaign.getDate()))
         {
             // Exclude squadrons commanded by an ace
             if (canTransferToThisSquadron(possibleSquadron))
@@ -48,7 +48,7 @@ public class SquadronTransferFinder
         return selectedSquadronId;
     }
 
-    private boolean canTransferToThisSquadron(Squadron possibleSquadron) throws PWCGException
+    private boolean canTransferToThisSquadron(Company possibleSquadron) throws PWCGException
     {
         if (!squadronMemberHasCurrentSquadron())
         {
@@ -63,12 +63,12 @@ public class SquadronTransferFinder
             return false;
         }
         
-        if (possibleSquadron.getSquadronId() == squadronMember.getSquadronId())
+        if (possibleSquadron.getSquadronId() == crewMember.getCompanyId())
         {
             return false;
         }
         
-        if (squadronMember.determineCountry(campaign.getDate()).getCountryCode() != possibleSquadron.getCountry().getCountryCode())
+        if (crewMember.determineCountry(campaign.getDate()).getCountryCode() != possibleSquadron.getCountry().getCountryCode())
         {
             return false;
         }
@@ -79,7 +79,7 @@ public class SquadronTransferFinder
     private boolean squadronMemberHasCurrentSquadron() throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Squadron squadronMemberCurrentSquadron = squadronManager.getSquadron(squadronMember.getSquadronId());
+        Company squadronMemberCurrentSquadron = squadronManager.getSquadron(crewMember.getCompanyId());
         if (squadronMemberCurrentSquadron == null)
         {
             return true;
@@ -88,10 +88,10 @@ public class SquadronTransferFinder
         return false;
     }
 
-    private boolean isBestFitSquadron(Squadron possibleSquadron) throws PWCGException
+    private boolean isBestFitSquadron(Company possibleSquadron) throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Squadron squadronMemberCurrentSquadron = squadronManager.getSquadron(squadronMember.getSquadronId());
+        Company squadronMemberCurrentSquadron = squadronManager.getSquadron(crewMember.getCompanyId());
         if (squadronMemberCurrentSquadron != null)
         {
             PwcgRoleCategory bestRoleForThisSquadron = squadronMemberCurrentSquadron.determineSquadronPrimaryRoleCategory(campaign.getDate());

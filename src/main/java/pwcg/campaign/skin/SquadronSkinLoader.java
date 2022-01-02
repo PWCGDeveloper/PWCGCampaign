@@ -5,7 +5,7 @@ import java.util.Map;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -23,14 +23,14 @@ public class SquadronSkinLoader
     public void loadSquadronSkins() throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        for (Squadron squadron : squadronManager.getAllSquadrons())
+        for (Company squadron : squadronManager.getAllSquadrons())
         {
             registerSquadronSkins(squadron);
         }
         
     }
 
-    private void registerSquadronSkins(Squadron squadron)
+    private void registerSquadronSkins(Company squadron)
     {
         for (Skin squadronSkin : squadron.getSkins())
         {

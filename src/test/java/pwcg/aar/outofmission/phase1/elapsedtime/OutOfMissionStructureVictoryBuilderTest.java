@@ -13,10 +13,10 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.personnel.StructureVictoryBuilder;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.testutils.CampaignCache;
@@ -27,7 +27,7 @@ import pwcg.testutils.SquadronTestProfile;
 public class OutOfMissionStructureVictoryBuilderTest
 {
     private Campaign campaign;
-    private static SquadronMember squadronMember;
+    private static CrewMember crewMember;
 
     @Mock private AARContext aarContext;
     @Mock private ArmedService service;
@@ -38,11 +38,11 @@ public class OutOfMissionStructureVictoryBuilderTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
         
-        for (SquadronMember pilot : campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_STALINGRAD.getSquadronId()).getActiveAiSquadronMembers().getSquadronMemberList())
+        for (CrewMember crewMember : campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_STALINGRAD.getSquadronId()).getActiveAiCrewMembers().getCrewMemberList())
         {
-            if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE && !pilot.isPlayer())
+            if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_ACTIVE && !crewMember.isPlayer())
             {
-                squadronMember = pilot;
+                crewMember = crewMember;
                 break;
             }
         }
@@ -51,7 +51,7 @@ public class OutOfMissionStructureVictoryBuilderTest
     @Test
     public void testVictoryAwarded () throws PWCGException
     {     
-        StructureVictoryBuilder victoryGenerator = new StructureVictoryBuilder(squadronMember, PwcgStructure.BRIDGE);
+        StructureVictoryBuilder victoryGenerator = new StructureVictoryBuilder(crewMember, PwcgStructure.BRIDGE);
         Victory victory = victoryGenerator.generateOutOfMissionVictory(campaign.getDate());
         
         Assertions.assertTrue (victory.getVictim().getAirOrGround() == Victory.VEHICLE);

@@ -1,7 +1,7 @@
 package pwcg.campaign;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignModeChooser
@@ -23,7 +23,7 @@ public class CampaignModeChooser
         boolean isAxis = false;
         boolean isAllied = false;
         
-        for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        for (CrewMember player : campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList())
         {
             if (player.determineCountry(campaign.getDate()).getSide() == Side.ALLIED)
             {

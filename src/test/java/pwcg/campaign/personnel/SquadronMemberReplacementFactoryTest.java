@@ -11,16 +11,16 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
 @ExtendWith(MockitoExtension.class)
-public class SquadronMemberReplacementFactoryTest
+public class CrewMemberReplacementFactoryTest
 {
     @Mock 
     private Campaign campaign;
@@ -35,36 +35,36 @@ public class SquadronMemberReplacementFactoryTest
     }
 
     @Test
-    public void testCreateReplacementPilot() throws Exception
+    public void testCreateReplacementCrewMember() throws Exception
     {                
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420601"));
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
 
-        SquadronMemberReplacementFactory squadronMemberFactory = new  SquadronMemberReplacementFactory (campaign, service);
-        SquadronMember replacement = squadronMemberFactory.createAIReplacementPilot();
+        CrewMemberReplacementFactory squadronMemberFactory = new  CrewMemberReplacementFactory (campaign, service);
+        CrewMember replacement = squadronMemberFactory.createAIReplacementCrewMember();
         
         assert(replacement.isPlayer() == false);
         assert(replacement.getSerialNumber() >= SerialNumber.AI_STARTING_SERIAL_NUMBER);
         assert(replacement.getRank().equals("Oberfeldwebel") || replacement.getRank().equals("Leutnant"));
-        assert(replacement.getSquadronId() == Squadron.REPLACEMENT);
+        assert(replacement.getCompanyId() == Company.REPLACEMENT);
         assert(replacement.getAiSkillLevel() == AiSkillLevel.COMMON);
     }
 
     @Test
-    public void testCreateNoviceReplacementPilot() throws Exception
+    public void testCreateNoviceReplacementCrewMember() throws Exception
     {                
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19440602"));
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
 
-        SquadronMemberReplacementFactory squadronMemberFactory = new  SquadronMemberReplacementFactory (campaign, service);
-        SquadronMember replacement = squadronMemberFactory.createAIReplacementPilot();
+        CrewMemberReplacementFactory squadronMemberFactory = new  CrewMemberReplacementFactory (campaign, service);
+        CrewMember replacement = squadronMemberFactory.createAIReplacementCrewMember();
         
         assert(replacement.isPlayer() == false);
         assert(replacement.getSerialNumber() >= SerialNumber.AI_STARTING_SERIAL_NUMBER);
         assert(replacement.getRank().equals("Oberfeldwebel") || replacement.getRank().equals("Leutnant"));
-        assert(replacement.getSquadronId() == Squadron.REPLACEMENT);
+        assert(replacement.getCompanyId() == Company.REPLACEMENT);
         assert(replacement.getAiSkillLevel() == AiSkillLevel.NOVICE);
     }
     

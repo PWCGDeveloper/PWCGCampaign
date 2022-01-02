@@ -30,8 +30,7 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         TargetLocatorAir targetLocatorAir = new TargetLocatorAir(flightInformation);
 
         if (flightInformation.getFlightType() == FlightTypes.PATROL || 
-            flightInformation.getFlightType() == FlightTypes.LOW_ALT_PATROL || 
-            flightInformation.getFlightType() == FlightTypes.LONE_WOLF)
+            flightInformation.getFlightType() == FlightTypes.LOW_ALT_PATROL)
         {
             return targetLocatorAir.getFrontCoordinate();
         }
@@ -43,48 +42,13 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         {
             return targetLocatorAir.getBattleCoordinate();
         }
-        else if (flightInformation.getFlightType() == FlightTypes.INTERCEPT || flightInformation.getFlightType() == FlightTypes.RECON)
+        else if (flightInformation.getFlightType() == FlightTypes.INTERCEPT)
         {
             return targetLocatorAir.getInterceptCoordinate();
         }
-        else if (flightInformation.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
-        {
-            return flightInformation.getMission().getMissionBorders().getCenter();
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.OFFENSIVE || flightInformation.getFlightType() == FlightTypes.SPY_EXTRACT)
+        else if (flightInformation.getFlightType() == FlightTypes.OFFENSIVE)
         {
             return targetLocatorAir.getEnemyTerritoryPatrolCoordinate();
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.TRANSPORT)
-        {
-            return targetLocatorAir.getTransportAirfieldCoordinate();
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.BALLOON_BUST)
-        {
-            return targetLocatorAir.getBalloonCoordinate(flightInformation.getSquadron().determineSide());
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.BALLOON_DEFENSE)
-        {
-            return targetLocatorAir.getBalloonCoordinate(flightInformation.getSquadron().determineSide().getOppositeSide());
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.FERRY)
-        {
-            return targetLocatorAir.getTransportAirfieldCoordinate();
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.SCRAMBLE)
-        {
-            return targetLocatorAir.getScrambleCoordinate();
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.ESCORT)
-        {
-            if (flightInformation.isPlayerFlight())
-            {
-                return targetLocatorAir.getPlayerEscortRendezvousCoordinate();
-            }
-            else
-            {
-                return targetLocatorAir.getEscortForPlayerRendezvousCoordinate();
-            }
         }
 
         throw new PWCGException("No target locations for flight type " + flightInformation.getFlightType());

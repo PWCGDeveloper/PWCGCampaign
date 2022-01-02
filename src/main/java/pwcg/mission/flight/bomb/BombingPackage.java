@@ -10,7 +10,6 @@ import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.flight.scramble.AirfieldAttackScrambleFlightBuilder;
 import pwcg.mission.target.GroundTargetDefinitionFactory;
 import pwcg.mission.target.TargetDefinition;
 
@@ -32,24 +31,9 @@ public class BombingPackage implements IFlightPackage
         
         BombingFlight bombingFlight = new BombingFlight (flightInformation, targetDefinition);
         bombingFlight.createFlight();
-        
-        IFlight scrambleFlight = addScrambleFlight(bombingFlight);
-        if (scrambleFlight != null)
-        {
-            packageFlights.add(scrambleFlight);
-        }
-        
+ 
         packageFlights.add(bombingFlight);
         return packageFlights;
-    }
-
-    private IFlight addScrambleFlight(IFlight flight) throws PWCGException
-    {
-        if (flight.isPlayerFlight())
-        {
-            return AirfieldAttackScrambleFlightBuilder.addAirfieldScrambleToFlight(flight);
-        }
-        return null;
     }
 
     private TargetDefinition buildTargetDefinition(FlightInformation flightInformation) throws PWCGException

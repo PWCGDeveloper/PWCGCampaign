@@ -19,24 +19,28 @@ import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberFactory;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCacheBase;
 import pwcg.testutils.SquadronTestProfile;
 
 @ExtendWith(MockitoExtension.class)
-public class SquadronMemberFactoryTest
+public class CrewMemberFactoryTest
 {
     @Mock private Campaign campaign;
     @Mock private CampaignPersonnelManager campaignPersonnelManager;
     @Mock private CampaignAces campaignAces;
     
     private Date campaignDate;
-    private SquadronPersonnel squadronPersonnel;
-    private Squadron squadron;
+    private CompanyPersonnel squadronPersonnel;
+    private Company squadron;
     private SerialNumber serialNumber = new SerialNumber();
     
     @BeforeEach
@@ -48,11 +52,11 @@ public class SquadronMemberFactoryTest
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaignPersonnelManager.getCampaignAces()).thenReturn(campaignAces);
-        List<Ace> aces = new ArrayList<>();
+        List<TankAce> aces = new ArrayList<>();
         Mockito.when(campaignAces.getActiveCampaignAcesBySquadron(Mockito.anyInt())).thenReturn(aces);
         
         squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_3_PROFILE.getSquadronId()); 
-        squadronPersonnel = new SquadronPersonnel(campaign, squadron);
+        squadronPersonnel = new CompanyPersonnel(campaign, squadron);
     }
 
     @Test
@@ -73,8 +77,8 @@ public class SquadronMemberFactoryTest
         generatorModel.setService(service);
         generatorModel.setSquadronName(squadronName);
 
-        SquadronMemberFactory squadronMemberFactory = new  SquadronMemberFactory (campaign, squadron, squadronPersonnel);
-        SquadronMember player = squadronMemberFactory.createPlayer(generatorModel);
+        CrewMemberFactory squadronMemberFactory = new  CrewMemberFactory (campaign, squadron, squadronPersonnel);
+        CrewMember player = squadronMemberFactory.createPlayer(generatorModel);
         
         assert(player.isPlayer() == true);
         assert(player.getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER && player.getSerialNumber() < SerialNumber.AI_STARTING_SERIAL_NUMBER);
@@ -86,16 +90,16 @@ public class SquadronMemberFactoryTest
     }
 
     @Test
-    public void testCreateAiPilot() throws PWCGException
+    public void testCreateAiCrewMember() throws PWCGException
     {
-        SquadronMemberFactory squadronMemberFactory = new  SquadronMemberFactory (campaign, squadron, squadronPersonnel);
-        SquadronMember pilot = squadronMemberFactory.createInitialAIPilot("Sergent");
+        CrewMemberFactory squadronMemberFactory = new  CrewMemberFactory (campaign, squadron, squadronPersonnel);
+        CrewMember crewMember = squadronMemberFactory.createInitialAICrewMember("Sergent");
         
-        assert(pilot.isPlayer() == false);
-        assert(pilot.getSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER);
-        assert(pilot.getName() != null && !pilot.getName().isEmpty());
-        assert(pilot.getPicName() != null && !pilot.getPicName().isEmpty());
-        assert(pilot.getRank().equals("Sergent"));
-        assert(pilot.getInactiveDate().equals(DateUtils.getEndOfWar()));
+        assert(crewMember.isPlayer() == false);
+        assert(crewMember.getSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER);
+        assert(crewMember.getName() != null && !crewMember.getName().isEmpty());
+        assert(crewMember.getPicName() != null && !crewMember.getPicName().isEmpty());
+        assert(crewMember.getRank().equals("Sergent"));
+        assert(crewMember.getInactiveDate().equals(DateUtils.getEndOfWar()));
     }
 }

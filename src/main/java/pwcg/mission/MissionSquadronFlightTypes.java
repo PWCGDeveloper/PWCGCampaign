@@ -5,21 +5,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.mission.flight.FlightTypes;
 
 public class MissionSquadronFlightTypes
 {
     private Map<Integer, MissionSquadronFlightType> flightTypesForSquadrons = new HashMap<>();
     
-    public static MissionSquadronFlightTypes buildPlayerFlightType(FlightTypes flightType, Squadron squadron)
+    public static MissionSquadronFlightTypes buildPlayerFlightType(FlightTypes flightType, Company squadron)
     {
         MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
         playerFlightTypes.add(squadron, flightType);
         return playerFlightTypes;
     }
     
-    public void add(Squadron squadron, FlightTypes flightType)
+    public void add(Company squadron, FlightTypes flightType)
     {
         MissionSquadronFlightType squadronFlightType = new MissionSquadronFlightType();
         squadronFlightType.squadron = squadron;
@@ -36,19 +36,6 @@ public class MissionSquadronFlightTypes
         }
         return FlightTypes.ANY;
     }
-
-    public boolean isStrategicInterceptPlayerFlight()
-    {
-        for (MissionSquadronFlightType squadronFlightType : flightTypesForSquadrons.values())
-        {
-            if (squadronFlightType.flightType == FlightTypes.STRATEGIC_INTERCEPT)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
 
     public boolean isPlayerRaidFlight()
     {
@@ -72,9 +59,9 @@ public class MissionSquadronFlightTypes
         return flightTypes;
     }
 
-    public List<Squadron> getSquadrons()
+    public List<Company> getSquadrons()
     {
-        List<Squadron> squadrons = new ArrayList<>();
+        List<Company> squadrons = new ArrayList<>();
         for (MissionSquadronFlightType squadronFlightType : flightTypesForSquadrons.values())
         {
             squadrons.add(squadronFlightType.squadron);
@@ -82,7 +69,7 @@ public class MissionSquadronFlightTypes
         return squadrons;
     }
 
-    public Squadron getSquadron(int squadronId)
+    public Company getSquadron(int squadronId)
     {
         MissionSquadronFlightType squadronFlightType = flightTypesForSquadrons.get(squadronId);
         if (squadronFlightType != null)
@@ -103,7 +90,7 @@ public class MissionSquadronFlightTypes
 
     private class MissionSquadronFlightType
     {
-        private Squadron squadron;
+        private Company squadron;
         private FlightTypes flightType;
     }
 }

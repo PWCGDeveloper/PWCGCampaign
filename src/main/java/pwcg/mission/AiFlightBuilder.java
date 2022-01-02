@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightFactory;
@@ -39,9 +39,9 @@ public class AiFlightBuilder
         }
         
         AiSquadronIncluder aiSquadronIncluder = new AiSquadronIncluder(mission);
-        List<Squadron> aiSquadronsForMission = aiSquadronIncluder.decideSquadronsForMission();
+        List<Company> aiSquadronsForMission = aiSquadronIncluder.decideSquadronsForMission();
         
-        for (Squadron squadron : aiSquadronsForMission)
+        for (Company squadron : aiSquadronsForMission)
         {
             FlightTypes flightType = determineFlightType(squadron);
             flightType = NightFlightTypeConverter.getFlightType(flightType, mission.isNightMission());
@@ -56,7 +56,7 @@ public class AiFlightBuilder
         return missionFlights;
     }
 
-    private FlightTypes determineFlightType(Squadron squadron) throws PWCGException 
+    private FlightTypes determineFlightType(Company squadron) throws PWCGException 
     {
         IFlightTypeFactory flightTypeFactory = makeFlightTypeFactory();
         boolean isPlayerFlight = false;
@@ -65,7 +65,7 @@ public class AiFlightBuilder
         return flightType;
     }
 
-    private List<IFlight> buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
+    private List<IFlight> buildFlight(FlightTypes flightType, Company squadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
         List<IFlight> flights = flightFactory.buildFlight(mission, squadron, flightType, NecessaryFlightType.NONE);

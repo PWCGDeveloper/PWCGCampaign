@@ -20,7 +20,7 @@ public class FCDeploy extends DeployBase
         directoriesToCopy.put("FCData", null);
         directoriesToCopy.put("Coop", null);
 
-        // Service specific pilot images
+        // Service specific crewMember images
         directoriesToCopy.put("GAS", null);
         directoriesToCopy.put("RFC", null);
         directoriesToCopy.put("RNAS", null);

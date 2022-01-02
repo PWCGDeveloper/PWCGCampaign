@@ -2,8 +2,8 @@ package pwcg.aar.inmission.phase2.logeval;
 
 import pwcg.aar.AARFactory;
 import pwcg.aar.data.AARContext;
+import pwcg.aar.inmission.phase2.logeval.crewmemberstatus.AARCrewMemberStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.equipmentstatus.AAREquipmentStatusEvaluator;
-import pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARAreaOfCombat;
 import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyByAccumulatedDamaged;
 import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyVictoryEvaluator;
@@ -20,7 +20,7 @@ public class AAREvaluator
     private AARDamageStatusEvaluator aarDamageStatusEvaluator;
     private AARVehicleBuilder aarVehicleBuilder;
     private AARVictoryEvaluator aarVictoryEvaluator;
-    private AARPilotStatusEvaluator aarPilotStatusEvaluator;
+    private AARCrewMemberStatusEvaluator aarCrewMemberStatusEvaluator;
     private AAREquipmentStatusEvaluator aarEquipmentStatusEvaluator;
     private AARChronologicalEventListBuilder aarChronologicalEventListBuilder;
     private AARWaypointBuilder waypointBuilder;
@@ -45,9 +45,9 @@ public class AAREvaluator
         aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(aarContext.getLogEventData(), aarVehicleBuilder, aarDamageStatusEvaluator);
         aarDestroyedStatusEvaluator.buildDeadLists();
         
-        aarPilotStatusEvaluator = new AARPilotStatusEvaluator(
-                campaign, aarContext.getPreliminaryData().getPwcgMissionData(), aarDestroyedStatusEvaluator, aarContext.getLogEventData(), aarVehicleBuilder);
-        aarPilotStatusEvaluator.determineFateOfCrewsInMission();
+        aarCrewMemberStatusEvaluator = new AARCrewMemberStatusEvaluator(
+                campaign, aarDestroyedStatusEvaluator, aarContext.getLogEventData(), aarVehicleBuilder);
+        aarCrewMemberStatusEvaluator.determineFateOfCrewsInMission();
         
         aarEquipmentStatusEvaluator = new AAREquipmentStatusEvaluator(campaign, aarContext.getLogEventData(), aarVehicleBuilder);
         aarEquipmentStatusEvaluator.determineFateOfPlanesInMission();
@@ -70,7 +70,7 @@ public class AAREvaluator
         AARMissionEvaluationData evaluationData = new AARMissionEvaluationData();
         evaluationData.setPlaneAiEntities(aarVehicleBuilder.getLogPlanes());
         evaluationData.setVictoryResults(aarVictoryEvaluator.getVictoryResults());
-        evaluationData.setPilotsInMission(crewBuilder.buildPilotsFromLogPlanes());
+        evaluationData.setCrewMembersInMission(crewBuilder.buildCrewMembersFromLogPlanes());
         evaluationData.setChronologicalEvents(aarChronologicalEventListBuilder.getChronologicalEvents());
 
         return evaluationData;
@@ -116,9 +116,9 @@ public class AAREvaluator
         return aarVictoryEvaluator;
     }
 
-    public AARPilotStatusEvaluator getAarPilotStatusEvaluator()
+    public AARCrewMemberStatusEvaluator getAarCrewMemberStatusEvaluator()
     {
-        return aarPilotStatusEvaluator;
+        return aarCrewMemberStatusEvaluator;
     }
 }
 

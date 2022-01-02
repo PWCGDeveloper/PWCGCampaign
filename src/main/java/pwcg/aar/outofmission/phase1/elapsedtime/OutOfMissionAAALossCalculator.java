@@ -9,10 +9,10 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -21,7 +21,7 @@ public class OutOfMissionAAALossCalculator
 {
     private Campaign campaign;
     private AARContext aarContext;
-    private Map<Integer, SquadronMember> pilotsLostDueToAAA = new HashMap<>();
+    private Map<Integer, CrewMember> crewMembersLostDueToAAA = new HashMap<>();
     private Map<Integer, LogPlane> planesLostDueToAAA = new HashMap<>();
     private OutOfMissionAAAOddsCalculator oddsShotDownByAAACalculator;
 
@@ -34,41 +34,41 @@ public class OutOfMissionAAALossCalculator
     
     public void lostToAAA() throws PWCGException
     {
-        SquadronMembers campaignMembersNotInMission = CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(
+        CrewMembers campaignMembersNotInMission = CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(
                 campaign, aarContext.getPreliminaryData().getCampaignMembersInMission());
-        for (SquadronMember squadronMember : campaignMembersNotInMission.getSquadronMemberList())
+        for (CrewMember crewMember : campaignMembersNotInMission.getCrewMemberList())
         {
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(crewMember.getCompanyId());
             if (SquadronViability.isSquadronViable(squadron, campaign))
             {
-                calculatePilotShotDownByAAA(squadronMember);
+                calculateCrewMemberShotDownByAAA(crewMember);
             }
         }
     }
 
-    private void calculatePilotShotDownByAAA(SquadronMember squadronMember) throws PWCGException
+    private void calculateCrewMemberShotDownByAAA(CrewMember crewMember) throws PWCGException
     {
-        if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 
+        if (OutOfMissionCrewMemberSelector.shouldCrewMemberBeEvaluated(campaign, crewMember)) 
         {
-            int oddsShotDown = oddsShotDownByAAACalculator.oddsShotDownByAAA(squadronMember);
+            int oddsShotDown = oddsShotDownByAAACalculator.oddsShotDownByAAA(crewMember);
             
             int shotDownDiceRoll = RandomNumberGenerator.getRandom(1000);
             if (shotDownDiceRoll <= oddsShotDown)
             {
-                EquippedPlane planeShotDownByAAA = campaign.getEquipmentManager().destroyPlaneFromSquadron(squadronMember.getSquadronId(), campaign.getDate());
+                EquippedPlane planeShotDownByAAA = campaign.getEquipmentManager().destroyPlaneFromSquadron(crewMember.getCompanyId(), campaign.getDate());
 
                 LogPlane logPlane = new LogPlane(AARContextEventSequence.getNextOutOfMissionEventSequenceNumber());
-                logPlane.initializeFromOutOfMission(campaign, planeShotDownByAAA, squadronMember);
+                logPlane.initializeFromOutOfMission(campaign, planeShotDownByAAA, crewMember);
                 
-                pilotsLostDueToAAA.put(squadronMember.getSerialNumber(), squadronMember);
+                crewMembersLostDueToAAA.put(crewMember.getSerialNumber(), crewMember);
                 planesLostDueToAAA.put(planeShotDownByAAA.getSerialNumber(), logPlane);
             }
         }
     }
 
-    public Map<Integer, SquadronMember> getPilotsLostDueToAAA()
+    public Map<Integer, CrewMember> getCrewMembersLostDueToAAA()
     {
-        return pilotsLostDueToAAA;
+        return crewMembersLostDueToAAA;
     }
 
     public Map<Integer, LogPlane> getPlanesLostDueToAAA()

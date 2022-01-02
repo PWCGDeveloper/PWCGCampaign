@@ -7,8 +7,8 @@ import java.util.Set;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightTypeCategory;
@@ -34,9 +34,6 @@ public class MissionFlights
     public void generateFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
         MissionFlightBuilder missionFlightBuilder = new MissionFlightBuilder(mission);
-
-        List<IFlight> opposingFlights =  missionFlightBuilder.createOpposingAiFlights(playerFlightTypes);
-        flights.addAll(opposingFlights);
 
         List<IFlight> aiFlights = missionFlightBuilder.createAiFlights(playerFlightTypes);
         flights.addAll(aiFlights);
@@ -236,14 +233,14 @@ public class MissionFlights
         return null;
     }
 
-    public IFlight getPlayerFlight(SquadronMember player) throws PWCGException
+    public IFlight getPlayerFlight(CrewMember player) throws PWCGException
     {
         for (IFlight flight : getPlayerFlights())
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlayerPlanes())
             {
-                SquadronMember planePilot = plane.getPilot();
-                if (planePilot.getSerialNumber() == player.getSerialNumber())
+                CrewMember planeCrewMember = plane.getCrewMember();
+                if (planeCrewMember.getSerialNumber() == player.getSerialNumber())
                 {
                     return flight;
                 }
@@ -259,7 +256,7 @@ public class MissionFlights
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlayerPlanes())
             {
-                if (plane.getPilot().isPlayer())
+                if (plane.getCrewMember().isPlayer())
                 {
                     playersInMission.add(plane.getLinkTrId());
                 }

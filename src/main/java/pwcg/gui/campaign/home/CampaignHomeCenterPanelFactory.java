@@ -4,15 +4,15 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignHomeCenterPanelFactory
 {
-    public static JPanel makeCampaignHomeCenterPanel(CampaignHomeScreen campaignHome, List<SquadronMember> sortedPilots) throws PWCGException  
+    public static JPanel makeCampaignHomeCenterPanel(CampaignHomeScreen campaignHome, List<CrewMember> sortedCrewMembers) throws PWCGException  
     {
         CampaignHomeCenterPanel chalkboard = new CampaignHomeCenterPanel(campaignHome.getChalkboardSelector());
-        chalkboard.makePanel(sortedPilots);
+        chalkboard.makePanel(sortedCrewMembers);
         return chalkboard;
     }
 }

@@ -11,18 +11,18 @@ import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.resupply.depot.EquipmentWeightCalculator;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class InitialSquadronEquipper 
 {
     private Campaign campaign;
-    private Squadron squadron;
+    private Company squadron;
     private Equipment equipment = new Equipment();
-    private int planesNeeded = Squadron.SQUADRON_EQUIPMENT_SIZE;
+    private int planesNeeded = Company.SQUADRON_EQUIPMENT_SIZE;
     private EquipmentWeightCalculator equipmentWeightCalculator;
 
-	public InitialSquadronEquipper(Campaign campaign, Squadron squadron, EquipmentWeightCalculator equipmentWeightCalculator) 
+	public InitialSquadronEquipper(Campaign campaign, Company squadron, EquipmentWeightCalculator equipmentWeightCalculator) 
 	{
         this.campaign = campaign;
         this.squadron = squadron;

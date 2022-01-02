@@ -8,8 +8,8 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class PlayerDeclarationResolution
@@ -75,7 +75,7 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFirmAirVictories())
         {
-            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            CrewMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
                 if (!resultVictory.isConfirmed())
@@ -97,7 +97,7 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFirmAirVictories())
         {
-            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            CrewMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
                 String shotDownPlaneDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirmNotExact(player, victoryDeclaration, resultVictory);
@@ -116,7 +116,7 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFuzzyAirVictories())
         {
-            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            CrewMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
             if (didPlayerDamagePlane(playerSerialNumber, resultVictory))
             {
                 if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
@@ -138,7 +138,7 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFuzzyAirVictories())
         {
-            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            CrewMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
             if (didPlayerDamagePlane(playerSerialNumber, resultVictory))
             {
                 if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
@@ -160,13 +160,13 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFirmBalloonVictories())
         {
-            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            CrewMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
                 if (resultVictory.getVictor() instanceof LogPlane)
                 {
-                    SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
-                    if (PlayerVictoryResolver.isPlayerVictory(squadronMember, resultVictory.getVictor()))
+                    CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+                    if (PlayerVictoryResolver.isPlayerVictory(crewMember, resultVictory.getVictor()))
                     {
                         generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, resultVictory.getVictim().getVehicleType());
                         return true;
@@ -184,7 +184,7 @@ public class PlayerDeclarationResolution
         {
             if (didPlayerDamagePlane(playerSerialNumber, resultVictory))
             {
-                SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+                CrewMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
                 if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
                 {
                     generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, resultVictory.getVictim().getVehicleType());
@@ -208,7 +208,7 @@ public class PlayerDeclarationResolution
     private boolean didPlayerDamagePlane(Integer playerSerialNumber, LogVictory resultVictory) throws PWCGException
     {
         LogPlane playerPlane = evaluationData.getPlaneInMissionBySerialNumber(playerSerialNumber);
-        boolean didPlayerDamagePlane = resultVictory.didPilotDamagePlane(playerPlane.getId());
+        boolean didPlayerDamagePlane = resultVictory.didCrewMemberDamagePlane(playerPlane.getId());
         return didPlayerDamagePlane;
     }
 

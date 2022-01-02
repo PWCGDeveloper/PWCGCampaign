@@ -1,10 +1,10 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.AirToGroundVictoryBuilder;
-import pwcg.campaign.squadmember.GroundVictimGenerator;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.AirToGroundVictoryBuilder;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.GroundVictimGenerator;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -14,17 +14,17 @@ import pwcg.mission.ground.vehicle.IVehicle;
 public class OutOfMissionGroundVictoryEventGenerator 
 {    
 	private Campaign campaign = null;
-    private SquadronMember squadronMember;
+    private CrewMember crewMember;
 
 	private OutOfMissionVictoryData victoriesOutOMission = new OutOfMissionVictoryData();
 
-	public OutOfMissionGroundVictoryEventGenerator (Campaign campaign, SquadronMember squadronMember) 
+	public OutOfMissionGroundVictoryEventGenerator (Campaign campaign, CrewMember crewMember) 
 	{
         this.campaign = campaign;
-        this.squadronMember = squadronMember;
+        this.crewMember = crewMember;
 	}
 	
-    public OutOfMissionVictoryData outOfMissionVictoriesForSquadronMember() throws PWCGException 
+    public OutOfMissionVictoryData outOfMissionVictoriesForCrewMember() throws PWCGException 
     {
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         int victoryOdds = determineOddsOfOutOfMissionVictory(configManager);
@@ -35,15 +35,15 @@ public class OutOfMissionGroundVictoryEventGenerator
     private int determineOddsOfOutOfMissionVictory(ConfigManagerCampaign configManager) throws PWCGException
     {
         int victoryOdds = 5;
-        if (squadronMember.getAiSkillLevel() == AiSkillLevel.COMMON)
+        if (crewMember.getAiSkillLevel() == AiSkillLevel.COMMON)
         {
         	victoryOdds += 10;
         }
-        else if (squadronMember.getAiSkillLevel() == AiSkillLevel.VETERAN)
+        else if (crewMember.getAiSkillLevel() == AiSkillLevel.VETERAN)
         {
         	victoryOdds += 20;
         }
-        else if (squadronMember.getAiSkillLevel() == AiSkillLevel.ACE)
+        else if (crewMember.getAiSkillLevel() == AiSkillLevel.ACE)
         {
         	victoryOdds += 40;
         }
@@ -62,15 +62,15 @@ public class OutOfMissionGroundVictoryEventGenerator
 
     private void generateVictory() throws PWCGException
     {
-        GroundVictimGenerator duringCampaignVictimGenerator = new GroundVictimGenerator(campaign.getDate(), squadronMember);
+        GroundVictimGenerator duringCampaignVictimGenerator = new GroundVictimGenerator(campaign.getDate(), crewMember);
         IVehicle victimVehicle = duringCampaignVictimGenerator.generateVictimVehicle();
 
-        AirToGroundVictoryBuilder outOfMissionVictoryGenerator = new AirToGroundVictoryBuilder(squadronMember, victimVehicle);
+        AirToGroundVictoryBuilder outOfMissionVictoryGenerator = new AirToGroundVictoryBuilder(crewMember, victimVehicle);
         Victory victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(campaign.getDate());
 
         if (victory != null)
         {
-            victoriesOutOMission.addVictoryAwards(squadronMember.getSerialNumber(), victory);
+            victoriesOutOMission.addVictoryAwards(crewMember.getSerialNumber(), victory);
         }
     }
 

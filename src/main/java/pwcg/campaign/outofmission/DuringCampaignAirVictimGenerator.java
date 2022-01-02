@@ -8,96 +8,96 @@ import java.util.Map;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class DuringCampaignAirVictimGenerator implements IVictimGenerator
 {    
     private Campaign campaign;
-    private Squadron victimSquadron;
+    private Company victimSquadron;
 
-    private Map<Integer, SquadronMember> lowRanks = new HashMap<>();
-    private Map<Integer, SquadronMember> medRanks = new HashMap<>();
-    private Map<Integer, SquadronMember> highRanks = new HashMap<>();
-    private Map<Integer, SquadronMember> all = new HashMap<>();
+    private Map<Integer, CrewMember> lowRanks = new HashMap<>();
+    private Map<Integer, CrewMember> medRanks = new HashMap<>();
+    private Map<Integer, CrewMember> highRanks = new HashMap<>();
+    private Map<Integer, CrewMember> all = new HashMap<>();
 
-    public DuringCampaignAirVictimGenerator (Campaign campaign, Squadron victimSquadron) throws PWCGException
+    public DuringCampaignAirVictimGenerator (Campaign campaign, Company victimSquadron) throws PWCGException
     {
         this.campaign = campaign;
         this.victimSquadron = victimSquadron;
     }
 
-    public SquadronMember generateVictimAiCrew() throws PWCGException 
+    public CrewMember generateVictimAiCrew() throws PWCGException 
     {        
-        SquadronMember victimPilot = null;
+        CrewMember victimCrewMember = null;
         
-        Map<Integer, SquadronMember> possibleVictims = getPossibleVictims();
+        Map<Integer, CrewMember> possibleVictims = getPossibleVictims();
         if (possibleVictims.size() > 0)
         {
-            categorizeAIPilots(possibleVictims);
-            Map<Integer, SquadronMember> selectedCategory = selectPilotCategory();
-            victimPilot = selectVictim(selectedCategory);
+            categorizeAICrewMembers(possibleVictims);
+            Map<Integer, CrewMember> selectedCategory = selectCrewMemberCategory();
+            victimCrewMember = selectVictim(selectedCategory);
         }
         
-        return victimPilot;
+        return victimCrewMember;
     }
 
-    private void categorizeAIPilots(Map<Integer, SquadronMember> possibleVictims) throws PWCGException 
+    private void categorizeAICrewMembers(Map<Integer, CrewMember> possibleVictims) throws PWCGException 
     {
-        for (SquadronMember squadronMember : possibleVictims.values())
+        for (CrewMember crewMember : possibleVictims.values())
         {
             IRankHelper rankObj = RankFactory.createRankHelper();
-            Squadron possibleVictimSquadron = squadronMember.determineSquadron();
+            Company possibleVictimSquadron = crewMember.determineSquadron();
             if (possibleVictimSquadron != null)
             {
                 ArmedService victimService = possibleVictimSquadron.determineServiceForSquadron(campaign.getDate());
-                int rankPos = rankObj.getRankPosByService(squadronMember.getRank(), victimService);
+                int rankPos = rankObj.getRankPosByService(crewMember.getRank(), victimService);
                 if (rankPos == 0)
                 {
                     // DO not include commanders
                 }
                 else if (rankPos == 1)
                 {
-                    highRanks.put(squadronMember.getSerialNumber(), squadronMember);
+                    highRanks.put(crewMember.getSerialNumber(), crewMember);
                 }
                 else if (rankPos == 2)
                 {
-                    medRanks.put(squadronMember.getSerialNumber(), squadronMember);
+                    medRanks.put(crewMember.getSerialNumber(), crewMember);
                 }
                 else
                 {
-                    lowRanks.put(squadronMember.getSerialNumber(), squadronMember);
+                    lowRanks.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
             
-            all.put(squadronMember.getSerialNumber(), squadronMember);
+            all.put(crewMember.getSerialNumber(), crewMember);
         }
     }
 
-    private Map<Integer, SquadronMember> getPossibleVictims() throws PWCGException 
+    private Map<Integer, CrewMember> getPossibleVictims() throws PWCGException 
     {
-        Map<Integer, SquadronMember> possibleVictims = new HashMap<>();
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(victimSquadron.getSquadronId());
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+        Map<Integer, CrewMember> possibleVictims = new HashMap<>();
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(victimSquadron.getSquadronId());
+        CrewMembers squadronMembers = CrewMemberFilter.filterActiveAINoWounded(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        for (CrewMember crewMember : squadronMembers.getCrewMemberList())
         {
-            possibleVictims.put(squadronMember.getSerialNumber(), squadronMember);
+            possibleVictims.put(crewMember.getSerialNumber(), crewMember);
         }
 
         return possibleVictims;
     }
 
 
-    private Map<Integer, SquadronMember> selectPilotCategory() throws PWCGException 
+    private Map<Integer, CrewMember> selectCrewMemberCategory() throws PWCGException 
     {
-        Map<Integer, SquadronMember> selectedCategory;
+        Map<Integer, CrewMember> selectedCategory;
 
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 8)
@@ -121,13 +121,13 @@ public class DuringCampaignAirVictimGenerator implements IVictimGenerator
         return selectedCategory;
     }
 
-    private SquadronMember selectVictim(Map<Integer, SquadronMember> potentialVictims) throws PWCGException 
+    private CrewMember selectVictim(Map<Integer, CrewMember> potentialVictims) throws PWCGException 
     {
     	if (!potentialVictims.isEmpty())
     	{
-    	    List<SquadronMember> potentialVictimsList = new ArrayList<>(potentialVictims.values());
+    	    List<CrewMember> potentialVictimsList = new ArrayList<>(potentialVictims.values());
     		int index = RandomNumberGenerator.getRandom(potentialVictimsList.size());
-    		SquadronMember victim = potentialVictimsList.get(index);
+    		CrewMember victim = potentialVictimsList.get(index);
     		return victim;
     	}
     	

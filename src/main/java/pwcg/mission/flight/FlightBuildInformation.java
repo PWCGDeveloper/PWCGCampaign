@@ -1,15 +1,15 @@
 package pwcg.mission.flight;
 
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.mission.Mission;
 
 public class FlightBuildInformation
 {
     private Mission mission;
-    private Squadron squadron;
+    private Company squadron;
     private NecessaryFlightType necessaryFlightType = NecessaryFlightType.NONE;
 
-    public FlightBuildInformation(Mission mission, Squadron squadron, NecessaryFlightType necessaryFlightType)
+    public FlightBuildInformation(Mission mission, Company squadron, NecessaryFlightType necessaryFlightType)
     {
         this.mission = mission;
         this.squadron = squadron;
@@ -21,7 +21,7 @@ public class FlightBuildInformation
         return mission;
     }
 
-    public Squadron getSquadron()
+    public Company getSquadron()
     {
         return squadron;
     }

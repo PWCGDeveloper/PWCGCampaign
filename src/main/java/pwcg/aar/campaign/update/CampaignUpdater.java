@@ -7,7 +7,7 @@ import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.tabulate.campaignupdate.AARCampaignUpdateTabulator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.personnel.InitialSquadronBuilder;
+import pwcg.campaign.personnel.InitialCompanyBuilder;
 import pwcg.campaign.resupply.depot.EquipmentArchTypeChangeHandler;
 import pwcg.campaign.resupply.depot.EquipmentDepotReplenisher;
 import pwcg.core.exception.PWCGException;
@@ -28,8 +28,8 @@ public class CampaignUpdater
     {
 	    tabulateCampaignUpdateData();
 	    
-        CampaignPilotAwardsUpdater pilotUpdater = new CampaignPilotAwardsUpdater(campaign, campaignUpdateData);
-        pilotUpdater.updatesForMissionEvents();
+        CampaignCrewMemberAwardsUpdater crewMemberUpdater = new CampaignCrewMemberAwardsUpdater(campaign, campaignUpdateData);
+        crewMemberUpdater.updatesForMissionEvents();
         
         CampaignAceUpdater aceUpdater = new CampaignAceUpdater(campaign, campaignUpdateData.getPersonnelAwards().getHistoricalAceAwards().getAceVictories());
         aceUpdater.updatesCampaignAces();
@@ -68,7 +68,7 @@ public class CampaignUpdater
         campaign.getCampaignLogs().parseEventsToCampaignLogs(campaign, campaignUpdateData.getLogEvents().getCampaignLogEvents());
         campaign.setDate(newDate);
         
-        InitialSquadronBuilder initialSquadronBuilder = new InitialSquadronBuilder();
+        InitialCompanyBuilder initialSquadronBuilder = new InitialCompanyBuilder();
         initialSquadronBuilder.buildNewSquadrons(campaign);
     }
  }

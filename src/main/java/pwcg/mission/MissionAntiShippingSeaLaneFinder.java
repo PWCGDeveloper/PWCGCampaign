@@ -10,7 +10,7 @@ import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.shipping.ShippingLane;
 import pwcg.campaign.shipping.ShippingLaneManager;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
@@ -30,7 +30,7 @@ public class MissionAntiShippingSeaLaneFinder
         return shippingLane;
     }
     
-    public static boolean canFlyAntiShipping(Campaign campaign, Squadron squadron,ShippingLane shippingLane) throws PWCGException
+    public static boolean canFlyAntiShipping(Campaign campaign, Company squadron,ShippingLane shippingLane) throws PWCGException
     {
         List<FrontMapIdentifier> squadronMaps = AirfieldManager.getMapIdForAirfield(squadron.determineCurrentAirfieldName(campaign.getDate()));
         if (squadronMaps.contains(FrontMapIdentifier.KUBAN_MAP))

@@ -2,8 +2,8 @@ package pwcg.campaign.mode;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -20,12 +20,12 @@ public class CampaignDescriptionBuilderSinglePlayer implements ICampaignDescript
     {
         String campaignDescription = "";        
 
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        CrewMember referencePlayer = campaign.findReferencePlayer();
 
         campaignDescription += referencePlayer.getNameAndRank();
         campaignDescription += "     " + DateUtils.getDateString(campaign.getDate());
         
-        Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
+        Company squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getCompanyId());
         campaignDescription += "     " + squadron.determineDisplayName(campaign.getDate());
         campaignDescription += "     " + squadron.determineCurrentAirfieldName(campaign.getDate());
 

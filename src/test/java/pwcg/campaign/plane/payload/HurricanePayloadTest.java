@@ -20,7 +20,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -45,7 +45,7 @@ public class HurricanePayloadTest
     @Mock
     Campaign campaign;
     @Mock
-    Squadron squadron;
+    Company squadron;
     @Mock
     ConfigManagerCampaign configManagerCampaign;
 

@@ -13,7 +13,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.resupply.depot.EquipmentUpgradeRecord;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
@@ -37,9 +37,9 @@ public class EquipmentUpgradeHandler
     private void upgradePlayerSquadrons(ArmedService armedService) throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        for (Squadron squadron : squadronManager.getActiveSquadronsForService(campaign.getDate(), armedService))
+        for (Company squadron : squadronManager.getActiveSquadronsForService(campaign.getDate(), armedService))
         {
-            if (Squadron.isPlayerSquadron(campaign, squadron.getSquadronId()))
+            if (Company.isPlayerSquadron(campaign, squadron.getSquadronId()))
             {
                 upgradeEquipment(squadron);
             }
@@ -49,13 +49,13 @@ public class EquipmentUpgradeHandler
     private void upgradeAiSquadrons(ArmedService armedService) throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        for (Squadron squadron : squadronManager.getActiveSquadronsForService(campaign.getDate(), armedService))
+        for (Company squadron : squadronManager.getActiveSquadronsForService(campaign.getDate(), armedService))
         {
             upgradeEquipment(squadron);
         }
     }
 
-    private void upgradeEquipment(Squadron squadron) throws PWCGException
+    private void upgradeEquipment(Company squadron) throws PWCGException
     {
         Equipment equipmentForSquadron = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());
         EquipmentDepot equipmentDepot = campaign.getEquipmentManager().getEquipmentDepotForService(squadron.getService());

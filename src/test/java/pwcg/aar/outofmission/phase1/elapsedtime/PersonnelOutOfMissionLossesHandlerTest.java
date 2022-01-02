@@ -23,9 +23,9 @@ import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -40,7 +40,7 @@ public class PersonnelOutOfMissionLossesHandlerTest
     @Mock private AARContext aarContext;
     @Mock private CampaignUpdateData campaignUpdateData;
     @Mock private AARPreliminaryData preliminaryData;
-    @Mock private SquadronMembers squadronMembers;
+    @Mock private CrewMembers squadronMembers;
 
     
     @BeforeAll
@@ -66,7 +66,7 @@ public class PersonnelOutOfMissionLossesHandlerTest
             mocked.when(() -> CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(Mockito.any(), Mockito.any())).thenReturn(squadronMembers);
 
             OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
-            outOfMissionLossesHandler.lossesOutOfMission(new HashMap<Integer, SquadronMember>(), new HashMap<Integer, LogPlane>());
+            outOfMissionLossesHandler.lossesOutOfMission(new HashMap<Integer, CrewMember>(), new HashMap<Integer, LogPlane>());
             AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
             Assertions.assertTrue (lossesInMissionDataTotal.getAcesKilled(campaign).size() > 0);
         }
@@ -80,14 +80,14 @@ public class PersonnelOutOfMissionLossesHandlerTest
             mocked.when(() -> CampaignMembersOutOfMissionFinder.getAllCampaignMembersNotInMission(Mockito.any(), Mockito.any())).thenReturn(squadronMembers);
             mocked.when(() -> CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(Mockito.any(), Mockito.any())).thenReturn(squadronMembers);
 
-            Map<Integer, SquadronMember> aiKilled = new HashMap<>();
-            Map<Integer, SquadronMember> aiMaimed = new HashMap<>();
-            Map<Integer, SquadronMember> aiCaptured = new HashMap<>();
-            Map<Integer, SquadronMember> aiWounded = new HashMap<>();
+            Map<Integer, CrewMember> aiKilled = new HashMap<>();
+            Map<Integer, CrewMember> aiMaimed = new HashMap<>();
+            Map<Integer, CrewMember> aiCaptured = new HashMap<>();
+            Map<Integer, CrewMember> aiWounded = new HashMap<>();
     
             OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
-            SquadronMembers allAiCampaignMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
-            outOfMissionLossesHandler.lossesOutOfMission(allAiCampaignMembers.getSquadronMemberCollection(), new HashMap<Integer, LogPlane>());
+            CrewMembers allAiCampaignMembers = CrewMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+            outOfMissionLossesHandler.lossesOutOfMission(allAiCampaignMembers.getCrewMemberCollection(), new HashMap<Integer, LogPlane>());
     
             AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
             aiKilled.putAll(lossesInMissionDataTotal.getPersonnelKilled());

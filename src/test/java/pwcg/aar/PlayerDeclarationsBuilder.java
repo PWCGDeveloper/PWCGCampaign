@@ -5,7 +5,7 @@ import java.util.Map;
 
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 
 public class PlayerDeclarationsBuilder
 {    
@@ -13,7 +13,7 @@ public class PlayerDeclarationsBuilder
     {
     }
     
-    public Map<Integer, PlayerDeclarations> makePlayerDeclarations(SquadronMember player)
+    public Map<Integer, PlayerDeclarations> makePlayerDeclarations(CrewMember player)
     {
         Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
         PlayerDeclarations playerDeclarationSet = new PlayerDeclarations();

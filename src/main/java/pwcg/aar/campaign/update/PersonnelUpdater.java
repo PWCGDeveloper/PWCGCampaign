@@ -7,13 +7,13 @@ import pwcg.aar.data.CampaignUpdateData;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.CrewMemberFemaleGenerator;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
-import pwcg.campaign.personnel.SquadronMemberFemaleGenerator;
-import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.resupply.personnel.TransferRecord;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class PersonnelUpdater 
@@ -30,9 +30,9 @@ public class PersonnelUpdater
     public void personnelUpdates() throws PWCGException 
     {
         personnelAceRemovals();
-        personnelPilotLosses();        
+        personnelCrewMemberLosses();        
         personnelAceAdditions();
-        personnelHealWoundedPilots();
+        personnelHealWoundedCrewMembers();
     }
 
     private void personnelAceRemovals() throws PWCGException
@@ -55,11 +55,11 @@ public class PersonnelUpdater
 
     private void setAceKilledInCampaign(Integer serialNumber) throws PWCGException
     {
-        SquadronMember ace = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
-        ace.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
+        CrewMember ace = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
+        ace.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_KIA, campaign.getDate(), null);
     }
 
-    private void personnelPilotLosses() throws PWCGException 
+    private void personnelCrewMemberLosses() throws PWCGException 
     {        
         squadronMembersKilled();
         squadronMembersCaptured();
@@ -71,90 +71,90 @@ public class PersonnelUpdater
 
     private void squadronMembersKilled()
     {
-        for (SquadronMember pilot : campaignUpdateData.getPersonnelLosses().getPersonnelKilled().values())
+        for (CrewMember crewMember : campaignUpdateData.getPersonnelLosses().getPersonnelKilled().values())
         {
-            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
+            crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_KIA, campaign.getDate(), null);
         }
     }
 
     private void squadronMembersCaptured()
     {
-        for (SquadronMember pilot : campaignUpdateData.getPersonnelLosses().getPersonnelCaptured().values())
+        for (CrewMember crewMember : campaignUpdateData.getPersonnelLosses().getPersonnelCaptured().values())
         {
-            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_CAPTURED, campaign.getDate(), null);
+            crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_CAPTURED, campaign.getDate(), null);
         }
     }
 
     private void squadronMembersWounded() throws PWCGException
     {
-        for (SquadronMember pilot : campaignUpdateData.getPersonnelLosses().getPersonnelWounded().values())
+        for (CrewMember crewMember : campaignUpdateData.getPersonnelLosses().getPersonnelWounded().values())
         {
-            Date woundrecoveryDate = determinePlayerWoundedTime(SquadronMemberStatus.STATUS_WOUNDED);
-            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate(), woundrecoveryDate);
+            Date woundrecoveryDate = determinePlayerWoundedTime(CrewMemberStatus.STATUS_WOUNDED);
+            crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_WOUNDED, campaign.getDate(), woundrecoveryDate);
         }
     }
 
     private void squadronMembersMaimed() throws PWCGException
     {
-        for (SquadronMember pilot : campaignUpdateData.getPersonnelLosses().getPersonnelMaimed().values())
+        for (CrewMember crewMember : campaignUpdateData.getPersonnelLosses().getPersonnelMaimed().values())
         {
-            Date woundrecoveryDate = determinePlayerWoundedTime(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
-            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), woundrecoveryDate);
+            Date woundrecoveryDate = determinePlayerWoundedTime(CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+            crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), woundrecoveryDate);
         }
     }
 
     private void squadronMembersTransferredHome() throws PWCGException
     {
-        for (SquadronMember pilot : campaignUpdateData.getPersonnelLosses().getPersonnelTransferredHome().values())
+        for (CrewMember crewMember : campaignUpdateData.getPersonnelLosses().getPersonnelTransferredHome().values())
         {
-            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_TRANSFERRED, campaign.getDate(), null);
+            crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_TRANSFERRED, campaign.getDate(), null);
         }
     }
 
     private void squadronMembersTransfers() throws PWCGException
     {
-        for (TransferRecord transferRecord : campaignUpdateData.getResupplyData().getSquadronTransferData().getSquadronMembersTransferred())
+        for (TransferRecord transferRecord : campaignUpdateData.getResupplyData().getSquadronTransferData().getCrewMembersTransferred())
         {
-            addPilotToSquadron(transferRecord);
+            addCrewMemberToSquadron(transferRecord);
             removeFromReplacementPool(transferRecord);
         }
     }
 
-    private void addPilotToSquadron(TransferRecord transferRecord) throws PWCGException
+    private void addCrewMemberToSquadron(TransferRecord transferRecord) throws PWCGException
     {
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(transferRecord.getTransferTo());
-        transferRecord.getSquadronMember().setSquadronId(transferRecord.getTransferTo());
-        SquadronMember converted = SquadronMemberFemaleGenerator.convertToFemale(campaign, transferRecord.getTransferTo(), transferRecord.getSquadronMember());
-        transferRecord.setSquadronMember(converted);
-        squadronPersonnel.addSquadronMember(transferRecord.getSquadronMember());
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(transferRecord.getTransferTo());
+        transferRecord.getCrewMember().setSquadronId(transferRecord.getTransferTo());
+        CrewMember converted = CrewMemberFemaleGenerator.convertToFemale(campaign, transferRecord.getTransferTo(), transferRecord.getCrewMember());
+        transferRecord.setCrewMember(converted);
+        squadronPersonnel.addCrewMember(transferRecord.getCrewMember());
     }
 
     private void removeFromReplacementPool(TransferRecord transferRecord) throws PWCGException
     {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(transferRecord.getTransferTo());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(transferRecord.getTransferTo());
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         PersonnelReplacementsService replacementService = campaign.getPersonnelManager().getPersonnelReplacementsService(service.getServiceId());
-        replacementService.transferFromReservesToActive(transferRecord.getSquadronMember().getSerialNumber());
+        replacementService.transferFromReservesToActive(transferRecord.getCrewMember().getSerialNumber());
     }
 
     private void personnelAceAdditions() throws PWCGException
     {
-        for (TransferRecord transferRecord : campaignUpdateData.getResupplyData().getAcesTransferred().getSquadronMembersTransferred())
+        for (TransferRecord transferRecord : campaignUpdateData.getResupplyData().getAcesTransferred().getCrewMembersTransferred())
         {
-            transferRecord.getSquadronMember().setSquadronId(transferRecord.getTransferTo());
+            transferRecord.getCrewMember().setSquadronId(transferRecord.getTransferTo());
         }
     }
     
-    private void personnelHealWoundedPilots() throws PWCGException
+    private void personnelHealWoundedCrewMembers() throws PWCGException
     {
         CampaignWoundUpdater woundUpdater = new CampaignWoundUpdater(campaign);
-        woundUpdater.healWoundedPilots(campaignUpdateData.getNewDate());
+        woundUpdater.healWoundedCrewMembers(campaignUpdateData.getNewDate());
     }
     
-    private Date determinePlayerWoundedTime(int pilotStatus) throws PWCGException
+    private Date determinePlayerWoundedTime(int crewMemberStatus) throws PWCGException
     {
         WoundRecovery woundTimeCalculator = new WoundRecovery(campaign);
-        Date woundedDate = woundTimeCalculator.calcDateOfRecovery(pilotStatus);
+        Date woundedDate = woundTimeCalculator.calcDateOfRecovery(crewMemberStatus);
         return woundedDate;
     }
  }

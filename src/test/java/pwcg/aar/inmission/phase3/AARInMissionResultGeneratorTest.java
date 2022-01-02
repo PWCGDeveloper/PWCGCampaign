@@ -19,7 +19,7 @@ import org.mockito.quality.Strictness;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogCrewMember;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
@@ -31,14 +31,14 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.logfiles.LogFileSet;
-import pwcg.product.fc.country.FCCountry;
+import pwcg.product.bos.country.BoSCountry;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
 import pwcg.testutils.SquadronTestProfile;
@@ -51,12 +51,12 @@ public class AARInMissionResultGeneratorTest
     private static final int GEORGES_GUYNEMER = 101064;
     private static final int WERNER_VOSS = 101175;
     private Campaign campaign;
-    private List<LogPilot> pilotStatusList;
+    private List<LogCrewMember> crewMemberStatusList;
     private List<LogVictory> firmVictories;        
-    private SquadronMember sergentInFlight;
-    private SquadronMember corporalInFlight;
-    private SquadronMember sltInFlight;
-    private SquadronMember ltInFlight;
+    private CrewMember sergentInFlight;
+    private CrewMember corporalInFlight;
+    private CrewMember sltInFlight;
+    private CrewMember ltInFlight;
     private LogPlane playerPlaneVictor = new LogPlane(1);
     private LogPlane aiPlaneVictor = new LogPlane(2);
     private LogPlane wernerVossPlaneVictor = new LogPlane(3);
@@ -81,7 +81,7 @@ public class AARInMissionResultGeneratorTest
     @BeforeEach
     public void setupTest() throws PWCGException
     {        
-        pilotStatusList = new ArrayList<>();
+        crewMemberStatusList = new ArrayList<>();
         firmVictories = new ArrayList<>();
         playerDeclarationSet = new PlayerDeclarations();
 
@@ -90,12 +90,12 @@ public class AARInMissionResultGeneratorTest
         wernerVossPlaneVictor.setSquadronId(401010);
         gerogesGuynemerPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         
-        Mockito.when(evaluationData.getPilotsInMission()).thenReturn(pilotStatusList);
+        Mockito.when(evaluationData.getCrewMembersInMission()).thenReturn(crewMemberStatusList);
         Mockito.when(evaluationData.getVictoryResults()).thenReturn(firmVictories);   
         
         createCampaignMembersInMission();
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(playerPlaneVictor.getPilotSerialNumber())).thenReturn(playerPlaneVictor);   
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(aiPlaneVictor.getPilotSerialNumber())).thenReturn(aiPlaneVictor);   
+        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(playerPlaneVictor.getCrewMemberSerialNumber())).thenReturn(playerPlaneVictor);   
+        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(aiPlaneVictor.getCrewMemberSerialNumber())).thenReturn(aiPlaneVictor);   
     }
 
     @Test
@@ -122,10 +122,10 @@ public class AARInMissionResultGeneratorTest
         assert(aarContext.getPersonnelLosses().getPersonnelWounded().size() == 2);
         assert(aarContext.getPersonnelLosses().getAcesKilled(campaign).size() == 2);
 
-        List<Victory> aiPilotVictories = aarContext.getPersonnelAcheivements().getVictoryAwardsForPilot(aiPlaneVictor.getPilotSerialNumber());
-        List<Victory> playerVictories = aarContext.getPersonnelAcheivements().getVictoryAwardsForPilot(playerPlaneVictor.getPilotSerialNumber());
+        List<Victory> aiCrewMemberVictories = aarContext.getPersonnelAcheivements().getVictoryAwardsForCrewMember(aiPlaneVictor.getCrewMemberSerialNumber());
+        List<Victory> playerVictories = aarContext.getPersonnelAcheivements().getVictoryAwardsForCrewMember(playerPlaneVictor.getCrewMemberSerialNumber());
         List<ClaimDeniedEvent> playerClaimsDenied = aarContext.getPersonnelAcheivements().getPlayerClaimsDenied();
-        Assertions.assertTrue (aiPilotVictories.size() == 3);
+        Assertions.assertTrue (aiCrewMemberVictories.size() == 3);
         Assertions.assertTrue (playerVictories.size() == 2);
         Assertions.assertTrue (playerClaimsDenied.size() == 2);
     }
@@ -139,19 +139,19 @@ public class AARInMissionResultGeneratorTest
             playerDeclarationSet.addDeclaration(declaration);
         }
         
-        SquadronMember playerInFlight = campaign.findReferencePlayer();
+        CrewMember playerInFlight = campaign.findReferencePlayer();
         playerDeclarations.put(playerInFlight.getSerialNumber(), playerDeclarationSet);
     }
 
-    private void createVictory(LogPlane victor, Integer pilotSerialNumber, Integer planeSerialNumber)
+    private void createVictory(LogPlane victor, Integer crewMemberSerialNumber, Integer planeSerialNumber)
     {
         LogPlane victim = new LogPlane(3);
-        victim.setPilotSerialNumber(pilotSerialNumber);
+        victim.setCrewMemberSerialNumber(crewMemberSerialNumber);
         victim.setPlaneSerialNumber(planeSerialNumber);
         victim.setVehicleType("albatrosd5");
-        victim.setCountry(new FCCountry(Country.GERMANY));
+        victim.setCountry(new BoSCountry(Country.GERMANY));
         victim.setSquadronId(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
-        victim.intializePilot(pilotSerialNumber);
+        victim.intializeCrewMember(crewMemberSerialNumber);
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setLocation(new Coordinate(100.0, 0.0, 100.0));
@@ -162,40 +162,40 @@ public class AARInMissionResultGeneratorTest
 
     private void createCampaignMembersInMission() throws PWCGException
     {        
-        SquadronMember playerInFlight = campaign.findReferencePlayer();
-        addSquadronPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
-        playerPlaneVictor.setPilotSerialNumber(playerInFlight.getSerialNumber());
-        playerPlaneVictor.setCountry(new FCCountry(Country.FRANCE));
-        playerPlaneVictor.intializePilot(playerInFlight.getSerialNumber());
+        CrewMember playerInFlight = campaign.findReferencePlayer();
+        addSquadronCrewMember(playerInFlight.getSerialNumber(), CrewMemberStatus.STATUS_WOUNDED);
+        playerPlaneVictor.setCrewMemberSerialNumber(playerInFlight.getSerialNumber());
+        playerPlaneVictor.setCountry(new BoSCountry(Country.FRANCE));
+        playerPlaneVictor.intializeCrewMember(playerInFlight.getSerialNumber());
                 
-        sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
-        addSquadronPilot(sergentInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
-        aiPlaneVictor.setPilotSerialNumber(sergentInFlight.getSerialNumber());
-        aiPlaneVictor.setCountry(new FCCountry(Country.FRANCE));
-        aiPlaneVictor.intializePilot(sergentInFlight.getSerialNumber());
+        sergentInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Sergent");
+        addSquadronCrewMember(sergentInFlight.getSerialNumber(), CrewMemberStatus.STATUS_WOUNDED);
+        aiPlaneVictor.setCrewMemberSerialNumber(sergentInFlight.getSerialNumber());
+        aiPlaneVictor.setCountry(new BoSCountry(Country.FRANCE));
+        aiPlaneVictor.intializeCrewMember(sergentInFlight.getSerialNumber());
 
-        corporalInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");
-        addSquadronPilot(corporalInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+        corporalInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Corporal");
+        addSquadronCrewMember(corporalInFlight.getSerialNumber(), CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         
-        sltInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sous Lieutenant");
-        addSquadronPilot(sltInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_KIA);
+        sltInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Sous Lieutenant");
+        addSquadronCrewMember(sltInFlight.getSerialNumber(), CrewMemberStatus.STATUS_KIA);
         
-        ltInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Lieutenant");
-        addSquadronPilot(ltInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_CAPTURED);
+        ltInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Lieutenant");
+        addSquadronCrewMember(ltInFlight.getSerialNumber(), CrewMemberStatus.STATUS_CAPTURED);
     }
     
     private void createAcesInMission() throws PWCGException
     {
-        addSquadronPilot(WERNER_VOSS, SquadronMemberStatus.STATUS_KIA);
-        addSquadronPilot(GEORGES_GUYNEMER, SquadronMemberStatus.STATUS_KIA);
+        addSquadronCrewMember(WERNER_VOSS, CrewMemberStatus.STATUS_KIA);
+        addSquadronCrewMember(GEORGES_GUYNEMER, CrewMemberStatus.STATUS_KIA);
     }
 
     
-    private void addSquadronPilot(int serialNumber, int status)
+    private void addSquadronCrewMember(int serialNumber, int status)
     {
-        LogPilot squadronCrewMember = new LogPilot();
+        LogCrewMember squadronCrewMember = new LogCrewMember();
         squadronCrewMember.setSerialNumber(serialNumber);
         squadronCrewMember.setStatus(status);
-        pilotStatusList.add(squadronCrewMember);
+        crewMemberStatusList.add(squadronCrewMember);
     }
 }

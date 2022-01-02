@@ -3,7 +3,7 @@ package pwcg.mission;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PositionFinder;
@@ -55,7 +55,7 @@ public class MissionCenterDistanceCalculator
         int missionCenterMaxDistanceFromBase = PositionFinder.ABSURDLY_LARGE_DISTANCE;
         for (int playerSquadronId : participatingPlayers.getParticipatingSquadronIds())
         {
-            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronId);
+            Company playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronId);
             PlaneType planeForSquadron = playerSquadron.determineBestPlane(campaign.getDate());
             int maxRange = planeForSquadron.getRange();
             

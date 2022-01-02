@@ -35,7 +35,7 @@ public class CombatReportIOJsonTest
     @Test
     public void combatReportJsonTest() throws PWCGException
     {
-    	combatReport.setPilotSerialNumber(12345);
+    	combatReport.setCrewMemberSerialNumber(12345);
         combatReport.setDate(campaign.getDate());
         writeCombatReport();
         readCombatReport();

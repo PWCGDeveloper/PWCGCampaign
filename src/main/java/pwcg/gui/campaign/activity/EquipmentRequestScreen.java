@@ -24,14 +24,14 @@ import javax.swing.JPanel;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -145,8 +145,8 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         equipmentRetirementSelectionPanel.setLayout(new GridLayout(0, 1));
         equipmentRetirementSelectionPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        SquadronMember referencePlayer = campaign.getReferencePlayer();
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
+        CrewMember referencePlayer = campaign.getReferencePlayer();
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getCompanyId());
 
         JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Retire (Requested Planes)");
         equipmentRetirementSelectionPanel.add(titleLabel);
@@ -195,8 +195,8 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         equipmentChangeSelectionGrid.setLayout(new GridLayout(0, 1));
         equipmentChangeSelectionGrid.setAlignmentX(Component.LEFT_ALIGNMENT);
         
-        SquadronMember referencePlayer = campaign.getReferencePlayer();
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
+        CrewMember referencePlayer = campaign.getReferencePlayer();
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getCompanyId());
 
         JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Change (Assigned Planes)");
         equipmentChangeSelectionGrid.add(titleLabel);
@@ -229,9 +229,9 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     private JPanel makeReplacementAircraftSelectionPanel() throws PWCGException
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        SquadronMember referencePlayer = campaign.getReferencePlayer();
+        CrewMember referencePlayer = campaign.getReferencePlayer();
         ICountry country = CountryFactory.makeCountryByCountry(referencePlayer.getCountry());
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getCompanyId());
         PwcgRoleCategory roleCategory = squadron.getSquadronRoles().selectSquadronPrimaryRoleCategory(campaign.getDate());
         List<PlaneType> availablePlaneTypes = planeTypeFactory.getAvailablePlaneTypes(country, roleCategory, campaign.getDate());        
 
@@ -349,8 +349,8 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         {
             String planeTypeToChangeTo = (String) replacementAircraftTypeSelector.getSelectedItem();
             
-            SquadronMember referencePlayer = campaign.getReferencePlayer();
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
+            CrewMember referencePlayer = campaign.getReferencePlayer();
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getCompanyId());
     
             campaign.getEquipmentManager().actOnEquipmentRequest(squadron, serialNumbersOfChangedPlanes, planeTypeToChangeTo);
         }

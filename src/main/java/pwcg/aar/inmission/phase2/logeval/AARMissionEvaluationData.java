@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogCrewMember;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.core.exception.PWCGException;
@@ -15,7 +15,7 @@ public class AARMissionEvaluationData
 {
     private Map <String, LogPlane> planeAiEntities = new HashMap <>();
     private List<LogVictory> victoryResults = new ArrayList <>();
-    private List<LogPilot> pilotsInMission = new ArrayList<>();
+    private List<LogCrewMember> crewMembersInMission = new ArrayList<>();
     private List<LogBase> chronologicalEvents = new ArrayList<>();
     
     public LogPlane getPlaneInMissionBySerialNumber(Integer serialNumber) throws PWCGException
@@ -31,7 +31,7 @@ public class AARMissionEvaluationData
         return null;
     }
     
-    public boolean wasPilotInMission(Integer serialNumber) throws PWCGException
+    public boolean wasCrewMemberInMission(Integer serialNumber) throws PWCGException
     {
         for (LogPlane missionPlane : planeAiEntities.values())
         {
@@ -64,14 +64,14 @@ public class AARMissionEvaluationData
         this.victoryResults = victoryResults;
     }
 
-    public List<LogPilot> getPilotsInMission()
+    public List<LogCrewMember> getCrewMembersInMission()
     {
-        return pilotsInMission;
+        return crewMembersInMission;
     }
 
-    public void setPilotsInMission(List<LogPilot> squadronCrewsInMission)
+    public void setCrewMembersInMission(List<LogCrewMember> squadronCrewsInMission)
     {
-        this.pilotsInMission = squadronCrewsInMission;
+        this.crewMembersInMission = squadronCrewsInMission;
     }
 
     public List<LogBase> getChronologicalEvents()

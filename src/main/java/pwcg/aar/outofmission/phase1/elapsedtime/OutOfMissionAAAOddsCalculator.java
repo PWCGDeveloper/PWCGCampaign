@@ -3,10 +3,10 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronRoleSet;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -22,16 +22,16 @@ public class OutOfMissionAAAOddsCalculator
     }
     
 
-    public int oddsShotDownByAAA(SquadronMember squadronMember) throws PWCGException
+    public int oddsShotDownByAAA(CrewMember crewMember) throws PWCGException
     {
-        int shotDownOdds = intitialOddsBasedOnSquadronRole(squadronMember);
-        shotDownOdds = squadronMemberDeathOdds(squadronMember, shotDownOdds);
+        int shotDownOdds = intitialOddsBasedOnSquadronRole(crewMember);
+        shotDownOdds = squadronMemberDeathOdds(crewMember, shotDownOdds);
         return shotDownOdds;
     }
     
-    private int intitialOddsBasedOnSquadronRole(SquadronMember squadronMember) throws PWCGException
+    private int intitialOddsBasedOnSquadronRole(CrewMember crewMember) throws PWCGException
     {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(crewMember.getCompanyId());
         SquadronRoleSet squadronRoles = squadron.getSquadronRoles();
         PwcgRole roleThisMission = squadronRoles.selectRoleForMission(campaign.getDate());
         
@@ -60,27 +60,27 @@ public class OutOfMissionAAAOddsCalculator
         return shotDownOdds;
     }
     
-    private int squadronMemberDeathOdds(SquadronMember squadronMember, int shotDownOdds) throws PWCGException
+    private int squadronMemberDeathOdds(CrewMember crewMember, int shotDownOdds) throws PWCGException
     {
-        if (squadronMember.getAiSkillLevel() == AiSkillLevel.NOVICE)
+        if (crewMember.getAiSkillLevel() == AiSkillLevel.NOVICE)
         {
         	shotDownOdds += 17;
         }
-        else if (squadronMember.getAiSkillLevel() == AiSkillLevel.COMMON)
+        else if (crewMember.getAiSkillLevel() == AiSkillLevel.COMMON)
         {
         	shotDownOdds += 8;
         }
-        else if (squadronMember.getAiSkillLevel() == AiSkillLevel.VETERAN)
+        else if (crewMember.getAiSkillLevel() == AiSkillLevel.VETERAN)
         {
             shotDownOdds -= 7;
         }
-        else if (squadronMember.getAiSkillLevel() == AiSkillLevel.ACE)
+        else if (crewMember.getAiSkillLevel() == AiSkillLevel.ACE)
         {
             shotDownOdds -= 20;
         }
         
-        ArmedService service = squadronMember.determineService(campaign.getDate());
-        if (service.getServiceId() == BoSServiceManager.VVS)
+        ArmedService service = crewMember.determineService(campaign.getDate());
+        if (service.getServiceId() == BoSServiceManager.SVV)
         {
             shotDownOdds += 20;
         }

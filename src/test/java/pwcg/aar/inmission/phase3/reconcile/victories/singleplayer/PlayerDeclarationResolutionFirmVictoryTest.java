@@ -26,12 +26,12 @@ import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
-import pwcg.product.fc.country.FCCountry;
+import pwcg.product.bos.country.BoSCountry;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -43,9 +43,9 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     @Mock private PlayerVictoryDeclaration mockPlayerDeclaration;
     @Mock private AARMissionEvaluationData evaluationData;
     @Mock private VictorySorter victorySorter;
-    @Mock private SquadronMembers playerMembers;
-    @Mock private SquadronMember player;
-    @Mock private SquadronMember ai;
+    @Mock private CrewMembers playerMembers;
+    @Mock private CrewMember player;
+    @Mock private CrewMember ai;
     @Mock private PlaneTypeFactory planeFactory;
     
     private Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
@@ -53,7 +53,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
 
     private List<LogVictory> firmVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
-    private List<SquadronMember> players = new ArrayList<>();
+    private List<CrewMember> players = new ArrayList<>();
 
     private LogPlane playerVictor = new LogPlane(1);
     private LogPlane aiVictor = new LogPlane(2);
@@ -67,11 +67,11 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
 
-        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        playerVictor.setCountry(new FCCountry(Country.FRANCE));
+        playerVictor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        playerVictor.setCountry(new BoSCountry(Country.FRANCE));
         
-        aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        aiVictor.setCountry(new FCCountry(Country.FRANCE));
+        aiVictor.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        aiVictor.setCountry(new BoSCountry(Country.FRANCE));
         
         createMocks();
     }
@@ -182,14 +182,14 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     private void createVictory(Integer victorSerialNumber, Integer victimSerialNumber)
     {        
         LogPlane victim = new LogPlane(3);
-        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setCrewMemberSerialNumber(victimSerialNumber);
         victim.setVehicleType("albatrosd5");
-        victim.setCountry(new FCCountry(Country.GERMANY));
+        victim.setCountry(new BoSCountry(Country.GERMANY));
 
         LogPlane victor = new LogPlane(4);
         victor.setVehicleType("spad13");
-        victor.setPilotSerialNumber(victorSerialNumber);
-        victor.setCountry(new FCCountry(Country.FRANCE));
+        victor.setCrewMemberSerialNumber(victorSerialNumber);
+        victor.setCountry(new BoSCountry(Country.FRANCE));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictor(victor);
@@ -201,14 +201,14 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     private void createFriendlyVictory(Integer victorSerialNumber, Integer victimSerialNumber)
     {        
         LogPlane victim = new LogPlane(3);
-        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setCrewMemberSerialNumber(victimSerialNumber);
         victim.setVehicleType("spad13");
-        victim.setCountry(new FCCountry(Country.FRANCE));
+        victim.setCountry(new BoSCountry(Country.FRANCE));
 
         LogPlane victor = new LogPlane(4);
         victor.setVehicleType("spad13");
-        victor.setPilotSerialNumber(victorSerialNumber);
-        victor.setCountry(new FCCountry(Country.FRANCE));
+        victor.setCrewMemberSerialNumber(victorSerialNumber);
+        victor.setCountry(new BoSCountry(Country.FRANCE));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictor(victor);

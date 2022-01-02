@@ -3,9 +3,9 @@ package pwcg.aar.campaign.update;
 import java.util.Date;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignWoundUpdater
@@ -17,17 +17,17 @@ public class CampaignWoundUpdater
         this.campaign = campaign;
     }
     
-    public void healWoundedPilots(Date newDate) throws PWCGException
+    public void healWoundedCrewMembers(Date newDate) throws PWCGException
     {
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getAllCampaignMembers().values())
+        for (CrewMember crewMember : campaign.getPersonnelManager().getAllCampaignMembers().values())
         {
-            if (!(squadronMember instanceof Ace))
+            if (!(crewMember instanceof TankAce))
             {
-                if (squadronMember.getRecoveryDate() != null)
+                if (crewMember.getRecoveryDate() != null)
                 {
-                    if (!(squadronMember.getRecoveryDate().after(newDate)))
+                    if (!(crewMember.getRecoveryDate().after(newDate)))
                     {
-                        squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
+                        crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_ACTIVE, null, null);
                     }
                 }
             }

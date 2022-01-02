@@ -6,8 +6,8 @@ import java.util.Map;
 
 import pwcg.aar.ui.events.model.MedalEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.medals.Medal;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class MedalEventGenerator
@@ -19,36 +19,36 @@ public class MedalEventGenerator
         this.campaign = campaign;
     }
 
-    public List<MedalEvent> createPilotMedalEvents(Map<Integer, Map<String, Medal>> medalAwardByPilot) throws PWCGException
+    public List<MedalEvent> createCrewMemberMedalEvents(Map<Integer, Map<String, Medal>> medalAwardByCrewMember) throws PWCGException
     {
-        List<MedalEvent> medalEventsForSquadronMembers = new ArrayList<>();
+        List<MedalEvent> medalEventsForCrewMembers = new ArrayList<>();
         
-        for (Integer pilotSerialNumber : medalAwardByPilot.keySet())
+        for (Integer crewMemberSerialNumber : medalAwardByCrewMember.keySet())
         {
-            SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(pilotSerialNumber);
-            if (squadronMember != null)
+            CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(crewMemberSerialNumber);
+            if (crewMember != null)
             {
-                Map<String, Medal> medalsForSquadronMember = medalAwardByPilot.get(pilotSerialNumber);
-                for (Medal medal : medalsForSquadronMember.values())
+                Map<String, Medal> medalsForCrewMember = medalAwardByCrewMember.get(crewMemberSerialNumber);
+                for (Medal medal : medalsForCrewMember.values())
                 {
-                    MedalEvent medalEvent = makeMedalEvent(squadronMember, medal);
-                    medalEventsForSquadronMembers.add(medalEvent);
+                    MedalEvent medalEvent = makeMedalEvent(crewMember, medal);
+                    medalEventsForCrewMembers.add(medalEvent);
                 }
             }
         }
         
-        return medalEventsForSquadronMembers;
+        return medalEventsForCrewMembers;
     }
     
-    private MedalEvent makeMedalEvent(SquadronMember pilot, Medal medal) throws PWCGException
+    private MedalEvent makeMedalEvent(CrewMember crewMember, Medal medal) throws PWCGException
     {
         boolean isNewsworthy = true;
-        if (medal.getMedalName().contains("Pilots Badge"))
+        if (medal.getMedalName().contains("CrewMembers Badge"))
         {
             isNewsworthy = false;
         }
 
-        MedalEvent medalEvent = new MedalEvent(campaign, medal.getMedalName(), pilot.getSquadronId(), pilot.getSerialNumber(), campaign.getDate(), isNewsworthy);
+        MedalEvent medalEvent = new MedalEvent(campaign, medal.getMedalName(), crewMember.getCompanyId(), crewMember.getSerialNumber(), campaign.getDate(), isNewsworthy);
         return medalEvent;
     }
 }

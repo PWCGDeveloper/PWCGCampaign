@@ -12,8 +12,8 @@ import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.newspapers.Newspaper;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -74,7 +74,7 @@ public class AARNewsPanel extends AARDocumentPanel
     
     private void createNewsEventTab() throws PWCGException
     {
-        HashMap<String, JPanel> newsGuiList = createPilotNewsList() ;
+        HashMap<String, JPanel> newsGuiList = createCrewMemberNewsList() ;
         for (String tabName : newsGuiList.keySet())
         {
             eventTabPane.addTab(tabName, newsGuiList.get(tabName));
@@ -82,7 +82,7 @@ public class AARNewsPanel extends AARDocumentPanel
         }
     }
 
-	private HashMap<String, JPanel> createPilotNewsList() throws PWCGException 
+	private HashMap<String, JPanel> createCrewMemberNewsList() throws PWCGException 
 	{
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         makeHistoricalNewspaperEvents();
@@ -109,12 +109,12 @@ public class AARNewsPanel extends AARDocumentPanel
         List<AceKilledEvent> aceKilledEvents = aarCoordinator.getAarContext().getUiDebriefData().getNewsPanelData().getAcesKilledDuringElapsedTime();
         for (AceKilledEvent aceKilledEvent : aceKilledEvents)
         {
-            SquadronMember deadAce = campaign.getPersonnelManager().getAnyCampaignMember(aceKilledEvent.getPilotSerialNumber());
+            CrewMember deadAce = campaign.getPersonnelManager().getAnyCampaignMember(aceKilledEvent.getCrewMemberSerialNumber());
             if (deadAce != null)
             {
                 NewspaperAceLostUI newspaperGui = new NewspaperAceLostUI(deadAce);
                 newspaperGui.makePanels();
-                String tabName = "News: " + aceKilledEvent.getPilotName();
+                String tabName = "News: " + aceKilledEvent.getCrewMemberName();
                 newsGuiList.put(tabName, newspaperGui);
             }
         }

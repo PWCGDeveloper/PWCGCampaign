@@ -10,7 +10,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
@@ -24,7 +24,7 @@ public class TransportReferenceLocationSelector
     public static double CLOSE_ENOUGH_FOR_TRANSPORT = 150000.0;
     
     private Campaign campaign;
-    private Squadron squadron;
+    private Company squadron;
     
     public TransportReferenceLocationSelector(FlightInformation flightInformation)
     {

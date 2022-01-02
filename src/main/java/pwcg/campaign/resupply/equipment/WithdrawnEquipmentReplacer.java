@@ -10,7 +10,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.resupply.depot.EquipmentReplacementUtils;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -20,9 +20,9 @@ public class WithdrawnEquipmentReplacer
 {
     private Campaign campaign;
     private Equipment equipment;
-    private Squadron squadron;
+    private Company squadron;
     
-    public WithdrawnEquipmentReplacer(Campaign campaign, Equipment equipment, Squadron squadron)
+    public WithdrawnEquipmentReplacer(Campaign campaign, Equipment equipment, Company squadron)
     {
         this.campaign = campaign;
         this.equipment = equipment;
@@ -83,7 +83,7 @@ public class WithdrawnEquipmentReplacer
 
     private int calculatePlanesNeeded(int planesRemoved)
     {
-        int minNeeded = Squadron.MIN_REEQUIPMENT_SIZE - equipment.getActiveEquippedPlanes().size();
+        int minNeeded = Company.MIN_REEQUIPMENT_SIZE - equipment.getActiveEquippedPlanes().size();
         int numNeeded = planesRemoved;
         if (minNeeded > planesRemoved)
         {

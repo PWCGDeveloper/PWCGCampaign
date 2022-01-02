@@ -14,7 +14,7 @@ import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 import pwcg.testutils.CampaignCache;
@@ -61,7 +61,7 @@ public class CampaignEquipmentManagerTest
             ++count;
         }
         
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190.getSquadronId());
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         PlaneType planeType = planeTypeFactory.getPlaneById("bf109f4");
         campaign.getEquipmentManager().actOnEquipmentRequest(squadron, planesToReplace, planeType.getDisplayName());

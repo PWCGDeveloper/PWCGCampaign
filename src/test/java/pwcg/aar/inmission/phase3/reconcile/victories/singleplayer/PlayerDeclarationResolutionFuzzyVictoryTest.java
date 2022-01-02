@@ -28,13 +28,13 @@ import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
-import pwcg.product.fc.country.FCCountry;
+import pwcg.product.bos.country.BoSCountry;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -48,9 +48,9 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     @Mock private PlayerVictoryDeclaration mockPlayerDeclaration;
     @Mock private AARMissionEvaluationData evaluationData;
     @Mock private VictorySorter victorySorter;
-    @Mock private SquadronMembers playerMembers;
-    @Mock private SquadronMember player;
-    @Mock private SquadronMember ai;
+    @Mock private CrewMembers playerMembers;
+    @Mock private CrewMember player;
+    @Mock private CrewMember ai;
     @Mock private PlaneTypeFactory planeFactory;
     
     private Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
@@ -58,7 +58,7 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
 
     private List<LogVictory> fuzzyVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
-    private List<SquadronMember> players = new ArrayList<>();
+    private List<CrewMember> players = new ArrayList<>();
 
     private LogPlane playerVictor = new LogPlane(1);
     private LogPlane aiVictor = new LogPlane(2);
@@ -72,9 +72,9 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
         
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
 
-        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        playerVictor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         playerVictor.setId(PLAYER_PLANE_LOG_ID);
-        aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        aiVictor.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
         
         createMocks();
     }
@@ -235,19 +235,19 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     private LogPlane createVictimPlane(Integer victimSerialNumber, String aircraftType, PwcgRoleCategory approximateRole)
     {
         LogPlane victim = new LogPlane(1);
-        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setCrewMemberSerialNumber(victimSerialNumber);
         victim.setVehicleType(aircraftType);
         victim.setRoleCategory(approximateRole);
-        victim.setCountry(new FCCountry(Country.BRITAIN));
+        victim.setCountry(new BoSCountry(Country.BRITAIN));
         return victim;
     }
 
     private void createFriendlyVictory(Integer victorSerialNumber, Integer victimSerialNumber)
     {        
         LogPlane victim = new LogPlane(3);
-        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setCrewMemberSerialNumber(victimSerialNumber);
         victim.setVehicleType("albatrosd5");
-        victim.setCountry(new FCCountry(Country.GERMANY));
+        victim.setCountry(new BoSCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);

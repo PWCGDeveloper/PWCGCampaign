@@ -1,9 +1,9 @@
 package pwcg.campaign.squadron;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.SquadronMemberVictories;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.CrewMemberVictories;
 import pwcg.core.exception.PWCGException;
 
 public class SquadronSummaryStatistics 
@@ -27,22 +27,22 @@ public class SquadronSummaryStatistics
     
     public void calculateStatistics() throws PWCGException
     {
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(logsForSquadronId).getSquadronMembers().getSquadronMemberList())
+        for (CrewMember crewMember : campaign.getPersonnelManager().getCompanyPersonnel(logsForSquadronId).getCrewMembers().getCrewMemberList())
         {
-            if (squadronMember.getPilotActiveStatus() == SquadronMemberStatus.STATUS_KIA)
+            if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_KIA)
             {
                 ++numKilled;
             }
-            else if (squadronMember.getPilotActiveStatus() == SquadronMemberStatus.STATUS_CAPTURED)
+            else if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_CAPTURED)
             {
                 ++numCaptured;
             }
-            else if (squadronMember.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+            else if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED)
             {
                 ++numMaimed;
             }
             
-            SquadronMemberVictories squadronMemberVictories = squadronMember.getSquadronMemberVictories();
+            CrewMemberVictories squadronMemberVictories = crewMember.getCrewMemberVictories();
             numAirToAirVictories += squadronMemberVictories.getAirToAirVictoryCount();
             numTankKills += squadronMemberVictories.getTankVictoryCount();
             numTrainKills += squadronMemberVictories.getTrainVictoryCount();
@@ -65,7 +65,7 @@ public class SquadronSummaryStatistics
         return numCaptured;
     }
 
-    public int getSquadronMembersLostTotal()
+    public int getCrewMembersLostTotal()
     {
         return numKilled + numCaptured + numMaimed;
     }

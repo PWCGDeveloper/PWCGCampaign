@@ -140,8 +140,8 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
 
             createPanelSetBasedOnReasonForAdvancingTime(allEventPanels);
             
-            AARPilotLossPanel pilotsLostPanelSet = new AARPilotLossPanel(campaign);
-            allEventPanels.add(pilotsLostPanelSet);
+            AARCrewMemberLossPanel crewMembersLostPanelSet = new AARCrewMemberLossPanel(campaign);
+            allEventPanels.add(crewMembersLostPanelSet);
             
             AARMissionVictoryPanel outOfMissionVictoryPanel = new AARMissionVictoryPanel(campaign);
             allEventPanels.add(outOfMissionVictoryPanel);
@@ -149,17 +149,17 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
             AAREquipmentChangePanel equipmentChangePanelSet = new AAREquipmentChangePanel(campaign);
             allEventPanels.add(equipmentChangePanelSet);
 
-            AARPilotsTransferredPanel pilotsTransferredPanelSet = new AARPilotsTransferredPanel(campaign);
-            allEventPanels.add(pilotsTransferredPanelSet);
+            AARCrewMembersTransferredPanel crewMembersTransferredPanelSet = new AARCrewMembersTransferredPanel(campaign);
+            allEventPanels.add(crewMembersTransferredPanelSet);
 
-            AARPilotLeavePanel pilotsLeavePanelSet = new AARPilotLeavePanel();
-            allEventPanels.add(pilotsLeavePanelSet);
+            AARCrewMemberLeavePanel crewMembersLeavePanelSet = new AARCrewMemberLeavePanel();
+            allEventPanels.add(crewMembersLeavePanelSet);
 
-            AARMedalPanel pilotsMedalPanelSet = new AARMedalPanel(campaign);
-            allEventPanels.add(pilotsMedalPanelSet);
+            AARMedalPanel crewMembersMedalPanelSet = new AARMedalPanel(campaign);
+            allEventPanels.add(crewMembersMedalPanelSet);
 
-            AARPromotionPanel pilotsPromotionPanelSet = new AARPromotionPanel(campaign);
-            allEventPanels.add(pilotsPromotionPanelSet);
+            AARPromotionPanel crewMembersPromotionPanelSet = new AARPromotionPanel(campaign);
+            allEventPanels.add(crewMembersPromotionPanelSet);
 
             AARNewsPanel newsPanelSet = new AARNewsPanel();
             allEventPanels.add(newsPanelSet);

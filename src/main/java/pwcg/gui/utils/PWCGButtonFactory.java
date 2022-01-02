@@ -129,26 +129,26 @@ public class PWCGButtonFactory extends JButton
 
     public static PWCGJButton makeImageButton(ImageIcon imageIcon, Color background, String commandText, String noIcontext, String toolTipText, ActionListener listener) throws PWCGException
     {
-        PWCGJButton pilotPictureButton = null;
+        PWCGJButton crewMemberPictureButton = null;
         if (imageIcon != null)
         {
-            pilotPictureButton = new PWCGJButton(imageIcon);
+            crewMemberPictureButton = new PWCGJButton(imageIcon);
         }
         else
         {
-            pilotPictureButton = new PWCGJButton(noIcontext);
+            crewMemberPictureButton = new PWCGJButton(noIcontext);
         }
-        pilotPictureButton.addActionListener(listener);
-        pilotPictureButton.setBackground(background);
-        pilotPictureButton.setOpaque(false);
-        pilotPictureButton.setBorderPainted(false);
-        pilotPictureButton.setFocusPainted(false);
-        pilotPictureButton.setActionCommand(commandText);
+        crewMemberPictureButton.addActionListener(listener);
+        crewMemberPictureButton.setBackground(background);
+        crewMemberPictureButton.setOpaque(false);
+        crewMemberPictureButton.setBorderPainted(false);
+        crewMemberPictureButton.setFocusPainted(false);
+        crewMemberPictureButton.setActionCommand(commandText);
 
         toolTipText = InternationalizationManager.getTranslation(toolTipText);
-        ToolTipManager.setToolTip(pilotPictureButton, toolTipText);
+        ToolTipManager.setToolTip(crewMemberPictureButton, toolTipText);
         
-        return pilotPictureButton;
+        return crewMemberPictureButton;
     }
 
     public static JRadioButton makeRadioButton(String displayText, String commandText, String toolTipText, Font font, Color foreground, boolean selected, ActionListener actionListener) throws PWCGException

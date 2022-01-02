@@ -56,13 +56,13 @@ public class LogVictory extends LogBase
         this.confirmed = confirmed;
     }
 
-    public boolean didPilotDamagePlane(String victorId)
+    public boolean didCrewMemberDamagePlane(String victorId)
     {
         if(damageInformation == null)
         {
             return false;
         }
-        return damageInformation.didPilotDamagePlane(victorId);
+        return damageInformation.didCrewMemberDamagePlane(victorId);
     }
 
     public void setDamageInformation(AARDamageStatus damageInformation)

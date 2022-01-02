@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
@@ -215,7 +215,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     }
 
     @Override
-    public void flightChanged(Squadron squadron) throws PWCGException
+    public void flightChanged(Company squadron) throws PWCGException
     {
         if (!isChangedSquadronSameSide(briefingData.getSelectedFlight().getSquadron(), squadron))
         {
@@ -233,7 +233,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         this.add(BorderLayout.WEST, makeNavPanel());
     }
     
-    private boolean isChangedSquadronSameSide(Squadron before, Squadron after) throws PWCGException
+    private boolean isChangedSquadronSameSide(Company before, Company after) throws PWCGException
     {
         if (before.determineSide() == after.determineSide())
         {

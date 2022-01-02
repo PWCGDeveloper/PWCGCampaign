@@ -10,7 +10,6 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.builder.IndirectFireAssignmentHandler;
 import pwcg.mission.ground.unittypes.GroundUnitEngagableAAAEvaluator;
@@ -73,8 +72,6 @@ public class MissionFinalizer
                 finalizeForSinglePlayer();
             }
             
-            stopAttackingNearAirfield();
-
             if (PWCGContext.getProduct() == PWCGProduct.FC)
             {
                 FCBugHandler.fcBugs(mission);
@@ -125,16 +122,6 @@ public class MissionFinalizer
         {
             missionObjectiveSuccess.createSuccessMissionObjective(campaign, mission);
             missionObjectiveFailure.createFailureMissionObjective(campaign, mission);
-        }
-    }
-
-    private void stopAttackingNearAirfield() throws PWCGException
-    {
-        for (IFlight flight : flights.getAllAerialFlights())
-        {
-            StopAttackingNearAirfield stopAttackingNearAirfield = new StopAttackingNearAirfield(flight, mission.getFieldsForPatrol());
-            List<StopAttackingNearAirfieldSequence> stopSequenceForFlight = stopAttackingNearAirfield.stopAttackingAirfields();
-            stopSequenceForMission.addAll(stopSequenceForFlight);
         }
     }
 

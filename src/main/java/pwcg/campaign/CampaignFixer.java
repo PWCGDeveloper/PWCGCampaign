@@ -1,7 +1,7 @@
 package pwcg.campaign;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignFixer
@@ -17,7 +17,7 @@ public class CampaignFixer
     
     private static void trimNames(Campaign campaign) throws PWCGException
     {
-        for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        for (CrewMember player : campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList())
         {
             String name = player.getName().trim();
             player.setName(name);

@@ -14,9 +14,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
 import pwcg.testutils.CampaignCache;
@@ -30,7 +30,7 @@ public class AARCoordinatorInMissionTest
     private static ExpectedResults expectedResults;
     private static int playerMissionsFlown = 0;
 
-    private List<Squadron> squadronsInMission = new ArrayList<>();
+    private List<Company> squadronsInMission = new ArrayList<>();
     private Map<Integer, PlayerDeclarations> playerDeclarations;
 
     @BeforeAll
@@ -43,7 +43,7 @@ public class AARCoordinatorInMissionTest
         aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.reset(campaign);
         
-        playerMissionsFlown = campaign.getPersonnelManager().getFlyingPlayers().getSquadronMemberList().get(0).getMissionFlown();
+        playerMissionsFlown = campaign.getPersonnelManager().getFlyingPlayers().getCrewMemberList().get(0).getBattlesFought();
     }
 
     @Test
@@ -80,7 +80,7 @@ public class AARCoordinatorInMissionTest
 
     private void makePlayerDeclarations() throws PWCGException
     {
-        SquadronMember player = campaign.getPersonnelManager().getFlyingPlayers().getSquadronMemberList().get(0);
+        CrewMember player = campaign.getPersonnelManager().getFlyingPlayers().getCrewMemberList().get(0);
         PlayerDeclarationsBuilder  declarationsBuilder = new PlayerDeclarationsBuilder();
         playerDeclarations = declarationsBuilder.makePlayerDeclarations(player);
     }
@@ -95,7 +95,7 @@ public class AARCoordinatorInMissionTest
     
     public static SquadronPlaneAssignment getPlaneForSquadron(int SquadronId) throws PWCGException
     {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronId);
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronId);
         List<SquadronPlaneAssignment> squadronPlaneAssignments = squadron.getPlaneAssignments();
         return squadronPlaneAssignments.get(0);
     }

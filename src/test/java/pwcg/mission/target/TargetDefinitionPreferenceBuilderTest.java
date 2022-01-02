@@ -13,7 +13,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronRolePeriod;
 import pwcg.campaign.squadron.SquadronRoleSet;
 import pwcg.campaign.squadron.SquadronRoleWeight;
@@ -42,7 +42,7 @@ public class TargetDefinitionPreferenceBuilderTest
     @Test
     public void tankBustTargetTypeTest() throws PWCGException
     {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_TANK_BUSTER);
@@ -68,7 +68,7 @@ public class TargetDefinitionPreferenceBuilderTest
     @Test
     public void trainBustTargetTypeTest() throws PWCGException
     {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_TRAIN_BUSTER);
@@ -94,7 +94,7 @@ public class TargetDefinitionPreferenceBuilderTest
     @Test
     public void shippingTargetTypeTest() throws PWCGException
     {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_ANTI_SHIPPING);

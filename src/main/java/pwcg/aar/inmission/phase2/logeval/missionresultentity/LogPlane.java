@@ -1,10 +1,10 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.logfiles.event.IAType12;
@@ -17,8 +17,8 @@ public class LogPlane extends LogAIEntity
     private Coordinate landAt = null;
     private Integer squadronId;
     private boolean crashedInSight = false;
-    private LogPilot logPilot;
-    private int pilotSerialNumber;
+    private LogCrewMember logCrewMember;
+    private int crewMemberSerialNumber;
     private int planeSerialNumber;
     private int planeStatus = PlaneStatus.STATUS_DEPLOYED;
     private LogTurrets turrets = new LogTurrets();
@@ -41,35 +41,35 @@ public class LogPlane extends LogAIEntity
     public void initializeFromMissionPlane(PwcgGeneratedMissionPlaneData missionPlane)
     {        
         this.squadronId = missionPlane.getSquadronId();
-        this.pilotSerialNumber = missionPlane.getPilotSerialNumber();
+        this.crewMemberSerialNumber = missionPlane.getCrewMemberSerialNumber();
         this.planeSerialNumber = missionPlane.getPlaneSerialNumber();
-        intializePilot(missionPlane.getPilotSerialNumber());
+        intializeCrewMember(missionPlane.getCrewMemberSerialNumber());
     }
 
-    public void initializeFromOutOfMission(Campaign campaign, EquippedPlane plane, SquadronMember squadronMember) throws PWCGException
+    public void initializeFromOutOfMission(Campaign campaign, EquippedPlane plane, CrewMember crewMember) throws PWCGException
     {
-        this.squadronId = squadronMember.getSquadronId();
-        this.pilotSerialNumber = squadronMember.getSerialNumber();
+        this.squadronId = crewMember.getCompanyId();
+        this.crewMemberSerialNumber = crewMember.getSerialNumber();
         this.planeSerialNumber = plane.getSerialNumber();
 
         super.setId(""+super.getSequenceNum());
-        super.setCountry(squadronMember.determineCountry(campaign.getDate()));
-        super.setName(squadronMember.getNameAndRank());
+        super.setCountry(crewMember.determineCountry(campaign.getDate()));
+        super.setName(crewMember.getNameAndRank());
         super.setVehicleType(plane.getDisplayName());
         super.setRoleCategory(plane.determinePrimaryRoleCategory());
     }
 
-    public void intializePilot(int serialNumber)
+    public void intializeCrewMember(int serialNumber)
     {
-        logPilot = new LogPilot();
-        logPilot.setSerialNumber(serialNumber);
+        logCrewMember = new LogCrewMember();
+        logCrewMember.setSerialNumber(serialNumber);
     }
     
     public void mapBotToCrew(String botId) throws PWCGException
     {
-        if (logPilot != null)
+        if (logCrewMember != null)
         {
-            logPilot.setBotId(botId);
+            logCrewMember.setBotId(botId);
         }
         else
         {
@@ -103,7 +103,7 @@ public class LogPlane extends LogAIEntity
 
     public boolean isBot(String botId)
     {
-        if (logPilot.getBotId().equals(botId))
+        if (logCrewMember.getBotId().equals(botId))
         {
             return true;
         }
@@ -113,7 +113,7 @@ public class LogPlane extends LogAIEntity
 
     public boolean isCrewMember(int serialNumber)
     {
-        if (logPilot.getSerialNumber() == serialNumber)
+        if (logCrewMember.getSerialNumber() == serialNumber)
         {
             return true;
         }
@@ -123,10 +123,10 @@ public class LogPlane extends LogAIEntity
 
     public boolean isLogPlaneFromPlayerSquadron(Campaign campaign) throws PWCGException
     {
-        SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(pilotSerialNumber);
-        if (squadronMember != null)
+        CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(crewMemberSerialNumber);
+        if (crewMember != null)
         {
-            if (Squadron.isPlayerSquadron(campaign, squadronId))
+            if (Company.isPlayerSquadron(campaign, squadronId))
             {
                 return true;
             }
@@ -135,16 +135,16 @@ public class LogPlane extends LogAIEntity
         return false;
     }
     
-    public SquadronMember getSquadronMemberForLogEvent(Campaign campaign) throws PWCGException
+    public CrewMember getCrewMemberForLogEvent(Campaign campaign) throws PWCGException
     {
-        SquadronMember squadronMember = null;
-        squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(getPilotSerialNumber());
-        return squadronMember;
+        CrewMember crewMember = null;
+        crewMember = campaign.getPersonnelManager().getAnyCampaignMember(getCrewMemberSerialNumber());
+        return crewMember;
     }
 
-    public LogPilot getLogPilot()
+    public LogCrewMember getLogCrewMember()
     {
-        return logPilot;
+        return logCrewMember;
     }
 
     public boolean isCrashedInSight()
@@ -167,14 +167,14 @@ public class LogPlane extends LogAIEntity
         this.squadronId = squadronId;
     }
 
-    public int getPilotSerialNumber()
+    public int getCrewMemberSerialNumber()
     {
-        return pilotSerialNumber;
+        return crewMemberSerialNumber;
     }
 
-    public void setPilotSerialNumber(int pilotSerialNumber)
+    public void setCrewMemberSerialNumber(int crewMemberSerialNumber)
     {
-        this.pilotSerialNumber = pilotSerialNumber;
+        this.crewMemberSerialNumber = crewMemberSerialNumber;
     }
 
     public int getPlaneSerialNumber()

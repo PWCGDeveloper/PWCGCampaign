@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
@@ -84,12 +84,12 @@ public class DebriefDescriptionChalkboard extends ImageResizingPanel
     {
         String missionText = "Assigned Personnel:\n";
         
-        for (SquadronMember pilotInMission : aarCoordinator.getAarContext().getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection().values())
+        for (CrewMember crewMemberInMission : aarCoordinator.getAarContext().getPreliminaryData().getCampaignMembersInMission().getCrewMemberCollection().values())
         {            
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
-            if (pilotInMission.getSquadronId() == referencePlayer.getSquadronId())
+            CrewMember referencePlayer = campaign.findReferencePlayer();
+            if (crewMemberInMission.getCompanyId() == referencePlayer.getCompanyId())
             {
-                missionText += "             " + pilotInMission.getNameAndRank();
+                missionText += "             " + crewMemberInMission.getNameAndRank();
                 missionText += "\n";
             }
         }

@@ -6,10 +6,10 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -28,7 +28,7 @@ public class FlightInformation
     private Mission mission;
     private FlightTypes flightType;
     private List<PlaneMcu> planes;
-    private Squadron squadron;
+    private Company squadron;
     private Coordinate targetSearchStartLocation;
     private NecessaryFlightType necessaryFlightType = NecessaryFlightType.NONE;
     private TargetType roleBasedTarget = TargetType.TARGET_NONE;
@@ -45,7 +45,7 @@ public class FlightInformation
         this.necessaryFlightType = necessaryFlightType;
     }
 
-    public List<SquadronMember> getParticipatingPlayersForFlight()
+    public List<CrewMember> getParticipatingPlayersForFlight()
     {
         return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
     }
@@ -55,12 +55,12 @@ public class FlightInformation
         return mission;
     }
 
-    public Squadron getSquadron()
+    public Company getSquadron()
     {
         return squadron;
     }
 
-    public void setSquadron(Squadron squadron)
+    public void setSquadron(Company squadron)
     {
         this.squadron = squadron;
     }
@@ -92,7 +92,7 @@ public class FlightInformation
         return (necessaryFlightType == NecessaryFlightType.OPPOSING_FLIGHT);
     }
 
-    public List<SquadronMember> getFlightParticipatingPlayers()
+    public List<CrewMember> getFlightParticipatingPlayers()
     {
         return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
     }

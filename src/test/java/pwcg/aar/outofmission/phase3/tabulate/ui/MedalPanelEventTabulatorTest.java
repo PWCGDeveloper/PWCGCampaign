@@ -20,7 +20,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.medals.IMedalManager;
 import pwcg.campaign.medals.Medal;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.fc.medals.FrenchMedalManager;
 import pwcg.testutils.SquadronTestProfile;
@@ -30,10 +30,10 @@ import pwcg.testutils.SquadronTestProfile;
 public class MedalPanelEventTabulatorTest extends AARTestSetup
 {
     @Mock
-    private Squadron squadron1;
+    private Company squadron1;
     
     @Mock
-    private Squadron squadron2;
+    private Company squadron2;
 
     @Mock 
     private ICountry country;
@@ -59,22 +59,22 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
     @Test
     public void testMedalsAwardedInMission() throws PWCGException 
     {
-        Mockito.when(pilot1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(pilot2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(pilot1.determineSquadron()).thenReturn(squadron1);
-        Mockito.when(pilot2.determineSquadron()).thenReturn(squadron1);
+        Mockito.when(crewMember1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember1.determineSquadron()).thenReturn(squadron1);
+        Mockito.when(crewMember2.determineSquadron()).thenReturn(squadron1);
 
-        medalsAwarded.put(pilot1.getSerialNumber(), new HashMap<String, Medal>());
-        medalsAwarded.put(pilot2.getSerialNumber(), new HashMap<String, Medal>());
+        medalsAwarded.put(crewMember1.getSerialNumber(), new HashMap<String, Medal>());
+        medalsAwarded.put(crewMember2.getSerialNumber(), new HashMap<String, Medal>());
         Mockito.when(personnelAwards.getCampaignMemberMedals()).thenReturn(medalsAwarded);
 
         Map<Integer, Medal> frenchMedals = medalManager.getMedals();
         Medal cdg = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE);
         Medal cdgBronzeStar = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE_BRONZE_STAR);
         Medal cdgSilverPalm = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE_SILVER_PALM);
-        medalsAwarded.get(pilot1.getSerialNumber()).put(cdg.getMedalName(), cdg);
-        medalsAwarded.get(pilot1.getSerialNumber()).put(cdgBronzeStar.getMedalName(), cdgBronzeStar);
-        medalsAwarded.get(pilot2.getSerialNumber()).put(cdgSilverPalm.getMedalName(), cdgSilverPalm);
+        medalsAwarded.get(crewMember1.getSerialNumber()).put(cdg.getMedalName(), cdg);
+        medalsAwarded.get(crewMember1.getSerialNumber()).put(cdgBronzeStar.getMedalName(), cdgBronzeStar);
+        medalsAwarded.get(crewMember2.getSerialNumber()).put(cdgSilverPalm.getMedalName(), cdgSilverPalm);
        
         MedalPanelEventTabulator medalPanelEventTabulator = new MedalPanelEventTabulator(campaign, aarContext);
         AARMedalPanelData medalPanelData = medalPanelEventTabulator.tabulateForAARMedalPanel();
@@ -85,22 +85,22 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
     @Test
     public void testMedalsAwarded() throws PWCGException 
     {
-        Mockito.when(pilot1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(pilot2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(pilot1.determineSquadron()).thenReturn(squadron1);
-        Mockito.when(pilot2.determineSquadron()).thenReturn(squadron1);
+        Mockito.when(crewMember1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember1.determineSquadron()).thenReturn(squadron1);
+        Mockito.when(crewMember2.determineSquadron()).thenReturn(squadron1);
 
-        medalsAwarded.put(pilot1.getSerialNumber(), new HashMap<String, Medal>());
-        medalsAwarded.put(pilot2.getSerialNumber(), new HashMap<String, Medal>());
+        medalsAwarded.put(crewMember1.getSerialNumber(), new HashMap<String, Medal>());
+        medalsAwarded.put(crewMember2.getSerialNumber(), new HashMap<String, Medal>());
         Mockito.when(personnelAwards.getCampaignMemberMedals()).thenReturn(medalsAwarded);
 
         Map<Integer, Medal> frenchMedals = medalManager.getMedals();
         Medal cdg = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE);
         Medal cdgBronzeStar = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE_BRONZE_STAR);
         Medal cdgSilverPalm = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE_SILVER_PALM);
-        medalsAwarded.get(pilot1.getSerialNumber()).put(cdg.getMedalName(), cdg);
-        medalsAwarded.get(pilot1.getSerialNumber()).put(cdgBronzeStar.getMedalName(), cdgBronzeStar);
-        medalsAwarded.get(pilot2.getSerialNumber()).put(cdgSilverPalm.getMedalName(), cdgSilverPalm);
+        medalsAwarded.get(crewMember1.getSerialNumber()).put(cdg.getMedalName(), cdg);
+        medalsAwarded.get(crewMember1.getSerialNumber()).put(cdgBronzeStar.getMedalName(), cdgBronzeStar);
+        medalsAwarded.get(crewMember2.getSerialNumber()).put(cdgSilverPalm.getMedalName(), cdgSilverPalm);
        
         MedalPanelEventTabulator medalPanelEventTabulator = new MedalPanelEventTabulator(campaign, aarContext);
         AARMedalPanelData medalPanelData = medalPanelEventTabulator.tabulateForAARMedalPanel();
@@ -111,22 +111,22 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
     @Test
     public void testMedalsAwardedButOneIsNotInSquadron() throws PWCGException 
     {
-        Mockito.when(pilot1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(pilot2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
-        Mockito.when(pilot1.determineSquadron()).thenReturn(squadron1);
-        Mockito.when(pilot2.determineSquadron()).thenReturn(squadron2);
+        Mockito.when(crewMember1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
+        Mockito.when(crewMember1.determineSquadron()).thenReturn(squadron1);
+        Mockito.when(crewMember2.determineSquadron()).thenReturn(squadron2);
 
-        medalsAwarded.put(pilot1.getSerialNumber(), new HashMap<String, Medal>());
-        medalsAwarded.put(pilot2.getSerialNumber(), new HashMap<String, Medal>());
+        medalsAwarded.put(crewMember1.getSerialNumber(), new HashMap<String, Medal>());
+        medalsAwarded.put(crewMember2.getSerialNumber(), new HashMap<String, Medal>());
         Mockito.when(personnelAwards.getCampaignMemberMedals()).thenReturn(medalsAwarded);
 
         FrenchMedalManager frenchMedalManager = new FrenchMedalManager(campaign);
         Medal cdg = frenchMedalManager.getMedal(FrenchMedalManager.CROIX_DE_GUERRE);
         Medal cdgBronzeStar = frenchMedalManager.getMedal(FrenchMedalManager.CROIX_DE_GUERRE_BRONZE_STAR);
         Medal cdgSilverPalm = frenchMedalManager.getMedal(FrenchMedalManager.CROIX_DE_GUERRE_SILVER_PALM);
-        medalsAwarded.get(pilot1.getSerialNumber()).put(cdg.getMedalName(), cdg);
-        medalsAwarded.get(pilot1.getSerialNumber()).put(cdgBronzeStar.getMedalName(), cdgBronzeStar);
-        medalsAwarded.get(pilot2.getSerialNumber()).put(cdgSilverPalm.getMedalName(), cdgSilverPalm);
+        medalsAwarded.get(crewMember1.getSerialNumber()).put(cdg.getMedalName(), cdg);
+        medalsAwarded.get(crewMember1.getSerialNumber()).put(cdgBronzeStar.getMedalName(), cdgBronzeStar);
+        medalsAwarded.get(crewMember2.getSerialNumber()).put(cdgSilverPalm.getMedalName(), cdgSilverPalm);
 
         MedalPanelEventTabulator medalPanelEventTabulator = new MedalPanelEventTabulator(campaign, aarContext);
         AARMedalPanelData medalPanelData = medalPanelEventTabulator.tabulateForAARMedalPanel();

@@ -8,9 +8,9 @@ import java.util.Map;
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.core.exception.PWCGException;
 
 public class OutOfMissionAceLossCalculator
@@ -24,21 +24,21 @@ public class OutOfMissionAceLossCalculator
         this.aarContext = aarContext;
     }
 
-    public List<SquadronMember> acesKilledHistorically() throws PWCGException
+    public List<CrewMember> acesKilledHistorically() throws PWCGException
     {
         PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(aarContext.getNewDate());
 
-        Map<Integer, Ace> acesKilled = new HashMap<>();
-        List<Ace> deadAces = PWCGContext.getInstance().getAceManager().acesKilledHistoricallyInTimePeriod(campaign.getDate(), aarContext.getNewDate());
+        Map<Integer, TankAce> acesKilled = new HashMap<>();
+        List<TankAce> deadAces = PWCGContext.getInstance().getAceManager().acesKilledHistoricallyInTimePeriod(campaign.getDate(), aarContext.getNewDate());
 
-        for (Ace deadAce : deadAces)
+        for (TankAce deadAce : deadAces)
         {
-            Ace deadAceThisCampaign = PWCGContext.getInstance().getAceManager().getAceWithCampaignAdjustment(
+            TankAce deadAceThisCampaign = PWCGContext.getInstance().getAceManager().getAceWithCampaignAdjustment(
                     campaign, campaign.getPersonnelManager().getCampaignAces(), deadAce.getSerialNumber(), campaign.getDate());
 
             if (deadAceThisCampaign != null)
             {
-                if (deadAceThisCampaign.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_CAPTURED)
+                if (deadAceThisCampaign.getCrewMemberActiveStatus() <= CrewMemberStatus.STATUS_CAPTURED)
                 {
                     continue;
                 }
@@ -47,6 +47,6 @@ public class OutOfMissionAceLossCalculator
             }
         }
         
-        return new ArrayList<SquadronMember>(acesKilled.values());
+        return new ArrayList<CrewMember>(acesKilled.values());
     }
 }

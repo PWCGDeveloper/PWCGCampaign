@@ -4,15 +4,15 @@ import java.util.Date;
 
 import pwcg.campaign.Campaign;
 
-public class TransferEvent extends AARPilotEvent
+public class TransferEvent extends AARCrewMemberEvent
 {
     private int transferFrom;
     private int transferTo;
     private int leaveTime = 0;
 	
-    public TransferEvent(Campaign campaign, int transferFrom, int transferTo, int leaveTime, int pilotSerialNumber, Date date, boolean isNewsWorthy)
+    public TransferEvent(Campaign campaign, int transferFrom, int transferTo, int leaveTime, int crewMemberSerialNumber, Date date, boolean isNewsWorthy)
     {
-        super(campaign, transferTo, pilotSerialNumber, date, isNewsWorthy);
+        super(campaign, transferTo, crewMemberSerialNumber, date, isNewsWorthy);
         this.transferFrom = transferFrom;
         this.transferTo = transferTo;
         this.leaveTime = leaveTime;

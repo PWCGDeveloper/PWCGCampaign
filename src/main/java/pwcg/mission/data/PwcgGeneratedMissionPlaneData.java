@@ -4,9 +4,9 @@ public class PwcgGeneratedMissionPlaneData
 {
     private String aircraftType;
     private Integer squadronId;
-    private Integer pilotSerialNumber;
+    private Integer crewMemberSerialNumber;
     private Integer planeSerialNumber;
-    private String pilotName;
+    private String crewMemberName;
 
     public PwcgGeneratedMissionPlaneData ()
     {
@@ -32,14 +32,14 @@ public class PwcgGeneratedMissionPlaneData
         this.squadronId = squadronId;
     }
 
-    public Integer getPilotSerialNumber()
+    public Integer getCrewMemberSerialNumber()
     {
-        return pilotSerialNumber;
+        return crewMemberSerialNumber;
     }
 
-    public void setPilotSerialNumber(Integer pilotSerialNumber)
+    public void setCrewMemberSerialNumber(Integer crewMemberSerialNumber)
     {
-        this.pilotSerialNumber = pilotSerialNumber;
+        this.crewMemberSerialNumber = crewMemberSerialNumber;
     }
 
     public Integer getPlaneSerialNumber()
@@ -52,13 +52,13 @@ public class PwcgGeneratedMissionPlaneData
         this.planeSerialNumber = planeSerialNumber;
     }
 
-    public String getPilotName()
+    public String getCrewMemberName()
     {
-        return pilotName;
+        return crewMemberName;
     }
 
-    public void setPilotName(String pilotName)
+    public void setCrewMemberName(String crewMemberName)
     {
-        this.pilotName = pilotName;
+        this.crewMemberName = crewMemberName;
     }
 }

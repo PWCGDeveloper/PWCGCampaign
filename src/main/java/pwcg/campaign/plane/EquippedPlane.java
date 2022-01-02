@@ -2,9 +2,8 @@ package pwcg.campaign.plane;
 
 import java.util.Date;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SerialNumber;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -123,10 +122,5 @@ public class EquippedPlane extends PlaneType
     public void setEquipmentRequest(boolean isEquipmentRequest)
     {
         this.isEquipmentRequest = isEquipmentRequest;
-    }
-
-    public String getDisplayMarkings() throws PWCGException {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        return campaign.getPlaneMarkingManager().determineDisplayMarkings(campaign, this);
     }
 }

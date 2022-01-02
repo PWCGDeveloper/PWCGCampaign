@@ -9,7 +9,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class PwcgGeneratedMissionPlaneMapper
@@ -43,7 +43,7 @@ public class PwcgGeneratedMissionPlaneMapper
 
     private Side determinePlaneSide(Campaign campaign, PwcgGeneratedMissionPlaneData missionPlane) throws PWCGException
     {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(missionPlane.getSquadronId());            
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(missionPlane.getSquadronId());            
         Side side = squadron.determineSquadronCountry(campaign.getDate()).getSide();
         return side;
     }

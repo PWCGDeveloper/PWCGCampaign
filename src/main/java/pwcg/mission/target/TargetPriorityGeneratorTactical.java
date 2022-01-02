@@ -51,7 +51,7 @@ public class TargetPriorityGeneratorTactical
     private static void addStructureTargetTypePriorities(FlightInformation flightInformation, List<TargetType> targetTypesByIndex) throws PWCGException
     {
         FlightTypes flightType = flightInformation.getFlightType();
-        if (flightType == FlightTypes.BOMB || flightType == FlightTypes.STRATEGIC_BOMB)
+        if (flightType == FlightTypes.BOMB)
         {
             addStructuresForBombingMission(flightInformation, targetTypesByIndex);
         }

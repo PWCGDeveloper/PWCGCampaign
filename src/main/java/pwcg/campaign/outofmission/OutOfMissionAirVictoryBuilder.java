@@ -7,13 +7,13 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.Victory;
+import pwcg.campaign.crewmember.VictoryEntity;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.Victory;
-import pwcg.campaign.squadmember.VictoryEntity;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
@@ -21,18 +21,18 @@ import pwcg.core.utils.PWCGLogger;
 public class OutOfMissionAirVictoryBuilder
 {
     private Campaign campaign;
-    private Squadron victimSquadron;
+    private Company victimSquadron;
     private IVictimGenerator victimGenerator;
-    private SquadronMember victorPilot;
-    private SquadronMember victimPilot;
+    private CrewMember victorCrewMember;
+    private CrewMember victimCrewMember;
     private EquippedPlane victimPlane;
 
-    public OutOfMissionAirVictoryBuilder (Campaign campaign, Squadron victimSquadron, IVictimGenerator victimGenerator, SquadronMember victorPilot)
+    public OutOfMissionAirVictoryBuilder (Campaign campaign, Company victimSquadron, IVictimGenerator victimGenerator, CrewMember victorCrewMember)
     {
         this.campaign = campaign;
         this.victimSquadron = victimSquadron;
         this.victimGenerator = victimGenerator;
-        this.victorPilot = victorPilot;
+        this.victorCrewMember = victorCrewMember;
     }
     
     public Victory generateOutOfMissionVictory(Date date) throws PWCGException
@@ -87,7 +87,7 @@ public class OutOfMissionAirVictoryBuilder
     {
         VictoryEntity victor = new VictoryEntity();
         
-        Squadron squadron = victorPilot.determineSquadron();
+        Company squadron = victorCrewMember.determineSquadron();
 
         PlaneType victorPlaneType = squadron.determineBestPlane(campaign.getDate());
 
@@ -95,26 +95,26 @@ public class OutOfMissionAirVictoryBuilder
         victor.setType(victorPlaneType.getDisplayName());
         victor.setName(victorPlaneType.getDisplayName());
         victor.setSquadronName(squadron.determineDisplayName(date));
-        victor.setPilotName(victorPilot.getRank() + " " + victorPilot.getName());
-        victor.setPilotSerialNumber(victorPilot.getSerialNumber());
-        victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
+        victor.setCrewMemberName(victorCrewMember.getRank() + " " + victorCrewMember.getName());
+        victor.setCrewMemberSerialNumber(victorCrewMember.getSerialNumber());
+        victor.setCrewMemberStatus(CrewMemberStatus.STATUS_ACTIVE);
         
         return victor;
     }
 
     private VictoryEntity createVictim(Date date) throws PWCGException
     {
-        victimPilot = victimGenerator.generateVictimAiCrew();
+        victimCrewMember = victimGenerator.generateVictimAiCrew();
         victimPlane = victimGenerator.generateVictimPlane();
-        if (victimPilot != null && victimPlane != null)
+        if (victimCrewMember != null && victimPlane != null)
         {
             VictoryEntity victim = new VictoryEntity();            
             victim.setAirOrGround(Victory.AIRCRAFT);
             victim.setType(victimPlane.getType());
             victim.setName(victimPlane.getDisplayName());
             victim.setSquadronName(victimSquadron.determineDisplayName(date));
-            victim.setPilotSerialNumber(victimPilot.getSerialNumber());
-            victim.setPilotStatus(SquadronMemberStatus.STATUS_KIA);
+            victim.setCrewMemberSerialNumber(victimCrewMember.getSerialNumber());
+            victim.setCrewMemberStatus(CrewMemberStatus.STATUS_KIA);
             return victim;
         }
         return null;
@@ -124,7 +124,7 @@ public class OutOfMissionAirVictoryBuilder
     {
         String eventLocationDescription = "";
         
-        Coordinate squadronPosition = victorPilot.determineSquadron().determineCurrentPosition(date);
+        Coordinate squadronPosition = victorCrewMember.determineSquadron().determineCurrentPosition(date);
         if (squadronPosition != null)
         {
             FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
@@ -140,9 +140,9 @@ public class OutOfMissionAirVictoryBuilder
         return eventLocationDescription;
     }
 
-    public SquadronMember getVictimPilot()
+    public CrewMember getVictimCrewMember()
     {
-        return victimPilot;
+        return victimCrewMember;
     }
 
     public EquippedPlane getVictimPlane()

@@ -5,10 +5,10 @@ import java.util.Date;
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.personnel.CrewMemberReplacementFactory;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
-import pwcg.campaign.personnel.SquadronMemberReplacementFactory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -42,19 +42,19 @@ public class PersonnelReplacementUpdater
 
 	private void replaceForService(PersonnelReplacementsService replacementService) throws PWCGException 
 	{
-		int numReplacementPilots = replacementService.getNumReplacements();
-		buildReplacementPilots(replacementService, numReplacementPilots);
+		int numReplacementCrewMembers = replacementService.getNumReplacements();
+		buildReplacementCrewMembers(replacementService, numReplacementCrewMembers);
 		removeReplacementPoints(replacementService);
 		updateReplacementDate(replacementService);
 	}
 
-	private void buildReplacementPilots(PersonnelReplacementsService replacementService, int numReplacementPilots) throws PWCGException 
+	private void buildReplacementCrewMembers(PersonnelReplacementsService replacementService, int numReplacementCrewMembers) throws PWCGException 
 	{
 		ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(replacementService.getServiceId());
-		SquadronMemberReplacementFactory replacementFactory = new SquadronMemberReplacementFactory(campaign, service);
-		for (int i = 0; i < numReplacementPilots; ++i)
+		CrewMemberReplacementFactory replacementFactory = new CrewMemberReplacementFactory(campaign, service);
+		for (int i = 0; i < numReplacementCrewMembers; ++i)
 		{
-			SquadronMember replacement = replacementFactory.createAIReplacementPilot();
+			CrewMember replacement = replacementFactory.createAIReplacementCrewMember();
 			replacementService.addReplacement(replacement);
 		}
 	}

@@ -5,14 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class MissionSquadronRegistry
 {
-    private Map<Integer, Squadron> squadronsInUse = new HashMap<>();
+    private Map<Integer, Company> squadronsInUse = new HashMap<>();
 
-    public boolean isSquadronAvailable(Squadron squadron)
+    public boolean isSquadronAvailable(Company squadron)
     {
         if (squadronsInUse.containsKey(squadron.getSquadronId()))
         {
@@ -21,7 +21,7 @@ public class MissionSquadronRegistry
         return true;
     }
 
-    public void registerSquadronForUse(Squadron squadron) throws PWCGException
+    public void registerSquadronForUse(Company squadron) throws PWCGException
     {
         if (squadronsInUse.containsKey(squadron.getSquadronId()))
         {
@@ -30,10 +30,10 @@ public class MissionSquadronRegistry
         squadronsInUse.put(squadron.getSquadronId(), squadron);
     }
 
-    public List<Squadron> removeSquadronsInUse(List<Squadron> squadrons)
+    public List<Company> removeSquadronsInUse(List<Company> squadrons)
     {
-        List<Squadron> squadronsNotInUse = new ArrayList<>();
-        for (Squadron squadron : squadrons)
+        List<Company> squadronsNotInUse = new ArrayList<>();
+        for (Company squadron : squadrons)
         {
             if (!squadronsInUse.containsKey(squadron.getSquadronId()))
             {

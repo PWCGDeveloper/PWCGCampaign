@@ -8,9 +8,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
@@ -20,7 +20,7 @@ public class CampaignGeneratorDO
     private ArmedService service = null;
     private FrontMapIdentifier frontMap = null;
     private String campaignName = "";
-    private String playerPilotName = "";
+    private String playerCrewMemberName = "";
     private String coopUser = "";
     private String region = "";
     private String rankName = null;
@@ -36,7 +36,7 @@ public class CampaignGeneratorDO
             return false;
         }
         
-        if (playerPilotName.isEmpty())
+        if (playerCrewMemberName.isEmpty())
         {
             return false;
         }
@@ -90,7 +90,7 @@ public class CampaignGeneratorDO
         return false;
     }
     
-    public void createCoopUserAndPersona(Campaign campaign, SquadronMember player) throws PWCGException
+    public void createCoopUserAndPersona(Campaign campaign, CrewMember player) throws PWCGException
     {
         if (getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
@@ -126,14 +126,14 @@ public class CampaignGeneratorDO
         this.campaignName = campaignName;
     }
     
-   public String getPlayerPilotName()
+   public String getPlayerCrewMemberName()
     {
-        return playerPilotName;
+        return playerCrewMemberName;
     }
 
-    public void setPlayerPilotName(String playerPilotName)
+    public void setPlayerCrewMemberName(String playerCrewMemberName)
     {
-        this.playerPilotName = playerPilotName;
+        this.playerCrewMemberName = playerCrewMemberName;
     }
 
     public String getRegion()

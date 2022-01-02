@@ -10,7 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronRolePeriod;
 import pwcg.campaign.squadron.SquadronRoleSet;
 import pwcg.campaign.squadron.SquadronRoleWeight;
@@ -32,7 +32,7 @@ public class TargetDefinitionBuilderAntiShippingTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_KUBAN_PROFILE);
 
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.STG77_KUBAN_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.STG77_KUBAN_PROFILE.getSquadronId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_ANTI_SHIPPING);

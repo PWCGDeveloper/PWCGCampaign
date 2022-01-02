@@ -15,9 +15,9 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,10 +25,10 @@ public class VictorySorterTest
 {
     @Mock private Campaign campaign;
     @Mock private CampaignPersonnelManager personnelManager;
-    @Mock private SquadronMembers playerMembers;
-    @Mock private SquadronMember player;
+    @Mock private CrewMembers playerMembers;
+    @Mock private CrewMember player;
 
-    private List<SquadronMember> players = new ArrayList<>();
+    private List<CrewMember> players = new ArrayList<>();
     private LogVictoryHelper logVictoryHelper = new LogVictoryHelper();
 
     @BeforeEach

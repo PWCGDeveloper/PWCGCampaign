@@ -10,11 +10,10 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.product.bos.country.BoSCountryFactory;
-import pwcg.product.fc.country.FCCountryFactory;
 
 public class CountryFactory
 {
@@ -58,7 +57,7 @@ public class CountryFactory
         }
         else if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            countryFactory = new FCCountryFactory();
+            countryFactory = new BoSCountryFactory();
         }
         
         return countryFactory;
@@ -67,7 +66,7 @@ public class CountryFactory
     public static ICountry makeAssaultProximityCountry(Side side, Coordinate assaultPosition, Date date) throws PWCGException
     {
         ICountry country = null;
-        List<Squadron> squadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsBySideAndProximity(side, date, assaultPosition, 10000);
+        List<Company> squadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsBySideAndProximity(side, date, assaultPosition, 10000);
         if (squadrons.size() > 0)
         {
             country = squadrons.get(0).getCountry();

@@ -11,23 +11,23 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadronMemberPicker;
+import pwcg.testutils.CrewMemberPicker;
 import pwcg.testutils.SquadronTestProfile;
 
 @ExtendWith(MockitoExtension.class)
-public class SquadronMemberFilterTest
+public class CrewMemberFilterTest
 {
     private Campaign campaign;
-    private Map<Integer, SquadronMember> woundedSquadronMembers = new HashMap<>();
-    private Map<Integer, SquadronMember> maimedSquadronMembers = new HashMap<>();
-    private Map<Integer, SquadronMember> capturedSquadronMembers = new HashMap<>();
-    private Map<Integer, SquadronMember> deadSquadronMembers = new HashMap<>();
+    private Map<Integer, CrewMember> woundedCrewMembers = new HashMap<>();
+    private Map<Integer, CrewMember> maimedCrewMembers = new HashMap<>();
+    private Map<Integer, CrewMember> capturedCrewMembers = new HashMap<>();
+    private Map<Integer, CrewMember> deadCrewMembers = new HashMap<>();
     
     @BeforeEach
     public void setupTest() throws PWCGException
@@ -35,65 +35,65 @@ public class SquadronMemberFilterTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         
-        while (woundedSquadronMembers.size() < 5)
+        while (woundedCrewMembers.size() < 5)
         {
-            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
-            squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate(), DateUtils.advanceTimeDays(campaign.getDate(), 10));
-            if (!campaignMemberUsed(squadronMember.getSerialNumber()) && squadronMember.isPlayer() == false)
+            CrewMember crewMember = CrewMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+            crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_WOUNDED, campaign.getDate(), DateUtils.advanceTimeDays(campaign.getDate(), 10));
+            if (!campaignMemberUsed(crewMember.getSerialNumber()) && crewMember.isPlayer() == false)
             {
-                woundedSquadronMembers.put(squadronMember.getSerialNumber(), squadronMember);
+                woundedCrewMembers.put(crewMember.getSerialNumber(), crewMember);
             }
         }
         
-        while (maimedSquadronMembers.size() < 4)
+        while (maimedCrewMembers.size() < 4)
         {
-            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
-            squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), null);
-            if (!campaignMemberUsed(squadronMember.getSerialNumber()) && squadronMember.isPlayer() == false)
+            CrewMember crewMember = CrewMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+            crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), null);
+            if (!campaignMemberUsed(crewMember.getSerialNumber()) && crewMember.isPlayer() == false)
             {
-                maimedSquadronMembers.put(squadronMember.getSerialNumber(), squadronMember);
+                maimedCrewMembers.put(crewMember.getSerialNumber(), crewMember);
             }
         }
         
-        while (deadSquadronMembers.size() < 3)
+        while (deadCrewMembers.size() < 3)
         {
-            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
-            squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
-            if (!campaignMemberUsed(squadronMember.getSerialNumber()) && squadronMember.isPlayer() == false)
+            CrewMember crewMember = CrewMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+            crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_KIA, campaign.getDate(), null);
+            if (!campaignMemberUsed(crewMember.getSerialNumber()) && crewMember.isPlayer() == false)
             {
-                deadSquadronMembers.put(squadronMember.getSerialNumber(), squadronMember);
+                deadCrewMembers.put(crewMember.getSerialNumber(), crewMember);
             }
         }
         
-        while (capturedSquadronMembers.size() < 2)
+        while (capturedCrewMembers.size() < 2)
         {
-            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
-            squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_CAPTURED, campaign.getDate(), null);
-            if (!campaignMemberUsed(squadronMember.getSerialNumber()) && squadronMember.isPlayer() == false)
+            CrewMember crewMember = CrewMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+            crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_CAPTURED, campaign.getDate(), null);
+            if (!campaignMemberUsed(crewMember.getSerialNumber()) && crewMember.isPlayer() == false)
             {
-                capturedSquadronMembers.put(squadronMember.getSerialNumber(), squadronMember);
+                capturedCrewMembers.put(crewMember.getSerialNumber(), crewMember);
             }
         }
     }
     
     private boolean campaignMemberUsed(int serialNumber)
     {
-        if (woundedSquadronMembers.containsKey(serialNumber))
+        if (woundedCrewMembers.containsKey(serialNumber))
         {
             return true;
         }
         
-        if (maimedSquadronMembers.containsKey(serialNumber))
+        if (maimedCrewMembers.containsKey(serialNumber))
         {
             return true;
         }
         
-        if (capturedSquadronMembers.containsKey(serialNumber))
+        if (capturedCrewMembers.containsKey(serialNumber))
         {
             return true;
         }
 
-        if (deadSquadronMembers.containsKey(serialNumber))
+        if (deadCrewMembers.containsKey(serialNumber))
         {
             return true;
         }
@@ -104,41 +104,41 @@ public class SquadronMemberFilterTest
     @Test
     public void validateFilters() throws PWCGException
     {
-        Map<Integer, SquadronMember> allCampaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();
+        Map<Integer, CrewMember> allCampaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();
         int numAces = campaign.getPersonnelManager().getCampaignAces().getAllCampaignAces().size();
-        int numPlayers = SquadronMemberFilter.filterActivePlayers(allCampaignMembers, campaign.getDate()).getSquadronMemberList().size();
-        int numInactive = maimedSquadronMembers.size() + capturedSquadronMembers.size() + deadSquadronMembers.size();
-        int numWounded = woundedSquadronMembers.size();
+        int numPlayers = CrewMemberFilter.filterActivePlayers(allCampaignMembers, campaign.getDate()).getCrewMemberList().size();
+        int numInactive = maimedCrewMembers.size() + capturedCrewMembers.size() + deadCrewMembers.size();
+        int numWounded = woundedCrewMembers.size();
  
         assert(numPlayers == 1);
 
-        SquadronMembers squadronMembers;
-        squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(allCampaignMembers, campaign.getDate());
-        assert(squadronMembers.getSquadronMemberList().size() == (allCampaignMembers.size() - numInactive));
+        CrewMembers squadronMembers;
+        squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(allCampaignMembers, campaign.getDate());
+        assert(squadronMembers.getCrewMemberList().size() == (allCampaignMembers.size() - numInactive));
         
-        squadronMembers = SquadronMemberFilter.filterActiveAI(allCampaignMembers, campaign.getDate());
-        assert(squadronMembers.getSquadronMemberList().size() == (allCampaignMembers.size() - (numInactive + numAces + numPlayers)));
+        squadronMembers = CrewMemberFilter.filterActiveAI(allCampaignMembers, campaign.getDate());
+        assert(squadronMembers.getCrewMemberList().size() == (allCampaignMembers.size() - (numInactive + numAces + numPlayers)));
         
-        squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayer(allCampaignMembers, campaign.getDate());
-        assert(squadronMembers.getSquadronMemberList().size() == (allCampaignMembers.size() - (numInactive + numAces)));
+        squadronMembers = CrewMemberFilter.filterActiveAIAndPlayer(allCampaignMembers, campaign.getDate());
+        assert(squadronMembers.getCrewMemberList().size() == (allCampaignMembers.size() - (numInactive + numAces)));
         
-        squadronMembers = SquadronMemberFilter.filterActiveAIAndAces(allCampaignMembers, campaign.getDate());
-        assert(squadronMembers.getSquadronMemberList().size() == (allCampaignMembers.size() - (numInactive + numPlayers)));
+        squadronMembers = CrewMemberFilter.filterActiveAIAndAces(allCampaignMembers, campaign.getDate());
+        assert(squadronMembers.getCrewMemberList().size() == (allCampaignMembers.size() - (numInactive + numPlayers)));
         
-        squadronMembers = SquadronMemberFilter.filterInactiveAIAndPlayerAndAces(allCampaignMembers, campaign.getDate());
-        assert(squadronMembers.getSquadronMemberList().size() == (numInactive));
+        squadronMembers = CrewMemberFilter.filterInactiveAIAndPlayerAndAces(allCampaignMembers, campaign.getDate());
+        assert(squadronMembers.getCrewMemberList().size() == (numInactive));
         
-        squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(allCampaignMembers, campaign.getDate());
-        assert(squadronMembers.getSquadronMemberList().size() == (allCampaignMembers.size() - (numInactive + numAces + numPlayers + numWounded)));
+        squadronMembers = CrewMemberFilter.filterActiveAINoWounded(allCampaignMembers, campaign.getDate());
+        assert(squadronMembers.getCrewMemberList().size() == (allCampaignMembers.size() - (numInactive + numAces + numPlayers + numWounded)));
         
-        validateFiltersOnActive(squadronMembers.getSquadronMemberList().size());
+        validateFiltersOnActive(squadronMembers.getCrewMemberList().size());
     }
     
     public void validateFiltersOnActive(int numActiveExpected) throws PWCGException
     {
-        Map<Integer, SquadronMember> allActiveCampaignMembers = campaign.getPersonnelManager().getActiveCampaignMembers();
+        Map<Integer, CrewMember> allActiveCampaignMembers = campaign.getPersonnelManager().getActiveCampaignMembers();
         int numAces = campaign.getPersonnelManager().getCampaignAces().getActiveCampaignAces().size();
-        int numPlayers = SquadronMemberFilter.filterActivePlayers(allActiveCampaignMembers, campaign.getDate()).getSquadronMemberList().size();
+        int numPlayers = CrewMemberFilter.filterActivePlayers(allActiveCampaignMembers, campaign.getDate()).getCrewMemberList().size();
  
         assert(numPlayers == 1);
         assert(numAces > 0);

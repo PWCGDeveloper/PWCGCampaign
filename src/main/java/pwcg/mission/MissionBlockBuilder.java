@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -118,9 +118,9 @@ public class MissionBlockBuilder
 
     private boolean isBlockNearPlayer(Coordinate blockPosition) throws PWCGException
     {
-        for (SquadronMember player : mission.getParticipatingPlayers().getAllParticipatingPlayers())
+        for (CrewMember player : mission.getParticipatingPlayers().getAllParticipatingPlayers())
         {
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
             Airfield airfield = squadron.determineCurrentAirfieldAnyMap(mission.getCampaign().getDate());
             CoordinateBox airfieldBox = CoordinateBox.coordinateBoxFromCenter(airfield.getPosition(), 10000);
             if (airfieldBox.isInBox(blockPosition))

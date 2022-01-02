@@ -11,9 +11,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
@@ -46,18 +46,18 @@ public class FlightCrewBuilderTest
     public void testPlayerFlightGeneration() throws PWCGException
     {
         FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
-        List<SquadronMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
+        List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
-        List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+        List<CrewMember> players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
         boolean playerFound = false;
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.KG53_PROFILE.getSquadronId());        
-        for (SquadronMember crew : assignedCrewMap)
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.KG53_PROFILE.getSquadronId());        
+        for (CrewMember crew : assignedCrewMap)
         {
-            assert(squadronPersonnel.isActiveSquadronMember(crew.getSerialNumber()));
+            assert(squadronPersonnel.isActiveCrewMember(crew.getSerialNumber()));
             if (crew.getSerialNumber() == players.get(0).getSerialNumber())
             {
                 playerFound = true;
@@ -71,18 +71,18 @@ public class FlightCrewBuilderTest
     public void testAiFlightGeneration() throws PWCGException
     {
         FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
         flightInformation.setSquadron(squadron);
 
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
-        List<SquadronMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
+        List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
-        List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
+        List<CrewMember> players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId());        
         boolean playerFound = false;
-        for (SquadronMember crew : assignedCrewMap)
+        for (CrewMember crew : assignedCrewMap)
         {
-            assert(squadronPersonnel.isActiveSquadronMember(crew.getSerialNumber()));
+            assert(squadronPersonnel.isActiveCrewMember(crew.getSerialNumber()));
             if (crew.getSerialNumber() == players.get(0).getSerialNumber())
             {
                 playerFound = true;

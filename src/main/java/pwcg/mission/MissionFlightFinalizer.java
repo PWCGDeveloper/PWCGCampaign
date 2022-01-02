@@ -1,11 +1,6 @@
 package pwcg.mission;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
@@ -27,7 +22,6 @@ public class MissionFlightFinalizer
     {
         convertForCoop();
         finalizeFlights();        
-        addVirtualEscorts();        
         adjustAI();        
         setCzTriggers();
     }
@@ -47,30 +41,6 @@ public class MissionFlightFinalizer
         {
             flight.finalizeFlight();
         }
-    }
-
-    private void addVirtualEscorts() throws PWCGException
-    {
-        List<IFlight> shuffledFlights = new ArrayList<>();
-        if (mission.getFlights().hasPlayerFlightForSide(Side.AXIS))
-        {
-            shuffledFlights.addAll(mission.getFlights().getAiFlightsForSide(Side.ALLIED));
-        }
-        
-        if (mission.getFlights().hasPlayerFlightForSide(Side.ALLIED))
-        {
-            shuffledFlights.addAll(mission.getFlights().getAiFlightsForSide(Side.AXIS));
-        }
-        
-        Collections.shuffle(shuffledFlights);
-        for (IFlight flight : shuffledFlights)
-        {
-            boolean needsVirtualEscort = flight.getMission().getVirtualEscortHandler().needsEscort(flight);
-            if (needsVirtualEscort)
-            {
-                flight.addVirtualEscort();
-            }
-        }        
     }
 
     private void adjustAI() throws PWCGException

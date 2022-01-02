@@ -106,25 +106,13 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public int getAdditionalInitialTargetRadius(FlightTypes flightType)
     {
         int initialDistance = 0;
-        if (flightType == FlightTypes.SPY_EXTRACT)
-        {
-            initialDistance = 10000;
-        }
-        else if (flightType == FlightTypes.PARATROOP_DROP)
+        if (flightType == FlightTypes.PARATROOP_DROP)
         {
             initialDistance = 5000;
         }
         else if (flightType == FlightTypes.CARGO_DROP)
         {
             initialDistance = 5000;
-        }
-        else if (flightType == FlightTypes.TRANSPORT)
-        {
-            initialDistance = 5000;
-        }
-        else if (flightType == FlightTypes.STRATEGIC_BOMB)
-        {
-            initialDistance = 30000;                    
         }
 
         return initialDistance;
@@ -149,14 +137,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         else if (flightType == FlightTypes.PARATROOP_DROP)
         {
             initialDistance = 30000;
-        }
-        else if (flightType == FlightTypes.TRANSPORT)
-        {
-            initialDistance = 30000;
-        }
-        else if (flightType == FlightTypes.STRATEGIC_BOMB)
-        {
-            initialDistance = 100000;                    
         }
 
         return initialDistance;

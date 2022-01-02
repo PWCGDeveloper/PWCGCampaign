@@ -9,32 +9,32 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.personnel.PersonnelActiveFilter;
 import pwcg.campaign.personnel.PersonnelFilter;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class PersonnelFilterTest
 {
-    private static Map<Integer, SquadronMember> testSquadronMembers = new HashMap<Integer, SquadronMember>();
+    private static Map<Integer, CrewMember> testCrewMembers = new HashMap<Integer, CrewMember>();
     private static String[] names = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", };
     
     @BeforeEach
     public void setupTest() throws PWCGException
     {
-    	testSquadronMembers = new HashMap<Integer, SquadronMember>();
+    	testCrewMembers = new HashMap<Integer, CrewMember>();
     	for (int i = 0; i < 10; ++i)
     	{
-    		SquadronMember squadronMember = new SquadronMember();
-    		squadronMember.setName(names[i]);
-    		squadronMember.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
-    		squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
-    		squadronMember.setSquadronId(101003);
-    		testSquadronMembers.put(squadronMember.getSerialNumber(), squadronMember);
+    		CrewMember crewMember = new CrewMember();
+    		crewMember.setName(names[i]);
+    		crewMember.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
+    		crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_ACTIVE, null, null);
+    		crewMember.setSquadronId(101003);
+    		testCrewMembers.put(crewMember.getSerialNumber(), crewMember);
     	}
     }
 
@@ -43,19 +43,19 @@ public class PersonnelFilterTest
     {            	
     	for (int i = 0; i < 4; ++i)
     	{
-    		SquadronMember squadronMember = testSquadronMembers.get(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
-    		squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, DateUtils.getDateYYYYMMDD("19170801"), null);
+    		CrewMember crewMember = testCrewMembers.get(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
+    		crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_KIA, DateUtils.getDateYYYYMMDD("19170801"), null);
     	}
 
-    	Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<Integer, SquadronMember>();
+    	Map<Integer, CrewMember> returnCrewMembers = new HashMap<Integer, CrewMember>();
     	
         PersonnelActiveFilter activePersonnelFilter = new PersonnelActiveFilter();
-        returnSquadronMembers = activePersonnelFilter.getActive(testSquadronMembers);
-        Assertions.assertTrue (returnSquadronMembers.size() == 6);
+        returnCrewMembers = activePersonnelFilter.getActive(testCrewMembers);
+        Assertions.assertTrue (returnCrewMembers.size() == 6);
     	
         PersonnelActiveFilter inactivePersonnelFilter = new PersonnelActiveFilter();
-        returnSquadronMembers = inactivePersonnelFilter.getInactive(testSquadronMembers);
-        Assertions.assertTrue (returnSquadronMembers.size() == 4);
+        returnCrewMembers = inactivePersonnelFilter.getInactive(testCrewMembers);
+        Assertions.assertTrue (returnCrewMembers.size() == 4);
     }
 
     @Test
@@ -63,19 +63,19 @@ public class PersonnelFilterTest
     {         
     	for (int i = 3; i < 7; ++i)
     	{
-    		SquadronMember squadronMember = testSquadronMembers.get(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
-    		squadronMember.setSerialNumber(SerialNumber.ACE_STARTING_SERIAL_NUMBER + i);
+    		CrewMember crewMember = testCrewMembers.get(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
+    		crewMember.setSerialNumber(SerialNumber.ACE_STARTING_SERIAL_NUMBER + i);
     	}
 
-    	Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<Integer, SquadronMember>();
+    	Map<Integer, CrewMember> returnCrewMembers = new HashMap<Integer, CrewMember>();
     	
     	PersonnelFilter personnelFilter = new PersonnelFilter(false);    	
-    	returnSquadronMembers = personnelFilter.applyAceFilter(testSquadronMembers);
-        Assertions.assertTrue (returnSquadronMembers.size() == 4);
+    	returnCrewMembers = personnelFilter.applyAceFilter(testCrewMembers);
+        Assertions.assertTrue (returnCrewMembers.size() == 4);
     	
         personnelFilter = new PersonnelFilter(true);
-    	returnSquadronMembers = personnelFilter.applyAceFilter(testSquadronMembers);
-        Assertions.assertTrue (returnSquadronMembers.size() == 6);
+    	returnCrewMembers = personnelFilter.applyAceFilter(testCrewMembers);
+        Assertions.assertTrue (returnCrewMembers.size() == 6);
     }
     
     @Test
@@ -83,19 +83,19 @@ public class PersonnelFilterTest
     {         
         for (int i = 3; i < 7; ++i)
         {
-            SquadronMember squadronMember = testSquadronMembers.get(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
-            squadronMember.setSquadronId(101005);
+            CrewMember crewMember = testCrewMembers.get(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
+            crewMember.setSquadronId(101005);
         }
 
-        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<Integer, SquadronMember>();
+        Map<Integer, CrewMember> returnCrewMembers = new HashMap<Integer, CrewMember>();
         
         PersonnelFilter personnelFilter = new PersonnelFilter(false);       
-        returnSquadronMembers = personnelFilter.applySquadronFilter(testSquadronMembers, 101005);
-        Assertions.assertTrue (returnSquadronMembers.size() == 4);
+        returnCrewMembers = personnelFilter.applySquadronFilter(testCrewMembers, 101005);
+        Assertions.assertTrue (returnCrewMembers.size() == 4);
         
         personnelFilter = new PersonnelFilter(true);
-        returnSquadronMembers = personnelFilter.applySquadronFilter(testSquadronMembers, 101005);
-        Assertions.assertTrue (returnSquadronMembers.size() == 6);
+        returnCrewMembers = personnelFilter.applySquadronFilter(testCrewMembers, 101005);
+        Assertions.assertTrue (returnCrewMembers.size() == 6);
      }
     
     @Test
@@ -103,19 +103,19 @@ public class PersonnelFilterTest
     {         
         for (int i = 3; i < 7; ++i)
         {
-            SquadronMember squadronMember = testSquadronMembers.get(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
-            squadronMember.setSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER + i);
+            CrewMember crewMember = testCrewMembers.get(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
+            crewMember.setSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER + i);
         }
 
-        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<Integer, SquadronMember>();
+        Map<Integer, CrewMember> returnCrewMembers = new HashMap<Integer, CrewMember>();
         
         PersonnelFilter personnelFilter = new PersonnelFilter(false);       
-        returnSquadronMembers = personnelFilter.applyPlayerFilter(testSquadronMembers);
-        Assertions.assertTrue (returnSquadronMembers.size() == 4);
+        returnCrewMembers = personnelFilter.applyPlayerFilter(testCrewMembers);
+        Assertions.assertTrue (returnCrewMembers.size() == 4);
         
         personnelFilter = new PersonnelFilter(true);
-        returnSquadronMembers = personnelFilter.applyPlayerFilter(testSquadronMembers);
-        Assertions.assertTrue (returnSquadronMembers.size() == 6);
+        returnCrewMembers = personnelFilter.applyPlayerFilter(testCrewMembers);
+        Assertions.assertTrue (returnCrewMembers.size() == 6);
      }
 
 }

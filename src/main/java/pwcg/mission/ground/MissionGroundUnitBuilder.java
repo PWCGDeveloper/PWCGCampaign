@@ -15,7 +15,6 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionBalloonBuilder;
 import pwcg.mission.MissionShipBuilder;
 import pwcg.mission.ground.builder.IBattleBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -48,7 +47,6 @@ public class MissionGroundUnitBuilder
         generateTrains();
         generateTrucks();
         generateDrifters();
-        generateBalloons();
         generateShips();
         createAAAForMission();
     }
@@ -81,12 +79,6 @@ public class MissionGroundUnitBuilder
     {
         AAAManager aaaManager = new AAAManager(campaign, mission);
         aaaManager.getAAAForMission(this);
-    }
-
-    private void generateBalloons() throws PWCGException
-    {
-        MissionBalloonBuilder balloonBuilder = new MissionBalloonBuilder(mission);
-        missionBalloons = balloonBuilder.createMissionBalloons();
     }
 
     private void generateShips() throws PWCGException

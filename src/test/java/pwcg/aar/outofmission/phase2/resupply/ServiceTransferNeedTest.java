@@ -12,14 +12,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ServiceResupplyNeed;
 import pwcg.campaign.resupply.SquadronNeedFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.fc.country.FCServiceManager;
@@ -41,7 +41,7 @@ public class ServiceTransferNeedTest
      }
 
     @Test
-    public void testTransfersWithNoSquadronMembers() throws PWCGException
+    public void testTransfersWithNoCrewMembers() throws PWCGException
     {
         deactivateSquadronPersonnel();
         
@@ -67,15 +67,15 @@ public class ServiceTransferNeedTest
 
     private void deactivateSquadronPersonnel() throws PWCGException
     {
-        SquadronMembers jasta16SquadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getSquadronPersonnel(JASTA_16).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        CrewMembers jasta16CrewMembers = CrewMemberFilter.filterActiveAI(campaign.getPersonnelManager().getCompanyPersonnel(JASTA_16).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
         int numInactivated = 0;
-        for (SquadronMember squadronMember : jasta16SquadronMembers.getSquadronMemberList())
+        for (CrewMember crewMember : jasta16CrewMembers.getCrewMemberList())
         {
-            if (!squadronMember.isPlayer())
+            if (!crewMember.isPlayer())
             {
-                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
+                crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_KIA, campaign.getDate(), null);
                 Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 9);
-                squadronMember.setInactiveDate(inactiveDate);
+                crewMember.setInactiveDate(inactiveDate);
                 ++numInactivated;                
             }
             

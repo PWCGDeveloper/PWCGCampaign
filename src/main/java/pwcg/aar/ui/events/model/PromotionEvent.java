@@ -4,15 +4,15 @@ import java.util.Date;
 
 import pwcg.campaign.Campaign;
 
-public class PromotionEvent extends AARPilotEvent
+public class PromotionEvent extends AARCrewMemberEvent
 {
     private String oldRank = "";
     private String newRank = "";
     private String promotingGeneral = "";
 
-    public PromotionEvent(Campaign campaign, String oldRank, String newRank, String promotingGeneral, int squadronId, int pilotSerialNumber, Date date, boolean isNewsWorthy)
+    public PromotionEvent(Campaign campaign, String oldRank, String newRank, String promotingGeneral, int squadronId, int crewMemberSerialNumber, Date date, boolean isNewsWorthy)
     {
-        super(campaign, squadronId, pilotSerialNumber, date, isNewsWorthy);
+        super(campaign, squadronId, crewMemberSerialNumber, date, isNewsWorthy);
         this.oldRank = oldRank;
         this.newRank = newRank;
         this.promotingGeneral = promotingGeneral;

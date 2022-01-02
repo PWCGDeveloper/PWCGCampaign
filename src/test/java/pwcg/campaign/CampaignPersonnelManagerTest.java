@@ -10,11 +10,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.personnel.InitialReplacementStaffer;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -35,23 +35,23 @@ public class CampaignPersonnelManagerTest
     @Test
     public void testAceRetrieval() throws PWCGException
     {
-        SquadronMember ace = campaign.getPersonnelManager().getAnyCampaignMember(201001);
+        CrewMember ace = campaign.getPersonnelManager().getAnyCampaignMember(201001);
         assert(ace.getName().equals("Hermann Graf"));
     }
 
     @Test
-    public void testSquadronMemberRetrieval() throws PWCGException
+    public void testCrewMemberRetrieval() throws PWCGException
     {
-        SquadronMember aiPilot = campaign.getPersonnelManager().getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 10);
-        assert(aiPilot != null);
+        CrewMember aiCrewMember = campaign.getPersonnelManager().getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 10);
+        assert(aiCrewMember != null);
     }
 
     @Test
     public void testPlayerRetrieval() throws PWCGException
     {
-    	assert(campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().size() == 1);
-        SquadronMember player = campaign.findReferencePlayer();
-        SquadronMember playerBySerialNumber = campaign.getPersonnelManager().getAnyCampaignMember(player.getSerialNumber());
+    	assert(campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList().size() == 1);
+        CrewMember player = campaign.findReferencePlayer();
+        CrewMember playerBySerialNumber = campaign.getPersonnelManager().getAnyCampaignMember(player.getSerialNumber());
         assert(playerBySerialNumber.isPlayer());
     }
 

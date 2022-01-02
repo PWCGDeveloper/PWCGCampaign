@@ -94,8 +94,8 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         buttonGrid.add(goBackToBriefingMapButton);
 
         buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
-        JButton goToPilotSelectionButton = makeButton("Next: Pilots", "Next: Pilots", "Progress to pilot selection screen");
-        buttonGrid.add(goToPilotSelectionButton);
+        JButton goToCrewMemberSelectionButton = makeButton("Next: CrewMembers", "Next: CrewMembers", "Progress to crewMember selection screen");
+        buttonGrid.add(goToCrewMemberSelectionButton);
 
         buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         JButton makeWaypointsEditableButton = makeButton("Edit Waypoint Details", "Edit Waypoints", "Make waypoint data editable");
@@ -124,9 +124,9 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
             {
                 backToBriefingMap();
             }
-            else if (action.equals("Next: Pilots"))
+            else if (action.equals("Next: CrewMembers"))
             {
-                forwardToPilotSelection();
+                forwardToCrewMemberSelection();
             }
             else if (action.equals("Back to Campaign"))
             {
@@ -155,12 +155,12 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 
-    private void forwardToPilotSelection() throws PWCGException
+    private void forwardToCrewMemberSelection() throws PWCGException
     {
         pushEditsToModel();
-        BriefingPilotSelectionScreen pilotSelection = new BriefingPilotSelectionScreen(campaignHomeGuiBriefingWrapper);
-        pilotSelection.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(pilotSelection);
+        BriefingCrewMemberSelectionScreen crewMemberSelection = new BriefingCrewMemberSelectionScreen(campaignHomeGuiBriefingWrapper);
+        crewMemberSelection.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(crewMemberSelection);
     }
 
     private void makeWaypointsEditable() throws PWCGException

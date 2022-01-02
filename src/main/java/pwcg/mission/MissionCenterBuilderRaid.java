@@ -11,7 +11,7 @@ import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.BridgeFinder;
 import pwcg.campaign.group.RailroadStationFinder;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.LocationAwayFromFrontFinder;
@@ -38,7 +38,7 @@ public class MissionCenterBuilderRaid implements IMissionCenterBuilder
 
     private List<PWCGLocation> getRaidLocations(int missionBoxRadius) throws PWCGException
     {
-        Squadron squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
+        Company squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
         Coordinate squadronLocation = squadron.determineCurrentPosition(campaign.getDate());
 
         List<Airfield> airfieldTargets = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getNearbyOccupiedAirFieldsForSide(
@@ -85,7 +85,7 @@ public class MissionCenterBuilderRaid implements IMissionCenterBuilder
     
     private List<PWCGLocation> getRaidLocationsAwayFromFront(List<PWCGLocation> raidLocations) throws PWCGException
     {
-        Squadron squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
+        Company squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
 
         List<PWCGLocation> raidLocationsAwayFromFront = LocationAwayFromFrontFinder.getLocationsAwayFromFront(
                 raidLocations, squadron.determineSide().getOppositeSide(), campaign.getDate());
@@ -102,7 +102,7 @@ public class MissionCenterBuilderRaid implements IMissionCenterBuilder
         }
         else
         {
-            Squadron squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
+            Company squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
             Coordinate squadronLocation = squadron.determineCurrentPosition(campaign.getDate());
             return squadronLocation;
         }

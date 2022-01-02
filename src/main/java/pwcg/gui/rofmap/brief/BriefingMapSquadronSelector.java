@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -72,7 +72,7 @@ public class BriefingMapSquadronSelector implements ActionListener
 
         for (IFlight aiflight : mission.getFlights().getAiFlights())
         {
-            Squadron squadron = aiflight.getSquadron();
+            Company squadron = aiflight.getSquadron();
             Side squadronSide = squadron.getCountry().getSide();
 
             if (includeSquadron(selectedFlightSide, squadronSide))
@@ -154,7 +154,7 @@ public class BriefingMapSquadronSelector implements ActionListener
     private void addSquadronToSelected(int squadronId) throws PWCGException
     {
         IFlight flight = mission.getFlights().getAiFlightForSquadron(squadronId);
-        Squadron squadron = flight.getSquadron();
+        Company squadron = flight.getSquadron();
         selectedSquadrons.put(squadronId, squadron.determineDisplayName(mission.getCampaign().getDate()));
     }
 }

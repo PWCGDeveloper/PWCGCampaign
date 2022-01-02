@@ -8,14 +8,14 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.CrewMemberFilter;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class ServiceChangeHandler
@@ -29,13 +29,13 @@ public class ServiceChangeHandler
 
     public void handleChangeOfService(Date newDate) throws PWCGException 
     {
-        for (Squadron squadron : PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(campaign.getDate()))
+        for (Company squadron : PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(campaign.getDate()))
         {
             handleChangeOfServiceForSquadron(squadron, newDate);
         }
     }
     
-    private void handleChangeOfServiceForSquadron(Squadron squadron, Date newDate) throws PWCGException 
+    private void handleChangeOfServiceForSquadron(Company squadron, Date newDate) throws PWCGException 
     {
         ArmedService serviceNow = squadron.determineServiceForSquadron(campaign.getDate());
         ArmedService serviceAfter = squadron.determineServiceForSquadron(newDate);
@@ -46,39 +46,39 @@ public class ServiceChangeHandler
         }
     }
 
-    private void changeService(Squadron squadron, ArmedService serviceNow, ArmedService serviceAfter) throws PWCGException
+    private void changeService(Company squadron, ArmedService serviceNow, ArmedService serviceAfter) throws PWCGException
     {
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember pilot : squadronMembers.getSquadronMemberList())
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId());
+        CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        for (CrewMember crewMember : squadronMembers.getCrewMemberList())
         {
-            setPilotRanksForNewService(pilot, serviceNow, serviceAfter);
-            setPilotCountryForNewService(pilot, serviceAfter);
+            setCrewMemberRanksForNewService(crewMember, serviceNow, serviceAfter);
+            setCrewMemberCountryForNewService(crewMember, serviceAfter);
         }
     }
 
 
-    private void setPilotRanksForNewService(SquadronMember pilot, ArmedService serviceNow, ArmedService serviceAfter) throws PWCGException
+    private void setCrewMemberRanksForNewService(CrewMember crewMember, ArmedService serviceNow, ArmedService serviceAfter) throws PWCGException
     {
         IRankHelper rankObj = RankFactory.createRankHelper();
         List<String> ranksNow = rankObj.getRanksByService(serviceNow);
         List<String> ranksAfter = rankObj.getRanksByService(serviceAfter);
 
-        String rankAfter = getRankAfterChangeOfService(ranksNow, ranksAfter, pilot);
-        pilot.setRank(rankAfter);
-        setRankOfHistoricalAce(pilot);
+        String rankAfter = getRankAfterChangeOfService(ranksNow, ranksAfter, crewMember);
+        crewMember.setRank(rankAfter);
+        setRankOfHistoricalAce(crewMember);
     }
 
 
 
-    private String getRankAfterChangeOfService(List<String> ranksNow, List<String> ranksAfter, SquadronMember pilot)
+    private String getRankAfterChangeOfService(List<String> ranksNow, List<String> ranksAfter, CrewMember crewMember)
     {
         String rankAfter = ranksAfter.get(ranksAfter.size() - 1);
-        String pilotRank = pilot.getRank();
+        String crewMemberRank = crewMember.getRank();
         for (int i = 0; i < ranksNow.size(); ++i)
         {
             String rankNow = ranksNow.get(i);
-            if (rankNow.equals(pilotRank))
+            if (rankNow.equals(crewMemberRank))
             {
                 if (i < ranksAfter.size())
                 {
@@ -90,21 +90,21 @@ public class ServiceChangeHandler
         return rankAfter;
     }
 
-    private void setRankOfHistoricalAce(SquadronMember pilot)
+    private void setRankOfHistoricalAce(CrewMember crewMember)
     {
-        if (pilot instanceof Ace)
+        if (crewMember instanceof TankAce)
         {
-        	Ace ace = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(pilot.getSerialNumber());
+        	TankAce ace = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(crewMember.getSerialNumber());
             if (ace != null)
             {
-                ace.setRank(pilot.getRank());
+                ace.setRank(crewMember.getRank());
             }
         }
     }
 
-    private void setPilotCountryForNewService(SquadronMember pilot, ArmedService serviceAfter) throws PWCGException
+    private void setCrewMemberCountryForNewService(CrewMember crewMember, ArmedService serviceAfter) throws PWCGException
     {
         ICountry country = CountryFactory.makeCountryByService(serviceAfter);
-        pilot.setCountry(country.getCountry());
+        crewMember.setCountry(country.getCountry());
     }
 }

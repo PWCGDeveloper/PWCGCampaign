@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.CampaignMode;
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.utils.PWCGStringValidator;
 
@@ -21,7 +17,6 @@ public class CampaignGeneratorState
     public enum CampaignGeneratorWorkflow
     {
         CHOOSE_PLAYER_NAME,
-        CHOOSE_REGION,
         CHOOSE_COOP_USER,
         CHOOSE_MAP,
         CHOOSE_DATE,
@@ -40,15 +35,6 @@ public class CampaignGeneratorState
     {
         stateStack.add(CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME);
         
-        if (PWCGContext.getProduct() == PWCGProduct.FC)
-        {
-            ICountry country = campaignGeneratorDO.getService().getCountry();
-            if (country.getCountry() == Country.GERMANY)
-            {
-                stateStack.add(CampaignGeneratorWorkflow.CHOOSE_REGION);
-            }
-        }
-
         if (campaignGeneratorDO.getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
             stateStack.add(CampaignGeneratorWorkflow.CHOOSE_COOP_USER);
@@ -90,7 +76,7 @@ public class CampaignGeneratorState
         {
             return false;
         }
-        else if (!PWCGStringValidator.isValidName(campaignGeneratorDO.getPlayerPilotName()))
+        else if (!PWCGStringValidator.isValidName(campaignGeneratorDO.getPlayerCrewMemberName()))
         {
             return false;
         }

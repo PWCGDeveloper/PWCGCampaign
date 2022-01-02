@@ -34,13 +34,13 @@ public class ScreenOverridesFileBuilder
 //        addDefaultOverride(ScreenIdentifier.PwcgMainScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignGeneratorScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignDeleteScreen);
-//        addDefaultOverride(ScreenIdentifier.CampaignNewPilotScreen);
+//        addDefaultOverride(ScreenIdentifier.CampaignNewCrewMemberScreen);
 //        
 //        addDefaultOverride(ScreenIdentifier.PwcgSkinConfigurationAnalysisScreen);
 //        addDefaultOverride(ScreenIdentifier.PwcgPlanesOwnedConfigurationScreen);
 //        addDefaultOverride(ScreenIdentifier.PwcgMusicConfigScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignHomeScreen);
-//        addDefaultOverride(ScreenIdentifier.BriefingPilotSelectionScreen);
+//        addDefaultOverride(ScreenIdentifier.BriefingCrewMemberSelectionScreen);
 //        addDefaultOverride(ScreenIdentifier.BriefingDescriptionScreen);
 //        addDefaultOverride(ScreenIdentifier.MapScreens);
 //        addDefaultOverride(ScreenIdentifier.DebriefMissionDescriptionScreen);
@@ -52,12 +52,12 @@ public class ScreenOverridesFileBuilder
 //        addDefaultOverride(ScreenIdentifier.CampaignSimpleConfigurationScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignEquipmentDepotScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignCoopAdminScreen);
-//        addDefaultOverride(ScreenIdentifier.CampaignReferencePilotSelectorScreen);
+//        addDefaultOverride(ScreenIdentifier.CampaignReferenceCrewMemberSelectorScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignIntelligenceReportScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignJournalScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignSquadronLogScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignMedalScreen);
-//        addDefaultOverride(ScreenIdentifier.CampaignPilotLogScreen);
+//        addDefaultOverride(ScreenIdentifier.CampaignCrewMemberLogScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignSkinConfigurationScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignLeaveScreen);
 //        addDefaultOverride(ScreenIdentifier.CampaignTransferScreen);
@@ -66,13 +66,13 @@ public class ScreenOverridesFileBuilder
 //        addDefaultOverride(ScreenIdentifier.AARReportMainPanel);
 //        addDefaultOverride(ScreenIdentifier.MissingSkinScreen);
 //        
-//        addDefaultOverride(ScreenIdentifier.CampaignPilotChalkboard);
+//        addDefaultOverride(ScreenIdentifier.CampaignCrewMemberChalkboard);
 //        addDefaultOverride(ScreenIdentifier.CampaignEquipmentChalkboard);
 //        addDefaultOverride(ScreenIdentifier.PlaqueBronzeBackground);
 //        addDefaultOverride(ScreenIdentifier.CampaignHomeSquadronPlaque);
 //        addDefaultOverride(ScreenIdentifier.Document);
 //        addDefaultOverride(ScreenIdentifier.OpenMedalBox);
-//        addDefaultOverride(ScreenIdentifier.OpenPilotLog);
+//        addDefaultOverride(ScreenIdentifier.OpenCrewMemberLog);
 //        addDefaultOverride(ScreenIdentifier.OpenJournal);
 //        addDefaultOverride(ScreenIdentifier.OpenSquadronLog);
 

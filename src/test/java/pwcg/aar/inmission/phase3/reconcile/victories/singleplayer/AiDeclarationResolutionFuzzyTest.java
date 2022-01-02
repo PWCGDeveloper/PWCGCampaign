@@ -29,11 +29,11 @@ import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -44,22 +44,22 @@ public class AiDeclarationResolutionFuzzyTest
     @Mock private AARMissionEvaluationData evaluationData;
     @Mock private Campaign campaign;
     @Mock private CampaignData campaignData;
-    @Mock private Squadron squadron;
+    @Mock private Company squadron;
     @Mock private CampaignPersonnelManager personnelManager;
     @Mock private AARContext aarContext;
     @Mock private AARPreliminaryData preliminaryData;
     @Mock private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
     @Mock private VictorySorter victorySorter;
-    @Mock private SquadronMember player;
-    @Mock private SquadronMember aiSquadMember1;
-    @Mock private SquadronMember aiSquadMember2;
-    @Mock private SquadronMember aiNotSquadMember;
+    @Mock private CrewMember player;
+    @Mock private CrewMember aiSquadMember1;
+    @Mock private CrewMember aiSquadMember2;
+    @Mock private CrewMember aiNotSquadMember;
     
-    private SquadronMembers campaignMembersInmission = new SquadronMembers();
+    private CrewMembers campaignMembersInmission = new CrewMembers();
 
     private List<LogVictory> fuzzyVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
-    private List<SquadronMember> players = new ArrayList<>();
+    private List<CrewMember> players = new ArrayList<>();
 
     private LogPlane playerVictor = new LogPlane(1);
     private LogPlane aiVictorOne = new LogPlane(2);
@@ -77,9 +77,9 @@ public class AiDeclarationResolutionFuzzyTest
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInmission);
 
-        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        aiVictorOne.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        aiVictorTwo.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2);
+        playerVictor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        aiVictorOne.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        aiVictorTwo.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2);
         playerVictor.setCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
         aiVictorOne.setCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
         aiVictorTwo.setCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
@@ -106,7 +106,7 @@ public class AiDeclarationResolutionFuzzyTest
         Mockito.when(aiSquadMember2.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2)).thenReturn(aiVictorTwo);
         
-        List<Squadron> playerSquadronsInMission = new ArrayList<>();
+        List<Company> playerSquadronsInMission = new ArrayList<>();
         playerSquadronsInMission.add(squadron);
         Mockito.when(preliminaryData.getPlayerSquadronsInMission()).thenReturn(playerSquadronsInMission);
 
@@ -114,15 +114,15 @@ public class AiDeclarationResolutionFuzzyTest
         playerVictor.setSquadronId(squadronId);
         aiVictorOne.setSquadronId(squadronId);
         aiVictorTwo.setSquadronId(squadronId);
-        Mockito.when(aiSquadMember1.getSquadronId()).thenReturn(squadronId);
-        Mockito.when(aiSquadMember2.getSquadronId()).thenReturn(squadronId);
+        Mockito.when(aiSquadMember1.getCompanyId()).thenReturn(squadronId);
+        Mockito.when(aiSquadMember2.getCompanyId()).thenReturn(squadronId);
         Mockito.when(squadron.getSquadronId()).thenReturn(squadronId);
     }
 
     private void createVictory(Integer victimSerialNumber) throws PWCGException
     {        
         LogPlane victim = new LogPlane(4);
-        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setCrewMemberSerialNumber(victimSerialNumber);
         victim.setCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         
         LogVictory resultVictory = new LogVictory(10);
@@ -133,8 +133,8 @@ public class AiDeclarationResolutionFuzzyTest
     @Test
     public void testAiOnlyOneFuzzyVictoryAward () throws PWCGException
     {   
-        campaignMembersInmission.addToSquadronMemberCollection(player);
-        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
+        campaignMembersInmission.addToCrewMemberCollection(player);
+        campaignMembersInmission.addToCrewMemberCollection(aiSquadMember1);
 
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
@@ -145,9 +145,9 @@ public class AiDeclarationResolutionFuzzyTest
     @Test
     public void testAiOneFuzzyVictoryPerCrewAward () throws PWCGException
     {   
-        campaignMembersInmission.addToSquadronMemberCollection(player);
-        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
-        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember2);
+        campaignMembersInmission.addToCrewMemberCollection(player);
+        campaignMembersInmission.addToCrewMemberCollection(aiSquadMember1);
+        campaignMembersInmission.addToCrewMemberCollection(aiSquadMember2);
 
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
@@ -158,7 +158,7 @@ public class AiDeclarationResolutionFuzzyTest
     @Test
     public void testAiFuzzyVictoryAwardFailedBecuseNoCrewOtherThanPlayer () throws PWCGException
     {   
-        campaignMembersInmission.addToSquadronMemberCollection(player);
+        campaignMembersInmission.addToCrewMemberCollection(player);
 
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
@@ -169,9 +169,9 @@ public class AiDeclarationResolutionFuzzyTest
     @Test
     public void testAiFuzzyVictoryAwardFailedBecuseAllConfirmed () throws PWCGException
     {   
-        campaignMembersInmission.addToSquadronMemberCollection(player);
-        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
-        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember2);
+        campaignMembersInmission.addToCrewMemberCollection(player);
+        campaignMembersInmission.addToCrewMemberCollection(aiSquadMember1);
+        campaignMembersInmission.addToCrewMemberCollection(aiSquadMember2);
 
         for (LogVictory fuzzyVictory : fuzzyVictories)
         {
@@ -185,14 +185,14 @@ public class AiDeclarationResolutionFuzzyTest
     }
     
     @Test
-    public void testAiFuzzyVictoryAwardFailedBecuseVictorIsNotSquadronMember () throws PWCGException
+    public void testAiFuzzyVictoryAwardFailedBecuseVictorIsNotCrewMember () throws PWCGException
     {   
-        campaignMembersInmission.addToSquadronMemberCollection(player);
-        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
-        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember2);
+        campaignMembersInmission.addToCrewMemberCollection(player);
+        campaignMembersInmission.addToCrewMemberCollection(aiSquadMember1);
+        campaignMembersInmission.addToCrewMemberCollection(aiSquadMember2);
 
-        Mockito.when(aiSquadMember1.getSquadronId()).thenReturn(501004);
-        Mockito.when(aiSquadMember2.getSquadronId()).thenReturn(501004);
+        Mockito.when(aiSquadMember1.getCompanyId()).thenReturn(501004);
+        Mockito.when(aiSquadMember2.getCompanyId()).thenReturn(501004);
 
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
@@ -203,9 +203,9 @@ public class AiDeclarationResolutionFuzzyTest
     @Test
     public void testAiFuzzyVictoryAwardFailedBecuseSameSide () throws PWCGException
     {   
-        campaignMembersInmission.addToSquadronMemberCollection(player);
-        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
-        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember2);
+        campaignMembersInmission.addToCrewMemberCollection(player);
+        campaignMembersInmission.addToCrewMemberCollection(aiSquadMember1);
+        campaignMembersInmission.addToCrewMemberCollection(aiSquadMember2);
 
         Mockito.when(aiSquadMember1.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         Mockito.when(aiSquadMember2.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));

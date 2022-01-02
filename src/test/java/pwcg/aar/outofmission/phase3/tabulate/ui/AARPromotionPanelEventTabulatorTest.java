@@ -14,7 +14,7 @@ import org.mockito.quality.Strictness;
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.tabulate.debrief.PromotionPanelEventTabulator;
 import pwcg.aar.ui.display.model.AARPromotionPanelData;
-import pwcg.campaign.squadmember.SerialNumber;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)

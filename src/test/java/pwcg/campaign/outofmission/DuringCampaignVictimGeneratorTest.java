@@ -10,9 +10,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.personnel.EnemySquadronFinder;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -33,15 +33,15 @@ public class DuringCampaignVictimGeneratorTest
     @Test
     public void testVictimGeneration () throws PWCGException
     {               
-        Squadron victorSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());        
+        Company victorSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());        
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron victimSquadron = enemySquadronFinder.getEnemyForOutOfMission(victorSquadron, campaign.getDate());
+        Company victimSquadron = enemySquadronFinder.getEnemyForOutOfMission(victorSquadron, campaign.getDate());
 
         DuringCampaignAirVictimGenerator  victimGenerator = new DuringCampaignAirVictimGenerator(campaign, victimSquadron);
         Side victorSide = victorSquadron.determineSquadronCountry(campaign.getDate()).getSide();
 
-        SquadronMember victim = victimGenerator.generateVictimAiCrew();
-        Squadron victimSquadronFromVictim = victim.determineSquadron();
+        CrewMember victim = victimGenerator.generateVictimAiCrew();
+        Company victimSquadronFromVictim = victim.determineSquadron();
         Side victimSide = victimSquadron.determineSquadronCountry(campaign.getDate()).getSide();
         
         assert(victimSide != victorSide);
@@ -52,9 +52,9 @@ public class DuringCampaignVictimGeneratorTest
     @Test
     public void testNotFromPlayerSquadron () throws PWCGException
     {               
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         DuringCampaignAirVictimGenerator  victimGenerator = new DuringCampaignAirVictimGenerator(campaign, squadron);
-        SquadronMember victim = victimGenerator.generateVictimAiCrew();
+        CrewMember victim = victimGenerator.generateVictimAiCrew();
         assert(victim != null);
     }
 

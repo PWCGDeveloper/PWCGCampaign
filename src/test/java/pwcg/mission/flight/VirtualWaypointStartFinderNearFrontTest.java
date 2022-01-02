@@ -15,7 +15,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
@@ -27,7 +27,7 @@ import pwcg.mission.flight.waypoint.virtual.VirtualWaypointStartFinder;
 public class VirtualWaypointStartFinderNearFrontTest
 {
     @Mock private IFlight flight;
-    @Mock private Squadron squadron;
+    @Mock private Company squadron;
     @Mock private Campaign campaign;
     @Mock private Mission mission;
     @Mock private VirtualWayPointCoordinate vwpCoordinate1;

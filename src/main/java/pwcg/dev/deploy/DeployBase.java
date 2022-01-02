@@ -165,7 +165,7 @@ public abstract class DeployBase
         directoriesToCopy.put("National", null);
         directoriesToCopy.put("Newspaper", null);
         directoriesToCopy.put("Newspapers", null);
-        directoriesToCopy.put("PilotPictures", null);
+        directoriesToCopy.put("CrewMemberPictures", null);
         directoriesToCopy.put("Planes", null);
         directoriesToCopy.put("Profiles", null);
         directoriesToCopy.put("themes", null);
@@ -242,7 +242,7 @@ public abstract class DeployBase
         directoriesToMake.put("Report", null);
         directoriesToMake.put("User", null);
         directoriesToMake.put("Personnel", null);
-        directoriesToMake.put("Pilots", null);
+        directoriesToMake.put("CrewMembers", null);
         directoriesToMake.put("Users", null);
 
         return directoriesToMake;

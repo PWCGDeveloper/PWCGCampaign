@@ -17,7 +17,7 @@ public class TransferEventGenerator
         this.campaign = campaign;
     }
 
-    public List<TransferEvent> createPilotTransferEvents(List<TransferRecord> squadronMembersTransferred) throws PWCGException
+    public List<TransferEvent> createCrewMemberTransferEvents(List<TransferRecord> squadronMembersTransferred) throws PWCGException
     {
         List<TransferEvent>  transferEvents = new ArrayList<>();
         for (TransferRecord transferred : squadronMembersTransferred)
@@ -33,8 +33,8 @@ public class TransferEventGenerator
     {
         boolean isNewsworthy = true;
         int leaveTimeInDays = 0;
-        int pilotSerialNumber = transferRecord.getSquadronMember().getSerialNumber();
-        TransferEvent transferEvent = new TransferEvent(campaign, transferRecord.getTransferFrom(), transferRecord.getTransferTo(), leaveTimeInDays, pilotSerialNumber, campaign.getDate(), isNewsworthy);
+        int crewMemberSerialNumber = transferRecord.getCrewMember().getSerialNumber();
+        TransferEvent transferEvent = new TransferEvent(campaign, transferRecord.getTransferFrom(), transferRecord.getTransferTo(), leaveTimeInDays, crewMemberSerialNumber, campaign.getDate(), isNewsworthy);
         return transferEvent;
     }
 }

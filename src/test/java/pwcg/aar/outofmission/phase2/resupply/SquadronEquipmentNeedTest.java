@@ -17,12 +17,12 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.resupply.equipment.SquadronEquipmentNeed;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -30,11 +30,11 @@ import pwcg.core.utils.DateUtils;
 public class SquadronEquipmentNeedTest
 {
     @Mock private Campaign campaign;
-    @Mock private Squadron squadron;
+    @Mock private Company squadron;
     @Mock private CampaignEquipmentManager campaignEquipmentManager;
     @Mock private Equipment equipment;
     @Mock private AARPersonnelLosses lossesInMissionData;
-    @Mock private SquadronPersonnel squadronPersonnel;
+    @Mock private CompanyPersonnel squadronPersonnel;
     @Mock private EquippedPlane equippedPlane;
 
     private Map<Integer, EquippedPlane> activeEquippedPlaneCollection = new HashMap<>();
@@ -64,7 +64,7 @@ public class SquadronEquipmentNeedTest
         squadronTransferNeed.determineResupplyNeeded();
         Assertions.assertTrue (squadronTransferNeed.needsResupply() == true);
         
-        for (int i = 0; i < Squadron.SQUADRON_EQUIPMENT_SIZE - 1; ++i)
+        for (int i = 0; i < Company.SQUADRON_EQUIPMENT_SIZE - 1; ++i)
         {
             squadronTransferNeed.noteResupply();
             Assertions.assertTrue (squadronTransferNeed.needsResupply() == true);

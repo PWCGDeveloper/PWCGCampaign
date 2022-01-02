@@ -76,11 +76,11 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
         {
             JLabel usernameLabel = makeCoopInfoLabel(coopDisplayRecord.getUsername());
             JLabel campaignNameLabel = makeCoopInfoLabel(coopDisplayRecord.getCampaignName());
-            JLabel pilotNameLabel = makeCoopInfoLabel(coopDisplayRecord.getPilotNameAndRank());
+            JLabel crewMemberNameLabel = makeCoopInfoLabel(coopDisplayRecord.getCrewMemberNameAndRank());
             JLabel squadronNameLabel = makeCoopInfoLabel(coopDisplayRecord.getSquadronName());
             recordListPanel.add(usernameLabel);
             recordListPanel.add(campaignNameLabel);
-            recordListPanel.add(pilotNameLabel);
+            recordListPanel.add(crewMemberNameLabel);
             recordListPanel.add(squadronNameLabel);
         }
 
@@ -103,7 +103,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
                 PWCGContext.getInstance().setCampaign(campaign);
                 if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
                 {
-                    List<CoopDisplayRecord> coopDisplayRecordsForUser = coopPersonaDataBuilder.getPlayerSquadronMembersForUser(campaign);
+                    List<CoopDisplayRecord> coopDisplayRecordsForUser = coopPersonaDataBuilder.getPlayerCrewMembersForUser(campaign);
                     coopDisplayRecords.addAll(coopDisplayRecordsForUser);
                 }
             }

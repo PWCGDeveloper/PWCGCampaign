@@ -12,24 +12,24 @@ import org.mockito.Mockito;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberVictories;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberVictories;
-import pwcg.campaign.squadmember.Victory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronRoleSet;
 import pwcg.core.exception.PWCGException;
 
 public abstract class MedalManagerTestBase
 {
     @Mock protected Campaign campaign;
-    @Mock protected SquadronMember player;
-    @Mock protected Squadron squadron;
+    @Mock protected CrewMember player;
+    @Mock protected Company squadron;
     @Mock protected ICountry country;
-    @Mock protected SquadronMemberVictories squadronMemberVictories;
+    @Mock protected CrewMemberVictories squadronMemberVictories;
     @Mock protected SquadronRoleSet squadronRoleSet;
     
-    protected List<SquadronMember> players = new ArrayList<>();
+    protected List<CrewMember> players = new ArrayList<>();
     protected List<Victory> victories = new ArrayList<>();
     protected List<Medal> medals = new ArrayList<>();
     protected ArmedService service;
@@ -41,7 +41,7 @@ public abstract class MedalManagerTestBase
         players.add(player);
         
         Mockito.when(player.getMedals()).thenReturn(medals);
-        Mockito.when(player.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
+        Mockito.when(player.getCrewMemberVictories()).thenReturn(squadronMemberVictories);
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
         Mockito.when(squadron.getSquadronRoles()).thenReturn(squadronRoleSet);
         Mockito.when(squadronRoleSet.isSquadronThisRole(ArgumentMatchers.<Date>any(), ArgumentMatchers.<PwcgRole>any())).thenReturn(true);
@@ -57,9 +57,9 @@ public abstract class MedalManagerTestBase
     }
 
 
-    protected void awardWoundedAward(SquadronMember pilot, ArmedService service) throws PWCGException
+    protected void awardWoundedAward(CrewMember crewMember, ArmedService service) throws PWCGException
     {
-        Medal medal = medalManager.awardWoundedAward(pilot, service);
+        Medal medal = medalManager.awardWoundedAward(crewMember, service);
         medals.add(medal);
     }
 

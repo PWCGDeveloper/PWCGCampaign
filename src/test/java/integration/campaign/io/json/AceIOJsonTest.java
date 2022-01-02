@@ -11,8 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.HistoricalAce;
 import pwcg.campaign.io.json.HistoricalAceIOJson;
-import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)

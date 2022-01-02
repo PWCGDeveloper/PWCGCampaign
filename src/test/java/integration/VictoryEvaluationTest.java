@@ -20,10 +20,10 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -64,7 +64,7 @@ public class VictoryEvaluationTest
     {
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
@@ -87,8 +87,8 @@ public class VictoryEvaluationTest
         PlayerDeclarations playerDeclarations = new PlayerDeclarations();
         playerDeclarations.addDeclaration(playerVictoryDeclaration1);
 
-        SquadronMember player = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
-        Assertions.assertEquals(0, player.getSquadronMemberVictories().getAirToAirVictories().size());
+        CrewMember player = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
+        Assertions.assertEquals(0, player.getCrewMemberVictories().getAirToAirVictories().size());
 
         Map<Integer, PlayerDeclarations> playerDeclarationMap = new HashMap<>();
         playerDeclarationMap.put(player.getSerialNumber(), playerDeclarations);
@@ -96,8 +96,8 @@ public class VictoryEvaluationTest
         AARCoordinator.getInstance().aarPreliminary(campaign);
         AARCoordinator.getInstance().submitAAR(playerDeclarationMap);
     
-        SquadronMember playerAfter = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
-        Assertions.assertEquals(1, playerAfter.getSquadronMemberVictories().getAirToAirVictories().size());
+        CrewMember playerAfter = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
+        Assertions.assertEquals(1, playerAfter.getCrewMemberVictories().getAirToAirVictories().size());
     }
 
     @Test
@@ -105,7 +105,7 @@ public class VictoryEvaluationTest
     {
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
@@ -136,8 +136,8 @@ public class VictoryEvaluationTest
         playerDeclarations.addDeclaration(playerVictoryDeclaration1);
         playerDeclarations.addDeclaration(playerVictoryDeclaration2);
 
-        SquadronMember player = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
-        Assertions.assertEquals(0, player.getSquadronMemberVictories().getAirToAirVictories().size());
+        CrewMember player = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
+        Assertions.assertEquals(0, player.getCrewMemberVictories().getAirToAirVictories().size());
 
         Map<Integer, PlayerDeclarations> playerDeclarationMap = new HashMap<>();
         playerDeclarationMap.put(player.getSerialNumber(), playerDeclarations);
@@ -145,8 +145,8 @@ public class VictoryEvaluationTest
         AARCoordinator.getInstance().aarPreliminary(campaign);
         AARCoordinator.getInstance().submitAAR(playerDeclarationMap);
     
-        SquadronMember playerAfter = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
-        Assertions.assertEquals(2, playerAfter.getSquadronMemberVictories().getAirToAirVictories().size());
+        CrewMember playerAfter = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
+        Assertions.assertEquals(2, playerAfter.getCrewMemberVictories().getAirToAirVictories().size());
     }
 
     @Test
@@ -154,7 +154,7 @@ public class VictoryEvaluationTest
     {
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
@@ -182,8 +182,8 @@ public class VictoryEvaluationTest
         playerDeclarations.addDeclaration(playerVictoryDeclaration1);
         playerDeclarations.addDeclaration(playerVictoryDeclaration2);
 
-        SquadronMember player = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
-        Assertions.assertEquals(0, player.getSquadronMemberVictories().getAirToAirVictories().size());
+        CrewMember player = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
+        Assertions.assertEquals(0, player.getCrewMemberVictories().getAirToAirVictories().size());
 
         Map<Integer, PlayerDeclarations> playerDeclarationMap = new HashMap<>();
         playerDeclarationMap.put(player.getSerialNumber(), playerDeclarations);
@@ -191,8 +191,8 @@ public class VictoryEvaluationTest
         AARCoordinator.getInstance().aarPreliminary(campaign);
         AARCoordinator.getInstance().submitAAR(playerDeclarationMap);
     
-        SquadronMember playerAfter = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
-        Assertions.assertEquals(1, playerAfter.getSquadronMemberVictories().getAirToAirVictories().size());
+        CrewMember playerAfter = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
+        Assertions.assertEquals(1, playerAfter.getCrewMemberVictories().getAirToAirVictories().size());
     }
 
     @Test
@@ -200,7 +200,7 @@ public class VictoryEvaluationTest
     {
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
@@ -215,7 +215,7 @@ public class VictoryEvaluationTest
         Map<Integer, Integer> playerFlightVictories = new HashMap<>();
         for(PlaneMcu plane : playerFlightPlanes)
         {
-            playerFlightVictories.put(plane.getPilot().getSerialNumber(), plane.getPilot().getSquadronMemberVictories().getAirToAirVictories().size());
+            playerFlightVictories.put(plane.getCrewMember().getSerialNumber(), plane.getCrewMember().getCrewMemberVictories().getAirToAirVictories().size());
         }
 
 
@@ -227,8 +227,8 @@ public class VictoryEvaluationTest
 
         PlayerDeclarations playerDeclarations = new PlayerDeclarations();
 
-        SquadronMember player = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
-        Assertions.assertEquals(0, player.getSquadronMemberVictories().getAirToAirVictories().size());
+        CrewMember player = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
+        Assertions.assertEquals(0, player.getCrewMemberVictories().getAirToAirVictories().size());
 
         Map<Integer, PlayerDeclarations> playerDeclarationMap = new HashMap<>();
         playerDeclarationMap.put(player.getSerialNumber(), playerDeclarations);
@@ -236,20 +236,20 @@ public class VictoryEvaluationTest
         AARCoordinator.getInstance().aarPreliminary(campaign);
         AARCoordinator.getInstance().submitAAR(playerDeclarationMap);
     
-        SquadronMember playerAfter = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
-        Assertions.assertEquals(0, playerAfter.getSquadronMemberVictories().getAirToAirVictories().size());
+        CrewMember playerAfter = mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0);
+        Assertions.assertEquals(0, playerAfter.getCrewMemberVictories().getAirToAirVictories().size());
         
-        boolean wasAwardedToSquadronMember = false;
+        boolean wasAwardedToCrewMember = false;
         for (int serialNumber : playerFlightVictories.keySet())
         {
             int numVictoriesBefore = playerFlightVictories.get(serialNumber);
-            SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
-            if (numVictoriesBefore < pilot.getSquadronMemberVictories().getAirToAirVictories().size())
+            CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
+            if (numVictoriesBefore < crewMember.getCrewMemberVictories().getAirToAirVictories().size())
             {
-                wasAwardedToSquadronMember = true;
+                wasAwardedToCrewMember = true;
             }
         }
-        Assertions.assertTrue(wasAwardedToSquadronMember);
+        Assertions.assertTrue(wasAwardedToCrewMember);
     }
 
     private int buildMissionEntities(BufferedWriter writer, Mission mission) throws Exception
@@ -291,7 +291,7 @@ public class VictoryEvaluationTest
     {       
         Coordinate location = new Coordinate(500000, 0, 50000);
 
-        List<PlaneMcu> enemyPlanes = findEnemyPilots(mission);
+        List<PlaneMcu> enemyPlanes = findEnemyCrewMembers(mission);
         for (PlaneMcu enemyPlane : enemyPlanes)
         {
             int planeId =  ENEMY_START_PLANE_ID + enemyPlane.getNumberInFormation() - 1;
@@ -301,13 +301,13 @@ public class VictoryEvaluationTest
                     enemyPlane.getCountry(), "-1", location);
             aType12.write(writer);
 
-            AType12 aType1Bot = new AType12(Integer.valueOf(botId).toString(), "BotPilot_" + enemyPlane.getType(), "BotPilot_" + enemyPlane.getType(), 
+            AType12 aType1Bot = new AType12(Integer.valueOf(botId).toString(), "BotCrewMember_" + enemyPlane.getType(), "BotCrewMember_" + enemyPlane.getType(), 
                     enemyPlane.getCountry(), Integer.valueOf(planeId).toString(), location);
             aType1Bot.write(writer);
         }
     }
     
-    private List<PlaneMcu> findEnemyPilots(Mission mission) throws PWCGException
+    private List<PlaneMcu> findEnemyCrewMembers(Mission mission) throws PWCGException
     {
         for(IFlight flight : mission.getFlights().getAiFlightsForSide(Side.ALLIED))
         {
@@ -340,7 +340,7 @@ public class VictoryEvaluationTest
                     CountryFactory.makeCountryByCountry(Country.GERMANY), "-1", location);
             aType12.write(writer);
 
-            AType12 aType1Bot = new AType12(Integer.valueOf(botId).toString(), "BotPilot_" + friendlyPlane.getType(), "BotPilot_" + friendlyPlane.getType(), 
+            AType12 aType1Bot = new AType12(Integer.valueOf(botId).toString(), "BotCrewMember_" + friendlyPlane.getType(), "BotCrewMember_" + friendlyPlane.getType(), 
                     CountryFactory.makeCountryByCountry(Country.GERMANY), Integer.valueOf(planeId).toString(), location);
             aType1Bot.write(writer);
             

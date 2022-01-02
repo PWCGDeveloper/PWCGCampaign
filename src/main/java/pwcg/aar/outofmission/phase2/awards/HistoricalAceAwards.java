@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.medals.Medal;
-import pwcg.campaign.squadmember.Victory;
 
 public class HistoricalAceAwards
 {

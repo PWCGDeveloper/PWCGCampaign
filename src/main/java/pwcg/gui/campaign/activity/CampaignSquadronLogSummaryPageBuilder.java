@@ -30,7 +30,7 @@ public class CampaignSquadronLogSummaryPageBuilder
         summaryPageBuffer.append("Squadron Members Killed: " + squadronSummaryStatistics.getNumKilled() + "\n");
         summaryPageBuffer.append("Squadron Members Captured: " + squadronSummaryStatistics.getNumCaptured() + "\n");
         summaryPageBuffer.append("Squadron Members Lost To Wounds: " + squadronSummaryStatistics.getNumMaimed() + "\n");
-        summaryPageBuffer.append("Squadron Members Lost Total: " + squadronSummaryStatistics.getSquadronMembersLostTotal() + "\n");
+        summaryPageBuffer.append("Squadron Members Lost Total: " + squadronSummaryStatistics.getCrewMembersLostTotal() + "\n");
 
         summaryPageBuffer.append("Squadron Air To Air Victories: " + squadronSummaryStatistics.getNumAirToAirVictories() + "\n");
         summaryPageBuffer.append("Squadron Tank Kills: " + squadronSummaryStatistics.getNumTankKills() + "\n");

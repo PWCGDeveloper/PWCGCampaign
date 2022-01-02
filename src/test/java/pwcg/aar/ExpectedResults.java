@@ -6,13 +6,13 @@ import java.util.Map;
 
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 
 public class ExpectedResults
 {
     private Campaign campaign;
-    private int squadronMemberPilotSerialNumber;
-    private List<Integer> lostPilots = new ArrayList<>();
+    private int squadronMemberCrewMemberSerialNumber;
+    private List<Integer> lostCrewMembers = new ArrayList<>();
     private int playerAirVictories = 0;
     private int playerGroundVictories = 0;
     private int squadronMemberAirVictories = 0;
@@ -26,16 +26,16 @@ public class ExpectedResults
 
     public void buildExpectedResultsFromAARContext(AARContext aarContext)
     {
-        addLostPilots(aarContext.getPersonnelLosses().getPersonnelKilled());
-        addLostPilots(aarContext.getPersonnelLosses().getPersonnelCaptured());
-        addLostPilots(aarContext.getPersonnelLosses().getPersonnelMaimed());
+        addLostCrewMembers(aarContext.getPersonnelLosses().getPersonnelKilled());
+        addLostCrewMembers(aarContext.getPersonnelLosses().getPersonnelCaptured());
+        addLostCrewMembers(aarContext.getPersonnelLosses().getPersonnelMaimed());
     }
 
-    private void addLostPilots(Map<Integer, SquadronMember> killedPilots)
+    private void addLostCrewMembers(Map<Integer, CrewMember> killedCrewMembers)
     {
-        for(SquadronMember lostPilot : killedPilots.values())
+        for(CrewMember lostCrewMember : killedCrewMembers.values())
         {
-            lostPilots.add(lostPilot.getSerialNumber());
+            lostCrewMembers.add(lostCrewMember.getSerialNumber());
         }
     }
 
@@ -49,19 +49,19 @@ public class ExpectedResults
         this.campaign = campaign;
     }
 
-    public int getSquadronMemberPilotSerialNumber()
+    public int getCrewMemberCrewMemberSerialNumber()
     {
-        return squadronMemberPilotSerialNumber;
+        return squadronMemberCrewMemberSerialNumber;
     }
 
-    public void setSquadronMemberPilotSerialNumber(int squadronMemberPilotSerialNumber)
+    public void setCrewMemberCrewMemberSerialNumber(int squadronMemberCrewMemberSerialNumber)
     {
-        this.squadronMemberPilotSerialNumber = squadronMemberPilotSerialNumber;
+        this.squadronMemberCrewMemberSerialNumber = squadronMemberCrewMemberSerialNumber;
     }
 
-    public List<Integer> getLostPilots()
+    public List<Integer> getLostCrewMembers()
     {
-        return lostPilots;
+        return lostCrewMembers;
     }
 
     public int getPlayerAirVictories()
@@ -94,22 +94,22 @@ public class ExpectedResults
         ++playerGroundVictories;
     }
 
-    public int getSquadronMemberAirVictories()
+    public int getCrewMemberAirVictories()
     {
         return squadronMemberAirVictories;
     }
 
-    public void addSquadronMemberAirVictories()
+    public void addCrewMemberAirVictories()
     {
         ++squadronMemberAirVictories;
     }
 
-    public int getSquadronMemberGroundVictories()
+    public int getCrewMemberGroundVictories()
     {
         return squadronMemberGroundVictories;
     }
 
-    public void addSquadronMemberGroundVictories()
+    public void addCrewMemberGroundVictories()
     {
         ++squadronMemberGroundVictories;
     }

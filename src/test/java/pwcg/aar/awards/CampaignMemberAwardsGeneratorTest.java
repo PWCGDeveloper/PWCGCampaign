@@ -18,7 +18,7 @@ import pwcg.aar.outofmission.phase2.awards.CampaignMemberAwardsGenerator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
@@ -51,13 +51,13 @@ public class CampaignMemberAwardsGeneratorTest
     public void setupTest() throws PWCGException
     {        
         Mockito.when(aarContext.getPersonnelLosses()).thenReturn(personnelLosses);
-        Mockito.when(personnelLosses.pilotisWoundedToday(Mockito.any())).thenReturn(false);
+        Mockito.when(personnelLosses.crewMemberisWoundedToday(Mockito.any())).thenReturn(false);
     }
 
     @Test
     public void testMedalAwardedForVictories () throws PWCGException
     {             
-        SquadronMember aiSquadMember = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");
+        CrewMember aiSquadMember = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Corporal");
         CampaignPersonnelTestHelper.addVictories(aiSquadMember, campaign.getDate(), 20);
 
         CampaignMemberAwardsGenerator awardsGenerator = new CampaignMemberAwardsGenerator(campaign, aarContext);
@@ -70,9 +70,9 @@ public class CampaignMemberAwardsGeneratorTest
     @Test
     public void testInjuredMembersAwardedWoundBadge () throws PWCGException
     {            
-        SquadronMember aiSquadMember = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");
+        CrewMember aiSquadMember = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Corporal");
 
-        Mockito.when(personnelLosses.pilotisWoundedToday(Mockito.any())).thenReturn(true);
+        Mockito.when(personnelLosses.crewMemberisWoundedToday(Mockito.any())).thenReturn(true);
          
         CampaignMemberAwardsGenerator awardsGenerator = new CampaignMemberAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.generateAwards(aiSquadMember, 1);
@@ -84,9 +84,9 @@ public class CampaignMemberAwardsGeneratorTest
     @Test
     public void testPromotionAwardedForVictoriesAndMissionsFlown () throws PWCGException
     {     
-        SquadronMember aiSquadMember = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");
+        CrewMember aiSquadMember = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Corporal");
         CampaignPersonnelTestHelper.addVictories(aiSquadMember, campaign.getDate(), 20);
-        aiSquadMember.setMissionFlown(100);
+        aiSquadMember.setBattlesFought(100);
 
         CampaignMemberAwardsGenerator awardsGenerator = new CampaignMemberAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.generateAwards(aiSquadMember, 1);

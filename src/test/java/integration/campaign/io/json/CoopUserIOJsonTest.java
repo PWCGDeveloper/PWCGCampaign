@@ -34,17 +34,17 @@ public class CoopUserIOJsonTest
 
     private void readCoopUser() throws PWCGException
     {
-        boolean pilotFound = false;
+        boolean crewMemberFound = false;
         List<CoopUser> coopUsers = CoopUserIOJson.readCoopUsers();
         for (CoopUser coopUser: coopUsers)
         {
             if (coopUser.getUsername().equals("Test User"))
             {
-                pilotFound = true;
+                crewMemberFound = true;
             }
         }
         
-        assert(pilotFound);
+        assert(crewMemberFound);
     }
     
     private void deleteCoopUser()

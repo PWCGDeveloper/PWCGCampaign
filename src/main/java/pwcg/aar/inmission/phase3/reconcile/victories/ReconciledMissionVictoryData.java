@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.Victory;
 
 public class ReconciledMissionVictoryData
 {
-    private Map<Integer, List<Victory>> victoryAwardByPilot = new HashMap<>();
+    private Map<Integer, List<Victory>> victoryAwardByCrewMember = new HashMap<>();
     private List<ClaimDeniedEvent> playerClaimsDenied = new ArrayList<>();
     
     public void addVictoryAwards(Map<Integer, List<Victory>> victoryAwards)
     {
-        this.victoryAwardByPilot.putAll(victoryAwards);
+        this.victoryAwardByCrewMember.putAll(victoryAwards);
     }
 
     public void addClaimDenied(ClaimDeniedEvent deniedClaim)
@@ -23,9 +23,9 @@ public class ReconciledMissionVictoryData
         playerClaimsDenied.add(deniedClaim);
     }
 
-    public Map<Integer, List<Victory>> getVictoryAwardsByPilot()
+    public Map<Integer, List<Victory>> getVictoryAwardsByCrewMember()
     {
-        return victoryAwardByPilot;
+        return victoryAwardByCrewMember;
     }
 
     public List<ClaimDeniedEvent> getPlayerClaimsDenied()

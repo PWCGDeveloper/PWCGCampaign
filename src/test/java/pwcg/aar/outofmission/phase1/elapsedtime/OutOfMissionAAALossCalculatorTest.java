@@ -11,7 +11,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -22,7 +22,7 @@ import pwcg.product.bos.country.BoSServiceManager;
 public class OutOfMissionAAALossCalculatorTest
 {
     @Mock
-    private SquadronMember squadronMember;
+    private CrewMember crewMember;
 
     @Mock
     private Campaign campaign;
@@ -41,41 +41,41 @@ public class OutOfMissionAAALossCalculatorTest
     }
     
     @Test
-    public void testPilotLostToAAAOddsGroundAttackRussianNovice() throws PWCGException
+    public void testCrewMemberLostToAAAOddsGroundAttackRussianNovice() throws PWCGException
     {
-        Mockito.when(squadronMember.getSquadronId()).thenReturn(10121312);
-        Mockito.when(squadronMember.getAiSkillLevel()).thenReturn(AiSkillLevel.NOVICE);
-        Mockito.when(squadronMember.determineService(campaign.getDate())).thenReturn(service);
+        Mockito.when(crewMember.getCompanyId()).thenReturn(10121312);
+        Mockito.when(crewMember.getAiSkillLevel()).thenReturn(AiSkillLevel.NOVICE);
+        Mockito.when(crewMember.determineService(campaign.getDate())).thenReturn(service);
         Mockito.when(service.getServiceId()).thenReturn(BoSServiceManager.VVS);
         
         OutOfMissionAAAOddsCalculator aaaLossOddsCalculator = new OutOfMissionAAAOddsCalculator(campaign);
-        int odds = aaaLossOddsCalculator.oddsShotDownByAAA(squadronMember);
+        int odds = aaaLossOddsCalculator.oddsShotDownByAAA(crewMember);
         assert(odds == 52);
     }
     
     @Test
-    public void testPilotLostToAAAOddsGroundAttackGermanNovice() throws PWCGException
+    public void testCrewMemberLostToAAAOddsGroundAttackGermanNovice() throws PWCGException
     {
-        Mockito.when(squadronMember.getSquadronId()).thenReturn(10121312);
-        Mockito.when(squadronMember.getAiSkillLevel()).thenReturn(AiSkillLevel.NOVICE);
-        Mockito.when(squadronMember.determineService(campaign.getDate())).thenReturn(service);
+        Mockito.when(crewMember.getCompanyId()).thenReturn(10121312);
+        Mockito.when(crewMember.getAiSkillLevel()).thenReturn(AiSkillLevel.NOVICE);
+        Mockito.when(crewMember.determineService(campaign.getDate())).thenReturn(service);
         Mockito.when(service.getServiceId()).thenReturn(BoSServiceManager.LUFTWAFFE);
         
         OutOfMissionAAAOddsCalculator aaaLossOddsCalculator = new OutOfMissionAAAOddsCalculator(campaign);
-        int odds = aaaLossOddsCalculator.oddsShotDownByAAA(squadronMember);
+        int odds = aaaLossOddsCalculator.oddsShotDownByAAA(crewMember);
         assert(odds == 32);
     }
     
     @Test
-    public void testPilotLostToAAAOddsDiveBombGermanVeteran() throws PWCGException
+    public void testCrewMemberLostToAAAOddsDiveBombGermanVeteran() throws PWCGException
     {
-        Mockito.when(squadronMember.getSquadronId()).thenReturn(20121077);
-        Mockito.when(squadronMember.getAiSkillLevel()).thenReturn(AiSkillLevel.VETERAN);
-        Mockito.when(squadronMember.determineService(campaign.getDate())).thenReturn(service);
+        Mockito.when(crewMember.getCompanyId()).thenReturn(20121077);
+        Mockito.when(crewMember.getAiSkillLevel()).thenReturn(AiSkillLevel.VETERAN);
+        Mockito.when(crewMember.determineService(campaign.getDate())).thenReturn(service);
         Mockito.when(service.getServiceId()).thenReturn(BoSServiceManager.LUFTWAFFE);
         
         OutOfMissionAAAOddsCalculator aaaLossOddsCalculator = new OutOfMissionAAAOddsCalculator(campaign);
-        int odds = aaaLossOddsCalculator.oddsShotDownByAAA(squadronMember);
+        int odds = aaaLossOddsCalculator.oddsShotDownByAAA(crewMember);
         assert(odds == 8);
     }
 }

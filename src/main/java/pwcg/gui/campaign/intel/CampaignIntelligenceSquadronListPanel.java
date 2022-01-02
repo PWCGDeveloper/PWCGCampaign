@@ -13,7 +13,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
@@ -104,8 +104,8 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
         JLabel headerLabel = PWCGLabelFactory.makePaperLabelLarge(roleCategory.getRoleCategoryDescription() + " Squadrons \n");
         squadronRoleGrid.add(headerLabel);
 
-        List<Squadron> squadrons = getSquadronsForIntel(roleCategory);
-        for (Squadron squadron : squadrons)
+        List<Company> squadrons = getSquadronsForIntel(roleCategory);
+        for (Company squadron : squadrons)
         {
             if (SquadronViability.isSquadronViable(squadron, campaign))
             {
@@ -131,12 +131,12 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
         return squadronRolePanel;
     }
 
-    private List<Squadron> getSquadronsForIntel(PwcgRoleCategory roleCategory) throws PWCGException
+    private List<Company> getSquadronsForIntel(PwcgRoleCategory roleCategory) throws PWCGException
     {
-        List<Squadron> squadronsWithPrimaryRole = new ArrayList<>();
+        List<Company> squadronsWithPrimaryRole = new ArrayList<>();
 
-        List<Squadron> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(campaign.getDate());
-        for (Squadron squadron : squadronsForMap)
+        List<Company> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(campaign.getDate());
+        for (Company squadron : squadronsForMap)
         {
             if (includeSquadron(squadron, roleCategory))
             {
@@ -147,7 +147,7 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
         return squadronsWithPrimaryRole;
     }
     
-    private boolean includeSquadron(Squadron squadron, PwcgRoleCategory roleCategory) throws PWCGException
+    private boolean includeSquadron(Company squadron, PwcgRoleCategory roleCategory) throws PWCGException
     {
         if (squadron.determineSquadronPrimaryRoleCategory(campaign.getDate()) != roleCategory)
         {

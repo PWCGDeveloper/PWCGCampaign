@@ -18,7 +18,7 @@ import pwcg.aar.outofmission.phase4.ElapsedTIme.ElapsedTimeEventGenerator;
 import pwcg.aar.outofmission.phase4.ElapsedTIme.ElapsedTimeEvents;
 import pwcg.aar.outofmission.phase4.ElapsedTIme.OutOfMissionCommandChangeHandler;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -90,7 +90,7 @@ public class AARCoordinatorOutOfMission
 
     private void outOfMissionAwards() throws PWCGException 
     {
-        Map<Integer, SquadronMember> squadronMembersToEvaluate = campaign.getPersonnelManager().getActiveCampaignMembers();
+        Map<Integer, CrewMember> squadronMembersToEvaluate = campaign.getPersonnelManager().getActiveCampaignMembers();
         
         CampaignAwardsGenerator campaignMemberAwardsGenerator = new CampaignAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = campaignMemberAwardsGenerator.createCampaignMemberAwards(new ArrayList<>(squadronMembersToEvaluate.values()));

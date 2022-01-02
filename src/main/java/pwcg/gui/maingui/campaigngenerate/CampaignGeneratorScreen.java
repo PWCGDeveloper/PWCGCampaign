@@ -17,9 +17,9 @@ import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignInitialWriter;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
@@ -152,7 +152,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
             }
             else if (action.equalsIgnoreCase("Complete"))
             {
-                proceedToCampaignPilotInput();
+                proceedToCampaignCrewMemberInput();
             }
             else if (action.equalsIgnoreCase("Create Campaign"))
             {
@@ -167,7 +167,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         }
     }
 
-    private void proceedToCampaignPilotInput() throws PWCGException
+    private void proceedToCampaignCrewMemberInput() throws PWCGException
     {
         campaignGeneratorState.buildStateStack();
 
@@ -184,8 +184,8 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         campaign.open(campaignGeneratorDO.getCampaignName());                    
         PWCGContext.getInstance().setCampaign(campaign);
 
-        SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
-        for (SquadronMember player : players.getSquadronMemberList())
+        CrewMembers players = campaign.getPersonnelManager().getAllActivePlayers();
+        for (CrewMember player : players.getCrewMemberList())
         {
             campaignGeneratorDO.createCoopUserAndPersona(campaign, player);
         }
@@ -215,7 +215,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
     {        
         ArmedService service = campaignGeneratorDO.getService();
         String campaignName = campaignGeneratorDO.getCampaignName();
-        String playerName = campaignGeneratorDO.getPlayerPilotName();
+        String playerName = campaignGeneratorDO.getPlayerCrewMemberName();
         String region = campaignGeneratorDO.getRegion();
         String squadronName = campaignGeneratorDO.getSquadName();
         String rank = campaignGeneratorDO.getRank();

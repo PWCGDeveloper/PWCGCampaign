@@ -13,7 +13,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
@@ -21,7 +21,7 @@ public class EquipmentArchTypeChangeHandler
 {
     private Campaign campaign;
     private Date newDate;
-    private Set<Squadron> squadronsToEquip = new HashSet<>();
+    private Set<Company> squadronsToEquip = new HashSet<>();
 	
 	public EquipmentArchTypeChangeHandler(Campaign campaign, Date newDate)
 	{
@@ -38,7 +38,7 @@ public class EquipmentArchTypeChangeHandler
     private void removeOutdatedArchTypes() throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        for (Squadron squadron : squadronManager.getActiveSquadrons(campaign.getDate()))
+        for (Company squadron : squadronManager.getActiveSquadrons(campaign.getDate()))
         {
             Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());
             if (squadronEquipment != null)
@@ -64,10 +64,10 @@ public class EquipmentArchTypeChangeHandler
 
     private void addNewArchTypes() throws PWCGException
     {
-        for (Squadron squadron : squadronsToEquip)
+        for (Company squadron : squadronsToEquip)
         {
             Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());
-            int numPlanesNeeded = Squadron.SQUADRON_EQUIPMENT_SIZE - squadronEquipment.getActiveEquippedPlanes().size();
+            int numPlanesNeeded = Company.SQUADRON_EQUIPMENT_SIZE - squadronEquipment.getActiveEquippedPlanes().size();
 
             PlaneType bestPlaneType = getBestPlaneTypeForSquadron(squadron);
             for (int i = 0; i < numPlanesNeeded; ++i)
@@ -78,7 +78,7 @@ public class EquipmentArchTypeChangeHandler
         }
     }
     
-    private PlaneType getBestPlaneTypeForSquadron(Squadron squadron) throws PWCGException
+    private PlaneType getBestPlaneTypeForSquadron(Company squadron) throws PWCGException
     {
         List<PlaneType> planeTypesForSquadron = new ArrayList<>();
         for (PlaneArchType archType : squadron.determineCurrentAircraftArchTypes(newDate))

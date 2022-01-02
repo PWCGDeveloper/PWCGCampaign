@@ -2,7 +2,7 @@ package pwcg.gui.rofmap.brief.builder;
 
 import java.util.Map;
 
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.BriefingMissionFlightSetBuilder;
 import pwcg.gui.rofmap.brief.model.BriefingData;
@@ -46,7 +46,7 @@ public class BriefingDataBuilder
 
     private int getInitialSelectedSquadron() throws PWCGException
     {
-        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
-        return referencePlayer.getSquadronId();
+        CrewMember referencePlayer = mission.getCampaign().findReferencePlayer();
+        return referencePlayer.getCompanyId();
     }
 }

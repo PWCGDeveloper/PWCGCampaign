@@ -3,16 +3,16 @@ package pwcg.campaign.resupply.equipment;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.resupply.ISquadronNeed;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class SquadronEquipmentNeed implements ISquadronNeed
 {
     private Campaign campaign;
-    private Squadron squadron;
+    private Company squadron;
     private int planesNeeded = 0;
 
-    public SquadronEquipmentNeed(Campaign campaign, Squadron squadron)
+    public SquadronEquipmentNeed(Campaign campaign, Company squadron)
     {
         this.campaign = campaign;
         this.squadron = squadron;
@@ -25,7 +25,7 @@ public class SquadronEquipmentNeed implements ISquadronNeed
         int activeSquadronSize = equipment.getActiveEquippedPlanes().size();
         int recentlyInactive = equipment.getRecentlyInactiveEquippedPlanes(campaign.getDate()).size();
       
-        planesNeeded = Squadron.SQUADRON_EQUIPMENT_SIZE - activeSquadronSize - recentlyInactive;
+        planesNeeded = Company.SQUADRON_EQUIPMENT_SIZE - activeSquadronSize - recentlyInactive;
 
     }
 

@@ -12,12 +12,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.data.AARPersonnelLosses;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogCrewMember;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
@@ -28,7 +28,7 @@ import pwcg.testutils.SquadronTestProfile;
 public class PersonnelSquadronLossHandlerTest
 {
     private Campaign campaign;
-    private List<LogPilot> pilotStatusList;
+    private List<LogCrewMember> crewMemberStatusList;
 
     @BeforeAll
     public void setupSuite() throws PWCGException
@@ -40,36 +40,36 @@ public class PersonnelSquadronLossHandlerTest
     @BeforeEach
     public void setupTest() throws PWCGException
     {
-        pilotStatusList = new ArrayList<>();
+        crewMemberStatusList = new ArrayList<>();
     }
 
-    private void addPilot(Integer serialNumber, int status)
+    private void addCrewMember(Integer serialNumber, int status)
     {
-        LogPilot squadronCrewMember = new LogPilot();
+        LogCrewMember squadronCrewMember = new LogCrewMember();
         squadronCrewMember.setSerialNumber(serialNumber);
         squadronCrewMember.setStatus(status);
-        pilotStatusList.add(squadronCrewMember);
+        crewMemberStatusList.add(squadronCrewMember);
     }
 
     @Test
     public void testEverybodyKilled() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.findReferencePlayer();
-        addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_KIA);
+        CrewMember playerInFlight = campaign.findReferencePlayer();
+        addCrewMember(playerInFlight.getSerialNumber(), CrewMemberStatus.STATUS_KIA);
 
-        SquadronMember SergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
-        addPilot(SergentInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_KIA);
+        CrewMember SergentInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Sergent");
+        addCrewMember(SergentInFlight.getSerialNumber(), CrewMemberStatus.STATUS_KIA);
 
-        SquadronMember corporalInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");
-        addPilot(corporalInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_KIA);
+        CrewMember corporalInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Corporal");
+        addCrewMember(corporalInFlight.getSerialNumber(), CrewMemberStatus.STATUS_KIA);
 
-        SquadronMember sltInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sous Lieutenant");
-        addPilot(sltInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_KIA);
+        CrewMember sltInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Sous Lieutenant");
+        addCrewMember(sltInFlight.getSerialNumber(), CrewMemberStatus.STATUS_KIA);
 
-        addPilot(101064, SquadronMemberStatus.STATUS_KIA);
+        addCrewMember(101064, CrewMemberStatus.STATUS_KIA);
 
-        PersonnelLossHandler pilotLossInMissionHandler = new PersonnelLossHandler(campaign);
-        AARPersonnelLosses personnelLosses = pilotLossInMissionHandler.pilotsShotDown(pilotStatusList);
+        PersonnelLossHandler crewMemberLossInMissionHandler = new PersonnelLossHandler(campaign);
+        AARPersonnelLosses personnelLosses = crewMemberLossInMissionHandler.crewMembersShotDown(crewMemberStatusList);
 
         Assertions.assertTrue (personnelLosses.getPersonnelKilled().size() == 5);
         Assertions.assertTrue (personnelLosses.getPersonnelCaptured().size() == 0);
@@ -79,22 +79,22 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testMixedStatusWithMaimed() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.findReferencePlayer();
-        addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
+        CrewMember playerInFlight = campaign.findReferencePlayer();
+        addCrewMember(playerInFlight.getSerialNumber(), CrewMemberStatus.STATUS_WOUNDED);
 
-        SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
-        addPilot(sergentInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
+        CrewMember sergentInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Sergent");
+        addCrewMember(sergentInFlight.getSerialNumber(), CrewMemberStatus.STATUS_WOUNDED);
 
-        SquadronMember corporalInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");
-        addPilot(corporalInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+        CrewMember corporalInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Corporal");
+        addCrewMember(corporalInFlight.getSerialNumber(), CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED);
 
-        SquadronMember sltInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sous Lieutenant");
-        addPilot(sltInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_KIA);
+        CrewMember sltInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Sous Lieutenant");
+        addCrewMember(sltInFlight.getSerialNumber(), CrewMemberStatus.STATUS_KIA);
 
-        addPilot(101064, SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+        addCrewMember(101064, CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED);
 
-        PersonnelLossHandler pilotLossInMissionHandler = new PersonnelLossHandler(campaign);
-        AARPersonnelLosses personnelLosses = pilotLossInMissionHandler.pilotsShotDown(pilotStatusList);
+        PersonnelLossHandler crewMemberLossInMissionHandler = new PersonnelLossHandler(campaign);
+        AARPersonnelLosses personnelLosses = crewMemberLossInMissionHandler.crewMembersShotDown(crewMemberStatusList);
 
         Assertions.assertTrue (personnelLosses.getPersonnelKilled().size() == 1);
         Assertions.assertTrue (personnelLosses.getPersonnelCaptured().size() == 0);
@@ -105,22 +105,22 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testMixedStatusWithCaptured() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.findReferencePlayer();
-        addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_CAPTURED);
+        CrewMember playerInFlight = campaign.findReferencePlayer();
+        addCrewMember(playerInFlight.getSerialNumber(), CrewMemberStatus.STATUS_CAPTURED);
 
-        SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
-        addPilot(sergentInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_ACTIVE);
+        CrewMember sergentInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Sergent");
+        addCrewMember(sergentInFlight.getSerialNumber(), CrewMemberStatus.STATUS_ACTIVE);
 
-        SquadronMember corporalInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");
-        addPilot(corporalInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+        CrewMember corporalInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Corporal");
+        addCrewMember(corporalInFlight.getSerialNumber(), CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED);
 
-        SquadronMember sltInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sous Lieutenant");
-        addPilot(sltInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_CAPTURED);
+        CrewMember sltInFlight = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Sous Lieutenant");
+        addCrewMember(sltInFlight.getSerialNumber(), CrewMemberStatus.STATUS_CAPTURED);
 
-        addPilot(101064, SquadronMemberStatus.STATUS_CAPTURED);
+        addCrewMember(101064, CrewMemberStatus.STATUS_CAPTURED);
 
-        PersonnelLossHandler pilotLossInMissionHandler = new PersonnelLossHandler(campaign);
-        AARPersonnelLosses personnelLosses = pilotLossInMissionHandler.pilotsShotDown(pilotStatusList);
+        PersonnelLossHandler crewMemberLossInMissionHandler = new PersonnelLossHandler(campaign);
+        AARPersonnelLosses personnelLosses = crewMemberLossInMissionHandler.crewMembersShotDown(crewMemberStatusList);
 
         Assertions.assertTrue (personnelLosses.getPersonnelKilled().size() == 0);
         Assertions.assertTrue (personnelLosses.getPersonnelCaptured().size() == 3);

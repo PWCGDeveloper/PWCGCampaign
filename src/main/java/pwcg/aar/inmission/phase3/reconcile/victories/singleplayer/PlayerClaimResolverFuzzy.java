@@ -2,9 +2,9 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class PlayerClaimResolverFuzzy
@@ -32,7 +32,7 @@ public class PlayerClaimResolverFuzzy
         return shotDownPlaneDisplayName;
     }
 
-    public String getShotDownPlaneDisplayNameAsFuzzyNotExact(SquadronMember player, PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
+    public String getShotDownPlaneDisplayNameAsFuzzyNotExact(CrewMember player, PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
     {
         String shotDownPlaneDisplayName = "";
         if (!resultVictory.isConfirmed())

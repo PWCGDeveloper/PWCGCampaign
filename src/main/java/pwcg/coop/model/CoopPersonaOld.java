@@ -4,8 +4,8 @@ public class CoopPersonaOld
 {
     private String username;
     private String campaignName;
-    private String pilotName;
-    private String pilotRank;
+    private String crewMemberName;
+    private String crewMemberRank;
     private int serialNumber;
     private int squadronId;
     private boolean approved;
@@ -31,24 +31,24 @@ public class CoopPersonaOld
         this.campaignName = campaignName;
     }
 
-    public String getPilotName()
+    public String getCrewMemberName()
     {
-        return pilotName;
+        return crewMemberName;
     }
 
-    public void setPilotName(String pilotName)
+    public void setCrewMemberName(String crewMemberName)
     {
-        this.pilotName = pilotName;
+        this.crewMemberName = crewMemberName;
     }
     
-    public String getPilotRank()
+    public String getCrewMemberRank()
     {
-        return pilotRank;
+        return crewMemberRank;
     }
 
-    public void setPilotRank(String pilotRank)
+    public void setCrewMemberRank(String crewMemberRank)
     {
-        this.pilotRank = pilotRank;
+        this.crewMemberRank = crewMemberRank;
     }
 
     public int getSerialNumber()

@@ -25,20 +25,20 @@ import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class AiDeclarationResolutionFirmTest
 {
-    private static final String PLAYER_NAME = "Pilot Player";
+    private static final String PLAYER_NAME = "CrewMember Player";
 
     @Mock private Campaign campaign;
     @Mock private CampaignPersonnelManager personnelManager;
-    @Mock private SquadronMembers playerMembers;
+    @Mock private CrewMembers playerMembers;
 
     @Mock private List<LogVictory> confirmedAiVictories = new ArrayList<LogVictory>();
     @Mock private AARMissionEvaluationData evaluationData;
@@ -46,12 +46,12 @@ public class AiDeclarationResolutionFirmTest
     @Mock private AARContext aarContext;
     @Mock private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
     @Mock private VictorySorter victorySorter;
-    @Mock private SquadronMember player;
-    @Mock private SquadronMember ai;
+    @Mock private CrewMember player;
+    @Mock private CrewMember ai;
         
     private List<LogVictory> firmVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
-    private List<SquadronMember> players = new ArrayList<>();
+    private List<CrewMember> players = new ArrayList<>();
 
     private LogPlane playerVictor = new LogPlane(1);
     private LogPlane aiVictor = new LogPlane(2);
@@ -66,9 +66,9 @@ public class AiDeclarationResolutionFirmTest
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);   
 
-        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        playerVictor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         playerVictor.setPlaneSerialNumber(SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 1);
-        aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        aiVictor.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
         aiVictor.setPlaneSerialNumber(SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 2);
 
         createVictory(playerVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1000);
@@ -79,7 +79,7 @@ public class AiDeclarationResolutionFirmTest
     private void createVictory(LogPlane victor, Integer victimSerialNumber) throws PWCGException
     {        
         LogPlane victim = new LogPlane(3);
-        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setCrewMemberSerialNumber(victimSerialNumber);
         victim.setPlaneSerialNumber(SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
         
         LogVictory resultVictory = new LogVictory(10);

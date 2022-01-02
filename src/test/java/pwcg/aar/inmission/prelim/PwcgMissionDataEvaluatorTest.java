@@ -10,7 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,7 +26,7 @@ public class PwcgMissionDataEvaluatorTest
     CampaignPersonnelManager personnelManager;
 
     @Mock
-    Squadron squadron;
+    Company squadron;
     
     static int thisSquadronId = 20111052; // JG52
 
@@ -36,13 +36,13 @@ public class PwcgMissionDataEvaluatorTest
     }
 
     @Test
-    public void determineSquadronMembersInMissionTest () throws PWCGException
+    public void determineCrewMembersInMissionTest () throws PWCGException
     {             
         
     }
     
     @Test
-    public void determineSquadronMembersNotInMissionTest () throws PWCGException
+    public void determineCrewMembersNotInMissionTest () throws PWCGException
     {             
     }
     

@@ -7,9 +7,10 @@
   "countries": [
     "RUSSIA"
   ],
-  "startDate": "19430101",
+  "startDate": "19430701",
   "endDate": "19460724",
   "rarityWeight": 40,
   "vehicleClass": "Tank",
-  "playerDrivable": true
+  "playerDrivable": true,
+  "archType": "su152"
 }

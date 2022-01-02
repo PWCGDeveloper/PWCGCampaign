@@ -2,8 +2,8 @@ package pwcg.campaign.personnel;
 
 import java.util.Date;
 
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.core.exception.PWCGException;
 
 public class PersonnelReplacementsService
@@ -11,8 +11,8 @@ public class PersonnelReplacementsService
     public static final int NUM_POINTS_FOR_ONE_PILOT = 10;
 
     private Integer serviceId;
-    private SquadronMembers replacements = new SquadronMembers();
-    private SquadronMembers replacementsDesignatedForAssignment = new SquadronMembers();
+    private CrewMembers replacements = new CrewMembers();
+    private CrewMembers replacementsDesignatedForAssignment = new CrewMembers();
     private Date lastReplacementDate;
     private int dailyReplacementRate = NUM_POINTS_FOR_ONE_PILOT;
     private int replacementPoints = 0;
@@ -31,19 +31,19 @@ public class PersonnelReplacementsService
         this.serviceId = serviceId;
     }
 
-    public SquadronMembers getReplacements()
+    public CrewMembers getReplacements()
     {
         return replacements;
     }
 
-    public void setReplacements(SquadronMembers replacements)
+    public void setReplacements(CrewMembers replacements)
     {
         this.replacements = replacements;
     }
 
     public boolean hasReplacements() throws PWCGException
     {
-        if (replacements.getSquadronMemberCollection().isEmpty())
+        if (replacements.getCrewMemberCollection().isEmpty())
         {
             return false;
         }
@@ -53,34 +53,34 @@ public class PersonnelReplacementsService
         }
     }
 
-    public void addReplacement(SquadronMember replacement) throws PWCGException
+    public void addReplacement(CrewMember replacement) throws PWCGException
     {
-        replacements.addToSquadronMemberCollection(replacement);
+        replacements.addToCrewMemberCollection(replacement);
     }
 
-    public SquadronMember findReplacement() throws PWCGException
+    public CrewMember findReplacement() throws PWCGException
     {
-        SquadronMember replacement = replacements.findSquadronMember();
+        CrewMember replacement = replacements.findCrewMember();
         if (replacement != null)
         {
-            replacements.removeSquadronMember(replacement.getSerialNumber());
-            replacementsDesignatedForAssignment.addToSquadronMemberCollection(replacement);
+            replacements.removeCrewMember(replacement.getSerialNumber());
+            replacementsDesignatedForAssignment.addToCrewMemberCollection(replacement);
         }
         return replacement;
     }
 
-    public SquadronMember transferFromReservesToActive(int serialNumber) throws PWCGException
+    public CrewMember transferFromReservesToActive(int serialNumber) throws PWCGException
     {
-        SquadronMember replacement = replacementsDesignatedForAssignment.removeSquadronMember(serialNumber);
+        CrewMember replacement = replacementsDesignatedForAssignment.removeCrewMember(serialNumber);
         return replacement;
     }
 
-    public SquadronMember getReplacement(int serialNumber) throws PWCGException
+    public CrewMember getReplacement(int serialNumber) throws PWCGException
     {
-        SquadronMember replacement = replacements.getSquadronMember(serialNumber);
+        CrewMember replacement = replacements.getCrewMember(serialNumber);
         if (replacement == null)
         {
-            replacement = replacementsDesignatedForAssignment.getSquadronMember(serialNumber);
+            replacement = replacementsDesignatedForAssignment.getCrewMember(serialNumber);
         }
         return replacement;
     }
@@ -117,8 +117,8 @@ public class PersonnelReplacementsService
 
     public void removeReplacementPoints()
     {
-        int numPilotsAdded = getNumReplacements();
-        replacementPoints -= (NUM_POINTS_FOR_ONE_PILOT * numPilotsAdded);
+        int numCrewMembersAdded = getNumReplacements();
+        replacementPoints -= (NUM_POINTS_FOR_ONE_PILOT * numCrewMembersAdded);
     }
 
     public int getReplacementPoints()

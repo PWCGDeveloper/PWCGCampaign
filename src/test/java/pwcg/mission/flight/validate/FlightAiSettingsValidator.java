@@ -7,7 +7,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -116,14 +116,14 @@ public class FlightAiSettingsValidator
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {
-                SquadronMember squadronMember = mission.getCampaign().getPersonnelManager().getAnyCampaignMember(plane.getPilot().getSerialNumber());
-                if (plane.getPilot().isPlayer())
+                CrewMember crewMember = mission.getCampaign().getPersonnelManager().getAnyCampaignMember(plane.getCrewMember().getSerialNumber());
+                if (plane.getCrewMember().isPlayer())
                 {
                     assert(plane.getAiLevel() == AiSkillLevel.PLAYER);
                 }
                 else if (!plane.isNovice())
                 {
-                    assert(plane.getAiLevel() == squadronMember.getAiSkillLevel());
+                    assert(plane.getAiLevel() == crewMember.getAiSkillLevel());
                 }
                 else
                 {

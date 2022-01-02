@@ -16,7 +16,7 @@ import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
+import pwcg.gui.maingui.campaigngenerate.CampaignNewCrewMemberScreen;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -65,11 +65,11 @@ public class CampaignPersonnelScreen extends ImageResizingPanel implements Actio
 
         buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
-        JButton coopAdminButton = PWCGButtonFactory.makeTranslucentMenuButton("Administer Pilots", "AdminCoopPilots", "Administer pilots for this campaign", this);
+        JButton coopAdminButton = PWCGButtonFactory.makeTranslucentMenuButton("Administer CrewMembers", "AdminCoopCrewMembers", "Administer crewMembers for this campaign", this);
         buttonPanel.add(coopAdminButton);
 
-        JButton referencePilotButton = PWCGButtonFactory.makeTranslucentMenuButton("Reference Pilot", "CampChangeReferencePilot", "Change the reference pilot for the UI", this);
-        buttonPanel.add(referencePilotButton);
+        JButton referenceCrewMemberButton = PWCGButtonFactory.makeTranslucentMenuButton("Reference CrewMember", "CampChangeReferenceCrewMember", "Change the reference crewMember for the UI", this);
+        buttonPanel.add(referenceCrewMemberButton);
 
         if (campaign.isCampaignActive())
         {
@@ -87,17 +87,17 @@ public class CampaignPersonnelScreen extends ImageResizingPanel implements Actio
 		try
 		{
             String action = ae.getActionCommand();
-            if (action.equalsIgnoreCase("CampChangeReferencePilot"))
+            if (action.equalsIgnoreCase("CampChangeReferenceCrewMember"))
             {
-                showChangeReferencePilot();
+                showChangeReferenceCrewMember();
             }
-            else if (action.equalsIgnoreCase("AddHumanPilot"))
+            else if (action.equalsIgnoreCase("AddHumanCrewMember"))
             {
-                showAddHumanPilot();
+                showAddHumanCrewMember();
             }
-            else if (action.equalsIgnoreCase("AdminCoopPilots"))
+            else if (action.equalsIgnoreCase("AdminCoopCrewMembers"))
             {
-                showAdminPilots();
+                showAdminCrewMembers();
             }
             else if (action.equalsIgnoreCase("CampSkinManager"))
             {
@@ -115,29 +115,29 @@ public class CampaignPersonnelScreen extends ImageResizingPanel implements Actio
 		}
 	}
 	
-    private void showAddHumanPilot() throws PWCGException
+    private void showAddHumanCrewMember() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, campaignHome);
-        addPilotDisplay.makePanels();        
-        CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
+        CampaignNewCrewMemberScreen addCrewMemberDisplay = new CampaignNewCrewMemberScreen(campaign, campaignHome);
+        addCrewMemberDisplay.makePanels();        
+        CampaignGuiContextManager.getInstance().pushToContextStack(addCrewMemberDisplay);
     }
 
-    private void showChangeReferencePilot() throws PWCGException
+    private void showChangeReferenceCrewMember() throws PWCGException
     {
-        CampaignReferencePilotSelectorScreen referencePilotSelector = new CampaignReferencePilotSelectorScreen(campaign, campaignHome);
-        referencePilotSelector.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(referencePilotSelector);
+        CampaignReferenceCrewMemberSelectorScreen referenceCrewMemberSelector = new CampaignReferenceCrewMemberSelectorScreen(campaign, campaignHome);
+        referenceCrewMemberSelector.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(referenceCrewMemberSelector);
     }
 
-    private void showAdminPilots() throws PWCGException 
+    private void showAdminCrewMembers() throws PWCGException 
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignPlayerAdminScreen adminCoopPilotDisplay = new CampaignPlayerAdminScreen(campaign);
-        adminCoopPilotDisplay.makePanels();
+        CampaignPlayerAdminScreen adminCoopCrewMemberDisplay = new CampaignPlayerAdminScreen(campaign);
+        adminCoopCrewMemberDisplay.makePanels();
 
-        CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopPilotDisplay);
+        CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopCrewMemberDisplay);
     }
 
     private void showSkinManager() throws PWCGException 

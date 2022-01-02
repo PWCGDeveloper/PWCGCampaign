@@ -10,10 +10,10 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -32,12 +32,12 @@ public class InitialReplacementStafferTest
         for (ArmedService service : armedServices)
         {
             InitialReplacementStaffer initialReplacementStaffer = new InitialReplacementStaffer(campaign, service);
-            SquadronMembers squadronMembers = initialReplacementStaffer.staffReplacementsForService();
+            CrewMembers squadronMembers = initialReplacementStaffer.staffReplacementsForService();
             
-            assert(squadronMembers.getSquadronMemberCollection().size() == InitialReplacementStaffer.NUM_INITIAL_REPLACEMENTS);
-            for (SquadronMember replacement : squadronMembers.getSquadronMemberCollection().values())
+            assert(squadronMembers.getCrewMemberCollection().size() == InitialReplacementStaffer.NUM_INITIAL_REPLACEMENTS);
+            for (CrewMember replacement : squadronMembers.getCrewMemberCollection().values())
             {
-                assert(replacement.getSquadronId() == Squadron.REPLACEMENT);
+                assert(replacement.getCompanyId() == Company.REPLACEMENT);
             }
         }
     }

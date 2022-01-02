@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogCrewMember;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.crewmember.SerialNumber.SerialNumberClassification;
 import pwcg.core.exception.PWCGException;
 
 public class AARCrewBuilder
@@ -20,30 +20,30 @@ public class AARCrewBuilder
         this.planeAiEntities = planeAiEntities;
     }
     
-    public List<LogPilot> buildPilotsFromLogPlanes() throws PWCGException
+    public List<LogCrewMember> buildCrewMembersFromLogPlanes() throws PWCGException
     {
-        List<LogPilot> pilotsInMission = new ArrayList<LogPilot>();
+        List<LogCrewMember> crewMembersInMission = new ArrayList<LogCrewMember>();
         for (LogPlane logPlane : planeAiEntities.values())
         {
-            pilotsInMission.add(logPlane.getLogPilot());
+            crewMembersInMission.add(logPlane.getLogCrewMember());
         }
         
-        if (pilotsInMission.isEmpty())
+        if (crewMembersInMission.isEmpty())
         {
             throw new PWCGException("No squadron members found for mission");
         }
         
-        return pilotsInMission;
+        return crewMembersInMission;
      }
 
-    public List<LogPilot> buildAcesFromLogPlanes()
+    public List<LogCrewMember> buildAcesFromLogPlanes()
     {
-        List<LogPilot> aceCrewsInMission = new ArrayList<LogPilot>();
+        List<LogCrewMember> aceCrewsInMission = new ArrayList<LogCrewMember>();
         for (LogPlane logPlane : planeAiEntities.values())
         {
-            if (SerialNumber.getSerialNumberClassification(logPlane.getPilotSerialNumber()) == SerialNumberClassification.ACE)
+            if (SerialNumber.getSerialNumberClassification(logPlane.getCrewMemberSerialNumber()) == SerialNumberClassification.ACE)
             {
-                aceCrewsInMission.add(logPlane.getLogPilot());
+                aceCrewsInMission.add(logPlane.getLogCrewMember());
             }
         }
         

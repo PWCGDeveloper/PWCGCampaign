@@ -15,11 +15,11 @@ import edu.cmu.relativelayout.RelativeConstraints;
 import edu.cmu.relativelayout.RelativeLayout;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.TankAce;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
@@ -40,7 +40,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
     
     private SkinSessionManager skinSessionManager = new SkinSessionManager();
     private Campaign campaign;
-    private CampaignSkinConfigurationPilotPanel skinControlPanel;
+    private CampaignSkinConfigurationCrewMemberPanel skinControlPanel;
     private CampaignSkinConfigurationSelectionPanel skinSelectionPanel;
 
     public CampaignSkinConfigurationScreen(Campaign campaign) 
@@ -57,17 +57,17 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSkinConfigurationScreen);
         this.setImageFromName(imagePath);
 
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        skinSessionManager.setPilot(referencePlayer);
+        CrewMember referencePlayer = campaign.findReferencePlayer();
+        skinSessionManager.setCrewMember(referencePlayer);
 
-        makeMainPanelForPilot(referencePlayer);
+        makeMainPanelForCrewMember(referencePlayer);
     }
 
-    private void makeMainPanelForPilot(SquadronMember pilot) throws PWCGException
+    private void makeMainPanelForCrewMember(CrewMember crewMember) throws PWCGException
     {        
         JPanel navPanel  = makeLeftPanel();
         createSkinSelectionPanel();
-        createSkinControlPanel(pilot);
+        createSkinControlPanel(crewMember);
 
         Binding navPanelBinding = BindingFactory.getBindingFactory().directLeftEdge();
         RelativeConstraints navPanelConstraints = new RelativeConstraints();
@@ -96,15 +96,15 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         makePlainButtons(buttonPanel);
         campaignButtonPanel.add (buttonPanel, BorderLayout.NORTH);
 
-        JPanel pilotSelectionPanel  = createPilotSelectionPanel();
-        campaignButtonPanel.add (pilotSelectionPanel, BorderLayout.CENTER);
+        JPanel crewMemberSelectionPanel  = createCrewMemberSelectionPanel();
+        campaignButtonPanel.add (crewMemberSelectionPanel, BorderLayout.CENTER);
 
         return campaignButtonPanel;
     }
 
-    private void createSkinControlPanel(SquadronMember pilot) throws PWCGException
+    private void createSkinControlPanel(CrewMember crewMember) throws PWCGException
     {
-        skinControlPanel = new CampaignSkinConfigurationPilotPanel(campaign, this);
+        skinControlPanel = new CampaignSkinConfigurationCrewMemberPanel(campaign, this);
         skinControlPanel.makePanels();
                         
         ImageToDisplaySizer.setDocumentSize(skinControlPanel);
@@ -118,20 +118,20 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         ImageToDisplaySizer.setDocumentSize(skinSelectionPanel);
     }
 
-    private JPanel createPilotSelectionPanel() throws PWCGException, PWCGException
+    private JPanel createCrewMemberSelectionPanel() throws PWCGException, PWCGException
     {
-        List<SquadronMember> pilotsNoAces = makePilotList();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomePilotsRightPanel(this, pilotsNoAces);
+        List<CrewMember> crewMembersNoAces = makeCrewMemberList();
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeCrewMembersRightPanel(this, crewMembersNoAces);
 
         return squadronPanel;
     }
 
-    private List<SquadronMember> makePilotList() throws PWCGException 
+    private List<CrewMember> makeCrewMemberList() throws PWCGException 
     {
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayer(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        return squadronMembers.sortPilots(campaign.getDate());
+        CrewMember referencePlayer = campaign.findReferencePlayer();
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(referencePlayer.getCompanyId());
+        CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayer(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        return squadronMembers.sortCrewMembers(campaign.getDate());
     }
 
     private void makePlainButtons(JPanel buttonPanel) throws PWCGException
@@ -145,21 +145,21 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         buttonPanel.add(cancelButton);
      }
 
-    private void showSkinsForPilot(String action) throws PWCGException 
+    private void showSkinsForCrewMember(String action) throws PWCGException 
     {
-        SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
-        if (pilot != null)
+        CrewMember crewMember = UIUtils.getCrewMemberFromAction(campaign, action);
+        if (crewMember != null)
         {
-            if (pilot instanceof Ace)
+            if (crewMember instanceof TankAce)
             {
                 return;
             }
 
             this.removeAll();
 
-            skinSessionManager.setPilot(pilot);
+            skinSessionManager.setCrewMember(crewMember);
             skinSessionManager.clearSkinCategorySelectedFlags();
-            makeMainPanelForPilot(pilot);
+            makeMainPanelForCrewMember(crewMember);
             this.revalidate();
             this.repaint();
         }
@@ -171,9 +171,9 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         {
             String action = ae.getActionCommand();
             
-            if (action.startsWith("CampFlowPilot"))
+            if (action.startsWith("CampFlowCrewMember"))
             {
-                showSkinsForPilot(action);
+                showSkinsForCrewMember(action);
             }
             else if (action.equalsIgnoreCase("AcceptSkins"))
             {
@@ -204,7 +204,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         return skinSessionManager;
     }
 
-    public CampaignSkinConfigurationPilotPanel getSkinControlPanel()
+    public CampaignSkinConfigurationCrewMemberPanel getSkinControlPanel()
     {
         return skinControlPanel;
     }

@@ -3,8 +3,8 @@ package pwcg.gui.campaign.mission;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.GuiMissionInitiator;
@@ -42,8 +42,8 @@ public class MissionGeneratorHelper
     static MissionHumanParticipants buildParticipatingPlayersSinglePlayer(Campaign campaign) throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(referencePlayer);
+        CrewMember referencePlayer = campaign.findReferencePlayer();
+        participatingPlayers.addCrewMember(referencePlayer);
         return participatingPlayers;
     }
 }

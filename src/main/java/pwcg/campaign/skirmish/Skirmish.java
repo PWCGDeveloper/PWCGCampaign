@@ -7,7 +7,7 @@ import java.util.List;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -130,7 +130,7 @@ public class Skirmish
         return false;
     }
 
-    public boolean hasFlighTypeForRole(Squadron squadron, PwcgRole role) throws PWCGException
+    public boolean hasFlighTypeForRole(Company squadron, PwcgRole role) throws PWCGException
     {
         List<SkirmishProfileElement> skirmishElementsForSide = getSkirmishProfileElementForSide(squadron);
         for (SkirmishProfileElement skirmishProfileElement : skirmishElementsForSide)
@@ -144,7 +144,7 @@ public class Skirmish
         return false;
     }
 
-    public FlightTypes getFlighTypeForRole(Squadron squadron, PwcgRole role) throws PWCGException
+    public FlightTypes getFlighTypeForRole(Company squadron, PwcgRole role) throws PWCGException
     {
         List<SkirmishProfileElement> skirmishElementsForSide = getSkirmishProfileElementForSide(squadron);
         for (SkirmishProfileElement skirmishProfileElement : skirmishElementsForSide)
@@ -188,7 +188,7 @@ public class Skirmish
         return role;
     }
 
-    private List<SkirmishProfileElement> getSkirmishProfileElementForSide(Squadron squadron) throws PWCGException
+    private List<SkirmishProfileElement> getSkirmishProfileElementForSide(Company squadron) throws PWCGException
     {
         List<SkirmishProfileElement> skirmishElementsForSide = new ArrayList<>();
         SkirmishProfileAirAssociation squadronAssociation = getSkirmishAssociation(squadron);
@@ -205,7 +205,7 @@ public class Skirmish
         return skirmishElementsForSide;
     }
 
-    private SkirmishProfileAirAssociation getSkirmishAssociation(Squadron squadron) throws PWCGException
+    private SkirmishProfileAirAssociation getSkirmishAssociation(Company squadron) throws PWCGException
     {
         SkirmishProfileAirAssociation squadronAssociation = SkirmishProfileAirAssociation.DEFENDER;
         if (squadron.determineSide() == attackerAir)

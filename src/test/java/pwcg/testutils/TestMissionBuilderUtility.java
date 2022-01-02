@@ -1,9 +1,9 @@
 package pwcg.testutils;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.skirmish.Skirmish;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
@@ -42,7 +42,7 @@ public class TestMissionBuilderUtility
     {
         MissionHumanParticipants participatingPlayers = buildTestParticipatingHumans(campaign);
 
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(flightType, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
@@ -58,9 +58,9 @@ public class TestMissionBuilderUtility
     public static MissionHumanParticipants buildTestParticipatingHumans(Campaign campaign) throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        for (SquadronMember player: campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        for (CrewMember player: campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList())
         {
-            participatingPlayers.addSquadronMember(player);
+            participatingPlayers.addCrewMember(player);
         }
         return participatingPlayers;
     }

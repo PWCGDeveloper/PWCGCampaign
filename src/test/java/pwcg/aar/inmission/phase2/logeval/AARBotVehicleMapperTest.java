@@ -20,8 +20,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
@@ -37,7 +37,7 @@ public class AARBotVehicleMapperTest
     private CampaignPersonnelManager campaignPersonnelManager;
 
     @Mock
-    private SquadronMember squadronMember;
+    private CrewMember crewMember;
 
     @Mock
     private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
@@ -73,10 +73,10 @@ public class AARBotVehicleMapperTest
                     int numGermanTrucks) throws PWCGException
     {
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
-        //Mockito.when(campaignPersonnelManager.getCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(squadronMember);
-        Mockito.when(campaignPersonnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(squadronMember);
-        Mockito.when(campaignPersonnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(squadronMember);
-        Mockito.when(squadronMember.isPlayer()).thenReturn(false);
+        //Mockito.when(campaignPersonnelManager.getCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(crewMember);
+        Mockito.when(campaignPersonnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(crewMember);
+        Mockito.when(campaignPersonnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(crewMember);
+        Mockito.when(crewMember.isPlayer()).thenReturn(false);
 
         testMissionEntityGenerator = new TestMissionEntityGenerator();
         testMissionEntityGenerator.makeMissionArtifacts(numFrenchPlanes, numGermanPlanes, numFrenchBalloons, numGermanBalloons, numFrenchTrucks, numGermanTrucks);
@@ -97,22 +97,22 @@ public class AARBotVehicleMapperTest
         assert(planeAiEntities.size() == numFrenchPlanes + numGermanPlanes);
         for (LogPlane missionResultPlane : planeAiEntities.values())
         {
-            assert(missionResultPlane.getLogPilot() != null);
+            assert(missionResultPlane.getLogCrewMember() != null);
             if (missionResultPlane.getId().equals("1001"))
             {
-                assert(missionResultPlane.getLogPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+                assert(missionResultPlane.getLogCrewMember().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
             }
             if (missionResultPlane.getId().equals("1002"))
             {
-                assert(missionResultPlane.getLogPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER + 2);
+                assert(missionResultPlane.getLogCrewMember().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER + 2);
             }
             if (missionResultPlane.getId().equals("2001"))
             {
-                assert(missionResultPlane.getLogPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
+                assert(missionResultPlane.getLogCrewMember().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
             }
             if (missionResultPlane.getId().equals("2002"))
             {
-                assert(missionResultPlane.getLogPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER + 200);
+                assert(missionResultPlane.getLogCrewMember().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER + 200);
             }
         }
     }

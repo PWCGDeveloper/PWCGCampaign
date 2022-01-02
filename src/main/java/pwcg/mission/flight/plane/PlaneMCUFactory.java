@@ -5,10 +5,10 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
@@ -28,7 +28,7 @@ public class PlaneMCUFactory
 
     public List<PlaneMcu> createPlanesForFlight(int numPlanes) throws PWCGException
     {
-        List<SquadronMember> crewsForFlight = buildFlightCrews(numPlanes);
+        List<CrewMember> crewsForFlight = buildFlightCrews(numPlanes);
         if (crewsForFlight.size() < numPlanes)
         {
             numPlanes = crewsForFlight.size();
@@ -39,9 +39,9 @@ public class PlaneMCUFactory
         return planesForFlight;
     }
     
-    public static PlaneMcu createPlaneMcuByPlaneType (Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot) throws PWCGException
+    public static PlaneMcu createPlaneMcuByPlaneType (Campaign campaign, EquippedPlane equippedPlane, ICountry country, CrewMember crewMember) throws PWCGException
     {
-        PlaneMcu plane = new PlaneMcu(campaign, pilot);
+        PlaneMcu plane = new PlaneMcu(campaign, crewMember);
         plane.buildPlane(equippedPlane, country);
         return plane;
     }
@@ -54,14 +54,14 @@ public class PlaneMCUFactory
 		return planesTypesForFlight;
 	}
 
-	private List<SquadronMember> buildFlightCrews(int numPlanes) throws PWCGException 
+	private List<CrewMember> buildFlightCrews(int numPlanes) throws PWCGException 
 	{
 		FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
-        List<SquadronMember> crewsForFlight = flightCrewBuilder.createCrewAssignmentsForFlight(numPlanes);
+        List<CrewMember> crewsForFlight = flightCrewBuilder.createCrewAssignmentsForFlight(numPlanes);
 		return crewsForFlight;
 	}
 
-    private List<PlaneMcu> createPlanes(List<EquippedPlane> planesTypesForFlight, List<SquadronMember> crewsForFlight) throws PWCGException
+    private List<PlaneMcu> createPlanes(List<EquippedPlane> planesTypesForFlight, List<CrewMember> crewsForFlight) throws PWCGException
     {        
         List<PlaneMcu> planesForFlight = new ArrayList<>();
         for (int index = 0; index < planesTypesForFlight.size(); ++index)
@@ -69,8 +69,8 @@ public class PlaneMCUFactory
         	try
         	{
 	            EquippedPlane equippedPlane = planesTypesForFlight.get(index);
-	            SquadronMember pilot = crewsForFlight.get(index);            
-	            PlaneMcu plane = createPlaneMcuByPlaneType(flightInformation.getCampaign(), equippedPlane, flightInformation.getSquadron().getCountry(), pilot);
+	            CrewMember crewMember = crewsForFlight.get(index);            
+	            PlaneMcu plane = createPlaneMcuByPlaneType(flightInformation.getCampaign(), equippedPlane, flightInformation.getSquadron().getCountry(), crewMember);
 	            if (index > 0)
 	            {
 	                PlaneMcu leadPlane = planesForFlight.get(0);
@@ -109,7 +109,7 @@ public class PlaneMCUFactory
 
 	private void setPlaneDescription(PlaneMcu plane) throws PWCGException
 	{
-	    plane.setDesc(plane.getPilot().getNameAndRank());
+	    plane.setDesc(plane.getCrewMember().getNameAndRank());
 	}
 
 	private void setPlaneCallsign(int numInFormation, PlaneMcu plane)
@@ -123,12 +123,12 @@ public class PlaneMCUFactory
 	private void setAiSkillLevelForPlane(PlaneMcu plane) throws PWCGException
 	{
 	    AiSkillLevel aiLevel = AiSkillLevel.COMMON;
-        if (plane.getPilot().isPlayer())
+        if (plane.getCrewMember().isPlayer())
         {
             aiLevel = AiSkillLevel.PLAYER;
 
         }
-        else if (plane.getPilot() instanceof Ace)
+        else if (plane.getCrewMember() instanceof TankAce)
         {
             aiLevel = AiSkillLevel.ACE;
 
@@ -146,7 +146,7 @@ public class PlaneMCUFactory
         AiSkillLevel aiLevel;
         if (!plane.isNovice())
         {
-            aiLevel = plane.getPilot().getAiSkillLevel();
+            aiLevel = plane.getCrewMember().getAiSkillLevel();
         }
         else
         {

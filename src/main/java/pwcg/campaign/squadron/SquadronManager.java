@@ -21,7 +21,7 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class SquadronManager 
 {
-	private TreeMap<Integer, Squadron> squadronMap = new TreeMap<>();
+	private TreeMap<Integer, Company> squadronMap = new TreeMap<>();
 
 	public SquadronManager ()
 	{
@@ -31,28 +31,28 @@ public class SquadronManager
 	{
         squadronMap.clear();
         		
-        List<Squadron> squadrons = SquadronIOJson.readJson(); 
-		for (Squadron squadron : squadrons)
+        List<Company> squadrons = SquadronIOJson.readJson(); 
+		for (Company squadron : squadrons)
 		{
 			squadronMap.put(squadron.getSquadronId(), squadron);
 		}
 	}
 
-	public Squadron getSquadron(int id) throws PWCGException
+	public Company getSquadron(int id) throws PWCGException
 	{
 		if(squadronMap.containsKey(id))
 		{
-			Squadron squadron = squadronMap.get(id);
+			Company squadron = squadronMap.get(id);
 			return squadron;
 		}
 		
     	return null;
 	}
 
-    public Squadron getSquadronByName(String squadName, Date campaignDate) throws PWCGException 
+    public Company getSquadronByName(String squadName, Date campaignDate) throws PWCGException 
     {
-        Squadron squadReturn = null;
-        for (Squadron squadron : squadronMap.values())
+        Company squadReturn = null;
+        for (Company squadron : squadronMap.values())
         {
             if (squadName.equalsIgnoreCase(squadron.determineDisplayName(campaignDate)))
             {
@@ -87,18 +87,18 @@ public class SquadronManager
         return squadReturn;
     }
 
-    public List<Squadron> getAllSquadrons()
+    public List<Company> getAllSquadrons()
     {
-        ArrayList<Squadron> list = new ArrayList<Squadron>();
+        ArrayList<Company> list = new ArrayList<Company>();
         list.addAll(squadronMap.values());
         return list;
         
     }
 
-    public List<Squadron> getActiveSquadrons(Date date) throws PWCGException 
+    public List<Company> getActiveSquadrons(Date date) throws PWCGException 
     {
-        ArrayList<Squadron> returnSquadList = new ArrayList<Squadron>();
-        for (Squadron squadron : getAllSquadrons())
+        ArrayList<Company> returnSquadList = new ArrayList<Company>();
+        for (Company squadron : getAllSquadrons())
         {
             if (SquadronViability.isSquadronActive(squadron, date))
             {
@@ -109,29 +109,29 @@ public class SquadronManager
         return returnSquadList;
     }
 
-    public List<Squadron> getActiveSquadronsForCurrentMap(Date date) throws PWCGException 
+    public List<Company> getActiveSquadronsForCurrentMap(Date date) throws PWCGException 
     {
-        List<Squadron> activeSquadronsForCurrentMap = SquadronReducer.reduceToCurrentMap(getActiveSquadrons(date), date);
+        List<Company> activeSquadronsForCurrentMap = SquadronReducer.reduceToCurrentMap(getActiveSquadrons(date), date);
         return activeSquadronsForCurrentMap;
         
     }
 
-    public List<Squadron> getActiveSquadronsForSide(Date date, Side side) throws PWCGException 
+    public List<Company> getActiveSquadronsForSide(Date date, Side side) throws PWCGException 
     {
-        List<Squadron> activeSquadronsForSide = SquadronReducer.reduceToSide(getActiveSquadrons(date), side);
+        List<Company> activeSquadronsForSide = SquadronReducer.reduceToSide(getActiveSquadrons(date), side);
         return activeSquadronsForSide;
     }
 
-    public List<Squadron> getActiveSquadronsForService(Date date, ArmedService service) throws PWCGException 
+    public List<Company> getActiveSquadronsForService(Date date, ArmedService service) throws PWCGException 
     {
-        List<Squadron> activeSquadronsForService = SquadronReducer.reduceToService( getActiveSquadrons(date), date, service);
+        List<Company> activeSquadronsForService = SquadronReducer.reduceToService( getActiveSquadrons(date), date, service);
         return activeSquadronsForService;
     }
 
-    public List<Squadron> getActiveSquadronsBySideAndProximity(Side side, Date date, Coordinate referencePosition, double radius) throws PWCGException
+    public List<Company> getActiveSquadronsBySideAndProximity(Side side, Date date, Coordinate referencePosition, double radius) throws PWCGException
     {
-        List<Squadron> activeSquadronsForSide = SquadronReducer.reduceToSide( getActiveSquadrons(date), side);
-        List<Squadron> activeSquadronsForSideInRange = new ArrayList<>();
+        List<Company> activeSquadronsForSide = SquadronReducer.reduceToSide( getActiveSquadrons(date), side);
+        List<Company> activeSquadronsForSideInRange = new ArrayList<>();
         while (activeSquadronsForSideInRange.isEmpty())
         {
             activeSquadronsForSideInRange = SquadronReducer.reduceToProximityOnCurrentMap(activeSquadronsForSide, date, referencePosition, radius);
@@ -144,12 +144,12 @@ public class SquadronManager
         return activeSquadronsForSideInRange;        
     }
 
-	public List<Squadron> getPlayerFlyableSquadronsByService(ArmedService service, Date date) throws PWCGException 
+	public List<Company> getPlayerFlyableSquadronsByService(ArmedService service, Date date) throws PWCGException 
 	{
-		List<Squadron> squadList = getActiveSquadronsForService(date, service);
-        List<Squadron> list = new ArrayList<Squadron>();
+		List<Company> squadList = getActiveSquadronsForService(date, service);
+        List<Company> list = new ArrayList<Company>();
 	        
-		for (Squadron squadron : squadList)
+		for (Company squadron : squadList)
 		{
 		    if (squadron.hasFlyablePlane(date))
 		    {
@@ -167,9 +167,9 @@ public class SquadronManager
 		return list;
 	}
 
-    public Squadron getAnyActiveSquadronForAirfield(Airfield airfield, Date date) throws PWCGException 
+    public Company getAnyActiveSquadronForAirfield(Airfield airfield, Date date) throws PWCGException 
     {
-        for (Squadron squadron : squadronMap.values())
+        for (Company squadron : squadronMap.values())
         {
             String currentFieldNameForSquad = squadron.determineCurrentAirfieldName(date);
             if (currentFieldNameForSquad != null)
@@ -193,10 +193,10 @@ public class SquadronManager
         return null;
     }
 
-    public ArrayList<Squadron> getViableSquadrons(Campaign campaign) throws PWCGException 
+    public ArrayList<Company> getViableSquadrons(Campaign campaign) throws PWCGException 
     {
-        ArrayList<Squadron> returnSquadList = new ArrayList<Squadron>();
-        for (Squadron squadron : getAllSquadrons())
+        ArrayList<Company> returnSquadList = new ArrayList<Company>();
+        for (Company squadron : getAllSquadrons())
         {
             if (SquadronViability.isSquadronViable(squadron, campaign))
             {
@@ -207,30 +207,30 @@ public class SquadronManager
          return returnSquadList;
     }
 
-    public List<Squadron> getViableAiSquadronsForCurrentMapAndSide(Campaign campaign, Side side) throws PWCGException 
+    public List<Company> getViableAiSquadronsForCurrentMapAndSide(Campaign campaign, Side side) throws PWCGException 
     {
-        List<Squadron> viableSquadronsForSide = SquadronReducer.reduceToSide(getViableSquadrons(campaign), side);
-        List<Squadron> selectedSquadronsNoPlayer = SquadronReducer.reduceToAIOnly(viableSquadronsForSide, campaign);
-        List<Squadron> selectedSquadronsForCurrentMap = SquadronReducer.reduceToCurrentMap(selectedSquadronsNoPlayer, campaign.getDate());
+        List<Company> viableSquadronsForSide = SquadronReducer.reduceToSide(getViableSquadrons(campaign), side);
+        List<Company> selectedSquadronsNoPlayer = SquadronReducer.reduceToAIOnly(viableSquadronsForSide, campaign);
+        List<Company> selectedSquadronsForCurrentMap = SquadronReducer.reduceToCurrentMap(selectedSquadronsNoPlayer, campaign.getDate());
         
         return eliminateAnomalySquadrons(campaign, selectedSquadronsForCurrentMap);
     }
 
-    public List<Squadron> getViableAiSquadronsForCurrentMapAndSideAndRole(Campaign campaign, List <PwcgRole> acceptableRoles, Side side) throws PWCGException 
+    public List<Company> getViableAiSquadronsForCurrentMapAndSideAndRole(Campaign campaign, List <PwcgRole> acceptableRoles, Side side) throws PWCGException 
     {
-        List<Squadron> viableSquadronsForSide = SquadronReducer.reduceToSide(getViableSquadrons(campaign), side);
-        List<Squadron> selectedSquadronsByRole = SquadronReducer.reduceToRole(viableSquadronsForSide, acceptableRoles, campaign.getDate());
-        List<Squadron> selectedSquadronsNoPlayer = SquadronReducer.reduceToAIOnly(selectedSquadronsByRole, campaign);
-        List<Squadron> selectedSquadronsForCurrentMap = SquadronReducer.reduceToCurrentMap(selectedSquadronsNoPlayer, campaign.getDate());
+        List<Company> viableSquadronsForSide = SquadronReducer.reduceToSide(getViableSquadrons(campaign), side);
+        List<Company> selectedSquadronsByRole = SquadronReducer.reduceToRole(viableSquadronsForSide, acceptableRoles, campaign.getDate());
+        List<Company> selectedSquadronsNoPlayer = SquadronReducer.reduceToAIOnly(selectedSquadronsByRole, campaign);
+        List<Company> selectedSquadronsForCurrentMap = SquadronReducer.reduceToCurrentMap(selectedSquadronsNoPlayer, campaign.getDate());
         
         return eliminateAnomalySquadrons(campaign, selectedSquadronsForCurrentMap);
     }
 
-    private List<Squadron> eliminateAnomalySquadrons(Campaign campaign, List<Squadron> selectedSquadronsForCurrentMap) throws PWCGException
+    private List<Company> eliminateAnomalySquadrons(Campaign campaign, List<Company> selectedSquadronsForCurrentMap) throws PWCGException
     {
         if (campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.RemoveNonHistoricalSquadronsKey) == 1)
         {
-            List<Squadron> selectedSquadronsNoAnomalies = SquadronReducer.reduceToNoAnomalies(selectedSquadronsForCurrentMap, campaign.getDate());
+            List<Company> selectedSquadronsNoAnomalies = SquadronReducer.reduceToNoAnomalies(selectedSquadronsForCurrentMap, campaign.getDate());
             return selectedSquadronsNoAnomalies;
         }
         else
@@ -239,12 +239,12 @@ public class SquadronManager
         }
     }
 
-    public Squadron getClosestSquadron(Coordinate position, Date date) throws PWCGException 
+    public Company getClosestSquadron(Coordinate position, Date date) throws PWCGException 
     {
         Airfield airfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().findClosestAirfield(position);
         if (airfield != null)
         {
-            Squadron squadron = getAnyActiveSquadronForAirfield(airfield, date);
+            Company squadron = getAnyActiveSquadronForAirfield(airfield, date);
             return squadron;
         }
 

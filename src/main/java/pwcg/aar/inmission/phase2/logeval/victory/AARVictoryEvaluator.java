@@ -74,10 +74,10 @@ public class AARVictoryEvaluator
         if (missionResultVictory.getVictim() instanceof LogPlane)
         {
             LogPlane victimPlane = (LogPlane)missionResultVictory.getVictim();
-            BehindEnemyLines pilotCapture = new BehindEnemyLines(campaign.getDate());
+            BehindEnemyLines crewMemberCapture = new BehindEnemyLines(campaign.getDate());
             String missionMapName = pwcgMissionData.getMissionHeader().getMapName();
             FrontMapIdentifier mapId = FrontMapIdentifier.getFrontMapIdentifierForName(missionMapName);
-            boolean inReportingRange = pilotCapture.inReportingRange(mapId, missionResultVictory.getLocation(), victimPlane.getCountry().getSide());
+            boolean inReportingRange = crewMemberCapture.inReportingRange(mapId, missionResultVictory.getLocation(), victimPlane.getCountry().getSide());
             victimPlane.setCrashedInSight(inReportingRange);
         }
     }

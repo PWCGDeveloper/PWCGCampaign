@@ -4,9 +4,9 @@ import java.util.Date;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -26,39 +26,39 @@ public class MissionPlayerFlightSkinGenerator
     {
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            SquadronMember squadronMember = plane.getPilot();
-            setSkinForPlayerSquadron(squadronMember, flight.getFlightInformation().getSquadron(), plane, flight.getCampaign().getDate());
+            CrewMember crewMember = plane.getCrewMember();
+            setSkinForPlayerSquadron(crewMember, flight.getFlightInformation().getSquadron(), plane, flight.getCampaign().getDate());
         }
     }
 
-    private void setSkinForPlayerSquadron(SquadronMember pilot, Squadron squad, PlaneMcu plane, Date date)
+    private void setSkinForPlayerSquadron(CrewMember crewMember, Company company, PlaneMcu plane, Date date)
     {
-        MissionSkinInitializer.intitializeSkin(missionSkinSet, squad, plane, date);
-        setUserAssignedPilotSkin(pilot, plane);
+        MissionSkinInitializer.intitializeSkin(missionSkinSet, company, plane, date);
+        setUserAssignedCrewMemberSkin(crewMember, plane);
     }
 
-	private void setUserAssignedPilotSkin(SquadronMember pilot, PlaneMcu plane) 
+	private void setUserAssignedCrewMemberSkin(CrewMember crewMember, PlaneMcu plane) 
 	{
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         
-		for (Skin pilotSkin : pilot.getSkins())
+		for (Skin crewMemberSkin : crewMember.getSkins())
 		{
-		    if (pilotSkin.getStartDate().after(campaign.getDate()) || pilotSkin.getEndDate().before(campaign.getDate()))
+		    if (crewMemberSkin.getStartDate().after(campaign.getDate()) || crewMemberSkin.getEndDate().before(campaign.getDate()))
 		    {
 		        continue;
 		    }
 	            
 		    try
 		    {
-    		    if (pilotSkin.getPlane() != null && 
-    		        pilotSkin.getPlane().length() > 0 &&
-                    !pilotSkin.getPlane().equals(plane.getType()))
+    		    if (crewMemberSkin.getPlane() != null && 
+    		        crewMemberSkin.getPlane().length() > 0 &&
+                    !crewMemberSkin.getPlane().equals(plane.getType()))
     		    {
     		        continue;
     		    }
     
-                plane.setPlaneSkin(pilotSkin);
-                flight.getMission().addSkinInUse(pilotSkin);
+                plane.setPlaneSkin(crewMemberSkin);
+                flight.getMission().addSkinInUse(crewMemberSkin);
 		    }
 		    catch (Exception exp)
 		    {

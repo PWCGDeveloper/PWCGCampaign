@@ -25,20 +25,20 @@ import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.tabulate.combatreport.AARCombatReportTabulator;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
-import pwcg.aar.ui.events.PilotStatusEventGenerator;
+import pwcg.aar.ui.events.CrewMemberStatusEventGenerator;
 import pwcg.aar.ui.events.PlaneStatusEventGenerator;
 import pwcg.aar.ui.events.VictoryEventGenerator;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
-import pwcg.aar.ui.events.model.PilotStatusEvent;
+import pwcg.aar.ui.events.model.CrewMemberStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadmember.Victory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -46,15 +46,15 @@ import pwcg.testutils.SquadronTestProfile;
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class CombatReportTabulatorTest extends AARTestSetup
 {
-    @Mock private SquadronMembers campaignMembersInMission;
-    @Mock private PilotStatusEventGenerator pilotStatusEventGenerator;
+    @Mock private CrewMembers campaignMembersInMission;
+    @Mock private CrewMemberStatusEventGenerator crewMemberStatusEventGenerator;
     @Mock private PlaneStatusEventGenerator planeStatusEventGenerator;
     @Mock private VictoryEventGenerator victoryEventGenerator;
     @Mock private AARMissionEvaluationData missionEvaluationData;
     @Mock private AARPersonnelAcheivements personnelAcheivements;
     @Mock private Victory victory;
 
-    private Map<Integer, SquadronMember> campaignMembersInMissionMap = new HashMap<>();
+    private Map<Integer, CrewMember> campaignMembersInMissionMap = new HashMap<>();
 
     @BeforeEach
     public void setupTest() throws PWCGException
@@ -65,10 +65,10 @@ public class CombatReportTabulatorTest extends AARTestSetup
     @Test
     public void combatReportTabulationTest () throws PWCGException
     {             
-        List<SquadronMember> crews = new ArrayList<>();
-        crews.add(pilot1);
+        List<CrewMember> crews = new ArrayList<>();
+        crews.add(crewMember1);
         
-        campaignMembersInMissionMap.put(pilot1.getSerialNumber(), pilot1);
+        campaignMembersInMissionMap.put(crewMember1.getSerialNumber(), crewMember1);
 
         Mockito.when(missionHeader.getMissionFileName()).thenReturn("MissionFileName");
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
@@ -76,13 +76,13 @@ public class CombatReportTabulatorTest extends AARTestSetup
         Mockito.when(aarContext.getPersonnelAcheivements()).thenReturn(personnelAcheivements);
         Mockito.when(preliminaryData.getPwcgMissionData()).thenReturn(pwcgMissionData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInMission);
-        Mockito.when(campaignMembersInMission.getSquadronMemberCollection()).thenReturn(campaignMembersInMissionMap);
-        Mockito.when(missionEvaluationData.wasPilotInMission(Mockito.anyInt())).thenReturn(true);
+        Mockito.when(campaignMembersInMission.getCrewMemberCollection()).thenReturn(campaignMembersInMissionMap);
+        Mockito.when(missionEvaluationData.wasCrewMemberInMission(Mockito.anyInt())).thenReturn(true);
         
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         
         boolean isNewsWorthy = false;
-        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, "Any Plane", player.getSquadronId(), player.getSerialNumber(), campaign.getDate(), isNewsWorthy);
+        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, "Any Plane", player.getCompanyId(), player.getSerialNumber(), campaign.getDate(), isNewsWorthy);
 
         List<ClaimDeniedEvent> claimsDenied = new ArrayList<>();
         claimsDenied.add(claimDenied);
@@ -90,27 +90,27 @@ public class CombatReportTabulatorTest extends AARTestSetup
 
         isNewsWorthy = true;
         List<VictoryEvent> victories = new ArrayList<>();
-        VictoryEvent victoryEvent = new VictoryEvent(campaign, victory, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), pilot1.getSerialNumber(), campaign.getDate(), isNewsWorthy);        
+        VictoryEvent victoryEvent = new VictoryEvent(campaign, victory, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), crewMember1.getSerialNumber(), campaign.getDate(), isNewsWorthy);        
         victories.add(victoryEvent);
-        VictoryEvent victoryEventNotFromSquadron = new VictoryEvent(campaign, victory, SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), pilot2.getSerialNumber(), campaign.getDate(), isNewsWorthy);        
+        VictoryEvent victoryEventNotFromSquadron = new VictoryEvent(campaign, victory, SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), crewMember2.getSerialNumber(), campaign.getDate(), isNewsWorthy);        
         victories.add(victoryEventNotFromSquadron);
-        Mockito.when(victoryEventGenerator.createPilotVictoryEvents(ArgumentMatchers.<Map<Integer, List<Victory>>>any())).thenReturn(victories);
+        Mockito.when(victoryEventGenerator.createCrewMemberVictoryEvents(ArgumentMatchers.<Map<Integer, List<Victory>>>any())).thenReturn(victories);
                 
         isNewsWorthy = true;
-        PilotStatusEvent pilotStatusEvent = new PilotStatusEvent(campaign, SquadronMemberStatus.STATUS_KIA, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), pilot1.getSerialNumber(), campaign.getDate(), isNewsWorthy);
-        PilotStatusEvent pilotStatusEventNotFromSquadron = new PilotStatusEvent(campaign, SquadronMemberStatus.STATUS_KIA, SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), pilot2.getSerialNumber(), campaign.getDate(), isNewsWorthy);
-        Map<Integer, PilotStatusEvent> pilotsLost = new HashMap<>();
-        pilotsLost.put(pilot1.getSerialNumber(), pilotStatusEvent);
-        pilotsLost.put(pilot2.getSerialNumber(), pilotStatusEventNotFromSquadron);
-        Mockito.when(pilotStatusEventGenerator.createPilotLossEvents(ArgumentMatchers.<AARPersonnelLosses>any())).thenReturn(pilotsLost);
+        CrewMemberStatusEvent crewMemberStatusEvent = new CrewMemberStatusEvent(campaign, CrewMemberStatus.STATUS_KIA, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), crewMember1.getSerialNumber(), campaign.getDate(), isNewsWorthy);
+        CrewMemberStatusEvent crewMemberStatusEventNotFromSquadron = new CrewMemberStatusEvent(campaign, CrewMemberStatus.STATUS_KIA, SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), crewMember2.getSerialNumber(), campaign.getDate(), isNewsWorthy);
+        Map<Integer, CrewMemberStatusEvent> crewMembersLost = new HashMap<>();
+        crewMembersLost.put(crewMember1.getSerialNumber(), crewMemberStatusEvent);
+        crewMembersLost.put(crewMember2.getSerialNumber(), crewMemberStatusEventNotFromSquadron);
+        Mockito.when(crewMemberStatusEventGenerator.createCrewMemberLossEvents(ArgumentMatchers.<AARPersonnelLosses>any())).thenReturn(crewMembersLost);
 
         boolean isNewsworthy = true;
         LogPlane logPlane = new LogPlane(AARContextEventSequence.getNextOutOfMissionEventSequenceNumber());
-        logPlane.initializeFromOutOfMission(campaign, plane1, pilot1);
+        logPlane.initializeFromOutOfMission(campaign, plane1, crewMember1);
         PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(campaign, logPlane, PlaneStatus.STATUS_DESTROYED, isNewsworthy);
 
         LogPlane logPlaneNotFromSquadron = new LogPlane(AARContextEventSequence.getNextOutOfMissionEventSequenceNumber());
-        logPlaneNotFromSquadron.initializeFromOutOfMission(campaign, plane2, pilot2);
+        logPlaneNotFromSquadron.initializeFromOutOfMission(campaign, plane2, crewMember2);
         PlaneStatusEvent planeStatusEventNotFromSquadron = new PlaneStatusEvent(campaign, logPlane, PlaneStatus.STATUS_DESTROYED, isNewsworthy);
 
         Map<Integer, PlaneStatusEvent> planesLost = new HashMap<>();
@@ -118,9 +118,9 @@ public class CombatReportTabulatorTest extends AARTestSetup
         planesLost.put(plane2.getSerialNumber(), planeStatusEventNotFromSquadron);
         Mockito.when(planeStatusEventGenerator.createPlaneLossEvents(ArgumentMatchers.<AAREquipmentLosses>any())).thenReturn(planesLost);
 
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         AARCombatReportTabulator combatReportPanelEventTabulator = new AARCombatReportTabulator(campaign, squadron, aarContext);
-        combatReportPanelEventTabulator.setPilotStatusEventGenerator(pilotStatusEventGenerator);
+        combatReportPanelEventTabulator.setCrewMemberStatusEventGenerator(crewMemberStatusEventGenerator);
         combatReportPanelEventTabulator.setPlaneStatusEventGenerator(planeStatusEventGenerator);
         combatReportPanelEventTabulator.setVictoryEventGenerator(victoryEventGenerator);
         AARCombatReportPanelData combatReportPanelData = combatReportPanelEventTabulator.tabulateForAARCombatReportPanel();
@@ -128,9 +128,9 @@ public class CombatReportTabulatorTest extends AARTestSetup
         Assertions.assertTrue (combatReportPanelData.getClaimsDenied().size() == 1);
         Assertions.assertTrue (combatReportPanelData.getCrewsInMission().size() == 1);
         Assertions.assertTrue (combatReportPanelData.getMissionHeader().getMissionFileName().equals("MissionFileName"));
-        Assertions.assertTrue (combatReportPanelData.getSquadronMembersLostInMission().size() == 1);
+        Assertions.assertTrue (combatReportPanelData.getCrewMembersLostInMission().size() == 1);
         Assertions.assertTrue (combatReportPanelData.getSquadronPlanesLostInMission().size() == 1);
-        Assertions.assertTrue (combatReportPanelData.getVictoriesForSquadronMembersInMission().size() == 1);
+        Assertions.assertTrue (combatReportPanelData.getVictoriesForCrewMembersInMission().size() == 1);
 
     }
 

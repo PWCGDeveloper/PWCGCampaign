@@ -10,12 +10,12 @@ import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.prelim.claims.AARClaimPanelData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogFileSet;
 import pwcg.core.utils.DateUtils;
@@ -27,9 +27,9 @@ public class TestPreliminaryDataBuilder
 {
     private Campaign campaign;
     private AARPreliminaryData preliminaryData = new AARPreliminaryData();
-    private List<Squadron> squadronsInMission = new ArrayList<>();
+    private List<Company> squadronsInMission = new ArrayList<>();
 
-    public TestPreliminaryDataBuilder (Campaign campaign, List<Squadron> squadronsInMission)
+    public TestPreliminaryDataBuilder (Campaign campaign, List<Company> squadronsInMission)
     {
         this.campaign = campaign;
         this.squadronsInMission = squadronsInMission;
@@ -47,19 +47,19 @@ public class TestPreliminaryDataBuilder
 
     private void makeCampaignMembersInMission() throws PWCGException
     {
-        SquadronMembers squadronMembersInMission = new SquadronMembers();
+        CrewMembers squadronMembersInMission = new CrewMembers();
         
-        SquadronMember player = campaign.getPersonnelManager().getFlyingPlayers().getSquadronMemberList().get(0);
-        squadronMembersInMission.addToSquadronMemberCollection(player);
+        CrewMember player = campaign.getPersonnelManager().getFlyingPlayers().getCrewMemberList().get(0);
+        squadronMembersInMission.addToCrewMemberCollection(player);
 
-        for (Squadron squadron : squadronsInMission)
+        for (Company squadron : squadronsInMission)
         {
-            SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
-                            campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(),campaign.getDate());
-            List<SquadronMember> squadronMembersList = squadronMembers.getSquadronMemberList();
+            CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(
+                            campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(),campaign.getDate());
+            List<CrewMember> squadronMembersList = squadronMembers.getCrewMemberList();
             for (int i = 0; i < 4; ++i)
             {
-                squadronMembersInMission.addToSquadronMemberCollection(squadronMembersList.get(i));
+                squadronMembersInMission.addToCrewMemberCollection(squadronMembersList.get(i));
             }
         }
                 
@@ -126,22 +126,22 @@ public class TestPreliminaryDataBuilder
     {
         Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes  = new HashMap<>();
         
-        SquadronMembers squadronMembersInMission = preliminaryData.getCampaignMembersInMission();
-        for (SquadronMember squadronMember : squadronMembersInMission.getSquadronMemberCollection().values())
+        CrewMembers squadronMembersInMission = preliminaryData.getCampaignMembersInMission();
+        for (CrewMember crewMember : squadronMembersInMission.getCrewMemberCollection().values())
         {
-            Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronMember.getSquadronId());
+            Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(crewMember.getCompanyId());
             List<EquippedPlane> planesForSquadron = new ArrayList<>(equipment.getActiveEquippedPlanes().values());
             int planeIndex = RandomNumberGenerator.getRandom(planesForSquadron.size());
             EquippedPlane equippedPlane = planesForSquadron.get(planeIndex);
 
             PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
             missionPlaneData.setAircraftType(equippedPlane.getType());
-            missionPlaneData.setSquadronId(squadronMember.getSquadronId());
-            missionPlaneData.setPilotName(squadronMember.getName());
-            missionPlaneData.setPilotSerialNumber(squadronMember.getSerialNumber());
+            missionPlaneData.setSquadronId(crewMember.getCompanyId());
+            missionPlaneData.setCrewMemberName(crewMember.getName());
+            missionPlaneData.setCrewMemberSerialNumber(crewMember.getSerialNumber());
             missionPlaneData.setPlaneSerialNumber(equippedPlane.getSerialNumber());
             
-            missionPlanes.put(squadronMember.getSerialNumber(), missionPlaneData);
+            missionPlanes.put(crewMember.getSerialNumber(), missionPlaneData);
         }
         
         return missionPlanes;

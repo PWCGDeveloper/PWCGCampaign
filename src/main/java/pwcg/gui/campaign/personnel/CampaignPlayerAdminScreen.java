@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.coop.CoopPersonaDataBuilder;
 import pwcg.coop.CoopUserCampaignMassUpdate;
 import pwcg.coop.model.CoopDisplayRecord;
@@ -30,7 +30,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.activity.CampaignTransferScreen;
 import pwcg.gui.dialogs.ConfirmDialog;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
+import pwcg.gui.maingui.campaigngenerate.CampaignNewCrewMemberScreen;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageToDisplaySizer;
@@ -41,12 +41,12 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
 {
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
-    private int selectedPilotPanel  = 0;
-    private List<CampaignPlayerAdminPilotPanel> personaInfoPanels = new ArrayList<>();
-    private CampaignPlayerAdminPilotPanel selectedPersonaInfoPanel = null;
+    private int selectedCrewMemberPanel  = 0;
+    private List<CampaignPlayerAdminCrewMemberPanel> personaInfoPanels = new ArrayList<>();
+    private CampaignPlayerAdminCrewMemberPanel selectedPersonaInfoPanel = null;
     private TreeMap<String, CoopDisplayRecord> coopDisplayRecords = new TreeMap<>(Collections.reverseOrder());
     private JPanel personaActionsPanel;
-    private int pilotsPerPanel  = 12;
+    private int crewMembersPerPanel  = 12;
     private JButton nextPage;
     private JButton previousPage;
 
@@ -90,7 +90,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         for (int page = 0; page <pages; ++page)
         {
             List<CoopDisplayRecord> coopDisplayRecordsForPage = getRecordsForPage(page);
-            CampaignPlayerAdminPilotPanel personaInfoPanel = new CampaignPlayerAdminPilotPanel(campaign, this, coopDisplayRecordsForPage);
+            CampaignPlayerAdminCrewMemberPanel personaInfoPanel = new CampaignPlayerAdminCrewMemberPanel(campaign, this, coopDisplayRecordsForPage);
             personaInfoPanel.makePanels();
             ImageToDisplaySizer.setDocumentSizePlusExtra(personaInfoPanel, 300);
             personaInfoPanels.add(personaInfoPanel);
@@ -107,14 +107,14 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
             this.remove(selectedPersonaInfoPanel);
         }
 
-        selectedPersonaInfoPanel = personaInfoPanels.get(selectedPilotPanel);
+        selectedPersonaInfoPanel = personaInfoPanels.get(selectedCrewMemberPanel);
         this.add(selectedPersonaInfoPanel, BorderLayout.CENTER);
     }
 
     private int calculateNumberOfPages()
     {
-        int pages = coopDisplayRecords.size() / pilotsPerPanel;
-        if ((coopDisplayRecords.size() % pilotsPerPanel) > 0)
+        int pages = coopDisplayRecords.size() / crewMembersPerPanel;
+        if ((coopDisplayRecords.size() % crewMembersPerPanel) > 0)
         {
             ++pages;
         }
@@ -127,8 +127,8 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
 
     private List<CoopDisplayRecord> getRecordsForPage(int page)
     {
-        int startRecord = pilotsPerPanel * page;
-        int endRecord = pilotsPerPanel * (page + 1);
+        int startRecord = crewMembersPerPanel * page;
+        int endRecord = crewMembersPerPanel * (page + 1);
         if (endRecord > coopDisplayRecords.size())
         {
             endRecord = coopDisplayRecords.size();
@@ -158,10 +158,10 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
 
         buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         
-        nextPage = PWCGButtonFactory.makeTranslucentMenuButton("Next Page", "NextPage", "Next page of pilots", this);
+        nextPage = PWCGButtonFactory.makeTranslucentMenuButton("Next Page", "NextPage", "Next page of crewMembers", this);
         buttonPanel.add(nextPage);
 
-        previousPage = PWCGButtonFactory.makeTranslucentMenuButton("Previous Page", "PreviousPage", "Previous page of pilots", this);
+        previousPage = PWCGButtonFactory.makeTranslucentMenuButton("Previous Page", "PreviousPage", "Previous page of crewMembers", this);
         buttonPanel.add(previousPage);
 
         JPanel navPanel = new JPanel(new BorderLayout());
@@ -183,17 +183,17 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
 
         buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
-        buttonPanel.add(makeActionButton("Add Pilot", "Add a coop persona to the campaign"));
-        if (getSquadronMemberForSelectedPilot() != null)
+        buttonPanel.add(makeActionButton("Add CrewMember", "Add a coop persona to the campaign"));
+        if (getCrewMemberForSelectedCrewMember() != null)
         {
-            if (getSquadronMemberForSelectedPilot().getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
+            if (getCrewMemberForSelectedCrewMember().getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_ACTIVE)
             {
-                buttonPanel.add(makeActionButton("Transfer Pilot", "Transfer a coop persona to a new squadron"));
-                buttonPanel.add(makeActionButton("Retire Pilot", "Retire a coop persona. Cannot be undone"));
+                buttonPanel.add(makeActionButton("Transfer CrewMember", "Transfer a coop persona to a new squadron"));
+                buttonPanel.add(makeActionButton("Retire CrewMember", "Retire a coop persona. Cannot be undone"));
             }
             else
             {
-                buttonPanel.add(makeActionButton("Activate Pilot", "Activate a disabled pilot"));
+                buttonPanel.add(makeActionButton("Activate CrewMember", "Activate a disabled crewMember"));
             }
         }
 
@@ -208,12 +208,12 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         nextPage.setEnabled(false);
         previousPage.setEnabled(false);
 
-        if (selectedPilotPanel > 0)
+        if (selectedCrewMemberPanel > 0)
         {
             previousPage.setEnabled(true);
         }
 
-        if (selectedPilotPanel < (personaInfoPanels.size() -1))
+        if (selectedCrewMemberPanel < (personaInfoPanels.size() -1))
         {
             nextPage.setEnabled(true);
         }
@@ -242,21 +242,21 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
             {
                 previousPage();
             }
-            else if (action.equalsIgnoreCase("Add Pilot"))
+            else if (action.equalsIgnoreCase("Add CrewMember"))
             {
-                addPilot();
+                addCrewMember();
             }
-            else if (action.equalsIgnoreCase("Transfer Pilot"))
+            else if (action.equalsIgnoreCase("Transfer CrewMember"))
             {
-                transferPilot();
+                transferCrewMember();
             }
-            else if (action.contains("Retire Pilot"))
+            else if (action.contains("Retire CrewMember"))
             {
-                retirePilot();
+                retireCrewMember();
             }
-            else if (action.contains("Activate Pilot"))
+            else if (action.contains("Activate CrewMember"))
             {
-                activatePilot();
+                activateCrewMember();
             }
         }
         catch (Throwable e)
@@ -272,57 +272,57 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 
-    private void addPilot() throws PWCGException
+    private void addCrewMember() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, this);
-        addPilotDisplay.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
+        CampaignNewCrewMemberScreen addCrewMemberDisplay = new CampaignNewCrewMemberScreen(campaign, this);
+        addCrewMemberDisplay.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(addCrewMemberDisplay);
     }
 
-    private void transferPilot() throws PWCGException
+    private void transferCrewMember() throws PWCGException
     {
-        SquadronMember pilot = getSquadronMemberForSelectedPilot();
-        if (pilot != null)
+        CrewMember crewMember = getCrewMemberForSelectedCrewMember();
+        if (crewMember != null)
         {
             SoundManager.getInstance().playSound("Typewriter.WAV");
             boolean passTime = false;
-            CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaign, pilot, this, passTime);
+            CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaign, crewMember, this, passTime);
             transferDisplay.makePanels();
             CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
         }
     }
 
-    private void retirePilot() throws PWCGException
+    private void retireCrewMember() throws PWCGException
     {
-        SquadronMember pilot = getSquadronMemberForSelectedPilot();
-        if (pilot != null)
+        CrewMember crewMember = getCrewMemberForSelectedCrewMember();
+        if (crewMember != null)
         {
-            int result = ConfirmDialog.areYouSure("Confirm Retire " + pilot.getNameAndRank());
+            int result = ConfirmDialog.areYouSure("Confirm Retire " + crewMember.getNameAndRank());
             if (result == JOptionPane.YES_OPTION)
             {
-                ChangePilotStatus(pilot, SquadronMemberStatus.STATUS_RETIRED);
+                ChangeCrewMemberStatus(crewMember, CrewMemberStatus.STATUS_RETIRED);
             }
         }
     }
 
-    private void activatePilot() throws PWCGException
+    private void activateCrewMember() throws PWCGException
     {
-        SquadronMember pilot = getSquadronMemberForSelectedPilot();
-        if (pilot != null)
+        CrewMember crewMember = getCrewMemberForSelectedCrewMember();
+        if (crewMember != null)
         {
-            int result = ConfirmDialog.areYouSure("Confirm Reactivation of " + pilot.getNameAndRank());
+            int result = ConfirmDialog.areYouSure("Confirm Reactivation of " + crewMember.getNameAndRank());
             if (result == JOptionPane.YES_OPTION)
             {
-                ChangePilotStatus(pilot, SquadronMemberStatus.STATUS_ACTIVE);
+                ChangeCrewMemberStatus(crewMember, CrewMemberStatus.STATUS_ACTIVE);
             }
         }
     }
 
-    private void ChangePilotStatus(SquadronMember pilot, int status) throws PWCGException, PWCGUserException
+    private void ChangeCrewMemberStatus(CrewMember crewMember, int status) throws PWCGException, PWCGUserException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        pilot.setPilotActiveStatus(status, campaign.getDate(), null);
+        crewMember.setCrewMemberActiveStatus(status, campaign.getDate(), null);
         campaign.write();
 
         loadCoopRecords();
@@ -332,25 +332,25 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
     
     private void nextPage() throws PWCGException
     {
-        if (selectedPilotPanel < (personaInfoPanels.size()-1))
+        if (selectedCrewMemberPanel < (personaInfoPanels.size()-1))
         {
-            ++selectedPilotPanel;
+            ++selectedCrewMemberPanel;
             updateCoopUserRecordsForUserSelection();
         }
     }
     
     private void previousPage() throws PWCGException
     {
-        if (selectedPilotPanel > 0)
+        if (selectedCrewMemberPanel > 0)
         {
-            --selectedPilotPanel;
+            --selectedCrewMemberPanel;
             updateCoopUserRecordsForUserSelection();
         }
     }
 
     private void updateCoopUserRecordsForUserSelection() throws PWCGException
     {
-        CampaignPlayerAdminPilotPanel personaInfoPanel = personaInfoPanels.get(selectedPilotPanel);
+        CampaignPlayerAdminCrewMemberPanel personaInfoPanel = personaInfoPanels.get(selectedCrewMemberPanel);
         Map<String, List<Integer>> personaByUser = personaInfoPanel.getUsersForPersonas();
         CoopUserCampaignMassUpdate.updateCoopUserRecordsForUserSelectionMakeANewClassAndTestIt(campaign, personaByUser);
         makeCenterPanels();
@@ -359,7 +359,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
 
     public void refreshInformation() throws PWCGException
     {
-        CampaignPlayerAdminPilotPanel personaInfoPanel = personaInfoPanels.get(selectedPilotPanel);                
+        CampaignPlayerAdminCrewMemberPanel personaInfoPanel = personaInfoPanels.get(selectedCrewMemberPanel);                
         personaInfoPanel.refreshInformation();
         
         makeRightPanel();
@@ -368,14 +368,14 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         refresh();
     }
 
-    private SquadronMember getSquadronMemberForSelectedPilot() throws PWCGException
+    private CrewMember getCrewMemberForSelectedCrewMember() throws PWCGException
     {
-         CampaignPlayerAdminPilotPanel personaInfoPanel = personaInfoPanels.get(selectedPilotPanel);
-        CoopDisplayRecord coopDisplayRecord = personaInfoPanel.getSelectedPilot();
+         CampaignPlayerAdminCrewMemberPanel personaInfoPanel = personaInfoPanels.get(selectedCrewMemberPanel);
+        CoopDisplayRecord coopDisplayRecord = personaInfoPanel.getSelectedCrewMember();
         if (coopDisplayRecord != null)
         {
-            SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(coopDisplayRecord.getPilotSerialNumber());
-            return pilot;
+            CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(coopDisplayRecord.getCrewMemberSerialNumber());
+            return crewMember;
         }
 
         return null;
@@ -397,10 +397,10 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
     {
         coopDisplayRecords.clear();
         CoopPersonaDataBuilder coopPersonaDataBuilder = new CoopPersonaDataBuilder();
-        List<CoopDisplayRecord> coopDisplayRecordsForCampaign = coopPersonaDataBuilder.getPlayerSquadronMembersForUser(campaign);
+        List<CoopDisplayRecord> coopDisplayRecordsForCampaign = coopPersonaDataBuilder.getPlayerCrewMembersForUser(campaign);
         for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecordsForCampaign)
         {
-            String key = coopDisplayRecord.getPilotStatus() + coopDisplayRecord.getPilotNameAndRank();
+            String key = coopDisplayRecord.getCrewMemberStatus() + coopDisplayRecord.getCrewMemberNameAndRank();
             coopDisplayRecords.put(key, coopDisplayRecord);
         }
     }

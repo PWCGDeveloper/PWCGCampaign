@@ -14,7 +14,7 @@ public class CampaignActiveSinglePlayer implements ICampaignActive
     
     public boolean isCampaignActive() throws PWCGException
     {
-        if (campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().size() > 0)
+        if (campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList().size() > 0)
         {
             return true;
         }

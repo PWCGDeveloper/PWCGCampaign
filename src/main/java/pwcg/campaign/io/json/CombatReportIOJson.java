@@ -18,40 +18,40 @@ public class CombatReportIOJson
 
 	public static void writeJson(Campaign campaign, CombatReport combatReport) throws PWCGException
 	{
-        String combatReportPath = buildCombatReportPath(campaign, combatReport.getPilotSerialNumber());
+        String combatReportPath = buildCombatReportPath(campaign, combatReport.getCrewMemberSerialNumber());
         FileUtils.createDirIfNeeded(combatReportPath);
         
         PwcgJsonWriter<CombatReport> jsonWriter = new PwcgJsonWriter<>();
         jsonWriter.writeAsJson(combatReport, combatReportPath, DateUtils.getDateStringYYYYMMDD(combatReport.getDate()) + COMBAT_REPORT_SUFFIX);
 	}
 
-	public static Map<String, CombatReport> readJson(Campaign campaign, Integer pilotSerialNumber) throws PWCGException
+	public static Map<String, CombatReport> readJson(Campaign campaign, Integer crewMemberSerialNumber) throws PWCGException
 	{
 	    Map<String, CombatReport> combatReportsForCampaign = new TreeMap<>();
-        String combatReportPath = buildCombatReportPath(campaign, pilotSerialNumber);
+        String combatReportPath = buildCombatReportPath(campaign, crewMemberSerialNumber);
 	    List<File> combatReportFiles = FileUtils.getFilesWithFilter(combatReportPath, COMBAT_REPORT_SUFFIX);
 		for (File combatReportFile : combatReportFiles)
 		{
 			JsonObjectReader<CombatReport> jsoReader = new JsonObjectReader<>(CombatReport.class);
 			CombatReport combatReport = jsoReader.readJsonFile(combatReportPath, combatReportFile.getName()); 
-			convertV5ToV6(pilotSerialNumber, combatReport);			
+			convertV5ToV6(crewMemberSerialNumber, combatReport);			
 			combatReportsForCampaign.put(DateUtils.getDateStringYYYYMMDD(combatReport.getDate()), combatReport);
 		}
 		
 		return combatReportsForCampaign;
 	}
 
-    private static void convertV5ToV6(Integer pilotSerialNumber, CombatReport combatReport)
+    private static void convertV5ToV6(Integer crewMemberSerialNumber, CombatReport combatReport)
     {
-        if (combatReport.getPilotSerialNumber() <= 0)
+        if (combatReport.getCrewMemberSerialNumber() <= 0)
         {
-            combatReport.setPilotSerialNumber(pilotSerialNumber);
+            combatReport.setCrewMemberSerialNumber(crewMemberSerialNumber);
         }
     }
 
-    public static String buildCombatReportPath(Campaign campaign, Integer pilotSerialNumber)
+    public static String buildCombatReportPath(Campaign campaign, Integer crewMemberSerialNumber)
     {
-        String combatReportPath = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\CombatReports\\" + pilotSerialNumber + "\\";
+        String combatReportPath = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\CombatReports\\" + crewMemberSerialNumber + "\\";
         return combatReportPath;
     }
 }

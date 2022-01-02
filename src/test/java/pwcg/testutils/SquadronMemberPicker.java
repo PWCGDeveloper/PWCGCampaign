@@ -4,38 +4,38 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
-public class SquadronMemberPicker
+public class CrewMemberPicker
 {
-    public static SquadronMember pickNonAceCampaignMember (Campaign campaign, int squadronId) throws PWCGException
+    public static CrewMember pickNonAceCampaignMember (Campaign campaign, int squadronId) throws PWCGException
     {
-        Map<Integer, SquadronMember> squadronAllCampaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();        
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(squadronAllCampaignMembers, campaign.getDate());        
-        List<SquadronMember> allHealthyCampaignMembers = squadronMembers.getSquadronMemberList();
+        Map<Integer, CrewMember> squadronAllCampaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();        
+        CrewMembers squadronMembers = CrewMemberFilter.filterActiveAINoWounded(squadronAllCampaignMembers, campaign.getDate());        
+        List<CrewMember> allHealthyCampaignMembers = squadronMembers.getCrewMemberList();
         int index = RandomNumberGenerator.getRandom(allHealthyCampaignMembers.size());
         return allHealthyCampaignMembers.get(index);
     }
     
-    public static SquadronMember pickNonAceSquadronMember (Campaign campaign, int squadronId) throws PWCGException
+    public static CrewMember pickNonAceCrewMember (Campaign campaign, int squadronId) throws PWCGException
     {
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);        
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
-        List<SquadronMember> allHealthySquadronMembers = squadronMembers.getSquadronMemberList();
-        int index = RandomNumberGenerator.getRandom(allHealthySquadronMembers.size());
-        return allHealthySquadronMembers.get(index);
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadronId);        
+        CrewMembers squadronMembers = CrewMemberFilter.filterActiveAINoWounded(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());        
+        List<CrewMember> allHealthyCrewMembers = squadronMembers.getCrewMemberList();
+        int index = RandomNumberGenerator.getRandom(allHealthyCrewMembers.size());
+        return allHealthyCrewMembers.get(index);
     }
     
-    public static SquadronMember pickPlayerSquadronMember (Campaign campaign, int squadronId) throws PWCGException
+    public static CrewMember pickPlayerCrewMember (Campaign campaign, int squadronId) throws PWCGException
     {
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);        
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActivePlayers(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
-        List<SquadronMember> allHealthyPlayers = squadronMembers.getSquadronMemberList();
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadronId);        
+        CrewMembers squadronMembers = CrewMemberFilter.filterActivePlayers(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());        
+        List<CrewMember> allHealthyPlayers = squadronMembers.getCrewMemberList();
         int index = RandomNumberGenerator.getRandom(allHealthyPlayers.size());
         return allHealthyPlayers.get(index);
     }

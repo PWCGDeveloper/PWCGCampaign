@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
-import pwcg.aar.ui.events.model.PilotStatusEvent;
+import pwcg.aar.ui.events.model.CrewMemberStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 
 public class CampaignMissionWin
@@ -18,8 +18,8 @@ public class CampaignMissionWin
     
     public boolean isMissionAWin()
     {
-        Map<Integer, PilotStatusEvent> squadronMembersLost = combatResultsForMission.getSquadronMembersLostInMission();
-        List<VictoryEvent> victoriesScored = combatResultsForMission.getVictoriesForSquadronMembersInMission();
+        Map<Integer, CrewMemberStatusEvent> squadronMembersLost = combatResultsForMission.getCrewMembersLostInMission();
+        List<VictoryEvent> victoriesScored = combatResultsForMission.getVictoriesForCrewMembersInMission();
         
         if (squadronMembersLost.size() == 0)
         {

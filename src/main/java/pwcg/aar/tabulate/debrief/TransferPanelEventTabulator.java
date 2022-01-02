@@ -38,23 +38,23 @@ public class TransferPanelEventTabulator
         List<TransferEvent> transferEventsForSquadronAces = transferAces(transferEventGenerator);
         allTransferInEvents.addAll(transferEventsForSquadronAces);
         
-        List<TransferEvent> transferEventsForSquadronMembers = transferSquadronMembers(transferEventGenerator);
-        allTransferInEvents.addAll(transferEventsForSquadronMembers);
+        List<TransferEvent> transferEventsForCrewMembers = transferCrewMembers(transferEventGenerator);
+        allTransferInEvents.addAll(transferEventsForCrewMembers);
         
         transferPanelData.setTransfers(allTransferInEvents);
     }
 
     private List<TransferEvent> transferAces(TransferEventGenerator transferEventGenerator) throws PWCGException
     {
-        List <TransferRecord> acesTransferredIn = aarContext.getResupplyData().getAcesTransferred().getSquadronMembersTransferred();
-        List<TransferEvent> transferEventsForAces = transferEventGenerator.createPilotTransferEvents(acesTransferredIn);
+        List <TransferRecord> acesTransferredIn = aarContext.getResupplyData().getAcesTransferred().getCrewMembersTransferred();
+        List<TransferEvent> transferEventsForAces = transferEventGenerator.createCrewMemberTransferEvents(acesTransferredIn);
         return transferEventsForAces;
     }
 
-    private List<TransferEvent> transferSquadronMembers(TransferEventGenerator transferEventGenerator) throws PWCGException
+    private List<TransferEvent> transferCrewMembers(TransferEventGenerator transferEventGenerator) throws PWCGException
     {
-        List <TransferRecord> squadronMembersTransferredIn = aarContext.getResupplyData().getSquadronTransferData().getSquadronMembersTransferred();
-        List<TransferEvent> transferEventsForSquadronMembers = transferEventGenerator.createPilotTransferEvents(squadronMembersTransferredIn);
-        return transferEventsForSquadronMembers;
+        List <TransferRecord> squadronMembersTransferredIn = aarContext.getResupplyData().getSquadronTransferData().getCrewMembersTransferred();
+        List<TransferEvent> transferEventsForCrewMembers = transferEventGenerator.createCrewMemberTransferEvents(squadronMembersTransferredIn);
+        return transferEventsForCrewMembers;
     }
 }

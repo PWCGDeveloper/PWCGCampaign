@@ -16,9 +16,9 @@ import org.mockito.quality.Strictness;
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.tabulate.debrief.AceLeavePanelEventTabulator;
 import pwcg.aar.ui.display.model.AARAceLeavePanelData;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.resupply.personnel.TransferRecord;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -28,7 +28,7 @@ public class AARAceLeavePanelEventTabulatorTest extends AARTestSetup
 {
     
     @Mock
-    private Ace ace;
+    private TankAce ace;
 
     @Mock
     private TransferRecord historicalAceTransferData;
@@ -42,7 +42,7 @@ public class AARAceLeavePanelEventTabulatorTest extends AARTestSetup
         
         Mockito.when(ace.determineSquadron()).thenReturn(squadronEsc103);
 
-        Mockito.when(acesTransferred.getSquadronMembersTransferred()).thenReturn(transferRecords);
+        Mockito.when(acesTransferred.getCrewMembersTransferred()).thenReturn(transferRecords);
         
         transferRecords.clear();
     }
@@ -50,7 +50,7 @@ public class AARAceLeavePanelEventTabulatorTest extends AARTestSetup
     @Test
     public void oneAceOnLeave () throws PWCGException
     {             
-        transferRecords.add(new TransferRecord(ace, SquadronTestProfile.JASTA_11_PROFILE.getSquadronId(), SquadronMemberStatus.STATUS_ON_LEAVE));
+        transferRecords.add(new TransferRecord(ace, SquadronTestProfile.JASTA_11_PROFILE.getSquadronId(), CrewMemberStatus.STATUS_ON_LEAVE));
 
         AceLeavePanelEventTabulator aceLeavePanelEventTabulator = new AceLeavePanelEventTabulator(campaign, aarContext);
         AARAceLeavePanelData aceLeavePanelData = aceLeavePanelEventTabulator.tabulateForAARAceLeavePanel();

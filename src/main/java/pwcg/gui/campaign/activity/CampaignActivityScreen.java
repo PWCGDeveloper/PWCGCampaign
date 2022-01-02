@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -147,7 +147,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
         }
         
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        CrewMember referencePlayer = campaign.findReferencePlayer();
         
         boolean passTime = true;
         CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaign, referencePlayer, campaignHome, passTime);
@@ -196,8 +196,8 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        CampaignSquadronLogScreen logDisplay = new CampaignSquadronLogScreen(referencePlayer.getSquadronId());
+        CrewMember referencePlayer = campaign.findReferencePlayer();
+        CampaignSquadronLogScreen logDisplay = new CampaignSquadronLogScreen(referencePlayer.getCompanyId());
         logDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(logDisplay);

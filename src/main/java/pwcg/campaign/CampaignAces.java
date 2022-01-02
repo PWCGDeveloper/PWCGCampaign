@@ -5,19 +5,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.TankAce;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignAces
 {
-    private Map<Integer, Ace> acesInCampaign = new HashMap<>();
+    private Map<Integer, TankAce> acesInCampaign = new HashMap<>();
 
-	public Map<Integer, Ace> getAllCampaignAces()
+	public Map<Integer, TankAce> getAllCampaignAces()
 	{
-	    Map<Integer, Ace> activeCampaignAces = new HashMap<>();
-        for (Ace ace : acesInCampaign.values())
+	    Map<Integer, TankAce> activeCampaignAces = new HashMap<>();
+        for (TankAce ace : acesInCampaign.values())
         {
             activeCampaignAces.put(ace.getSerialNumber(), ace);
         }
@@ -25,12 +25,12 @@ public class CampaignAces
         return activeCampaignAces;
 	}
 	
-    public Map<Integer, Ace> getActiveCampaignAces()
+    public Map<Integer, TankAce> getActiveCampaignAces()
     {
-        Map<Integer, Ace> activeCampaignAces = new HashMap<>();
-        for (Ace ace : acesInCampaign.values())
+        Map<Integer, TankAce> activeCampaignAces = new HashMap<>();
+        for (TankAce ace : acesInCampaign.values())
         {
-            if (ace.getPilotActiveStatus() != SquadronMemberStatus.STATUS_ACTIVE)
+            if (ace.getCrewMemberActiveStatus() != CrewMemberStatus.STATUS_ACTIVE)
             {
                 continue;
             }
@@ -42,17 +42,17 @@ public class CampaignAces
     }
 
 
-    public List<Ace> getActiveCampaignAcesBySquadron(int squadronId) throws PWCGException
+    public List<TankAce> getActiveCampaignAcesBySquadron(int squadronId) throws PWCGException
     {
-        List<Ace> acesForSquadron = new ArrayList<>();
-        for (Ace ace : acesInCampaign.values())
+        List<TankAce> acesForSquadron = new ArrayList<>();
+        for (TankAce ace : acesInCampaign.values())
         {
-            if (ace.getPilotActiveStatus() != SquadronMemberStatus.STATUS_ACTIVE)
+            if (ace.getCrewMemberActiveStatus() != CrewMemberStatus.STATUS_ACTIVE)
             {
                 continue;
             }
             
-            Squadron aceSquadron = ace.determineSquadron();
+            Company aceSquadron = ace.determineSquadron();
             if (aceSquadron != null)
             {
                 if (aceSquadron.getSquadronId() == squadronId)
@@ -65,19 +65,19 @@ public class CampaignAces
         return acesForSquadron;
     }
 
-	public void setCampaignAces(Map<Integer, Ace> acesInCampaign)
+	public void setCampaignAces(Map<Integer, TankAce> acesInCampaign)
 	{
 		this.acesInCampaign = acesInCampaign;
 	}
 	
-	public Ace retrieveAceBySerialNumber(int serialNumber)
+	public TankAce retrieveAceBySerialNumber(int serialNumber)
 	{
 		return acesInCampaign.get(serialNumber);
 	}
 
     public void mergeAddedAces(CampaignAces acesAvailable)
     {
-        for (Ace ace : acesAvailable.getAllCampaignAces().values())
+        for (TankAce ace : acesAvailable.getAllCampaignAces().values())
         {
             if (!acesInCampaign.containsKey(ace.getSerialNumber()))
             {

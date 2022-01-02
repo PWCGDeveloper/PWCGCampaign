@@ -100,8 +100,8 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
         missionDescriptionBuffer.append(missionPrefix);
         missionDescriptionBuffer.append(missionDescriptionText);
 
-        String pilotList = makePilotList();
-        missionDescriptionBuffer.append(pilotList.toString());
+        String crewMemberList = makeCrewMemberList();
+        missionDescriptionBuffer.append(crewMemberList.toString());
         
         missionTextArea.setText(missionDescriptionBuffer.toString());
     }
@@ -116,16 +116,16 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
         return missionPrefix;
     }
 
-    private String makePilotList() throws PWCGException 
+    private String makeCrewMemberList() throws PWCGException 
     {
         BriefingFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
-        StringBuffer assignedPilotsBuffer = new StringBuffer ("Assigned Pilots:\n");
+        StringBuffer assignedCrewMembersBuffer = new StringBuffer ("Assigned CrewMembers:\n");
         for (CrewPlanePayloadPairing crewPlane : activeMissionHandler.getCrews())
         {
-            assignedPilotsBuffer.append("    " + crewPlane.getPilot().getNameAndRank() + "\n");
+            assignedCrewMembersBuffer.append("    " + crewPlane.getCrewMember().getNameAndRank() + "\n");
         }
         
-        return assignedPilotsBuffer.toString();
+        return assignedCrewMembersBuffer.toString();
     }
 
 }

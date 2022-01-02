@@ -5,14 +5,14 @@ import java.util.Map;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 
 public interface IMedalManager
 {
-	Medal awardWoundedAward(SquadronMember pilot, ArmedService service);
-	Medal award(Campaign campaign, SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException;
-	boolean hasMedal(SquadronMember pilot, Medal medal);
+	Medal awardWoundedAward(CrewMember crewMember, ArmedService service);
+	Medal award(Campaign campaign, CrewMember crewMember, ArmedService service, int victoriesThisMission) throws PWCGException;
+	boolean hasMedal(CrewMember crewMember, Medal medal);
 	List<MedalManager> getAllManagers(Campaign campaign);
 	Medal getMedalFromManager(String type);
 	List<Medal> getAllAwardsForService() throws PWCGException;

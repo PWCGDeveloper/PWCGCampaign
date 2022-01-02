@@ -8,7 +8,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.skin.SkinFilter;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -34,9 +34,9 @@ public class MissionAiSkinGenerator
         }
     }
 
-    private void setAISkin(Squadron squad, PlaneMcu plane, Date date) throws PWCGException
+    private void setAISkin(Company company, PlaneMcu plane, Date date) throws PWCGException
     {
-        MissionSkinInitializer.intitializeSkin(missionSkinSet, squad, plane, date);
+        MissionSkinInitializer.intitializeSkin(missionSkinSet, company, plane, date);
         if (shouldUsePersonalSkin(plane))
         {
             chooseNonSquadronPersonalSkin(plane);
@@ -75,16 +75,16 @@ public class MissionAiSkinGenerator
     
     private boolean shouldUsePersonalSkin(PlaneMcu plane) throws PWCGException
     {
-        plane.getPilot().getRank();
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(plane.getSquadronId());
+        plane.getCrewMember().getRank();
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(plane.getSquadronId());
         IRankHelper rankHelper = RankFactory.createRankHelper();
-        int rankPos = rankHelper.getRankPosByService(plane.getPilot().getRank(), squadron.determineServiceForSquadron(flight.getCampaign().getDate()));
+        int rankPos = rankHelper.getRankPosByService(plane.getCrewMember().getRank(), squadron.determineServiceForSquadron(flight.getCampaign().getDate()));
         if (rankPos < 3)
         {
             return true;
         }
         
-        if (plane.getPilot().getAiSkillLevel().getAiSkillLevel() > AiSkillLevel.COMMON.getAiSkillLevel())
+        if (plane.getCrewMember().getAiSkillLevel().getAiSkillLevel() > AiSkillLevel.COMMON.getAiSkillLevel())
         {
             return true;
         }

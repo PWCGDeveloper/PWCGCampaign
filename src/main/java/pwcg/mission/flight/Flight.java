@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -133,12 +133,6 @@ public abstract class Flight implements IFlight
         finalizeVirtualFlight();        
     }
 
-    @Override
-    public void addVirtualEscort() throws PWCGException
-    {
-        virtualWaypointPackage.addEscort();
-    }
-
     private void finalizeCoreFlight() throws PWCGException
     {
         flightPlanes.finalize();
@@ -202,7 +196,7 @@ public abstract class Flight implements IFlight
     }
 
     @Override
-    public Squadron getSquadron()
+    public Company getSquadron()
     {
         return flightInformation.getSquadron();
     }

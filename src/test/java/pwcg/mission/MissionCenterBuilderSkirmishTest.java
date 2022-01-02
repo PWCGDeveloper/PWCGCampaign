@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.skirmish.Skirmish;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -64,7 +64,7 @@ public class MissionCenterBuilderSkirmishTest
         List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         Assertions.assertTrue (skirmishes.size() > 0);
         
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, skirmishes.get(0), playerFlightTypes);
@@ -78,8 +78,8 @@ public class MissionCenterBuilderSkirmishTest
     private MissionHumanParticipants makeParticipatingPlayers(Campaign campaign) throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        SquadronMember player = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(player);
+        CrewMember player = campaign.findReferencePlayer();
+        participatingPlayers.addCrewMember(player);
         return participatingPlayers;
     }
 

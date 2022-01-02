@@ -4,9 +4,9 @@ import pwcg.aar.AARFactory;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.promotion.PromotionArbitrator;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignMemberAwardsGenerator
@@ -22,46 +22,46 @@ public class CampaignMemberAwardsGenerator
         this.personnelAwards = AARFactory.makeAARPersonnelAwards();
     }
 
-    public AARPersonnelAwards generateAwards(SquadronMember squadronMember, int victoriesInMissionForPilot) throws PWCGException 
+    public AARPersonnelAwards generateAwards(CrewMember crewMember, int victoriesInMissionForCrewMember) throws PWCGException 
     {
-        promotions(squadronMember);
-        medals(squadronMember, victoriesInMissionForPilot);
+        promotions(crewMember);
+        medals(crewMember, victoriesInMissionForCrewMember);
         return personnelAwards;
     }
     
-    private void promotions(SquadronMember squadronMember) throws PWCGException 
+    private void promotions(CrewMember crewMember) throws PWCGException 
     {
-        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalCrewMembers(campaign, crewMember);
         if (!promotion.equals(PromotionArbitrator.NO_PROMOTION))
         {
-            personnelAwards.addPromotion(squadronMember.getSerialNumber(), promotion);
+            personnelAwards.addPromotion(crewMember.getSerialNumber(), promotion);
         }
     }
 
-    private void medals(SquadronMember squadronMember, int victoriesInMissionForPilot) throws PWCGException 
+    private void medals(CrewMember crewMember, int victoriesInMissionForCrewMember) throws PWCGException 
     {
         MedalEventHandler medalHandler = new MedalEventHandler(campaign);
-        medalHandler.awardMedals(squadronMember, victoriesInMissionForPilot);
-        awardWoundMedalIfWounded(squadronMember);
-        assignMedals(squadronMember, medalHandler);
+        medalHandler.awardMedals(crewMember, victoriesInMissionForCrewMember);
+        awardWoundMedalIfWounded(crewMember);
+        assignMedals(crewMember, medalHandler);
     }
 
-    private void awardWoundMedalIfWounded(SquadronMember squadronMember) throws PWCGException
+    private void awardWoundMedalIfWounded(CrewMember crewMember) throws PWCGException
 	{
-        boolean pilotWounded = aarContext.getPersonnelLosses().pilotisWoundedToday(squadronMember);
-        if (pilotWounded)
+        boolean crewMemberWounded = aarContext.getPersonnelLosses().crewMemberisWoundedToday(crewMember);
+        if (crewMemberWounded)
         {
             MedalEventHandler medalHandler = new MedalEventHandler(campaign);
-            medalHandler.awardWoundMedals(squadronMember);
-            assignMedals(squadronMember, medalHandler);
+            medalHandler.awardWoundMedals(crewMember);
+            assignMedals(crewMember, medalHandler);
         }
 	}
 
-    private void assignMedals(SquadronMember squadronMember, MedalEventHandler medalHandler)
+    private void assignMedals(CrewMember crewMember, MedalEventHandler medalHandler)
 	{
-		for (Medal medal : medalHandler.getMedalAwardsForSquadronMember(squadronMember.getSerialNumber()))
+		for (Medal medal : medalHandler.getMedalAwardsForCrewMember(crewMember.getSerialNumber()))
         {
-		    personnelAwards.addMedal(squadronMember.getSerialNumber(), medal);
+		    personnelAwards.addMedal(crewMember.getSerialNumber(), medal);
         }
 	}
 }

@@ -1,6 +1,6 @@
 package pwcg.mission.flight.factory;
 
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightTypes;
@@ -10,7 +10,7 @@ public interface IFlightFactory
 {
     IFlight buildFlight(
             Mission mission,
-            Squadron squadron,
+            Company squadron,
             FlightTypes flightType,
             boolean isPlayerFlight) throws PWCGException;
 }

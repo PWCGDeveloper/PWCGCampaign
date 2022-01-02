@@ -86,7 +86,7 @@ public class BriefingPlaneModificationsPicker
         {
             JCheckBox planeModificationsCheckBox= PWCGButtonFactory.makeCheckBox(
                     payloadForPlane, 
-                    "SelectPlaneModification:" + crewPlane.getPilot().getSerialNumber(), 
+                    "SelectPlaneModification:" + crewPlane.getCrewMember().getSerialNumber(), 
                     font,
                     ColorMap.CHALK_FOREGROUND,
                     actionListener);

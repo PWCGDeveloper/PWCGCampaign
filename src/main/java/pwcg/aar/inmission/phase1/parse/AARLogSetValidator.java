@@ -22,10 +22,10 @@ public class AARLogSetValidator
             throw new PWCGException("Could not find any vehicle spawns in log set " + logFileSetName);
         }
         
-        isReferencePilotInMission(campaign, preliminaryData, logEventData);
+        isReferenceCrewMemberInMission(campaign, preliminaryData, logEventData);
     }
 
-    private void isReferencePilotInMission(Campaign campaign, AARPreliminaryData preliminaryData, LogEventData logEventData) throws PWCGException
+    private void isReferenceCrewMemberInMission(Campaign campaign, AARPreliminaryData preliminaryData, LogEventData logEventData) throws PWCGException
     {
         AARVehicleBuilder vehicleBuilder = AARFactory.makeAARVehicleBuilder(campaign, preliminaryData, logEventData);
         vehicleBuilder.buildVehicleListsByVehicleType(logEventData);
@@ -33,7 +33,7 @@ public class AARLogSetValidator
         boolean referencePlayerFound = false;
         for (LogPlane logPlane : vehicleBuilder.getLogPlanes().values())
         {
-            if (logPlane.getPilotSerialNumber() == campaign.getReferencePlayer().getSerialNumber())
+            if (logPlane.getCrewMemberSerialNumber() == campaign.getReferencePlayer().getSerialNumber())
             {
                 referencePlayerFound = true;
             }
@@ -41,7 +41,7 @@ public class AARLogSetValidator
         
         if (!referencePlayerFound)
         {
-            throw new PWCGException("Reference pilot is not in this mission.  Please change the reference pilot and rerun the AAR.  Incorrect reference pilot is " + campaign.getReferencePlayer().getNameAndRank());
+            throw new PWCGException("Reference crewMember is not in this mission.  Please change the reference crewMember and rerun the AAR.  Incorrect reference crewMember is " + campaign.getReferencePlayer().getNameAndRank());
         }
     }
 

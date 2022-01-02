@@ -112,7 +112,7 @@ public class BehindEnemyLines
         return distanceToEnemy;
     }
 
-    private boolean notBehindLinesByAirfield(Coordinate landingCoordinates, Side pilotSide, boolean behindEnemyLines)
+    private boolean notBehindLinesByAirfield(Coordinate landingCoordinates, Side crewMemberSide, boolean behindEnemyLines)
                     throws PWCGException
     {
         Airfield closestAirfield =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().findClosestAirfield(landingCoordinates);
@@ -124,7 +124,7 @@ public class BehindEnemyLines
                 behindEnemyLines = false;
             }
             
-            if (pilotSide == closestAirfield.determineCountryOnDate(date).getSide())
+            if (crewMemberSide == closestAirfield.determineCountryOnDate(date).getSide())
             {
             	reason = "You found friendly positions after coming down near the friendly airfield of " + closestAirfield.getName();
                 behindEnemyLines = false;
@@ -137,7 +137,7 @@ public class BehindEnemyLines
         return behindEnemyLines;
     }
 
-    private boolean behindLinesByGroup(Coordinate landingCoordinates, Side pilotSide, boolean behindEnemyLines)
+    private boolean behindLinesByGroup(Coordinate landingCoordinates, Side crewMemberSide, boolean behindEnemyLines)
                     throws PWCGException
     {
         PWCGLocation closestTown =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(landingCoordinates);
@@ -149,7 +149,7 @@ public class BehindEnemyLines
                 behindEnemyLines = false;
             }
             
-            if (pilotSide == closestTown.getCountry(date).getSide())
+            if (crewMemberSide == closestTown.getCountry(date).getSide())
             {
             	reason = "You found friendly positions after coming down near the friendly town of " + closestTown.getName();
                 behindEnemyLines = false;

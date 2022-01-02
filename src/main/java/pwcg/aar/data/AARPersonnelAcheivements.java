@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.Victory;
 
 public class AARPersonnelAcheivements
 {
     private Map<Integer, Integer> missionsFlown = new HashMap<>();
-    private Map<Integer, List<Victory>> victoryAwardByPilot = new HashMap<>();
+    private Map<Integer, List<Victory>> victoryAwardByCrewMember = new HashMap<>();
     private List<ClaimDeniedEvent> playerClaimsDenied = new ArrayList<>();
 
     public void updateMissionsFlown(Integer serialNumber, Integer newMissionsFlown)
@@ -21,31 +21,31 @@ public class AARPersonnelAcheivements
 
 	public void merge(AARPersonnelAcheivements sourcePersonnelAwards)
 	{
-		mergeVictories(sourcePersonnelAwards.getVictoriesByPilot());
+		mergeVictories(sourcePersonnelAwards.getVictoriesByCrewMember());
         missionsFlown.putAll(sourcePersonnelAwards.getMissionsFlown());
 	}
 
-	public void mergeVictories(Map<Integer, List<Victory>> sourceVictoryAwardByPilot)
+	public void mergeVictories(Map<Integer, List<Victory>> sourceVictoryAwardByCrewMember)
 	{
-		for (Integer serialNumber : sourceVictoryAwardByPilot.keySet())
+		for (Integer serialNumber : sourceVictoryAwardByCrewMember.keySet())
 		{
-		    List<Victory> victoriesForPlot = sourceVictoryAwardByPilot.get(serialNumber);
+		    List<Victory> victoriesForPlot = sourceVictoryAwardByCrewMember.get(serialNumber);
 		    for (Victory victory : victoriesForPlot)
 		    {
-		        addVictoryAwardByPilot(serialNumber, victory);
+		        addVictoryAwardByCrewMember(serialNumber, victory);
 		    }
 		}
 	}
 
-    private void addVictoryAwardByPilot(Integer serialNumber, Victory victory)
+    private void addVictoryAwardByCrewMember(Integer serialNumber, Victory victory)
     {
-        if (!victoryAwardByPilot.containsKey(serialNumber))
+        if (!victoryAwardByCrewMember.containsKey(serialNumber))
         {
-            victoryAwardByPilot.put(serialNumber, new ArrayList<Victory>());
+            victoryAwardByCrewMember.put(serialNumber, new ArrayList<Victory>());
         }
         
-        List<Victory> victoriesForPilot = victoryAwardByPilot.get(serialNumber);
-        victoriesForPilot.add(victory);
+        List<Victory> victoriesForCrewMember = victoryAwardByCrewMember.get(serialNumber);
+        victoriesForCrewMember.add(victory);
     }
 
     public Map<Integer, Integer> getMissionsFlown()
@@ -53,49 +53,49 @@ public class AARPersonnelAcheivements
         return missionsFlown;
     }
     
-    public Map<Integer, List<Victory>> getVictoriesByPilot()
+    public Map<Integer, List<Victory>> getVictoriesByCrewMember()
     {
-        return victoryAwardByPilot;
+        return victoryAwardByCrewMember;
     }
     
-    public int getGroundVictoryCountForPilot(int serialNumber)
+    public int getGroundVictoryCountForCrewMember(int serialNumber)
     {
-        int numGroundVictoriesForPilot = 0;
-        if (victoryAwardByPilot.containsKey(serialNumber))
+        int numGroundVictoriesForCrewMember = 0;
+        if (victoryAwardByCrewMember.containsKey(serialNumber))
         {
-            for (Victory victoryForPilot : victoryAwardByPilot.get(serialNumber))
+            for (Victory victoryForCrewMember : victoryAwardByCrewMember.get(serialNumber))
             {
-                if (victoryForPilot.getVictim().getAirOrGround() == Victory.VEHICLE)
+                if (victoryForCrewMember.getVictim().getAirOrGround() == Victory.VEHICLE)
                 {
-                    ++numGroundVictoriesForPilot;
+                    ++numGroundVictoriesForCrewMember;
                 }
             }
         }
-        return numGroundVictoriesForPilot;
+        return numGroundVictoriesForCrewMember;
     }
     
-    public int getAirVictoryCountForPilot(int serialNumber)
+    public int getAirVictoryCountForCrewMember(int serialNumber)
     {
-        int numAirVictoriesForPilot = 0;
-        if (victoryAwardByPilot.containsKey(serialNumber))
+        int numAirVictoriesForCrewMember = 0;
+        if (victoryAwardByCrewMember.containsKey(serialNumber))
         {
-            for (Victory victoryForPilot : victoryAwardByPilot.get(serialNumber))
+            for (Victory victoryForCrewMember : victoryAwardByCrewMember.get(serialNumber))
             {
-                if (victoryForPilot.getVictim().getAirOrGround() == Victory.AIRCRAFT)
+                if (victoryForCrewMember.getVictim().getAirOrGround() == Victory.AIRCRAFT)
                 {
-                    ++numAirVictoriesForPilot;
+                    ++numAirVictoriesForCrewMember;
                 }
             }
         }
-        return numAirVictoriesForPilot;
+        return numAirVictoriesForCrewMember;
     }
     
     public int getTotalAirToAirVictories()
     {
     	int totalAirToAirVictories = 0;
-    	for (List<Victory> victoriesForPilot : victoryAwardByPilot.values())
+    	for (List<Victory> victoriesForCrewMember : victoryAwardByCrewMember.values())
     	{
-    	    for (Victory victory : victoriesForPilot)
+    	    for (Victory victory : victoriesForCrewMember)
     	    {
     	        if (victory.getVictim().getAirOrGround() == Victory.AIRCRAFT)
     	        {
@@ -109,9 +109,9 @@ public class AARPersonnelAcheivements
     public int getTotalAirToGroundVictories()
     {
         int totalAirToAirVictories = 0;
-        for (List<Victory> victoriesForPilot : victoryAwardByPilot.values())
+        for (List<Victory> victoriesForCrewMember : victoryAwardByCrewMember.values())
         {
-            for (Victory victory : victoriesForPilot)
+            for (Victory victory : victoriesForCrewMember)
             {
                 if (victory.getVictim().getAirOrGround() == Victory.VEHICLE)
                 {
@@ -122,14 +122,14 @@ public class AARPersonnelAcheivements
         return totalAirToAirVictories;
     }
 
-    public List<Victory> getVictoryAwardsForPilot(Integer serialNumber)
+    public List<Victory> getVictoryAwardsForCrewMember(Integer serialNumber)
     {
-        List<Victory> victoriesForPilot = new ArrayList<Victory>();
-        if (victoryAwardByPilot.containsKey(serialNumber))
+        List<Victory> victoriesForCrewMember = new ArrayList<Victory>();
+        if (victoryAwardByCrewMember.containsKey(serialNumber))
         {
-            victoriesForPilot = victoryAwardByPilot.get(serialNumber);
+            victoriesForCrewMember = victoryAwardByCrewMember.get(serialNumber);
         }
-        return victoriesForPilot;
+        return victoriesForCrewMember;
     }
 
     public List<ClaimDeniedEvent> getPlayerClaimsDenied()

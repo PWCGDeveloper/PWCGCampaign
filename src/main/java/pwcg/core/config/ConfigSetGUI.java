@@ -16,8 +16,8 @@ public class ConfigSetGUI
 		configSet.addConfigItem(ConfigItemKeys.ChalkboardFontSizeKey, new ConfigItem("30"));		
         configSet.addConfigItem(ConfigItemKeys.BriefingFontKey, new ConfigItem("Serif"));
         configSet.addConfigItem(ConfigItemKeys.BriefingFontSizeKey, new ConfigItem("22"));
-		configSet.addConfigItem(ConfigItemKeys.PilotFontSizeKey, new ConfigItem("22"));
-		configSet.addConfigItem(ConfigItemKeys.PilotFontKey, new ConfigItem("Serif"));		
+		configSet.addConfigItem(ConfigItemKeys.CrewMemberFontSizeKey, new ConfigItem("22"));
+		configSet.addConfigItem(ConfigItemKeys.CrewMemberFontKey, new ConfigItem("Serif"));		
         configSet.addConfigItem(ConfigItemKeys.TypewriterFontSizeKey, new ConfigItem("18"));
         configSet.addConfigItem(ConfigItemKeys.TypewriterFontKey, new ConfigItem("Serif"));
         configSet.addConfigItem(ConfigItemKeys.CursiveFontSizeKey, new ConfigItem("20"));

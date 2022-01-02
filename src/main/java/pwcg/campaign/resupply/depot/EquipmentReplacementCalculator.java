@@ -8,7 +8,7 @@ import java.util.Map;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneArchType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -24,7 +24,7 @@ public class EquipmentReplacementCalculator
         this.campaign = campaign;
     }
 
-    public void createArchTypeForReplacementPlane(List<Squadron> squadronsForService) throws PWCGException
+    public void createArchTypeForReplacementPlane(List<Company> squadronsForService) throws PWCGException
     {
         loadWeightsByUsage(squadronsForService);        
         loadWeightsByNeed(squadronsForService);        
@@ -62,14 +62,14 @@ public class EquipmentReplacementCalculator
         }
     }
 
-    private void loadWeightsByUsage(List<Squadron> squadronsForService) throws PWCGException
+    private void loadWeightsByUsage(List<Company> squadronsForService) throws PWCGException
     {
         EquipmentReplacementWeightUsage equipmentReplacementWeightUsage = new EquipmentReplacementWeightUsage(campaign.getDate());
         Map<String, Integer> aircraftUsageByArchType = equipmentReplacementWeightUsage.getAircraftUsageByArchType(squadronsForService);
         loadWeightedList(aircraftUsageByArchType, weightedArchTypeUsage);        
     }
 
-    private void loadWeightsByNeed(List<Squadron> squadronsForService) throws PWCGException
+    private void loadWeightsByNeed(List<Company> squadronsForService) throws PWCGException
     {
         EquipmentReplacementWeightByNeed equipmentReplacementWeightByNeed = new EquipmentReplacementWeightByNeed(campaign);
         Map<String, Integer> replacementsForLosses = equipmentReplacementWeightByNeed.getAircraftNeedByArchType(squadronsForService);

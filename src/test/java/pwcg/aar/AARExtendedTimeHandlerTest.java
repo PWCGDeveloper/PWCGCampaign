@@ -11,17 +11,17 @@ import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogCrewMember;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -33,7 +33,7 @@ public class AARExtendedTimeHandlerTest
     private Campaign campaign;
     private AARContext aarContext;
     
-    @Mock LogPilot playerLogPilot;
+    @Mock LogCrewMember playerLogCrewMember;
     
     @BeforeAll
     public void setupSuite() throws PWCGException
@@ -52,28 +52,28 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testPersonnelReplacedWhenTimePassed () throws PWCGException
     {
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
-                        campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+        CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(
+                        campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        for (CrewMember crewMember : squadronMembers.getCrewMemberList())
         {
-            if (!squadronMember.isPlayer())
+            if (!crewMember.isPlayer())
             {
-                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
+                crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_KIA, campaign.getDate(), null);
             }
-            SquadronMembers squadronMembersLeft = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
-                            campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-            if (squadronMembersLeft.getSquadronMemberCollection().size() < 3)
+            CrewMembers squadronMembersLeft = CrewMemberFilter.filterActiveAIAndPlayerAndAces(
+                            campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+            if (squadronMembersLeft.getCrewMemberCollection().size() < 3)
             {
                 break;
             }
         }
         
-        SquadronMembers squadronMembersLeft = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
-                        campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        CrewMembers squadronMembersLeft = CrewMemberFilter.filterActiveAIAndPlayerAndAces(
+                        campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
         
         int numLeaves = 0;
-        int numSquadronMembers = squadronMembersLeft.getSquadronMemberCollection().size();
-        while (numSquadronMembers < 9)
+        int numCrewMembers = squadronMembersLeft.getCrewMemberCollection().size();
+        while (numCrewMembers < 9)
         {
             AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);
             extendedTimeHandler.timePassedForLeave(21);
@@ -84,16 +84,16 @@ public class AARExtendedTimeHandlerTest
             else
             {
                 ++numLeaves;
-                squadronMembersLeft = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
-                                campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-                numSquadronMembers = squadronMembersLeft.getSquadronMemberCollection().size();
+                squadronMembersLeft = CrewMemberFilter.filterActiveAIAndPlayerAndAces(
+                                campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+                numCrewMembers = squadronMembersLeft.getCrewMemberCollection().size();
             }
         }
         
         Assertions.assertTrue (numLeaves < 10);
-        SquadronMembers squadronMembersAfter = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
-                        campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        assert(squadronMembersAfter.getSquadronMemberCollection().size() >= 9);
+        CrewMembers squadronMembersAfter = CrewMemberFilter.filterActiveAIAndPlayerAndAces(
+                        campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        assert(squadronMembersAfter.getCrewMemberCollection().size() >= 9);
     }
 
     
@@ -131,9 +131,9 @@ public class AARExtendedTimeHandlerTest
         }
         
         Assertions.assertTrue (numLeaves < 10);
-        SquadronMembers squadronMembersAfter = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
-                        campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        assert(squadronMembersAfter.getSquadronMemberCollection().size() >= 9);
+        CrewMembers squadronMembersAfter = CrewMemberFilter.filterActiveAIAndPlayerAndAces(
+                        campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        assert(squadronMembersAfter.getCrewMemberCollection().size() >= 9);
     }
 
     @Test

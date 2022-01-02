@@ -1,0 +1,81 @@
+{
+	"country": "RUSSIA",
+	"squadronId": 101139003,
+	"name": "139th Tank Division, 3rd Company",
+	"fileName": "139th Tank Division 3 Co.json",
+	"skill": 30,
+	"unitIdCode": "",
+	"subUnitIdCode": "",
+	"tankAssignments": [
+		{
+			"archType": "t26",
+			"introduction": "19400101",
+			"withdrawal": "19420531"
+		},
+		{
+			"archType": "t34",
+			"introduction": "19420601",
+			"withdrawal": "19450601"
+		}
+	],
+	"bases": {
+		"19420801": "Grishin",
+		"19420906": "Grishin",
+		"19421011": "Rahinka",
+		"19421123": "Bol. Ivanovka",
+		"19421223": "Bol. Ivanovka",
+		"19430120": "Bol. Ivanovka",
+		"19430301": "Agoy",
+		"19430330": "Severskaya",
+		"19430418": "Agoy",
+		"19430918": "Agoy",
+		"19430927": "Anapa",
+		"19431004": "Anapa",
+		"19431008": "Zaporojskaya",
+		"19440101": "Srednyaya Ahtuba",
+		"19440201": "Novonikolskoye",
+		"19440301": "Verhne-Pogromnoye",
+		"19440401": "Abganerovo",
+		"19440501": "Srednyaya Ahtuba",
+		"19440601": "Voroponovo",
+		"19440701": "Voroponovo",
+		"19440801": "Abganerovo",
+		"19440901": "Skvorin",
+		"19441001": "Skvorin",
+		"19441101": "Skvorin",
+		"19441201": "Skvorin",
+		"19450101": "ef_Dortmund",
+		"19450201": "ef_Dortmund",
+		"19450301": "ef_Bonninghardt-Sud",
+		"19450401": "ef_Schijndel",
+		"19450501": "ef_Diest"
+	},
+	"skins": [
+	],
+	"serviceId": 10112,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_MAIN_BATTLE_TANK",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+	}
+}

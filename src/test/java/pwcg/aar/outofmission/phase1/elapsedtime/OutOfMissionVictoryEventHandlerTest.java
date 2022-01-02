@@ -18,10 +18,10 @@ import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.Victory;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -32,11 +32,11 @@ public class OutOfMissionVictoryEventHandlerTest
 {
     private Campaign campaign;
 
-    @Mock private SquadronMember squadronMember;    
+    @Mock private CrewMember crewMember;    
     @Mock private AARContext aarContext;
     @Mock private AARPreliminaryData preliminaryData;
 
-    private SquadronMembers outOfMissionSquadronMembers;
+    private CrewMembers outOfMissionCrewMembers;
 
     @BeforeEach
     public void setupTest() throws PWCGException
@@ -46,9 +46,9 @@ public class OutOfMissionVictoryEventHandlerTest
         
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         
-        outOfMissionSquadronMembers = new SquadronMembers();
-        outOfMissionSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().
-                getSquadronPersonnel(SquadronTestProfile.JASTA_16_PROFILE.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        outOfMissionCrewMembers = new CrewMembers();
+        outOfMissionCrewMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().
+                getCompanyPersonnel(SquadronTestProfile.JASTA_16_PROFILE.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
     }
 
     @Test
@@ -56,8 +56,8 @@ public class OutOfMissionVictoryEventHandlerTest
     {     
         try (MockedStatic<CampaignMembersOutOfMissionFinder> mocked = Mockito.mockStatic(CampaignMembersOutOfMissionFinder.class)) 
         {
-            mocked.when(() -> CampaignMembersOutOfMissionFinder.getAllCampaignMembersNotInMission(Mockito.any(), Mockito.any())).thenReturn(outOfMissionSquadronMembers);
-            mocked.when(() -> CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(Mockito.any(), Mockito.any())).thenReturn(outOfMissionSquadronMembers);
+            mocked.when(() -> CampaignMembersOutOfMissionFinder.getAllCampaignMembersNotInMission(Mockito.any(), Mockito.any())).thenReturn(outOfMissionCrewMembers);
+            mocked.when(() -> CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(Mockito.any(), Mockito.any())).thenReturn(outOfMissionCrewMembers);
 
             OutOfMissionVictoryEventHandler victoryGenerator = new OutOfMissionVictoryEventHandler(campaign, aarContext);
         
@@ -65,9 +65,9 @@ public class OutOfMissionVictoryEventHandlerTest
             for (int i = 0; i < 1000; ++i)
             {
                 OutOfMissionVictoryData victoriesOutOMission = victoryGenerator.generateOutOfMissionVictories();
-                if (!victoriesOutOMission.getVictoryAwardsBySquadronMember().isEmpty())
+                if (!victoriesOutOMission.getVictoryAwardsByCrewMember().isEmpty())
                 {
-                    for (List<Victory> victories : victoriesOutOMission.getVictoryAwardsBySquadronMember().values())
+                    for (List<Victory> victories : victoriesOutOMission.getVictoryAwardsByCrewMember().values())
                     {
                         outOfMissionVictoriesAwarded += victories.size();
                         if (outOfMissionVictoriesAwarded > 1)

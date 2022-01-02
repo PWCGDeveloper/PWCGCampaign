@@ -6,9 +6,9 @@ import java.util.List;
 import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
+import pwcg.campaign.crewmember.HistoricalAce;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 

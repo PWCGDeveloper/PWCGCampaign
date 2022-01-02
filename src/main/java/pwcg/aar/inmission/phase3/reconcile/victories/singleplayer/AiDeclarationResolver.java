@@ -12,10 +12,10 @@ import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CrewMemberFilter;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class AiDeclarationResolver  extends PlayerVictoryResolver
@@ -60,7 +60,7 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
         if (resultVictory.getVictor() instanceof LogPlane)
         {
             LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-            SquadronMember squadronMemberVictor = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getPilotSerialNumber());
+            CrewMember squadronMemberVictor = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getCrewMemberSerialNumber());
             if (squadronMemberVictor != null)
             {
                 if (!PlayerVictoryResolver.isPlayerVictory(squadronMemberVictor, resultVictory.getVictor()))
@@ -80,10 +80,10 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
         {
             if (resultVictory.getVictor() instanceof LogUnknown)
             {
-                SquadronMember pilotVictor = flightMemberForVictory(resultVictory);
-                if (pilotVictor != null)
+                CrewMember crewMemberVictor = flightMemberForVictory(resultVictory);
+                if (crewMemberVictor != null)
                 {
-                    createAiVictory(resultVictory, pilotVictor);
+                    createAiVictory(resultVictory, crewMemberVictor);
                 }
             }
         }
@@ -98,29 +98,29 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
                 LogUnknown missionEntityUnknown = (LogUnknown)resultVictory.getVictor();
                 if (missionEntityUnknown.getUnknownVictoryAssignment() == UnknownVictoryAssignments.RANDOM_ASSIGNMENT)
                 {
-                    SquadronMember pilotVictor = flightMemberForVictory(resultVictory);
-                    if (pilotVictor != null)
+                    CrewMember crewMemberVictor = flightMemberForVictory(resultVictory);
+                    if (crewMemberVictor != null)
                     {
-                        createAiVictory(resultVictory, pilotVictor);
+                        createAiVictory(resultVictory, crewMemberVictor);
                     }
                 }
             }
         }
     }
 
-    private SquadronMember flightMemberForVictory(LogVictory resultVictory) throws PWCGException
+    private CrewMember flightMemberForVictory(LogVictory resultVictory) throws PWCGException
     {
         ICountry victimCountry = resultVictory.getVictim().getCountry();
-        SquadronMembers squadronMembersInMissionOtherThanPlayer = getAiMissionSquadronMembers();
-        for (SquadronMember pilotVictor: squadronMembersInMissionOtherThanPlayer.getSquadronMemberList())
+        CrewMembers squadronMembersInMissionOtherThanPlayer = getAiMissionCrewMembers();
+        for (CrewMember crewMemberVictor: squadronMembersInMissionOtherThanPlayer.getCrewMemberList())
         {
-            if (pilotVictor.determineCountry(campaign.getDate()).getSide() != victimCountry.getSide())
+            if (crewMemberVictor.determineCountry(campaign.getDate()).getSide() != victimCountry.getSide())
             {
-                if (pilotVictor != null)
+                if (crewMemberVictor != null)
                 {
-                    if (!alreadyhasVictory(pilotVictor.getSerialNumber()))
+                    if (!alreadyhasVictory(crewMemberVictor.getSerialNumber()))
                     {
-                        return pilotVictor;
+                        return crewMemberVictor;
                     }
                 }
             }
@@ -129,15 +129,15 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
         return null;
     }
 
-    private SquadronMembers getAiMissionSquadronMembers() throws PWCGException
+    private CrewMembers getAiMissionCrewMembers() throws PWCGException
     {
-        Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection();
-        List<Squadron> playerSquadronsInMission = aarContext.getPreliminaryData().getPlayerSquadronsInMission();
-        SquadronMembers squadronMembersInMissionOtherThanPlayer = new SquadronMembers();
-        for (Squadron squadron : playerSquadronsInMission)
+        Map<Integer, CrewMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getCrewMemberCollection();
+        List<Company> playerSquadronsInMission = aarContext.getPreliminaryData().getPlayerSquadronsInMission();
+        CrewMembers squadronMembersInMissionOtherThanPlayer = new CrewMembers();
+        for (Company squadron : playerSquadronsInMission)
         {
-            SquadronMembers squadronMembersForSquadron = SquadronMemberFilter.filterActiveAIForSquadron(campaignMembersInMission, campaign.getDate(), squadron.getSquadronId());
-            squadronMembersInMissionOtherThanPlayer.addSquadronMembers(squadronMembersForSquadron);
+            CrewMembers squadronMembersForSquadron = CrewMemberFilter.filterActiveAIForSquadron(campaignMembersInMission, campaign.getDate(), squadron.getSquadronId());
+            squadronMembersInMissionOtherThanPlayer.addCrewMembers(squadronMembersForSquadron);
         }
         return squadronMembersInMissionOtherThanPlayer;
     }
@@ -149,7 +149,7 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
             if (confirmedAiVictory.getVictor() instanceof LogPlane)
             {
                 LogPlane victorPlanePlane = (LogPlane)confirmedAiVictory.getVictor();
-                if (victorPlanePlane.getPilotSerialNumber() == serialNumber)
+                if (victorPlanePlane.getCrewMemberSerialNumber() == serialNumber)
                 {
                     return true;
                 }
@@ -159,10 +159,10 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
         return false;
    }
 
-    private void createAiVictory(LogVictory resultVictory, SquadronMember pilotVictor) throws PWCGException
+    private void createAiVictory(LogVictory resultVictory, CrewMember crewMemberVictor) throws PWCGException
     {
         AARMissionEvaluationData evaluationData = aarContext.getMissionEvaluationData();
-        LogPlane squadronMemberPlane = evaluationData.getPlaneInMissionBySerialNumber(pilotVictor.getSerialNumber());
+        LogPlane squadronMemberPlane = evaluationData.getPlaneInMissionBySerialNumber(crewMemberVictor.getSerialNumber());
         if (squadronMemberPlane != null)
         {
             resultVictory.setVictor(squadronMemberPlane);

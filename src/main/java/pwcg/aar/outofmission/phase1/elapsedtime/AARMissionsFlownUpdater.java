@@ -4,8 +4,8 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.outofmission.phase2.awards.MissionsFlownCalculator;
 import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.core.exception.PWCGException;
 
 public class AARMissionsFlownUpdater
@@ -27,25 +27,25 @@ public class AARMissionsFlownUpdater
     
     private void missionsFlownInMission() throws PWCGException
     {
-        SquadronMembers campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission();
-        for (SquadronMember squadronMember : campaignMembersInMission.getSquadronMemberList())
+        CrewMembers campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission();
+        for (CrewMember crewMember : campaignMembersInMission.getCrewMemberList())
         {
-            int updatedMissionsFlown = MissionsFlownCalculator.calculateMissionsFlown(campaign, squadronMember);
-            aarContext.getPersonnelAcheivements().updateMissionsFlown(squadronMember.getSerialNumber(), updatedMissionsFlown);
+            int updatedMissionsFlown = MissionsFlownCalculator.calculateMissionsFlown(campaign, crewMember);
+            aarContext.getPersonnelAcheivements().updateMissionsFlown(crewMember.getSerialNumber(), updatedMissionsFlown);
         }
     }
 
     public void missionsFlownOutOfMission() throws PWCGException 
     {        
-        SquadronMembers campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission();
-        SquadronMembers campaignMembersNotInMission = CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(campaign, campaignMembersInMission);
+        CrewMembers campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission();
+        CrewMembers campaignMembersNotInMission = CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(campaign, campaignMembersInMission);
         
-        for (SquadronMember squadronMember : campaignMembersNotInMission.getSquadronMemberList())
+        for (CrewMember crewMember : campaignMembersNotInMission.getCrewMemberList())
         {
-            if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 
+            if (OutOfMissionCrewMemberSelector.shouldCrewMemberBeEvaluated(campaign, crewMember)) 
             {
-                int updatedMissionsFlown = MissionsFlownCalculator.calculateMissionsFlown(campaign, squadronMember);
-                aarContext.getPersonnelAcheivements().updateMissionsFlown(squadronMember.getSerialNumber(), updatedMissionsFlown);
+                int updatedMissionsFlown = MissionsFlownCalculator.calculateMissionsFlown(campaign, crewMember);
+                aarContext.getPersonnelAcheivements().updateMissionsFlown(crewMember.getSerialNumber(), updatedMissionsFlown);
             }
         }
     }

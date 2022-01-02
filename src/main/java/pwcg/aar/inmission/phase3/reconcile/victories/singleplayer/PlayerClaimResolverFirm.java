@@ -3,9 +3,9 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -14,7 +14,7 @@ public class PlayerClaimResolverFirm
 {    
     private PlayerClaimPlaneNameFinder claimPlaneNameFinder = new PlayerClaimPlaneNameFinder();
     
-    public String getShotDownPlaneDisplayNameAsFirm (SquadronMember player, PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
+    public String getShotDownPlaneDisplayNameAsFirm (CrewMember player, PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
     {
         String shotDownPlaneDisplayName = "";
         
@@ -52,7 +52,7 @@ public class PlayerClaimResolverFirm
     }
         
 
-    public String getShotDownPlaneDisplayNameAsFirmNotExact(SquadronMember player, PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
+    public String getShotDownPlaneDisplayNameAsFirmNotExact(CrewMember player, PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
     {
         String shotDownPlaneDisplayName = "";
         if (!resultVictory.isConfirmed())

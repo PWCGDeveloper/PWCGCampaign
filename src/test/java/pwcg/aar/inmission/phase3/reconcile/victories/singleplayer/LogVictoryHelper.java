@@ -10,9 +10,9 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.squadmember.SerialNumber;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.location.Coordinate;
-import pwcg.product.fc.country.FCCountry;
+import pwcg.product.bos.country.BoSCountry;
 import pwcg.testutils.SquadronTestProfile;
 
 public class LogVictoryHelper
@@ -24,11 +24,11 @@ public class LogVictoryHelper
         LogPlane victor = makeVictor();
         
         LogPlane victim = new LogPlane(1);
-        victim.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
+        victim.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         victim.setVehicleType("albatrosd5");
-        victim.setCountry(new FCCountry(Country.GERMANY));
+        victim.setCountry(new BoSCountry(Country.GERMANY));
         victim.setSquadronId(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
-        victim.intializePilot(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
+        victim.intializeCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
 
         makeVictory(victor, victim);
     }
@@ -38,11 +38,11 @@ public class LogVictoryHelper
         LogUnknown victor = new LogUnknown();
         
         LogPlane victim = new LogPlane(1);
-        victim.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
+        victim.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         victim.setVehicleType("albatrosd5");
-        victim.setCountry(new FCCountry(Country.GERMANY));
+        victim.setCountry(new BoSCountry(Country.GERMANY));
         victim.setSquadronId(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
-        victim.intializePilot(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
+        victim.intializeCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
 
         makeVictory(victor, victim);
     }
@@ -53,7 +53,7 @@ public class LogVictoryHelper
         
         LogBalloon victim = new LogBalloon(10000);
         victim.setVehicleType("drachen");
-        victim.setCountry(new FCCountry(Country.GERMANY));
+        victim.setCountry(new BoSCountry(Country.GERMANY));
 
         makeVictory(victor, victim);
     }
@@ -64,7 +64,7 @@ public class LogVictoryHelper
         
         LogBalloon victim = new LogBalloon(10000);
         victim.setVehicleType("drachen");
-        victim.setCountry(new FCCountry(Country.GERMANY));
+        victim.setCountry(new BoSCountry(Country.GERMANY));
 
         makeVictory(victor, victim);
     }
@@ -75,7 +75,7 @@ public class LogVictoryHelper
         
         LogGroundUnit victim = new LogGroundUnit(1000);
         victim.setVehicleType("tank");
-        victim.setCountry(new FCCountry(Country.GERMANY));
+        victim.setCountry(new BoSCountry(Country.GERMANY));
 
         makeVictory(victor, victim);
     }
@@ -83,11 +83,11 @@ public class LogVictoryHelper
     public LogPlane makeVictor()
     {
         LogPlane victor = new LogPlane(1);
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         victor.setVehicleType("spad13");
-        victor.setCountry(new FCCountry(Country.FRANCE));
+        victor.setCountry(new BoSCountry(Country.FRANCE));
         victor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        victor.intializePilot(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.intializeCrewMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         return victor;
     }
 

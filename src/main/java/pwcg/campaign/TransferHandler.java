@@ -2,10 +2,10 @@ package pwcg.campaign;
 
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronTransferFinder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -14,15 +14,15 @@ import pwcg.core.utils.RandomNumberGenerator;
 public class TransferHandler 
 {
     private Campaign campaign = null;
-    private SquadronMember player = null;
+    private CrewMember player = null;
     
-    public TransferHandler (Campaign campaign, SquadronMember player)
+    public TransferHandler (Campaign campaign, CrewMember player)
     {
         this.campaign = campaign;
         this.player = player;
     }
 
-	public TransferEvent transferPlayer(Squadron oldSquadron, Squadron newSquadron) throws PWCGException 
+	public TransferEvent transferPlayer(Company oldSquadron, Company newSquadron) throws PWCGException 
 	{
 	    int leaveTimeForTransfer = transferleaveTime();	
         changeInRankForServiceTransfer(oldSquadron.determineServiceForSquadron(campaign.getDate()), newSquadron.determineServiceForSquadron(campaign.getDate()));
@@ -32,33 +32,33 @@ public class TransferHandler
         return transferEvent;
 	}
 
-	public void transferAI(SquadronMember squadronMember) throws PWCGException 
+	public void transferAI(CrewMember crewMember) throws PWCGException 
     {
-        SquadronTransferFinder squadronTransferFinder = new SquadronTransferFinder(campaign, squadronMember);
+        SquadronTransferFinder squadronTransferFinder = new SquadronTransferFinder(campaign, crewMember);
         int newSquadronId = squadronTransferFinder.chooseSquadronForTransfer();
-		SquadronPersonnel oldSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronMember.getSquadronId());
-		SquadronPersonnel newSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(newSquadronId);
+		CompanyPersonnel oldSquadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(crewMember.getCompanyId());
+		CompanyPersonnel newSquadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(newSquadronId);
 
-		oldSquadronPersonnel.removeSquadronMember(squadronMember);
-        squadronMember.setSquadronId(newSquadronId);
-		newSquadronPersonnel.addSquadronMember(squadronMember);
+		oldSquadronPersonnel.removeCrewMember(crewMember);
+        crewMember.setSquadronId(newSquadronId);
+		newSquadronPersonnel.addCrewMember(crewMember);
     }
 
-	private TransferEvent createTransferEvent(int leaveTimeForTransfer, Squadron oldSquad, Squadron newSquad) throws PWCGException
+	private TransferEvent createTransferEvent(int leaveTimeForTransfer, Company oldSquad, Company newSquad) throws PWCGException
 	{
         boolean isNewsWorthy = true;
 		TransferEvent transferEvent = new TransferEvent(campaign, oldSquad.getSquadronId(), newSquad.getSquadronId(), leaveTimeForTransfer, player.getSerialNumber(), campaign.getDate(), isNewsWorthy);
 		return transferEvent;
 	}
 
-	private void movePlayerToNewSquadron(Squadron newSquadron) throws PWCGException
+	private void movePlayerToNewSquadron(Company newSquadron) throws PWCGException
 	{        
-		SquadronPersonnel oldSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(player.getSquadronId());
-		SquadronPersonnel newSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(newSquadron.getSquadronId());
+		CompanyPersonnel oldSquadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(player.getCompanyId());
+		CompanyPersonnel newSquadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(newSquadron.getSquadronId());
 
-		oldSquadronPersonnel.removeSquadronMember(player);
+		oldSquadronPersonnel.removeCrewMember(player);
 		player.setSquadronId(newSquadron.getSquadronId());
-		newSquadronPersonnel.addSquadronMember(player);
+		newSquadronPersonnel.addCrewMember(player);
 	}
 
 	private int transferleaveTime() throws PWCGException 

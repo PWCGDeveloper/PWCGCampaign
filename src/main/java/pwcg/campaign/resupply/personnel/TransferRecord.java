@@ -1,23 +1,23 @@
 package pwcg.campaign.resupply.personnel;
 
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 
 public class TransferRecord
 {
-    private SquadronMember squadronMember;
+    private CrewMember crewMember;
     private int transferFrom;
     private int transferTo;
 
-    public TransferRecord(SquadronMember squadronMember, int transferFrom, int transferTo)
+    public TransferRecord(CrewMember crewMember, int transferFrom, int transferTo)
     {
-        this.squadronMember  = squadronMember;
+        this.crewMember  = crewMember;
         this.transferFrom  = transferFrom;
         this.transferTo  = transferTo;
     }
     
-    public SquadronMember getSquadronMember()
+    public CrewMember getCrewMember()
     {
-        return squadronMember;
+        return crewMember;
     }
 
     public int getTransferFrom()
@@ -30,8 +30,8 @@ public class TransferRecord
         return transferTo;
     }
 
-    public void setSquadronMember(SquadronMember squadronMember)
+    public void setCrewMember(CrewMember crewMember)
     {
-        this.squadronMember = squadronMember;
+        this.crewMember = crewMember;
     }
 }

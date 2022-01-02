@@ -13,7 +13,7 @@ import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.factory.AirfieldConfigurationFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.AirfieldConfiguration;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
@@ -182,8 +182,8 @@ public class AirfieldManager
     {
         List<Airfield> airfieldsFiltered = new ArrayList<>();
         
-        List<Squadron> activeSquadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(date);
-        for (Squadron squadron : activeSquadrons)
+        List<Company> activeSquadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(date);
+        for (Company squadron : activeSquadrons)
         {
             Airfield squadronAirfield = squadron.determineCurrentAirfieldCurrentMap(date);
             if (isAirfieldInList(airfieldsToFilter, squadronAirfield))

@@ -14,17 +14,17 @@ public class PlaneStatus
     public static final String REMOVED_FROM_SERVICE_DESC = "Removed from service";
     
 
-    public static String pilotStatusToStatusDescription(int pilotStatus)
+    public static String crewMemberStatusToStatusDescription(int crewMemberStatus)
     {
-        if (pilotStatus == STATUS_DEPOT)
+        if (crewMemberStatus == STATUS_DEPOT)
         {
             return DEPOT_STATUS_DESC;
         }
-        else if (pilotStatus == STATUS_DESTROYED)
+        else if (crewMemberStatus == STATUS_DESTROYED)
         {
             return DESTROYED_STATUS_DESC;
         }
-        else if (pilotStatus == STATUS_REMOVED_FROM_SERVICE)
+        else if (crewMemberStatus == STATUS_REMOVED_FROM_SERVICE)
         {
             return REMOVED_FROM_SERVICE_DESC;
         }

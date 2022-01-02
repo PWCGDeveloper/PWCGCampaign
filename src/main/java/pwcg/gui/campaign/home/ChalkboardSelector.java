@@ -14,10 +14,10 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
@@ -50,11 +50,11 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         JPanel selectorPanel = new JPanel(new GridLayout(0, 3));
         selectorPanel.setOpaque(false);
 
-        JRadioButton pilotsButton = makeRadioButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
-        selectorPanel.add(pilotsButton);
+        JRadioButton crewMembersButton = makeRadioButton("CrewMembers", "CampCrewMembers", "Show squadron crewMember chalk board");
+        selectorPanel.add(crewMembersButton);
 
-        JRadioButton playerPilotsButton = makeRadioButton("Player Pilots", "CampPlayerPilots", "Show player pilots chalk board");
-        selectorPanel.add(playerPilotsButton);
+        JRadioButton playerCrewMembersButton = makeRadioButton("Player CrewMembers", "CampPlayerCrewMembers", "Show player crewMembers chalk board");
+        selectorPanel.add(playerCrewMembersButton);
 
         JRadioButton topAcesButton = makeRadioButton("Top Aces: All", "CampTopAces", "Show top aces chalk board");
         selectorPanel.add(topAcesButton);
@@ -106,13 +106,13 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         {
             String action = ae.getActionCommand();
 
-            if (action.equalsIgnoreCase("CampPilots"))
+            if (action.equalsIgnoreCase("CampCrewMembers"))
             {
                 createPlayerSquadronContext();
             }            
-            else if (action.equalsIgnoreCase("CampPlayerPilots"))
+            else if (action.equalsIgnoreCase("CampPlayerCrewMembers"))
             {
-                createPlayerPilotsContext();
+                createPlayerCrewMembersContext();
             }
             else if (action.equalsIgnoreCase("CampTopAcesService"))
             {
@@ -156,46 +156,46 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         CampaignEquipmentChalkBoardPanelSet equipmentChalkboardDisplay = new CampaignEquipmentChalkBoardPanelSet(campaignHome.getChalkboardSelector());
         equipmentChalkboardDisplay.makeEquipmentPanel(campaignHome.getCampaign());
         
-        List<SquadronMember> squadronMembers = makePilotList();
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getSquadronId());
+        List<CrewMember> squadronMembers = makeCrewMemberList();
+        CrewMember referencePlayer = campaign.findReferencePlayer();
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getCompanyId());
 
         campaignHome.createNewContext(equipmentChalkboardDisplay, squadronPanel);
     }    
 
     public void createPlayerSquadronContext() throws PWCGException 
     {
-        List<SquadronMember> squadronMembers = makePilotList();
+        List<CrewMember> squadronMembers = makeCrewMemberList();
         JPanel chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, squadronMembers);
         
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getSquadronId());
+        CrewMember referencePlayer = campaign.findReferencePlayer();
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getCompanyId());
 
         campaignHome.createNewContext(chalkboardPanel, squadronPanel);
     }
 
-    public void createPlayerPilotsContext() throws PWCGException 
+    public void createPlayerCrewMembersContext() throws PWCGException 
     {
-        List<SquadronMember> playerPilots = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
-        JPanel chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, playerPilots);
+        List<CrewMember> playerCrewMembers = campaign.getPersonnelManager().getAllPlayers().getCrewMemberList();
+        JPanel chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, playerCrewMembers);
         
-        JPanel playerPilotPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaignHome, playerPilots);
+        JPanel playerCrewMemberPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaignHome, playerCrewMembers);
 
-        campaignHome.createNewContext(chalkboardPanel, playerPilotPanel);
+        campaignHome.createNewContext(chalkboardPanel, playerCrewMemberPanel);
     }
     
-    private List<SquadronMember> makePilotList() throws PWCGException 
+    private List<CrewMember> makeCrewMemberList() throws PWCGException 
     {
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        return squadronMembers.sortPilots(campaign.getDate());
+        CrewMember referencePlayer = campaign.findReferencePlayer();
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(referencePlayer.getCompanyId());
+        CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        return squadronMembers.sortCrewMembers(campaign.getDate());
     }
 
     private void createTopAceContext(TopAcesListType topAcesListType) throws PWCGException 
     {
         TopAcesListBuilder topAcesListBuilder = new TopAcesListBuilder(campaign);
-        List<SquadronMember> acesToDisplay = topAcesListBuilder.getTopTenAces(topAcesListType);
+        List<CrewMember> acesToDisplay = topAcesListBuilder.getTopTenAces(topAcesListType);
         
         CampaignHomeTopAcesCenterPanel topAceListChalkboard = new CampaignHomeTopAcesCenterPanel(campaignHome);
         topAceListChalkboard.makePanel(acesToDisplay);

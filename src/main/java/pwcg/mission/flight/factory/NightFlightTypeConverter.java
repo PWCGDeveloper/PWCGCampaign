@@ -9,11 +9,7 @@ public class NightFlightTypeConverter
     {
         if (isNightMission)
         {
-            if (flightType == FlightTypes.ESCORT                    ||
-                flightType == FlightTypes.ARTILLERY_SPOT            ||
-                flightType == FlightTypes.BALLOON_BUST              ||
-                flightType == FlightTypes.BALLOON_DEFENSE           ||
-                flightType == FlightTypes.OFFENSIVE                 ||
+            if (flightType == FlightTypes.OFFENSIVE                 ||
                 flightType == FlightTypes.DIVE_BOMB)
             {
                 return FlightTypes.GROUND_ATTACK;

@@ -2,8 +2,8 @@ package pwcg.product.bos.medals;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.medals.Medal;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class ItalianMedalManager extends BoSMedalManager 
@@ -22,7 +22,7 @@ public class ItalianMedalManager extends BoSMedalManager
         super(campaign);
 
 		
-        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                "ita_pilots_badge.png"));
+        medals.put(PILOTS_BADGE, new Medal ("CrewMembers Badge",                                "ita_crewMembers_badge.png"));
         medals.put(WOUND_STRIPE, new Medal ("Wound Stripe",                                "ita_wound_stripe.png"));
         
         medals.put(MEDAL_MILITARY_VALOR_BRONZE, new Medal ("Al Valore Militar Bronze",     "ita_al_valore_militar_bronze.png"));
@@ -32,14 +32,14 @@ public class ItalianMedalManager extends BoSMedalManager
         medals.put(CROSS_MILITARY_VALOR, new Medal ("Cross of Military Valour",            "ita_cross_of_merit_valor.png"));
 	} 
 
-	public Medal awardWoundedAward(SquadronMember pilot, ArmedService service) 
+	public Medal awardWoundedAward(CrewMember crewMember, ArmedService service) 
 	{
         return medals.get(WOUND_STRIPE);
 	}
 
-    protected Medal awardWings(SquadronMember pilot) 
+    protected Medal awardWings(CrewMember crewMember) 
     {
-        if (!hasMedal(pilot, medals.get(PILOTS_BADGE)))
+        if (!hasMedal(crewMember, medals.get(PILOTS_BADGE)))
         {
             return medals.get(PILOTS_BADGE);
         }
@@ -47,29 +47,29 @@ public class ItalianMedalManager extends BoSMedalManager
         return null;
     }
 
-	protected Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
+	protected Medal awardFighter(CrewMember crewMember, ArmedService service, int victoriesThisMission) throws PWCGException 
 	{
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 1) && !hasMedal(pilot, medals.get(MEDAL_MILITARY_VALOR_BRONZE)))
+		if ((crewMember.getCrewMemberVictories().getAirToAirVictoryCount() >= 1) && !hasMedal(crewMember, medals.get(MEDAL_MILITARY_VALOR_BRONZE)))
 		{
 			return medals.get(MEDAL_MILITARY_VALOR_BRONZE);
 		}
 
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 5)  && !hasMedal(pilot, medals.get(MEDAL_MILITARY_VALOR_SILVER)))
+		if ((crewMember.getCrewMemberVictories().getAirToAirVictoryCount() >= 5)  && !hasMedal(crewMember, medals.get(MEDAL_MILITARY_VALOR_SILVER)))
 		{
 			return medals.get(MEDAL_MILITARY_VALOR_SILVER);
 		}
 
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 13) && !hasMedal(pilot, medals.get(MEDAL_MILITARY_VALOR_GOLD)))
+		if ((crewMember.getCrewMemberVictories().getAirToAirVictoryCount() >= 13) && !hasMedal(crewMember, medals.get(MEDAL_MILITARY_VALOR_GOLD)))
 		{
 			return medals.get(MEDAL_MILITARY_VALOR_GOLD);
 		}
 
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 18) && !hasMedal(pilot, medals.get(CROSS_WAR_MERIT)))
+		if ((crewMember.getCrewMemberVictories().getAirToAirVictoryCount() >= 18) && !hasMedal(crewMember, medals.get(CROSS_WAR_MERIT)))
 		{
 			return medals.get(CROSS_WAR_MERIT);
 		}
 
-        if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 25) && !hasMedal(pilot, medals.get(CROSS_MILITARY_VALOR)))
+        if ((crewMember.getCrewMemberVictories().getAirToAirVictoryCount() >= 25) && !hasMedal(crewMember, medals.get(CROSS_MILITARY_VALOR)))
         {
             return medals.get(CROSS_MILITARY_VALOR);
         }
@@ -77,48 +77,48 @@ public class ItalianMedalManager extends BoSMedalManager
 		return null;
 	}
 
-    protected Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
+    protected Medal awardBomber(CrewMember crewMember, ArmedService service, int victoriesThisMission) throws PWCGException 
     {
-        int numPilotGroundVictoryPoints = pilot.getSquadronMemberVictories().getGroundVictoryPointTotal();
+        int numCrewMemberGroundVictoryPoints = crewMember.getCrewMemberVictories().getGroundVictoryPointTotal();
 
-        if ((pilot.getMissionFlown() >= 15) && !hasMedal(pilot, medals.get(MEDAL_MILITARY_VALOR_BRONZE)))
+        if ((crewMember.getBattlesFought() >= 15) && !hasMedal(crewMember, medals.get(MEDAL_MILITARY_VALOR_BRONZE)))
         {
             return medals.get(MEDAL_MILITARY_VALOR_BRONZE);
         }
         
-        if (!hasMedal(pilot, medals.get(MEDAL_MILITARY_VALOR_SILVER)))
+        if (!hasMedal(crewMember, medals.get(MEDAL_MILITARY_VALOR_SILVER)))
         {
-            if (pilot.getMissionFlown() >= 40)
+            if (crewMember.getBattlesFought() >= 40)
             {
                 return medals.get(MEDAL_MILITARY_VALOR_SILVER);
             }
-            if (pilot.getMissionFlown() >= 20 && numPilotGroundVictoryPoints > 15)
+            if (crewMember.getBattlesFought() >= 20 && numCrewMemberGroundVictoryPoints > 15)
             {
                 return medals.get(MEDAL_MILITARY_VALOR_SILVER);
             }
         }
         
-        if (pilot.getMissionFlown() >= 80 && numPilotGroundVictoryPoints > 40)
+        if (crewMember.getBattlesFought() >= 80 && numCrewMemberGroundVictoryPoints > 40)
         {
             return medals.get(MEDAL_MILITARY_VALOR_GOLD);
         }
 
-        if (!hasMedal(pilot, medals.get(CROSS_WAR_MERIT)))
+        if (!hasMedal(crewMember, medals.get(CROSS_WAR_MERIT)))
         {
-            if (pilot.getMissionFlown() >= 100 && numPilotGroundVictoryPoints > 60)
+            if (crewMember.getBattlesFought() >= 100 && numCrewMemberGroundVictoryPoints > 60)
             {
                 return medals.get(CROSS_WAR_MERIT);
             }
         }
 
-        if (!hasMedal(pilot, medals.get(CROSS_MILITARY_VALOR)))
+        if (!hasMedal(crewMember, medals.get(CROSS_MILITARY_VALOR)))
         {
-            if (pilot.getMissionFlown() >= 100 && numPilotGroundVictoryPoints > 100)
+            if (crewMember.getBattlesFought() >= 100 && numCrewMemberGroundVictoryPoints > 100)
             {
                 return medals.get(CROSS_MILITARY_VALOR);
             }
         }
         
-        return awardFighter(pilot, service, victoriesThisMission);
+        return awardFighter(crewMember, service, victoriesThisMission);
     }
 }

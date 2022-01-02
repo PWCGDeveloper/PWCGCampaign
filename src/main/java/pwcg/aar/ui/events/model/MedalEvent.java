@@ -4,13 +4,13 @@ import java.util.Date;
 
 import pwcg.campaign.Campaign;
 
-public class MedalEvent extends AARPilotEvent
+public class MedalEvent extends AARCrewMemberEvent
 {
     private String medal = "";
 
-    public MedalEvent(Campaign campaign, String medal, int squadronId, int pilotSerialNumber, Date date, boolean isNewsWorthy)
+    public MedalEvent(Campaign campaign, String medal, int squadronId, int crewMemberSerialNumber, Date date, boolean isNewsWorthy)
     {
-        super(campaign, squadronId, pilotSerialNumber, date, isNewsWorthy);
+        super(campaign, squadronId, crewMemberSerialNumber, date, isNewsWorthy);
         this.medal = medal;
     }
 

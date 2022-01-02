@@ -13,10 +13,10 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
@@ -29,7 +29,7 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     private Campaign campaign;    
     private AARContext aarContext;
 
-    private Map<Integer, SquadronMember> personnelLosses;
+    private Map<Integer, CrewMember> personnelLosses;
     private Map<Integer, LogPlane> equipmentLosses;
 
     @BeforeAll
@@ -81,12 +81,12 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
 
     private void validatePersonnelLossesInMemory() throws PWCGException
     {
-        for (SquadronMember lostPilot : personnelLosses.values())
+        for (CrewMember lostCrewMember : personnelLosses.values())
         {
-            System.out.println("Pilot Lost: " + lostPilot.getNameAndRank());
-            SquadronMember lostPilotFromPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(lostPilot.getSquadronId()).getSquadronMember(lostPilot.getSerialNumber());
-            assert (lostPilotFromPersonnel != null);
-            assert (lostPilotFromPersonnel.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+            System.out.println("CrewMember Lost: " + lostCrewMember.getNameAndRank());
+            CrewMember lostCrewMemberFromPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(lostCrewMember.getCompanyId()).getCrewMember(lostCrewMember.getSerialNumber());
+            assert (lostCrewMemberFromPersonnel != null);
+            assert (lostCrewMemberFromPersonnel.getCrewMemberActiveStatus() <= CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         }
     }
 

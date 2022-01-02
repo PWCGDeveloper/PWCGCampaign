@@ -98,7 +98,7 @@ public class RoFFrenchMedalManagerTest extends MedalManagerTestBase
 
         List<Medal> highestOrderMedals = medalManager.getMedalsWithHighestOrderOnly(player.getMedals());
         Assertions.assertEquals (5, highestOrderMedals.size());
-        Assertions.assertEquals ("Pilots Badge", highestOrderMedals.get(0).getMedalName());
+        Assertions.assertEquals ("CrewMembers Badge", highestOrderMedals.get(0).getMedalName());
         Assertions.assertEquals ("Medaille Militaire", highestOrderMedals.get(1).getMedalName());
         Assertions.assertEquals (MedalManager.CROIX_DE_GUERRE_NAME + " with Silver Palm", highestOrderMedals.get(2).getMedalName());
         Assertions.assertEquals ("Medaille d' Honneur", highestOrderMedals.get(3).getMedalName());

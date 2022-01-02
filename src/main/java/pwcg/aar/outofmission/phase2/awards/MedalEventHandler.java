@@ -7,11 +7,11 @@ import java.util.Map;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.medals.IMedalManager;
 import pwcg.campaign.medals.Medal;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class MedalEventHandler 
@@ -24,45 +24,45 @@ public class MedalEventHandler
 		this.campaign = campaign;
 	}
 
-    public void awardMedals(SquadronMember squadronMember, int victoriesThisMission) throws PWCGException 
+    public void awardMedals(CrewMember crewMember, int victoriesThisMission) throws PWCGException 
 	{
-		if (squadronMember instanceof Ace)
+		if (crewMember instanceof TankAce)
 		{
 			return;
 		}
 		
-        ArmedService service = squadronMember.determineService(campaign.getDate());
-        IMedalManager mm = MedalManagerFactory.createMedalManager(squadronMember.determineCountry(campaign.getDate()), campaign);
-		Medal medal = mm.award(campaign, squadronMember, service,  victoriesThisMission);
+        ArmedService service = crewMember.determineService(campaign.getDate());
+        IMedalManager mm = MedalManagerFactory.createMedalManager(crewMember.determineCountry(campaign.getDate()), campaign);
+		Medal medal = mm.award(campaign, crewMember, service,  victoriesThisMission);
 		if (medal != null)
 		{
-		    if (!alreadAwarded(squadronMember, medal.getMedalName()))
+		    if (!alreadAwarded(crewMember, medal.getMedalName()))
 		    {
-		        Map<String, Medal> medalsAwardedInElapsedTime = getMedalsInElapsedTimeForPilot(squadronMember);
+		        Map<String, Medal> medalsAwardedInElapsedTime = getMedalsInElapsedTimeForCrewMember(crewMember);
 		        medal.setMedalDate(campaign.getDate());
 		        medalsAwardedInElapsedTime.put(medal.getMedalName(), medal);
 		    }
 		}
 	}
 
-    public void awardWoundMedals(SquadronMember squadronMember) throws PWCGException 
+    public void awardWoundMedals(CrewMember crewMember) throws PWCGException 
     {
-        IMedalManager mm = MedalManagerFactory.createMedalManager(squadronMember.determineCountry(campaign.getDate()), campaign);
-        Medal woundMedal = mm.awardWoundedAward(squadronMember, squadronMember.determineService(campaign.getDate()));
+        IMedalManager mm = MedalManagerFactory.createMedalManager(crewMember.determineCountry(campaign.getDate()), campaign);
+        Medal woundMedal = mm.awardWoundedAward(crewMember, crewMember.determineService(campaign.getDate()));
         if (woundMedal != null)
         {
-            if (!alreadAwarded(squadronMember, woundMedal.getMedalName()))
+            if (!alreadAwarded(crewMember, woundMedal.getMedalName()))
             {
-                Map<String, Medal> medalsAwardedInElapsedTime = getMedalsInElapsedTimeForPilot(squadronMember);
+                Map<String, Medal> medalsAwardedInElapsedTime = getMedalsInElapsedTimeForCrewMember(crewMember);
                 woundMedal.setMedalDate(campaign.getDate());
                 medalsAwardedInElapsedTime.put(woundMedal.getMedalName(), woundMedal);
             }
         }
     }
 
-    private boolean alreadAwarded(SquadronMember squadronMember, String medalName)
+    private boolean alreadAwarded(CrewMember crewMember, String medalName)
     {
-        for (Medal medal : squadronMember.getMedals())
+        for (Medal medal : crewMember.getMedals())
         {
             if (medal.getMedalName().equals(medalName))
             {
@@ -70,7 +70,7 @@ public class MedalEventHandler
             }
         }    
         
-        return alreadyAwardedMedalDuringElapsedTime(squadronMember.getSerialNumber(), medalName);
+        return alreadyAwardedMedalDuringElapsedTime(crewMember.getSerialNumber(), medalName);
     }
     
     private boolean alreadyAwardedMedalDuringElapsedTime(Integer serialNumber, String medalName)
@@ -87,18 +87,18 @@ public class MedalEventHandler
         return false;
     }
 
-    private Map<String, Medal> getMedalsInElapsedTimeForPilot(SquadronMember squadronMember)
+    private Map<String, Medal> getMedalsInElapsedTimeForCrewMember(CrewMember crewMember)
     {
-        if (!medalAwards.containsKey(squadronMember.getSerialNumber()))
+        if (!medalAwards.containsKey(crewMember.getSerialNumber()))
         {
             Map <String, Medal> medalsAwardedInElapsedTime = new HashMap<>();
-            medalAwards.put(squadronMember.getSerialNumber(), medalsAwardedInElapsedTime);
+            medalAwards.put(crewMember.getSerialNumber(), medalsAwardedInElapsedTime);
         }
-        Map <String, Medal> medalsAwardedInElapsedTime = medalAwards.get(squadronMember.getSerialNumber());
+        Map <String, Medal> medalsAwardedInElapsedTime = medalAwards.get(crewMember.getSerialNumber());
         return medalsAwardedInElapsedTime;
     }
 
-	public List<Medal> getMedalAwardsForSquadronMember(Integer serialNumber) 
+	public List<Medal> getMedalAwardsForCrewMember(Integer serialNumber) 
 	{
         if (!medalAwards.containsKey(serialNumber))
         {

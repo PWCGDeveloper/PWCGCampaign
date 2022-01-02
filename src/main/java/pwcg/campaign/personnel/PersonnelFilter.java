@@ -3,10 +3,10 @@ package pwcg.campaign.personnel;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.crewmember.SerialNumber.SerialNumberClassification;
 
 public class PersonnelFilter 
 {
@@ -17,124 +17,124 @@ public class PersonnelFilter
         this.invertFilter = invertFilter;
     }
 
-    public Map<Integer, SquadronMember> applyPlayerFilter(Map<Integer, SquadronMember> input) 
+    public Map<Integer, CrewMember> applyPlayerFilter(Map<Integer, CrewMember> input) 
     {
-        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();
-        for (SquadronMember pilot : input.values())
+        Map<Integer, CrewMember> returnCrewMembers = new HashMap<>();
+        for (CrewMember crewMember : input.values())
         {
             if (!invertFilter)
             {
-                if (SerialNumber.getSerialNumberClassification(pilot.getSerialNumber()) == SerialNumberClassification.PLAYER)
+                if (SerialNumber.getSerialNumberClassification(crewMember.getSerialNumber()) == SerialNumberClassification.PLAYER)
                 {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                    returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
             else
             {
-                if (SerialNumber.getSerialNumberClassification(pilot.getSerialNumber()) != SerialNumberClassification.PLAYER)
+                if (SerialNumber.getSerialNumberClassification(crewMember.getSerialNumber()) != SerialNumberClassification.PLAYER)
                 {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                    returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
         }
 
-        return returnSquadronMembers;
+        return returnCrewMembers;
     }
 
-    public Map<Integer, SquadronMember> applyAceFilter(Map<Integer, SquadronMember> input) 
+    public Map<Integer, CrewMember> applyAceFilter(Map<Integer, CrewMember> input) 
     {
-        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();
-        for (SquadronMember pilot : input.values())
+        Map<Integer, CrewMember> returnCrewMembers = new HashMap<>();
+        for (CrewMember crewMember : input.values())
         {
             if (!invertFilter)
             {
-                if (SerialNumber.getSerialNumberClassification(pilot.getSerialNumber()) == SerialNumberClassification.ACE)
+                if (SerialNumber.getSerialNumberClassification(crewMember.getSerialNumber()) == SerialNumberClassification.ACE)
                 {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                    returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
             else
             {
-                if (SerialNumber.getSerialNumberClassification(pilot.getSerialNumber()) != SerialNumberClassification.ACE)
+                if (SerialNumber.getSerialNumberClassification(crewMember.getSerialNumber()) != SerialNumberClassification.ACE)
                 {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                    returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
         }
 
-        return returnSquadronMembers;
+        return returnCrewMembers;
     }   
 
-    public Map<Integer, SquadronMember> applyAIFilter(Map<Integer, SquadronMember> input)
+    public Map<Integer, CrewMember> applyAIFilter(Map<Integer, CrewMember> input)
     {
-        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();
-        for (SquadronMember pilot : input.values())
+        Map<Integer, CrewMember> returnCrewMembers = new HashMap<>();
+        for (CrewMember crewMember : input.values())
         {
             if (!invertFilter)
             {
-                if (SerialNumber.getSerialNumberClassification(pilot.getSerialNumber()) == SerialNumberClassification.AI)
+                if (SerialNumber.getSerialNumberClassification(crewMember.getSerialNumber()) == SerialNumberClassification.AI)
                 {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                    returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
             else
             {
-                if (SerialNumber.getSerialNumberClassification(pilot.getSerialNumber()) != SerialNumberClassification.AI)
+                if (SerialNumber.getSerialNumberClassification(crewMember.getSerialNumber()) != SerialNumberClassification.AI)
                 {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                    returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
         }
 
-        return returnSquadronMembers;
+        return returnCrewMembers;
     }
 
-    public Map<Integer, SquadronMember> applyWoundedFilter(Map<Integer, SquadronMember> input)
+    public Map<Integer, CrewMember> applyWoundedFilter(Map<Integer, CrewMember> input)
     {
-        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();
-        for (SquadronMember pilot : input.values())
+        Map<Integer, CrewMember> returnCrewMembers = new HashMap<>();
+        for (CrewMember crewMember : input.values())
         {
             if (!invertFilter)
             {
-                if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED)
+                if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_WOUNDED)
                 {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                    returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
             else
             {
-                if (!(pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED))
+                if (!(crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_WOUNDED))
                 {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                    returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
         }
 
-        return returnSquadronMembers;
+        return returnCrewMembers;
     }
 
     
-    public Map<Integer, SquadronMember> applySquadronFilter(Map<Integer, SquadronMember> input, int squadronId) 
+    public Map<Integer, CrewMember> applySquadronFilter(Map<Integer, CrewMember> input, int squadronId) 
     {
-        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();
-        for (SquadronMember pilot : input.values())
+        Map<Integer, CrewMember> returnCrewMembers = new HashMap<>();
+        for (CrewMember crewMember : input.values())
         {
             if (!invertFilter)
             {
-                if (pilot.getSquadronId() == squadronId)
+                if (crewMember.getCompanyId() == squadronId)
                 {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                    returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
             else
             {
-                if (pilot.getSquadronId() != squadronId)
+                if (crewMember.getCompanyId() != squadronId)
                 {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                    returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
                 }
             }
         }
 
-        return returnSquadronMembers;
+        return returnCrewMembers;
     }
 }

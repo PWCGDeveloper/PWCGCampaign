@@ -10,8 +10,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigSimple;
@@ -42,10 +42,10 @@ public class StructureBorderBuilderTest
 
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigStructuresKey, ConfigSimple.CONFIG_LEVEL_LOW);
         
-        SquadronMember player = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(player);
+        CrewMember player = campaign.findReferencePlayer();
+        participatingPlayers.addCrewMember(player);
 
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
@@ -69,10 +69,10 @@ public class StructureBorderBuilderTest
 
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigStructuresKey, ConfigSimple.CONFIG_LEVEL_MED);
         
-        SquadronMember player = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(player);
+        CrewMember player = campaign.findReferencePlayer();
+        participatingPlayers.addCrewMember(player);
 
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
@@ -81,7 +81,7 @@ public class StructureBorderBuilderTest
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
         CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructuresConsideringFlights(new ArrayList<>());
 
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
         assert(structureBorder.isInBox(squadron.determineCurrentPosition(campaign.getDate())));
 
         ConfigManager configManager = campaign.getCampaignConfigManager();
@@ -99,10 +99,10 @@ public class StructureBorderBuilderTest
 
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigStructuresKey, ConfigSimple.CONFIG_LEVEL_HIGH);
         
-        SquadronMember player = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(player);
+        CrewMember player = campaign.findReferencePlayer();
+        participatingPlayers.addCrewMember(player);
 
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
@@ -111,7 +111,7 @@ public class StructureBorderBuilderTest
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
         CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructuresConsideringFlights(new ArrayList<>());
 
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
         assert(structureBorder.isInBox(squadron.determineCurrentPosition(campaign.getDate())));
 
         ConfigManager configManager = campaign.getCampaignConfigManager();
@@ -127,10 +127,10 @@ public class StructureBorderBuilderTest
         PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         
-        SquadronMember player = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(player);
+        CrewMember player = campaign.findReferencePlayer();
+        participatingPlayers.addCrewMember(player);
 
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);

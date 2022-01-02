@@ -8,9 +8,9 @@ import java.util.Map;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.Victory;
-import pwcg.campaign.squadmember.VictoryBuilder;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.Victory;
+import pwcg.campaign.crewmember.VictoryBuilder;
 import pwcg.core.exception.PWCGException;
 
 public class VictoryEventHandler 
@@ -30,10 +30,10 @@ public class VictoryEventHandler
             if (resultVictory.getVictor() instanceof LogPlane)
             {
                 LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-    			SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getPilotSerialNumber());
-    			if (pilot != null)
+    			CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getCrewMemberSerialNumber());
+    			if (crewMember != null)
     			{			    
-                    addVictoryForPilot(resultVictory, pilot);
+                    addVictoryForCrewMember(resultVictory, crewMember);
     			}
             }
 		}
@@ -41,18 +41,18 @@ public class VictoryEventHandler
 		return victories;
 	}
 
-    private void addVictoryForPilot(LogVictory logVictory, SquadronMember pilot) throws PWCGException
+    private void addVictoryForCrewMember(LogVictory logVictory, CrewMember crewMember) throws PWCGException
     {
         VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
         Victory victory = victoryBuilder.buildVictory(campaign.getDate(), logVictory);
 
-        if (!victories.containsKey(pilot.getSerialNumber()))
+        if (!victories.containsKey(crewMember.getSerialNumber()))
         {
-            List<Victory> victoriesForPilot = new ArrayList<Victory>();
-            victories.put(pilot.getSerialNumber(), victoriesForPilot);
+            List<Victory> victoriesForCrewMember = new ArrayList<Victory>();
+            victories.put(crewMember.getSerialNumber(), victoriesForCrewMember);
         }
         
-        List<Victory> victoriesForPilot = victories.get(pilot.getSerialNumber());
-        victoriesForPilot.add(victory);
+        List<Victory> victoriesForCrewMember = victories.get(crewMember.getSerialNumber());
+        victoriesForCrewMember.add(victory);
     }
 }

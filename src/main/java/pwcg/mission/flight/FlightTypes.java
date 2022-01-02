@@ -8,15 +8,8 @@ public enum FlightTypes
     PATROL(FlightTypeCategory.FIGHTER), 
     OFFENSIVE(FlightTypeCategory.FIGHTER), 
     INTERCEPT(FlightTypeCategory.FIGHTER), 
-    STRATEGIC_INTERCEPT(FlightTypeCategory.FIGHTER), 
-    SCRAMBLE(FlightTypeCategory.FIGHTER), 
-    LONE_WOLF(FlightTypeCategory.FIGHTER), 
-    ESCORT(FlightTypeCategory.FIGHTER), 
-    SCRAMBLE_OPPOSE(FlightTypeCategory.FIGHTER), 
     LOW_ALT_CAP(FlightTypeCategory.FIGHTER), 
     LOW_ALT_PATROL(FlightTypeCategory.FIGHTER), 
-    BALLOON_BUST(FlightTypeCategory.FIGHTER), 
-    BALLOON_DEFENSE(FlightTypeCategory.FIGHTER),
     GROUND_ATTACK(FlightTypeCategory.ATTACK), 
     GROUND_HUNT(FlightTypeCategory.ATTACK),
     TRAIN_BUST(FlightTypeCategory.ATTACK),
@@ -26,15 +19,8 @@ public enum FlightTypes
     BOMB(FlightTypeCategory.BOMB), 
     LOW_ALT_BOMB(FlightTypeCategory.BOMB), 
     DIVE_BOMB(FlightTypeCategory.BOMB),
-    CONTACT_PATROL(FlightTypeCategory.SINGLE), 
-    ARTILLERY_SPOT(FlightTypeCategory.SINGLE), 
-    RECON(FlightTypeCategory.SINGLE), 
-    SPY_EXTRACT(FlightTypeCategory.SINGLE),
     CARGO_DROP(FlightTypeCategory.TRANSPORT), 
     PARATROOP_DROP(FlightTypeCategory.TRANSPORT), 
-    TRANSPORT(FlightTypeCategory.TRANSPORT), 
-    FERRY(FlightTypeCategory.TRANSPORT),
-    STRATEGIC_BOMB(FlightTypeCategory.STRATEGIC),
     GROUND_FORCES(FlightTypeCategory.INVALID), 
     ANY(FlightTypeCategory.INVALID);
 
@@ -74,13 +60,9 @@ public enum FlightTypes
 
     public static boolean isLowAltFlightType(FlightTypes flightType)
     {
-        if (flightType == FlightTypes.ARTILLERY_SPOT    || 
-            flightType == FlightTypes.CONTACT_PATROL    || 
-            flightType == FlightTypes.GROUND_ATTACK     || 
+        if (flightType == FlightTypes.GROUND_ATTACK     || 
             flightType == FlightTypes.GROUND_HUNT       || 
-            flightType == FlightTypes.RAID              || 
-            flightType == FlightTypes.SCRAMBLE          || 
-            flightType == FlightTypes.SPY_EXTRACT)
+            flightType == FlightTypes.RAID)
         {
             return true;
         }
@@ -95,8 +77,7 @@ public enum FlightTypes
             flightType == FlightTypes.GROUND_ATTACK || 
             flightType == FlightTypes.GROUND_HUNT   || 
             flightType == FlightTypes.RAID          || 
-            flightType == FlightTypes.DIVE_BOMB     || 
-            flightType == FlightTypes.STRATEGIC_BOMB)
+            flightType == FlightTypes.DIVE_BOMB)
         {
             return true;
         }
@@ -106,16 +87,11 @@ public enum FlightTypes
 
     public static boolean isFighterFlight(FlightTypes flightType)
     {
-        if (flightType == FlightTypes.BALLOON_BUST      || 
-            flightType == FlightTypes.BALLOON_DEFENSE   || 
-            flightType == FlightTypes.ESCORT            || 
-            flightType == FlightTypes.INTERCEPT         || 
-            flightType == FlightTypes.LONE_WOLF         || 
+        if (flightType == FlightTypes.INTERCEPT         || 
             flightType == FlightTypes.LOW_ALT_CAP       ||
             flightType == FlightTypes.LOW_ALT_PATROL    ||
             flightType == FlightTypes.OFFENSIVE    ||
-            flightType == FlightTypes.PATROL    ||
-            flightType == FlightTypes.SCRAMBLE)
+            flightType == FlightTypes.PATROL)
         {
             return true;
         }
@@ -149,8 +125,7 @@ public enum FlightTypes
     public static boolean isLevelBombingFlight(FlightTypes flightType)
     {
         if (flightType == FlightTypes.BOMB          ||
-            flightType == FlightTypes.LOW_ALT_BOMB  || 
-            flightType == FlightTypes.STRATEGIC_BOMB)
+            flightType == FlightTypes.LOW_ALT_BOMB)
         {
             return true;
         }
@@ -187,11 +162,6 @@ public enum FlightTypes
 
     public static boolean isFlightNeedsEscort(FlightTypes flightType)
     {
-        if (flightType == FlightTypes.TRANSPORT)
-        {
-            return false;
-        }
-        
         if (flightType == FlightTypes.RAID)
         {
             return false;

@@ -170,7 +170,7 @@ public class CampaignSkinConfigurationSelectionPanel extends ImageResizingPanel 
     private String getSkinSelection()
     {
         SkinSessionManager skinSessionManager = parent.getSkinSessionManager();
-        Skin skinForPlane = skinSessionManager.getSkinForPilotAndPlane(selectedPlane);
+        Skin skinForPlane = skinSessionManager.getSkinForCrewMemberAndPlane(selectedPlane);
         String currentSkinNameForSelectedPlane = "";
         if (skinForPlane != null)
         {
@@ -192,7 +192,7 @@ public class CampaignSkinConfigurationSelectionPanel extends ImageResizingPanel 
             JRadioButton skinButton = makeRadioButton(skinName, "SelectSkin:" + skinName, ColorMap.PAPER_FOREGROUND);
             skinSelectGrid.add(skinButton);
             
-            // Select the skin if the pilot has one assigned and it is in this group
+            // Select the skin if the crewMember has one assigned and it is in this group
             if (skinName.equals(currentSkinNameForSelectedPlane))
             {
                 skinButton.setSelected(true);
@@ -232,11 +232,11 @@ public class CampaignSkinConfigurationSelectionPanel extends ImageResizingPanel 
                 int index = action.indexOf(":");
                 String selectedSkinName = action.substring(index + 1);
 
-                assignSkinToPilot(selectedSkinName);
+                assignSkinToCrewMember(selectedSkinName);
                 resetSkinSelectionPanel();
                 
-                CampaignSkinConfigurationPilotPanel skinSelectionPanel = parent.getSkinControlPanel();
-                skinSelectionPanel.resetPilotInfoPanel();
+                CampaignSkinConfigurationCrewMemberPanel skinSelectionPanel = parent.getSkinControlPanel();
+                skinSelectionPanel.resetCrewMemberInfoPanel();
             }
         }
         catch (Exception e)
@@ -246,7 +246,7 @@ public class CampaignSkinConfigurationSelectionPanel extends ImageResizingPanel 
         }
     }
 
-    private void assignSkinToPilot(String selectedSkinName) throws PWCGException
+    private void assignSkinToCrewMember(String selectedSkinName) throws PWCGException
     {
         Skin skin = null;
         SkinSessionManager skinSessionManager = parent.getSkinSessionManager();
@@ -257,7 +257,7 @@ public class CampaignSkinConfigurationSelectionPanel extends ImageResizingPanel 
             {
                 skin = new Skin();
                 skin.setSkinName(selectedSkinName);
-                ICountry country = CountryFactory.makeCountryByCountry(skinSessionManager.getPilot().getCountry());
+                ICountry country = CountryFactory.makeCountryByCountry(skinSessionManager.getCrewMember().getCountry());
                 skin.setCountry(country.getCountryName());
                 skin.setPlane(selectedPlane);
             }

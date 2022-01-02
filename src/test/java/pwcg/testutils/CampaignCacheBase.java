@@ -8,13 +8,13 @@ import java.util.Map;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
-import pwcg.campaign.CampaignHumanPilotHandler;
+import pwcg.campaign.CampaignHumanCrewMemberHandler;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.AiCrewMemberRemovalChooser;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.squadmember.AiPilotRemovalChooser;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -49,43 +49,43 @@ public abstract class CampaignCacheBase implements ICampaignCache
             
             if (profile.isCompetitive())
             {
-	            List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+	            List<CrewMember> players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
 	            assert(players.size() == 1);
 	            
-	            addMorePilotsForCoop(campaign, "Squadron Mate", "Leutnant", SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
-	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+	            addMoreCrewMembersForCoop(campaign, "Squadron Mate", "Leutnant", SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
 	            assert(players.size() == 2);
 	            
-	            addMorePilotsForCoop(campaign, "Friendly Fighter", "Leutnant", 20112052);
-	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+	            addMoreCrewMembersForCoop(campaign, "Friendly Fighter", "Leutnant", 20112052);
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
 	            assert(players.size() == 3);
 	            
-	            addMorePilotsForCoop(campaign, "Friendly Bombermaj", "Major", 20131053);
-	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+	            addMoreCrewMembersForCoop(campaign, "Friendly Bombermaj", "Major", 20131053);
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
 	            assert(players.size() == 4);
 	            
-	            addMorePilotsForCoop(campaign, "Friendly Bombercpt", "Hauptmann", 20131053);
-	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+	            addMoreCrewMembersForCoop(campaign, "Friendly Bombercpt", "Hauptmann", 20131053);
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
 	            assert(players.size() == 5);
 	            
-	            addMorePilotsForCoop(campaign, "Friendly Divebomber", "Oberleutnant", 20122077);
-	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+	            addMoreCrewMembersForCoop(campaign, "Friendly Divebomber", "Oberleutnant", 20122077);
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
 	            assert(players.size() == 6);
 	            
-	            addMorePilotsForCoop(campaign, "Enemy Fighter", "Leyitenant", 10111011);
-	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+	            addMoreCrewMembersForCoop(campaign, "Enemy Fighter", "Leyitenant", 10111011);
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
 	            assert(players.size() == 7);
 	            
-	            addMorePilotsForCoop(campaign, "Enemy Bomber", "Major", 10131132);
-	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+	            addMoreCrewMembersForCoop(campaign, "Enemy Bomber", "Major", 10131132);
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
 	            assert(players.size() == 8);
 	            
-	            addMorePilotsForCoop(campaign, "Enemy Bomber", "Kapitan", 10131132);
-	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+	            addMoreCrewMembersForCoop(campaign, "Enemy Bomber", "Kapitan", 10131132);
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
 	            assert(players.size() == 9);
 	            
-	            addMorePilotsForCoop(campaign, "Enemy Groundattack", "Starshyi Leyitenant", 10121503);
-	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+	            addMoreCrewMembersForCoop(campaign, "Enemy Groundattack", "Starshyi Leyitenant", 10121503);
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
 	            assert(players.size() == 10);
 	            
             }
@@ -95,13 +95,13 @@ public abstract class CampaignCacheBase implements ICampaignCache
         throw new PWCGException("No campaign found for profile " + profile.getKey());
     }
     
-    protected void addMorePilotsForCoop(Campaign campaign, String name, String rank, int squadronId) throws PWCGException
+    protected void addMoreCrewMembersForCoop(Campaign campaign, String name, String rank, int squadronId) throws PWCGException
     {
-        AiPilotRemovalChooser pilotRemovalChooser = new AiPilotRemovalChooser(campaign);
-        SquadronMember squadronMemberToReplace = pilotRemovalChooser.findAiPilotToRemove(rank, squadronId);
+        AiCrewMemberRemovalChooser crewMemberRemovalChooser = new AiCrewMemberRemovalChooser(campaign);
+        CrewMember squadronMemberToReplace = crewMemberRemovalChooser.findAiCrewMemberToRemove(rank, squadronId);
         
-        CampaignHumanPilotHandler humanPilotHandler = new CampaignHumanPilotHandler(campaign);
-        humanPilotHandler.addNewPilot(
+        CampaignHumanCrewMemberHandler humanCrewMemberHandler = new CampaignHumanCrewMemberHandler(campaign);
+        humanCrewMemberHandler.addNewCrewMember(
                 name, 
                 rank, 
                 squadronMemberToReplace.getSerialNumber(), 
@@ -111,7 +111,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
 	public static CampaignGeneratorModel makeCampaignModelForProfile(SquadronTestProfile profile) throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Squadron squadron = squadronManager.getSquadron(profile.getSquadronId());
+        Company squadron = squadronManager.getSquadron(profile.getSquadronId());
         
         Date campaignDate = DateUtils.getDateYYYYMMDD(profile.getDateString());
         ArmedService service = squadron.determineServiceForSquadron(campaignDate);

@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -237,7 +237,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
             return false;
         }
 
-        if (campaign.findReferencePlayer().getPilotActiveStatus() != SquadronMemberStatus.STATUS_ACTIVE)
+        if (campaign.findReferencePlayer().getCrewMemberActiveStatus() != CrewMemberStatus.STATUS_ACTIVE)
         {
             return false;
         }
@@ -247,8 +247,8 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 
     private boolean isDisplayLeaveButton() throws PWCGException
     {
-        if (campaign.findReferencePlayer().getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED ||
-            campaign.findReferencePlayer().getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        if (campaign.findReferencePlayer().getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_WOUNDED ||
+            campaign.findReferencePlayer().getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
             return true;
         }

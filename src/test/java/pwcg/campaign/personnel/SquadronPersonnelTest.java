@@ -29,14 +29,14 @@ public class SquadronPersonnelTest {
     @Test
     public void isHumanSquadronTest() throws PWCGException
     {
-        SquadronPersonnel squadronpersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        CompanyPersonnel squadronpersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         assert(squadronpersonnel.isPlayerSquadron());
     }
 
     @Test
     public void isNotHumanSquadronTest() throws PWCGException
     {
-        SquadronPersonnel squadronpersonnel = campaign.getPersonnelManager().getSquadronPersonnel(20111052);
+        CompanyPersonnel squadronpersonnel = campaign.getPersonnelManager().getCompanyPersonnel(20111052);
         assert(squadronpersonnel.isPlayerSquadron() == false);
     }
 }

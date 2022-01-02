@@ -17,8 +17,8 @@ import javax.swing.SwingConstants;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -65,15 +65,15 @@ public class AARClaimPanels extends ImageResizingPanel
         tabs.setBackground(tabBG);
         tabs.setOpaque(false);
 
-        SquadronMembers pilotsInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getCampaignMembersInMission();
-        for (SquadronMember pilot : pilotsInMission.getSquadronMemberCollection().values())
+        CrewMembers crewMembersInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getCampaignMembersInMission();
+        for (CrewMember crewMember : crewMembersInMission.getCrewMemberCollection().values())
         {
-            if (pilot.isPlayer())
+            if (crewMember.isPlayer())
             {
                 AARClaimPanel claimPanel = new AARClaimPanel();
                 claimPanel.makePanel();
-                claimPanels.put(pilot.getSerialNumber(), claimPanel);
-                tabs.addTab(pilot.getNameAndRank(), claimPanel);
+                claimPanels.put(crewMember.getSerialNumber(), claimPanel);
+                tabs.addTab(crewMember.getNameAndRank(), claimPanel);
             }
         }
 
@@ -113,22 +113,22 @@ public class AARClaimPanels extends ImageResizingPanel
             infoPanelGrid.add(PWCGLabelFactory.makeDummyLabel());
         }
 
-        String pilotsText = InternationalizationManager.getTranslation("Pilots assigned to this mission");
-        pilotsText = "     " + pilotsText + ": ";
-        JLabel lPilots = PWCGLabelFactory.makeTransparentLabel(pilotsText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
-        infoPanelGrid.add(lPilots);
+        String crewMembersText = InternationalizationManager.getTranslation("CrewMembers assigned to this mission");
+        crewMembersText = "     " + crewMembersText + ": ";
+        JLabel lCrewMembers = PWCGLabelFactory.makeTransparentLabel(crewMembersText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
+        infoPanelGrid.add(lCrewMembers);
         
-        SquadronMembers pilotsInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getCampaignMembersInMission();
-        List<SquadronMember> pilotsInMissionSorted = pilotsInMission.sortPilots(campaign.getDate());
-        for (SquadronMember pilot : pilotsInMissionSorted)
+        CrewMembers crewMembersInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getCampaignMembersInMission();
+        List<CrewMember> crewMembersInMissionSorted = crewMembersInMission.sortCrewMembers(campaign.getDate());
+        for (CrewMember crewMember : crewMembersInMissionSorted)
         {
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
-            if (pilot.getSquadronId() == referencePlayer.getSquadronId())
+            CrewMember referencePlayer = campaign.findReferencePlayer();
+            if (crewMember.getCompanyId() == referencePlayer.getCompanyId())
             {
-                String crewDesc = "             " + pilot.getNameAndRank();
-                JLabel lPilot = PWCGLabelFactory.makeTransparentLabel(crewDesc, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
-                lPilot.setSize(200, 40);
-                infoPanelGrid.add(lPilot);      
+                String crewDesc = "             " + crewMember.getNameAndRank();
+                JLabel lCrewMember = PWCGLabelFactory.makeTransparentLabel(crewDesc, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
+                lCrewMember.setSize(200, 40);
+                infoPanelGrid.add(lCrewMember);      
             }
         }
         

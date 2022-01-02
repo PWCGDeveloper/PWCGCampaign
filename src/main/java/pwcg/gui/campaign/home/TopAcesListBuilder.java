@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -30,12 +30,12 @@ public class TopAcesListBuilder
         this.campaign = campaign;
 	}
 
-    public List<SquadronMember> getTopTenAces(TopAcesListType topAcesListType)  
+    public List<CrewMember> getTopTenAces(TopAcesListType topAcesListType)  
     {
         try
         {
-            List<SquadronMember> allAces = getAcesSortedByVictories();
-            List<SquadronMember> reducedAces = reduceAces(allAces, topAcesListType);
+            List<CrewMember> allAces = getAcesSortedByVictories();
+            List<CrewMember> reducedAces = reduceAces(allAces, topAcesListType);
             return reducedAces;
         }
         catch (Exception e)
@@ -47,7 +47,7 @@ public class TopAcesListBuilder
         return new ArrayList<>();
     }
 
-    private List<SquadronMember> reduceAces(List<SquadronMember> allAces, TopAcesListType topAcesListType) throws PWCGException
+    private List<CrewMember> reduceAces(List<CrewMember> allAces, TopAcesListType topAcesListType) throws PWCGException
     {
         if (topAcesListType == TopAcesListType.TOP_ACES_SERVICE)
         {
@@ -63,12 +63,12 @@ public class TopAcesListBuilder
         }
     }
 
-    private List<SquadronMember> reduceAcesPlayerServiceOnly(List<SquadronMember> allAces) throws PWCGException
+    private List<CrewMember> reduceAcesPlayerServiceOnly(List<CrewMember> allAces) throws PWCGException
     {
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        CrewMember referencePlayer = campaign.findReferencePlayer();
         
-        List<SquadronMember> reducedAces = new ArrayList<>();
-        for (SquadronMember ace : allAces)
+        List<CrewMember> reducedAces = new ArrayList<>();
+        for (CrewMember ace : allAces)
         {
             if (ace.determineService(campaign.getDate()) == referencePlayer.determineService(campaign.getDate()))
             {
@@ -83,12 +83,12 @@ public class TopAcesListBuilder
         return reducedAces;
     }
 
-    private List<SquadronMember> reduceAcesNoHistorical(List<SquadronMember> allAces)
+    private List<CrewMember> reduceAcesNoHistorical(List<CrewMember> allAces)
     {
-        List<SquadronMember> reducedAces = new ArrayList<>();
-        for (SquadronMember ace : allAces)
+        List<CrewMember> reducedAces = new ArrayList<>();
+        for (CrewMember ace : allAces)
         {
-            if (!(ace instanceof Ace))
+            if (!(ace instanceof TankAce))
             {
                 reducedAces.add(ace);
             }
@@ -101,10 +101,10 @@ public class TopAcesListBuilder
         return reducedAces;
     }
 
-    private List<SquadronMember> reduceAcesToTen(List<SquadronMember> allAces)
+    private List<CrewMember> reduceAcesToTen(List<CrewMember> allAces)
     {
-        List<SquadronMember> reducedAces = new ArrayList<>();
-        for (SquadronMember ace : allAces)
+        List<CrewMember> reducedAces = new ArrayList<>();
+        for (CrewMember ace : allAces)
         {
             reducedAces.add(ace);
             if (reducedAces.size() == 10)
@@ -115,22 +115,22 @@ public class TopAcesListBuilder
         return reducedAces;
     }
 
-    private List<SquadronMember> getAcesSortedByVictories() throws PWCGException
+    private List<CrewMember> getAcesSortedByVictories() throws PWCGException
     {
-        Map<Integer, SquadronMember> allPilotsInCampaign = campaign.getPersonnelManager().getAllCampaignMembers();
+        Map<Integer, CrewMember> allCrewMembersInCampaign = campaign.getPersonnelManager().getAllCampaignMembers();
         
-        Map<String, SquadronMember> sortedAcesByVictories = new TreeMap <>();
+        Map<String, CrewMember> sortedAcesByVictories = new TreeMap <>();
         int topAceCount = 1;
-	    for (SquadronMember ace : allPilotsInCampaign.values()) 
+	    for (CrewMember ace : allCrewMembersInCampaign.values()) 
 	    {  
-	        if (ace.getSquadronMemberVictories().getAirToAirVictoryCount() >= 5)
+	        if (ace.getCrewMemberVictories().getAirToAirVictoryCount() >= 5)
 	        {
-    			String newKey = new String ("" + (ACE_VICTORY_SORT_CONSTANT - ((100 * ace.getSquadronMemberVictories().getAirToAirVictoryCount()) + topAceCount)));
+    			String newKey = new String ("" + (ACE_VICTORY_SORT_CONSTANT - ((100 * ace.getCrewMemberVictories().getAirToAirVictoryCount()) + topAceCount)));
     			sortedAcesByVictories.put(newKey, ace);    			
     			++topAceCount;
 	        }
 	    }
 	    
-	    return new ArrayList<SquadronMember>(sortedAcesByVictories.values());
+	    return new ArrayList<CrewMember>(sortedAcesByVictories.values());
     }
 }

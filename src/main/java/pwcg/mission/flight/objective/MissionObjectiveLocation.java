@@ -3,7 +3,7 @@ package pwcg.mission.flight.objective;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
@@ -21,7 +21,7 @@ public class MissionObjectiveLocation
         return missionObjectiveLocation;
     }
 
-    static String getMissionObjectiveLocation(Squadron squadron, Date date, Coordinate position) throws PWCGException 
+    static String getMissionObjectiveLocation(Company squadron, Date date, Coordinate position) throws PWCGException 
     {
         String targetName =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(position).getName();
         return " near " + targetName;

@@ -11,10 +11,8 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogGroundUnit;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
-import pwcg.campaign.plane.Balloon;
-import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.crewmember.SerialNumber.SerialNumberClassification;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType12;
@@ -88,7 +86,7 @@ public class AARVehicleBuilder
         List<LogPlane> playerLogPlanes = new ArrayList<>();
         for (LogPlane logPlane : logPlanes.values())
         {
-            if (SerialNumber.getSerialNumberClassification(logPlane.getPilotSerialNumber()) == SerialNumberClassification.PLAYER)
+            if (SerialNumber.getSerialNumberClassification(logPlane.getCrewMemberSerialNumber()) == SerialNumberClassification.PLAYER)
             {
                 playerLogPlanes.add(logPlane);
             }
@@ -111,13 +109,9 @@ public class AARVehicleBuilder
 
     private void sortLogEntity(IAType12 atype12) throws PWCGException
     {
-        if (pwcgMissionDataEvaluator.wasPilotAssignedToMissionByName(atype12.getName()))
+        if (pwcgMissionDataEvaluator.wasCrewMemberAssignedToMissionByName(atype12.getName()))
         {
             createLogPlane(atype12);
-        }
-        else if (Balloon.isBalloonName(atype12.getName()))
-        {
-            createLogBalloon(atype12);
         }
         else
         {
@@ -135,22 +129,11 @@ public class AARVehicleBuilder
 
     private LogPlane makePlaneFromMissionAndLog(IAType12 atype12) throws PWCGException
     {
-        PwcgGeneratedMissionPlaneData missionPlane = pwcgMissionDataEvaluator.getPlaneForPilotByName(atype12.getName());
+        PwcgGeneratedMissionPlaneData missionPlane = pwcgMissionDataEvaluator.getPlaneForCrewMemberByName(atype12.getName());
         LogPlane logPlane = new LogPlane(atype12.getSequenceNum());
         logPlane.initializeEntityFromEvent(atype12);
         logPlane.initializeFromMissionPlane(missionPlane);
         return logPlane;
-    }
-
-    private void createLogBalloon(IAType12 atype12) throws PWCGException
-    {
-        LogAIEntity logEntity;
-        logEntity = new LogBalloon(atype12.getSequenceNum());
-        logEntity.initializeEntityFromEvent(atype12);
-        logEntity.setRoleCategory(PwcgRoleCategory.BALLOON);
-
-        logBalloons.put(atype12.getId(), (LogBalloon) logEntity);
-        PWCGLogger.log(LogLevel.DEBUG, "Add Plane: " + atype12.getName() + " ID:" + atype12.getId() + " Type:" + atype12.getType());
     }
 
     private void createLogGroundUnit(IAType12 atype12) throws PWCGException

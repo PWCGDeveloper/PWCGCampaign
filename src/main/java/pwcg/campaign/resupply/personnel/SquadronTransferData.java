@@ -11,7 +11,7 @@ public class SquadronTransferData
     
     public void addTransferRecord(TransferRecord transferRecord)
     {
-        int serialNumber = transferRecord.getSquadronMember().getSerialNumber();
+        int serialNumber = transferRecord.getCrewMember().getSerialNumber();
         if (!squadronMembersTransferred.containsKey(serialNumber))
         {
             List<TransferRecord> newTransfeRecordSet = new ArrayList<>();
@@ -24,7 +24,7 @@ public class SquadronTransferData
     
     public void merge(SquadronTransferData source)
     {
-        for (TransferRecord transferRecord : source.getSquadronMembersTransferred())
+        for (TransferRecord transferRecord : source.getCrewMembersTransferred())
         {
             addTransferRecord(transferRecord);
         }
@@ -35,12 +35,12 @@ public class SquadronTransferData
         return squadronMembersTransferred.size();
     }
     
-    public List<TransferRecord> getSquadronMembersTransferred()
+    public List<TransferRecord> getCrewMembersTransferred()
     {
         List<TransferRecord> allTransferrecords = new ArrayList<>();
-        for (List<TransferRecord> transferRecordsForPilot : squadronMembersTransferred.values())
+        for (List<TransferRecord> transferRecordsForCrewMember : squadronMembersTransferred.values())
         {
-            for (TransferRecord transferRecord : transferRecordsForPilot)
+            for (TransferRecord transferRecord : transferRecordsForCrewMember)
             {
                 allTransferrecords.add(transferRecord);
             }

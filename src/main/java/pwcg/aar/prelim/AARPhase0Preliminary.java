@@ -6,8 +6,8 @@ import pwcg.aar.prelim.claims.AARClaimPanelEventTabulator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.core.exception.PWCGException;
 
 public class AARPhase0Preliminary
@@ -44,7 +44,7 @@ public class AARPhase0Preliminary
     private void determineActiveCampaignMembersInMission() throws PWCGException
     {
         CampaignMembersInMissionFinder campaignMembersInMissionHandler = new CampaignMembersInMissionFinder();
-        SquadronMembers campaignMembersInMission = campaignMembersInMissionHandler.determineCampaignMembersInMission(campaign, aarPreliminarytData.getPwcgMissionData());
+        CrewMembers campaignMembersInMission = campaignMembersInMissionHandler.determineCampaignMembersInMission(campaign, aarPreliminarytData.getPwcgMissionData());
         aarPreliminarytData.setCampaignMembersInMission(campaignMembersInMission);
     }
 
@@ -53,7 +53,7 @@ public class AARPhase0Preliminary
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE ||
             campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
         {
-            SquadronMember singlePlayer = campaign.findReferencePlayer();
+            CrewMember singlePlayer = campaign.findReferencePlayer();
             Side side = singlePlayer.determineSquadron().determineSquadronCountry(campaign.getDate()).getSide();
             AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, side);
             AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();

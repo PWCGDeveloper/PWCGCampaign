@@ -8,7 +8,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.SquadronNeedFactory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentNeedForSquadronsCalculator
@@ -22,11 +22,11 @@ public class EquipmentNeedForSquadronsCalculator
         this.squadronNeedFactory = squadronNeedFactory;
     }
 
-    public Map<String, Integer> getAircraftNeedByArchType(List<Squadron> squadronsForService) throws PWCGException
+    public Map<String, Integer> getAircraftNeedByArchType(List<Company> squadronsForService) throws PWCGException
     {
         Map<String, Integer> aircraftNeedByArchType = new HashMap<>();
 
-        for (Squadron squadron : squadronsForService)
+        for (Company squadron : squadronsForService)
         {
             ISquadronNeed squadronResupplyNeed = squadronNeedFactory.buildSquadronNeed(campaign, squadron);
             squadronResupplyNeed.determineResupplyNeeded();                

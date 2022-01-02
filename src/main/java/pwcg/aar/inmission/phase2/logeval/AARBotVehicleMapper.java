@@ -35,9 +35,9 @@ public class AARBotVehicleMapper
             LogPlane planeResult = getMissionResultPlaneById(planeId);
             if (planeResult != null)
             {
-                if (atype12Bot.getType().contains("BotPilot") || atype12Bot.getType().contains("Common Bot"))
+                if (atype12Bot.getType().contains("BotCrewMember") || atype12Bot.getType().contains("Common Bot"))
                 {
-                    mapBotPilot(atype12Bot, planeResult);
+                    mapBotCrewMember(atype12Bot, planeResult);
                 }
             }
             else
@@ -47,9 +47,9 @@ public class AARBotVehicleMapper
         }
     }
 
-    private void mapBotPilot(IAType12 atype12, LogPlane planeResult) throws PWCGException
+    private void mapBotCrewMember(IAType12 atype12, LogPlane planeResult) throws PWCGException
     {
-        PWCGLogger.log(LogLevel.DEBUG, "Add Pilot bot for : " + planeResult.getLogPilot().getSerialNumber() + "   " + atype12.getId());
+        PWCGLogger.log(LogLevel.DEBUG, "Add CrewMember bot for : " + planeResult.getLogCrewMember().getSerialNumber() + "   " + atype12.getId());
         planeResult.mapBotToCrew(atype12.getId());
     }
     

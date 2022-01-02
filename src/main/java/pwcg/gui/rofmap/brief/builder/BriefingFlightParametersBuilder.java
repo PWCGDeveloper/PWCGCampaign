@@ -4,7 +4,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.gui.rofmap.brief.model.BriefingFlightParameters;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.McuWaypoint;
@@ -35,14 +34,6 @@ public class BriefingFlightParametersBuilder
 		for (McuWaypoint waypoint :  playerFlight.getWaypointPackage().getAllWaypoints())
 		{				
 		     addPlayerFlightWaypoint(prevWaypoint, waypoint);
-
-		     if (playerFlight.getFlightType() == FlightTypes.ESCORT)
-		     {
-		         if (waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS)
-		         {
-		             updateEscortWaypointsOnMap();
-		         }
-		     }
 
 		     if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
 		     {
@@ -84,27 +75,5 @@ public class BriefingFlightParametersBuilder
         BriefingMapPoint briefingMapPoint = BriefingMapPointFactory.createAttackPoint(targetLocation);
         briefingFlightParameters.addBriefingMapMapPoints(briefingMapPoint);
 	}
-	
-    private void updateEscortWaypointsOnMap() throws PWCGException
-    {
-        IFlight escortedByPlayerFlight = playerFlight.getAssociatedFlight();
-        if (escortedByPlayerFlight != null)
-	    {
-	        for (McuWaypoint waypoint : escortedByPlayerFlight.getWaypointPackage().getAllWaypoints())
-	        {
-	            if (waypoint.getWpAction() == WaypointAction.WP_ACTION_LANDING_APPROACH)
-	            {
-	                continue;
-	            }
-	            
-	            addEscortPoint(waypoint);
-	        }               
-	    }
-    }
     
-    private void addEscortPoint(McuWaypoint escortWaypoint)
-	{
-        BriefingMapPoint briefingMapPoint = BriefingMapPointFactory.createEscortPoint(escortWaypoint);
-        briefingFlightParameters.addBriefingMapMapPoints(briefingMapPoint);
-	}
 }

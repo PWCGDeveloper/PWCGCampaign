@@ -4,15 +4,15 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 public class MissionSkinInitializer 
 {
-    public static void intitializeSkin(MissionSkinSet missionSkinSet, Squadron squad, PlaneMcu plane, Date date)
+    public static void intitializeSkin(MissionSkinSet missionSkinSet, Company company, PlaneMcu plane, Date date)
     {
         setFactorySkin(missionSkinSet, plane, date);
-        setSquadronSkin(missionSkinSet, squad, plane, date);
+        setSquadronSkin(missionSkinSet, company, plane, date);
     }
 
     private static void setFactorySkin(MissionSkinSet missionSkinSet, PlaneMcu plane, Date date)
@@ -21,7 +21,7 @@ public class MissionSkinInitializer
         MissionSkinGeneratorHelper.chooseFactorySkin(plane, factorySkins);
     }
 
-    private static void setSquadronSkin(MissionSkinSet missionSkinSet, Squadron squadron, PlaneMcu plane, Date date)
+    private static void setSquadronSkin(MissionSkinSet missionSkinSet, Company squadron, PlaneMcu plane, Date date)
     {
         List<Skin> squadronSkins = missionSkinSet.getSquadronSkins(plane.getType());
         MissionSkinGeneratorHelper.chooseSquadronSkin(squadron, plane, squadronSkins, date);

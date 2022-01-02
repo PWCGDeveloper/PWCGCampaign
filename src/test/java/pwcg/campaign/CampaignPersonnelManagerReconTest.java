@@ -11,11 +11,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CampaignPersonnelFilter;
-import pwcg.campaign.personnel.SquadronMemberFilterSpecification;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.personnel.CrewMemberFilterSpecification;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -34,31 +34,31 @@ public class CampaignPersonnelManagerReconTest
     }
 
     @Test
-    public void getSquadronMembersTest () throws PWCGException
+    public void getCrewMembersTest () throws PWCGException
     {                               
-        SquadronMemberFilterSpecification filterSpecification = new SquadronMemberFilterSpecification();
+        CrewMemberFilterSpecification filterSpecification = new CrewMemberFilterSpecification();
 
-        SquadronMembers squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.ESC_103_PROFILE.getSquadronId()).getSquadronMembersWithAces();
-        CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronMembers.getSquadronMemberCollection());
+        CrewMembers squadronMembers = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.ESC_103_PROFILE.getSquadronId()).getCrewMembersWithAces();
+        CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronMembers.getCrewMemberCollection());
 
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(false);  
         filterSpecification.setIncludeAI(true);  
         filterSpecification.setSpecifySquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Map<Integer, SquadronMember> squadronMembersNoPlayerNoAces = filter.getFilteredSquadronMembers(filterSpecification);
-        Assertions.assertTrue (squadronMembersNoPlayerNoAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 2));
+        Map<Integer, CrewMember> squadronMembersNoPlayerNoAces = filter.getFilteredCrewMembers(filterSpecification);
+        Assertions.assertTrue (squadronMembersNoPlayerNoAces.size() == (Company.SQUADRON_STAFF_SIZE - 2));
         
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(true);        
         filterSpecification.setIncludeAI(true);  
-        Map<Integer, SquadronMember> squadronMembersNoPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
-        Assertions.assertTrue (squadronMembersNoPlayerWithAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 1));
+        Map<Integer, CrewMember> squadronMembersNoPlayerWithAces = filter.getFilteredCrewMembers(filterSpecification);
+        Assertions.assertTrue (squadronMembersNoPlayerWithAces.size() == (Company.SQUADRON_STAFF_SIZE - 1));
 
         filterSpecification.setIncludePlayer(true);        
         filterSpecification.setIncludeAces(true);        
         filterSpecification.setIncludeAI(true);  
-        Map<Integer, SquadronMember> squadronMembersWithPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
-        Assertions.assertTrue (squadronMembersWithPlayerWithAces.size() == Squadron.SQUADRON_STAFF_SIZE);
+        Map<Integer, CrewMember> squadronMembersWithPlayerWithAces = filter.getFilteredCrewMembers(filterSpecification);
+        Assertions.assertTrue (squadronMembersWithPlayerWithAces.size() == Company.SQUADRON_STAFF_SIZE);
     }
 }
 

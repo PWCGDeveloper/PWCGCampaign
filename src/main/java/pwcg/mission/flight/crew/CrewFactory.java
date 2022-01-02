@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CrewMemberFilter;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightInformation;
@@ -15,9 +15,9 @@ import pwcg.mission.flight.FlightInformation;
 public class CrewFactory
 {
     private Campaign campaign;
-    private Squadron squadron;
+    private Company squadron;
     private MissionHumanParticipants participatingPlayers;
-    private Map <Integer, SquadronMember> crewsForSquadron = new HashMap <>();
+    private Map <Integer, CrewMember> crewsForSquadron = new HashMap <>();
     
 	public CrewFactory(FlightInformation flightInformation)
 	{
@@ -26,7 +26,7 @@ public class CrewFactory
         this.participatingPlayers = flightInformation.getMission().getParticipatingPlayers();
 	}
 
-    public Map <Integer, SquadronMember> createCrews() throws PWCGException 
+    public Map <Integer, CrewMember> createCrews() throws PWCGException 
     {
         createCrewsForSquadron();
         ensurePlayerIsAssigned();
@@ -35,25 +35,25 @@ public class CrewFactory
 
     private void createCrewsForSquadron() throws PWCGException
     {
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(
-                campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember pilot : squadronMembers.getSquadronMemberList())
+        CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(
+                campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        for (CrewMember crewMember : squadronMembers.getCrewMemberList())
         {
-            crewsForSquadron.put(pilot.getSerialNumber(), pilot);
+            crewsForSquadron.put(crewMember.getSerialNumber(), crewMember);
         }
     }
 
     private void ensurePlayerIsAssigned() throws PWCGException
     {
-        for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
+        for (CrewMember player : participatingPlayers.getAllParticipatingPlayers())
         {
             addPlayerToMissionIfNeeded(player);
         }
     }
 
-    private void addPlayerToMissionIfNeeded(SquadronMember player)
+    private void addPlayerToMissionIfNeeded(CrewMember player)
     {
-        if (player.getSquadronId() != squadron.getSquadronId())
+        if (player.getCompanyId() != squadron.getSquadronId())
         {
             return;
         }
@@ -63,7 +63,7 @@ public class CrewFactory
             return;
         }
          
-        for (SquadronMember squadronMemberToBeReplaced : crewsForSquadron.values())
+        for (CrewMember squadronMemberToBeReplaced : crewsForSquadron.values())
         {
             if (!squadronMemberToBeReplaced.isPlayer())
             {

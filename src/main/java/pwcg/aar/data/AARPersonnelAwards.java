@@ -19,8 +19,8 @@ public class AARPersonnelAwards
             medalsAwarded.put(serialNumber, new HashMap<String, Medal>());
         }
 
-        Map<String, Medal> medalsForPilot = medalsAwarded.get(serialNumber);
-        medalsForPilot.put(medal.getMedalName(), medal);
+        Map<String, Medal> medalsForCrewMember = medalsAwarded.get(serialNumber);
+        medalsForCrewMember.put(medal.getMedalName(), medal);
     }
 
     public void addPromotion(Integer serialNumber, String promotion)
@@ -45,9 +45,9 @@ public class AARPersonnelAwards
 	            medalsAwarded.put(serialNumber, new HashMap<String, Medal>());
 	        }
 
-            Map<String, Medal> sourceMedalsForPilot = sourceMedalsAwarded.get(serialNumber);
-            Map<String, Medal> medalsForPilot = medalsAwarded.get(serialNumber);
-            medalsForPilot.putAll(sourceMedalsForPilot);
+            Map<String, Medal> sourceMedalsForCrewMember = sourceMedalsAwarded.get(serialNumber);
+            Map<String, Medal> medalsForCrewMember = medalsAwarded.get(serialNumber);
+            medalsForCrewMember.putAll(sourceMedalsForCrewMember);
 		}
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogCrewMember;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.core.exception.PWCGException;
@@ -16,7 +16,7 @@ import pwcg.core.logfiles.event.IAType3;
 public class AARDestroyedStatusEvaluator
 {
     private List<LogVictory> deadLogVehicles = new ArrayList<>();
-    private Map<Integer, LogPilot> deadLogPilots = new HashMap<>();
+    private Map<Integer, LogCrewMember> deadLogCrewMembers = new HashMap<>();
 
     private AARVehicleBuilder vehicleBuilder;
     private LogEventData logEventData;
@@ -45,7 +45,7 @@ public class AARDestroyedStatusEvaluator
             }
             else
             {
-                addDeadPilot(atype3);
+                addDeadCrewMember(atype3);
             }
         }
     }
@@ -78,20 +78,20 @@ public class AARDestroyedStatusEvaluator
         }
     }
 
-    private void addDeadPilot(IAType3 atype3)
+    private void addDeadCrewMember(IAType3 atype3)
     {
-        LogPilot deadPilot = matchDeadBotToCrewMember(atype3);
-        if (deadPilot != null)
+        LogCrewMember deadCrewMember = matchDeadBotToCrewMember(atype3);
+        if (deadCrewMember != null)
         {
-            deadLogPilots.put(deadPilot.getSerialNumber(), deadPilot);
+            deadLogCrewMembers.put(deadCrewMember.getSerialNumber(), deadCrewMember);
         }
     }
 
-    private LogPilot matchDeadBotToCrewMember(IAType3 atype3)
+    private LogCrewMember matchDeadBotToCrewMember(IAType3 atype3)
     {
         for (LogPlane planeEntity : vehicleBuilder.getLogPlanes().values())
         {
-            LogPilot crewMemberEntity = planeEntity.getLogPilot();
+            LogCrewMember crewMemberEntity = planeEntity.getLogCrewMember();
             if (crewMemberEntity.getBotId().equals(atype3.getVictim()))
             {
                 return crewMemberEntity;
@@ -103,7 +103,7 @@ public class AARDestroyedStatusEvaluator
 
     public boolean didCrewMemberDie(int serialNumber)
     {
-        if (deadLogPilots.containsKey(serialNumber))
+        if (deadLogCrewMembers.containsKey(serialNumber))
         {
             return true;
         }

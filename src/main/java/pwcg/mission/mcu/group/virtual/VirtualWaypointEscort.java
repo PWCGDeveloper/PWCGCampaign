@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -22,7 +22,7 @@ public class VirtualWaypointEscort
     private VirtualWaypointPlanes vwpPlanes;
     private VirtualWayPointCoordinate vwpCoordinate;
     private VirtualWaypointTriggered vwpActivate;
-    private Squadron escortSquadron;
+    private Company escortSquadron;
 
     private McuTimer activateEscortTimer = new McuTimer();
     private McuActivate activateEscort = new McuActivate();
@@ -31,7 +31,7 @@ public class VirtualWaypointEscort
     private List<PlaneMcu> escortPlanes = new ArrayList<>();
     private int index = IndexGenerator.getInstance().getNextIndex();
 
-    public VirtualWaypointEscort(VirtualWayPointCoordinate vwpCoordinate, Squadron escortSquadron, VirtualWaypointPlanes vwpPlanes, VirtualWaypointTriggered vwpActivate)
+    public VirtualWaypointEscort(VirtualWayPointCoordinate vwpCoordinate, Company escortSquadron, VirtualWaypointPlanes vwpPlanes, VirtualWaypointTriggered vwpActivate)
     {
         this.vwpCoordinate = vwpCoordinate;
         this.escortSquadron = escortSquadron;
@@ -147,7 +147,7 @@ public class VirtualWaypointEscort
         vwpActivate.linkToEscort(activateEscortTimer.getIndex());
     }
 
-    public Squadron getEscortSquadron()
+    public Company getEscortSquadron()
     {
         return escortSquadron;
     }

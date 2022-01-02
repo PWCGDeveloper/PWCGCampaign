@@ -26,7 +26,7 @@ public class ArmedServiceFinder
         return servicesForMap;
     }
 
-    public static List<ArmedService> getArmedServicesForPilotCreation(Campaign campaign) throws PWCGException
+    public static List<ArmedService> getArmedServicesForCrewMemberCreation(Campaign campaign) throws PWCGException
     {
         return getArmedServicesForMap(campaign);
     }

@@ -2,21 +2,21 @@ package pwcg.campaign.promotion;
 
 import pwcg.aar.outofmission.phase2.awards.IPromotionEventHandler;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.core.exception.PWCGException;
 
 public class PromotionEventHandlerFactory 
 {
-	public static IPromotionEventHandler getPromotionEventHandler(Campaign campaign, SquadronMember squadronMember) throws PWCGException 
+	public static IPromotionEventHandler getPromotionEventHandler(Campaign campaign, CrewMember crewMember) throws PWCGException 
 	{
-        if (squadronMember instanceof Ace)
+        if (crewMember instanceof TankAce)
         {
             return null;
         }
         
         PromotionMinimumCriteria promotionMinimumCriteria = new PromotionMinimumCriteria();
-        promotionMinimumCriteria.setMinimumPromotionStandards(squadronMember, campaign.getDate());
+        promotionMinimumCriteria.setMinimumPromotionStandards(crewMember, campaign.getDate());
         return new PromotionArbitrator(promotionMinimumCriteria);
 	}
 }

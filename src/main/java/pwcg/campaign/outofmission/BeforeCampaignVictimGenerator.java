@@ -8,24 +8,24 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberNames;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
-import pwcg.campaign.squadmember.PilotNames;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class BeforeCampaignVictimGenerator implements IVictimGenerator
 {
-    private SquadronMember victimPilot;
+    private CrewMember victimCrewMember;
 
     private Campaign campaign;
-    private Squadron victimSquadron;
+    private Company victimSquadron;
     private Date date;
 
-    public BeforeCampaignVictimGenerator (Campaign campaign, Squadron squadron, Date date)
+    public BeforeCampaignVictimGenerator (Campaign campaign, Company squadron, Date date)
     {
         this.campaign = campaign;
         this.victimSquadron = squadron;
@@ -40,20 +40,20 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
     }
 
     @Override
-    public SquadronMember generateVictimAiCrew() throws PWCGException 
+    public CrewMember generateVictimAiCrew() throws PWCGException 
     {        
-        List<SquadronMember> allPilots = generateAIPilots(victimSquadron, date);
-        victimPilot = selectVictim(allPilots);
-        return victimPilot;
+        List<CrewMember> allCrewMembers = generateAICrewMembers(victimSquadron, date);
+        victimCrewMember = selectVictim(allCrewMembers);
+        return victimCrewMember;
     }
 
-    private SquadronMember selectVictim(List<SquadronMember> squadronMembers) throws PWCGException 
+    private CrewMember selectVictim(List<CrewMember> squadronMembers) throws PWCGException 
     {
         int index = RandomNumberGenerator.getRandom(squadronMembers.size());
         return squadronMembers.get(index);
     }
 
-    private List<SquadronMember> generateAIPilots(Squadron squadron, Date campaignDate) throws PWCGException 
+    private List<CrewMember> generateAICrewMembers(Company squadron, Date campaignDate) throws PWCGException 
     {
         Map<Integer, Integer> numAtRank = new HashMap<Integer, Integer>();
         numAtRank.put(0, 1);
@@ -65,17 +65,17 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
         return generateAISquadMembers(squadron, campaignDate, numAtRank);
     }
 
-    private List<SquadronMember> generateAISquadMembers(
-                    Squadron squadron, 
+    private List<CrewMember> generateAISquadMembers(
+                    Company squadron, 
                     Date campaignDate, 
                     Map<Integer, Integer> numAtRank)
                     throws PWCGException
     {
-        // Add the AI pilots
+        // Add the AI crewMembers
         IRankHelper rankLists = RankFactory.createRankHelper();
         List<String> ranks = rankLists.getRanksByService(squadron.determineServiceForSquadron(campaignDate));
         
-        List<SquadronMember> squadMembers = new ArrayList<SquadronMember>();
+        List<CrewMember> squadMembers = new ArrayList<CrewMember>();
         
         for (int i = 0; i < numAtRank.size(); ++i)
         {
@@ -89,13 +89,13 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
             int atThisRank = numAtRank.get(i);
             for (int j = 0; j < atThisRank; ++j)
             {
-                SquadronMember aiSquadronMember = new SquadronMember();
+                CrewMember aiCrewMember = new CrewMember();
 
-                String squaddieName = PilotNames.getInstance().getName(squadron.determineServiceForSquadron(campaignDate), new HashMap<>());
-                aiSquadronMember.setName(squaddieName);
-                aiSquadronMember.setRank(rankLists.getRankByService(rankPos, squadron.determineServiceForSquadron(campaignDate)));
+                String squaddieName = CrewMemberNames.getInstance().getName(squadron.determineServiceForSquadron(campaignDate), new HashMap<>());
+                aiCrewMember.setName(squaddieName);
+                aiCrewMember.setRank(rankLists.getRankByService(rankPos, squadron.determineServiceForSquadron(campaignDate)));
 
-                squadMembers.add(aiSquadronMember);
+                squadMembers.add(aiCrewMember);
             }
         }
         

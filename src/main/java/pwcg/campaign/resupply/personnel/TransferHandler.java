@@ -2,13 +2,13 @@ package pwcg.campaign.resupply.personnel;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.ServiceResupplyNeed;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class TransferHandler
@@ -24,7 +24,7 @@ public class TransferHandler
         this.transferNeedBuilder = transferNeedBuilder;
     }
     
-    public SquadronTransferData determineSquadronMemberTransfers(ArmedService armedService) throws PWCGException
+    public SquadronTransferData determineCrewMemberTransfers(ArmedService armedService) throws PWCGException
     {
         ServiceResupplyNeed serviceTransferNeed = transferNeedBuilder.determineNeedForService(SquadronNeedType.PERSONNEL);
         PersonnelReplacementsService serviceReplacements =  campaign.getPersonnelManager().getPersonnelReplacementsService(armedService.getServiceId());
@@ -39,8 +39,8 @@ public class TransferHandler
             ISquadronNeed selectedSquadronNeed = serviceTransferNeed.chooseNeedySquadron();
             if (serviceReplacements.hasReplacements())
             {
-                SquadronMember replacement = serviceReplacements.findReplacement();        
-                TransferRecord transferRecord = new TransferRecord(replacement, Squadron.REPLACEMENT, selectedSquadronNeed.getSquadronId());
+                CrewMember replacement = serviceReplacements.findReplacement();        
+                TransferRecord transferRecord = new TransferRecord(replacement, Company.REPLACEMENT, selectedSquadronNeed.getSquadronId());
                 squadronTransferData.addTransferRecord(transferRecord);
                 serviceTransferNeed.noteResupply(selectedSquadronNeed);
             }

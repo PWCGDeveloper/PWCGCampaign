@@ -2,7 +2,7 @@ package pwcg.campaign;
 
 import java.util.Date;
 
-import pwcg.campaign.squadmember.SerialNumber;
+import pwcg.campaign.crewmember.SerialNumber;
 
 public class CampaignData
 {

@@ -15,16 +15,16 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.MedalManagerFactory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.product.bos.medals.GermanMedalManager;
 import pwcg.product.fc.country.FCServiceManager;
-import pwcg.product.fc.medals.GermanMedalManager;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -58,7 +58,7 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
 	@Test
 	public void testBavarianMedals () throws PWCGException
 	{            	
-        Mockito.when(player.getPlayerRegion()).thenReturn(SquadronMember.BAVARIA);
+        Mockito.when(player.getPlayerRegion()).thenReturn(CrewMember.BAVARIA);
 
         awardMedal(GermanMedalManager.B_PILOTS_BADGE, 0, 0);
 		awardMedal(GermanMedalManager.IRON_CROSS_2, 1, 1);
@@ -75,7 +75,7 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
 	@Test
 	public void testPrussianMedals () throws PWCGException
 	{            	
-        Mockito.when(player.getPlayerRegion()).thenReturn(SquadronMember.PRUSSIA);
+        Mockito.when(player.getPlayerRegion()).thenReturn(CrewMember.PRUSSIA);
 
         awardMedal(GermanMedalManager.PILOTS_BADGE, 0, 0);
 		awardMedal(GermanMedalManager.IRON_CROSS_2, 1, 1);
@@ -93,7 +93,7 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
 	@Test
 	public void testWurttemburgMedals () throws PWCGException
 	{            	
-        Mockito.when(player.getPlayerRegion()).thenReturn(SquadronMember.WURTTEMBURG);
+        Mockito.when(player.getPlayerRegion()).thenReturn(CrewMember.WURTTEMBURG);
 
         awardMedal(GermanMedalManager.PILOTS_BADGE, 0, 0);
 		awardMedal(GermanMedalManager.IRON_CROSS_2, 1, 1);
@@ -109,7 +109,7 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
 	@Test
 	public void testSaxonyMedals () throws PWCGException
 	{            	
-        Mockito.when(player.getPlayerRegion()).thenReturn(SquadronMember.SAXONY);
+        Mockito.when(player.getPlayerRegion()).thenReturn(CrewMember.SAXONY);
 
         awardMedal(GermanMedalManager.PILOTS_BADGE, 0, 0);
 		awardMedal(GermanMedalManager.IRON_CROSS_2, 1, 1);
@@ -126,7 +126,7 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
     @Test
     public void testIronCrossFirstClassFail () throws PWCGException
     {            
-        Mockito.when(player.getPlayerRegion()).thenReturn(SquadronMember.PRUSSIA);
+        Mockito.when(player.getPlayerRegion()).thenReturn(CrewMember.PRUSSIA);
         awardMedal(GermanMedalManager.PILOTS_BADGE, 0, 0);
 		awardMedal(GermanMedalManager.IRON_CROSS_2, 1, 1);
 

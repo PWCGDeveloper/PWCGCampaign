@@ -1,6 +1,6 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.Victory;
 
 public class PlayerVictoryDeclaration
 {

@@ -8,7 +8,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -17,7 +17,7 @@ import pwcg.dev.utils.AirfieldDistanceOrganizer.AirfieldSet;
 
 public class AirfieldBestMMatchFinder
 {
-    public static Airfield recommendBestMatch(Squadron squadron, Date date) throws PWCGException
+    public static Airfield recommendBestMatch(Company squadron, Date date) throws PWCGException
     {        
         Airfield squadronField = squadron.determineCurrentAirfieldAnyMap(date);
 

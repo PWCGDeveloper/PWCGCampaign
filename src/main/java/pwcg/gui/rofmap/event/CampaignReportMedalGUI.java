@@ -9,10 +9,10 @@ import pwcg.aar.ui.events.model.MedalEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalManager;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -22,7 +22,7 @@ public class CampaignReportMedalGUI extends AARDocumentIconPanel
 	private static final long serialVersionUID = 1L;
 	private Campaign campaign;
     private MedalEvent medalEvent = null;
-    private SquadronMember medalRecipient;
+    private CrewMember medalRecipient;
 
     public CampaignReportMedalGUI(Campaign campaign, MedalEvent medalEvent) throws PWCGException
     {
@@ -30,7 +30,7 @@ public class CampaignReportMedalGUI extends AARDocumentIconPanel
         this.setOpaque(false);
 
         this.medalEvent = medalEvent;
-        this.medalRecipient = campaign.getPersonnelManager().getAnyCampaignMember(medalEvent.getPilotSerialNumber());
+        this.medalRecipient = campaign.getPersonnelManager().getAnyCampaignMember(medalEvent.getCrewMemberSerialNumber());
             
         makePanel();        
     }
@@ -69,10 +69,10 @@ public class CampaignReportMedalGUI extends AARDocumentIconPanel
 
     private String createMedalImagePath(Medal medal)
     {
-        SquadronMember pilot = medalRecipient;
+        CrewMember crewMember = medalRecipient;
         
         String medalPath = ContextSpecificImages.imagesMedals();
-        ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
+        ICountry country = CountryFactory.makeCountryByCountry(crewMember.getCountry());
         if (country.getSide() == Side.ALLIED)
         {
             medalPath += "Allied\\";

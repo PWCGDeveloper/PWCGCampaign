@@ -3,7 +3,7 @@ package pwcg.campaign;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
@@ -111,10 +111,10 @@ public class CampaignGeneratorModel
         this.campaignMode = campaignMode;
     }
 
-    public Squadron getCampaignSquadron() throws PWCGException
+    public Company getCampaignSquadron() throws PWCGException
     {
     	SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Squadron playerSquadron = squadronManager.getSquadronByName(squadronName, campaignDate);
+        Company playerSquadron = squadronManager.getSquadronByName(squadronName, campaignDate);
         return playerSquadron;
     }
     
@@ -142,7 +142,7 @@ public class CampaignGeneratorModel
 
         if (getPlayerName() == null || getPlayerName().length() == 0)
         {
-            throw new PWCGUserException ("Invalid name - no pilot name provided");
+            throw new PWCGUserException ("Invalid name - no crewMember name provided");
         }
 
         if (getPlayerRank() == null || getPlayerRank().length() == 0)

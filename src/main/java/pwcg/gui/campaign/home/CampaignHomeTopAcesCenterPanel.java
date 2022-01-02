@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -29,13 +29,13 @@ public class CampaignHomeTopAcesCenterPanel extends JPanel
         this.campaignHome = campaignHome;
 	}
 
-    public void makePanel(List<SquadronMember> acesToDisplay)  
+    public void makePanel(List<CrewMember> acesToDisplay)  
     {
         try
         {
             this.add(campaignHome.getChalkboardSelector(), BorderLayout.NORTH);
  
-            JPanel chalkBoardPanel = createPilotListPanel(acesToDisplay);
+            JPanel chalkBoardPanel = createCrewMemberListPanel(acesToDisplay);
             this.add(chalkBoardPanel, BorderLayout.CENTER);
             this.setBorder(PwcgBorderFactory.createCampaignHomeChalkboardBoxBorder());
             
@@ -48,10 +48,10 @@ public class CampaignHomeTopAcesCenterPanel extends JPanel
         }
     }
 
-    private JPanel createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException
+    private JPanel createCrewMemberListPanel(List<CrewMember> sortedCrewMembers) throws PWCGException
     {
-        CampaignPilotChalkboard pilotChalkboardBuilder = new CampaignPilotChalkboard();
-        pilotChalkboardBuilder.makePanels(sortedPilots);
-        return pilotChalkboardBuilder;
+        CampaignCrewMemberChalkboard crewMemberChalkboardBuilder = new CampaignCrewMemberChalkboard();
+        crewMemberChalkboardBuilder.makePanels(sortedCrewMembers);
+        return crewMemberChalkboardBuilder;
     }
 }

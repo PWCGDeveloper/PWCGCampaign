@@ -22,10 +22,10 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -35,11 +35,11 @@ public class ElapsedTimeEventGeneratorTest
 {
     @Mock private Campaign campaign;
     @Mock private CampaignPersonnelManager personnelManager;
-    @Mock private SquadronMembers playerMembers;
-    @Mock private SquadronMember player;
+    @Mock private CrewMembers playerMembers;
+    @Mock private CrewMember player;
     @Mock private AARContext aarContext;
     @Mock private CampaignUpdateData campaignUpdateData;
-    @Mock private Squadron squad;
+    @Mock private Company company;
     @Mock private Airfield currentAirfield;
     @Mock private Airfield newAirfield;
 
@@ -52,14 +52,14 @@ public class ElapsedTimeEventGeneratorTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaignDate = DateUtils.getDateYYYYMMDD("19420901");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(squad.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
+        Mockito.when(company.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
        
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);
-        List<SquadronMember> players = new ArrayList<>();
+        List<CrewMember> players = new ArrayList<>();
         players.add(player);
-        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
-        Mockito.when(player.determineSquadron()).thenReturn(squad);   
+        Mockito.when(playerMembers.getCrewMemberList()).thenReturn(players);   
+        Mockito.when(player.determineSquadron()).thenReturn(company);   
     }
 
     @Test
@@ -68,8 +68,8 @@ public class ElapsedTimeEventGeneratorTest
         newDate = DateUtils.getDateYYYYMMDD("19420902");
         Mockito.when(aarContext.getNewDate()).thenReturn(newDate);
  
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Tuzov");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Tuzov");
+        Mockito.when(company.determineCurrentAirfieldName(campaignDate)).thenReturn("Tuzov");
+        Mockito.when(company.determineCurrentAirfieldName(newDate)).thenReturn("Tuzov");
 
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
@@ -84,10 +84,10 @@ public class ElapsedTimeEventGeneratorTest
         campaignDate = DateUtils.getDateYYYYMMDD("19420901");
         newDate = DateUtils.getDateYYYYMMDD("19420909");
         Mockito.when(aarContext.getNewDate()).thenReturn(newDate);
-        Mockito.when(squad.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
+        Mockito.when(company.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
 
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Tuzov");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Kalach");
+        Mockito.when(company.determineCurrentAirfieldName(campaignDate)).thenReturn("Tuzov");
+        Mockito.when(company.determineCurrentAirfieldName(newDate)).thenReturn("Kalach");
 
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();

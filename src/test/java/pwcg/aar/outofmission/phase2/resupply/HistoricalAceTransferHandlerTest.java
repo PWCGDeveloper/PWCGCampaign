@@ -51,12 +51,12 @@ public class HistoricalAceTransferHandlerTest
     {
         HistoricalAceTransferHandler historicalAceTransferHandler = new HistoricalAceTransferHandler(campaign, DateUtils.getDateYYYYMMDD("19170503"));
         SquadronTransferData acesTransferred =  historicalAceTransferHandler.determineAceTransfers();
-        Assertions.assertTrue (acesTransferred.getSquadronMembersTransferred().size() > 0);
+        Assertions.assertTrue (acesTransferred.getCrewMembersTransferred().size() > 0);
         
         boolean karlSchaferFound = false;
-        for (TransferRecord transferRecord : acesTransferred.getSquadronMembersTransferred())
+        for (TransferRecord transferRecord : acesTransferred.getCrewMembersTransferred())
         {
-            if (transferRecord.getSquadronMember().getSerialNumber() == 101112)
+            if (transferRecord.getCrewMember().getSerialNumber() == 101112)
             {
                 karlSchaferFound = true;
             }

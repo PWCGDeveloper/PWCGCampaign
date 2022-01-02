@@ -7,7 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -59,7 +59,7 @@ public class BodenplatteFlightTest
         Assertions.assertTrue (mission.getSkirmish().getSkirmishName().contentEquals("Bodenplatte-Ophoven"));
 
         CoordinateBox missionBox = mission.getMissionBorders();
-        Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(campaign.getReferencePlayer().getSquadronId());
+        Company playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(campaign.getReferencePlayer().getCompanyId());
         Coordinate playerLocation = playerSquadron.determineCurrentPosition(campaign.getDate());
         assert(missionBox.isInBox(playerLocation));
 
@@ -83,7 +83,7 @@ public class BodenplatteFlightTest
         Assertions.assertTrue (mission.getSkirmish().getSkirmishName().contentEquals("Bodenplatte-Volkel"));
 
         CoordinateBox missionBox = mission.getMissionBorders();
-        Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(campaign.getReferencePlayer().getSquadronId());
+        Company playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(campaign.getReferencePlayer().getCompanyId());
         Coordinate playerLocation = playerSquadron.determineCurrentPosition(campaign.getDate());
         assert(missionBox.isInBox(playerLocation));
 

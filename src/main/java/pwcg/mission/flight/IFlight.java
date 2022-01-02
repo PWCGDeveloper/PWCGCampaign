@@ -3,7 +3,7 @@ package pwcg.mission.flight;
 import java.io.BufferedWriter;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
@@ -39,7 +39,7 @@ public interface IFlight
 
     int getFlightId();
         
-    Squadron getSquadron();
+    Company getSquadron();
     
     FlightTypes getFlightType();
 
@@ -52,8 +52,6 @@ public interface IFlight
     void overrideFlightCruisingSpeedForEscort(int cruisingSpeed);
     
     TargetDefinition getTargetDefinition();
-
-    void addVirtualEscort() throws PWCGException;
 
     void setAssociatedFlight(IFlight associatedFlight);
 

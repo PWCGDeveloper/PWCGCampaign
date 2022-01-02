@@ -13,7 +13,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ResupplySquadronChooser;
 import pwcg.campaign.resupply.equipment.SquadronEquipmentNeed;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -104,17 +104,17 @@ public class ResupplySquadronChooserTest
         Map<Integer, ISquadronNeed> needs = new HashMap<>();
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         
-        Squadron playerSquadron = squadronManager.getSquadron(20111051);
+        Company playerSquadron = squadronManager.getSquadron(20111051);
         SquadronEquipmentNeed playerSquadronEquipmentNeed = new SquadronEquipmentNeed(campaign, playerSquadron);
         playerSquadronEquipmentNeed.setPlanesNeeded(playerPlanesNeeded);
         needs.put(playerSquadron.getSquadronId(), playerSquadronEquipmentNeed);
         
-        Squadron i_jg52 = squadronManager.getSquadron(20111052);
+        Company i_jg52 = squadronManager.getSquadron(20111052);
         SquadronEquipmentNeed i_jg52EquipmentNeed = new SquadronEquipmentNeed(campaign, i_jg52);
         i_jg52EquipmentNeed.setPlanesNeeded(i_jg52PlanesNeeded);
         needs.put(i_jg52.getSquadronId(), i_jg52EquipmentNeed);        
         
-        Squadron ii_jg52 = squadronManager.getSquadron(20112052);
+        Company ii_jg52 = squadronManager.getSquadron(20112052);
         SquadronEquipmentNeed ii_jg52EquipmentNeed = new SquadronEquipmentNeed(campaign, ii_jg52);
         ii_jg52EquipmentNeed.setPlanesNeeded(ii_jg52PlanesNeeded);
         needs.put(ii_jg52.getSquadronId(), ii_jg52EquipmentNeed);        

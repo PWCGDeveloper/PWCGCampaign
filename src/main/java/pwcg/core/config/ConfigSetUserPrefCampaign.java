@@ -7,7 +7,7 @@ public class ConfigSetUserPrefCampaign
 		ConfigSet configSet = new ConfigSet();
 		configSet.setConfigSetName(ConfigSetKeys.ConfigSetUserPrefCampaign);
 
-        configSet.addConfigItem(ConfigItemKeys.PilotInjuryKey, new ConfigItem("2"));
+        configSet.addConfigItem(ConfigItemKeys.CrewMemberInjuryKey, new ConfigItem("2"));
         configSet.addConfigItem(ConfigItemKeys.DetailedVictoryDescriptionKey, new ConfigItem("1"));
         configSet.addConfigItem(ConfigItemKeys.MissionsCreditedKey, new ConfigItem("1"));    
         configSet.addConfigItem(ConfigItemKeys.ShowAllFlightsInBreifingKey, new ConfigItem("0"));

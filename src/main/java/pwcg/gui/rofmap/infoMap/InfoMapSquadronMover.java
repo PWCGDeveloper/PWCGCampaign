@@ -4,7 +4,7 @@ import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.SquadronIOJson;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class InfoMapSquadronMover
@@ -15,7 +15,7 @@ public class InfoMapSquadronMover
     {
         if (squadronIdToMove > 0)
         {
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronIdToMove);
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronIdToMove);
             if (squadron != null)
             {
                 squadron.assignAirfield(assignmentDate, targetAirfield);

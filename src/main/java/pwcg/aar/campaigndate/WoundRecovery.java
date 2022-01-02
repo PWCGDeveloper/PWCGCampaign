@@ -3,7 +3,7 @@ package pwcg.aar.campaigndate;
 import java.util.Date;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -17,23 +17,23 @@ public class WoundRecovery
         this.campaign = campaign;
     }
     
-    public Date calcDateOfRecovery(int pilotStatus) throws PWCGException 
+    public Date calcDateOfRecovery(int crewMemberStatus) throws PWCGException 
     {
-        int daysForWounds = calculateDaysForWounds(pilotStatus);        
+        int daysForWounds = calculateDaysForWounds(crewMemberStatus);        
         Date newDateAfterWounds = DateUtils.advanceTimeDays(campaign.getDate(), daysForWounds);
         return newDateAfterWounds;
     }    
 
-    public int calculateDaysForWounds(int pilotStatus) throws PWCGException 
+    public int calculateDaysForWounds(int crewMemberStatus) throws PWCGException 
     {
         int daysForWound = 0;
-        if (pilotStatus == SquadronMemberStatus.STATUS_WOUNDED)
+        if (crewMemberStatus == CrewMemberStatus.STATUS_WOUNDED)
         {
             int randomAdditional = RandomNumberGenerator.getRandom(20);
             daysForWound = 4 + randomAdditional;
         }
         
-        if (pilotStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        if (crewMemberStatus == CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
             int randomAdditional = RandomNumberGenerator.getRandom(60);
             daysForWound = 25 + randomAdditional;

@@ -8,10 +8,10 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.skirmish.SkirmishBuilder;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -37,12 +37,12 @@ public class MissionBorderBuilderTest
         PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
-        SquadronMember player = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(player);
+        CrewMember player = campaign.findReferencePlayer();
+        participatingPlayers.addCrewMember(player);
         
         for (int i = 0; i < 10; ++i)
         {
-            Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+            Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
             MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
             MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
@@ -64,14 +64,14 @@ public class MissionBorderBuilderTest
         PWCGContext.getInstance().setCampaign(coopCampaign);
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        for (SquadronMember player: coopCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        for (CrewMember player: coopCampaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList())
         {
-            participatingPlayers.addSquadronMember(player);
+            participatingPlayers.addCrewMember(player);
         }
         
         for (int i = 0; i < 10; ++i)
         {
-            Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+            Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
             MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
             MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(coopCampaign, participatingPlayers, null, playerFlightTypes);
@@ -91,15 +91,15 @@ public class MissionBorderBuilderTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        for (SquadronMember player: campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        for (CrewMember player: campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList())
         {
-            participatingPlayers.addSquadronMember(player);
+            participatingPlayers.addCrewMember(player);
         }
 
         SkirmishBuilder skirmishBuilder = new SkirmishBuilder(campaign, participatingPlayers);
         Skirmish skirmish = skirmishBuilder.chooseBestSkirmish();
 
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, skirmish, playerFlightTypes);

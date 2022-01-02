@@ -4,13 +4,13 @@ import java.util.Date;
 
 import pwcg.campaign.Campaign;
 
-public class AceLeaveEvent extends AARPilotEvent
+public class AceLeaveEvent extends AARCrewMemberEvent
 {
 	private String status = "";
 
-    public AceLeaveEvent(Campaign campaign, String status, int squadronId, int pilotSerialNumber, Date date, boolean isNewsWorthy)
+    public AceLeaveEvent(Campaign campaign, String status, int squadronId, int crewMemberSerialNumber, Date date, boolean isNewsWorthy)
     {
-        super(campaign, squadronId, pilotSerialNumber, date, isNewsWorthy);
+        super(campaign, squadronId, crewMemberSerialNumber, date, isNewsWorthy);
         this.status = status;
     }
 

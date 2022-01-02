@@ -12,9 +12,9 @@ import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.resupply.depot.EquipmentDepotInitializer;
-import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 

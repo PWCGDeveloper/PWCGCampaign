@@ -11,5 +11,6 @@
   "endDate": "19460724",
   "rarityWeight": 60,
   "vehicleClass": "Tank",
-  "playerDrivable": true
+  "playerDrivable": true,
+  "archType": "kv1"
 }

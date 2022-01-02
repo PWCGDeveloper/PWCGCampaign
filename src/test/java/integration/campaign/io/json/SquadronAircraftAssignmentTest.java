@@ -12,7 +12,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -23,11 +23,11 @@ public class SquadronAircraftAssignmentTest
     public void verifyValidBoSAirfieldMoveDatesTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        List<Squadron> squadrons = SquadronIOJson.readJson();
+        List<Company> squadrons = SquadronIOJson.readJson();
         Assertions.assertTrue (squadrons.size() > 0);
         
         boolean success = true;
-        for (Squadron squadron : squadrons)
+        for (Company squadron : squadrons)
         {
             if (!verifySquadronAircraftTransitions(squadron))
             {
@@ -38,7 +38,7 @@ public class SquadronAircraftAssignmentTest
         assert(success);
     }
  
-    private boolean verifySquadronAircraftTransitions(Squadron squadron) throws PWCGException
+    private boolean verifySquadronAircraftTransitions(Company squadron) throws PWCGException
     {
         boolean success = true;
         Date lastEndDate = null;

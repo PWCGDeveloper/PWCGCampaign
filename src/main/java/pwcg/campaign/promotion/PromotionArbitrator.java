@@ -4,13 +4,13 @@ import pwcg.aar.outofmission.phase2.awards.IPromotionEventHandler;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberVictories;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberVictories;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
 public class PromotionArbitrator implements IPromotionEventHandler
@@ -23,11 +23,11 @@ public class PromotionArbitrator implements IPromotionEventHandler
         this.promotionCriteria = promotionCriteria;
     }
     
-    public String determinePromotion(Campaign campaign, SquadronMember pilot) throws PWCGException 
+    public String determinePromotion(Campaign campaign, CrewMember crewMember) throws PWCGException 
     {
         String promotion = NO_PROMOTION;
        
-        int rankPosBeforePromotion = getRankPositionForPilot(campaign, pilot);
+        int rankPosBeforePromotion = getRankPositionForCrewMember(campaign, crewMember);
         if (rankPosBeforePromotion == 0)
         {
             return NO_PROMOTION;
@@ -36,11 +36,11 @@ public class PromotionArbitrator implements IPromotionEventHandler
         int requiredMissionForNextRank = getRequiredMissionsForNextRank(rankPosBeforePromotion);
         int requiredVictoriesForNextRank = getRequiredVictoriesForNextRank(rankPosBeforePromotion);
         
-        int numPilotMissions = pilot.getMissionFlown();
-        int numPilotVictories = getPilotVictories(campaign, pilot);
-        if (numPilotMissions >= requiredMissionForNextRank && numPilotVictories >= requiredVictoriesForNextRank)
+        int numCrewMemberMissions = crewMember.getBattlesFought();
+        int numCrewMemberVictories = getCrewMemberVictories(campaign, crewMember);
+        if (numCrewMemberMissions >= requiredMissionForNextRank && numCrewMemberVictories >= requiredVictoriesForNextRank)
         {
-            ArmedService service = pilot.determineService(campaign.getDate());
+            ArmedService service = crewMember.determineService(campaign.getDate());
             IRankHelper rankObj = RankFactory.createRankHelper();
             if (rankPosBeforePromotion > 1)
             {
@@ -49,8 +49,8 @@ public class PromotionArbitrator implements IPromotionEventHandler
             } 
             else if (rankPosBeforePromotion == 1)
             {
-                boolean squadronHasCommander = determineSquadronhasCommander(campaign, pilot);
-                if (pilot.isPlayer() || !squadronHasCommander)
+                boolean squadronHasCommander = determineSquadronhasCommander(campaign, crewMember);
+                if (crewMember.isPlayer() || !squadronHasCommander)
                 {
                     promotion = rankObj.getRankByService(0, service);
                 }
@@ -60,10 +60,10 @@ public class PromotionArbitrator implements IPromotionEventHandler
         return promotion;
     }
 
-    private int getPilotVictories(Campaign campaign, SquadronMember pilot) throws PWCGException
+    private int getCrewMemberVictories(Campaign campaign, CrewMember crewMember) throws PWCGException
     {
-        PwcgRoleCategory roleCategory = pilot.determineSquadron().determineSquadronPrimaryRoleCategory(campaign.getDate());
-        SquadronMemberVictories victories = pilot.getSquadronMemberVictories();
+        PwcgRoleCategory roleCategory = crewMember.determineSquadron().determineSquadronPrimaryRoleCategory(campaign.getDate());
+        CrewMemberVictories victories = crewMember.getCrewMemberVictories();
         if (roleCategory == PwcgRoleCategory.FIGHTER)
         {
             return victories.getAirToAirVictoryCount();
@@ -74,14 +74,14 @@ public class PromotionArbitrator implements IPromotionEventHandler
         }
     }
 
-    private boolean determineSquadronhasCommander(Campaign campaign, SquadronMember pilot) throws PWCGException
+    private boolean determineSquadronhasCommander(Campaign campaign, CrewMember referenceCrewMember) throws PWCGException
     {
         boolean squadronHasCommander = false;
-        SquadronPersonnel playerPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(pilot.getSquadronId());
-        SquadronMembers activePersonnel = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(playerPersonnel.getSquadronMembers().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember squadronMember : activePersonnel.getSquadronMemberList())
+        CompanyPersonnel playerPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(referenceCrewMember.getCompanyId());
+        CrewMembers activePersonnel = CrewMemberFilter.filterActiveAIAndPlayerAndAces(playerPersonnel.getCrewMembers().getCrewMemberCollection(), campaign.getDate());
+        for (CrewMember crewMember : activePersonnel.getCrewMemberList())
         {
-            if (squadronMember.determineIsSquadronMemberCommander())
+            if (crewMember.determineIsCrewMemberCommander())
             {
                 squadronHasCommander = true;
             }
@@ -89,11 +89,11 @@ public class PromotionArbitrator implements IPromotionEventHandler
         return squadronHasCommander;
     }
 
-    private int getRankPositionForPilot(Campaign campaign, SquadronMember pilot) throws PWCGException
+    private int getRankPositionForCrewMember(Campaign campaign, CrewMember crewMember) throws PWCGException
     {
-        ArmedService service = pilot.determineService(campaign.getDate());
+        ArmedService service = crewMember.determineService(campaign.getDate());
         IRankHelper rankObj = RankFactory.createRankHelper();
-        int rankPosBeforePromotion = rankObj.getRankPosByService(pilot.getRank(), service);
+        int rankPosBeforePromotion = rankObj.getRankPosByService(crewMember.getRank(), service);
         return rankPosBeforePromotion;
     }
 
@@ -101,19 +101,19 @@ public class PromotionArbitrator implements IPromotionEventHandler
     {
         if (rankPosBeforePromotion > 3)
         {
-            return promotionCriteria.getPilotRankMedMinMissions();
+            return promotionCriteria.getCrewMemberRankMedMinMissions();
         }
         else if (rankPosBeforePromotion == 3)
         {
-            return promotionCriteria.getPilotRankHighMinMissions();
+            return promotionCriteria.getCrewMemberRankHighMinMissions();
         }
         else if (rankPosBeforePromotion == 2)
         {
-            return promotionCriteria.getPilotRankExecMinMissions();
+            return promotionCriteria.getCrewMemberRankExecMinMissions();
         }
         else if (rankPosBeforePromotion == 1)
         {
-            return promotionCriteria.getPilotRankCommandMinMissions();
+            return promotionCriteria.getCrewMemberRankCommandMinMissions();
         }
         return 100000000;
     }
@@ -122,19 +122,19 @@ public class PromotionArbitrator implements IPromotionEventHandler
     {
         if (rankPosBeforePromotion > 3)
         {
-            return promotionCriteria.getPilotRankMedMinVictories();
+            return promotionCriteria.getCrewMemberRankMedMinVictories();
         }
         else if (rankPosBeforePromotion == 3)
         {
-            return promotionCriteria.getPilotRankHighMinVictories();
+            return promotionCriteria.getCrewMemberRankHighMinVictories();
         }
         else if (rankPosBeforePromotion == 2)
         {
-            return promotionCriteria.getPilotRankExecMinVictories();
+            return promotionCriteria.getCrewMemberRankExecMinVictories();
         }
         else if (rankPosBeforePromotion == 1)
         {
-            return promotionCriteria.getPilotRankCommandMinVictories();
+            return promotionCriteria.getCrewMemberRankCommandMinVictories();
         }
         return 100000000;
     }

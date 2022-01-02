@@ -4,40 +4,40 @@ import java.util.List;
 
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.VictoryDescription;
+import pwcg.campaign.crewmember.VictoryDescription;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignReportVictoryGUI extends AARDocumentIconPanel
 {
 	private static final long serialVersionUID = 1L;
 	private Campaign campaign;
-	private List<VictoryEvent> victoriesForPilot = null;
+	private List<VictoryEvent> victoriesForCrewMember = null;
 	
-	public CampaignReportVictoryGUI(Campaign campaign, List<VictoryEvent> victoriesForPilot) throws PWCGException
+	public CampaignReportVictoryGUI(Campaign campaign, List<VictoryEvent> victoriesForCrewMember) throws PWCGException
 	{
 		super();
         this.campaign = campaign;
-        this.victoriesForPilot = victoriesForPilot;
+        this.victoriesForCrewMember = victoriesForCrewMember;
         makePanel();        
 	}
 
     protected String getHeaderText() throws PWCGException
     {
-        String header = "Notification of Victory for " + victoriesForPilot.get(0).getPilotName();
+        String header = "Notification of Victory for " + victoriesForCrewMember.get(0).getCrewMemberName();
         return header;
     }
 
     protected String getBodyText() throws PWCGException
     {
-        String pilotVictoriesText = "";
-        for (VictoryEvent victoryEvent : victoriesForPilot)
+        String crewMemberVictoriesText = "";
+        for (VictoryEvent victoryEvent : victoriesForCrewMember)
         {            
             VictoryDescription victoryDescription = new VictoryDescription(campaign, victoryEvent.getVictory());
             String victoryDescriptionText = victoryDescription.createVictoryDescription();
-            pilotVictoriesText += victoryDescriptionText + "\n\n";   
+            crewMemberVictoriesText += victoryDescriptionText + "\n\n";   
         }
 
-        return pilotVictoriesText;
+        return crewMemberVictoriesText;
     }
 
     @Override

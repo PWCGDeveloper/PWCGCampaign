@@ -7,7 +7,7 @@ import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 
 public class AARSimulatedMission
@@ -31,14 +31,14 @@ public class AARSimulatedMission
         OutOfMissionVictoryEventHandler victoryEventHandler = new OutOfMissionVictoryEventHandler(campaign, aarContext);
         OutOfMissionVictoryData victoriesOutOMission = victoryEventHandler.generateOutOfMissionVictories();
 
-        aarContext.getPersonnelAcheivements().mergeVictories(victoriesOutOMission.getVictoryAwardsBySquadronMember());
-        outOfMissionLosses(victoriesOutOMission.getShotDownPilots(), victoriesOutOMission.getShotDownPlanes());
+        aarContext.getPersonnelAcheivements().mergeVictories(victoriesOutOMission.getVictoryAwardsByCrewMember());
+        outOfMissionLosses(victoriesOutOMission.getShotDownCrewMembers(), victoriesOutOMission.getShotDownPlanes());
     }
 
-    private void outOfMissionLosses(Map<Integer, SquadronMember> shotDownPilots, Map<Integer, LogPlane> shotDownPlanes) throws PWCGException 
+    private void outOfMissionLosses(Map<Integer, CrewMember> shotDownCrewMembers, Map<Integer, LogPlane> shotDownPlanes) throws PWCGException 
     {
         OutOfMissionLossHandler lossHandler = new  OutOfMissionLossHandler(campaign, aarContext);
-        lossHandler.lossesOutOfMission(shotDownPilots, shotDownPlanes);
+        lossHandler.lossesOutOfMission(shotDownCrewMembers, shotDownPlanes);
         
         AARPersonnelLosses personnelLosses = lossHandler.getOutOfMissionPersonnelLosses();
         aarContext.getPersonnelLosses().merge(personnelLosses);

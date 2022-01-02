@@ -8,11 +8,11 @@ import pwcg.aar.ui.events.model.AAREvent;
 import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.HistoricalAce;
+import pwcg.campaign.crewmember.TankAce;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.medals.Medal;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.HistoricalAce;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -34,9 +34,9 @@ public class HistoricalAceAwardsGenerator
     public HistoricalAceAwards aceEvents() throws PWCGException 
     {
 
-        for (Ace ace : campaign.getPersonnelManager().getCampaignAces().getAllCampaignAces().values())
+        for (TankAce ace : campaign.getPersonnelManager().getCampaignAces().getAllCampaignAces().values())
         {
-            if (!(ace.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_CAPTURED))
+            if (!(ace.getCrewMemberActiveStatus() <= CrewMemberStatus.STATUS_CAPTURED))
             {
                 generateEventsForAce(ace);
             }
@@ -45,12 +45,12 @@ public class HistoricalAceAwardsGenerator
         return historicalAceEvents;
     }
 
-    private void generateEventsForAce(Ace aceAtPreviousDate) throws PWCGException
+    private void generateEventsForAce(TankAce aceAtPreviousDate) throws PWCGException
     {
         HistoricalAce historicalAce = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceAtPreviousDate.getSerialNumber());
         if (historicalAce != null)
         {
-            Ace aceAtNewDate = historicalAce.getAtDate(newDate);
+            TankAce aceAtNewDate = historicalAce.getAtDate(newDate);
             aceMissions(aceAtPreviousDate);
             aceVictories(aceAtPreviousDate, aceAtNewDate);
             aceMedals(aceAtPreviousDate, aceAtNewDate);
@@ -62,7 +62,7 @@ public class HistoricalAceAwardsGenerator
         }
     }
 
-    private void acePromotions(Ace aceAtPreviousDate, Ace aceAtNewDate)
+    private void acePromotions(TankAce aceAtPreviousDate, TankAce aceAtNewDate)
     {
         if (!aceAtNewDate.getRank().equals(aceAtPreviousDate.getRank()))
         {
@@ -70,14 +70,14 @@ public class HistoricalAceAwardsGenerator
         }
     }
 
-    private void aceMissions(Ace aceAtPreviousDate)
+    private void aceMissions(TankAce aceAtPreviousDate)
     {
-        aceAtPreviousDate.setMissionFlown(aceAtPreviousDate.getMissionFlown() + 3);
+        aceAtPreviousDate.setBattlesFought(aceAtPreviousDate.getBattlesFought() + 3);
     }
 
-    private void aceVictories(Ace aceAtPreviousDate, Ace aceAtNewDate) throws PWCGException
+    private void aceVictories(TankAce aceAtPreviousDate, TankAce aceAtNewDate) throws PWCGException
     {
-        for (Victory victory : aceAtNewDate.getSquadronMemberVictories().getAirToAirVictories())
+        for (Victory victory : aceAtNewDate.getCrewMemberVictories().getAirToAirVictories())
         {
             if (victory.getDate().before(newDate) &&
                             (victory.getDate().equals(campaign.getDate()) || victory.getDate().after(campaign.getDate())))
@@ -87,7 +87,7 @@ public class HistoricalAceAwardsGenerator
         }
     }
 
-    private void aceMedals(Ace aceAtPreviousDate, Ace aceAtNewDate)
+    private void aceMedals(TankAce aceAtPreviousDate, TankAce aceAtNewDate)
     {
         for (int medalIndex = 0; medalIndex < aceAtNewDate.getMedals().size(); ++medalIndex)
         {

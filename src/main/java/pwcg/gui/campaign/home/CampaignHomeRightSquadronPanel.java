@@ -7,9 +7,9 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.campaign.pilot.CampaignHomePilotPanel;
+import pwcg.gui.campaign.crewmember.CampaignHomeCrewMemberPanel;
 
 public class CampaignHomeRightSquadronPanel extends JPanel
 {
@@ -28,20 +28,20 @@ public class CampaignHomeRightSquadronPanel extends JPanel
         this.campaignHome = campaignHome;
     }
 
-    public void makePanel(List<SquadronMember>sortedPilots, int squadronId) throws PWCGException
+    public void makePanel(List<CrewMember>sortedCrewMembers, int squadronId) throws PWCGException
     {
-        JPanel pilotListPanel = makePilotPanel(sortedPilots);
-        this.add(pilotListPanel, BorderLayout.NORTH);
+        JPanel crewMemberListPanel = makeCrewMemberPanel(sortedCrewMembers);
+        this.add(crewMemberListPanel, BorderLayout.NORTH);
 
         JPanel plaquePanel = makePlaquePanel(squadronId);
         this.add(plaquePanel, BorderLayout.SOUTH);
     }
 
-    private JPanel makePilotPanel(List<SquadronMember>sortedPilots) throws PWCGException
+    private JPanel makeCrewMemberPanel(List<CrewMember>sortedCrewMembers) throws PWCGException
     {
-        CampaignHomePilotPanel pilotList = new CampaignHomePilotPanel(campaignHome);
-        pilotList.makePanel(sortedPilots, "  Roster", "CampFlowPilot:");
-        return pilotList;
+        CampaignHomeCrewMemberPanel crewMemberList = new CampaignHomeCrewMemberPanel(campaignHome);
+        crewMemberList.makePanel(sortedCrewMembers, "  Roster", "CampFlowCrewMember:");
+        return crewMemberList;
     }
 
     private JPanel makePlaquePanel(int squadronId) throws PWCGException 

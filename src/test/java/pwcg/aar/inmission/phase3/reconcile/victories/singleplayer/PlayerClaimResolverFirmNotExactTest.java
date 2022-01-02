@@ -15,17 +15,17 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.product.fc.country.FCCountry;
+import pwcg.product.bos.country.BoSCountry;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class PlayerClaimResolverFirmNotExactTest
 {
-    @Mock private SquadronMember player;
+    @Mock private CrewMember player;
 
     @BeforeEach
     public void setupTest() throws PWCGException
@@ -42,12 +42,12 @@ public class PlayerClaimResolverFirmNotExactTest
         LogPlane victim = new LogPlane(1);
         victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("se5a");
-        victim.setCountry(new FCCountry(Country.BRITAIN));
+        victim.setCountry(new BoSCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd5");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new FCCountry(Country.GERMANY));
+        victor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new BoSCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -68,12 +68,12 @@ public class PlayerClaimResolverFirmNotExactTest
         LogPlane victim = new LogPlane(1);
         victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("se5a");
-        victim.setCountry(new FCCountry(Country.BRITAIN));
+        victim.setCountry(new BoSCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd5");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new FCCountry(Country.GERMANY));
+        victor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new BoSCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -94,12 +94,12 @@ public class PlayerClaimResolverFirmNotExactTest
         LogPlane victim = new LogPlane(1);
         victim.setRoleCategory(PwcgRoleCategory.BOMBER);
         victim.setVehicleType("notarealplane");
-        victim.setCountry(new FCCountry(Country.BRITAIN));
+        victim.setCountry(new BoSCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd5");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new FCCountry(Country.GERMANY));
+        victor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new BoSCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -120,12 +120,12 @@ public class PlayerClaimResolverFirmNotExactTest
         LogPlane victim = new LogPlane(1);
         victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("se5a");
-        victim.setCountry(new FCCountry(Country.BRITAIN));
+        victim.setCountry(new BoSCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd5");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new FCCountry(Country.GERMANY));
+        victor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new BoSCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -146,12 +146,12 @@ public class PlayerClaimResolverFirmNotExactTest
         LogPlane victim = new LogPlane(1);
         victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("se5a");
-        victim.setCountry(new FCCountry(Country.BRITAIN));
+        victim.setCountry(new BoSCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd5");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new FCCountry(Country.GERMANY));
+        victor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new BoSCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -173,12 +173,12 @@ public class PlayerClaimResolverFirmNotExactTest
         LogPlane victim = new LogPlane(1);
         victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("albatrosd5");
-        victim.setCountry(new FCCountry(Country.GERMANY));
+        victim.setCountry(new BoSCountry(Country.GERMANY));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd5");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victim.setCountry(new FCCountry(Country.GERMANY));
+        victor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victim.setCountry(new BoSCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);

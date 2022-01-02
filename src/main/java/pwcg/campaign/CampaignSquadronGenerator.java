@@ -1,19 +1,19 @@
 package pwcg.campaign;
 
-import pwcg.campaign.personnel.InitialSquadronStaffer;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.InitialCompanyStaffer;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.resupply.InitialSquadronEquipper;
 import pwcg.campaign.resupply.depot.EquipmentWeightCalculator;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignSquadronGenerator 
 {
     private Campaign campaign;
-    private Squadron squadron;
+    private Company squadron;
     
-    public CampaignSquadronGenerator(Campaign campaign, Squadron squadron)
+    public CampaignSquadronGenerator(Campaign campaign, Company squadron)
     {
         this.campaign = campaign;
         this.squadron = squadron;
@@ -27,12 +27,12 @@ public class CampaignSquadronGenerator
 
     public void createSquadronStaff(CampaignGeneratorModel generatorModel) throws PWCGException
     {
-        InitialSquadronStaffer squadronStaffer = new InitialSquadronStaffer(campaign, squadron);
+        InitialCompanyStaffer squadronStaffer = new InitialCompanyStaffer(campaign, squadron);
         if (squadron.getSquadronId() == generatorModel.getCampaignSquadron().getSquadronId())
         {
             squadronStaffer.addPlayerToCampaign(generatorModel);
         }
-        SquadronPersonnel squadronPersonnel = squadronStaffer.generatePersonnel();
+        CompanyPersonnel squadronPersonnel = squadronStaffer.generatePersonnel();
         campaign.getPersonnelManager().addPersonnelForSquadron(squadronPersonnel);
     }
 

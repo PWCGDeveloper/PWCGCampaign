@@ -7,8 +7,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -28,10 +28,10 @@ public class MissionCenterDistanceCalculatorTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
-        for (SquadronMember player : players.getSquadronMemberList())
+        CrewMembers players = campaign.getPersonnelManager().getAllActivePlayers();
+        for (CrewMember player : players.getCrewMemberList())
         {
-            participatingPlayers.addSquadronMember(player);
+            participatingPlayers.addCrewMember(player);
         }
         
         MissionCenterDistanceCalculator missionCenterDistanceCalculator = new MissionCenterDistanceCalculator(campaign, participatingPlayers);
@@ -50,10 +50,10 @@ public class MissionCenterDistanceCalculatorTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
-        for (SquadronMember player : players.getSquadronMemberList())
+        CrewMembers players = campaign.getPersonnelManager().getAllActivePlayers();
+        for (CrewMember player : players.getCrewMemberList())
         {
-            participatingPlayers.addSquadronMember(player);
+            participatingPlayers.addCrewMember(player);
         }
         
         int wayOutOfRange = 10000000;

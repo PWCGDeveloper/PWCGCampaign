@@ -23,7 +23,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.skirmish.IconicMissionsManager;
 import pwcg.campaign.skirmish.IconicSingleMission;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -84,7 +84,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
             String description = formDescription(squadronId);            
             String commandText = description + ":" + squadronId;
             buttonPanel.add(makeCategoryRadioButton(description, commandText));
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             countriesInBattle.add(squadron.getCountry().getCountry());
         }
         
@@ -131,7 +131,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
 
     private String formDescription(Integer squadronId) throws PWCGException
     {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
         Date iconicBattleDate = DateUtils.getDateYYYYMMDD(iconicBattleData.getIconicBattleKey());
         String description = squadron.determineDisplayName(iconicBattleDate) + " flying " + squadron.determineBestPlane(iconicBattleDate).getDisplayName();
         return description;

@@ -3,7 +3,7 @@ package pwcg.campaign.shipping;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skirmish.SkirmishDistance;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -14,7 +14,7 @@ public class ShipEncounterZoneManager
 {
     public static ShipEncounterZone getShipEncounterZone (Campaign campaign, MissionHumanParticipants participatingPlayers) throws PWCGException
     {
-        Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(participatingPlayers.getAllParticipatingPlayers().get(0).getSquadronId());
+        Company squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(participatingPlayers.getAllParticipatingPlayers().get(0).getCompanyId());
         Coordinate playerSquadronPosition = squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getPosition();
         ShipEncounterZone shipEncounterZone = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager().getNearbyEncounterZone(campaign.getDate(), playerSquadronPosition);
         

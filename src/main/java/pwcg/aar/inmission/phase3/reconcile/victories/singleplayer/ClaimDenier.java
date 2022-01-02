@@ -2,9 +2,9 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class ClaimDenier
@@ -31,10 +31,10 @@ public class ClaimDenier
     private ClaimDeniedEvent createPlaneDenied(Integer playerSerialNumber, PlayerVictoryDeclaration declaration) throws PWCGException
     {
         String planeDesc = getPlaneDescription(declaration);
-        SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+        CrewMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
         
         boolean isNewsworthy = false;
-        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, planeDesc, player.getSquadronId(), player.getSerialNumber(), campaign.getDate(), isNewsworthy);
+        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, planeDesc, player.getCompanyId(), player.getSerialNumber(), campaign.getDate(), isNewsworthy);
         
         return claimDenied;
     }

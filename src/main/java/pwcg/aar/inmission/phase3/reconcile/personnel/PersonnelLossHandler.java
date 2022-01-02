@@ -3,11 +3,11 @@ package pwcg.aar.inmission.phase3.reconcile.personnel;
 import java.util.List;
 
 import pwcg.aar.data.AARPersonnelLosses;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogCrewMember;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.core.exception.PWCGException;
 
 public class PersonnelLossHandler
@@ -22,20 +22,20 @@ public class PersonnelLossHandler
     }
 
 
-    public AARPersonnelLosses pilotsShotDown(List<LogPilot> pilotStatusList) throws PWCGException
+    public AARPersonnelLosses crewMembersShotDown(List<LogCrewMember> crewMemberStatusList) throws PWCGException
     {
-        for (LogPilot pilotStatus : pilotStatusList)
+        for (LogCrewMember crewMemberStatus : crewMemberStatusList)
         {
             CampaignPersonnelManager campaignPersonnelManager = campaign.getPersonnelManager();            
-            SquadronMember pilot = campaignPersonnelManager.getAnyCampaignMember(pilotStatus.getSerialNumber());
+            CrewMember crewMember = campaignPersonnelManager.getAnyCampaignMember(crewMemberStatus.getSerialNumber());
 
-            if (pilot.isPlayer())
+            if (crewMember.isPlayer())
             {
-                setStatus(pilotStatus, pilot);
+                setStatus(crewMemberStatus, crewMember);
             }
             else
             {
-                setStatus(pilotStatus, pilot);
+                setStatus(crewMemberStatus, crewMember);
             }
         }
         
@@ -43,26 +43,26 @@ public class PersonnelLossHandler
     }
 
 
-    private void setStatus(LogPilot logPilot, SquadronMember pilot) throws PWCGException
+    private void setStatus(LogCrewMember logCrewMember, CrewMember crewMember) throws PWCGException
     {
-        if (logPilot.getStatus() == SquadronMemberStatus.STATUS_WOUNDED)
+        if (logCrewMember.getStatus() == CrewMemberStatus.STATUS_WOUNDED)
         {
-            personnelLosses.addPersonnelWounded(pilot);
+            personnelLosses.addPersonnelWounded(crewMember);
         }
 
-        if (logPilot.getStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        if (logCrewMember.getStatus() == CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
-            personnelLosses.addPersonnelMaimed(pilot);
+            personnelLosses.addPersonnelMaimed(crewMember);
         }
 
-        if (logPilot.getStatus() == SquadronMemberStatus.STATUS_CAPTURED)
+        if (logCrewMember.getStatus() == CrewMemberStatus.STATUS_CAPTURED)
         {
-            personnelLosses.addPersonnelCaptured(pilot);
+            personnelLosses.addPersonnelCaptured(crewMember);
         }
 
-        if (logPilot.getStatus() == SquadronMemberStatus.STATUS_KIA)
+        if (logCrewMember.getStatus() == CrewMemberStatus.STATUS_KIA)
         {
-            personnelLosses.addPersonnelKilled(pilot);
+            personnelLosses.addPersonnelKilled(crewMember);
         }
     }
 }

@@ -5,38 +5,38 @@ import java.util.Map;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
-import pwcg.aar.ui.events.PilotStatusEventGenerator;
+import pwcg.aar.ui.events.CrewMemberStatusEventGenerator;
 import pwcg.aar.ui.events.PlaneStatusEventGenerator;
 import pwcg.aar.ui.events.VictoryEventGenerator;
-import pwcg.aar.ui.events.model.PilotStatusEvent;
+import pwcg.aar.ui.events.model.CrewMemberStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadmember.Victory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.Victory;
+import pwcg.campaign.personnel.CrewMemberFilter;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class AARCombatReportTabulator 
 {
     private Campaign campaign;
-    private Squadron squadron;
+    private Company squadron;
     private AARContext aarContext;
     
-    private PilotStatusEventGenerator pilotStatusEventGenerator;
+    private CrewMemberStatusEventGenerator crewMemberStatusEventGenerator;
     private PlaneStatusEventGenerator planeStatusEventGenerator;
     private VictoryEventGenerator victoryEventGenerator;
     private AARCombatReportPanelData combatReportPanelData = new AARCombatReportPanelData();
     
-    public AARCombatReportTabulator (Campaign campaign, Squadron squadron, AARContext aarContext)
+    public AARCombatReportTabulator (Campaign campaign, Company squadron, AARContext aarContext)
     {
         this.aarContext = aarContext;
         this.campaign = campaign;
         this.squadron = squadron;
         
-        pilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
+        crewMemberStatusEventGenerator = new CrewMemberStatusEventGenerator(campaign);
         planeStatusEventGenerator = new PlaneStatusEventGenerator(campaign);
         victoryEventGenerator = new VictoryEventGenerator(campaign);
     }
@@ -46,9 +46,9 @@ public class AARCombatReportTabulator
         createCrewsInMission();
         createDeniedClaims();
         extractMissionHeader();
-        createLossesForPilotsInMission();
+        createLossesForCrewMembersInMission();
         createLossesForEquipmentInMission();
-        createVictoryEventsForSquadronMembersInMission();
+        createVictoryEventsForCrewMembersInMission();
         return combatReportPanelData;
     }
 
@@ -59,9 +59,9 @@ public class AARCombatReportTabulator
 
     private void createCrewsInMission() throws PWCGException
     {
-        Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection();
-        SquadronMembers squadronMembersInMission = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesForSquadron(campaignMembersInMission, campaign.getDate(), squadron.getSquadronId());
-        combatReportPanelData.addPilotsInMission(squadronMembersInMission);
+        Map<Integer, CrewMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getCrewMemberCollection();
+        CrewMembers squadronMembersInMission = CrewMemberFilter.filterActiveAIAndPlayerAndAcesForSquadron(campaignMembersInMission, campaign.getDate(), squadron.getSquadronId());
+        combatReportPanelData.addCrewMembersInMission(squadronMembersInMission);
     }
 
     private void extractMissionHeader()
@@ -69,14 +69,14 @@ public class AARCombatReportTabulator
         combatReportPanelData.setMissionAARHeader(aarContext.getPreliminaryData().getPwcgMissionData().getMissionHeader());
     }
 
-    private void createLossesForPilotsInMission() throws PWCGException
+    private void createLossesForCrewMembersInMission() throws PWCGException
     {
-        Map<Integer, PilotStatusEvent> pilotsLostInMission = pilotStatusEventGenerator.createPilotLossEvents(aarContext.getPersonnelLosses());
-        for (PilotStatusEvent pilotLostEvent : pilotsLostInMission.values())
+        Map<Integer, CrewMemberStatusEvent> crewMembersLostInMission = crewMemberStatusEventGenerator.createCrewMemberLossEvents(aarContext.getPersonnelLosses());
+        for (CrewMemberStatusEvent crewMemberLostEvent : crewMembersLostInMission.values())
         {
-            if (isIncludeInCombatReport(pilotLostEvent.getSquadronId(), pilotLostEvent.getPilotSerialNumber()))
+            if (isIncludeInCombatReport(crewMemberLostEvent.getSquadronId(), crewMemberLostEvent.getCrewMemberSerialNumber()))
             {
-                combatReportPanelData.addPilotLostInMission(pilotLostEvent);
+                combatReportPanelData.addCrewMemberLostInMission(crewMemberLostEvent);
             }
         }
     }
@@ -86,22 +86,22 @@ public class AARCombatReportTabulator
         Map<Integer, PlaneStatusEvent> planesLostInMission = planeStatusEventGenerator.createPlaneLossEvents(aarContext.getEquipmentLosses());
         for (PlaneStatusEvent planeLostEvent : planesLostInMission.values())
         {
-            if (isIncludeInCombatReport(planeLostEvent.getSquadronId(), planeLostEvent.getPilotSerialNumber()))
+            if (isIncludeInCombatReport(planeLostEvent.getSquadronId(), planeLostEvent.getCrewMemberSerialNumber()))
             {
                 combatReportPanelData.addPlaneLostInMission(planeLostEvent);
             }
         }
     }
 
-    private void createVictoryEventsForSquadronMembersInMission() throws PWCGException
+    private void createVictoryEventsForCrewMembersInMission() throws PWCGException
     {
-        Map<Integer, List<Victory>> victoryAwardByPilot = aarContext.getPersonnelAcheivements().getVictoriesByPilot();
-        List<VictoryEvent> victoriesInMission = victoryEventGenerator.createPilotVictoryEvents(victoryAwardByPilot);
+        Map<Integer, List<Victory>> victoryAwardByCrewMember = aarContext.getPersonnelAcheivements().getVictoriesByCrewMember();
+        List<VictoryEvent> victoriesInMission = victoryEventGenerator.createCrewMemberVictoryEvents(victoryAwardByCrewMember);
         for (VictoryEvent victoryEvent : victoriesInMission)
         {
-            if (isIncludeInCombatReport(victoryEvent.getSquadronId(), victoryEvent.getPilotSerialNumber()))
+            if (isIncludeInCombatReport(victoryEvent.getSquadronId(), victoryEvent.getCrewMemberSerialNumber()))
             {
-                combatReportPanelData.addVictoryForSquadronMembers(victoryEvent);
+                combatReportPanelData.addVictoryForCrewMembers(victoryEvent);
             }
         }
     }
@@ -110,7 +110,7 @@ public class AARCombatReportTabulator
     {
         if (squadronId == squadron.getSquadronId())
         {
-            if (aarContext.getMissionEvaluationData().wasPilotInMission(serialNumber))
+            if (aarContext.getMissionEvaluationData().wasCrewMemberInMission(serialNumber))
             {
                 return true;
             }
@@ -124,9 +124,9 @@ public class AARCombatReportTabulator
         this.planeStatusEventGenerator = planeStatusEventGenerator;
     }
 
-    public void setPilotStatusEventGenerator(PilotStatusEventGenerator pilotStatusEventGenerator)
+    public void setCrewMemberStatusEventGenerator(CrewMemberStatusEventGenerator crewMemberStatusEventGenerator)
     {
-        this.pilotStatusEventGenerator = pilotStatusEventGenerator;
+        this.crewMemberStatusEventGenerator = crewMemberStatusEventGenerator;
     }
 
     public void setVictoryEventGenerator(VictoryEventGenerator victoryEventGenerator)

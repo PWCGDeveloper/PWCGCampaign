@@ -12,10 +12,10 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberReplacer;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.io.json.CoopUserIOJson;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberReplacer;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
@@ -29,8 +29,8 @@ public class CoopUserAddRemoveTest
 {
     private static Campaign coopCampaign;
     private static final String coopuser = "New Coop";
-    private static final String personaName = "My Pilot";
-    private SquadronMember newSquadronMember;
+    private static final String personaName = "My CrewMember";
+    private CrewMember newCrewMember;
 
     @BeforeAll
     public void setupSuite() throws PWCGException
@@ -49,7 +49,7 @@ public class CoopUserAddRemoveTest
     public void testCoopCampaignLifeCycle() throws Exception
     {
         createCoopUser();
-        createCoopPersonaSquadronMember();
+        createCoopPersonaCrewMember();
         removeUser();
     }
 
@@ -61,22 +61,22 @@ public class CoopUserAddRemoveTest
         assert(coopUserFile.exists());
     }
     
-    private void createCoopPersonaSquadronMember() throws Exception
+    private void createCoopPersonaCrewMember() throws Exception
     {
-        SquadronMemberReplacer squadronMemberReplacer = new SquadronMemberReplacer(coopCampaign);
-        newSquadronMember = squadronMemberReplacer.createPersona(personaName, "Leutnant", "II./St.G.77", coopuser);
+        CrewMemberReplacer squadronMemberReplacer = new CrewMemberReplacer(coopCampaign);
+        newCrewMember = squadronMemberReplacer.createPersona(personaName, "Leutnant", "II./St.G.77", coopuser);
         coopCampaign.write();
         
-        verifyNewSquadronMember();        
+        verifyNewCrewMember();        
         verifyNewCoopPersona();        
     }
 
-    private void verifyNewSquadronMember() throws PWCGException
+    private void verifyNewCrewMember() throws PWCGException
     {
-        SquadronMember squadronMemberFromPersonnel = coopCampaign.getPersonnelManager().getAnyCampaignMember(newSquadronMember.getSerialNumber());
+        CrewMember squadronMemberFromPersonnel = coopCampaign.getPersonnelManager().getAnyCampaignMember(newCrewMember.getSerialNumber());
         assert(squadronMemberFromPersonnel != null);
-        assert(squadronMemberFromPersonnel.getSquadronId() == 20122077);
-        assert(squadronMemberFromPersonnel.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE);
+        assert(squadronMemberFromPersonnel.getCompanyId() == 20122077);
+        assert(squadronMemberFromPersonnel.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_ACTIVE);
     }
 
     private void verifyNewCoopPersona() throws PWCGException
@@ -91,7 +91,7 @@ public class CoopUserAddRemoveTest
                 coopUserFileExists = true;
                 for (int persona : coopUser.getUserPersonas(coopCampaign.getName()))
                 {
-                    if (persona == newSquadronMember.getSerialNumber())
+                    if (persona == newCrewMember.getSerialNumber())
                     {
                         coopPersonaExists = true;
                     }
@@ -116,10 +116,10 @@ public class CoopUserAddRemoveTest
 
         assert(CoopUserManager.getIntance().getCoopUser(coopuser) == null);
 
-        SquadronMember squadronMemberFromPersonnel = coopCampaign.getPersonnelManager().getAnyCampaignMember(newSquadronMember.getSerialNumber());
+        CrewMember squadronMemberFromPersonnel = coopCampaign.getPersonnelManager().getAnyCampaignMember(newCrewMember.getSerialNumber());
         assert(squadronMemberFromPersonnel != null);
-        assert(squadronMemberFromPersonnel.getSquadronId() == 20122077);
-        assert(squadronMemberFromPersonnel.getPilotActiveStatus() == SquadronMemberStatus.STATUS_RETIRED);
+        assert(squadronMemberFromPersonnel.getCompanyId() == 20122077);
+        assert(squadronMemberFromPersonnel.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_RETIRED);
     }
 
 }

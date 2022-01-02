@@ -1,7 +1,6 @@
 package pwcg.mission;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignMode;
 import pwcg.campaign.CampaignModeChooser;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.utils.TestDriver;
@@ -18,10 +17,6 @@ public class MissionBorderBuilderFactory
         else if (CampaignModeChooser.isCampaignModeCompetitive(campaign))
         {
             return new MissionCenterBuilderMulti(campaign, participatingPlayers);
-        }
-        else if (playerFlightTypes.isStrategicInterceptPlayerFlight() && campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
-        {
-            return new MissionCenterBuilderStrategicIntercept(campaign, participatingPlayers);
         }
         else if (skirmish != null)
         {

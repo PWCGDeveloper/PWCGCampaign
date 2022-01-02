@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class ResupplySquadronChooser
@@ -64,7 +64,7 @@ public class ResupplySquadronChooser
     {
         for (ISquadronNeed squadronNeed : squadronNeeds.values())
         {
-            if (Squadron.isPlayerSquadron(campaign, squadronNeed.getSquadronId()))
+            if (Company.isPlayerSquadron(campaign, squadronNeed.getSquadronId()))
             {
                 desperateSquadron(playerSquadronNeeds, squadronNeed, 4);
             }

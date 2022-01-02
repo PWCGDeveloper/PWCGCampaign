@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.Country;
+import pwcg.campaign.crewmember.HistoricalAce;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.io.json.HistoricalAceIOJson;
-import pwcg.campaign.squadmember.HistoricalAce;
-import pwcg.campaign.squadmember.Victory;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;

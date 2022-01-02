@@ -9,7 +9,7 @@ import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentDepotInitializer
@@ -26,8 +26,8 @@ public class EquipmentDepotInitializer
 
     public Equipment createReplacementPoolForService() throws PWCGException
     {
-        List<Squadron> activeSquadronsForService = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForService(campaign.getDate(), service);
-        for (Squadron squadron : activeSquadronsForService)
+        List<Company> activeSquadronsForService = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForService(campaign.getDate(), service);
+        for (Company squadron : activeSquadronsForService)
         {
             EquipmentWeightCalculator equipmentWeightCalculator = createPlaneCalculator(squadron);            
             makeReplacementPlanesForSquadron(equipmentWeightCalculator);
@@ -35,7 +35,7 @@ public class EquipmentDepotInitializer
         return equipment;
     }
 
-    private EquipmentWeightCalculator createPlaneCalculator(Squadron squadron) throws PWCGException
+    private EquipmentWeightCalculator createPlaneCalculator(Company squadron) throws PWCGException
     {
         List<PlaneType> planeTypesForSquadron = squadron.determineCurrentAircraftList(campaign.getDate());
         EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());

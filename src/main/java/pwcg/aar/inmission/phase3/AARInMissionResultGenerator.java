@@ -37,7 +37,7 @@ public class AARInMissionResultGenerator
         IClaimResolver missionResolver = CampaignModeAARFactory.createClaimResolver(campaign, aarContext, playerDeclarations);
         ReconciledMissionVictoryData reconciledMissionVictoryData = missionResolver.resolvePlayerClaims();
         aarContext.getPersonnelAcheivements().setPlayerClaimsDenied(reconciledMissionVictoryData.getPlayerClaimsDenied());
-        aarContext.getPersonnelAcheivements().mergeVictories(reconciledMissionVictoryData.getVictoryAwardsByPilot());
+        aarContext.getPersonnelAcheivements().mergeVictories(reconciledMissionVictoryData.getVictoryAwardsByCrewMember());
     }
 
     private void personnelChangesInMission() throws PWCGException 

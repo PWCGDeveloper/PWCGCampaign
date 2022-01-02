@@ -8,8 +8,8 @@ import java.util.Set;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
@@ -41,7 +41,7 @@ public class PwcgMissionDataEvaluator
 
         for (PwcgGeneratedMissionPlaneData missionPlane : aarPreliminarytData.getPwcgMissionData().getMissionPlanes().values())
         {
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(missionPlane.getSquadronId());            
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(missionPlane.getSquadronId());            
             if (squadron.determineSquadronCountry(campaign.getDate()).getSide() == side)
             {
                 uniquePlanesForSide.add(missionPlane.getAircraftType());
@@ -51,18 +51,18 @@ public class PwcgMissionDataEvaluator
         return new ArrayList<String>(uniquePlanesForSide);
     }
 
-    public PwcgGeneratedMissionPlaneData getPlaneForPilotBySerialNumber(Integer serialNumber) throws PWCGException
+    public PwcgGeneratedMissionPlaneData getPlaneForCrewMemberBySerialNumber(Integer serialNumber) throws PWCGException
     {
         return aarPreliminarytData.getPwcgMissionData().getMissionPlane(serialNumber);
     }
     
-    public PwcgGeneratedMissionPlaneData getPlaneForPilotByName(String name) throws PWCGException
+    public PwcgGeneratedMissionPlaneData getPlaneForCrewMemberByName(String name) throws PWCGException
     {
         List<PwcgGeneratedMissionPlaneData> missionPlanes = new ArrayList<>(aarPreliminarytData.getPwcgMissionData().getMissionPlanes().values());
         for (PwcgGeneratedMissionPlaneData missionPlane : missionPlanes)
         {
-            SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(missionPlane.getPilotSerialNumber());
-            if (squadronMember.isPilotName(name))
+            CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(missionPlane.getCrewMemberSerialNumber());
+            if (crewMember.isCrewMemberName(name))
             {
                 return missionPlane;
             }
@@ -71,11 +71,11 @@ public class PwcgMissionDataEvaluator
         throw new PWCGException("No missionPlane found for name " + name);
     }
 
-    public boolean wasPilotAssignedToMission(Integer serialNumber) throws PWCGException
+    public boolean wasCrewMemberAssignedToMission(Integer serialNumber) throws PWCGException
     {
-        for (SquadronMember pilotInMission : aarPreliminarytData.getCampaignMembersInMission().getSquadronMemberCollection().values())
+        for (CrewMember crewMemberInMission : aarPreliminarytData.getCampaignMembersInMission().getCrewMemberCollection().values())
         {
-            if (pilotInMission.getSerialNumber() == serialNumber)
+            if (crewMemberInMission.getSerialNumber() == serialNumber)
             {
                 return true;
             }
@@ -84,26 +84,26 @@ public class PwcgMissionDataEvaluator
         return false;
     }
 
-    public boolean wasPilotAssignedToMissionByName(String destroyedEntityName) throws PWCGException
+    public boolean wasCrewMemberAssignedToMissionByName(String destroyedEntityName) throws PWCGException
     {
         if (VehicleDefinitionManager.isLocomotive(destroyedEntityName))
         {
             return false;
         }
 
-        for (SquadronMember pilotInMission : aarPreliminarytData.getCampaignMembersInMission().getSquadronMemberCollection().values())
+        for (CrewMember crewMemberInMission : aarPreliminarytData.getCampaignMembersInMission().getCrewMemberCollection().values())
         {
             if (destroyedEntityName == null)
             {
                 return false;
             }
             
-            if (pilotInMission.getName() == null)
+            if (crewMemberInMission.getName() == null)
             {
                 return false;
             }
             
-            if (pilotInMission.isPilotName(destroyedEntityName))
+            if (crewMemberInMission.isCrewMemberName(destroyedEntityName))
             {
                 return true;
             }

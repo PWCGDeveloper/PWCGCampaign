@@ -9,7 +9,7 @@ import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.MapArea;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -170,7 +170,7 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
         List<Coordinate> playerSquadronCoordinates = new ArrayList<>();
         for (int playerSquadronId : participatingPlayers.getParticipatingSquadronIds())
         {
-            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronId);
+            Company playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronId);
             Coordinate playerSquadronCoordinate = playerSquadron.determineCurrentPosition(campaign.getDate());
             playerSquadronCoordinates.add(playerSquadronCoordinate);
         }

@@ -13,12 +13,12 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.outofmission.DuringCampaignAirVictimGenerator;
 import pwcg.campaign.outofmission.OutOfMissionAirVictoryBuilder;
 import pwcg.campaign.personnel.EnemySquadronFinder;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.Victory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
@@ -43,11 +43,11 @@ public class OutOfMissionAirVictoryBuilderTest
     @Test
     public void testVictoryAwarded () throws PWCGException
     {     
-        SquadronMember aiSquadMember = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Serzhant");        
-        Squadron squadronMemberSquadron = aiSquadMember.determineSquadron();
+        CrewMember aiSquadMember = CampaignPersonnelTestHelper.getCrewMemberByRank(campaign, "Serzhant");        
+        Company squadronMemberSquadron = aiSquadMember.determineSquadron();
 
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron victimSquadron = enemySquadronFinder.getEnemyForOutOfMission(squadronMemberSquadron, campaign.getDate());
+        Company victimSquadron = enemySquadronFinder.getEnemyForOutOfMission(squadronMemberSquadron, campaign.getDate());
         DuringCampaignAirVictimGenerator duringCampaignVictimGenerator = new DuringCampaignAirVictimGenerator(campaign, victimSquadron);
         
         OutOfMissionAirVictoryBuilder victoryGenerator = new OutOfMissionAirVictoryBuilder(campaign, victimSquadron, duringCampaignVictimGenerator, aiSquadMember);

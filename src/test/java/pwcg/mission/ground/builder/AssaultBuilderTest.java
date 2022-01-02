@@ -19,7 +19,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -41,7 +41,7 @@ public class AssaultBuilderTest
 {
     @Mock private Campaign campaign;
     @Mock private Mission mission;
-    @Mock private Squadron squadron;
+    @Mock private Company squadron;
     @Mock private ConfigManagerCampaign configManager;
     @Mock private MissionFlights missionFlightBuilder;
     @Mock private IFlight playerFlight;

@@ -47,9 +47,8 @@ public class East1944Map extends PWCGMap
 
     private void buildArmedServicesActiveForMap()
     {
-        armedServicesActiveForMap.add(BoSServiceManager.VVS);
-        armedServicesActiveForMap.add(BoSServiceManager.NORMANDIE);
-        armedServicesActiveForMap.add(BoSServiceManager.LUFTWAFFE);
+        armedServicesActiveForMap.add(BoSServiceManager.SVV);
+        armedServicesActiveForMap.add(BoSServiceManager.WEHRMACHT);
     }
 
     @Override

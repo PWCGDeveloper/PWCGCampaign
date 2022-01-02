@@ -2,7 +2,7 @@ package pwcg.mission.data;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
@@ -17,7 +17,7 @@ public class MissionHeaderGenerator
         // Even for Coop flights we have to set the header.  Doesn't really matter which flight 
         // as long as it is a player flight
         IFlight myFlight = mission.getFlights().getReferencePlayerFlight();
-        Squadron mySquadron =myFlight.getSquadron();
+        Company mySquadron =myFlight.getSquadron();
         
         MissionHeader missionHeader = new MissionHeader();
         

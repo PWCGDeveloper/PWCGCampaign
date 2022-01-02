@@ -6,7 +6,7 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.rofmap.brief.model.BriefingPilotAssignmentData;
+import pwcg.gui.rofmap.brief.model.BriefingCrewMemberAssignmentData;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
@@ -15,9 +15,9 @@ import pwcg.mission.flight.plane.PlaneMcu;
 public class BriefingPayloadHelper
 {
     private Mission mission;
-    private BriefingPilotAssignmentData briefingAssignmentData = new BriefingPilotAssignmentData();
+    private BriefingCrewMemberAssignmentData briefingAssignmentData = new BriefingCrewMemberAssignmentData();
     
-	public BriefingPayloadHelper(Mission mission, BriefingPilotAssignmentData briefingAssignmentData)
+	public BriefingPayloadHelper(Mission mission, BriefingCrewMemberAssignmentData briefingAssignmentData)
 	{
         this.mission = mission;
         this.briefingAssignmentData = briefingAssignmentData;
@@ -29,11 +29,11 @@ public class BriefingPayloadHelper
         assignModificationsToCrewPlanes();
     }
 
-    public void modifyPayload(Integer pilotSerialNumber, int payloadId) 
+    public void modifyPayload(Integer crewMemberSerialNumber, int payloadId) 
     {
         try
         {
-            CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPilot(pilotSerialNumber);
+            CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByCrewMember(crewMemberSerialNumber);
             if (crewPlane != null)
             {
                 crewPlane.setPayloadId(payloadId);
@@ -45,15 +45,15 @@ public class BriefingPayloadHelper
         }
     }
 
-    public void setPayloadForAddedPlane(Integer pilotSerialNumber) throws PWCGException
+    public void setPayloadForAddedPlane(Integer crewMemberSerialNumber) throws PWCGException
     {
-        CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPilot(pilotSerialNumber);
+        CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByCrewMember(crewMemberSerialNumber);
         executePayloadAssignmentSequence(crewPlane);
     }
 
-    public void setPayloadForChangedPlane(Integer pilotSerialNumber) throws PWCGException
+    public void setPayloadForChangedPlane(Integer crewMemberSerialNumber) throws PWCGException
     {
-        CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPilot(pilotSerialNumber);
+        CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByCrewMember(crewMemberSerialNumber);
         executePayloadAssignmentSequence(crewPlane);
     }
 
@@ -105,7 +105,7 @@ public class BriefingPayloadHelper
         {
             if (sourceCrewPlane.getPlane().getType().equals(crewPlane.getPlane().getType()))
             {
-                if (sourceCrewPlane.getPilot().getSerialNumber() != crewPlane.getPilot().getSerialNumber())
+                if (sourceCrewPlane.getCrewMember().getSerialNumber() != crewPlane.getCrewMember().getSerialNumber())
                 {
                     mapPayloadFromPlane(crewPlane, sourceCrewPlane);
                     setToSimilarPlane = true;

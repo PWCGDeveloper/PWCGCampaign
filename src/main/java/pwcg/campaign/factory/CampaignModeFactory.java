@@ -2,15 +2,15 @@ package pwcg.campaign.factory;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
+import pwcg.campaign.crewmember.CrewMemberReplacer;
+import pwcg.campaign.crewmember.CrewMemberReplacerCoop;
+import pwcg.campaign.crewmember.ICrewMemberReplacer;
 import pwcg.campaign.mode.CampaignActiveCoop;
 import pwcg.campaign.mode.CampaignActiveSinglePlayer;
 import pwcg.campaign.mode.CampaignDescriptionBuilderCoop;
 import pwcg.campaign.mode.CampaignDescriptionBuilderSinglePlayer;
 import pwcg.campaign.mode.ICampaignActive;
 import pwcg.campaign.mode.ICampaignDescriptionBuilder;
-import pwcg.campaign.squadmember.ISquadronMemberReplacer;
-import pwcg.campaign.squadmember.SquadronMemberReplacer;
-import pwcg.campaign.squadmember.SquadronMemberReplacerCoop;
 
 public class CampaignModeFactory
 {
@@ -38,15 +38,15 @@ public class CampaignModeFactory
         }
     }
     
-    public static ISquadronMemberReplacer makeSquadronMemberReplacer (Campaign campaign)
+    public static ICrewMemberReplacer makeCrewMemberReplacer (Campaign campaign)
     {
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
-            return new SquadronMemberReplacer(campaign);
+            return new CrewMemberReplacer(campaign);
         }
         else
         {
-            return new SquadronMemberReplacerCoop(campaign);
+            return new CrewMemberReplacerCoop(campaign);
         }
     }
 }

@@ -18,7 +18,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -27,12 +27,12 @@ import pwcg.core.utils.DateUtils;
 @ExtendWith(MockitoExtension.class)
 public class EnemySquadronFinderTest
 {
-    @Mock private Squadron squadron;
+    @Mock private Company squadron;
     @Mock private Campaign campaign;
     @Mock private CampaignPersonnelManager personnelManager;
     @Mock private CampaignEquipmentManager equipmentManager;
     @Mock private Equipment equipment;
-    @Mock private SquadronPersonnel squadronPersonnel;
+    @Mock private CompanyPersonnel squadronPersonnel;
     @Mock private Airfield squadronAirfield;
     @Mock private ConfigManagerCampaign configManagerCampaign;
     
@@ -50,7 +50,7 @@ public class EnemySquadronFinderTest
         
         Mockito.when(configManagerCampaign.getIntConfigParam(ConfigItemKeys.RemoveNonHistoricalSquadronsKey)).thenReturn(0);
 
-        Mockito.when(personnelManager.getSquadronPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
+        Mockito.when(personnelManager.getCompanyPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
         Mockito.when(squadronPersonnel.isSquadronPersonnelViable()).thenReturn(true);
 
         Mockito.when(campaign.getEquipmentManager()).thenReturn(equipmentManager);
@@ -66,7 +66,7 @@ public class EnemySquadronFinderTest
     public void findEnemySquadronFromCorner () throws PWCGException
     {     
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron enemySquadron = enemySquadronFinder.getEnemyForOutOfMission(squadron, DateUtils.getDateYYYYMMDD("19421001"));
+        Company enemySquadron = enemySquadronFinder.getEnemyForOutOfMission(squadron, DateUtils.getDateYYYYMMDD("19421001"));
         assert(enemySquadron != null);
     }
 
@@ -74,7 +74,7 @@ public class EnemySquadronFinderTest
     public void findEnemySquadronNearby () throws PWCGException
     {     
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron enemySquadron = enemySquadronFinder.getEnemyForOutOfMission(squadron, DateUtils.getDateYYYYMMDD("19421001"));
+        Company enemySquadron = enemySquadronFinder.getEnemyForOutOfMission(squadron, DateUtils.getDateYYYYMMDD("19421001"));
         assert(enemySquadron != null);
     }
 
@@ -82,7 +82,7 @@ public class EnemySquadronFinderTest
     public void findEnemySquadronAny () throws PWCGException
     {     
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron enemySquadron = enemySquadronFinder.getEnemyForOutOfMission(squadron, DateUtils.getDateYYYYMMDD("19421001"));
+        Company enemySquadron = enemySquadronFinder.getEnemyForOutOfMission(squadron, DateUtils.getDateYYYYMMDD("19421001"));
         assert(enemySquadron != null);
     }
 }

@@ -14,7 +14,7 @@ import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
@@ -62,7 +62,7 @@ public class AARCombatReportPanel extends AARDocumentPanel implements ActionList
 
     private void buildCombatReport() throws PWCGException 
     {                
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        CrewMember referencePlayer = campaign.findReferencePlayer();
         CombatReportBuilder combatReportBuilder = new CombatReportBuilder(campaign, referencePlayer, aarCoordinator);
         combatReport = combatReportBuilder.createCombatReport();
     }

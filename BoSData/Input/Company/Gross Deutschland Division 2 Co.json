@@ -3,7 +3,7 @@
 	"squadronId": 201001002,
 	"name": "Gross Deutschland Division, 2nd Company",
 	"fileName": "Gross Deutschland Division 2 Co.json",
-	"skill": 90,
+	"skill": 80,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tankAssignments": [
@@ -18,7 +18,7 @@
 			"withdrawal": "19430601"
 		},
 		{
-			"archType": "pzv",
+			"archType": "panther",
 			"introduction": "19430601",
 			"withdrawal": "19450601"
 		}

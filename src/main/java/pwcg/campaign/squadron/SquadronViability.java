@@ -11,7 +11,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.core.exception.PWCGException;
@@ -19,7 +19,7 @@ import pwcg.core.utils.DateUtils;
 
 public class SquadronViability
 {
-    public static boolean isSquadronActive(Squadron squadron, Date date) throws PWCGException 
+    public static boolean isSquadronActive(Company squadron, Date date) throws PWCGException 
     {       
         String currentAirfield = squadron.determineCurrentAirfieldName(date);
         if (currentAirfield == null)
@@ -40,7 +40,7 @@ public class SquadronViability
         return true; 
     }
     
-    public static boolean isSquadronPlayerFlyable(Squadron squadron, Date date) throws PWCGException 
+    public static boolean isSquadronPlayerFlyable(Company squadron, Date date) throws PWCGException 
     {       
         if (!isSquadronActive(squadron, date))
         {
@@ -55,14 +55,14 @@ public class SquadronViability
         return true; 
     }
 
-    public static boolean isSquadronViable(Squadron squadron, Campaign campaign) throws PWCGException
+    public static boolean isSquadronViable(Company squadron, Campaign campaign) throws PWCGException
     {
         if (!isSquadronActive(squadron, campaign.getDate()))
         {
             return false;
         }
         
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId());
         if (squadronPersonnel == null)
         {
             return false;
@@ -92,10 +92,10 @@ public class SquadronViability
         return true;
     }
 
-    public static List<Squadron> reduceToAIOnly(Campaign campaign, List<Squadron> selectedSquadrons) throws PWCGException
+    public static List<Company> reduceToAIOnly(Campaign campaign, List<Company> selectedSquadrons) throws PWCGException
     {
-        List<Squadron> selectedSquadronsNoPlayer = new ArrayList<>();
-        for (Squadron squadron : selectedSquadrons)
+        List<Company> selectedSquadronsNoPlayer = new ArrayList<>();
+        for (Company squadron : selectedSquadrons)
         {
             if (!campaign.getPersonnelManager().squadronHasActivePlayers(squadron.getSquadronId()))
             {
@@ -105,10 +105,10 @@ public class SquadronViability
         return selectedSquadronsNoPlayer;
     }
     
-    public static List<Squadron> reduceToSide(Side side, List<Squadron> squadrons) throws PWCGException
+    public static List<Company> reduceToSide(Side side, List<Company> squadrons) throws PWCGException
     {       
-        List<Squadron> squadronsForSide = new ArrayList<Squadron>();
-        for (Squadron squadron : squadrons)
+        List<Company> squadronsForSide = new ArrayList<Company>();
+        for (Company squadron : squadrons)
         {
             if (side == squadron.determineSide())
             {
@@ -119,10 +119,10 @@ public class SquadronViability
     }
     
 
-    public static List<Squadron> reduceToCurrentMap(List<Squadron> squadrons, Date date) throws PWCGException 
+    public static List<Company> reduceToCurrentMap(List<Company> squadrons, Date date) throws PWCGException 
     {
-        List<Squadron> listForMap = new ArrayList<Squadron>();
-        for (Squadron squadron : squadrons)
+        List<Company> listForMap = new ArrayList<Company>();
+        for (Company squadron : squadrons)
         {
             Airfield field = squadron.determineCurrentAirfieldCurrentMap(date);
             if (field != null)
@@ -134,10 +134,10 @@ public class SquadronViability
         return listForMap;
     }
     
-    public static List<Squadron> reduceToService(List<Squadron> squadrons, Date date, ArmedService service) throws PWCGException 
+    public static List<Company> reduceToService(List<Company> squadrons, Date date, ArmedService service) throws PWCGException 
     {
-        List<Squadron> squadronsForService = new ArrayList<>();
-        for (Squadron squadron : squadrons)
+        List<Company> squadronsForService = new ArrayList<>();
+        for (Company squadron : squadrons)
         {
             if (squadron.determineServiceForSquadron(date).getServiceId() == service.getServiceId())
             {
@@ -148,10 +148,10 @@ public class SquadronViability
     }
     
 
-    public static List<Squadron> reduceToCountry(List<Squadron> squadrons, Date date, ICountry country) throws PWCGException
+    public static List<Company> reduceToCountry(List<Company> squadrons, Date date, ICountry country) throws PWCGException
     {
-        List<Squadron> squadronsForCountry = new ArrayList<>();
-        for (Squadron squadron : squadrons)
+        List<Company> squadronsForCountry = new ArrayList<>();
+        for (Company squadron : squadrons)
         {
             ICountry squadCountry = squadron.determineSquadronCountry(date);
             if (squadCountry.equals(country))
@@ -162,10 +162,10 @@ public class SquadronViability
         return squadronsForCountry;
     }
 
-    public static List<Squadron> reduceToRole(List<Squadron> squadrons, List<PwcgRole> acceptableRoles, Date date) throws PWCGException 
+    public static List<Company> reduceToRole(List<Company> squadrons, List<PwcgRole> acceptableRoles, Date date) throws PWCGException 
     {       
-        Map<Integer, Squadron> squadronsWithRole = new HashMap<>();
-        for(Squadron squadron : squadrons)
+        Map<Integer, Company> squadronsWithRole = new HashMap<>();
+        for(Company squadron : squadrons)
         {
             for (PwcgRole acceptableRole : acceptableRoles)
             {

@@ -3,8 +3,8 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 import java.util.Map;
 
 import pwcg.aar.data.AARPersonnelLosses;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -12,58 +12,58 @@ public class PersonnelOutOfMissionStatusHandler
 {
     private AARPersonnelLosses outOfMissionPersonnelLosses = new AARPersonnelLosses();
 
-    public AARPersonnelLosses determineFateOfShotDownPilots(Map<Integer, SquadronMember> shotDownPilots) throws PWCGException
+    public AARPersonnelLosses determineFateOfShotDownCrewMembers(Map<Integer, CrewMember> shotDownCrewMembers) throws PWCGException
     {
-        for (SquadronMember squadronMember : shotDownPilots.values())
+        for (CrewMember crewMember : shotDownCrewMembers.values())
         {
-            int pilotStatus = fateOfShotDownPilot();
-            sortByStatus(squadronMember, pilotStatus);
+            int crewMemberStatus = fateOfShotDownCrewMember();
+            sortByStatus(crewMember, crewMemberStatus);
         }
         return outOfMissionPersonnelLosses;        
     }
     
-    private int fateOfShotDownPilot() throws PWCGException
+    private int fateOfShotDownCrewMember() throws PWCGException
     {
         int fateDiceRoll = RandomNumberGenerator.getRandom(100);
         if (fateDiceRoll < 20)
         {
-            return SquadronMemberStatus.STATUS_KIA;
+            return CrewMemberStatus.STATUS_KIA;
         }
         else if (fateDiceRoll < 30)
         {
-            return SquadronMemberStatus.STATUS_CAPTURED;
+            return CrewMemberStatus.STATUS_CAPTURED;
         }
         else if (fateDiceRoll < 45)
         {
-            return SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED;
+            return CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED;
         }
         else if (fateDiceRoll < 65)
         {
-            return SquadronMemberStatus.STATUS_WOUNDED;
+            return CrewMemberStatus.STATUS_WOUNDED;
         }
         else
         {
-            return SquadronMemberStatus.STATUS_ACTIVE;
+            return CrewMemberStatus.STATUS_ACTIVE;
         }
     }
 
-    private void sortByStatus(SquadronMember squadronMember, int pilotStatus)
+    private void sortByStatus(CrewMember crewMember, int crewMemberStatus)
     {
-        if (pilotStatus == SquadronMemberStatus.STATUS_KIA)
+        if (crewMemberStatus == CrewMemberStatus.STATUS_KIA)
         {
-            outOfMissionPersonnelLosses.addPersonnelKilled(squadronMember);
+            outOfMissionPersonnelLosses.addPersonnelKilled(crewMember);
         }
-        else if (pilotStatus == SquadronMemberStatus.STATUS_CAPTURED)
+        else if (crewMemberStatus == CrewMemberStatus.STATUS_CAPTURED)
         {
-            outOfMissionPersonnelLosses.addPersonnelCaptured(squadronMember);
+            outOfMissionPersonnelLosses.addPersonnelCaptured(crewMember);
         }
-        else if (pilotStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        else if (crewMemberStatus == CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
-            outOfMissionPersonnelLosses.addPersonnelMaimed(squadronMember);
+            outOfMissionPersonnelLosses.addPersonnelMaimed(crewMember);
         }
-        else if (pilotStatus == SquadronMemberStatus.STATUS_WOUNDED)
+        else if (crewMemberStatus == CrewMemberStatus.STATUS_WOUNDED)
         {
-            outOfMissionPersonnelLosses.addPersonnelWounded(squadronMember);
+            outOfMissionPersonnelLosses.addPersonnelWounded(crewMember);
         }
     }
 }

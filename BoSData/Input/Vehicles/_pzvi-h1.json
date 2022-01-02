@@ -11,5 +11,6 @@
   "endDate": "19460724",
   "rarityWeight": 10,
   "vehicleClass": "Tank",
-  "playerDrivable": true
+  "playerDrivable": true,
+  "archType": "tiger"
 }

@@ -19,11 +19,11 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.crewmember.TankAce;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.MissionEntityBuilder;
@@ -46,9 +46,9 @@ public class AcesKilledEventGeneratorTest
     @Test
     public void aceKilled () throws PWCGException
     {       
-        Ace aceKilledInMission = MissionEntityBuilder.makeDeadAceWithVictories("Ace A", SerialNumber.ACE_STARTING_SERIAL_NUMBER+1, AcesKilledEventGenerator.NUM_VICTORIES_FOR_ACE_TO_BE_NEWSWORTHY, campaign.getDate());
+        TankAce aceKilledInMission = MissionEntityBuilder.makeDeadAceWithVictories("Ace A", SerialNumber.ACE_STARTING_SERIAL_NUMBER+1, AcesKilledEventGenerator.NUM_VICTORIES_FOR_ACE_TO_BE_NEWSWORTHY, campaign.getDate());
 
-        List<SquadronMember> acesKilledInMissionAndElapsedTime = new ArrayList<>();
+        List<CrewMember> acesKilledInMissionAndElapsedTime = new ArrayList<>();
         acesKilledInMissionAndElapsedTime.add(aceKilledInMission);
 
         AcesKilledEventGenerator acesKilledEventGenerator = new AcesKilledEventGenerator(campaign);
@@ -60,15 +60,15 @@ public class AcesKilledEventGeneratorTest
     @Test
     public void aceKilledNotEnoughVictories () throws PWCGException
     {       
-        Ace aceKilledInMission = new Ace();
-        aceKilledInMission.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
+        TankAce aceKilledInMission = new TankAce();
+        aceKilledInMission.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_KIA, campaign.getDate(), null);
         for (int i = 0; i < AcesKilledEventGenerator.NUM_VICTORIES_FOR_ACE_TO_BE_NEWSWORTHY-1; ++i)
         {
             Victory victory = new Victory();
             aceKilledInMission.addVictory(victory);
         }
 
-        List<SquadronMember> acesKilledInMissionAndElapsedTime = new ArrayList<>();
+        List<CrewMember> acesKilledInMissionAndElapsedTime = new ArrayList<>();
         acesKilledInMissionAndElapsedTime.add(aceKilledInMission);
 
         AcesKilledEventGenerator acesKilledEventGenerator = new AcesKilledEventGenerator(campaign);

@@ -22,7 +22,7 @@ import pwcg.campaign.plane.PlaneStatus;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.equipment.EquipmentReplacementHandler;
 import pwcg.campaign.resupply.equipment.EquipmentResupplyData;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -64,13 +64,13 @@ public class EquipmentReplacementHandlerTest
     private void deactivateCampaignEquipment() throws PWCGException
     {
         Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
-        Squadron playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Company playerSquadron = campaign.determinePlayerSquadrons().get(0);
         int numInactivated = 0;
         for (Equipment equipment: campaign.getEquipmentManager().getEquipmentAllSquadrons().values())
         {
             for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
             {
-                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(equippedPlane.getSquadronId());
+                Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(equippedPlane.getSquadronId());
                 if (squadron.getService() == armedService.getServiceId())
                 {
                     if (playerSquadron.getSquadronId() != equippedPlane.getSquadronId())
@@ -92,7 +92,7 @@ public class EquipmentReplacementHandlerTest
     }
 
     @Test
-    public void testTransfersInForLostSquadronMembers() throws PWCGException
+    public void testTransfersInForLostCrewMembers() throws PWCGException
     {
         ResupplyNeedBuilder equipmentNeedBuilder = new ResupplyNeedBuilder(campaign, armedService);
         EquipmentReplacementHandler squadronTransferHandler = new EquipmentReplacementHandler(campaign, equipmentNeedBuilder);
@@ -108,11 +108,11 @@ public class EquipmentReplacementHandlerTest
         Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
 
         int numInactivated = 0;
-        Squadron playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Company playerSquadron = campaign.determinePlayerSquadrons().get(0);
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getSquadronId());
         for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
         {
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadron.getSquadronId());
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadron.getSquadronId());
             if (squadron.getSquadronId() == equippedPlane.getSquadronId())
             {                
                 equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);

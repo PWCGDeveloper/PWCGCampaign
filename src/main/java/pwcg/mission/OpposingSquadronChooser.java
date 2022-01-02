@@ -10,7 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -29,9 +29,9 @@ public class OpposingSquadronChooser
         this.numberOfOpposingFlights = numberOfOpposingFlights;
     }
 
-    public List<Squadron> getOpposingSquadrons() throws PWCGException
+    public List<Company> getOpposingSquadrons() throws PWCGException
     {
-        List<Squadron> viableOpposingSquads = getViableOpposingSquadrons();        
+        List<Company> viableOpposingSquads = getViableOpposingSquadrons();        
         if (viableOpposingSquads.size() <= numberOfOpposingFlights)
         {
             return viableOpposingSquads;
@@ -42,14 +42,14 @@ public class OpposingSquadronChooser
         }
     }
 
-    private List<Squadron> selectOpposingSquadrons(List<Squadron> viableOpposingSquads)
+    private List<Company> selectOpposingSquadrons(List<Company> viableOpposingSquads)
     {
-        Map<Integer, Squadron> selectedOpposingSquads = new HashMap<>();
+        Map<Integer, Company> selectedOpposingSquads = new HashMap<>();
         HashSet<Integer> alreadyPicked = new HashSet<>();
         while (selectedOpposingSquads.size() < numberOfOpposingFlights)
         {
             int index= RandomNumberGenerator.getRandom(viableOpposingSquads.size());
-            Squadron opposingSquadron = viableOpposingSquads.get(index);
+            Company opposingSquadron = viableOpposingSquads.get(index);
             if (!selectedOpposingSquads.containsKey(opposingSquadron.getSquadronId()))
             {
                 selectedOpposingSquads.put(opposingSquadron.getSquadronId(), opposingSquadron);
@@ -59,9 +59,9 @@ public class OpposingSquadronChooser
         return new ArrayList<>(selectedOpposingSquads.values());
     }
 
-    private List<Squadron> getViableOpposingSquadrons() throws PWCGException
+    private List<Company> getViableOpposingSquadrons() throws PWCGException
     {        
-        List<Squadron> viableOpposingSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, opposingRoles, opposingSide);
+        List<Company> viableOpposingSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, opposingRoles, opposingSide);
         return viableOpposingSquads;
     }
 }

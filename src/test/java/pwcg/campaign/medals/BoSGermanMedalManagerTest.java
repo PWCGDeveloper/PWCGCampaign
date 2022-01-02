@@ -104,7 +104,7 @@ public class BoSGermanMedalManagerTest extends MedalManagerTestBase
 
         List<Medal> highestOrderMedals = medalManager.getMedalsWithHighestOrderOnly(player.getMedals());
         Assertions.assertEquals (6, highestOrderMedals.size());
-        Assertions.assertEquals ("Pilots Badge", highestOrderMedals.get(0).getMedalName());
+        Assertions.assertEquals ("CrewMembers Badge", highestOrderMedals.get(0).getMedalName());
         Assertions.assertEquals ("Iron Cross 2nd Class", highestOrderMedals.get(1).getMedalName());
         Assertions.assertEquals ("Iron Cross 1st Class", highestOrderMedals.get(2).getMedalName());
         Assertions.assertEquals ("German Cross Gold", highestOrderMedals.get(3).getMedalName());

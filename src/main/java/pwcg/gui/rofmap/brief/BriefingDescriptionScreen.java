@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -161,7 +161,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     }
 
     @Override
-    public void flightChanged(Squadron squadron) throws PWCGException
+    public void flightChanged(Company squadron) throws PWCGException
     {
         briefingData.changeSelectedFlight(squadron.getSquadronId());
         briefingChalkboard.setMissionText();

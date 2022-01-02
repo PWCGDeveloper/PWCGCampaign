@@ -10,11 +10,11 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.skirmish.IconicMissionsManager;
 import pwcg.campaign.skirmish.IconicSingleMission;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.CampaignGuiContextManager;
@@ -82,7 +82,7 @@ public class IconicBattlesGenerator
     private CampaignGeneratorModel makeCampaignModelForProfile() throws PWCGException
     {
         IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleKey());
-        Squadron squadron = findPlayerSquadronForMission();
+        Company squadron = findPlayerSquadronForMission();
         Date campaignDate = DateUtils.getDateYYYYMMDD(iconicBattleData.getIconicBattleKey());
 
         ArmedService service = squadron.determineServiceForSquadron(campaignDate);
@@ -104,9 +104,9 @@ public class IconicBattlesGenerator
         return generatorModel;
     }
 
-    private Squadron findPlayerSquadronForMission() throws PWCGException
+    private Company findPlayerSquadronForMission() throws PWCGException
     {
-        Squadron playerSquadron = null;
+        Company playerSquadron = null;
         if (isAAATruckMission())
         {
             playerSquadron = getSquadronForAAATruck();
@@ -119,13 +119,13 @@ public class IconicBattlesGenerator
         return playerSquadron;
     }
 
-    private Squadron getSquadronForAAATruck() throws PWCGException
+    private Company getSquadronForAAATruck() throws PWCGException
     {
         Side truckSide = getTruckSide();
         IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleKey());
         for (Integer squadronId : iconicMission.getIconicBattleParticipants())
         {
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             if (squadron.determineSide() == truckSide)
             {
                 return squadron;
@@ -137,9 +137,9 @@ public class IconicBattlesGenerator
     private MissionHumanParticipants buildTestParticipatingHumans(Campaign campaign) throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        for (SquadronMember player: campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        for (CrewMember player: campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList())
         {
-            participatingPlayers.addSquadronMember(player);
+            participatingPlayers.addCrewMember(player);
         }
         return participatingPlayers;
     }

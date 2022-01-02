@@ -13,11 +13,11 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.AirToGroundVictoryBuilder;
-import pwcg.campaign.squadmember.GroundVictimGenerator;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.AirToGroundVictoryBuilder;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.GroundVictimGenerator;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.testutils.CampaignCache;
@@ -28,7 +28,7 @@ import pwcg.testutils.SquadronTestProfile;
 public class OutOfMissionGroundVictoryBuilderTest
 {
     private Campaign campaign;
-    private static SquadronMember squadronMember;
+    private static CrewMember crewMember;
 
     @Mock private AARContext aarContext;
     @Mock private ArmedService service;
@@ -39,11 +39,11 @@ public class OutOfMissionGroundVictoryBuilderTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
         
-        for (SquadronMember pilot : campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_STALINGRAD.getSquadronId()).getActiveAiSquadronMembers().getSquadronMemberList())
+        for (CrewMember crewMember : campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_STALINGRAD.getSquadronId()).getActiveAiCrewMembers().getCrewMemberList())
         {
-            if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE && !pilot.isPlayer())
+            if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_ACTIVE && !crewMember.isPlayer())
             {
-                squadronMember = pilot;
+                crewMember = crewMember;
                 break;
             }
         }
@@ -52,10 +52,10 @@ public class OutOfMissionGroundVictoryBuilderTest
     @Test
     public void testVictoryAwarded () throws PWCGException
     {     
-        GroundVictimGenerator duringCampaignVictimGenerator = new GroundVictimGenerator(campaign.getDate(), squadronMember);
+        GroundVictimGenerator duringCampaignVictimGenerator = new GroundVictimGenerator(campaign.getDate(), crewMember);
         IVehicle victimVehicle = duringCampaignVictimGenerator.generateVictimVehicle();
 
-        AirToGroundVictoryBuilder victoryGenerator = new AirToGroundVictoryBuilder(squadronMember, victimVehicle);
+        AirToGroundVictoryBuilder victoryGenerator = new AirToGroundVictoryBuilder(crewMember, victimVehicle);
         Victory victory = victoryGenerator.generateOutOfMissionVictory(campaign.getDate());
         
         Assertions.assertTrue (victory.getVictim().getAirOrGround() == Victory.VEHICLE);

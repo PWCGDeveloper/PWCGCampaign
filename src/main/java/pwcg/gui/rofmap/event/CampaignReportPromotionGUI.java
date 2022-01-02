@@ -5,8 +5,8 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -14,13 +14,13 @@ public class CampaignReportPromotionGUI extends AARDocumentIconPanel
 {
 	private static final long serialVersionUID = 1L;
 	private PromotionEvent promotionEvent = null;
-    private SquadronMember promotionRecipient;
+    private CrewMember promotionRecipient;
 
 	public CampaignReportPromotionGUI(Campaign campaign, PromotionEvent promotionEvent) throws PWCGException
 	{
 		super();
 		this.promotionEvent = promotionEvent;
-		this.promotionRecipient = campaign.getPersonnelManager().getAnyCampaignMember(promotionEvent.getPilotSerialNumber());
+		this.promotionRecipient = campaign.getPersonnelManager().getAnyCampaignMember(promotionEvent.getCrewMemberSerialNumber());
 		makePanel();		
 	}
 

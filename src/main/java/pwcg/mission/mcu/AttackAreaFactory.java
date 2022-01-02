@@ -17,7 +17,6 @@ public class AttackAreaFactory
         McuAttackArea attackArea = null;
         if (flightType == FlightTypes.BOMB || 
             flightType == FlightTypes.LOW_ALT_BOMB || 
-            flightType == FlightTypes.TRANSPORT ||
             flightType == FlightTypes.PARATROOP_DROP ||
             flightType == FlightTypes.CARGO_DROP)
         {

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.HistoricalAce;
+import pwcg.campaign.crewmember.HistoricalAce;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 

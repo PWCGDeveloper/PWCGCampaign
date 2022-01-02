@@ -7,7 +7,7 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.ui.display.model.AARCombatReportMapData;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class AARCombatReportTabulateCoordinator
@@ -30,8 +30,8 @@ public class AARCombatReportTabulateCoordinator
 
     private void tabulateCombatReport() throws PWCGException
     {
-        List<Squadron> playerSquadronsInMission = aarContext.getPreliminaryData().getPlayerSquadronsInMission();
-        for (Squadron playerSquadron : playerSquadronsInMission)
+        List<Company> playerSquadronsInMission = aarContext.getPreliminaryData().getPlayerSquadronsInMission();
+        for (Company playerSquadron : playerSquadronsInMission)
         {
             AARCombatReportTabulator combatReportTabulator = new AARCombatReportTabulator(campaign, playerSquadron, aarContext);
             AARCombatReportPanelData combatReportPanelData = combatReportTabulator.tabulateForAARCombatReportPanel();

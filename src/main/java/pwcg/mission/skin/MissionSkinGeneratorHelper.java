@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -32,7 +32,7 @@ public class MissionSkinGeneratorHelper
         }
     }
 
-    public static void chooseSquadronSkin(Squadron squadron, PlaneMcu plane, List<Skin> squadronSkins, Date date) 
+    public static void chooseSquadronSkin(Company squadron, PlaneMcu plane, List<Skin> squadronSkins, Date date) 
     {
         Skin selectedSkin = null;
         

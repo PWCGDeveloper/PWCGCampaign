@@ -13,55 +13,14 @@ import pwcg.gui.colors.GermanColorMap;
 
 public class GermanServiceBuilder
 {
-    public static String LUFTWAFFE_NAME = "Luftwaffe";
-    public static String LUFTWAFFE_ICON ="ServiceLuftwaffe";
-
     public static String WEHRMACHT_NAME = "Wehrmacht";
     public static String WEHRMACHT_ICON = "ServiceWehrmacht";
 
     public static List <ArmedService> createServices() throws PWCGException
     {
         List <ArmedService> germanServices = new ArrayList<ArmedService>();
-        germanServices.add(createLuftwaffe());
         germanServices.add(createGermanArmy());
         return germanServices;
-    }
-
-
-    private static ArmedService createLuftwaffe() throws PWCGException
-    {
-        ArmedService luftwaffe = new ArmedService();
-        luftwaffe.setServiceId(BoSServiceManager.LUFTWAFFE);
-        luftwaffe.setCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
-        luftwaffe.setNameCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
-        luftwaffe.setName(LUFTWAFFE_NAME);
-        luftwaffe.setServiceIcon(LUFTWAFFE_ICON);
-
-        luftwaffe.setStartDate(DateUtils.getBeginningOfGame());
-        luftwaffe.setEndDate(DateUtils.getEndOfWar());
-        luftwaffe.setServiceColorMap(new GermanColorMap());
-        luftwaffe.setGeneralRankForService("Generalleutnant");
-
-        List<String> luftwaffePics = new ArrayList<String>();
-        luftwaffePics.add("German");
-        luftwaffe.setPicDirs(luftwaffePics);
-        
-        luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19390101"), 50);
-        luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19400101"), 60);
-        luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19410101"), 70);
-        luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19420101"), 90);
-        luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
-        luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19440601"), 50);
-        
-        luftwaffe.setDailyPersonnelReplacementRatePerSquadron(1.3);
-        luftwaffe.setDailyEquipmentReplacementRatePerSquadron(1.0);
-        
-        luftwaffe.setAirVictoriesForgreatAce(50);
-        luftwaffe.setGroundVictoriesForgreatAce(150);
-
-        luftwaffe.setArmedServiceType(ArmedServiceType.ARMED_SERVICE_AIR);
-
-        return luftwaffe;
     }
 
     private static ArmedService createGermanArmy() throws PWCGException

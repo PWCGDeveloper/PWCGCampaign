@@ -11,9 +11,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.skirmish.DynamicSkirmishBuilder;
 import pwcg.campaign.skirmish.Skirmish;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
@@ -52,7 +52,7 @@ public class KubanCargoRouteTest
         Skirmish cargoRouteSkirmish = dynamicSkirmishBuilder.buildSkirmishForCargoRoute();
                 
         MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
-        for (SquadronMember player : playerParticipants.getAllParticipatingPlayers())
+        for (CrewMember player : playerParticipants.getAllParticipatingPlayers())
         {
             playerFlightTypes.add(player.determineSquadron(), FlightTypes.DIVE_BOMB);
         }

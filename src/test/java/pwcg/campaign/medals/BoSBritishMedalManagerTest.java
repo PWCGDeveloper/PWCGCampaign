@@ -109,7 +109,7 @@ public class BoSBritishMedalManagerTest extends MedalManagerTestBase
 
         List<Medal> highestOrderMedals = medalManager.getMedalsWithHighestOrderOnly(player.getMedals());
         Assertions.assertEquals (4, highestOrderMedals.size());
-        Assertions.assertEquals ("Pilots Badge", highestOrderMedals.get(0).getMedalName());
+        Assertions.assertEquals ("CrewMembers Badge", highestOrderMedals.get(0).getMedalName());
         Assertions.assertEquals (MedalManager.DISTINGUISHED_FLYING_CROSS_NAME + " With Bar", highestOrderMedals.get(1).getMedalName());
         Assertions.assertEquals (MedalManager.DISTINGUISHED_SERVICE_ORDER_NAME + " With Bar", highestOrderMedals.get(2).getMedalName());
         Assertions.assertEquals ("Victoria Cross", highestOrderMedals.get(3).getMedalName());

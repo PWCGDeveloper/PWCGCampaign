@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -191,7 +191,7 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
             }
             else
             {
-                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(skin.getSquadId());
+                Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(skin.getSquadId());
                 if (squadron != null)
                 {
                     squadronName = "" + squadron.getSquadronId();

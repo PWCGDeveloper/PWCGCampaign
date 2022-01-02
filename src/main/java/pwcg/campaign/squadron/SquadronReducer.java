@@ -21,10 +21,10 @@ import pwcg.core.utils.MathUtils;
 public class SquadronReducer
 {
 
-    public static List<Squadron> reduceToAIOnly(List<Squadron> selectedSquadrons, Campaign campaign) throws PWCGException
+    public static List<Company> reduceToAIOnly(List<Company> selectedSquadrons, Campaign campaign) throws PWCGException
     {
-        List<Squadron> selectedSquadronsNoPlayer = new ArrayList<>();
-        for (Squadron squadron : selectedSquadrons)
+        List<Company> selectedSquadronsNoPlayer = new ArrayList<>();
+        for (Company squadron : selectedSquadrons)
         {
             if (!campaign.getPersonnelManager().squadronHasActivePlayers(squadron.getSquadronId()))
             {
@@ -34,10 +34,10 @@ public class SquadronReducer
         return selectedSquadronsNoPlayer;
     }
     
-    public static List<Squadron> reduceToSide(List<Squadron> squadrons, Side side) throws PWCGException
+    public static List<Company> reduceToSide(List<Company> squadrons, Side side) throws PWCGException
     {       
-        List<Squadron> squadronsForSide = new ArrayList<>();
-        for (Squadron squadron : squadrons)
+        List<Company> squadronsForSide = new ArrayList<>();
+        for (Company squadron : squadrons)
         {
             if (side == squadron.determineSide())
             {
@@ -47,10 +47,10 @@ public class SquadronReducer
         return squadronsForSide;
     }
 
-    public static List<Squadron> reduceToCurrentMap(List<Squadron> squadrons, Date date) throws PWCGException 
+    public static List<Company> reduceToCurrentMap(List<Company> squadrons, Date date) throws PWCGException 
     {
-        List<Squadron> squadronsForMap = new ArrayList<>();
-        for (Squadron squadron : squadrons)
+        List<Company> squadronsForMap = new ArrayList<>();
+        for (Company squadron : squadrons)
         {
             Airfield field = squadron.determineCurrentAirfieldCurrentMap(date);
             if (field != null)
@@ -62,10 +62,10 @@ public class SquadronReducer
         return squadronsForMap;
     }
     
-    public static List<Squadron> reduceToService(List<Squadron> squadrons, Date date, ArmedService service) throws PWCGException 
+    public static List<Company> reduceToService(List<Company> squadrons, Date date, ArmedService service) throws PWCGException 
     {
-        List<Squadron> squadronsForService = new ArrayList<>();
-        for (Squadron squadron : squadrons)
+        List<Company> squadronsForService = new ArrayList<>();
+        for (Company squadron : squadrons)
         {
             if (squadron.determineServiceForSquadron(date).getServiceId() == service.getServiceId())
             {
@@ -76,10 +76,10 @@ public class SquadronReducer
     }
     
 
-    public static List<Squadron> reduceToCountry(List<Squadron> squadrons, Date date, ICountry country) throws PWCGException
+    public static List<Company> reduceToCountry(List<Company> squadrons, Date date, ICountry country) throws PWCGException
     {
-        List<Squadron> squadronsForCountry = new ArrayList<>();
-        for (Squadron squadron : squadrons)
+        List<Company> squadronsForCountry = new ArrayList<>();
+        for (Company squadron : squadrons)
         {
             ICountry squadCountry = squadron.determineSquadronCountry(date);
             if (squadCountry.equals(country))
@@ -90,10 +90,10 @@ public class SquadronReducer
         return squadronsForCountry;
     }
 
-    public static List<Squadron> reduceToRole(List<Squadron> squadrons, List<PwcgRole> acceptableRoles, Date date) throws PWCGException 
+    public static List<Company> reduceToRole(List<Company> squadrons, List<PwcgRole> acceptableRoles, Date date) throws PWCGException 
     {       
-        Map<Integer, Squadron> squadronsWithRole = new HashMap<>();
-        for(Squadron squadron : squadrons)
+        Map<Integer, Company> squadronsWithRole = new HashMap<>();
+        for(Company squadron : squadrons)
         {
             for (PwcgRole acceptableRole : acceptableRoles)
             {
@@ -107,11 +107,11 @@ public class SquadronReducer
         return new ArrayList<>(squadronsWithRole.values());
     }
 
-    public static List<Squadron> reduceToProximityOnCurrentMap(List<Squadron> squadrons, Date date, Coordinate referencePosition, double radius) throws PWCGException 
+    public static List<Company> reduceToProximityOnCurrentMap(List<Company> squadrons, Date date, Coordinate referencePosition, double radius) throws PWCGException 
     {
-        List<Squadron> squadronsWithinRadius = new ArrayList<>();
-        List<Squadron> squadronsOnMap = reduceToCurrentMap(squadrons, date);
-        for (Squadron squadron : squadronsOnMap)
+        List<Company> squadronsWithinRadius = new ArrayList<>();
+        List<Company> squadronsOnMap = reduceToCurrentMap(squadrons, date);
+        for (Company squadron : squadronsOnMap)
         {
             Coordinate squadronPosition = squadron.determineCurrentPosition(date);
             double distanceFromReference = MathUtils.calcDist(referencePosition, squadronPosition);
@@ -124,24 +124,24 @@ public class SquadronReducer
         return squadronsWithinRadius;
     }
 
-    public static List<Squadron> sortByProximityOnCurrentMap(List<Squadron> squadrons, Date date, Coordinate referencePosition) throws PWCGException 
+    public static List<Company> sortByProximityOnCurrentMap(List<Company> squadrons, Date date, Coordinate referencePosition) throws PWCGException 
     {
-        Map<Integer, Squadron> squadronsByProximity = new TreeMap<>();
-        List<Squadron> squadronsOnMap = reduceToCurrentMap(squadrons, date);
-        for (Squadron squadron : squadronsOnMap)
+        Map<Integer, Company> squadronsByProximity = new TreeMap<>();
+        List<Company> squadronsOnMap = reduceToCurrentMap(squadrons, date);
+        for (Company squadron : squadronsOnMap)
         {
             Coordinate squadronPosition = squadron.determineCurrentPosition(date);
             Double distanceFromReference = MathUtils.calcDist(referencePosition, squadronPosition);
             squadronsByProximity.put(distanceFromReference.intValue(), squadron);
         }
 
-        return new ArrayList<Squadron>(squadronsByProximity.values());
+        return new ArrayList<Company>(squadronsByProximity.values());
     }
     
-    public static List<Squadron> reduceToNoAnomalies(List<Squadron> squadrons, Date date) throws PWCGException
+    public static List<Company> reduceToNoAnomalies(List<Company> squadrons, Date date) throws PWCGException
     {       
-        List<Squadron> squadronsWithoutAnomalies = new ArrayList<>();
-        for (Squadron squadron : squadrons)
+        List<Company> squadronsWithoutAnomalies = new ArrayList<>();
+        for (Company squadron : squadrons)
         {
             if (!squadronIsAnomaly(squadron, date))
             {
@@ -151,7 +151,7 @@ public class SquadronReducer
         return squadronsWithoutAnomalies;
     }
     
-    private static boolean squadronIsAnomaly(Squadron squadron, Date date) throws PWCGException
+    private static boolean squadronIsAnomaly(Company squadron, Date date) throws PWCGException
     {
         if (squadron.getSquadronId() == 20115021)
         {

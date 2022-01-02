@@ -1,10 +1,10 @@
 package pwcg.aar.data.ui;
 
 import pwcg.aar.ui.display.model.AARAceLeavePanelData;
+import pwcg.aar.ui.display.model.AARCrewMemberLossPanelData;
 import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.display.model.AARMedalPanelData;
 import pwcg.aar.ui.display.model.AARNewsPanelData;
-import pwcg.aar.ui.display.model.AARPilotLossPanelData;
 import pwcg.aar.ui.display.model.AARPromotionPanelData;
 import pwcg.aar.ui.display.model.TransferPanelData;
 import pwcg.aar.ui.display.model.VictoryEvents;
@@ -16,7 +16,7 @@ public class UIDebriefData
     private AARNewsPanelData newsPanelData = new AARNewsPanelData();
     private AARAceLeavePanelData aceLeavePanelData = new AARAceLeavePanelData();
     private AARMedalPanelData medalPanelData = new AARMedalPanelData();
-    private AARPilotLossPanelData pilotLossPanelData = new AARPilotLossPanelData();
+    private AARCrewMemberLossPanelData crewMemberLossPanelData = new AARCrewMemberLossPanelData();
     private AAREquipmentLossPanelData equipmentLossPanelData = new AAREquipmentLossPanelData();
     private AARPromotionPanelData promotionPanelData = new AARPromotionPanelData();
     private TransferPanelData transferPanelData = new TransferPanelData();
@@ -42,9 +42,9 @@ public class UIDebriefData
         this.equipmentLossPanelData.merge(equipmentLossPanelData);
     }
 
-    public void addPilotLossPanelData(AARPilotLossPanelData pilotLossPanelData)
+    public void addCrewMemberLossPanelData(AARCrewMemberLossPanelData crewMemberLossPanelData)
     {
-        this.pilotLossPanelData.merge(pilotLossPanelData);
+        this.crewMemberLossPanelData.merge(crewMemberLossPanelData);
     }
 
     public void addPromotionPanelData(AARPromotionPanelData promotionPanelData)
@@ -77,9 +77,9 @@ public class UIDebriefData
         return medalPanelData;
     }
 
-    public AARPilotLossPanelData getPilotLossPanelData()
+    public AARCrewMemberLossPanelData getCrewMemberLossPanelData()
     {
-        return pilotLossPanelData;
+        return crewMemberLossPanelData;
     }
 
     public AAREquipmentLossPanelData getEquipmentLossPanelData()
@@ -106,7 +106,7 @@ public class UIDebriefData
     {
         newsPanelData.merge(uiDebriefDataForIteration.getNewsPanelData());
         medalPanelData.merge(uiDebriefDataForIteration.getMedalPanelData());
-        pilotLossPanelData.merge(uiDebriefDataForIteration.getPilotLossPanelData());
+        crewMemberLossPanelData.merge(uiDebriefDataForIteration.getCrewMemberLossPanelData());
         equipmentLossPanelData.merge(uiDebriefDataForIteration.getEquipmentLossPanelData());
         promotionPanelData.merge(uiDebriefDataForIteration.getPromotionPanelData());
         transferPanelData.merge(uiDebriefDataForIteration.getTransferPanelData());

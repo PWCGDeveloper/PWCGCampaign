@@ -8,7 +8,7 @@ import java.util.TreeMap;
 public class CoopCampaignPersonas
 {
     private String campaignName;
-    private Map<Integer, String> campaignPilots = new TreeMap<>();
+    private Map<Integer, String> campaignCrewMembers = new TreeMap<>();
 
     public CoopCampaignPersonas()
     {
@@ -26,20 +26,20 @@ public class CoopCampaignPersonas
 
     public List<Integer> getSerialNumbers()
     {
-        return new ArrayList<Integer>(campaignPilots.keySet());
+        return new ArrayList<Integer>(campaignCrewMembers.keySet());
     }
 
-    public void addPersona(int serialNumber, String pilotName)
+    public void addPersona(int serialNumber, String crewMemberName)
     {
-        if (!campaignPilots.containsKey(serialNumber))
+        if (!campaignCrewMembers.containsKey(serialNumber))
         {
-            campaignPilots.put(serialNumber, pilotName);
+            campaignCrewMembers.put(serialNumber, crewMemberName);
         }
     }
 
     public boolean hasPersona(int serialNumber)
     {
-        if (campaignPilots.containsKey(serialNumber))
+        if (campaignCrewMembers.containsKey(serialNumber))
         {
             return true;
         }
@@ -48,9 +48,9 @@ public class CoopCampaignPersonas
 
     public void remove(int serialNumber)
     {
-        if (campaignPilots.containsKey(serialNumber))
+        if (campaignCrewMembers.containsKey(serialNumber))
         {
-            campaignPilots.remove(serialNumber);
+            campaignCrewMembers.remove(serialNumber);
         }        
     }
 }

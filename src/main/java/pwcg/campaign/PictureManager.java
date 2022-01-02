@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.HistoricalAce;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.HistoricalAce;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.gui.utils.ContextSpecificImages;
 
@@ -32,22 +32,22 @@ public class PictureManager
         return picPath;
     }
 
-	public static String getPicturePath(SquadronMember pilot) throws PWCGUserException 
+	public static String getPicturePath(CrewMember crewMember) throws PWCGUserException 
 	{
 		String picPath = null;
-		if (pilot instanceof Ace || pilot instanceof HistoricalAce)
+		if (crewMember instanceof TankAce || crewMember instanceof HistoricalAce)
 		{
-			picPath = getAcePicturePath(pilot);
+			picPath = getAcePicturePath(crewMember);
 		}
 		else
 		{
-			picPath = getPilotPicturePath(pilot);
+			picPath = getCrewMemberPicturePath(crewMember);
 		}
 		
 		return picPath;
 	}
 
-	private static File getAcePictureFile(SquadronMember ace) throws PWCGUserException 
+	private static File getAcePictureFile(CrewMember ace) throws PWCGUserException 
 	{
 		String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgAcesDir() + "Pictures\\" + ace.getName();
 		
@@ -65,28 +65,28 @@ public class PictureManager
 		return acePic;
 	}
 
-	private static File getPilotPictureFile(SquadronMember pilot) throws PWCGUserException 
+	private static File getCrewMemberPictureFile(CrewMember crewMember) throws PWCGUserException 
 	{
 		List<File> picFiles = getFiles();
 		for (File picFile : picFiles)
 		{
-			if (picFile.getName().equals(pilot.getPicName()))
+			if (picFile.getName().equals(crewMember.getPicName()))
 			{
 				return picFile;
 			}
 		}
 		
-		throw new PWCGUserException ("Pilot picture " + pilot.getPicName() + " not found");
+		throw new PWCGUserException ("CrewMember picture " + crewMember.getPicName() + " not found");
 	}
 
-	private static String getPilotPicturePath(SquadronMember pilot) throws PWCGUserException 
+	private static String getCrewMemberPicturePath(CrewMember crewMember) throws PWCGUserException 
 	{
-		File pic = getPilotPictureFile(pilot);
+		File pic = getCrewMemberPictureFile(crewMember);
 		
 		return pic.getAbsolutePath();
 	}
 
-	private static String getAcePicturePath(SquadronMember ace) throws PWCGUserException 
+	private static String getAcePicturePath(CrewMember ace) throws PWCGUserException 
 	{
 		File pic = getAcePictureFile(ace);
 		return pic.getAbsolutePath();
@@ -94,10 +94,10 @@ public class PictureManager
 
 	private static List<File> getFiles() 
 	{
-        String basePicPath = ContextSpecificImages.imagesPilotPictures();
+        String basePicPath = ContextSpecificImages.imagesCrewMemberPictures();
 
 		List<File> picFiles = new ArrayList<File>();
-		List<String>picDirs = getPilotPicDirs(basePicPath);
+		List<String>picDirs = getCrewMemberPicDirs(basePicPath);
 		for (String dirPath : picDirs)
 		{
 			File dir = new File(dirPath);
@@ -124,7 +124,7 @@ public class PictureManager
 	 * @param serviceId
 	 * @return
 	 */
-	private static List<String> getPilotPicDirs(String basePicPath)
+	private static List<String> getCrewMemberPicDirs(String basePicPath)
 	{			
 		List<String> picDirs = new ArrayList<String>();
 
@@ -136,7 +136,7 @@ public class PictureManager
 			if (file.isDirectory())
 			{
 				picDirs.add(file.getAbsolutePath());
-				List<String> subPicDirs = getPilotPicDirs(file.getAbsolutePath());
+				List<String> subPicDirs = getCrewMemberPicDirs(file.getAbsolutePath());
 				picDirs.addAll(subPicDirs);
 			}
 		}

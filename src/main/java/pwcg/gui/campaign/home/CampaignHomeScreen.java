@@ -10,10 +10,10 @@ import javax.swing.JPanel;
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
@@ -97,15 +97,15 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
 
     private JPanel makeDefaultCenterPanel() throws PWCGException
     {
-        List<SquadronMember> squadronMembers = makePilotList();
+        List<CrewMember> squadronMembers = makeCrewMemberList();
         return CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(this, squadronMembers);
     }
 
     private JPanel makeDefaultRightPanel() throws PWCGException
     {
-        List<SquadronMember> squadronMembers = makePilotList();
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        return CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaign, this, squadronMembers, referencePlayer.getSquadronId());
+        List<CrewMember> squadronMembers = makeCrewMemberList();
+        CrewMember referencePlayer = campaign.findReferencePlayer();
+        return CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaign, this, squadronMembers, referencePlayer.getCompanyId());
     }
 
     private void createSelectorPanel() throws PWCGException
@@ -114,12 +114,12 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         chalkboardSelector.createSelectorPanel();
     }
 
-    private List<SquadronMember> makePilotList() throws PWCGException 
+    private List<CrewMember> makeCrewMemberList() throws PWCGException 
     {
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        return squadronMembers.sortPilots(campaign.getDate());
+        CrewMember referencePlayer = campaign.findReferencePlayer();
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(referencePlayer.getCompanyId());
+        CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        return squadronMembers.sortCrewMembers(campaign.getDate());
     }
 
 
@@ -139,7 +139,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         }
         else
         {
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
+            CrewMember referencePlayer = campaign.findReferencePlayer();
             return referencePlayer.determineCountry(campaign.getDate()).getSide();
         }
     }

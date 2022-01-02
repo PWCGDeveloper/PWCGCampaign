@@ -8,7 +8,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Balloon;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -55,56 +54,9 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
             altitude = determineParaDropFlightAltitude();
             altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
         }
-        else if (flightType == FlightTypes.SCRAMBLE)
-        {
-            altitude = determineScrambleFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.TRANSPORT)
-        {
-            altitude = determineTransportFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.SPY_EXTRACT)
-        {
-            altitude = determineSpyExtractFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.SPY_EXTRACT)
-        {
-            altitude = determineSpyExtractFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.CONTACT_PATROL)
-        {
-            altitude = determineContactPatrolFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.ARTILLERY_SPOT)
-        {
-            altitude = determineArtillerySpotFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.ESCORT)
-        {
-            altitude = determineHighAltitudeBombingAltitude() + 500;
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
         else if (flightType == FlightTypes.DIVE_BOMB)
         {
             altitude = determineDiveBombFlightAltitude();
-        }
-        else if (flightType == FlightTypes.STRATEGIC_BOMB)
-        {
-            altitude = determineStrategicAltitudeBombingAltitude();
-        }
-        else if (flightType == FlightTypes.BALLOON_BUST)
-        {
-            altitude = determineBalloonBustAltitude();
-        }
-        else if (flightType == FlightTypes.BALLOON_DEFENSE)
-        {
-            altitude = determineBalloonDefenseAltitude();
         }
         
         return altitude;
@@ -165,14 +117,6 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         altitude = altitude + randomAlt;            
         return altitude;
     }
-        
-    private int determineStrategicAltitudeBombingAltitude()
-    {
-        int altitude = 6500;
-        int randomAlt = RandomNumberGenerator.getRandom(2000);
-        altitude = altitude + randomAlt;            
-        return altitude;
-    }
 
     private int determineLowAltitudePatrolAltitude()
     {
@@ -226,59 +170,5 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         }
         
         return altitude + randomAltitude + additionalAltitudeForMountains;
-    }
-    
-    private int determineScrambleFlightAltitude() 
-    {
-        int altitude = 2000;
-        int randomAlt = RandomNumberGenerator.getRandom(1000);
-        
-        altitude = altitude + randomAlt;
-        
-        return altitude;
-    }
-    
-    private int determineTransportFlightAltitude() throws PWCGException 
-    {
-        int altitude = 2000;
-        int randomAltitude = RandomNumberGenerator.getRandom(2000);
-        int additionalAltitudeForMountains = 0;
-
-        FrontMapIdentifier map = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();
-        if (map == FrontMapIdentifier.KUBAN_MAP)
-        {
-            additionalAltitudeForMountains = 1000;
-        }
-        return altitude + randomAltitude + additionalAltitudeForMountains;
-    }
-
-    private int determineArtillerySpotFlightAltitude() 
-    {
-        int altitude = 200 + RandomNumberGenerator.getRandom(300);
-        return altitude;
-    }
-
-    private int determineContactPatrolFlightAltitude() 
-    {
-        int altitude = 500;
-        int randomAlt = RandomNumberGenerator.getRandom(150);
-        altitude = altitude + randomAlt;            
-        return altitude;
-    }
-
-    private int determineSpyExtractFlightAltitude() 
-    {
-        int altitude = 500 + RandomNumberGenerator.getRandom(100);        
-        return altitude;
-    }
-
-    private int determineBalloonBustAltitude()
-    {
-        return Balloon.BALLOON_ALTITUDE + 200;
-    }
-
-    private int determineBalloonDefenseAltitude()
-    {
-        return Balloon.BALLOON_ALTITUDE + 500;
     }
 }

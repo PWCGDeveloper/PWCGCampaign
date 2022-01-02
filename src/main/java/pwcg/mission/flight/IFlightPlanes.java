@@ -17,7 +17,7 @@ public interface IFlightPlanes
 
     List<PlaneMcu> getPlayerPlanes() throws PWCGException;
 
-    PlaneMcu getPlaneForPilot(Integer pilotSerialNumber);
+    PlaneMcu getPlaneForCrewMember(Integer crewMemberSerialNumber);
 
     PlaneMcu getPlaneByLinkTrId(Integer planeLinkTrId);
 

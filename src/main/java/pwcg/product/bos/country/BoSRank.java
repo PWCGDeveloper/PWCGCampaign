@@ -16,12 +16,6 @@ import pwcg.core.utils.PWCGLogger;
 public class BoSRank implements IRankHelper 
 {
     Map <Integer, Map<Integer, RankStruct>> ranksByService = new TreeMap <Integer, Map<Integer, RankStruct>>();
-    
-    Map<Integer, RankStruct> vvs = new TreeMap<Integer, RankStruct>();
-	Map<Integer, RankStruct> luftwaffe = new TreeMap<Integer, RankStruct>();
-    Map<Integer, RankStruct> iaf = new TreeMap<Integer, RankStruct>();
-    Map<Integer, RankStruct> usaaf = new TreeMap<Integer, RankStruct>();
-    Map<Integer, RankStruct> raf = new TreeMap<Integer, RankStruct>();
 
     Map<Integer, RankStruct> svv = new TreeMap<Integer, RankStruct>();
     Map<Integer, RankStruct> wehrmacht = new TreeMap<Integer, RankStruct>();
@@ -37,27 +31,8 @@ public class BoSRank implements IRankHelper
     	    for (Rank rank : ranks.getRanks())
     	    {
     	        RankStruct rankStruct = new RankStruct(rank.getRankName(), rank.getRankAbbrev());
-    	        if (rank.getRankService() == BoSServiceManager.VVS || rank.getRankService() == BoSServiceManager.NORMANDIE)
-    	        {
-    	            vvs.put(rank.getRankId(), rankStruct);
-    	        }
-                else if (rank.getRankService() == BoSServiceManager.LUFTWAFFE)
-                {
-                    luftwaffe.put(rank.getRankId(), rankStruct);
-                }
-                else if (rank.getRankService() == BoSServiceManager.REGIA_AERONAUTICA)
-                {
-                    iaf.put(rank.getRankId(), rankStruct);
-                }
-                else if (rank.getRankService() == BoSServiceManager.USAAF)
-                {
-                    usaaf.put(rank.getRankId(), rankStruct);
-                }
-                else if (rank.getRankService() == BoSServiceManager.RAF || rank.getRankService() == BoSServiceManager.RCAF || rank.getRankService() == BoSServiceManager.FREE_FRENCH)
-                {
-                    raf.put(rank.getRankId(), rankStruct);
-                }
-                else if (rank.getRankService() == BoSServiceManager.WEHRMACHT)
+
+                if (rank.getRankService() == BoSServiceManager.WEHRMACHT)
                 {
                     wehrmacht.put(rank.getRankId(), rankStruct);
                 }
@@ -74,16 +49,6 @@ public class BoSRank implements IRankHelper
                     britisharmy.put(rank.getRankId(), rankStruct);
                 }
     	    }
-    
-            // Form a map of rank maps
-            ranksByService.put(BoSServiceManager.VVS, vvs);
-            ranksByService.put(BoSServiceManager.NORMANDIE, vvs);
-            ranksByService.put(BoSServiceManager.LUFTWAFFE, luftwaffe);
-            ranksByService.put(BoSServiceManager.REGIA_AERONAUTICA, iaf);
-            ranksByService.put(BoSServiceManager.USAAF, usaaf);
-            ranksByService.put(BoSServiceManager.RAF, raf);
-            ranksByService.put(BoSServiceManager.FREE_FRENCH, raf);
-            ranksByService.put(BoSServiceManager.RCAF, raf);
             
             ranksByService.put(BoSServiceManager.WEHRMACHT, wehrmacht);
             ranksByService.put(BoSServiceManager.SVV, svv);
@@ -148,25 +113,19 @@ public class BoSRank implements IRankHelper
     @Override
     public String getRankAbbrev (String rank)
     {
-        String abbrev = getRankAbbrevByService (rank, luftwaffe);
+        String abbrev = getRankAbbrevByService (rank, britisharmy);
         if (abbrev.length() > 0)
         {
             return abbrev;
         }
         
-        abbrev = getRankAbbrevByService (rank, vvs);
+        abbrev = getRankAbbrevByService (rank, svv);
         if (abbrev.length() > 0)
         {
             return abbrev;
         }
 
-        abbrev = getRankAbbrevByService (rank, iaf);
-        if (abbrev.length() > 0)
-        {
-            return abbrev;
-        }
-
-        abbrev = getRankAbbrevByService (rank, usaaf);
+        abbrev = getRankAbbrevByService (rank, usarmy);
         if (abbrev.length() > 0)
         {
             return abbrev;
@@ -248,7 +207,7 @@ public class BoSRank implements IRankHelper
     }
 
     @Override
-    public int getNumPilotsInSquadron()
+    public int getNumCrewMembersInSquadron()
     {
         return 12;
     }

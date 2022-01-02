@@ -6,11 +6,11 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.HistoricalAce;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
 import pwcg.campaign.resupply.personnel.TransferRecord;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.HistoricalAce;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 
 public class HistoricalAceTransferHandler
@@ -29,19 +29,19 @@ public class HistoricalAceTransferHandler
     public SquadronTransferData determineAceTransfers() throws PWCGException
     {
         CampaignPersonnelManager campaignPersonnelManager = campaign.getPersonnelManager();            
-        List<Ace> acesBefore = PWCGContext.getInstance().getAceManager().getActiveAcesForCampaign(campaignPersonnelManager.getCampaignAces(), campaign.getDate());
-        for (Ace aceBefore : acesBefore)
+        List<TankAce> acesBefore = PWCGContext.getInstance().getAceManager().getActiveAcesForCampaign(campaignPersonnelManager.getCampaignAces(), campaign.getDate());
+        for (TankAce aceBefore : acesBefore)
         {
-            if (aceBefore.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
+            if (aceBefore.getCrewMemberActiveStatus() > CrewMemberStatus.STATUS_CAPTURED)
             {
                 HistoricalAce ha = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceBefore.getSerialNumber());
-                Ace aceAfter = ha.getAtDate(newDate);
+                TankAce aceAfter = ha.getAtDate(newDate);
 
-                if (aceAfter.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
+                if (aceAfter.getCrewMemberActiveStatus() > CrewMemberStatus.STATUS_CAPTURED)
                 {
-                    if (!(aceBefore.getSquadronId() == aceAfter.getSquadronId()))
+                    if (!(aceBefore.getCompanyId() == aceAfter.getCompanyId()))
                     {
-                        TransferRecord aceTransferRecord = new TransferRecord(aceAfter, aceBefore.getSquadronId(), aceAfter.getSquadronId());
+                        TransferRecord aceTransferRecord = new TransferRecord(aceAfter, aceBefore.getCompanyId(), aceAfter.getCompanyId());
                         acesTransferred.addTransferRecord(aceTransferRecord);
                     }
                 }

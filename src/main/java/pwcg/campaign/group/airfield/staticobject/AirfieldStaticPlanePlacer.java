@@ -12,7 +12,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.StaticPlaneSelectorFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -42,7 +42,7 @@ public class AirfieldStaticPlanePlacer
         IStaticPlane selectedStaticPlane = null;
         
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, date);
+        Company squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, date);
         if (squadronForField == null)
         {
             return null;

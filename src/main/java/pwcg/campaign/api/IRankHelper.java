@@ -17,5 +17,5 @@ public interface IRankHelper
     public String getRankAbbrevByService(int index, ArmedService service);
     public boolean isCommandRank(String rank, ArmedService service);
     public Map<Integer, Integer> createRankMap();
-    public int getNumPilotsInSquadron();
+    public int getNumCrewMembersInSquadron();
 }

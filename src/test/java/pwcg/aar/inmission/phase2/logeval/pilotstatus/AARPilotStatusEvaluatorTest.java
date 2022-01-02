@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase2.logeval.pilotstatus;
+package pwcg.aar.inmission.phase2.logeval.crewMemberstatus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +15,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
+import pwcg.aar.inmission.phase2.logeval.crewmemberstatus.AARCrewMemberStatusCapturedEvaluator;
+import pwcg.aar.inmission.phase2.logeval.crewmemberstatus.AARCrewMemberStatusDeadEvaluator;
+import pwcg.aar.inmission.phase2.logeval.crewmemberstatus.AARCrewMemberStatusEvaluator;
+import pwcg.aar.inmission.phase2.logeval.crewmemberstatus.AARCrewMemberStatusWoundedEvaluator;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogCrewMember;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
@@ -25,9 +29,9 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -39,13 +43,13 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
 
 @ExtendWith(MockitoExtension.class)
-public class AARPilotStatusEvaluatorTest
+public class AARCrewMemberStatusEvaluatorTest
 {
     @Mock private LogEventData logEventData;
     @Mock private AARVehicleBuilder aarVehicleBuilder;
-    @Mock private AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator;
-    @Mock private AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator;
-    @Mock private AARPilotStatusWoundedEvaluator aarPilotStatusWoundedEvaluator;
+    @Mock private AARCrewMemberStatusDeadEvaluator aarCrewMemberStatusDeadEvaluator;
+    @Mock private AARCrewMemberStatusCapturedEvaluator aarCrewMemberStatusCapturedEvaluator;
+    @Mock private AARCrewMemberStatusWoundedEvaluator aarCrewMemberStatusWoundedEvaluator;
     @Mock private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
     @Mock private Campaign campaign;
     @Mock private PwcgMissionData pwcgMissionData;
@@ -64,20 +68,20 @@ public class AARPilotStatusEvaluatorTest
     {
         testSetup();
         
-        Mockito.when(aarPilotStatusDeadEvaluator.isCrewMemberDead()).thenReturn(false);
-        Mockito.when(aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(
+        Mockito.when(aarCrewMemberStatusDeadEvaluator.isCrewMemberDead()).thenReturn(false);
+        Mockito.when(aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(
         		ArgumentMatchers.<FrontMapIdentifier>any(), 
         		ArgumentMatchers.<Coordinate>any(), 
         		ArgumentMatchers.<Side>any())).thenReturn(false);
-        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).thenReturn(SquadronMemberStatus.STATUS_ACTIVE);
+        Mockito.when(aarCrewMemberStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).thenReturn(CrewMemberStatus.STATUS_ACTIVE);
 
-        AARPilotStatusEvaluator aarPilotStatusEvaluator = makeEvaluator();
+        AARCrewMemberStatusEvaluator aarCrewMemberStatusEvaluator = makeEvaluator();
         
-        aarPilotStatusEvaluator.determineFateOfCrewsInMission();
+        aarCrewMemberStatusEvaluator.determineFateOfCrewsInMission();
         for (LogPlane resultPlaneAfter : aarVehicleBuilder.getLogPlanes().values())
         {
-            LogPilot crewmanAfter = resultPlaneAfter.getLogPilot();
-            Assertions.assertTrue (crewmanAfter.getStatus() == SquadronMemberStatus.STATUS_ACTIVE);
+            LogCrewMember crewmanAfter = resultPlaneAfter.getLogCrewMember();
+            Assertions.assertTrue (crewmanAfter.getStatus() == CrewMemberStatus.STATUS_ACTIVE);
         }        
     }
 
@@ -86,17 +90,17 @@ public class AARPilotStatusEvaluatorTest
     {
         testSetup();
         
-        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).
-            thenReturn(SquadronMemberStatus.STATUS_WOUNDED);
-        Mockito.when(aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(
+        Mockito.when(aarCrewMemberStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).
+            thenReturn(CrewMemberStatus.STATUS_WOUNDED);
+        Mockito.when(aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(
         		ArgumentMatchers.<FrontMapIdentifier>any(), 
         		ArgumentMatchers.<Coordinate>any(), 
         		ArgumentMatchers.<Side>any())).thenReturn(false);
-        Mockito.when(aarPilotStatusDeadEvaluator.isCrewMemberDead()).thenReturn(false);
+        Mockito.when(aarCrewMemberStatusDeadEvaluator.isCrewMemberDead()).thenReturn(false);
 
-        AARPilotStatusEvaluator aarPilotStatusEvaluator = makeEvaluator();
+        AARCrewMemberStatusEvaluator aarCrewMemberStatusEvaluator = makeEvaluator();
         
-        runTestWithStatusCheck(aarPilotStatusEvaluator, SquadronMemberStatus.STATUS_WOUNDED);
+        runTestWithStatusCheck(aarCrewMemberStatusEvaluator, CrewMemberStatus.STATUS_WOUNDED);
     }
 
     /**
@@ -107,19 +111,19 @@ public class AARPilotStatusEvaluatorTest
     {
         testSetup();
         
-        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).
-            thenReturn(SquadronMemberStatus.STATUS_WOUNDED);
-        Mockito.when(aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(
+        Mockito.when(aarCrewMemberStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).
+            thenReturn(CrewMemberStatus.STATUS_WOUNDED);
+        Mockito.when(aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(
         		ArgumentMatchers.<FrontMapIdentifier>any(), 
         		ArgumentMatchers.<Coordinate>any(), 
         		ArgumentMatchers.<Side>any())).thenReturn(true);
-        Mockito.when(aarPilotStatusDeadEvaluator.isCrewMemberDead()).thenReturn(false);
+        Mockito.when(aarCrewMemberStatusDeadEvaluator.isCrewMemberDead()).thenReturn(false);
 
-        AARPilotStatusEvaluator aarPilotStatusEvaluator = makeEvaluator();
+        AARCrewMemberStatusEvaluator aarCrewMemberStatusEvaluator = makeEvaluator();
         
-        aarPilotStatusEvaluator.determineFateOfCrewsInMission();
+        aarCrewMemberStatusEvaluator.determineFateOfCrewsInMission();
         
-        runTestWithStatusCheck(aarPilotStatusEvaluator, SquadronMemberStatus.STATUS_CAPTURED);
+        runTestWithStatusCheck(aarCrewMemberStatusEvaluator, CrewMemberStatus.STATUS_CAPTURED);
     }
 
 
@@ -131,19 +135,19 @@ public class AARPilotStatusEvaluatorTest
     {
         testSetup();
         
-        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).
-            thenReturn(SquadronMemberStatus.STATUS_WOUNDED);
-        Mockito.when(aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(
+        Mockito.when(aarCrewMemberStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).
+            thenReturn(CrewMemberStatus.STATUS_WOUNDED);
+        Mockito.when(aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(
         		ArgumentMatchers.<FrontMapIdentifier>any(), 
         		ArgumentMatchers.<Coordinate>any(), 
         		ArgumentMatchers.<Side>any())).thenReturn(true);
-        Mockito.when(aarPilotStatusDeadEvaluator.isCrewMemberDead()).thenReturn(true);
+        Mockito.when(aarCrewMemberStatusDeadEvaluator.isCrewMemberDead()).thenReturn(true);
 
-        AARPilotStatusEvaluator aarPilotStatusEvaluator = makeEvaluator();
+        AARCrewMemberStatusEvaluator aarCrewMemberStatusEvaluator = makeEvaluator();
         
-        aarPilotStatusEvaluator.determineFateOfCrewsInMission();
+        aarCrewMemberStatusEvaluator.determineFateOfCrewsInMission();
         
-        runTestWithStatusCheck(aarPilotStatusEvaluator, SquadronMemberStatus.STATUS_KIA);
+        runTestWithStatusCheck(aarCrewMemberStatusEvaluator, CrewMemberStatus.STATUS_KIA);
     }
 
     private void testSetup() throws PWCGException
@@ -157,26 +161,26 @@ public class AARPilotStatusEvaluatorTest
         Mockito.when(aarVehicleBuilder.getLogPlanes()).thenReturn(planeAiEntities);
     }
 
-    private AARPilotStatusEvaluator makeEvaluator() throws PWCGException
+    private AARCrewMemberStatusEvaluator makeEvaluator() throws PWCGException
     {
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
-        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryKey)).thenReturn(4);
+        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.CrewMemberInjuryKey)).thenReturn(4);
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         Mockito.when(missionHeader.getMapName()).thenReturn(FrontMapIdentifier.ARRAS_MAP.getMapName());
 
-        AARPilotStatusEvaluator aarPilotStatusEvaluator = new AARPilotStatusEvaluator(campaign, pwcgMissionData, destroyedStatusEvaluator, logEventData, aarVehicleBuilder);
-        aarPilotStatusEvaluator.setAarPilotStatusCapturedEvaluator(aarPilotStatusCapturedEvaluator);
-        aarPilotStatusEvaluator.setAarPilotStatusWoundedEvaluator(aarPilotStatusWoundedEvaluator);
-        aarPilotStatusEvaluator.setAarPilotStatusDeadEvaluator(aarPilotStatusDeadEvaluator);
-        return aarPilotStatusEvaluator;
+        AARCrewMemberStatusEvaluator aarCrewMemberStatusEvaluator = new AARCrewMemberStatusEvaluator(campaign, pwcgMissionData, destroyedStatusEvaluator, logEventData, aarVehicleBuilder);
+        aarCrewMemberStatusEvaluator.setAarCrewMemberStatusCapturedEvaluator(aarCrewMemberStatusCapturedEvaluator);
+        aarCrewMemberStatusEvaluator.setAarCrewMemberStatusWoundedEvaluator(aarCrewMemberStatusWoundedEvaluator);
+        aarCrewMemberStatusEvaluator.setAarCrewMemberStatusDeadEvaluator(aarCrewMemberStatusDeadEvaluator);
+        return aarCrewMemberStatusEvaluator;
     }
 
-    private void runTestWithStatusCheck(AARPilotStatusEvaluator aarPilotStatusEvaluator, int expectedStatus) throws PWCGException
+    private void runTestWithStatusCheck(AARCrewMemberStatusEvaluator aarCrewMemberStatusEvaluator, int expectedStatus) throws PWCGException
     {
-        aarPilotStatusEvaluator.determineFateOfCrewsInMission();
+        aarCrewMemberStatusEvaluator.determineFateOfCrewsInMission();
         for (LogPlane resultPlaneAfter : aarVehicleBuilder.getLogPlanes().values())
         {
-            LogPilot crewmanAfter = resultPlaneAfter.getLogPilot();
+            LogCrewMember crewmanAfter = resultPlaneAfter.getLogCrewMember();
             Assertions.assertTrue (crewmanAfter.getStatus() == expectedStatus);
         }
     }
@@ -189,7 +193,7 @@ public class AARPilotStatusEvaluatorTest
         ICountry country = CountryFactory.makeCountryByCountry(Country.BRITAIN);
         resultPlane.setCountry(country);
         planeAiEntities.put("11111", resultPlane);
-        resultPlane.intializePilot(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        resultPlane.intializeCrewMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         
         return planeAiEntities;
     }

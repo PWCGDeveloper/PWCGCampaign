@@ -9,6 +9,11 @@ public enum PwcgRoleCategory
     TRANSPORT("Transport"),
     BALLOON("Balloon"),
     GROUND_UNIT("Ground Unit"),
+    
+    TANK("Tank Unit"),
+    TANK_DESTROYER("Tank Destroyer Unit"),
+    SPG("Self Propelled Gun Unit"),
+
     OTHER("other");
 
     private String roleCategoryDescription;

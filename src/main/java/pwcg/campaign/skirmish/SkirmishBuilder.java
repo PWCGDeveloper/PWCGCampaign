@@ -7,8 +7,8 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
@@ -96,7 +96,7 @@ public class SkirmishBuilder
 
     private boolean isWithinRange(Skirmish skirmish) throws PWCGException
     {
-        for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
+        for (CrewMember player : participatingPlayers.getAllParticipatingPlayers())
         {
             double distance = calculateDistance(skirmish, player);
             if (distance > SkirmishDistance.findMaxSkirmishDistance())
@@ -107,10 +107,10 @@ public class SkirmishBuilder
         return true;
     }
 
-    private double calculateDistance(Skirmish skirmish, SquadronMember player) throws PWCGException
+    private double calculateDistance(Skirmish skirmish, CrewMember player) throws PWCGException
     {
         Coordinate skirmishCenter = skirmish.getCenter();
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
         Coordinate squadronPosition = squadron.determineCurrentPosition(campaign.getDate());
         double distance = MathUtils.calcDist(skirmishCenter, squadronPosition);
         return distance;

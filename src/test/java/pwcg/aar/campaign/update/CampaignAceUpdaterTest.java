@@ -16,8 +16,8 @@ import org.mockito.quality.Strictness;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.TankAce;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -43,16 +43,16 @@ public class CampaignAceUpdaterTest
 
         Map<Integer, List<Victory>> aceVictories = new HashMap<>();
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(1, campaign.getDate());
-        victories.get(0).getVictor().setPilotName("Georges Guynemer");
+        victories.get(0).getVictor().setCrewMemberName("Georges Guynemer");
         aceVictories.put(101064, victories);
         
-        Ace aceInCampaign = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101064);   
-        int aceVictoriesBefore = aceInCampaign.getSquadronMemberVictories().getAirToAirVictoryCount();
+        TankAce aceInCampaign = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101064);   
+        int aceVictoriesBefore = aceInCampaign.getCrewMemberVictories().getAirToAirVictoryCount();
         
         CampaignAceUpdater updater = new CampaignAceUpdater(campaign, aceVictories);
         updater.updatesCampaignAces();
 
-        int aceVictoriesAfter = aceInCampaign.getSquadronMemberVictories().getAirToAirVictoryCount();
+        int aceVictoriesAfter = aceInCampaign.getCrewMemberVictories().getAirToAirVictoryCount();
         
         Assertions.assertTrue (aceVictoriesAfter == (aceVictoriesBefore+1));
     }
@@ -63,16 +63,16 @@ public class CampaignAceUpdaterTest
     {
         Map<Integer, List<Victory>> aceVictories = new HashMap<>();
         List<Victory> victories = VictoryMaker.makeMultipleCentralVictories(1, campaign.getDate());
-        victories.get(0).getVictor().setPilotName("Paul Baumer");
+        victories.get(0).getVictor().setCrewMemberName("Paul Baumer");
         aceVictories.put(101143, victories);
         
-        Ace aceInCampaign = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101143);   
-        int aceVictoriesBefore = aceInCampaign.getSquadronMemberVictories().getAirToAirVictoryCount();
+        TankAce aceInCampaign = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101143);   
+        int aceVictoriesBefore = aceInCampaign.getCrewMemberVictories().getAirToAirVictoryCount();
         
         CampaignAceUpdater updater = new CampaignAceUpdater(campaign, aceVictories);
         updater.updatesCampaignAces();
 
-        int aceVictoriesAfter = aceInCampaign.getSquadronMemberVictories().getAirToAirVictoryCount();
+        int aceVictoriesAfter = aceInCampaign.getCrewMemberVictories().getAirToAirVictoryCount();
         
         Assertions.assertTrue (aceVictoriesAfter == (aceVictoriesBefore+1));
     }

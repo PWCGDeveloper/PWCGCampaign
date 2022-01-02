@@ -51,11 +51,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         }
         else
         {
-            if (flight.getFlightType() == FlightTypes.ESCORT)
-            {
-                return getBestIngressPositionForEscortRendezvous();
-            }
-            else if (flight.getFlightType() == FlightTypes.PATROL)
+            if (flight.getFlightType() == FlightTypes.PATROL)
             {
                 return getBestIngressPositionForPatrol();
             }
@@ -119,22 +115,6 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
                 closestEnemyFrontLinesToTarget, 
                 closestFriendlyFrontLinesToTarget, 
-                distanceBehindFrontForIngress, 
-                campaign.getDate(), 
-                flight.getSquadron().determineSide());
-    }
-
-    private Coordinate getBestIngressPositionForEscortRendezvous() throws PWCGException 
-    {
-        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
-                flight.getTargetDefinition().getPosition(), 
-                flight.getSquadron().determineSide().getOppositeSide());
-        int distanceBehindFrontForIngress = getDistanceFromFront();
-
-        return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
-                closestEnemyFrontLinesToTarget, 
-                flight.getFlightHomePosition(), 
                 distanceBehindFrontForIngress, 
                 campaign.getDate(), 
                 flight.getSquadron().determineSide());

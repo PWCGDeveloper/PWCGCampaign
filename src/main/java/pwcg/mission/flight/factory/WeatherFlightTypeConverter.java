@@ -22,10 +22,6 @@ public class WeatherFlightTypeConverter
             {
                 flightType = FlightTypes.LOW_ALT_PATROL;
             }
-            else if (flightType == FlightTypes.ESCORT)
-            {
-                flightType = FlightTypes.LOW_ALT_PATROL;
-            }
             else if (flightType == FlightTypes.OFFENSIVE)
             {
                 flightType = FlightTypes.LOW_ALT_CAP;
@@ -33,10 +29,6 @@ public class WeatherFlightTypeConverter
             else if (flightType == FlightTypes.INTERCEPT)
             {
                 flightType = FlightTypes.LOW_ALT_CAP;
-            }
-            else if (flightType == FlightTypes.RECON)
-            {
-                flightType = FlightTypes.CONTACT_PATROL;
             }
         }
 

@@ -33,14 +33,14 @@ public class PwcgMissionData
         return missionPlanes;
     }
 
-    public  PwcgGeneratedMissionPlaneData getMissionPlane(Integer pilotSerialNumber)
+    public  PwcgGeneratedMissionPlaneData getMissionPlane(Integer crewMemberSerialNumber)
     {
-        return missionPlanes.get(pilotSerialNumber);
+        return missionPlanes.get(crewMemberSerialNumber);
     }
 
     public void addMissionPlanes(PwcgGeneratedMissionPlaneData  missionPlane) throws PWCGException
     {
-        missionPlanes.put(missionPlane.getPilotSerialNumber(), missionPlane);
+        missionPlanes.put(missionPlane.getCrewMemberSerialNumber(), missionPlane);
     }
 
     public String getMissionDescription()

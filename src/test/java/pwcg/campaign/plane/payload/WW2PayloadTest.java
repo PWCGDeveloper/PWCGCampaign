@@ -14,7 +14,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -36,7 +36,7 @@ public class WW2PayloadTest
     @Mock
     Campaign campaign;
     @Mock
-    Squadron squadron;
+    Company squadron;
     @Mock
     ICountry country;
 

@@ -3,7 +3,7 @@ package pwcg.aar.ui.events.model;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
@@ -27,7 +27,7 @@ public class SquadronMoveEvent  extends AAREvent
         try
         {
             SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-            Squadron squadron = squadronManager.getSquadron(squadronId);
+            Company squadron = squadronManager.getSquadron(squadronId);
             if (squadron != null)
             {
                 this.squadronName = squadron.determineDisplayName(date);

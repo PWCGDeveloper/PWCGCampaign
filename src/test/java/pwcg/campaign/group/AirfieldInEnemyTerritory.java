@@ -10,7 +10,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -48,13 +48,13 @@ public class AirfieldInEnemyTerritory
 	private void determineProperPlacementForDate(FrontMapIdentifier mapId, Date startDate) throws PWCGException
 	{
 		SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-		for (Squadron squadron : squadronManager.getActiveSquadrons(startDate))
+		for (Company squadron : squadronManager.getActiveSquadrons(startDate))
 		{
 		    determineSquadronIsOnCorrectSide(mapId, startDate, squadron);
 		}
 	}
 
-	private void determineSquadronIsOnCorrectSide(FrontMapIdentifier mapId, Date startDate, Squadron squadron) throws PWCGException
+	private void determineSquadronIsOnCorrectSide(FrontMapIdentifier mapId, Date startDate, Company squadron) throws PWCGException
 	{
 		Airfield squadronField = squadron.determineCurrentAirfieldCurrentMap(startDate);
 		if (squadronField != null)
@@ -70,7 +70,7 @@ public class AirfieldInEnemyTerritory
 		}
 	}
 
-	private void noteBadlyPlacedSquadron(Date startDate, Squadron squadron, Airfield squadronField,
+	private void noteBadlyPlacedSquadron(Date startDate, Company squadron, Airfield squadronField,
 	        FrontMapIdentifier mapForAirfield) throws PWCGException
 	{
 		ICountry squadronCountry = squadron.determineSquadronCountry(startDate);
@@ -114,7 +114,7 @@ public class AirfieldInEnemyTerritory
 		}
 	}
 	
-	private String formKey (Squadron squadron, Airfield squadronField)
+	private String formKey (Company squadron, Airfield squadronField)
 	{
     	return squadron.getSquadronId() + " at " + squadronField.getName();
 	}

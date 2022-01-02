@@ -1,9 +1,9 @@
 {
 	"country": "GERMANY",
-	"squadronId": 201016001,
-	"name": "16th Panzer Division, 1st Company",
-	"fileName": "16th Panzer Division 1 Co.json",
-	"skill": 80,
+	"squadronId": 201016003,
+	"name": "16th Panzer Division, 3rd Company",
+	"fileName": "16th Panzer Division 3 Co.json",
+	"skill": 70,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tankAssignments": [

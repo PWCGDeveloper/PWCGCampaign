@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
@@ -117,17 +117,17 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
 		List<Integer> selectedCoopPersonas = coopPersonaAccept.getAcceptedCoopPersonas();
     	if (selectedCoopPersonas.isEmpty())
     	{
-            errorMessages.add("No pilots selected for mission");
+            errorMessages.add("No crewMembers selected for mission");
     	}
     	
     	CoopUserManager coopUserManager = CoopUserManager.getIntance();
     	Map <String, Integer> coopPersonasByCoopUser = new HashMap<>();
     	for (Integer coopPersona : selectedCoopPersonas)
     	{
-    	    CoopUser coopUser = coopUserManager.getCoopUserForSquadronMember(campaign.getName(), coopPersona);
+    	    CoopUser coopUser = coopUserManager.getCoopUserForCrewMember(campaign.getName(), coopPersona);
             if (coopPersonasByCoopUser.containsKey(coopUser.getUsername()))
             {
-                errorMessages.add("More than one pilot in mission for player " + coopUser.getUsername());
+                errorMessages.add("More than one crewMember in mission for player " + coopUser.getUsername());
             }
     		else
     		{
@@ -135,7 +135,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     		}
     	}
     	
-    	SquadronMember referencePlayer = campaign.findReferencePlayer();
+    	CrewMember referencePlayer = campaign.findReferencePlayer();
         boolean referencePlayerIncluded = false;
         for (int coopPersona : selectedCoopPersonas)
         {
@@ -229,8 +229,8 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     private void generateMission() throws PWCGException
     {
         Map<Integer, PwcgRole> squadronRoleOverride = new HashMap<>();
-        List<SquadronMember> selectedCoopPersonas = coopPersonaAccept.getAcceptedSquadronMembers();
-        participatingPlayers.addSquadronMembers(selectedCoopPersonas);            	
+        List<CrewMember> selectedCoopPersonas = coopPersonaAccept.getAcceptedCrewMembers();
+        participatingPlayers.addCrewMembers(selectedCoopPersonas);            	
         MissionGeneratorHelper.showBriefingMap(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers, squadronRoleOverride);
     }
 
@@ -238,8 +238,8 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     private void generateMissionWithRoleOverride() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        List<SquadronMember> selectedCoopPersonas = coopPersonaAccept.getAcceptedSquadronMembers();
-        participatingPlayers.addSquadronMembers(selectedCoopPersonas);              
+        List<CrewMember> selectedCoopPersonas = coopPersonaAccept.getAcceptedCrewMembers();
+        participatingPlayers.addCrewMembers(selectedCoopPersonas);              
         BriefingRoleChooser briefingRoleChooser = new BriefingRoleChooser(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers);
         briefingRoleChooser.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingRoleChooser);

@@ -12,13 +12,13 @@ import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
@@ -56,7 +56,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
 
     public void setSquadronIntelText(int squadronId) throws PWCGException
     {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
         
         String squadronIntelHeaderDesc = formSquadronHeaderDesc(squadron);
         squadronIntelHeaderText.setText(squadronIntelHeaderDesc);
@@ -140,7 +140,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
         return squadronIntelText;
     }
 
-    private String formSquadronHeaderDesc(Squadron squadron) throws PWCGException
+    private String formSquadronHeaderDesc(Company squadron) throws PWCGException
     {
         String stationedAtText = InternationalizationManager.getTranslation("Stationed At");
         String callSignText = InternationalizationManager.getTranslation("Call Sign");
@@ -156,14 +156,14 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
         return intelBuffer.toString();
     }
 
-    private String formSquadronPersonnelDesc(Squadron squadron) throws PWCGException
+    private String formSquadronPersonnelDesc(Company squadron) throws PWCGException
     {
         StringBuffer intelBuffer = new StringBuffer("");
         formPersonnel(squadron.getSquadronId(), intelBuffer);
         return intelBuffer.toString();
     }
 
-    private String formSquadronEquipmentDesc(Squadron squadron) throws PWCGException
+    private String formSquadronEquipmentDesc(Company squadron) throws PWCGException
     {
         StringBuffer intelBuffer = new StringBuffer("");
         formAircraftInventory(squadron, intelBuffer);
@@ -178,22 +178,22 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
         intelBuffer.append("\n        " + personnelText + "\n");        
         intelBuffer.append("        ----------------------------------------\n");          
 
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
-        SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        List<SquadronMember> sortedPilots = activeSquadronMembers.sortPilots(campaign.getDate());
-        for (SquadronMember squadronMember : sortedPilots)
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadronId);
+        CrewMembers activeCrewMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        List<CrewMember> sortedCrewMembers = activeCrewMembers.sortCrewMembers(campaign.getDate());
+        for (CrewMember crewMember : sortedCrewMembers)
         {
-            intelBuffer.append("            " + squadronMember.getNameAndRank());          
+            intelBuffer.append("            " + crewMember.getNameAndRank());          
             intelBuffer.append("\n");          
         }
         
-        for(int i = sortedPilots.size(); i < 35; ++i)
+        for(int i = sortedCrewMembers.size(); i < 35; ++i)
         {
             intelBuffer.append("                              \n");          
         }
     }
 
-    private void formAircraftInventory(Squadron squadron, StringBuffer intelBuffer) throws PWCGException
+    private void formAircraftInventory(Company squadron, StringBuffer intelBuffer) throws PWCGException
     {
         String aircraftInventoryText = InternationalizationManager.getTranslation("Aircraft On Inventory");
 
@@ -204,7 +204,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
         for (int i = 0; i < sortedAircraftOnInventory.size(); ++i)
         {
             EquippedPlane plane = sortedAircraftOnInventory.get(i);
-            intelBuffer.append("            " + plane.getDisplayName() + " (" + plane.getDisplayMarkings() + ")");
+            intelBuffer.append("            " + plane.getDisplayName());
             intelBuffer.append(".\n");          
         }
     }

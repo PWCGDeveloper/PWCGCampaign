@@ -3,9 +3,9 @@ package pwcg.gui.campaign.home;
 import java.awt.event.ActionEvent;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.TankAce;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGErrorBundler;
@@ -13,10 +13,10 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.activity.CampaignActivityScreen;
 import pwcg.gui.campaign.config.CampaignConfigurationScreen;
+import pwcg.gui.campaign.crewmember.CampaignCrewMemberScreen;
 import pwcg.gui.campaign.intel.CampaignIntelScreen;
 import pwcg.gui.campaign.mission.CampaignMissionScreen;
 import pwcg.gui.campaign.personnel.CampaignPersonnelScreen;
-import pwcg.gui.campaign.pilot.CampaignPilotScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.UIUtils;
 
@@ -65,9 +65,9 @@ public class CampaignHomeAction
             {
                 showConfig();
             }
-            else if (action.startsWith("CampFlowPilot"))
+            else if (action.startsWith("CampFlowCrewMember"))
             {
-                showPilot(action);
+                showCrewMember(action);
             }
         }
         catch (PWCGUserException ue)
@@ -90,21 +90,21 @@ public class CampaignHomeAction
         }
     }
 
-    private void showPilot(String action) throws PWCGException 
+    private void showCrewMember(String action) throws PWCGException 
     {
-        SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
-        if (pilot != null)
+        CrewMember crewMember = UIUtils.getCrewMemberFromAction(campaign, action);
+        if (crewMember != null)
         {
-            Squadron squad = pilot.determineSquadron();
-            if (pilot instanceof Ace)
+            Company company = crewMember.determineSquadron();
+            if (crewMember instanceof TankAce)
             {
-                Ace ace = (Ace)pilot;
-                squad =  ace.determineSquadron();;
+                TankAce ace = (TankAce)crewMember;
+                company =  ace.determineSquadron();;
             }
-            CampaignPilotScreen pilotPanel = new CampaignPilotScreen(campaign, squad, pilot, campaignHome);
-            pilotPanel.makePanels();
+            CampaignCrewMemberScreen crewMemberPanel = new CampaignCrewMemberScreen(campaign, company, crewMember, campaignHome);
+            crewMemberPanel.makePanels();
             
-            CampaignGuiContextManager.getInstance().pushToContextStack(pilotPanel);
+            CampaignGuiContextManager.getInstance().pushToContextStack(crewMemberPanel);
         }
     }
 

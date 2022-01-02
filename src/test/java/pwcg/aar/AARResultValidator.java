@@ -1,8 +1,8 @@
 package pwcg.aar;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -19,34 +19,34 @@ public class AARResultValidator
 
     public void validateInMission(int playerMissionsFlown, int expectedPlayerVictories) throws PWCGException
     {
-        SquadronMember player = campaign.findReferencePlayer();
+        CrewMember player = campaign.findReferencePlayer();
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
-        assert(player.getSquadronMemberVictories().getAirToAirVictoryCount() == expectedResults.getPlayerAirVictories());
-        assert(player.getSquadronMemberVictories().getGroundVictoryCount() == expectedResults.getPlayerGroundVictories());
+        assert(player.getCrewMemberVictories().getAirToAirVictoryCount() == expectedResults.getPlayerAirVictories());
+        assert(player.getCrewMemberVictories().getGroundVictoryCount() == expectedResults.getPlayerGroundVictories());
         
-        SquadronMember otherPilot = campaign.getPersonnelManager().getAnyCampaignMember(expectedResults.getSquadronMemberPilotSerialNumber());        
-        assert(otherPilot.getSquadronMemberVictories().getAirToAirVictoryCount() == expectedResults.getSquadronMemberAirVictories());
-        assert(otherPilot.getSquadronMemberVictories().getGroundVictoryCount() == expectedResults.getSquadronMemberGroundVictories());
-        for (Integer serialNumber : expectedResults.getLostPilots())
+        CrewMember otherCrewMember = campaign.getPersonnelManager().getAnyCampaignMember(expectedResults.getCrewMemberCrewMemberSerialNumber());        
+        assert(otherCrewMember.getCrewMemberVictories().getAirToAirVictoryCount() == expectedResults.getCrewMemberAirVictories());
+        assert(otherCrewMember.getCrewMemberVictories().getGroundVictoryCount() == expectedResults.getCrewMemberGroundVictories());
+        for (Integer serialNumber : expectedResults.getLostCrewMembers())
         {
-            SquadronMember lostPilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
-            assert(lostPilot.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+            CrewMember lostCrewMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
+            assert(lostCrewMember.getCrewMemberActiveStatus() <= CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         }
-        assert(player.getMissionFlown()  == (playerMissionsFlown+1));
-        assert(player.getSquadronMemberVictories().getAirToAirVictoryCount() == expectedPlayerVictories);
+        assert(player.getBattlesFought()  == (playerMissionsFlown+1));
+        assert(player.getCrewMemberVictories().getAirToAirVictoryCount() == expectedPlayerVictories);
     }
 
     public void validateLeave() throws PWCGException
     {
-        SquadronMember player = campaign.findReferencePlayer();
+        CrewMember player = campaign.findReferencePlayer();
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
-        assert(player.getSquadronMemberVictories().getAirToAirVictoryCount() == 0);
-        assert(player.getSquadronMemberVictories().getGroundVictoryCount() == 0);
+        assert(player.getCrewMemberVictories().getAirToAirVictoryCount() == 0);
+        assert(player.getCrewMemberVictories().getGroundVictoryCount() == 0);
         
-        for (Integer serialNumber : expectedResults.getLostPilots())
+        for (Integer serialNumber : expectedResults.getLostCrewMembers())
         {
-            SquadronMember lostPilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
-            assert(lostPilot.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_WOUNDED);
+            CrewMember lostCrewMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
+            assert(lostCrewMember.getCrewMemberActiveStatus() <= CrewMemberStatus.STATUS_WOUNDED);
         }
     }
 }

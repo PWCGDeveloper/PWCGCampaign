@@ -25,7 +25,7 @@ import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.resupply.depot.EquipmentDepotReplenisher;
 import pwcg.campaign.resupply.depot.EquipmentReplacementUtils;
 import pwcg.campaign.resupply.depot.EquipmentUpgradeRecord;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.country.BoSServiceManager;
@@ -64,7 +64,7 @@ public class EquipmentDepotReplenisherTest
     public void testArchTypesInProductionForServiceLife() throws PWCGException
     {
         SquadronManager squadronmanager = PWCGContext.getInstance().getSquadronManager();
-        for (Squadron squadron : squadronmanager.getAllSquadrons())
+        for (Company squadron : squadronmanager.getAllSquadrons())
         {
             for (SquadronPlaneAssignment planeAssignment : squadron.getPlaneAssignments())
             {

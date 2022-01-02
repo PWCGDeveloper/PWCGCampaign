@@ -14,7 +14,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.IFlight;
@@ -25,7 +25,7 @@ import pwcg.mission.flight.plane.PlaneMcu;
 public class MissionSkinSetBuilderTest
 {
     @Mock private Campaign campaign;
-    @Mock private Squadron squadron;
+    @Mock private Company squadron;
     @Mock private IFlight flight;
     @Mock private IFlightPlanes flightPlanes;
     @Mock private PlaneMcu plane1;

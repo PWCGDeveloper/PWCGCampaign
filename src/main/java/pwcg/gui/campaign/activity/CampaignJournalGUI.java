@@ -127,8 +127,8 @@ public class CampaignJournalGUI extends JPanel
         JLabel lSquadron = PWCGLabelFactory.makeTransparentLabel(squadronText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         headerLeftPanel.add(lSquadron);
 
-		JLabel lPilot = makePilotsInMissionLabel(font);
-		headerLeftPanel.add(lPilot);
+		JLabel lCrewMember = makeCrewMembersInMissionLabel(font);
+		headerLeftPanel.add(lCrewMember);
 
         String typeText = InternationalizationManager.getTranslation("Type");
         typeText += ": " + combatReport.getType();
@@ -177,23 +177,23 @@ public class CampaignJournalGUI extends JPanel
 		headerPanel.add(headerRightPanel, BorderLayout.CENTER);
     }
 
-    private JLabel makePilotsInMissionLabel(Font font) throws PWCGException
+    private JLabel makeCrewMembersInMissionLabel(Font font) throws PWCGException
     {
-        String pilotNames = "";
-        for (String pilotName : combatReport.getFlightPilots())
+        String crewMemberNames = "";
+        for (String crewMemberName : combatReport.getFlightCrewMembers())
         {
-            if (!pilotNames.isEmpty())
+            if (!crewMemberNames.isEmpty())
             {
-                pilotNames += ", ";
+                crewMemberNames += ", ";
             }
-            pilotNames += pilotName;
+            crewMemberNames += crewMemberName;
         }
         
-        String pilotsInMissionText = InternationalizationManager.getTranslation("Pilots in mission");
-        pilotsInMissionText += ": " + pilotNames;
-        JLabel lPilot = PWCGLabelFactory.makeTransparentLabel(pilotsInMissionText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        String crewMembersInMissionText = InternationalizationManager.getTranslation("CrewMembers in mission");
+        crewMembersInMissionText += ": " + crewMemberNames;
+        JLabel lCrewMember = PWCGLabelFactory.makeTransparentLabel(crewMembersInMissionText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
 
-        return lPilot;
+        return lCrewMember;
     }
 
 	private Component makeMissionResults() throws PWCGException 

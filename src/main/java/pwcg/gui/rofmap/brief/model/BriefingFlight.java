@@ -3,11 +3,11 @@ package pwcg.gui.rofmap.brief.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberSorter;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberSorter;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.BriefingDataInitializer;
 import pwcg.gui.rofmap.brief.BriefingPayloadHelper;
@@ -19,7 +19,7 @@ public class BriefingFlight
 {
     private int squadronId;
     private BriefingFlightParameters briefingFlightParameters;
-    private BriefingPilotAssignmentData briefingAssignmentData;
+    private BriefingCrewMemberAssignmentData briefingAssignmentData;
     private double selectedFuel = 1.0;
     private Mission mission;
 
@@ -28,13 +28,13 @@ public class BriefingFlight
         this.mission = mission;
         this.squadronId = squadronId;
         this.briefingFlightParameters = briefingFlightParameters;
-        briefingAssignmentData = new BriefingPilotAssignmentData();
+        briefingAssignmentData = new BriefingCrewMemberAssignmentData();
     }
     
-    public void initializeFromMission(Squadron squadron) throws PWCGException
+    public void initializeFromMission(Company squadron) throws PWCGException
     {
-        BriefingDataInitializer pilotHelper = new BriefingDataInitializer(mission);
-        briefingAssignmentData = pilotHelper.initializeFromMission(squadron);
+        BriefingDataInitializer crewMemberHelper = new BriefingDataInitializer(mission);
+        briefingAssignmentData = crewMemberHelper.initializeFromMission(squadron);
 
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.initializePayloadsFromMission();
@@ -42,43 +42,43 @@ public class BriefingFlight
         initializeFuel();
     }
 
-    public void changePlane(Integer pilotSerialNumber, Integer planeSerialNumber) throws PWCGException
+    public void changePlane(Integer crewMemberSerialNumber, Integer planeSerialNumber) throws PWCGException
     {
-        briefingAssignmentData.changePlane(pilotSerialNumber, planeSerialNumber);
+        briefingAssignmentData.changePlane(crewMemberSerialNumber, planeSerialNumber);
 
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
-        payloadHelper.setPayloadForChangedPlane(pilotSerialNumber);
+        payloadHelper.setPayloadForChangedPlane(crewMemberSerialNumber);
     }
 
 
-    public void assignPilotFromBriefing(Integer pilotSerialNumber) throws PWCGException
+    public void assignCrewMemberFromBriefing(Integer crewMemberSerialNumber) throws PWCGException
     {
-        EquippedPlane planeForPilot = this.getSortedUnassignedPlanes().get(0);
-        assignPilotAndPlaneFromBriefing(pilotSerialNumber, planeForPilot.getSerialNumber());
+        EquippedPlane planeForCrewMember = this.getSortedUnassignedPlanes().get(0);
+        assignCrewMemberAndPlaneFromBriefing(crewMemberSerialNumber, planeForCrewMember.getSerialNumber());
     }
 
-    public void assignPilotAndPlaneFromBriefing(Integer pilotSerialNumber, Integer planeSerialNumber) throws PWCGException
+    public void assignCrewMemberAndPlaneFromBriefing(Integer crewMemberSerialNumber, Integer planeSerialNumber) throws PWCGException
     {
-        briefingAssignmentData.assignPilot(pilotSerialNumber, planeSerialNumber);
+        briefingAssignmentData.assignCrewMember(crewMemberSerialNumber, planeSerialNumber);
         
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
-        payloadHelper.setPayloadForAddedPlane(pilotSerialNumber);
+        payloadHelper.setPayloadForAddedPlane(crewMemberSerialNumber);
     }    
 
-    public void unassignPilotFromBriefing(int pilotSerialNumber) throws PWCGException
+    public void unassignCrewMemberFromBriefing(int crewMemberSerialNumber) throws PWCGException
     {
-        briefingAssignmentData.unassignPilot(pilotSerialNumber);
+        briefingAssignmentData.unassignCrewMember(crewMemberSerialNumber);
     }
 
-    public void modifyPayload(Integer pilotSerialNumber, int newPayload)
+    public void modifyPayload(Integer crewMemberSerialNumber, int newPayload)
     {
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
-        payloadHelper.modifyPayload(pilotSerialNumber, newPayload);
+        payloadHelper.modifyPayload(crewMemberSerialNumber, newPayload);
     }
 
-    public List<SquadronMember> getSortedUnassignedPilots() throws PWCGException 
+    public List<CrewMember> getSortedUnassignedCrewMembers() throws PWCGException 
     {       
-        return SquadronMemberSorter.sortSquadronMembers(mission.getCampaign(), briefingAssignmentData.getUnassignedPilots());
+        return CrewMemberSorter.sortCrewMembers(mission.getCampaign(), briefingAssignmentData.getUnassignedCrewMembers());
     }
 
     public List<EquippedPlane> getSortedUnassignedPlanes() throws PWCGException 
@@ -86,9 +86,9 @@ public class BriefingFlight
         return PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(briefingAssignmentData.getUnassignedPlanes().values()));
     }
 
-    public CrewPlanePayloadPairing getPairingByPilot(Integer pilotSerialNumber) throws PWCGException 
+    public CrewPlanePayloadPairing getPairingByCrewMember(Integer crewMemberSerialNumber) throws PWCGException 
     {       
-        return briefingAssignmentData.findAssignedCrewPairingByPilot(pilotSerialNumber);
+        return briefingAssignmentData.findAssignedCrewPairingByCrewMember(crewMemberSerialNumber);
     }
 
     public Mission getMission()
@@ -106,7 +106,7 @@ public class BriefingFlight
         return briefingFlightParameters;
     }
 
-    public BriefingPilotAssignmentData getBriefingAssignmentData()
+    public BriefingCrewMemberAssignmentData getBriefingAssignmentData()
     {
         return briefingAssignmentData;
     }
@@ -116,14 +116,14 @@ public class BriefingFlight
         return briefingAssignmentData.getCrews();
     }
 
-    public void movePilotUp(int pilotSerialNumber)
+    public void moveCrewMemberUp(int crewMemberSerialNumber)
     {
-        briefingAssignmentData.movePilotUp(pilotSerialNumber);        
+        briefingAssignmentData.moveCrewMemberUp(crewMemberSerialNumber);        
     }
 
-    public void movePilotDown(int pilotSerialNumber)
+    public void moveCrewMemberDown(int crewMemberSerialNumber)
     {
-        briefingAssignmentData.movePilotDown(pilotSerialNumber);        
+        briefingAssignmentData.moveCrewMemberDown(crewMemberSerialNumber);        
     }
 
     public double getSelectedFuel()

@@ -12,15 +12,15 @@ import java.util.Set;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.HistoricalAce;
+import pwcg.campaign.crewmember.HistoricalAceRank;
+import pwcg.campaign.crewmember.HistoricalAceSquadron;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.io.json.HistoricalAceIOJson;
 import pwcg.campaign.medals.Medal;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.HistoricalAce;
-import pwcg.campaign.squadmember.HistoricalAceRank;
-import pwcg.campaign.squadmember.HistoricalAceSquadron;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
@@ -41,12 +41,12 @@ public class AceManager
 
     public CampaignAces loadFromHistoricalAces(Date date) throws PWCGException 
     {
-        Map<Integer, Ace> historicalAcesAtDate = new HashMap<>();
+        Map<Integer, TankAce> historicalAcesAtDate = new HashMap<>();
 
         for (int i = 0; i < historicalAces.size(); ++i)
         {
             HistoricalAce historicalAce = historicalAces.get(i);
-            Ace adjustedAce = historicalAce.getAtDate(date);
+            TankAce adjustedAce = historicalAce.getAtDate(date);
 
             historicalAcesAtDate.put(adjustedAce.getSerialNumber(), adjustedAce);
         }
@@ -57,16 +57,16 @@ public class AceManager
         return campaignAces;
     }
 
-    public List<Ace> getAllAcesForSquadron(Collection<Ace> aces, int squadronId)
+    public List<TankAce> getAllAcesForSquadron(Collection<TankAce> aces, int squadronId)
     {
-        List<Ace> retAces = new ArrayList<Ace>();
+        List<TankAce> retAces = new ArrayList<TankAce>();
 
-        for (Ace ace : aces)
+        for (TankAce ace : aces)
         {
-            int aceSquadronId = ace.getSquadronId();
+            int aceSquadronId = ace.getCompanyId();
             if (aceSquadronId == squadronId)
             {
-                Ace aceClone = ace.copy();
+                TankAce aceClone = ace.copy();
                 retAces.add(aceClone);
             }
         }
@@ -74,17 +74,17 @@ public class AceManager
         return retAces;
     }
 
-    public List<Ace> getActiveAcesForCampaign(CampaignAces aces, Date date) throws PWCGException 
+    public List<TankAce> getActiveAcesForCampaign(CampaignAces aces, Date date) throws PWCGException 
     {
-        List<Ace> retAces = new ArrayList<Ace>();
+        List<TankAce> retAces = new ArrayList<TankAce>();
 
-        for (Ace ace : aces.getActiveCampaignAces().values())
+        for (TankAce ace : aces.getActiveCampaignAces().values())
         {
             HistoricalAce historicalAce = getHistoricalAceBySerialNumber(ace.getSerialNumber());
             if (historicalAce != null)
             {
-                Ace aceClone = getAceNoCampaignAdjustment(aces, ace.getSerialNumber(), date);                
-                if (aceClone != null && aceClone.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
+                TankAce aceClone = getAceNoCampaignAdjustment(aces, ace.getSerialNumber(), date);                
+                if (aceClone != null && aceClone.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_ACTIVE)
                 {
                     retAces.add(aceClone);
                 }
@@ -94,11 +94,11 @@ public class AceManager
         return retAces;
     }
 
-    public List<Ace> getActiveAcesForSquadron(CampaignAces aces, Date date, int squadronId) throws PWCGException 
+    public List<TankAce> getActiveAcesForSquadron(CampaignAces aces, Date date, int squadronId) throws PWCGException 
     {
-        List<Ace> retAces = new ArrayList<Ace>();
+        List<TankAce> retAces = new ArrayList<TankAce>();
 
-        for (Ace ace : aces.getActiveCampaignAces().values())
+        for (TankAce ace : aces.getActiveCampaignAces().values())
         {
             HistoricalAce historicalAce = getHistoricalAceBySerialNumber(ace.getSerialNumber());
             if (historicalAce != null)
@@ -107,9 +107,9 @@ public class AceManager
     
                 if (squadAtThisDate == squadronId)
                 {                    
-                    Ace aceClone = getAceNoCampaignAdjustment(aces, ace.getSerialNumber(), date);
+                    TankAce aceClone = getAceNoCampaignAdjustment(aces, ace.getSerialNumber(), date);
     
-                    if (aceClone != null && aceClone.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
+                    if (aceClone != null && aceClone.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_ACTIVE)
                     {
                         retAces.add(aceClone);
                     }
@@ -120,9 +120,9 @@ public class AceManager
         return retAces;
     }
 
-    public Ace getAceWithCampaignAdjustment(Campaign campaign, CampaignAces aces, Integer aceSerialNumber, Date date) throws PWCGException 
+    public TankAce getAceWithCampaignAdjustment(Campaign campaign, CampaignAces aces, Integer aceSerialNumber, Date date) throws PWCGException 
 	{
-		Ace aceClone = getAceNoCampaignAdjustment(aces, aceSerialNumber, date);
+		TankAce aceClone = getAceNoCampaignAdjustment(aces, aceSerialNumber, date);
 		if (aceClone != null)
 		{
 			setRankToCommanderIfAceCommandsSquadron(campaign, date, aceClone);
@@ -138,20 +138,20 @@ public class AceManager
         return retAce;
     }
 
-    public List<Ace> acesKilledHistoricallyInTimePeriod(Date beforeDate, Date afterDate) throws PWCGException 
+    public List<TankAce> acesKilledHistoricallyInTimePeriod(Date beforeDate, Date afterDate) throws PWCGException 
     {
-        List<Ace> deadAces = new ArrayList<Ace>();
+        List<TankAce> deadAces = new ArrayList<TankAce>();
 
         for (HistoricalAce ha : historicalAces)
         {
-            Ace aceBefore = ha.getAtDate(beforeDate);
-            if (aceBefore.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_CAPTURED)
+            TankAce aceBefore = ha.getAtDate(beforeDate);
+            if (aceBefore.getCrewMemberActiveStatus() <= CrewMemberStatus.STATUS_CAPTURED)
             {
                 continue;
             }
 
-            Ace aceAfter = ha.getAtDate(afterDate);
-            if (aceAfter.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_CAPTURED)
+            TankAce aceAfter = ha.getAtDate(afterDate);
+            if (aceAfter.getCrewMemberActiveStatus() <= CrewMemberStatus.STATUS_CAPTURED)
             {
                 deadAces.add(aceAfter);
             }
@@ -221,15 +221,15 @@ public class AceManager
 
     }
 
-    private Ace getAceNoCampaignAdjustment(CampaignAces aces, Integer aceSerialNumber, Date date) throws PWCGException 
+    private TankAce getAceNoCampaignAdjustment(CampaignAces aces, Integer aceSerialNumber, Date date) throws PWCGException 
 	{
-		Ace aceClone = null;
+		TankAce aceClone = null;
 		
-		Ace ace = aces.retrieveAceBySerialNumber(aceSerialNumber);
+		TankAce ace = aces.retrieveAceBySerialNumber(aceSerialNumber);
 		if (ace != null)
 		{
 			aceClone = ace.copy();
-			if (!(aceClone.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_CAPTURED))
+			if (!(aceClone.getCrewMemberActiveStatus() <= CrewMemberStatus.STATUS_CAPTURED))
 			{
 				HistoricalAce historicalAce = getHistoricalAceBySerialNumber(ace.getSerialNumber());
 	            setAceCloneRank(date, aceClone, historicalAce);
@@ -243,17 +243,17 @@ public class AceManager
 	}
 
 
-	private void setAceCloneSquadron(Date date, Ace aceClone, HistoricalAce historicalAce)
+	private void setAceCloneSquadron(Date date, TankAce aceClone, HistoricalAce historicalAce)
 	{
 		int squadAtThisDate = historicalAce.getCurrentSquadron(date, true) ;
 		aceClone.setSquadronId(squadAtThisDate);
 		if (squadAtThisDate > 0)
 		{
-			aceClone.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
+			aceClone.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_ACTIVE, null, null);
 		}
 	}
 
-	private void setAceCloneRank(Date date, Ace aceClone, HistoricalAce historicalAce) throws PWCGException
+	private void setAceCloneRank(Date date, TankAce aceClone, HistoricalAce historicalAce) throws PWCGException
 	{
 		String rankAtThisDate = historicalAce.getCurrentRank(date);
 		if (rankAtThisDate != null && rankAtThisDate.length() > 0)
@@ -262,22 +262,22 @@ public class AceManager
 		}
 	}
 
-	private void setAceCloneMedals(Date date, Ace aceClone, HistoricalAce historicalAce)
+	private void setAceCloneMedals(Date date, TankAce aceClone, HistoricalAce historicalAce)
 	{
 		List<Medal> medals = historicalAce.getMedals(date);
 		aceClone.setMedals(medals);
 	}
 
-	private void setRankToCommanderIfAceCommandsSquadron(Campaign campaign, Date date, Ace aceClone)
+	private void setRankToCommanderIfAceCommandsSquadron(Campaign campaign, Date date, TankAce aceClone)
 	        throws PWCGException
 	{
 		if (campaign != null)
 		{
-		    if (aceClone.getSquadronId() > 0)
+		    if (aceClone.getCompanyId() > 0)
 		    {
-                if (Squadron.isPlayerSquadron(campaign, aceClone.getSquadronId()))
+                if (Company.isPlayerSquadron(campaign, aceClone.getCompanyId()))
     			{
-    				if (campaign.getPersonnelManager().getSquadronPersonnel(aceClone.getSquadronId()).isPlayerCommander())
+    				if (campaign.getPersonnelManager().getCompanyPersonnel(aceClone.getCompanyId()).isPlayerCommander())
     				{
     				    IRankHelper rankObj = RankFactory.createRankHelper();
                         String commandRankRank = rankObj.getRankByService(0, aceClone.determineService(date));

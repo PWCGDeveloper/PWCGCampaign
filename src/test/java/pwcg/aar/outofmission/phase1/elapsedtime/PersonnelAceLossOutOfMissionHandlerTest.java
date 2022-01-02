@@ -15,7 +15,7 @@ import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -42,7 +42,7 @@ public class PersonnelAceLossOutOfMissionHandlerTest
     {     
         Mockito.when(aarContext.getNewDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171001"));
         OutOfMissionAceLossCalculator aceLossOutOfMissionHandler = new OutOfMissionAceLossCalculator(campaign, aarContext);
-        List<SquadronMember> acesKilled = aceLossOutOfMissionHandler.acesKilledHistorically();
+        List<CrewMember> acesKilled = aceLossOutOfMissionHandler.acesKilledHistorically();
         Assertions.assertTrue (acesKilled.size() == 5);
     }
 

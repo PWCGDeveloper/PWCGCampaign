@@ -19,7 +19,7 @@ public class PWCGMonitorFonts
         PrimaryFontLarge,
         ChalkBoardFont,
         ChalkBoardBriefingFont,
-        PilotLogBookFont,
+        CrewMemberLogBookFont,
         NewspaperFont,
         TyoewriterFont,
         DecorativeFint,
@@ -91,10 +91,10 @@ public class PWCGMonitorFonts
         return font;
     }
 
-    public static Font getPilotLogBookFont() throws PWCGException 
+    public static Font getCrewMemberLogBookFont() throws PWCGException 
     {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PilotFontKey);
-        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PilotFontSizeKey);
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.CrewMemberFontKey);
+        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.CrewMemberFontSizeKey);
         fontSize = verifyFontSizeForScreenSize(fontSize);
         
         Font font = buildBoldFont(fontName, fontSize);
@@ -159,7 +159,7 @@ public class PWCGMonitorFonts
         return font;
     }
 
-    public static int getPilotPlateHeight() throws PWCGException
+    public static int getCrewMemberPlateHeight() throws PWCGException
     {
         if (PWCGMonitorSupport.isSmallScreen())
         {

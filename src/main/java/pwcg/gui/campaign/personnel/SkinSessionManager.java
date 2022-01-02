@@ -8,12 +8,12 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CompanyPersonnel;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -22,15 +22,15 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
  * Manages state for a skin editing session.
  * During the edit process an overall view of skin assignment must be maintained in memory.
  * By maintaining state in memory a cancel allows the use to revert to the previous state.
- * Because assignment to one pilot impacts availability to another, assignments to all pilots must be maintained.
+ * Because assignment to one crewMember impacts availability to another, assignments to all crewMembers must be maintained.
  * 
  * @author Patrick Wilson
  *
  */
 public class SkinSessionManager
 {
-    private SquadronMember pilot = null;
-    private Map <Integer, PilotSkinInfo> pilotSkinSets = new HashMap <>();
+    private CrewMember crewMember = null;
+    private Map <Integer, CrewMemberSkinInfo> crewMemberSkinSets = new HashMap <>();
     
     private boolean squadronSkinsSelected = false;
     private boolean nonSquadronSkinsSelected = false;
@@ -45,9 +45,9 @@ public class SkinSessionManager
         List<Skin> skinNames = new ArrayList<>();
 
         Campaign campaign = PWCGContext.getInstance().getCampaign();
-        Squadron squad = pilot.determineSquadron();
+        Company company = crewMember.determineSquadron();
 
-        List<Skin> squadronSkins = PWCGContext.getInstance().getSkinManager().getSkinsBySquadronPlaneDate(selectedPlane, squad.getSquadronId(), campaign.getDate());
+        List<Skin> squadronSkins = PWCGContext.getInstance().getSkinManager().getSkinsBySquadronPlaneDate(selectedPlane, company.getSquadronId(), campaign.getDate());
         skinNames = getConfiguredSkins(squadronSkins);
 
         return skinNames;
@@ -114,7 +114,7 @@ public class SkinSessionManager
         {
             if (!(campaignDate.before(skin.getStartDate())) && !(campaignDate.after(skin.getEndDate())))
             {
-                if (!isSkinInUseByAnotherPilot(skin))
+                if (!isSkinInUseByAnotherCrewMember(skin))
                 {
                     if (skin.getSkinName() != null)
                     {
@@ -131,17 +131,17 @@ public class SkinSessionManager
         return skinNames;
     }
 
-    private boolean isSkinInUseByAnotherPilot(Skin skinToCheck) throws PWCGException
+    private boolean isSkinInUseByAnotherCrewMember(Skin skinToCheck) throws PWCGException
     {
         Campaign campaign = PWCGContext.getInstance().getCampaign();
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(pilot.getSquadronId());
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember squadMember : squadronMembers.getSquadronMemberList())
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(crewMember.getCompanyId());
+        CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+        for (CrewMember squadMember : squadronMembers.getCrewMemberList())
         {
-            if (!(squadMember.getSerialNumber() == pilot.getSerialNumber()))
+            if (!(squadMember.getSerialNumber() == crewMember.getSerialNumber()))
             {
-                List<Skin> skinsForPilot = squadMember.getSkins();
-                for (Skin skin : skinsForPilot)
+                List<Skin> skinsForCrewMember = squadMember.getSkins();
+                for (Skin skin : skinsForCrewMember)
                 {
                     if (skinToCheck.getSkinName().equalsIgnoreCase(skin.getSkinName()))
                     {
@@ -152,12 +152,12 @@ public class SkinSessionManager
         }
         
         // Then look for skins assigned this session
-        for (PilotSkinInfo pilotSkinSet: pilotSkinSets.values())
+        for (CrewMemberSkinInfo crewMemberSkinSet: crewMemberSkinSets.values())
         {
-            // Exclude skins assigned to other pilots during this session
-            if (!(pilotSkinSet.getPilot().getSerialNumber() == pilot.getSerialNumber()))
+            // Exclude skins assigned to other crewMembers during this session
+            if (!(crewMemberSkinSet.getCrewMember().getSerialNumber() == crewMember.getSerialNumber()))
             {
-                for (Skin skinAssignedThisSession : pilotSkinSet.getAllSkins().values())
+                for (Skin skinAssignedThisSession : crewMemberSkinSet.getAllSkins().values())
                 {
                     if (skinAssignedThisSession != null)
                     {
@@ -173,48 +173,48 @@ public class SkinSessionManager
         return false;
     }
 
-    private void addSkinSetForPilot (SquadronMember pilot) throws PWCGException
+    private void addSkinSetForCrewMember (CrewMember crewMember) throws PWCGException
     {
-        if (!pilotSkinSets.containsKey(pilot.getSerialNumber()))
+        if (!crewMemberSkinSets.containsKey(crewMember.getSerialNumber()))
         {
-            PilotSkinInfo pilotSkinSet = new PilotSkinInfo(pilot);
-            pilotSkinSet.initialize();
-            pilotSkinSets.put(pilot.getSerialNumber(), pilotSkinSet);
+            CrewMemberSkinInfo crewMemberSkinSet = new CrewMemberSkinInfo(crewMember);
+            crewMemberSkinSet.initialize();
+            crewMemberSkinSets.put(crewMember.getSerialNumber(), crewMemberSkinSet);
         }
     }
 
     public void finalizeSkinAssignments ()
     {
-        for (PilotSkinInfo pilotSkinSet : pilotSkinSets.values())
+        for (CrewMemberSkinInfo crewMemberSkinSet : crewMemberSkinSets.values())
         {
-            if (pilotSkinSet != null)
+            if (crewMemberSkinSet != null)
             {
-                pilotSkinSet.setSkinAssignments();
+                crewMemberSkinSet.setSkinAssignments();
             }
         }
     }
 
-    public SquadronMember getPilot()
+    public CrewMember getCrewMember()
     {
-        return pilot;
+        return crewMember;
     }
 
-    public void setPilot(SquadronMember pilot) throws PWCGException
+    public void setCrewMember(CrewMember crewMember) throws PWCGException
     {
-        this.pilot = pilot;
-        addSkinSetForPilot (pilot);
+        this.crewMember = crewMember;
+        addSkinSetForCrewMember (crewMember);
     }
 
-    public Skin getSkinForPilotAndPlane(String planeName)
+    public Skin getSkinForCrewMemberAndPlane(String planeName)
     {
         Skin skin = null;
         
-        if (pilot != null)
+        if (crewMember != null)
         {
-            PilotSkinInfo pilotSkinSet = pilotSkinSets.get(pilot.getSerialNumber());
-            if (pilotSkinSet != null)
+            CrewMemberSkinInfo crewMemberSkinSet = crewMemberSkinSets.get(crewMember.getSerialNumber());
+            if (crewMemberSkinSet != null)
             {
-                skin = pilotSkinSet.getSkinForPlane(planeName);
+                skin = crewMemberSkinSet.getSkinForPlane(planeName);
             }
         }
         
@@ -223,19 +223,19 @@ public class SkinSessionManager
 
      public void updateSkinForPlane(String plane, Skin skin)
      {
-         if (pilot != null)
+         if (crewMember != null)
          {
-             PilotSkinInfo pilotSkinSet = pilotSkinSets.get(pilot.getSerialNumber());
-             if (pilotSkinSet != null)
+             CrewMemberSkinInfo crewMemberSkinSet = crewMemberSkinSets.get(crewMember.getSerialNumber());
+             if (crewMemberSkinSet != null)
              {
-                 pilotSkinSet.updateSkinForPlane(plane, skin);
+                 crewMemberSkinSet.updateSkinForPlane(plane, skin);
              }
          }
      }
 
-     public PilotSkinInfo getPilotSkinSet()
+     public CrewMemberSkinInfo getCrewMemberSkinSet()
      {
-         return pilotSkinSets.get(pilot.getSerialNumber());
+         return crewMemberSkinSets.get(crewMember.getSerialNumber());
      }
 
     public boolean isSquadronSkinsSelected()

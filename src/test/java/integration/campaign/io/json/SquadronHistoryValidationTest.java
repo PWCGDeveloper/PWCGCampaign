@@ -14,7 +14,7 @@ import pwcg.campaign.SquadHistoryEntry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.SquadronIOJson;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -25,11 +25,11 @@ public class SquadronHistoryValidationTest
     public void readJsonBoSSquadronsTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        List<Squadron> squadrons = SquadronIOJson.readJson();
+        List<Company> squadrons = SquadronIOJson.readJson();
         Assertions.assertTrue (squadrons.size() > 0);
         
         boolean success = true;
-        for (Squadron squadron : squadrons)
+        for (Company squadron : squadrons)
         {
             verifyVVSTransition(squadron);
             if (!verifyBoSTransitionDates(squadron))
@@ -41,7 +41,7 @@ public class SquadronHistoryValidationTest
         assert(success);
     }
     
-    private void verifyVVSTransition(Squadron squadron) throws PWCGException
+    private void verifyVVSTransition(Company squadron) throws PWCGException
     {
         if (squadron.getSquadronId() == 10131136)
         {
@@ -62,7 +62,7 @@ public class SquadronHistoryValidationTest
         }
     }
     
-    private boolean verifyBoSTransitionDates(Squadron squadron) throws PWCGException
+    private boolean verifyBoSTransitionDates(Company squadron) throws PWCGException
     {
         SquadHistory squadronHistory = squadron.getSquadHistory();
         boolean success = true;

@@ -16,7 +16,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.resupply.depot.EquipmentDepotInitializer;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignEquipmentManager
@@ -165,7 +165,7 @@ public class CampaignEquipmentManager
     }
 
 
-    public void actOnEquipmentRequest(Squadron squadron, List<Integer> serialNumbersOfChangedPlanes, String planeTypeToChangeTo) throws PWCGException
+    public void actOnEquipmentRequest(Company squadron, List<Integer> serialNumbersOfChangedPlanes, String planeTypeToChangeTo) throws PWCGException
     {
         for (int serialNumber : serialNumbersOfChangedPlanes)
         {

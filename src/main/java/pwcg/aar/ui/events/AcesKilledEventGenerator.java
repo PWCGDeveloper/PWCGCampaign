@@ -5,9 +5,9 @@ import java.util.List;
 
 import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class AcesKilledEventGenerator
@@ -22,17 +22,17 @@ public class AcesKilledEventGenerator
     }
 
 
-    public List<AceKilledEvent> createAceKilledEvents(List<SquadronMember> acesKilledInMissionAndElapsedTime) throws PWCGException
+    public List<AceKilledEvent> createAceKilledEvents(List<CrewMember> acesKilledInMissionAndElapsedTime) throws PWCGException
     {
         List<AceKilledEvent> aceKilledEvents = new ArrayList<>();
-        for (SquadronMember ace : acesKilledInMissionAndElapsedTime)
+        for (CrewMember ace : acesKilledInMissionAndElapsedTime)
         {
             if (ace == null)
             {
                 continue;
             }
             
-            Squadron aceSquad =  ace.determineSquadron();
+            Company aceSquad =  ace.determineSquadron();
             if (aceSquad != null)
             {
                 AceKilledEvent aceKilledEvent = makeAceKilledEvent(ace, aceSquad);
@@ -46,13 +46,13 @@ public class AcesKilledEventGenerator
         return aceKilledEvents;
     }
     
-    private AceKilledEvent makeAceKilledEvent(SquadronMember ace, Squadron aceSquadron) throws PWCGException
+    private AceKilledEvent makeAceKilledEvent(CrewMember ace, Company aceSquadron) throws PWCGException
     {
         AceKilledEvent aceKilledEvent = null;
         
-        if (ace.getSquadronMemberVictories().getAirToAirVictoryCount() >= NUM_VICTORIES_FOR_ACE_TO_BE_NEWSWORTHY)
+        if (ace.getCrewMemberVictories().getAirToAirVictoryCount() >= NUM_VICTORIES_FOR_ACE_TO_BE_NEWSWORTHY)
         {
-            String status = SquadronMemberStatus.pilotStatusToStatusDescription(ace.getPilotActiveStatus());
+            String status = CrewMemberStatus.crewMemberStatusToStatusDescription(ace.getCrewMemberActiveStatus());
     
             int aceSerialNumber = ace.getSerialNumber();
             int aceSquadronId = aceSquadron.getSquadronId();

@@ -45,7 +45,6 @@ public class Mission
     private MissionFlights missionFlights;
     private MissionPlayerVehicle missionPlayerVehicles = new MissionPlayerVehicle();
     private VehicleDefinition playerVehicleDefinition;
-    private MissionVirtualEscortHandler virtualEscortHandler = new MissionVirtualEscortHandler();
     private SkinsInUse skinsInUse = new SkinsInUse();
 
     private MissionBattleManager battleManager = new MissionBattleManager();
@@ -302,11 +301,6 @@ public class Mission
     public MissionBattleManager getBattleManager()
     {
         return battleManager;
-    }
-
-    public MissionVirtualEscortHandler getVirtualEscortHandler()
-    {
-        return virtualEscortHandler;
     }
 
     public VehicleSetBuilderComprehensive getVehicleSetBuilder()

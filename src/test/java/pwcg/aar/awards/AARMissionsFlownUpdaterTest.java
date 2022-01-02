@@ -18,8 +18,8 @@ import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -52,31 +52,31 @@ public class AARMissionsFlownUpdaterTest
         Mockito.when(aarContext.getPersonnelAcheivements()).thenReturn(personnelAcheivements);
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);        
 
-        SquadronMembers nonPlayerSquadronMembers = SquadronMemberFilter.filterActiveAINoWounded(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        CrewMembers nonPlayerCrewMembers = CrewMemberFilter.filterActiveAINoWounded(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
 
-        SquadronMembers campaignMembersInMission = new SquadronMembers();
-        campaignMembersInMission.addToSquadronMemberCollection(nonPlayerSquadronMembers.getSquadronMemberList().get(1));
-        campaignMembersInMission.addToSquadronMemberCollection(nonPlayerSquadronMembers.getSquadronMemberList().get(2));
-        campaignMembersInMission.addToSquadronMemberCollection(nonPlayerSquadronMembers.getSquadronMemberList().get(3));
+        CrewMembers campaignMembersInMission = new CrewMembers();
+        campaignMembersInMission.addToCrewMemberCollection(nonPlayerCrewMembers.getCrewMemberList().get(1));
+        campaignMembersInMission.addToCrewMemberCollection(nonPlayerCrewMembers.getCrewMemberList().get(2));
+        campaignMembersInMission.addToCrewMemberCollection(nonPlayerCrewMembers.getCrewMemberList().get(3));
 
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInMission);
         
-        int missionsFlownBefore1 = nonPlayerSquadronMembers.getSquadronMemberList().get(1).getMissionFlown();
-        int missionsFlownBefore2 = nonPlayerSquadronMembers.getSquadronMemberList().get(2).getMissionFlown();
-        int missionsFlownBefore3 = nonPlayerSquadronMembers.getSquadronMemberList().get(3).getMissionFlown();
+        int missionsFlownBefore1 = nonPlayerCrewMembers.getCrewMemberList().get(1).getBattlesFought();
+        int missionsFlownBefore2 = nonPlayerCrewMembers.getCrewMemberList().get(2).getBattlesFought();
+        int missionsFlownBefore3 = nonPlayerCrewMembers.getCrewMemberList().get(3).getBattlesFought();
         
         AARMissionsFlownUpdater missionsFlown = new AARMissionsFlownUpdater(campaign, aarContext);
         missionsFlown.updateMissionsFlown();
 
         Map<Integer, Integer> updatedMissionsFLown = personnelAcheivements.getMissionsFlown();
         
-        assert(updatedMissionsFLown.containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber()));
-        assert(updatedMissionsFLown.containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber()));
-        assert(updatedMissionsFLown.containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber()));
+        assert(updatedMissionsFLown.containsKey(nonPlayerCrewMembers.getCrewMemberList().get(1).getSerialNumber()));
+        assert(updatedMissionsFLown.containsKey(nonPlayerCrewMembers.getCrewMemberList().get(2).getSerialNumber()));
+        assert(updatedMissionsFLown.containsKey(nonPlayerCrewMembers.getCrewMemberList().get(3).getSerialNumber()));
         
-        int missionsFlownAfter1 = updatedMissionsFLown.get(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber());
-        int missionsFlownAfter2 = updatedMissionsFLown.get(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber());
-        int missionsFlownAfter3 = updatedMissionsFLown.get(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber());
+        int missionsFlownAfter1 = updatedMissionsFLown.get(nonPlayerCrewMembers.getCrewMemberList().get(1).getSerialNumber());
+        int missionsFlownAfter2 = updatedMissionsFLown.get(nonPlayerCrewMembers.getCrewMemberList().get(2).getSerialNumber());
+        int missionsFlownAfter3 = updatedMissionsFLown.get(nonPlayerCrewMembers.getCrewMemberList().get(3).getSerialNumber());
 
         Assertions.assertTrue ((missionsFlownAfter1 - missionsFlownBefore1) == 1);
         Assertions.assertTrue ((missionsFlownAfter2 - missionsFlownBefore2) == 1);

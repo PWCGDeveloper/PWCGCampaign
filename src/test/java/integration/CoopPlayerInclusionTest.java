@@ -12,9 +12,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberReplacer;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberReplacer;
 import pwcg.coop.CoopUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorDO;
@@ -39,7 +39,7 @@ public class CoopPlayerInclusionTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         generateCoopUsers();
-        generateHumanPilots();
+        generateHumanCrewMembers();
     }
 
     @AfterAll
@@ -70,91 +70,91 @@ public class CoopPlayerInclusionTest
         CoopUserManager.getIntance().removeCoopUser("RussianIlUser");
     }
 
-    private void generateHumanPilots() throws Exception
+    private void generateHumanCrewMembers() throws Exception
     {
-    	CampaignGeneratorDO germanFighterPilot = new CampaignGeneratorDO();
-    	germanFighterPilot.setPlayerPilotName("German Fighter");
-    	germanFighterPilot.setRank("Leutnant");
-    	germanFighterPilot.setSquadName("I./JG52");
-    	germanFighterPilot.setCoopUser("GermanFighterUser");
-    	createHumanPilot(germanFighterPilot);
+    	CampaignGeneratorDO germanFighterCrewMember = new CampaignGeneratorDO();
+    	germanFighterCrewMember.setPlayerCrewMemberName("German Fighter");
+    	germanFighterCrewMember.setRank("Leutnant");
+    	germanFighterCrewMember.setSquadName("I./JG52");
+    	germanFighterCrewMember.setCoopUser("GermanFighterUser");
+    	createHumanCrewMember(germanFighterCrewMember);
     	
-        CampaignGeneratorDO germanFighterPilotII = new CampaignGeneratorDO();
-        germanFighterPilotII.setPlayerPilotName("German Secondfighter");
-        germanFighterPilotII.setRank("Leutnant");
-        germanFighterPilotII.setSquadName("I./JG52");
-        germanFighterPilotII.setCoopUser("GermanSecondFighterUser");
-        createHumanPilot(germanFighterPilotII);
+        CampaignGeneratorDO germanFighterCrewMemberII = new CampaignGeneratorDO();
+        germanFighterCrewMemberII.setPlayerCrewMemberName("German Secondfighter");
+        germanFighterCrewMemberII.setRank("Leutnant");
+        germanFighterCrewMemberII.setSquadName("I./JG52");
+        germanFighterCrewMemberII.setCoopUser("GermanSecondFighterUser");
+        createHumanCrewMember(germanFighterCrewMemberII);
 
-    	CampaignGeneratorDO germanBomberPilot = new CampaignGeneratorDO();
-    	germanBomberPilot.setPlayerPilotName("German Bomber");
-    	germanBomberPilot.setRank("Leutnant");
-    	germanBomberPilot.setSquadName("I./KG76");
-    	germanBomberPilot.setCoopUser("GermanBomberUser");
-    	createHumanPilot(germanBomberPilot);
+    	CampaignGeneratorDO germanBomberCrewMember = new CampaignGeneratorDO();
+    	germanBomberCrewMember.setPlayerCrewMemberName("German Bomber");
+    	germanBomberCrewMember.setRank("Leutnant");
+    	germanBomberCrewMember.setSquadName("I./KG76");
+    	germanBomberCrewMember.setCoopUser("GermanBomberUser");
+    	createHumanCrewMember(germanBomberCrewMember);
     	
-    	CampaignGeneratorDO germanStukaPilot = new CampaignGeneratorDO();
-    	germanStukaPilot.setPlayerPilotName("German Stuka");
-    	germanStukaPilot.setRank("Leutnant");
-    	germanStukaPilot.setSquadName("II./St.G.77");
-    	germanStukaPilot.setCoopUser("GermanStukaUser");
-    	createHumanPilot(germanStukaPilot);
+    	CampaignGeneratorDO germanStukaCrewMember = new CampaignGeneratorDO();
+    	germanStukaCrewMember.setPlayerCrewMemberName("German Stuka");
+    	germanStukaCrewMember.setRank("Leutnant");
+    	germanStukaCrewMember.setSquadName("II./St.G.77");
+    	germanStukaCrewMember.setCoopUser("GermanStukaUser");
+    	createHumanCrewMember(germanStukaCrewMember);
     	
-    	CampaignGeneratorDO russianFighterPilot = new CampaignGeneratorDO();
-    	russianFighterPilot.setPlayerPilotName("Russian Fighter");
-    	russianFighterPilot.setRank("Leyitenant");
-    	russianFighterPilot.setSquadName("27th Fighter Air Regiment");
-    	russianFighterPilot.setCoopUser("RussianFighterUser");
-    	createHumanPilot(russianFighterPilot);
+    	CampaignGeneratorDO russianFighterCrewMember = new CampaignGeneratorDO();
+    	russianFighterCrewMember.setPlayerCrewMemberName("Russian Fighter");
+    	russianFighterCrewMember.setRank("Leyitenant");
+    	russianFighterCrewMember.setSquadName("27th Fighter Air Regiment");
+    	russianFighterCrewMember.setCoopUser("RussianFighterUser");
+    	createHumanCrewMember(russianFighterCrewMember);
     	
-    	CampaignGeneratorDO russianBomberPilot = new CampaignGeneratorDO();
-    	russianBomberPilot.setPlayerPilotName("Russian Bomber");
-    	russianBomberPilot.setRank("Leyitenant");
-    	russianBomberPilot.setSquadName("86th Bomber Air Regiment");
-    	russianBomberPilot.setCoopUser("RussianBomberUser");
-    	createHumanPilot(russianBomberPilot);
+    	CampaignGeneratorDO russianBomberCrewMember = new CampaignGeneratorDO();
+    	russianBomberCrewMember.setPlayerCrewMemberName("Russian Bomber");
+    	russianBomberCrewMember.setRank("Leyitenant");
+    	russianBomberCrewMember.setSquadName("86th Bomber Air Regiment");
+    	russianBomberCrewMember.setCoopUser("RussianBomberUser");
+    	createHumanCrewMember(russianBomberCrewMember);
     	
-    	CampaignGeneratorDO russianIlPilot = new CampaignGeneratorDO();
-    	russianIlPilot.setPlayerPilotName("Russian Il");
-    	russianIlPilot.setRank("Leyitenant");
-    	russianIlPilot.setSquadName("621st Ground Attack Air Regiment");
-    	russianIlPilot.setCoopUser("RussianIlUser");
-    	createHumanPilot(russianIlPilot);
+    	CampaignGeneratorDO russianIlCrewMember = new CampaignGeneratorDO();
+    	russianIlCrewMember.setPlayerCrewMemberName("Russian Il");
+    	russianIlCrewMember.setRank("Leyitenant");
+    	russianIlCrewMember.setSquadName("621st Ground Attack Air Regiment");
+    	russianIlCrewMember.setCoopUser("RussianIlUser");
+    	createHumanCrewMember(russianIlCrewMember);
     	
     }
     
-    private void createHumanPilot(CampaignGeneratorDO campaignGeneratorDO) throws Exception
+    private void createHumanCrewMember(CampaignGeneratorDO campaignGeneratorDO) throws Exception
     {
-        String playerName = campaignGeneratorDO.getPlayerPilotName();
+        String playerName = campaignGeneratorDO.getPlayerCrewMemberName();
         String squadronName = campaignGeneratorDO.getSquadName();
         String rank = campaignGeneratorDO.getRank();
         String coopuser = campaignGeneratorDO.getCoopUser();
 
-        SquadronMemberReplacer squadronMemberReplacer = new SquadronMemberReplacer(coopCampaign);
+        CrewMemberReplacer squadronMemberReplacer = new CrewMemberReplacer(coopCampaign);
         squadronMemberReplacer.createPersona(playerName, rank, squadronName, coopuser);
     }
     
-    private SquadronMember getSquadronMemberByName(String pilotName) throws PWCGException
+    private CrewMember getCrewMemberByName(String crewMemberName) throws PWCGException
     {
-    	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+    	for (CrewMember player : coopCampaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList())
     	{
-    		if (player.getName().contentEquals(pilotName))
+    		if (player.getName().contentEquals(crewMemberName))
     		{
     			return player;
     		}
     	}
     	
-    	throw new PWCGException("No player found for name " + pilotName);
+    	throw new PWCGException("No player found for name " + crewMemberName);
     }
 
     @Test
     public void coopMultiPlayerTest() throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        participatingPlayers.addSquadronMember(getSquadronMemberByName("German Fighter"));
-        participatingPlayers.addSquadronMember(getSquadronMemberByName("German Bomber"));
-        participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Fighter"));
-        participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Il"));
+        participatingPlayers.addCrewMember(getCrewMemberByName("German Fighter"));
+        participatingPlayers.addCrewMember(getCrewMemberByName("German Bomber"));
+        participatingPlayers.addCrewMember(getCrewMemberByName("Russian Fighter"));
+        participatingPlayers.addCrewMember(getCrewMemberByName("Russian Il"));
 
         generateMission(participatingPlayers, FlightTypes.ANY);
         assert(mission.getFlights().getPlayerFlights().size() == 4);
@@ -205,9 +205,9 @@ public class CoopPlayerInclusionTest
     public void coopMultiPlayerWithSameSquadronTest() throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        participatingPlayers.addSquadronMember(getSquadronMemberByName("German Fighter"));
-        participatingPlayers.addSquadronMember(getSquadronMemberByName("German Secondfighter"));
-        participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Fighter"));
+        participatingPlayers.addCrewMember(getCrewMemberByName("German Fighter"));
+        participatingPlayers.addCrewMember(getCrewMemberByName("German Secondfighter"));
+        participatingPlayers.addCrewMember(getCrewMemberByName("Russian Fighter"));
 
         generateMission(participatingPlayers, FlightTypes.ANY);
         assert(mission.getFlights().getPlayerFlights().size() == 2);

@@ -38,7 +38,7 @@ public class FlightPlanes implements IFlightPlanes
         List<PlaneMcu> aiPlanes = new ArrayList<>();
         for (PlaneMcu plane : planes)
         {
-            if (!plane.getPilot().isPlayer())
+            if (!plane.getCrewMember().isPlayer())
             {
                 aiPlanes.add(plane);
             }
@@ -53,7 +53,7 @@ public class FlightPlanes implements IFlightPlanes
         List<PlaneMcu> playerPlanes = new ArrayList<>();
         for (PlaneMcu plane : planes)
         {
-            if (plane.getPilot().isPlayer())
+            if (plane.getCrewMember().isPlayer())
             {
                 playerPlanes.add(plane);
             }
@@ -63,35 +63,35 @@ public class FlightPlanes implements IFlightPlanes
     }
 
     @Override
-    public PlaneMcu getPlaneForPilot(Integer pilotSerialNumber)
+    public PlaneMcu getPlaneForCrewMember(Integer crewMemberSerialNumber)
     {
-        PlaneMcu pilotPlane = null;
+        PlaneMcu crewMemberPlane = null;
         for (PlaneMcu plane : planes)
         {
-            if (plane.getPilot().getSerialNumber() == pilotSerialNumber)
+            if (plane.getCrewMember().getSerialNumber() == crewMemberSerialNumber)
             {
-                pilotPlane = plane;
+                crewMemberPlane = plane;
                 break;
             }
         }
 
-        return pilotPlane;
+        return crewMemberPlane;
     }
 
     @Override
     public PlaneMcu getPlaneByLinkTrId(Integer planeLinkTrId)
     {
-        PlaneMcu pilotPlane = null;
+        PlaneMcu crewMemberPlane = null;
         for (PlaneMcu plane : planes)
         {
             if (plane.getLinkTrId() == planeLinkTrId)
             {
-                pilotPlane = plane;
+                crewMemberPlane = plane;
                 break;
             }
         }
 
-        return pilotPlane;
+        return crewMemberPlane;
     }
 
     @Override

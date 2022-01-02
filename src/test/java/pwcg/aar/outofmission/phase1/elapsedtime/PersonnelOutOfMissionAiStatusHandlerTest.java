@@ -14,9 +14,9 @@ import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -38,17 +38,17 @@ public class PersonnelOutOfMissionAiStatusHandlerTest
     public void testPersonnelLossesOutOfMission () throws PWCGException
     {     
         PersonnelOutOfMissionStatusHandler personnelLossOutOfMissionHandler = new PersonnelOutOfMissionStatusHandler();
-        Map<Integer, SquadronMember> campaignMembers = campaign.getPersonnelManager().getActiveCampaignMembers();
-        SquadronMembers squadronMembersInMissionOtherThanPlayer = SquadronMemberFilter.filterActiveAI(campaignMembers, campaign.getDate());
-        personnelLossOutOfMissionHandler.determineFateOfShotDownPilots(squadronMembersInMissionOtherThanPlayer.getSquadronMemberCollection());
+        Map<Integer, CrewMember> campaignMembers = campaign.getPersonnelManager().getActiveCampaignMembers();
+        CrewMembers squadronMembersInMissionOtherThanPlayer = CrewMemberFilter.filterActiveAI(campaignMembers, campaign.getDate());
+        personnelLossOutOfMissionHandler.determineFateOfShotDownCrewMembers(squadronMembersInMissionOtherThanPlayer.getCrewMemberCollection());
         
-        Map<Integer, SquadronMember> aiKilled = new HashMap<>();
-        Map<Integer, SquadronMember> aiMaimed = new HashMap<>();
-        Map<Integer, SquadronMember> aiCaptured = new HashMap<>();
+        Map<Integer, CrewMember> aiKilled = new HashMap<>();
+        Map<Integer, CrewMember> aiMaimed = new HashMap<>();
+        Map<Integer, CrewMember> aiCaptured = new HashMap<>();
 
         for (int i = 0; i < 10; ++i)
         {
-            AARPersonnelLosses outOfMissionPersonnelLosses = personnelLossOutOfMissionHandler.determineFateOfShotDownPilots(campaignMembers);
+            AARPersonnelLosses outOfMissionPersonnelLosses = personnelLossOutOfMissionHandler.determineFateOfShotDownCrewMembers(campaignMembers);
             aiKilled.putAll(outOfMissionPersonnelLosses.getPersonnelKilled());
             aiMaimed.putAll(outOfMissionPersonnelLosses.getPersonnelMaimed());
             aiCaptured.putAll(outOfMissionPersonnelLosses.getPersonnelCaptured());

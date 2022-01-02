@@ -9,7 +9,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.product.bos.plane.BoSStaticPlane;
-import pwcg.product.fc.plane.FCStaticPlane;
 
 public class MissionBlockEntityBuilder
 {
@@ -52,11 +51,6 @@ public class MissionBlockEntityBuilder
             return false;
         }        
         if (structure instanceof BoSStaticPlane)
-        {
-            return true;
-        }
-        
-        if (structure instanceof FCStaticPlane)
         {
             return true;
         }

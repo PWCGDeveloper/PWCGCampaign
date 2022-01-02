@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import pwcg.aar.ui.events.model.LeaveEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
@@ -169,7 +169,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         constraints.gridx = 1;
         constraints.gridheight = 1;
 
-        for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        for (CrewMember player : campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList())
         {
             if (player.getRecoveryDate() != null)
             {
@@ -248,7 +248,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         {
             if (action.equalsIgnoreCase("Accept Leave"))
             {
-                pilotLeave();
+                crewMemberLeave();
             }
             else if (action.equalsIgnoreCase("Reject Leave"))
             {
@@ -263,7 +263,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         }
     }
 
-    private void pilotLeave() throws PWCGUserException, Exception
+    private void crewMemberLeave() throws PWCGUserException, Exception
     {
         SoundManager.getInstance().playSound("Stapling.WAV");
 
@@ -271,8 +271,8 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         if (leaveTimeDays > 0)
         {
             boolean isNewsWorthy = false;
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
-            LeaveEvent leaveEvent = new LeaveEvent(campaign, leaveTimeDays, referencePlayer.getSquadronId(), referencePlayer.getSerialNumber(), campaign.getDate(),
+            CrewMember referencePlayer = campaign.findReferencePlayer();
+            LeaveEvent leaveEvent = new LeaveEvent(campaign, leaveTimeDays, referencePlayer.getCompanyId(), referencePlayer.getSerialNumber(), campaign.getDate(),
                     isNewsWorthy);
             parent.campaignTimePassedForLeave(leaveEvent.getLeaveTime());
         }

@@ -20,7 +20,7 @@ public class BriefingPlanePicker
         this.parent = parent;
     }
 
-    public Integer pickPlane(Integer pilotSerialNumber) throws PWCGException
+    public Integer pickPlane(Integer crewMemberSerialNumber) throws PWCGException
     {       
         List<EquippedPlane> squadronPlanes = missionEditHandler.getSortedUnassignedPlanes();
         Object[] possibilities = new Object[squadronPlanes.size()];
@@ -28,7 +28,7 @@ public class BriefingPlanePicker
         {
             EquippedPlane plane = squadronPlanes.get(i);
             PickerEntry entry = new PickerEntry();
-            entry.description = plane.getDisplayName() + " (" + plane.getDisplayMarkings() + ")";
+            entry.description = plane.getDisplayName();
             entry.plane = plane;
             possibilities[i] = entry;
         }

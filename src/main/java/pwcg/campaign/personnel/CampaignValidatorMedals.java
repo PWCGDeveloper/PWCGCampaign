@@ -1,11 +1,11 @@
 package pwcg.campaign.personnel;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.medals.IMedalManager;
 import pwcg.campaign.medals.Medal;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignValidatorMedals
@@ -17,18 +17,18 @@ public class CampaignValidatorMedals
         this.campaign = campaign;
     }
     
-    public void assignMissingMedalsForSquadMember(SquadronMember squadronMember) throws PWCGException 
+    public void assignMissingMedalsForSquadMember(CrewMember crewMember) throws PWCGException 
     {
-        if (!(squadronMember instanceof Ace))
+        if (!(crewMember instanceof TankAce))
         {
-            IMedalManager mm = MedalManagerFactory.createMedalManager(squadronMember.determineCountry(campaign.getDate()), campaign);
+            IMedalManager mm = MedalManagerFactory.createMedalManager(crewMember.determineCountry(campaign.getDate()), campaign);
             while (true)
             {
-                Medal medal = mm.award(campaign, squadronMember, squadronMember.determineService(campaign.getDate()),  0);
+                Medal medal = mm.award(campaign, crewMember, crewMember.determineService(campaign.getDate()),  0);
                 if (medal != null)
                 {
                     medal.setMedalDate(campaign.getDate());
-                    squadronMember.addMedal(medal);
+                    crewMember.addMedal(medal);
                 }
                 else
                 {

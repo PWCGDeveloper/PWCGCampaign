@@ -8,10 +8,10 @@ import java.util.TreeMap;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -28,12 +28,12 @@ public abstract class MedalManager implements IMedalManager
 
 	protected Map<Integer, Medal> medals = new TreeMap<Integer, Medal>();
 
-	protected abstract Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException ;
-    protected abstract Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException ;
-    protected abstract Medal awardWings(SquadronMember pilot)  ;
+	protected abstract Medal awardFighter(CrewMember crewMember, ArmedService service, int victoriesThisMission) throws PWCGException ;
+    protected abstract Medal awardBomber(CrewMember crewMember, ArmedService service, int victoriesThisMission) throws PWCGException ;
+    protected abstract Medal awardWings(CrewMember crewMember)  ;
 
 	@Override
-	public abstract Medal awardWoundedAward(SquadronMember pilot, ArmedService service);
+	public abstract Medal awardWoundedAward(CrewMember crewMember, ArmedService service);
 
 	protected Campaign campaign = null;
 	
@@ -72,20 +72,20 @@ public abstract class MedalManager implements IMedalManager
 	}
 
     @Override
-	public final Medal award(Campaign campaign, SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
+	public final Medal award(Campaign campaign, CrewMember crewMember, ArmedService service, int victoriesThisMission) throws PWCGException 
     {
         Medal medal = null;
         
-        medal = awardWings (pilot);
+        medal = awardWings (crewMember);
         if (medal == null)
         {
-            medal = awardFighter(pilot, service, victoriesThisMission);
+            medal = awardFighter(crewMember, service, victoriesThisMission);
             if (medal == null)
             {
-                Squadron squadron =  pilot.determineSquadron();
+                Company squadron =  crewMember.determineSquadron();
                 if (squadron != null && !squadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_FIGHTER))
                 {
-                    medal = awardBomber(pilot, service, victoriesThisMission);
+                    medal = awardBomber(crewMember, service, victoriesThisMission);
                 }
             }
         }
@@ -94,13 +94,13 @@ public abstract class MedalManager implements IMedalManager
     }
 
 	@Override
-	public boolean hasMedal(SquadronMember pilot, Medal medal)
+	public boolean hasMedal(CrewMember crewMember, Medal medal)
 	{
 		boolean hasMedal = false;
-		for (int i = 0; i < pilot.getMedals().size(); ++i)
+		for (int i = 0; i < crewMember.getMedals().size(); ++i)
 		{
-			Medal pilotMedal = pilot.getMedals().get(i);
-			if (pilotMedal.getMedalName().equalsIgnoreCase(medal.getMedalName()))
+			Medal crewMemberMedal = crewMember.getMedals().get(i);
+			if (crewMemberMedal.getMedalName().equalsIgnoreCase(medal.getMedalName()))
 			{
 				hasMedal = true;
 				break;

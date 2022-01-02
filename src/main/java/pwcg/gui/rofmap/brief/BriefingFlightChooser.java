@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
@@ -53,14 +53,14 @@ public class BriefingFlightChooser implements ActionListener
         JLabel spacerLabel3 = PWCGLabelFactory.makeDummyLabel();        
         flightChooserButtonPanelGrid.add(spacerLabel3);
 
-        Map<Integer, Squadron> playerSquadronsInMission = new HashMap<>();
+        Map<Integer, Company> playerSquadronsInMission = new HashMap<>();
         for (IFlight playerFlight : mission.getFlights().getPlayerFlights())
         {
-            Squadron squadron = playerFlight.getSquadron();
+            Company squadron = playerFlight.getSquadron();
             playerSquadronsInMission.put(squadron.getSquadronId(), squadron);
         }
 
-        for (Squadron squadron : playerSquadronsInMission.values())
+        for (Company squadron : playerSquadronsInMission.values())
         {
             JRadioButton airLowDensity = PWCGButtonFactory.makeRadioButton(
                     squadron.determineDisplayName(mission.getCampaign().getDate()), 
@@ -106,7 +106,7 @@ public class BriefingFlightChooser implements ActionListener
             int index = action.indexOf(":");
             String selectedSquadronId = action.substring(index + 1);
             int squadronId = Integer.valueOf(selectedSquadronId);
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             
             setSelectedButton(squadronId);
 

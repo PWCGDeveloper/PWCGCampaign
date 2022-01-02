@@ -11,7 +11,7 @@ import javax.swing.JTabbedPane;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.MedalEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
@@ -64,10 +64,10 @@ public class AARMedalPanel extends AARDocumentPanel
         eventTabPane.setBackground(bgColor);
         eventTabPane.setOpaque(false);
        
-        HashMap<String, CampaignReportMedalGUI> pilotMedalGuiList = createPilotMedalList() ;
-        for (String tabName : pilotMedalGuiList.keySet())
+        HashMap<String, CampaignReportMedalGUI> crewMemberMedalGuiList = createCrewMemberMedalList() ;
+        for (String tabName : crewMemberMedalGuiList.keySet())
         {
-            eventTabPane.addTab(tabName, pilotMedalGuiList.get(tabName));
+            eventTabPane.addTab(tabName, crewMemberMedalGuiList.get(tabName));
             this.shouldDisplay = true;
         }
 
@@ -75,24 +75,24 @@ public class AARMedalPanel extends AARDocumentPanel
         return eventTabPane;
     }
 
-	private HashMap<String, CampaignReportMedalGUI> createPilotMedalList() throws PWCGException 
+	private HashMap<String, CampaignReportMedalGUI> createCrewMemberMedalList() throws PWCGException 
 	{
         List<MedalEvent> medalsAwarded = aarCoordinator.getAarContext().getUiDebriefData().getMedalPanelData().getMedalsAwarded();
-        HashMap<String, CampaignReportMedalGUI> pilotMedalGuiList = new HashMap<String, CampaignReportMedalGUI>();
+        HashMap<String, CampaignReportMedalGUI> crewMemberMedalGuiList = new HashMap<String, CampaignReportMedalGUI>();
         for (MedalEvent medalEvent : medalsAwarded)
         {
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
-            if (medalEvent.getSquadronId() == referencePlayer.getSquadronId())
+            CrewMember referencePlayer = campaign.findReferencePlayer();
+            if (medalEvent.getSquadronId() == referencePlayer.getCompanyId())
             {
                 if (medalEvent.isNewsWorthy())
                 {
                     CampaignReportMedalGUI medalGui = new CampaignReportMedalGUI(campaign, medalEvent);
-                    String tabName = "Medal Awarded: " + medalEvent.getPilotName();
-                    pilotMedalGuiList.put(tabName, medalGui);
+                    String tabName = "Medal Awarded: " + medalEvent.getCrewMemberName();
+                    crewMemberMedalGuiList.put(tabName, medalGui);
                 }
             }
         }
         
-        return pilotMedalGuiList;
+        return crewMemberMedalGuiList;
 	}
 }

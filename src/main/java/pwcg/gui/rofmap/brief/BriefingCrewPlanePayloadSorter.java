@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
@@ -38,8 +38,8 @@ public class BriefingCrewPlanePayloadSorter
                 
         for (CrewPlanePayloadPairing crewPlane : unsorted)
         {
-            SquadronMember pilotSquadMember = crewPlane.getPilot();
-            String crewKey = pilotSquadMember.determineSortKey(mission.getCampaign().getDate());
+            CrewMember crewMemberSquadMember = crewPlane.getCrewMember();
+            String crewKey = crewMemberSquadMember.determineSortKey(mission.getCampaign().getDate());
             sortedTree.put(crewKey, crewPlane);
         }
         

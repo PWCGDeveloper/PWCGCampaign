@@ -11,7 +11,7 @@ import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.ServiceResupplyNeed;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentReplacementWeightByNeed
@@ -23,7 +23,7 @@ public class EquipmentReplacementWeightByNeed
         this.campaign = campaign;
     }
 
-    public Map<String, Integer> getAircraftNeedByArchType(List<Squadron> squadronsForService) throws PWCGException
+    public Map<String, Integer> getAircraftNeedByArchType(List<Company> squadronsForService) throws PWCGException
     {
         if (squadronsForService.size() == 0)
         {
@@ -51,7 +51,7 @@ public class EquipmentReplacementWeightByNeed
             ISquadronNeed squadronNeed = resupplyNeed.getSquadronNeeds().get(squadronId);
             if (squadronNeed.getNumNeeded() > 0)
             {
-                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+                Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
                 List<String> asrchTypesForSquadron = squadron.getActiveArchTypes(campaign.getDate());
                 
                 for (String archType : asrchTypesForSquadron)

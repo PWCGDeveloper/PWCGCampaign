@@ -2,27 +2,27 @@ package pwcg.campaign.promotion;
 
 import java.util.Date;
 
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.country.BoSServiceManager;
 
 public class PromotionMinimumCriteria
 {
-    private int pilotRankMedMinMissions = 20;
-    private int pilotRankHighMinMissions = 50;
-    private int pilotRankExecMinMissions = 80;
-    private int pilotRankCommandMinMissions = 110;
+    private int crewMemberRankMedMinMissions = 20;
+    private int crewMemberRankHighMinMissions = 50;
+    private int crewMemberRankExecMinMissions = 80;
+    private int crewMemberRankCommandMinMissions = 110;
 
-    private int pilotRankMedMinVictories = 1;
-    private int pilotRankHighMinVictories = 3;
-    private int pilotRankExecMinVictories = 7;
-    private int pilotRankCommandMinVictories = 15;
+    private int crewMemberRankMedMinVictories = 1;
+    private int crewMemberRankHighMinVictories = 3;
+    private int crewMemberRankExecMinVictories = 7;
+    private int crewMemberRankCommandMinVictories = 10;
 
-    public void setMinimumPromotionStandards(SquadronMember squadronMember, Date date) throws PWCGException
+    public void setMinimumPromotionStandards(CrewMember crewMember, Date date) throws PWCGException
     {
-        int serviceId = squadronMember.determineSquadron().getService();
-        PwcgRoleCategory roleCategory = squadronMember.determineSquadron().determineSquadronPrimaryRoleCategory(date);
+        int serviceId = crewMember.determineSquadron().getService();
+        PwcgRoleCategory roleCategory = crewMember.determineSquadron().determineSquadronPrimaryRoleCategory(date);
 
         setMissionsFlownForPromotion(serviceId, roleCategory);
         setVictoriesForPromotion(serviceId, roleCategory);
@@ -30,124 +30,88 @@ public class PromotionMinimumCriteria
 
     private void setMissionsFlownForPromotion(int serviceId, PwcgRoleCategory roleCategory)
     {
-        if (serviceId == BoSServiceManager.LUFTWAFFE)
+        if (serviceId == BoSServiceManager.WEHRMACHT)
         {
-            setMissionsForLuftwaffe();
+            setMissionsForWehrmacht();
         }
 
-        if (serviceId == BoSServiceManager.USAAF)
+        if (serviceId == BoSServiceManager.US_ARMY || serviceId == BoSServiceManager.BRITISH_ARMY)
         {
-            setMissionsForUSAAF();
-        }
-
-        if (roleCategory == PwcgRoleCategory.RECON)
-        {
-            setMissionsForRecon();
+            setMissionsForUSArmy();
         }
     }
 
     private void setVictoriesForPromotion(int serviceId, PwcgRoleCategory roleCategory)
     {
-        if (roleCategory == PwcgRoleCategory.RECON)
+        if (serviceId == BoSServiceManager.WEHRMACHT)
         {
-            setVictoriesForRecon();
-        }
-        else if (roleCategory != PwcgRoleCategory.FIGHTER)
-        {
-            setVictoriesForBomber();
-        }
-        else if (roleCategory == PwcgRoleCategory.FIGHTER && serviceId == BoSServiceManager.LUFTWAFFE)
-        {
-            setVictoriesForLuftwaffeFighter();
+            setVictoriesForWehrmacht();
         }
     }
 
-    private void setMissionsForRecon()
+    private void setMissionsForWehrmacht()
     {
-        pilotRankMedMinMissions = 30;
-        pilotRankHighMinMissions = 60;
-        pilotRankExecMinMissions = 110;
-        pilotRankCommandMinMissions = 150;
+        crewMemberRankMedMinMissions = 30;
+        crewMemberRankHighMinMissions = 60;
+        crewMemberRankExecMinMissions = 110;
+        crewMemberRankCommandMinMissions = 150;
     }
 
-    private void setMissionsForLuftwaffe()
+    private void setMissionsForUSArmy()
     {
-        pilotRankMedMinMissions = 30;
-        pilotRankHighMinMissions = 60;
-        pilotRankExecMinMissions = 110;
-        pilotRankCommandMinMissions = 150;
+        crewMemberRankMedMinMissions = 20;
+        crewMemberRankHighMinMissions = 40;
+        crewMemberRankExecMinMissions = 80;
+        crewMemberRankCommandMinMissions = 100;
     }
 
-    private void setMissionsForUSAAF()
+    private void setVictoriesForWehrmacht()
     {
-        pilotRankMedMinMissions = 20;
-        pilotRankHighMinMissions = 40;
-        pilotRankExecMinMissions = 80;
-        pilotRankCommandMinMissions = 100;
+
+        crewMemberRankMedMinVictories = 1;
+        crewMemberRankHighMinVictories = 5;
+        crewMemberRankExecMinVictories = 10;
+        crewMemberRankCommandMinVictories = 15;
     }
 
-    private void setVictoriesForBomber()
+    public int getCrewMemberRankMedMinMissions()
     {
-        pilotRankMedMinVictories = 5;
-        pilotRankHighMinVictories = 15;
-        pilotRankExecMinVictories = 30;
-        pilotRankCommandMinVictories = 50;
+        return crewMemberRankMedMinMissions;
     }
 
-    private void setVictoriesForRecon()
+    public int getCrewMemberRankHighMinMissions()
     {
-        pilotRankMedMinVictories = 0;
-        pilotRankHighMinVictories = 0;
-        pilotRankExecMinVictories = 0;
-        pilotRankCommandMinVictories = 0;
+        return crewMemberRankHighMinMissions;
     }
 
-    private void setVictoriesForLuftwaffeFighter()
+    public int getCrewMemberRankExecMinMissions()
     {
-        pilotRankMedMinVictories = 5;
-        pilotRankHighMinVictories = 15;
-        pilotRankExecMinVictories = 30;
-        pilotRankCommandMinVictories = 50;
+        return crewMemberRankExecMinMissions;
     }
 
-    public int getPilotRankMedMinMissions()
+    public int getCrewMemberRankCommandMinMissions()
     {
-        return pilotRankMedMinMissions;
+        return crewMemberRankCommandMinMissions;
     }
 
-    public int getPilotRankHighMinMissions()
+    public int getCrewMemberRankMedMinVictories()
     {
-        return pilotRankHighMinMissions;
+        return crewMemberRankMedMinVictories;
     }
 
-    public int getPilotRankExecMinMissions()
+    public int getCrewMemberRankHighMinVictories()
     {
-        return pilotRankExecMinMissions;
+        return crewMemberRankHighMinVictories;
     }
 
-    public int getPilotRankCommandMinMissions()
+    public int getCrewMemberRankExecMinVictories()
     {
-        return pilotRankCommandMinMissions;
+        return crewMemberRankExecMinVictories;
     }
 
-    public int getPilotRankMedMinVictories()
+    public int getCrewMemberRankCommandMinVictories()
     {
-        return pilotRankMedMinVictories;
-    }
-
-    public int getPilotRankHighMinVictories()
-    {
-        return pilotRankHighMinVictories;
-    }
-
-    public int getPilotRankExecMinVictories()
-    {
-        return pilotRankExecMinVictories;
-    }
-
-    public int getPilotRankCommandMinVictories()
-    {
-        return pilotRankCommandMinVictories;
+        return crewMemberRankCommandMinVictories;
     }
 
 }

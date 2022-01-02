@@ -49,9 +49,8 @@ public class MoscowMap extends PWCGMap
 
     private void buildArmedServicesActiveForMap()
     {
-        armedServicesActiveForMap.add(BoSServiceManager.VVS);
-        armedServicesActiveForMap.add(BoSServiceManager.LUFTWAFFE);
-        armedServicesActiveForMap.add(BoSServiceManager.REGIA_AERONAUTICA);
+        armedServicesActiveForMap.add(BoSServiceManager.SVV);
+        armedServicesActiveForMap.add(BoSServiceManager.WEHRMACHT);
     }
 
     @Override

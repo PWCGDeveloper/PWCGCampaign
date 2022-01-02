@@ -11,7 +11,7 @@ import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
@@ -79,8 +79,8 @@ public class AAREquipmentChangePanel extends AARDocumentPanel
         HashMap<String, CampaignReportEquipmentStatusGUI> equipmentLostGuiList = new HashMap<>();
         for (PlaneStatusEvent planeStatusEvent : equipmentLossPanelData.getEquipmentLost().values())
 		{
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
-            if (planeStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
+            CrewMember referencePlayer = campaign.findReferencePlayer();
+            if (planeStatusEvent.getSquadronId() == referencePlayer.getCompanyId())
             {
                 CampaignReportEquipmentStatusGUI equipmentChangeGui = new CampaignReportEquipmentStatusGUI(campaign, planeStatusEvent);
                 String tabName = "Plane Lost: " + planeStatusEvent.getPlaneSerialNumber();

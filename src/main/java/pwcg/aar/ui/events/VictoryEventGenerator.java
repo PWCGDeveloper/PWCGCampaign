@@ -6,8 +6,8 @@ import java.util.Map;
 
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.core.exception.PWCGException;
 
 public class VictoryEventGenerator
@@ -19,31 +19,31 @@ public class VictoryEventGenerator
         this.campaign = campaign;
     }
 
-    public List<VictoryEvent> createPilotVictoryEvents(Map<Integer, List<Victory>> victoryAwardByPilot) throws PWCGException
+    public List<VictoryEvent> createCrewMemberVictoryEvents(Map<Integer, List<Victory>> victoryAwardByCrewMember) throws PWCGException
     {
-        List<VictoryEvent> victoryEventsForSquadronMembers = new ArrayList<>();
+        List<VictoryEvent> victoryEventsForCrewMembers = new ArrayList<>();
         
-        for (Integer serialNumber : victoryAwardByPilot.keySet())
+        for (Integer serialNumber : victoryAwardByCrewMember.keySet())
         {
-            SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
-            if (squadronMember != null)
+            CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
+            if (crewMember != null)
             {
-                List<Victory> victoriesForSquadronMember = victoryAwardByPilot.get(serialNumber);
-                for (Victory victory : victoriesForSquadronMember)
+                List<Victory> victoriesForCrewMember = victoryAwardByCrewMember.get(serialNumber);
+                for (Victory victory : victoriesForCrewMember)
                 {
-                    VictoryEvent victoryEvent = makeVictoryEvent(squadronMember, victory);
-                    victoryEventsForSquadronMembers.add(victoryEvent);
+                    VictoryEvent victoryEvent = makeVictoryEvent(crewMember, victory);
+                    victoryEventsForCrewMembers.add(victoryEvent);
                 }
             }
         }
         
-        return victoryEventsForSquadronMembers;
+        return victoryEventsForCrewMembers;
     }
 
-    private VictoryEvent makeVictoryEvent(SquadronMember pilot, Victory victory) throws PWCGException
+    private VictoryEvent makeVictoryEvent(CrewMember crewMember, Victory victory) throws PWCGException
     {
         boolean isNewsWorthy = true;
-        VictoryEvent victoryEvent = new VictoryEvent(campaign, victory, pilot.getSquadronId(), pilot.getSerialNumber(), campaign.getDate(), isNewsWorthy);
+        VictoryEvent victoryEvent = new VictoryEvent(campaign, victory, crewMember.getCompanyId(), crewMember.getSerialNumber(), campaign.getDate(), isNewsWorthy);
         return victoryEvent;
      }
 

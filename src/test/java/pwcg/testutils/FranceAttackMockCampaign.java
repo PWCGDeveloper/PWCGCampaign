@@ -12,7 +12,7 @@ import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -45,7 +45,7 @@ public class FranceAttackMockCampaign
     protected Date date;
     protected MissionGroundUnitResourceManager missionGroundUnitResourceManager = new MissionGroundUnitResourceManager();
     protected CoordinateBox missionBorders;
-    protected Squadron squadron;
+    protected Company squadron;
 
     public void mockCampaignSetup() throws PWCGException
     {

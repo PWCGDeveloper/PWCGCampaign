@@ -7,7 +7,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.skirmish.Skirmish;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
@@ -29,7 +29,7 @@ public class PlayerFlightTypeBuilder
         for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
         {
             IFlightTypeFactory flightTypeFactory = null;
-            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            Company playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             if (skirmish == null)
             {
                 flightTypeFactory = PWCGFlightTypeAbstractFactory.createFlightTypeFactory(campaign);
@@ -51,7 +51,7 @@ public class PlayerFlightTypeBuilder
             MissionWeather weather, 
             IFlightTypeFactory flightTypeFactory, 
             Map<Integer, PwcgRole> squadronRoleOverride,
-            Squadron playerSquadron) throws PWCGException
+            Company playerSquadron) throws PWCGException
     {
         boolean isPlayerFlight = true;
         

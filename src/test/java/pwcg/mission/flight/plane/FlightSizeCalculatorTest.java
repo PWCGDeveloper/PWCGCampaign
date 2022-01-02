@@ -20,7 +20,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
@@ -33,7 +33,7 @@ import pwcg.testutils.SquadronTestProfile;
 public class FlightSizeCalculatorTest 
 {
     @Mock private FlightInformation flightInformation;
-    @Mock private Squadron squadron;
+    @Mock private Company squadron;
     private Campaign campaign;
     private List<Country> countries = Arrays.asList(Country.GERMANY, Country.RUSSIA);
 

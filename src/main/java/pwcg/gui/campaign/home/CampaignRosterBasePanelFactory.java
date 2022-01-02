@@ -7,17 +7,17 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 
 public abstract class CampaignRosterBasePanelFactory
 {
     protected ActionListener parent = null;
 	protected Campaign campaign = null;
-	protected SquadronMember referencePlayer = null;
-	protected List<SquadronMember> sortedPilots = null;
+	protected CrewMember referencePlayer = null;
+	protected List<CrewMember> sortedCrewMembers = null;
     protected JPanel chalkboardPanel = null;
-    protected JPanel pilotListPanel = null;
+    protected JPanel crewMemberListPanel = null;
     protected boolean excludeAces = false;
 
 	public CampaignRosterBasePanelFactory(ActionListener parent) throws PWCGException  
@@ -27,7 +27,7 @@ public abstract class CampaignRosterBasePanelFactory
 		this.referencePlayer = campaign.findReferencePlayer();
 	}
 	
-	abstract public void makePilotList() throws PWCGException ;
+	abstract public void makeCrewMemberList() throws PWCGException ;
 
 	abstract public void makeCampaignHomePanels() throws PWCGException, PWCGException  ;
 
@@ -36,9 +36,9 @@ public abstract class CampaignRosterBasePanelFactory
         return chalkboardPanel;
     }
 
-    public JPanel getPilotListPanel()
+    public JPanel getCrewMemberListPanel()
     {
-        return pilotListPanel;
+        return crewMemberListPanel;
     }
 
     public void setExcludeAces(boolean excludeAces)

@@ -4,13 +4,13 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class MissionRoleGenerator
 {
 
-    public static PwcgRole getMissionRole(Campaign campaign, Map<Integer, PwcgRole> squadronRoleOverride, Squadron playerSquadron) throws PWCGException
+    public static PwcgRole getMissionRole(Campaign campaign, Map<Integer, PwcgRole> squadronRoleOverride, Company playerSquadron) throws PWCGException
     {
         PwcgRole missionRole = playerSquadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
         if (squadronRoleOverride.containsKey(playerSquadron.getSquadronId()))
@@ -20,7 +20,7 @@ public class MissionRoleGenerator
         return missionRole;
     }
 
-    public static PwcgRole getMissionRole(Campaign campaign, Squadron playerSquadron) throws PWCGException
+    public static PwcgRole getMissionRole(Campaign campaign, Company playerSquadron) throws PWCGException
     {
         PwcgRole missionRole = playerSquadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
         return missionRole;

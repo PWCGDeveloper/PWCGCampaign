@@ -5,20 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.InitialReplacementStaffer;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
-import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignPersonnelManager 
 {
 	private Campaign campaign = null;
-    private Map<Integer, SquadronPersonnel> squadronPersonnelAllSquadrons = new HashMap<>();
+    private Map<Integer, CompanyPersonnel> squadronPersonnelAllSquadrons = new HashMap<>();
     private Map<Integer, PersonnelReplacementsService> personnelReplacementsServices = new HashMap<>();
 	private CampaignAces campaignAces = new CampaignAces();
 
@@ -27,17 +27,17 @@ public class CampaignPersonnelManager
 		this.campaign = campaign;
 	}
 
-	public Map<Integer, SquadronPersonnel> getCampaignPersonnel()
+	public Map<Integer, CompanyPersonnel> getCampaignPersonnel()
 	{
-		return new HashMap<Integer, SquadronPersonnel>(squadronPersonnelAllSquadrons);
+		return new HashMap<Integer, CompanyPersonnel>(squadronPersonnelAllSquadrons);
 	}
 
-    public SquadronPersonnel getSquadronPersonnel(Integer squadronId)
+    public CompanyPersonnel getCompanyPersonnel(Integer squadronId)
     {
         return squadronPersonnelAllSquadrons.get(squadronId);
     }
 
-	public void addPersonnelForSquadron(SquadronPersonnel campaignPersonnel)
+	public void addPersonnelForSquadron(CompanyPersonnel campaignPersonnel)
 	{
 	    squadronPersonnelAllSquadrons.put(campaignPersonnel.getSquadron().getSquadronId(), campaignPersonnel);
 	}
@@ -49,7 +49,7 @@ public class CampaignPersonnelManager
 
 	public void setCampaignAces(CampaignAces campaignAces) throws PWCGException
 	{
-	    for (Ace campaignAce : campaignAces.getAllCampaignAces().values())
+	    for (TankAce campaignAce : campaignAces.getAllCampaignAces().values())
 	    {
             campaignAce.mergeWithHistorical(campaign);
 	    }
@@ -57,73 +57,73 @@ public class CampaignPersonnelManager
 		this.campaignAces = campaignAces;
 	}
 
-    public List<SquadronPersonnel> getAllSquadronPersonnel()
+    public List<CompanyPersonnel> getAllSquadronPersonnel()
     {
-        return new ArrayList<SquadronPersonnel>(squadronPersonnelAllSquadrons.values());
+        return new ArrayList<CompanyPersonnel>(squadronPersonnelAllSquadrons.values());
     }    
 
-    public Map<Integer, SquadronMember> getAllCampaignMembers() throws PWCGException
+    public Map<Integer, CrewMember> getAllCampaignMembers() throws PWCGException
     {
-        Map<Integer, SquadronMember> allSquadronMembers = getAllNonAceCampaignMembers();
-        allSquadronMembers.putAll(campaignAces.getAllCampaignAces());
-        return allSquadronMembers;
+        Map<Integer, CrewMember> allCrewMembers = getAllNonAceCampaignMembers();
+        allCrewMembers.putAll(campaignAces.getAllCampaignAces());
+        return allCrewMembers;
     }
 
-    public Map<Integer, SquadronMember> getActiveCampaignMembers() throws PWCGException
+    public Map<Integer, CrewMember> getActiveCampaignMembers() throws PWCGException
     {
-        Map<Integer, SquadronMember> allSquadronMembers = getAllActiveNonAceCampaignMembers();
-        allSquadronMembers.putAll(campaignAces.getActiveCampaignAces());
-        return allSquadronMembers;
+        Map<Integer, CrewMember> allCrewMembers = getAllActiveNonAceCampaignMembers();
+        allCrewMembers.putAll(campaignAces.getActiveCampaignAces());
+        return allCrewMembers;
     }
 
-    public SquadronMembers getAllActivePlayers() throws PWCGException
+    public CrewMembers getAllActivePlayers() throws PWCGException
     {
-        return getPlayersForStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+        return getPlayersForStatus(CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED);
     }
 
-    public SquadronMembers getAllPlayers() throws PWCGException
+    public CrewMembers getAllPlayers() throws PWCGException
     {
-        SquadronMembers allPlayers =  new SquadronMembers();
-        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        CrewMembers allPlayers =  new CrewMembers();
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-            SquadronMembers playersInSquadron = squadronPersonnel.getPlayers();
-            allPlayers.addSquadronMembers(playersInSquadron);
+            CrewMembers playersInSquadron = squadronPersonnel.getPlayers();
+            allPlayers.addCrewMembers(playersInSquadron);
         }
         return allPlayers;
     }
 
-    public SquadronMembers getFlyingPlayers() throws PWCGException
+    public CrewMembers getFlyingPlayers() throws PWCGException
     {
-        return getPlayersForStatus(SquadronMemberStatus.STATUS_ACTIVE);
+        return getPlayersForStatus(CrewMemberStatus.STATUS_ACTIVE);
     }
 
-    public SquadronMembers getDeadPlayers() throws PWCGException
+    public CrewMembers getDeadPlayers() throws PWCGException
     {
-        return getPlayersForStatus(SquadronMemberStatus.STATUS_KIA);
+        return getPlayersForStatus(CrewMemberStatus.STATUS_KIA);
     }    
 
-    public SquadronMembers getRetiredPlayers() throws PWCGException
+    public CrewMembers getRetiredPlayers() throws PWCGException
     {
-        return getPlayersForStatus(SquadronMemberStatus.STATUS_RETIRED);
+        return getPlayersForStatus(CrewMemberStatus.STATUS_RETIRED);
     }    
 
-    private SquadronMembers getPlayersForStatus(int status) throws PWCGException
+    private CrewMembers getPlayersForStatus(int status) throws PWCGException
     {
-    	SquadronMembers allPlayers =  new SquadronMembers();
-        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+    	CrewMembers allPlayers =  new CrewMembers();
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-        	SquadronMembers playersInSquadron = squadronPersonnel.getPlayersByStatus(status);
-        	allPlayers.addSquadronMembers(playersInSquadron);
+        	CrewMembers playersInSquadron = squadronPersonnel.getPlayersByStatus(status);
+        	allPlayers.addCrewMembers(playersInSquadron);
         }
         return allPlayers;
     }
     
     public boolean squadronHasActivePlayers(int squadronId) throws PWCGException
     {
-        SquadronMembers allActivePlayers = getPlayersForStatus(SquadronMemberStatus.STATUS_ACTIVE);
-        for (SquadronMember player : allActivePlayers.getSquadronMemberList())
+        CrewMembers allActivePlayers = getPlayersForStatus(CrewMemberStatus.STATUS_ACTIVE);
+        for (CrewMember player : allActivePlayers.getCrewMemberList())
         {
-            if (player.getSquadronId() == squadronId)
+            if (player.getCompanyId() == squadronId)
             {
                 return true;
             }
@@ -131,56 +131,56 @@ public class CampaignPersonnelManager
         return false;
     }    
 
-    public Map<Integer, SquadronMember> getAllActiveNonAceCampaignMembers() throws PWCGException
+    public Map<Integer, CrewMember> getAllActiveNonAceCampaignMembers() throws PWCGException
     {
-        Map<Integer, SquadronMember> allNonAceCampaignMembers =  new HashMap<>();
-        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        Map<Integer, CrewMember> allNonAceCampaignMembers =  new HashMap<>();
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-            allNonAceCampaignMembers.putAll(squadronPersonnel.getActiveAiSquadronMembers().getSquadronMemberCollection());
-            allNonAceCampaignMembers.putAll(squadronPersonnel.getPlayersByStatus(SquadronMemberStatus.STATUS_ACTIVE).getSquadronMemberCollection());
+            allNonAceCampaignMembers.putAll(squadronPersonnel.getActiveAiCrewMembers().getCrewMemberCollection());
+            allNonAceCampaignMembers.putAll(squadronPersonnel.getPlayersByStatus(CrewMemberStatus.STATUS_ACTIVE).getCrewMemberCollection());
         }
         return allNonAceCampaignMembers;
     }    
 
-    public Map<Integer, SquadronMember> getAllNonAceCampaignMembers() throws PWCGException
+    public Map<Integer, CrewMember> getAllNonAceCampaignMembers() throws PWCGException
     {
-        Map<Integer, SquadronMember> allNonAceCampaignMembers =  new HashMap<>();
-        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        Map<Integer, CrewMember> allNonAceCampaignMembers =  new HashMap<>();
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-            allNonAceCampaignMembers.putAll(squadronPersonnel.getSquadronMembers().getSquadronMemberCollection());
+            allNonAceCampaignMembers.putAll(squadronPersonnel.getCrewMembers().getCrewMemberCollection());
         }
         return allNonAceCampaignMembers;
     }    
 
-    public SquadronMember getCampaignAce(Integer serialNumber) throws PWCGException
+    public CrewMember getCampaignAce(Integer serialNumber) throws PWCGException
     {
-        SquadronMember squadronMember = campaignAces.retrieveAceBySerialNumber(serialNumber);
-        return squadronMember;
+        CrewMember crewMember = campaignAces.retrieveAceBySerialNumber(serialNumber);
+        return crewMember;
     }    
 
-    public SquadronMember getAnyCampaignMember(Integer serialNumber) throws PWCGException
+    public CrewMember getAnyCampaignMember(Integer serialNumber) throws PWCGException
     {
-        SquadronMember squadronMember = campaignAces.retrieveAceBySerialNumber(serialNumber);
-        if (squadronMember != null)
+        CrewMember crewMember = campaignAces.retrieveAceBySerialNumber(serialNumber);
+        if (crewMember != null)
         {
-            return squadronMember;
+            return crewMember;
         }        
 
-        for (SquadronPersonnel squadronPersonnel : squadronPersonnelAllSquadrons.values())
+        for (CompanyPersonnel squadronPersonnel : squadronPersonnelAllSquadrons.values())
         {
-            squadronMember = squadronPersonnel.getSquadronMember(serialNumber);
-            if (squadronMember != null)
+            crewMember = squadronPersonnel.getCrewMember(serialNumber);
+            if (crewMember != null)
             {
-                return squadronMember;
+                return crewMember;
             }        
         }
 
         for (PersonnelReplacementsService personnelReplacements : personnelReplacementsServices.values())
         {
-            squadronMember =  personnelReplacements.getReplacement(serialNumber);
-            if (squadronMember != null)
+            crewMember =  personnelReplacements.getReplacement(serialNumber);
+            if (crewMember != null)
             {
-                return squadronMember;
+                return crewMember;
             }        
         }
         
@@ -231,7 +231,7 @@ public class CampaignPersonnelManager
     public void createPersonnelReplacements(ArmedService armedService) throws PWCGException
     {
         InitialReplacementStaffer initialReplacementStaffer = new InitialReplacementStaffer(campaign, armedService);
-        SquadronMembers squadronMembers = initialReplacementStaffer.staffReplacementsForService();
+        CrewMembers squadronMembers = initialReplacementStaffer.staffReplacementsForService();
         
         PersonnelReplacementsService replacementsForService = new PersonnelReplacementsService();
         replacementsForService.setReplacements(squadronMembers);

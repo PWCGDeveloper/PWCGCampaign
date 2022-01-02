@@ -33,7 +33,7 @@ public class CampaignReportAceLeaveGUI extends AARDocumentIconPanel
     {
         String transferMessage = "Squadron: " + aceLeaveEvent.getSquadronName() + "\n";
         transferMessage += "Date: " + DateUtils.getDateStringPretty(aceLeaveEvent.getDate()) + "\n";
-        transferMessage += aceLeaveEvent.getPilotName() + 
+        transferMessage += aceLeaveEvent.getCrewMemberName() + 
                         " has been granted leave from " + aceLeaveEvent.getSquadronName()  + "\n";
 
 

@@ -26,7 +26,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DirectoryReader;
@@ -96,9 +96,9 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
     private void setSoundForScreen() throws PWCGException
     {
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        CrewMember referencePlayer = campaign.findReferencePlayer();
         AARCombatReportPanelData combatPanelData = aarCoordinator.getAarContext().
-                        findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
+                        findUiCombatReportDataForSquadron(referencePlayer.getCompanyId()).getCombatReportPanelData();
         CampaignMissionWin missionWin = new CampaignMissionWin(combatPanelData);
         MusicManager.playMissionStatusTheme(missionWin.isMissionAWin());
     }
@@ -128,9 +128,9 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
     
     private Coordinate findFirstEventCoordinate() throws PWCGException
     {
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        CrewMember referencePlayer = campaign.findReferencePlayer();
         List<LogBase> logEvents = aarCoordinator.getAarContext().
-                findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
+                findUiCombatReportDataForSquadron(referencePlayer.getCompanyId()).getCombatReportMapData().getChronologicalEvents();
 
         for (LogBase event : logEvents)
         {
@@ -152,9 +152,9 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	private void makeMapEvents() throws PWCGException  
 	{
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        CrewMember referencePlayer = campaign.findReferencePlayer();
         List<LogBase> logEvents = aarCoordinator.getAarContext().
-                        findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
+                        findUiCombatReportDataForSquadron(referencePlayer.getCompanyId()).getCombatReportMapData().getChronologicalEvents();
 
         DebriefMapPanel mapPanel = (DebriefMapPanel)mapScroll.getMapPanel();
         mapPanel.createMapEvents(logEvents);
@@ -252,9 +252,9 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
     private void showMissionEvents() throws PWCGException 
     {        
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        CrewMember referencePlayer = campaign.findReferencePlayer();
         List<LogBase> logEvents = aarCoordinator.getAarContext().
-                        findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
+                        findUiCombatReportDataForSquadron(referencePlayer.getCompanyId()).getCombatReportMapData().getChronologicalEvents();
 
         if (!logEvents.isEmpty())
         {

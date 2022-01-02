@@ -1,24 +1,24 @@
 package pwcg.gui.utils;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 
 public class UIUtils
 {
-    public static SquadronMember getPilotFromAction(Campaign campaign, String action) throws PWCGException
+    public static CrewMember getCrewMemberFromAction(Campaign campaign, String action) throws PWCGException
     {
         int index = action.indexOf(":");
-        String pilotSerialNumberString = action.substring(index + 1);
-        Integer serialNumber = Integer.valueOf(pilotSerialNumberString);
+        String crewMemberSerialNumberString = action.substring(index + 1);
+        Integer serialNumber = Integer.valueOf(crewMemberSerialNumberString);
 
-        SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
-        if (pilot == null)
+        CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
+        if (crewMember == null)
         {
-            pilot = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(serialNumber);
+            crewMember = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(serialNumber);
         }
 
         
-        return pilot;
+        return crewMember;
     }
 }

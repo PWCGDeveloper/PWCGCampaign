@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.plane.PlaneArchType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 
@@ -19,11 +19,11 @@ public class EquipmentReplacementWeightUsage
         this.campaignDate = campaignDate;
     }
 
-    public Map<String, Integer> getAircraftUsageByArchType(List<Squadron> squadronsForService) throws PWCGException
+    public Map<String, Integer> getAircraftUsageByArchType(List<Company> squadronsForService) throws PWCGException
     {
         Map<String, Integer> aircraftUsageByArchType = new HashMap<>();
         
-        for (Squadron squadron : squadronsForService)
+        for (Company squadron : squadronsForService)
         {
             if (SquadronViability.isSquadronActive(squadron, campaignDate))
             {

@@ -11,7 +11,7 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.IFlight;
@@ -131,7 +131,7 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
         List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 8);
         availablePayloads.addAll(alwaysAvailablePayloads);
         
-        Squadron squadron = flight.getSquadron();
+        Company squadron = flight.getSquadron();
         PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
         
         if ((squadronPrimaryRoleCategory == PwcgRoleCategory.FIGHTER))

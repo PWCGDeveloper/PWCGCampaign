@@ -19,17 +19,17 @@ import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.rofmap.brief.BriefingDataInitializer;
-import pwcg.gui.rofmap.brief.model.BriefingPilotAssignmentData;
+import pwcg.gui.rofmap.brief.model.BriefingCrewMemberAssignmentData;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlights;
 import pwcg.mission.flight.IFlight;
@@ -46,9 +46,9 @@ public class BriefingDataInitializerTest
     @Mock protected CampaignEquipmentManager equipmentManager;
     @Mock protected Equipment equipment;
 
-    @Mock protected Squadron squadron;
-    @Mock protected SquadronPersonnel squadronPersonnel;
-    @Mock protected SquadronMembers squadronMembers;
+    @Mock protected Company squadron;
+    @Mock protected CompanyPersonnel squadronPersonnel;
+    @Mock protected CrewMembers squadronMembers;
     @Mock protected Mission mission;
     @Mock protected MissionFlights missionFlightBuilder;
     @Mock protected IFlight flight;
@@ -61,15 +61,15 @@ public class BriefingDataInitializerTest
     @Mock protected EquippedPlane equippedPlane2;
     @Mock protected EquippedPlane equippedPlane3;
     @Mock protected EquippedPlane equippedPlane4;
-    @Mock protected SquadronMember pilot1;
-    @Mock protected SquadronMember pilot2;
-    @Mock protected SquadronMember pilot3;
-    @Mock protected SquadronMember pilot4;
+    @Mock protected CrewMember crewMember1;
+    @Mock protected CrewMember crewMember2;
+    @Mock protected CrewMember crewMember3;
+    @Mock protected CrewMember crewMember4;
 
-    protected Map<Integer, SquadronMember> squadronPersonnelMap = new HashMap<>();
+    protected Map<Integer, CrewMember> squadronPersonnelMap = new HashMap<>();
     protected List<PlaneMcu> planesInFlight = new ArrayList<>();
     protected Map<Integer, EquippedPlane> equippedPlanes = new HashMap<>();
-    protected BriefingPilotAssignmentData briefingAssignmentData = new BriefingPilotAssignmentData();
+    protected BriefingCrewMemberAssignmentData briefingAssignmentData = new BriefingCrewMemberAssignmentData();
 
     @BeforeEach
     public void setupTest() throws PWCGException
@@ -90,20 +90,20 @@ public class BriefingDataInitializerTest
         Mockito.when(equipmentManager.getEquipmentForSquadron(Mockito.any())).thenReturn(equipment);
         Mockito.when(equipment.getActiveEquippedPlanes()).thenReturn(equippedPlanes);
 
-        Mockito.when(personnelManager.getSquadronPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
-        Mockito.when(squadronPersonnel.getSquadronMembersWithAces()).thenReturn(squadronMembers);
-        Mockito.when(squadronMembers.getSquadronMemberCollection()).thenReturn(squadronPersonnelMap);
+        Mockito.when(personnelManager.getCompanyPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
+        Mockito.when(squadronPersonnel.getCrewMembersWithAces()).thenReturn(squadronMembers);
+        Mockito.when(squadronMembers.getCrewMemberCollection()).thenReturn(squadronPersonnelMap);
 
         Mockito.when(squadron.getSquadronId()).thenReturn(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         
-        Mockito.when(pilot1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
-        Mockito.when(pilot2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
-        Mockito.when(pilot3.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+3);
-        Mockito.when(pilot4.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+4);
-        squadronPersonnelMap.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+1, pilot1);
-        squadronPersonnelMap.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+2, pilot2);
-        squadronPersonnelMap.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+3, pilot3);
-        squadronPersonnelMap.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+4, pilot4);
+        Mockito.when(crewMember1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
+        Mockito.when(crewMember2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
+        Mockito.when(crewMember3.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+3);
+        Mockito.when(crewMember4.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+4);
+        squadronPersonnelMap.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+1, crewMember1);
+        squadronPersonnelMap.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+2, crewMember2);
+        squadronPersonnelMap.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+3, crewMember3);
+        squadronPersonnelMap.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+4, crewMember4);
 
         Mockito.when(equippedPlane1.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+1);
         Mockito.when(equippedPlane2.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+2);
@@ -118,8 +118,8 @@ public class BriefingDataInitializerTest
         equippedPlanes.put(equippedPlane3.getSerialNumber(), equippedPlane3);
         equippedPlanes.put(equippedPlane4.getSerialNumber(), equippedPlane4);
 
-        Mockito.when(plane1.getPilot()).thenReturn(pilot1);
-        Mockito.when(plane2.getPilot()).thenReturn(pilot2);
+        Mockito.when(plane1.getCrewMember()).thenReturn(crewMember1);
+        Mockito.when(plane2.getCrewMember()).thenReturn(crewMember2);
         Mockito.when(plane1.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+1);
         Mockito.when(plane2.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+2);
 
@@ -135,15 +135,15 @@ public class BriefingDataInitializerTest
         briefingAssignmentData = briefingDataInitializer.initializeFromMission(squadron);
         
         assert(briefingAssignmentData.getCrews().size() == 2);
-        assert(briefingAssignmentData.getUnassignedPilots().size() == 2);
+        assert(briefingAssignmentData.getUnassignedCrewMembers().size() == 2);
         assert(briefingAssignmentData.getUnassignedPlanes().size() == 2);
-        assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getPlane().getType().equals("bf109f4"));
-        assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPlane().getType().equals("bf109f2"));
-        assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
-        assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
+        assert(briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getPlane().getType().equals("bf109f4"));
+        assert(briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPlane().getType().equals("bf109f2"));
+        assert(briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getCrewMember().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
+        assert(briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getCrewMember().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
     }
 
-    public BriefingPilotAssignmentData getBriefingAssignmentData()
+    public BriefingCrewMemberAssignmentData getBriefingAssignmentData()
     {
         return briefingAssignmentData;
     }

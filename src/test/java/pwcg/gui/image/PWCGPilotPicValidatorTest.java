@@ -15,69 +15,69 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 
 @ExtendWith(MockitoExtension.class)
-public class PWCGPilotPicValidatorTest
+public class PWCGCrewMemberPicValidatorTest
 {
-    private String pilotPicDir;
+    private String crewMemberPicDir;
 
     @BeforeEach
     public void setup ()
     {
         PWCGDirectoryProductManager directoryManager = new PWCGDirectoryProductManager(PWCGProduct.BOS);
         String imageDir  = directoryManager.getPwcgImagesDir();
-        pilotPicDir = imageDir + "PilotPictures\\";
+        crewMemberPicDir = imageDir + "CrewMemberPictures\\";
     }
     
     @Test
-    public void pilotPicValidatorAmericanTest () throws PWCGException
+    public void crewMemberPicValidatorAmericanTest () throws PWCGException
     {
-        pilotPicDir += "American\\";
-        for (File pilotPicFile : FileUtils.getFilesWithFilter(pilotPicDir, ".jpg"))
+        crewMemberPicDir += "American\\";
+        for (File crewMemberPicFile : FileUtils.getFilesWithFilter(crewMemberPicDir, ".jpg"))
         {
-            BufferedImage image = ImageCache.getImageFromFile(pilotPicFile.getPath());
+            BufferedImage image = ImageCache.getImageFromFile(crewMemberPicFile.getPath());
             Assertions.assertTrue (image != null);
         }
     }
     
     @Test
-    public void pilotPicValidatorBritishTest () throws PWCGException
+    public void crewMemberPicValidatorBritishTest () throws PWCGException
     {
-        pilotPicDir += "British\\";
-        for (File pilotPicFile : FileUtils.getFilesWithFilter(pilotPicDir, ".jpg"))
+        crewMemberPicDir += "British\\";
+        for (File crewMemberPicFile : FileUtils.getFilesWithFilter(crewMemberPicDir, ".jpg"))
         {
-            BufferedImage image = ImageCache.getImageFromFile(pilotPicFile.getPath());
+            BufferedImage image = ImageCache.getImageFromFile(crewMemberPicFile.getPath());
             Assertions.assertTrue (image != null);
         }
     }
     
     @Test
-    public void pilotPicValidatorGermanTest () throws PWCGException
+    public void crewMemberPicValidatorGermanTest () throws PWCGException
     {
-        pilotPicDir += "German\\";
-        for (File pilotPicFile : FileUtils.getFilesWithFilter(pilotPicDir, ".jpg"))
+        crewMemberPicDir += "German\\";
+        for (File crewMemberPicFile : FileUtils.getFilesWithFilter(crewMemberPicDir, ".jpg"))
         {
-            BufferedImage image = ImageCache.getImageFromFile(pilotPicFile.getPath());
+            BufferedImage image = ImageCache.getImageFromFile(crewMemberPicFile.getPath());
             Assertions.assertTrue (image != null);
         }
     }
     
     @Test
-    public void pilotPicValidatorRussianTest () throws PWCGException
+    public void crewMemberPicValidatorRussianTest () throws PWCGException
     {
-        pilotPicDir += "Russian\\";
-        for (File pilotPicFile : FileUtils.getFilesWithFilter(pilotPicDir, ".jpg"))
+        crewMemberPicDir += "Russian\\";
+        for (File crewMemberPicFile : FileUtils.getFilesWithFilter(crewMemberPicDir, ".jpg"))
         {
-            BufferedImage image = ImageCache.getImageFromFile(pilotPicFile.getPath());
+            BufferedImage image = ImageCache.getImageFromFile(crewMemberPicFile.getPath());
             Assertions.assertTrue (image != null);
         }
     }
     
     @Test
-    public void pilotPicValidatorItalianTest () throws PWCGException
+    public void crewMemberPicValidatorItalianTest () throws PWCGException
     {
-        pilotPicDir += "Italian\\";
-        for (File pilotPicFile : FileUtils.getFilesWithFilter(pilotPicDir, ".jpg"))
+        crewMemberPicDir += "Italian\\";
+        for (File crewMemberPicFile : FileUtils.getFilesWithFilter(crewMemberPicDir, ".jpg"))
         {
-            BufferedImage image = ImageCache.getImageFromFile(pilotPicFile.getPath());
+            BufferedImage image = ImageCache.getImageFromFile(crewMemberPicFile.getPath());
             Assertions.assertTrue (image != null);
         }
     }

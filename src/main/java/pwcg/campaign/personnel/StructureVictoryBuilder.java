@@ -6,13 +6,13 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.crewmember.Victory;
+import pwcg.campaign.crewmember.VictoryEntity;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.Victory;
-import pwcg.campaign.squadmember.VictoryEntity;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
@@ -20,13 +20,13 @@ import pwcg.mission.ground.building.PwcgStructure;
 
 public class StructureVictoryBuilder
 {
-    private SquadronMember victorPilot;
+    private CrewMember victorCrewMember;
     private PwcgStructure victimStructure;
 
-    public StructureVictoryBuilder (SquadronMember victorPilot, PwcgStructure victimStructure)
+    public StructureVictoryBuilder (CrewMember victorCrewMember, PwcgStructure victimStructure)
     {
         this.victimStructure = victimStructure;
-        this.victorPilot = victorPilot;
+        this.victorCrewMember = victorCrewMember;
     }
     
     public Victory generateOutOfMissionVictory(Date date) throws PWCGException
@@ -57,7 +57,7 @@ public class StructureVictoryBuilder
         if (victim != null && victor != null)
         {
 	        victory = new Victory();
-	        createVictoryHeader(date, victory, victorPilot.getSide().getOppositeSide());
+	        createVictoryHeader(date, victory, victorCrewMember.getSide().getOppositeSide());
 	
 	        victory.setVictim(victim);
 	        victory.setVictor(victor);
@@ -80,7 +80,7 @@ public class StructureVictoryBuilder
     {
         VictoryEntity victor = new VictoryEntity();
         
-        Squadron squadron = victorPilot.determineSquadron();
+        Company squadron = victorCrewMember.determineSquadron();
 
         PlaneType victorPlaneType = squadron.determineBestPlane(date);
         if (victorPlaneType == null)
@@ -92,9 +92,9 @@ public class StructureVictoryBuilder
         victor.setType(victorPlaneType.getDisplayName());
         victor.setName(victorPlaneType.getDisplayName());
         victor.setSquadronName(squadron.determineDisplayName(date));
-        victor.setPilotName(victorPilot.getRank() + " " + victorPilot.getName());
-        victor.setPilotSerialNumber(victorPilot.getSerialNumber());
-        victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
+        victor.setCrewMemberName(victorCrewMember.getRank() + " " + victorCrewMember.getName());
+        victor.setCrewMemberSerialNumber(victorCrewMember.getSerialNumber());
+        victor.setCrewMemberStatus(CrewMemberStatus.STATUS_ACTIVE);
         
         return victor;
     }
@@ -106,9 +106,9 @@ public class StructureVictoryBuilder
         victim.setType(victimStructure.getDescription());
         victim.setName(victimStructure.getDescription());
         victim.setSquadronName("");
-        victim.setPilotName("");
-        victim.setPilotSerialNumber(SerialNumber.NO_SERIAL_NUMBER);
-        victim.setPilotStatus(SquadronMemberStatus.STATUS_KIA);
+        victim.setCrewMemberName("");
+        victim.setCrewMemberSerialNumber(SerialNumber.NO_SERIAL_NUMBER);
+        victim.setCrewMemberStatus(CrewMemberStatus.STATUS_KIA);
         return victim;
     }
 
@@ -116,7 +116,7 @@ public class StructureVictoryBuilder
     {
         String eventLocationDescription = "";
         
-        Coordinate squadronPosition = victorPilot.determineSquadron().determineCurrentPosition(date);
+        Coordinate squadronPosition = victorCrewMember.determineSquadron().determineCurrentPosition(date);
         if (squadronPosition != null)
         {
             FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);

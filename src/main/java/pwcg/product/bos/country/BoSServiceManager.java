@@ -14,16 +14,6 @@ import pwcg.core.utils.PWCGLogger;
 
 public class BoSServiceManager extends ArmedServiceManager implements IArmedServiceManager 
 {
-    
-    public static int VVS = 10101;
-    public static int USAAF = 10102;
-    public static int RAF = 10103;
-    public static int NORMANDIE = 10104;
-    public static int FREE_FRENCH = 10105;
-    public static int RCAF = 10106;
-    public static int LUFTWAFFE = 20101;
-    public static int REGIA_AERONAUTICA = 20202;
-
     public static int WEHRMACHT = 20111;
     public static int SVV = 10112;
     public static int US_ARMY = 10113;
@@ -53,7 +43,6 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         {    
             createRussianServices();
             createGermanServices();
-            createItalianServices();
             createAmericanServices();
             createBritishServices();
         }
@@ -72,11 +61,6 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
     {
         armedServicesByCountry.put(BoSCountry.GERMANY_CODE, GermanServiceBuilder.createServices());
     }
-    
-	private void createItalianServices() throws PWCGException
-	{
-		armedServicesByCountry.put(BoSCountry.ITALY_CODE, ItalianServiceBuilder.createServices());
-	}
 
     private void createAmericanServices() throws PWCGException
     {
@@ -127,23 +111,19 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
     {
         if (country == Country.GERMANY)
         {
-            return(getArmedServiceById(LUFTWAFFE, date));
+            return(getArmedServiceById(WEHRMACHT, date));
         }
         else if (country == Country.RUSSIA)
         {
-            return(getArmedServiceById(VVS, date));
-        }
-        else if (country == Country.ITALY)
-        {
-            return(getArmedServiceById(REGIA_AERONAUTICA, date));
+            return(getArmedServiceById(SVV, date));
         }
         else if (country == Country.USA)
         {
-            return(getArmedServiceById(USAAF, date));
+            return(getArmedServiceById(US_ARMY, date));
         }
         else if (country == Country.BRITAIN)
         {
-            return(getArmedServiceById(RAF, date));
+            return(getArmedServiceById(BRITISH_ARMY, date));
         }
         
         throw new PWCGException("Unexpected country for getPrimaryServiceForNation " + country);

@@ -7,7 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.skirmish.SkirmishBuilder;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
@@ -78,7 +78,7 @@ public class MissionGenerator
         MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
         weather.createMissionWeather();
 
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(playerFlightType, playerSquadron);
         
         Skirmish skirmish = null;

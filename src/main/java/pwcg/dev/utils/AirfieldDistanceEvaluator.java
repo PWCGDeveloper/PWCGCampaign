@@ -10,7 +10,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -77,8 +77,8 @@ public class AirfieldDistanceEvaluator
         Map <String, Airfield> fighterFields = airfieldSet.getFighterFields();
         Map <String, Airfield> bomberFields = airfieldSet.getBomberFields();
 
-        List<Squadron> allActiveSquadrons = squadronManager.getActiveSquadrons(dateNow);
-        for (Squadron squadron : allActiveSquadrons)
+        List<Company> allActiveSquadrons = squadronManager.getActiveSquadrons(dateNow);
+        for (Company squadron : allActiveSquadrons)
         {
             boolean bad = false;
             

@@ -35,7 +35,7 @@ public class AARPromotionPanel extends AARDocumentPanel
 	{
         try
         {
-            JTabbedPane eventTabPane = createPilotPromotionTab();
+            JTabbedPane eventTabPane = createCrewMemberPromotionTab();
             createPostCombatReportTabs(eventTabPane);
             this.add(eventTabPane, BorderLayout.WEST);
         }
@@ -55,7 +55,7 @@ public class AARPromotionPanel extends AARDocumentPanel
         this.add(postCombatPanel, BorderLayout.CENTER);
     }
 
-    private JTabbedPane createPilotPromotionTab() throws PWCGException
+    private JTabbedPane createCrewMemberPromotionTab() throws PWCGException
     {
         Color bgColor = ColorMap.PAPER_BACKGROUND;
 
@@ -63,10 +63,10 @@ public class AARPromotionPanel extends AARDocumentPanel
         eventTabPane.setBackground(bgColor);
         eventTabPane.setOpaque(false);
        
-        HashMap<String, CampaignReportPromotionGUI> pilotPromotionGuiList = createPilotPromotionList() ;
-        for (String tabName : pilotPromotionGuiList.keySet())
+        HashMap<String, CampaignReportPromotionGUI> crewMemberPromotionGuiList = createCrewMemberPromotionList() ;
+        for (String tabName : crewMemberPromotionGuiList.keySet())
         {
-            eventTabPane.addTab(tabName, pilotPromotionGuiList.get(tabName));
+            eventTabPane.addTab(tabName, crewMemberPromotionGuiList.get(tabName));
             this.shouldDisplay = true;
         }
 
@@ -74,20 +74,20 @@ public class AARPromotionPanel extends AARDocumentPanel
         return eventTabPane;
     }
 
-	private HashMap<String, CampaignReportPromotionGUI> createPilotPromotionList() throws PWCGException 
+	private HashMap<String, CampaignReportPromotionGUI> createCrewMemberPromotionList() throws PWCGException 
 	{
-        HashMap<String, CampaignReportPromotionGUI> pilotPromotionGuiList = new HashMap<String, CampaignReportPromotionGUI>();
+        HashMap<String, CampaignReportPromotionGUI> crewMemberPromotionGuiList = new HashMap<String, CampaignReportPromotionGUI>();
         List<PromotionEvent> promotionEvents = aarCoordinator.getAarContext().getUiDebriefData().getPromotionPanelData().getPromotionEventsDuringElapsedTime();
         for (PromotionEvent promotionEvent : promotionEvents)
 		{
-            if (promotionEvent.getSquadronId() == campaign.findReferencePlayer().getSquadronId())
+            if (promotionEvent.getSquadronId() == campaign.findReferencePlayer().getCompanyId())
             {
                 CampaignReportPromotionGUI promotionGui = new CampaignReportPromotionGUI(campaign, promotionEvent);
-                String tabName = "Promotion Awarded: " + promotionEvent.getNewRank() + " " + promotionEvent.getPilotName();
-                pilotPromotionGuiList.put(tabName, promotionGui);
+                String tabName = "Promotion Awarded: " + promotionEvent.getNewRank() + " " + promotionEvent.getCrewMemberName();
+                crewMemberPromotionGuiList.put(tabName, promotionGui);
             }
 		}
         
-        return pilotPromotionGuiList;
+        return crewMemberPromotionGuiList;
 	}
 }

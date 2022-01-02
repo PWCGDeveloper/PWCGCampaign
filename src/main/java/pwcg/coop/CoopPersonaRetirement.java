@@ -3,8 +3,8 @@ package pwcg.coop;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.core.exception.PWCGException;
 
 class CoopPersonaRetirement
@@ -25,10 +25,10 @@ class CoopPersonaRetirement
 
     private static void removePersonasFromCampaign(int personaToRetire, Campaign campaign) throws PWCGException
     {
-        SquadronMember squadronMemberToRetire = campaign.getPersonnelManager().getAnyCampaignMember(personaToRetire);
+        CrewMember squadronMemberToRetire = campaign.getPersonnelManager().getAnyCampaignMember(personaToRetire);
         if (squadronMemberToRetire != null)
         {
-            squadronMemberToRetire.setPilotActiveStatus(SquadronMemberStatus.STATUS_RETIRED, campaign.getDate(), null);
+            squadronMemberToRetire.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_RETIRED, campaign.getDate(), null);
         }
     }
 }

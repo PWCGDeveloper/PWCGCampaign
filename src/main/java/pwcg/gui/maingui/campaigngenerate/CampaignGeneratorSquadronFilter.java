@@ -10,9 +10,9 @@ import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -26,9 +26,9 @@ public class CampaignGeneratorSquadronFilter
 	    try
 	    {
     		SquadronManager squadManager =  PWCGContext.getInstance().getSquadronManager();
-    		List<Squadron> squadronList = squadManager.getPlayerFlyableSquadronsByService(dateCorrectedService, campaignDate);
+    		List<Company> squadronList = squadManager.getPlayerFlyableSquadronsByService(dateCorrectedService, campaignDate);
             PWCGLogger.log(LogLevel.DEBUG, "makeSquadronChoices squadron list size: " + squadronList.size());
-    		for (Squadron squadron : squadronList)
+    		for (Company squadron : squadronList)
     		{
                 PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(campaignDate) + " makeSquadronChoices evaluate squadron");
 
@@ -63,10 +63,10 @@ public class CampaignGeneratorSquadronFilter
 	    return validSquadrons;
 	}
 	
-	private boolean rejectBecauseWrongRole(Squadron squad, Date campaignDate, String roleDesc) throws PWCGException
+	private boolean rejectBecauseWrongRole(Company company, Date campaignDate, String roleDesc) throws PWCGException
 	{
 	    PwcgRoleCategory role = PwcgRoleCategory.getRoleCategoryFromDescription(roleDesc);
-        PwcgRoleCategory squadronRole = squad.determineSquadronPrimaryRoleCategory(campaignDate);
+        PwcgRoleCategory squadronRole = company.determineSquadronPrimaryRoleCategory(campaignDate);
         if (role == squadronRole)
         {
             return false;
@@ -75,14 +75,14 @@ public class CampaignGeneratorSquadronFilter
 		return true;
 	}
 	
-	private boolean rejectBecauseCommandConflict(Squadron squad, Date campaignDate, boolean playerIsCommander) throws PWCGException
+	private boolean rejectBecauseCommandConflict(Company company, Date campaignDate, boolean playerIsCommander) throws PWCGException
 	{
 		AceManager aceManager = PWCGContext.getInstance().getAceManager();
 		CampaignAces aces =  aceManager.loadFromHistoricalAces(campaignDate);
-		List<Ace> squadronAces =  aceManager.getActiveAcesForSquadron(aces, campaignDate, squad.getSquadronId());
+		List<TankAce> squadronAces =  aceManager.getActiveAcesForSquadron(aces, campaignDate, company.getSquadronId());
 		if (squadronAces.size() > 0)
 		{
-			if (playerIsCommander && squad.isCommandedByAce(squadronAces, campaignDate))
+			if (playerIsCommander && company.isCommandedByAce(squadronAces, campaignDate))
 			{
 				return true;
 			}
@@ -91,14 +91,14 @@ public class CampaignGeneratorSquadronFilter
 		return false;
 	}
 	
-	private boolean rejectBecauseWrongMap(Squadron squad, Date campaignDate, FrontMapIdentifier selectedCampaignMap) throws PWCGException
+	private boolean rejectBecauseWrongMap(Company company, Date campaignDate, FrontMapIdentifier selectedCampaignMap) throws PWCGException
 	{
 		if (selectedCampaignMap == null)
 		{
 			return false;
 		}
 		
-    	String airfieldName = squad.determineCurrentAirfieldName(campaignDate);
+    	String airfieldName = company.determineCurrentAirfieldName(campaignDate);
     	List<FrontMapIdentifier> airfieldMaps = MapForAirfieldFinder.getMapForAirfield(airfieldName);
     	
     	for (FrontMapIdentifier airfieldMap : airfieldMaps)

@@ -5,9 +5,9 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -61,9 +61,9 @@ public class StructureBorderBuilder
         CoordinateBox structureBorders = CoordinateBox.copy(missionBorders);
         
         List<Coordinate> airfieldCoordinates = new ArrayList<>();
-        for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
+        for (CrewMember player : participatingPlayers.getAllParticipatingPlayers())
         {
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
             Airfield airfield = squadron.determineCurrentAirfieldAnyMap(campaign.getDate());
             airfieldCoordinates.add(airfield.getPosition());
         }

@@ -24,15 +24,15 @@ import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
-import pwcg.campaign.squadmember.Ace;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
@@ -43,14 +43,14 @@ public abstract class AARTestSetup
     @Mock protected Campaign campaign;
     @Mock protected CampaignData campaignData;
     @Mock protected CampaignPersonnelManager personnelManager;
-    @Mock protected Squadron squadronEsc103;
-    @Mock protected Squadron jasta11;
+    @Mock protected Company squadronEsc103;
+    @Mock protected Company jasta11;
     @Mock protected AARContext aarContext;
     @Mock protected PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
     @Mock protected PwcgMissionData pwcgMissionData;
     @Mock protected MissionHeader missionHeader;
     @Mock protected AARPreliminaryData preliminaryData;
-    @Mock protected SquadronMembers campaignMembersInMission;
+    @Mock protected CrewMembers campaignMembersInMission;
     @Mock protected ReconciledMissionVictoryData reconciledVictoryData;
     @Mock protected AARPersonnelLosses personnelLosses;
     @Mock protected AARPersonnelLosses personnelLossesCampaignUpdate;
@@ -61,15 +61,15 @@ public abstract class AARTestSetup
     @Mock protected SquadronTransferData acesTransferred;
     @Mock protected SquadronTransferData squadronMembersTransferred;
     @Mock private CampaignUpdateData campaignUpdateData;
-    @Mock protected SquadronMember player;
-    @Mock protected SquadronMember enemyPilot1;
-    @Mock protected SquadronMember pilot1;
-    @Mock protected SquadronMember pilot2;
-    @Mock protected SquadronMember pilot3;
-    @Mock protected Ace ace1;
-    @Mock protected Ace ace2;
-    @Mock protected Ace ace3;
-    @Mock protected Ace ace4;
+    @Mock protected CrewMember player;
+    @Mock protected CrewMember enemyCrewMember1;
+    @Mock protected CrewMember crewMember1;
+    @Mock protected CrewMember crewMember2;
+    @Mock protected CrewMember crewMember3;
+    @Mock protected TankAce ace1;
+    @Mock protected TankAce ace2;
+    @Mock protected TankAce ace3;
+    @Mock protected TankAce ace4;
     @Mock protected EquippedPlane enemyPlane1;
     @Mock protected EquippedPlane plane1;
     @Mock protected EquippedPlane plane2;
@@ -77,7 +77,7 @@ public abstract class AARTestSetup
     @Mock protected ArmedService frenchAirForce;
     @Mock protected ArmedService germanAirForce;
     
-    protected List<SquadronMember> players = new ArrayList<>();
+    protected List<CrewMember> players = new ArrayList<>();
 
     protected void setupAARMocks() throws PWCGException
     {
@@ -105,9 +105,9 @@ public abstract class AARTestSetup
         Mockito.when(campaignData.getName()).thenReturn("Player Name");
 
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1)).thenReturn(pilot1);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2)).thenReturn(pilot2);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+3)).thenReturn(pilot3);
+        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1)).thenReturn(crewMember1);
+        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2)).thenReturn(crewMember2);
+        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+3)).thenReturn(crewMember3);
         
         Mockito.when(frenchAirForce.getCountry()).thenReturn(CountryFactory.makeCountryByCountry(Country.FRANCE));
         Mockito.when(germanAirForce.getCountry()).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
@@ -148,47 +148,47 @@ public abstract class AARTestSetup
     private void mockPersonnel() throws PWCGException
     {
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        Mockito.when(player.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(player.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         Mockito.when(player.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
         Mockito.when(player.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(player.determineSquadron()).thenReturn(squadronEsc103);
 
 
-        Mockito.when(enemyPilot1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+100);
-        Mockito.when(pilot1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
-        Mockito.when(pilot2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
-        Mockito.when(pilot3.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+3);
+        Mockito.when(enemyCrewMember1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+100);
+        Mockito.when(crewMember1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
+        Mockito.when(crewMember2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
+        Mockito.when(crewMember3.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+3);
 
-        Mockito.when(enemyPilot1.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
-        Mockito.when(pilot1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(pilot2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(pilot3.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(enemyCrewMember1.getCompanyId()).thenReturn(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
+        Mockito.when(crewMember1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember3.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
-        Mockito.when(enemyPilot1.getCountry()).thenReturn(Country.GERMANY);
-        Mockito.when(pilot1.getCountry()).thenReturn(Country.FRANCE);
-        Mockito.when(pilot2.getCountry()).thenReturn(Country.FRANCE);
-        Mockito.when(pilot3.getCountry()).thenReturn(Country.FRANCE);
+        Mockito.when(enemyCrewMember1.getCountry()).thenReturn(Country.GERMANY);
+        Mockito.when(crewMember1.getCountry()).thenReturn(Country.FRANCE);
+        Mockito.when(crewMember2.getCountry()).thenReturn(Country.FRANCE);
+        Mockito.when(crewMember3.getCountry()).thenReturn(Country.FRANCE);
         
-        Mockito.when(enemyPilot1.determineService(ArgumentMatchers.any())).thenReturn(germanAirForce);
-        Mockito.when(pilot1.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
-        Mockito.when(pilot2.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
-        Mockito.when(pilot3.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
+        Mockito.when(enemyCrewMember1.determineService(ArgumentMatchers.any())).thenReturn(germanAirForce);
+        Mockito.when(crewMember1.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
+        Mockito.when(crewMember2.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
+        Mockito.when(crewMember3.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
 
         
-        Mockito.when(enemyPilot1.determineSquadron()).thenReturn(jasta11);
-        Mockito.when(pilot1.determineSquadron()).thenReturn(squadronEsc103);
-        Mockito.when(pilot2.determineSquadron()).thenReturn(squadronEsc103);
-        Mockito.when(pilot3.determineSquadron()).thenReturn(squadronEsc103);
+        Mockito.when(enemyCrewMember1.determineSquadron()).thenReturn(jasta11);
+        Mockito.when(crewMember1.determineSquadron()).thenReturn(squadronEsc103);
+        Mockito.when(crewMember2.determineSquadron()).thenReturn(squadronEsc103);
+        Mockito.when(crewMember3.determineSquadron()).thenReturn(squadronEsc103);
         
         Mockito.when(ace1.getSerialNumber()).thenReturn(SerialNumber.ACE_STARTING_SERIAL_NUMBER+1);
         Mockito.when(ace2.getSerialNumber()).thenReturn(SerialNumber.ACE_STARTING_SERIAL_NUMBER+2);
         Mockito.when(ace3.getSerialNumber()).thenReturn(SerialNumber.ACE_STARTING_SERIAL_NUMBER+3);
         Mockito.when(ace4.getSerialNumber()).thenReturn(SerialNumber.ACE_STARTING_SERIAL_NUMBER+4);
 
-        Mockito.when(ace1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(ace2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(ace3.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(ace4.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(ace1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(ace2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(ace3.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(ace4.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         
         Mockito.when(ace1.determineSquadron()).thenReturn(squadronEsc103);
         Mockito.when(ace2.determineSquadron()).thenReturn(squadronEsc103);

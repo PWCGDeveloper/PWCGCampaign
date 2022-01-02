@@ -4,21 +4,14 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.escort.EscortSquadronSelector;
-import pwcg.mission.flight.escort.VirtualEscortFlightInformationBuilder;
 import pwcg.mission.flight.waypoint.missionpoint.IVirtualActivate;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.group.virtual.IVirtualWaypoint;
 import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
-import pwcg.mission.mcu.group.virtual.VirtualWaypointEscort;
 
 public class VirtualWaypointPackage implements IVirtualWaypointPackage
 {
@@ -52,39 +45,6 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
         if (additionalTime > 30)
         {
             virtualWaypoints.get(0).addAdditionalTime(additionalTime);
-        }
-    }
-
-    @Override
-    public void addEscort() throws PWCGException
-    {
-        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(flight.getCampaign(), flight.getSquadron(), flight.getMission().getMissionBorders().getCenter(), flight.getMission().getMissionSquadronRegistry());
-        if (friendlyFighterSquadron != null)
-        {
-            FlightInformation vwpEscortFlightInformation = VirtualEscortFlightInformationBuilder.buildVirtualEscortFlightInformation(flight.getMission(), friendlyFighterSquadron);
-            for (VirtualWaypoint virtualWaypoint : virtualWaypoints)
-            {
-                virtualWaypoint.addEscort(vwpEscortFlightInformation);
-            }
-            
-            flight.getMission().getMissionSquadronRegistry().registerSquadronForUse(friendlyFighterSquadron);
-        }
-        else
-        {
-            PWCGLogger.log(LogLevel.DEBUG, "No escort available for virtual flight");
-        }
-    }
-
-    @Override
-    public VirtualWaypointEscort getEscort() throws PWCGException
-    {
-        if (!virtualWaypoints.isEmpty())
-        {
-            return virtualWaypoints.get(0).getVwpEscort();
-        }
-        else
-        {
-            return null;
         }
     }
 

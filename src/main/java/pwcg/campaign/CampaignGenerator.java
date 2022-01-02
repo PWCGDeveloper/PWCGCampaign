@@ -5,10 +5,10 @@ import java.util.List;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignGenerator 
@@ -49,8 +49,8 @@ public class CampaignGenerator
 
     private void staffSquadrons() throws PWCGException
     {
-        List<Squadron> activeSquadronsOnCampaignStartDate = PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(generatorModel.getCampaignDate());
-        for (Squadron squadron : activeSquadronsOnCampaignStartDate)
+        List<Company> activeSquadronsOnCampaignStartDate = PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(generatorModel.getCampaignDate());
+        for (Company squadron : activeSquadronsOnCampaignStartDate)
         {
             CampaignSquadronGenerator squadronGenerator = new CampaignSquadronGenerator(campaign, squadron);
             squadronGenerator.createSquadron(generatorModel);
@@ -61,7 +61,7 @@ public class CampaignGenerator
 
     private void useCampaignPlayerToSetReferencePlayer() throws PWCGException
     {
-        SquadronMember referencePlayer = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        CrewMember referencePlayer = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList().get(0);
         campaign.getCampaignData().setReferencePlayerSerialNumber(referencePlayer.getSerialNumber());
     }
 
@@ -87,8 +87,8 @@ public class CampaignGenerator
 
     private void setMapForNewCampaign() throws PWCGException
     {
-        Squadron squad = PWCGContext.getInstance().getSquadronManager().getSquadronByName(generatorModel.getSquadronName(), generatorModel.getCampaignDate());
-        Airfield airfield = squad.determineCurrentAirfieldAnyMap(generatorModel.getCampaignDate());
+        Company company = PWCGContext.getInstance().getSquadronManager().getSquadronByName(generatorModel.getSquadronName(), generatorModel.getCampaignDate());
+        Airfield airfield = company.determineCurrentAirfieldAnyMap(generatorModel.getCampaignDate());
         List<FrontMapIdentifier> airfieldMaps = MapForAirfieldFinder.getMapForAirfield(airfield.getName());
         FrontMapIdentifier initialAirfieldMap = airfieldMaps.get(0);
 

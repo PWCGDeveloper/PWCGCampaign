@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class MapFinderForCampaign
@@ -39,16 +39,16 @@ public class MapFinderForCampaign
 
     private static FrontMapIdentifier findMapByActivePlayer(Campaign campaign) throws PWCGException
     {
-        SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
-        FrontMapIdentifier mapIdentifier = findMapByPlayers(campaign, players.getSquadronMemberList());
+        CrewMembers players = campaign.getPersonnelManager().getAllActivePlayers();
+        FrontMapIdentifier mapIdentifier = findMapByPlayers(campaign, players.getCrewMemberList());
         return mapIdentifier;
     }
 
     private static FrontMapIdentifier findMapByInactivePlayer(Campaign campaign) throws PWCGException
     {
-        SquadronMembers players = campaign.getPersonnelManager().getAllPlayers();
-        TreeMap<Date, SquadronMember> inactivePlayersSortedByDate = new TreeMap<>(Collections.reverseOrder());
-        for (SquadronMember player : players.getSquadronMemberList())
+        CrewMembers players = campaign.getPersonnelManager().getAllPlayers();
+        TreeMap<Date, CrewMember> inactivePlayersSortedByDate = new TreeMap<>(Collections.reverseOrder());
+        for (CrewMember player : players.getCrewMemberList())
         {
             if (player.getInactiveDate() != null)
             {
@@ -56,8 +56,8 @@ public class MapFinderForCampaign
             }
         }
         
-        List<SquadronMember> inactivePlayersSortedByDateList = new ArrayList<>();
-        for (SquadronMember inactivePlayer : inactivePlayersSortedByDate.values())
+        List<CrewMember> inactivePlayersSortedByDateList = new ArrayList<>();
+        for (CrewMember inactivePlayer : inactivePlayersSortedByDate.values())
         {
             inactivePlayersSortedByDateList.add(inactivePlayer);
         }
@@ -66,10 +66,10 @@ public class MapFinderForCampaign
         return mapIdentifier;
     }
 
-    private static FrontMapIdentifier findMapByPlayers(Campaign campaign, List<SquadronMember> players) throws PWCGException
+    private static FrontMapIdentifier findMapByPlayers(Campaign campaign, List<CrewMember> players) throws PWCGException
     {
         FrontMapIdentifier mapIdentifier = FrontMapIdentifier.NO_MAP;
-        for (SquadronMember player : players)
+        for (CrewMember player : players)
         {
             mapIdentifier = findMapForPlayer(campaign, player);
             if (mapIdentifier != FrontMapIdentifier.NO_MAP)
@@ -80,11 +80,11 @@ public class MapFinderForCampaign
         return mapIdentifier;
     }
 
-    private static FrontMapIdentifier findMapForPlayer(Campaign campaign, SquadronMember player) throws PWCGException
+    private static FrontMapIdentifier findMapForPlayer(Campaign campaign, CrewMember player) throws PWCGException
     {
         FrontMapIdentifier mapIdentifier = FrontMapIdentifier.NO_MAP;
 
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
         List<FrontMapIdentifier> mapIdentifiers = MapForAirfieldFinder.getMapForAirfield(squadron.determineCurrentAirfieldName(campaign.getDate()));
         if (mapIdentifiers.size() > 0)
         {

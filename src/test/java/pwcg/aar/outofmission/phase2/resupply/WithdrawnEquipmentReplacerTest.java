@@ -15,12 +15,12 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.PlaneMarkingManagerFactory;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.resupply.equipment.WithdrawnEquipmentReplacer;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -32,7 +32,7 @@ public class WithdrawnEquipmentReplacerTest
     private Campaign campaign;
     
     @Mock
-    private Squadron squadron;
+    private Company squadron;
     
     private Equipment equipment = new Equipment();
     private SerialNumber serialNumber = new SerialNumber();

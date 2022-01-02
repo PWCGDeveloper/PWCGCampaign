@@ -8,7 +8,7 @@ import pwcg.aar.ui.display.model.VictoryEvents;
 import pwcg.aar.ui.events.VictoryEventGenerator;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.core.exception.PWCGException;
 
 public class VictoryPanelEventTabulator
@@ -26,8 +26,8 @@ public class VictoryPanelEventTabulator
         
     public VictoryEvents createVictoryEvents() throws PWCGException
     {
-        Map<Integer, List<Victory>> victoryAwardByPilotOutOfMission = aarContext.getPersonnelAcheivements().getVictoriesByPilot();
-        List<VictoryEvent> victoriesOutOfMission = victoryEventGenerator.createPilotVictoryEvents(victoryAwardByPilotOutOfMission);
+        Map<Integer, List<Victory>> victoryAwardByCrewMemberOutOfMission = aarContext.getPersonnelAcheivements().getVictoriesByCrewMember();
+        List<VictoryEvent> victoriesOutOfMission = victoryEventGenerator.createCrewMemberVictoryEvents(victoryAwardByCrewMemberOutOfMission);
         for (VictoryEvent victoryEvent : victoriesOutOfMission)
         {
             victoryEvents.addVictory(victoryEvent);

@@ -5,12 +5,12 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PayloadElementManager;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
@@ -104,21 +104,21 @@ public class BriefingFlightCrewPlaneUpdater
 
     private void configurePlaneForCrew(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        AiSkillLevel aiLevel = crewPlane.getPilot().getAiSkillLevel();
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(playerFlight.getSquadron().getSquadronId());
-        SquadronMember squadronMember = squadronPersonnel.getSquadronMember(crewPlane.getPilot().getSerialNumber());
-        if (squadronMember == null)
+        AiSkillLevel aiLevel = crewPlane.getCrewMember().getAiSkillLevel();
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(playerFlight.getSquadron().getSquadronId());
+        CrewMember crewMember = squadronPersonnel.getCrewMember(crewPlane.getCrewMember().getSerialNumber());
+        if (crewMember == null)
         {
-            squadronMember = campaign.getPersonnelManager().getCampaignAce(crewPlane.getPilot().getSerialNumber());
+            crewMember = campaign.getPersonnelManager().getCampaignAce(crewPlane.getCrewMember().getSerialNumber());
         }
         
-        if (squadronMember.isPlayer())
+        if (crewMember.isPlayer())
         {
             aiLevel = AiSkillLevel.PLAYER;
         }
 
-        plane.setName(crewPlane.getPilot().getNameAndRank());
-        plane.setDesc(crewPlane.getPilot().getNameAndRank());
+        plane.setName(crewPlane.getCrewMember().getNameAndRank());
+        plane.setDesc(crewPlane.getCrewMember().getNameAndRank());
         plane.setAiLevel(aiLevel);
     }
 
@@ -126,7 +126,7 @@ public class BriefingFlightCrewPlaneUpdater
     {
         PlaneMcu flightmember = playerFlight.getFlightPlanes().getFlightLeader();
         PlaneMcu updatedPlaneMcu = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
-                playerFlight.getFlightInformation().getCountry(), crewPlane.getPilot());
+                playerFlight.getFlightInformation().getCountry(), crewPlane.getCrewMember());
         updatedPlaneMcu.setTarget(flightmember.getLinkTrId());
         updatedPlaneMcu.setFuel(flightmember.getFuel());
 
@@ -136,7 +136,7 @@ public class BriefingFlightCrewPlaneUpdater
     private PlaneMcu updateLeader(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {        
         PlaneMcu updatedFlightLeader = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
-                playerFlight.getFlightInformation().getCountry(), crewPlane.getPilot());
+                playerFlight.getFlightInformation().getCountry(), crewPlane.getCrewMember());
         PlaneMcu flightLeaderPlaneMcu = playerFlight.getFlightPlanes().getFlightLeader();        
         updatedFlightLeader.copyEntityIndexFromPlane(flightLeaderPlaneMcu);
         updatedFlightLeader.setLinkTrId(flightLeaderPlaneMcu.getLinkTrId());

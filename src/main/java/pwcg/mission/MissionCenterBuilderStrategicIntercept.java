@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.LocationAwayFromFrontFinder;
@@ -32,14 +32,14 @@ public class MissionCenterBuilderStrategicIntercept implements IMissionCenterBui
 
     private List<PWCGLocation> getTowns(int missionBoxRadius) throws PWCGException
     {
-        Squadron squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
+        Company squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
         Coordinate squadronLocation = squadron.determineCurrentPosition(campaign.getDate());
         return PWCGContext.getInstance().getCurrentMap().getGroupManager().findTownsForSideWithinRadius(squadron.determineSide(), campaign.getDate(), squadronLocation, missionBoxRadius * 2);
     }
     
     private List<PWCGLocation> getTownsAwayFromFront(List<PWCGLocation> townLocations) throws PWCGException
     {
-        Squadron squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
+        Company squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
 
         List<PWCGLocation> townLocationsAwayFromFont = LocationAwayFromFrontFinder.getLocationsAwayFromFront(
                 townLocations, squadron.determineSide(), campaign.getDate());
@@ -55,7 +55,7 @@ public class MissionCenterBuilderStrategicIntercept implements IMissionCenterBui
         }
         else
         {
-            Squadron squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
+            Company squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
             Coordinate squadronLocation = squadron.determineCurrentPosition(campaign.getDate());
             return squadronLocation;
         }

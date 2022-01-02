@@ -8,7 +8,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightInformation;
@@ -101,7 +101,7 @@ public class TargetLocatorAir
     public Coordinate getScrambleCoordinate() throws PWCGException
     {
         Campaign campaign = flightInformation.getCampaign();
-        Squadron squadron = flightInformation.getSquadron();
+        Company squadron = flightInformation.getSquadron();
         return squadron.determineCurrentPosition(campaign.getDate());
     }
 

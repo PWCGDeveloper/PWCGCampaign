@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class AiSquadronIncluder
 {
     private Campaign campaign;
     private Mission mission;
-    private List<Squadron> squadronsForMission = new ArrayList<>();
+    private List<Company> squadronsForMission = new ArrayList<>();
 
     AiSquadronIncluder (Mission mission)
     {
@@ -19,7 +19,7 @@ public class AiSquadronIncluder
         this.campaign = mission.getCampaign();
     }
 
-    public List<Squadron> decideSquadronsForMission() throws PWCGException
+    public List<Company> decideSquadronsForMission() throws PWCGException
     {
         MissionAiSquadronFinder missionSquadronFinder = new MissionAiSquadronFinder(campaign, mission);
         missionSquadronFinder.findAiSquadronsForMission();
@@ -28,9 +28,9 @@ public class AiSquadronIncluder
         return squadronsForMission;
     }
     
-    private void decideSquadronsFromSquadronSet(List<Squadron> squads) throws PWCGException 
+    private void decideSquadronsFromSquadronSet(List<Company> squads) throws PWCGException 
     {
-        for (Squadron squadron : squads)
+        for (Company squadron : squads)
         {
             if (squadronWillGenerateAFlight(squadron))
             {
@@ -39,7 +39,7 @@ public class AiSquadronIncluder
         }
     }
 
-    private boolean squadronWillGenerateAFlight(Squadron squadron) throws PWCGException
+    private boolean squadronWillGenerateAFlight(Company squadron) throws PWCGException
     {
         if (!squadronIsInRange(squadron))
         {
@@ -49,7 +49,7 @@ public class AiSquadronIncluder
         return true;
     }
 
-    private boolean squadronIsInRange(Squadron squadron) throws PWCGException 
+    private boolean squadronIsInRange(Company squadron) throws PWCGException 
     {
         return SquadronRange.positionIsInRange(campaign, squadron, mission.getMissionBorders().getCenter());
     }

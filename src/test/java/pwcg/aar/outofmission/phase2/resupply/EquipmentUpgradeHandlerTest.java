@@ -24,7 +24,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.resupply.equipment.EquipmentUpgradeHandler;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -75,7 +75,7 @@ public class EquipmentUpgradeHandlerTest
 
         // replace planes in squadron with different quality 109s, but all worse
         // than the very good planes in the depot
-        Squadron playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Company playerSquadron = campaign.determinePlayerSquadrons().get(0);
         Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getSquadronId());
         for (EquippedPlane planeInSquadronBeforeTest : equipmentForSquadronBeforeTest.getActiveEquippedPlanes().values())
         {
@@ -162,7 +162,7 @@ public class EquipmentUpgradeHandlerTest
 
         // replace planes in player squadron with very good quality 109s, to
         // avoid the need for replacement
-        Squadron playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Company playerSquadron = campaign.determinePlayerSquadrons().get(0);
         Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getSquadronId());
         for (EquippedPlane planeInSquadronBeforeTest : equipmentForSquadronBeforeTest.getActiveEquippedPlanes().values())
         {
@@ -239,7 +239,7 @@ public class EquipmentUpgradeHandlerTest
 
         // Clear out the squadron and add better planes than we have in the
         // depot
-        Squadron playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Company playerSquadron = campaign.determinePlayerSquadrons().get(0);
         Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getSquadronId());
 
         for (EquippedPlane planeInSquadronBeforeTest : equipmentForSquadronBeforeTest.getActiveEquippedPlanes().values())

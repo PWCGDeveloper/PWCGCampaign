@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase2.logeval.pilotstatus;
+package pwcg.aar.inmission.phase2.logeval.crewMemberstatus;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,14 +10,15 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
+import pwcg.aar.inmission.phase2.logeval.crewmemberstatus.AARCrewMemberStatusDeadEvaluator;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogCrewMember;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.SerialNumber;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.logfiles.LogParser;
@@ -25,16 +26,16 @@ import pwcg.core.logfiles.event.AType3;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-public class AARPilotStatusDeadEvaluatorTest
+public class AARCrewMemberStatusDeadEvaluatorTest
 {
     @Mock private Campaign campaign;
     @Mock private LogParser aarLogParser;
     @Mock private Coordinate downAt;
-    @Mock private LogPilot resultCrewmember;
+    @Mock private LogCrewMember resultCrewmember;
     @Mock private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
     @Mock private AType3 destroyedEventForPlane;
-    @Mock private SquadronMember pilot;
-    @Mock private Squadron squadron;
+    @Mock private CrewMember crewMember;
+    @Mock private Company squadron;
     @Mock private CampaignPersonnelManager personnelManager;
     
     
@@ -45,8 +46,8 @@ public class AARPilotStatusDeadEvaluatorTest
         Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
         
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(personnelManager.getAnyCampaignMember(Mockito.anyInt())).thenReturn(pilot);
-        Mockito.when(pilot.determineSquadron()).thenReturn(squadron);
+        Mockito.when(personnelManager.getAnyCampaignMember(Mockito.anyInt())).thenReturn(crewMember);
+        Mockito.when(crewMember.determineSquadron()).thenReturn(squadron);
         
     }
 
@@ -59,14 +60,14 @@ public class AARPilotStatusDeadEvaluatorTest
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
-        aarPilotStatusDeadEvaluator.initialize(
+        AARCrewMemberStatusDeadEvaluator aarCrewMemberStatusDeadEvaluator = new AARCrewMemberStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
+        aarCrewMemberStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         null, 
                         oddsOfDeathDueToAiStupidity);
         
-        boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
+        boolean dead = aarCrewMemberStatusDeadEvaluator.isCrewMemberDead();
         assert(dead == false);
     }
 
@@ -82,14 +83,14 @@ public class AARPilotStatusDeadEvaluatorTest
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
-        aarPilotStatusDeadEvaluator.initialize(
+        AARCrewMemberStatusDeadEvaluator aarCrewMemberStatusDeadEvaluator = new AARCrewMemberStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
+        aarCrewMemberStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
                         oddsOfDeathDueToAiStupidity);
         
-        boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
+        boolean dead = aarCrewMemberStatusDeadEvaluator.isCrewMemberDead();
         assert(dead == true);
     }
 
@@ -105,14 +106,14 @@ public class AARPilotStatusDeadEvaluatorTest
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
-        aarPilotStatusDeadEvaluator.initialize(
+        AARCrewMemberStatusDeadEvaluator aarCrewMemberStatusDeadEvaluator = new AARCrewMemberStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
+        aarCrewMemberStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
                         oddsOfDeathDueToAiStupidity);
         
-        boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
+        boolean dead = aarCrewMemberStatusDeadEvaluator.isCrewMemberDead();
         assert(dead == true);
     }
 
@@ -128,14 +129,14 @@ public class AARPilotStatusDeadEvaluatorTest
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
-        aarPilotStatusDeadEvaluator.initialize(
+        AARCrewMemberStatusDeadEvaluator aarCrewMemberStatusDeadEvaluator = new AARCrewMemberStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
+        aarCrewMemberStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
                         oddsOfDeathDueToAiStupidity);
         
-        boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
+        boolean dead = aarCrewMemberStatusDeadEvaluator.isCrewMemberDead();
         assert(dead == true);
     }
 
@@ -156,19 +157,19 @@ public class AARPilotStatusDeadEvaluatorTest
 
         int oddsOfDeathDueToAiStupidity = 100;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
-        aarPilotStatusDeadEvaluator.initialize(
+        AARCrewMemberStatusDeadEvaluator aarCrewMemberStatusDeadEvaluator = new AARCrewMemberStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
+        aarCrewMemberStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
                         oddsOfDeathDueToAiStupidity);
         
-        boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
+        boolean dead = aarCrewMemberStatusDeadEvaluator.isCrewMemberDead();
         assert(dead == true);
     }
 
     @Test
-    public void testSquadronMemberCrashedButNotKilled () throws PWCGException
+    public void testCrewMemberCrashedButNotKilled () throws PWCGException
     {
         Coordinate downAt = new Coordinate();
         downAt.setXPos(100.0);
@@ -179,19 +180,19 @@ public class AARPilotStatusDeadEvaluatorTest
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
-        aarPilotStatusDeadEvaluator.initialize(
+        AARCrewMemberStatusDeadEvaluator aarCrewMemberStatusDeadEvaluator = new AARCrewMemberStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
+        aarCrewMemberStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
                         oddsOfDeathDueToAiStupidity);
         
-        boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
+        boolean dead = aarCrewMemberStatusDeadEvaluator.isCrewMemberDead();
         assert(dead == false);
     }
 
     @Test
-    public void testSquadronMemberKilledByKnownVictor () throws PWCGException
+    public void testCrewMemberKilledByKnownVictor () throws PWCGException
     {
         Coordinate downAt = new Coordinate();
         downAt.setXPos(100.0);
@@ -202,19 +203,19 @@ public class AARPilotStatusDeadEvaluatorTest
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
-        aarPilotStatusDeadEvaluator.initialize(
+        AARCrewMemberStatusDeadEvaluator aarCrewMemberStatusDeadEvaluator = new AARCrewMemberStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
+        aarCrewMemberStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
                         oddsOfDeathDueToAiStupidity);
         
-        boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
+        boolean dead = aarCrewMemberStatusDeadEvaluator.isCrewMemberDead();
         assert(dead == true);
     }
 
     @Test
-    public void testSquadronMemberSurvivedAccidentNearField () throws PWCGException
+    public void testCrewMemberSurvivedAccidentNearField () throws PWCGException
     {
         Coordinate downAt = new Coordinate();
         downAt.setXPos(100.0);
@@ -230,19 +231,19 @@ public class AARPilotStatusDeadEvaluatorTest
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
-        aarPilotStatusDeadEvaluator.initialize(
+        AARCrewMemberStatusDeadEvaluator aarCrewMemberStatusDeadEvaluator = new AARCrewMemberStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
+        aarCrewMemberStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
                         oddsOfDeathDueToAiStupidity);
         
-        boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
+        boolean dead = aarCrewMemberStatusDeadEvaluator.isCrewMemberDead();
         assert(dead == false);
     }
 
     @Test
-    public void testSquadronMemberKilledByAccidentAwayFromField () throws PWCGException
+    public void testCrewMemberKilledByAccidentAwayFromField () throws PWCGException
     {
         Coordinate downAt = new Coordinate();
         downAt.setXPos(100.0);
@@ -258,8 +259,8 @@ public class AARPilotStatusDeadEvaluatorTest
 
         int oddsOfDeathDueToAiStupidity = 50;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
-        aarPilotStatusDeadEvaluator.initialize(
+        AARCrewMemberStatusDeadEvaluator aarCrewMemberStatusDeadEvaluator = new AARCrewMemberStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
+        aarCrewMemberStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
@@ -269,7 +270,7 @@ public class AARPilotStatusDeadEvaluatorTest
         boolean survivedAtLeastOnce = false;
         for(int i = 0; i < 100; ++i)
         {
-            boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
+            boolean dead = aarCrewMemberStatusDeadEvaluator.isCrewMemberDead();
             if (dead)
             {
                 wasKilledAtLeastOnce = true;

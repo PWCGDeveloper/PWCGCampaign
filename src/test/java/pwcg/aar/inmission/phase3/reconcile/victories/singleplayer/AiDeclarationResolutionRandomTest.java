@@ -28,11 +28,11 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.SquadronTestProfile;
@@ -44,21 +44,21 @@ public class AiDeclarationResolutionRandomTest
     @Mock private List<LogVictory> confirmedAiVictories = new ArrayList<LogVictory>();
     @Mock private AARMissionEvaluationData evaluationData;
     @Mock private Campaign campaign;
-    @Mock private Squadron squadron;
+    @Mock private Company squadron;
     @Mock private CampaignPersonnelManager personnelManager;
     @Mock private AARContext aarContext;
     @Mock private AARPreliminaryData preliminaryData;
     @Mock private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
     @Mock private VictorySorter victorySorter;
-    @Mock private SquadronMember player;
-    @Mock private Squadron playerSquadron;
-    @Mock private SquadronMember aiSquadMember;
+    @Mock private CrewMember player;
+    @Mock private Company playerSquadron;
+    @Mock private CrewMember aiSquadMember;
             
-    private SquadronMembers campaignMembersInmission = new SquadronMembers();
+    private CrewMembers campaignMembersInmission = new CrewMembers();
 
     private List<LogVictory> randomVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
-    private List<SquadronMember> players = new ArrayList<>();
+    private List<CrewMember> players = new ArrayList<>();
 
     private LogPlane playerVictor = new LogPlane(1);
     private LogPlane aiVictor = new LogPlane(2);
@@ -72,8 +72,8 @@ public class AiDeclarationResolutionRandomTest
         randomVictories.clear();
         campaignMembersInmission.clear();
 
-        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);        
-        aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        playerVictor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);        
+        aiVictor.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
 
         players = new ArrayList<>();
         players.add(player);
@@ -97,7 +97,7 @@ public class AiDeclarationResolutionRandomTest
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInmission);
-        List<Squadron> playerSquadronsInMission = new ArrayList<>();
+        List<Company> playerSquadronsInMission = new ArrayList<>();
         playerSquadronsInMission.add(playerSquadron);
         Mockito.when(preliminaryData.getPlayerSquadronsInMission()).thenReturn(playerSquadronsInMission);
 
@@ -105,13 +105,13 @@ public class AiDeclarationResolutionRandomTest
         Mockito.when(playerSquadron.getSquadronId()).thenReturn(squadronId);
         playerVictor.setSquadronId(squadronId);
         aiVictor.setSquadronId(squadronId);
-        Mockito.when(aiSquadMember.getSquadronId()).thenReturn(squadronId);
+        Mockito.when(aiSquadMember.getCompanyId()).thenReturn(squadronId);
     }
 
     private void createVictory(Integer victimSerialNumber, UnknownVictoryAssignments unknownVictoryAssignment)
     {        
         LogPlane victim = new LogPlane(3);
-        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setCrewMemberSerialNumber(victimSerialNumber);
         
         ICountry victimCountry = CountryFactory.makeCountryByCountry(Country.RUSSIA);
         victim.setCountry(victimCountry);
@@ -128,8 +128,8 @@ public class AiDeclarationResolutionRandomTest
     @Test
     public void testAiRandomVictoryAward () throws PWCGException
     {   
-        campaignMembersInmission.addToSquadronMemberCollection(player);
-        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember);
+        campaignMembersInmission.addToCrewMemberCollection(player);
+        campaignMembersInmission.addToCrewMemberCollection(aiSquadMember);
 
 
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictor);
@@ -143,7 +143,7 @@ public class AiDeclarationResolutionRandomTest
     @Test
     public void testAiRandomVictoryAwardFailedBecusePlaneNotFound () throws PWCGException
     {   
-        campaignMembersInmission.addToSquadronMemberCollection(player);
+        campaignMembersInmission.addToCrewMemberCollection(player);
 
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 

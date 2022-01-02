@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.io.json.CoopUserIOJson;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 
@@ -32,8 +32,8 @@ public class CoopUserCampaignMassUpdate
                 List<Integer> personaByUser = usersForPersonas.get(username);
                 for (int serialNumber : personaByUser)
                 {
-                    SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
-                    coopUser.addPersona(campaign.getName(), squadronMember.getSerialNumber(), squadronMember.getName());
+                    CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
+                    coopUser.addPersona(campaign.getName(), crewMember.getSerialNumber(), crewMember.getName());
                 }
                 CoopUserIOJson.writeJson(coopUser);
             }

@@ -7,26 +7,26 @@ import java.util.Map;
 
 import pwcg.aar.ui.events.model.AAREvent;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
-import pwcg.aar.ui.events.model.PilotStatusEvent;
+import pwcg.aar.ui.events.model.CrewMemberStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.mission.data.MissionHeader;
 
 public class AARCombatReportPanelData
 {
     private MissionHeader missionHeader;
-    private Map<Integer, SquadronMember> crewsInMission = new HashMap<>();
-    private Map<Integer, PilotStatusEvent> squadronMembersLostInMission = new HashMap<>();
+    private Map<Integer, CrewMember> crewsInMission = new HashMap<>();
+    private Map<Integer, CrewMemberStatusEvent> squadronMembersLostInMission = new HashMap<>();
     private Map<Integer, PlaneStatusEvent> squadronPlanesLostInMission = new HashMap<>();
-    private List<VictoryEvent> victoriesForSquadronMembersInMission = new ArrayList<>();
+    private List<VictoryEvent> victoriesForCrewMembersInMission = new ArrayList<>();
     private List<ClaimDeniedEvent> claimsDenied = new ArrayList<>();
     
     public List<AAREvent> getAllEvents()
     {
         List<AAREvent> allEvents = new ArrayList<>();
-        allEvents.addAll(victoriesForSquadronMembersInMission);
+        allEvents.addAll(victoriesForCrewMembersInMission);
         allEvents.addAll(claimsDenied);
         allEvents.addAll(squadronMembersLostInMission.values());
         
@@ -43,12 +43,12 @@ public class AARCombatReportPanelData
         this.missionHeader = missionHeader;
     }
 
-    public Map<Integer, SquadronMember> getCrewsInMission()
+    public Map<Integer, CrewMember> getCrewsInMission()
     {
         return crewsInMission;
     }
     
-    public Map<Integer, PilotStatusEvent> getSquadronMembersLostInMission()
+    public Map<Integer, CrewMemberStatusEvent> getCrewMembersLostInMission()
     {
         return squadronMembersLostInMission;
     }
@@ -58,9 +58,9 @@ public class AARCombatReportPanelData
         return squadronPlanesLostInMission;
     }
 
-    public List<VictoryEvent> getVictoriesForSquadronMembersInMission()
+    public List<VictoryEvent> getVictoriesForCrewMembersInMission()
     {
-        return victoriesForSquadronMembersInMission;
+        return victoriesForCrewMembersInMission;
     }
 
     public List<ClaimDeniedEvent> getClaimsDenied()
@@ -73,19 +73,19 @@ public class AARCombatReportPanelData
         claimsDenied.addAll(sourceClaimDeniedEvents);
     }
 
-    public void addPilotsInMission(SquadronMembers crewsInMissionFromPlayerSquadron)
+    public void addCrewMembersInMission(CrewMembers crewsInMissionFromPlayerSquadron)
     {
-        crewsInMission.putAll(crewsInMissionFromPlayerSquadron.getSquadronMemberCollection());
+        crewsInMission.putAll(crewsInMissionFromPlayerSquadron.getCrewMemberCollection());
     }
 
-    public void addPilotLostInMission(PilotStatusEvent pilotLostEvent)
+    public void addCrewMemberLostInMission(CrewMemberStatusEvent crewMemberLostEvent)
     {
-        squadronMembersLostInMission.put(pilotLostEvent.getPilotSerialNumber(), pilotLostEvent);
+        squadronMembersLostInMission.put(crewMemberLostEvent.getCrewMemberSerialNumber(), crewMemberLostEvent);
     }
 
-    public void addVictoryForSquadronMembers(VictoryEvent victory)
+    public void addVictoryForCrewMembers(VictoryEvent victory)
     {
-        victoriesForSquadronMembersInMission.add(victory);
+        victoriesForCrewMembersInMission.add(victory);
         
     }
 

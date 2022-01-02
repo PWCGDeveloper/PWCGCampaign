@@ -13,9 +13,9 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
+import pwcg.campaign.crewmember.Victory;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -26,7 +26,7 @@ import pwcg.testutils.SquadronTestProfile;
 public class OutOfMissionAirVictoryEventGeneratorTest
 {
     private Campaign campaign;
-    private static SquadronMember squadronMember;
+    private static CrewMember crewMember;
     
     @Mock private ArmedService service;
 
@@ -36,62 +36,62 @@ public class OutOfMissionAirVictoryEventGeneratorTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
         
-        for (SquadronMember pilot : campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_STALINGRAD.getSquadronId()).getActiveAiSquadronMembers().getSquadronMemberList())
+        for (CrewMember crewMember : campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_STALINGRAD.getSquadronId()).getActiveAiCrewMembers().getCrewMemberList())
         {
-            if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE && !pilot.isPlayer())
+            if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_ACTIVE && !crewMember.isPlayer())
             {
-                squadronMember = pilot;
+                crewMember = crewMember;
                 break;
             }
         }
     }
     
     @Test
-    public void testPilotOutOfMissionVictoryNovice() throws PWCGException
+    public void testCrewMemberOutOfMissionVictoryNovice() throws PWCGException
     {
-        testPilotOutOfMissionVictory(AiSkillLevel.NOVICE);
+        testCrewMemberOutOfMissionVictory(AiSkillLevel.NOVICE);
     }
     
     @Test
-    public void testPilotOutOfMissionVictoryCommon() throws PWCGException
+    public void testCrewMemberOutOfMissionVictoryCommon() throws PWCGException
     {
-        testPilotOutOfMissionVictory(AiSkillLevel.COMMON);
+        testCrewMemberOutOfMissionVictory(AiSkillLevel.COMMON);
     }
     
     @Test
-    public void testPilotOutOfMissionVictoryVeteran() throws PWCGException
+    public void testCrewMemberOutOfMissionVictoryVeteran() throws PWCGException
     {
-        testPilotOutOfMissionVictory(AiSkillLevel.VETERAN);
+        testCrewMemberOutOfMissionVictory(AiSkillLevel.VETERAN);
     }
     
     @Test
-    public void testPilotOutOfMissionVictoryAce() throws PWCGException
+    public void testCrewMemberOutOfMissionVictoryAce() throws PWCGException
     {
-        testPilotOutOfMissionVictory(AiSkillLevel.ACE);
+        testCrewMemberOutOfMissionVictory(AiSkillLevel.ACE);
     }
     
-    public void testPilotOutOfMissionVictory(AiSkillLevel aiSkillLevel) throws PWCGException
+    public void testCrewMemberOutOfMissionVictory(AiSkillLevel aiSkillLevel) throws PWCGException
     {
-        squadronMember.setAiSkillLevel(aiSkillLevel);
+        crewMember.setAiSkillLevel(aiSkillLevel);
         
         OutOfMissionVictoryData victoryData = new OutOfMissionVictoryData();
 
         int numMissionsInWar = 1000;
         for (int j = 0; j < numMissionsInWar; ++j)
         {
-            OutOfMissionAirVictoryEventGenerator victoryGenerator = new OutOfMissionAirVictoryEventGenerator(campaign, squadronMember);
-            OutOfMissionVictoryData victoriesOutOMission = victoryGenerator.outOfMissionVictoriesForSquadronMember();    
+            OutOfMissionAirVictoryEventGenerator victoryGenerator = new OutOfMissionAirVictoryEventGenerator(campaign, crewMember);
+            OutOfMissionVictoryData victoriesOutOMission = victoryGenerator.outOfMissionVictoriesForCrewMember();    
             victoryData.merge(victoriesOutOMission);
         }
         
-        assert(victoryData.getVictoryAwardsBySquadronMember().size() > 0);
+        assert(victoryData.getVictoryAwardsByCrewMember().size() > 0);
         
-        List<Victory> squadronMemberVictories = victoryData.getVictoryAwardsBySquadronMember().get(squadronMember.getSerialNumber());
+        List<Victory> squadronMemberVictories = victoryData.getVictoryAwardsByCrewMember().get(crewMember.getSerialNumber());
         assert(squadronMemberVictories.size() > 0);
         
         Victory victory = squadronMemberVictories.get(0);
-        assert(victory.getVictor().getPilotSerialNumber() == squadronMember.getSerialNumber());
-        assert(victory.getVictim().getPilotSerialNumber() > 0);
+        assert(victory.getVictor().getCrewMemberSerialNumber() == crewMember.getSerialNumber());
+        assert(victory.getVictim().getCrewMemberSerialNumber() > 0);
     }
 
 }

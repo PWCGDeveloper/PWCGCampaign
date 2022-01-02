@@ -93,7 +93,7 @@ public class PWCGMonitorSupport
         return screenSize;
     }
 
-    public static int getPilotPlateHeight() throws PWCGException
+    public static int getCrewMemberPlateHeight() throws PWCGException
     {
         if (isSmallScreen())
         {

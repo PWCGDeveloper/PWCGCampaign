@@ -1,6 +1,6 @@
 package pwcg.coop.model;
 
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 
 public class CoopDisplayRecord
 {
@@ -8,8 +8,8 @@ public class CoopDisplayRecord
     private String pilorNameAndRank = "unknown";
     private String campaignName = "unknown";
     private String squadronName = "unknown";
-    private int pilotStatus = SquadronMemberStatus.STATUS_ACTIVE;
-    private int pilotSerialNumber = 0;
+    private int crewMemberStatus = CrewMemberStatus.STATUS_ACTIVE;
+    private int crewMemberSerialNumber = 0;
 
     public String getUsername()
     {
@@ -21,7 +21,7 @@ public class CoopDisplayRecord
         this.username = username;
     }
 
-    public String getPilotNameAndRank()
+    public String getCrewMemberNameAndRank()
     {
         return pilorNameAndRank;
     }
@@ -51,23 +51,23 @@ public class CoopDisplayRecord
         this.squadronName = squadronName;
     }
 
-    public int getPilotStatus()
+    public int getCrewMemberStatus()
     {
-        return pilotStatus;
+        return crewMemberStatus;
     }
 
-    public void setPilotStatus(int pilotStatus)
+    public void setCrewMemberStatus(int crewMemberStatus)
     {
-        this.pilotStatus = pilotStatus;
+        this.crewMemberStatus = crewMemberStatus;
     }
 
-    public int getPilotSerialNumber()
+    public int getCrewMemberSerialNumber()
     {
-        return pilotSerialNumber;
+        return crewMemberSerialNumber;
     }
 
-    public void setPilotSerialNumber(int pilotSerialNumber)
+    public void setCrewMemberSerialNumber(int crewMemberSerialNumber)
     {
-        this.pilotSerialNumber = pilotSerialNumber;
+        this.crewMemberSerialNumber = crewMemberSerialNumber;
     }
 }

@@ -16,7 +16,6 @@ import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
-import pwcg.mission.target.TargetDefinitionBuilderOpposing;
 
 public class InterceptPackage implements IFlightPackage
 {	
@@ -52,15 +51,7 @@ public class InterceptPackage implements IFlightPackage
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
         ITargetDefinitionBuilder targetDefinitionBuilder;
-        if (this.flightInformation.isPlayerFlight())
-        {
-            targetDefinitionBuilder = new TargetDefinitionBuilderOpposing(flightInformation);
-        }
-        else
-        {
-            targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
-        }
-
+        targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
         return  targetDefinitionBuilder.buildTargetDefinition();
     }
     

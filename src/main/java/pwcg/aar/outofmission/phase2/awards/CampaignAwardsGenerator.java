@@ -6,7 +6,7 @@ import pwcg.aar.AARFactory;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignAwardsGenerator
@@ -20,26 +20,26 @@ public class CampaignAwardsGenerator
         this.awardsGenerator =  AARFactory.makeCampaignMemberAwardsGenerator(campaign, aarContext);
     }
 
-    public AARPersonnelAwards createCampaignMemberAwards(List<SquadronMember> squadronMembersToEvaluate) throws PWCGException
+    public AARPersonnelAwards createCampaignMemberAwards(List<CrewMember> squadronMembersToEvaluate) throws PWCGException
     {
         AARPersonnelAwards personnelAwards = AARFactory.makeAARPersonnelAwards();
 
-        for (SquadronMember squadronMember : squadronMembersToEvaluate)
+        for (CrewMember crewMember : squadronMembersToEvaluate)
         {
-            if (!squadronMember.isHistoricalAce())
+            if (!crewMember.isHistoricalAce())
             {                
-                int airVictoriesToday = getAirVictoryCountToday(squadronMember);
-                AARPersonnelAwards personnelAwardsForSquadronMember = awardsGenerator.generateAwards(squadronMember, airVictoriesToday);
-                personnelAwards.merge(personnelAwardsForSquadronMember);
+                int airVictoriesToday = getAirVictoryCountToday(crewMember);
+                AARPersonnelAwards personnelAwardsForCrewMember = awardsGenerator.generateAwards(crewMember, airVictoriesToday);
+                personnelAwards.merge(personnelAwardsForCrewMember);
             }
         }
         
         return personnelAwards;
     }
 
-    private int getAirVictoryCountToday(SquadronMember squadronMember)
+    private int getAirVictoryCountToday(CrewMember crewMember)
     {
-        int airVictoriesToday = aarContext.getPersonnelAcheivements().getAirVictoryCountForPilot(squadronMember.getSerialNumber());
+        int airVictoriesToday = aarContext.getPersonnelAcheivements().getAirVictoryCountForCrewMember(crewMember.getSerialNumber());
         return airVictoriesToday;
     }
 }

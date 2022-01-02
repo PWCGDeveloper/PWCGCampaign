@@ -7,14 +7,14 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class MissionAiSquadronFinder
 {
-    private List<Squadron> alliedSquads = new ArrayList<Squadron>();
-    private List<Squadron> axisSquads = new ArrayList<Squadron>();
+    private List<Company> alliedSquads = new ArrayList<Company>();
+    private List<Company> axisSquads = new ArrayList<Company>();
     private Campaign campaign;
     private Mission mission;
 
@@ -36,14 +36,6 @@ public class MissionAiSquadronFinder
         else if (mission.getMissionProfile() == MissionProfile.NIGHT_TACTICAL_MISSION)
         {
             findSquadronsForNightTacticalMission();
-        }
-        else if (mission.getMissionProfile() == MissionProfile.DAY_STRATEGIC_MISSION)
-        {
-            findSquadronsForStrategicMission();
-        }
-        else if (mission.getMissionProfile() == MissionProfile.NIGHT_STRATEGIC_MISSION)
-        {
-            findSquadronsForNightStrategicMission();
         }
         else
         {
@@ -67,35 +59,8 @@ public class MissionAiSquadronFinder
         acceptableRoles.add(PwcgRole.ROLE_ATTACK);
         acceptableRoles.add(PwcgRole.ROLE_TRANSPORT);
 
-        List<Squadron> otherAlliedSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
-        List<Squadron> otherAxisSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
-
-        alliedSquads.addAll(otherAlliedSquads);
-        axisSquads.addAll(otherAxisSquads);
-    }
-
-    private void findSquadronsForStrategicMission() throws PWCGException
-    {
-        List<PwcgRole> acceptableRoles = new ArrayList<PwcgRole>();
-        acceptableRoles.add(PwcgRole.ROLE_FIGHTER);
-        acceptableRoles.add(PwcgRole.ROLE_BOMB);
-        acceptableRoles.add(PwcgRole.ROLE_STRAT_BOMB);
-
-        List<Squadron> otherAlliedSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
-        List<Squadron> otherAxisSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
-
-        alliedSquads.addAll(otherAlliedSquads);
-        axisSquads.addAll(otherAxisSquads);
-    }
-
-    private void findSquadronsForNightStrategicMission() throws PWCGException
-    {
-        List<PwcgRole> acceptableRoles = new ArrayList<PwcgRole>();
-        acceptableRoles.add(PwcgRole.ROLE_BOMB);
-        acceptableRoles.add(PwcgRole.ROLE_STRAT_BOMB);
-
-        List<Squadron> otherAlliedSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
-        List<Squadron> otherAxisSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
+        List<Company> otherAlliedSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
+        List<Company> otherAxisSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
 
         alliedSquads.addAll(otherAlliedSquads);
         axisSquads.addAll(otherAxisSquads);
@@ -107,12 +72,12 @@ public class MissionAiSquadronFinder
         axisSquads = filterSquadrons(axisSquads);
     }
 
-    private List<Squadron> filterSquadrons(List<Squadron> squadronsToBeEvaluated) throws PWCGException
+    private List<Company> filterSquadrons(List<Company> squadronsToBeEvaluated) throws PWCGException
     {
-        List<Squadron> acceptedSquadrons = new ArrayList<>();
-        for (Squadron squadron : squadronsToBeEvaluated)
+        List<Company> acceptedSquadrons = new ArrayList<>();
+        for (Company squadron : squadronsToBeEvaluated)
         {
-            if (Squadron.isPlayerSquadron(campaign, squadron.getSquadronId()))
+            if (Company.isPlayerSquadron(campaign, squadron.getSquadronId()))
             {
                 continue;
             }
@@ -128,7 +93,7 @@ public class MissionAiSquadronFinder
         return acceptedSquadrons;
     }
 
-    private boolean shouldFlyDayNight(Squadron squadron) throws PWCGException
+    private boolean shouldFlyDayNight(Company squadron) throws PWCGException
     {
 
         if ((squadron.getNightOdds(campaign.getDate()) <= 0) && (mission.isNightMission()))
@@ -156,12 +121,12 @@ public class MissionAiSquadronFinder
         return true;
     }
 
-    public List<Squadron> getAlliedSquads()
+    public List<Company> getAlliedSquads()
     {
         return alliedSquads;
     }
 
-    public List<Squadron> getAxisSquads()
+    public List<Company> getAxisSquads()
     {
         return axisSquads;
     }

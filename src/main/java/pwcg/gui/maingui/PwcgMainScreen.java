@@ -21,8 +21,8 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
+import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
@@ -312,7 +312,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
     				else
     				{
     				    String nation = determineCampaignCountryForIcon(campaign).getNationality();
-    					icon = nation + "Pilot.jpg";
+    					icon = nation + "CrewMember.jpg";
     				}
     
     				PWCGJButton button = ImageButton.makeCampaignFlagButton(campaignName, icon);
@@ -332,14 +332,14 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 			
 		}
 		
-        PWCGJButton newButton = ImageButton.makeCampaignFlagButton(InternationalizationManager.getTranslation("New"), "NewPilot.jpg");
+        PWCGJButton newButton = ImageButton.makeCampaignFlagButton(InternationalizationManager.getTranslation("New"), "NewCrewMember.jpg");
         newButton.setActionCommand("New Campaign");
         newButton.addActionListener(this );
         ToolTipManager.setToolTip(newButton, "Create a new campaign");
         campaignListPanel.add(newButton);
         campaignButtonList.add(newButton);
 
-        PWCGJButton deleteCampaignButton = ImageButton.makeCampaignFlagButton(InternationalizationManager.getTranslation("Delete"), "DeletePilot.jpg");
+        PWCGJButton deleteCampaignButton = ImageButton.makeCampaignFlagButton(InternationalizationManager.getTranslation("Delete"), "DeleteCrewMember.jpg");
         deleteCampaignButton.setActionCommand("Delete Campaign");
         deleteCampaignButton.addActionListener(this );
         ToolTipManager.setToolTip(deleteCampaignButton, "Delete campaigns");
@@ -360,7 +360,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         }
         else
         {
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
+            CrewMember referencePlayer = campaign.findReferencePlayer();
             return CountryFactory.makeCountryByCountry(referencePlayer.getCountry());
         }
      }

@@ -6,7 +6,6 @@ import pwcg.core.utils.PWCGLogger;
 public class PWCGContext 
 {
     protected static BoSContext bosContextManager = null;
-    protected static FCContext fcContextManager = null;
     protected static PWCGProduct product = PWCGProduct.NONE;
 
 	protected PWCGContext()
@@ -37,7 +36,6 @@ public class PWCGContext
         if (PWCGContext.product != product)
         {
             bosContextManager = null;
-            fcContextManager = null;
             PWCGContext.product = product;
             buildProductContext();
         }
@@ -54,16 +52,6 @@ public class PWCGContext
             }
             
             return PWCGContext.bosContextManager;
-        }
-        else if (product == PWCGProduct.FC)
-        {
-            if (PWCGContext.fcContextManager == null)
-            {
-                PWCGContext.fcContextManager = new FCContext();
-                PWCGContext.fcContextManager.initialize();
-            }
-            
-            return PWCGContext.fcContextManager;
         }
         else
         {

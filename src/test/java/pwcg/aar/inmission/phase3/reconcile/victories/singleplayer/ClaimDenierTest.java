@@ -19,12 +19,12 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMembers;
+import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,14 +34,14 @@ public class ClaimDenierTest
     @Mock private PlayerVictoryDeclaration declaration;
     @Mock private Campaign campaign;
     @Mock private CampaignPersonnelManager personnelManager;
-    @Mock private SquadronMembers playerMembers;
-    @Mock private SquadronMember player;
-    @Mock private SquadronMember pilot;
-    @Mock private Squadron squadron;
+    @Mock private CrewMembers playerMembers;
+    @Mock private CrewMember player;
+    @Mock private CrewMember crewMember;
+    @Mock private Company squadron;
     @Mock private PlaneTypeFactory planeFactory;
     @Mock private PlaneType planeType;
    
-    private List<SquadronMember> players = new ArrayList<>();
+    private List<CrewMember> players = new ArrayList<>();
 
     @BeforeEach
     public void setupTest() throws PWCGException
@@ -52,7 +52,7 @@ public class ClaimDenierTest
         players.add(player);
 
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);
+        Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(crewMember);
     }
 
     @Test

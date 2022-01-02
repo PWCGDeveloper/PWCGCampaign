@@ -3,8 +3,8 @@ package pwcg.campaign.personnel;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.crewmember.CrewMember;
+import pwcg.campaign.crewmember.CrewMemberStatus;
 
 public class PersonnelActiveFilter
 {
@@ -12,54 +12,54 @@ public class PersonnelActiveFilter
     {
     }
     
-    public Map<Integer, SquadronMember> getActive(Map<Integer, SquadronMember> input) 
+    public Map<Integer, CrewMember> getActive(Map<Integer, CrewMember> input) 
     {
-        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();
-        for (SquadronMember pilot : input.values())
+        Map<Integer, CrewMember> returnCrewMembers = new HashMap<>();
+        for (CrewMember crewMember : input.values())
         {
-            if (isActive(pilot))
+            if (isActive(crewMember))
             {
-                returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
             }
         }
 
-        return returnSquadronMembers;
+        return returnCrewMembers;
     }
     
-    public Map<Integer, SquadronMember> getInactive(Map<Integer, SquadronMember> input) 
+    public Map<Integer, CrewMember> getInactive(Map<Integer, CrewMember> input) 
     {
-        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();
-        for (SquadronMember pilot : input.values())
+        Map<Integer, CrewMember> returnCrewMembers = new HashMap<>();
+        for (CrewMember crewMember : input.values())
         {
-            if (!isActive(pilot))
+            if (!isActive(crewMember))
             {
-                returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                returnCrewMembers.put(crewMember.getSerialNumber(), crewMember);
             }
         }
 
-        return returnSquadronMembers;
+        return returnCrewMembers;
     }
 
     
-    private boolean isActive(SquadronMember pilot)
+    private boolean isActive(CrewMember crewMember)
     {
-        if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
+        if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_ACTIVE)
         {
             return true;
         }
-        else if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ON_LEAVE)
+        else if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_ON_LEAVE)
         {
             return true;
         }
-        else if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_TRANSFERRED)
+        else if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_TRANSFERRED)
         {
             return false;
         }
-        else if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED)
+        else if (crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_WOUNDED)
         {
             return true;
         }
-        else if (pilot.isPlayer() && pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        else if (crewMember.isPlayer() && crewMember.getCrewMemberActiveStatus() == CrewMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
             return true;
         }
