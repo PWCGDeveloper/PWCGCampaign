@@ -203,21 +203,21 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 
         Company playerSquadron = squadronMemberToTransfer.determineSquadron();        
 
-        if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_BOMB))
+        if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_SELF_PROPELLED_AAA))
         {
-            cbRole.setSelectedItem(PwcgRole.ROLE_BOMB);
+            cbRole.setSelectedItem(PwcgRole.ROLE_SELF_PROPELLED_AAA);
         }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_DIVE_BOMB))
+        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_TANK_DESTROYER))
         {
-            cbRole.setSelectedItem(PwcgRole.ROLE_DIVE_BOMB);
+            cbRole.setSelectedItem(PwcgRole.ROLE_TANK_DESTROYER);
         }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_ATTACK))
+        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_SELF_PROPELLED_GUN))
         {
-            cbRole.setSelectedItem(PwcgRole.ROLE_ATTACK);
+            cbRole.setSelectedItem(PwcgRole.ROLE_SELF_PROPELLED_GUN);
         }
         else
         {
-            cbRole.setSelectedItem(PwcgRole.ROLE_FIGHTER);
+            cbRole.setSelectedItem(PwcgRole.ROLE_MAIN_BATTLE_TANK);
         }                
     }
 
@@ -239,10 +239,10 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         JLabel lRole = PWCGLabelFactory.makeTransparentLabel(roleText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
 
         cbRole = new JComboBox<String>();
-        cbRole.addItem(PwcgRole.ROLE_FIGHTER.getRoleDescription());
-        cbRole.addItem(PwcgRole.ROLE_DIVE_BOMB.getRoleDescription());
-        cbRole.addItem(PwcgRole.ROLE_ATTACK.getRoleDescription());
-        cbRole.addItem(PwcgRole.ROLE_BOMB.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_MAIN_BATTLE_TANK.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_TANK_DESTROYER.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_SELF_PROPELLED_GUN.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_SELF_PROPELLED_AAA.getRoleDescription());
         cbRole.setOpaque(false);
         cbRole.setBackground(buttonBG);
         cbRole.setSelectedIndex(0);
