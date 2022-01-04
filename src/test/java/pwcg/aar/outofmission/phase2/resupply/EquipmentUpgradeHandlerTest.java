@@ -75,7 +75,7 @@ public class EquipmentUpgradeHandlerTest
 
         // replace planes in squadron with different quality 109s, but all worse
         // than the very good planes in the depot
-        Company playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Company playerSquadron = campaign.determinePlayerCompanies().get(0);
         Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
         for (EquippedTank planeInSquadronBeforeTest : equipmentForSquadronBeforeTest.getActiveEquippedTanks().values())
         {
@@ -162,7 +162,7 @@ public class EquipmentUpgradeHandlerTest
 
         // replace planes in player squadron with very good quality 109s, to
         // avoid the need for replacement
-        Company playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Company playerSquadron = campaign.determinePlayerCompanies().get(0);
         Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
         for (EquippedTank planeInSquadronBeforeTest : equipmentForSquadronBeforeTest.getActiveEquippedTanks().values())
         {
@@ -239,7 +239,7 @@ public class EquipmentUpgradeHandlerTest
 
         // Clear out the squadron and add better planes than we have in the
         // depot
-        Company playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Company playerSquadron = campaign.determinePlayerCompanies().get(0);
         Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
 
         for (EquippedTank planeInSquadronBeforeTest : equipmentForSquadronBeforeTest.getActiveEquippedTanks().values())

@@ -227,7 +227,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
             return false;
         }
 
-        if (!campaign.isCampaignCanFly())
+        if (!campaign.isCampaignCanOperate())
         {
             return false;
         }

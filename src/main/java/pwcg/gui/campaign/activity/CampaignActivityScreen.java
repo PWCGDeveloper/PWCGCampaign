@@ -220,7 +220,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
             return false;
         }
 
-        if (!campaign.isCampaignCanFly())
+        if (!campaign.isCampaignCanOperate())
         {
             return false;
         }

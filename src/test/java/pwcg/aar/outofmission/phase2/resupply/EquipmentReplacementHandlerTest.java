@@ -64,7 +64,7 @@ public class EquipmentReplacementHandlerTest
     private void deactivateCampaignEquipment() throws PWCGException
     {
         Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
-        Company playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Company playerSquadron = campaign.determinePlayerCompanies().get(0);
         int numInactivated = 0;
         for (Equipment equipment: campaign.getEquipmentManager().getEquipmentAllCompanies().values())
         {
@@ -108,7 +108,7 @@ public class EquipmentReplacementHandlerTest
         Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
 
         int numInactivated = 0;
-        Company playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Company playerSquadron = campaign.determinePlayerCompanies().get(0);
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
         for (EquippedTank equippedPlane : equipment.getActiveEquippedTanks().values())
         {

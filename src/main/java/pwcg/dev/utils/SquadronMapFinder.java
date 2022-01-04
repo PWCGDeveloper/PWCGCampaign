@@ -38,7 +38,7 @@ public class SquadronMapFinder
         
         TreeMap<Integer, String> airfieldsOnMapSorted = new TreeMap<>();
         
-        List<Company> allSq =  PWCGContext.getInstance().getCompanyManager().getAllSquadrons();
+        List<Company> allSq =  PWCGContext.getInstance().getCompanyManager().getAllCompanies();
         for (Company squadron : allSq)
         {
             Airfield airfield = squadron.determineCurrentAirfieldCurrentMap(DateUtils.getDateYYYYMMDD("19430801"));

@@ -30,7 +30,7 @@ public class SquadronTransferFinder
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
        
-        for (Company possibleSquadron : squadronManager.getActiveSquadrons(campaign.getDate()))
+        for (Company possibleSquadron : squadronManager.getActiveCompanies(campaign.getDate()))
         {
             // Exclude squadrons commanded by an ace
             if (canTransferToThisSquadron(possibleSquadron))

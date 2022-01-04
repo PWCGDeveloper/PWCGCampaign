@@ -316,7 +316,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         
         Date date = parent.getCampaignGeneratorDO().getStartDate();
         CompanyManager companyManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> companiesForService = companyManager.getPlayerFlyableSquadronsByService(parent.getCampaignGeneratorDO().getService(), date);
+        List<Company> companiesForService = companyManager.getPlayerCompaniesByService(parent.getCampaignGeneratorDO().getService(), date);
         
         for (Company company : companiesForService)
         {            

@@ -1,21 +1,20 @@
 {
-	"country": "RUSSIA",
-	"squadronId": 101147001,
-	"name": "147th Tank Division, 1st Company",
-	"fileName": "147th Tank Division 1 Co.json",
-	"skill": 30,
+	"country": "GERMANY",
+	"squadronId": 201910001,
+	"name": "10 Flak Regiment, 1st Company",
+	"fileName": "10 Flak Regiment Co 1.json",
+	"skill": 60,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tankAssignments": [
 		{
-			"archType": "t34",
+			"archType": "sdkfz10",
 			"introduction": "19400101",
 			"withdrawal": "19450601"
 		}
 	],
 	"bases": {
 		"19420801": "Grishin",
-		"19420906": "Grishin",
 		"19421011": "Rahinka",
 		"19421123": "Bol. Ivanovka",
 		"19421223": "Bol. Ivanovka",
@@ -45,16 +44,15 @@
 		"19450401": "ef_Schijndel",
 		"19450501": "ef_Diest"
 	},
-	"skins": [
-	],
-	"serviceId": 10112,
+	"skins": [],
+	"serviceId": 20111,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19400101",
 				"weightedRoles": [
 					{
-						"role": "ROLE_MAIN_BATTLE_TANK",
+						"role": "ROLE_SELF_PROPELLED_AAA",
 						"weight": 100
 					}
 				]
@@ -64,7 +62,7 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19440901",
+				"startDate": "19400101",
 				"endDate": "19450601",
 				"nightMissionOdds": 3
 			}
@@ -72,5 +70,6 @@
 	},
 	"conversionPeriods": [],
 	"callsigns": {
+		
 	}
 }

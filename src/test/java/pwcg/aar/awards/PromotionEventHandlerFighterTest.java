@@ -65,7 +65,7 @@ public class PromotionEventHandlerFighterTest
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(1, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(20);
         Mockito.when(crewMember.getRank()).thenReturn("Corporal");
 
@@ -80,7 +80,7 @@ public class PromotionEventHandlerFighterTest
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(3, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(50);
         Mockito.when(crewMember.getRank()).thenReturn("Sergent");
 
@@ -95,7 +95,7 @@ public class PromotionEventHandlerFighterTest
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(7, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(80);
         Mockito.when(crewMember.getRank()).thenReturn("Sous Lieutenant");
         String promotion = PromotionEventHandler.promoteNonHistoricalCrewMembers(campaign, crewMember);
@@ -109,7 +109,7 @@ public class PromotionEventHandlerFighterTest
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(15, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(110);
         Mockito.when(crewMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(crewMember.isPlayer()).thenReturn(true);
@@ -126,7 +126,7 @@ public class PromotionEventHandlerFighterTest
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(15, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(110);
         Mockito.when(crewMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(crewMember.isPlayer()).thenReturn(false);
@@ -143,7 +143,7 @@ public class PromotionEventHandlerFighterTest
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(15, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(109);
         Mockito.when(crewMember.getRank()).thenReturn("Lieutenant");
 
@@ -158,7 +158,7 @@ public class PromotionEventHandlerFighterTest
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(14, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(90);
         Mockito.when(crewMember.getRank()).thenReturn("Lieutenant");
 

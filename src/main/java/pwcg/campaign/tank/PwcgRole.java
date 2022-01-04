@@ -13,10 +13,10 @@ public enum PwcgRole
     ROLE_TRANSPORT (PwcgRoleCategory.TRANSPORT, "Transport"),
 
     ROLE_GROUND_UNIT (PwcgRoleCategory.OTHER, "Ground Unit"),
-    ROLE_MAIN_BATTLE_TANK(PwcgRoleCategory.TANK, "Tank Unit"),
+    ROLE_MAIN_BATTLE_TANK(PwcgRoleCategory.MAIN_BATTLE_TANK, "Tank Unit"),
     ROLE_TANK_DESTROYER(PwcgRoleCategory.TANK_DESTROYER, "Tank Destroyer Unit"),
-    ROLE_SELF_PROPELLED_GUN(PwcgRoleCategory.SPG, "SPG Unit"),
-    ROLE_SELF_PROPELLED_AAA(PwcgRoleCategory.AAA, "AAA Unit"),
+    ROLE_SELF_PROPELLED_GUN(PwcgRoleCategory.SELF_PROPELLED_GUN, "SPG Unit"),
+    ROLE_SELF_PROPELLED_AAA(PwcgRoleCategory.SELF_PROPELLED_AAA, "AAA Unit"),
     
     ROLE_NONE (PwcgRoleCategory.OTHER, "None");
 

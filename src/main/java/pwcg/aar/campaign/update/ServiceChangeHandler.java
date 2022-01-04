@@ -29,7 +29,7 @@ public class ServiceChangeHandler
 
     public void handleChangeOfService(Date newDate) throws PWCGException 
     {
-        for (Company squadron : PWCGContext.getInstance().getCompanyManager().getActiveSquadrons(campaign.getDate()))
+        for (Company squadron : PWCGContext.getInstance().getCompanyManager().getActiveCompanies(campaign.getDate()))
         {
             handleChangeOfServiceForSquadron(squadron, newDate);
         }

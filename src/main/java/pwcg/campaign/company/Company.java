@@ -322,7 +322,7 @@ public class Company
 		squadronDescription += fieldName + "\n\n";
 		
 		List<TankType> planes = determineCurrentAircraftList(date);
-		squadronDescription += "Flying the:\n";
+		squadronDescription += "Operating the:\n";
 		for (TankType plane : planes)
 		{
 			squadronDescription += "    " + plane.getDisplayName() + "\n";
@@ -363,7 +363,7 @@ public class Company
         ICountry squadronCountry = CountryFactory.makeCountryByCountry(country);
         Side enemySide = squadronCountry.getSideNoNeutral().getOppositeSide();
         Airfield field = determineCurrentAirfieldCurrentMap(date);
-        squads =  PWCGContext.getInstance().getCompanyManager().getActiveSquadronsBySideAndProximity(enemySide, date, field.getPosition(), 30000);
+        squads =  PWCGContext.getInstance().getCompanyManager().getActiveCompaniesBySideAndProximity(enemySide, date, field.getPosition(), 30000);
 
         // Use an enemy squadron as a reference country.
         // If no enemy squadron use the enemy map reference nation

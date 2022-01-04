@@ -79,7 +79,7 @@ public class EquipmentReplacementWeightByNeedTest
         
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(earlyCampaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveCompaniesForService(earlyCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(earlyCampaign);
         Map<String, Integer> aircraftUsageByArchType = equipmentReplacementWeightUsage.getAircraftNeedByArchType(squadronsForService);
@@ -117,7 +117,7 @@ public class EquipmentReplacementWeightByNeedTest
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10101);
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(earlyCampaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveCompaniesForService(earlyCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(earlyCampaign);
         Map<String, Integer> aircraftUsageByArchType = equipmentReplacementWeightUsage.getAircraftNeedByArchType(squadronsForService);
@@ -151,7 +151,7 @@ public class EquipmentReplacementWeightByNeedTest
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20202);
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(earlyCampaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveCompaniesForService(earlyCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(earlyCampaign);
         Map<String, Integer> aircraftUsageByArchType = equipmentReplacementWeightUsage.getAircraftNeedByArchType(squadronsForService);
@@ -167,7 +167,7 @@ public class EquipmentReplacementWeightByNeedTest
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveCompaniesForService(lateCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(lateCampaign);
         Map<String, Integer> aircraftUsageByArchType = equipmentReplacementWeightUsage.getAircraftNeedByArchType(squadronsForService);
@@ -196,7 +196,7 @@ public class EquipmentReplacementWeightByNeedTest
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(BoSServiceManager.USAAF);
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveCompaniesForService(lateCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(lateCampaign);
         Map<String, Integer> aircraftUsageByArchType = equipmentReplacementWeightUsage.getAircraftNeedByArchType(squadronsForService);
@@ -211,7 +211,7 @@ public class EquipmentReplacementWeightByNeedTest
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(BoSServiceManager.RAF);
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveCompaniesForService(lateCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(lateCampaign);
         Map<String, Integer> aircraftUsageByArchType = equipmentReplacementWeightUsage.getAircraftNeedByArchType(squadronsForService);

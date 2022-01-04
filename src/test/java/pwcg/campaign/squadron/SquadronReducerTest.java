@@ -31,7 +31,7 @@ public class SquadronReducerTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_52_PROFILE_STALINGRAD);
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> allSquadrons = squadronManager.getAllSquadrons();
+        List<Company> allSquadrons = squadronManager.getAllCompanies();
         List<Company> squadronsWithoutAnomalies = CompanyReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
         
         assert(squadronsWithoutAnomalies.size() > 30);
@@ -47,7 +47,7 @@ public class SquadronReducerTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> allSquadrons = squadronManager.getAllSquadrons();
+        List<Company> allSquadrons = squadronManager.getAllCompanies();
         List<Company> squadronsWithoutAnomalies = CompanyReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
         
         boolean jg51Found = false;
@@ -72,7 +72,7 @@ public class SquadronReducerTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> allSquadrons = squadronManager.getAllSquadrons();
+        List<Company> allSquadrons = squadronManager.getAllCompanies();
         List<Company> squadronsWithoutAnomalies = CompanyReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
         
         boolean gruppo21Found = false;

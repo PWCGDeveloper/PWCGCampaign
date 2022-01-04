@@ -57,7 +57,7 @@ public class PromotionEventHandlerReconTest
     @Test
     public void promoteCorporalToSergent () throws PWCGException
     {     
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(30);
         Mockito.when(crewMember.getRank()).thenReturn("Corporal");
 
@@ -69,7 +69,7 @@ public class PromotionEventHandlerReconTest
     @Test
     public void promoteSergent () throws PWCGException
     {     
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(60);
         Mockito.when(crewMember.getRank()).thenReturn("Sergent");
 
@@ -81,7 +81,7 @@ public class PromotionEventHandlerReconTest
     @Test
     public void promoteSousLieutenant () throws PWCGException
     {     
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(110);
         Mockito.when(crewMember.getRank()).thenReturn("Sous Lieutenant");
 
@@ -93,7 +93,7 @@ public class PromotionEventHandlerReconTest
     @Test
     public void promoteCapitaine () throws PWCGException
     {     
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(150);
         Mockito.when(crewMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(crewMember.isPlayer()).thenReturn(true);
@@ -107,7 +107,7 @@ public class PromotionEventHandlerReconTest
     @Test
     public void promoteCapitaineFailNotPlayer () throws PWCGException
     {     
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(150);
         Mockito.when(crewMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(crewMember.isPlayer()).thenReturn(false);
@@ -121,7 +121,7 @@ public class PromotionEventHandlerReconTest
     @Test
     public void promoteCapitaineFailNotEnoughMissions () throws PWCGException
     {     
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(109);
         Mockito.when(crewMember.getRank()).thenReturn("Lieutenant");
 

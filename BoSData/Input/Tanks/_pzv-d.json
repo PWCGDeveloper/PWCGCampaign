@@ -13,7 +13,7 @@
 	"cruisingSpeed": 15,
 	"goodness": 80,
 	"roleCategories": [
-		"ROLE_MAIN_BATTLE_TANK"
+		"MAIN_BATTLE_TANK"
 	],
 	"introduction": "19430601",
 	"endProduction": "19450601",

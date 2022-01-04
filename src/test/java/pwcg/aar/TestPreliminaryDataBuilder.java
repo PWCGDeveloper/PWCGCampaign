@@ -49,7 +49,7 @@ public class TestPreliminaryDataBuilder
     {
         CrewMembers squadronMembersInMission = new CrewMembers();
         
-        CrewMember player = campaign.getPersonnelManager().getFlyingPlayers().getCrewMemberList().get(0);
+        CrewMember player = campaign.getPersonnelManager().getPlayersInMission().getCrewMemberList().get(0);
         squadronMembersInMission.addToCrewMemberCollection(player);
 
         for (Company squadron : squadronsInMission)

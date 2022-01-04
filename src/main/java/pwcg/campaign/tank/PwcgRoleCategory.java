@@ -10,10 +10,10 @@ public enum PwcgRoleCategory
     BALLOON("Balloon"),
     GROUND_UNIT("Ground Unit"),
     
-    TANK("Tank Unit"),
+    MAIN_BATTLE_TANK("Tank Unit"),
     TANK_DESTROYER("Tank Destroyer Unit"),
-    SPG("Self Propelled Gun Unit"),
-    AAA("Self Propelled AAA Unit"),
+    SELF_PROPELLED_GUN("Self Propelled Gun Unit"),
+    SELF_PROPELLED_AAA("Self Propelled AAA Unit"),
 
     OTHER("other");
 

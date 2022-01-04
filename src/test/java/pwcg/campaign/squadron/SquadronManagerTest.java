@@ -46,7 +46,7 @@ public class SquadronManagerTest
     public void getActiveSquadronsTest() throws PWCGException
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadrons = squadronManager.getActiveSquadrons(campaign.getDate());
+        List<Company> squadrons = squadronManager.getActiveCompanies(campaign.getDate());
         
         boolean foundJG52 = false;
         boolean foundStg2 = false;
@@ -82,7 +82,7 @@ public class SquadronManagerTest
     public void getActiveSquadronsForSideTest() throws PWCGException
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadrons = squadronManager.getActiveSquadronsForSide(campaign.getDate(), Side.AXIS);
+        List<Company> squadrons = squadronManager.getActiveCompaniesForSide(campaign.getDate(), Side.AXIS);
         
         boolean foundJG52 = false;
         boolean foundStg2 = false;
@@ -130,7 +130,7 @@ public class SquadronManagerTest
         }
         
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadrons = squadronManager.getViableSquadrons(campaign);
+        List<Company> squadrons = squadronManager.getViableCompanies(campaign);
         
         boolean foundJG52 = false;
         boolean foundStg2 = false;

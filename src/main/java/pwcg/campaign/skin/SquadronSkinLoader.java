@@ -23,7 +23,7 @@ public class SquadronSkinLoader
     public void loadSquadronSkins() throws PWCGException
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        for (Company squadron : squadronManager.getAllSquadrons())
+        for (Company squadron : squadronManager.getAllCompanies())
         {
             registerSquadronSkins(squadron);
         }

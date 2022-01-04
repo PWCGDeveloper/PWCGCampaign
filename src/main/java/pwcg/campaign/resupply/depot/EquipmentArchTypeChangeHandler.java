@@ -38,7 +38,7 @@ public class EquipmentArchTypeChangeHandler
     private void removeOutdatedArchTypes() throws PWCGException
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        for (Company squadron : squadronManager.getActiveSquadrons(campaign.getDate()))
+        for (Company squadron : squadronManager.getActiveCompanies(campaign.getDate()))
         {
             Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId());
             if (squadronEquipment != null)

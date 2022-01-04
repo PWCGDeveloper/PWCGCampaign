@@ -39,7 +39,7 @@ public class SquadronPlaneFinder
     
     private void findPlane(String planeId, Date startDate, Date endDate) throws PWCGException  
     {       
-        List<Company> allSq =  PWCGContext.getInstance().getCompanyManager().getAllSquadrons();
+        List<Company> allSq =  PWCGContext.getInstance().getCompanyManager().getAllCompanies();
         PWCGLogger.log(LogLevel.DEBUG, "TankType Id: " + planeId);
         for (Company company : allSq)
         {
@@ -64,7 +64,7 @@ public class SquadronPlaneFinder
     
     private void printPlanes() throws PWCGException  
     {       
-        List<Company> allSq =  PWCGContext.getInstance().getCompanyManager().getAllSquadrons();
+        List<Company> allSq =  PWCGContext.getInstance().getCompanyManager().getAllCompanies();
         TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
         for (Company company : allSq)
         {

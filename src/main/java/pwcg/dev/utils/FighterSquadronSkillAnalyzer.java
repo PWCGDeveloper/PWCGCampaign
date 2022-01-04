@@ -32,7 +32,7 @@ public class FighterSquadronSkillAnalyzer
 	
 	private void findPlane(Date startDate) throws PWCGException  
 	{		
-		List<Company> allSq =  PWCGContext.getInstance().getCompanyManager().getAllSquadrons();
+		List<Company> allSq =  PWCGContext.getInstance().getCompanyManager().getAllCompanies();
 		int totalSkill = 0;
 		int totalFighterSquads = 0;
 		for (Company company : allSq)

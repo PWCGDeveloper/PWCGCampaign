@@ -241,16 +241,16 @@ public class Campaign
         return campaignActive.isCampaignActive();
     }
 
-    public boolean isCampaignCanFly() throws PWCGException
+    public boolean isCampaignCanOperate() throws PWCGException
     {
-        if (personnelManager.getFlyingPlayers().getCrewMemberList().size() > 0)
+        if (personnelManager.getPlayersInMission().getCrewMemberList().size() > 0)
         {
             return true;
         }
         return false;
     }
 
-    public List<Company> determinePlayerSquadrons() throws PWCGException
+    public List<Company> determinePlayerCompanies() throws PWCGException
     {
         List<Company> playerSquadrons = new ArrayList<>();
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();

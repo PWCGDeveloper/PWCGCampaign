@@ -53,7 +53,7 @@ public class EquipmentReplacementWeightNeedTest
     {
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveCompaniesForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
         EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);
@@ -86,7 +86,7 @@ public class EquipmentReplacementWeightNeedTest
     {
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10101);
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveCompaniesForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
         EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);
@@ -111,7 +111,7 @@ public class EquipmentReplacementWeightNeedTest
     {
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20202);
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
+        List<Company> squadronsForService = squadronManager.getActiveCompaniesForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
         EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);

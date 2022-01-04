@@ -37,7 +37,7 @@ public class EquipmentUpgradeHandler
     private void upgradePlayerSquadrons(ArmedService armedService) throws PWCGException
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        for (Company squadron : squadronManager.getActiveSquadronsForService(campaign.getDate(), armedService))
+        for (Company squadron : squadronManager.getActiveCompaniesForService(campaign.getDate(), armedService))
         {
             if (Company.isPlayerSquadron(campaign, squadron.getCompanyId()))
             {
@@ -49,7 +49,7 @@ public class EquipmentUpgradeHandler
     private void upgradeAiSquadrons(ArmedService armedService) throws PWCGException
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        for (Company squadron : squadronManager.getActiveSquadronsForService(campaign.getDate(), armedService))
+        for (Company squadron : squadronManager.getActiveCompaniesForService(campaign.getDate(), armedService))
         {
             upgradeEquipment(squadron);
         }

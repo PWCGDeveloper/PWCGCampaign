@@ -392,7 +392,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		cbSquadron.removeAllItems();
 		CompanyManager squadManager = PWCGContext.getInstance().getCompanyManager();
 				
-		List<Company> squadronList = squadManager.getPlayerFlyableSquadronsByService(service, campaign.getDate());
+		List<Company> squadronList = squadManager.getPlayerCompaniesByService(service, campaign.getDate());
 		
         String roleDesc = (String)cbRole.getSelectedItem();
         PwcgRole role = PwcgRole.getRoleFromDescription(roleDesc);

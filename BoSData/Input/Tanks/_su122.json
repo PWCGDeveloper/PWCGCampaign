@@ -13,7 +13,7 @@
 	"cruisingSpeed": 13,
 	"goodness": 50,
 	"roleCategories": [
-		"ROLE_SELF_PROPELLED_GUN"
+		"SELF_PROPELLED_GUN"
 	],
 	"introduction": "19420601",
 	"endProduction": "19450601",

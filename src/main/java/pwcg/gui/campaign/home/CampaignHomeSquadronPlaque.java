@@ -85,7 +85,7 @@ public class CampaignHomeSquadronPlaque extends JPanel
         TankType aircraftType = squadron.determineBestPlane(campaign.getDate());
         if (aircraftType != null)
         {
-            String aircraftString = spacing + InternationalizationManager.getTranslation("Flying the");
+            String aircraftString = spacing + InternationalizationManager.getTranslation("Operating the");
             aircraftString += " " + aircraftType.getDisplayName();
             JLabel lAircraft = PWCGLabelFactory.makeTransparentLabel(aircraftString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
 

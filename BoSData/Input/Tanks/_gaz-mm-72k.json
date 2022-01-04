@@ -13,7 +13,7 @@
 	"cruisingSpeed": 10,
 	"goodness": 40,
 	"roleCategories": [
-		"ROLE_SELF_PROPELLED_AAA"
+		"SELF_PROPELLED_AAA"
 	],
 	"introduction": "19410601",
 	"endProduction": "19450601",

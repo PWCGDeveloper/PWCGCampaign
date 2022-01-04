@@ -1,5 +1,5 @@
 {
-	"type": _sdkfz184",
+	"type": "_sdkfz184",
 	"archType": "elefant",
 	"side": "AXIS",
 	"primaryUsedBy": [
@@ -13,7 +13,7 @@
 	"cruisingSpeed": 9,
 	"goodness": 50,
 	"roleCategories": [
-		"ROLE_TANK_DESTROYER"
+		"TANK_DESTROYER"
 	],
 	"introduction": "19430601",
 	"endProduction": "19450601",

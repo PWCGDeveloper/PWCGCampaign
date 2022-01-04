@@ -182,7 +182,7 @@ public class AirfieldManager
     {
         List<Airfield> airfieldsFiltered = new ArrayList<>();
         
-        List<Company> activeSquadrons = PWCGContext.getInstance().getCompanyManager().getActiveSquadronsForCurrentMap(date);
+        List<Company> activeSquadrons = PWCGContext.getInstance().getCompanyManager().getActiveCompaniesForCurrentMap(date);
         for (Company squadron : activeSquadrons)
         {
             Airfield squadronAirfield = squadron.determineCurrentAirfieldCurrentMap(date);

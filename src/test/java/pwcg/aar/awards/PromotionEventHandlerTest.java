@@ -55,7 +55,7 @@ public class PromotionEventHandlerTest
     @Test
     public void promoteCorporalToSergentRecon () throws PWCGException
     {     
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(30);
         Mockito.when(crewMember.getRank()).thenReturn("Corporal");
         Mockito.when(crewMember.determineSquadron()).thenReturn(squadron);
@@ -72,7 +72,7 @@ public class PromotionEventHandlerTest
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(1, campaign.getDate());
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
 
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(20);
         Mockito.when(crewMember.getRank()).thenReturn("Corporal");
         Mockito.when(crewMember.determineSquadron()).thenReturn(squadron);
@@ -86,7 +86,7 @@ public class PromotionEventHandlerTest
     @Test
     public void promoteCorporalToSergentFailedDueToDifferentRole () throws PWCGException
     {     
-        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(crewMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(crewMember.getBattlesFought()).thenReturn(10);
         Mockito.when(crewMember.getRank()).thenReturn("Corporal");
         Mockito.when(crewMember.determineSquadron()).thenReturn(squadron);

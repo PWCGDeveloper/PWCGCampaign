@@ -61,7 +61,7 @@ public class OpposingSquadronChooser
 
     private List<Company> getViableOpposingSquadrons() throws PWCGException
     {        
-        List<Company> viableOpposingSquads = PWCGContext.getInstance().getCompanyManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, opposingRoles, opposingSide);
+        List<Company> viableOpposingSquads = PWCGContext.getInstance().getCompanyManager().getViableAiCompaniesForCurrentMapAndSideAndRole(campaign, opposingRoles, opposingSide);
         return viableOpposingSquads;
     }
 }

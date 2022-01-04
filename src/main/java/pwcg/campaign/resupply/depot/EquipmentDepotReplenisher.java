@@ -44,7 +44,7 @@ public class EquipmentDepotReplenisher
     private List<Company> getSquadronsForService(ArmedService service) throws PWCGException 
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        return squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
+        return squadronManager.getActiveCompaniesForService(campaign.getDate(), service);
     }
 
     private void addReplacementPlanesForService(

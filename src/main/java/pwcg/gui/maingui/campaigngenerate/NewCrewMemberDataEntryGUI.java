@@ -377,7 +377,7 @@ public class NewCrewMemberDataEntryGUI extends JPanel implements ActionListener
         
         Date date = campaign.getDate();
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsForService = squadronManager.getPlayerFlyableSquadronsByService(parent.getNewCrewMemberGeneratorDO().getService(), date);
+        List<Company> squadronsForService = squadronManager.getPlayerCompaniesByService(parent.getNewCrewMemberGeneratorDO().getService(), date);
         
         for (Company squadron : squadronsForService)
         {            

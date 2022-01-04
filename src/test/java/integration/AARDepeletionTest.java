@@ -43,7 +43,7 @@ public class AARDepeletionTest
             aarCoordinator.reset(campaign);
             aarCoordinator.submitLeave(campaign, 1);
             int numDepeletedSquadrons = 0;
-            for (Company squadron : PWCGContext.getInstance().getCompanyManager().getActiveSquadrons(campaign.getDate()))
+            for (Company squadron : PWCGContext.getInstance().getCompanyManager().getActiveCompanies(campaign.getDate()))
             {
                 if (!CompanyViability.isCompanyViable(squadron, campaign))
                 {

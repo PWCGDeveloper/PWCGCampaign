@@ -28,7 +28,7 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PwcgBorderFactory;
 
-public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
+public class CampaignIntelligenceCompanyDetailsPanel extends JPanel
 {
     private static final long serialVersionUID = 1L;
 
@@ -37,7 +37,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
     private JTextArea squadronIntelPersonnelText;
     private JTextArea squadronIntelEquipmentText;
 
-    public CampaignIntelligenceSquadronDetailsPanel(Campaign campaign)
+    public CampaignIntelligenceCompanyDetailsPanel(Campaign campaign)
     {
         this.campaign = campaign;
     }

@@ -59,7 +59,7 @@ public class MissionLogEventsBuilder
 
     private void makeCrewMembersForVictories() throws PWCGException
     {
-        CrewMember player = campaign.getPersonnelManager().getFlyingPlayers().getCrewMemberList().get(0);
+        CrewMember player = campaign.getPersonnelManager().getPlayersInMission().getCrewMemberList().get(0);
         for (CrewMember crewMember : preliminaryData.getCampaignMembersInMission().getCrewMemberCollection().values())
         {
             if (crewMember.getCompanyId() != player.getCompanyId())
@@ -144,7 +144,7 @@ public class MissionLogEventsBuilder
     {
         Coordinate crashLocation = new Coordinate(100000, 0, 100000);
 
-        CrewMember player = campaign.getPersonnelManager().getFlyingPlayers().getCrewMemberList().get(0);
+        CrewMember player = campaign.getPersonnelManager().getPlayersInMission().getCrewMemberList().get(0);
         String playerPlaneId = serialNumberToPlaneId.get(player.getSerialNumber());
         IAType12 playerPlane = logEventData.getVehicle(playerPlaneId);
 

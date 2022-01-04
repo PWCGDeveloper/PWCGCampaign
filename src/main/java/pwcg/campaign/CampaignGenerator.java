@@ -49,7 +49,7 @@ public class CampaignGenerator
 
     private void staffCompanies() throws PWCGException
     {
-        List<Company> activeSquadronsOnCampaignStartDate = PWCGContext.getInstance().getCompanyManager().getActiveSquadrons(generatorModel.getCampaignDate());
+        List<Company> activeSquadronsOnCampaignStartDate = PWCGContext.getInstance().getCompanyManager().getActiveCompanies(generatorModel.getCampaignDate());
         for (Company company : activeSquadronsOnCampaignStartDate)
         {
             CampaignCompanyGenerator companyGenerator = new CampaignCompanyGenerator(campaign, company);

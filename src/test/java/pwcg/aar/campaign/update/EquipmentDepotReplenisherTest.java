@@ -64,7 +64,7 @@ public class EquipmentDepotReplenisherTest
     public void testArchTypesInProductionForServiceLife() throws PWCGException
     {
         CompanyManager squadronmanager = PWCGContext.getInstance().getCompanyManager();
-        for (Company squadron : squadronmanager.getAllSquadrons())
+        for (Company squadron : squadronmanager.getAllCompanies())
         {
             for (CompanyTankAssignment planeAssignment : squadron.getPlaneAssignments())
             {

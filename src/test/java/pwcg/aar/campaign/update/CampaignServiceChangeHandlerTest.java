@@ -32,7 +32,7 @@ public class CampaignServiceChangeHandlerTest
     public void testRafTransition() throws PWCGException 
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
-        ArmedService service = campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate());
+        ArmedService service = campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate());
         ICountry country = service.getCountry();
         CompanyPersonnel personnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.RFC_2_PROFILE.getSquadronId());
 
@@ -50,7 +50,7 @@ public class CampaignServiceChangeHandlerTest
         ServiceChangeHandler serviceChangeHandler = new ServiceChangeHandler(campaign);
         serviceChangeHandler.handleChangeOfService(DateUtils.getRAFDate());
                 
-        service = campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(DateUtils.getRAFDate());
+        service = campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(DateUtils.getRAFDate());
         Assertions.assertTrue (service.getCountry().getCountry() == Country.BRITAIN);
         Assertions.assertTrue (service.getName().equals(FCServiceManager.RAF_NAME));
 

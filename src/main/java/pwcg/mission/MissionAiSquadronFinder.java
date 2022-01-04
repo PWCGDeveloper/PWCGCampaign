@@ -47,8 +47,8 @@ public class MissionAiSquadronFinder
 
     private void findSquadronsForTacticalMission() throws PWCGException
     {
-        alliedSquads = PWCGContext.getInstance().getCompanyManager().getViableAiSquadronsForCurrentMapAndSide(campaign, Side.ALLIED);
-        axisSquads = PWCGContext.getInstance().getCompanyManager().getViableAiSquadronsForCurrentMapAndSide(campaign, Side.AXIS);
+        alliedSquads = PWCGContext.getInstance().getCompanyManager().getViableAiCompaniesForCurrentMapAndSide(campaign, Side.ALLIED);
+        axisSquads = PWCGContext.getInstance().getCompanyManager().getViableAiCompaniesForCurrentMapAndSide(campaign, Side.AXIS);
     }
 
     private void findSquadronsForNightTacticalMission() throws PWCGException
@@ -59,8 +59,8 @@ public class MissionAiSquadronFinder
         acceptableRoles.add(PwcgRole.ROLE_ATTACK);
         acceptableRoles.add(PwcgRole.ROLE_TRANSPORT);
 
-        List<Company> otherAlliedSquads = PWCGContext.getInstance().getCompanyManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
-        List<Company> otherAxisSquads = PWCGContext.getInstance().getCompanyManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
+        List<Company> otherAlliedSquads = PWCGContext.getInstance().getCompanyManager().getViableAiCompaniesForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
+        List<Company> otherAxisSquads = PWCGContext.getInstance().getCompanyManager().getViableAiCompaniesForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
 
         alliedSquads.addAll(otherAlliedSquads);
         axisSquads.addAll(otherAxisSquads);

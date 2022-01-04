@@ -1,0 +1,56 @@
+{
+	"country": "GERMANY",
+	"squadronId": 201911003,
+	"name": "11 Flak Regiment, 3rd Company",
+	"fileName": "11 Flak Regiment Co 3.json",
+	"skill": 60,
+	"unitIdCode": "",
+	"subUnitIdCode": "",
+	"tankAssignments": [
+		{
+			"archType": "sdkfz10",
+			"introduction": "19400101",
+			"withdrawal": "19450601"
+		}
+	],
+	"bases": {
+		"19440901": "Gilze-Rijen",
+		"19440925": "Mill",
+		"19440928": "Arnhem Deelen",
+		"19441101": "Krefeld",
+		"19441220": "Dusseldorf-Lohausen",
+		"19441225": "Koln-Butzweilerhof",
+		"19441229": "Koln-Butzweilerhof",
+		"19450207": "Krefeld",
+		"19450310": "Kirchhellen",
+		"19450404": "Gelnhausen"
+	},
+	"skins": [],
+	"serviceId": 20111,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_SELF_PROPELLED_AAA",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19400101",
+				"endDate": "19450601",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		
+	}
+}

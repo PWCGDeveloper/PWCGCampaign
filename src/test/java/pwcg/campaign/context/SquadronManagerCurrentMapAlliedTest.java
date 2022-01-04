@@ -53,7 +53,7 @@ public class SquadronManagerCurrentMapAlliedTest
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
 
-        List<Company> squadrons = squadronManager.getViableAiSquadronsForCurrentMapAndSide(campaign, Side.ALLIED);
+        List<Company> squadrons = squadronManager.getViableAiCompaniesForCurrentMapAndSide(campaign, Side.ALLIED);
         
         boolean foundJG52 = false;
         boolean foundStg2 = false;
@@ -118,7 +118,7 @@ public class SquadronManagerCurrentMapAlliedTest
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
 
         List<PwcgRole> roles = new ArrayList<PwcgRole>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_FIGHTER, PwcgRole.ROLE_ATTACK));
-        List<Company> squadrons = squadronManager.getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, roles, Side.ALLIED);
+        List<Company> squadrons = squadronManager.getViableAiCompaniesForCurrentMapAndSideAndRole(campaign, roles, Side.ALLIED);
         
         boolean foundJG52 = false;
         boolean foundStg2 = false;
@@ -183,7 +183,7 @@ public class SquadronManagerCurrentMapAlliedTest
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
 
         List<PwcgRole> roles = new ArrayList<PwcgRole>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_FIGHTER));
-        List<Company> squadrons = squadronManager.getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, roles, Side.AXIS);
+        List<Company> squadrons = squadronManager.getViableAiCompaniesForCurrentMapAndSideAndRole(campaign, roles, Side.AXIS);
         
         boolean foundJG52 = false;
         boolean foundStg2 = false;

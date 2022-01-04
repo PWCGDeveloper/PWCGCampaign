@@ -42,7 +42,7 @@ public class AirfieldStaticPlanePlacer
         IStaticPlane selectedStaticPlane = null;
         
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        Company squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, date);
+        Company squadronForField = squadronManager.getAnyActiveCompanyForAirfield(airfield, date);
         if (squadronForField == null)
         {
             return null;

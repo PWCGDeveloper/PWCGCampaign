@@ -63,7 +63,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             AAROutOfMissionStepper stepper = AARFactory.makeAAROutOfMissionStepper(campaign, aarContext);
             stepper.oneStep();
 
-	    	int viableSquadrons = PWCGContext.getInstance().getCompanyManager().getViableSquadrons(campaign).size();
+	    	int viableSquadrons = PWCGContext.getInstance().getCompanyManager().getViableCompanies(campaign).size();
             int airVictories = aarContext.getPersonnelAcheivements().getTotalAirToAirVictories();
             int groundVictories = aarContext.getPersonnelAcheivements().getTotalAirToGroundVictories();
 	    	int losses = aarContext.getPersonnelLosses().getSquadMembersLostAndInjured().size();

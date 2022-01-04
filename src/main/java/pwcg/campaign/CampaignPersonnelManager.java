@@ -92,7 +92,7 @@ public class CampaignPersonnelManager
         return allPlayers;
     }
 
-    public CrewMembers getFlyingPlayers() throws PWCGException
+    public CrewMembers getPlayersInMission() throws PWCGException
     {
         return getPlayersForStatus(CrewMemberStatus.STATUS_ACTIVE);
     }

@@ -1,8 +1,8 @@
 {
 	"country": "RUSSIA",
-	"squadronId": 101147001,
-	"name": "147th Tank Division, 1st Company",
-	"fileName": "147th Tank Division 1 Co.json",
+	"squadronId": 101214001,
+	"name": "214th AntiAircraft Regiment, 1st Company",
+	"fileName": "214th AntiAircraft Regiment 1 Co.json",
 	"skill": 30,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
@@ -54,7 +54,7 @@
 				"startDate": "19400101",
 				"weightedRoles": [
 					{
-						"role": "ROLE_MAIN_BATTLE_TANK",
+						"role": "ROLE_SELF_PROPELLED_AAA",
 						"weight": 100
 					}
 				]

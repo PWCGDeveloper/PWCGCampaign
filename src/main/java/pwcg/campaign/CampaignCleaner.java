@@ -45,7 +45,7 @@ public class CampaignCleaner
     private void removeUnwantedSquadronFiles() throws PWCGException
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        List<Company> squadronsToStaff = squadronManager.getActiveSquadrons(campaign.getDate());
+        List<Company> squadronsToStaff = squadronManager.getActiveCompanies(campaign.getDate());
         for (Company squadron : squadronsToStaff)
         {
             if (!CompanyViability.isCompanyActive(squadron, campaign.getDate()))

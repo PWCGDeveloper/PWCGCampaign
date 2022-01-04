@@ -84,7 +84,7 @@ public class CompanyManager
         return squadReturn;
     }
 
-    public List<Company> getAllSquadrons()
+    public List<Company> getAllCompanies()
     {
         ArrayList<Company> list = new ArrayList<Company>();
         list.addAll(companyMap.values());
@@ -92,10 +92,10 @@ public class CompanyManager
         
     }
 
-    public List<Company> getActiveSquadrons(Date date) throws PWCGException 
+    public List<Company> getActiveCompanies(Date date) throws PWCGException 
     {
         ArrayList<Company> returnSquadList = new ArrayList<Company>();
-        for (Company company : getAllSquadrons())
+        for (Company company : getAllCompanies())
         {
             if (CompanyViability.isCompanyActive(company, date))
             {
@@ -106,28 +106,28 @@ public class CompanyManager
         return returnSquadList;
     }
 
-    public List<Company> getActiveSquadronsForCurrentMap(Date date) throws PWCGException 
+    public List<Company> getActiveCompaniesForCurrentMap(Date date) throws PWCGException 
     {
-        List<Company> activeSquadronsForCurrentMap = CompanyReducer.reduceToCurrentMap(getActiveSquadrons(date), date);
+        List<Company> activeSquadronsForCurrentMap = CompanyReducer.reduceToCurrentMap(getActiveCompanies(date), date);
         return activeSquadronsForCurrentMap;
         
     }
 
-    public List<Company> getActiveSquadronsForSide(Date date, Side side) throws PWCGException 
+    public List<Company> getActiveCompaniesForSide(Date date, Side side) throws PWCGException 
     {
-        List<Company> activeSquadronsForSide = CompanyReducer.reduceToSide(getActiveSquadrons(date), side);
+        List<Company> activeSquadronsForSide = CompanyReducer.reduceToSide(getActiveCompanies(date), side);
         return activeSquadronsForSide;
     }
 
-    public List<Company> getActiveSquadronsForService(Date date, ArmedService service) throws PWCGException 
+    public List<Company> getActiveCompaniesForService(Date date, ArmedService service) throws PWCGException 
     {
-        List<Company> activeSquadronsForService = CompanyReducer.reduceToService( getActiveSquadrons(date), date, service);
+        List<Company> activeSquadronsForService = CompanyReducer.reduceToService( getActiveCompanies(date), date, service);
         return activeSquadronsForService;
     }
 
-    public List<Company> getActiveSquadronsBySideAndProximity(Side side, Date date, Coordinate referencePosition, double radius) throws PWCGException
+    public List<Company> getActiveCompaniesBySideAndProximity(Side side, Date date, Coordinate referencePosition, double radius) throws PWCGException
     {
-        List<Company> activeSquadronsForSide = CompanyReducer.reduceToSide( getActiveSquadrons(date), side);
+        List<Company> activeSquadronsForSide = CompanyReducer.reduceToSide( getActiveCompanies(date), side);
         List<Company> activeSquadronsForSideInRange = new ArrayList<>();
         while (activeSquadronsForSideInRange.isEmpty())
         {
@@ -141,9 +141,9 @@ public class CompanyManager
         return activeSquadronsForSideInRange;        
     }
 
-	public List<Company> getPlayerFlyableSquadronsByService(ArmedService service, Date date) throws PWCGException 
+	public List<Company> getPlayerCompaniesByService(ArmedService service, Date date) throws PWCGException 
 	{
-		List<Company> squadList = getActiveSquadronsForService(date, service);
+		List<Company> squadList = getActiveCompaniesForService(date, service);
         List<Company> list = new ArrayList<Company>();
 	        
 		for (Company company : squadList)
@@ -154,7 +154,7 @@ public class CompanyManager
 		return list;
 	}
 
-    public Company getAnyActiveSquadronForAirfield(Airfield airfield, Date date) throws PWCGException 
+    public Company getAnyActiveCompanyForAirfield(Airfield airfield, Date date) throws PWCGException 
     {
         for (Company company : companyMap.values())
         {
@@ -180,10 +180,10 @@ public class CompanyManager
         return null;
     }
 
-    public ArrayList<Company> getViableSquadrons(Campaign campaign) throws PWCGException 
+    public ArrayList<Company> getViableCompanies(Campaign campaign) throws PWCGException 
     {
         ArrayList<Company> returnSquadList = new ArrayList<Company>();
-        for (Company company : getAllSquadrons())
+        for (Company company : getAllCompanies())
         {
             if (CompanyViability.isCompanyViable(company, campaign))
             {
@@ -194,26 +194,26 @@ public class CompanyManager
          return returnSquadList;
     }
 
-    public List<Company> getViableAiSquadronsForCurrentMapAndSide(Campaign campaign, Side side) throws PWCGException 
+    public List<Company> getViableAiCompaniesForCurrentMapAndSide(Campaign campaign, Side side) throws PWCGException 
     {
-        List<Company> viableSquadronsForSide = CompanyReducer.reduceToSide(getViableSquadrons(campaign), side);
+        List<Company> viableSquadronsForSide = CompanyReducer.reduceToSide(getViableCompanies(campaign), side);
         List<Company> selectedSquadronsNoPlayer = CompanyReducer.reduceToAIOnly(viableSquadronsForSide, campaign);
         List<Company> selectedSquadronsForCurrentMap = CompanyReducer.reduceToCurrentMap(selectedSquadronsNoPlayer, campaign.getDate());
         
-        return eliminateAnomalySquadrons(campaign, selectedSquadronsForCurrentMap);
+        return eliminateAnomalyCompanies(campaign, selectedSquadronsForCurrentMap);
     }
 
-    public List<Company> getViableAiSquadronsForCurrentMapAndSideAndRole(Campaign campaign, List <PwcgRole> acceptableRoles, Side side) throws PWCGException 
+    public List<Company> getViableAiCompaniesForCurrentMapAndSideAndRole(Campaign campaign, List <PwcgRole> acceptableRoles, Side side) throws PWCGException 
     {
-        List<Company> viableSquadronsForSide = CompanyReducer.reduceToSide(getViableSquadrons(campaign), side);
+        List<Company> viableSquadronsForSide = CompanyReducer.reduceToSide(getViableCompanies(campaign), side);
         List<Company> selectedSquadronsByRole = CompanyReducer.reduceToRole(viableSquadronsForSide, acceptableRoles, campaign.getDate());
         List<Company> selectedSquadronsNoPlayer = CompanyReducer.reduceToAIOnly(selectedSquadronsByRole, campaign);
         List<Company> selectedSquadronsForCurrentMap = CompanyReducer.reduceToCurrentMap(selectedSquadronsNoPlayer, campaign.getDate());
         
-        return eliminateAnomalySquadrons(campaign, selectedSquadronsForCurrentMap);
+        return eliminateAnomalyCompanies(campaign, selectedSquadronsForCurrentMap);
     }
 
-    private List<Company> eliminateAnomalySquadrons(Campaign campaign, List<Company> selectedSquadronsForCurrentMap) throws PWCGException
+    private List<Company> eliminateAnomalyCompanies(Campaign campaign, List<Company> selectedSquadronsForCurrentMap) throws PWCGException
     {
         if (campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.RemoveNonHistoricalSquadronsKey) == 1)
         {
@@ -231,7 +231,7 @@ public class CompanyManager
         Airfield airfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().findClosestAirfield(position);
         if (airfield != null)
         {
-            Company company = getAnyActiveSquadronForAirfield(airfield, date);
+            Company company = getAnyActiveCompanyForAirfield(airfield, date);
             return company;
         }
 

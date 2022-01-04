@@ -26,7 +26,7 @@ public class CampaignUpdateNewCompanyEquipper
     public List<Integer> equipNewSquadrons() throws PWCGException
     {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        for (Company squadron : squadronManager.getActiveSquadrons(campaign.getDate()))
+        for (Company squadron : squadronManager.getActiveCompanies(campaign.getDate()))
         {
             if (campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId()) == null)
             {

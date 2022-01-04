@@ -87,7 +87,7 @@ public class MissionAirfieldBuilder
         }
         
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        Company squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, campaign.getDate());
+        Company squadronForField = squadronManager.getAnyActiveCompanyForAirfield(airfield, campaign.getDate());
         if (squadronForField != null)
         {
             return squadronForField.getCountry();

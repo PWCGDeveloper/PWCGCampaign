@@ -348,7 +348,7 @@ public class Airfield extends FixedPosition implements Cloneable
     @Override
     public ICountry getCountry(Date date) throws PWCGException {
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        Company squadronForField = squadronManager.getAnyActiveSquadronForAirfield(this, date);
+        Company squadronForField = squadronManager.getAnyActiveCompanyForAirfield(this, date);
 
         if (squadronForField != null)
         {

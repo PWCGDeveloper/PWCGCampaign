@@ -131,7 +131,7 @@ public class InfoMapPanel extends MapPanelBase
             if (whatToDisplay[DISPLAY_FIGHTER])
             {
                 CompanyManager squadronManager =  PWCGContext.getInstance().getCompanyManager();
-                List<Company> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
+                List<Company> allSquadrons = squadronManager.getActiveCompaniesForCurrentMap(parent.getMapDate());
                 for (Company squadron : allSquadrons)
                 {
                     PwcgRoleCategory squadronPrimaryRole = squadron.determineSquadronPrimaryRoleCategory(parent.getMapDate());
@@ -145,7 +145,7 @@ public class InfoMapPanel extends MapPanelBase
             if (whatToDisplay[DISPLAY_BOMBER])
             {
                 CompanyManager squadronManager =  PWCGContext.getInstance().getCompanyManager();
-                List<Company> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
+                List<Company> allSquadrons = squadronManager.getActiveCompaniesForCurrentMap(parent.getMapDate());
                 for (Company squadron : allSquadrons)
                 {
                     PwcgRoleCategory squadronRole = squadron.determineSquadronPrimaryRoleCategory(parent.getMapDate());
@@ -160,7 +160,7 @@ public class InfoMapPanel extends MapPanelBase
             if (whatToDisplay[DISPLAY_ATTACK])
             {
                 CompanyManager squadronManager =  PWCGContext.getInstance().getCompanyManager();
-                List<Company> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
+                List<Company> allSquadrons = squadronManager.getActiveCompaniesForCurrentMap(parent.getMapDate());
                 for (Company squadron : allSquadrons)
                 {
                     PwcgRoleCategory squadronPrimaryRole = squadron.determineSquadronPrimaryRoleCategory(parent.getMapDate());
@@ -174,7 +174,7 @@ public class InfoMapPanel extends MapPanelBase
             if (whatToDisplay[DISPLAY_RECON])
             {
                 CompanyManager squadronManager =  PWCGContext.getInstance().getCompanyManager();
-                List<Company> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
+                List<Company> allSquadrons = squadronManager.getActiveCompaniesForCurrentMap(parent.getMapDate());
                 for (Company squadron : allSquadrons)
                 {
                     PwcgRoleCategory squadronPrimaryRole = squadron.determineSquadronPrimaryRoleCategory(parent.getMapDate());
@@ -413,7 +413,7 @@ public class InfoMapPanel extends MapPanelBase
         List <Company> selectedSquadrons = new ArrayList<Company>();
             
         CompanyManager squadronManager =  PWCGContext.getInstance().getCompanyManager();
-        List<Company> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
+        List<Company> allSquadrons = squadronManager.getActiveCompaniesForCurrentMap(parent.getMapDate());
                 
         for (Company squadron : allSquadrons)
         {

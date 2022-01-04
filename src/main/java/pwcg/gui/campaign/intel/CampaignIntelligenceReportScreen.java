@@ -26,7 +26,7 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
     private static final long serialVersionUID = 1L;
 
 	private Campaign campaign;
-	private CampaignIntelligenceSquadronDetailsPanel squadronDetailsRightPanel;
+	private CampaignIntelligenceCompanyDetailsPanel squadronDetailsRightPanel;
 	private Side side;
 	private JPanel contentPanel;
 	
@@ -102,14 +102,14 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 
     private JPanel makeCenterPanel() throws PWCGException  
     {
-        CampaignIntelligenceSquadronListPanel squadronSelectionCenterPanel = new CampaignIntelligenceSquadronListPanel(campaign, this,side);
+        CampaignIntelligenceCompanyListPanel squadronSelectionCenterPanel = new CampaignIntelligenceCompanyListPanel(campaign, this,side);
         squadronSelectionCenterPanel.makePanel();
         return squadronSelectionCenterPanel;
     }
 
     private JPanel makeRightPanel() throws PWCGException  
     {
-        squadronDetailsRightPanel = new CampaignIntelligenceSquadronDetailsPanel(campaign);
+        squadronDetailsRightPanel = new CampaignIntelligenceCompanyDetailsPanel(campaign);
         squadronDetailsRightPanel.makePanel();
         return squadronDetailsRightPanel;
     }

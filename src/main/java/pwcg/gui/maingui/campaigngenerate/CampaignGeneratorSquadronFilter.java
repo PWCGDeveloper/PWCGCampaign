@@ -26,7 +26,7 @@ public class CampaignGeneratorSquadronFilter
 	    try
 	    {
     		CompanyManager squadManager =  PWCGContext.getInstance().getCompanyManager();
-    		List<Company> squadronList = squadManager.getPlayerFlyableSquadronsByService(dateCorrectedService, campaignDate);
+    		List<Company> squadronList = squadManager.getPlayerCompaniesByService(dateCorrectedService, campaignDate);
             PWCGLogger.log(LogLevel.DEBUG, "makeSquadronChoices squadron list size: " + squadronList.size());
     		for (Company squadron : squadronList)
     		{

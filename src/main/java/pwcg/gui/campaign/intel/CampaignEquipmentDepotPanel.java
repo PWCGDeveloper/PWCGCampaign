@@ -63,11 +63,10 @@ public class CampaignEquipmentDepotPanel extends JPanel
         depoBodyPanel.setOpaque(false);
         depoPanel.add(depoBodyPanel, BorderLayout.CENTER);
 
-        createDepotForRole(PwcgRoleCategory.FIGHTER, depoBodyPanel);
-        createDepotForRole(PwcgRoleCategory.ATTACK, depoBodyPanel);
-        createDepotForRole(PwcgRoleCategory.RECON, depoBodyPanel);
-        createDepotForRole(PwcgRoleCategory.BOMBER, depoBodyPanel);
-        createDepotForRole(PwcgRoleCategory.TRANSPORT, depoBodyPanel);
+        createDepotForRole(PwcgRoleCategory.MAIN_BATTLE_TANK, depoBodyPanel);
+        createDepotForRole(PwcgRoleCategory.TANK_DESTROYER, depoBodyPanel);
+        createDepotForRole(PwcgRoleCategory.SELF_PROPELLED_GUN, depoBodyPanel);
+        createDepotForRole(PwcgRoleCategory.SELF_PROPELLED_AAA, depoBodyPanel);
         
         return depoPanel;
     }
