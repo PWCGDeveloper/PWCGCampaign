@@ -17,13 +17,13 @@ import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarat
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;

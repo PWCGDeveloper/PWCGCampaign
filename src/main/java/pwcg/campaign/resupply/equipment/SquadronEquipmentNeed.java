@@ -1,9 +1,9 @@
 package pwcg.campaign.resupply.equipment;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.resupply.ISquadronNeed;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.Equipment;
 import pwcg.core.exception.PWCGException;
 
 public class SquadronEquipmentNeed implements ISquadronNeed
@@ -21,18 +21,18 @@ public class SquadronEquipmentNeed implements ISquadronNeed
     @Override
     public void determineResupplyNeeded() throws PWCGException
     {
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());
-        int activeSquadronSize = equipment.getActiveEquippedPlanes().size();
-        int recentlyInactive = equipment.getRecentlyInactiveEquippedPlanes(campaign.getDate()).size();
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId());
+        int activeSquadronSize = equipment.getActiveEquippedTanks().size();
+        int recentlyInactive = equipment.getRecentlyInactiveEquippedTanks(campaign.getDate()).size();
       
-        planesNeeded = Company.SQUADRON_EQUIPMENT_SIZE - activeSquadronSize - recentlyInactive;
+        planesNeeded = Company.COMPANY_EQUIPMENT_SIZE - activeSquadronSize - recentlyInactive;
 
     }
 
     @Override
     public int getSquadronId()
     {
-        return squadron.getSquadronId();
+        return squadron.getCompanyId();
     }
 
     @Override

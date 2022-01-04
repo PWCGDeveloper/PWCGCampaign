@@ -1,8 +1,8 @@
 package pwcg.mission.data;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;

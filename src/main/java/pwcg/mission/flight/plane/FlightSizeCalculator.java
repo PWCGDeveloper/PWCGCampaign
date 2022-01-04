@@ -3,7 +3,7 @@ package pwcg.mission.flight.plane;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;

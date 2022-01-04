@@ -16,17 +16,17 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneArchType;
+import pwcg.campaign.plane.TankArchType;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.resupply.depot.EquipmentDepotReplenisher;
 import pwcg.campaign.resupply.depot.EquipmentReplacementUtils;
 import pwcg.campaign.resupply.depot.EquipmentUpgradeRecord;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.testutils.CampaignCache;
@@ -40,9 +40,9 @@ public class EquipmentDepotReplenisherTest
     private Campaign campaign;
 
     @Mock
-    EquippedPlane me109E7;
+    EquippedTank me109E7;
     @Mock
-    EquippedPlane me109K4;
+    EquippedTank me109K4;
 
     @BeforeAll
     public void setupSuite() throws PWCGException
@@ -63,14 +63,14 @@ public class EquipmentDepotReplenisherTest
     @Test
     public void testArchTypesInProductionForServiceLife() throws PWCGException
     {
-        SquadronManager squadronmanager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronmanager = PWCGContext.getInstance().getCompanyManager();
         for (Company squadron : squadronmanager.getAllSquadrons())
         {
-            for (SquadronPlaneAssignment planeAssignment : squadron.getPlaneAssignments())
+            for (CompanyTankAssignment planeAssignment : squadron.getPlaneAssignments())
             {
-                PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeAssignment.getArchType());
-                String selectedPlaneType = EquipmentReplacementUtils.getTypeForReplacement(planeAssignment.getSquadronWithdrawal(), planeArchType);
-                Assertions.assertTrue (selectedPlaneType.length() > 0);
+                TankArchType planeArchType = PWCGContext.getInstance().getTankTypeFactory().getTankArchType(planeAssignment.getArchType());
+                String selectedTankType = EquipmentReplacementUtils.getTypeForReplacement(planeAssignment.getCompanyWithdrawal(), planeArchType);
+                Assertions.assertTrue (selectedTankType.length() > 0);
             }
         }
     }
@@ -96,7 +96,7 @@ public class EquipmentDepotReplenisherTest
 
         int upgradeSerialNumber = upgradeRecord.getUpgrade().getSerialNumber();
 
-        EquippedPlane planeInDepot = equipmentDepot.getPlaneFromDepot(upgradeSerialNumber);
+        EquippedTank planeInDepot = equipmentDepot.getPlaneFromDepot(upgradeSerialNumber);
         Assertions.assertTrue (planeInDepot != null);
 
         planeInDepot = equipmentDepot.removeEquippedPlaneFromDepot(upgradeSerialNumber);

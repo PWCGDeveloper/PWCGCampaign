@@ -1,6 +1,6 @@
 package pwcg.mission.flight;
 
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.mission.Mission;
 
 public class FlightBuildInformation

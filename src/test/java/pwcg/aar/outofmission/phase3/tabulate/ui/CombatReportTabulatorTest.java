@@ -32,13 +32,13 @@ import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.aar.ui.events.model.CrewMemberStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -107,18 +107,18 @@ public class CombatReportTabulatorTest extends AARTestSetup
         boolean isNewsworthy = true;
         LogPlane logPlane = new LogPlane(AARContextEventSequence.getNextOutOfMissionEventSequenceNumber());
         logPlane.initializeFromOutOfMission(campaign, plane1, crewMember1);
-        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(campaign, logPlane, PlaneStatus.STATUS_DESTROYED, isNewsworthy);
+        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(campaign, logPlane, TankStatus.STATUS_DESTROYED, isNewsworthy);
 
         LogPlane logPlaneNotFromSquadron = new LogPlane(AARContextEventSequence.getNextOutOfMissionEventSequenceNumber());
         logPlaneNotFromSquadron.initializeFromOutOfMission(campaign, plane2, crewMember2);
-        PlaneStatusEvent planeStatusEventNotFromSquadron = new PlaneStatusEvent(campaign, logPlane, PlaneStatus.STATUS_DESTROYED, isNewsworthy);
+        PlaneStatusEvent planeStatusEventNotFromSquadron = new PlaneStatusEvent(campaign, logPlane, TankStatus.STATUS_DESTROYED, isNewsworthy);
 
         Map<Integer, PlaneStatusEvent> planesLost = new HashMap<>();
         planesLost.put(plane1.getSerialNumber(), planeStatusEvent);
         planesLost.put(plane2.getSerialNumber(), planeStatusEventNotFromSquadron);
         Mockito.when(planeStatusEventGenerator.createPlaneLossEvents(ArgumentMatchers.<AAREquipmentLosses>any())).thenReturn(planesLost);
 
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         AARCombatReportTabulator combatReportPanelEventTabulator = new AARCombatReportTabulator(campaign, squadron, aarContext);
         combatReportPanelEventTabulator.setCrewMemberStatusEventGenerator(crewMemberStatusEventGenerator);
         combatReportPanelEventTabulator.setPlaneStatusEventGenerator(planeStatusEventGenerator);

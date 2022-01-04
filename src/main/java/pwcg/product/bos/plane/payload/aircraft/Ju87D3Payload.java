@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
@@ -20,7 +20,7 @@ public class Ju87D3Payload extends PlanePayload
 {    
     private Date bk37IntroDate;
 
-    public Ju87D3Payload(PlaneType planeType, Date date)
+    public Ju87D3Payload(TankType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -60,7 +60,7 @@ public class Ju87D3Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Ju87D3Payload clone = new Ju87D3Payload(getPlaneType(), getDate());
+        Ju87D3Payload clone = new Ju87D3Payload(getTankType(), getDate());
         
         return super.copy(clone);
     }

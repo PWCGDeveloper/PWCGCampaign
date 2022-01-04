@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;

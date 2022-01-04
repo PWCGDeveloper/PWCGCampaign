@@ -5,13 +5,13 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.BridgeFinder;
 import pwcg.campaign.group.RailroadStationFinder;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.LocationAwayFromFrontFinder;

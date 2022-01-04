@@ -1,0 +1,21 @@
+{
+	"type": _sdkfz184",
+	"archType": "elefant",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "Sd.Kfz.184",
+	"script": "LuaScripts\\WorldObjects\\vehicles\\_sdkfz184.txt",
+	"model": "graphics\\vehicles\\_sdkfz184\\_sdkfz184.mgm",
+	"desc": "Sd.Kfz.184",
+	"cruisingSpeed": 9,
+	"goodness": 50,
+	"roleCategories": [
+		"ROLE_TANK_DESTROYER"
+	],
+	"introduction": "19430601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

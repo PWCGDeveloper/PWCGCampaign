@@ -4,12 +4,12 @@ import java.util.List;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneEquipmentFactory;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.Equipment;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankEquipmentFactory;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentDepotInitializer
@@ -26,7 +26,7 @@ public class EquipmentDepotInitializer
 
     public Equipment createReplacementPoolForService() throws PWCGException
     {
-        List<Company> activeSquadronsForService = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForService(campaign.getDate(), service);
+        List<Company> activeSquadronsForService = PWCGContext.getInstance().getCompanyManager().getActiveSquadronsForService(campaign.getDate(), service);
         for (Company squadron : activeSquadronsForService)
         {
             EquipmentWeightCalculator equipmentWeightCalculator = createPlaneCalculator(squadron);            
@@ -37,7 +37,7 @@ public class EquipmentDepotInitializer
 
     private EquipmentWeightCalculator createPlaneCalculator(Company squadron) throws PWCGException
     {
-        List<PlaneType> planeTypesForSquadron = squadron.determineCurrentAircraftList(campaign.getDate());
+        List<TankType> planeTypesForSquadron = squadron.determineCurrentAircraftList(campaign.getDate());
         EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         equipmentWeightCalculator.determinePlaneWeightsForPlanes(planeTypesForSquadron);
         return equipmentWeightCalculator;
@@ -53,8 +53,8 @@ public class EquipmentDepotInitializer
         
         for (int i = 0; i < numPlanes; ++i)
         {
-            String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
-            EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForDepot(campaign, planeTypeName);
+            String planeTypeName = equipmentWeightCalculator.getTankTypeFromWeight();
+            EquippedTank equippedPlane = TankEquipmentFactory.makePlaneForDepot(campaign, planeTypeName);
             equipment.addEPlaneToDepot(equippedPlane);
         }
     }

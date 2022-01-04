@@ -2,10 +2,10 @@ package pwcg.aar.campaign.update;
 
 import pwcg.aar.data.CampaignUpdateData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneStatus;
 import pwcg.campaign.resupply.equipment.EquipmentResupplyRecord;
+import pwcg.campaign.tank.Equipment;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankStatus;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentUpdater 
@@ -29,8 +29,8 @@ public class EquipmentUpdater
     {
         for (Integer planeSerialNumber : campaignUpdateData.getEquipmentLosses().getPlanesDestroyed().keySet())
         {
-            EquippedPlane equippedPlane = campaign.getEquipmentManager().getAnyPlaneWithPreference(planeSerialNumber);
-            equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
+            EquippedTank equippedPlane = campaign.getEquipmentManager().getAnyPlaneWithPreference(planeSerialNumber);
+            equippedPlane.setPlaneStatus(TankStatus.STATUS_DESTROYED);
             equippedPlane.setDateRemovedFromService(campaign.getDate());
         }
     }
@@ -40,10 +40,10 @@ public class EquipmentUpdater
         for (EquipmentResupplyRecord equipmentResupplyRecord : campaignUpdateData.getResupplyData().getEquipmentResupplyData().getEquipmentResupplied())
         {
             Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(equipmentResupplyRecord.getTransferTo());
-            EquippedPlane replacementPlane = equipmentResupplyRecord.getEquippedPlane();
+            EquippedTank replacementPlane = equipmentResupplyRecord.getEquippedPlane();
             replacementPlane.setSquadronId(equipmentResupplyRecord.getTransferTo());
-            replacementPlane.setPlaneStatus(PlaneStatus.STATUS_DEPLOYED);
-            equipment.addEquippedPlaneToSquadron(campaign, equipmentResupplyRecord.getTransferTo(), replacementPlane);
+            replacementPlane.setPlaneStatus(TankStatus.STATUS_DEPLOYED);
+            equipment.addEquippedTankToCompany(campaign, equipmentResupplyRecord.getTransferTo(), replacementPlane);
         }
     }
  }

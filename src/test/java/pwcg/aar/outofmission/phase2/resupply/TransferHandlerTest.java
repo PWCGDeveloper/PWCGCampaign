@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
@@ -23,7 +24,6 @@ import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
 import pwcg.campaign.resupply.personnel.TransferHandler;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.fc.country.FCServiceManager;
@@ -69,7 +69,7 @@ public class TransferHandlerTest
         CrewMembers allActiveCampaignMembers = CrewMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
         for (CrewMember crewMember : allActiveCampaignMembers.getCrewMemberList())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(crewMember.getCompanyId());
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(crewMember.getCompanyId());
             if (!crewMember.isPlayer() && squadron.getService() == armedService.getServiceId())
             {
                 Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
@@ -103,8 +103,8 @@ public class TransferHandlerTest
         CrewMembers allActiveCampaignMembers = CrewMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
         for (CrewMember crewMember : allActiveCampaignMembers.getCrewMemberList())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(crewMember.getCompanyId());
-            if (!crewMember.isPlayer() && squadron.getSquadronId() == SquadronTestProfile.JASTA_11_PROFILE.getSquadronId())
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(crewMember.getCompanyId());
+            if (!crewMember.isPlayer() && squadron.getCompanyId() == SquadronTestProfile.JASTA_11_PROFILE.getSquadronId())
             {
                 Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
                 crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_KIA, inactiveDate, null);

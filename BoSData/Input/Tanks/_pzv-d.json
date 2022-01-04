@@ -1,0 +1,21 @@
+{
+	"type": "_pzv-d",
+	"archType": "panther",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "Pz.Kpfw.V Ausf.D",
+	"script": "LuaScripts\\WorldObjects\\vehicles\\_pzv-d.txt",
+	"model": "graphics\\vehicles\\_pzv-d\\_pzv-d.mgm",
+	"desc": "Pz.Kpfw.V Ausf.D",
+	"cruisingSpeed": 15,
+	"goodness": 80,
+	"roleCategories": [
+		"ROLE_MAIN_BATTLE_TANK"
+	],
+	"introduction": "19430601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

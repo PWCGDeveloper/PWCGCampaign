@@ -1,19 +1,19 @@
 package pwcg.campaign.resupply.equipment;
 
-import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.tank.EquippedTank;
 
 public class EquipmentResupplyRecord
 {
-    private EquippedPlane equippedPlane;
+    private EquippedTank equippedPlane;
     private int transferTo;
 
-    public EquipmentResupplyRecord(EquippedPlane equippedPlane, int transferTo)
+    public EquipmentResupplyRecord(EquippedTank equippedPlane, int transferTo)
     {
         this.equippedPlane  = equippedPlane;
         this.transferTo  = transferTo;
     }
     
-    public EquippedPlane getEquippedPlane()
+    public EquippedTank getEquippedPlane()
     {
         return equippedPlane;
     }

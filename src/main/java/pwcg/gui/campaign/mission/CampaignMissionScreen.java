@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.crewmember.CrewMemberStatus;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;

@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 
@@ -53,12 +53,12 @@ public class MissionHumanParticipants
 	
 	public boolean isSquadronInMission(Company squadron)
 	{
-	       return participatingPlayers.containsKey(squadron.getSquadronId());
+	       return participatingPlayers.containsKey(squadron.getCompanyId());
 	}
 	
 	public boolean isPlayerInMission(Company squadron, CrewMember player)
 	{
-		List<CrewMember> playersForSquadron =  getParticipatingPlayersForSquadron(squadron.getSquadronId());
+		List<CrewMember> playersForSquadron =  getParticipatingPlayersForSquadron(squadron.getCompanyId());
 		for (CrewMember playerForSquadron : playersForSquadron)
 		{
 			if (playerForSquadron.getSerialNumber() == player.getSerialNumber())
@@ -86,7 +86,7 @@ public class MissionHumanParticipants
         double totalPlayerDistanceToTarget = 0.0;
         for (int playersSquadronId : participatingPlayers.keySet())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playersSquadronId);
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(playersSquadronId);
             totalPlayerDistanceToTarget += MathUtils.calcDist(squadron.determineCurrentPosition(mission.getCampaign().getDate()), mission.getMissionBorders().getCenter());
         }
         
@@ -99,7 +99,7 @@ public class MissionHumanParticipants
         Map<Integer, Company> playerSquadronsMap = new HashMap<>();
         for (int playersSquadronId : participatingPlayers.keySet())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playersSquadronId);
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(playersSquadronId);
             playerSquadronsMap.put(playersSquadronId, squadron);
         }
         
@@ -112,7 +112,7 @@ public class MissionHumanParticipants
         Map<Side, Side> playerSideMap = new HashMap<>();
         for (int playersSquadronId : participatingPlayers.keySet())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playersSquadronId);
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(playersSquadronId);
             playerSideMap.put(squadron.determineSide(), squadron.determineSide());
         }
         

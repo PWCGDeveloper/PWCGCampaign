@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightInformation;
@@ -36,7 +36,7 @@ public class CrewFactory
     private void createCrewsForSquadron() throws PWCGException
     {
         CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(
-                campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+                campaign.getPersonnelManager().getCompanyPersonnel(squadron.getCompanyId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
         for (CrewMember crewMember : squadronMembers.getCrewMemberList())
         {
             crewsForSquadron.put(crewMember.getSerialNumber(), crewMember);
@@ -53,7 +53,7 @@ public class CrewFactory
 
     private void addPlayerToMissionIfNeeded(CrewMember player)
     {
-        if (player.getCompanyId() != squadron.getSquadronId())
+        if (player.getCompanyId() != squadron.getCompanyId())
         {
             return;
         }

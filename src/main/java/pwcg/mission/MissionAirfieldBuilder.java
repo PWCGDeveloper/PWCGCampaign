@@ -4,13 +4,13 @@ import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 
@@ -86,7 +86,7 @@ public class MissionAirfieldBuilder
             return airfieldCountry;
         }
         
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         Company squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, campaign.getDate());
         if (squadronForField != null)
         {

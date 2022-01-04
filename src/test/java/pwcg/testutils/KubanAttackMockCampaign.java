@@ -9,6 +9,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
@@ -17,7 +18,6 @@ import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -61,7 +61,7 @@ public class KubanAttackMockCampaign
 
         date = DateUtils.getDateYYYYMMDD("19430401");
         
-        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20121002); // I./St.G.2
+        squadron = PWCGContext.getInstance().getCompanyManager().getCompany(20121002); // I./St.G.2
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(date);
@@ -72,7 +72,7 @@ public class KubanAttackMockCampaign
         
         Mockito.when(campaign.getEquipmentManager()).thenReturn(equipmentManager);
         Mockito.when(equipmentManager.getEquipmentForSquadron(Mockito.any())).thenReturn(squadronEquipment);
-        Mockito.when(squadronEquipment.isSquadronEquipmentViable()).thenReturn(true);
+        Mockito.when(squadronEquipment.isCompanyEquipmentViable()).thenReturn(true);
 
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(missionGroundUnitResourceManager);

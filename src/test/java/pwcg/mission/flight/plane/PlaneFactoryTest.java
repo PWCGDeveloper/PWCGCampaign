@@ -11,11 +11,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.personnel.CompanyPersonnel;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -55,7 +55,7 @@ public class PlaneFactoryTest
     public void testPlayerPlaneGeneration() throws PWCGException
     {
 
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.KG53_PROFILE.getSquadronId());
 
         FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, NecessaryFlightType.PLAYER_FLIGHT);
 
@@ -89,7 +89,7 @@ public class PlaneFactoryTest
     public void testAiPlaneGeneration() throws PWCGException
     {
 
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(20111052);
 
         FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, NecessaryFlightType.PLAYER_FLIGHT);
 
@@ -100,7 +100,7 @@ public class PlaneFactoryTest
 
         List<CrewMember> players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
         boolean playerFound = false;
-        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId());
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getCompanyId());
         int callnum = 1;
         for (PlaneMcu plane : assignedPlanes)
         {

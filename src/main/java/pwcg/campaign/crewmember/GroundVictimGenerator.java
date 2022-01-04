@@ -6,7 +6,7 @@ import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.IWeight;
 import pwcg.core.utils.WeightCalculator;

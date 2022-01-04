@@ -3,7 +3,7 @@ package pwcg.gui.campaign.home;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;

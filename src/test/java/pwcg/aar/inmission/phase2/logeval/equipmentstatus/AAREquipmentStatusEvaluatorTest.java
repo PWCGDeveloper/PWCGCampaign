@@ -57,7 +57,7 @@ public class AAREquipmentStatusEvaluatorTest
 
         AAREquipmentStatusEvaluator aarEquipmentStatusEvaluator = new AAREquipmentStatusEvaluator(campaign, logEventData, aarVehicleBuilder);
         aarEquipmentStatusEvaluator.determineFateOfPlanesInMission();        
-        runTestWithStatusCheck(aarEquipmentStatusEvaluator, PlaneStatus.STATUS_DESTROYED);
+        runTestWithStatusCheck(aarEquipmentStatusEvaluator, TankStatus.STATUS_DESTROYED);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class AAREquipmentStatusEvaluatorTest
 
         AAREquipmentStatusEvaluator aarEquipmentStatusEvaluator = new AAREquipmentStatusEvaluator(campaign, logEventData, aarVehicleBuilder);
         aarEquipmentStatusEvaluator.determineFateOfPlanesInMission();        
-        runTestWithStatusCheck(aarEquipmentStatusEvaluator, PlaneStatus.STATUS_DEPLOYED);
+        runTestWithStatusCheck(aarEquipmentStatusEvaluator, TankStatus.STATUS_DEPLOYED);
     }
 
     @Test
@@ -78,7 +78,7 @@ public class AAREquipmentStatusEvaluatorTest
 
         AAREquipmentStatusEvaluator aarEquipmentStatusEvaluator = new AAREquipmentStatusEvaluator(campaign, logEventData, aarVehicleBuilder);
         aarEquipmentStatusEvaluator.determineFateOfPlanesInMission();        
-        runTestWithStatusCheck(aarEquipmentStatusEvaluator, PlaneStatus.STATUS_DEPLOYED);
+        runTestWithStatusCheck(aarEquipmentStatusEvaluator, TankStatus.STATUS_DEPLOYED);
     }
 
     private void runTestWithStatusCheck(AAREquipmentStatusEvaluator AAREquipmentStatusEvaluator, int expectedStatus) throws PWCGException
@@ -99,7 +99,7 @@ public class AAREquipmentStatusEvaluatorTest
         resultPlane.setCountry(country);
         resultPlane.intializeCrewMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         resultPlane.setSquadronId(10131132);
-        resultPlane.setPlaneStatus(PlaneStatus.STATUS_DEPLOYED);
+        resultPlane.setPlaneStatus(TankStatus.STATUS_DEPLOYED);
 
         Map <String, LogPlane> planeAiEntities = new HashMap <>();
         planeAiEntities.put("11111", resultPlane);        

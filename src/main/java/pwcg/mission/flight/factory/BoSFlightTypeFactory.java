@@ -7,8 +7,8 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;

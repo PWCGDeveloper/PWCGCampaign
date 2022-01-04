@@ -6,7 +6,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.GroundVictimGenerator;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.exception.PWCGException;
 
 public class OutOfMissionVictoryEventHandler 

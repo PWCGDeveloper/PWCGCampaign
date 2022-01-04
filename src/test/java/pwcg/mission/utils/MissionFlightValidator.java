@@ -27,8 +27,8 @@ public class MissionFlightValidator
         for (IFlight flight: mission.getFlights().getAllAerialFlights())
         {
             System.out.println(flight.getFlightInformation().getSquadron().determineDisplayName(mission.getCampaign().getDate()) + "    " + flight.getFlightInformation().getFlightType());
-            Assertions.assertTrue (!squadronsUsedInMission.contains(flight.getSquadron().getSquadronId()));
-            squadronsUsedInMission.add(flight.getSquadron().getSquadronId());
+            Assertions.assertTrue (!squadronsUsedInMission.contains(flight.getSquadron().getCompanyId()));
+            squadronsUsedInMission.add(flight.getSquadron().getCompanyId());
         }
     }
 

@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -21,7 +21,7 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
 {
     private Date sh37IntroDate;
 
-    public IL2M42Payload(PlaneType planeType, Date date)
+    public IL2M42Payload(TankType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(87);
@@ -89,7 +89,7 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        IL2M42Payload clone = new IL2M42Payload(getPlaneType(), getDate());
+        IL2M42Payload clone = new IL2M42Payload(getTankType(), getDate());
         
         return super.copy(clone);
     }

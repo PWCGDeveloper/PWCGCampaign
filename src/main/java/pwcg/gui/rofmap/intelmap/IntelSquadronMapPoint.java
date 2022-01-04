@@ -1,7 +1,7 @@
 package pwcg.gui.rofmap.intelmap;
 
 import pwcg.campaign.ArmedService;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 
 
 public class IntelSquadronMapPoint extends IntelMapPoint

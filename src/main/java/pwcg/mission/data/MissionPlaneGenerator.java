@@ -3,7 +3,7 @@ package pwcg.mission.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
@@ -43,7 +43,7 @@ public class MissionPlaneGenerator
         missionPlaneData.setCrewMemberName(plane.getCrewMember().getName());
         missionPlaneData.setCrewMemberSerialNumber(plane.getCrewMember().getSerialNumber());
         missionPlaneData.setPlaneSerialNumber(plane.getSerialNumber());
-        missionPlaneData.setSquadronId(squadron.getSquadronId());
+        missionPlaneData.setSquadronId(squadron.getCompanyId());
         missionPlaneData.setAircraftType(plane.getType());
         
         missionPlanes.add(missionPlaneData);

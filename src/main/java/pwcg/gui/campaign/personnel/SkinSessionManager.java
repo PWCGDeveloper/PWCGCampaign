@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -47,7 +47,7 @@ public class SkinSessionManager
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         Company company = crewMember.determineSquadron();
 
-        List<Skin> squadronSkins = PWCGContext.getInstance().getSkinManager().getSkinsBySquadronPlaneDate(selectedPlane, company.getSquadronId(), campaign.getDate());
+        List<Skin> squadronSkins = PWCGContext.getInstance().getSkinManager().getSkinsBySquadronPlaneDate(selectedPlane, company.getCompanyId(), campaign.getDate());
         skinNames = getConfiguredSkins(squadronSkins);
 
         return skinNames;

@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberSorter;
 import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.crewmember.SerialNumber.SerialNumberClassification;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightInformation;
@@ -42,7 +42,7 @@ public class FlightCrewBuilder
 
     private void assignPlayersToCrew() throws PWCGException
     {
-        if (Company.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId()))
+        if (Company.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getCompanyId()))
         {
             List<CrewMember> participatingPlayerCrews = new ArrayList<>();
             for (CrewMember crewMember : flightInformation.getFlightParticipatingPlayers())

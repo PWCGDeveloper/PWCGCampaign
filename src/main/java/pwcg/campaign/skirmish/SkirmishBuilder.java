@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
@@ -110,7 +110,7 @@ public class SkirmishBuilder
     private double calculateDistance(Skirmish skirmish, CrewMember player) throws PWCGException
     {
         Coordinate skirmishCenter = skirmish.getCenter();
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(player.getCompanyId());
         Coordinate squadronPosition = squadron.determineCurrentPosition(campaign.getDate());
         double distance = MathUtils.calcDist(skirmishCenter, squadronPosition);
         return distance;

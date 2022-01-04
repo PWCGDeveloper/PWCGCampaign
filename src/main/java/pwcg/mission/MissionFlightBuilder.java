@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightFactory;
 import pwcg.mission.flight.FlightTypes;
@@ -27,7 +27,7 @@ public class MissionFlightBuilder
         List<IFlight> playerAndAssociatedFlights = new ArrayList<>();
         for (Company playerSquadron : playerFlightTypes.getSquadrons())
         {
-            FlightTypes playerFlightType = playerFlightTypes.getFlightTypeForSquadron(playerSquadron.getSquadronId());
+            FlightTypes playerFlightType = playerFlightTypes.getFlightTypeForSquadron(playerSquadron.getCompanyId());
             
             FlightFactory flightFactory = new FlightFactory(campaign);
             List<IFlight>  playerFlights = flightFactory.buildFlight(mission, playerSquadron, playerFlightType, NecessaryFlightType.PLAYER_FLIGHT);        

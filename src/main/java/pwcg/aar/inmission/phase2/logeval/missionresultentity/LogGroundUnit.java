@@ -1,6 +1,6 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.event.IAType12;
 

@@ -2,9 +2,9 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
@@ -15,7 +15,7 @@ public class Bf109K4Payload extends Bf109Payload implements IPlanePayload
 {
     private Date db605cIntroDate;
 
-    public Bf109K4Payload(PlaneType planeType, Date date)
+    public Bf109K4Payload(TankType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -47,7 +47,7 @@ public class Bf109K4Payload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109K4Payload clone = new Bf109K4Payload(getPlaneType(), getDate());
+        Bf109K4Payload clone = new Bf109K4Payload(getTankType(), getDate());
         return super.copy(clone);
     }
 

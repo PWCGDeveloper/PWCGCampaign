@@ -2,17 +2,17 @@ package pwcg.campaign.resupply.depot;
 
 import java.util.Date;
 
-import pwcg.campaign.plane.PlaneArchType;
+import pwcg.campaign.tank.TankArchType;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentReplacementUtils
 {
 
-    public static String getTypeForReplacement(Date campaignDate, PlaneArchType planeArchType) throws PWCGException
+    public static String getTypeForReplacement(Date campaignDate, TankArchType planeArchType) throws PWCGException
     {
         EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaignDate);
-        equipmentWeightCalculator.determinePlaneWeightsForPlanes(planeArchType.getInProductionMemberPlaneTypes(campaignDate));
-        String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
+        equipmentWeightCalculator.determinePlaneWeightsForPlanes(planeArchType.getInProductionMemberTankTypes(campaignDate));
+        String planeTypeName = equipmentWeightCalculator.getTankTypeFromWeight();
         return planeTypeName;
     }
 

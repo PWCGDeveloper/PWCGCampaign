@@ -1,0 +1,21 @@
+{
+	"type": "_pzvi-h1",
+	"archType": "tiger",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "Pz.Kpfw.VI Ausf.H1",
+	"script": "LuaScripts\\WorldObjects\\vehicles\\_pzvi-h1.txt",
+	"model": "graphics\\vehicles\\_pzvi-h1\\_pzvi-h1.mgm",
+	"desc": "Pz.Kpfw.VI Ausf.H1",
+	"cruisingSpeed": 13,
+	"goodness": 80,
+	"roleCategories": [
+		"ROLE_MAIN_BATTLE_TANK"
+	],
+	"introduction": "19420601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

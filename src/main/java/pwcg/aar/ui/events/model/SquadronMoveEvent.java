@@ -2,9 +2,9 @@ package pwcg.aar.ui.events.model;
 
 import java.util.Date;
 
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
 public class SquadronMoveEvent  extends AAREvent
@@ -26,8 +26,8 @@ public class SquadronMoveEvent  extends AAREvent
         
         try
         {
-            SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-            Company squadron = squadronManager.getSquadron(squadronId);
+            CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
+            Company squadron = squadronManager.getCompany(squadronId);
             if (squadron != null)
             {
                 this.squadronName = squadron.determineDisplayName(date);

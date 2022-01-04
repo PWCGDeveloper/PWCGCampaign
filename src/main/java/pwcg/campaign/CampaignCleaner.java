@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
+import pwcg.campaign.company.CompanyViability;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.crewmember.CrewMember;
@@ -16,9 +19,6 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalManager;
 import pwcg.campaign.personnel.CompanyPersonnel;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
-import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -44,23 +44,23 @@ public class CampaignCleaner
 
     private void removeUnwantedSquadronFiles() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsToStaff = squadronManager.getActiveSquadrons(campaign.getDate());
         for (Company squadron : squadronsToStaff)
         {
-            if (!SquadronViability.isSquadronActive(squadron, campaign.getDate()))
+            if (!CompanyViability.isCompanyActive(squadron, campaign.getDate()))
             {
-                if (campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId()) == null)
+                if (campaign.getPersonnelManager().getCompanyPersonnel(squadron.getCompanyId()) == null)
                 {
                     String campaignPersonnelDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
-                    File squadronPersonnelFile = new File(campaignPersonnelDir + squadron.getSquadronId() + ".json");
+                    File squadronPersonnelFile = new File(campaignPersonnelDir + squadron.getCompanyId() + ".json");
                     if (squadronPersonnelFile.exists())
                     {
                         squadronPersonnelFile.delete();
                     }
                     
                     String campaignEquipmentDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\";
-                    File campaignEquipmentFile = new File(campaignEquipmentDir + squadron.getSquadronId() + ".json");
+                    File campaignEquipmentFile = new File(campaignEquipmentDir + squadron.getCompanyId() + ".json");
                     if (campaignEquipmentFile.exists())
                     {
                         campaignEquipmentFile.delete();
@@ -117,7 +117,7 @@ public class CampaignCleaner
                         crewMemberSerialNumbers.put(crewMember.getSerialNumber(), new ArrayList<Integer>());
                     }
                     List<Integer> squadronsForSerialNumber = crewMemberSerialNumbers.get(crewMember.getSerialNumber());
-                    squadronsForSerialNumber.add(personnel.getSquadron().getSquadronId());
+                    squadronsForSerialNumber.add(personnel.getSquadron().getCompanyId());
                 }
             }
         }
@@ -139,7 +139,7 @@ public class CampaignCleaner
                     {
                         crewMember.setSerialNumber(campaign.getCampaignData().getSerialNumber().getNextCrewMemberSerialNumber());
                         
-                        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(crewMember.getCompanyId());
+                        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(crewMember.getCompanyId());
                         String squaddieName = CrewMemberNames.getInstance().getName(squadron.determineServiceForSquadron(campaign.getDate()), new HashMap<>());
                         crewMember.setName(squaddieName);
                     }
@@ -173,7 +173,7 @@ public class CampaignCleaner
                         crewMemberSerialNumbers.put(crewMember.getSerialNumber(), new ArrayList<Integer>());
                     }
                     List<Integer> squadronsForSerialNumber = crewMemberSerialNumbers.get(crewMember.getSerialNumber());
-                    squadronsForSerialNumber.add(personnel.getSquadron().getSquadronId());
+                    squadronsForSerialNumber.add(personnel.getSquadron().getCompanyId());
                 }
             }
         }

@@ -3,11 +3,11 @@ package pwcg.dev.utils;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.plane.SquadronPlaneAssignment;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.CompanyTankAssignment;
+import pwcg.campaign.tank.TankType;
+import pwcg.campaign.tank.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -39,16 +39,16 @@ public class SquadronPlaneFinder
     
     private void findPlane(String planeId, Date startDate, Date endDate) throws PWCGException  
     {       
-        List<Company> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
-        PWCGLogger.log(LogLevel.DEBUG, "PlaneType Id: " + planeId);
+        List<Company> allSq =  PWCGContext.getInstance().getCompanyManager().getAllSquadrons();
+        PWCGLogger.log(LogLevel.DEBUG, "TankType Id: " + planeId);
         for (Company company : allSq)
         {
             boolean hasPlane = false;
-            for (SquadronPlaneAssignment planeAssignment : company.getPlaneAssignments())
+            for (CompanyTankAssignment planeAssignment : company.getPlaneAssignments())
             {
                 if (planeAssignment.getArchType().equals(planeId))
                 {
-                    if (!planeAssignment.getSquadronWithdrawal().before(endDate))
+                    if (!planeAssignment.getCompanyWithdrawal().before(endDate))
                     {
                         hasPlane = true;
                     }
@@ -57,22 +57,22 @@ public class SquadronPlaneFinder
 
             if (hasPlane)
             {
-                PWCGLogger.log(LogLevel.DEBUG, "" + company.getSquadronId());
+                PWCGLogger.log(LogLevel.DEBUG, "" + company.getCompanyId());
             }
         }
     }
     
     private void printPlanes() throws PWCGException  
     {       
-        List<Company> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+        List<Company> allSq =  PWCGContext.getInstance().getCompanyManager().getAllSquadrons();
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
         for (Company company : allSq)
         {
-            PWCGLogger.log(LogLevel.DEBUG, "Squadron: " + company.getSquadronId());
+            PWCGLogger.log(LogLevel.DEBUG, "Squadron: " + company.getCompanyId());
             boolean hasPlane = false;
-            for (SquadronPlaneAssignment planeAssignment : company.getPlaneAssignments())
+            for (CompanyTankAssignment planeAssignment : company.getPlaneAssignments())
             {
-                for (PlaneType plane : planeTypeFactory.createPlaneTypesForArchType(planeAssignment.getArchType()))
+                for (TankType plane : planeTypeFactory.createTankTypesForArchType(planeAssignment.getArchType()))
                 {
                     PWCGLogger.log(LogLevel.DEBUG, "        " + plane.getDisplayName());
                 }
@@ -80,7 +80,7 @@ public class SquadronPlaneFinder
 
             if (hasPlane)
             {
-                PWCGLogger.log(LogLevel.DEBUG, "" + company.getSquadronId());
+                PWCGLogger.log(LogLevel.DEBUG, "" + company.getCompanyId());
             }
         }
     }

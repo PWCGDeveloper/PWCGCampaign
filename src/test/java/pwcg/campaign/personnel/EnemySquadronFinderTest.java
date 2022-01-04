@@ -11,6 +11,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
@@ -18,7 +19,6 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -55,7 +55,7 @@ public class EnemySquadronFinderTest
 
         Mockito.when(campaign.getEquipmentManager()).thenReturn(equipmentManager);
         Mockito.when(equipmentManager.getEquipmentForSquadron(Mockito.any())).thenReturn(equipment);
-        Mockito.when(equipment.isSquadronEquipmentViable()).thenReturn(true);
+        Mockito.when(equipment.isCompanyEquipmentViable()).thenReturn(true);
         
         Mockito.when(squadron.getCountry()).thenReturn(squadronCountry);
     }

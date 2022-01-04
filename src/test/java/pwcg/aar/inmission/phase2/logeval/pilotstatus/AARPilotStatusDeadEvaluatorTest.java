@@ -14,11 +14,11 @@ import pwcg.aar.inmission.phase2.logeval.crewmemberstatus.AARCrewMemberStatusDea
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogCrewMember;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.SerialNumber;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.logfiles.LogParser;

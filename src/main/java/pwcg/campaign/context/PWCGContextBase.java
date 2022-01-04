@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.CompanyManager;
+import pwcg.campaign.company.SkirmishProfileManager;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.newspapers.NewspaperManager;
-import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
-import pwcg.campaign.squadron.SkirmishProfileManager;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
@@ -27,13 +27,13 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     protected FrontMapIdentifier currentMap = null;
     protected Campaign campaign = null;
     protected AceManager aceManager = new AceManager();
-    protected SquadronManager squadronManager = new SquadronManager();
+    protected CompanyManager squadronManager = new CompanyManager();
     protected NewspaperManager newspaperManager = new NewspaperManager();
     protected SkinManager skinManager = new SkinManager();
     protected SkirmishProfileManager skirmishProfileManager = new SkirmishProfileManager();
     protected VehicleDefinitionManager vehicleDefinitionManager = new VehicleDefinitionManager();
     protected StaticObjectDefinitionManager staticObjectDefinitionManager = new StaticObjectDefinitionManager();
-    protected PlaneTypeFactory planeTypeFactory = new PlaneTypeFactory();
+    protected TankTypeFactory tankTypeFactory = new TankTypeFactory();
     protected boolean testMode = false;
     protected String missionLogPath = "";
 
@@ -55,7 +55,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     {
         initializeMap();
         
-        planeTypeFactory.initialize();
+        tankTypeFactory.initialize();
         aceManager.configure();
         squadronManager.initialize();
         skirmishProfileManager.initialize();
@@ -202,7 +202,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public SquadronManager getSquadronManager()
+    public CompanyManager getCompanyManager()
     {
         return squadronManager;
     }
@@ -221,9 +221,9 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public PlaneTypeFactory getPlaneTypeFactory()
+    public TankTypeFactory getTankTypeFactory()
     {
-        return planeTypeFactory;
+        return tankTypeFactory;
     }
     
     @Override

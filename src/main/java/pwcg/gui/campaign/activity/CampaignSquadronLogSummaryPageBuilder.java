@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.SquadronSummaryStatistics;
+import pwcg.campaign.company.SquadronSummaryStatistics;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignSquadronLogSummaryPageBuilder

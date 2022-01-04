@@ -1,12 +1,12 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyViability;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.crewmember.TankAce;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 
 public class OutOfMissionCrewMemberSelector
@@ -39,8 +39,8 @@ public class OutOfMissionCrewMemberSelector
 
     private static boolean isSquadronViable(Campaign campaign, CrewMember crewMember) throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(crewMember.getCompanyId());
-        return SquadronViability.isSquadronViable(squadron, campaign);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(crewMember.getCompanyId());
+        return CompanyViability.isCompanyViable(squadron, campaign);
     }
 
 }

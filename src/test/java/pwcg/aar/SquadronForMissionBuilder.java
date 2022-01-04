@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class SquadronForMissionBuilder
@@ -21,12 +21,12 @@ public class SquadronForMissionBuilder
 
     public List<Company> makeSquadronsInMission() throws PWCGException
     {
-        Company jg51 = PWCGContext.getInstance().getSquadronManager().getSquadron(20111051);
-        Company stg77 = PWCGContext.getInstance().getSquadronManager().getSquadron(20121077);
-        Company kg76 = PWCGContext.getInstance().getSquadronManager().getSquadron(20132076);
-        Company reg11 = PWCGContext.getInstance().getSquadronManager().getSquadron(10111011);
-        Company reg132 = PWCGContext.getInstance().getSquadronManager().getSquadron(10131132);
-        Company reg175 = PWCGContext.getInstance().getSquadronManager().getSquadron(10121175);
+        Company jg51 = PWCGContext.getInstance().getCompanyManager().getCompany(20111051);
+        Company stg77 = PWCGContext.getInstance().getCompanyManager().getCompany(20121077);
+        Company kg76 = PWCGContext.getInstance().getCompanyManager().getCompany(20132076);
+        Company reg11 = PWCGContext.getInstance().getCompanyManager().getCompany(10111011);
+        Company reg132 = PWCGContext.getInstance().getCompanyManager().getCompany(10131132);
+        Company reg175 = PWCGContext.getInstance().getCompanyManager().getCompany(10121175);
         
         squadronsInMission.add(jg51);
         squadronsInMission.add(stg77);

@@ -10,6 +10,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
@@ -35,15 +37,15 @@ public class SquadronManagerTest
     @Test
     public void getSquadronTest() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Company squadron = squadronManager.getSquadron(20111052);
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
+        Company squadron = squadronManager.getCompany(20111052);
         assert(squadron.determineDisplayName(campaign.getDate()).equals("I./JG52"));
     }
 
     @Test
     public void getActiveSquadronsTest() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadrons = squadronManager.getActiveSquadrons(campaign.getDate());
         
         boolean foundJG52 = false;
@@ -79,7 +81,7 @@ public class SquadronManagerTest
     @Test
     public void getActiveSquadronsForSideTest() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadrons = squadronManager.getActiveSquadronsForSide(campaign.getDate(), Side.AXIS);
         
         boolean foundJG52 = false;
@@ -127,7 +129,7 @@ public class SquadronManagerTest
             ++numSaved;
         }
         
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadrons = squadronManager.getViableSquadrons(campaign);
         
         boolean foundJG52 = false;

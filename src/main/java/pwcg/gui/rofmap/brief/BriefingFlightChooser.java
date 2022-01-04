@@ -13,8 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
@@ -57,14 +57,14 @@ public class BriefingFlightChooser implements ActionListener
         for (IFlight playerFlight : mission.getFlights().getPlayerFlights())
         {
             Company squadron = playerFlight.getSquadron();
-            playerSquadronsInMission.put(squadron.getSquadronId(), squadron);
+            playerSquadronsInMission.put(squadron.getCompanyId(), squadron);
         }
 
         for (Company squadron : playerSquadronsInMission.values())
         {
             JRadioButton airLowDensity = PWCGButtonFactory.makeRadioButton(
                     squadron.determineDisplayName(mission.getCampaign().getDate()), 
-                    "FlightChanged:" + squadron.getSquadronId(),
+                    "FlightChanged:" + squadron.getCompanyId(),
                     "Select squadron to change context", 
                     null, 
                     ColorMap.CHALK_FOREGROUND,
@@ -72,7 +72,7 @@ public class BriefingFlightChooser implements ActionListener
             flightChooserButtonPanelGrid.add(airLowDensity);
             ButtonModel model = airLowDensity.getModel();
             flightChooserButtonGroup.add(airLowDensity);
-            flightChooserButtonModels.put(squadron.getSquadronId(), model);
+            flightChooserButtonModels.put(squadron.getCompanyId(), model);
         }
 
         flightChooserPanel = new JPanel(new BorderLayout());
@@ -106,7 +106,7 @@ public class BriefingFlightChooser implements ActionListener
             int index = action.indexOf(":");
             String selectedSquadronId = action.substring(index + 1);
             int squadronId = Integer.valueOf(selectedSquadronId);
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
             
             setSelectedButton(squadronId);
 

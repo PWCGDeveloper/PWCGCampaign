@@ -20,10 +20,10 @@ public class BriefingMissionFlightSetBuilder
             
             BriefingFlightParameters briefingFlightParameters = buildBriefingFlightParameters(playerFlight);
 
-            BriefingFlight briefingMissionFlight = new BriefingFlight(mission, briefingFlightParameters, playerFlight.getSquadron().getSquadronId());
+            BriefingFlight briefingMissionFlight = new BriefingFlight(mission, briefingFlightParameters, playerFlight.getSquadron().getCompanyId());
             briefingMissionFlight.initializeFromMission(playerFlight.getSquadron());
 
-            briefingMissionFlights.put(playerFlight.getSquadron().getSquadronId(), briefingMissionFlight);
+            briefingMissionFlights.put(playerFlight.getSquadron().getCompanyId(), briefingMissionFlight);
         }
         
         return briefingMissionFlights;

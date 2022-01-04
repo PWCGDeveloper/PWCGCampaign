@@ -247,7 +247,7 @@ public class CampaignSquadronPersonnelUpdaterTest
     @Test
     public void testCrewMemberTransferred() throws PWCGException
     {
-        ArmedService armedService = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId())
+        ArmedService armedService = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.ESC_103_PROFILE.getSquadronId())
                 .determineServiceForSquadron(campaign.getDate());
         PersonnelReplacementsService serviceReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(armedService.getServiceId());
         CrewMember transferredCrewMember = serviceReplacements.findReplacement();

@@ -71,7 +71,7 @@ public class BriefingPayloadHelper
 
     private void assignPayloadsToCrewPlanes() throws PWCGException
     {
-        IFlight playerFlight = mission.getFlights().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
+        IFlight playerFlight = mission.getFlights().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getCompanyId());
         for (PlaneMcu plane : playerFlight.getFlightPlanes().getPlanes())
         {
             CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPlane(plane.getSerialNumber());
@@ -84,7 +84,7 @@ public class BriefingPayloadHelper
 
     private void assignModificationsToCrewPlanes() throws PWCGException
     {
-        IFlight playerFlight = mission.getFlights().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
+        IFlight playerFlight = mission.getFlights().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getCompanyId());
         for (PlaneMcu plane : playerFlight.getFlightPlanes().getPlanes())
         {
             CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPlane(plane.getSerialNumber());
@@ -127,7 +127,7 @@ public class BriefingPayloadHelper
     
     private void setPayloadFromPayloadFactory(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        IFlight playerFlight = mission.getFlights().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
+        IFlight playerFlight = mission.getFlights().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getCompanyId());
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadFactory.createPlanePayload(crewPlane.getPlane().getType(), mission.getCampaign().getDate());
         payload.createWeaponsPayload(playerFlight);

@@ -102,6 +102,6 @@ public class KeptFlightsRecorder
     public boolean isSquadronInKept(IFlight flight) throws PWCGException
     {
         KeptFlights keptFlightsForSide = getKeptFlightsForSide(flight);
-        return keptFlightsForSide.isSquadronInKept(flight.getSquadron().getSquadronId());
+        return keptFlightsForSide.isSquadronInKept(flight.getSquadron().getCompanyId());
     }
 }

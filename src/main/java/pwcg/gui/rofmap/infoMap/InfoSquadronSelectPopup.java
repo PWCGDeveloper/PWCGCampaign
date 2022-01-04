@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 
 public class InfoSquadronSelectPopup extends JPopupMenu
@@ -20,7 +20,7 @@ public class InfoSquadronSelectPopup extends JPopupMenu
             for (Company squadron : squadronsAtBase)
             {
                 String squadronName = squadron.determineDisplayName(date);
-                JMenuItem squadronMenuItem = new JMenuItem("Select Squadron:"+squadron.getSquadronId()+":"+squadronName);
+                JMenuItem squadronMenuItem = new JMenuItem("Select Squadron:"+squadron.getCompanyId()+":"+squadronName);
                 squadronMenuItem.addActionListener(parent);
                 add(squadronMenuItem);
             }

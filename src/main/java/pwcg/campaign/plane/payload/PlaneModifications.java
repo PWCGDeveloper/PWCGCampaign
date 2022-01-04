@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 
 public class PlaneModifications
@@ -13,9 +13,9 @@ public class PlaneModifications
     private PayloadDesignations modifications = new PayloadDesignations();
     private PayloadDesignations stockModifications = new PayloadDesignations();
     private Set<Integer> selectedModifications = new HashSet<>();
-    private PlaneType planeType;
+    private TankType planeType;
 
-    public PlaneModifications(PlaneType planeType)
+    public PlaneModifications(TankType planeType)
     {
         this.planeType = planeType;
     }

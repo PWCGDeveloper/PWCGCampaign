@@ -15,6 +15,8 @@ import java.util.Map;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.AirfieldManager;
@@ -22,9 +24,7 @@ import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
@@ -130,7 +130,7 @@ public class InfoMapPanel extends MapPanelBase
             
             if (whatToDisplay[DISPLAY_FIGHTER])
             {
-                SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
+                CompanyManager squadronManager =  PWCGContext.getInstance().getCompanyManager();
                 List<Company> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Company squadron : allSquadrons)
                 {
@@ -144,7 +144,7 @@ public class InfoMapPanel extends MapPanelBase
             
             if (whatToDisplay[DISPLAY_BOMBER])
             {
-                SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
+                CompanyManager squadronManager =  PWCGContext.getInstance().getCompanyManager();
                 List<Company> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Company squadron : allSquadrons)
                 {
@@ -159,7 +159,7 @@ public class InfoMapPanel extends MapPanelBase
             
             if (whatToDisplay[DISPLAY_ATTACK])
             {
-                SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
+                CompanyManager squadronManager =  PWCGContext.getInstance().getCompanyManager();
                 List<Company> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Company squadron : allSquadrons)
                 {
@@ -173,7 +173,7 @@ public class InfoMapPanel extends MapPanelBase
             
             if (whatToDisplay[DISPLAY_RECON])
             {
-                SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
+                CompanyManager squadronManager =  PWCGContext.getInstance().getCompanyManager();
                 List<Company> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Company squadron : allSquadrons)
                 {
@@ -412,7 +412,7 @@ public class InfoMapPanel extends MapPanelBase
     {
         List <Company> selectedSquadrons = new ArrayList<Company>();
             
-        SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager =  PWCGContext.getInstance().getCompanyManager();
         List<Company> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 
         for (Company squadron : allSquadrons)

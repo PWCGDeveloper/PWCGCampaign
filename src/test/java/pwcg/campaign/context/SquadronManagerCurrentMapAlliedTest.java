@@ -12,9 +12,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.escort.EscortSquadronSelector;
 import pwcg.testutils.CampaignCache;
@@ -37,7 +37,7 @@ public class SquadronManagerCurrentMapAlliedTest
     public void getEscortOrEscortedSquadronAlliedTest() throws PWCGException
     {
 
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.RAF_184_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.RAF_184_PROFILE.getSquadronId());
         
         Company nearbySquadron = EscortSquadronSelector.getEscortedSquadron(campaign, squadron, squadron.determineCurrentPosition(campaign.getDate()));
 
@@ -51,7 +51,7 @@ public class SquadronManagerCurrentMapAlliedTest
     @Test
     public void getViableAiSquadronsForCurrentMapAndSideTest() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
 
         List<Company> squadrons = squadronManager.getViableAiSquadronsForCurrentMapAndSide(campaign, Side.ALLIED);
         
@@ -115,7 +115,7 @@ public class SquadronManagerCurrentMapAlliedTest
     @Test
     public void getViableAiSquadronsForCurrentMapAndSideAndRoleAlliedTest() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
 
         List<PwcgRole> roles = new ArrayList<PwcgRole>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_FIGHTER, PwcgRole.ROLE_ATTACK));
         List<Company> squadrons = squadronManager.getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, roles, Side.ALLIED);
@@ -180,7 +180,7 @@ public class SquadronManagerCurrentMapAlliedTest
     @Test
     public void getViableAiSquadronsForCurrentMapAndSideAndRoleAxisTest() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
 
         List<PwcgRole> roles = new ArrayList<PwcgRole>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_FIGHTER));
         List<Company> squadrons = squadronManager.getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, roles, Side.AXIS);

@@ -5,15 +5,15 @@ import java.util.List;
 
 public class AARClaimPanelData
 {
-    private List<String> enemyPlaneTypesInMission = new ArrayList<>();
+    private List<String> enemyTankTypesInMission = new ArrayList<>();
     
-    public List<String> getEnemyPlaneTypesInMission()
+    public List<String> getEnemyTankTypesInMission()
     {
-        return enemyPlaneTypesInMission;
+        return enemyTankTypesInMission;
     }
     
-    public void setEnemyPlaneTypesInMission(List<String> enemyPlanesInMission)
+    public void setEnemyTankTypesInMission(List<String> enemyPlanesInMission)
     {
-        this.enemyPlaneTypesInMission = enemyPlanesInMission;
+        this.enemyTankTypesInMission = enemyPlanesInMission;
     }
 }

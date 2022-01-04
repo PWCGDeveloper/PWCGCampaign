@@ -2,8 +2,8 @@ package pwcg.mission.flight.objective;
 
 import java.util.Date;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 

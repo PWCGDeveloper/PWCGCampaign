@@ -2,10 +2,10 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -13,7 +13,7 @@ import pwcg.mission.target.TargetCategory;
 
 public class IL2M41Payload extends PlanePayload implements IPlanePayload
 {
-    public IL2M41Payload(PlaneType planeType, Date date)
+    public IL2M41Payload(TankType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(72);
@@ -58,7 +58,7 @@ public class IL2M41Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        IL2M41Payload clone = new IL2M41Payload(getPlaneType(), getDate());
+        IL2M41Payload clone = new IL2M41Payload(getTankType(), getDate());
         
         return super.copy(clone);
     }

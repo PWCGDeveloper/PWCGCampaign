@@ -3,9 +3,9 @@ package pwcg.mission.skin;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;

@@ -1,8 +1,8 @@
 package pwcg.gui.campaign.crewmember;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.squadron.Company;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 
 public class CampaignAcePanel extends CampaignCrewMemberScreen

@@ -3,7 +3,6 @@ package pwcg.product.bos.config;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.initialposition.TakeoffFormation;
 import pwcg.mission.ground.BattleSize;
 
 public class BoSProductSpecificConfiguration implements IProductSpecificConfiguration
@@ -76,12 +75,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public boolean usePosition1()
     {
         return true;
-    }
-
-    @Override
-    public TakeoffFormation getTakeoffFormation()
-    {
-        return TakeoffFormation.STAGGERED;
     }
 
     @Override

@@ -3,9 +3,9 @@ package pwcg.gui.campaign.home;
 import java.awt.event.ActionEvent;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.TankAce;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGErrorBundler;

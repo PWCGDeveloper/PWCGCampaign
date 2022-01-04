@@ -3,8 +3,8 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.tank.PwcgRoleCategory;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 
 public class PlayerClaimResolverFuzzy
@@ -17,8 +17,8 @@ public class PlayerClaimResolverFuzzy
         
         if (!resultVictory.isConfirmed())
         {
-            PlaneType shotDownPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(resultVictory.getVictim().getVehicleType());
-            PlaneType claimedPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+            TankType shotDownPlane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(resultVictory.getVictim().getVehicleType());
+            TankType claimedPlane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(playerDeclaration.getAircraftType());
                 
             if (shotDownPlane != null && claimedPlane != null)
             {
@@ -40,7 +40,7 @@ public class PlayerClaimResolverFuzzy
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
                 PwcgRoleCategory victimApproximateRole = resultVictory.getVictim().getRoleCategory();
-                PlaneType declaredPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+                TankType declaredPlane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(playerDeclaration.getAircraftType());
                 if (declaredPlane != null)
                 {
                     PwcgRoleCategory declarationApproximateRole = declaredPlane.determinePrimaryRoleCategory();

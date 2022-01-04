@@ -14,11 +14,11 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.TankType;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -127,7 +127,7 @@ public class FW190A5PayloadTest
     private IPlanePayload getPayloadGeneratorForFighter() throws PWCGException
     {
         Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.FIGHTER);
-        PlaneType fw190A5 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
+        TankType fw190A5 = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(BosPlaneAttributeMapping.FW190_A5.getTankType());
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190A5.getType(), campaign.getDate());
         return payloadGenerator;
@@ -136,7 +136,7 @@ public class FW190A5PayloadTest
     private IPlanePayload getPayloadGeneratorForAttack() throws PWCGException
     {
         Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.ATTACK);
-        PlaneType fw190A5 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
+        TankType fw190A5 = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(BosPlaneAttributeMapping.FW190_A5.getTankType());
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190A5.getType(), campaign.getDate());
         return payloadGenerator;

@@ -21,6 +21,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -32,7 +33,6 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
@@ -70,10 +70,10 @@ public abstract class AARTestSetup
     @Mock protected TankAce ace2;
     @Mock protected TankAce ace3;
     @Mock protected TankAce ace4;
-    @Mock protected EquippedPlane enemyPlane1;
-    @Mock protected EquippedPlane plane1;
-    @Mock protected EquippedPlane plane2;
-    @Mock protected EquippedPlane plane3;
+    @Mock protected EquippedTank enemyPlane1;
+    @Mock protected EquippedTank plane1;
+    @Mock protected EquippedTank plane2;
+    @Mock protected EquippedTank plane3;
     @Mock protected ArmedService frenchAirForce;
     @Mock protected ArmedService germanAirForce;
     
@@ -99,9 +99,9 @@ public abstract class AARTestSetup
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaign.getReferencePlayer()).thenReturn(player);
         Mockito.when(squadronEsc103.determineDisplayName(Mockito.any())).thenReturn("Esc 103");
-        Mockito.when(squadronEsc103.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(squadronEsc103.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         Mockito.when(jasta11.determineDisplayName(Mockito.any())).thenReturn("Jasta 11");
-        Mockito.when(jasta11.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
+        Mockito.when(jasta11.getCompanyId()).thenReturn(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
         Mockito.when(campaignData.getName()).thenReturn("Player Name");
 
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);

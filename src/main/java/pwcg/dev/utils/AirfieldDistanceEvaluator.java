@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -72,7 +72,7 @@ public class AirfieldDistanceEvaluator
 
     private void analyzeSquadrons(AirfieldSet airfieldSet, Date dateNow, Side sideSquadrons) throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         
         Map <String, Airfield> fighterFields = airfieldSet.getFighterFields();
         Map <String, Airfield> bomberFields = airfieldSet.getBomberFields();
@@ -144,7 +144,7 @@ public class AirfieldDistanceEvaluator
 
             if (bad)
             {
-                PWCGLogger.log(LogLevel.DEBUG, "\nSquadron " + squadron.getSquadronId() + " at field " + squadronField.getName() + " on date " + dateNow + reason);
+                PWCGLogger.log(LogLevel.DEBUG, "\nSquadron " + squadron.getCompanyId() + " at field " + squadronField.getName() + " on date " + dateNow + reason);
                 int distance = AirfieldReporter.getDistanceToFront(squadronField, sideSquadrons, dateNow);
                 PWCGLogger.log(LogLevel.DEBUG, squadronField.getName() + "   Km to front: " + distance);
                 AirfieldBestMMatchFinder.recommendBestMatch(squadron, dateNow);

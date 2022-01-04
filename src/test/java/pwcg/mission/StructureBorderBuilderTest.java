@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigSimple;
@@ -81,7 +81,7 @@ public class StructureBorderBuilderTest
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
         CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructuresConsideringFlights(new ArrayList<>());
 
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(player.getCompanyId());
         assert(structureBorder.isInBox(squadron.determineCurrentPosition(campaign.getDate())));
 
         ConfigManager configManager = campaign.getCampaignConfigManager();
@@ -111,7 +111,7 @@ public class StructureBorderBuilderTest
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
         CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructuresConsideringFlights(new ArrayList<>());
 
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(player.getCompanyId());
         assert(structureBorder.isInBox(squadron.determineCurrentPosition(campaign.getDate())));
 
         ConfigManager configManager = campaign.getCampaignConfigManager();

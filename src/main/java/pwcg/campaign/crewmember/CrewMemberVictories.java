@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PlaneArchType;
-import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.tank.TankArchType;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
@@ -59,7 +59,7 @@ public class CrewMemberVictories
 
     private void addAirVictoryInType(Victory victory)
     {
-        String key = getPlaneArchTypeForPlaneName(victory.getVictor().getType());
+        String key = getTankArchTypeForPlaneName(victory.getVictor().getType());
         if (!airVictoriesdInType.containsKey(key))
         {
             List<Victory> playerAircraftTypeTypeList = new ArrayList<>();
@@ -71,7 +71,7 @@ public class CrewMemberVictories
 
     private void addGroundVictoryInType(Victory victory)
     {
-        String key = getPlaneArchTypeForPlaneName(victory.getVictor().getType());
+        String key = getTankArchTypeForPlaneName(victory.getVictor().getType());
         if (!groundVictoriesdInType.containsKey(key))
         {
             List<Victory> playerAircraftTypeTypeList = new ArrayList<>();
@@ -83,7 +83,7 @@ public class CrewMemberVictories
 
     private void addAirTypeVictory(Victory victory)
     {
-        String key = getPlaneArchTypeForPlaneName(victory.getVictim().getType());
+        String key = getTankArchTypeForPlaneName(victory.getVictim().getType());
         if (!airVictoriesType.containsKey(key))
         {
             List<Victory> planeTypeList = new ArrayList<>();
@@ -105,14 +105,14 @@ public class CrewMemberVictories
         tankTypeList.add(victory);
     }
     
-    private String getPlaneArchTypeForPlaneName(String planeTypeName)
+    private String getTankArchTypeForPlaneName(String planeTypeName)
     {
-        PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneByDisplayName(planeTypeName);
+        TankType planeType = PWCGContext.getInstance().getTankTypeFactory().getPlaneByDisplayName(planeTypeName);
         String archTypeName = "Unknown";
         if (planeType != null)
         {
-            PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeType.getArchType());
-            archTypeName = PlaneArchType.getArchTypeDescription(planeArchType.getPlaneArchTypeName());
+            TankArchType planeArchType = PWCGContext.getInstance().getTankTypeFactory().getTankArchType(planeType.getArchType());
+            archTypeName = TankArchType.getArchTypeDescription(planeArchType.getTankArchTypeName());
         }
         return archTypeName;
     }

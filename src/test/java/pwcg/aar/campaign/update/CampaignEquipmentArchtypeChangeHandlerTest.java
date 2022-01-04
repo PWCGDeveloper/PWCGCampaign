@@ -27,41 +27,41 @@ public class CampaignEquipmentArchtypeChangeHandlerTest
     public void testArchtypeReplacement() throws PWCGException 
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-        assertPlaneArchType(campaign, "bf109");
-        assertNotPlaneArchType(campaign, "fw190");
+        assertTankArchType(campaign, "bf109");
+        assertNotTankArchType(campaign, "fw190");
         int daysOff = DateUtils.daysDifference(campaign.getDate(), DateUtils.getDateYYYYMMDD("19420514"));
         AARCoordinator aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.submitLeave(campaign, daysOff);
-        assertNotPlaneArchType(campaign, "bf109");
-        assertPlaneArchType(campaign, "fw190");
+        assertNotTankArchType(campaign, "bf109");
+        assertTankArchType(campaign, "fw190");
     }
     
     @Test
     public void testArchtypeNoReplacement() throws PWCGException 
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-        assertPlaneArchType(campaign, "bf109");
-        assertNotPlaneArchType(campaign, "fw190");
+        assertTankArchType(campaign, "bf109");
+        assertNotTankArchType(campaign, "fw190");
         int daysOff = DateUtils.daysDifference(campaign.getDate(), DateUtils.getDateYYYYMMDD("19420513"));
         AARCoordinator aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.submitLeave(campaign, daysOff);
-        assertPlaneArchType(campaign, "bf109");
-        assertNotPlaneArchType(campaign, "fw190");
+        assertTankArchType(campaign, "bf109");
+        assertNotTankArchType(campaign, "fw190");
     }
     
-    private void assertPlaneArchType(Campaign campaign, String planeArchTypeName)
+    private void assertTankArchType(Campaign campaign, String planeArchTypeName)
     {
     	Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(20111051);
-        for (EquippedPlane plane : equipment.getActiveEquippedPlanes().values())
+        for (EquippedTank plane : equipment.getActiveEquippedTanks().values())
         {
             assert(plane.getArchType().equals(planeArchTypeName));
         }
     }
     
-    private void assertNotPlaneArchType(Campaign campaign, String planeArchTypeName)
+    private void assertNotTankArchType(Campaign campaign, String planeArchTypeName)
     {
     	Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(20111051);
-        for (EquippedPlane plane : equipment.getActiveEquippedPlanes().values())
+        for (EquippedTank plane : equipment.getActiveEquippedTanks().values())
         {
             assert(!(plane.getArchType().equals(planeArchTypeName)));
         }

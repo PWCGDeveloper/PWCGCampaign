@@ -3,7 +3,7 @@ package pwcg.mission.flight;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.Mission;

@@ -12,6 +12,7 @@ import java.util.Set;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.crewmember.HistoricalAce;
 import pwcg.campaign.crewmember.HistoricalAceRank;
@@ -20,7 +21,6 @@ import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.io.json.HistoricalAceIOJson;
 import pwcg.campaign.medals.Medal;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 

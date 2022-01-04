@@ -3,16 +3,16 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PlaneTypeFactory;
+import pwcg.campaign.tank.TankType;
+import pwcg.campaign.tank.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
 
 public class ClaimDenier
 {
     private Campaign campaign;
-    private PlaneTypeFactory planeFactory;
+    private TankTypeFactory planeFactory;
   
-    public ClaimDenier (Campaign campaign, PlaneTypeFactory planeFactory)
+    public ClaimDenier (Campaign campaign, TankTypeFactory planeFactory)
     {
         this.campaign = campaign;
         this.planeFactory = planeFactory;
@@ -42,13 +42,13 @@ public class ClaimDenier
     private String getPlaneDescription(PlayerVictoryDeclaration playerDeclaration)
     {
         String planeDesc = "Unknown";
-        if (playerDeclaration.getAircraftType().equals(PlaneType.BALLOON))
+        if (playerDeclaration.getAircraftType().equals(TankType.BALLOON))
         {
-            planeDesc = PlaneType.BALLOON;
+            planeDesc = TankType.BALLOON;
         }
         else
         {
-            PlaneType plane = planeFactory.createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+            TankType plane = planeFactory.createTankTypeByAnyName(playerDeclaration.getAircraftType());
             if (plane != null)
             {
                 planeDesc = plane.getDisplayName();

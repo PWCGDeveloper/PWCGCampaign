@@ -25,15 +25,15 @@ public class KeptFlights
     {
         if (keptFlight.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
         {
-            fighterFlightsKept.put(keptFlight.getSquadron().getSquadronId(), keptFlight);
+            fighterFlightsKept.put(keptFlight.getSquadron().getCompanyId(), keptFlight);
         }
         else if (keptFlight.getFlightType().isCategory(FlightTypeCategory.BOMB))
         {
-            bomberFlightsKept.put(keptFlight.getSquadron().getSquadronId(), keptFlight);
+            bomberFlightsKept.put(keptFlight.getSquadron().getCompanyId(), keptFlight);
         }
         else
         {
-            otherFlightsKept.put(keptFlight.getSquadron().getSquadronId(), keptFlight);
+            otherFlightsKept.put(keptFlight.getSquadron().getCompanyId(), keptFlight);
         }
 
         keptFlightTypes.add(keptFlight.getFlightType());

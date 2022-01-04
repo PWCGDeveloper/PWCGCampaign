@@ -8,7 +8,7 @@
 	"subUnitIdCode": "",
 	"tankAssignments": [
 		{
-			"archType": "kv",
+			"archType": "kv1",
 			"introduction": "19400101",
 			"withdrawal": "19450601"
 		}

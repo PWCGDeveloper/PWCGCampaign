@@ -31,7 +31,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.SerialNumber;
-import pwcg.campaign.plane.PlaneTypeFactory;
+import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.country.BoSCountry;
@@ -51,7 +51,7 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     @Mock private CrewMembers playerMembers;
     @Mock private CrewMember player;
     @Mock private CrewMember ai;
-    @Mock private PlaneTypeFactory planeFactory;
+    @Mock private TankTypeFactory planeFactory;
     
     private Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
     private PlayerDeclarations playerDeclarationSet;

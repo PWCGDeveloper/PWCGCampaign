@@ -7,6 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CampaignValidatorMedals;
@@ -15,8 +16,7 @@ import pwcg.campaign.personnel.CrewMemberFemaleConverter;
 import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.personnel.CrewMemberGroundInitialVictoryBuilder;
 import pwcg.campaign.personnel.CrewMemberPictureBuilder;
-import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -45,7 +45,7 @@ public class CrewMemberFactory
         player.setCountry(country.getCountry());
         player.setAiSkillLevel(AiSkillLevel.PLAYER);
         player.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_ACTIVE, null, null);
-        player.setSquadronId(company.getSquadronId());
+        player.setSquadronId(company.getCompanyId());
         player.setSerialNumber(campaign.getSerialNumber().getLastPlayerSerialNumber());
         player.setInactiveDate(DateUtils.getEndOfWar());
         
@@ -69,7 +69,7 @@ public class CrewMemberFactory
         newCrewMember.setName(squaddieName);
         newCrewMember.setRank(rank);
         newCrewMember.setCountry(company.getCountry().getCountry());
-        newCrewMember.setSquadronId(company.getSquadronId());
+        newCrewMember.setSquadronId(company.getCompanyId());
         newCrewMember.setSerialNumber(campaign.getSerialNumber().getNextCrewMemberSerialNumber());
         newCrewMember.setInactiveDate(DateUtils.getEndOfWar());
 

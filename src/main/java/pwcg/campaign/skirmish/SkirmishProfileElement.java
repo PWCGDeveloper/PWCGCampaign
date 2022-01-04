@@ -1,6 +1,6 @@
 package pwcg.campaign.skirmish;
 
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.target.TargetType;
 

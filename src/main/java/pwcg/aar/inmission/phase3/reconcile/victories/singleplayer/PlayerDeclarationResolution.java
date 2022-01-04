@@ -9,7 +9,7 @@ import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 
 public class PlayerDeclarationResolution
@@ -40,7 +40,7 @@ public class PlayerDeclarationResolution
             {
                 boolean resolved = false;
                 
-                if (!victoryDeclaration.getAircraftType().equals(PlaneType.BALLOON))
+                if (!victoryDeclaration.getAircraftType().equals(TankType.BALLOON))
                 {
                     resolvePlayerAircraftClaim(playerSerialNumber, victoryDeclaration);
                 }

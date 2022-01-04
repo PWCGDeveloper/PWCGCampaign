@@ -21,10 +21,10 @@ import pwcg.aar.prelim.claims.AARClaimPanelData;
 import pwcg.aar.prelim.claims.AARClaimPanelEventTabulator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.SerialNumber;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
@@ -88,7 +88,7 @@ public class AARClaimPanelEventTabulatorTest
     {             
         AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, Side.AXIS);
         AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
-        Assertions.assertTrue (claimPanelData.getEnemyPlaneTypesInMission().size() == 2);
+        Assertions.assertTrue (claimPanelData.getEnemyTankTypesInMission().size() == 2);
         
     }
     
@@ -97,7 +97,7 @@ public class AARClaimPanelEventTabulatorTest
     {             
         AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, Side.ALLIED);
         AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
-        Assertions.assertTrue (claimPanelData.getEnemyPlaneTypesInMission().size() == 1);
+        Assertions.assertTrue (claimPanelData.getEnemyTankTypesInMission().size() == 1);
         
     }
 }

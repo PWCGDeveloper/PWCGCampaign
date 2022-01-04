@@ -1,7 +1,7 @@
 package pwcg.campaign.crewmember;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;

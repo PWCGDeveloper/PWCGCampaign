@@ -1,0 +1,21 @@
+{
+	"type": "_su122",
+	"archType": "su",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [],
+	"displayName": "SU-122 UZTM (1943)",
+	"script": "LuaScripts\\WorldObjects\\vehicles\\_su122.txt",
+	"model": "graphics\\vehicles\\_su122\\_su122.mgm",
+	"desc": "SU-122",
+	"cruisingSpeed": 13,
+	"goodness": 50,
+	"roleCategories": [
+		"ROLE_SELF_PROPELLED_GUN"
+	],
+	"introduction": "19420601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

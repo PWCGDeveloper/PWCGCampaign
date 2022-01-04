@@ -6,17 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneEquipmentFactory;
-import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.resupply.depot.EquipmentDepotInitializer;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.Equipment;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankEquipmentFactory;
+import pwcg.campaign.tank.TankStatus;
+import pwcg.campaign.tank.TankType;
+import pwcg.campaign.tank.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignEquipmentManager
@@ -60,7 +60,7 @@ public class CampaignEquipmentManager
         equipmentDepotsForServices.put(serviceId, replacementEquipmentForService);
     }
 
-    public Map<Integer, Equipment> getEquipmentAllSquadrons()
+    public Map<Integer, Equipment> getEquipmentAllCompanies()
     {
         return equipmentAllSquadrons;
     }
@@ -70,9 +70,9 @@ public class CampaignEquipmentManager
         return new ArrayList<Integer>(equipmentDepotsForServices.keySet());
     }
     
-    public EquippedPlane getAnyPlaneWithPreference(Integer serialNumber) throws PWCGException
+    public EquippedTank getAnyPlaneWithPreference(Integer serialNumber) throws PWCGException
     {
-        EquippedPlane equippedPlane = getPlaneFromAnySquadron(serialNumber);
+        EquippedTank equippedPlane = getPlaneFromAnySquadron(serialNumber);
         if (equippedPlane == null)
         {
             equippedPlane = getPlaneFromAnyDepo(serialNumber);
@@ -86,11 +86,11 @@ public class CampaignEquipmentManager
         return equippedPlane;
     }
 
-    private EquippedPlane getPlaneFromAnySquadron(Integer serialNumber) throws PWCGException
+    private EquippedTank getPlaneFromAnySquadron(Integer serialNumber) throws PWCGException
     {
         for (Equipment equipment : equipmentAllSquadrons.values())
         {
-            EquippedPlane equippedPlane = equipment.getEquippedPlane(serialNumber);
+            EquippedTank equippedPlane = equipment.getEquippedTank(serialNumber);
             if (equippedPlane != null)
             {
                 return equippedPlane;
@@ -100,11 +100,11 @@ public class CampaignEquipmentManager
         return null;
     }
 
-    private EquippedPlane getPlaneFromAnyDepo(Integer serialNumber) throws PWCGException
+    private EquippedTank getPlaneFromAnyDepo(Integer serialNumber) throws PWCGException
     {
         for (EquipmentDepot equipmentDepot : equipmentDepotsForServices.values())
         {
-            EquippedPlane equippedPlane = equipmentDepot.getAnyPlaneInDepot(serialNumber);
+            EquippedTank equippedPlane = equipmentDepot.getAnyPlaneInDepot(serialNumber);
             if (equippedPlane != null)
             {
                 return equippedPlane;
@@ -113,10 +113,10 @@ public class CampaignEquipmentManager
         return null;
     }
 
-    public EquippedPlane getAnyActivePlaneFromSquadron(Integer squadronId) throws PWCGException
+    public EquippedTank getAnyActivePlaneFromSquadron(Integer squadronId) throws PWCGException
     {
         Equipment equipment = equipmentAllSquadrons.get(squadronId);
-        for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
+        for (EquippedTank equippedPlane : equipment.getActiveEquippedTanks().values())
         {
             return equippedPlane;
         }
@@ -124,18 +124,18 @@ public class CampaignEquipmentManager
         throw new PWCGException ("Unable to locate active equipped plane for squadron " + squadronId);
     }
 
-    public EquippedPlane destroyPlaneFromSquadron(int squadronId, Date date) throws PWCGException
+    public EquippedTank destroyPlaneFromSquadron(int squadronId, Date date) throws PWCGException
     {
-        EquippedPlane destroyedPlane = getAnyActivePlaneFromSquadron(squadronId);
-        destroyedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
+        EquippedTank destroyedPlane = getAnyActivePlaneFromSquadron(squadronId);
+        destroyedPlane.setPlaneStatus(TankStatus.STATUS_DESTROYED);
         destroyedPlane.setDateRemovedFromService(date);
         return destroyedPlane;
     }
 
-    public EquippedPlane destroyPlane(int serialNumber, Date date) throws PWCGException
+    public EquippedTank destroyPlane(int serialNumber, Date date) throws PWCGException
     {
-        EquippedPlane destroyedPlane = getAnyPlaneWithPreference(serialNumber);
-        destroyedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
+        EquippedTank destroyedPlane = getAnyPlaneWithPreference(serialNumber);
+        destroyedPlane.setPlaneStatus(TankStatus.STATUS_DESTROYED);
         destroyedPlane.setDateRemovedFromService(date);
         return destroyedPlane;
     }
@@ -172,14 +172,14 @@ public class CampaignEquipmentManager
             this.destroyPlane(serialNumber, campaign.getDate());
         }
         
-        Equipment squadronEquipment = equipmentAllSquadrons.get(squadron.getSquadronId());
+        Equipment squadronEquipment = equipmentAllSquadrons.get(squadron.getCompanyId());
         for (int i = 0; i < serialNumbersOfChangedPlanes.size(); ++i)
         {
-            PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-            PlaneType planeType = planeTypeFactory.getPlaneByDisplayName(planeTypeToChangeTo);
-            EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForSquadron(campaign, planeType.getType(), squadron.getSquadronId());
+            TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
+            TankType planeType = planeTypeFactory.getPlaneByDisplayName(planeTypeToChangeTo);
+            EquippedTank equippedPlane = TankEquipmentFactory.makeTankForSquadron(campaign, planeType.getType(), squadron.getCompanyId());
             equippedPlane.setEquipmentRequest(true);
-            squadronEquipment.addEquippedPlaneToSquadron(campaign, squadron.getSquadronId(), equippedPlane);
+            squadronEquipment.addEquippedTankToCompany(campaign, squadron.getCompanyId(), equippedPlane);
         }
     }
 

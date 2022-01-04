@@ -15,11 +15,11 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.plane.TankType;
+import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -92,13 +92,13 @@ public class Ju87D3G2PayloadTest
     public void validateStukaPayloadBeforeCannons() throws PWCGException
     {
         BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
 
-        PlaneType bosPlaneType = planeTypeFactory.createPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
+        TankType bosTankType = planeTypeFactory.createTankTypeByType(BosPlaneAttributeMapping.JU87_D3.getTankType());
 
-        System.out.println(bosPlaneType.getType());
+        System.out.println(bosTankType.getType());
 
-        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
+        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
         Assertions.assertTrue (payload != null);
 
         Assertions.assertTrue (payload.getAvailablePayloadDesignations(flight).size() == 8);
@@ -125,15 +125,15 @@ public class Ju87D3G2PayloadTest
     public void validateStukaPayloadAfterCannons() throws PWCGException
     {
         BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
 
-        PlaneType bosPlaneType = planeTypeFactory.createPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
+        TankType bosTankType = planeTypeFactory.createTankTypeByType(BosPlaneAttributeMapping.JU87_D3.getTankType());
 
-        System.out.println(bosPlaneType.getType());
+        System.out.println(bosTankType.getType());
 
         Date date = DateUtils.getDateYYYYMMDD("19430503");
 
-        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), date);
+        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosTankType.getType(), date);
         Assertions.assertTrue (payload != null);
 
         Assertions.assertTrue (payload.getAvailablePayloadDesignations(flight).size() == 10);
@@ -158,7 +158,7 @@ public class Ju87D3G2PayloadTest
 
     private IPlanePayload getPayloadGeneratorForDiveBomber() throws PWCGException
     {
-        PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
+        TankType plane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(BosPlaneAttributeMapping.JU87_D3.getTankType());
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(plane.getType(), campaign.getDate());
         return payloadGenerator;
@@ -166,7 +166,7 @@ public class Ju87D3G2PayloadTest
 
     private IPlanePayload getPayloadGeneratorForAttack() throws PWCGException
     {
-        PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
+        TankType plane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(BosPlaneAttributeMapping.JU87_D3.getTankType());
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(plane.getType(), campaign.getDate());
         return payloadGenerator;

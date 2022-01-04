@@ -63,7 +63,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             AAROutOfMissionStepper stepper = AARFactory.makeAAROutOfMissionStepper(campaign, aarContext);
             stepper.oneStep();
 
-	    	int viableSquadrons = PWCGContext.getInstance().getSquadronManager().getViableSquadrons(campaign).size();
+	    	int viableSquadrons = PWCGContext.getInstance().getCompanyManager().getViableSquadrons(campaign).size();
             int airVictories = aarContext.getPersonnelAcheivements().getTotalAirToAirVictories();
             int groundVictories = aarContext.getPersonnelAcheivements().getTotalAirToGroundVictories();
 	    	int losses = aarContext.getPersonnelLosses().getSquadMembersLostAndInjured().size();
@@ -175,13 +175,13 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     private void printShortHandedSquadrons() throws PWCGException
     {
         System.out.println("=====================================================");
-        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllCompanyPersonnel())
         {
             System.out.println(squadronPersonnel.getSquadron().determineDisplayName(campaign.getDate()));
             System.out.println(" Personnel size is " + squadronPersonnel.getCrewMembersWithAces().getActiveCount(campaign.getDate()));
             
-            Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronPersonnel.getSquadron().getSquadronId());
-            System.out.println(" Equipment size is " + equipment.getActiveEquippedPlanes().size());
+            Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronPersonnel.getSquadron().getCompanyId());
+            System.out.println(" Equipment size is " + equipment.getActiveEquippedTanks().size());
         }
     }
 }

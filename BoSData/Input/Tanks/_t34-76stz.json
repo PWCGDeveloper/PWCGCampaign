@@ -1,0 +1,21 @@
+{
+	"type": "_t34-76stz",
+	"archType": "t34",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [],
+	"displayName": "T-34-76 STZ 41",
+	"script": "LuaScripts\\WorldObjects\\vehicles\\_t34-76stz.txt",
+	"model": "graphics\\vehicles\\_t34-76stz\\_t34-76stz.mgm",
+	"desc": "T-34-76 STZ 41",
+	"cruisingSpeed": 18,
+	"goodness": 50,
+	"roleCategories": [
+		"ROLE_MAIN_BATTLE_TANK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19430601",
+	"withdrawal": "19430801"
+}

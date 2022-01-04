@@ -8,6 +8,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
@@ -15,7 +16,6 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -123,7 +123,7 @@ public class HistoricalAce extends CrewMember
         Company squadron = null;
         if (lastHistoricalAceSquadron != null)
         {
-            squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(lastHistoricalAceSquadron.squadron);
+            squadron = PWCGContext.getInstance().getCompanyManager().getCompany(lastHistoricalAceSquadron.squadron);
         }
 
         return squadron;
@@ -271,7 +271,7 @@ public class HistoricalAce extends CrewMember
         String rankName = "";
 
         int squadId = getCurrentSquadron(date, false);
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadId);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadId);
 
         if (squadron != null && currentRank != null)
         {

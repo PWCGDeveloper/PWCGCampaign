@@ -11,10 +11,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.SquadHistory;
 import pwcg.campaign.SquadHistoryEntry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.io.json.SquadronIOJson;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.io.json.CompanyIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -25,7 +25,7 @@ public class SquadronHistoryValidationTest
     public void readJsonBoSSquadronsTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        List<Company> squadrons = SquadronIOJson.readJson();
+        List<Company> squadrons = CompanyIOJson.readJson();
         Assertions.assertTrue (squadrons.size() > 0);
         
         boolean success = true;
@@ -43,7 +43,7 @@ public class SquadronHistoryValidationTest
     
     private void verifyVVSTransition(Company squadron) throws PWCGException
     {
-        if (squadron.getSquadronId() == 10131136)
+        if (squadron.getCompanyId() == 10131136)
         {
             SquadHistory squadronHistory = squadron.getSquadHistory();
             Assertions.assertTrue (squadronHistory != null);

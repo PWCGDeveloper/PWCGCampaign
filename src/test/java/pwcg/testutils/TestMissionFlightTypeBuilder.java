@@ -1,7 +1,7 @@
 package pwcg.testutils;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightTypes;

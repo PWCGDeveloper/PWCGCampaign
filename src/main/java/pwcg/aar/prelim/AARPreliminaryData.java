@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Set;
 
 import pwcg.aar.prelim.claims.AARClaimPanelData;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogFileSet;
 
@@ -72,11 +72,11 @@ public class AARPreliminaryData
             }
         }
         
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> playerSquadronsInMission = new ArrayList<>();
         for (Integer squadronId : uniqueSquadronsInMission)
         {
-            Company squadron = squadronManager.getSquadron(squadronId);
+            Company squadron = squadronManager.getCompany(squadronId);
             playerSquadronsInMission.add(squadron);
         }
         return playerSquadronsInMission;

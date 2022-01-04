@@ -9,11 +9,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.personnel.CompanyPersonnel;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
@@ -46,7 +46,7 @@ public class FlightCrewBuilderTest
     public void testPlayerFlightGeneration() throws PWCGException
     {
         FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.KG53_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
@@ -71,14 +71,14 @@ public class FlightCrewBuilderTest
     public void testAiFlightGeneration() throws PWCGException
     {
         FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(20111052);
         flightInformation.setSquadron(squadron);
 
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
         List<CrewMember> players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
-        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId());        
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getCompanyId());        
         boolean playerFound = false;
         for (CrewMember crew : assignedCrewMap)
         {

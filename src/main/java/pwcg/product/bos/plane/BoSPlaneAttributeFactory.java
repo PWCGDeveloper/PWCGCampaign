@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.IStaticPlane;
-import pwcg.campaign.plane.IPlaneAttributeMapping;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -26,8 +25,8 @@ public class BoSPlaneAttributeFactory
 
     public static IStaticPlane getStaticPlane(String planeType) throws PWCGException 
     {
-        IPlaneAttributeMapping BosPlaneAttributeMapping = createPlaneAttributeMap(planeType);
-        String[] staticPlaneMatches = BosPlaneAttributeMapping.getStaticPlaneMatches();
+        BosPlaneAttributeMapping bosPlaneAttributeMapping = createPlaneAttributeMap(planeType);
+        String[] staticPlaneMatches = bosPlaneAttributeMapping.getStaticPlaneMatches();
         int index = RandomNumberGenerator.getRandom(staticPlaneMatches.length);
         return new BoSStaticPlane(staticPlaneMatches[index]);
     }
@@ -37,13 +36,13 @@ public class BoSPlaneAttributeFactory
         List<BosPlaneAttributeMapping> planeAttributeMappingsList = Arrays.asList(BosPlaneAttributeMapping.values());
         for (BosPlaneAttributeMapping planeAttributeMappings : planeAttributeMappingsList)
         {
-            for (String staticPlaneType : planeAttributeMappings.getStaticPlaneMatches())
+            for (String staticTankType : planeAttributeMappings.getStaticPlaneMatches())
             {
-                if (planeType.contains(staticPlaneType)) 
+                if (planeType.contains(staticTankType)) 
                 {
                     return true;
                 }
-                if (staticPlaneType.contains(planeType)) 
+                if (staticTankType.contains(planeType)) 
                 {
                     return true;
                 }

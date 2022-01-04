@@ -12,11 +12,11 @@ import pwcg.aar.ui.events.model.CrewMemberStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class AARCombatReportTabulator 
@@ -60,7 +60,7 @@ public class AARCombatReportTabulator
     private void createCrewsInMission() throws PWCGException
     {
         Map<Integer, CrewMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getCrewMemberCollection();
-        CrewMembers squadronMembersInMission = CrewMemberFilter.filterActiveAIAndPlayerAndAcesForSquadron(campaignMembersInMission, campaign.getDate(), squadron.getSquadronId());
+        CrewMembers squadronMembersInMission = CrewMemberFilter.filterActiveAIAndPlayerAndAcesForSquadron(campaignMembersInMission, campaign.getDate(), squadron.getCompanyId());
         combatReportPanelData.addCrewMembersInMission(squadronMembersInMission);
     }
 
@@ -108,7 +108,7 @@ public class AARCombatReportTabulator
     
     boolean isIncludeInCombatReport(int squadronId, int serialNumber) throws PWCGException
     {
-        if (squadronId == squadron.getSquadronId())
+        if (squadronId == squadron.getCompanyId())
         {
             if (aarContext.getMissionEvaluationData().wasCrewMemberInMission(serialNumber))
             {

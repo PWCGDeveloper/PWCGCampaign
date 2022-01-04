@@ -5,11 +5,11 @@ import java.util.HashMap;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberNames;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 

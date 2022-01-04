@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
@@ -222,7 +222,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
             briefingData.clearAiFlightsToDisplay();
         }
         
-        briefingData.changeSelectedFlight(squadron.getSquadronId());
+        briefingData.changeSelectedFlight(squadron.getCompanyId());
         refreshAllPanels();           
 
     }

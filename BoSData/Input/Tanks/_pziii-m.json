@@ -1,0 +1,21 @@
+{
+	"type": "_pziii-m",
+	"archType": "pziii",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "Pz.Kpfw.III Ausf.M",
+	"script": "LuaScripts\\WorldObjects\\vehicles\\_pziii-m.txt",
+	"model": "graphics\\vehicles\\_pziii-m\\_pziii-m.mgm",
+	"desc": "Pz.Kpfw.III Ausf.M",
+	"cruisingSpeed": 12,
+	"goodness": 45,
+	"roleCategories": [
+		"ROLE_MAIN_BATTLE_TANK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19421201",
+	"withdrawal": "19440101"
+}

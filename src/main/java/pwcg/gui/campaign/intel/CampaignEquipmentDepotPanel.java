@@ -12,9 +12,9 @@ import javax.swing.JTextArea;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -101,7 +101,7 @@ public class CampaignEquipmentDepotPanel extends JPanel
 
     private void createDepotForRole(PwcgRoleCategory roleCategory, JPanel depotBodyPanel) throws PWCGException
     {
-        List<EquippedPlane> aircraftForRole = getDepotAircraftForRole(roleCategory);
+        List<EquippedTank> aircraftForRole = getDepotAircraftForRole(roleCategory);
         if (aircraftForRole.size() > 0)
         {
             JPanel depotRolePanel = new JPanel(new BorderLayout());
@@ -131,10 +131,10 @@ public class CampaignEquipmentDepotPanel extends JPanel
         return serviceDepotText;
     }
 
-    private String formAircraftInventory(List<EquippedPlane> aircraftForRole, PwcgRoleCategory roleCategory) throws PWCGException
+    private String formAircraftInventory(List<EquippedTank> aircraftForRole, PwcgRoleCategory roleCategory) throws PWCGException
     {
         Map<String, Integer> planeCount = new TreeMap<>();
-        for (EquippedPlane plane : aircraftForRole)
+        for (EquippedTank plane : aircraftForRole)
         {
             if (!planeCount.containsKey(plane.getDisplayName()))
             {
@@ -158,7 +158,7 @@ public class CampaignEquipmentDepotPanel extends JPanel
         return depoStatusBuffer.toString();
     }
     
-    private List<EquippedPlane> getDepotAircraftForRole(PwcgRoleCategory roleCategory) throws PWCGException
+    private List<EquippedTank> getDepotAircraftForRole(PwcgRoleCategory roleCategory) throws PWCGException
     {
         EquipmentDepot equipmentDepot = campaign.getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
         return equipmentDepot.getDepotAircraftForRole(roleCategory);

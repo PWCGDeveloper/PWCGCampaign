@@ -11,14 +11,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.resupply.depot.EquipmentNeedForSquadronsCalculator;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -41,7 +41,7 @@ public class EquipmentReplacementWeightNoNeedTest
     public void testGermanNeedNoLosses() throws PWCGException
     {
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
@@ -55,7 +55,7 @@ public class EquipmentReplacementWeightNoNeedTest
     public void testRussianNeedNoLosses() throws PWCGException
     {
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10101);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
@@ -69,7 +69,7 @@ public class EquipmentReplacementWeightNoNeedTest
     public void testItalianNeedNoLosses() throws PWCGException
     {
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20202);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 
 public class AiSquadronIncluder
@@ -32,25 +32,7 @@ public class AiSquadronIncluder
     {
         for (Company squadron : squads)
         {
-            if (squadronWillGenerateAFlight(squadron))
-            {
-                squadronsForMission.add(squadron);
-            }
+            squadronsForMission.add(squadron);
         }
-    }
-
-    private boolean squadronWillGenerateAFlight(Company squadron) throws PWCGException
-    {
-        if (!squadronIsInRange(squadron))
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    private boolean squadronIsInRange(Company squadron) throws PWCGException 
-    {
-        return SquadronRange.positionIsInRange(campaign, squadron, mission.getMissionBorders().getCenter());
     }
 }

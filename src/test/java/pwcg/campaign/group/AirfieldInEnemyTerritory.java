@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -47,7 +47,7 @@ public class AirfieldInEnemyTerritory
 
 	private void determineProperPlacementForDate(FrontMapIdentifier mapId, Date startDate) throws PWCGException
 	{
-		SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+		CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
 		for (Company squadron : squadronManager.getActiveSquadrons(startDate))
 		{
 		    determineSquadronIsOnCorrectSide(mapId, startDate, squadron);
@@ -116,6 +116,6 @@ public class AirfieldInEnemyTerritory
 	
 	private String formKey (Company squadron, Airfield squadronField)
 	{
-    	return squadron.getSquadronId() + " at " + squadronField.getName();
+    	return squadron.getCompanyId() + " at " + squadronField.getName();
 	}
 }

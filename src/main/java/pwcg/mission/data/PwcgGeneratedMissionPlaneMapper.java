@@ -6,10 +6,10 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 
 public class PwcgGeneratedMissionPlaneMapper
@@ -36,14 +36,14 @@ public class PwcgGeneratedMissionPlaneMapper
 
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            alliedPlaneMap.put(PlaneType.BALLOON, PlaneType.BALLOON);
-            axisPlaneMap.put(PlaneType.BALLOON, PlaneType.BALLOON);
+            alliedPlaneMap.put(TankType.BALLOON, TankType.BALLOON);
+            axisPlaneMap.put(TankType.BALLOON, TankType.BALLOON);
         }
     }
 
     private Side determinePlaneSide(Campaign campaign, PwcgGeneratedMissionPlaneData missionPlane) throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(missionPlane.getSquadronId());            
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(missionPlane.getSquadronId());            
         Side side = squadron.determineSquadronCountry(campaign.getDate()).getSide();
         return side;
     }

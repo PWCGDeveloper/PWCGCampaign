@@ -20,12 +20,12 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.PlaneSorter;
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.TankSorter;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -232,12 +232,12 @@ public class CampaignSkinConfigurationCrewMemberPanel extends ImageResizingPanel
         CrewMember referencePlayer = campaign.findReferencePlayer();
         Company company = referencePlayer.determineSquadron();
 
-        List<PlaneType> squadronPlanes = company.determineCurrentAircraftList(campaign.getDate());
+        List<TankType> squadronPlanes = company.determineCurrentAircraftList(campaign.getDate());
 
-        List<PlaneType> squadronPlanesByBest = PlaneSorter.sortPlanesByGoodness(squadronPlanes);
+        List<TankType> squadronPlanesByBest = TankSorter.sortTanksByGoodness(squadronPlanes);
 
         boolean planeSelected = false;
-        for (PlaneType plane : squadronPlanesByBest)
+        for (TankType plane : squadronPlanesByBest)
         {
             // Add this aircraft to the aircraft button group and panel
             JRadioButton aircraftButton = makeRadioButton(plane.getDisplayName(), "SelectPlane:" + plane.getType(), ColorMap.PAPER_FOREGROUND);
@@ -350,7 +350,7 @@ public class CampaignSkinConfigurationCrewMemberPanel extends ImageResizingPanel
 
         String planeDisplayName = "";
 
-        PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
+        TankType plane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(planeName);
         if (plane != null)
         {
             planeDisplayName = plane.getDisplayName();

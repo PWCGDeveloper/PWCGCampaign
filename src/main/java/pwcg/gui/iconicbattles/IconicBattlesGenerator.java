@@ -9,12 +9,12 @@ import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.skirmish.IconicMissionsManager;
 import pwcg.campaign.skirmish.IconicSingleMission;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.CampaignGuiContextManager;
@@ -113,7 +113,7 @@ public class IconicBattlesGenerator
         }
         else
         {
-            playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(iconicBattleData.getSelectedSquadron());
+            playerSquadron = PWCGContext.getInstance().getCompanyManager().getCompany(iconicBattleData.getSelectedSquadron());
         }
         
         return playerSquadron;
@@ -125,7 +125,7 @@ public class IconicBattlesGenerator
         IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleKey());
         for (Integer squadronId : iconicMission.getIconicBattleParticipants())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
             if (squadron.determineSide() == truckSide)
             {
                 return squadron;

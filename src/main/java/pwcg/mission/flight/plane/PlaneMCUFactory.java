@@ -7,8 +7,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.TankAce;
-import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.tank.Equipment;
+import pwcg.campaign.tank.EquippedTank;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
@@ -33,24 +33,24 @@ public class PlaneMCUFactory
         {
             numPlanes = crewsForFlight.size();
         }
-        List<EquippedPlane> planesTypesForFlight = buildEquipmentForFllght(numPlanes);
+        List<EquippedTank> planesTypesForFlight = buildEquipmentForFllght(numPlanes);
         List<PlaneMcu> planesForFlight = createPlanes(planesTypesForFlight, crewsForFlight);
         
         return planesForFlight;
     }
     
-    public static PlaneMcu createPlaneMcuByPlaneType (Campaign campaign, EquippedPlane equippedPlane, ICountry country, CrewMember crewMember) throws PWCGException
+    public static PlaneMcu createPlaneMcuByTankType (Campaign campaign, EquippedTank equippedPlane, ICountry country, CrewMember crewMember) throws PWCGException
     {
         PlaneMcu plane = new PlaneMcu(campaign, crewMember);
         plane.buildPlane(equippedPlane, country);
         return plane;
     }
 
-	private List<EquippedPlane> buildEquipmentForFllght(int numPlanes) throws PWCGException 
+	private List<EquippedTank> buildEquipmentForFllght(int numPlanes) throws PWCGException 
 	{
-		Equipment equipmentForSquadron = flightInformation.getCampaign().getEquipmentManager().getEquipmentForSquadron(flightInformation.getSquadron().getSquadronId());
+		Equipment equipmentForSquadron = flightInformation.getCampaign().getEquipmentManager().getEquipmentForSquadron(flightInformation.getSquadron().getCompanyId());
         FlightPlaneTypeBuilder planeTypeBuilder = new FlightPlaneTypeBuilder(equipmentForSquadron, numPlanes);
-        List<EquippedPlane> planesTypesForFlight =planeTypeBuilder.getPlaneListForFlight();
+        List<EquippedTank> planesTypesForFlight =planeTypeBuilder.getPlaneListForFlight();
 		return planesTypesForFlight;
 	}
 
@@ -61,16 +61,16 @@ public class PlaneMCUFactory
 		return crewsForFlight;
 	}
 
-    private List<PlaneMcu> createPlanes(List<EquippedPlane> planesTypesForFlight, List<CrewMember> crewsForFlight) throws PWCGException
+    private List<PlaneMcu> createPlanes(List<EquippedTank> planesTypesForFlight, List<CrewMember> crewsForFlight) throws PWCGException
     {        
         List<PlaneMcu> planesForFlight = new ArrayList<>();
         for (int index = 0; index < planesTypesForFlight.size(); ++index)
         {
         	try
         	{
-	            EquippedPlane equippedPlane = planesTypesForFlight.get(index);
+	            EquippedTank equippedPlane = planesTypesForFlight.get(index);
 	            CrewMember crewMember = crewsForFlight.get(index);            
-	            PlaneMcu plane = createPlaneMcuByPlaneType(flightInformation.getCampaign(), equippedPlane, flightInformation.getSquadron().getCountry(), crewMember);
+	            PlaneMcu plane = createPlaneMcuByTankType(flightInformation.getCampaign(), equippedPlane, flightInformation.getSquadron().getCountry(), crewMember);
 	            if (index > 0)
 	            {
 	                PlaneMcu leadPlane = planesForFlight.get(0);
@@ -143,15 +143,6 @@ public class PlaneMCUFactory
 
     private AiSkillLevel assignAiSkillLevel(PlaneMcu plane) throws PWCGException
     {
-        AiSkillLevel aiLevel;
-        if (!plane.isNovice())
-        {
-            aiLevel = plane.getCrewMember().getAiSkillLevel();
-        }
-        else
-        {
-            aiLevel =  AiSkillLevel.NOVICE;
-        }
-        return aiLevel;
+        return plane.getCrewMember().getAiSkillLevel();
     }
  }

@@ -1,6 +1,6 @@
 package pwcg.gui.rofmap.brief;
 
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 
 public interface IFlightChanged

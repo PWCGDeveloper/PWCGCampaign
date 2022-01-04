@@ -5,7 +5,7 @@ import java.util.List;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.tank.PwcgRole;
 
 public class NewCrewMemberGeneratorDO
 {

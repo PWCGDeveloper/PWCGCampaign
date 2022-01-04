@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.io.json.SquadronIOJson;
+import pwcg.campaign.io.json.CompanyIOJson;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -23,7 +23,7 @@ public class SquadronAircraftAssignmentTest
     public void verifyValidBoSAirfieldMoveDatesTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        List<Company> squadrons = SquadronIOJson.readJson();
+        List<Company> squadrons = CompanyIOJson.readJson();
         Assertions.assertTrue (squadrons.size() > 0);
         
         boolean success = true;
@@ -42,16 +42,16 @@ public class SquadronAircraftAssignmentTest
     {
         boolean success = true;
         Date lastEndDate = null;
-        List<SquadronPlaneAssignment> planeAssignments = squadron.getPlaneAssignments();
-        for (SquadronPlaneAssignment planeAssignment : planeAssignments)
+        List<CompanyTankAssignment> planeAssignments = squadron.getPlaneAssignments();
+        for (CompanyTankAssignment planeAssignment : planeAssignments)
         {
             if (lastEndDate == null)
             {
-                lastEndDate = planeAssignment.getSquadronWithdrawal();
+                lastEndDate = planeAssignment.getCompanyWithdrawal();
             }
             else
             {
-                Date thisEndDate = planeAssignment.getSquadronWithdrawal();
+                Date thisEndDate = planeAssignment.getCompanyWithdrawal();
                 thisEndDate = DateUtils.advanceTimeDays(thisEndDate, 1);
                 if (thisEndDate.before(lastEndDate))
                 {

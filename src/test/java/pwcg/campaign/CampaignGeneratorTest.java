@@ -8,6 +8,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
@@ -17,9 +19,7 @@ import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.Equipment;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCacheBase;
@@ -30,31 +30,32 @@ public class CampaignGeneratorTest
 {
 	public CampaignGeneratorTest() throws PWCGException
 	{
-    	PWCGContext.setProduct(PWCGProduct.FC);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
+    	PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.STALINGRAD_MAP);
 	}
 	
     @Test
-    public void createWWICampaign () throws PWCGException
+    public void createWWIICampaign () throws PWCGException
     {        
-    	Campaign campaign = generateCampaign(SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), DateUtils.getDateYYYYMMDD("19171001"));
+    	Campaign campaign = generateCampaign(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE.getSquadronId(), DateUtils.getDateYYYYMMDD("19420801"));
     	assert(campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList().size() == 1);
         CrewMember player = campaign.findReferencePlayer();
-        Assertions.assertTrue (player.determineSquadron().getSquadronId() == SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
-        Assertions.assertTrue (player.determineSquadron().determineSquadronCountry(campaign.getDate()).getCountry() == Country.FRANCE);
+        Assertions.assertTrue (player.determineSquadron().getCompanyId() == SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE.getSquadronId());
+        Assertions.assertTrue (player.determineSquadron().determineSquadronCountry(campaign.getDate()).getCountry() == Country.GERMANY);
         Assertions.assertTrue (campaign.getCampaignData().getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
-        assert(campaign.getPersonnelManager().getAllSquadronPersonnel().size() > 30);
+        assert(campaign.getPersonnelManager().getAllCompanyPersonnel().size() > 6);
+        assert(campaign.getEquipmentManager().getEquipmentAllCompanies().size() > 6);
         
-        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllCompanyPersonnel())
         {
             CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
-            assert(squadronMembers.getCrewMemberList().size() == Company.SQUADRON_STAFF_SIZE);
+            assert(squadronMembers.getCrewMemberList().size() == Company.COMPANY_STAFF_SIZE);
         }
         
         
-        for (Equipment equipment : campaign.getEquipmentManager().getEquipmentAllSquadrons().values())
+        for (Equipment equipment : campaign.getEquipmentManager().getEquipmentAllCompanies().values())
         {
-            assert(equipment.getActiveEquippedPlanes().size() == Company.SQUADRON_EQUIPMENT_SIZE);
+            assert(equipment.getActiveEquippedTanks().size() == Company.COMPANY_EQUIPMENT_SIZE);
         }
     }
 
@@ -62,9 +63,9 @@ public class CampaignGeneratorTest
                     int squadronId,
                     Date campaignDate) throws PWCGException 
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         
-        Company squadron = squadronManager.getSquadron(squadronId);
+        Company squadron = squadronManager.getCompany(squadronId);
         
         ArmedService service = squadron.determineServiceForSquadron(campaignDate);
         String squadronName = squadron.determineDisplayName(campaignDate);

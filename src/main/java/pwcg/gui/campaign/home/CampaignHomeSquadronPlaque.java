@@ -9,9 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -57,7 +57,7 @@ public class CampaignHomeSquadronPlaque extends JPanel
         descGridPanel.add(PWCGLabelFactory.makeDummyLabel());
         descGridPanel.add(PWCGLabelFactory.makeDummyLabel());
 
-        Company squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron =  PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
 
         String assignedToString = InternationalizationManager.getTranslation("Assigned to");
         JLabel lAssignedTo = PWCGLabelFactory.makeTransparentLabel(assignedToString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
@@ -82,7 +82,7 @@ public class CampaignHomeSquadronPlaque extends JPanel
         descGridPanel.add(lDate);
 
 
-        PlaneType aircraftType = squadron.determineBestPlane(campaign.getDate());
+        TankType aircraftType = squadron.determineBestPlane(campaign.getDate());
         if (aircraftType != null)
         {
             String aircraftString = spacing + InternationalizationManager.getTranslation("Flying the");

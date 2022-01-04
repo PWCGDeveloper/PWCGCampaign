@@ -7,13 +7,13 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.factory.AirfieldConfigurationFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.AirfieldConfiguration;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
@@ -182,7 +182,7 @@ public class AirfieldManager
     {
         List<Airfield> airfieldsFiltered = new ArrayList<>();
         
-        List<Company> activeSquadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(date);
+        List<Company> activeSquadrons = PWCGContext.getInstance().getCompanyManager().getActiveSquadronsForCurrentMap(date);
         for (Company squadron : activeSquadrons)
         {
             Airfield squadronAirfield = squadron.determineCurrentAirfieldCurrentMap(date);

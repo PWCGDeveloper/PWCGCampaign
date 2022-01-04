@@ -1,0 +1,21 @@
+{
+	"type": "_pziv-g",
+	"archType": "pziv",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "Pz.Kpfw.IV Ausf.G",
+	"script": "LuaScripts\\WorldObjects\\vehicles\\_pziv-g.txt",
+	"model": "graphics\\vehicles\\_pziv-g\\_pziv-g.mgm",
+	"desc": "Pz.Kpfw.IV Ausf.G",
+	"cruisingSpeed": 14,
+	"goodness": 55,
+	"roleCategories": [
+		"ROLE_MAIN_BATTLE_TANK"
+	],
+	"introduction": "19420601",
+	"endProduction": "19441001",
+	"withdrawal": "19450601"
+}

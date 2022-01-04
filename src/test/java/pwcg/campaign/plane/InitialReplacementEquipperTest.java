@@ -43,7 +43,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 15);
+        assert(equipment.getAvailableDepotTanks().size() == 15);
         
         boolean me110e2Found = false;
         boolean he111h6Found = false;
@@ -51,7 +51,7 @@ public class InitialReplacementEquipperTest
         boolean ju87d3Found = false;
         boolean ju52Found = false;
         
-        for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
+        for (EquippedTank replacementPlane : equipment.getAvailableDepotTanks().values())
         {
             if (replacementPlane.getType().equals("bf110e2"))
             {
@@ -96,7 +96,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 17);
+        assert(equipment.getAvailableDepotTanks().size() == 17);
         
         boolean me110g2Found = false;
         boolean he111h6Found = false;
@@ -105,7 +105,7 @@ public class InitialReplacementEquipperTest
         boolean ju87d3Found = false;
         boolean ju52Found = false;
         
-        for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
+        for (EquippedTank replacementPlane : equipment.getAvailableDepotTanks().values())
         {
             if (replacementPlane.getType().equals("bf110g2"))
             {
@@ -151,7 +151,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, vvs);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 90);
+        assert(equipment.getAvailableDepotTanks().size() == 90);
         
         boolean c47 = false;
         boolean hurricane = false;
@@ -162,7 +162,7 @@ public class InitialReplacementEquipperTest
         boolean pe2Found = false;
         boolean il2Found = false;
 
-        for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
+        for (EquippedTank replacementPlane : equipment.getAvailableDepotTanks().values())
         {
             if (replacementPlane.getType().equals("i16t24"))
             {
@@ -221,7 +221,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, vvs);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 175);
+        assert(equipment.getAvailableDepotTanks().size() == 175);
         
         boolean c47 = false;
         boolean hurricane = false;
@@ -233,7 +233,7 @@ public class InitialReplacementEquipperTest
         boolean il2Found = false;
         boolean yak1Found = false;
         
-        for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
+        for (EquippedTank replacementPlane : equipment.getAvailableDepotTanks().values())
         {
             if (replacementPlane.getType().equals("i16t24"))
             {
@@ -297,11 +297,11 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, regiaAeronautica);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 1);
+        assert(equipment.getAvailableDepotTanks().size() == 1);
         
         boolean macchiFound = false;
         
-        for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
+        for (EquippedTank replacementPlane : equipment.getAvailableDepotTanks().values())
         {
             if (replacementPlane.getType().equals("mc202s8"))
             {

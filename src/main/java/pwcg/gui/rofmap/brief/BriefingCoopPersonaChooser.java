@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;

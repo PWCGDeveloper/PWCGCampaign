@@ -6,12 +6,12 @@ import java.util.Map;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.ServiceResupplyNeed;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentReplacementWeightByNeed
@@ -51,7 +51,7 @@ public class EquipmentReplacementWeightByNeed
             ISquadronNeed squadronNeed = resupplyNeed.getSquadronNeeds().get(squadronId);
             if (squadronNeed.getNumNeeded() > 0)
             {
-                Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+                Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
                 List<String> asrchTypesForSquadron = squadron.getActiveArchTypes(campaign.getDate());
                 
                 for (String archType : asrchTypesForSquadron)

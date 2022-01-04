@@ -1,9 +1,9 @@
 package pwcg.testutils;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.skirmish.Skirmish;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;

@@ -10,11 +10,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.plane.TankType;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -62,7 +62,7 @@ public class WW2PayloadTest
     {
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
 
-        for (PlaneType planeType : PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes())
+        for (TankType planeType : PWCGContext.getInstance().getTankTypeFactory().getAllPlanes())
         {
             IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(planeType.getType(), campaign.getDate());
             testPatrolPayload(payloadGenerator);

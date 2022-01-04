@@ -12,6 +12,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
@@ -19,8 +21,6 @@ import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.campaign.resupply.depot.EquipmentReplacementWeightByNeed;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.bos.country.BoSServiceManager;
@@ -44,25 +44,25 @@ public class EquipmentReplacementWeightByNeedTest
 
     private void removePlanesFromCampaign(Campaign campaign) throws PWCGException
     {
-        for (Equipment equipment : campaign.getEquipmentManager().getEquipmentAllSquadrons().values())
+        for (Equipment equipment : campaign.getEquipmentManager().getEquipmentAllCompanies().values())
         {
             int numDestroyedOverOneWeekAgo = 0;
             int numDestroyedlessThanOneWeekAgo = 0;
-            for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
+            for (EquippedTank equippedPlane : equipment.getActiveEquippedTanks().values())
             {
                 if (numDestroyedOverOneWeekAgo < 2)
                 {
                     Date threeWeeksAgo = DateUtils.removeTimeDays(campaign.getDate(), 21);
                     ++numDestroyedOverOneWeekAgo;
                     equippedPlane.setDateRemovedFromService(threeWeeksAgo);
-                    equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
+                    equippedPlane.setPlaneStatus(TankStatus.STATUS_DESTROYED);
                 }
                 else if (numDestroyedlessThanOneWeekAgo < 1)
                 {
                     Date threeDaysAgo = DateUtils.removeTimeDays(campaign.getDate(), 3);
                     ++numDestroyedlessThanOneWeekAgo;
                     equippedPlane.setDateRemovedFromService(threeDaysAgo);
-                    equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
+                    equippedPlane.setPlaneStatus(TankStatus.STATUS_DESTROYED);
                 }
                 else
                 {
@@ -78,7 +78,7 @@ public class EquipmentReplacementWeightByNeedTest
         removePlanesFromCampaign(earlyCampaign);
         
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(earlyCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(earlyCampaign);
@@ -116,7 +116,7 @@ public class EquipmentReplacementWeightByNeedTest
         removePlanesFromCampaign(earlyCampaign);
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10101);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(earlyCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(earlyCampaign);
@@ -150,7 +150,7 @@ public class EquipmentReplacementWeightByNeedTest
         removePlanesFromCampaign(earlyCampaign);
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20202);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(earlyCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(earlyCampaign);
@@ -166,7 +166,7 @@ public class EquipmentReplacementWeightByNeedTest
         removePlanesFromCampaign(lateCampaign);
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(lateCampaign);
@@ -195,7 +195,7 @@ public class EquipmentReplacementWeightByNeedTest
         removePlanesFromCampaign(lateCampaign);
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(BoSServiceManager.USAAF);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(lateCampaign);
@@ -210,7 +210,7 @@ public class EquipmentReplacementWeightByNeedTest
         removePlanesFromCampaign(lateCampaign);
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(BoSServiceManager.RAF);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
         
         EquipmentReplacementWeightByNeed equipmentReplacementWeightUsage = new EquipmentReplacementWeightByNeed(lateCampaign);

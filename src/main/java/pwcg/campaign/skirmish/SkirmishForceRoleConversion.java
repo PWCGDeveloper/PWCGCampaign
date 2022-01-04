@@ -1,7 +1,7 @@
 package pwcg.campaign.skirmish;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.tank.PwcgRole;
 
 public class SkirmishForceRoleConversion
 {

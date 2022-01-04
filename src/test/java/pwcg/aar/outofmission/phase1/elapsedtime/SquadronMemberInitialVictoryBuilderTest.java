@@ -7,6 +7,7 @@ import org.junit.jupiter.api.TestInstance;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
@@ -15,7 +16,6 @@ import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -38,7 +38,7 @@ public class CrewMemberInitialVictoryBuilderTest
     @Test
     public void testInitialVictoriesGermanFighter () throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20112052);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(20112052);
         ArmedService service = squadron.determineServiceForSquadron(germanCampaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         CompanyPersonnel jg52Personnel = germanCampaign.getPersonnelManager().getCompanyPersonnel(20112052);
@@ -70,7 +70,7 @@ public class CrewMemberInitialVictoryBuilderTest
     @Test
     public void testInitialVictoriesRussianFighter () throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(10111126);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(10111126);
         ArmedService service = squadron.determineServiceForSquadron(germanCampaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         
@@ -101,7 +101,7 @@ public class CrewMemberInitialVictoryBuilderTest
     @Test
     public void testInitialVictoriesGermanFighterWest () throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20112052);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(20112052);
         ArmedService service = squadron.determineServiceForSquadron(germanCampaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         CompanyPersonnel jg52Personnel = germanCampaign.getPersonnelManager().getCompanyPersonnel(20112052);
@@ -134,7 +134,7 @@ public class CrewMemberInitialVictoryBuilderTest
     public void testInitialVictoriesAmericanFighterWest () throws PWCGException
     {
 
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(102362377);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(102362377);
         ArmedService service = squadron.determineServiceForSquadron(americanCampaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         CompanyPersonnel fg362Personnel = americanCampaign.getPersonnelManager().getCompanyPersonnel(102362377);

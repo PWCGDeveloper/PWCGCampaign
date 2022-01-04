@@ -32,12 +32,12 @@ public class AARClaimPanelEventTabulator
     private void makeEnemyAircraftList() throws PWCGException
     {
         PwcgMissionDataEvaluator missionDatavaluator = new PwcgMissionDataEvaluator(campaign, aarPreliminarytData);
-        List<String> enemyPlanesInMission = missionDatavaluator.determineAxisPlaneTypesInMission();
+        List<String> enemyPlanesInMission = missionDatavaluator.determineAxisTankTypesInMission();
         if (side == Side.AXIS)
         {
-            enemyPlanesInMission = missionDatavaluator.determineAlliedPlaneTypesInMission();
+            enemyPlanesInMission = missionDatavaluator.determineAlliedTankTypesInMission();
         }
         
-        claimPanelData.setEnemyPlaneTypesInMission(enemyPlanesInMission);
+        claimPanelData.setEnemyTankTypesInMission(enemyPlanesInMission);
     }
 }

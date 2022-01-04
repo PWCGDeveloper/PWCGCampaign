@@ -29,13 +29,13 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.TransferHandler;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -390,7 +390,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 	private void evaluate() throws PWCGException 
 	{		
 		cbSquadron.removeAllItems();
-		SquadronManager squadManager = PWCGContext.getInstance().getSquadronManager();
+		CompanyManager squadManager = PWCGContext.getInstance().getCompanyManager();
 				
 		List<Company> squadronList = squadManager.getPlayerFlyableSquadronsByService(service, campaign.getDate());
 		
@@ -401,13 +401,13 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		{
 			Company company = squadronList.get(i);
 			Date campaignDate = campaign.getDate();
-			if(company.getSquadronId() != squadronMemberToTransfer.getCompanyId())
+			if(company.getCompanyId() != squadronMemberToTransfer.getCompanyId())
 			{
 			    if (company.determineSquadronPrimaryRoleCategory(campaignDate) == role.getRoleCategory())
 			    {
 			        String display = company.determineDisplayName(campaign.getDate());
 			        CampaignAces aces =  PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(campaignDate);
-			        List<TankAce> squadronAces =  PWCGContext.getInstance().getAceManager().getActiveAcesForSquadron(aces, campaignDate, company.getSquadronId());
+			        List<TankAce> squadronAces =  PWCGContext.getInstance().getAceManager().getActiveAcesForSquadron(aces, campaignDate, company.getCompanyId());
 			        if (!squadronMemberToTransfer.isCommander(campaignDate) || !company.isCommandedByAce(squadronAces, campaignDate))
 			        {
 			            cbSquadron.addItem(display);
@@ -434,7 +434,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         String squadronInfo = "";
         if (squadronName != null)
         {
-            Company company = PWCGContext.getInstance().getSquadronManager().getSquadronByName(squadronName, campaign.getDate());
+            Company company = PWCGContext.getInstance().getCompanyManager().getCompanyByName(squadronName, campaign.getDate());
             squadronInfo = company.determineSquadronInfo(campaign.getDate());
         }
         tSquadronInfo.setText(squadronInfo);
@@ -521,7 +521,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
     {
         String newSquadName = getSelectedSquad();
         TransferHandler transferHandler = new TransferHandler(campaign, squadronMemberToTransfer);
-        Company newSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByName(newSquadName, campaign.getDate());
+        Company newSquadron = PWCGContext.getInstance().getCompanyManager().getCompanyByName(newSquadName, campaign.getDate());
         TransferEvent transferEvent = transferHandler.transferPlayer(squadronMemberToTransfer.determineSquadron(), newSquadron);
         return transferEvent;
     }

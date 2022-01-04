@@ -3,8 +3,8 @@ package pwcg.campaign.personnel;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 

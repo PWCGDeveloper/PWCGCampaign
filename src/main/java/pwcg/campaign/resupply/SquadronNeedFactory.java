@@ -1,9 +1,9 @@
 package pwcg.campaign.resupply;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.resupply.equipment.SquadronEquipmentNeed;
 import pwcg.campaign.resupply.personnel.SquadronPersonnelNeed;
-import pwcg.campaign.squadron.Company;
 
 public class SquadronNeedFactory
 {

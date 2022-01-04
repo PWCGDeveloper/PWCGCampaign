@@ -36,6 +36,8 @@ public enum SquadronTestProfile
     RFC_2_PROFILE("RFC2", 302002, "19180331", CampaignMode.CAMPAIGN_MODE_SINGLE, FrontMapIdentifier.ARRAS_MAP, false),
     RFC_46_PROFILE("RFC46", 302046, "19170801", CampaignMode.CAMPAIGN_MODE_SINGLE, FrontMapIdentifier.ARRAS_MAP, false),
 
+    GROSS_DEUTSCHLAND_PROFILE("Gross Deutschland", 201001001, "19420801", CampaignMode.CAMPAIGN_MODE_SINGLE, FrontMapIdentifier.STALINGRAD_MAP, false),
+
     COOP_COMPETITIVE_PROFILE("JG51_Late_Competitive",20111051, "19420501", CampaignMode.CAMPAIGN_MODE_COOP, FrontMapIdentifier.STALINGRAD_MAP, true),
     COOP_COOPERATIVE_PROFILE("JG51_Late_Coop",20111051, "19420501", CampaignMode.CAMPAIGN_MODE_COOP, FrontMapIdentifier.STALINGRAD_MAP, false);
 

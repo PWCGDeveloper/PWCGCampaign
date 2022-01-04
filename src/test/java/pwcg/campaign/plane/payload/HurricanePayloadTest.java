@@ -14,13 +14,13 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.plane.TankType;
+import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -213,13 +213,13 @@ public class HurricanePayloadTest
     public void validateHurricaneModsEarly() throws PWCGException 
     {
         BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
 
-        PlaneType bosPlaneType = planeTypeFactory.createPlaneTypeByType(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType());
+        TankType bosTankType = planeTypeFactory.createTankTypeByType(BosPlaneAttributeMapping.HURRICANE_MKII.getTankType());
             
-        System.out.println(bosPlaneType.getType());
+        System.out.println(bosTankType.getType());
             
-        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
+        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
         assert(payload != null);
             
         assert(payload.getSelectedModifications().size() == 1);
@@ -234,13 +234,13 @@ public class HurricanePayloadTest
     public void validateHurricaneModsLate() throws PWCGException 
     {
         BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
 
-        PlaneType bosPlaneType = planeTypeFactory.createPlaneTypeByType(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType());
+        TankType bosTankType = planeTypeFactory.createTankTypeByType(BosPlaneAttributeMapping.HURRICANE_MKII.getTankType());
             
-        System.out.println(bosPlaneType.getType());
+        System.out.println(bosTankType.getType());
             
-        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19430103"));
+        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19430103"));
         assert(payload != null);
             
         assert(payload.getSelectedModifications().size() == 2);
@@ -258,7 +258,7 @@ public class HurricanePayloadTest
     
     private IPlanePayload getPayloadGeneratorForFighter() throws PWCGException
     {
-        PlaneType fw190A5 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType());
+        TankType fw190A5 = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(BosPlaneAttributeMapping.HURRICANE_MKII.getTankType());
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190A5.getType(), campaign.getDate());
         return payloadGenerator;

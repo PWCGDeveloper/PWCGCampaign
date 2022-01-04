@@ -266,14 +266,7 @@ public class DateUtils
 
     public static Date getBeginningOfGame() throws PWCGException
     {
-        if (PWCGContext.getProduct() == PWCGProduct.FC)
-        {
-            return DateUtils.getDateYYYYMMDD("19170601");            
-        }
-        else
-        {              
-            return DateUtils.getDateYYYYMMDD("19411001");            
-        }
+        return DateUtils.getDateYYYYMMDD("19420801");            
     }
 
     public static Date getStartofWWIIItaly() throws PWCGException

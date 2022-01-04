@@ -26,7 +26,7 @@ public class BriefingAssignmentDataTest extends BriefingDataInitializerTest
     }
 
     @Test
-    public void modifyPlaneTypeTest () throws PWCGException
+    public void modifyTankTypeTest () throws PWCGException
     {             
         briefingAssignmentData.changePlane(SerialNumber.AI_STARTING_SERIAL_NUMBER+1, SerialNumber.PLANE_STARTING_SERIAL_NUMBER+4);
         

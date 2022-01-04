@@ -6,14 +6,14 @@ import java.util.List;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.CampaignAces;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.TankAce;
-import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -25,7 +25,7 @@ public class CampaignGeneratorSquadronFilter
 		List<String> validSquadrons = new ArrayList<>();
 	    try
 	    {
-    		SquadronManager squadManager =  PWCGContext.getInstance().getSquadronManager();
+    		CompanyManager squadManager =  PWCGContext.getInstance().getCompanyManager();
     		List<Company> squadronList = squadManager.getPlayerFlyableSquadronsByService(dateCorrectedService, campaignDate);
             PWCGLogger.log(LogLevel.DEBUG, "makeSquadronChoices squadron list size: " + squadronList.size());
     		for (Company squadron : squadronList)
@@ -79,7 +79,7 @@ public class CampaignGeneratorSquadronFilter
 	{
 		AceManager aceManager = PWCGContext.getInstance().getAceManager();
 		CampaignAces aces =  aceManager.loadFromHistoricalAces(campaignDate);
-		List<TankAce> squadronAces =  aceManager.getActiveAcesForSquadron(aces, campaignDate, company.getSquadronId());
+		List<TankAce> squadronAces =  aceManager.getActiveAcesForSquadron(aces, campaignDate, company.getCompanyId());
 		if (squadronAces.size() > 0)
 		{
 			if (playerIsCommander && company.isCommandedByAce(squadronAces, campaignDate))

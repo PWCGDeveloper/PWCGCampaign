@@ -6,14 +6,13 @@ import pwcg.aar.campaigndate.WoundRecovery;
 import pwcg.aar.data.CampaignUpdateData;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.personnel.CompanyPersonnel;
-import pwcg.campaign.personnel.CrewMemberFemaleGenerator;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.resupply.personnel.TransferRecord;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class PersonnelUpdater 
@@ -124,14 +123,12 @@ public class PersonnelUpdater
     {
         CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(transferRecord.getTransferTo());
         transferRecord.getCrewMember().setSquadronId(transferRecord.getTransferTo());
-        CrewMember converted = CrewMemberFemaleGenerator.convertToFemale(campaign, transferRecord.getTransferTo(), transferRecord.getCrewMember());
-        transferRecord.setCrewMember(converted);
         squadronPersonnel.addCrewMember(transferRecord.getCrewMember());
     }
 
     private void removeFromReplacementPool(TransferRecord transferRecord) throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(transferRecord.getTransferTo());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(transferRecord.getTransferTo());
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         PersonnelReplacementsService replacementService = campaign.getPersonnelManager().getPersonnelReplacementsService(service.getServiceId());
         replacementService.transferFromReservesToActive(transferRecord.getCrewMember().getSerialNumber());

@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapFinderForCampaign;
 import pwcg.campaign.context.PWCGContext;
@@ -20,9 +22,7 @@ import pwcg.campaign.mode.ICampaignActive;
 import pwcg.campaign.mode.ICampaignDescriptionBuilder;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.InitialCompanyBuilder;
-import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -61,10 +61,8 @@ public class Campaign
             return false;
         }
 
-        CampaignFixer.fixCampaign(this);
-
         InitialCompanyBuilder initialSquadronBuilder = new InitialCompanyBuilder();
-        initialSquadronBuilder.buildNewSquadrons(this);
+        initialSquadronBuilder.buildNewCompanies(this);
 
         verifyRepresentativePlayer();
         
@@ -198,7 +196,7 @@ public class Campaign
     {
         for (CrewMember player : this.personnelManager.getAllActivePlayers().getCrewMemberList())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(player.getCompanyId());
             PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(this.getDate());
             if (squadronPrimaryRoleCategory == PwcgRoleCategory.FIGHTER)
             {
@@ -255,10 +253,10 @@ public class Campaign
     public List<Company> determinePlayerSquadrons() throws PWCGException
     {
         List<Company> playerSquadrons = new ArrayList<>();
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         for (CrewMember player : personnelManager.getAllActivePlayers().getCrewMemberList())
         {
-            Company playerSquadron = squadronManager.getSquadron(player.getCompanyId());
+            Company playerSquadron = squadronManager.getCompany(player.getCompanyId());
             playerSquadrons.add(playerSquadron);
         }
         return playerSquadrons;
@@ -297,7 +295,7 @@ public class Campaign
     public Company findReferenceSquadron() throws PWCGException
     {
         CrewMember referencePlayer = findReferencePlayer();
-        Company referencePlayerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getCompanyId());
+        Company referencePlayerSquadron = PWCGContext.getInstance().getCompanyManager().getCompany(referencePlayer.getCompanyId());
         return referencePlayerSquadron;
     }
 

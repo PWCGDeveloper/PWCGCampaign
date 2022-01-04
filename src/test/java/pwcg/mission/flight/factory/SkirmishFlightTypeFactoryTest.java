@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.skirmish.SkirmishManager;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
@@ -60,7 +60,7 @@ public class SkirmishFlightTypeFactoryTest
         List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
         SkirmishFlightTypeFactory skirmishFlightTypeFactory = new SkirmishFlightTypeFactory(campaign, skirmishesForDate.get(0), null);
-        Company c47Squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(102012437);
+        Company c47Squadron = PWCGContext.getInstance().getCompanyManager().getCompany(102012437);
         boolean isPlayerFlight = false;
         FlightTypes flightType = skirmishFlightTypeFactory.getFlightType(c47Squadron, isPlayerFlight, PwcgRole.ROLE_TRANSPORT);
         assert(flightType == FlightTypes.PARATROOP_DROP);
@@ -76,7 +76,7 @@ public class SkirmishFlightTypeFactoryTest
         List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
         SkirmishFlightTypeFactory skirmishFlightTypeFactory = new SkirmishFlightTypeFactory(campaign, skirmishesForDate.get(0), null);
-        Company c47Squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(102012437);
+        Company c47Squadron = PWCGContext.getInstance().getCompanyManager().getCompany(102012437);
         boolean isPlayerFlight = false;
         FlightTypes flightType = skirmishFlightTypeFactory.getFlightType(c47Squadron, isPlayerFlight, PwcgRole.ROLE_TRANSPORT);
         assert(flightType == FlightTypes.CARGO_DROP);

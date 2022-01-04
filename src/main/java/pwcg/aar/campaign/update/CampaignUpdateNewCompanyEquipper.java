@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.CampaignEquipmentIOJson;
-import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.resupply.InitialSquadronEquipper;
+import pwcg.campaign.resupply.InitialCompanyEquipper;
 import pwcg.campaign.resupply.depot.EquipmentWeightCalculator;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.Equipment;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignUpdateNewCompanyEquipper
@@ -25,17 +25,17 @@ public class CampaignUpdateNewCompanyEquipper
 
     public List<Integer> equipNewSquadrons() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         for (Company squadron : squadronManager.getActiveSquadrons(campaign.getDate()))
         {
-            if (campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId()) == null)
+            if (campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId()) == null)
             {
                 EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
-                InitialSquadronEquipper equipmentStaffer = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
+                InitialCompanyEquipper equipmentStaffer = new InitialCompanyEquipper(campaign, squadron, equipmentWeightCalculator);
                 Equipment squadronEquipment = equipmentStaffer.generateEquipment();
-                campaign.getEquipmentManager().addEquipmentForSquadron(squadron.getSquadronId(), squadronEquipment);
-                squadronsEquipped.add(squadron.getSquadronId());
-                CampaignEquipmentIOJson.writeEquipmentForSquadron(campaign, squadron.getSquadronId());
+                campaign.getEquipmentManager().addEquipmentForSquadron(squadron.getCompanyId(), squadronEquipment);
+                squadronsEquipped.add(squadron.getCompanyId());
+                CampaignEquipmentIOJson.writeEquipmentForSquadron(campaign, squadron.getCompanyId());
             }
         }
         

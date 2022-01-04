@@ -8,11 +8,6 @@
 	"subUnitIdCode": "",
 	"tankAssignments": [
 		{
-			"archType": "t26",
-			"introduction": "19400101",
-			"withdrawal": "19420531"
-		},
-		{
 			"archType": "t34",
 			"introduction": "19420601",
 			"withdrawal": "19450601"

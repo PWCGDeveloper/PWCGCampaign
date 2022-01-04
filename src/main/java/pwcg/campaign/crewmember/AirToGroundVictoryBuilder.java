@@ -3,11 +3,11 @@ package pwcg.campaign.crewmember;
 import java.util.Date;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
@@ -76,14 +76,14 @@ public class AirToGroundVictoryBuilder
         Company squadron = victorCrewMember.determineSquadron();
         if (squadron != null)
         {
-            PlaneType victorPlaneType = squadron.determineBestPlane(date);
+            TankType victorTankType = squadron.determineBestPlane(date);
     
-            if (victorPlaneType != null)
+            if (victorTankType != null)
             {
                 VictoryEntity victor = new VictoryEntity();
                 victor.setAirOrGround(Victory.AIRCRAFT);
-                victor.setType(victorPlaneType.getDisplayName());
-                victor.setName(victorPlaneType.getDisplayName());
+                victor.setType(victorTankType.getDisplayName());
+                victor.setName(victorTankType.getDisplayName());
                 victor.setSquadronName(squadron.determineDisplayName(date));
                 victor.setCrewMemberName(victorCrewMember.getRank() + " " + victorCrewMember.getName());
                 victor.setCrewMemberSerialNumber(victorCrewMember.getSerialNumber());

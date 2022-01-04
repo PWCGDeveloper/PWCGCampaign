@@ -15,8 +15,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberStatus;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneStatus;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
@@ -94,9 +94,9 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     {
         for (LogPlane lostPlane : equipmentLosses.values())
         {
-            EquippedPlane lostPlaneFromEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(lostPlane.getSquadronId()).getEquippedPlane(lostPlane.getPlaneSerialNumber());
+            EquippedTank lostPlaneFromEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(lostPlane.getSquadronId()).getEquippedTank(lostPlane.getPlaneSerialNumber());
             assert (lostPlaneFromEquipment != null);
-            assert (lostPlaneFromEquipment.getPlaneStatus() == PlaneStatus.STATUS_DESTROYED);
+            assert (lostPlaneFromEquipment.getPlaneStatus() == TankStatus.STATUS_DESTROYED);
         }
     }
 }

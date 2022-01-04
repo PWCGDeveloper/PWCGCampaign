@@ -18,10 +18,10 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.PictureManager;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -202,7 +202,7 @@ public class CampaignCrewMemberScreen extends ImageResizingPanel implements Acti
 
     private PWCGJButton makePlanePicture(Date date) throws PWCGException 
     {
-        PlaneType bestPlane = null;
+        TankType bestPlane = null;
         if (company != null)
         {
             bestPlane = company.determineBestPlane(date);

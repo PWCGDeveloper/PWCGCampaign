@@ -1,24 +1,24 @@
 package pwcg.campaign.resupply.depot;
 
-import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.tank.EquippedTank;
 
 public class EquipmentUpgradeRecord
 {
-    private EquippedPlane upgrade;
-    private EquippedPlane replacedPlane;
+    private EquippedTank upgrade;
+    private EquippedTank replacedPlane;
 
-    public EquipmentUpgradeRecord(EquippedPlane upgrade, EquippedPlane replacedPlane)
+    public EquipmentUpgradeRecord(EquippedTank upgrade, EquippedTank replacedPlane)
     {
         this.upgrade = upgrade;
         this.replacedPlane = replacedPlane;
     }
     
-    public EquippedPlane getUpgrade()
+    public EquippedTank getUpgrade()
     {
         return upgrade;
     }
 
-    public EquippedPlane getReplacedPlane()
+    public EquippedTank getReplacedPlane()
     {
         return replacedPlane;
     }

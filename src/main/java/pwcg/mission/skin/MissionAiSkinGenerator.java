@@ -4,11 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.skin.SkinFilter;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -76,7 +76,7 @@ public class MissionAiSkinGenerator
     private boolean shouldUsePersonalSkin(PlaneMcu plane) throws PWCGException
     {
         plane.getCrewMember().getRank();
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(plane.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(plane.getSquadronId());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         int rankPos = rankHelper.getRankPosByService(plane.getCrewMember().getRank(), squadron.determineServiceForSquadron(flight.getCampaign().getDate()));
         if (rankPos < 3)

@@ -12,10 +12,10 @@ import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.skin.Skin;
+import pwcg.campaign.tank.EquippedTank;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
@@ -41,7 +41,7 @@ import pwcg.mission.mcu.group.WingmanMcuGroup;
  * @author Patrick Wilson
  *
  */
-public class PlaneMcu extends EquippedPlane implements Cloneable
+public class PlaneMcu extends EquippedTank implements Cloneable
 {
     private String name = "";
     private int index;
@@ -94,7 +94,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.linkTrId = entity.getIndex();
     }
     
-    public void buildPlane(EquippedPlane equippedPlane, ICountry country) throws PWCGException
+    public void buildPlane(EquippedTank equippedPlane, ICountry country) throws PWCGException
     {
         equippedPlane.copyTemplate(this);
         this.setName(crewMember.getNameAndRank());

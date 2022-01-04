@@ -88,7 +88,7 @@ public class BriefingPayloadHelperTest extends BriefingDataInitializerTest
     }
 
     @Test
-    public void setPayloadForAddedSamePlaneTypeTest () throws PWCGException
+    public void setPayloadForAddedSameTankTypeTest () throws PWCGException
     {       
         Mockito.when(equippedPlane1.getType()).thenReturn("bf109f4");
         Mockito.when(equippedPlane2.getType()).thenReturn("bf109f4");
@@ -110,7 +110,7 @@ public class BriefingPayloadHelperTest extends BriefingDataInitializerTest
     }
 
     @Test
-    public void setPayloadForAddedDifferentPlaneTypeTest () throws PWCGException
+    public void setPayloadForAddedDifferentTankTypeTest () throws PWCGException
     {       
         Mockito.when(equippedPlane1.getType()).thenReturn("bf109f4");
         Mockito.when(equippedPlane2.getType()).thenReturn("bf109f2");

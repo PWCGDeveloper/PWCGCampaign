@@ -280,7 +280,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         FlightMap flightMap = new FlightMap();
         flightMap.flightType = flight.getFlightType().toString();
         flightMap.planeType = flight.getFlightPlanes().getFlightLeader().getDisplayName();
-        flightMap.squadronId = flight.getSquadron().getSquadronId();
+        flightMap.squadronId = flight.getSquadron().getCompanyId();
         
         for (MissionPoint waypoint : flight.getWaypointPackage().getFlightMissionPoints())
         {

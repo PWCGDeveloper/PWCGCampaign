@@ -5,9 +5,9 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -47,8 +47,8 @@ public class MissionAiSquadronFinder
 
     private void findSquadronsForTacticalMission() throws PWCGException
     {
-        alliedSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSide(campaign, Side.ALLIED);
-        axisSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSide(campaign, Side.AXIS);
+        alliedSquads = PWCGContext.getInstance().getCompanyManager().getViableAiSquadronsForCurrentMapAndSide(campaign, Side.ALLIED);
+        axisSquads = PWCGContext.getInstance().getCompanyManager().getViableAiSquadronsForCurrentMapAndSide(campaign, Side.AXIS);
     }
 
     private void findSquadronsForNightTacticalMission() throws PWCGException
@@ -59,8 +59,8 @@ public class MissionAiSquadronFinder
         acceptableRoles.add(PwcgRole.ROLE_ATTACK);
         acceptableRoles.add(PwcgRole.ROLE_TRANSPORT);
 
-        List<Company> otherAlliedSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
-        List<Company> otherAxisSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
+        List<Company> otherAlliedSquads = PWCGContext.getInstance().getCompanyManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
+        List<Company> otherAxisSquads = PWCGContext.getInstance().getCompanyManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
 
         alliedSquads.addAll(otherAlliedSquads);
         axisSquads.addAll(otherAxisSquads);
@@ -77,7 +77,7 @@ public class MissionAiSquadronFinder
         List<Company> acceptedSquadrons = new ArrayList<>();
         for (Company squadron : squadronsToBeEvaluated)
         {
-            if (Company.isPlayerSquadron(campaign, squadron.getSquadronId()))
+            if (Company.isPlayerSquadron(campaign, squadron.getCompanyId()))
             {
                 continue;
             }

@@ -2,13 +2,13 @@ package pwcg.campaign;
 
 import java.util.List;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignGenerator 
@@ -25,7 +25,7 @@ public class CampaignGenerator
     {
         generatorModel.validateCampaignInputs();
         createCampaignBasis();
-        staffSquadrons();
+        staffCompanies();
         createPersonnelReplacements();
         createEquipmentReplacements();
         return campaign;
@@ -47,13 +47,13 @@ public class CampaignGenerator
         campaign.getCampaignData().setCampaignMode(generatorModel.getCampaignMode());
 	}
 
-    private void staffSquadrons() throws PWCGException
+    private void staffCompanies() throws PWCGException
     {
-        List<Company> activeSquadronsOnCampaignStartDate = PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(generatorModel.getCampaignDate());
-        for (Company squadron : activeSquadronsOnCampaignStartDate)
+        List<Company> activeSquadronsOnCampaignStartDate = PWCGContext.getInstance().getCompanyManager().getActiveSquadrons(generatorModel.getCampaignDate());
+        for (Company company : activeSquadronsOnCampaignStartDate)
         {
-            CampaignSquadronGenerator squadronGenerator = new CampaignSquadronGenerator(campaign, squadron);
-            squadronGenerator.createSquadron(generatorModel);
+            CampaignCompanyGenerator companyGenerator = new CampaignCompanyGenerator(campaign, company);
+            companyGenerator.createSquadron(generatorModel);
         }
         
         useCampaignPlayerToSetReferencePlayer();
@@ -87,7 +87,7 @@ public class CampaignGenerator
 
     private void setMapForNewCampaign() throws PWCGException
     {
-        Company company = PWCGContext.getInstance().getSquadronManager().getSquadronByName(generatorModel.getSquadronName(), generatorModel.getCampaignDate());
+        Company company = PWCGContext.getInstance().getCompanyManager().getCompanyByName(generatorModel.getSquadronName(), generatorModel.getCampaignDate());
         Airfield airfield = company.determineCurrentAirfieldAnyMap(generatorModel.getCampaignDate());
         List<FrontMapIdentifier> airfieldMaps = MapForAirfieldFinder.getMapForAirfield(airfield.getName());
         FrontMapIdentifier initialAirfieldMap = airfieldMaps.get(0);

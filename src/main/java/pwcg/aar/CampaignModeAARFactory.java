@@ -24,7 +24,7 @@ public class CampaignModeAARFactory
         }
         else
         {
-            ClaimDenier claimDenier = new ClaimDenier(campaign, PWCGContext.getInstance().getPlaneTypeFactory());
+            ClaimDenier claimDenier = new ClaimDenier(campaign, PWCGContext.getInstance().getTankTypeFactory());
             VerifiedVictoryGenerator verifiedVictoryGenerator = new VerifiedVictoryGenerator(campaign, aarContext);
             return new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         }

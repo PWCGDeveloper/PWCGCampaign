@@ -21,9 +21,9 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.PayloadDesignation;
+import pwcg.campaign.tank.EquippedTank;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -286,7 +286,7 @@ public class BriefingCrewMemberChalkboard extends ImageResizingPanel
 
         BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
         List<CrewMember> sortedUnassignedCrewMembers = briefingMissionHandler.getSortedUnassignedCrewMembers();
-        List<EquippedPlane> sortedUnassignedPlanes = briefingMissionHandler.getSortedUnassignedPlanes();
+        List<EquippedTank> sortedUnassignedPlanes = briefingMissionHandler.getSortedUnassignedPlanes();
 
         int numRows = sortedUnassignedCrewMembers.size();
         if (sortedUnassignedPlanes.size() > numRows)
@@ -312,7 +312,7 @@ public class BriefingCrewMemberChalkboard extends ImageResizingPanel
 
             if (sortedUnassignedPlanes.size() > i)
             {
-                EquippedPlane unassignedPlane = sortedUnassignedPlanes.get(i);
+                EquippedTank unassignedPlane = sortedUnassignedPlanes.get(i);
                 String planeNameText = formPlaneName(unassignedPlane.getDisplayName());
                 JLabel planeLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel(planeNameText);
                 unassignedCrewMemberGrid.add(planeLabel);

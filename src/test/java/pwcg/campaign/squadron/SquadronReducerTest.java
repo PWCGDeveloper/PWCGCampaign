@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
+import pwcg.campaign.company.CompanyReducer;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
@@ -27,15 +30,15 @@ public class SquadronReducerTest
     public void anomaliesRemoved() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_52_PROFILE_STALINGRAD);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> allSquadrons = squadronManager.getAllSquadrons();
-        List<Company> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
+        List<Company> squadronsWithoutAnomalies = CompanyReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
         
         assert(squadronsWithoutAnomalies.size() > 30);
         for (Company squadron : squadronsWithoutAnomalies)
         {
-            Assertions.assertTrue (squadron.getSquadronId() != 20115021);
-            Assertions.assertTrue (squadron.getSquadronId() != 20111051);
+            Assertions.assertTrue (squadron.getCompanyId() != 20115021);
+            Assertions.assertTrue (squadron.getCompanyId() != 20111051);
         }
     }
 
@@ -43,18 +46,18 @@ public class SquadronReducerTest
     public void jg51NotAnAnomaly() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> allSquadrons = squadronManager.getAllSquadrons();
-        List<Company> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
+        List<Company> squadronsWithoutAnomalies = CompanyReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
         
         boolean jg51Found = false;
         
         assert(squadronsWithoutAnomalies.size() > 30);
         for (Company squadron : squadronsWithoutAnomalies)
         {
-            Assertions.assertTrue (squadron.getSquadronId() != 20115021);
+            Assertions.assertTrue (squadron.getCompanyId() != 20115021);
             
-            if (squadron.getSquadronId() != 20111051)
+            if (squadron.getCompanyId() != 20111051)
             {
                 jg51Found = true;
             }
@@ -68,9 +71,9 @@ public class SquadronReducerTest
     public void noAnomaliesRemoved() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> allSquadrons = squadronManager.getAllSquadrons();
-        List<Company> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
+        List<Company> squadronsWithoutAnomalies = CompanyReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
         
         boolean gruppo21Found = false;
         boolean jg51Found = false;
@@ -78,12 +81,12 @@ public class SquadronReducerTest
         assert(squadronsWithoutAnomalies.size() > 30);
         for (Company squadron : squadronsWithoutAnomalies)
         {            
-            if (squadron.getSquadronId() != 20115021)
+            if (squadron.getCompanyId() != 20115021)
             {
                 gruppo21Found = true;
             }
             
-            if (squadron.getSquadronId() != 20111051)
+            if (squadron.getCompanyId() != 20111051)
             {
                 jg51Found = true;
             }

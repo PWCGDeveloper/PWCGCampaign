@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.tank.TankType;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -161,22 +161,22 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
 
     public JPanel makeAxisPanel() throws PWCGException 
     {
-        List<PlaneType> axisPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAxisPlanes();
+        List<TankType> axisPlanes = PWCGContext.getInstance().getTankTypeFactory().getAxisPlanes();
         return makePlanePanel(axisPlanes);
     }
 
     public JPanel makeAlliedPanel() throws PWCGException 
     {
-        List<PlaneType> alliedPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAlliedPlanes();
+        List<TankType> alliedPlanes = PWCGContext.getInstance().getTankTypeFactory().getAlliedPlanes();
         return makePlanePanel(alliedPlanes);
     }
 
-	public JPanel makePlanePanel(List<PlaneType> planes) throws PWCGException 
+	public JPanel makePlanePanel(List<TankType> planes) throws PWCGException 
 	{
         JPanel planeListOuterPanel = new JPanel(new BorderLayout());
         planeListOuterPanel.setOpaque(false);
 		
-		TreeMap<String, PlaneType> planeMap = sortPlanesByType(planes);
+		TreeMap<String, TankType> planeMap = sortPlanesByType(planes);
 		
 		JPanel planeListPanel = createPlanePanel(planeMap);
 		
@@ -187,21 +187,18 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
         return planeListOuterPanel;
 	}
 
-    private TreeMap<String, PlaneType> sortPlanesByType(List<PlaneType> planes)
+    private TreeMap<String, TankType> sortPlanesByType(List<TankType> planes)
     {
-        TreeMap<String, PlaneType> planeMap = new TreeMap<String, PlaneType>();
+        TreeMap<String, TankType> planeMap = new TreeMap<String, TankType>();
         for (int i = 0; i < planes.size(); ++i)
         {
-            PlaneType plane = planes.get(i);
-            if (plane.isFlyable())
-            {
-                planeMap.put(plane.getType(), plane);
-            }
+            TankType plane = planes.get(i);
+            planeMap.put(plane.getType(), plane);
         }
         return planeMap;
     }
 
-    private JPanel createPlanePanel(TreeMap<String, PlaneType> planeMap) throws PWCGException
+    private JPanel createPlanePanel(TreeMap<String, TankType> planeMap) throws PWCGException
     {
         MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
         int columns = 2;
@@ -215,7 +212,7 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
 
         Color buttonBG = ColorMap.PAPERPART_BACKGROUND;
         
-        for (PlaneType plane : planeMap.values())
+        for (TankType plane : planeMap.values())
 		{
 			JCheckBox b1 = ImageButton.makeCheckBox(plane.getDisplayName(), plane.getType());
 
@@ -289,7 +286,7 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
 	private class PlaneOwned
 	{
 		JCheckBox checkBox = null;
-		PlaneType plane;
+		TankType plane;
 	}
 }
 

@@ -3,7 +3,7 @@ package pwcg.aar.inmission.phase3.reconcile.equipment;
 import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
-import pwcg.campaign.plane.PlaneStatus;
+import pwcg.campaign.tank.TankStatus;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentResultsInMissionHandler
@@ -20,7 +20,7 @@ public class EquipmentResultsInMissionHandler
     {
         for (LogPlane logPlane : evaluationData.getPlaneAiEntities().values())
         {
-            if (logPlane.getPlaneStatus() == PlaneStatus.STATUS_DESTROYED)
+            if (logPlane.getPlaneStatus() == TankStatus.STATUS_DESTROYED)
             {
                 equipmentLosses.addPlaneDestroyed(logPlane);
             }

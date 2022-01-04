@@ -3,11 +3,11 @@ package pwcg.gui.rofmap.brief.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberSorter;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneSorter;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankSorter;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.BriefingDataInitializer;
 import pwcg.gui.rofmap.brief.BriefingPayloadHelper;
@@ -53,7 +53,7 @@ public class BriefingFlight
 
     public void assignCrewMemberFromBriefing(Integer crewMemberSerialNumber) throws PWCGException
     {
-        EquippedPlane planeForCrewMember = this.getSortedUnassignedPlanes().get(0);
+        EquippedTank planeForCrewMember = this.getSortedUnassignedPlanes().get(0);
         assignCrewMemberAndPlaneFromBriefing(crewMemberSerialNumber, planeForCrewMember.getSerialNumber());
     }
 
@@ -81,9 +81,9 @@ public class BriefingFlight
         return CrewMemberSorter.sortCrewMembers(mission.getCampaign(), briefingAssignmentData.getUnassignedCrewMembers());
     }
 
-    public List<EquippedPlane> getSortedUnassignedPlanes() throws PWCGException 
+    public List<EquippedTank> getSortedUnassignedPlanes() throws PWCGException 
     {       
-        return PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(briefingAssignmentData.getUnassignedPlanes().values()));
+        return TankSorter.sortEquippedTanksByGoodness(new ArrayList<EquippedTank>(briefingAssignmentData.getUnassignedPlanes().values()));
     }
 
     public CrewPlanePayloadPairing getPairingByCrewMember(Integer crewMemberSerialNumber) throws PWCGException 

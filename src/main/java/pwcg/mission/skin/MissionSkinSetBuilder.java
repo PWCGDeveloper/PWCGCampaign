@@ -3,11 +3,11 @@ package pwcg.mission.skin;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.skin.SkinFilter;
 import pwcg.campaign.skin.SkinManager;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -38,10 +38,10 @@ public class MissionSkinSetBuilder
             List<Skin> factorySkinsForPlane = skinManager.getSkinsBySquadronPlaneDate(plane.getType(), Skin.FACTORY_GENERIC, date);
             factorySkinsForPlane = SkinFilter.skinFilterSeason(factorySkinsForPlane, season);
 
-            List<Skin> squadronSkinsForPlane = skinManager.getSquadronSkinsByPlaneSquadronDate(plane.getType(), squadron.getSquadronId(), date);
+            List<Skin> squadronSkinsForPlane = skinManager.getSquadronSkinsByPlaneSquadronDate(plane.getType(), squadron.getCompanyId(), date);
             squadronSkinsForPlane = SkinFilter.skinFilterSeason(squadronSkinsForPlane, season);
 
-            List<Skin> squadronPersonalSkinsForPlane = skinManager.getSkinsByPlaneSquadronDateInUse(plane.getType(), squadron.getSquadronId(), date);
+            List<Skin> squadronPersonalSkinsForPlane = skinManager.getSkinsByPlaneSquadronDateInUse(plane.getType(), squadron.getCompanyId(), date);
             squadronPersonalSkinsForPlane = SkinFilter.skinFilterSeason(squadronPersonalSkinsForPlane, season);
 
             List<Skin> nonSquadronPersonalSkinsForPlane = skinManager.getPersonalSkinsByPlaneCountryDateInUse(plane.getType(), squadron.determineSquadronCountry(date).getCountryName(), date);

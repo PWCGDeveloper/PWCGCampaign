@@ -4,7 +4,7 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.GuiMissionInitiator;

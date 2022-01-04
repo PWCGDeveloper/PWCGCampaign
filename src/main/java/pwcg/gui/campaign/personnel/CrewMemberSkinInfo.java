@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.PlaneSorter;
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.TankSorter;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 
 public class CrewMemberSkinInfo
@@ -39,9 +39,9 @@ public class CrewMemberSkinInfo
         Company squadron = referencePlayer.determineSquadron();
         
         // Make an entry for each plane initialized to "No Skin"
-        List<PlaneType> squadronPlanes = squadron.determineCurrentAircraftList(campaign.getDate());
-        List<PlaneType> squadronPlanesByBest = PlaneSorter.sortPlanesByGoodness(squadronPlanes);
-        for (PlaneType plane : squadronPlanesByBest)
+        List<TankType> squadronPlanes = squadron.determineCurrentAircraftList(campaign.getDate());
+        List<TankType> squadronPlanesByBest = TankSorter.sortTanksByGoodness(squadronPlanes);
+        for (TankType plane : squadronPlanesByBest)
         {
             updateSkinForPlane(plane.getType(), null);
         }        

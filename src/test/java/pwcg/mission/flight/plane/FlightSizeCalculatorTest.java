@@ -15,12 +15,12 @@ import org.mockito.quality.Strictness;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;

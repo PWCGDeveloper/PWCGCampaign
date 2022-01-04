@@ -69,6 +69,6 @@ public class CampaignUpdater
         campaign.setDate(newDate);
         
         InitialCompanyBuilder initialSquadronBuilder = new InitialCompanyBuilder();
-        initialSquadronBuilder.buildNewSquadrons(campaign);
+        initialSquadronBuilder.buildNewCompanies(campaign);
     }
  }

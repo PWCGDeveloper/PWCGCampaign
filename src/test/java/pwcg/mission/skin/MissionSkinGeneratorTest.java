@@ -13,9 +13,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.IFlight;
@@ -56,7 +56,7 @@ public class MissionSkinGeneratorTest
     @Test
     public void buildMissionSkinSetForSummerJu87() throws Exception
     {
-        Mockito.when(squadron.getSquadronId()).thenReturn(20121002);
+        Mockito.when(squadron.getCompanyId()).thenReturn(20121002);
         Mockito.when(country.getCountryName()).thenReturn("Germany");
         
         planes.clear();
@@ -73,7 +73,7 @@ public class MissionSkinGeneratorTest
     @Test
     public void buildMissionSkinSetForSummerIl2M42() throws Exception
     {
-        Mockito.when(squadron.getSquadronId()).thenReturn(10121062);
+        Mockito.when(squadron.getCompanyId()).thenReturn(10121062);
         Mockito.when(country.getCountryName()).thenReturn("Russia");
         
         planes.clear();

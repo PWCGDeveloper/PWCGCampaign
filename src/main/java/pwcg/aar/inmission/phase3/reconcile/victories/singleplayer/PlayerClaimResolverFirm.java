@@ -4,8 +4,8 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.tank.PwcgRoleCategory;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -29,8 +29,8 @@ public class PlayerClaimResolverFirm
                         if (resultVictory.getVictim() instanceof LogPlane)
                         {
                             LogPlane victimPlane = (LogPlane)resultVictory.getVictim();
-                            PlaneType shotDownPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(victimPlane.getVehicleType());
-                            PlaneType claimedPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+                            TankType shotDownPlane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(victimPlane.getVehicleType());
+                            TankType claimedPlane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(playerDeclaration.getAircraftType());
             
                             if (shotDownPlane == null || claimedPlane == null)
                             {
@@ -63,7 +63,7 @@ public class PlayerClaimResolverFirm
                 {
                     PwcgRoleCategory victimApproximateRole = resultVictory.getVictim().getRoleCategory();
                     
-                    PlaneType declaredPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+                    TankType declaredPlane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(playerDeclaration.getAircraftType());
                     if (declaredPlane != null)
                     {
                         PwcgRoleCategory declarationApproximateRole = declaredPlane.determinePrimaryRoleCategory();

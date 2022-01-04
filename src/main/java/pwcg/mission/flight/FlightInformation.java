@@ -5,11 +5,11 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Company;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -47,7 +47,7 @@ public class FlightInformation
 
     public List<CrewMember> getParticipatingPlayersForFlight()
     {
-        return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
+        return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getCompanyId());
     }
 
     public Mission getMission()
@@ -94,7 +94,7 @@ public class FlightInformation
 
     public List<CrewMember> getFlightParticipatingPlayers()
     {
-        return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
+        return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getCompanyId());
     }
 
     public void setCampaign(Campaign campaign)

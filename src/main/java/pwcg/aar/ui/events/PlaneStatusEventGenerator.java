@@ -7,7 +7,7 @@ import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.PlaneStatus;
+import pwcg.campaign.tank.TankStatus;
 import pwcg.core.exception.PWCGException;
 
 public class PlaneStatusEventGenerator
@@ -40,7 +40,7 @@ public class PlaneStatusEventGenerator
     private PlaneStatusEvent makePlaneLostEvent(LogPlane lostPlane) throws PWCGException
     {
         boolean isNewsworthy = true;
-        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(campaign, lostPlane, PlaneStatus.STATUS_DESTROYED, isNewsworthy);
+        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(campaign, lostPlane, TankStatus.STATUS_DESTROYED, isNewsworthy);
         return planeStatusEvent;
     }
 }

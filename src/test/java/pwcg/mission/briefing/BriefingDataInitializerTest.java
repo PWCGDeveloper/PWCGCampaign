@@ -17,6 +17,7 @@ import org.mockito.quality.Strictness;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
@@ -25,7 +26,6 @@ import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.rofmap.brief.BriefingDataInitializer;
@@ -57,10 +57,10 @@ public class BriefingDataInitializerTest
     @Mock protected PlaneMcu plane2;
     @Mock protected PlaneMcu plane3;
     @Mock protected PlaneMcu plane4;
-    @Mock protected EquippedPlane equippedPlane1;
-    @Mock protected EquippedPlane equippedPlane2;
-    @Mock protected EquippedPlane equippedPlane3;
-    @Mock protected EquippedPlane equippedPlane4;
+    @Mock protected EquippedTank equippedPlane1;
+    @Mock protected EquippedTank equippedPlane2;
+    @Mock protected EquippedTank equippedPlane3;
+    @Mock protected EquippedTank equippedPlane4;
     @Mock protected CrewMember crewMember1;
     @Mock protected CrewMember crewMember2;
     @Mock protected CrewMember crewMember3;
@@ -68,7 +68,7 @@ public class BriefingDataInitializerTest
 
     protected Map<Integer, CrewMember> squadronPersonnelMap = new HashMap<>();
     protected List<PlaneMcu> planesInFlight = new ArrayList<>();
-    protected Map<Integer, EquippedPlane> equippedPlanes = new HashMap<>();
+    protected Map<Integer, EquippedTank> equippedPlanes = new HashMap<>();
     protected BriefingCrewMemberAssignmentData briefingAssignmentData = new BriefingCrewMemberAssignmentData();
 
     @BeforeEach
@@ -88,13 +88,13 @@ public class BriefingDataInitializerTest
         
         Mockito.when(campaign.getEquipmentManager()).thenReturn(equipmentManager);
         Mockito.when(equipmentManager.getEquipmentForSquadron(Mockito.any())).thenReturn(equipment);
-        Mockito.when(equipment.getActiveEquippedPlanes()).thenReturn(equippedPlanes);
+        Mockito.when(equipment.getActiveEquippedTanks()).thenReturn(equippedPlanes);
 
         Mockito.when(personnelManager.getCompanyPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
         Mockito.when(squadronPersonnel.getCrewMembersWithAces()).thenReturn(squadronMembers);
         Mockito.when(squadronMembers.getCrewMemberCollection()).thenReturn(squadronPersonnelMap);
 
-        Mockito.when(squadron.getSquadronId()).thenReturn(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        Mockito.when(squadron.getCompanyId()).thenReturn(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         
         Mockito.when(crewMember1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
         Mockito.when(crewMember2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);

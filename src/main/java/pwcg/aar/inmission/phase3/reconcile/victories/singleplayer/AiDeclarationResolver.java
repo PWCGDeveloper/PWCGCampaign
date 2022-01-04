@@ -12,10 +12,10 @@ import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class AiDeclarationResolver  extends PlayerVictoryResolver
@@ -136,7 +136,7 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
         CrewMembers squadronMembersInMissionOtherThanPlayer = new CrewMembers();
         for (Company squadron : playerSquadronsInMission)
         {
-            CrewMembers squadronMembersForSquadron = CrewMemberFilter.filterActiveAIForSquadron(campaignMembersInMission, campaign.getDate(), squadron.getSquadronId());
+            CrewMembers squadronMembersForSquadron = CrewMemberFilter.filterActiveAIForSquadron(campaignMembersInMission, campaign.getDate(), squadron.getCompanyId());
             squadronMembersInMissionOtherThanPlayer.addCrewMembers(squadronMembersForSquadron);
         }
         return squadronMembersInMissionOtherThanPlayer;

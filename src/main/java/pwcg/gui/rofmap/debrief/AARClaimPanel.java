@@ -19,7 +19,7 @@ import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarat
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -141,16 +141,16 @@ public class AARClaimPanel extends JPanel implements ActionListener
         cbPlane.setSize(300, 40);		
         cbPlane.setFont(font);
 
-        List<String> planeTypesInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getClaimPanelData().getEnemyPlaneTypesInMission();
+        List<String> planeTypesInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getClaimPanelData().getEnemyTankTypesInMission();
         if (addBalloon()) 
         {
-            planeTypesInMission.add(PlaneType.BALLOON);
+            planeTypesInMission.add(TankType.BALLOON);
         }
         
         for (String planeName : planeTypesInMission)
         {
             String planeDisplayName = planeName;
-            PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
+            TankType plane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(planeName);
             if (plane != null)
             {
                 planeDisplayName = plane.getDisplayName();
@@ -177,14 +177,14 @@ public class AARClaimPanel extends JPanel implements ActionListener
 			PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
 			String planeTypeDesc = (String)cbPlaneBoxes.get(i).getSelectedItem();
 				
-			if (planeTypeDesc.equals(PlaneType.BALLOON))
+			if (planeTypeDesc.equals(TankType.BALLOON))
 			{
-			    declaration.setAircraftType(PlaneType.BALLOON);
+			    declaration.setAircraftType(TankType.BALLOON);
 			    playerDeclarations.addDeclaration(declaration);
 			}
 			else
 			{
-			    PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
+			    TankType planeType = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(planeTypeDesc);
 			    if (planeType != null)
 			    {
     			    if (planeType.getType().equalsIgnoreCase(planeType.getType()))

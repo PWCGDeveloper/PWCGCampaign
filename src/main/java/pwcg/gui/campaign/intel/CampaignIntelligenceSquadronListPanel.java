@@ -11,10 +11,10 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyViability;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronViability;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
@@ -107,16 +107,16 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
         List<Company> squadrons = getSquadronsForIntel(roleCategory);
         for (Company squadron : squadrons)
         {
-            if (SquadronViability.isSquadronViable(squadron, campaign))
+            if (CompanyViability.isCompanyViable(squadron, campaign))
             {
                 JButton squadronSelectButton = PWCGButtonFactory.makePaperButton(
-                        squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), "Detailed information for squadron", parent);
+                        squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getCompanyId(), "Detailed information for squadron", parent);
                 squadronRoleGrid.add(squadronSelectButton);                
             }
             else
             {
                 JButton squadronSelectButton = PWCGButtonFactory.makeRedPaperButton(
-                        squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), "Detailed information for squadron", parent);
+                        squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getCompanyId(), "Detailed information for squadron", parent);
                 squadronRoleGrid.add(squadronSelectButton);
             }
         }
@@ -135,7 +135,7 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
     {
         List<Company> squadronsWithPrimaryRole = new ArrayList<>();
 
-        List<Company> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(campaign.getDate());
+        List<Company> squadronsForMap = PWCGContext.getInstance().getCompanyManager().getActiveSquadronsForCurrentMap(campaign.getDate());
         for (Company squadron : squadronsForMap)
         {
             if (includeSquadron(squadron, roleCategory))

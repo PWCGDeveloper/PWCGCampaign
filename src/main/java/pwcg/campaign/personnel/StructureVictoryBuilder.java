@@ -3,6 +3,7 @@ package pwcg.campaign.personnel;
 import java.util.Date;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
@@ -11,8 +12,7 @@ import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.crewmember.VictoryEntity;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
@@ -82,15 +82,15 @@ public class StructureVictoryBuilder
         
         Company squadron = victorCrewMember.determineSquadron();
 
-        PlaneType victorPlaneType = squadron.determineBestPlane(date);
-        if (victorPlaneType == null)
+        TankType victorTankType = squadron.determineBestPlane(date);
+        if (victorTankType == null)
         {
             return null;
         }
 
         victor.setAirOrGround(Victory.AIRCRAFT);
-        victor.setType(victorPlaneType.getDisplayName());
-        victor.setName(victorPlaneType.getDisplayName());
+        victor.setType(victorTankType.getDisplayName());
+        victor.setName(victorTankType.getDisplayName());
         victor.setSquadronName(squadron.determineDisplayName(date));
         victor.setCrewMemberName(victorCrewMember.getRank() + " " + victorCrewMember.getName());
         victor.setCrewMemberSerialNumber(victorCrewMember.getSerialNumber());

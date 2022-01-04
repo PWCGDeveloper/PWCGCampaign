@@ -7,10 +7,10 @@ import pwcg.core.exception.PWCGException;
 
 public class InitialCompanyBuilder
 {
-    public void buildNewSquadrons(Campaign campaign) throws PWCGException
+    public void buildNewCompanies(Campaign campaign) throws PWCGException
     {
         CampaignUpdateNewCompanyStaffer newSquadronStaffer = new CampaignUpdateNewCompanyStaffer(campaign);
-        newSquadronStaffer.staffNewSquadrons();
+        newSquadronStaffer.staffNewCompanies();
 
         CampaignUpdateNewCompanyEquipper newSquadronEquipper = new CampaignUpdateNewCompanyEquipper(campaign);
         newSquadronEquipper.equipNewSquadrons();

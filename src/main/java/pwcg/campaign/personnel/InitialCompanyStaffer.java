@@ -2,15 +2,14 @@ package pwcg.campaign.personnel;
 
 import java.util.List;
 
-import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberFactory;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 
@@ -44,10 +43,8 @@ public class InitialCompanyStaffer
 
     private void addCrewMember(CrewMember crewMember) throws PWCGException
     {
-        if ((squadronPersonnel.getCrewMembersWithAces().getCrewMemberList().size()) < Company.SQUADRON_STAFF_SIZE)
+        if ((squadronPersonnel.getCrewMembersWithAces().getCrewMemberList().size()) < Company.COMPANY_STAFF_SIZE)
         {
-            ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
-            CrewMemberFemaleConverter.convertNightWitchesToFemale(campaign, service, crewMember);
             squadronPersonnel.addCrewMember(crewMember);
         }
     }
@@ -70,14 +67,14 @@ public class InitialCompanyStaffer
         
         if (ranks.size() == 4)
         {
-            addNumAiCrewMembersAtRank(4, 2);
-            addNumAiCrewMembersAtRank(5, 3);
+            addNumAiCrewMembersAtRank(5, 2);
+            addNumAiCrewMembersAtRank(8, 3);
         }
         else if (ranks.size() == 5)
         {
             addNumAiCrewMembersAtRank(4, 2);
-            addNumAiCrewMembersAtRank(3, 3);
-            addNumAiCrewMembersAtRank(2, 4);
+            addNumAiCrewMembersAtRank(5, 3);
+            addNumAiCrewMembersAtRank(4, 4);
         }
         else
         {

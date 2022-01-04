@@ -3,8 +3,8 @@ package pwcg.mission.skin;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Company;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 public class MissionSkinInitializer 

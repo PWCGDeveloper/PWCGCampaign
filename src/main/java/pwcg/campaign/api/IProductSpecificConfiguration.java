@@ -1,7 +1,6 @@
 package pwcg.campaign.api;
 
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.initialposition.TakeoffFormation;
 import pwcg.mission.ground.BattleSize;
 
 public interface IProductSpecificConfiguration
@@ -11,7 +10,6 @@ public interface IProductSpecificConfiguration
     boolean useFlagDir();
     boolean useCallSign();
     boolean usePosition1();
-    TakeoffFormation getTakeoffFormation();
     int getAdditionalInitialTargetRadius(FlightTypes flightType);
     int getAdditionalMaxTargetRadius(FlightTypes flightType);
     int geNeutralZone();

@@ -3,10 +3,10 @@ package pwcg.mission.skin;
 import java.util.Date;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;

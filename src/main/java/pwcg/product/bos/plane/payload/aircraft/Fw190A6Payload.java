@@ -5,13 +5,13 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.PwcgRoleCategory;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.IFlight;
@@ -20,7 +20,7 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
 {
     private Date g3IntroDate;
 
-    public Fw190A6Payload(PlaneType planeType, Date date)
+    public Fw190A6Payload(TankType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -65,7 +65,7 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Fw190A6Payload clone = new Fw190A6Payload(getPlaneType(), getDate());
+        Fw190A6Payload clone = new Fw190A6Payload(getTankType(), getDate());
         
         return super.copy(clone);
     }

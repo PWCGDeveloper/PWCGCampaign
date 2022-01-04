@@ -3,11 +3,11 @@ package pwcg.mission;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
-import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.skirmish.Skirmish;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
@@ -29,7 +29,7 @@ public class PlayerFlightTypeBuilder
         for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
         {
             IFlightTypeFactory flightTypeFactory = null;
-            Company playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            Company playerSquadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
             if (skirmish == null)
             {
                 flightTypeFactory = PWCGFlightTypeAbstractFactory.createFlightTypeFactory(campaign);

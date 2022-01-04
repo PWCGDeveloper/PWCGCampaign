@@ -1,8 +1,8 @@
 package pwcg.mission;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -63,7 +63,7 @@ public class MissionProfileGenerator
         int nightMissionOdds = 100;
         for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
             int squadronNightOdds = squadron.getNightOdds(campaign.getDate());
             if (squadronNightOdds < nightMissionOdds)
             {

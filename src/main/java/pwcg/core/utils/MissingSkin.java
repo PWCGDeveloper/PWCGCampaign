@@ -6,12 +6,12 @@ public class MissingSkin
     private String category = "";
     private String skinName = "";
 
-    public String getPlaneType()
+    public String getTankType()
     {
         return planeType;
     }
 
-    public void setPlaneType(String planeType)
+    public void setTankType(String planeType)
     {
         this.planeType = planeType;
     }

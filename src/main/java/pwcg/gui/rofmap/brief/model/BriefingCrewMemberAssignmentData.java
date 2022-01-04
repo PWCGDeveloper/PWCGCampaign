@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.EquippedTank;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingCrewMemberAssignmentData
@@ -15,7 +15,7 @@ public class BriefingCrewMemberAssignmentData
 	private Company squadron;
     private List<CrewPlanePayloadPairing> assignedCrewPlanes = new ArrayList<>();
     private Map<Integer, CrewMember> unAssignedCrewMembers = new HashMap<>();
-    private Map<Integer, EquippedPlane> unAssignedPlanes = new HashMap<>();
+    private Map<Integer, EquippedTank> unAssignedPlanes = new HashMap<>();
 
     public void reset()
     {
@@ -29,7 +29,7 @@ public class BriefingCrewMemberAssignmentData
         unAssignedCrewMembers.put(crewMember.getSerialNumber(), crewMember);
     }
 
-    public void addPlane(EquippedPlane equippedPlane)
+    public void addPlane(EquippedTank equippedPlane)
     {
         unAssignedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
     }
@@ -37,7 +37,7 @@ public class BriefingCrewMemberAssignmentData
     public void assignCrewMember(int crewMemberSerialNumber, int planeSerialNumber)
     {
         CrewMember assignedCrewMember = unAssignedCrewMembers.remove(crewMemberSerialNumber);        
-        EquippedPlane equippedPlane = unAssignedPlanes.remove(planeSerialNumber);
+        EquippedTank equippedPlane = unAssignedPlanes.remove(planeSerialNumber);
         
         CrewPlanePayloadPairing crewPlane = new CrewPlanePayloadPairing(assignedCrewMember, equippedPlane);
         crewPlane.setPayloadId(CrewPlanePayloadPairing.NO_PAYLOAD_ASSIGNED);
@@ -61,7 +61,7 @@ public class BriefingCrewMemberAssignmentData
 
         unAssignedPlanes.put(crewPlane.getPlane().getSerialNumber(), crewPlane.getPlane());
         
-        EquippedPlane equippedPlane = unAssignedPlanes.remove(planeSerialNumber);
+        EquippedTank equippedPlane = unAssignedPlanes.remove(planeSerialNumber);
  
         crewPlane.setPlane(equippedPlane);
         crewPlane.setPayloadId(CrewPlanePayloadPairing.NO_PAYLOAD_ASSIGNED);
@@ -79,7 +79,7 @@ public class BriefingCrewMemberAssignmentData
         return unAssignedCrewMembers;
     }
 
-    public Map<Integer, EquippedPlane> getUnassignedPlanes()
+    public Map<Integer, EquippedTank> getUnassignedPlanes()
     {
         return unAssignedPlanes;
     }

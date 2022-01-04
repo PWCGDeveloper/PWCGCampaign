@@ -18,7 +18,7 @@ import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.VictoryDescription;
-import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.tank.EquippedTank;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
@@ -165,7 +165,7 @@ public class CombatReportBuilder
         String planesLostAppend = "";        
         for (PlaneStatusEvent planeLostEvent :squadronPlanesLostInMission.values())
         {
-            EquippedPlane lostPlane = campaign.getEquipmentManager().getAnyPlaneWithPreference(planeLostEvent.getPlaneSerialNumber());
+            EquippedTank lostPlane = campaign.getEquipmentManager().getAnyPlaneWithPreference(planeLostEvent.getPlaneSerialNumber());
             planesLostAppend += "    " + lostPlane.getDisplayName() + "\n";
         }
         

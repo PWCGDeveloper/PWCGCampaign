@@ -8,13 +8,13 @@ import java.util.Map;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.EquippedTank;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -84,7 +84,7 @@ public class DuringCampaignAirVictimGenerator implements IVictimGenerator
     private Map<Integer, CrewMember> getPossibleVictims() throws PWCGException 
     {
         Map<Integer, CrewMember> possibleVictims = new HashMap<>();
-        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(victimSquadron.getSquadronId());
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(victimSquadron.getCompanyId());
         CrewMembers squadronMembers = CrewMemberFilter.filterActiveAINoWounded(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
         for (CrewMember crewMember : squadronMembers.getCrewMemberList())
         {
@@ -134,9 +134,9 @@ public class DuringCampaignAirVictimGenerator implements IVictimGenerator
     	return null;
     }
 
-    public EquippedPlane generateVictimPlane() throws PWCGException 
+    public EquippedTank generateVictimPlane() throws PWCGException 
     {        
-        EquippedPlane victimPlane = campaign.getEquipmentManager().getAnyActivePlaneFromSquadron(victimSquadron.getSquadronId());
+        EquippedTank victimPlane = campaign.getEquipmentManager().getAnyActivePlaneFromSquadron(victimSquadron.getCompanyId());
         return victimPlane;
     }
 

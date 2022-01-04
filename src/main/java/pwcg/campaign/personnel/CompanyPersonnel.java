@@ -6,12 +6,12 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -49,7 +49,7 @@ public class CompanyPersonnel
     public boolean isSquadronPersonnelViable() throws PWCGException
     {
         int vialbleCrewMembers = squadronMembers.getActiveCount(campaign.getDate());
-        if (vialbleCrewMembers > (Company.SQUADRON_STAFF_SIZE / 2))
+        if (vialbleCrewMembers > (Company.COMPANY_STAFF_SIZE / 2))
         {
             return true;
         }
@@ -82,7 +82,7 @@ public class CompanyPersonnel
         CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
         if (crewMember != null)
         {
-            if (crewMember.getCompanyId() == squadron.getSquadronId())
+            if (crewMember.getCompanyId() == squadron.getCompanyId())
             {
                 return true;
             }
@@ -128,7 +128,7 @@ public class CompanyPersonnel
             activeCrewMembersAndAces.addToCrewMemberCollection(crewMember);
         }
 
-        List<TankAce> aces = campaign.getPersonnelManager().getCampaignAces().getActiveCampaignAcesBySquadron(squadron.getSquadronId());
+        List<TankAce> aces = campaign.getPersonnelManager().getCampaignAces().getActiveCampaignAcesBySquadron(squadron.getCompanyId());
         for (CrewMember ace : aces)
         {
             activeCrewMembersAndAces.addToCrewMemberCollection(ace);

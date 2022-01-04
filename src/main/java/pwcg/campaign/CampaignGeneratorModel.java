@@ -2,9 +2,9 @@ package pwcg.campaign;
 
 import java.util.Date;
 
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
@@ -111,10 +111,10 @@ public class CampaignGeneratorModel
         this.campaignMode = campaignMode;
     }
 
-    public Company getCampaignSquadron() throws PWCGException
+    public Company getCampaignCompany() throws PWCGException
     {
-    	SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Company playerSquadron = squadronManager.getSquadronByName(squadronName, campaignDate);
+    	CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
+        Company playerSquadron = squadronManager.getCompanyByName(squadronName, campaignDate);
         return playerSquadron;
     }
     

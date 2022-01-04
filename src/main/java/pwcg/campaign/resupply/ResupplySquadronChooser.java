@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class ResupplySquadronChooser

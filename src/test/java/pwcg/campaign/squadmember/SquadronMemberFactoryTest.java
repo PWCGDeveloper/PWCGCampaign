@@ -17,6 +17,7 @@ import pwcg.campaign.CampaignAces;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
@@ -25,7 +26,6 @@ import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.crewmember.TankAce;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CompanyPersonnel;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCacheBase;
@@ -55,7 +55,7 @@ public class CrewMemberFactoryTest
         List<TankAce> aces = new ArrayList<>();
         Mockito.when(campaignAces.getActiveCampaignAcesBySquadron(Mockito.anyInt())).thenReturn(aces);
         
-        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_3_PROFILE.getSquadronId()); 
+        squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.ESC_3_PROFILE.getSquadronId()); 
         squadronPersonnel = new CompanyPersonnel(campaign, squadron);
     }
 

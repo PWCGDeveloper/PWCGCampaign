@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.tank.EquippedTank;
 
 public class CrewPlanePayloadPairing
 {
@@ -14,11 +14,11 @@ public class CrewPlanePayloadPairing
     public static final int NO_PAYLOAD_ASSIGNED = -1;
     
     private CrewMember crewMember;
-    private EquippedPlane plane;
+    private EquippedTank plane;
     private int payloadId = NO_PAYLOAD_ASSIGNED;
     private Map<String, String> modifications = new HashMap<>();
 
-    public CrewPlanePayloadPairing(CrewMember crewMember, EquippedPlane plane)
+    public CrewPlanePayloadPairing(CrewMember crewMember, EquippedTank plane)
     {
         this.crewMember = crewMember;
         this.plane = plane;
@@ -29,12 +29,12 @@ public class CrewPlanePayloadPairing
         return crewMember;
     }
 
-    public EquippedPlane getPlane()
+    public EquippedTank getPlane()
     {
         return plane;
     }
 
-    public void setPlane(EquippedPlane plane)
+    public void setPlane(EquippedTank plane)
     {
         this.plane = plane;
     }

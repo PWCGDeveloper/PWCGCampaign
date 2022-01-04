@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.outofmission.phase2.awards.PromotionEventHandler;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
@@ -23,7 +24,6 @@ import pwcg.campaign.crewmember.CrewMemberVictories;
 import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.promotion.PromotionArbitrator;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;

@@ -1,0 +1,21 @@
+{
+	"type": "_m4a2",
+	"archType": "sherman",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"USA"
+	],
+	"stockModifications": [],
+	"displayName": "M4A2",
+	"script": "LuaScripts\\WorldObjects\\vehicles\\_m4a2.txt",
+	"model": "graphics\\vehicles\\_m4a2\\_m4a2.mgm",
+	"desc": "Sherman",
+	"cruisingSpeed": 14,
+	"goodness": 40,
+	"roleCategories": [
+		"ROLE_MAIN_BATTLE_TANK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

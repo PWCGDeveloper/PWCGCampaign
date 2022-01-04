@@ -8,12 +8,12 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberNames;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneEquipmentFactory;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankEquipmentFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -33,9 +33,9 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
     }
 
     @Override
-    public EquippedPlane generateVictimPlane() throws PWCGException
+    public EquippedTank generateVictimPlane() throws PWCGException
     {
-        EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForBeforeCampaign(campaign, victimSquadron.determineSide(), date);
+        EquippedTank equippedPlane = TankEquipmentFactory.makePlaneForBeforeCampaign(campaign, victimSquadron.determineSide(), date);
         return equippedPlane;
     }
 

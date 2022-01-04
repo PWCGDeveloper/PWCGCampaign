@@ -7,14 +7,14 @@ import java.util.Map;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.resupply.depot.EquipmentUpgradeRecord;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.Equipment;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankSorter;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentUpgradeHandler
@@ -36,10 +36,10 @@ public class EquipmentUpgradeHandler
 
     private void upgradePlayerSquadrons(ArmedService armedService) throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         for (Company squadron : squadronManager.getActiveSquadronsForService(campaign.getDate(), armedService))
         {
-            if (Company.isPlayerSquadron(campaign, squadron.getSquadronId()))
+            if (Company.isPlayerSquadron(campaign, squadron.getCompanyId()))
             {
                 upgradeEquipment(squadron);
             }
@@ -48,7 +48,7 @@ public class EquipmentUpgradeHandler
 
     private void upgradeAiSquadrons(ArmedService armedService) throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         for (Company squadron : squadronManager.getActiveSquadronsForService(campaign.getDate(), armedService))
         {
             upgradeEquipment(squadron);
@@ -57,31 +57,31 @@ public class EquipmentUpgradeHandler
 
     private void upgradeEquipment(Company squadron) throws PWCGException
     {
-        Equipment equipmentForSquadron = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());
+        Equipment equipmentForSquadron = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId());
         EquipmentDepot equipmentDepot = campaign.getEquipmentManager().getEquipmentDepotForService(squadron.getService());
 
-        List<EquippedPlane> sortedPlanes = getPlanesForSquadronWorstToBest(equipmentForSquadron);
-        for (EquippedPlane equippedPlane : sortedPlanes)
+        List<EquippedTank> sortedPlanes = getPlanesForSquadronWorstToBest(equipmentForSquadron);
+        for (EquippedTank equippedPlane : sortedPlanes)
         {
             EquipmentUpgradeRecord equipmentUpgrade = equipmentDepot.getUpgrade(equippedPlane);
             if (equipmentUpgrade != null)
             {
-                EquippedPlane replacementPlane = equipmentDepot.removeEquippedPlaneFromDepot(equipmentUpgrade.getUpgrade().getSerialNumber());
-                equipmentForSquadron.addEquippedPlaneToSquadron(campaign, squadron.getSquadronId(), replacementPlane);
+                EquippedTank replacementPlane = equipmentDepot.removeEquippedPlaneFromDepot(equipmentUpgrade.getUpgrade().getSerialNumber());
+                equipmentForSquadron.addEquippedTankToCompany(campaign, squadron.getCompanyId(), replacementPlane);
                 
-                EquippedPlane replacedPlane = equipmentForSquadron.removeEquippedPlane(equipmentUpgrade.getReplacedPlane().getSerialNumber());
+                EquippedTank replacedPlane = equipmentForSquadron.removeEquippedTank(equipmentUpgrade.getReplacedPlane().getSerialNumber());
                 equipmentDepot.addPlaneToDepot(replacedPlane);
 
-                EquipmentResupplyRecord equipmentResupplyRecord = new EquipmentResupplyRecord(replacementPlane, squadron.getSquadronId());
+                EquipmentResupplyRecord equipmentResupplyRecord = new EquipmentResupplyRecord(replacementPlane, squadron.getCompanyId());
                 equipmentResupplyData.addEquipmentResupplyRecord(equipmentResupplyRecord);
             }
         }        
     }
 
-    private List<EquippedPlane> getPlanesForSquadronWorstToBest(Equipment equipmentForSquadron) throws PWCGException
+    private List<EquippedTank> getPlanesForSquadronWorstToBest(Equipment equipmentForSquadron) throws PWCGException
     {
-        Map<Integer, EquippedPlane> planesForSquadron = equipmentForSquadron.getActiveEquippedPlanes();
-        List<EquippedPlane> sortedPlanes = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(planesForSquadron.values()));
+        Map<Integer, EquippedTank> planesForSquadron = equipmentForSquadron.getActiveEquippedTanks();
+        List<EquippedTank> sortedPlanes = TankSorter.sortEquippedTanksByGoodness(new ArrayList<EquippedTank>(planesForSquadron.values()));
         Collections.reverse(sortedPlanes);
         return sortedPlanes;
     }

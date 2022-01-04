@@ -4,11 +4,11 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.EquippedTank;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -28,8 +28,8 @@ public class PlaneStatusEvent extends AARCrewMemberEvent
         
         try
         {
-            SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-            Company squadron = squadronManager.getSquadron(super.getSquadronId());
+            CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
+            Company squadron = squadronManager.getCompany(super.getSquadronId());
             if (squadron != null)
             {
                 this.squadronName = squadron.determineDisplayName(campaign.getDate());
@@ -45,7 +45,7 @@ public class PlaneStatusEvent extends AARCrewMemberEvent
     public String getPlaneLostText(Campaign campaign) throws PWCGException
     {
         CampaignEquipmentManager campaignEquipmentManager = campaign.getEquipmentManager();
-        EquippedPlane shotDownPlane = campaignEquipmentManager.destroyPlane(planeSerialNumber, campaign.getDate());
+        EquippedTank shotDownPlane = campaignEquipmentManager.destroyPlane(planeSerialNumber, campaign.getDate());
 
         CampaignPersonnelManager campaignPersonnelManager = campaign.getPersonnelManager();
         CrewMember shotDownCrewMember = campaignPersonnelManager.getAnyCampaignMember(super.getCrewMemberSerialNumber());
@@ -63,7 +63,7 @@ public class PlaneStatusEvent extends AARCrewMemberEvent
     public String getPlaneAddedToDepotText(Campaign campaign) throws PWCGException
     {
         CampaignEquipmentManager campaignEquipmentManager = campaign.getEquipmentManager();
-        EquippedPlane shotDownPlane = campaignEquipmentManager.destroyPlane(planeSerialNumber, campaign.getDate());
+        EquippedTank shotDownPlane = campaignEquipmentManager.destroyPlane(planeSerialNumber, campaign.getDate());
 
         String prettyDate = DateUtils.getDateStringPretty(campaign.getDate());
         String planeEventText = 
@@ -77,7 +77,7 @@ public class PlaneStatusEvent extends AARCrewMemberEvent
     public String getPlaneWithdrawnFromServiceText(Campaign campaign) throws PWCGException
     {
         CampaignEquipmentManager campaignEquipmentManager = campaign.getEquipmentManager();
-        EquippedPlane shotDownPlane = campaignEquipmentManager.destroyPlane(planeSerialNumber, campaign.getDate());
+        EquippedTank shotDownPlane = campaignEquipmentManager.destroyPlane(planeSerialNumber, campaign.getDate());
 
         String prettyDate = DateUtils.getDateStringPretty(campaign.getDate());
         String planeEventText = 

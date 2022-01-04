@@ -16,6 +16,8 @@ import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.SerialNumber.SerialNumberClassification;
@@ -24,8 +26,6 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -265,8 +265,8 @@ public class CrewMember implements Cloneable
     public ArmedService determineService(Date date) throws PWCGException
     {
         ArmedService service = null;
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Company squadron = squadronManager.getSquadron(companyId);
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
+        Company squadron = squadronManager.getCompany(companyId);
 
         if (squadron != null)
         {
@@ -303,8 +303,8 @@ public class CrewMember implements Cloneable
 
     public ICountry determineCountry(Date date) throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Company squadron = squadronManager.getSquadron(companyId);
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
+        Company squadron = squadronManager.getCompany(companyId);
         if (squadron == null)
         {
             throw new PWCGException("No country found. Squadron is " + companyId);
@@ -318,7 +318,7 @@ public class CrewMember implements Cloneable
         Company squadron = null;
         if (companyId > 0)
         {
-            squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(companyId);
+            squadron = PWCGContext.getInstance().getCompanyManager().getCompany(companyId);
         }
 
         return squadron;

@@ -18,9 +18,9 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.EquippedTank;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -475,7 +475,7 @@ public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implem
                     CrewMember crewMember = crewPlanePair.getCrewMember();
                     if (crewMember.isPlayer())
                     {
-                        EquippedPlane playerPlane = crewPlanePair.getPlane();
+                        EquippedTank playerPlane = crewPlanePair.getPlane();
                         if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))
                         {
                             ErrorDialog
@@ -493,7 +493,7 @@ public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implem
     @Override
     public void flightChanged(Company squadron) throws PWCGException
     {
-        briefingData.changeSelectedFlight(squadron.getSquadronId());
+        briefingData.changeSelectedFlight(squadron.getCompanyId());
         this.add(BorderLayout.CENTER, createCenterPanel());
     }
 

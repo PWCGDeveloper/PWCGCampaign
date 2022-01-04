@@ -7,6 +7,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
@@ -15,7 +16,6 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class ServiceChangeHandler
@@ -29,7 +29,7 @@ public class ServiceChangeHandler
 
     public void handleChangeOfService(Date newDate) throws PWCGException 
     {
-        for (Company squadron : PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(campaign.getDate()))
+        for (Company squadron : PWCGContext.getInstance().getCompanyManager().getActiveSquadrons(campaign.getDate()))
         {
             handleChangeOfServiceForSquadron(squadron, newDate);
         }
@@ -48,7 +48,7 @@ public class ServiceChangeHandler
 
     private void changeService(Company squadron, ArmedService serviceNow, ArmedService serviceAfter) throws PWCGException
     {
-        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId());
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getCompanyId());
         CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
         for (CrewMember crewMember : squadronMembers.getCrewMemberList())
         {

@@ -1,8 +1,6 @@
 package pwcg.product.bos.plane;
 
-import pwcg.campaign.plane.IPlaneAttributeMapping;
-
-public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
+public enum BosPlaneAttributeMapping
 {
     BF109_E7("bf109e7", "static_bf109e7", "static_bf109e7_open", "static_bf109e7_net"),
     BF109_F2("bf109f2", "static_bf109","static_bf109_open", "static_bf109_net"),
@@ -76,13 +74,11 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
 		this.staticPlaneMatches = staticPlaneMatches;		
 	}
 
-	@Override
 	public String getPlaneType() 
 	{
 		return planeType;
 	}
 
-	@Override
 	public String[] getStaticPlaneMatches() 
 	{
 		return staticPlaneMatches;

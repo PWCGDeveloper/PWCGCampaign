@@ -1,8 +1,8 @@
 package pwcg.gui.rofmap.event;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignReportLeaveGUI extends AARDocumentIconPanel
@@ -26,7 +26,7 @@ public class CampaignReportLeaveGUI extends AARDocumentIconPanel
 
     protected String getBodyText() throws PWCGException
     {
-        Company squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(campaign.findReferencePlayer().getCompanyId());
+        Company squadron =  PWCGContext.getInstance().getCompanyManager().getCompany(campaign.findReferencePlayer().getCompanyId());
                 
         String leaveText = "Squadron: " + squadron.determineDisplayName(campaign.getDate()) + "\n";
         leaveText += "Date: " + campaign.getDate() + "\n";        

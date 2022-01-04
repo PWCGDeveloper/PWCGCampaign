@@ -15,10 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -40,9 +40,9 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
 {
     private static final long serialVersionUID = 1L;
     
-    private Map<String, PlaneType> planeTypesToDisplay = null;
+    private Map<String, TankType> planeTypesToDisplay = null;
 
-	public PwcgSkinConfigurationAnalysisDisplayScreen(Map<String, PlaneType> planeTypesToDisplay) 
+	public PwcgSkinConfigurationAnalysisDisplayScreen(Map<String, TankType> planeTypesToDisplay) 
 	{
         super("");
         this.setLayout(new BorderLayout());
@@ -135,7 +135,7 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
         
         for (String planeTypeDesc : planeTypesToDisplay.keySet())
         {
-            PlaneType plane = planeTypesToDisplay.get(planeTypeDesc);
+            TankType plane = planeTypesToDisplay.get(planeTypeDesc);
             List<Skin> skinSet = allSkinsInPWCG.get(planeTypeDesc);
             
             addSkinsForPlane(reportBodyPanel, plane, skinSet);
@@ -144,7 +144,7 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
         return reportBodyPanel;
     }
 
-    private void addSkinsForPlane(JPanel reportBodyPanel, PlaneType plane, List<Skin> skinSet) throws PWCGException
+    private void addSkinsForPlane(JPanel reportBodyPanel, TankType plane, List<Skin> skinSet) throws PWCGException
     {
         JLabel reportBodyPlaneLabel = PWCGLabelFactory.makePaperLabelMedium("Plane: " + plane.getDisplayName());
         reportBodyPanel.add(reportBodyPlaneLabel);
@@ -191,10 +191,10 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
             }
             else
             {
-                Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(skin.getSquadId());
+                Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(skin.getSquadId());
                 if (squadron != null)
                 {
-                    squadronName = "" + squadron.getSquadronId();
+                    squadronName = "" + squadron.getCompanyId();
                 }
                 else
                 {

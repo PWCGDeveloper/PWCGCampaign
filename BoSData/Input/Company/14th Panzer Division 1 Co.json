@@ -8,11 +8,6 @@
 	"subUnitIdCode": "",
 	"tankAssignments": [
 		{
-			"archType": "pziiiearly",
-			"introduction": "19400101",
-			"withdrawal": "19420801"
-		},
-		{
 			"archType": "pziii",
 			"introduction": "19420801",
 			"withdrawal": "19430101"
@@ -56,7 +51,7 @@
 	},
 	"skins": [
 	],
-	"serviceId": 20102,
+	"serviceId": 20111,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

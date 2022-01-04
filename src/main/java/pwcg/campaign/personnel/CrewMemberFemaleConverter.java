@@ -3,12 +3,9 @@ package pwcg.campaign.personnel;
 import java.util.HashMap;
 
 import pwcg.campaign.ArmedService;
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberNames;
 import pwcg.campaign.crewmember.CrewMembers;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.product.bos.country.BoSServiceManager;
@@ -30,20 +27,6 @@ public class CrewMemberFemaleConverter
             convertToFemalePicture(service, crewMember);
         }
         
-        return crewMember;
-    }
-
-    public static CrewMember convertNightWitchesToFemale(Campaign campaign, ArmedService service, CrewMember crewMember) throws PWCGException
-    {
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(crewMember.getCompanyId());
-        if (squadron != null)
-        {
-            if (squadron.getSquadronId() == 10111588)
-            {
-                convertToFemaleName(crewMember,squadron.getNamesInUse(campaign));
-                convertToFemalePicture(service, crewMember);
-            }
-        }
         return crewMember;
     }
     

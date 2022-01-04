@@ -2,9 +2,9 @@ package pwcg.gui.rofmap.event;
 
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -32,9 +32,9 @@ public class CampaignReportTransferPanel extends AARDocumentIconPanel
 
     protected String getBodyText() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Company fromSquadron = squadronManager.getSquadron(transferEvent.getTransferFrom());
-        Company toSquadron = squadronManager.getSquadron(transferEvent.getTransferTo());
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
+        Company fromSquadron = squadronManager.getCompany(transferEvent.getTransferFrom());
+        Company toSquadron = squadronManager.getCompany(transferEvent.getTransferTo());
 
         String transferMessage = transferEvent.getCrewMemberName() + " has been transferred" + "\n";
                         

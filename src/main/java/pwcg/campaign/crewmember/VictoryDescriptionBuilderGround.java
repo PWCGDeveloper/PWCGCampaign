@@ -29,7 +29,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
     {
         String victoryDesc = "";
         
-        String victorPlaneType = getPlaneDescription(victory.getVictor().getType());
+        String victorTankType = getPlaneDescription(victory.getVictor().getType());
 
         // Line 1
         victoryDesc +=  "On " + DateUtils.getDateString(victory.getDate());
@@ -48,7 +48,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
         // Line 3
         victoryDesc +=  "\n";
         victoryDesc +=  victory.getVictor().getCrewMemberName();
-        victoryDesc +=  " was flying a " + victorPlaneType + ".";        
+        victoryDesc +=  " was flying a " + victorTankType + ".";        
         
         return victoryDesc;
     }
@@ -61,7 +61,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
     {        
         String victoryDesc = "";
         
-        String victimPlaneType = getPlaneDescription(victory.getVictim().getType());
+        String victimTankType = getPlaneDescription(victory.getVictim().getType());
 
         if (!(victory.getVictim().getCrewMemberName().isEmpty()))
         {
@@ -75,7 +75,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
 
             // Line 2
             victoryDesc +=  "\n";
-            victoryDesc +=  "A " + victimPlaneType + " of " + victory.getVictim().getSquadronName() + " was brought down by a " + getGroundUnitName(victory.getVictor()) + ".";
+            victoryDesc +=  "A " + victimTankType + " of " + victory.getVictim().getSquadronName() + " was brought down by a " + getGroundUnitName(victory.getVictor()) + ".";
 
             // Line 3
             String crewMemberFate = getCrewMemberFate();
@@ -84,7 +84,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
         // If we do not have all of the information
         else
         {
-            victoryDesc +=  victimPlaneType + " shot down by " + getGroundUnitName(victory.getVictor()) + "";
+            victoryDesc +=  victimTankType + " shot down by " + getGroundUnitName(victory.getVictor()) + "";
         }
         
         return victoryDesc;

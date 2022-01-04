@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.tank.EquippedTank;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 
@@ -22,11 +22,11 @@ public class BriefingPlanePicker
 
     public Integer pickPlane(Integer crewMemberSerialNumber) throws PWCGException
     {       
-        List<EquippedPlane> squadronPlanes = missionEditHandler.getSortedUnassignedPlanes();
+        List<EquippedTank> squadronPlanes = missionEditHandler.getSortedUnassignedPlanes();
         Object[] possibilities = new Object[squadronPlanes.size()];
         for (int i = 0; i < squadronPlanes.size(); ++i)
         {
-            EquippedPlane plane = squadronPlanes.get(i);
+            EquippedTank plane = squadronPlanes.get(i);
             PickerEntry entry = new PickerEntry();
             entry.description = plane.getDisplayName();
             entry.plane = plane;
@@ -51,7 +51,7 @@ public class BriefingPlanePicker
     private static class PickerEntry
     {
         public String description;
-        public EquippedPlane plane;
+        public EquippedTank plane;
 
         public String toString()
         {

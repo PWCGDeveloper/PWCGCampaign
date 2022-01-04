@@ -13,8 +13,8 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PlaneTypeFactory;
+import pwcg.campaign.plane.TankType;
+import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -86,11 +86,11 @@ public class MissionLogEventsBuilder
     {
         for (CrewMember crewMember : preliminaryData.getCampaignMembersInMission().getCrewMemberCollection().values())
         {
-            SquadronPlaneAssignment planeAssignment = AARCoordinatorInMissionTest.getPlaneForSquadron(crewMember.getCompanyId());
-            PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-            List<PlaneType> planeTypesForSquadron = planeTypeFactory.createActivePlaneTypesForArchType(planeAssignment.getArchType(), campaign.getDate());
+            CompanyTankAssignment planeAssignment = AARCoordinatorInMissionTest.getPlaneForSquadron(crewMember.getCompanyId());
+            TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
+            List<TankType> planeTypesForSquadron = planeTypeFactory.createActiveTankTypesForArchType(planeAssignment.getArchType(), campaign.getDate());
             int index = RandomNumberGenerator.getRandom(planeTypesForSquadron.size());
-            PlaneType planeType = planeTypesForSquadron.get(index);
+            TankType planeType = planeTypesForSquadron.get(index);
             AType12 planeSpawn = new AType12(
                     makeNextId(),
                     planeType.getDisplayName(),

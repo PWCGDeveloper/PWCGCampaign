@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -63,7 +63,7 @@ public class StructureBorderBuilder
         List<Coordinate> airfieldCoordinates = new ArrayList<>();
         for (CrewMember player : participatingPlayers.getAllParticipatingPlayers())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(player.getCompanyId());
             Airfield airfield = squadron.determineCurrentAirfieldAnyMap(campaign.getDate());
             airfieldCoordinates.add(airfield.getPosition());
         }

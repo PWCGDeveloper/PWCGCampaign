@@ -8,13 +8,8 @@
 	"subUnitIdCode": "",
 	"tankAssignments": [
 		{
-			"archType": "su122",
+			"archType": "su",
 			"introduction": "19400101",
-			"withdrawal": "19440101"
-		},
-		{
-			"archType": "su152",
-			"introduction": "19440101",
 			"withdrawal": "19450601"
 		}
 	],

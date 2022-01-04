@@ -15,6 +15,7 @@ import org.mockito.quality.Strictness;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.AiCrewMemberRemovalChooser;
@@ -22,7 +23,6 @@ import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.personnel.CompanyPersonnel;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -53,7 +53,7 @@ public class AiCrewMemberRemovalChooserTest
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaignPersonnelManager.getCompanyPersonnel(ArgumentMatchers.anyInt())).thenReturn(squadronPersonnel);
 
-        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(10131132); 
+        squadron = PWCGContext.getInstance().getCompanyManager().getCompany(10131132); 
         
         Mockito.when(squadronMember1.getRank()).thenReturn("Major");
         Mockito.when(squadronMember1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);

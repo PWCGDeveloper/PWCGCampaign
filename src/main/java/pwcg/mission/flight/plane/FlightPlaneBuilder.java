@@ -4,7 +4,7 @@ import java.util.List;
 
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CompanyPersonnel;
-import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.tank.Equipment;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
 
@@ -61,7 +61,7 @@ public class FlightPlaneBuilder
 
 	private int calcActiveCrewMembersAvailable() throws PWCGException 
     {
-    	int squadronId = flightInformation.getSquadron().getSquadronId();
+    	int squadronId = flightInformation.getSquadron().getCompanyId();
     	CompanyPersonnel squadronPersonnel = flightInformation.getCampaign().getPersonnelManager().getCompanyPersonnel(squadronId);
     	CrewMembers activeAiCrewMembers = squadronPersonnel.getActiveAiCrewMembers();
 		return (activeAiCrewMembers.getCrewMemberList().size() + flightInformation.getFlightParticipatingPlayers().size());
@@ -69,9 +69,9 @@ public class FlightPlaneBuilder
     
     private int calcNumPlanesAvailable() 
     {
-    	int squadronId = flightInformation.getSquadron().getSquadronId();
+    	int squadronId = flightInformation.getSquadron().getCompanyId();
     	Equipment squadronEquipment = flightInformation.getCampaign().getEquipmentManager().getEquipmentForSquadron(squadronId);
-		return (squadronEquipment.getActiveEquippedPlanes().size());
+		return (squadronEquipment.getActiveEquippedTanks().size());
 	}
 
 	private int calcTargetPlanesInFlight() throws PWCGException 

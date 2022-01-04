@@ -2,13 +2,13 @@ package pwcg.campaign.resupply.personnel;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.ServiceResupplyNeed;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class TransferHandler

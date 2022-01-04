@@ -4,6 +4,7 @@ import java.util.Date;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
@@ -11,9 +12,8 @@ import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.crewmember.VictoryEntity;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
@@ -25,7 +25,7 @@ public class OutOfMissionAirVictoryBuilder
     private IVictimGenerator victimGenerator;
     private CrewMember victorCrewMember;
     private CrewMember victimCrewMember;
-    private EquippedPlane victimPlane;
+    private EquippedTank victimPlane;
 
     public OutOfMissionAirVictoryBuilder (Campaign campaign, Company victimSquadron, IVictimGenerator victimGenerator, CrewMember victorCrewMember)
     {
@@ -89,11 +89,11 @@ public class OutOfMissionAirVictoryBuilder
         
         Company squadron = victorCrewMember.determineSquadron();
 
-        PlaneType victorPlaneType = squadron.determineBestPlane(campaign.getDate());
+        TankType victorTankType = squadron.determineBestPlane(campaign.getDate());
 
         victor.setAirOrGround(Victory.AIRCRAFT);
-        victor.setType(victorPlaneType.getDisplayName());
-        victor.setName(victorPlaneType.getDisplayName());
+        victor.setType(victorTankType.getDisplayName());
+        victor.setName(victorTankType.getDisplayName());
         victor.setSquadronName(squadron.determineDisplayName(date));
         victor.setCrewMemberName(victorCrewMember.getRank() + " " + victorCrewMember.getName());
         victor.setCrewMemberSerialNumber(victorCrewMember.getSerialNumber());
@@ -145,7 +145,7 @@ public class OutOfMissionAirVictoryBuilder
         return victimCrewMember;
     }
 
-    public EquippedPlane getVictimPlane()
+    public EquippedTank getVictimPlane()
     {
         return victimPlane;
     }

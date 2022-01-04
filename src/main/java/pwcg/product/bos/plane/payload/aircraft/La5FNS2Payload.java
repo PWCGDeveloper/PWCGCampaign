@@ -2,17 +2,17 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.campaign.tank.TankType;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
 public class La5FNS2Payload extends PlanePayload implements IPlanePayload
 {
-    public La5FNS2Payload(PlaneType planeType, Date date)
+    public La5FNS2Payload(TankType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -34,7 +34,7 @@ public class La5FNS2Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        La5FNS2Payload clone = new La5FNS2Payload(getPlaneType(), getDate());
+        La5FNS2Payload clone = new La5FNS2Payload(getTankType(), getDate());
         
         return super.copy(clone);
     }

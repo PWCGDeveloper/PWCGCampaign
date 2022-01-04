@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneArchType;
-import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.resupply.depot.EquipmentReplacementUtils;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.Equipment;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankArchType;
+import pwcg.campaign.tank.TankEquipmentFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -39,11 +39,11 @@ public class WithdrawnEquipmentReplacer
     private int removeWithdrawnPlanes()
     {
         int planesRemoved = 0;
-        for (EquippedPlane plane: equipment.getActiveEquippedPlanes().values())
+        for (EquippedTank plane: equipment.getActiveEquippedTanks().values())
         {
             if (isWithdrawPlane(plane))
             {
-                equipment.deactivateEquippedPlaneFromSquadron(plane.getSerialNumber(), campaign.getDate());
+                equipment.deactivateEquippedTankFromCompany(plane.getSerialNumber(), campaign.getDate());
                 ++planesRemoved;
             }
         }
@@ -51,7 +51,7 @@ public class WithdrawnEquipmentReplacer
         return planesRemoved;
     }
     
-    private boolean isWithdrawPlane(EquippedPlane plane)
+    private boolean isWithdrawPlane(EquippedTank plane)
     {
         if (campaign.getDate().before(plane.getWithdrawal()))
         {
@@ -71,7 +71,7 @@ public class WithdrawnEquipmentReplacer
         int numberOfPlanesToAdd = calculatePlanesNeeded(planesRemoved);
         for (int i = 0; i < numberOfPlanesToAdd; ++i)
         {
-            String planeTypeName = determinePlaneType();
+            String planeTypeName = determineTankType();
             if (!planeTypeName.isEmpty())
             {
                 addPlaneToSquadron(planeTypeName);
@@ -83,7 +83,7 @@ public class WithdrawnEquipmentReplacer
 
     private int calculatePlanesNeeded(int planesRemoved)
     {
-        int minNeeded = Company.MIN_REEQUIPMENT_SIZE - equipment.getActiveEquippedPlanes().size();
+        int minNeeded = Company.MIN_REEQUIPMENT_SIZE - equipment.getActiveEquippedTanks().size();
         int numNeeded = planesRemoved;
         if (minNeeded > planesRemoved)
         {
@@ -93,12 +93,12 @@ public class WithdrawnEquipmentReplacer
         return numNeeded;
     }
 
-    private String determinePlaneType() throws PWCGException
+    private String determineTankType() throws PWCGException
     {
         String planeArchTypeName = chooseArchTypeForSquadron();
         if (!planeArchTypeName.isEmpty())
         {
-            PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeArchTypeName);
+            TankArchType planeArchType = PWCGContext.getInstance().getTankTypeFactory().getTankArchType(planeArchTypeName);
             String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
             return planeTypeName;
         }
@@ -127,7 +127,7 @@ public class WithdrawnEquipmentReplacer
         List<String> availableArchTypes = new ArrayList<>();
         for (String planeArchTypeName : equipment.getArchTypes())
         {
-            PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeArchTypeName);
+            TankArchType planeArchType = PWCGContext.getInstance().getTankTypeFactory().getTankArchType(planeArchTypeName);
             String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
             if (planeTypeName != null && !planeTypeName.isEmpty())
             {
@@ -143,7 +143,7 @@ public class WithdrawnEquipmentReplacer
 
     private void addPlaneToSquadron(String planeTypeName) throws PWCGException
     {
-        EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForSquadron(campaign, planeTypeName, squadron.getSquadronId());
-        equipment.addEquippedPlaneToSquadron(campaign, squadron.getSquadronId(), equippedPlane);
+        EquippedTank equippedPlane = TankEquipmentFactory.makeTankForSquadron(campaign, planeTypeName, squadron.getCompanyId());
+        equipment.addEquippedTankToCompany(campaign, squadron.getCompanyId(), equippedPlane);
     }
 }

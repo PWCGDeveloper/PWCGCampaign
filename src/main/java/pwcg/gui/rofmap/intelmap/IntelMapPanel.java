@@ -16,10 +16,10 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
@@ -51,7 +51,7 @@ public class IntelMapPanel extends MapPanelBase
 	    Date date = campaign.getDate();
 
 		squadronPoints.clear();
-		List<Company> allSquadrons =  PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(date);
+		List<Company> allSquadrons =  PWCGContext.getInstance().getCompanyManager().getActiveSquadronsForCurrentMap(date);
 		for (Company squadron : allSquadrons)
 		{
 			addSquadronPoint(squadron);
@@ -257,7 +257,7 @@ public class IntelMapPanel extends MapPanelBase
             mapPoint.service = squadron.determineServiceForSquadron(parent.getMapDate());
             mapPoint.squadron = squadron;
             
-            if (squadron.getSquadronId() == campaign.findReferencePlayer().getCompanyId())
+            if (squadron.getCompanyId() == campaign.findReferencePlayer().getCompanyId())
             {
                 mapPoint.isPlayerSquadron = true;
             }
@@ -306,7 +306,7 @@ public class IntelMapPanel extends MapPanelBase
 				IntelSquadronMapPoint mapPoint = squadronPoints.get(squadName);
 				if (mapPoint != null)
 				{
-					parent.updateInfoPanel(mapPoint.squadron.getSquadronId());
+					parent.updateInfoPanel(mapPoint.squadron.getCompanyId());
 				}
 			}
 		}

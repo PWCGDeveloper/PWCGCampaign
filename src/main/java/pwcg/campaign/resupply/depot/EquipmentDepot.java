@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneSorter;
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.tank.Equipment;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.PwcgRoleCategory;
+import pwcg.campaign.tank.TankSorter;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentDepot
@@ -26,56 +26,56 @@ public class EquipmentDepot
 
     public int getDepotSize()
     {
-        return equipment.getAvailableDepotPlanes().size();
+        return equipment.getAvailableDepotTanks().size();
     }
     
-    public void addPlaneToDepot(EquippedPlane equippedPlane) throws PWCGException
+    public void addPlaneToDepot(EquippedTank equippedPlane) throws PWCGException
     {
         equipment.addEPlaneToDepot(equippedPlane);
     }
     
-    public EquippedPlane removeBestPlaneFromDepot(List<String> activeArchTypes)
+    public EquippedTank removeBestPlaneFromDepot(List<String> activeArchTypes)
     {
         return equipment.removeBestEquippedFromDepot(activeArchTypes); 
     }
 
-    public EquippedPlane removeEquippedPlaneFromDepot(int planeSerialNumber)
+    public EquippedTank removeEquippedPlaneFromDepot(int planeSerialNumber)
     {
-        return equipment.removeEquippedPlane(planeSerialNumber);
+        return equipment.removeEquippedTank(planeSerialNumber);
     }
 
-    public EquippedPlane getPlaneFromDepot(int planeSerialNumber)
+    public EquippedTank getPlaneFromDepot(int planeSerialNumber)
     {
-        return equipment.getEquippedPlane(planeSerialNumber);
+        return equipment.getEquippedTank(planeSerialNumber);
     }
 
-    public List<EquippedPlane> getDepotAircraftForRole(PwcgRoleCategory roleCategory) throws PWCGException
+    public List<EquippedTank> getDepotAircraftForRole(PwcgRoleCategory roleCategory) throws PWCGException
     {
-        List<EquippedPlane> planesInDepotForRole = new ArrayList<>();
-        for (EquippedPlane equippedPlane : equipment.getAvailableDepotPlanes().values())
+        List<EquippedTank> planesInDepotForRole = new ArrayList<>();
+        for (EquippedTank equippedPlane : equipment.getAvailableDepotTanks().values())
         {
             if (equippedPlane.getRoleCategories().get(0) == roleCategory)
             {
                 planesInDepotForRole.add(equippedPlane);
             }
         }
-        List<EquippedPlane> sortedDepotForRole = PlaneSorter.sortEquippedPlanesByGoodness(planesInDepotForRole);
+        List<EquippedTank> sortedDepotForRole = TankSorter.sortEquippedTanksByGoodness(planesInDepotForRole);
         return sortedDepotForRole;
     }
 
-    public List<EquippedPlane> getAllPlanesInDepot() throws PWCGException
+    public List<EquippedTank> getAllPlanesInDepot() throws PWCGException
     {
-        List<EquippedPlane> allPlanesInDepot = new ArrayList<>();
-        for (EquippedPlane equippedPlane : equipment.getAvailableDepotPlanes().values())
+        List<EquippedTank> allPlanesInDepot = new ArrayList<>();
+        for (EquippedTank equippedPlane : equipment.getAvailableDepotTanks().values())
         {
             allPlanesInDepot.add(equippedPlane);
         }
         return allPlanesInDepot;
     }
 
-    public EquippedPlane getAnyPlaneInDepot(int planeSerialNumber) throws PWCGException
+    public EquippedTank getAnyPlaneInDepot(int planeSerialNumber) throws PWCGException
     {
-        return equipment.getEquippedPlane(planeSerialNumber);
+        return equipment.getEquippedTank(planeSerialNumber);
     }
 
     public int getEquipmentPoints()
@@ -98,10 +98,10 @@ public class EquipmentDepot
         this.lastReplacementDate = lastReplacementDate;
     }
 
-    public EquipmentUpgradeRecord getUpgrade(EquippedPlane equippedPlane) throws PWCGException
+    public EquipmentUpgradeRecord getUpgrade(EquippedTank equippedPlane) throws PWCGException
     {
-        List<EquippedPlane> sortedPlanes = getPlanesForFromDepotBestToWorst(equipment.getAvailableDepotPlanes());
-        for (EquippedPlane depotPlane : sortedPlanes)
+        List<EquippedTank> sortedPlanes = getPlanesForFromDepotBestToWorst(equipment.getAvailableDepotTanks());
+        for (EquippedTank depotPlane : sortedPlanes)
         {
             if (isUpgradePlane(depotPlane, equippedPlane))
             {
@@ -112,7 +112,7 @@ public class EquipmentDepot
         return null;
     }
     
-    private boolean isUpgradePlane(EquippedPlane depotPlane, EquippedPlane equippedPlane)
+    private boolean isUpgradePlane(EquippedTank depotPlane, EquippedTank equippedPlane)
     {
         if (!(depotPlane.getArchType().equals(equippedPlane.getArchType())))
         {
@@ -132,9 +132,9 @@ public class EquipmentDepot
         return true;
     }
 
-    private List<EquippedPlane> getPlanesForFromDepotBestToWorst(Map<Integer, EquippedPlane> planesForSquadron) throws PWCGException
+    private List<EquippedTank> getPlanesForFromDepotBestToWorst(Map<Integer, EquippedTank> planesForSquadron) throws PWCGException
     {
-        List<EquippedPlane> sortedPlanes = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(planesForSquadron.values()));
+        List<EquippedTank> sortedPlanes = TankSorter.sortEquippedTanksByGoodness(new ArrayList<EquippedTank>(planesForSquadron.values()));
         return sortedPlanes;
     }
 }

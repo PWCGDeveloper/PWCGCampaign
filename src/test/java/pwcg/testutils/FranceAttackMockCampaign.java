@@ -7,12 +7,12 @@ import org.mockito.Mockito;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -54,7 +54,7 @@ public class FranceAttackMockCampaign
 
         date = DateUtils.getDateYYYYMMDD("19180501");
         
-        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(401010);
+        squadron = PWCGContext.getInstance().getCompanyManager().getCompany(401010);
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(date);

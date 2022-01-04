@@ -13,6 +13,8 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.skin.TacticalCodeColor;
+import pwcg.campaign.tank.PwcgRole;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;

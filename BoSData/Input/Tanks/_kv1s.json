@@ -1,0 +1,21 @@
+{
+	"type": "_kv1s",
+	"archType": "kv1",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [],
+	"displayName": "KV-1s",
+	"script": "LuaScripts\\WorldObjects\\vehicles\\_kv1s.txt",
+	"model": "graphics\\vehicles\\_kv1s\\_kv1s.mgm",
+	"desc": "KV-1s",
+	"cruisingSpeed": 10,
+	"goodness": 50,
+	"roleCategories": [
+		"ROLE_MAIN_BATTLE_TANK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

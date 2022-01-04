@@ -6,8 +6,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PlaneTypeFactory;
+import pwcg.campaign.plane.TankType;
+import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.core.exception.PWCGException;
@@ -26,16 +26,16 @@ public class BoSPayloadFactoryTest
     public void validatePayloadsForAllPlanes() throws PWCGException 
     {
         BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
 
-        for (PlaneType bosPlaneType : planeTypeFactory.getAllPlanes())
+        for (TankType bosTankType : planeTypeFactory.getAllPlanes())
         {
-            System.out.println(bosPlaneType.getType());
+            System.out.println(bosTankType.getType());
             
-            IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
+            IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
             assert(payload != null);
             
-            if (bosPlaneType.getType().equals(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType()))
+            if (bosTankType.getType().equals(BosPlaneAttributeMapping.HURRICANE_MKII.getTankType()))
             {
                 assert(payload.getSelectedModifications().get(0) == PayloadElement.MIRROR);
             }

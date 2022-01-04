@@ -19,12 +19,12 @@ public class SkinsForPlane
 	{
 	}
 
-	public String getPlaneType()
+	public String getTankType()
 	{
 		return planeType;
 	}
 
-	public void setPlaneType(String planeTpe)
+	public void setTankType(String planeTpe)
 	{
 		this.planeType = planeTpe;
 	}

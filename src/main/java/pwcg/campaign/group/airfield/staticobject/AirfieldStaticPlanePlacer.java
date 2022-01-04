@@ -8,12 +8,12 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.api.IStaticPlaneSelector;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.StaticPlaneSelectorFactory;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -41,7 +41,7 @@ public class AirfieldStaticPlanePlacer
     {
         IStaticPlane selectedStaticPlane = null;
         
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         Company squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, date);
         if (squadronForField == null)
         {
@@ -52,7 +52,7 @@ public class AirfieldStaticPlanePlacer
     
         // All planes for all squadrons at this airfield
         List<String> planeNames = new ArrayList<String>();
-        for (PlaneType plane : squadronForField.determineCurrentAircraftList(campaign.getDate()))
+        for (TankType plane : squadronForField.determineCurrentAircraftList(campaign.getDate()))
         {
             planeNames.add(plane.getType());
         }

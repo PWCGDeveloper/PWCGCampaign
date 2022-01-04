@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.mission.flight.FlightTypes;
 
 public class MissionSquadronFlightTypes
@@ -24,7 +24,7 @@ public class MissionSquadronFlightTypes
         MissionSquadronFlightType squadronFlightType = new MissionSquadronFlightType();
         squadronFlightType.squadron = squadron;
         squadronFlightType.flightType = flightType;
-        flightTypesForSquadrons.put(squadron.getSquadronId(), squadronFlightType);
+        flightTypesForSquadrons.put(squadron.getCompanyId(), squadronFlightType);
     }
 
     public FlightTypes getFlightTypeForSquadron(int squadronId)

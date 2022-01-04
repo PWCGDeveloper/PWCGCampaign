@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -77,8 +77,8 @@ public class BriefingMapSquadronSelector implements ActionListener
 
             if (includeSquadron(selectedFlightSide, squadronSide))
             {
-                JCheckBox checkBox = makeCheckBox(squadron.determineDisplayName(mission.getCampaign().getDate()), "" + squadron.getSquadronId());
-                squadronCheckBoxes.put(squadron.getSquadronId(), checkBox);
+                JCheckBox checkBox = makeCheckBox(squadron.determineDisplayName(mission.getCampaign().getDate()), "" + squadron.getCompanyId());
+                squadronCheckBoxes.put(squadron.getCompanyId(), checkBox);
                 squadronSelectorGrid.add(checkBox);
             }
         }

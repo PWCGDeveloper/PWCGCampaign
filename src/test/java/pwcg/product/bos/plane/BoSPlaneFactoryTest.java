@@ -7,8 +7,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PlaneTypeFactory;
+import pwcg.campaign.plane.TankType;
+import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)
@@ -20,13 +20,13 @@ public class BoSPlaneFactoryTest
 	}
 
 	@Test
-	public void testPlaneTypeCreation() throws PWCGException
+	public void testTankTypeCreation() throws PWCGException
 	{
-		PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+		TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
 		
-		for (PlaneType planeType : planeTypeFactory.getAllPlanes())
+		for (TankType planeType : planeTypeFactory.getAllPlanes())
 		{
-			PlaneType plane = planeTypeFactory.getPlaneById(planeType.getType());
+			TankType plane = planeTypeFactory.getPlaneById(planeType.getType());
 			Assertions.assertTrue (plane.getType().equals(planeType.getType()));
 			Assertions.assertTrue (plane.getArchType() != null);
 		}

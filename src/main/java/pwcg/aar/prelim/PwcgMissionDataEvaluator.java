@@ -7,9 +7,9 @@ import java.util.Set;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
@@ -25,23 +25,23 @@ public class PwcgMissionDataEvaluator
         this.aarPreliminarytData = aarPreliminarytData;
     }
 
-    public List<String> determineAxisPlaneTypesInMission() throws PWCGException
+    public List<String> determineAxisTankTypesInMission() throws PWCGException
     {
-        return determinePlaneTypesForSide(Side.AXIS);
+        return determineTankTypesForSide(Side.AXIS);
     }
 
-    public List<String> determineAlliedPlaneTypesInMission() throws PWCGException
+    public List<String> determineAlliedTankTypesInMission() throws PWCGException
     {
-        return determinePlaneTypesForSide(Side.ALLIED);
+        return determineTankTypesForSide(Side.ALLIED);
     }
 
-    private List<String> determinePlaneTypesForSide(Side side) throws PWCGException
+    private List<String> determineTankTypesForSide(Side side) throws PWCGException
     {
         Set<String> uniquePlanesForSide = new HashSet<>();
 
         for (PwcgGeneratedMissionPlaneData missionPlane : aarPreliminarytData.getPwcgMissionData().getMissionPlanes().values())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(missionPlane.getSquadronId());            
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(missionPlane.getSquadronId());            
             if (squadron.determineSquadronCountry(campaign.getDate()).getSide() == side)
             {
                 uniquePlanesForSide.add(missionPlane.getAircraftType());

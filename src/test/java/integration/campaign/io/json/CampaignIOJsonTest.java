@@ -134,8 +134,8 @@ public class CampaignIOJsonTest
     {
         Equipment fighterSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
         Assertions.assertTrue (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
-        Assertions.assertTrue (fighterSquadronEquipment.getActiveEquippedPlanes().size() >= 14);
-        for (EquippedPlane equippedPlane : fighterSquadronEquipment.getActiveEquippedPlanes().values())
+        Assertions.assertTrue (fighterSquadronEquipment.getActiveEquippedTanks().size() >= 14);
+        for (EquippedTank equippedPlane : fighterSquadronEquipment.getActiveEquippedTanks().values())
         {
             Assertions.assertTrue (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
             Assertions.assertTrue (equippedPlane.getArchType().equals("albatrosd"));
@@ -146,8 +146,8 @@ public class CampaignIOJsonTest
     {
         Equipment reconSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.RFC_2_PROFILE.getSquadronId());
         Assertions.assertTrue (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
-        Assertions.assertTrue (reconSquadronEquipment.getActiveEquippedPlanes().size() >= 14);
-        for (EquippedPlane equippedPlane : reconSquadronEquipment.getActiveEquippedPlanes().values())
+        Assertions.assertTrue (reconSquadronEquipment.getActiveEquippedTanks().size() >= 14);
+        for (EquippedTank equippedPlane : reconSquadronEquipment.getActiveEquippedTanks().values())
         {
             Assertions.assertTrue (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
             Assertions.assertTrue (equippedPlane.getArchType().contains("aircodh4"));

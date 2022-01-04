@@ -10,7 +10,7 @@ import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 
 public class PromotionArbitrator implements IPromotionEventHandler

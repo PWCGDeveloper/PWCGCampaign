@@ -23,15 +23,15 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.Equipment;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.PwcgRoleCategory;
+import pwcg.campaign.tank.TankType;
+import pwcg.campaign.tank.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -151,9 +151,9 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Retire (Requested Planes)");
         equipmentRetirementSelectionPanel.add(titleLabel);
 
-        for (int serialNumber : equipment.getActiveEquippedPlanes().keySet())
+        for (int serialNumber : equipment.getActiveEquippedTanks().keySet())
         {
-            EquippedPlane plane = equipment.getEquippedPlane(serialNumber);
+            EquippedTank plane = equipment.getEquippedTank(serialNumber);
             if (!plane.isEquipmentRequest())
             {
                 continue;
@@ -201,9 +201,9 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Change (Assigned Planes)");
         equipmentChangeSelectionGrid.add(titleLabel);
 
-        for (int serialNumber : equipment.getActiveEquippedPlanes().keySet())
+        for (int serialNumber : equipment.getActiveEquippedTanks().keySet())
         {
-            EquippedPlane plane = equipment.getEquippedPlane(serialNumber);
+            EquippedTank plane = equipment.getEquippedTank(serialNumber);
             if (plane.isEquipmentRequest())
             {
                 continue;
@@ -228,22 +228,22 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
 
     private JPanel makeReplacementAircraftSelectionPanel() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
         CrewMember referencePlayer = campaign.getReferencePlayer();
         ICountry country = CountryFactory.makeCountryByCountry(referencePlayer.getCountry());
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getCompanyId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(referencePlayer.getCompanyId());
         PwcgRoleCategory roleCategory = squadron.getSquadronRoles().selectSquadronPrimaryRoleCategory(campaign.getDate());
-        List<PlaneType> availablePlaneTypes = planeTypeFactory.getAvailablePlaneTypes(country, roleCategory, campaign.getDate());        
+        List<TankType> availableTankTypes = planeTypeFactory.getAvailableTankTypes(country, roleCategory, campaign.getDate());        
 
         replacementAircraftTypeSelector = new JComboBox<String>();
         replacementAircraftTypeSelector.setOpaque(false);
-        if (!availablePlaneTypes.isEmpty())
+        if (!availableTankTypes.isEmpty())
         {
-            for (PlaneType planeType : availablePlaneTypes)
+            for (TankType planeType : availableTankTypes)
             {
                 replacementAircraftTypeSelector.addItem(planeType.getDisplayName());
             }
-            replacementAircraftTypeSelector.setSelectedIndex(availablePlaneTypes.size()-1);
+            replacementAircraftTypeSelector.setSelectedIndex(availableTankTypes.size()-1);
         }
         
 
@@ -350,7 +350,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
             String planeTypeToChangeTo = (String) replacementAircraftTypeSelector.getSelectedItem();
             
             CrewMember referencePlayer = campaign.getReferencePlayer();
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getCompanyId());
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(referencePlayer.getCompanyId());
     
             campaign.getEquipmentManager().actOnEquipmentRequest(squadron, serialNumbersOfChangedPlanes, planeTypeToChangeTo);
         }

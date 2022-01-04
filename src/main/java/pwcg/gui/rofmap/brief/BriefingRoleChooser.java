@@ -15,11 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.SquadronRoleWeight;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronRoleWeight;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
@@ -128,7 +128,7 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
     private JLabel makeSquadronNameLabel(int squadronId) throws PWCGException
     {        
         Font font = PWCGMonitorFonts.getPrimaryFont();
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
         JLabel squadronNameLabel = PWCGLabelFactory.makeTransparentLabel(
                 squadron.determineDisplayName(campaign.getDate()), ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         return squadronNameLabel;
@@ -137,7 +137,7 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
     private JComboBox<String> makeRoleSelectorForSquadron(int squadronId) throws PWCGException
     {
         JComboBox<String> roleSelector = new JComboBox<String>();
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
 
         roleSelector.addItem(PwcgRole.ROLE_NONE.getRoleDescription());
 

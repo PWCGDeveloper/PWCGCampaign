@@ -2,9 +2,9 @@ package pwcg.gui.rofmap.infoMap;
 
 import java.util.Date;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.io.json.SquadronIOJson;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.io.json.CompanyIOJson;
 import pwcg.core.exception.PWCGException;
 
 public class InfoMapSquadronMover
@@ -15,11 +15,11 @@ public class InfoMapSquadronMover
     {
         if (squadronIdToMove > 0)
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronIdToMove);
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronIdToMove);
             if (squadron != null)
             {
                 squadron.assignAirfield(assignmentDate, targetAirfield);
-                SquadronIOJson.writeJson(squadron);
+                CompanyIOJson.writeJson(squadron);
                 squadronIdToMove = -1;
             }
         }

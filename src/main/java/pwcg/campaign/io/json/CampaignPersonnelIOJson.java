@@ -4,12 +4,12 @@ import java.io.File;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -35,9 +35,9 @@ public class CampaignPersonnelIOJson
 
     private static void writeSquadrons(Campaign campaign) throws PWCGException
     {
-        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllCompanyPersonnel())
         {
-            writeSquadron(campaign, squadronPersonnel.getSquadron().getSquadronId());
+            writeSquadron(campaign, squadronPersonnel.getSquadron().getCompanyId());
         }
     }
 
@@ -48,7 +48,7 @@ public class CampaignPersonnelIOJson
 
         String campaignPersonnelDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
         PwcgJsonWriter<CrewMembers> jsonWriterSquadrons = new PwcgJsonWriter<>();
-        jsonWriterSquadrons.writeAsJson(squadronMembersToWrite, campaignPersonnelDir, squadronPersonnel.getSquadron().getSquadronId() + ".json");
+        jsonWriterSquadrons.writeAsJson(squadronMembersToWrite, campaignPersonnelDir, squadronPersonnel.getSquadron().getCompanyId() + ".json");
     }
 
     private static void writeReplacements(Campaign campaign) throws PWCGException
@@ -83,12 +83,12 @@ public class CampaignPersonnelIOJson
         CrewMembers squadronMembers = jsoReader.readJsonFile(campaignPersonnelDir, jsonFile.getName());
         
         int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
         if (squadron != null)
         {
             CompanyPersonnel squadronPersonnel = new CompanyPersonnel(campaign, squadron);
             squadronPersonnel.setCrewMembers(squadronMembers);
-            campaign.getPersonnelManager().addPersonnelForSquadron(squadronPersonnel);
+            campaign.getPersonnelManager().addPersonnelForCompany(squadronPersonnel);
         }
         else
         {

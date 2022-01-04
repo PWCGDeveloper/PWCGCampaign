@@ -1,6 +1,6 @@
 package pwcg.mission.flight.waypoint;
 
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuWaypoint;

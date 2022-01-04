@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class MapFinderForCampaign
@@ -84,7 +84,7 @@ public class MapFinderForCampaign
     {
         FrontMapIdentifier mapIdentifier = FrontMapIdentifier.NO_MAP;
 
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getCompanyId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(player.getCompanyId());
         List<FrontMapIdentifier> mapIdentifiers = MapForAirfieldFinder.getMapForAirfield(squadron.determineCurrentAirfieldName(campaign.getDate()));
         if (mapIdentifiers.size() > 0)
         {

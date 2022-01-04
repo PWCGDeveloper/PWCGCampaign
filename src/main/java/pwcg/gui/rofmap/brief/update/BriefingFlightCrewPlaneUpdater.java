@@ -15,7 +15,6 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
-import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.plane.PlaneMCUFactory;
 import pwcg.mission.flight.plane.PlaneMcu;
 
@@ -35,7 +34,6 @@ public class BriefingFlightCrewPlaneUpdater
     {
         updatePlanesFromBriefing(crewPlanes);
         replacePlanesInPlayerFlight();
-        resetPlayerFlightInitialPosition();
     }
 
     private void updatePlanesFromBriefing(List<CrewPlanePayloadPairing> crewPlanes) throws PWCGException
@@ -51,11 +49,6 @@ public class BriefingFlightCrewPlaneUpdater
     private void replacePlanesInPlayerFlight() throws PWCGException
     {
         playerFlight.getFlightPlanes().setPlanes(updatedPlaneSet);
-    }
-
-    private void resetPlayerFlightInitialPosition() throws PWCGException
-    {
-        FlightPositionSetter.setFlightInitialPosition(playerFlight);
     }
 
     private void createPlaneBasedOnBriefingSelections(int numInFormation, CrewPlanePayloadPairing crewPlane) throws PWCGException
@@ -105,7 +98,7 @@ public class BriefingFlightCrewPlaneUpdater
     private void configurePlaneForCrew(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         AiSkillLevel aiLevel = crewPlane.getCrewMember().getAiSkillLevel();
-        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(playerFlight.getSquadron().getSquadronId());
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(playerFlight.getSquadron().getCompanyId());
         CrewMember crewMember = squadronPersonnel.getCrewMember(crewPlane.getCrewMember().getSerialNumber());
         if (crewMember == null)
         {
@@ -125,7 +118,7 @@ public class BriefingFlightCrewPlaneUpdater
     private PlaneMcu updateFlightMember(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         PlaneMcu flightmember = playerFlight.getFlightPlanes().getFlightLeader();
-        PlaneMcu updatedPlaneMcu = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
+        PlaneMcu updatedPlaneMcu = PlaneMCUFactory.createPlaneMcuByTankType(campaign, crewPlane.getPlane(), 
                 playerFlight.getFlightInformation().getCountry(), crewPlane.getCrewMember());
         updatedPlaneMcu.setTarget(flightmember.getLinkTrId());
         updatedPlaneMcu.setFuel(flightmember.getFuel());
@@ -135,7 +128,7 @@ public class BriefingFlightCrewPlaneUpdater
 
     private PlaneMcu updateLeader(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {        
-        PlaneMcu updatedFlightLeader = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
+        PlaneMcu updatedFlightLeader = PlaneMCUFactory.createPlaneMcuByTankType(campaign, crewPlane.getPlane(), 
                 playerFlight.getFlightInformation().getCountry(), crewPlane.getCrewMember());
         PlaneMcu flightLeaderPlaneMcu = playerFlight.getFlightPlanes().getFlightLeader();        
         updatedFlightLeader.copyEntityIndexFromPlane(flightLeaderPlaneMcu);

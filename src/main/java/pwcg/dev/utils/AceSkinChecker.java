@@ -7,8 +7,8 @@ import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.campaign.crewmember.HistoricalAce;
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
@@ -57,7 +57,7 @@ public class AceSkinChecker
 
             List<HistoricalAce> historicalAces = aceManager.getHistoricalAces();
             
-            List<PlaneType> allPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes();
+            List<TankType> allPlanes = PWCGContext.getInstance().getTankTypeFactory().getAllPlanes();
             
             for (HistoricalAce ace : historicalAces)
             {
@@ -66,7 +66,7 @@ public class AceSkinChecker
                 for (Skin skin : ace.getSkins())
                 {
                     boolean skinFound = false;
-                    for (PlaneType plane : allPlanes)
+                    for (TankType plane : allPlanes)
                     {
                         if (skinExists(plane.getType(), skin.getSkinName()))
                         {

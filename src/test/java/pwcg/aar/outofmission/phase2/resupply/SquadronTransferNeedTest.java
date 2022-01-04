@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
@@ -23,7 +24,6 @@ import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.resupply.personnel.SquadronPersonnelNeed;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -65,7 +65,7 @@ public class SquadronTransferNeedTest
         squadronTransferNeed.determineResupplyNeeded();
         Assertions.assertTrue (squadronTransferNeed.needsResupply() == true);
         
-        for (int i = 0; i < Company.SQUADRON_STAFF_SIZE - 1; ++i)
+        for (int i = 0; i < Company.COMPANY_STAFF_SIZE - 1; ++i)
         {
             squadronTransferNeed.noteResupply();
             Assertions.assertTrue (squadronTransferNeed.needsResupply() == true);

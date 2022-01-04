@@ -1,11 +1,11 @@
 package pwcg.campaign.resupply.personnel;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.resupply.ISquadronNeed;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class SquadronPersonnelNeed implements ISquadronNeed
@@ -22,14 +22,14 @@ public class SquadronPersonnelNeed implements ISquadronNeed
     
     public void determineResupplyNeeded() throws PWCGException
     {
-        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId());
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getCompanyId());
         CrewMembers activeCrewMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
         int activeSquadronSize = activeCrewMembers.getActiveCount(campaign.getDate());
         int getRecentlyInactive = squadronPersonnel.getRecentlyInactiveCrewMembers().getActiveCount(campaign.getDate());
       
-        if ((Company.SQUADRON_STAFF_SIZE -  activeSquadronSize - getRecentlyInactive) > 0)
+        if ((Company.COMPANY_STAFF_SIZE -  activeSquadronSize - getRecentlyInactive) > 0)
         {
-            transfersNeeded = Company.SQUADRON_STAFF_SIZE -  activeSquadronSize - getRecentlyInactive;
+            transfersNeeded = Company.COMPANY_STAFF_SIZE -  activeSquadronSize - getRecentlyInactive;
         }
         else
         {
@@ -39,7 +39,7 @@ public class SquadronPersonnelNeed implements ISquadronNeed
     
     public int getSquadronId()
     {
-        return squadron.getSquadronId();
+        return squadron.getCompanyId();
     }
 
     public boolean needsResupply()

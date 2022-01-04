@@ -14,8 +14,8 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneSorter;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankSorter;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
@@ -48,15 +48,15 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         this.setBorder(PwcgBorderFactory.createCampaignHomeChalkboardBoxBorder());        
 
         CrewMember referencePlayer = campaign.findReferencePlayer();            
-        Map<Integer, EquippedPlane> planesForSquadron = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getCompanyId()).getActiveEquippedPlanes();
+        Map<Integer, EquippedTank> planesForSquadron = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getCompanyId()).getActiveEquippedTanks();
         
         JPanel equipmentPanel = createEquipmentListPanel(campaign, planesForSquadron);
         this.add(equipmentPanel, BorderLayout.CENTER);
     }
 
-    private JPanel createEquipmentListPanel(Campaign campaign, Map<Integer, EquippedPlane> planesForSquadron) throws PWCGException
+    private JPanel createEquipmentListPanel(Campaign campaign, Map<Integer, EquippedTank> planesForSquadron) throws PWCGException
     {
-        List<EquippedPlane> sortedAircraftOnInventory = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(planesForSquadron.values()));
+        List<EquippedTank> sortedAircraftOnInventory = TankSorter.sortEquippedTanksByGoodness(new ArrayList<EquippedTank>(planesForSquadron.values()));
 
         Font font = PWCGMonitorFonts.getChalkboardFont();
 
@@ -101,7 +101,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         equipmentChalkboardPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
         
         int i = 1;
-        for (EquippedPlane plane : sortedAircraftOnInventory)
+        for (EquippedTank plane : sortedAircraftOnInventory)
         {
             constraints.weightx = 0.15;
             constraints.gridx = 0;

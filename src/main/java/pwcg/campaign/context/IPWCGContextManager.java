@@ -4,14 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.CompanyManager;
+import pwcg.campaign.company.SkirmishProfileManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.newspapers.NewspaperManager;
-import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
-import pwcg.campaign.squadron.SkirmishProfileManager;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
@@ -47,13 +47,13 @@ public interface IPWCGContextManager
 
     void initializeMap() throws PWCGException;
     
-    SquadronManager getSquadronManager();
+    CompanyManager getCompanyManager();
 
     SkirmishProfileManager getSkirmishProfileManager();
     
     SkinManager getSkinManager();
 
-    PlaneTypeFactory getPlaneTypeFactory();
+    TankTypeFactory getTankTypeFactory();
 
     PWCGDirectoryProductManager getDirectoryManager();
 

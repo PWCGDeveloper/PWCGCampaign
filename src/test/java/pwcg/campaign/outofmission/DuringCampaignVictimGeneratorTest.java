@@ -8,11 +8,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.personnel.EnemySquadronFinder;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -33,7 +33,7 @@ public class DuringCampaignVictimGeneratorTest
     @Test
     public void testVictimGeneration () throws PWCGException
     {               
-        Company victorSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());        
+        Company victorSquadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());        
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
         Company victimSquadron = enemySquadronFinder.getEnemyForOutOfMission(victorSquadron, campaign.getDate());
 
@@ -45,14 +45,14 @@ public class DuringCampaignVictimGeneratorTest
         Side victimSide = victimSquadron.determineSquadronCountry(campaign.getDate()).getSide();
         
         assert(victimSide != victorSide);
-        assert(victimSquadron.getSquadronId() == victimSquadronFromVictim.getSquadronId());
+        assert(victimSquadron.getCompanyId() == victimSquadronFromVictim.getCompanyId());
 
     }
 
     @Test
     public void testNotFromPlayerSquadron () throws PWCGException
     {               
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         DuringCampaignAirVictimGenerator  victimGenerator = new DuringCampaignAirVictimGenerator(campaign, squadron);
         CrewMember victim = victimGenerator.generateVictimAiCrew();
         assert(victim != null);

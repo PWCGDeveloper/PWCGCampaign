@@ -7,12 +7,12 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -34,12 +34,12 @@ public class CampaignPersonnelManagerFighterTest
 
         CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         CrewMembers squadronMembersNoPlayerNoAces = CrewMemberFilter.filterActiveAI(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());        
-    	Assertions.assertTrue (squadronMembersNoPlayerNoAces.getCrewMemberList().size() < (Company.SQUADRON_STAFF_SIZE - 1));
+    	Assertions.assertTrue (squadronMembersNoPlayerNoAces.getCrewMemberList().size() < (Company.COMPANY_STAFF_SIZE - 1));
         
         CrewMembers squadronMembersNoPlayerWithAces = CrewMemberFilter.filterActiveAIAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());        
-        Assertions.assertTrue (squadronMembersNoPlayerWithAces.getCrewMemberList().size() == (Company.SQUADRON_STAFF_SIZE - 1));
+        Assertions.assertTrue (squadronMembersNoPlayerWithAces.getCrewMemberList().size() == (Company.COMPANY_STAFF_SIZE - 1));
 
         CrewMembers squadronMembersWithPlayerWithAces = CrewMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());        
-        Assertions.assertTrue (squadronMembersWithPlayerWithAces.getCrewMemberList().size() == Company.SQUADRON_STAFF_SIZE);
+        Assertions.assertTrue (squadronMembersWithPlayerWithAces.getCrewMemberList().size() == Company.COMPANY_STAFF_SIZE);
     }
 }

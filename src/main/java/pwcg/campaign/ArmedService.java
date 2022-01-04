@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.colors.IServiceColorMap;
@@ -151,14 +151,14 @@ public class ArmedService
 
     public int getDailyEquipmentReplacementRate(Date date) throws PWCGException
     {
-        List<Company> squadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForService(date, this);
+        List<Company> squadrons = PWCGContext.getInstance().getCompanyManager().getActiveSquadronsForService(date, this);
         double dailyEquipmentReplacementRateForThisDate = dailyEquipmentReplacementRatePerSquadron * squadrons.size();
         return Double.valueOf(dailyEquipmentReplacementRateForThisDate).intValue();
     }
 
     public int getDailyPersonnelReplacementRate(Date date) throws PWCGException
     {
-        List<Company> squadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForService(date, this);
+        List<Company> squadrons = PWCGContext.getInstance().getCompanyManager().getActiveSquadronsForService(date, this);
         double dailyEquipmentReplacementRateForThisDate = dailyPersonnelReplacementRatePerSquadron * squadrons.size();
         return Double.valueOf(dailyEquipmentReplacementRateForThisDate).intValue();
     }

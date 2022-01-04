@@ -19,11 +19,11 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
 @ExtendWith(MockitoExtension.class)
-public class PlaneTypeFactoryTest
+public class TankTypeFactoryTest
 {
     @Mock Campaign campaign;
     
-    public PlaneTypeFactoryTest() throws PWCGException
+    public TankTypeFactoryTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }
@@ -31,8 +31,8 @@ public class PlaneTypeFactoryTest
     @Test
     public void testCreatePlane() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        PlaneType planeType =  planeTypeFactory.createPlaneTypeByType("bf110e2");
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
+        TankType planeType =  planeTypeFactory.createTankTypeByType("bf110e2");
         assert(planeType.getType().equals("bf110e2"));
         assert(planeType.getArchType().equals("bf110"));
     }
@@ -40,40 +40,40 @@ public class PlaneTypeFactoryTest
     @Test
     public void testCreatePlaneByDesc() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        PlaneType planeType =  planeTypeFactory.createPlaneTypeByAnyName("Bf 109 F-4");
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
+        TankType planeType =  planeTypeFactory.createTankTypeByAnyName("Bf 109 F-4");
         assert(planeType.getType().equals("bf109f4"));
         assert(planeType.getArchType().equals("bf109"));
     }
 
     @Test
-    public void getAvailablePlaneTypesTest() throws PWCGException
+    public void getAvailableTankTypesTest() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
         
-        List<PlaneType> availableGermanPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.GERMANY), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
-        assert(availableGermanPlaneTypes.size() == 8);
+        List<TankType> availableGermanTankTypes = planeTypeFactory.getAvailableTankTypes(CountryFactory.makeCountryByCountry(Country.GERMANY), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableGermanTankTypes.size() == 8);
 
-        List<PlaneType> availableBritishPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.BRITAIN), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
-        assert(availableBritishPlaneTypes.size() == 2);
+        List<TankType> availableBritishTankTypes = planeTypeFactory.getAvailableTankTypes(CountryFactory.makeCountryByCountry(Country.BRITAIN), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableBritishTankTypes.size() == 2);
 
-        List<PlaneType> availableAmericanPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.USA), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
-        assert(availableAmericanPlaneTypes.size() == 2);
+        List<TankType> availableAmericanTankTypes = planeTypeFactory.getAvailableTankTypes(CountryFactory.makeCountryByCountry(Country.USA), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableAmericanTankTypes.size() == 2);
 
-        List<PlaneType> availableRussianPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.RUSSIA), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
-        assert(availableRussianPlaneTypes.size() == 8);
+        List<TankType> availableRussianTankTypes = planeTypeFactory.getAvailableTankTypes(CountryFactory.makeCountryByCountry(Country.RUSSIA), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableRussianTankTypes.size() == 8);
         
-        List<PlaneType> availableGermanAttackPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.GERMANY), PwcgRoleCategory.ATTACK, DateUtils.getDateYYYYMMDD("19430101"));        
-        assert(availableGermanAttackPlaneTypes.size() == 9);
+        List<TankType> availableGermanAttackTankTypes = planeTypeFactory.getAvailableTankTypes(CountryFactory.makeCountryByCountry(Country.GERMANY), PwcgRoleCategory.ATTACK, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableGermanAttackTankTypes.size() == 9);
     }
 
     @Test
-    public void testAllPlaneTypes() throws PWCGException
+    public void testAllTankTypes() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        Map<String, PlaneType> planeTypes =  planeTypeFactory.getPlaneTypes();
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
+        Map<String, TankType> planeTypes =  planeTypeFactory.getTankTypes();
         assert(planeTypes.size() > 30);
-        for (PlaneType planeType : planeTypes.values())
+        for (TankType planeType : planeTypes.values())
         {
             assert(planeType.getArchType() != null);
             assert(planeType.getIntroduction().after(DateUtils.getDateYYYYMMDD("19390901")));
@@ -87,10 +87,10 @@ public class PlaneTypeFactoryTest
     @Test
     public void testCreatePlanesForArchType() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        List<PlaneType> planeTypes =  planeTypeFactory.createPlaneTypesForArchType("bf109");
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
+        List<TankType> planeTypes =  planeTypeFactory.createTankTypesForArchType("bf109");
         assert(planeTypes.size() == 8);
-        for (PlaneType planeType : planeTypes)
+        for (TankType planeType : planeTypes)
         {
             assert(planeType.getArchType().equals("bf109"));
         }
@@ -101,10 +101,10 @@ public class PlaneTypeFactoryTest
     {
         Date planeDate = DateUtils.getDateYYYYMMDD("19420402");
         
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        List<PlaneType> planeTypes =  planeTypeFactory.createActivePlaneTypesForArchType("bf109", planeDate);
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
+        List<TankType> planeTypes =  planeTypeFactory.createActiveTankTypesForArchType("bf109", planeDate);
         assert(planeTypes.size() == 3);
-        for (PlaneType planeType : planeTypes)
+        for (TankType planeType : planeTypes)
         {
             assert(planeType.getArchType().equals("bf109"));
         }
@@ -114,8 +114,8 @@ public class PlaneTypeFactoryTest
     public void testCreateActiveFightersForCampaign() throws PWCGException
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420302"));
-        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        List<PlaneType> planeTypes =  planeTypeFactory.getAllFightersForCampaign(campaign);
+        TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
+        List<TankType> planeTypes =  planeTypeFactory.getAllFightersForCampaign(campaign);
         assert(planeTypes.size() == 14);
     }
 

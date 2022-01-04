@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PlaneArchType;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.TankArchType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -80,8 +80,8 @@ public class EquipmentReplacementCalculator
     {
         for (String planeArchTypeName : aircraftReplacementWeights.keySet())
         {
-            PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeArchTypeName);
-            if (planeArchType.getInProductionMemberPlaneTypes(campaign.getDate()).size() > 0)
+            TankArchType planeArchType = PWCGContext.getInstance().getTankTypeFactory().getTankArchType(planeArchTypeName);
+            if (planeArchType.getInProductionMemberTankTypes(campaign.getDate()).size() > 0)
             {
                 int numUses = aircraftReplacementWeights.get(planeArchTypeName);
                 for (int i = 0; i < numUses; ++i)

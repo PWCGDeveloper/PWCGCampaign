@@ -6,11 +6,11 @@ import java.util.List;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -70,7 +70,7 @@ public class AiCrewMemberRemovalChooser
         CrewMembers squadronMembers = squadronPersonnel.getCrewMembers();
         CrewMembers activeCrewMembers = CrewMemberFilter.filterActiveAI(squadronMembers.getCrewMemberCollection(), campaign.getDate());
         
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
 
         List<CrewMember> squadronMembersOfSimilarRank = new ArrayList<>();
@@ -104,7 +104,7 @@ public class AiCrewMemberRemovalChooser
         CrewMembers squadronMembers = squadronPersonnel.getCrewMembers();
         CrewMembers activeCrewMembers = CrewMemberFilter.filterActiveAI(squadronMembers.getCrewMemberCollection(), campaign.getDate());
         
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
 
         List<CrewMember> squadronMembersOfAnyNonCommandRank = new ArrayList<>();

@@ -37,9 +37,9 @@ public class CampaignPersonnelManager
         return squadronPersonnelAllSquadrons.get(squadronId);
     }
 
-	public void addPersonnelForSquadron(CompanyPersonnel campaignPersonnel)
+	public void addPersonnelForCompany(CompanyPersonnel campaignPersonnel)
 	{
-	    squadronPersonnelAllSquadrons.put(campaignPersonnel.getSquadron().getSquadronId(), campaignPersonnel);
+	    squadronPersonnelAllSquadrons.put(campaignPersonnel.getSquadron().getCompanyId(), campaignPersonnel);
 	}
 
 	public CampaignAces getCampaignAces()
@@ -57,7 +57,7 @@ public class CampaignPersonnelManager
 		this.campaignAces = campaignAces;
 	}
 
-    public List<CompanyPersonnel> getAllSquadronPersonnel()
+    public List<CompanyPersonnel> getAllCompanyPersonnel()
     {
         return new ArrayList<CompanyPersonnel>(squadronPersonnelAllSquadrons.values());
     }    
@@ -84,7 +84,7 @@ public class CampaignPersonnelManager
     public CrewMembers getAllPlayers() throws PWCGException
     {
         CrewMembers allPlayers =  new CrewMembers();
-        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllCompanyPersonnel())
         {
             CrewMembers playersInSquadron = squadronPersonnel.getPlayers();
             allPlayers.addCrewMembers(playersInSquadron);
@@ -110,7 +110,7 @@ public class CampaignPersonnelManager
     private CrewMembers getPlayersForStatus(int status) throws PWCGException
     {
     	CrewMembers allPlayers =  new CrewMembers();
-        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllCompanyPersonnel())
         {
         	CrewMembers playersInSquadron = squadronPersonnel.getPlayersByStatus(status);
         	allPlayers.addCrewMembers(playersInSquadron);
@@ -118,7 +118,7 @@ public class CampaignPersonnelManager
         return allPlayers;
     }
     
-    public boolean squadronHasActivePlayers(int squadronId) throws PWCGException
+    public boolean companyHasActivePlayers(int squadronId) throws PWCGException
     {
         CrewMembers allActivePlayers = getPlayersForStatus(CrewMemberStatus.STATUS_ACTIVE);
         for (CrewMember player : allActivePlayers.getCrewMemberList())
@@ -134,7 +134,7 @@ public class CampaignPersonnelManager
     public Map<Integer, CrewMember> getAllActiveNonAceCampaignMembers() throws PWCGException
     {
         Map<Integer, CrewMember> allNonAceCampaignMembers =  new HashMap<>();
-        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllCompanyPersonnel())
         {
             allNonAceCampaignMembers.putAll(squadronPersonnel.getActiveAiCrewMembers().getCrewMemberCollection());
             allNonAceCampaignMembers.putAll(squadronPersonnel.getPlayersByStatus(CrewMemberStatus.STATUS_ACTIVE).getCrewMemberCollection());
@@ -145,7 +145,7 @@ public class CampaignPersonnelManager
     public Map<Integer, CrewMember> getAllNonAceCampaignMembers() throws PWCGException
     {
         Map<Integer, CrewMember> allNonAceCampaignMembers =  new HashMap<>();
-        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllCompanyPersonnel())
         {
             allNonAceCampaignMembers.putAll(squadronPersonnel.getCrewMembers().getCrewMemberCollection());
         }

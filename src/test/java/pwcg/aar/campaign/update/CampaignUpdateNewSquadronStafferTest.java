@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyViability;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -39,19 +39,19 @@ public class CampaignUpdateNewSquadronStafferTest
         campaign.setDate(newDate);
         
         CampaignUpdateNewCompanyStaffer newSquadronStaffer = new CampaignUpdateNewCompanyStaffer(campaign);
-        List<Integer> squadronsAdded = newSquadronStaffer.staffNewSquadrons();
+        List<Integer> squadronsAdded = newSquadronStaffer.staffNewCompanies();
         assert(squadronsAdded.size() > 0);
         for (int squadronId : squadronsAdded)
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-            assert(SquadronViability.isSquadronActive(squadron, campaign.getDate()));
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
+            assert(CompanyViability.isCompanyActive(squadron, campaign.getDate()));
             
             CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadronId);
             assert(squadronPersonnel != null);
 
             CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(),campaign.getDate());
             assert(squadronMembers != null);
-            assert(squadronMembers.getActiveCount(campaign.getDate()) >= Company.SQUADRON_STAFF_SIZE);
+            assert(squadronMembers.getActiveCount(campaign.getDate()) >= Company.COMPANY_STAFF_SIZE);
         }
     }
 }

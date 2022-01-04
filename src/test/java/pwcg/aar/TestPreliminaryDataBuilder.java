@@ -9,13 +9,13 @@ import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.prelim.claims.AARClaimPanelData;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CrewMemberFilter;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogFileSet;
 import pwcg.core.utils.DateUtils;
@@ -55,7 +55,7 @@ public class TestPreliminaryDataBuilder
         for (Company squadron : squadronsInMission)
         {
             CrewMembers squadronMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(
-                            campaign.getPersonnelManager().getCompanyPersonnel(squadron.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(),campaign.getDate());
+                            campaign.getPersonnelManager().getCompanyPersonnel(squadron.getCompanyId()).getCrewMembersWithAces().getCrewMemberCollection(),campaign.getDate());
             List<CrewMember> squadronMembersList = squadronMembers.getCrewMemberList();
             for (int i = 0; i < 4; ++i)
             {
@@ -75,13 +75,13 @@ public class TestPreliminaryDataBuilder
 
     private void makeClaimData()
     {
-        List<String> enemyPlaneTypesInMission = new ArrayList<>();
-        enemyPlaneTypesInMission.add("pe2s35");
-        enemyPlaneTypesInMission.add("yak1s69");
-        enemyPlaneTypesInMission.add("il2m41");
+        List<String> enemyTankTypesInMission = new ArrayList<>();
+        enemyTankTypesInMission.add("pe2s35");
+        enemyTankTypesInMission.add("yak1s69");
+        enemyTankTypesInMission.add("il2m41");
         
         AARClaimPanelData claimPanelData = new AARClaimPanelData();
-        claimPanelData.setEnemyPlaneTypesInMission(enemyPlaneTypesInMission);
+        claimPanelData.setEnemyTankTypesInMission(enemyTankTypesInMission);
         
         preliminaryData.setClaimPanelData(claimPanelData);
     }
@@ -130,9 +130,9 @@ public class TestPreliminaryDataBuilder
         for (CrewMember crewMember : squadronMembersInMission.getCrewMemberCollection().values())
         {
             Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(crewMember.getCompanyId());
-            List<EquippedPlane> planesForSquadron = new ArrayList<>(equipment.getActiveEquippedPlanes().values());
+            List<EquippedTank> planesForSquadron = new ArrayList<>(equipment.getActiveEquippedTanks().values());
             int planeIndex = RandomNumberGenerator.getRandom(planesForSquadron.size());
-            EquippedPlane equippedPlane = planesForSquadron.get(planeIndex);
+            EquippedTank equippedPlane = planesForSquadron.get(planeIndex);
 
             PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
             missionPlaneData.setAircraftType(equippedPlane.getType());

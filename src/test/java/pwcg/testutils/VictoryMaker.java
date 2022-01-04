@@ -58,14 +58,14 @@ public class VictoryMaker
         victor.setAirOrGround(Victory.AIRCRAFT);
         victor.setCrewMemberStatus(CrewMemberStatus.STATUS_ACTIVE);
         victor.setSquadronName("Esc 3");
-        victor.setType(FCPlaneAttributeMapping.SPAD13.getPlaneType());
+        victor.setType(FCPlaneAttributeMapping.SPAD13.getTankType());
         victory.setVictor(victor);
 
         VictoryEntity victim = new VictoryEntity();
         victim.setAirOrGround(Victory.AIRCRAFT);
         victim.setCrewMemberStatus(CrewMemberStatus.STATUS_KIA);
         victim.setSquadronName("Jasta 2");
-        victim.setType(FCPlaneAttributeMapping.ALBATROSD5.getPlaneType());
+        victim.setType(FCPlaneAttributeMapping.ALBATROSD5.getTankType());
         victory.setVictim(victim);
         
         return victory;
@@ -83,14 +83,14 @@ public class VictoryMaker
         victor.setAirOrGround(Victory.AIRCRAFT);
         victor.setCrewMemberStatus(CrewMemberStatus.STATUS_ACTIVE);
         victor.setSquadronName("Jasta 2");
-        victor.setType(FCPlaneAttributeMapping.ALBATROSD5.getPlaneType());
+        victor.setType(FCPlaneAttributeMapping.ALBATROSD5.getTankType());
         victory.setVictor(victor);
         
         VictoryEntity victim = new VictoryEntity();
         victim.setAirOrGround(Victory.AIRCRAFT);
         victim.setCrewMemberStatus(CrewMemberStatus.STATUS_KIA);
         victim.setSquadronName("Esc 3");
-        victim.setType(FCPlaneAttributeMapping.SPAD13.getPlaneType());
+        victim.setType(FCPlaneAttributeMapping.SPAD13.getTankType());
         victory.setVictim(victim);
         
         return victory;
@@ -107,7 +107,7 @@ public class VictoryMaker
         victor.setAirOrGround(Victory.AIRCRAFT);
         victor.setCrewMemberStatus(CrewMemberStatus.STATUS_ACTIVE);
         victor.setSquadronName("Esc 3");
-        victor.setType(FCPlaneAttributeMapping.SPAD13.getPlaneType());
+        victor.setType(FCPlaneAttributeMapping.SPAD13.getTankType());
         victory.setVictor(victor);
 
         VictoryEntity victim = new VictoryEntity();

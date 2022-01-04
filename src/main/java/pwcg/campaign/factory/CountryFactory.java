@@ -7,10 +7,10 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.ICountryFactory;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.product.bos.country.BoSCountryFactory;
@@ -66,7 +66,7 @@ public class CountryFactory
     public static ICountry makeAssaultProximityCountry(Side side, Coordinate assaultPosition, Date date) throws PWCGException
     {
         ICountry country = null;
-        List<Company> squadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsBySideAndProximity(side, date, assaultPosition, 10000);
+        List<Company> squadrons = PWCGContext.getInstance().getCompanyManager().getActiveSquadronsBySideAndProximity(side, date, assaultPosition, 10000);
         if (squadrons.size() > 0)
         {
             country = squadrons.get(0).getCountry();

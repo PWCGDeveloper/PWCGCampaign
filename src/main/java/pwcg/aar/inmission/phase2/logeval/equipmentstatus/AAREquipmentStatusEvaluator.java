@@ -5,7 +5,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.plane.PlaneStatus;
+import pwcg.campaign.tank.TankStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType3;
@@ -30,13 +30,13 @@ public class AAREquipmentStatusEvaluator
             IAType3 destroyedEventForPlane = logEventData.getDestroyedEvent(logPlane.getId());
             if (destroyedEventForPlane != null)
             {
-                Airfield playerSquadronField = PWCGContext.getInstance().getSquadronManager().getSquadron(logPlane.getSquadronId()).determineCurrentAirfieldAnyMap(campaign.getDate());
+                Airfield playerSquadronField = PWCGContext.getInstance().getCompanyManager().getCompany(logPlane.getSquadronId()).determineCurrentAirfieldAnyMap(campaign.getDate());
                 if (playerSquadronField != null)
                 {
                     EquipmentSurvivalCalculator equipmentSurvivalCalculator = new EquipmentSurvivalCalculator(destroyedEventForPlane.getLocation(), playerSquadronField);
                     if (equipmentSurvivalCalculator.isPlaneDestroyed())
                     {
-                        logPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
+                        logPlane.setPlaneStatus(TankStatus.STATUS_DESTROYED);
                     }
                 }
             }

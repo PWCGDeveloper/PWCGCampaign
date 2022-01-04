@@ -23,7 +23,7 @@ public class ServiceResupplyNeed
     
     public void determineResupplyNeed() throws PWCGException
     {
-        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (CompanyPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllCompanyPersonnel())
         {
             int serviceIdForSquadron = squadronPersonnel.getSquadron().determineServiceForSquadron(campaign.getDate()).getServiceId();
             if (serviceId == serviceIdForSquadron)

@@ -11,6 +11,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.AircraftIOJson;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -20,7 +21,6 @@ import pwcg.core.utils.RandomNumberGenerator;
 public class PlaneTypeFactory 
 {
     private Map<String, PlaneType> planeTypes = new TreeMap<>();
-    private Map<String, PlaneArchType> planeArchTypes = new TreeMap<>();
 
     public PlaneTypeFactory ()
     {
@@ -29,22 +29,6 @@ public class PlaneTypeFactory
     public void initialize()  throws PWCGException
     {
         planeTypes = AircraftIOJson.readJson();
-        createPlaneArchTypes();
-    }
-
-    private void createPlaneArchTypes()
-    {
-        for (PlaneType planeType : planeTypes.values())
-        {
-            if (!planeArchTypes.containsKey(planeType.getArchType()))
-            {
-                PlaneArchType planeArchType = new PlaneArchType(planeType.getArchType());
-                planeArchTypes.put(planeType.getArchType(), planeArchType);
-            }
-            
-            PlaneArchType planeArchType = planeArchTypes.get(planeType.getArchType());
-            planeArchType.addPlaneTypeToArchType(planeType);
-        }
     }
 
     public void dump() 
@@ -54,11 +38,6 @@ public class PlaneTypeFactory
             PWCGLogger.log(LogLevel.DEBUG, "" + planeType.getType() + "    " +  planeType.getDisplayName());
         }
     }    
-    
-    public PlaneArchType getPlaneArchType(String planeArchTypeName)
-    {
-        return planeArchTypes.get(planeArchTypeName);
-    }
 
     public List<PlaneType> getAllFightersForCampaign(Campaign campaign) throws PWCGException 
     {

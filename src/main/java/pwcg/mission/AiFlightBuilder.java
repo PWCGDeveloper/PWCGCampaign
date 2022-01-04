@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightFactory;

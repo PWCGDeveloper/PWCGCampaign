@@ -2,8 +2,8 @@ package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.tank.PwcgRoleCategory;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.event.IAType12;
 
@@ -27,7 +27,7 @@ public abstract class LogAIEntity extends LogBase
         setName(atype12.getName());
         setVehicleType(atype12.getType());
         
-        PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(atype12.getType());
+        TankType plane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(atype12.getType());
         if (plane != null)
         {
             setRoleCategory(plane.determinePrimaryRoleCategory());

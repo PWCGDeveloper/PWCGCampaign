@@ -11,14 +11,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.personnel.CompanyPersonnel;
 import pwcg.campaign.personnel.CrewMemberFilter;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneSorter;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankSorter;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
@@ -56,7 +56,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
 
     public void setSquadronIntelText(int squadronId) throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(squadronId);
         
         String squadronIntelHeaderDesc = formSquadronHeaderDesc(squadron);
         squadronIntelHeaderText.setText(squadronIntelHeaderDesc);
@@ -159,7 +159,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
     private String formSquadronPersonnelDesc(Company squadron) throws PWCGException
     {
         StringBuffer intelBuffer = new StringBuffer("");
-        formPersonnel(squadron.getSquadronId(), intelBuffer);
+        formPersonnel(squadron.getCompanyId(), intelBuffer);
         return intelBuffer.toString();
     }
 
@@ -199,11 +199,11 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
 
         intelBuffer.append("\n        " + aircraftInventoryText + "\n");        
         intelBuffer.append("        ----------------------------------------\n");          
-        Map<Integer, EquippedPlane> aircraftOnInventory = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId()).getActiveEquippedPlanes();
-        List<EquippedPlane> sortedAircraftOnInventory = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(aircraftOnInventory.values()));
+        Map<Integer, EquippedTank> aircraftOnInventory = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId()).getActiveEquippedTanks();
+        List<EquippedTank> sortedAircraftOnInventory = TankSorter.sortEquippedTanksByGoodness(new ArrayList<EquippedTank>(aircraftOnInventory.values()));
         for (int i = 0; i < sortedAircraftOnInventory.size(); ++i)
         {
-            EquippedPlane plane = sortedAircraftOnInventory.get(i);
+            EquippedTank plane = sortedAircraftOnInventory.get(i);
             intelBuffer.append("            " + plane.getDisplayName());
             intelBuffer.append(".\n");          
         }

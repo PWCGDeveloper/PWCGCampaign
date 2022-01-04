@@ -2,7 +2,7 @@ package pwcg.gui.colors;
 
 import java.awt.Color;
 
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.tank.PwcgRoleCategory;
 
 public class AustrianColorMap extends ServiceColor implements IServiceColorMap
 {

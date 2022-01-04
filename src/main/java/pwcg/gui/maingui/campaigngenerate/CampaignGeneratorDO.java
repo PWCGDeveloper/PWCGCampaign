@@ -10,7 +10,7 @@ import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;

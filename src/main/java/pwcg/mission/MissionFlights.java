@@ -213,7 +213,7 @@ public class MissionFlights
     {
         for (IFlight flight : getPlayerFlights())
         {
-            if (flight.getSquadron().getSquadronId() == squadronId)
+            if (flight.getSquadron().getCompanyId() == squadronId)
             {
                 return flight;
             }
@@ -225,7 +225,7 @@ public class MissionFlights
     {
         for (IFlight flight : getAiFlights())
         {
-            if (flight.getSquadron().getSquadronId() == squadronId)
+            if (flight.getSquadron().getCompanyId() == squadronId)
             {
                 return flight;
             }

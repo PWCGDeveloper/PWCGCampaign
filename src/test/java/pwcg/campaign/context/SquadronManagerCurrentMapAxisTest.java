@@ -8,8 +8,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.MissionSquadronRegistry;
 import pwcg.mission.flight.escort.EscortSquadronSelector;
@@ -32,7 +32,7 @@ public class SquadronManagerCurrentMapAxisTest
     @Test
     public void getEscortOrEscortedSquadronAxisTest() throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
                  
         Company nearbySquadron = EscortSquadronSelector.getEscortSquadron(campaign, squadron, squadron.determineCurrentPosition(campaign.getDate()), new MissionSquadronRegistry());
         assert(nearbySquadron != null);

@@ -7,13 +7,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.SquadronRolePeriod;
+import pwcg.campaign.company.SquadronRoleSet;
+import pwcg.campaign.company.SquadronRoleWeight;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronRolePeriod;
-import pwcg.campaign.squadron.SquadronRoleSet;
-import pwcg.campaign.squadron.SquadronRoleWeight;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
@@ -32,7 +32,7 @@ public class TargetDefinitionBuilderAntiShippingTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_KUBAN_PROFILE);
 
-        Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.STG77_KUBAN_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.STG77_KUBAN_PROFILE.getSquadronId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_ANTI_SHIPPING);

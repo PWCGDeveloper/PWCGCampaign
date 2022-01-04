@@ -12,12 +12,12 @@ import org.mockito.Mockito;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.SquadronRoleSet;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberVictories;
 import pwcg.campaign.crewmember.Victory;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronRoleSet;
 import pwcg.core.exception.PWCGException;
 
 public abstract class MedalManagerTestBase

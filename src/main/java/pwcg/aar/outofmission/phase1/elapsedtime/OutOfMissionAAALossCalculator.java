@@ -8,12 +8,12 @@ import pwcg.aar.data.AARContextEventSequence;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyViability;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronViability;
+import pwcg.campaign.tank.EquippedTank;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -38,8 +38,8 @@ public class OutOfMissionAAALossCalculator
                 campaign, aarContext.getPreliminaryData().getCampaignMembersInMission());
         for (CrewMember crewMember : campaignMembersNotInMission.getCrewMemberList())
         {
-            Company squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(crewMember.getCompanyId());
-            if (SquadronViability.isSquadronViable(squadron, campaign))
+            Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(crewMember.getCompanyId());
+            if (CompanyViability.isCompanyViable(squadron, campaign))
             {
                 calculateCrewMemberShotDownByAAA(crewMember);
             }
@@ -55,7 +55,7 @@ public class OutOfMissionAAALossCalculator
             int shotDownDiceRoll = RandomNumberGenerator.getRandom(1000);
             if (shotDownDiceRoll <= oddsShotDown)
             {
-                EquippedPlane planeShotDownByAAA = campaign.getEquipmentManager().destroyPlaneFromSquadron(crewMember.getCompanyId(), campaign.getDate());
+                EquippedTank planeShotDownByAAA = campaign.getEquipmentManager().destroyPlaneFromSquadron(crewMember.getCompanyId(), campaign.getDate());
 
                 LogPlane logPlane = new LogPlane(AARContextEventSequence.getNextOutOfMissionEventSequenceNumber());
                 logPlane.initializeFromOutOfMission(campaign, planeShotDownByAAA, crewMember);

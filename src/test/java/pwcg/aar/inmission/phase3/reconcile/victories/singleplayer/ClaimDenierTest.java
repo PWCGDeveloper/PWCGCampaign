@@ -17,14 +17,14 @@ import org.mockito.quality.Strictness;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.SerialNumber;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.plane.TankType;
+import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)
@@ -38,8 +38,8 @@ public class ClaimDenierTest
     @Mock private CrewMember player;
     @Mock private CrewMember crewMember;
     @Mock private Company squadron;
-    @Mock private PlaneTypeFactory planeFactory;
-    @Mock private PlaneType planeType;
+    @Mock private TankTypeFactory planeFactory;
+    @Mock private TankType planeType;
    
     private List<CrewMember> players = new ArrayList<>();
 
@@ -71,7 +71,7 @@ public class ClaimDenierTest
 
         Mockito.when(declaration.isConfirmed()).thenReturn(false);
         Mockito.when(declaration.getAircraftType()).thenReturn("Albatros D.III");
-        Mockito.when(planeFactory.createPlaneTypeByAnyName(ArgumentMatchers.<String>any())).thenReturn(planeType);
+        Mockito.when(planeFactory.createTankTypeByAnyName(ArgumentMatchers.<String>any())).thenReturn(planeType);
         Mockito.when(planeType.getDisplayName()).thenReturn("Albatros D.III");
         
         ClaimDenier claimDenier = new ClaimDenier(campaign, planeFactory);
@@ -84,10 +84,10 @@ public class ClaimDenierTest
     {
 
         Mockito.when(declaration.isConfirmed()).thenReturn(false);
-        Mockito.when(declaration.getAircraftType()).thenReturn(PlaneType.BALLOON);
+        Mockito.when(declaration.getAircraftType()).thenReturn(TankType.BALLOON);
         
         ClaimDenier claimDenier = new ClaimDenier(campaign, planeFactory);
         ClaimDeniedEvent claimDeniedEvent = claimDenier.determineClaimDenied(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, declaration);
-        Assertions.assertTrue (claimDeniedEvent.getType().equals(PlaneType.BALLOON));
+        Assertions.assertTrue (claimDeniedEvent.getType().equals(TankType.BALLOON));
     }
 }

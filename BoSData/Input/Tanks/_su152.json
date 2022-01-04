@@ -1,0 +1,21 @@
+{
+	"type": "_su152",
+	"archType": "su",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [],
+	"displayName": "SU-152 ChKZ (1943)",
+	"script": "LuaScripts\\WorldObjects\\vehicles\\_su152.txt",
+	"model": "graphics\\vehicles\\_su152\\_su152.mgm",
+	"desc": "SU-152",
+	"cruisingSpeed": 11,
+	"goodness": 70,
+	"roleCategories": [
+		"ROLE_SELF_PROPELLED_GUN"
+	],
+	"introduction": "19430401",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

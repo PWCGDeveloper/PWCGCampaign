@@ -21,7 +21,6 @@ public class StalingradMap extends PWCGMap
     static
     { 
         missionSpacingMyDate = new TreeMap<>(); 
-        missionSpacingMyDate.put("19420101", 5); 
         missionSpacingMyDate.put("19420801", 3); 
         missionSpacingMyDate.put("19420823", 2); 
         missionSpacingMyDate.put("19420905", 1); 

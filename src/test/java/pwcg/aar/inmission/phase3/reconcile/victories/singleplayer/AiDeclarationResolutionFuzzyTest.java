@@ -26,6 +26,7 @@ import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -33,7 +34,6 @@ import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -116,7 +116,7 @@ public class AiDeclarationResolutionFuzzyTest
         aiVictorTwo.setSquadronId(squadronId);
         Mockito.when(aiSquadMember1.getCompanyId()).thenReturn(squadronId);
         Mockito.when(aiSquadMember2.getCompanyId()).thenReturn(squadronId);
-        Mockito.when(squadron.getSquadronId()).thenReturn(squadronId);
+        Mockito.when(squadron.getCompanyId()).thenReturn(squadronId);
     }
 
     private void createVictory(Integer victimSerialNumber) throws PWCGException

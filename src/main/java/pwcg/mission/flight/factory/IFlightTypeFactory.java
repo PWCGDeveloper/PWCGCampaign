@@ -1,7 +1,7 @@
 package pwcg.mission.flight.factory;
 
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 

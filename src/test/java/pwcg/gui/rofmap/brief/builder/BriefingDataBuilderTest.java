@@ -51,7 +51,7 @@ public class BriefingDataBuilderTest
         assert(briefingData.getActiveBriefingFlight().getBriefingAssignmentData().getCrews().size() > 0);
         
         IFlight flight = briefingData.getSelectedFlight();
-        Assertions.assertTrue (flight.getSquadron().getSquadronId() == SquadronTestProfile.KG53_PROFILE.getSquadronId());
+        Assertions.assertTrue (flight.getSquadron().getCompanyId() == SquadronTestProfile.KG53_PROFILE.getSquadronId());
 
         BriefingFlight briefingFlight = briefingData.getActiveBriefingFlight();
         Assertions.assertTrue (briefingFlight.getSquadronId() == SquadronTestProfile.KG53_PROFILE.getSquadronId());

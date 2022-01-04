@@ -1,9 +1,9 @@
 package pwcg.mission.flight.factory;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.skirmish.Skirmish;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;

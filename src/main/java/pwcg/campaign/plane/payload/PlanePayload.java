@@ -3,7 +3,7 @@ package pwcg.campaign.plane.payload;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
@@ -12,10 +12,10 @@ public abstract class PlanePayload implements IPlanePayload
 {
     private PlanePayloads payloads = new PlanePayloads();
     private PlaneModifications modifications;
-    private PlaneType planeType;
+    private TankType planeType;
     private Date date;
 
-	public PlanePayload(PlaneType planeType, Date date)
+	public PlanePayload(TankType planeType, Date date)
 	{
 	    this.planeType = planeType;
         this.date = date;
@@ -214,7 +214,7 @@ public abstract class PlanePayload implements IPlanePayload
         }
     }
 
-    protected PlaneType getPlaneType()
+    protected TankType getTankType()
     {
         return planeType;
     }

@@ -4,13 +4,13 @@ import java.util.List;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneArchType;
-import pwcg.campaign.plane.PlaneEquipmentFactory;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankArchType;
+import pwcg.campaign.tank.TankEquipmentFactory;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentDepotReplenisher
@@ -43,7 +43,7 @@ public class EquipmentDepotReplenisher
 
     private List<Company> getSquadronsForService(ArmedService service) throws PWCGException 
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         return squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
     }
 
@@ -72,20 +72,20 @@ public class EquipmentDepotReplenisher
         int numPlanes = equipmentDepot.getEquipmentPoints() / EquipmentDepot.NUM_POINTS_PER_PLANE;
         for (int i = 0; i < numPlanes; ++i)
         {
-            PlaneArchType planeArchType = getArchTypeForReplacement(equipmentReplacementCalculator);
+            TankArchType planeArchType = getArchTypeForReplacement(equipmentReplacementCalculator);
             replacePlaneByArchType(equipmentDepot, planeArchType);
         }
     }
 
-    private void replacePlaneByArchType(EquipmentDepot equipmentDepot, PlaneArchType planeArchType) throws PWCGException
+    private void replacePlaneByArchType(EquipmentDepot equipmentDepot, TankArchType planeArchType) throws PWCGException
     {
         String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
-        EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForDepot(campaign, planeTypeName);
+        EquippedTank equippedPlane = TankEquipmentFactory.makePlaneForDepot(campaign, planeTypeName);
         equipmentDepot.addPlaneToDepot(equippedPlane);
         equipmentDepot.setLastReplacementDate(campaign.getDate());
     }
 
-    private PlaneArchType getArchTypeForReplacement(EquipmentReplacementCalculator equipmentReplacementCalculator) throws PWCGException
+    private TankArchType getArchTypeForReplacement(EquipmentReplacementCalculator equipmentReplacementCalculator) throws PWCGException
     {
         String archTypeForReplacementPlane = "";
         if (equipmentReplacementCalculator.hasMoreForReplacement()) 
@@ -97,7 +97,7 @@ public class EquipmentDepotReplenisher
             archTypeForReplacementPlane = equipmentReplacementCalculator.chooseArchTypeForReplacementByUsage();
         }
 
-        PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(archTypeForReplacementPlane);
+        TankArchType planeArchType = PWCGContext.getInstance().getTankTypeFactory().getTankArchType(archTypeForReplacementPlane);
         return planeArchType;
     }
 }

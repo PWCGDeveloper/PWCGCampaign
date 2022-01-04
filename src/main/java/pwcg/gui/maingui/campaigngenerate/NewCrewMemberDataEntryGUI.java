@@ -27,14 +27,14 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyManager;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.PwcgRoleCategory;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.tank.PwcgRole;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.config.InternationalizationManager;
@@ -376,7 +376,7 @@ public class NewCrewMemberDataEntryGUI extends JPanel implements ActionListener
         Map<String, PwcgRoleCategory> rolesSorted = new TreeMap<>();
         
         Date date = campaign.getDate();
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         List<Company> squadronsForService = squadronManager.getPlayerFlyableSquadronsByService(parent.getNewCrewMemberGeneratorDO().getService(), date);
         
         for (Company squadron : squadronsForService)
@@ -569,7 +569,7 @@ public class NewCrewMemberDataEntryGUI extends JPanel implements ActionListener
             return "";
         }
 
-        Company company = PWCGContext.getInstance().getSquadronManager().getSquadronByName(squadronName, campaignDate);
+        Company company = PWCGContext.getInstance().getCompanyManager().getCompanyByName(squadronName, campaignDate);
         return company.determineSquadronInfo(campaignDate);
     }
 

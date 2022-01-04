@@ -5,8 +5,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.MathUtils;

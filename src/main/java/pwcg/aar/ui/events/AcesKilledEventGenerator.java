@@ -5,9 +5,9 @@ import java.util.List;
 
 import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberStatus;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class AcesKilledEventGenerator
@@ -55,7 +55,7 @@ public class AcesKilledEventGenerator
             String status = CrewMemberStatus.crewMemberStatusToStatusDescription(ace.getCrewMemberActiveStatus());
     
             int aceSerialNumber = ace.getSerialNumber();
-            int aceSquadronId = aceSquadron.getSquadronId();
+            int aceSquadronId = aceSquadron.getCompanyId();
             boolean isNewsworthy = true;
             aceKilledEvent = new AceKilledEvent(campaign, status, aceSquadronId, aceSerialNumber, campaign.getDate(), isNewsworthy);
         }

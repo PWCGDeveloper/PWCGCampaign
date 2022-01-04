@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.plane.PlaneArchType;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronViability;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.CompanyViability;
+import pwcg.campaign.tank.TankArchType;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentReplacementWeightUsage
@@ -25,24 +25,24 @@ public class EquipmentReplacementWeightUsage
         
         for (Company squadron : squadronsForService)
         {
-            if (SquadronViability.isSquadronActive(squadron, campaignDate))
+            if (CompanyViability.isCompanyActive(squadron, campaignDate))
             {
-                List<PlaneArchType> currentAircraftArchTypes = squadron.determineCurrentAircraftArchTypes(campaignDate);
-                for (PlaneArchType planeArchType : currentAircraftArchTypes)
+                List<TankArchType> currentAircraftArchTypes = squadron.determineCurrentAircraftArchTypes(campaignDate);
+                for (TankArchType planeArchType : currentAircraftArchTypes)
                 {
-                    if (excludeFromWeightedList(planeArchType.getPlaneArchTypeName()))
+                    if (excludeFromWeightedList(planeArchType.getTankArchTypeName()))
                     {
                         continue;
                     }
                     
-                    if (!aircraftUsageByArchType.containsKey(planeArchType.getPlaneArchTypeName()))
+                    if (!aircraftUsageByArchType.containsKey(planeArchType.getTankArchTypeName()))
                     {
-                        aircraftUsageByArchType.put(planeArchType.getPlaneArchTypeName(), Integer.valueOf(0)); 
+                        aircraftUsageByArchType.put(planeArchType.getTankArchTypeName(), Integer.valueOf(0)); 
                     }
                     
-                    Integer numUsagesOfArchtype = aircraftUsageByArchType.get(planeArchType.getPlaneArchTypeName());
+                    Integer numUsagesOfArchtype = aircraftUsageByArchType.get(planeArchType.getTankArchTypeName());
                     ++numUsagesOfArchtype;
-                    aircraftUsageByArchType.put(planeArchType.getPlaneArchTypeName(), numUsagesOfArchtype);
+                    aircraftUsageByArchType.put(planeArchType.getTankArchTypeName(), numUsagesOfArchtype);
                 }
             }
         }

@@ -3,7 +3,7 @@ package pwcg.campaign.promotion;
 import java.util.Date;
 
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.PwcgRoleCategory;
+import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.country.BoSServiceManager;
 

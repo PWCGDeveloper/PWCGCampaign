@@ -1,10 +1,10 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.squadron.Company;
+import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.logfiles.event.IAType12;
@@ -20,7 +20,7 @@ public class LogPlane extends LogAIEntity
     private LogCrewMember logCrewMember;
     private int crewMemberSerialNumber;
     private int planeSerialNumber;
-    private int planeStatus = PlaneStatus.STATUS_DEPLOYED;
+    private int planeStatus = TankStatus.STATUS_DEPLOYED;
     private LogTurrets turrets = new LogTurrets();
 
     public LogPlane(int sequenceNumber)
@@ -46,7 +46,7 @@ public class LogPlane extends LogAIEntity
         intializeCrewMember(missionPlane.getCrewMemberSerialNumber());
     }
 
-    public void initializeFromOutOfMission(Campaign campaign, EquippedPlane plane, CrewMember crewMember) throws PWCGException
+    public void initializeFromOutOfMission(Campaign campaign, EquippedTank plane, CrewMember crewMember) throws PWCGException
     {
         this.squadronId = crewMember.getCompanyId();
         this.crewMemberSerialNumber = crewMember.getSerialNumber();

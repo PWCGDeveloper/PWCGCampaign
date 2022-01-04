@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.company.Company;
 import pwcg.campaign.crewmember.CrewMemberStatus;
 import pwcg.campaign.crewmember.TankAce;
-import pwcg.campaign.squadron.Company;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignAces
@@ -55,7 +55,7 @@ public class CampaignAces
             Company aceSquadron = ace.determineSquadron();
             if (aceSquadron != null)
             {
-                if (aceSquadron.getSquadronId() == squadronId)
+                if (aceSquadron.getCompanyId() == squadronId)
                 {
                     acesForSquadron.add(ace);
                 }

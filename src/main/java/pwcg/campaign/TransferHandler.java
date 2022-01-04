@@ -2,11 +2,11 @@ package pwcg.campaign;
 
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.company.Company;
+import pwcg.campaign.company.SquadronTransferFinder;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CompanyPersonnel;
-import pwcg.campaign.squadron.Company;
-import pwcg.campaign.squadron.SquadronTransferFinder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -47,17 +47,17 @@ public class TransferHandler
 	private TransferEvent createTransferEvent(int leaveTimeForTransfer, Company oldSquad, Company newSquad) throws PWCGException
 	{
         boolean isNewsWorthy = true;
-		TransferEvent transferEvent = new TransferEvent(campaign, oldSquad.getSquadronId(), newSquad.getSquadronId(), leaveTimeForTransfer, player.getSerialNumber(), campaign.getDate(), isNewsWorthy);
+		TransferEvent transferEvent = new TransferEvent(campaign, oldSquad.getCompanyId(), newSquad.getCompanyId(), leaveTimeForTransfer, player.getSerialNumber(), campaign.getDate(), isNewsWorthy);
 		return transferEvent;
 	}
 
 	private void movePlayerToNewSquadron(Company newSquadron) throws PWCGException
 	{        
 		CompanyPersonnel oldSquadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(player.getCompanyId());
-		CompanyPersonnel newSquadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(newSquadron.getSquadronId());
+		CompanyPersonnel newSquadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(newSquadron.getCompanyId());
 
 		oldSquadronPersonnel.removeCrewMember(player);
-		player.setSquadronId(newSquadron.getSquadronId());
+		player.setSquadronId(newSquadron.getCompanyId());
 		newSquadronPersonnel.addCrewMember(player);
 	}
 
