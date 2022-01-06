@@ -3,9 +3,9 @@ package pwcg.product.bos.plane.payload;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.plane.BoSPlaneAttributeFactory;
@@ -67,9 +67,9 @@ import pwcg.product.bos.plane.payload.aircraft.Yak7BS36Payload;
 import pwcg.product.bos.plane.payload.aircraft.Yak9S1Payload;
 import pwcg.product.bos.plane.payload.aircraft.Yak9TS1Payload;
 
-public class BoSPayloadFactory implements IPayloadFactory
+public class BoSPayloadFactory implements IPlanePayloadFactory
 {
-	public IPlanePayload createPlanePayload(String planeTypeName, Date date) throws PWCGException 
+	public IPlanePayload createPayload(String planeTypeName, Date date) throws PWCGException 
 	{
 		TankType planeType = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(planeTypeName);
 		BosPlaneAttributeMapping attributeMapping = BoSPlaneAttributeFactory.createPlaneAttributeMap(planeTypeName);
@@ -305,9 +305,9 @@ public class BoSPayloadFactory implements IPayloadFactory
 	}
 
     @Override
-    public PayloadDesignation getPlanePayloadDesignation(String planeTypeName, int selectedPrimaryPayloadId, Date date) throws PWCGException
+    public PlanePayloadDesignation getPlanePayloadDesignation(String planeTypeName, int selectedPrimaryPayloadId, Date date) throws PWCGException
     {
-        IPlanePayload planePayload = createPlanePayload(planeTypeName, date);
+        IPlanePayload planePayload = createPayload(planeTypeName, date);
         planePayload.setSelectedPayloadId(selectedPrimaryPayloadId);
         return planePayload.getSelectedPayloadDesignation();
     }

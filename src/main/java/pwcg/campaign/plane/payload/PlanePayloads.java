@@ -5,7 +5,7 @@ import pwcg.core.exception.PWCGException;
 public class PlanePayloads
 {
     private int selectedPrimaryPayloadId = 0;
-    private PayloadDesignations payloads = new PayloadDesignations();
+    private PlanePayloadDesignations payloads = new PlanePayloadDesignations();
     private int noOrdnancePayloadId = 0;
 
 	public PlanePayloads()
@@ -21,12 +21,12 @@ public class PlanePayloads
         return target;
     }
 
-    public void addPayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
+    public void addPayload(int payloadId, String modMask, PlanePayloadElement ... requestedPayloadElements)
     {
         payloads.addPayload(payloadId, modMask, requestedPayloadElements);
     }
 
-    public PayloadDesignations getPayloadDesignations()
+    public PlanePayloadDesignations getPayloadDesignations()
     {
         return payloads;
     }
@@ -46,7 +46,7 @@ public class PlanePayloads
         return (payloadId == selectedPrimaryPayloadId);
     }
 
-    public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException
+    public PlanePayloadDesignation getSelectedPayloadDesignation() throws PWCGException
     {
         return payloads.getPayloadDesignation(selectedPrimaryPayloadId);
     }

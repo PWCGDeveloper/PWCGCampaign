@@ -40,40 +40,14 @@ public class MissionPointSetFactory
 
     public static IMissionPointSet createFlightBegin(IFlight flight, IMissionPointSet flightActivate, AirStartPattern airStartPattern, McuWaypoint waypointToLinkAirSTart) throws PWCGException, PWCGException 
     {
-        FlightInformation flightInformation = flight.getFlightInformation();
-        if (!flightInformation.isAirStart())
-        {
-            MissionPointFlightBeginTakeoff flightBegin = new MissionPointFlightBeginTakeoff(flight, flightActivate);
-            flightBegin.createFlightBegin();
-            return flightBegin;
-        }
-        else if (flightInformation.isVirtual())
-        {
-            MissionPointFlightBeginVirtual flightBegin = new MissionPointFlightBeginVirtual(flight, airStartPattern, waypointToLinkAirSTart);
-            flightBegin.createFlightBegin();
-            return flightBegin;
-        }        
-        else if (flightInformation.isAirStart())
-        {
-            MissionPointFlightBeginAirStart flightBegin = new MissionPointFlightBeginAirStart(flight, airStartPattern, waypointToLinkAirSTart);
-            flightBegin.createFlightBegin();
-            return flightBegin;
-        }
-        else
-        {
-            throw new PWCGException("Flight does not match any expected criteria for start");
-        }
+        MissionPointFlightBeginVirtual flightBegin = new MissionPointFlightBeginVirtual(flight, airStartPattern, waypointToLinkAirSTart);
+        flightBegin.createFlightBegin();
+        return flightBegin;
     }
 
-    public static IMissionPointSet createFlightEndAtHomeField(IFlight flight) throws PWCGException, PWCGException 
+    public static IMissionPointSet createFlightEnd(IFlight flight) throws PWCGException, PWCGException 
     {
-        Airfield landingAirfield = flight.getFlightInformation().getAirfield();
-        return createFlightEnd(flight, landingAirfield);
-    }
-    
-    public static IMissionPointSet createFlightEnd(IFlight flight, Airfield landingAirfield) throws PWCGException, PWCGException 
-    {
-        MissionPointFlightEnd flightEnd = new MissionPointFlightEnd(flight, landingAirfield);
+        MissionPointFlightEnd flightEnd = new MissionPointFlightEnd(flight);
         flightEnd.createFlightEnd();
         return flightEnd;
     }

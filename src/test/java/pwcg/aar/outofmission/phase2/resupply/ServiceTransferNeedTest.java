@@ -36,7 +36,7 @@ public class ServiceTransferNeedTest
     @BeforeAll
     public void setupSuite() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
      }
 

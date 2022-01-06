@@ -33,7 +33,7 @@ public class CoalitionFactoryTest
         coalition = CoalitionFactory.getCoalitionBySide(Side.AXIS);
         assert(coalition == Coalition.COALITION_AXIS);
 
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         coalition = CoalitionFactory.getCoalitionBySide(Side.ALLIED);
         assert(coalition == Coalition.COALITION_ENTENTE);
 
@@ -51,7 +51,7 @@ public class CoalitionFactoryTest
         coalition = CoalitionFactory.getFriendlyCoalition(germany);
         assert(coalition == Coalition.COALITION_AXIS);
 
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         coalition = CoalitionFactory.getFriendlyCoalition(britain);
         assert(coalition == Coalition.COALITION_ENTENTE);
 
@@ -69,7 +69,7 @@ public class CoalitionFactoryTest
         coalition = CoalitionFactory.getEnemyCoalition(germany);
         assert(coalition == Coalition.COALITION_ALLIED);
 
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         coalition = CoalitionFactory.getEnemyCoalition(britain);
         assert(coalition == Coalition.COALITION_CENTRAL);
 
@@ -87,7 +87,7 @@ public class CoalitionFactoryTest
         assert(!wwiiCoalitions.contains(Coalition.COALITION_CENTRAL));
         assert(!wwiiCoalitions.contains(Coalition.COALITION_ENTENTE));
 
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         List<Coalition> wwiCoalitions = CoalitionFactory.getAllCoalitions();
         assert(wwiCoalitions.contains(Coalition.COALITION_CENTRAL));
         assert(wwiCoalitions.contains(Coalition.COALITION_ENTENTE));

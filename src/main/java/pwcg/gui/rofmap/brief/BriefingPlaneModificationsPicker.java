@@ -13,23 +13,23 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
+import pwcg.mission.playerunit.crew.CrewVehiclePayloadPairing;
 
 public class BriefingPlaneModificationsPicker
 {
     private ActionListener actionListener;
-    private CrewPlanePayloadPairing crewPlane;
+    private CrewVehiclePayloadPairing crewPlane;
     private JPanel planeModificationsPanel = new JPanel(new GridLayout(0,1));
     private Map<String, JCheckBox> planeModifications = new HashMap<>();
     private Date date;
     
-    public BriefingPlaneModificationsPicker(ActionListener actionListener, CrewPlanePayloadPairing crewPlane, Date date)
+    public BriefingPlaneModificationsPicker(ActionListener actionListener, CrewVehiclePayloadPairing crewPlane, Date date)
     {
         this.actionListener = actionListener;
         this.crewPlane = crewPlane;
@@ -96,8 +96,8 @@ public class BriefingPlaneModificationsPicker
 
     private String getPayloadMaskForChosenModifications(String planeTypeName, String payloadDescription) throws PWCGException
     {
-        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName, date);
+        IPlanePayloadFactory payloadfactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        IPlanePayload payload = payloadfactory.createPayload(planeTypeName, date);
         
         return payload.getPayloadMaskByDescription(payloadDescription);
     }

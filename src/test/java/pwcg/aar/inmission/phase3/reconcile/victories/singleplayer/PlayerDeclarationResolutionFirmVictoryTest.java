@@ -61,7 +61,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     @BeforeEach
     public void setupTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         
         firmVictories.clear();
         

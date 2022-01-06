@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.mission.flight.FlightTypes;
@@ -20,11 +20,11 @@ public class Yak1S127Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-2, "10000", PayloadElement.RPK10);
-        setAvailablePayload(-1, "100000", PayloadElement.MIRROR);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.FAB50SV_X2);
-        setAvailablePayload(2, "101", PayloadElement.FAB100M_X2);
+        setAvailablePayload(-2, "10000", PlanePayloadElement.RPK10);
+        setAvailablePayload(-1, "100000", PlanePayloadElement.MIRROR);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.FAB50SV_X2);
+        setAvailablePayload(2, "101", PlanePayloadElement.FAB100M_X2);
 	}
 
     @Override

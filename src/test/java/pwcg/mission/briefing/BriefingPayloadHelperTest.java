@@ -12,7 +12,7 @@ import org.mockito.quality.Strictness;
 
 import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.BriefingPayloadHelper;
 
@@ -25,10 +25,10 @@ public class BriefingPayloadHelperTest extends BriefingDataInitializerTest
     @Mock private IPlanePayload payload2;
     @Mock private IPlanePayload payload3;
     @Mock private IPlanePayload payload4;
-    @Mock private PayloadDesignation payloadDesignation1;
-    @Mock private PayloadDesignation payloadDesignation2;
-    @Mock private PayloadDesignation payloadDesignation3;
-    @Mock private PayloadDesignation payloadDesignation4;
+    @Mock private PlanePayloadDesignation payloadDesignation1;
+    @Mock private PlanePayloadDesignation payloadDesignation2;
+    @Mock private PlanePayloadDesignation payloadDesignation3;
+    @Mock private PlanePayloadDesignation payloadDesignation4;
     
     @BeforeEach
     public void setupTest() throws PWCGException

@@ -16,15 +16,15 @@ public class RoFAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
 	public RoFAirfieldInEnemyTerritory () throws PWCGException
 	{
 		super(true);
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
 	}
 
 	@Test
 	public void airfieldCheckArrasTest() throws PWCGException 
 	{
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.STALINGRAD_MAP);
 
         RoFAirfieldInEnemyTerritory airfieldFInder = new RoFAirfieldInEnemyTerritory();
-        airfieldFInder.findEnemy(FrontMapIdentifier.ARRAS_MAP, DateUtils.getDateYYYYMMDD("19160101"), DateUtils.getDateYYYYMMDD("19181111"));
+        airfieldFInder.findEnemy(FrontMapIdentifier.STALINGRAD_MAP, DateUtils.getDateYYYYMMDD("19160101"), DateUtils.getDateYYYYMMDD("19181111"));
 	}
 }

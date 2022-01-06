@@ -28,7 +28,7 @@ public class AirfieldBuilderArras
     
     public static void main(String[] args) throws Exception
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
 
         AirfieldBuilderArras jsonConverter = new AirfieldBuilderArras();
         jsonConverter.getAirfieldNames("Arras");

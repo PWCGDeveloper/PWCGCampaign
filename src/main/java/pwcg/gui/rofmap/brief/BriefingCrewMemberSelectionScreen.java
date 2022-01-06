@@ -38,8 +38,8 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.playerunit.crew.CrewVehiclePayloadPairing;
 
 public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implements ActionListener, MouseWheelListener, IFlightChanged
 {
@@ -271,7 +271,7 @@ public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implem
         {
             BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
             Integer crewMemberSerialNumber = getCrewMemberSerialNumberFromAction(action);
-            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByCrewMember(crewMemberSerialNumber);
+            CrewVehiclePayloadPairing planeCrew = briefingMissionHandler.getPairingByCrewMember(crewMemberSerialNumber);
             CrewMember crewMember = planeCrew.getCrewMember();
             briefingMissionHandler.unassignCrewMemberFromBriefing(crewMember.getSerialNumber());
             refreshCrewMemberDisplay();
@@ -283,7 +283,7 @@ public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implem
         if (!mission.getFinalizer().isFinalized())
         {
             BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
-            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByCrewMember(selectedCrewMemberSerialNumber);
+            CrewVehiclePayloadPairing planeCrew = briefingMissionHandler.getPairingByCrewMember(selectedCrewMemberSerialNumber);
             CrewMember crewMember = planeCrew.getCrewMember();
             briefingMissionHandler.moveCrewMemberUp(crewMember.getSerialNumber());
             refreshCrewMemberDisplay();
@@ -295,7 +295,7 @@ public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implem
         if (!mission.getFinalizer().isFinalized())
         {
             BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
-            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByCrewMember(selectedCrewMemberSerialNumber);
+            CrewVehiclePayloadPairing planeCrew = briefingMissionHandler.getPairingByCrewMember(selectedCrewMemberSerialNumber);
             CrewMember crewMember = planeCrew.getCrewMember();
             briefingMissionHandler.moveCrewMemberDown(crewMember.getSerialNumber());
             refreshCrewMemberDisplay();
@@ -308,7 +308,7 @@ public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implem
         {
             BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
             Integer crewMemberSerialNumber = getCrewMemberSerialNumberFromAction(action);
-            CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByCrewMember(crewMemberSerialNumber);
+            CrewVehiclePayloadPairing crewPlane = briefingMissionHandler.getPairingByCrewMember(crewMemberSerialNumber);
 
             BriefingPayloadPicker briefingPayloadPicker = new BriefingPayloadPicker(this, briefingData);
             Date date = mission.getCampaign().getDate();
@@ -340,7 +340,7 @@ public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implem
     private void setModificationInCrewPlane(Integer crewMemberSerialNumber) throws PWCGException
     {
         BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
-        CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByCrewMember(crewMemberSerialNumber);
+        CrewVehiclePayloadPairing crewPlane = briefingMissionHandler.getPairingByCrewMember(crewMemberSerialNumber);
         crewPlane.clearModification();
         BriefingPlaneModificationsPicker modificationPicker = planeModifications.get(crewMemberSerialNumber);
         for (String modificationDescription : modificationPicker.getPlaneModifications().keySet())
@@ -369,11 +369,11 @@ public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implem
     private void synchronizePayload() throws PWCGException
     {
         BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
-        List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getCrews();
-        CrewPlanePayloadPairing leadPlane = assignedPairings.get(0);
+        List<CrewVehiclePayloadPairing> assignedPairings = briefingMissionHandler.getCrews();
+        CrewVehiclePayloadPairing leadPlane = assignedPairings.get(0);
         for (int i = 1; i < assignedPairings.size(); ++i)
         {
-            CrewPlanePayloadPairing subordinatePlane = assignedPairings.get(i);
+            CrewVehiclePayloadPairing subordinatePlane = assignedPairings.get(i);
             if (leadPlane.getPlane().getType().equals(subordinatePlane.getPlane().getType()))
             {
                 subordinatePlane.setPayloadId(leadPlane.getPayloadId());
@@ -385,11 +385,11 @@ public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implem
     private void synchronizeModifications() throws PWCGException
     {
         BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
-        List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getCrews();
-        CrewPlanePayloadPairing leadPlane = assignedPairings.get(0);
+        List<CrewVehiclePayloadPairing> assignedPairings = briefingMissionHandler.getCrews();
+        CrewVehiclePayloadPairing leadPlane = assignedPairings.get(0);
         for (int i = 1; i < assignedPairings.size(); ++i)
         {
-            CrewPlanePayloadPairing subordinatePlane = assignedPairings.get(i);
+            CrewVehiclePayloadPairing subordinatePlane = assignedPairings.get(i);
             if (leadPlane.getPlane().equals(subordinatePlane.getPlane()))
             {
                 subordinatePlane.clearModification();
@@ -470,7 +470,7 @@ public class BriefingCrewMemberSelectionScreen extends ImageResizingPanel implem
             List<BriefingFlight> briefingFlights = briefingData.getBriefingFlights();
             for (BriefingFlight briefingFlight : briefingFlights)
             {
-                for (CrewPlanePayloadPairing crewPlanePair : briefingFlight.getCrews())
+                for (CrewVehiclePayloadPairing crewPlanePair : briefingFlight.getCrews())
                 {
                     CrewMember crewMember = crewPlanePair.getCrewMember();
                     if (crewMember.isPlayer())

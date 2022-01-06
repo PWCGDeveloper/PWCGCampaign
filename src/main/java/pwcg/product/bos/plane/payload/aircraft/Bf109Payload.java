@@ -2,7 +2,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
@@ -58,7 +58,7 @@ public abstract class Bf109Payload extends PlanePayload
 
     protected int createStandardPayload() throws PWCGException
     {
-        return getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
+        return getPayloadIdByDescription(PlanePayloadElement.STANDARD.getDescription());
     }
 
     protected int selectSoftTargetPayload()

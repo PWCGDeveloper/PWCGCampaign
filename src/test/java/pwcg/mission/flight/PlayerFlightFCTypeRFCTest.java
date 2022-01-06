@@ -40,7 +40,7 @@ public class PlayerFlightFCTypeRFCTest
     @BeforeAll
     public void setupSuite() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
     }
 
@@ -49,7 +49,7 @@ public class PlayerFlightFCTypeRFCTest
 	{
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
-        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getPlayerFlights().get(0);
+        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getPlayerUnits().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);
@@ -75,7 +75,7 @@ public class PlayerFlightFCTypeRFCTest
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_HUNT, MissionProfile.DAY_TACTICAL_MISSION);
-        GroundFreeHuntFlight flight = (GroundFreeHuntFlight) mission.getFlights().getPlayerFlights().get(0);
+        GroundFreeHuntFlight flight = (GroundFreeHuntFlight) mission.getFlights().getPlayerUnits().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);
@@ -99,7 +99,7 @@ public class PlayerFlightFCTypeRFCTest
 		
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.BOMB, MissionProfile.DAY_TACTICAL_MISSION);
-        BombingFlight flight = (BombingFlight) mission.getFlights().getPlayerFlights().get(0);
+        BombingFlight flight = (BombingFlight) mission.getFlights().getPlayerUnits().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);

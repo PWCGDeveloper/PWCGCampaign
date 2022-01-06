@@ -38,7 +38,7 @@ public class VirtualAdditionalTimeCalculator
         int averagePlayerIngressTime = 0;
         int numPlayerFlightsWithIngress = 0;
         int totalPlayerIngressTime = 0;
-        for (IFlight playerFlight : mission.getFlights().getPlayerFlights())
+        for (IFlight playerFlight : mission.getFlights().getPlayerUnits())
         {
             int timeToIngress = playerFlight.getWaypointPackage().secondsUntilWaypoint(WaypointAction.WP_ACTION_INGRESS);
             if (timeToIngress > 0)

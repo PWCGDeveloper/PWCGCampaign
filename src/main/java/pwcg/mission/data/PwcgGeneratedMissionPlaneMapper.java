@@ -34,7 +34,7 @@ public class PwcgGeneratedMissionPlaneMapper
             
         }
 
-        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
             alliedPlaneMap.put(TankType.BALLOON, TankType.BALLOON);
             axisPlaneMap.put(TankType.BALLOON, TankType.BALLOON);

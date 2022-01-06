@@ -12,9 +12,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
-import pwcg.mission.flight.factory.NightFlightTypeConverter;
 import pwcg.mission.flight.factory.WeatherFlightTypeConverter;
 import pwcg.mission.options.MissionWeather;
 
@@ -38,13 +36,13 @@ public class AiFlightBuilder
             return missionFlights;
         }
         
+        // TODO TC change by squadron to a limited number of AI flights
         AiSquadronIncluder aiSquadronIncluder = new AiSquadronIncluder(mission);
         List<Company> aiSquadronsForMission = aiSquadronIncluder.decideSquadronsForMission();
         
         for (Company squadron : aiSquadronsForMission)
         {
             FlightTypes flightType = determineFlightType(squadron);
-            flightType = NightFlightTypeConverter.getFlightType(flightType, mission.isNightMission());
             flightType = WeatherFlightTypeConverter.getFlightType(flightType, missionWeather);
 
             List<IFlight> flights = buildFlight(flightType, squadron);
@@ -68,7 +66,7 @@ public class AiFlightBuilder
     private List<IFlight> buildFlight(FlightTypes flightType, Company squadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
-        List<IFlight> flights = flightFactory.buildFlight(mission, squadron, flightType, NecessaryFlightType.NONE);
+        List<IFlight> flights = flightFactory.buildFlight(mission, flightType);
         return flights;        
     }
 

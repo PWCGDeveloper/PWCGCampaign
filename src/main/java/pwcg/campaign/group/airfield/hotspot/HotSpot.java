@@ -7,7 +7,7 @@ public class HotSpot
 {
     private Coordinate position = new Coordinate();
 	private Orientation orientation = new Orientation();
-	private HotSpotType hotSpotType = HotSpotType.HOTSPOT_ANY;
+	private HotSpotType hotSpotType = HotSpotType.HOTSPOT_UNUSED;
 	
     public Coordinate getPosition()
     {

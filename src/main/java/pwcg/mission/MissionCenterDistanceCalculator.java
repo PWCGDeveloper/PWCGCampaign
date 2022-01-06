@@ -6,14 +6,12 @@ import pwcg.core.exception.PWCGException;
 
 public class MissionCenterDistanceCalculator
 {
-    public static final int MINIMUM_MAX_DISTANCE = 20000;
+    public static final int MINIMUM_MAX_DISTANCE = 1000;
     private Campaign campaign;
-    private MissionHumanParticipants participatingPlayers;
 
-    public MissionCenterDistanceCalculator (Campaign campaign, MissionHumanParticipants participatingPlayers)
+    public MissionCenterDistanceCalculator (Campaign campaign)
     {
         this.campaign = campaign;
-        this.participatingPlayers = participatingPlayers;
     }
 
     public int determineMaxDistanceForMissionCenter() throws PWCGException

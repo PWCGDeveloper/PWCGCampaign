@@ -8,7 +8,7 @@ import pwcg.core.exception.PWCGException;
 
 public class MissionBorderBuilderFactory 
 {
-    public static IMissionCenterBuilder buildMissionCenterBuilder(Campaign campaign, MissionHumanParticipants participatingPlayers, Skirmish skirmish, MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
+    public static IMissionCenterBuilder buildMissionCenterBuilder(Campaign campaign, MissionHumanParticipants participatingPlayers, Skirmish skirmish) throws PWCGException
     {
         if (TestDriver.getInstance().getTestMissionCenter() != null)
         {
@@ -21,10 +21,6 @@ public class MissionBorderBuilderFactory
         else if (skirmish != null)
         {
             return new MissionCenterBuilderSkirmish(campaign, skirmish);
-        }
-        else if (playerFlightTypes.isPlayerRaidFlight())
-        {
-            return new MissionCenterBuilderRaid(campaign, participatingPlayers);
         }
         else
         {

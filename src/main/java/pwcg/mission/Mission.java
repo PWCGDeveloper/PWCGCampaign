@@ -16,7 +16,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.data.PwcgGeneratedMission;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.MissionGroundUnitBuilder;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
@@ -25,6 +24,7 @@ import pwcg.mission.io.MissionFileFactory;
 import pwcg.mission.options.MissionOptions;
 import pwcg.mission.options.MissionType;
 import pwcg.mission.options.MissionWeather;
+import pwcg.mission.playerunit.PlayerUnit;
 import pwcg.mission.target.AssaultDefinition;
 
 public class Mission
@@ -33,7 +33,6 @@ public class Mission
     private MissionHumanParticipants participatingPlayers;
     private CoordinateBox missionBorders;
     private CoordinateBox structureBorders;
-    private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
     private MissionOptions missionOptions;
 
     private MissionWeather weather;
@@ -42,6 +41,7 @@ public class Mission
     private MissionAirfields missionAirfields;
     private MissionFinalizer finalizer;
 
+    private MissionPlayerUnits missionPlayerUnits;
     private MissionFlights missionFlights;
     private MissionPlayerVehicle missionPlayerVehicles = new MissionPlayerVehicle();
     private VehicleDefinition playerVehicleDefinition;
@@ -59,7 +59,6 @@ public class Mission
 
     public Mission(
             Campaign campaign, 
-            MissionProfile missionProfile, 
             MissionHumanParticipants participatingPlayers, 
             VehicleDefinition playerVehicleDefinition,
             CoordinateBox missionBorders, 
@@ -71,7 +70,6 @@ public class Mission
         this.campaign = campaign;
         this.participatingPlayers = participatingPlayers;
         this.playerVehicleDefinition = playerVehicleDefinition;
-        this.missionProfile = missionProfile;
         this.missionBorders = missionBorders;
         this.weather = weather;
         this.skirmish = skirmish;
@@ -97,8 +95,8 @@ public class Mission
         validate();
         createStructuresBoxForMission();
         createGroundUnits();
-        createPlayerVehicle();
         generateFlights(playerFlightTypes);
+        createPlayerVehicle();
     }
 
     private void createPlayerVehicle() throws PWCGException
@@ -117,21 +115,17 @@ public class Mission
 
         MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(this, structureBorders);
         missionAirfields = airfieldBuilder.buildFieldsForPatrol();
-        
-        MissionBlockEntityBuilder missionBlockEntityBuilder = new MissionBlockEntityBuilder(this);
-        missionBlockEntityBuilder.buildEntitiesForTargetStructures(missionBlocks);
     }
 
     private void buildStructureBorders() throws PWCGException
     {
-        StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
-        structureBorders = structureBorderBuilder.getBordersForStructuresConsideringFlights( missionFlights.getPlayerFlights());
+        StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, missionBorders);
+        structureBorders = structureBorderBuilder.buildBorderForMission();
     }
 
     private void generateFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
         missionFlights.generateFlights(playerFlightTypes);
-        createFirePots();
     }
 
     private void validate() throws PWCGException
@@ -209,14 +203,6 @@ public class Mission
         }
     }
 
-    private void createFirePots() throws PWCGException
-    {
-        if (isNightMission())
-        {
-            missionEffects.createFirePots(this);
-        }
-    }
-
     public void finalizeMission() throws PWCGException
     {
         finalizer.finalizeMission();
@@ -226,9 +212,9 @@ public class Mission
     {
         boolean hasPlayerAllied = false;
         boolean hasPlayerAxis = false;
-        for (IFlight flight : missionFlights.getPlayerFlights())
+        for (PlayerUnit unit : missionPlayerUnits.getPlayerUnits())
         {
-            if (flight.getSquadron().determineSide() == Side.ALLIED)
+            if (unit.getUnitInformation().getCountry().getSide() == Side.ALLIED)
             {
                 hasPlayerAllied = true;
             }
@@ -308,16 +294,6 @@ public class Mission
         return vehicleSetBuilder;
     }
 
-    public boolean isNightMission()
-    {
-        return missionProfile.isNightMission();
-    }
-
-    public MissionProfile getMissionProfile()
-    {
-        return missionProfile;
-    }
-
     public MissionHumanParticipants getParticipatingPlayers()
     {
         return participatingPlayers;
@@ -381,5 +357,10 @@ public class Mission
     public MissionFinalizer getFinalizer()
     {
         return finalizer;
+    }
+
+    public MissionPlayerUnits getPlayerUnits()
+    {
+        return missionPlayerUnits;
     }
 }

@@ -44,7 +44,7 @@ public class AARDamageStatusEvaluatorTest
     @BeforeEach
     public void setup () throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         
         damagedVictim1.setId(VICTIM_ID_1);
         damagedVictim2.setId(VICTIM_ID_2);

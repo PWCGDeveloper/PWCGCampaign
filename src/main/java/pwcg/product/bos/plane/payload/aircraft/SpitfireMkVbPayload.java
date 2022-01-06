@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.mission.flight.IFlight;
@@ -18,9 +18,9 @@ public class SpitfireMkVbPayload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-2, "10", PayloadElement.MERLIN_ENGINE);
-        setAvailablePayload(-1, "100", PayloadElement.MIRROR);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);        
+        setAvailablePayload(-2, "10", PlanePayloadElement.MERLIN_ENGINE);
+        setAvailablePayload(-1, "100", PlanePayloadElement.MIRROR);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);        
 	}
 
     @Override

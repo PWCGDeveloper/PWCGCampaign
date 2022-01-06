@@ -13,7 +13,7 @@ import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.newspapers.NewspaperManager;
-import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.skin.SkinManager;
 import pwcg.campaign.tank.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
@@ -263,7 +263,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public abstract IPayloadFactory getPayloadFactory() throws PWCGException; 
+    public abstract IPlanePayloadFactory getPlanePayloadFactory() throws PWCGException; 
 
     @Override
     public abstract void initializeMap() throws PWCGException;    

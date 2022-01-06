@@ -70,7 +70,7 @@ public class Company
 	private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
     private Map<Date, Callsign> callsigns = new TreeMap<>();
 	
-	public static boolean isPlayerSquadron (Campaign campaign, int squadronId)
+	public static boolean isPlayerCompany (Campaign campaign, int squadronId)
 	{
 	    CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadronId);
         if (squadronPersonnel != null && squadronPersonnel.isPlayerSquadron())

@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
@@ -29,30 +29,30 @@ public class Hs129B2Payload extends PlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-2, "100000", PayloadElement.PEILG6);
-        setAvailablePayload(-1, "1000000", PayloadElement.MIRROR);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "1", PayloadElement.SC50_X4);
-		setAvailablePayload(2, "1", PayloadElement.SC50_X6);
-		setAvailablePayload(3, "1", PayloadElement.SC250_X1);
-        setAvailablePayload(4, "1", PayloadElement.SC250_X1, PayloadElement.SC50_X2);
-        setAvailablePayload(5, "101", PayloadElement.MG17_GUNPOD);
-        setAvailablePayload(6, "101", PayloadElement.MG17_GUNPOD, PayloadElement.SC50_X2);
-		setAvailablePayload(7, "1001", PayloadElement.MK101_30_AP_GUNPOD);
-		setAvailablePayload(8, "1001", PayloadElement.MK101_30_HE_GUNPOD);
-		setAvailablePayload(9, "1001", PayloadElement.MK101_30_AP_GUNPOD, PayloadElement.SC50_X2);
-		setAvailablePayload(10, "1001", PayloadElement.MK101_30_HE_GUNPOD, PayloadElement.SC50_X2);
-        setAvailablePayload(11, "10001", PayloadElement.MK103_30_AP_GUNPOD);
-        setAvailablePayload(12, "10001", PayloadElement.MK103_30_AP_GUNPOD, PayloadElement.SC50_X2);
-        setAvailablePayload(13, "10001", PayloadElement.MK103_30_HE_GUNPOD);
-        setAvailablePayload(14, "10001", PayloadElement.MK103_30_HE_GUNPOD, PayloadElement.SC50_X2);
-        setAvailablePayload(15, "10001", PayloadElement.MG151_20_GUNPOD);
-        setAvailablePayload(17, "11", PayloadElement.MG151_20_UPGRADE);
-        setAvailablePayload(18, "11", PayloadElement.MG151_20_UPGRADE, PayloadElement.SC50_X4);
-        setAvailablePayload(19, "11", PayloadElement.MG151_20_UPGRADE, PayloadElement.SC50_X6);
-        setAvailablePayload(20, "11", PayloadElement.MG151_20_UPGRADE, PayloadElement.SC250_X1);
-        setAvailablePayload(21, "11", PayloadElement.MG151_20_UPGRADE, PayloadElement.SC250_X1, PayloadElement.SC50_X2);
-        setAvailablePayload(34, "1", PayloadElement.EMPTY);
+        setAvailablePayload(-2, "100000", PlanePayloadElement.PEILG6);
+        setAvailablePayload(-1, "1000000", PlanePayloadElement.MIRROR);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "1", PlanePayloadElement.SC50_X4);
+		setAvailablePayload(2, "1", PlanePayloadElement.SC50_X6);
+		setAvailablePayload(3, "1", PlanePayloadElement.SC250_X1);
+        setAvailablePayload(4, "1", PlanePayloadElement.SC250_X1, PlanePayloadElement.SC50_X2);
+        setAvailablePayload(5, "101", PlanePayloadElement.MG17_GUNPOD);
+        setAvailablePayload(6, "101", PlanePayloadElement.MG17_GUNPOD, PlanePayloadElement.SC50_X2);
+		setAvailablePayload(7, "1001", PlanePayloadElement.MK101_30_AP_GUNPOD);
+		setAvailablePayload(8, "1001", PlanePayloadElement.MK101_30_HE_GUNPOD);
+		setAvailablePayload(9, "1001", PlanePayloadElement.MK101_30_AP_GUNPOD, PlanePayloadElement.SC50_X2);
+		setAvailablePayload(10, "1001", PlanePayloadElement.MK101_30_HE_GUNPOD, PlanePayloadElement.SC50_X2);
+        setAvailablePayload(11, "10001", PlanePayloadElement.MK103_30_AP_GUNPOD);
+        setAvailablePayload(12, "10001", PlanePayloadElement.MK103_30_AP_GUNPOD, PlanePayloadElement.SC50_X2);
+        setAvailablePayload(13, "10001", PlanePayloadElement.MK103_30_HE_GUNPOD);
+        setAvailablePayload(14, "10001", PlanePayloadElement.MK103_30_HE_GUNPOD, PlanePayloadElement.SC50_X2);
+        setAvailablePayload(15, "10001", PlanePayloadElement.MG151_20_GUNPOD);
+        setAvailablePayload(17, "11", PlanePayloadElement.MG151_20_UPGRADE);
+        setAvailablePayload(18, "11", PlanePayloadElement.MG151_20_UPGRADE, PlanePayloadElement.SC50_X4);
+        setAvailablePayload(19, "11", PlanePayloadElement.MG151_20_UPGRADE, PlanePayloadElement.SC50_X6);
+        setAvailablePayload(20, "11", PlanePayloadElement.MG151_20_UPGRADE, PlanePayloadElement.SC250_X1);
+        setAvailablePayload(21, "11", PlanePayloadElement.MG151_20_UPGRADE, PlanePayloadElement.SC250_X1, PlanePayloadElement.SC50_X2);
+        setAvailablePayload(34, "1", PlanePayloadElement.EMPTY);
 	}
 
     @Override
@@ -156,7 +156,7 @@ public class Hs129B2Payload extends PlanePayload
     }
     
     @Override
-    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    protected List<PlanePayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
     {
         List<Integer>availablePayloads = new ArrayList<>();
         List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 2, 3, 4, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21);

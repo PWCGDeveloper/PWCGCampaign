@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
@@ -42,14 +42,14 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
     @Override
     protected void initialize()
 	{
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.ROS82_X6);
-        setAvailablePayload(5, "101", PayloadElement.FAB50SV_X2);
-        setAvailablePayload(6, "101", PayloadElement.FAB100M_X2);
-        setAvailablePayload(16, "100001", PayloadElement.SHVAK_UPGRADE);
-        setAvailablePayload(17, "100011", PayloadElement.SHVAK_UPGRADE, PayloadElement.FAB50SV_X2);
-        setAvailablePayload(21, "100101", PayloadElement.SHVAK_UPGRADE, PayloadElement.FAB100M_X2);
-        setAvailablePayload(22, "100101", PayloadElement.SHVAK_UPGRADE, PayloadElement.ROS82_X6);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.ROS82_X6);
+        setAvailablePayload(5, "101", PlanePayloadElement.FAB50SV_X2);
+        setAvailablePayload(6, "101", PlanePayloadElement.FAB100M_X2);
+        setAvailablePayload(16, "100001", PlanePayloadElement.SHVAK_UPGRADE);
+        setAvailablePayload(17, "100011", PlanePayloadElement.SHVAK_UPGRADE, PlanePayloadElement.FAB50SV_X2);
+        setAvailablePayload(21, "100101", PlanePayloadElement.SHVAK_UPGRADE, PlanePayloadElement.FAB100M_X2);
+        setAvailablePayload(22, "100101", PlanePayloadElement.SHVAK_UPGRADE, PlanePayloadElement.ROS82_X6);
 	}
 
     @Override
@@ -201,7 +201,7 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
     }
     
     @Override
-    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    protected List<PlanePayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
     {
         List<Integer>availablePayloads = new ArrayList<>();
         List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 5,6 );

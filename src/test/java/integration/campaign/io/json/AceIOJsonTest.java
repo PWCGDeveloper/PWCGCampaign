@@ -21,7 +21,7 @@ public class AceIOJsonTest
     @Test
     public void readJsonTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         List<HistoricalAce> aces = HistoricalAceIOJson.readJson();
         Assertions.assertTrue (aces.size() == 186);        
         verifyNoDuplicateSerialNumbers(aces);

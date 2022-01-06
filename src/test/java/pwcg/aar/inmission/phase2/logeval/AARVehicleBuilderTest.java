@@ -56,7 +56,7 @@ public class AARVehicleBuilderTest
 
     public AARVehicleBuilderTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
     }
 
     @Test

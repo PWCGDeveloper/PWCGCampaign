@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -21,17 +21,17 @@ public class P38J25Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
-        setAvailablePayload(-1, "100000", PayloadElement.MN28);
+        setAvailablePayload(-1, "100000", PlanePayloadElement.MN28);
 
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.ADDITIONAL_AMMO);
-        setAvailablePayload(2, "101", PayloadElement.LB500x2);
-        setAvailablePayload(4, "101", PayloadElement.LB1000x2);
-        setAvailablePayload(6, "101", PayloadElement.LB2000x2);
-        setAvailablePayload(8, "10001", PayloadElement.M8X6);
-        setAvailablePayload(10, "1001", PayloadElement.P38_BOMBS_AND_ROCKETS);
-        setAvailablePayload(14, "1001", PayloadElement.LB500x4);
-        setAvailablePayload(16, "1001", PayloadElement.LB500x6);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.ADDITIONAL_AMMO);
+        setAvailablePayload(2, "101", PlanePayloadElement.LB500x2);
+        setAvailablePayload(4, "101", PlanePayloadElement.LB1000x2);
+        setAvailablePayload(6, "101", PlanePayloadElement.LB2000x2);
+        setAvailablePayload(8, "10001", PlanePayloadElement.M8X6);
+        setAvailablePayload(10, "1001", PlanePayloadElement.P38_BOMBS_AND_ROCKETS);
+        setAvailablePayload(14, "1001", PlanePayloadElement.LB500x4);
+        setAvailablePayload(16, "1001", PlanePayloadElement.LB500x6);
 	}
  
     @Override

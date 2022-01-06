@@ -15,7 +15,7 @@ public class BriefingMissionFlightSetBuilder
     public static Map<Integer, BriefingFlight> buildBriefingMissions(Mission mission) throws PWCGException
     {
         Map<Integer, BriefingFlight> briefingMissionFlights = new HashMap<>();
-        for (IFlight playerFlight : mission.getFlights().getPlayerFlights())
+        for (IFlight playerFlight : mission.getFlights().getPlayerUnits())
         {
             
             BriefingFlightParameters briefingFlightParameters = buildBriefingFlightParameters(playerFlight);

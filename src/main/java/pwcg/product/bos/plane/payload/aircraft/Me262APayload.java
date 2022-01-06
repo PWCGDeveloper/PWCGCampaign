@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
@@ -44,17 +44,17 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     @Override
     protected void initialize()
     {        
-        setAvailablePayload(-4, "10000", PayloadElement.REMOVE_ARMOR);
-        setAvailablePayload(-3, "10000", PayloadElement.EXTRA_ARMOR);
+        setAvailablePayload(-4, "10000", PlanePayloadElement.REMOVE_ARMOR);
+        setAvailablePayload(-3, "10000", PlanePayloadElement.EXTRA_ARMOR);
 
-        setAvailablePayload(-5, "100000000", PayloadElement.AUTO_VALVE);
-        setAvailablePayload(-2, "1000", PayloadElement.ARMORED_HEADREST);
-        setAvailablePayload(-1, "10", PayloadElement.GYRO_GUNSIGHT);
+        setAvailablePayload(-5, "100000000", PlanePayloadElement.AUTO_VALVE);
+        setAvailablePayload(-2, "1000", PlanePayloadElement.ARMORED_HEADREST);
+        setAvailablePayload(-1, "10", PlanePayloadElement.GYRO_GUNSIGHT);
         
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "1000001", PayloadElement.REMOVE_INNER_GUNS);
-        setAvailablePayload(2, "101", PayloadElement.R4M_X26);
-        setAvailablePayload(3, "10000001", PayloadElement.KG500x1);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "1000001", PlanePayloadElement.REMOVE_INNER_GUNS);
+        setAvailablePayload(2, "101", PlanePayloadElement.R4M_X26);
+        setAvailablePayload(3, "10000001", PlanePayloadElement.KG500x1);
     }
 
     @Override
@@ -120,20 +120,20 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     @Override
     protected void loadAvailableStockModifications()
     {
-        registerStockModification(PayloadElement.ARMORED_HEADREST);        
+        registerStockModification(PlanePayloadElement.ARMORED_HEADREST);        
         if (getDate().after(gyroGunsightIntroDate))
         {
-            registerStockModification(PayloadElement.GYRO_GUNSIGHT);
+            registerStockModification(PlanePayloadElement.GYRO_GUNSIGHT);
         }
         
         if (getDate().after(autoValveIntroDate))
         {
-            registerStockModification(PayloadElement.AUTO_VALVE);
+            registerStockModification(PlanePayloadElement.AUTO_VALVE);
         }
     }
     
     @Override
-    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    protected List<PlanePayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
     {
         List<Integer>availablePayloads = new ArrayList<>();
         List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 3);

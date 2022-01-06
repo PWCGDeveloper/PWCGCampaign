@@ -126,7 +126,7 @@ public class LogPlane extends LogAIEntity
         CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(crewMemberSerialNumber);
         if (crewMember != null)
         {
-            if (Company.isPlayerSquadron(campaign, squadronId))
+            if (Company.isPlayerCompany(campaign, squadronId))
             {
                 return true;
             }

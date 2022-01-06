@@ -55,7 +55,7 @@ public class VictoryEvaluationTest
     @BeforeEach
     public void testSetup() throws Exception
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.JASTA_11_PROFILE);
     }
     
@@ -211,7 +211,7 @@ public class VictoryEvaluationTest
         mission.finalizeMission();
         mission.write();
         
-        List<PlaneMcu> playerFlightPlanes = mission.getFlights().getPlayerFlights().get(0).getFlightPlanes().getPlanes();
+        List<PlaneMcu> playerFlightPlanes = mission.getFlights().getPlayerUnits().get(0).getFlightPlanes().getPlanes();
         Map<Integer, Integer> playerFlightVictories = new HashMap<>();
         for(PlaneMcu plane : playerFlightPlanes)
         {
@@ -329,7 +329,7 @@ public class VictoryEvaluationTest
         int playerAid = -1;
         
         Coordinate location = new Coordinate(500000, 0, 50000);
-        List<PlaneMcu> playerFlightPlanes = mission.getFlights().getPlayerFlights().get(0).getFlightPlanes().getPlanes();
+        List<PlaneMcu> playerFlightPlanes = mission.getFlights().getPlayerUnits().get(0).getFlightPlanes().getPlanes();
         
         for (PlaneMcu friendlyPlane : playerFlightPlanes)
         {

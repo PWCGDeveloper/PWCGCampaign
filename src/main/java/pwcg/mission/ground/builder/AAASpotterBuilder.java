@@ -20,7 +20,7 @@ public class AAASpotterBuilder
     
     public static GroundUnitCollection createAAASpotterBattery (Coordinate position, Campaign campaign, ICountry spotterCountry) throws PWCGException
     {
-        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
             return null;
         }

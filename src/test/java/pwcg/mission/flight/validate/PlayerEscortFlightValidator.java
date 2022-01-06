@@ -27,7 +27,7 @@ public class PlayerEscortFlightValidator
 
     public PlayerEscortFlightValidator(MissionFlights missionFlights) throws PWCGException
     {
-        this.playerFlight = missionFlights.getPlayerFlights().get(0);
+        this.playerFlight = missionFlights.getPlayerUnits().get(0);
         
         List<IFlight> escortForPlayerFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORTED);
         if (!escortForPlayerFlights.isEmpty())

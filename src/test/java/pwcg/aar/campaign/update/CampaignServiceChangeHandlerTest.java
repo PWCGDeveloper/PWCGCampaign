@@ -25,7 +25,7 @@ public class CampaignServiceChangeHandlerTest
 {
     public CampaignServiceChangeHandlerTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
     }
 
     @Test

@@ -4,10 +4,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.company.Company;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
@@ -15,18 +13,15 @@ import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.virtual.VirtualWaypointPackage;
-import pwcg.mission.skin.MissionSkinGenerator;
 import pwcg.mission.target.TargetDefinition;
 
 public abstract class Flight implements IFlight
 {
     private FlightInformation flightInformation;
     private FlightPlanes flightPlanes;
-    private FlightPlayerContact flightPlayerContact = new FlightPlayerContact();
     private IWaypointPackage waypointPackage;
     private VirtualWaypointPackage virtualWaypointPackage;
     private TargetDefinition targetDefinition;
-    private IFlight associatedFlight = null;
     private int index = IndexGenerator.getInstance().getNextIndex();
 
     public Flight(FlightInformation flightInformation, TargetDefinition targetDefinition)
@@ -63,11 +58,11 @@ public abstract class Flight implements IFlight
             writer.write("{");
             writer.newLine();
 
-            writer.write("  Name = \"Flight " + flightInformation.getSquadron().determineDisplayName(getCampaign().getDate()) + "\";");
+            writer.write("  Name = \"Flight " + flightInformation.getName() + "\";");
             writer.newLine();
             writer.write("  Index = " + index + ";");
             writer.newLine();
-            writer.write("  Desc = \"Flight " + flightInformation.getSquadron().determineDisplayName(getCampaign().getDate()) + "\";");
+            writer.write("  Desc = \"Flight " + flightInformation.getName() + "\";");
             writer.newLine();
 
             writer.newLine();
@@ -109,27 +104,15 @@ public abstract class Flight implements IFlight
         return waypointPackage;
     }
 
-    public Coordinate getFlightHomePosition() throws PWCGException
-    {
-        return flightInformation.getFlightHomePosition();
-    }
-
     public Campaign getCampaign()
     {
         return flightInformation.getCampaign();
-    }
-
-    public IFlightPlayerContact getFlightPlayerContact()
-    {
-        return flightPlayerContact;
     }
 
     @Override
     public void finalizeFlight() throws PWCGException
     {
         finalizeCoreFlight();        
-        finalizeWingmenForFlight();
-        finalizeSkinsForFlight();
         finalizeVirtualFlight();        
     }
 
@@ -137,12 +120,6 @@ public abstract class Flight implements IFlight
     {
         flightPlanes.finalize();
         waypointPackage.finalize(flightPlanes);
-    }
-
-    private void finalizeWingmenForFlight() throws PWCGException
-    {
-        //WingmanBuilder wingmanBuilder = new WingmanBuilder(this);
-        //wingmanBuilder.buildWingmenForFlight();
     }
 
     private void finalizeVirtualFlight() throws PWCGException
@@ -154,22 +131,11 @@ public abstract class Flight implements IFlight
          }
     }
 
-    private void finalizeSkinsForFlight() throws PWCGException
-    {
-        MissionSkinGenerator.assignSkinsForFlight(this);
-    }
-
     public IVirtualWaypointPackage getVirtualWaypointPackage()
     {
         return virtualWaypointPackage;
     }
-
-    @Override
-    public void overrideFlightCruisingSpeedForEscort(int cruisingSpeed)
-    {
-        flightInformation.setCruisingSpeed(cruisingSpeed);
-    }
-
+    
     @Override
     public int getFlightCruisingSpeed()
     {
@@ -196,27 +162,9 @@ public abstract class Flight implements IFlight
     }
 
     @Override
-    public Company getSquadron()
-    {
-        return flightInformation.getSquadron();
-    }
-
-    @Override
     public FlightTypes getFlightType()
     {
         return flightInformation.getFlightType();
-    }
-
-    @Override
-    public boolean isPlayerFlight()
-    {
-        return flightInformation.isPlayerFlight();
-    }
-
-    @Override
-    public double getClosestContactWithPlayerDistance()
-    {
-        return flightPlayerContact.getClosestContactWithPlayerDistance();
     }
 
     @Override
@@ -224,16 +172,4 @@ public abstract class Flight implements IFlight
     {
         return targetDefinition;
     }    
-
-    @Override
-    public void setAssociatedFlight(IFlight associatedFlight)
-    {
-        this.associatedFlight = associatedFlight;;
-    }    
-
-    @Override
-    public IFlight getAssociatedFlight()
-    {
-        return associatedFlight;
-    }
 }

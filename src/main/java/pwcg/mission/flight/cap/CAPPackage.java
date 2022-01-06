@@ -3,11 +3,11 @@ package pwcg.mission.flight.cap;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
-import pwcg.mission.flight.FlightSpotterBuilder;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPackage;
@@ -28,23 +28,18 @@ public class CAPPackage implements IFlightPackage
     }
 
     @Override
-    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (Mission mission, ICountry country) throws PWCGException 
     {
         if (flightType != FlightTypes.INTERCEPT && flightType != FlightTypes.LOW_ALT_CAP)
         {
             throw new PWCGException("Invalid intercept flight type " + flightType);
         }
         
-        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(mission, country, flightType, planeType);
         this.targetDefinition = buildTargetDefintion();
 
         CAPFlight interceptFlight = new CAPFlight (flightInformation, targetDefinition);
         interceptFlight.createFlight();
-        
-        if (flightInformation.isPlayerFlight())
-        {
-            FlightSpotterBuilder.createSpotters(interceptFlight, flightInformation);
-        }
         
         packageFlights.add(interceptFlight);
         return packageFlights;

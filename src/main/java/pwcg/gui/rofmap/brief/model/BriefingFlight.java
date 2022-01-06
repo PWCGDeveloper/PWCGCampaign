@@ -13,7 +13,7 @@ import pwcg.gui.rofmap.brief.BriefingDataInitializer;
 import pwcg.gui.rofmap.brief.BriefingPayloadHelper;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
+import pwcg.mission.playerunit.crew.CrewVehiclePayloadPairing;
 
 public class BriefingFlight
 {
@@ -86,7 +86,7 @@ public class BriefingFlight
         return TankSorter.sortEquippedTanksByGoodness(new ArrayList<EquippedTank>(briefingAssignmentData.getUnassignedPlanes().values()));
     }
 
-    public CrewPlanePayloadPairing getPairingByCrewMember(Integer crewMemberSerialNumber) throws PWCGException 
+    public CrewVehiclePayloadPairing getPairingByCrewMember(Integer crewMemberSerialNumber) throws PWCGException 
     {       
         return briefingAssignmentData.findAssignedCrewPairingByCrewMember(crewMemberSerialNumber);
     }
@@ -111,7 +111,7 @@ public class BriefingFlight
         return briefingAssignmentData;
     }
 
-    public List<CrewPlanePayloadPairing> getCrews()
+    public List<CrewVehiclePayloadPairing> getCrews()
     {
         return briefingAssignmentData.getCrews();
     }

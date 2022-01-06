@@ -60,11 +60,11 @@ public class WW2PayloadTest
     @Test
     public void payloadTest() throws PWCGException
     {
-        IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
+        IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
 
         for (TankType planeType : PWCGContext.getInstance().getTankTypeFactory().getAllPlanes())
         {
-            IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(planeType.getType(), campaign.getDate());
+            IPlanePayload payloadGenerator = payloadFactory.createPayload(planeType.getType(), campaign.getDate());
             testPatrolPayload(payloadGenerator);
             testInterceptPayload(payloadGenerator);
             testBombPayloads(payloadGenerator);
@@ -112,7 +112,7 @@ public class WW2PayloadTest
     private void runPayload(IPlanePayload payloadGenerator) throws PWCGException
     {
         int payloadId = payloadGenerator.createWeaponsPayload(flight);
-        PayloadDesignation payloadDesignation = payloadGenerator.getSelectedPayloadDesignation();
+        PlanePayloadDesignation payloadDesignation = payloadGenerator.getSelectedPayloadDesignation();
         Assertions.assertTrue (payloadDesignation.getPayloadId() == payloadId);
     }
 }

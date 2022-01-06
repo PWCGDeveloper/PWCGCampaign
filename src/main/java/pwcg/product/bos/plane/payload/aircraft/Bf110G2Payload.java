@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.mission.flight.FlightTypes;
@@ -20,22 +20,22 @@ public class Bf110G2Payload extends PlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-1, "10", PayloadElement.REMOVE_HEADREST);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "1", PayloadElement.SC250_X2);
-        setAvailablePayload(2, "1", PayloadElement.SC250_X2, PayloadElement.SC50_X4);
-        setAvailablePayload(3, "101", PayloadElement.SC50_X12);
-        setAvailablePayload(4, "1001", PayloadElement.SC500_X2);
-        setAvailablePayload(5, "1001", PayloadElement.SC500_X2, PayloadElement.SC50_X4);
-        setAvailablePayload(6, "10001", PayloadElement.SC1000_X1);
-        setAvailablePayload(7, "10001", PayloadElement.SC1000_X1, PayloadElement.SC250_X2);
-        setAvailablePayload(8, "10001", PayloadElement.SC1000_X1, PayloadElement.SC50_X4);
-        setAvailablePayload(9,  "1000001", PayloadElement.MG151_20_PODS);
-        setAvailablePayload(10,  "1000001", PayloadElement.MG151_20_PODS, PayloadElement.SC50_X4);
-		setAvailablePayload(11, "1000001", PayloadElement.BK37_AP_GUNPOD);
-		setAvailablePayload(12, "1000001", PayloadElement.BK37_AP_GUNPOD, PayloadElement.SC50_X4);
-		setAvailablePayload(13, "1000001", PayloadElement.BK37_HE_GUNPOD);
-		setAvailablePayload(14, "1000001", PayloadElement.BK37_HE_GUNPOD, PayloadElement.SC50_X4);
+        setAvailablePayload(-1, "10", PlanePayloadElement.REMOVE_HEADREST);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "1", PlanePayloadElement.SC250_X2);
+        setAvailablePayload(2, "1", PlanePayloadElement.SC250_X2, PlanePayloadElement.SC50_X4);
+        setAvailablePayload(3, "101", PlanePayloadElement.SC50_X12);
+        setAvailablePayload(4, "1001", PlanePayloadElement.SC500_X2);
+        setAvailablePayload(5, "1001", PlanePayloadElement.SC500_X2, PlanePayloadElement.SC50_X4);
+        setAvailablePayload(6, "10001", PlanePayloadElement.SC1000_X1);
+        setAvailablePayload(7, "10001", PlanePayloadElement.SC1000_X1, PlanePayloadElement.SC250_X2);
+        setAvailablePayload(8, "10001", PlanePayloadElement.SC1000_X1, PlanePayloadElement.SC50_X4);
+        setAvailablePayload(9,  "1000001", PlanePayloadElement.MG151_20_PODS);
+        setAvailablePayload(10,  "1000001", PlanePayloadElement.MG151_20_PODS, PlanePayloadElement.SC50_X4);
+		setAvailablePayload(11, "1000001", PlanePayloadElement.BK37_AP_GUNPOD);
+		setAvailablePayload(12, "1000001", PlanePayloadElement.BK37_AP_GUNPOD, PlanePayloadElement.SC50_X4);
+		setAvailablePayload(13, "1000001", PlanePayloadElement.BK37_HE_GUNPOD);
+		setAvailablePayload(14, "1000001", PlanePayloadElement.BK37_HE_GUNPOD, PlanePayloadElement.SC50_X4);
 	}
 
     @Override
@@ -90,7 +90,7 @@ public class Bf110G2Payload extends PlanePayload
     
     private int createStandardPayload()
     {
-        return getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
+        return getPayloadIdByDescription(PlanePayloadElement.STANDARD.getDescription());
     }
 
     @Override

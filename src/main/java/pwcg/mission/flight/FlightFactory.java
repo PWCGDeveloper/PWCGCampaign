@@ -32,9 +32,7 @@ public class FlightFactory
     
     public List<IFlight> buildFlight(
     		Mission mission,
-    		Company squadron,
-            FlightTypes flightType,
-            NecessaryFlightType necessaryFlightType) throws PWCGException 
+            FlightTypes flightType) throws PWCGException 
     {        
         if (flightType == FlightTypes.ANY)
         {
@@ -42,7 +40,7 @@ public class FlightFactory
         }
                 
         IFlightPackage flightPackage = null;
-        if (flightType == FlightTypes.BOMB || flightType == FlightTypes.LOW_ALT_BOMB)
+        if (flightType == FlightTypes.LOW_ALT_BOMB)
         {
             flightPackage = new BombingPackage(flightType);
         }
@@ -53,38 +51,6 @@ public class FlightFactory
         else if (flightType == FlightTypes.GROUND_ATTACK)
         {
             flightPackage = new GroundAttackPackage(TargetType.TARGET_NONE);
-        }
-        else if (flightType == FlightTypes.TRAIN_BUST)
-        {
-            flightPackage = new GroundAttackPackage(TargetType.TARGET_TRAIN);
-        }
-        else if (flightType == FlightTypes.TANK_BUST)
-        {
-            flightPackage = new GroundAttackPackage(TargetType.TARGET_ARMOR);
-        }
-        else if (flightType == FlightTypes.ANTI_SHIPPING)
-        {
-            flightPackage = new GroundAttackPackage(TargetType.TARGET_SHIPPING);
-        }
-        else if (flightType == FlightTypes.GROUND_HUNT)
-        {
-            flightPackage = new GroundFreeHuntPackage();
-        }
-        else if (flightType == FlightTypes.RAID)
-        {
-            flightPackage = new RaiderAttackPackage();
-        }
-        else if (flightType == FlightTypes.INTERCEPT)
-        {
-            flightPackage = new InterceptPackage(flightType);
-        }
-        else if (flightType == FlightTypes.OFFENSIVE)
-        {
-            flightPackage = new OffensivePackage();
-        }
-        else if (flightType == FlightTypes.PATROL)
-        {
-            flightPackage = new PatrolPackage();
         }
         else if (flightType == FlightTypes.LOW_ALT_PATROL)
         {
@@ -107,8 +73,7 @@ public class FlightFactory
             throw new PWCGMissionGenerationException("Invalid flight type: " + flightType);
         }
 
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, necessaryFlightType);
-        List<IFlight> packageFlights = flightPackage.createPackage(flightBuildInformation);
+        List<IFlight> packageFlights = flightPackage.createPackage();
         
         return packageFlights;
     }

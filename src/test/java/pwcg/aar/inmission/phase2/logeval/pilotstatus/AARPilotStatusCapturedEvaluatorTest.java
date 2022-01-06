@@ -49,7 +49,7 @@ public class AARCrewMemberStatusCapturedEvaluatorTest
         aarCrewMemberStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, new Coordinate(), Side.AXIS);
+            boolean captured = aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.STALINGRAD_MAP, new Coordinate(), Side.AXIS);
             assert(captured == true);
         }
     }
@@ -78,7 +78,7 @@ public class AARCrewMemberStatusCapturedEvaluatorTest
         boolean escapedAtLeastOnce = false;
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, new Coordinate(), Side.AXIS);
+            boolean captured = aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.STALINGRAD_MAP, new Coordinate(), Side.AXIS);
             if (captured)
             {
                 wasCapturedAtLeastOnce = true;
@@ -108,7 +108,7 @@ public class AARCrewMemberStatusCapturedEvaluatorTest
         aarCrewMemberStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, new Coordinate(), Side.AXIS);
+            boolean captured = aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.STALINGRAD_MAP, new Coordinate(), Side.AXIS);
             assert(captured == false);
         }
     }
@@ -123,7 +123,7 @@ public class AARCrewMemberStatusCapturedEvaluatorTest
         aarCrewMemberStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, null, Side.AXIS);
+            boolean captured = aarCrewMemberStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.STALINGRAD_MAP, null, Side.AXIS);
             assert(captured == false);
         }
     }

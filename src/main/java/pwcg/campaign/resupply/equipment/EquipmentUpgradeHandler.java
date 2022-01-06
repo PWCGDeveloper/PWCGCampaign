@@ -39,7 +39,7 @@ public class EquipmentUpgradeHandler
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         for (Company squadron : squadronManager.getActiveCompaniesForService(campaign.getDate(), armedService))
         {
-            if (Company.isPlayerSquadron(campaign, squadron.getCompanyId()))
+            if (Company.isPlayerCompany(campaign, squadron.getCompanyId()))
             {
                 upgradeEquipment(squadron);
             }

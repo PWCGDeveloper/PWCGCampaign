@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
@@ -47,16 +47,16 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     @Override
     protected void initialize()
 	{
-        setAvailablePayload(-5, "100000000", PayloadElement.OCTANE_150_FUEL);
-        setAvailablePayload(-4, "10000000", PayloadElement.MERLIN_70_ENGINE);
-        setAvailablePayload(-3, "1000000", PayloadElement.SPITFIRE_CLIPPED_WINGS);
-        setAvailablePayload(-2, "100000", PayloadElement.MIRROR);
-        setAvailablePayload(-1, "10000", PayloadElement.GYRO_GUNSIGHT);
+        setAvailablePayload(-5, "100000000", PlanePayloadElement.OCTANE_150_FUEL);
+        setAvailablePayload(-4, "10000000", PlanePayloadElement.MERLIN_70_ENGINE);
+        setAvailablePayload(-3, "1000000", PlanePayloadElement.SPITFIRE_CLIPPED_WINGS);
+        setAvailablePayload(-2, "100000", PlanePayloadElement.MIRROR);
+        setAvailablePayload(-1, "10000", PlanePayloadElement.GYRO_GUNSIGHT);
         
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.SC500_X1);
-        setAvailablePayload(2, "101", PayloadElement.SC250_X2);
-        setAvailablePayload(4, "1001", PayloadElement.RP3_X2);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.SC500_X1);
+        setAvailablePayload(2, "101", PlanePayloadElement.SC250_X2);
+        setAvailablePayload(4, "1001", PlanePayloadElement.RP3_X2);
 	}
 
     @Override
@@ -145,20 +145,20 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     @Override
     protected void loadAvailableStockModifications()
     {
-        registerStockModification(PayloadElement.MIRROR);        
+        registerStockModification(PlanePayloadElement.MIRROR);        
         if (getDate().after(gyroGunsightIntroDate))
         {
-            registerStockModification(PayloadElement.GYRO_GUNSIGHT);
+            registerStockModification(PlanePayloadElement.GYRO_GUNSIGHT);
         }
         
         if (getDate().after(highOctaneFuelIntroDate))
         {
-            registerStockModification(PayloadElement.OCTANE_150_FUEL);
+            registerStockModification(PlanePayloadElement.OCTANE_150_FUEL);
         }
     }
     
     @Override
-    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    protected List<PlanePayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
     {
         List<Integer>availablePayloads = new ArrayList<>();
         List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1);

@@ -185,7 +185,7 @@ public class BoSAirfieldTest
 
 	    for (PWCGMap map : contextManager.getAllMaps())
 	    {
-	        if (map.getMapIdentifier() == FrontMapIdentifier.BODENPLATTE_MAP || map.getMapIdentifier() == FrontMapIdentifier.EAST1945_MAP || map.getMapIdentifier() == FrontMapIdentifier.ARRAS_MAP)
+	        if (map.getMapIdentifier() == FrontMapIdentifier.BODENPLATTE_MAP || map.getMapIdentifier() == FrontMapIdentifier.EAST1945_MAP || map.getMapIdentifier() == FrontMapIdentifier.STALINGRAD_MAP)
 	        {
 	            continue;
 	        }

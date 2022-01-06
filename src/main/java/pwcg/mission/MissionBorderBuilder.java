@@ -12,19 +12,17 @@ public class MissionBorderBuilder
     private Campaign campaign;
     private MissionHumanParticipants participatingPlayers;
     private Skirmish skirmish;
-    private MissionSquadronFlightTypes playerFlightTypes;
 	
-	public MissionBorderBuilder(Campaign campaign, MissionHumanParticipants participatingPlayers, Skirmish skirmish, MissionSquadronFlightTypes playerFlightTypes)
+	public MissionBorderBuilder(Campaign campaign, MissionHumanParticipants participatingPlayers, Skirmish skirmish)
 	{
         this.campaign = campaign;
         this.participatingPlayers = participatingPlayers;
         this.skirmish = skirmish;
-        this.playerFlightTypes = playerFlightTypes;
 	}
 
     public CoordinateBox buildCoordinateBox() throws PWCGException
     {
-        IMissionCenterBuilder missionCenterBuilder = MissionBorderBuilderFactory.buildMissionCenterBuilder(campaign, participatingPlayers, skirmish, playerFlightTypes);
+        IMissionCenterBuilder missionCenterBuilder = MissionBorderBuilderFactory.buildMissionCenterBuilder(campaign, participatingPlayers, skirmish);
         
         int missionBoxRadius = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MissionBoxSizeKey) * 1000;
         Coordinate missionCenterCoordinate = missionCenterBuilder.findMissionCenter(missionBoxRadius);

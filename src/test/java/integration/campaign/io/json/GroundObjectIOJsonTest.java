@@ -17,7 +17,7 @@ public class GroundObjectIOJsonTest
     @Test
     public void readJsonArrasTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         String mapName = "Arras";
         validateGroundStructures(mapName);
     }

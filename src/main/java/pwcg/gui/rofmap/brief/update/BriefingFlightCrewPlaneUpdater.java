@@ -7,16 +7,16 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.personnel.CompanyPersonnel;
-import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
-import pwcg.campaign.plane.payload.PayloadElementManager;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElementManager;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.plane.PlaneMCUFactory;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.playerunit.crew.CrewVehiclePayloadPairing;
 
 public class BriefingFlightCrewPlaneUpdater
 {
@@ -30,16 +30,16 @@ public class BriefingFlightCrewPlaneUpdater
         this.playerFlight = playerFlight;
     }
 
-    public void updatePlayerPlanes(List<CrewPlanePayloadPairing> crewPlanes) throws PWCGException
+    public void updatePlayerPlanes(List<CrewVehiclePayloadPairing> crewPlanes) throws PWCGException
     {
         updatePlanesFromBriefing(crewPlanes);
         replacePlanesInPlayerFlight();
     }
 
-    private void updatePlanesFromBriefing(List<CrewPlanePayloadPairing> crewPlanes) throws PWCGException
+    private void updatePlanesFromBriefing(List<CrewVehiclePayloadPairing> crewPlanes) throws PWCGException
     {
         int numInFormation = 1;
-        for (CrewPlanePayloadPairing crewPlane : crewPlanes)
+        for (CrewVehiclePayloadPairing crewPlane : crewPlanes)
         {
             createPlaneBasedOnBriefingSelections(numInFormation, crewPlane);
             ++numInFormation;
@@ -51,7 +51,7 @@ public class BriefingFlightCrewPlaneUpdater
         playerFlight.getFlightPlanes().setPlanes(updatedPlaneSet);
     }
 
-    private void createPlaneBasedOnBriefingSelections(int numInFormation, CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private void createPlaneBasedOnBriefingSelections(int numInFormation, CrewVehiclePayloadPairing crewPlane) throws PWCGException
     {
         PlaneMcu plane = null;
         if (numInFormation == 1)
@@ -73,29 +73,29 @@ public class BriefingFlightCrewPlaneUpdater
         updatedPlaneSet.add(plane);
     }
 
-    private void setPayloadFromBriefing(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private void setPayloadFromBriefing(PlaneMcu plane, CrewVehiclePayloadPairing crewPlane) throws PWCGException
     {
-        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(plane.getType(), campaign.getDate());
+        IPlanePayloadFactory payloadfactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        IPlanePayload payload = payloadfactory.createPayload(plane.getType(), campaign.getDate());
         payload.setSelectedPayloadId(crewPlane.getPayloadId());
         plane.setPlanePayload(payload);
     }
 
-    private void setModificationsFromBriefing(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private void setModificationsFromBriefing(PlaneMcu plane, CrewVehiclePayloadPairing crewPlane) throws PWCGException
     {
         IPlanePayload payload = plane.getPlanePayload();
         payload.clearModifications();
 
-        PayloadElementManager payloadElementManager = new PayloadElementManager();
+        PlanePayloadElementManager payloadElementManager = new PlanePayloadElementManager();
         for (String modificationDescription : crewPlane.getModifications())
         {
-        	PayloadElement modification = payloadElementManager.getPayloadElementByDescription(modificationDescription);
+        	PlanePayloadElement modification = payloadElementManager.getPayloadElementByDescription(modificationDescription);
         	payload.selectModification(modification);
         }        
         plane.setPlanePayload(payload);
     }
 
-    private void configurePlaneForCrew(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private void configurePlaneForCrew(PlaneMcu plane, CrewVehiclePayloadPairing crewPlane) throws PWCGException
     {
         AiSkillLevel aiLevel = crewPlane.getCrewMember().getAiSkillLevel();
         CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(playerFlight.getSquadron().getCompanyId());
@@ -115,7 +115,7 @@ public class BriefingFlightCrewPlaneUpdater
         plane.setAiLevel(aiLevel);
     }
 
-    private PlaneMcu updateFlightMember(CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private PlaneMcu updateFlightMember(CrewVehiclePayloadPairing crewPlane) throws PWCGException
     {
         PlaneMcu flightmember = playerFlight.getFlightPlanes().getFlightLeader();
         PlaneMcu updatedPlaneMcu = PlaneMCUFactory.createPlaneMcuByTankType(campaign, crewPlane.getPlane(), 
@@ -126,7 +126,7 @@ public class BriefingFlightCrewPlaneUpdater
         return updatedPlaneMcu;
     }
 
-    private PlaneMcu updateLeader(CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private PlaneMcu updateLeader(CrewVehiclePayloadPairing crewPlane) throws PWCGException
     {        
         PlaneMcu updatedFlightLeader = PlaneMCUFactory.createPlaneMcuByTankType(campaign, crewPlane.getPlane(), 
                 playerFlight.getFlightInformation().getCountry(), crewPlane.getCrewMember());

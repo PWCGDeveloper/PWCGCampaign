@@ -8,9 +8,9 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 
@@ -46,11 +46,11 @@ public class BriefingPayloadPicker
 
     private List<String> getAvailablePayloadTypes(String planeTypeName, Date date) throws PWCGException 
     {
-        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName, date);
+        IPlanePayloadFactory payloadfactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        IPlanePayload payload = payloadfactory.createPayload(planeTypeName, date);
         
         List<String> payloadDescriptions = new ArrayList<>();
-        for (PayloadDesignation payloadDesignation : payload.getAvailablePayloadDesignations(briefingData.getSelectedFlight()))
+        for (PlanePayloadDesignation payloadDesignation : payload.getAvailablePayloadDesignations(briefingData.getSelectedFlight()))
         {
             payloadDescriptions.add(payloadDesignation.getPayloadDescription());
         }
@@ -60,8 +60,8 @@ public class BriefingPayloadPicker
 
     private int getPayloadIndex(String planeTypeName, String payloadDescription, Date date) throws PWCGException
     {
-        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName, date);
+        IPlanePayloadFactory payloadfactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        IPlanePayload payload = payloadfactory.createPayload(planeTypeName, date);
         
         return payload.getPayloadIdByDescription(payloadDescription);
     }

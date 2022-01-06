@@ -14,7 +14,7 @@ public class MissionTime
     private String missionTime = "08:30:00";
     private List <String> missionTimes = new ArrayList<String>();
 
-    public MissionTime(Date date, boolean isNightFlight)
+    public MissionTime(Date date)
     {        
         List <SunriseSunset> sunriseSunsets = new ArrayList<SunriseSunset>();
         
@@ -42,6 +42,8 @@ public class MissionTime
         sunriseSunsets.add(new SunriseSunset(11, 21, 7, 45, 17, 30));
         sunriseSunsets.add(new SunriseSunset(12,  6, 7, 30, 17, 30));
 
+        // TODO TC add night missions
+        boolean isNightFlight = false;
         if (!isNightFlight)
         {
             SunriseSunset sunriseSunset = setDayMissionTimes(sunriseSunsets, date);

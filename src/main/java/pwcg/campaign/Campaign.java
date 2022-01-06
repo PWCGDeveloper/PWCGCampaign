@@ -215,7 +215,7 @@ public class Campaign
     public boolean isValidCampaignForProduct() throws PWCGException
     {
         Date campaignDate = campaignData.getDate();
-        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
             if (campaignDate.after(DateUtils.getDateYYYYMMDD("19300101")))
             {

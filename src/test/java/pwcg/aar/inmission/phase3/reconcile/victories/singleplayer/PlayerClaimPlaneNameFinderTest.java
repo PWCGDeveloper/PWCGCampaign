@@ -16,7 +16,7 @@ public class PlayerClaimPlaneNameFinderTest
 {
     public PlayerClaimPlaneNameFinderTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
     }
 
     @Test

@@ -9,13 +9,12 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.tank.EquippedTank;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
@@ -41,7 +40,7 @@ import pwcg.mission.mcu.group.WingmanMcuGroup;
  * @author Patrick Wilson
  *
  */
-public class PlaneMcu extends EquippedTank implements Cloneable
+public class PlaneMcu extends PlaneType implements Cloneable
 {
     private String name = "";
     private int index;
@@ -94,9 +93,9 @@ public class PlaneMcu extends EquippedTank implements Cloneable
         this.linkTrId = entity.getIndex();
     }
     
-    public void buildPlane(EquippedTank equippedPlane, ICountry country) throws PWCGException
+    public void buildPlane(PlaneType planeType, ICountry country) throws PWCGException
     {
-        equippedPlane.copyTemplate(this);
+        planeType.copyTemplate(this);
         this.setName(crewMember.getNameAndRank());
         this.setDesc(crewMember.getNameAndRank());
         startInAir = FlightStartPosition.START_IN_AIR;
@@ -170,35 +169,18 @@ public class PlaneMcu extends EquippedTank implements Cloneable
         }
     }
 
-    public boolean isActivePlayerPlane() throws PWCGException
-    {
-        boolean isPlayerPlane = false;
-        if (getAiLevel() == AiSkillLevel.PLAYER)
-        {
-            isPlayerPlane = true;
-        }
-
-        CrewMembers squadronMembers = campaign.getPersonnelManager().getAllActivePlayers();
-        if (squadronMembers.isCrewMember(serialNumber))
-        {
-            isPlayerPlane = true;
-        }
-
-        return isPlayerPlane;
-    }
-
     public IPlanePayload buildPlanePayload(IFlight flight, Date date) throws PWCGException
     {
-        IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        payload = payloadFactory.createPlanePayload(this.getType(), date);
+        IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        payload = payloadFactory.createPayload(this.getType(), date);
         payload.createWeaponsPayload(flight);
         return payload.copy();
     }
 
     public IPlanePayload buildStandardPlanePayload(Date date) throws PWCGException
     {
-        IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        payload = payloadFactory.createPlanePayload(this.getType(), date);
+        IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        payload = payloadFactory.createPayload(this.getType(), date);
         payload.createStandardWeaponsPayload();
         return payload.copy();
     }

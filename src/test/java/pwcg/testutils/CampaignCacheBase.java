@@ -95,27 +95,27 @@ public abstract class CampaignCacheBase implements ICampaignCache
         throw new PWCGException("No campaign found for profile " + profile.getKey());
     }
     
-    protected void addMoreCrewMembersForCoop(Campaign campaign, String name, String rank, int squadronId) throws PWCGException
+    protected void addMoreCrewMembersForCoop(Campaign campaign, String name, String rank, int companyId) throws PWCGException
     {
         AiCrewMemberRemovalChooser crewMemberRemovalChooser = new AiCrewMemberRemovalChooser(campaign);
-        CrewMember squadronMemberToReplace = crewMemberRemovalChooser.findAiCrewMemberToRemove(rank, squadronId);
+        CrewMember companyMemberToReplace = crewMemberRemovalChooser.findAiCrewMemberToRemove(rank, companyId);
         
         CampaignHumanCrewMemberHandler humanCrewMemberHandler = new CampaignHumanCrewMemberHandler(campaign);
         humanCrewMemberHandler.addNewCrewMember(
                 name, 
                 rank, 
-                squadronMemberToReplace.getSerialNumber(), 
-                squadronId);
+                companyMemberToReplace.getSerialNumber(), 
+                companyId);
     }
     
 	public static CampaignGeneratorModel makeCampaignModelForProfile(SquadronTestProfile profile) throws PWCGException
     {
-        CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
-        Company squadron = squadronManager.getCompany(profile.getSquadronId());
+        CompanyManager companyManager = PWCGContext.getInstance().getCompanyManager();
+        Company company = companyManager.getCompany(profile.getSquadronId());
         
         Date campaignDate = DateUtils.getDateYYYYMMDD(profile.getDateString());
-        ArmedService service = squadron.determineServiceForSquadron(campaignDate);
-        String squadronName = squadron.determineDisplayName(campaignDate);
+        ArmedService service = company.determineServiceForSquadron(campaignDate);
+        String companyName = company.determineDisplayName(campaignDate);
         
         IRankHelper rank = RankFactory.createRankHelper();
         String rankName = rank.getRankByService(2, service);
@@ -127,7 +127,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);
-        generatorModel.setSquadronName(squadronName);
+        generatorModel.setSquadronName(companyName);
         generatorModel.setCampaignMode(profile.getCampaignMode());
 
         return generatorModel;

@@ -20,7 +20,7 @@ public class CityNameBuilder
 {    
     public static void main(String[] args) throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
 
         CityNameBuilder jsonConverter = new CityNameBuilder();
         jsonConverter.getCityNames("Arras");

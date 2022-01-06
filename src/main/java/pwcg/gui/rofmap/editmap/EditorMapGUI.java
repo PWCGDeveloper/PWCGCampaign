@@ -223,9 +223,9 @@ public class EditorMapGUI extends MapGUI implements ActionListener
             addToMapGrid(mapGrid, FrontMapIdentifier.EAST1945_MAP);
             addToMapGrid(mapGrid, FrontMapIdentifier.BODENPLATTE_MAP);
         }
-        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        else if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            addToMapGrid(mapGrid, FrontMapIdentifier.ARRAS_MAP);
+            addToMapGrid(mapGrid, FrontMapIdentifier.STALINGRAD_MAP);
         }
         else
         {

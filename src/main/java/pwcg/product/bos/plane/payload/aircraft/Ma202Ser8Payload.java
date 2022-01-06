@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -21,12 +21,12 @@ public class Ma202Ser8Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-		setAvailablePayload(-1, "10", PayloadElement.ARMORED_WINDSCREEN);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "101", PayloadElement.T50_X2);
-		setAvailablePayload(2, "1001", PayloadElement.T100_X2);
-		setAvailablePayload(3, "10001", PayloadElement.BREDA_GUNPOD);
-		setAvailablePayload(4, "100001", PayloadElement.MG151_20_GUNPOD);
+		setAvailablePayload(-1, "10", PlanePayloadElement.ARMORED_WINDSCREEN);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "101", PlanePayloadElement.T50_X2);
+		setAvailablePayload(2, "1001", PlanePayloadElement.T100_X2);
+		setAvailablePayload(3, "10001", PlanePayloadElement.BREDA_GUNPOD);
+		setAvailablePayload(4, "100001", PlanePayloadElement.MG151_20_GUNPOD);
 	}
 
     @Override

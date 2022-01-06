@@ -81,7 +81,7 @@ public abstract class AARTestSetup
 
     protected void setupAARMocks() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         players = new ArrayList<>();
         players.add(player);
         

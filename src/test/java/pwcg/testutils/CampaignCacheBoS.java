@@ -30,31 +30,7 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
     @Override
     protected void loadCampaignProfiles() throws PWCGException
     {
-        makeProfile(SquadronTestProfile.REGIMENT_503_PROFILE);
-        makeProfile(SquadronTestProfile.REGIMENT_11_PROFILE);
-        makeProfile(SquadronTestProfile.REGIMENT_321_PROFILE);
-
-        makeProfile(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-        makeProfile(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-        makeProfile(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190);
-        makeProfile(SquadronTestProfile.JG_52_PROFILE_STALINGRAD);
-        makeProfile(SquadronTestProfile.JG_26_PROFILE_WEST);
-        makeProfile(SquadronTestProfile.JV44_PROFILE);
-        makeProfile(SquadronTestProfile.KG53_PROFILE);
-        makeProfile(SquadronTestProfile.KG53__STALINGRAD_PROFILE);
-        makeProfile(SquadronTestProfile.STG77_PROFILE);
-        makeProfile(SquadronTestProfile.STG77_KUBAN_PROFILE);
-        makeProfile(SquadronTestProfile.TG2_PROFILE);
-        
-        makeProfile(SquadronTestProfile.FG_362_PROFILE);
-        makeProfile(SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
-        makeProfile(SquadronTestProfile.FG_354_BODENPLATTE_PROFILE);
-        makeProfile(SquadronTestProfile.RAF_326_BODENPLATTE_PROFILE);
-        makeProfile(SquadronTestProfile.RAF_184_PROFILE);
         makeProfile(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
-        makeProfile(SquadronTestProfile.EAST1944_PROFILE);
-        makeProfile(SquadronTestProfile.EAST1945_PROFILE);
-
-        makeProfile(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE);        
+       makeProfile(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE);        
     }
 }

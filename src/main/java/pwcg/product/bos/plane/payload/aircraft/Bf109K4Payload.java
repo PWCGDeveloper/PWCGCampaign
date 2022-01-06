@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -37,11 +37,11 @@ public class Bf109K4Payload extends Bf109Payload implements IPlanePayload
     @Override
     protected void initialize()
 	{        
-        setAvailablePayload(-1, "10000", PayloadElement.DB605DC_ENGINE);        
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "101", PayloadElement.SC250_X1);
-        setAvailablePayload(2, "1001", PayloadElement.SC500_X1);
-        setAvailablePayload(3, "11", PayloadElement.MG151_20_GUNPOD);
+        setAvailablePayload(-1, "10000", PlanePayloadElement.DB605DC_ENGINE);        
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "101", PlanePayloadElement.SC250_X1);
+        setAvailablePayload(2, "1001", PlanePayloadElement.SC500_X1);
+        setAvailablePayload(3, "11", PlanePayloadElement.MG151_20_GUNPOD);
 	}
 
     @Override
@@ -110,7 +110,7 @@ public class Bf109K4Payload extends Bf109Payload implements IPlanePayload
     {
         if (getDate().after(db605cIntroDate))
         {
-            registerStockModification(PayloadElement.DB605DC_ENGINE);
+            registerStockModification(PlanePayloadElement.DB605DC_ENGINE);
         }
     }
 }

@@ -15,7 +15,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.crew.FlightCrewBuilder;
+import pwcg.mission.playerunit.crew.UnitCrewBuilder;
 
 public class PlaneMCUFactory
 {    
@@ -56,7 +56,7 @@ public class PlaneMCUFactory
 
 	private List<CrewMember> buildFlightCrews(int numPlanes) throws PWCGException 
 	{
-		FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
+		UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> crewsForFlight = flightCrewBuilder.createCrewAssignmentsForFlight(numPlanes);
 		return crewsForFlight;
 	}

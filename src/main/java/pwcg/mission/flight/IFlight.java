@@ -3,7 +3,7 @@ package pwcg.mission.flight;
 import java.io.BufferedWriter;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.company.Company;
+import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
@@ -38,22 +38,13 @@ public interface IFlight
     IVirtualWaypointPackage getVirtualWaypointPackage();
 
     int getFlightId();
-        
-    Company getSquadron();
-    
+            
     FlightTypes getFlightType();
-
-    boolean isPlayerFlight();
-
-    double getClosestContactWithPlayerDistance();
     
     int getFlightCruisingSpeed();
-
-    void overrideFlightCruisingSpeedForEscort(int cruisingSpeed);
     
     TargetDefinition getTargetDefinition();
 
-    void setAssociatedFlight(IFlight associatedFlight);
+    ICountry getCountry();
 
-    IFlight getAssociatedFlight();
 }

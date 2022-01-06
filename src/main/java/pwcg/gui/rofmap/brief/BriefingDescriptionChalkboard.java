@@ -23,7 +23,7 @@ import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescriptionFactory;
-import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
+import pwcg.mission.playerunit.crew.CrewVehiclePayloadPairing;
 
 public class BriefingDescriptionChalkboard extends ImageResizingPanel
 {
@@ -120,7 +120,7 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
     {
         BriefingFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
         StringBuffer assignedCrewMembersBuffer = new StringBuffer ("Assigned CrewMembers:\n");
-        for (CrewPlanePayloadPairing crewPlane : activeMissionHandler.getCrews())
+        for (CrewVehiclePayloadPairing crewPlane : activeMissionHandler.getCrews())
         {
             assignedCrewMembersBuffer.append("    " + crewPlane.getCrewMember().getNameAndRank() + "\n");
         }

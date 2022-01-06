@@ -17,12 +17,12 @@ public class BehindEnemyLinesTest
 {
 	private BehindEnemyLines behindEnemyLines;
 	private Coordinate referenceCoordinateOnAlliedLines =  new Coordinate(128000.0, 0.0,80933.0);
-	private FrontMapIdentifier mapId = FrontMapIdentifier.ARRAS_MAP;
+	private FrontMapIdentifier mapId = FrontMapIdentifier.STALINGRAD_MAP;
 	
     @BeforeEach
     public void setupTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(mapId);
     	behindEnemyLines = new BehindEnemyLines(DateUtils.getDateYYYYMMDD("19170801"));
     }

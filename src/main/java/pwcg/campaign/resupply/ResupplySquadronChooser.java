@@ -64,7 +64,7 @@ public class ResupplySquadronChooser
     {
         for (ISquadronNeed squadronNeed : squadronNeeds.values())
         {
-            if (Company.isPlayerSquadron(campaign, squadronNeed.getSquadronId()))
+            if (Company.isPlayerCompany(campaign, squadronNeed.getSquadronId()))
             {
                 desperateSquadron(playerSquadronNeeds, squadronNeed, 4);
             }

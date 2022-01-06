@@ -275,7 +275,7 @@ public class AceManager
 		{
 		    if (aceClone.getCompanyId() > 0)
 		    {
-                if (Company.isPlayerSquadron(campaign, aceClone.getCompanyId()))
+                if (Company.isPlayerCompany(campaign, aceClone.getCompanyId()))
     			{
     				if (campaign.getPersonnelManager().getCompanyPersonnel(aceClone.getCompanyId()).isPlayerCommander())
     				{

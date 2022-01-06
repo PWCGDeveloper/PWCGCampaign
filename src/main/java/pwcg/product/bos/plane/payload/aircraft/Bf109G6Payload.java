@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -27,13 +27,13 @@ public class Bf109G6Payload extends Bf109Payload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-2, "100000", PayloadElement.GLASS_HEADREST);
-        setAvailablePayload(-1, "1000000", PayloadElement.REMOVE_HEADREST);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "1001", PayloadElement.SC50_X4);
-        setAvailablePayload(2, "10001", PayloadElement.SC250_X1);
-        setAvailablePayload(3, "101", PayloadElement.MG151_20_GUNPOD);
-        setAvailablePayload(4, "11", PayloadElement.MK108_30);
+        setAvailablePayload(-2, "100000", PlanePayloadElement.GLASS_HEADREST);
+        setAvailablePayload(-1, "1000000", PlanePayloadElement.REMOVE_HEADREST);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "1001", PlanePayloadElement.SC50_X4);
+        setAvailablePayload(2, "10001", PlanePayloadElement.SC250_X1);
+        setAvailablePayload(3, "101", PlanePayloadElement.MG151_20_GUNPOD);
+        setAvailablePayload(4, "11", PlanePayloadElement.MK108_30);
 	}
 
     @Override
@@ -121,7 +121,7 @@ public class Bf109G6Payload extends Bf109Payload implements IPlanePayload
     }
     
     @Override
-    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    protected List<PlanePayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
     {
         List<Integer>availablePayloads = new ArrayList<>();
         List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 2, 3);

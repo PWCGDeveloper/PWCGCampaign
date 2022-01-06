@@ -61,7 +61,7 @@ public class CampaignAwardsGeneratorTest
     @BeforeEach
     public void setupTest() throws PWCGException
     {        
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);        
 
         Mockito.when(aarContext.getPersonnelAcheivements()).thenReturn(personnelAcheivements);

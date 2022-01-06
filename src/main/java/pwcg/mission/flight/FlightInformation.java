@@ -5,14 +5,8 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
-import pwcg.campaign.company.Company;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
-import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.utils.IndexGenerator;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
@@ -28,9 +22,8 @@ public class FlightInformation
     private Mission mission;
     private FlightTypes flightType;
     private List<PlaneMcu> planes;
-    private Company squadron;
+    private ICountry country;
     private Coordinate targetSearchStartLocation;
-    private NecessaryFlightType necessaryFlightType = NecessaryFlightType.NONE;
     private TargetType roleBasedTarget = TargetType.TARGET_NONE;
 
     private boolean isAiTriggeredTakeoff = false;
@@ -38,16 +31,10 @@ public class FlightInformation
     private int flightCruisingSpeed = 0;
     private int formationType = McuFormation.FORMATION_V;
 
-    public FlightInformation(Mission mission, NecessaryFlightType necessaryFlightType)
+    public FlightInformation(Mission mission)
     {
         this.mission = mission;
         this.campaign = mission.getCampaign();
-        this.necessaryFlightType = necessaryFlightType;
-    }
-
-    public List<CrewMember> getParticipatingPlayersForFlight()
-    {
-        return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getCompanyId());
     }
 
     public Mission getMission()
@@ -55,46 +42,10 @@ public class FlightInformation
         return mission;
     }
 
-    public Company getSquadron()
-    {
-        return squadron;
-    }
-
-    public void setSquadron(Company squadron)
-    {
-        this.squadron = squadron;
-    }
-
-    public FlightTypes getFlightType()
-    {
-        return flightType;
-    }
-
     public void setFlightType(FlightTypes flightType)
     {
         this.flightType = flightType;
         this.formationType = FormationTypeCalculator.calculateFormationType(flightType);
-    }
-    
-    public boolean isNecessaryFlight()
-    {
-        return (necessaryFlightType != NecessaryFlightType.NONE);
-    }
-
-
-    public boolean isPlayerFlight()
-    {
-        return (necessaryFlightType == NecessaryFlightType.PLAYER_FLIGHT);
-    }
-
-    public boolean isOpposingFlight()
-    {
-        return (necessaryFlightType == NecessaryFlightType.OPPOSING_FLIGHT);
-    }
-
-    public List<CrewMember> getFlightParticipatingPlayers()
-    {
-        return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getCompanyId());
     }
 
     public void setCampaign(Campaign campaign)
@@ -114,54 +65,12 @@ public class FlightInformation
 
     public boolean isVirtual()
     {
-        boolean isVirtual = true;
-        if (necessaryFlightType == NecessaryFlightType.PLAYER_ESCORT ||
-            necessaryFlightType == NecessaryFlightType.PLAYER_ESCORTED ||
-            necessaryFlightType == NecessaryFlightType.PLAYER_FLIGHT ||
-            isAiTriggeredTakeoff)
-        {
-            isVirtual = false;
-        }
-        return isVirtual;
+        return true;
     }
 
     public boolean isAirStart() throws PWCGException
     {
-        boolean airstart = true;
-        if (necessaryFlightType == NecessaryFlightType.PLAYER_FLIGHT)
-        {
-            ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-            if (configManager.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey) != 1)
-            {
-                airstart = false;
-            }
-        }
-        if (isAiTriggeredTakeoff)
-        {
-            airstart = false;
-        }
-        return airstart;
-    }
-
-    public boolean isParkedStart() throws PWCGException
-    {
-        boolean parkedStart = false;
-        if (necessaryFlightType == NecessaryFlightType.PLAYER_FLIGHT)
-        {
-            ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-            if (configManager.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey) == 2)
-            {
-                parkedStart = true;
-            }
-        }
-        return parkedStart;
-    }
-
-    public Airfield getDepartureAirfield() throws PWCGException
-    {
-        String airfieldName = squadron.determineCurrentAirfieldName(campaign.getDate());
-        Airfield departureAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
-        return departureAirfield;
+        return true;
     }
 
     public void calculateAltitude() throws PWCGException
@@ -226,25 +135,9 @@ public class FlightInformation
         this.flightCruisingSpeed = cruisingSpeed;
     }
 
-
     public ICountry getCountry()
     {
-        return squadron.getCountry();
-    }
-
-    public Coordinate getFlightHomePosition() throws PWCGException
-    {
-        return squadron.determineCurrentPosition(campaign.getDate()).copy();
-    }
-
-    public String getAirfieldName()
-    {
-        return squadron.determineCurrentAirfieldName(campaign.getDate());
-    }
-
-    public Airfield getAirfield()
-    {
-        return squadron.determineCurrentAirfieldCurrentMap(campaign.getDate());
+        return country;
     }
 
     public int getFlightId()
@@ -267,8 +160,9 @@ public class FlightInformation
         this.isAiTriggeredTakeoff = isAiTriggeredTakeoff;
     }
 
-    public NecessaryFlightType getNecessaryFlightType()
+    //TODO TC used to be squadron - need a name for the flight
+    public String getName()
     {
-        return necessaryFlightType;
+        return null;
     }
 }

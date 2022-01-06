@@ -10,29 +10,29 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.objective.MissionObjectiveFactory;
 import pwcg.mission.options.MissionOptions;
 import pwcg.mission.options.MissionWeather;
 import pwcg.mission.options.WindLayer;
+import pwcg.mission.playerunit.PlayerUnit;
+import pwcg.mission.playerunit.objective.MissionObjectiveFactory;
 
 public class MissionDescriptionSinglePlayer implements IMissionDescription 
 {
     private Mission mission;
     private Campaign campaign;
-    private IFlight playerFlight;
+    private PlayerUnit playerUnit;
     
 	private String author = "Brought to you by PWCGCampaign";
 	private String title = "";
     private String singlePlayerHtmlTemplate = 
-                    "<br><SQUADRON> stationed at <AIRFIELD>" +
+                    "<br><COMPANY> stationed near <TOWN>" +
                     "<br> <DATE>" +
-                    "<br>Primary Objective <OBJECTIVE>" +
-                    "<br> <ESCORTED_BY>";
+                    "<br>Primary Objective <OBJECTIVE>";
     
 	private String descSinglePlayerTemplate = 
 		"Aircraft  <AIRCRAFT>\n" +
-		"Squadron  <SQUADRON>\n" +
-		"Airbase  <AIRFIELD>\n" +
+		"Squadron  <COMPANY>\n" +
+		"Airbase  <TOWN>\n" +
         "Date  <DATE>\n" +
         "Time  <TIME>\n" +
 		"\n" +
@@ -42,10 +42,8 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 		"\n" +
 		"Primary Objective \n" +
         "    <OBJECTIVE>\n" +
-        "\n" +
-        "<ESCORTED_BY>\n" +
-		"\n";
-
+        "\n";
+    
 	private String campaignDateString = "";
 		
 	private ArrayList<String> enemyIntList = new ArrayList<String>();
@@ -53,11 +51,11 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	private ArrayList<String> enemyIntHtmlList = new ArrayList<String>();
 	private ArrayList<String> friendlyIntHtmlList = new ArrayList<String>();
 	
-    public MissionDescriptionSinglePlayer (Campaign campaign, Mission mission, IFlight  playerFlight)
+    public MissionDescriptionSinglePlayer (Campaign campaign, Mission mission, PlayerUnit  playerUnit)
     {
         this.mission = mission;
         this.campaign = campaign;
-        this.playerFlight = playerFlight;
+        this.playerUnit = playerUnit;
         campaignDateString = DateUtils.getDateStringDashDelimitedYYYYMMDD(campaign.getDate());
     }
 
@@ -70,12 +68,11 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
         MissionOptions missionOptions = mission.getMissionOptions();
         setMissionDateTime(DateUtils.getDateAsMissionFileFormat(campaign.getDate()), missionOptions.getMissionTime().getMissionTime());
 
-        setAircraft(playerFlight.getFlightPlanes().getFlightLeader().getDisplayName());
-        setAirfield(playerFlight.getFlightInformation().getAirfieldName());
-        setObjective(MissionObjectiveFactory.formMissionObjective(playerFlight, campaign.getDate()));
-        setEscortedBy(playerFlight);
-        setSquadron(playerFlight.getSquadron().determineDisplayName(campaign.getDate()));
-        buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightType().toString());
+        setAircraft(playerUnit.getLeadVehicle().getDisplayName());
+        setTown(playerUnit.getUnitInformation().getBase());
+        setObjective(MissionObjectiveFactory.formMissionObjective(playerUnit, campaign.getDate()));
+        setSquadron(playerUnit.getCompany().determineDisplayName(campaign.getDate()));
+        buildTitleDescription(campaign.getCampaignData().getName(), playerUnit.getFlightType().toString());
 
         HashMap<String, IFlight> squadronMap = new HashMap<String, IFlight>();
         for (IFlight flight : mission.getFlights().getAiFlights())
@@ -85,7 +82,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 
         for (IFlight flight : squadronMap.values())
         {
-            setFlight(playerFlight.getSquadron().getCountry(), flight);
+            setFlight(playerUnit.getSquadron().getCountry(), flight);
         }
         
         return descSinglePlayerTemplate;
@@ -98,14 +95,14 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	
 	public void setSquadron(String replacement)
 	{
-		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<SQUADRON>", replacement);
-		singlePlayerHtmlTemplate = replace(singlePlayerHtmlTemplate, "<SQUADRON>", replacement);
+		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<COMPANY>", replacement);
+		singlePlayerHtmlTemplate = replace(singlePlayerHtmlTemplate, "<COMPANY>", replacement);
 	}
 	
-	public void setAirfield(String replacement)
+	public void setTown(String replacement)
 	{
-		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<AIRFIELD>", replacement);
-		singlePlayerHtmlTemplate = replace(singlePlayerHtmlTemplate, "<AIRFIELD>", replacement);
+		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<TOWN>", replacement);
+		singlePlayerHtmlTemplate = replace(singlePlayerHtmlTemplate, "<TOWN>", replacement);
 	}
 	
 	private void setMissionDateTime(String missionDate, String missionTime)

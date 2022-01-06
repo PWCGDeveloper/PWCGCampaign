@@ -36,7 +36,7 @@ public class TargetDefinitionBuilderTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         
-        IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
+        IFlight playerFlight = mission.getFlights().getPlayerUnits().get(0);
 
         TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation()); 
         TargetDefinition targetDefinition =  targetDefinitionBuilder.buildTargetDefinition();

@@ -34,7 +34,7 @@ public class AARRandomAssignmentCalculatorTest
 
     public AARRandomAssignmentCalculatorTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
     }
 
     @BeforeEach

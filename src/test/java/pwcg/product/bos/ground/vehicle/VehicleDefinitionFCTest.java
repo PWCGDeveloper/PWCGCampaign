@@ -23,7 +23,7 @@ public class VehicleDefinitionFCTest
     @BeforeEach
     public void setupTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         allVehiclesDefinitions = VehicleDefinitionIOJson.readJson();
     }
 

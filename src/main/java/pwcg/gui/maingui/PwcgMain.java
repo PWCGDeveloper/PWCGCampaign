@@ -65,7 +65,7 @@ public class PwcgMain
             }
             else if (args[0].equals("FC"))
             {
-                PWCGContext.setProduct(PWCGProduct.FC);
+                PWCGContext.setProduct(PWCGProduct.BOS);
                 PWCGLogger.log(LogLevel.INFO, "Running FC");
             }
         }

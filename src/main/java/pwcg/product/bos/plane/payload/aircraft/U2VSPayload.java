@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
@@ -19,9 +19,9 @@ public class U2VSPayload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-1, "10", PayloadElement.U2_GUNNER);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "1001", PayloadElement.FAB_U2VS);
+        setAvailablePayload(-1, "10", PlanePayloadElement.U2_GUNNER);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "1001", PlanePayloadElement.FAB_U2VS);
 	}
 
     @Override

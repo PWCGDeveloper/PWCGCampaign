@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -20,22 +20,22 @@ public class He111H6Payload extends PlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-2, "10", PayloadElement.BELLY_TURRET);
-        setAvailablePayload(-1, "100", PayloadElement.NOSE_TURRET);
-		setAvailablePayload(0, "1", PayloadElement.SC50_X16);
-		setAvailablePayload(1, "1", PayloadElement.SC250_X4);
-		setAvailablePayload(2, "1", PayloadElement.SC500_X1, PayloadElement.SC50_X16);
-        setAvailablePayload(3, "1", PayloadElement.SC500_X1, PayloadElement.SC250_X4);
-		setAvailablePayload(4, "1001", PayloadElement.SC1000_X2);
-		setAvailablePayload(5, "1001", PayloadElement.SC1000_X1, PayloadElement.SC50_X16);
-		setAvailablePayload(6, "1001", PayloadElement.SC1000_X1, PayloadElement.SC250_X4);
-		setAvailablePayload(7, "10001", PayloadElement.SC1800_X2);
-		setAvailablePayload(8, "10001", PayloadElement.SC1800_X1, PayloadElement.SC50_X16);
-        setAvailablePayload(9, "10001", PayloadElement.SC1800_X1, PayloadElement.SC250_X4);
-        setAvailablePayload(10, "11001", PayloadElement.SC1800_X1, PayloadElement.SC1000_X1);
-		setAvailablePayload(11, "100001", PayloadElement.SC2500_X1);
-		setAvailablePayload(12, "101001", PayloadElement.SC2500_X1, PayloadElement.SC1000_X1);
-        setAvailablePayload(13, "1", PayloadElement.EMPTY);
+        setAvailablePayload(-2, "10", PlanePayloadElement.BELLY_TURRET);
+        setAvailablePayload(-1, "100", PlanePayloadElement.NOSE_TURRET);
+		setAvailablePayload(0, "1", PlanePayloadElement.SC50_X16);
+		setAvailablePayload(1, "1", PlanePayloadElement.SC250_X4);
+		setAvailablePayload(2, "1", PlanePayloadElement.SC500_X1, PlanePayloadElement.SC50_X16);
+        setAvailablePayload(3, "1", PlanePayloadElement.SC500_X1, PlanePayloadElement.SC250_X4);
+		setAvailablePayload(4, "1001", PlanePayloadElement.SC1000_X2);
+		setAvailablePayload(5, "1001", PlanePayloadElement.SC1000_X1, PlanePayloadElement.SC50_X16);
+		setAvailablePayload(6, "1001", PlanePayloadElement.SC1000_X1, PlanePayloadElement.SC250_X4);
+		setAvailablePayload(7, "10001", PlanePayloadElement.SC1800_X2);
+		setAvailablePayload(8, "10001", PlanePayloadElement.SC1800_X1, PlanePayloadElement.SC50_X16);
+        setAvailablePayload(9, "10001", PlanePayloadElement.SC1800_X1, PlanePayloadElement.SC250_X4);
+        setAvailablePayload(10, "11001", PlanePayloadElement.SC1800_X1, PlanePayloadElement.SC1000_X1);
+		setAvailablePayload(11, "100001", PlanePayloadElement.SC2500_X1);
+		setAvailablePayload(12, "101001", PlanePayloadElement.SC2500_X1, PlanePayloadElement.SC1000_X1);
+        setAvailablePayload(13, "1", PlanePayloadElement.EMPTY);
 	}
 
     @Override

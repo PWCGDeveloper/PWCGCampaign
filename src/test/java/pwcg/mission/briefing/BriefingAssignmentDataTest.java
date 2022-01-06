@@ -9,7 +9,7 @@ import org.mockito.quality.Strictness;
 
 import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
+import pwcg.mission.playerunit.crew.CrewVehiclePayloadPairing;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -33,8 +33,8 @@ public class BriefingAssignmentDataTest extends BriefingDataInitializerTest
         assert(briefingAssignmentData.getCrews().size() == 2);
         assert(briefingAssignmentData.getUnassignedCrewMembers().size() == 2);
         
-        CrewPlanePayloadPairing crewPlane1 = briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
-        CrewPlanePayloadPairing crewPlane2 = briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
+        CrewVehiclePayloadPairing crewPlane1 = briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
+        CrewVehiclePayloadPairing crewPlane2 = briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
         
         assert(crewPlane1.getPlane().getType().equals("bf109f2"));
         assert(crewPlane2.getPlane().getType().equals("bf109f2"));
@@ -49,8 +49,8 @@ public class BriefingAssignmentDataTest extends BriefingDataInitializerTest
     {             
         briefingAssignmentData.assignCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+3, SerialNumber.PLANE_STARTING_SERIAL_NUMBER+3);
 
-        CrewPlanePayloadPairing crewPlane1 = briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
-        CrewPlanePayloadPairing crewPlane2 = briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
+        CrewVehiclePayloadPairing crewPlane1 = briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
+        CrewVehiclePayloadPairing crewPlane2 = briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
 
         assert(briefingAssignmentData.getCrews().size() == 3);
         assert(briefingAssignmentData.getUnassignedCrewMembers().size() == 1);
@@ -67,7 +67,7 @@ public class BriefingAssignmentDataTest extends BriefingDataInitializerTest
     {             
         briefingAssignmentData.unassignCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
         
-        CrewPlanePayloadPairing crewPlane1 = briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
+        CrewVehiclePayloadPairing crewPlane1 = briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
 
         assert(briefingAssignmentData.getCrews().size() == 1);
         assert(briefingAssignmentData.getUnassignedCrewMembers().size() == 3);

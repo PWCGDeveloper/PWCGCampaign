@@ -9,19 +9,11 @@ import pwcg.core.utils.CampaignRemover;
 public class CampaignCache
 {
     private static ICampaignCache bosCampaignCache = new CampaignCacheBoS();
-    private static ICampaignCache fcCampaignCache = new CampaignCacheFC();
 
     public static Campaign makeCampaign(SquadronTestProfile campaignProfile) throws PWCGException
     {
         Campaign campaign;
-        if (PWCGContext.getProduct() == PWCGProduct.FC)
-        {
-            campaign = fcCampaignCache.makeCampaignForceCreation(campaignProfile);
-        }
-        else
-        {
-            campaign = bosCampaignCache.makeCampaignForceCreation(campaignProfile);
-        }
+        campaign = bosCampaignCache.makeCampaignForceCreation(campaignProfile);
         
         PWCGContext.getInstance().setCampaign(campaign);
         PWCGContext.getInstance().changeContext(campaignProfile.getMapIdentifier());

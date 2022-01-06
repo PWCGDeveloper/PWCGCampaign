@@ -23,7 +23,7 @@ public class SquadronIOJsonTest
     @Test
     public void readJsonRoFSquadronsTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         List<Company> squadrons = CompanyIOJson.readJson();
         Assertions.assertTrue (squadrons.size() > 0);
 

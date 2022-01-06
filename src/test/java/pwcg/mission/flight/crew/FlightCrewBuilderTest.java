@@ -21,6 +21,7 @@ import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.NecessaryFlightType;
+import pwcg.mission.playerunit.crew.UnitCrewBuilder;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -49,7 +50,7 @@ public class FlightCrewBuilderTest
         Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.KG53_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
-        FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
+        UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
         List<CrewMember> players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
@@ -74,7 +75,7 @@ public class FlightCrewBuilderTest
         Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(20111052);
         flightInformation.setSquadron(squadron);
 
-        FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
+        UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
         List<CrewMember> players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();

@@ -5,18 +5,10 @@ import java.util.List;
 
 public enum FlightTypes
 {
-    PATROL(FlightTypeCategory.FIGHTER), 
-    OFFENSIVE(FlightTypeCategory.FIGHTER), 
-    INTERCEPT(FlightTypeCategory.FIGHTER), 
     LOW_ALT_CAP(FlightTypeCategory.FIGHTER), 
     LOW_ALT_PATROL(FlightTypeCategory.FIGHTER), 
+
     GROUND_ATTACK(FlightTypeCategory.ATTACK), 
-    GROUND_HUNT(FlightTypeCategory.ATTACK),
-    TRAIN_BUST(FlightTypeCategory.ATTACK),
-    TANK_BUST(FlightTypeCategory.ATTACK),
-    ANTI_SHIPPING(FlightTypeCategory.ATTACK),
-    RAID(FlightTypeCategory.ATTACK),
-    BOMB(FlightTypeCategory.BOMB), 
     LOW_ALT_BOMB(FlightTypeCategory.BOMB), 
     DIVE_BOMB(FlightTypeCategory.BOMB),
     CARGO_DROP(FlightTypeCategory.TRANSPORT), 
@@ -199,15 +191,4 @@ public enum FlightTypes
 
         return false;
     }
-
-    public static boolean isPlayerLead(FlightTypes flightType)
-    {
-        if (flightType == FlightTypes.GROUND_HUNT)            
-            {
-                return true;
-            }
-            
-        return false;
-    }
-
 }

@@ -31,14 +31,6 @@ public class AssaultGroundUnitFactory
         return mgUnit;
     }
 
-    public IGroundUnit createMachineGunFlareUnit (GroundUnitInformation groundUnitInformation, IFlight triggeringFlight) throws PWCGException 
-    {
-        IGroundUnit pillBoxUnit = new GroundMachineGunFlareUnit(groundUnitInformation, triggeringFlight);
-        pillBoxUnit.createGroundUnit();
-        return pillBoxUnit;
-    }
-    
-
     public IGroundUnit createAssaultArtilleryUnit (GroundUnitInformation groundUnitInformation) throws PWCGException
     {
         IGroundUnit artilleryUnit = new GroundArtilleryBattery(groundUnitInformation);

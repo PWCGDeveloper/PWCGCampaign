@@ -26,7 +26,7 @@ public class CampaignEquipmentArchtypeChangeHandlerTest
     @Test
     public void testArchtypeReplacement() throws PWCGException 
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE);
         assertTankArchType(campaign, "bf109");
         assertNotTankArchType(campaign, "fw190");
         int daysOff = DateUtils.daysDifference(campaign.getDate(), DateUtils.getDateYYYYMMDD("19420514"));
@@ -39,7 +39,7 @@ public class CampaignEquipmentArchtypeChangeHandlerTest
     @Test
     public void testArchtypeNoReplacement() throws PWCGException 
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE);
         assertTankArchType(campaign, "bf109");
         assertNotTankArchType(campaign, "fw190");
         int daysOff = DateUtils.daysDifference(campaign.getDate(), DateUtils.getDateYYYYMMDD("19420513"));

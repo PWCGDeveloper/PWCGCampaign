@@ -51,7 +51,7 @@ public class ClaimResolverTest
     @BeforeEach
     public void setupTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
 
         verifiedVictories = new ConfirmedVictories();
         playerDeclarationSet = new PlayerDeclarations();

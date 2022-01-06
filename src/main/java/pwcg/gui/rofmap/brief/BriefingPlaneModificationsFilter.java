@@ -5,17 +5,17 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
+import pwcg.mission.playerunit.crew.CrewVehiclePayloadPairing;
 
 public class BriefingPlaneModificationsFilter
 {
-    private CrewPlanePayloadPairing crewPlane;
+    private CrewVehiclePayloadPairing crewPlane;
     
-    public BriefingPlaneModificationsFilter(CrewPlanePayloadPairing crewPlane)
+    public BriefingPlaneModificationsFilter(CrewVehiclePayloadPairing crewPlane)
     {
         this.crewPlane = crewPlane;
     }
@@ -25,10 +25,10 @@ public class BriefingPlaneModificationsFilter
     {
         List<String> planeModifications = new ArrayList<>();
 
-        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(crewPlane.getPlane().getType(), date);
+        IPlanePayloadFactory payloadfactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        IPlanePayload payload = payloadfactory.createPayload(crewPlane.getPlane().getType(), date);
         
-        for (PayloadDesignation payloadDesignation : payload.getOptionalPayloadModifications())
+        for (PlanePayloadDesignation payloadDesignation : payload.getOptionalPayloadModifications())
         {
             planeModifications.add(payloadDesignation.getPayloadDescription());
         }

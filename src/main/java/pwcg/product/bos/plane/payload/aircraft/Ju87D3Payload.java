@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
@@ -42,19 +42,19 @@ public class Ju87D3Payload extends PlanePayload
     @Override
     protected void initialize()
 	{
-        setAvailablePayload(-2, "1000", PayloadElement.EXTRA_ARMOR);
-        setAvailablePayload(-1, "10", PayloadElement.SIREN);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-		setAvailablePayload(1, "1", PayloadElement.SC250_X1, PayloadElement.SD70_X4);
-        setAvailablePayload(2, "1", PayloadElement.SC500_X1);
-        setAvailablePayload(3, "1", PayloadElement.SC500_X1, PayloadElement.SD70_X4);
-        setAvailablePayload(4, "1", PayloadElement.SC500_X1, PayloadElement.SC250_X2);
-		setAvailablePayload(5, "1", PayloadElement.SC250_X3);
-		setAvailablePayload(6, "1", PayloadElement.SC1000_X1);
-		setAvailablePayload(7, "101", PayloadElement.SC1800_X1);
-		setAvailablePayload(9, "100001", PayloadElement.BK37_AP_GUNPOD);
-		setAvailablePayload(10, "100001", PayloadElement.BK37_HE_GUNPOD);
-        setAvailablePayload(11, "1", PayloadElement.EMPTY);
+        setAvailablePayload(-2, "1000", PlanePayloadElement.EXTRA_ARMOR);
+        setAvailablePayload(-1, "10", PlanePayloadElement.SIREN);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+		setAvailablePayload(1, "1", PlanePayloadElement.SC250_X1, PlanePayloadElement.SD70_X4);
+        setAvailablePayload(2, "1", PlanePayloadElement.SC500_X1);
+        setAvailablePayload(3, "1", PlanePayloadElement.SC500_X1, PlanePayloadElement.SD70_X4);
+        setAvailablePayload(4, "1", PlanePayloadElement.SC500_X1, PlanePayloadElement.SC250_X2);
+		setAvailablePayload(5, "1", PlanePayloadElement.SC250_X3);
+		setAvailablePayload(6, "1", PlanePayloadElement.SC1000_X1);
+		setAvailablePayload(7, "101", PlanePayloadElement.SC1800_X1);
+		setAvailablePayload(9, "100001", PlanePayloadElement.BK37_AP_GUNPOD);
+		setAvailablePayload(10, "100001", PlanePayloadElement.BK37_HE_GUNPOD);
+        setAvailablePayload(11, "1", PlanePayloadElement.EMPTY);
 	}
 
     @Override
@@ -147,7 +147,7 @@ public class Ju87D3Payload extends PlanePayload
     }
     
     @Override
-    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    protected List<PlanePayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
     {
         List<Integer>availablePayloads = new ArrayList<>();
         List<Integer>bk37Payloads = Arrays.asList(9, 10);

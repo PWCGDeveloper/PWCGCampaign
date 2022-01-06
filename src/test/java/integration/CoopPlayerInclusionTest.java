@@ -157,13 +157,13 @@ public class CoopPlayerInclusionTest
         participatingPlayers.addCrewMember(getCrewMemberByName("Russian Il"));
 
         generateMission(participatingPlayers, FlightTypes.ANY);
-        assert(mission.getFlights().getPlayerFlights().size() == 4);
+        assert(mission.getFlights().getPlayerUnits().size() == 4);
         verifyEnemyFlights();
         boolean germanFighterFound = false;
         boolean germanBomberFound = false;
         boolean russianFighterFound = false;
         boolean russianBomberFound = false;
-        for (IFlight flight : mission.getFlights().getPlayerFlights())
+        for (IFlight flight : mission.getFlights().getPlayerUnits())
         {
             Assertions.assertTrue (flight.isPlayerFlight() == true);
             Assertions.assertTrue (flight.getFlightInformation().isAirStart() == false);
@@ -210,12 +210,12 @@ public class CoopPlayerInclusionTest
         participatingPlayers.addCrewMember(getCrewMemberByName("Russian Fighter"));
 
         generateMission(participatingPlayers, FlightTypes.ANY);
-        assert(mission.getFlights().getPlayerFlights().size() == 2);
+        assert(mission.getFlights().getPlayerUnits().size() == 2);
         verifyEnemyFlights();
         boolean germanFighterFound = false;
         boolean germanFighter2Found = false;
         boolean russianFighterFound = false;
-        for (IFlight flight : mission.getFlights().getPlayerFlights())
+        for (IFlight flight : mission.getFlights().getPlayerUnits())
         {
             Assertions.assertTrue (flight.isPlayerFlight() == true);
             Assertions.assertTrue (flight.getFlightInformation().isAirStart() == false);
@@ -259,7 +259,7 @@ public class CoopPlayerInclusionTest
     
     private int verifyEnemyFlights() throws PWCGException 
     {
-        Side enemySide = mission.getFlights().getPlayerFlights().get(0).getSquadron().determineEnemySide();
+        Side enemySide = mission.getFlights().getPlayerUnits().get(0).getSquadron().determineEnemySide();
         
         boolean enemyFlightFound = false;
         int numEnemyFlights = 0;
@@ -274,11 +274,11 @@ public class CoopPlayerInclusionTest
         
         if (!enemyFlightFound)
         {
-            System.out.println("!!!!!No Enemy flights found for campaign " + coopCampaign.getCampaignData().getName() + "  Mission " + mission.getFlights().getPlayerFlights().get(0).getFlightType());
+            System.out.println("!!!!!No Enemy flights found for campaign " + coopCampaign.getCampaignData().getName() + "  Mission " + mission.getFlights().getPlayerUnits().get(0).getFlightType());
         }
         else
         {
-            System.out.println("Enemy flights found is " + numEnemyFlights + " for campaign " + coopCampaign.getCampaignData().getName() + "  Mission " + mission.getFlights().getPlayerFlights().get(0).getFlightType());
+            System.out.println("Enemy flights found is " + numEnemyFlights + " for campaign " + coopCampaign.getCampaignData().getName() + "  Mission " + mission.getFlights().getPlayerUnits().get(0).getFlightType());
         }
 
         assert(enemyFlightFound);

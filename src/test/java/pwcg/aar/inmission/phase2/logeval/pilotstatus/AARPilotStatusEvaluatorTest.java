@@ -166,7 +166,7 @@ public class AARCrewMemberStatusEvaluatorTest
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.CrewMemberInjuryKey)).thenReturn(4);
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
-        Mockito.when(missionHeader.getMapName()).thenReturn(FrontMapIdentifier.ARRAS_MAP.getMapName());
+        Mockito.when(missionHeader.getMapName()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP.getMapName());
 
         AARCrewMemberStatusEvaluator aarCrewMemberStatusEvaluator = new AARCrewMemberStatusEvaluator(campaign, pwcgMissionData, destroyedStatusEvaluator, logEventData, aarVehicleBuilder);
         aarCrewMemberStatusEvaluator.setAarCrewMemberStatusCapturedEvaluator(aarCrewMemberStatusCapturedEvaluator);

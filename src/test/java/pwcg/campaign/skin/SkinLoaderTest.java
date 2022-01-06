@@ -13,7 +13,7 @@ public class SkinLoaderTest
     @Test
     public void skinLoaderRoFTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         SkinLoader skinLoader = new SkinLoader();
         Map<String, SkinsForPlane> skinsForPlanes = skinLoader.loadPwcgSkins();
         

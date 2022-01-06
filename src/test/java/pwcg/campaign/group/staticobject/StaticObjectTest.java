@@ -27,7 +27,7 @@ public class StaticObjectTest {
     @Test
     public void staticObjectTestFC() throws PWCGException 
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
 
         runTest(fc_countries);
     }

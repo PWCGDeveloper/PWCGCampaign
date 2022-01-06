@@ -24,6 +24,7 @@ import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.NecessaryFlightType;
+import pwcg.mission.playerunit.crew.UnitCrewBuilder;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -66,7 +67,7 @@ public class FlightCrewBuilderCoopTest
         Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
-        FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
+        UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
         boolean playerFound = false;
@@ -115,7 +116,7 @@ public class FlightCrewBuilderCoopTest
         Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
-        FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
+        UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
         boolean player1Found = false;
@@ -175,7 +176,7 @@ public class FlightCrewBuilderCoopTest
         Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(10131132);
         flightInformation.setSquadron(squadron);
         
-        FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
+        UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
         boolean player1Found = false;

@@ -17,7 +17,7 @@ public class AirfieldHotSpotsIOJsonTest
     @Test
     public void readJsonTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         AirfieldHotSpotCollection airfieldHotSpotCollection = AirfieldHotSpotsIOJson.readJson();
         Assertions.assertTrue (airfieldHotSpotCollection.getAirfieldHotSpots().size() > 0);
     }

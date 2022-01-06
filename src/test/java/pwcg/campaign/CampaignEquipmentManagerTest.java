@@ -33,8 +33,8 @@ public class CampaignEquipmentManagerTest
     @Test
     public void makeAircraftForSquadronTest () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190);
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190.getSquadronId());
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190);
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getSquadronId());
         for (EquippedTank plane : equipment.getActiveEquippedTanks().values())
         {
             assert(plane.getType().contentEquals(BosPlaneAttributeMapping.FW190_A3.getTankType()));
@@ -48,8 +48,8 @@ public class CampaignEquipmentManagerTest
     {
         List<Integer> planesToReplace = new ArrayList<>();
         
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190);
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190.getSquadronId());
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190);
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getSquadronId());
         int count = 0;
         for (EquippedTank plane : equipment.getActiveEquippedTanks().values())
         {
@@ -61,7 +61,7 @@ public class CampaignEquipmentManagerTest
             ++count;
         }
         
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getSquadronId());
         TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
         TankType planeType = planeTypeFactory.getPlaneById("bf109f4");
         campaign.getEquipmentManager().actOnEquipmentRequest(squadron, planesToReplace, planeType.getDisplayName());

@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.mission.flight.FlightTypes;
@@ -20,12 +20,12 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.SC50_X4);
-        setAvailablePayload(2, "101", PayloadElement.SC250_X1);
-        setAvailablePayload(3, "1001", PayloadElement.SC500_X1);
-        setAvailablePayload(4, "10001", PayloadElement.MGFF_WING_GUNS);
-        setAvailablePayload(5, "100001", PayloadElement.MGFF_WING_GUNS_EXTRA_AMMO);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.SC50_X4);
+        setAvailablePayload(2, "101", PlanePayloadElement.SC250_X1);
+        setAvailablePayload(3, "1001", PlanePayloadElement.SC500_X1);
+        setAvailablePayload(4, "10001", PlanePayloadElement.MGFF_WING_GUNS);
+        setAvailablePayload(5, "100001", PlanePayloadElement.MGFF_WING_GUNS_EXTRA_AMMO);
 	}
 
     @Override
@@ -75,7 +75,7 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
     
     private int createStandardPayload()
     {
-        return  getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
+        return  getPayloadIdByDescription(PlanePayloadElement.STANDARD.getDescription());
     }
 
     private int selectSoftTargetPayload()

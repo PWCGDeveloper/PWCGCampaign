@@ -4,7 +4,6 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.factory.AirfieldObjectSelectorFactory;
 import pwcg.campaign.factory.HotSpotTranslatorFactory;
 import pwcg.campaign.group.airfield.Airfield;
@@ -16,7 +15,6 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
-import pwcg.mission.ground.builder.SearchLightBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.target.TargetDefinition;
@@ -53,32 +51,14 @@ public class AirfieldObjectPlacer
         List<HotSpot> hotSpots = hotSpotTranslator.getHotSpots();
         for (HotSpot hotSpot : hotSpots)
         {       
-            if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_SEARCHLIGHT)
-            {
-                addSearchlight(hotSpot);
-            }
-            else if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_AAA)
+            if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_AAA)
             {
                 addAAA(hotSpot);
-            }
-            else if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_PLANE)
-            {
-                addStaticPlane(hotSpot);
             }
             else 
             {
                 addAirfieldObject(hotSpot);
             }
-        }
-    }
-
-    private void addSearchlight(HotSpot hotSpot) throws PWCGException
-    {
-        if (!airfieldCountry.isNeutral())
-        {
-            SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
-            GroundUnitCollection searchLightGroup = groundUnitFactory.createOneSearchLight(airfieldCountry, hotSpot.getPosition());
-            mission.getGroundUnitBuilder().addAirfieldVehicle(searchLightGroup);
         }
     }
 
@@ -105,16 +85,6 @@ public class AirfieldObjectPlacer
             {
                 mission.getGroundUnitBuilder().addMissionAAA(aaaUnit);
             }
-        }
-    }
-
-    private void addStaticPlane(HotSpot hotSpot) throws PWCGException
-    {
-        AirfieldStaticPlanePlacer airfieldStaticPlane = new AirfieldStaticPlanePlacer();
-        IStaticPlane staticPlane = airfieldStaticPlane.getStaticPlane(airfield, airfieldCountry, campaign.getDate(), hotSpot.getPosition());
-        if (staticPlane != null)
-        {
-        	airfieldObjects.addStaticPlane(staticPlane);
         }
     }
 

@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -21,12 +21,12 @@ public class Yak1S69Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-1, "100000", PayloadElement.RPK10);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.ROS82_X2);
-        setAvailablePayload(5, "101", PayloadElement.ROS82_X6);
-        setAvailablePayload(9, "1001", PayloadElement.FAB50SV_X2);
-        setAvailablePayload(10, "10001", PayloadElement.FAB100M_X2);
+        setAvailablePayload(-1, "100000", PlanePayloadElement.RPK10);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.ROS82_X2);
+        setAvailablePayload(5, "101", PlanePayloadElement.ROS82_X6);
+        setAvailablePayload(9, "1001", PlanePayloadElement.FAB50SV_X2);
+        setAvailablePayload(10, "10001", PlanePayloadElement.FAB100M_X2);
 	}
 
     @Override

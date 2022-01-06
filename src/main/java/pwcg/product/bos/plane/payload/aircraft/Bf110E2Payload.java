@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.mission.flight.FlightTypes;
@@ -20,17 +20,17 @@ public class Bf110E2Payload extends PlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-2, "10", PayloadElement.ARMORED_WINDSCREEN);
-		setAvailablePayload(-1, "100", PayloadElement.EXTRA_ARMOR);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "1", PayloadElement.SC250_X2);
-        setAvailablePayload(2, "1", PayloadElement.SC250_X2, PayloadElement.SC50_X4);
-        setAvailablePayload(3, "1001", PayloadElement.SC50_X12);
-        setAvailablePayload(4, "10001", PayloadElement.SC500_X2);
-		setAvailablePayload(5, "10001", PayloadElement.SC500_X2, PayloadElement.SC50_X4);
-		setAvailablePayload(6, "100001", PayloadElement.SC1000_X1);
-		setAvailablePayload(7, "100001", PayloadElement.SC1000_X1, PayloadElement.SC250_X2);
-		setAvailablePayload(8, "10000", PayloadElement.SC1000_X1, PayloadElement.SC50_X4);
+        setAvailablePayload(-2, "10", PlanePayloadElement.ARMORED_WINDSCREEN);
+		setAvailablePayload(-1, "100", PlanePayloadElement.EXTRA_ARMOR);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "1", PlanePayloadElement.SC250_X2);
+        setAvailablePayload(2, "1", PlanePayloadElement.SC250_X2, PlanePayloadElement.SC50_X4);
+        setAvailablePayload(3, "1001", PlanePayloadElement.SC50_X12);
+        setAvailablePayload(4, "10001", PlanePayloadElement.SC500_X2);
+		setAvailablePayload(5, "10001", PlanePayloadElement.SC500_X2, PlanePayloadElement.SC50_X4);
+		setAvailablePayload(6, "100001", PlanePayloadElement.SC1000_X1);
+		setAvailablePayload(7, "100001", PlanePayloadElement.SC1000_X1, PlanePayloadElement.SC250_X2);
+		setAvailablePayload(8, "10000", PlanePayloadElement.SC1000_X1, PlanePayloadElement.SC50_X4);
 	}
 
     @Override
@@ -80,7 +80,7 @@ public class Bf110E2Payload extends PlanePayload
     
     private int createStandardPayload()
     {
-        return  getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
+        return  getPayloadIdByDescription(PlanePayloadElement.STANDARD.getDescription());
     }
 
     private int selectSoftTargetPayload()

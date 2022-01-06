@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.mission.flight.FlightTypes;
@@ -19,11 +19,11 @@ public class Ju52Payload extends PlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-1, "10000", PayloadElement.TURRET);
-        setAvailablePayload(0, "11", PayloadElement.CARGO);
-        setAvailablePayload(1, "101", PayloadElement.MAB_250);
-        setAvailablePayload(2, "1001", PayloadElement.PARATROOPERS);
-        setAvailablePayload(3, "1", PayloadElement.EMPTY);
+        setAvailablePayload(-1, "10000", PlanePayloadElement.TURRET);
+        setAvailablePayload(0, "11", PlanePayloadElement.CARGO);
+        setAvailablePayload(1, "101", PlanePayloadElement.MAB_250);
+        setAvailablePayload(2, "1001", PlanePayloadElement.PARATROOPERS);
+        setAvailablePayload(3, "1", PlanePayloadElement.EMPTY);
 	}
 
     @Override

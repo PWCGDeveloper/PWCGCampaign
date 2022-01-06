@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.mission.flight.FlightTypes;
@@ -20,14 +20,14 @@ public class Yak9TS1Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-5, "100000", PayloadElement.AMMO_COUNTER);
-        setAvailablePayload(-4, "10000", PayloadElement.PBP_1A);
-        setAvailablePayload(-3, "1000", PayloadElement.MIRROR);
-        setAvailablePayload(-2, "100", PayloadElement.LANDING_LIGHTS);
-        setAvailablePayload(-1, "10", PayloadElement.RPK10);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "1", PayloadElement.YAK937MM_AP);
-        setAvailablePayload(2, "1", PayloadElement.YAK937MM_HE);
+        setAvailablePayload(-5, "100000", PlanePayloadElement.AMMO_COUNTER);
+        setAvailablePayload(-4, "10000", PlanePayloadElement.PBP_1A);
+        setAvailablePayload(-3, "1000", PlanePayloadElement.MIRROR);
+        setAvailablePayload(-2, "100", PlanePayloadElement.LANDING_LIGHTS);
+        setAvailablePayload(-1, "10", PlanePayloadElement.RPK10);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "1", PlanePayloadElement.YAK937MM_AP);
+        setAvailablePayload(2, "1", PlanePayloadElement.YAK937MM_HE);
 	}
 
     @Override

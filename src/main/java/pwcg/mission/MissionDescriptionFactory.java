@@ -2,6 +2,7 @@ package pwcg.mission;
 
 import pwcg.campaign.Campaign;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.playerunit.PlayerUnit;
 
 public class MissionDescriptionFactory 
 {
@@ -13,13 +14,13 @@ public class MissionDescriptionFactory
 	    }
 	    else
 	    {
-            return new MissionDescriptionSinglePlayer(campaign, mission, mission.getFlights().getReferencePlayerFlight());
+            return new MissionDescriptionSinglePlayer(campaign, mission, mission.getPlayerUnits().getReferencePlayerUnit());
 	    }
 	}
 
-    public static IMissionDescription buildMissionDescription(Campaign campaign, Mission mission, IFlight selectedFlight)
+    public static IMissionDescription buildMissionDescription(Campaign campaign, Mission mission, PlayerUnit  playerUnit)
     {
-        return new MissionDescriptionSinglePlayer(campaign, mission, selectedFlight);
+        return new MissionDescriptionSinglePlayer(campaign, mission, playerUnit);
     }
 
 }

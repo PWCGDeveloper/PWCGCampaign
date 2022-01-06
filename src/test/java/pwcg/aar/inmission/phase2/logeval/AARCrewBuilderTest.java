@@ -48,7 +48,7 @@ public class AARCrewBuilderTest
     
     public AARCrewBuilderTest() throws PWCGException
     {        
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
 
         planeAiEntities = new HashMap <>();
         addPlane(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);

@@ -55,7 +55,7 @@ public class CountryFactory
         {
             countryFactory = new BoSCountryFactory();
         }
-        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        else if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
             countryFactory = new BoSCountryFactory();
         }

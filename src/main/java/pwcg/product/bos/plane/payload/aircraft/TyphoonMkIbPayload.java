@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
@@ -46,19 +46,19 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
     @Override
     protected void initialize()
 	{
-        setAvailablePayload(-5, "100000000", PayloadElement.DUST_DEFLECTOR);
-        setAvailablePayload(-4, "10000000", PayloadElement.EXTRA_ARMOR);
-        setAvailablePayload(-3, "1000000", PayloadElement.LB_11_BOOST);
-        setAvailablePayload(-2, "100000", PayloadElement.FOUR_PLADE_PROP);
-        setAvailablePayload(-1, "10000", PayloadElement.REFLECTOR_GUNSIGHT);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "1", PayloadElement.LB500x2);
-        setAvailablePayload(2, "1", PayloadElement.LB1000x2);
-        setAvailablePayload(3, "11", PayloadElement.MKI_HE_ROCKETS_X8);
-        setAvailablePayload(4, "11", PayloadElement.MKI_AP_ROCKETS_X8);
-        setAvailablePayload(5, "101", PayloadElement.MKI_ROCKETS_DOUBLE);
-        setAvailablePayload(6, "1001", PayloadElement.MKIII_HE_ROCKETS_X8);
-        setAvailablePayload(7, "1001", PayloadElement.MKIII_AP_ROCKETS_X8);
+        setAvailablePayload(-5, "100000000", PlanePayloadElement.DUST_DEFLECTOR);
+        setAvailablePayload(-4, "10000000", PlanePayloadElement.EXTRA_ARMOR);
+        setAvailablePayload(-3, "1000000", PlanePayloadElement.LB_11_BOOST);
+        setAvailablePayload(-2, "100000", PlanePayloadElement.FOUR_PLADE_PROP);
+        setAvailablePayload(-1, "10000", PlanePayloadElement.REFLECTOR_GUNSIGHT);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "1", PlanePayloadElement.LB500x2);
+        setAvailablePayload(2, "1", PlanePayloadElement.LB1000x2);
+        setAvailablePayload(3, "11", PlanePayloadElement.MKI_HE_ROCKETS_X8);
+        setAvailablePayload(4, "11", PlanePayloadElement.MKI_AP_ROCKETS_X8);
+        setAvailablePayload(5, "101", PlanePayloadElement.MKI_ROCKETS_DOUBLE);
+        setAvailablePayload(6, "1001", PlanePayloadElement.MKIII_HE_ROCKETS_X8);
+        setAvailablePayload(7, "1001", PlanePayloadElement.MKIII_AP_ROCKETS_X8);
 	}
 
     @Override
@@ -150,16 +150,16 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
     @Override
     protected void loadAvailableStockModifications()
     {
-        registerStockModification(PayloadElement.DUST_DEFLECTOR);
-        registerStockModification(PayloadElement.FOUR_PLADE_PROP);
+        registerStockModification(PlanePayloadElement.DUST_DEFLECTOR);
+        registerStockModification(PlanePayloadElement.FOUR_PLADE_PROP);
         if (getDate().after(boostIntroDate))
         {
-            registerStockModification(PayloadElement.LB_11_BOOST);
+            registerStockModification(PlanePayloadElement.LB_11_BOOST);
         }
     }
     
     @Override
-    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    protected List<PlanePayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
     {
         List<Integer>availablePayloads = new ArrayList<>();
         List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 2, 3, 4);

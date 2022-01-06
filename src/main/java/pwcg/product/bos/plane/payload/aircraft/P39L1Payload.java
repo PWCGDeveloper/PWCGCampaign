@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.mission.flight.FlightTypes;
@@ -20,13 +20,13 @@ public class P39L1Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-2, "100000", PayloadElement.P3937MM_AP);
-        setAvailablePayload(-1, "1000000", PayloadElement.RPK10);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(2, "1001", PayloadElement.ADDITIONAL_AMMO);
-        setAvailablePayload(4, "10001", PayloadElement.REM_M230);
-        setAvailablePayload(6, "11", PayloadElement.FAB100M_X1);
-        setAvailablePayload(12, "101", PayloadElement.FAB250SV_X1);
+        setAvailablePayload(-2, "100000", PlanePayloadElement.P3937MM_AP);
+        setAvailablePayload(-1, "1000000", PlanePayloadElement.RPK10);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(2, "1001", PlanePayloadElement.ADDITIONAL_AMMO);
+        setAvailablePayload(4, "10001", PlanePayloadElement.REM_M230);
+        setAvailablePayload(6, "11", PlanePayloadElement.FAB100M_X1);
+        setAvailablePayload(12, "101", PlanePayloadElement.FAB250SV_X1);
 	}
  
     @Override

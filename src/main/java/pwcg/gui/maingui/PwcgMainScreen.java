@@ -40,7 +40,6 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorScreen;
 import pwcg.gui.maingui.config.PwcgGlobalConfigurationScreen;
-import pwcg.gui.maingui.config.PwcgIconicMissionGenerationScreen;
 import pwcg.gui.maingui.config.PwcgPlanesOwnedConfigurationScreen;
 import pwcg.gui.maingui.config.PwcgSkinConfigurationAnalysisScreen;
 import pwcg.gui.maingui.coop.PwcgCoopGlobalAdminScreen;
@@ -238,7 +237,6 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         makeMenuButton (InternationalizationManager.getTranslation("Skin Analysis"), "Skin Analysis", buttonPanel);
         makeMenuButton (InternationalizationManager.getTranslation("PWCG Information"), "PWCG Information", buttonPanel);
         makeMenuButton (InternationalizationManager.getTranslation("Administer Coop"), "Administer Coop", buttonPanel);
-        makeMenuButton (InternationalizationManager.getTranslation("Iconic Missions"), "Iconic Missions", buttonPanel);
         
         int showFrontLineEditor = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.ShowFrontLineEditorKey);
         if (showFrontLineEditor == 1)
@@ -399,10 +397,6 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
             {
                 showCoopAdmin();
             }
-            else if (action.equals("Iconic Missions"))
-            {
-                showIconicMissions();
-            }
             else if (action.equals("Configuration"))
             {
                 showGlobalConfig();
@@ -469,16 +463,6 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         coopAdmin.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(coopAdmin);
-    }
-
-    private void showIconicMissions() throws PWCGException
-    {
-        SoundManager.getInstance().playSound("Stapler.WAV");
-
-        PwcgIconicMissionGenerationScreen iconicMissionsScreen = new PwcgIconicMissionGenerationScreen();
-        iconicMissionsScreen.makePanels();
-
-        CampaignGuiContextManager.getInstance().pushToContextStack(iconicMissionsScreen);
     }
 
     private void showSkinAnalysis() throws PWCGException 

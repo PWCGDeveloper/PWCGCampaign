@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
@@ -45,14 +45,14 @@ public class Fw190D9Payload extends PlanePayload implements IPlanePayload
     @Override
     protected void initialize()
 	{        
-        setAvailablePayload(-2, "10000000", PayloadElement.BUBBLE_CANOPY);
-        setAvailablePayload(-1, "1000000", PayloadElement.GYRO_GUNSIGHT);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.SD70_X4);
-        setAvailablePayload(2, "101", PayloadElement.SC250_X1);
-        setAvailablePayload(3, "1001", PayloadElement.SC500_X1);
-        setAvailablePayload(4, "10001", PayloadElement.BR21_X2);
-        setAvailablePayload(8, "100001", PayloadElement.R4M_X26);
+        setAvailablePayload(-2, "10000000", PlanePayloadElement.BUBBLE_CANOPY);
+        setAvailablePayload(-1, "1000000", PlanePayloadElement.GYRO_GUNSIGHT);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.SD70_X4);
+        setAvailablePayload(2, "101", PlanePayloadElement.SC250_X1);
+        setAvailablePayload(3, "1001", PlanePayloadElement.SC500_X1);
+        setAvailablePayload(4, "10001", PlanePayloadElement.BR21_X2);
+        setAvailablePayload(8, "100001", PlanePayloadElement.R4M_X26);
 	}
     
     @Override
@@ -159,15 +159,15 @@ public class Fw190D9Payload extends PlanePayload implements IPlanePayload
     @Override
     protected void loadAvailableStockModifications()
     {
-        registerStockModification(PayloadElement.BUBBLE_CANOPY);
+        registerStockModification(PlanePayloadElement.BUBBLE_CANOPY);
         if (getDate().after(gyroGunsightIntroDate))
         {
-            registerStockModification(PayloadElement.GYRO_GUNSIGHT);
+            registerStockModification(PlanePayloadElement.GYRO_GUNSIGHT);
         }
     }
     
     @Override
-    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    protected List<PlanePayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
     {
         List<Integer>availablePayloads = new ArrayList<>();
         List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 2, 3, 4);

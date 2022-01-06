@@ -9,7 +9,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.TankType;
 import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.fc.plane.FCPlaneAttributeMapping;
@@ -19,7 +19,7 @@ public class FCPayloadFactoryTest
 {	
 	public FCPayloadFactoryTest() throws PWCGException
 	{
-    	PWCGContext.setProduct(PWCGProduct.FC);      
+    	PWCGContext.setProduct(PWCGProduct.BOS);      
 	}
 
 	@Test
@@ -32,12 +32,12 @@ public class FCPayloadFactoryTest
 		{
 		    System.out.println(bosTankType.getType());
 		    
-			IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19180501"));
+			IPlanePayload payload = bosPayloadFactory.createPayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19180501"));
 			assert(payload != null);
 			
 			if (bosTankType.getType().equals(FCPlaneAttributeMapping.PFALZD3A.getTankType()))
 			{
-			    assert(bosTankType.getStockModifications().get(0) == PayloadElement.COCKPIT_LIGHT);
+			    assert(bosTankType.getStockModifications().get(0) == PlanePayloadElement.COCKPIT_LIGHT);
 			}
 		}
 	}

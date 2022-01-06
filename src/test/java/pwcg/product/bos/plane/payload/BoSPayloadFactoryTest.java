@@ -9,7 +9,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.TankType;
 import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
@@ -32,12 +32,12 @@ public class BoSPayloadFactoryTest
         {
             System.out.println(bosTankType.getType());
             
-            IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
+            IPlanePayload payload = bosPayloadFactory.createPayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
             assert(payload != null);
             
             if (bosTankType.getType().equals(BosPlaneAttributeMapping.HURRICANE_MKII.getTankType()))
             {
-                assert(payload.getSelectedModifications().get(0) == PayloadElement.MIRROR);
+                assert(payload.getSelectedModifications().get(0) == PlanePayloadElement.MIRROR);
             }
         }
     }

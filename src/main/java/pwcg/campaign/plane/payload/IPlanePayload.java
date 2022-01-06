@@ -11,8 +11,8 @@ public interface IPlanePayload
     PlanePayloads getPayloads();
     PlaneModifications getModifications();
 
-    PayloadDesignation getSelectedPayloadDesignation() throws PWCGException;
-    List<PayloadDesignation> getAvailablePayloadDesignations(IFlight iFlight) throws PWCGException;
+    PlanePayloadDesignation getSelectedPayloadDesignation() throws PWCGException;
+    List<PlanePayloadDesignation> getAvailablePayloadDesignations(IFlight iFlight) throws PWCGException;
     int getPayloadIdByDescription(String payloadDescription);
     String getPayloadMaskByDescription(String payloadDescription);
     int createWeaponsPayload(IFlight flight) throws PWCGException;
@@ -22,9 +22,9 @@ public interface IPlanePayload
     void selectNoOrdnancePayload();
     boolean isOrdnance();
 
-    void selectModification(PayloadElement payloadElement);
+    void selectModification(PlanePayloadElement payloadElement);
     void clearModifications();
-    List<PayloadElement> getSelectedModifications() throws PWCGException;
+    List<PlanePayloadElement> getSelectedModifications() throws PWCGException;
     String generateFullModificationMask() throws PWCGException;
-    List<PayloadDesignation> getOptionalPayloadModifications();
+    List<PlanePayloadDesignation> getOptionalPayloadModifications();
 }

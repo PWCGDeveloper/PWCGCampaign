@@ -19,7 +19,7 @@ public class AircraftIOJsonTest
     @Test
     public void readJsonTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Map<String, TankType> aircraft = AircraftIOJson.readJson();
         validate(aircraft);
     }

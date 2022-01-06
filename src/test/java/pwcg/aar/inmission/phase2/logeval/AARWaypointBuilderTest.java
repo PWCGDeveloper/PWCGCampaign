@@ -26,7 +26,7 @@ public class AARWaypointBuilderTest
     
     public AARWaypointBuilderTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
     }
 
     @Test

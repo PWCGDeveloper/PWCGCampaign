@@ -45,7 +45,7 @@ public class PlayerFlightTypeBoSDiveBombTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.DIVE_BOMB, MissionProfile.DAY_TACTICAL_MISSION);
-        DiveBombingFlight flight = (DiveBombingFlight) mission.getFlights().getPlayerFlights().get(0);
+        DiveBombingFlight flight = (DiveBombingFlight) mission.getFlights().getPlayerUnits().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);

@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -21,16 +21,16 @@ public class I16Type24Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-		setAvailablePayload(1, "1001", PayloadElement.FAB50SV_X2);
-		setAvailablePayload(2, "1001", PayloadElement.FAB100M_X2);
-		setAvailablePayload(3, "11", PayloadElement.ROS82_X4);
-		setAvailablePayload(7, "101", PayloadElement.ROS82_X6);
-		setAvailablePayload(11, "100001", PayloadElement.SHVAK_UPGRADE);
-        setAvailablePayload(12, "101001", PayloadElement.SHVAK_UPGRADE, PayloadElement.FAB50SV_X2);
-        setAvailablePayload(13, "101001", PayloadElement.SHVAK_UPGRADE, PayloadElement.FAB100M_X2);
-        setAvailablePayload(14, "100011", PayloadElement.SHVAK_UPGRADE, PayloadElement.ROS82_X4);
-        setAvailablePayload(18, "100101", PayloadElement.SHVAK_UPGRADE, PayloadElement.ROS82_X6);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+		setAvailablePayload(1, "1001", PlanePayloadElement.FAB50SV_X2);
+		setAvailablePayload(2, "1001", PlanePayloadElement.FAB100M_X2);
+		setAvailablePayload(3, "11", PlanePayloadElement.ROS82_X4);
+		setAvailablePayload(7, "101", PlanePayloadElement.ROS82_X6);
+		setAvailablePayload(11, "100001", PlanePayloadElement.SHVAK_UPGRADE);
+        setAvailablePayload(12, "101001", PlanePayloadElement.SHVAK_UPGRADE, PlanePayloadElement.FAB50SV_X2);
+        setAvailablePayload(13, "101001", PlanePayloadElement.SHVAK_UPGRADE, PlanePayloadElement.FAB100M_X2);
+        setAvailablePayload(14, "100011", PlanePayloadElement.SHVAK_UPGRADE, PlanePayloadElement.ROS82_X4);
+        setAvailablePayload(18, "100101", PlanePayloadElement.SHVAK_UPGRADE, PlanePayloadElement.ROS82_X6);
 	}
 
     @Override

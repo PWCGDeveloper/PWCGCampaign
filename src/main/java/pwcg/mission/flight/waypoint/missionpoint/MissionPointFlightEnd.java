@@ -4,38 +4,30 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.PWCGLocation;
 import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.flight.waypoint.end.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.end.TerminalWaypointGenerator;
 import pwcg.mission.mcu.BaseFlightMcu;
-import pwcg.mission.mcu.McuLanding;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet implements IMissionPointSet, IMissionPointSetLanding
 {
     private IFlight flight;
 
-    private McuLanding landingMcu;
-    private Airfield landingAirfield;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
 
-    public MissionPointFlightEnd(IFlight flight, Airfield landingAirfield)
+    public MissionPointFlightEnd(IFlight flight)
     {
         this.flight = flight;
-        this.landingAirfield = landingAirfield;
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_END;
     }
     
     public void createFlightEnd() throws PWCGException, PWCGException 
     {
-        createApproach();  
-        createLanding();  
+        createTerminalWaypoint();  
     }
 
     @Override
@@ -51,7 +43,6 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     public void write(BufferedWriter writer) throws PWCGException 
     {
         super.write(writer);
-        landingMcu.write(writer);
     }
 
     @Override
@@ -82,44 +73,14 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     public void finalizeMissionPointSet(FlightPlanes flightPlanes) throws PWCGException
     {
         super.finalizeMissionPointSet(flightPlanes);
-        createTargetAssociations();
-        createobjectAssociations(flightPlanes.getFlightLeader());
     }
     
-    @Override
-    public void setLandOnPlane(int planeIndex)
+    private void createTerminalWaypoint() throws PWCGException
     {
-        landingMcu.setObject(planeIndex);
-    }
-
-    private void createApproach() throws PWCGException
-    {
-        McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight, landingAirfield);
+        McuWaypoint approachWaypoint = TerminalWaypointGenerator.createTerminalWaypoint(flight);
         super.addWaypoint(approachWaypoint);
     }
-    
-    private void createLanding() throws PWCGException
-    {
-        PWCGLocation location = landingAirfield.getLandingLocation(flight.getMission());
-        
-        landingMcu = new McuLanding();
-        landingMcu.setDesc("Land");
-        landingMcu.setName("Land");
-        landingMcu.setPosition(location.getPosition());
-        landingMcu.setOrientation(location.getOrientation());
-    }
-    
-    public void createTargetAssociations() throws PWCGException
-    {
-        super.getLastWaypoint().setTarget(landingMcu.getIndex());
-    }
-    
-    private void createobjectAssociations (PlaneMcu plane)
-    {
-        landingMcu.clearObjects();
-        landingMcu.setObject(plane.getLinkTrId());
-    }
-
+  
     @Override
     public List<BaseFlightMcu> getAllFlightPoints()
     {

@@ -1,6 +1,6 @@
 package pwcg.campaign.context;
 
-import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.plane.payload.BoSPayloadFactory;
 
@@ -76,7 +76,7 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public IPayloadFactory getPayloadFactory() throws PWCGException  
+    public IPlanePayloadFactory getPlanePayloadFactory() throws PWCGException  
     {
         return new BoSPayloadFactory();
     }

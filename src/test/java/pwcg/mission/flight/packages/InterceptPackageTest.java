@@ -41,7 +41,7 @@ public class InterceptPackageTest extends PwcgTestBase
         List<IFlight> opposingFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.OPPOSING_FLIGHT);
         assert(opposingFlights.size() == 1);
 
-        IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
+        IFlight playerFlight = missionFlights.getPlayerUnits().get(0);
         verifyInterceptOpposingIsCloseToPlayer(playerFlight, opposingFlights.get(0));        
    }
 

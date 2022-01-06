@@ -19,13 +19,11 @@ public class MissionOptions
     private String playerConfig = "";
     private MissionTime missionTime = null;
     private Date date;
-    private MissionProfile missionProfile;
     
 
-    public MissionOptions(Date date, MissionProfile missionProfile)
+    public MissionOptions(Date date)
     {       
         this.date = date;
-        this.missionProfile = missionProfile;
     }
 
     public void createFlightSpecificMissionOptions() throws PWCGException 
@@ -35,7 +33,7 @@ public class MissionOptions
 
     private void createMissionTime() throws PWCGException 
     {          
-        missionTime = new MissionTime(date, missionProfile.isNightMission());
+        missionTime = new MissionTime(date);
         missionTime.generateMissionDateTime();
     }
 

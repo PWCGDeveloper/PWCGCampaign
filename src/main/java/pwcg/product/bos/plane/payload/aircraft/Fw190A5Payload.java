@@ -5,12 +5,10 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.company.Company;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.PwcgRoleCategory;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -23,7 +21,6 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
 {
     private Date mkFFWingGunsIntroDate;
     private Date mg151GunPodIntroDate;
-    private Date u17IntroDate;
 
     public Fw190A5Payload(TankType planeType, Date date)
     {
@@ -36,7 +33,6 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
     {
         try
         {
-            u17IntroDate = DateUtils.getDateYYYYMMDD("19430506");
             mkFFWingGunsIntroDate = DateUtils.getDateYYYYMMDD("19430506");
             mg151GunPodIntroDate = DateUtils.getDateYYYYMMDD("19430506");
         }
@@ -48,16 +44,16 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.SC50_X4);
-        setAvailablePayload(2, "101", PayloadElement.SC250_X1);
-        setAvailablePayload(3, "1001", PayloadElement.SC500_X1);
-        setAvailablePayload(4, "10001", PayloadElement.MGFF_WING_GUNS);
-        setAvailablePayload(5, "100001", PayloadElement.MG151_20_GUNPOD);
-        setAvailablePayload(6, "1000001", PayloadElement.U_17);
-        setAvailablePayload(7, "1000011", PayloadElement.SC50_X8);
-        setAvailablePayload(8, "1000101", PayloadElement.SC250_X1, PayloadElement.SC50_X4);
-        setAvailablePayload(9, "1000101", PayloadElement.SC500_X1, PayloadElement.SC50_X4);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.SC50_X4);
+        setAvailablePayload(2, "101", PlanePayloadElement.SC250_X1);
+        setAvailablePayload(3, "1001", PlanePayloadElement.SC500_X1);
+        setAvailablePayload(4, "10001", PlanePayloadElement.MGFF_WING_GUNS);
+        setAvailablePayload(5, "100001", PlanePayloadElement.MG151_20_GUNPOD);
+        setAvailablePayload(6, "1000001", PlanePayloadElement.U_17);
+        setAvailablePayload(7, "1000011", PlanePayloadElement.SC50_X8);
+        setAvailablePayload(8, "1000101", PlanePayloadElement.SC250_X1, PlanePayloadElement.SC50_X4);
+        setAvailablePayload(9, "1000101", PlanePayloadElement.SC500_X1, PlanePayloadElement.SC50_X4);
 	}
 
     @Override
@@ -86,31 +82,6 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
 
 	private int selectGroundAttackPayload (IFlight flight) throws PWCGException
     {
-	    int selectedPayloadId = 0;
-        PwcgRoleCategory squadronPrimaryRole = flight.getSquadron().determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
-        if (squadronPrimaryRole == PwcgRoleCategory.ATTACK)
-        {
-            selectedPayloadId = setU17Payload(flight);
-        }
-        else
-        {
-            selectedPayloadId = setGenericBombLoad(flight);
-        }
-        return selectedPayloadId;
-    }
-
-    private int setU17Payload(IFlight flight) throws PWCGException
-    {
-        int selectedPayloadId = 6;
-        if (getDate().before(u17IntroDate))
-        {
-        	selectedPayloadId = setGenericBombLoad(flight);
-        }
-        return selectedPayloadId;
-    }
-
-    private int setGenericBombLoad(IFlight flight) throws PWCGException
-    {
         int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
@@ -138,48 +109,18 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
     private int selectSoftTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPayloadId = 1;
-
-        Company squadron = flight.getSquadron();
-        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
-        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK))
-        {
-            if (getDate().after(u17IntroDate))
-            {
-                selectedPayloadId = 7;
-            }
-        }
         return selectedPayloadId;
     }
 
     private int selectMediumTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPayloadId = 2;
-
-        Company squadron = flight.getSquadron();
-        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
-        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK))
-        {
-            if (getDate().after(u17IntroDate))
-            {
-                selectedPayloadId = 8;
-            }
-        }
         return selectedPayloadId;
     }
 
     private int selectHeavyTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPayloadId = 3;
-
-        Company squadron = flight.getSquadron();
-        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
-        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK))
-        {
-            if (getDate().after(u17IntroDate))
-            {
-                selectedPayloadId = 9;
-            }
-        }
         return selectedPayloadId;
     }
 
@@ -239,36 +180,11 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
     }
     
     @Override
-    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight) throws PWCGException
+    protected List<PlanePayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight) throws PWCGException
     {
         List<Integer>availablePayloads = new ArrayList<>();
         List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 2, 3);
         availablePayloads.addAll(alwaysAvailablePayloads);
-        
-        Company squadron = flight.getSquadron();
-        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
-        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.FIGHTER))
-        {
-            if (getDate().after(mkFFWingGunsIntroDate))
-            {
-                availablePayloads.add(4);
-            }
-            
-            if (getDate().after(mg151GunPodIntroDate))
-            {
-                availablePayloads.add(5);
-            }
-        }
-        
-        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK))
-        {
-            if (getDate().after(u17IntroDate))
-            {
-                List<Integer>availableU17Payloads = Arrays.asList(7, 8, 9);
-                availablePayloads.addAll(availableU17Payloads);
-            }
-        }
-        
         return getAvailablePayloadDesignations(availablePayloads);
     }
 }

@@ -58,7 +58,7 @@ public class TargetDefinitionPreferenceBuilderTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         
-        IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
+        IFlight playerFlight = mission.getFlights().getPlayerUnits().get(0);
 
         TargetDefinitionPreferenceBuilder targetDefinitionPreferenceBuilder = new TargetDefinitionPreferenceBuilder(playerFlight.getFlightInformation());
         List<TargetType> shuffledTargetTypes = targetDefinitionPreferenceBuilder.getTargetPreferences();
@@ -84,7 +84,7 @@ public class TargetDefinitionPreferenceBuilderTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         
-        IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
+        IFlight playerFlight = mission.getFlights().getPlayerUnits().get(0);
 
         TargetDefinitionPreferenceBuilder targetDefinitionPreferenceBuilder = new TargetDefinitionPreferenceBuilder(playerFlight.getFlightInformation());
         List<TargetType> shuffledTargetTypes = targetDefinitionPreferenceBuilder.getTargetPreferences();
@@ -110,7 +110,7 @@ public class TargetDefinitionPreferenceBuilderTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         
-        IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
+        IFlight playerFlight = mission.getFlights().getPlayerUnits().get(0);
 
         TargetDefinitionPreferenceBuilder targetDefinitionPreferenceBuilder = new TargetDefinitionPreferenceBuilder(playerFlight.getFlightInformation());
         List<TargetType> shuffledTargetTypes = targetDefinitionPreferenceBuilder.getTargetPreferences();

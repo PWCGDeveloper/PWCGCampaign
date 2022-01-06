@@ -50,7 +50,7 @@ public class AARVehiclePlaneLandedTest
     @BeforeEach
     public void setup () throws PWCGException
     {        
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
 
         planeAiEntities = makePlaneEntities();
 

@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.mission.flight.FlightTypes;
@@ -20,16 +20,16 @@ public class SpitfireMkXIVPayload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-4, "100000000", PayloadElement.OCTANE_150_FUEL);
-        setAvailablePayload(-3, "10000000", PayloadElement.GYRO_GUNSIGHT);
-        setAvailablePayload(-2, "100000", PayloadElement.MIRROR);
+        setAvailablePayload(-4, "100000000", PlanePayloadElement.OCTANE_150_FUEL);
+        setAvailablePayload(-3, "10000000", PlanePayloadElement.GYRO_GUNSIGHT);
+        setAvailablePayload(-2, "100000", PlanePayloadElement.MIRROR);
         
-        setAvailablePayload(-1, "1000", PayloadElement.SPITFIRE_XIV_E_TYPE_WINGS);
+        setAvailablePayload(-1, "1000", PlanePayloadElement.SPITFIRE_XIV_E_TYPE_WINGS);
 
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.SC500_X1);
-        setAvailablePayload(2, "101", PayloadElement.SC250_X2);
-        setAvailablePayload(3, "111", PayloadElement.SC500_X1, PayloadElement.SC250_X2);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.SC500_X1);
+        setAvailablePayload(2, "101", PlanePayloadElement.SC250_X2);
+        setAvailablePayload(3, "111", PlanePayloadElement.SC500_X1, PlanePayloadElement.SC250_X2);
 	}
 
     @Override

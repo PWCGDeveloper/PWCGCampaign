@@ -219,12 +219,12 @@ public class HurricanePayloadTest
             
         System.out.println(bosTankType.getType());
             
-        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
+        IPlanePayload payload = bosPayloadFactory.createPayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
         assert(payload != null);
             
         assert(payload.getSelectedModifications().size() == 1);
-        List<PayloadElement> expectedElements = Arrays.asList(PayloadElement.MIRROR);
-        for (PayloadElement element : payload.getSelectedModifications())
+        List<PlanePayloadElement> expectedElements = Arrays.asList(PlanePayloadElement.MIRROR);
+        for (PlanePayloadElement element : payload.getSelectedModifications())
         {
             verifyExpectedModification(element, expectedElements);
         }
@@ -240,18 +240,18 @@ public class HurricanePayloadTest
             
         System.out.println(bosTankType.getType());
             
-        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19430103"));
+        IPlanePayload payload = bosPayloadFactory.createPayload(bosTankType.getType(), DateUtils.getDateYYYYMMDD("19430103"));
         assert(payload != null);
             
         assert(payload.getSelectedModifications().size() == 2);
-        List<PayloadElement> expectedElements = Arrays.asList(PayloadElement.MIRROR, PayloadElement.LB_14_BOOST);
-        for (PayloadElement element : payload.getSelectedModifications())
+        List<PlanePayloadElement> expectedElements = Arrays.asList(PlanePayloadElement.MIRROR, PlanePayloadElement.LB_14_BOOST);
+        for (PlanePayloadElement element : payload.getSelectedModifications())
         {
             verifyExpectedModification(element, expectedElements);
         }
     }
     
-    private void verifyExpectedModification(PayloadElement element, List<PayloadElement> expectedElements)
+    private void verifyExpectedModification(PlanePayloadElement element, List<PlanePayloadElement> expectedElements)
     {
         assert(expectedElements.contains(element));
     }
@@ -259,8 +259,8 @@ public class HurricanePayloadTest
     private IPlanePayload getPayloadGeneratorForFighter() throws PWCGException
     {
         TankType fw190A5 = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(BosPlaneAttributeMapping.HURRICANE_MKII.getTankType());
-        IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190A5.getType(), campaign.getDate());
+        IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        IPlanePayload payloadGenerator = payloadFactory.createPayload(fw190A5.getType(), campaign.getDate());
         return payloadGenerator;
     }
 

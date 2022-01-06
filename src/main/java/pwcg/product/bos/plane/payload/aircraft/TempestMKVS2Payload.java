@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
@@ -37,10 +37,10 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
     @Override
     protected void initialize()
 	{
-        setAvailablePayload(-1, "1000", PayloadElement.LB_11_BOOST);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.LB500x2);
-        setAvailablePayload(2, "101", PayloadElement.LB1000x2);
+        setAvailablePayload(-1, "1000", PlanePayloadElement.LB_11_BOOST);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.LB500x2);
+        setAvailablePayload(2, "101", PlanePayloadElement.LB1000x2);
 	}
 
     @Override
@@ -111,7 +111,7 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
     {
         if (getDate().after(boostIntroDate))
         {
-            registerStockModification(PayloadElement.LB_11_BOOST);
+            registerStockModification(PlanePayloadElement.LB_11_BOOST);
         }
     }
 }

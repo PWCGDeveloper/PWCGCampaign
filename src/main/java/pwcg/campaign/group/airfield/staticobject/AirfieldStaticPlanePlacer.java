@@ -22,6 +22,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 public class AirfieldStaticPlanePlacer
 {
 
+    // TODO TC Currently not used.  Add back in if static planes are useful
     public IStaticPlane getStaticPlane(Airfield airfield, ICountry airfieldCountry, Date date, Coordinate position) throws PWCGException  
     {
         Orientation objectOrientation = Orientation.createRandomOrientation();

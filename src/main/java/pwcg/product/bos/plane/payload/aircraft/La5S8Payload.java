@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
@@ -37,15 +37,15 @@ public class La5S8Payload extends PlanePayload implements IPlanePayload
     @Override
     protected void initialize()
 	{
-        setAvailablePayload(-4, "1000", PayloadElement.RPK10);
-        setAvailablePayload(-3, "10000", PayloadElement.WINDSCREEN);
+        setAvailablePayload(-4, "1000", PlanePayloadElement.RPK10);
+        setAvailablePayload(-3, "10000", PlanePayloadElement.WINDSCREEN);
         
-        setAvailablePayload(-2, "100000", PayloadElement.LA5_AMMO);
-        setAvailablePayload(-1, "1000000", PayloadElement.M82F_ENGINE);
+        setAvailablePayload(-2, "100000", PlanePayloadElement.LA5_AMMO);
+        setAvailablePayload(-1, "1000000", PlanePayloadElement.M82F_ENGINE);
         
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.FAB50SV_X2);
-        setAvailablePayload(2, "101", PayloadElement.FAB100M_X2);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PlanePayloadElement.FAB50SV_X2);
+        setAvailablePayload(2, "101", PlanePayloadElement.FAB100M_X2);
 	}
 
     @Override
@@ -114,11 +114,11 @@ public class La5S8Payload extends PlanePayload implements IPlanePayload
     @Override
     protected void loadAvailableStockModifications()
     {
-        registerStockModification(PayloadElement.RPK10);
-        registerStockModification(PayloadElement.WINDSCREEN);
+        registerStockModification(PlanePayloadElement.RPK10);
+        registerStockModification(PlanePayloadElement.WINDSCREEN);
         if (getDate().after(m82FIntroDate))
         {
-            registerStockModification(PayloadElement.M82F_ENGINE);
+            registerStockModification(PlanePayloadElement.M82F_ENGINE);
         }
     }
 }

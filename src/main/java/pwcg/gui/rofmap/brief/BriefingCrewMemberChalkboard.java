@@ -21,8 +21,8 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
-import pwcg.campaign.plane.payload.IPayloadFactory;
-import pwcg.campaign.plane.payload.PayloadDesignation;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
+import pwcg.campaign.plane.payload.PlanePayloadDesignation;
 import pwcg.campaign.tank.EquippedTank;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
@@ -34,7 +34,7 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
-import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
+import pwcg.mission.playerunit.crew.CrewVehiclePayloadPairing;
 
 public class BriefingCrewMemberChalkboard extends ImageResizingPanel
 {
@@ -136,7 +136,7 @@ public class BriefingCrewMemberChalkboard extends ImageResizingPanel
         activeCrewMemberRadioButtons.clear();
         BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
         int row = 2;
-        for (CrewPlanePayloadPairing crewPlane : briefingMissionHandler.getCrews())
+        for (CrewVehiclePayloadPairing crewPlane : briefingMissionHandler.getCrews())
         {
             addCrewMemberColumn(assignedCrewMemberPanel, crewPlane, row);
             addPlaneColumn(assignedCrewMemberPanel, crewPlane, row);
@@ -160,7 +160,7 @@ public class BriefingCrewMemberChalkboard extends ImageResizingPanel
             BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
             if (briefingMissionHandler.getBriefingAssignmentData().getCrews().size() > 0)
             {
-                CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getBriefingAssignmentData().getCrews().get(0);
+                CrewVehiclePayloadPairing crewPlane = briefingMissionHandler.getBriefingAssignmentData().getCrews().get(0);
                 if (activeCrewMemberRadioButtons.containsKey(crewPlane.getCrewMember().getSerialNumber()))
                 {
                     JRadioButton radioButton = activeCrewMemberRadioButtons.get(crewPlane.getCrewMember().getSerialNumber());
@@ -171,7 +171,7 @@ public class BriefingCrewMemberChalkboard extends ImageResizingPanel
         }
     }
 
-    private void addCrewMemberColumn(JPanel assignedCrewMemberPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
+    private void addCrewMemberColumn(JPanel assignedCrewMemberPanel, CrewVehiclePayloadPairing crewPlane, int row) throws PWCGException
     {
 
         String crewMemberNameText = crewPlane.getCrewMember().getNameAndRank();
@@ -200,7 +200,7 @@ public class BriefingCrewMemberChalkboard extends ImageResizingPanel
         return PWCGButtonFactory.makeRadioButton("", commandText, "", font, ColorMap.CHALK_FOREGROUND, false, actionListener);
     }
 
-    private void addPlaneColumn(JPanel assignedCrewMemberPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
+    private void addPlaneColumn(JPanel assignedCrewMemberPanel, CrewVehiclePayloadPairing crewPlane, int row) throws PWCGException
     {
         String planeName = formPlaneName(crewPlane.getPlane().getDisplayName());
         JButton planeButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planeName, 
@@ -222,12 +222,12 @@ public class BriefingCrewMemberChalkboard extends ImageResizingPanel
         return planeName;
     }
 
-    private void addPayloadColumn(JPanel assignedCrewMemberPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
+    private void addPayloadColumn(JPanel assignedCrewMemberPanel, CrewVehiclePayloadPairing crewPlane, int row) throws PWCGException
     {
         Date date = briefingContext.getMission().getCampaign().getDate();
         
-        IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        PayloadDesignation payloadDesignation = payloadFactory.getPlanePayloadDesignation(crewPlane.getPlane().getType(), crewPlane.getPayloadId(), date);
+        IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        PlanePayloadDesignation payloadDesignation = payloadFactory.getPlanePayloadDesignation(crewPlane.getPlane().getType(), crewPlane.getPayloadId(), date);
         String planePayloadDescription = payloadDesignation.getPayloadDescription();
         JButton payloadButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planePayloadDescription,
                 "Change Payload:" + crewPlane.getCrewMember().getSerialNumber(), "Change payload for  " + crewPlane.getCrewMember().getNameAndRank(), parent);
@@ -242,7 +242,7 @@ public class BriefingCrewMemberChalkboard extends ImageResizingPanel
         assignedCrewMemberPanel.add(assignedPayloadGroupingPanel, constraints);
     }
 
-    private void addModificationsColumn(JPanel assignedCrewMemberPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
+    private void addModificationsColumn(JPanel assignedCrewMemberPanel, CrewVehiclePayloadPairing crewPlane, int row) throws PWCGException
     {
         Date date = briefingContext.getMission().getCampaign().getDate();
 

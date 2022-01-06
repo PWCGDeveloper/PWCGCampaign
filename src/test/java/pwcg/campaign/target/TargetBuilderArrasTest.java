@@ -39,7 +39,7 @@ public class TargetBuilderArrasTest
     @BeforeAll
     public void setupSuite() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
 
         if (mission == null)
@@ -57,7 +57,7 @@ public class TargetBuilderArrasTest
         {
             mocked.when(() -> TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-            IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
+            IFlight playerFlight = mission.getFlights().getPlayerUnits().get(0);
         
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
@@ -74,7 +74,7 @@ public class TargetBuilderArrasTest
         {
             mocked.when(() -> TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-            IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
+            IFlight playerFlight = mission.getFlights().getPlayerUnits().get(0);
         
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
@@ -91,7 +91,7 @@ public class TargetBuilderArrasTest
         {
             mocked.when(() -> TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-            IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
+            IFlight playerFlight = mission.getFlights().getPlayerUnits().get(0);
         
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
@@ -108,7 +108,7 @@ public class TargetBuilderArrasTest
         {
             mocked.when(() -> TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-            IFlight playerFlight = mission.getFlights().getPlayerFlights().get(0);
+            IFlight playerFlight = mission.getFlights().getPlayerUnits().get(0);
             
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
     

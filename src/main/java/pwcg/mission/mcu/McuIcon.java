@@ -19,9 +19,9 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.objective.MissionObjectiveFactory;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.playerunit.objective.MissionObjectiveFactory;
 
 public class McuIcon extends BaseFlightMcu
 {

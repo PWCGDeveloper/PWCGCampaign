@@ -11,7 +11,6 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBorderBuilder;
 import pwcg.mission.MissionFlights;
 import pwcg.mission.MissionHumanParticipants;
-import pwcg.mission.MissionProfile;
 import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
@@ -21,10 +20,9 @@ import pwcg.mission.options.MissionWeather;
 public class TestMissionBuilderUtility
 {
 
-    public static Mission createTestMission(Campaign campaign, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders,
-            MissionProfile missionProfile) throws PWCGException
+    public static Mission createTestMission(Campaign campaign, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders) throws PWCGException
     {
-        MissionOptions missionOptions = new MissionOptions(campaign.getDate(), missionProfile);
+        MissionOptions missionOptions = new MissionOptions(campaign.getDate());
         missionOptions.createFlightSpecificMissionOptions();
 
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.UseRealisticWeatherKey, "0");
@@ -33,12 +31,12 @@ public class TestMissionBuilderUtility
 
         Skirmish skirmish = null;
         VehicleDefinition playerVehicleDefinition = null;
-        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, playerVehicleDefinition, missionBorders, weather, skirmish, missionOptions);
+        Mission mission = new Mission(campaign, participatingPlayers, playerVehicleDefinition, missionBorders, weather, skirmish, missionOptions);
         campaign.setCurrentMission(mission);
         return mission;
     }
 
-    public static MissionFlights createTestMission(Campaign campaign, MissionProfile missionProfile, FlightTypes flightType) throws PWCGException
+    public static MissionFlights createTestMission(Campaign campaign, FlightTypes flightType) throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = buildTestParticipatingHumans(campaign);
 
@@ -48,7 +46,7 @@ public class TestMissionBuilderUtility
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
-        Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, missionProfile);
+        Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders);
         mission.generate(playerFlightTypes);
 
         campaign.setCurrentMission(mission);

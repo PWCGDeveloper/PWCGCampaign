@@ -32,7 +32,7 @@ public class AirfieldManagerTest
     @BeforeAll
     public void setupSuite() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
         PWCGContext.getInstance().setCampaign(campaign);        
     }
@@ -43,7 +43,7 @@ public class AirfieldManagerTest
         Mockito.when(mission.getWeather()).thenReturn(weather);
         Mockito.when(weather.getWindDirection()).thenReturn(90);        
 
-        AirfieldManager airfieldManager = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.ARRAS_MAP).getAirfieldManager();
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.STALINGRAD_MAP).getAirfieldManager();
         for (Airfield airfield : airfieldManager.getAllAirfields().values())
         {
             Assertions.assertTrue (airfield.getTakeoffLocation(mission) != null);

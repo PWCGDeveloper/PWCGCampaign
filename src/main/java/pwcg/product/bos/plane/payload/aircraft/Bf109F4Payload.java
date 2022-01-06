@@ -3,7 +3,7 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -23,13 +23,13 @@ public class Bf109F4Payload extends Bf109Payload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-2, "10000", PayloadElement.ARMORED_WINDSCREEN);
-        setAvailablePayload(-1, "100000", PayloadElement.REMOVE_HEADREST);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "101", PayloadElement.SC50_X4);
-        setAvailablePayload(2, "1001", PayloadElement.SC250_X1);
-		setAvailablePayload(3, "11", PayloadElement.MG151_15_GUNPOD);
-		setAvailablePayload(4, "1000001", PayloadElement.MG151_20_GUNPOD);
+        setAvailablePayload(-2, "10000", PlanePayloadElement.ARMORED_WINDSCREEN);
+        setAvailablePayload(-1, "100000", PlanePayloadElement.REMOVE_HEADREST);
+        setAvailablePayload(0, "1", PlanePayloadElement.STANDARD);
+        setAvailablePayload(1, "101", PlanePayloadElement.SC50_X4);
+        setAvailablePayload(2, "1001", PlanePayloadElement.SC250_X1);
+		setAvailablePayload(3, "11", PlanePayloadElement.MG151_15_GUNPOD);
+		setAvailablePayload(4, "1000001", PlanePayloadElement.MG151_20_GUNPOD);
 	}
 
     @Override

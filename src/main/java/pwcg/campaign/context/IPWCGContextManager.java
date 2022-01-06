@@ -9,7 +9,7 @@ import pwcg.campaign.company.SkirmishProfileManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.newspapers.NewspaperManager;
-import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.skin.SkinManager;
 import pwcg.campaign.tank.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
@@ -43,7 +43,9 @@ public interface IPWCGContextManager
 
     Airfield getAirfieldAllMaps(String airfieldName);
 
-    IPayloadFactory getPayloadFactory() throws PWCGException;
+    IPlanePayloadFactory getPlanePayloadFactory() throws PWCGException;
+
+    IPlanePayloadFactory getVehiclePayloadFactory() throws PWCGException;
 
     void initializeMap() throws PWCGException;
     
