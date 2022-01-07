@@ -3,23 +3,22 @@ package pwcg.mission.data;
 public class MissionHeader
 {
     private String missionFileName = "";
-    private String squadron = "";
+    private String company = "";
     private String date = "";
     private String time = "";
-    private String aircraftType = "";
+    private String vehicleType = "";
     private String mapName;
-    private String airfield = "";
+    private String base = "";
     private String duty = "";
-    private int altitude = 100;
 
     public String getSquadron()
     {
-        return squadron;
+        return company;
     }
 
     public void setSquadron(String squadron)
     {
-        this.squadron = squadron;
+        this.company = squadron;
     }
 
     public String getDate()
@@ -52,14 +51,14 @@ public class MissionHeader
         this.mapName = mapName;
     }
 
-    public String getAirfield()
+    public String getBase()
     {
-        return airfield;
+        return base;
     }
 
-    public void setAirfield(String airfield)
+    public void setBase(String base)
     {
-        this.airfield = airfield;
+        this.base = base;
     }
 
     public String getDuty()
@@ -72,24 +71,14 @@ public class MissionHeader
         this.duty = duty;
     }
 
-    public int getAltitude()
+    public String getVehicleType()
     {
-        return altitude;
+        return vehicleType;
     }
 
-    public void setAltitude(int altitude)
+    public void setVehicleType(String vehicleType)
     {
-        this.altitude = altitude;
-    }
-
-    public String getAircraftType()
-    {
-        return aircraftType;
-    }
-
-    public void setAircraftType(String aircraftType)
-    {
-        this.aircraftType = aircraftType;
+        this.vehicleType = vehicleType;
     }
 
     public String getMissionFileName()

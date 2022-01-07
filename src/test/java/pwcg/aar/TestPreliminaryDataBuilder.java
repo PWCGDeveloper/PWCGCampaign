@@ -21,7 +21,7 @@ import pwcg.core.logfiles.LogFileSet;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.data.MissionHeader;
-import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
+import pwcg.mission.data.PwcgGeneratedMissionVehicleData;
 
 public class TestPreliminaryDataBuilder
 {
@@ -91,7 +91,7 @@ public class TestPreliminaryDataBuilder
         PwcgMissionData pwcgMissionData = new PwcgMissionData();
         
         MissionHeader missionHeader = makePwcgMissionDataHeader();
-        Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes = makePwcgMissionDataPlanes();
+        Map<Integer, PwcgGeneratedMissionVehicleData> missionPlanes = makePwcgMissionDataPlanes();
 
         pwcgMissionData.setMissionHeader(missionHeader);
         pwcgMissionData.setMissionDescription("A test mission");
@@ -105,10 +105,10 @@ public class TestPreliminaryDataBuilder
         MissionHeader missionHeader = new MissionHeader();
         missionHeader.setMissionFileName("Test Campaign Patrol 01-11-1941");
         
-        missionHeader.setAirfield("My Airfield");
+        missionHeader.setBase("My Airfield");
         missionHeader.setDate("10411101");
         missionHeader.setSquadron("I/JG51");
-        missionHeader.setAircraftType("Bf109 F-2");
+        missionHeader.setVehicleType("Bf109 F-2");
 
         
         missionHeader.setDuty("PATROL");
@@ -122,9 +122,9 @@ public class TestPreliminaryDataBuilder
     }
     
 
-    private Map<Integer, PwcgGeneratedMissionPlaneData> makePwcgMissionDataPlanes() throws PWCGException
+    private Map<Integer, PwcgGeneratedMissionVehicleData> makePwcgMissionDataPlanes() throws PWCGException
     {
-        Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes  = new HashMap<>();
+        Map<Integer, PwcgGeneratedMissionVehicleData> missionPlanes  = new HashMap<>();
         
         CrewMembers squadronMembersInMission = preliminaryData.getCampaignMembersInMission();
         for (CrewMember crewMember : squadronMembersInMission.getCrewMemberCollection().values())
@@ -134,12 +134,12 @@ public class TestPreliminaryDataBuilder
             int planeIndex = RandomNumberGenerator.getRandom(planesForSquadron.size());
             EquippedTank equippedPlane = planesForSquadron.get(planeIndex);
 
-            PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
-            missionPlaneData.setAircraftType(equippedPlane.getType());
-            missionPlaneData.setSquadronId(crewMember.getCompanyId());
+            PwcgGeneratedMissionVehicleData missionPlaneData = new PwcgGeneratedMissionVehicleData();
+            missionPlaneData.setVehicleType(equippedPlane.getType());
+            missionPlaneData.setCompanyId(crewMember.getCompanyId());
             missionPlaneData.setCrewMemberName(crewMember.getName());
             missionPlaneData.setCrewMemberSerialNumber(crewMember.getSerialNumber());
-            missionPlaneData.setPlaneSerialNumber(equippedPlane.getSerialNumber());
+            missionPlaneData.setVehicleSerialNumber(equippedPlane.getSerialNumber());
             
             missionPlanes.put(crewMember.getSerialNumber(), missionPlaneData);
         }

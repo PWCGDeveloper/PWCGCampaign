@@ -23,7 +23,6 @@ public class MissionFinalizer
     private boolean isFinalized = false;
     private MissionFrontLineIconBuilder frontLineIconBuilder;
     private MissionWaypointIconBuilder waypointIconBuilder = new MissionWaypointIconBuilder();
-    private MissionCompanyIconBuilder companyIconBuilder;
     private MissionAssaultIconBuilder assaultIconBuilder = new MissionAssaultIconBuilder();
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
     private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
@@ -41,7 +40,6 @@ public class MissionFinalizer
         if (!isFinalized)
         {
             frontLineIconBuilder = new MissionFrontLineIconBuilder(campaign);
-            companyIconBuilder = new MissionCompanyIconBuilder(campaign);
 
             setMissionScript(mission.getMissionOptions());
 
@@ -145,11 +143,6 @@ public class MissionFinalizer
     public MissionWaypointIconBuilder getWaypointIconBuilder()
     {
         return waypointIconBuilder;
-    }
-
-    public MissionCompanyIconBuilder getSquadronIconBuilder()
-    {
-        return companyIconBuilder;
     }
 
     public List<StopAttackingNearAirfieldSequence> getStopSequenceForMission()

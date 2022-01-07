@@ -52,7 +52,7 @@ public class BriefingMissionUpdaterTest
         changeWaypointData();
         BriefingMissionUpdater.pushEditsToMission(briefingData);
         
-        for (McuWaypoint waypoint : mission.getFlights().getPlayerFlightForSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId()).getWaypointPackage().getAllWaypoints())
+        for (McuWaypoint waypoint : mission.getFlights().getPlayerFlightForSquadron(SquadronTestProfile.KG53_PROFILE.getCompanyId()).getWaypointPackage().getAllWaypoints())
         {
             if (waypoint.getDesc().equals("Target Approach"))
             {

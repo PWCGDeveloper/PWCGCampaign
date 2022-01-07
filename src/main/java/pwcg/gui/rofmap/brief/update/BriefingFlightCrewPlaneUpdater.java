@@ -7,7 +7,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.personnel.CompanyPersonnel;
-import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayloadElementManager;

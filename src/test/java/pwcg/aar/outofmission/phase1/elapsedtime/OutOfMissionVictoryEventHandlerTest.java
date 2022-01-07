@@ -48,7 +48,7 @@ public class OutOfMissionVictoryEventHandlerTest
         
         outOfMissionCrewMembers = new CrewMembers();
         outOfMissionCrewMembers = CrewMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().
-                getCompanyPersonnel(SquadronTestProfile.JASTA_16_PROFILE.getSquadronId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
+                getCompanyPersonnel(SquadronTestProfile.JASTA_16_PROFILE.getCompanyId()).getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());
     }
 
     @Test

@@ -40,5 +40,10 @@ public class PlayerUnitInformation
     {
         return null;
     }
+    
+    public UnitMissionType getUnitMissionType()
+    {
+        return UnitMissionType.ASSAULT;
+    }
 
 }

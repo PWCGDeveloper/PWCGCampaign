@@ -19,11 +19,9 @@ public class GroundTargetDefinitionCollector
     public List<TargetDefinition> collectTargetDefinition() throws PWCGException
     {
         List<TargetDefinition> targetaDefinitionsForGroundUnit = createTargetDefinitionsForInfantry();
-        List<TargetDefinition> targetaDefinitionsForStructure = createTargetDefinitionsForAssignedStructures();
         
         List<TargetDefinition> allTargets = new ArrayList<>();
         allTargets.addAll(targetaDefinitionsForGroundUnit);
-        allTargets.addAll(targetaDefinitionsForStructure);
         return allTargets;
     }
 
@@ -33,13 +31,5 @@ public class GroundTargetDefinitionCollector
         List<TargetDefinition> targetaDefinitionsForGroundUnit = targetSelector.findInfantryGroundUnits();
         Collections.shuffle(targetaDefinitionsForGroundUnit);
         return targetaDefinitionsForGroundUnit;
-    }
-
-    private List<TargetDefinition> createTargetDefinitionsForAssignedStructures() throws PWCGException
-    {
-        TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(flightInformation);
-        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findTargetStructures();
-        Collections.shuffle(targetaDefinitionsForStructures);
-        return targetaDefinitionsForStructures;
     }
 }

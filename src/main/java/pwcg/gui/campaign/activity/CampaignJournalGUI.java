@@ -166,15 +166,6 @@ public class CampaignJournalGUI extends JPanel
         localityText += ": " + combatReport.getLocality();
         JLabel lLocality = PWCGLabelFactory.makeTransparentLabel(localityText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         headerRightPanel.add(lLocality);
-
-        String heightText = InternationalizationManager.getTranslation("Height");
-        heightText += ": " + combatReport.getAltitude();
-        JLabel lHeight = PWCGLabelFactory.makeTransparentLabel(heightText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
-        headerRightPanel.add(lHeight);
-
-		headerRightPanel.add(PWCGLabelFactory.makeDummyLabel());		
-		headerRightPanel.add(PWCGLabelFactory.makeDummyLabel());
-		headerPanel.add(headerRightPanel, BorderLayout.CENTER);
     }
 
     private JLabel makeCrewMembersInMissionLabel(Font font) throws PWCGException
@@ -219,7 +210,6 @@ public class CampaignJournalGUI extends JPanel
 		
 		Font medFont = PWCGMonitorFonts.getDecorativeFont();
         String narrativeDescText = InternationalizationManager.getTranslation("Height");
-        narrativeDescText += ": " + combatReport.getAltitude();
         JLabel lNarrative = PWCGLabelFactory.makeTransparentLabel(narrativeDescText, ColorMap.PAPER_FOREGROUND, medFont, SwingConstants.LEFT);
         narrativePanel.add(lNarrative, BorderLayout.NORTH);
 		

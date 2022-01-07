@@ -101,7 +101,7 @@ public class AiDeclarationResolutionRandomTest
         playerSquadronsInMission.add(playerSquadron);
         Mockito.when(preliminaryData.getPlayerSquadronsInMission()).thenReturn(playerSquadronsInMission);
 
-        int squadronId = SquadronTestProfile.JASTA_11_PROFILE.getSquadronId();
+        int squadronId = SquadronTestProfile.JASTA_11_PROFILE.getCompanyId();
         Mockito.when(playerSquadron.getCompanyId()).thenReturn(squadronId);
         playerVictor.setSquadronId(squadronId);
         aiVictor.setSquadronId(squadronId);

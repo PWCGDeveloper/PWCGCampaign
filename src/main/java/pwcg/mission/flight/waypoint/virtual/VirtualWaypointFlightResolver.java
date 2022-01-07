@@ -36,12 +36,4 @@ public class VirtualWaypointFlightResolver
             plane.noOrdnance();
         }
     }
-
-    public static void resolveLanding(IFlight flight, VirtualWaypointPackage vwpPackage) throws PWCGException
-    {
-        for (IVirtualWaypoint virtualWaypoint : vwpPackage.getVirtualWaypoints())
-        {
-            flight.getWaypointPackage().setLandingToTriggerOnPlane(virtualWaypoint.getVwpPlanes().getLeadActivatePlane().getLinkTrId());
-        }        
-    }
 }

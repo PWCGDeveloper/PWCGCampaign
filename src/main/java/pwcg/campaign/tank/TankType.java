@@ -11,8 +11,8 @@ import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.skin.TacticalCodeColor;
+import pwcg.campaign.tank.payload.TankPayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -40,7 +40,7 @@ public class TankType implements Cloneable
     protected Date endProduction;;
     protected Side side = null;
     protected List<Country> primaryUsedBy = new ArrayList<>();
-    protected List<PlanePayloadElement> stockModifications = new ArrayList<>();
+    protected List<TankPayloadElement> stockModifications = new ArrayList<>();
     protected TacticalCodeColor tacticalCodeColor = TacticalCodeColor.BLACK;
 
 
@@ -193,9 +193,9 @@ public class TankType implements Cloneable
         return false;
     }
     
-    public boolean isStockModification(PlanePayloadElement modification)
+    public boolean isStockModification(TankPayloadElement modification)
     {
-        for (PlanePayloadElement stockModification : getStockModifications())
+        for (TankPayloadElement stockModification : getStockModifications())
         {
             if (stockModification == modification)
             {
@@ -313,7 +313,7 @@ public class TankType implements Cloneable
         return false;
     }
 
-    public List<PlanePayloadElement> getStockModifications()
+    public List<TankPayloadElement> getStockModifications()
     {
         return stockModifications;
     }

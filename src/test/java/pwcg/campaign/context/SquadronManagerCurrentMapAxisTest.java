@@ -32,7 +32,7 @@ public class SquadronManagerCurrentMapAxisTest
     @Test
     public void getEscortOrEscortedSquadronAxisTest() throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId());
                  
         Company nearbySquadron = EscortSquadronSelector.getEscortSquadron(campaign, squadron, squadron.determineCurrentPosition(campaign.getDate()), new MissionSquadronRegistry());
         assert(nearbySquadron != null);

@@ -66,7 +66,7 @@ public class TargetDefinitionBuilderInfantry
     private boolean isCloseToAirfield(Coordinate blockPosition) throws PWCGException
     {
         List<Airfield> closeAirfields = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getAirfieldsWithinRadiusBySide(
-                blockPosition, flightInformation.getCampaign().getDate(), 5000, flightInformation.getSquadron().determineEnemySide());
+                blockPosition, flightInformation.getCampaign().getDate(), 5000, flightInformation.getCountry().getSide().getOppositeSide());
         if (closeAirfields.isEmpty())
         {
             return false;

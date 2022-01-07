@@ -113,7 +113,7 @@ public class PromotionEventHandlerFighterTest
         Mockito.when(crewMember.getBattlesFought()).thenReturn(110);
         Mockito.when(crewMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(crewMember.isPlayer()).thenReturn(true);
-        Mockito.when(crewMember.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
 
         String promotion = PromotionEventHandler.promoteNonHistoricalCrewMembers(campaign, crewMember);
 
@@ -130,7 +130,7 @@ public class PromotionEventHandlerFighterTest
         Mockito.when(crewMember.getBattlesFought()).thenReturn(110);
         Mockito.when(crewMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(crewMember.isPlayer()).thenReturn(false);
-        Mockito.when(crewMember.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
 
         String promotion = PromotionEventHandler.promoteNonHistoricalCrewMembers(campaign, crewMember);
 

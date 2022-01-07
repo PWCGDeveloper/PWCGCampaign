@@ -25,8 +25,8 @@ public class PwcgGeneratedMission
 	    pwcgMissionData.setMissionHeader(missionHeader);
         
 	    MissionPlaneGenerator missionPlaneGenerator = new MissionPlaneGenerator(mission);
-	    List<PwcgGeneratedMissionPlaneData> missionPlanes  = missionPlaneGenerator.generateMissionPlaneData();
-	    for (PwcgGeneratedMissionPlaneData missionPlane : missionPlanes)
+	    List<PwcgGeneratedMissionVehicleData> missionPlanes  = missionPlaneGenerator.generateMissionPlaneData();
+	    for (PwcgGeneratedMissionVehicleData missionPlane : missionPlanes)
 	    {
 	        pwcgMissionData.addMissionPlanes(missionPlane);
 	    }

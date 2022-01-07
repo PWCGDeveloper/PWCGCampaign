@@ -29,7 +29,7 @@ public class SquadronPersonnelTest {
     @Test
     public void isHumanSquadronTest() throws PWCGException
     {
-        CompanyPersonnel squadronpersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        CompanyPersonnel squadronpersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId());
         assert(squadronpersonnel.isPlayerSquadron());
     }
 

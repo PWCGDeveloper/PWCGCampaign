@@ -55,7 +55,7 @@ public class PlaneFactoryTest
     public void testPlayerPlaneGeneration() throws PWCGException
     {
 
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.KG53_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.KG53_PROFILE.getCompanyId());
 
         FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, NecessaryFlightType.PLAYER_FLIGHT);
 
@@ -65,7 +65,7 @@ public class PlaneFactoryTest
         List<PlaneMcu> assignedPlanes = planeFactory.createPlanesForFlight(4);
 
         boolean playerFound = false;
-        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.KG53_PROFILE.getSquadronId());
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.KG53_PROFILE.getCompanyId());
         int callnum = 1;
         for (PlaneMcu plane : assignedPlanes)
         {

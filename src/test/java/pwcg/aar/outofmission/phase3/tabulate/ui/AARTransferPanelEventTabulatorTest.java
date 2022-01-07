@@ -34,12 +34,12 @@ public class AARTransferPanelEventTabulatorTest extends AARTestSetup
     public void testTransferInEvent() throws PWCGException 
     {
         List<TransferRecord> squadronMemberTransferredIn = new ArrayList<>();
-        TransferRecord squadronMemberTransfer = new TransferRecord(crewMember1, SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        TransferRecord squadronMemberTransfer = new TransferRecord(crewMember1, SquadronTestProfile.ESC_3_PROFILE.getCompanyId(), SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
         squadronMemberTransferredIn.add(squadronMemberTransfer);        
         Mockito.when(squadronMembersTransferred.getCrewMembersTransferred()).thenReturn(squadronMemberTransferredIn);
 
         List<TransferRecord> acesTransferredIn = new ArrayList<>();
-        TransferRecord aceTransfer = new TransferRecord(ace1, SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        TransferRecord aceTransfer = new TransferRecord(ace1, SquadronTestProfile.ESC_3_PROFILE.getCompanyId(), SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
         acesTransferredIn.add(aceTransfer);        
         Mockito.when(acesTransferred.getCrewMembersTransferred()).thenReturn(acesTransferredIn);
         
@@ -55,12 +55,12 @@ public class AARTransferPanelEventTabulatorTest extends AARTestSetup
     public void testTransferOutEvent() throws PWCGException 
     {
         List<TransferRecord> squadronMemberTransferredOut = new ArrayList<>();
-        TransferRecord squadronMemberTransfer = new TransferRecord(crewMember1, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
+        TransferRecord squadronMemberTransfer = new TransferRecord(crewMember1, SquadronTestProfile.ESC_103_PROFILE.getCompanyId(), SquadronTestProfile.ESC_3_PROFILE.getCompanyId());
         squadronMemberTransferredOut.add(squadronMemberTransfer);        
         Mockito.when(squadronMembersTransferred.getCrewMembersTransferred()).thenReturn(squadronMemberTransferredOut);
 
         List<TransferRecord> acesTransferredIn = new ArrayList<>();
-        TransferRecord aceTransfer = new TransferRecord(ace1, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
+        TransferRecord aceTransfer = new TransferRecord(ace1, SquadronTestProfile.ESC_103_PROFILE.getCompanyId(), SquadronTestProfile.ESC_3_PROFILE.getCompanyId());
         acesTransferredIn.add(aceTransfer);        
         Mockito.when(acesTransferred.getCrewMembersTransferred()).thenReturn(acesTransferredIn);
         

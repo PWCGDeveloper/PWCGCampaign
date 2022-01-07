@@ -33,7 +33,7 @@ public class DuringCampaignVictimGeneratorTest
     @Test
     public void testVictimGeneration () throws PWCGException
     {               
-        Company victorSquadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());        
+        Company victorSquadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId());        
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
         Company victimSquadron = enemySquadronFinder.getEnemyForOutOfMission(victorSquadron, campaign.getDate());
 
@@ -52,7 +52,7 @@ public class DuringCampaignVictimGeneratorTest
     @Test
     public void testNotFromPlayerSquadron () throws PWCGException
     {               
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId());
         DuringCampaignAirVictimGenerator  victimGenerator = new DuringCampaignAirVictimGenerator(campaign, squadron);
         CrewMember victim = victimGenerator.generateVictimAiCrew();
         assert(victim != null);

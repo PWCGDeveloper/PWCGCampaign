@@ -115,17 +115,9 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public int getAdditionalMaxTargetRadius(FlightTypes flightType)
     {
         int initialDistance = 20000;
-        if (flightType == FlightTypes.GROUND_HUNT)
+        if (flightType == FlightTypes.DIVE_BOMB)
         {
             initialDistance = 30000;
-        }
-        else if (flightType == FlightTypes.DIVE_BOMB)
-        {
-            initialDistance = 30000;
-        }
-        else if (flightType == FlightTypes.BOMB)
-        {
-            initialDistance = 30000;                    
         }
         else if (flightType == FlightTypes.PARATROOP_DROP)
         {

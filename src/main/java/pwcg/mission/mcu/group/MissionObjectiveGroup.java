@@ -10,12 +10,12 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuEvent;
 import pwcg.mission.mcu.McuMessage;
 import pwcg.mission.mcu.McuMissionObjective;
 import pwcg.mission.mcu.McuTimer;
+import pwcg.mission.playerunit.PlayerUnit;
+import pwcg.mission.playerunit.PlayerVehicleMcu;
 
 public class MissionObjectiveGroup
 {
@@ -32,11 +32,11 @@ public class MissionObjectiveGroup
 
     public void createSuccessMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
     {
-        IFlight playerFlight = mission.getFlights().getReferencePlayerFlight();
-        Coordinate squadronLocation = playerFlight.getSquadron().determineCurrentPosition(campaign.getDate());
+        PlayerUnit playerUnit = mission.getPlayerUnits().getReferencePlayerUnit();
+        Coordinate squadronLocation = playerUnit.getCompany().determineCurrentPosition(campaign.getDate());
         missionBeginUnit = new MissionBeginUnit(squadronLocation.copy());            
                 
-        missionObjective.setCoalition(playerFlight.getSquadron().getCountry());
+        missionObjective.setCoalition(playerUnit.getCompany().getCountry());
         missionObjective.setSuccess(1);
         missionObjective.setPosition(squadronLocation);
 
@@ -47,16 +47,16 @@ public class MissionObjectiveGroup
 
     public void createFailureMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
     {
-        IFlight playerFlight = mission.getFlights().getReferencePlayerFlight();
-        Coordinate squadronLocation = playerFlight.getSquadron().determineCurrentPosition(campaign.getDate());
+        PlayerUnit playerUnit = mission.getPlayerUnits().getReferencePlayerUnit();
+        Coordinate squadronLocation = playerUnit.getCompany().determineCurrentPosition(campaign.getDate());
         missionBeginUnit = new MissionBeginUnit(squadronLocation.copy());            
 
-        missionObjective.setCoalition(playerFlight.getSquadron().getCountry());
+        missionObjective.setCoalition(playerUnit.getCompany().getCountry());
         missionObjective.setPosition(squadronLocation);
         missionObjective.setSuccess(0);
 
-        PlaneMcu referencePlane = mission.getFlights().getReferencePlayerFlight().getFlightPlanes().getPlayerPlanes().get(0);
-        referencePlane.setOnMessages(
+        PlayerVehicleMcu referenceVehicle = mission.getPlayerUnits().getReferencePlayerUnit().getVehicles().get(0);
+        referenceVehicle.setOnMessages(
                         McuMessage.ONKILL,
                         missionBeginUnit.getStartTimeindex(),
                         missionObjectiveTimer.getIndex());
@@ -65,7 +65,7 @@ public class MissionObjectiveGroup
         missionObjectiveTimer.setPosition(squadronLocation);
 
         McuEvent planeDamagedEvent = new McuEvent(McuEvent.ONPLANECRASHED, missionObjectiveTimer.getIndex());
-        referencePlane.addEvent(planeDamagedEvent);
+        referenceVehicle.addEvent(planeDamagedEvent);
     }
 
     public void write(BufferedWriter writer) throws PWCGException 

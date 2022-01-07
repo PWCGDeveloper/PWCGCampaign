@@ -45,7 +45,7 @@ public class MissionUnitFinalizer
 
     private void adjustAI() throws PWCGException
     {
-        AiAdjuster aiAdjuster = new AiAdjuster(campaign);
+        AiAdjuster aiAdjuster = new AiAdjuster();
         aiAdjuster.adjustAI(mission);
     }
 
@@ -69,11 +69,6 @@ public class MissionUnitFinalizer
                     for (int planeIndex : flight.getMission().getPlayerUnits().determinePlayerVehicleIds())
                     {
                         vwp.setVwpTriggerObject(planeIndex);
-                    }
-                    
-                    for (int truckIndex : mission.getMissionAAATrucks().getPlayerVehicleIds())
-                    {
-                        vwp.setVwpTriggerObject(truckIndex);
                     }
                 }
             }

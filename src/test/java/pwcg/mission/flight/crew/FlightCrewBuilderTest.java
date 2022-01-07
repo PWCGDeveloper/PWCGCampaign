@@ -47,15 +47,15 @@ public class FlightCrewBuilderTest
     public void testPlayerFlightGeneration() throws PWCGException
     {
         FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.KG53_PROFILE.getSquadronId());
-        flightInformation.setSquadron(squadron);
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.KG53_PROFILE.getCompanyId());
+        flightInformation.setCompany(squadron);
         
         UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
         List<CrewMember> players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();
         boolean playerFound = false;
-        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.KG53_PROFILE.getSquadronId());        
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.KG53_PROFILE.getCompanyId());        
         for (CrewMember crew : assignedCrewMap)
         {
             assert(squadronPersonnel.isActiveCrewMember(crew.getSerialNumber()));
@@ -73,7 +73,7 @@ public class FlightCrewBuilderTest
     {
         FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
         Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(20111052);
-        flightInformation.setSquadron(squadron);
+        flightInformation.setCompany(squadron);
 
         UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);

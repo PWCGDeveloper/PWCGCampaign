@@ -38,13 +38,13 @@ public class CampaignPersonnelManagerReconTest
     {                               
         CrewMemberFilterSpecification filterSpecification = new CrewMemberFilterSpecification();
 
-        CrewMembers squadronMembers = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.ESC_103_PROFILE.getSquadronId()).getCrewMembersWithAces();
+        CrewMembers squadronMembers = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.ESC_103_PROFILE.getCompanyId()).getCrewMembersWithAces();
         CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronMembers.getCrewMemberCollection());
 
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(false);  
         filterSpecification.setIncludeAI(true);  
-        filterSpecification.setSpecifySquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        filterSpecification.setSpecifySquadron(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
         Map<Integer, CrewMember> squadronMembersNoPlayerNoAces = filter.getFilteredCrewMembers(filterSpecification);
         Assertions.assertTrue (squadronMembersNoPlayerNoAces.size() == (Company.COMPANY_STAFF_SIZE - 2));
         

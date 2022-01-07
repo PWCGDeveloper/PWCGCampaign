@@ -22,7 +22,7 @@ public class InitialSquadronStafferGASTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
 
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JASTA_11_PROFILE.getCompanyId());
         
         InitialCompanyStaffer initialSquadronStaffer = new InitialCompanyStaffer(campaign, squadron);
         CompanyPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();        

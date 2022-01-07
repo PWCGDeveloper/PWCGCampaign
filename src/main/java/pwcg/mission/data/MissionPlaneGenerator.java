@@ -6,45 +6,45 @@ import java.util.List;
 import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.playerunit.PlayerUnit;
+import pwcg.mission.playerunit.PlayerVehicleMcu;
 
 public class MissionPlaneGenerator
 {
     private Mission mission;
-    private List<PwcgGeneratedMissionPlaneData> missionPlanes = new ArrayList<>();
+    private List<PwcgGeneratedMissionVehicleData> missionPlanes = new ArrayList<>();
     
     public MissionPlaneGenerator(Mission mission)
     {
         this.mission = mission;
     }
     
-    public List<PwcgGeneratedMissionPlaneData> generateMissionPlaneData() throws PWCGException
+    public List<PwcgGeneratedMissionVehicleData> generateMissionPlaneData() throws PWCGException
     {
-        for (IFlight flight : mission.getFlights().getAllAerialFlights())
+        for (PlayerUnit unit : mission.getPlayerUnits().getPlayerUnits())
         {
-            makePlaneEntriesForFlight(flight);
+            makePlaneEntriesForUnit(unit);
         }
         
         return missionPlanes;
     }
 
-    private void makePlaneEntriesForFlight(IFlight flight)
+    private void makePlaneEntriesForUnit(PlayerUnit unit)
     {
-        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+        for (PlayerVehicleMcu vehicle : unit.getVehicles())
         {
-            makeMissionPlaneEntry(flight.getSquadron(), plane);
+            makeMissionPlaneEntry(unit.getCompany(), vehicle);
         }
     }
 
-    private void makeMissionPlaneEntry(Company squadron, PlaneMcu plane)
+    private void makeMissionPlaneEntry(Company squadron, PlayerVehicleMcu vehicle)
     {
-        PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
-        missionPlaneData.setCrewMemberName(plane.getCrewMember().getFlightName());
-        missionPlaneData.setCrewMemberSerialNumber(plane.getCrewMember().getSerialNumber());
-        missionPlaneData.setPlaneSerialNumber(plane.getSerialNumber());
-        missionPlaneData.setSquadronId(squadron.getCompanyId());
-        missionPlaneData.setAircraftType(plane.getType());
+        PwcgGeneratedMissionVehicleData missionPlaneData = new PwcgGeneratedMissionVehicleData();
+        missionPlaneData.setCrewMemberName(vehicle.getCrewMember().getNameAndRank());
+        missionPlaneData.setCrewMemberSerialNumber(vehicle.getCrewMember().getSerialNumber());
+        missionPlaneData.setVehicleSerialNumber(vehicle.getSerialNumber());
+        missionPlaneData.setCompanyId(squadron.getCompanyId());
+        missionPlaneData.setVehicleType(vehicle.getType());
         
         missionPlanes.add(missionPlaneData);
     }

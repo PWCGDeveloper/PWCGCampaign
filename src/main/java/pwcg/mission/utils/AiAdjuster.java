@@ -1,6 +1,5 @@
 package pwcg.mission.utils;
 
-import pwcg.campaign.Campaign;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -9,12 +8,9 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
 public class AiAdjuster
-{
-    private Campaign campaign;
-    
-    public AiAdjuster(Campaign campaign)
+{    
+    public AiAdjuster()
     {
-        this.campaign = campaign;
     }
     
     public void adjustAI(Mission mission) throws PWCGException

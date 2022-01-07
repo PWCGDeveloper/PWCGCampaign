@@ -22,7 +22,7 @@ public class InitialSquadronStafferRFCTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
 
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.RFC_2_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.RFC_2_PROFILE.getCompanyId());
         
         InitialCompanyStaffer initialSquadronStaffer = new InitialCompanyStaffer(campaign, squadron);
         CompanyPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();        

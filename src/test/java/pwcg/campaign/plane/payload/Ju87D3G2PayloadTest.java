@@ -18,6 +18,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.plane.PlaneAttributeMapping;
 import pwcg.campaign.plane.TankType;
 import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -28,8 +29,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.product.bos.plane.BosPlaneAttributeMapping;
-import pwcg.product.bos.plane.payload.BoSPayloadFactory;
+import pwcg.product.bos.plane.payload.PlanePayloadFactory;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -91,10 +91,10 @@ public class Ju87D3G2PayloadTest
     @Test
     public void validateStukaPayloadBeforeCannons() throws PWCGException
     {
-        BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
+        PlanePayloadFactory bosPayloadFactory = new PlanePayloadFactory();
         TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
 
-        TankType bosTankType = planeTypeFactory.createTankTypeByType(BosPlaneAttributeMapping.JU87_D3.getTankType());
+        TankType bosTankType = planeTypeFactory.createTankTypeByType(PlaneAttributeMapping.JU87_D3.getTankType());
 
         System.out.println(bosTankType.getType());
 
@@ -124,10 +124,10 @@ public class Ju87D3G2PayloadTest
     @Test
     public void validateStukaPayloadAfterCannons() throws PWCGException
     {
-        BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
+        PlanePayloadFactory bosPayloadFactory = new PlanePayloadFactory();
         TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
 
-        TankType bosTankType = planeTypeFactory.createTankTypeByType(BosPlaneAttributeMapping.JU87_D3.getTankType());
+        TankType bosTankType = planeTypeFactory.createTankTypeByType(PlaneAttributeMapping.JU87_D3.getTankType());
 
         System.out.println(bosTankType.getType());
 
@@ -158,7 +158,7 @@ public class Ju87D3G2PayloadTest
 
     private IPlanePayload getPayloadGeneratorForDiveBomber() throws PWCGException
     {
-        TankType plane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(BosPlaneAttributeMapping.JU87_D3.getTankType());
+        TankType plane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(PlaneAttributeMapping.JU87_D3.getTankType());
         IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
         IPlanePayload payloadGenerator = payloadFactory.createPayload(plane.getType(), campaign.getDate());
         return payloadGenerator;
@@ -166,7 +166,7 @@ public class Ju87D3G2PayloadTest
 
     private IPlanePayload getPayloadGeneratorForAttack() throws PWCGException
     {
-        TankType plane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(BosPlaneAttributeMapping.JU87_D3.getTankType());
+        TankType plane = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(PlaneAttributeMapping.JU87_D3.getTankType());
         IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
         IPlanePayload payloadGenerator = payloadFactory.createPayload(plane.getType(), campaign.getDate());
         return payloadGenerator;

@@ -11,12 +11,12 @@ import pwcg.campaign.company.Company;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.plane.PlaneAttributeMapping;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.TankType;
 import pwcg.campaign.plane.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
-import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -34,10 +34,10 @@ public class CampaignEquipmentManagerTest
     public void makeAircraftForSquadronTest () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190);
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getSquadronId());
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getCompanyId());
         for (EquippedTank plane : equipment.getActiveEquippedTanks().values())
         {
-            assert(plane.getType().contentEquals(BosPlaneAttributeMapping.FW190_A3.getTankType()));
+            assert(plane.getType().contentEquals(PlaneAttributeMapping.FW190_A3.getTankType()));
         }
         
 
@@ -49,11 +49,11 @@ public class CampaignEquipmentManagerTest
         List<Integer> planesToReplace = new ArrayList<>();
         
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190);
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getSquadronId());
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getCompanyId());
         int count = 0;
         for (EquippedTank plane : equipment.getActiveEquippedTanks().values())
         {
-            assert(plane.getType().contentEquals(BosPlaneAttributeMapping.FW190_A3.getTankType()));
+            assert(plane.getType().contentEquals(PlaneAttributeMapping.FW190_A3.getTankType()));
             if (count == 0 || count == 3 || count == 6)
             {
                 planesToReplace.add(plane.getSerialNumber());
@@ -61,7 +61,7 @@ public class CampaignEquipmentManagerTest
             ++count;
         }
         
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getCompanyId());
         TankTypeFactory planeTypeFactory = PWCGContext.getInstance().getTankTypeFactory();
         TankType planeType = planeTypeFactory.getPlaneById("bf109f4");
         campaign.getEquipmentManager().actOnEquipmentRequest(squadron, planesToReplace, planeType.getDisplayName());
@@ -69,7 +69,7 @@ public class CampaignEquipmentManagerTest
         int bf109Count = 0;
         for (EquippedTank plane : equipment.getActiveEquippedTanks().values())
         {
-            if (plane.getType().contentEquals(BosPlaneAttributeMapping.BF109_F4.getTankType()))
+            if (plane.getType().contentEquals(PlaneAttributeMapping.BF109_F4.getTankType()))
             {
                 ++bf109Count;
             }

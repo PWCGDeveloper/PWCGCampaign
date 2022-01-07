@@ -70,10 +70,10 @@ public class EquipmentReplacementHandlerTest
         {
             for (EquippedTank equippedPlane : equipment.getActiveEquippedTanks().values())
             {
-                Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(equippedPlane.getSquadronId());
+                Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(equippedPlane.getCompanyId());
                 if (squadron.getService() == armedService.getServiceId())
                 {
-                    if (playerSquadron.getCompanyId() != equippedPlane.getSquadronId())
+                    if (playerSquadron.getCompanyId() != equippedPlane.getCompanyId())
                     {
                         equippedPlane.setPlaneStatus(TankStatus.STATUS_DESTROYED);
                         equippedPlane.setDateRemovedFromService(inactiveDate);
@@ -113,7 +113,7 @@ public class EquipmentReplacementHandlerTest
         for (EquippedTank equippedPlane : equipment.getActiveEquippedTanks().values())
         {
             Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(playerSquadron.getCompanyId());
-            if (squadron.getCompanyId() == equippedPlane.getSquadronId())
+            if (squadron.getCompanyId() == equippedPlane.getCompanyId())
             {                
                 equippedPlane.setPlaneStatus(TankStatus.STATUS_DESTROYED);
                 equippedPlane.setDateRemovedFromService(inactiveDate);

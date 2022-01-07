@@ -85,10 +85,10 @@ public class AARInMissionResultGeneratorTest
         firmVictories = new ArrayList<>();
         playerDeclarationSet = new PlayerDeclarations();
 
-        playerPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        aiPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        playerPlaneVictor.setCompanyId(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
+        aiPlaneVictor.setCompanyId(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
         wernerVossPlaneVictor.setSquadronId(401010);
-        gerogesGuynemerPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        gerogesGuynemerPlaneVictor.setCompanyId(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
         
         Mockito.when(evaluationData.getCrewMembersInMission()).thenReturn(crewMemberStatusList);
         Mockito.when(evaluationData.getVictoryResults()).thenReturn(firmVictories);   
@@ -150,7 +150,7 @@ public class AARInMissionResultGeneratorTest
         victim.setPlaneSerialNumber(planeSerialNumber);
         victim.setVehicleType("albatrosd5");
         victim.setCountry(new BoSCountry(Country.GERMANY));
-        victim.setSquadronId(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
+        victim.setCompanyId(SquadronTestProfile.JASTA_11_PROFILE.getCompanyId());
         victim.intializeCrewMember(crewMemberSerialNumber);
 
         LogVictory resultVictory = new LogVictory(10);

@@ -34,7 +34,7 @@ public class CampaignServiceChangeHandlerTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
         ArmedService service = campaign.determinePlayerCompanies().get(0).determineServiceForSquadron(campaign.getDate());
         ICountry country = service.getCountry();
-        CompanyPersonnel personnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.RFC_2_PROFILE.getSquadronId());
+        CompanyPersonnel personnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.RFC_2_PROFILE.getCompanyId());
 
         Assertions.assertTrue (country.getCountry() == Country.BRITAIN);
         Assertions.assertTrue (service.getName().equals(FCServiceManager.RFC_NAME));

@@ -80,7 +80,7 @@ public class ClaimResolverTest
         {
             LogPlane victor = new LogPlane(10+1);
             victor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-            victor.setSquadronId(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
+            victor.setCompanyId(SquadronTestProfile.JASTA_11_PROFILE.getCompanyId());
             victor.intializeCrewMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
             
             LogPlane victim = new LogPlane(100+i);
@@ -115,7 +115,7 @@ public class ClaimResolverTest
     public void testClaimDenied() throws PWCGException
     {
         boolean isNewsworthy = false;
-        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, "Any Plane", SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, campaign.getDate(), isNewsworthy);
+        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, "Any Plane", SquadronTestProfile.ESC_103_PROFILE.getCompanyId(), SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, campaign.getDate(), isNewsworthy);
 
         Mockito.when(claimDenier.determineClaimDenied(ArgumentMatchers.<Integer>any(), ArgumentMatchers.<PlayerVictoryDeclaration>any())).thenReturn(claimDenied);
 

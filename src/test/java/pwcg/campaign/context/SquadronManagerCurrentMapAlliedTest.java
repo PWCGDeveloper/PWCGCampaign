@@ -37,7 +37,7 @@ public class SquadronManagerCurrentMapAlliedTest
     public void getEscortOrEscortedSquadronAlliedTest() throws PWCGException
     {
 
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.RAF_184_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.RAF_184_PROFILE.getCompanyId());
         
         Company nearbySquadron = EscortSquadronSelector.getEscortedSquadron(campaign, squadron, squadron.determineCurrentPosition(campaign.getDate()));
 

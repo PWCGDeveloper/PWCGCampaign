@@ -32,7 +32,7 @@ public class TargetDefinitionBuilderAntiShippingTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_KUBAN_PROFILE);
 
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.STG77_KUBAN_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.STG77_KUBAN_PROFILE.getCompanyId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_ANTI_SHIPPING);

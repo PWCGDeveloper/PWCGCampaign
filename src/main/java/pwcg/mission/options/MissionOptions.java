@@ -3,7 +3,6 @@ package pwcg.mission.options;
 import java.util.Date;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.MissionProfile;
 import pwcg.mission.utils.MissionTime;
 
 public class MissionOptions 

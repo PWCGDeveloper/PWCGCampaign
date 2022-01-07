@@ -3,8 +3,8 @@ package pwcg.campaign.factory;
 import pwcg.campaign.api.IStaticPlaneSelector;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.plane.StaticPlaneSelector;
 import pwcg.core.exception.PWCGException;
-import pwcg.product.bos.plane.BoSStaticPlaneSelector;
 
 public class StaticPlaneSelectorFactory
 {
@@ -12,7 +12,7 @@ public class StaticPlaneSelectorFactory
     {
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            return new BoSStaticPlaneSelector();
+            return new StaticPlaneSelector();
         }
         else
         {

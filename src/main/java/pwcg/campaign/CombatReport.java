@@ -17,7 +17,6 @@ public class CombatReport
 	private String duty = "";
 	private String haReport = "";
 	private String narrative = "";
-	private String altitude = "";
 		
 	public CombatReport ()
 	{
@@ -132,16 +131,4 @@ public class CombatReport
 	{
 		this.narrative = narrative;
 	}
-
-	public String getAltitude()
-	{
-		return altitude;
-	}
-
-	public void setAltitude(String altitude)
-	{
-		this.altitude = altitude;
-	}
-
-
 }

@@ -12,10 +12,10 @@ import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.payload.ITankPayload;
+import pwcg.campaign.tank.payload.TankPayloadFactory;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
@@ -27,10 +27,8 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogCategory;
-import pwcg.mission.flight.FlightStartPosition;
 import pwcg.mission.mcu.McuEvent;
 import pwcg.mission.mcu.McuTREntity;
-import pwcg.mission.mcu.group.WingmanMcuGroup;
 
 public class PlayerVehicleMcu extends EquippedTank implements Cloneable
 {
@@ -54,9 +52,8 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
     private ICountry country = CountryFactory.makeNeutralCountry();
     private int damageThreshold = 1;
     private int deleteAfterDeath = 1;
-    private WingmanMcuGroup wingmanCommands;
 
-    private IPlanePayload payload = null;
+    private ITankPayload payload = null;
 
     private McuTREntity entity;
 
@@ -130,7 +127,6 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         vehicle.country = CountryFactory.makeCountryByCountry(this.country.getCountry());
         vehicle.damageThreshold = this.damageThreshold;
         vehicle.deleteAfterDeath = this.deleteAfterDeath;
-        vehicle.wingmanCommands = this.wingmanCommands;
         if (payload != null)
         {
             vehicle.payload = this.payload.copy();
@@ -172,24 +168,24 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
 
         return isPlayerVehicle;
     }
-
-    public IPlanePayload buildVehiclePayload(PlayerUnit unit, Date date) throws PWCGException
+    
+    public ITankPayload buildVehiclePayload(PlayerUnit unit, Date date) throws PWCGException
     {
-        IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getVehiclePayloadFactory();
+        TankPayloadFactory payloadFactory = new TankPayloadFactory();        
         payload = payloadFactory.createPayload(this.getType(), date);
-        payload.createPayload(unit);
+        payload.createWeaponsPayload(unit);
         return payload.copy();
     }
 
-    public IPlanePayload buildStandardVehiclePayload(Date date) throws PWCGException
+    public ITankPayload buildStandardVehiclePayload(Date date) throws PWCGException
     {
-        IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getVehiclePayloadFactory();
+        TankPayloadFactory payloadFactory = new TankPayloadFactory();        
         payload = payloadFactory.createPayload(this.getType(), date);
         payload.createStandardWeaponsPayload();
         return payload.copy();
     }
 
-    public void setVehiclePayload(IPlanePayload payload) throws PWCGException
+    public void setVehiclePayload(ITankPayload payload) throws PWCGException
     {
         if (payload != null)
         {
@@ -197,7 +193,7 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         }
     }
 
-    public IPlanePayload getVehiclePayload() throws PWCGException
+    public ITankPayload getVehiclePayload() throws PWCGException
     {
         if (payload != null)
         {
@@ -331,11 +327,6 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
             writer.newLine();
 
             entity.write(writer);
-
-            if (wingmanCommands != null)
-            {
-                wingmanCommands.write(writer);
-            }
         }
         catch (IOException e)
         {

@@ -12,7 +12,6 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
@@ -164,7 +163,7 @@ public class PlaneMcu extends PlaneType implements Cloneable
 
     public IPlanePayload buildPlanePayload(IFlight flight, Date date) throws PWCGException
     {
-        IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        PlanePayloadFactory payloadFactory = new PlanePayloadFactory();        
         payload = payloadFactory.createPayload(this.getType(), date);
         payload.createWeaponsPayload(flight);
         return payload.copy();
@@ -172,7 +171,7 @@ public class PlaneMcu extends PlaneType implements Cloneable
 
     public IPlanePayload buildStandardPlanePayload(Date date) throws PWCGException
     {
-        IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
+        PlanePayloadFactory payloadFactory = new PlanePayloadFactory();        
         payload = payloadFactory.createPayload(this.getType(), date);
         payload.createStandardWeaponsPayload();
         return payload.copy();

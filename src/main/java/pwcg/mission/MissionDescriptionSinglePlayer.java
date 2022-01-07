@@ -9,7 +9,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.options.MissionOptions;
 import pwcg.mission.options.MissionWeather;
 import pwcg.mission.options.WindLayer;
@@ -30,7 +29,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
                     "<br>Primary Objective <OBJECTIVE>";
     
 	private String descSinglePlayerTemplate = 
-		"Aircraft  <AIRCRAFT>\n" +
+		"Vehicle  <VEHICLE>\n" +
 		"Squadron  <COMPANY>\n" +
 		"Airbase  <TOWN>\n" +
         "Date  <DATE>\n" +
@@ -68,32 +67,60 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
         MissionOptions missionOptions = mission.getMissionOptions();
         setMissionDateTime(DateUtils.getDateAsMissionFileFormat(campaign.getDate()), missionOptions.getMissionTime().getMissionTime());
 
-        setAircraft(playerUnit.getLeadVehicle().getDisplayName());
+        setVehicle(playerUnit.getLeadVehicle().getDisplayName());
         setTown(playerUnit.getUnitInformation().getBase());
         setObjective(MissionObjectiveFactory.formMissionObjective(playerUnit, campaign.getDate()));
-        setSquadron(playerUnit.getCompany().determineDisplayName(campaign.getDate()));
-        buildTitleDescription(campaign.getCampaignData().getName(), playerUnit.getFlightType().toString());
+        setCompany(playerUnit.getCompany().determineDisplayName(campaign.getDate()));
+        buildTitleDescription(campaign.getCampaignData().getName(), playerUnit.getUnitInformation().getCompany().determineDisplayName(campaign.getDate()));
 
-        HashMap<String, IFlight> squadronMap = new HashMap<String, IFlight>();
-        for (IFlight flight : mission.getFlights().getAiFlights())
+        HashMap<String, PlayerUnit> companyMap = new HashMap<>();
+        for (PlayerUnit unit : mission.getPlayerUnits().getPlayerUnits())
         {
-            squadronMap.put(flight.getSquadron().determineDisplayName(campaign.getDate()), flight);
+            companyMap.put(unit.getCompany().determineDisplayName(campaign.getDate()), unit);
         }
 
-        for (IFlight flight : squadronMap.values())
+        for (PlayerUnit unit : companyMap.values())
         {
-            setFlight(playerUnit.getCountry(), flight);
+            setUnit(playerUnit.getUnitInformation().getCountry(), unit);
         }
         
         return descSinglePlayerTemplate;
     }
 
-	public void setAircraft(String replacement)
+    
+    private void setUnit(ICountry country, PlayerUnit unit) throws PWCGException 
+    {
+        Campaign campaign =     PWCGContext.getInstance().getCampaign();
+        
+        String squadron = unit.getCompany().determineDisplayName(campaign.getDate());
+        String vehicle = unit.getLeadVehicle().getDesc();
+        ICountry vehicleCountry = unit.getUnitInformation().getCountry();
+        
+        if (country.isSameSide(vehicleCountry))
+        {
+            String friendlyInt = "    " + squadron + " flying " + vehicle;
+            friendlyIntList.add(friendlyInt + "\n");
+            
+            String friendlyInthtml = "<br>    " + friendlyInt;
+            friendlyIntHtmlList.add(friendlyInthtml);           
+        }
+        else
+        {
+            String enemyInt = "    " + squadron + " flying " + vehicle;
+            enemyIntList.add(enemyInt + "\n");
+            
+            String enemyInthtml = "<br>    " + enemyInt;
+            enemyIntHtmlList.add(enemyInthtml);
+        }
+    }
+
+
+	public void setVehicle(String replacement)
 	{
-		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<AIRCRAFT>", replacement);
+		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<VEHICLE>", replacement);
 	}
 	
-	public void setSquadron(String replacement)
+	public void setCompany(String replacement)
 	{
 		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<COMPANY>", replacement);
 		singlePlayerHtmlTemplate = replace(singlePlayerHtmlTemplate, "<COMPANY>", replacement);

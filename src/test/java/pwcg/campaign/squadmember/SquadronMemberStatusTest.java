@@ -58,7 +58,7 @@ public class CrewMemberStatusTest
         List<TankAce> aces = new ArrayList<>();
         Mockito.when(campaignAces.getActiveCampaignAcesBySquadron(Mockito.anyInt())).thenReturn(aces);
 
-        squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.ESC_103_PROFILE.getSquadronId()); 
+        squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.ESC_103_PROFILE.getCompanyId()); 
         squadronPersonnel = new CompanyPersonnel(campaign, squadron);
 
         squadronMemberFactory = new  CrewMemberFactory (campaign, squadron, squadronPersonnel);

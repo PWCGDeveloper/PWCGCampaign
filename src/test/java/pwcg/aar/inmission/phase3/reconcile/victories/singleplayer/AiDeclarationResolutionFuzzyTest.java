@@ -110,7 +110,7 @@ public class AiDeclarationResolutionFuzzyTest
         playerSquadronsInMission.add(squadron);
         Mockito.when(preliminaryData.getPlayerSquadronsInMission()).thenReturn(playerSquadronsInMission);
 
-        int squadronId = SquadronTestProfile.JASTA_11_PROFILE.getSquadronId();
+        int squadronId = SquadronTestProfile.JASTA_11_PROFILE.getCompanyId();
         playerVictor.setSquadronId(squadronId);
         aiVictorOne.setSquadronId(squadronId);
         aiVictorTwo.setSquadronId(squadronId);

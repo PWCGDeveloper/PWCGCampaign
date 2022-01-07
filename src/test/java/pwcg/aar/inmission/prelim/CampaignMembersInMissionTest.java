@@ -20,7 +20,7 @@ import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMembers;
 import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
+import pwcg.mission.data.PwcgGeneratedMissionVehicleData;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -32,7 +32,7 @@ public class CampaignMembersInMissionTest
     private PwcgMissionData pwcgMissionData;
     
     private Campaign campaign;
-    private Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes  = new HashMap<>();
+    private Map<Integer, PwcgGeneratedMissionVehicleData> missionPlanes  = new HashMap<>();
 
     @BeforeAll
     public void setupSuite() throws PWCGException
@@ -48,7 +48,7 @@ public class CampaignMembersInMissionTest
         missionPlanes.clear();
         for (int i = 0; i < 50; ++i)
         {
-            PwcgGeneratedMissionPlaneData planeData = new PwcgGeneratedMissionPlaneData();
+            PwcgGeneratedMissionVehicleData planeData = new PwcgGeneratedMissionVehicleData();
             planeData.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + (i * 2) + 1);
             missionPlanes.put(planeData.getCrewMemberSerialNumber(), planeData);
         }

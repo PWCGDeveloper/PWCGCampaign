@@ -34,7 +34,6 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
         {
             VirtualWaypointFlightResolver.resolveForAttackFlight(flight, this);
         }
-        VirtualWaypointFlightResolver.resolveLanding(flight, this);
     }   
 
     @Override

@@ -50,7 +50,7 @@ public class AARAceLeavePanelEventTabulatorTest extends AARTestSetup
     @Test
     public void oneAceOnLeave () throws PWCGException
     {             
-        transferRecords.add(new TransferRecord(ace, SquadronTestProfile.JASTA_11_PROFILE.getSquadronId(), CrewMemberStatus.STATUS_ON_LEAVE));
+        transferRecords.add(new TransferRecord(ace, SquadronTestProfile.JASTA_11_PROFILE.getCompanyId(), CrewMemberStatus.STATUS_ON_LEAVE));
 
         AceLeavePanelEventTabulator aceLeavePanelEventTabulator = new AceLeavePanelEventTabulator(campaign, aarContext);
         AARAceLeavePanelData aceLeavePanelData = aceLeavePanelEventTabulator.tabulateForAARAceLeavePanel();
@@ -60,7 +60,7 @@ public class AARAceLeavePanelEventTabulatorTest extends AARTestSetup
     @Test
     public void noAcesOnLeave () throws PWCGException
     {             
-        transferRecords.add(new TransferRecord(ace, SquadronTestProfile.JASTA_11_PROFILE.getSquadronId(), SquadronTestProfile.JASTA_16_PROFILE.getSquadronId()));
+        transferRecords.add(new TransferRecord(ace, SquadronTestProfile.JASTA_11_PROFILE.getCompanyId(), SquadronTestProfile.JASTA_16_PROFILE.getCompanyId()));
 
         AceLeavePanelEventTabulator aceLeavePanelEventTabulator = new AceLeavePanelEventTabulator(campaign, aarContext);
         AARAceLeavePanelData aceLeavePanelData = aceLeavePanelEventTabulator.tabulateForAARAceLeavePanel();

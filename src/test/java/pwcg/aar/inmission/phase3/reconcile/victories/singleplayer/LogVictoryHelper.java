@@ -27,7 +27,7 @@ public class LogVictoryHelper
         victim.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         victim.setVehicleType("albatrosd5");
         victim.setCountry(new BoSCountry(Country.GERMANY));
-        victim.setSquadronId(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
+        victim.setCompanyId(SquadronTestProfile.JASTA_11_PROFILE.getCompanyId());
         victim.intializeCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
 
         makeVictory(victor, victim);
@@ -41,7 +41,7 @@ public class LogVictoryHelper
         victim.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         victim.setVehicleType("albatrosd5");
         victim.setCountry(new BoSCountry(Country.GERMANY));
-        victim.setSquadronId(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
+        victim.setCompanyId(SquadronTestProfile.JASTA_11_PROFILE.getCompanyId());
         victim.intializeCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
 
         makeVictory(victor, victim);
@@ -86,7 +86,7 @@ public class LogVictoryHelper
         victor.setCrewMemberSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         victor.setVehicleType("spad13");
         victor.setCountry(new BoSCountry(Country.FRANCE));
-        victor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        victor.setCompanyId(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
         victor.intializeCrewMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         return victor;
     }

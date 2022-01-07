@@ -16,7 +16,7 @@ public class MissionCoopConverter
 
         for (PlayerUnit unit : mission.getPlayerUnits().getPlayerUnits())
         {
-            unit.preparePlaneForCoop(unit);
+            unit.preparePlaneForCoop();
         }
     }
 }

@@ -106,7 +106,7 @@ public class AceManagerTest
     public void testActiveAcesForSquadron () throws PWCGException
     {            	
     	Mockito.when(georgesGuynemer.getCrewMemberActiveStatus()).thenReturn(CrewMemberStatus.STATUS_ACTIVE);
-    	List<TankAce> aces = aceManager.getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), DateUtils.getDateYYYYMMDD("19170801"), SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+    	List<TankAce> aces = aceManager.getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), DateUtils.getDateYYYYMMDD("19170801"), SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
     	Assertions.assertTrue (aces.size() > 0);
     }
 
@@ -114,7 +114,7 @@ public class AceManagerTest
     public void testActiveAcesForSquadronAceOnLeave () throws PWCGException
     {            	
     	Mockito.when(georgesGuynemer.getCrewMemberActiveStatus()).thenReturn(CrewMemberStatus.STATUS_ACTIVE);
-    	List<TankAce> aces = aceManager.getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), DateUtils.getDateYYYYMMDD("19160318"), SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+    	List<TankAce> aces = aceManager.getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), DateUtils.getDateYYYYMMDD("19160318"), SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
     	Assertions.assertTrue (aces.size() == 0);
     }
 
@@ -122,14 +122,14 @@ public class AceManagerTest
     public void testActiveAcesForSquadronButAceIsDead () throws PWCGException
     {            	
     	Mockito.when(georgesGuynemer.getCrewMemberActiveStatus()).thenReturn(CrewMemberStatus.STATUS_KIA);
-    	List<TankAce> aces = aceManager.getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), DateUtils.getDateYYYYMMDD("19171001"), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
+    	List<TankAce> aces = aceManager.getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), DateUtils.getDateYYYYMMDD("19171001"), SquadronTestProfile.ESC_3_PROFILE.getCompanyId());
     	Assertions.assertTrue (aces.size() == 0);
     }
 
     @Test
     public void testAllAcesForSquadron () throws PWCGException
     {            	
-    	List<TankAce> aces = aceManager.getAllAcesForSquadron(campaign.getPersonnelManager().getCampaignAces().getAllCampaignAces().values(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
+    	List<TankAce> aces = aceManager.getAllAcesForSquadron(campaign.getPersonnelManager().getCampaignAces().getAllCampaignAces().values(), SquadronTestProfile.ESC_3_PROFILE.getCompanyId());
     	Assertions.assertTrue (aces.size() == 1);
     }
 

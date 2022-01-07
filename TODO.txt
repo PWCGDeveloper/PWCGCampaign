@@ -1,16 +1,17 @@
 TC:
 Campaign creation:
-Make army services selectable for a campaign
+Service Flag Pictures
 Tank pictures
 Tank profiles
 Tank crew pictures
-Add vehicle arch types to driveable vehicles
-Generate tank units
-Generate tank equipment
-Allow transfer from air to ground
 
 Mission:
-Use only AI for airplane missions
+Tank payloads
+
+Player units
+Player mission types
+TargetDefinitionBuilderAAATruck - use asbasisforplayer target types
+
 Add human crewed vehicles
 Place player unit into mission
 Do not place other playable units into mission

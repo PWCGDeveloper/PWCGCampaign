@@ -34,7 +34,7 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     public List<MissionPoint> getFlightMissionPoints() throws PWCGException
     {
         List<MissionPoint> waypointsCoordinates =  super.getWaypointsAsMissionPoints();
-        MissionPoint landPoint = new MissionPoint(landingMcu.getPosition(), WaypointAction.WP_ACTION_LANDING_APPROACH);
+        MissionPoint landPoint = new MissionPoint(flight.getFlightInformation().getHomePosition(), WaypointAction.WP_ACTION_LANDING_APPROACH);
         waypointsCoordinates.add(landPoint);
         return waypointsCoordinates;
     }

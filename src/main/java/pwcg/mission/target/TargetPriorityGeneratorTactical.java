@@ -5,10 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightTypes;
 
 public class TargetPriorityGeneratorTactical
 {
@@ -36,19 +34,7 @@ public class TargetPriorityGeneratorTactical
 
     private static void addItemToWeightedList(List<TargetType> targetTypesByIndex, FlightInformation flightInformation, String configKey, TargetType targetType) throws PWCGException
     {
-        ConfigManagerCampaign configManager = flightInformation.getCampaign().getCampaignConfigManager();
-        int detailedVictoryDescription = configManager.getIntConfigParam(ConfigItemKeys.PWCGChangesTargetOddsKey);
         int weight = flightInformation.getCampaign().getCampaignConfigManager().getIntConfigParam(configKey);
-        if (detailedVictoryDescription == 0)
-        {
-            if (FlightTypes.isLevelBombingFlight(flightInformation.getFlightType()))
-            {
-                weight = weight * 10;
-            }
-            
-            int addedWeightForpreference = TargetPriorityPreferenceModifier.getTargetPreferenceWeight(flightInformation, targetType);
-            weight += addedWeightForpreference;
-        }
 
         if (weight > MAX_WEIGHTED_ENTRIES)
         {

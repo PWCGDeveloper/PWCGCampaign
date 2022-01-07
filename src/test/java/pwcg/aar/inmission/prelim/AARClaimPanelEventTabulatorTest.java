@@ -28,7 +28,7 @@ import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
-import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
+import pwcg.mission.data.PwcgGeneratedMissionVehicleData;
 
 @ExtendWith(MockitoExtension.class)
 public class AARClaimPanelEventTabulatorTest
@@ -40,7 +40,7 @@ public class AARClaimPanelEventTabulatorTest
     @Mock private PwcgMissionData pwcgMissionData;
     @Mock private MissionHeader missionHeader;
 
-    private Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes  = new HashMap<>();    
+    private Map<Integer, PwcgGeneratedMissionVehicleData> missionPlanes  = new HashMap<>();    
     private Date campaignDate;
     
     @BeforeEach
@@ -54,28 +54,28 @@ public class AARClaimPanelEventTabulatorTest
         
         Mockito.when(aarPreliminarytData.getPwcgMissionData()).thenReturn(pwcgMissionData);
 
-        PwcgGeneratedMissionPlaneData alliedYak = new PwcgGeneratedMissionPlaneData();
-        alliedYak.setAircraftType("yak1s69");
-        alliedYak.setSquadronId(10111011);
+        PwcgGeneratedMissionVehicleData alliedYak = new PwcgGeneratedMissionVehicleData();
+        alliedYak.setVehicleType("yak1s69");
+        alliedYak.setCompanyId(10111011);
         alliedYak.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
 
-        PwcgGeneratedMissionPlaneData alliedYak2 = new PwcgGeneratedMissionPlaneData();
-        alliedYak2.setAircraftType("yak1s69");
-        alliedYak2.setSquadronId(10111011);
+        PwcgGeneratedMissionVehicleData alliedYak2 = new PwcgGeneratedMissionVehicleData();
+        alliedYak2.setVehicleType("yak1s69");
+        alliedYak2.setCompanyId(10111011);
         alliedYak2.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2);
 
-        PwcgGeneratedMissionPlaneData alliedIL2 = new PwcgGeneratedMissionPlaneData();
-        alliedIL2.setAircraftType("il2m42");
-        alliedIL2.setSquadronId(10121503);
+        PwcgGeneratedMissionVehicleData alliedIL2 = new PwcgGeneratedMissionVehicleData();
+        alliedIL2.setVehicleType("il2m42");
+        alliedIL2.setCompanyId(10121503);
         alliedIL2.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 3);
 
         missionPlanes.put(alliedYak.getCrewMemberSerialNumber(), alliedYak);
         missionPlanes.put(alliedYak2.getCrewMemberSerialNumber(), alliedYak2);
         missionPlanes.put(alliedIL2.getCrewMemberSerialNumber(), alliedIL2);
        
-        PwcgGeneratedMissionPlaneData axis109 = new PwcgGeneratedMissionPlaneData();
-        axis109.setAircraftType("bf109f4");
-        axis109.setSquadronId(20111051);
+        PwcgGeneratedMissionVehicleData axis109 = new PwcgGeneratedMissionVehicleData();
+        axis109.setVehicleType("bf109f4");
+        axis109.setCompanyId(20111051);
         axis109.setCrewMemberSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 4);
 
         missionPlanes.put(axis109.getCrewMemberSerialNumber(), axis109);

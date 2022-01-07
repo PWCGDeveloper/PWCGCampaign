@@ -14,7 +14,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.AType12;
 import pwcg.core.logfiles.event.IAType12;
-import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
+import pwcg.mission.data.PwcgGeneratedMissionVehicleData;
 import pwcg.testutils.TestATypeFactory;
 
 public class TestMissionEntityGenerator
@@ -22,7 +22,7 @@ public class TestMissionEntityGenerator
     private LogEventData logEventData;    
     private List<IAType12> vehicles = new ArrayList<>();
     private Map<String, IAType12> crewMemberBots = new HashMap<>();
-    private Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes = new HashMap<>();
+    private Map<Integer, PwcgGeneratedMissionVehicleData> missionPlanes = new HashMap<>();
     private Map <String, LogPlane> planeAiEntities = new HashMap<>();
 
     public void makeMissionArtifacts(
@@ -118,10 +118,10 @@ public class TestMissionEntityGenerator
 
     private void makePwcgMissionPlaneFighter(String crewMemberName, Integer crewMemberSerialNumber, Integer planeSerialNumber, IAType12 plane) throws PWCGException
     {
-        PwcgGeneratedMissionPlaneData pwcgMissionPlane = new PwcgGeneratedMissionPlaneData();
-        pwcgMissionPlane.setAircraftType(plane.getType());
+        PwcgGeneratedMissionVehicleData pwcgMissionPlane = new PwcgGeneratedMissionVehicleData();
+        pwcgMissionPlane.setVehicleType(plane.getType());
         pwcgMissionPlane.setCrewMemberSerialNumber(crewMemberSerialNumber);
-        pwcgMissionPlane.setPlaneSerialNumber(planeSerialNumber);
+        pwcgMissionPlane.setVehicleSerialNumber(planeSerialNumber);
         missionPlanes.put(crewMemberSerialNumber, pwcgMissionPlane);
         
         AType12 crewMemberBot = TestATypeFactory.makeCrewMemberBot(plane);
@@ -151,12 +151,12 @@ public class TestMissionEntityGenerator
         return vehicles;
     }
 
-    public Map<Integer, PwcgGeneratedMissionPlaneData> getMissionPlanes()
+    public Map<Integer, PwcgGeneratedMissionVehicleData> getMissionPlanes()
     {
         return missionPlanes;
     }
 
-    public PwcgGeneratedMissionPlaneData getMissionPlane(Integer key)
+    public PwcgGeneratedMissionVehicleData getMissionPlane(Integer key)
     {
         return missionPlanes.get(key);
     }

@@ -1,8 +1,6 @@
 package pwcg.campaign.context;
 
-import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.core.exception.PWCGException;
-import pwcg.product.bos.plane.payload.BoSPayloadFactory;
 
 public class BoSContext extends PWCGContextBase implements IPWCGContextManager
 { 
@@ -73,12 +71,6 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
     public void initializeMap() throws PWCGException  
     {
         changeContext(FrontMapIdentifier.MOSCOW_MAP);
-    }
-
-    @Override
-    public IPlanePayloadFactory getPlanePayloadFactory() throws PWCGException  
-    {
-        return new BoSPayloadFactory();
     }
 
     @Override

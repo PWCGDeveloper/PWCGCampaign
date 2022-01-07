@@ -10,7 +10,6 @@ import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.newspapers.NewspaperManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.skin.SkinManager;
 import pwcg.campaign.tank.TankTypeFactory;
 import pwcg.core.exception.PWCGException;
@@ -43,10 +42,6 @@ public interface IPWCGContextManager
     List<PWCGMap> getAllMaps();
 
     Airfield getAirfieldAllMaps(String airfieldName);
-
-    IPlanePayloadFactory getPlanePayloadFactory() throws PWCGException;
-
-    IPlanePayloadFactory getVehiclePayloadFactory() throws PWCGException;
 
     void initializeMap() throws PWCGException;
     

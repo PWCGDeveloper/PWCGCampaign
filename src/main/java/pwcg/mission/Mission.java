@@ -43,7 +43,6 @@ public class Mission
 
     private MissionPlayerUnits missionPlayerUnits;
     private MissionFlights missionFlights;
-    private MissionPlayerVehicle missionPlayerVehicles = new MissionPlayerVehicle();
     private VehicleDefinition playerVehicleDefinition;
     private SkinsInUse skinsInUse = new SkinsInUse();
 
@@ -96,15 +95,12 @@ public class Mission
         createStructuresBoxForMission();
         createGroundUnits();
         generateFlights();
-        createPlayerVehicle();
+        createPlayerUnits();
     }
 
-    private void createPlayerVehicle() throws PWCGException
+    private void createPlayerUnits() throws PWCGException
     {
-        if (isAAATruckMission())
-        {
-            missionPlayerVehicles.buildPlayerVehicle(this, playerVehicleDefinition, participatingPlayers.getMissionPlayerSquadrons().get(0).determineSide(), campaign.getDate());
-        }
+        // TODO TC make player units
     }
 
     private void createStructuresBoxForMission() throws PWCGException
@@ -347,11 +343,6 @@ public class Mission
     public MissionSquadronRegistry getMissionSquadronRegistry()
     {
         return missionSquadronRegistry;
-    }
-
-    public MissionPlayerVehicle getMissionAAATrucks()
-    {
-        return missionPlayerVehicles;
     }
 
     public MissionFinalizer getFinalizer()

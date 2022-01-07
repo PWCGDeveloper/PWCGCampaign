@@ -18,7 +18,7 @@ import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
+import pwcg.mission.data.PwcgGeneratedMissionVehicleData;
 
 public class AARVehicleBuilder
 {
@@ -129,7 +129,7 @@ public class AARVehicleBuilder
 
     private LogPlane makePlaneFromMissionAndLog(IAType12 atype12) throws PWCGException
     {
-        PwcgGeneratedMissionPlaneData missionPlane = pwcgMissionDataEvaluator.getPlaneForCrewMemberByName(atype12.getName());
+        PwcgGeneratedMissionVehicleData missionPlane = pwcgMissionDataEvaluator.getPlaneForCrewMemberByName(atype12.getName());
         LogPlane logPlane = new LogPlane(atype12.getSequenceNum());
         logPlane.initializeEntityFromEvent(atype12);
         logPlane.initializeFromMissionPlane(missionPlane);

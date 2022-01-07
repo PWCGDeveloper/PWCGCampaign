@@ -18,6 +18,7 @@ import pwcg.campaign.company.Company;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.TankType;
+import pwcg.campaign.plane.PlaneAttributeMapping;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -27,7 +28,6 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -127,7 +127,7 @@ public class FW190A5PayloadTest
     private IPlanePayload getPayloadGeneratorForFighter() throws PWCGException
     {
         Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.FIGHTER);
-        TankType fw190A5 = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(BosPlaneAttributeMapping.FW190_A5.getTankType());
+        TankType fw190A5 = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(PlaneAttributeMapping.FW190_A5.getTankType());
         IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
         IPlanePayload payloadGenerator = payloadFactory.createPayload(fw190A5.getType(), campaign.getDate());
         return payloadGenerator;
@@ -136,7 +136,7 @@ public class FW190A5PayloadTest
     private IPlanePayload getPayloadGeneratorForAttack() throws PWCGException
     {
         Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.ATTACK);
-        TankType fw190A5 = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(BosPlaneAttributeMapping.FW190_A5.getTankType());
+        TankType fw190A5 = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByType(PlaneAttributeMapping.FW190_A5.getTankType());
         IPlanePayloadFactory payloadFactory = PWCGContext.getInstance().getPlanePayloadFactory();
         IPlanePayload payloadGenerator = payloadFactory.createPayload(fw190A5.getType(), campaign.getDate());
         return payloadGenerator;

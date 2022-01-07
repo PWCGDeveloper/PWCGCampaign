@@ -104,7 +104,7 @@ public class TransferHandlerTest
         for (CrewMember crewMember : allActiveCampaignMembers.getCrewMemberList())
         {
             Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(crewMember.getCompanyId());
-            if (!crewMember.isPlayer() && squadron.getCompanyId() == SquadronTestProfile.JASTA_11_PROFILE.getSquadronId())
+            if (!crewMember.isPlayer() && squadron.getCompanyId() == SquadronTestProfile.JASTA_11_PROFILE.getCompanyId())
             {
                 Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
                 crewMember.setCrewMemberActiveStatus(CrewMemberStatus.STATUS_KIA, inactiveDate, null);

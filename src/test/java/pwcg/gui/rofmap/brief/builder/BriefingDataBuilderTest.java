@@ -51,10 +51,10 @@ public class BriefingDataBuilderTest
         assert(briefingData.getActiveBriefingFlight().getBriefingAssignmentData().getCrews().size() > 0);
         
         IFlight flight = briefingData.getSelectedFlight();
-        Assertions.assertTrue (flight.getSquadron().getCompanyId() == SquadronTestProfile.KG53_PROFILE.getSquadronId());
+        Assertions.assertTrue (flight.getSquadron().getCompanyId() == SquadronTestProfile.KG53_PROFILE.getCompanyId());
 
         BriefingFlight briefingFlight = briefingData.getActiveBriefingFlight();
-        Assertions.assertTrue (briefingFlight.getSquadronId() == SquadronTestProfile.KG53_PROFILE.getSquadronId());
+        Assertions.assertTrue (briefingFlight.getSquadronId() == SquadronTestProfile.KG53_PROFILE.getCompanyId());
         
         BriefingFlightParameters briefingFlightParameters = briefingFlight.getBriefingFlightParameters();
         List<BriefingMapPoint>  briefingMapMapPoints = briefingFlightParameters.getBriefingMapMapPoints();

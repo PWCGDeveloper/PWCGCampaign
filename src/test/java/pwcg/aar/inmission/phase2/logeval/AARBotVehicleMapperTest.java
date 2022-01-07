@@ -24,7 +24,7 @@ import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
-import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
+import pwcg.mission.data.PwcgGeneratedMissionVehicleData;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -82,8 +82,8 @@ public class AARBotVehicleMapperTest
         testMissionEntityGenerator.makeMissionArtifacts(numFrenchPlanes, numGermanPlanes, numFrenchBalloons, numGermanBalloons, numFrenchTrucks, numGermanTrucks);
 
         PwcgMissionData pwcgMissionData = new PwcgMissionData();
-        List<PwcgGeneratedMissionPlaneData> missionPlanes = new ArrayList<>(testMissionEntityGenerator.getMissionPlanes().values());
-        for (PwcgGeneratedMissionPlaneData missionPlane : missionPlanes)
+        List<PwcgGeneratedMissionVehicleData> missionPlanes = new ArrayList<>(testMissionEntityGenerator.getMissionPlanes().values());
+        for (PwcgGeneratedMissionVehicleData missionPlane : missionPlanes)
         {
             pwcgMissionData.addMissionPlanes(missionPlane);
         }

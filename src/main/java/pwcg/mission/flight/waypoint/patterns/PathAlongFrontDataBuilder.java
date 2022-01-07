@@ -29,14 +29,14 @@ public class PathAlongFrontDataBuilder
         pathAlongFrontData.setPathDistance(patrolDistance / 2);
         pathAlongFrontData.setTargetGeneralLocation(generalStartPosition);
         pathAlongFrontData.setReturnAlongRoute(determineHasReturnLeg());
-        pathAlongFrontData.setSide(flight.getSquadron().determineSide());
+        pathAlongFrontData.setSide(flight.getFlightInformation().getCountry().getSide());
         
         return pathAlongFrontData;
     }
 
     private boolean determineHasReturnLeg()
     {
-        if (flight.getFlightType() == FlightTypes.PATROL || flight.getFlightType() == FlightTypes.LOW_ALT_PATROL)
+        if (flight.getFlightType() == FlightTypes.LOW_ALT_PATROL)
         {
             return true;
         }

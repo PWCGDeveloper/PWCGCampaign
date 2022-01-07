@@ -11,8 +11,6 @@ import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.crewmember.CrewMemberStatus;
@@ -73,20 +71,9 @@ public class CombatReportBuilder
             setCrewMembersForSinglePlayer();
         }
         
-        combatReport.setType(missionHeader.getAircraftType());
+        combatReport.setType(missionHeader.getVehicleType());
         combatReport.setDuty(missionHeader.getDuty());
 
-        int altitude = missionHeader.getAltitude();
-        String altString = " meters";
-        
-        ICountry personnelCountry = reportCrewMember.determineSquadron().getCountry();
-        if (personnelCountry.isCountry(Country.BRITAIN))
-        {
-            altitude = altitude * 3;
-            altString = " ft";
-        }
-
-        combatReport.setAltitude(altitude + altString);
         return combatReport;
     }
 

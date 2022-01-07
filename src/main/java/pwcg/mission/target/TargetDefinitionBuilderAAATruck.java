@@ -4,24 +4,24 @@ import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
+import pwcg.mission.playerunit.PlayerUnitInformation;
 
 public class TargetDefinitionBuilderAAATruck implements ITargetDefinitionBuilder
 {
-    private FlightInformation flightInformation;
+    private PlayerUnitInformation unitInformation;
 
-    public TargetDefinitionBuilderAAATruck(FlightInformation flightInformation) throws PWCGException
+    public TargetDefinitionBuilderAAATruck(PlayerUnitInformation unitInformation) throws PWCGException
     {
-        this.flightInformation = flightInformation;
+        this.unitInformation = unitInformation;
     }
 
     public TargetDefinition buildTargetDefinition() throws PWCGException
     {
 
-        Coordinate truckCoordinate = flightInformation.getMission().getMissionAAATrucks().getPosition().copy();
-        IGroundUnit targetGroundUnit = getBestTargetGroundUnit(flightInformation.getCountry().getSide().getOppositeSide(), truckCoordinate);
+        Coordinate truckCoordinate = unitInformation.getMission().getPlayerUnits().getReferencePlayerUnit().getLeadVehicle().getPosition();
+        IGroundUnit targetGroundUnit = getBestTargetGroundUnit(unitInformation.getCountry().getSide().getOppositeSide(), truckCoordinate);
 
         TargetDefinition targetDefinition = new TargetDefinition(targetGroundUnit.getVehicleClass().getTargetType(), truckCoordinate, targetGroundUnit.getCountry(), targetGroundUnit.getVehicleClass().getName());
         return targetDefinition;
@@ -32,7 +32,7 @@ public class TargetDefinitionBuilderAAATruck implements ITargetDefinitionBuilder
     {
         double closestUnitDistance = 1000000000.0;
         IGroundUnit unitClosestToMissionCenter = null;
-        for (GroundUnitCollection groundUnitCollection : flightInformation.getMission().getGroundUnitBuilder().getAssaults())
+        for (GroundUnitCollection groundUnitCollection : unitInformation.getMission().getGroundUnitBuilder().getAssaults())
         {
             for (IGroundUnit friendlyGroundUnit : groundUnitCollection.getGroundUnitsForSide(enemyUnitSide))
             {

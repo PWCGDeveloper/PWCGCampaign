@@ -32,7 +32,7 @@ public class CampaignPersonnelManagerFighterTest
     {            	    
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
 
-        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        CompanyPersonnel squadronPersonnel = campaign.getPersonnelManager().getCompanyPersonnel(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
         CrewMembers squadronMembersNoPlayerNoAces = CrewMemberFilter.filterActiveAI(squadronPersonnel.getCrewMembersWithAces().getCrewMemberCollection(), campaign.getDate());        
     	Assertions.assertTrue (squadronMembersNoPlayerNoAces.getCrewMemberList().size() < (Company.COMPANY_STAFF_SIZE - 1));
         

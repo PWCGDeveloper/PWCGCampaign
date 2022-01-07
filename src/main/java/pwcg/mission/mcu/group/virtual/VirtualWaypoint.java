@@ -7,7 +7,6 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -76,12 +75,6 @@ public final class VirtualWaypoint implements IVirtualWaypoint
                 }
             }
         }
-    }
-
-    @Override
-    public void addEscort(FlightInformation vwpEscortFlightInformation) throws PWCGException 
-    {
-        vwpEscort = VirtualWaypointEscortBuilder.buildVirtualEscort(vwpEscortFlightInformation, vwpCoordinate, vwpPlanes, vwpTriggered);
     }
 
     @Override

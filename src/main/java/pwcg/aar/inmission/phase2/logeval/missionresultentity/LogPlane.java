@@ -10,7 +10,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
+import pwcg.mission.data.PwcgGeneratedMissionVehicleData;
 
 public class LogPlane extends LogAIEntity
 {
@@ -38,11 +38,11 @@ public class LogPlane extends LogAIEntity
         this.landAt = landAt;
     }
 
-    public void initializeFromMissionPlane(PwcgGeneratedMissionPlaneData missionPlane)
+    public void initializeFromMissionPlane(PwcgGeneratedMissionVehicleData missionPlane)
     {        
-        this.squadronId = missionPlane.getSquadronId();
+        this.squadronId = missionPlane.getCompanyId();
         this.crewMemberSerialNumber = missionPlane.getCrewMemberSerialNumber();
-        this.planeSerialNumber = missionPlane.getPlaneSerialNumber();
+        this.planeSerialNumber = missionPlane.getVehicleSerialNumber();
         intializeCrewMember(missionPlane.getCrewMemberSerialNumber());
     }
 

@@ -44,7 +44,7 @@ public class GroundAttackAntiArmorPackageTest
     @Test
     public void groundAttackTankBustRoleTest() throws PWCGException
     {        
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.STG77_KUBAN_PROFILE.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.STG77_KUBAN_PROFILE.getCompanyId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_TANK_BUSTER);

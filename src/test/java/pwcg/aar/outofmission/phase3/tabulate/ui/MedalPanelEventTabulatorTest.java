@@ -59,8 +59,8 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
     @Test
     public void testMedalsAwardedInMission() throws PWCGException 
     {
-        Mockito.when(crewMember1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(crewMember2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
+        Mockito.when(crewMember2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
         Mockito.when(crewMember1.determineSquadron()).thenReturn(squadron1);
         Mockito.when(crewMember2.determineSquadron()).thenReturn(squadron1);
 
@@ -85,8 +85,8 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
     @Test
     public void testMedalsAwarded() throws PWCGException 
     {
-        Mockito.when(crewMember1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(crewMember2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(crewMember1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
+        Mockito.when(crewMember2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
         Mockito.when(crewMember1.determineSquadron()).thenReturn(squadron1);
         Mockito.when(crewMember2.determineSquadron()).thenReturn(squadron1);
 
@@ -111,8 +111,8 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
     @Test
     public void testMedalsAwardedButOneIsNotInSquadron() throws PWCGException 
     {
-        Mockito.when(crewMember1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(crewMember2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
+        Mockito.when(crewMember1.getCompanyId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getCompanyId());
+        Mockito.when(crewMember2.getCompanyId()).thenReturn(SquadronTestProfile.ESC_3_PROFILE.getCompanyId());
         Mockito.when(crewMember1.determineSquadron()).thenReturn(squadron1);
         Mockito.when(crewMember2.determineSquadron()).thenReturn(squadron2);
 

@@ -42,7 +42,7 @@ public class TargetDefinitionPreferenceBuilderTest
     @Test
     public void tankBustTargetTypeTest() throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_26_PROFILE_WEST.getCompanyId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_TANK_BUSTER);
@@ -68,7 +68,7 @@ public class TargetDefinitionPreferenceBuilderTest
     @Test
     public void trainBustTargetTypeTest() throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_26_PROFILE_WEST.getCompanyId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_TRAIN_BUSTER);
@@ -94,7 +94,7 @@ public class TargetDefinitionPreferenceBuilderTest
     @Test
     public void shippingTargetTypeTest() throws PWCGException
     {
-        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
+        Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.JG_26_PROFILE_WEST.getCompanyId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_ANTI_SHIPPING);

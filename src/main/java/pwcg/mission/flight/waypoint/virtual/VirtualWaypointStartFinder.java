@@ -100,7 +100,7 @@ public class VirtualWaypointStartFinder
 
     private static double getVwpDistanceFromFront(IFlight flight, VirtualWayPointCoordinate vwpCoordinate) throws PWCGException
     {
-        Side side = flight.getSquadron().determineSide();
+        Side side = flight.getFlightInformation().getCountry().getSide();
         Date campaignDate = flight.getCampaign().getDate();
         FrontLinePoint closestFrontPosition = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaignDate).findClosestFrontPositionForSide(vwpCoordinate.getPosition(), side);
         double vwpDistanceToFront = MathUtils.calcDist(closestFrontPosition.getPosition(), vwpCoordinate.getPosition());

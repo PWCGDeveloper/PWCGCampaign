@@ -65,7 +65,7 @@ public class FlightCrewBuilderCoopTest
         
         FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
         Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
-        flightInformation.setSquadron(squadron);
+        flightInformation.setCompany(squadron);
         
         UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
@@ -114,7 +114,7 @@ public class FlightCrewBuilderCoopTest
 
         FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
         Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
-        flightInformation.setSquadron(squadron);
+        flightInformation.setCompany(squadron);
         
         UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
@@ -174,7 +174,7 @@ public class FlightCrewBuilderCoopTest
 
         FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
         Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(10131132);
-        flightInformation.setSquadron(squadron);
+        flightInformation.setCompany(squadron);
         
         UnitCrewBuilder flightCrewBuilder = new UnitCrewBuilder(flightInformation);
         List<CrewMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
