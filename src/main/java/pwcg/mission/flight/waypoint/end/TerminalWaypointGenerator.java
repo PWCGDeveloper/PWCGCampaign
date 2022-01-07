@@ -1,11 +1,9 @@
 package pwcg.mission.flight.waypoint.end;
 
-import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
@@ -16,15 +14,13 @@ public class TerminalWaypointGenerator
 {
     public static McuWaypoint createTerminalWaypoint(IFlight flight) throws PWCGException  
     {        
-        PWCGLocation landingLocation = landingAirfield.getLandingLocation(flight.getMission());
         int LandingApproachWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.LandingApproachWaypointDistanceKey);
-        Coordinate approachCoords = MathUtils.calcNextCoord(landingLocation.getPosition(), landingLocation.getOrientation().getyOri() - 180, LandingApproachWaypointDistance);
+        Coordinate approachCoords = MathUtils.calcNextCoord(flight.getFlightInformation().getHomePosition(), 0, LandingApproachWaypointDistance);
         
-        int ApproachWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.ApproachWaypointAltitudeKey);
-        approachCoords.setYPos(landingAirfield.getPosition().getYPos() + ApproachWaypointAltitude);
+        approachCoords.setYPos(1000);
 
         Orientation orient = new Orientation();
-        orient.setyOri(landingLocation.getOrientation().getyOri());
+        orient.setyOri(0);
 
         McuWaypoint approachWP = WaypointFactory.createLandingApproachWaypointType();
         approachWP.setTriggerArea(McuWaypoint.LAND_AREA);

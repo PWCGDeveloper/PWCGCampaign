@@ -15,8 +15,7 @@ public class AttackAreaFactory
     {
         FlightTypes flightType = flightInformation.getFlightType();
         McuAttackArea attackArea = null;
-        if (flightType == FlightTypes.BOMB || 
-            flightType == FlightTypes.LOW_ALT_BOMB || 
+        if (flightType == FlightTypes.LOW_ALT_BOMB || 
             flightType == FlightTypes.PARATROOP_DROP ||
             flightType == FlightTypes.CARGO_DROP)
         {

@@ -2,16 +2,16 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 
 public class U2VSPayload extends PlanePayload implements IPlanePayload
 {
-    public U2VSPayload(TankType planeType, Date date)
+    public U2VSPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -27,7 +27,7 @@ public class U2VSPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        U2VSPayload clone = new U2VSPayload(getTankType(), getDate());
+        U2VSPayload clone = new U2VSPayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 

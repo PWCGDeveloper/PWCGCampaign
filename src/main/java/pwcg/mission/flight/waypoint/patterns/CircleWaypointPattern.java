@@ -90,7 +90,7 @@ public class CircleWaypointPattern
         McuWaypoint nextCircleWP = WaypointFactory.createDefinedWaypointType(wpType, wpAction);
         
         nextCircleWP.setTriggerArea(wpTriggerArea);
-        nextCircleWP.setDesc(flight.getSquadron().determineDisplayName(campaign.getDate()), wpType.getName());
+        nextCircleWP.setDesc(flight.getFlightInformation().getFlightName(), wpType.getName());
         nextCircleWP.setWpAction(wpAction);
 
         nextCircleWP.setSpeed(waypointSpeed - 20);

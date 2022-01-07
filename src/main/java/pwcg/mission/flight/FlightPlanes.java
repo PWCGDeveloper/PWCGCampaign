@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -35,47 +34,7 @@ public class FlightPlanes implements IFlightPlanes
     @Override
     public List<PlaneMcu> getAiPlanes() throws PWCGException 
     {
-        List<PlaneMcu> aiPlanes = new ArrayList<>();
-        for (PlaneMcu plane : planes)
-        {
-            if (!plane.getCrewMember().isPlayer())
-            {
-                aiPlanes.add(plane);
-            }
-        }
-
-        return aiPlanes;
-    }
-
-    @Override
-    public List<PlaneMcu> getPlayerPlanes() throws PWCGException 
-    {
-        List<PlaneMcu> playerPlanes = new ArrayList<>();
-        for (PlaneMcu plane : planes)
-        {
-            if (plane.getCrewMember().isPlayer())
-            {
-                playerPlanes.add(plane);
-            }
-        }
-
-        return playerPlanes;
-    }
-
-    @Override
-    public PlaneMcu getPlaneForCrewMember(Integer crewMemberSerialNumber)
-    {
-        PlaneMcu crewMemberPlane = null;
-        for (PlaneMcu plane : planes)
-        {
-            if (plane.getCrewMember().getSerialNumber() == crewMemberSerialNumber)
-            {
-                crewMemberPlane = plane;
-                break;
-            }
-        }
-
-        return crewMemberPlane;
+        return planes;
     }
 
     @Override
@@ -155,25 +114,6 @@ public class FlightPlanes implements IFlightPlanes
         plane.setStartInAir(startingPoint);
         plane.populateEntity(flight, getFlightLeader());
     }
-
-
-    @Override
-    public void preparePlaneForCoop(IFlight flight) throws PWCGException
-    {
-        for (PlaneMcu plane : planes)
-        {
-            if (plane.isActivePlayerPlane())
-            {
-                plane.setCoopStart(1);
-                plane.setAiLevel(AiSkillLevel.ACE);
-            }
-            else
-            {
-                plane.setCoopStart(0);
-            }
-        }
-    }
-    
 
     @Override
     public void write(BufferedWriter writer) throws PWCGException 

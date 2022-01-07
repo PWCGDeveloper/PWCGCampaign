@@ -12,7 +12,7 @@ import pwcg.mission.flight.waypoint.end.TerminalWaypointGenerator;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet implements IMissionPointSet, IMissionPointSetLanding
+public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet implements IMissionPointSet
 {
     private IFlight flight;
 
@@ -34,7 +34,7 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     public List<MissionPoint> getFlightMissionPoints() throws PWCGException
     {
         List<MissionPoint> waypointsCoordinates =  super.getWaypointsAsMissionPoints();
-        MissionPoint landPoint = new MissionPoint(landingMcu.getPosition(), WaypointAction.WP_ACTION_LANDING);
+        MissionPoint landPoint = new MissionPoint(landingMcu.getPosition(), WaypointAction.WP_ACTION_LANDING_APPROACH);
         waypointsCoordinates.add(landPoint);
         return waypointsCoordinates;
     }

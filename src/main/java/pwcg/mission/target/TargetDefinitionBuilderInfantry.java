@@ -34,7 +34,7 @@ public class TargetDefinitionBuilderInfantry
     private List<TargetDefinition> createTargetDefinitionFromGroundUnit(GroundUnitCollection groundUnitCollection) throws PWCGException
     {
         List<TargetDefinition> targetDefinitionsForCollection = new ArrayList<>();
-        for (IGroundUnit enemyGroundUnit : groundUnitCollection.getInterestingGroundUnitsForSide(flightInformation.getSquadron().determineEnemySide()))
+        for (IGroundUnit enemyGroundUnit : groundUnitCollection.getInterestingGroundUnitsForSide(flightInformation.getCountry().getSide().getOppositeSide()))
         {
             String targetDescription = buildTargetDescription(enemyGroundUnit);
             TargetDefinition targetDefinition = new TargetDefinition(enemyGroundUnit.getTargetType(), enemyGroundUnit.getPosition().copy(), enemyGroundUnit.getCountry(), targetDescription);

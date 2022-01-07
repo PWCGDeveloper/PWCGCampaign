@@ -6,11 +6,11 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
 import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.plane.FormationTypeCalculator;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.target.TargetType;
@@ -21,8 +21,11 @@ public class FlightInformation
     private Campaign campaign;
     private Mission mission;
     private FlightTypes flightType;
+    private PlaneType planeType;
     private List<PlaneMcu> planes;
     private ICountry country;
+    private String flightName;
+    private Coordinate homePosition;
     private Coordinate targetSearchStartLocation;
     private TargetType roleBasedTarget = TargetType.TARGET_NONE;
 
@@ -31,21 +34,21 @@ public class FlightInformation
     private int flightCruisingSpeed = 0;
     private int formationType = McuFormation.FORMATION_V;
 
-    public FlightInformation(Mission mission)
+    public FlightInformation(FlightBuildInformation flightBuildInformation) throws PWCGException
     {
-        this.mission = mission;
-        this.campaign = mission.getCampaign();
+        this.mission = flightBuildInformation.getMission();
+        this.campaign = flightBuildInformation.getMission().getCampaign();
+        this.flightType = flightBuildInformation.getFlightType();
+        this.planeType = flightBuildInformation.getPlaneType();
+        this.country = flightBuildInformation.getCountry();
+        this.homePosition = flightBuildInformation.getHomePosition();
+        this.flightName = flightBuildInformation.getFlightName();
+        this.targetSearchStartLocation = flightBuildInformation.getMission().getMissionBorders().getCenter().copy();
     }
 
     public Mission getMission()
     {
         return mission;
-    }
-
-    public void setFlightType(FlightTypes flightType)
-    {
-        this.flightType = flightType;
-        this.formationType = FormationTypeCalculator.calculateFormationType(flightType);
     }
 
     public void setCampaign(Campaign campaign)
@@ -56,6 +59,11 @@ public class FlightInformation
     public TargetType getRoleBasedTarget()
     {
         return roleBasedTarget;
+    }
+
+    public PlaneType getPlaneType()
+    {
+        return planeType;
     }
 
     public void setRoleBasedTarget(TargetType roleBasedTarget)
@@ -110,11 +118,6 @@ public class FlightInformation
         return targetSearchStartLocation.copy();
     }
 
-    public void setTargetSearchStartLocation(Coordinate targetSearchStartLocation)
-    {
-        this.targetSearchStartLocation = targetSearchStartLocation;
-    }
-
     public int getAltitude()
     {
         return altitude;
@@ -145,6 +148,11 @@ public class FlightInformation
         return flightId;
     }
 
+    public FlightTypes getFlightType()
+    {
+        return flightType;
+    }
+
     public int getFormationType()
     {
         return formationType;
@@ -160,9 +168,13 @@ public class FlightInformation
         this.isAiTriggeredTakeoff = isAiTriggeredTakeoff;
     }
 
-    //TODO TC used to be squadron - need a name for the flight
-    public String getName()
+    public String getFlightName()
     {
-        return null;
+        return flightName;
+    }
+
+    public Coordinate getHomePosition()
+    {
+        return homePosition;
     }
 }

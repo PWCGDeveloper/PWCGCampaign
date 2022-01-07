@@ -7,7 +7,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.GroundTargetDefinitionFactory;
@@ -25,9 +24,9 @@ public class GroundAttackPackage implements IFlightPackage
     }
     
     @Override
-    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createFlightPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {        
-        FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.GROUND_ATTACK);
+        FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation);
         flightInformation.setRoleBasedTarget(roleBasedTarget);
         
         TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);

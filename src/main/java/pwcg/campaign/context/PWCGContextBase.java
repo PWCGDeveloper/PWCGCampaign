@@ -13,6 +13,7 @@ import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.newspapers.NewspaperManager;
+import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.skin.SkinManager;
 import pwcg.campaign.tank.TankTypeFactory;
@@ -36,6 +37,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     protected TankTypeFactory tankTypeFactory = new TankTypeFactory();
     protected boolean testMode = false;
     protected String missionLogPath = "";
+    protected PlaneTypeFactory planeTypeFactory = new PlaneTypeFactory();
 
     protected List<String> campaignStartDates = new ArrayList<String>();
     
@@ -55,6 +57,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     {
         initializeMap();
         
+        planeTypeFactory.initialize();
         tankTypeFactory.initialize();
         aceManager.configure();
         squadronManager.initialize();
@@ -225,7 +228,13 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     {
         return tankTypeFactory;
     }
-    
+
+    @Override
+    public PlaneTypeFactory getPlaneTypeFactory()
+    {
+        return planeTypeFactory;
+    }
+
     @Override
     public List<PWCGMap> getMaps()
     {

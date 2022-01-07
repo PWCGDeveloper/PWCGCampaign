@@ -3,22 +3,15 @@ package pwcg.mission.flight;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.bomb.BombingPackage;
 import pwcg.mission.flight.cap.CAPPackage;
 import pwcg.mission.flight.divebomb.DiveBombingPackage;
 import pwcg.mission.flight.groundattack.GroundAttackPackage;
-import pwcg.mission.flight.groundhunt.GroundFreeHuntPackage;
-import pwcg.mission.flight.intercept.InterceptPackage;
-import pwcg.mission.flight.offensive.OffensivePackage;
 import pwcg.mission.flight.paradrop.CargoDropPackage;
 import pwcg.mission.flight.paradrop.ParaDropPackage;
 import pwcg.mission.flight.patrol.LowAltPatrolPackage;
-import pwcg.mission.flight.patrol.PatrolPackage;
-import pwcg.mission.flight.raider.RaiderAttackPackage;
 import pwcg.mission.target.TargetType;
 
 public class FlightFactory
@@ -30,10 +23,9 @@ public class FlightFactory
         this.campaign = campaign;
     }
     
-    public List<IFlight> buildFlight(
-    		Mission mission,
-            FlightTypes flightType) throws PWCGException 
+    public List<IFlight> buildFlight(FlightBuildInformation flightBuildInformation) throws PWCGException 
     {        
+        FlightTypes flightType = flightBuildInformation.getFlightType();
         if (flightType == FlightTypes.ANY)
         {
             throw new PWCGException("No flight type determined at build process");
@@ -42,7 +34,7 @@ public class FlightFactory
         IFlightPackage flightPackage = null;
         if (flightType == FlightTypes.LOW_ALT_BOMB)
         {
-            flightPackage = new BombingPackage(flightType);
+            flightPackage = new BombingPackage();
         }
         else if (flightType == FlightTypes.DIVE_BOMB)
         {
@@ -58,7 +50,7 @@ public class FlightFactory
         }
         else if (flightType == FlightTypes.LOW_ALT_CAP)
         {
-            flightPackage = new CAPPackage(flightType);
+            flightPackage = new CAPPackage();
         }
         else if (flightType == FlightTypes.PARATROOP_DROP)
         {
@@ -73,7 +65,7 @@ public class FlightFactory
             throw new PWCGMissionGenerationException("Invalid flight type: " + flightType);
         }
 
-        List<IFlight> packageFlights = flightPackage.createPackage();
+        List<IFlight> packageFlights = flightPackage.createFlightPackage(flightBuildInformation);
         
         return packageFlights;
     }

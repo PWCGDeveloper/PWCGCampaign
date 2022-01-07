@@ -18,40 +18,40 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
-public class CampaignGeneratorSquadronFilter
+public class CampaignGeneratorCompanyFilter
 {
 	public List<String> makeSquadronChoices(Date campaignDate, ArmedService dateCorrectedService, FrontMapIdentifier selectedCampaignMap, String selectedRole, boolean playerIsCommander) throws PWCGException 
 	{
 		List<String> validSquadrons = new ArrayList<>();
 	    try
 	    {
-    		CompanyManager squadManager =  PWCGContext.getInstance().getCompanyManager();
-    		List<Company> squadronList = squadManager.getPlayerCompaniesByService(dateCorrectedService, campaignDate);
-            PWCGLogger.log(LogLevel.DEBUG, "makeSquadronChoices squadron list size: " + squadronList.size());
-    		for (Company squadron : squadronList)
+    		CompanyManager companyManager =  PWCGContext.getInstance().getCompanyManager();
+    		List<Company> companyList = companyManager.getPlayerCompaniesByService(dateCorrectedService, campaignDate);
+            PWCGLogger.log(LogLevel.DEBUG, "makeSquadronChoices company list size: " + companyList.size());
+    		for (Company company : companyList)
     		{
-                PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(campaignDate) + " makeSquadronChoices evaluate squadron");
+                PWCGLogger.log(LogLevel.DEBUG, company.determineDisplayName(campaignDate) + " makeSquadronChoices evaluate company");
 
-       			if (rejectBecauseWrongRole(squadron, campaignDate, selectedRole))
+       			if (rejectBecauseWrongRole(company, campaignDate, selectedRole))
     			{
-	                PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(campaignDate) + ": Cannot fly  - incorrect role");
+	                PWCGLogger.log(LogLevel.DEBUG, company.determineDisplayName(campaignDate) + ": Cannot fly  - incorrect role");
     				continue;
     			}
     			
-       			if (rejectBecauseCommandConflict(squadron, campaignDate, playerIsCommander))
+       			if (rejectBecauseCommandConflict(company, campaignDate, playerIsCommander))
     			{
-                    PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(campaignDate) + ": Cannot fly  - commaned by ace");
+                    PWCGLogger.log(LogLevel.DEBUG, company.determineDisplayName(campaignDate) + ": Cannot fly  - commaned by ace");
     				continue;
     			}
     			
-       			if (rejectBecauseWrongMap(squadron, campaignDate, selectedCampaignMap))
+       			if (rejectBecauseWrongMap(company, campaignDate, selectedCampaignMap))
     			{
-                    PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(campaignDate) + ": Cannot fly  - commaned by ace");
+                    PWCGLogger.log(LogLevel.DEBUG, company.determineDisplayName(campaignDate) + ": Cannot fly  - commaned by ace");
     				continue;
     			}
     			
-				String squadronDisplayName = squadron.determineDisplayName(campaignDate);
-				validSquadrons.add(squadronDisplayName);
+				String companyDisplayName = company.determineDisplayName(campaignDate);
+				validSquadrons.add(companyDisplayName);
     		}
 	    }
 	    catch (Exception exp)
@@ -66,8 +66,8 @@ public class CampaignGeneratorSquadronFilter
 	private boolean rejectBecauseWrongRole(Company company, Date campaignDate, String roleDesc) throws PWCGException
 	{
 	    PwcgRoleCategory role = PwcgRoleCategory.getRoleCategoryFromDescription(roleDesc);
-        PwcgRoleCategory squadronRole = company.determineSquadronPrimaryRoleCategory(campaignDate);
-        if (role == squadronRole)
+        PwcgRoleCategory companyRole = company.determineSquadronPrimaryRoleCategory(campaignDate);
+        if (role == companyRole)
         {
             return false;
         }
@@ -79,10 +79,10 @@ public class CampaignGeneratorSquadronFilter
 	{
 		AceManager aceManager = PWCGContext.getInstance().getAceManager();
 		CampaignAces aces =  aceManager.loadFromHistoricalAces(campaignDate);
-		List<TankAce> squadronAces =  aceManager.getActiveAcesForSquadron(aces, campaignDate, company.getCompanyId());
-		if (squadronAces.size() > 0)
+		List<TankAce> companyAces =  aceManager.getActiveAcesForSquadron(aces, campaignDate, company.getCompanyId());
+		if (companyAces.size() > 0)
 		{
-			if (playerIsCommander && company.isCommandedByAce(squadronAces, campaignDate))
+			if (playerIsCommander && company.isCommandedByAce(companyAces, campaignDate))
 			{
 				return true;
 			}

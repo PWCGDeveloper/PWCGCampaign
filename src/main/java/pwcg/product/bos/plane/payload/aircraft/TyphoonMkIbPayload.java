@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.plane.payload.PlanePayloadDesignation;
 import pwcg.campaign.plane.payload.PlanePayloadElement;
-import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
@@ -22,7 +22,7 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
     private Date doubleRocketsIntroDate;
     private Date boostIntroDate;
 
-    public TyphoonMkIbPayload(TankType planeType, Date date)
+    public TyphoonMkIbPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -125,7 +125,7 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-    	TyphoonMkIbPayload clone = new TyphoonMkIbPayload(getTankType(), getDate());
+    	TyphoonMkIbPayload clone = new TyphoonMkIbPayload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }

@@ -1,9 +1,9 @@
 package pwcg.mission;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.options.MissionOptions;
 import pwcg.mission.options.MissionType;
+import pwcg.mission.playerunit.PlayerUnit;
 
 
 public class MissionCoopConverter
@@ -14,9 +14,9 @@ public class MissionCoopConverter
         MissionOptions missionOptions = mission.getMissionOptions();
         missionOptions.setMissionType(MissionType.COOP_MISSION);
 
-        for (IFlight flight : mission.getFlights().getAllAerialFlights())
+        for (PlayerUnit unit : mission.getPlayerUnits().getPlayerUnits())
         {
-            flight.getFlightPlanes().preparePlaneForCoop(flight);
+            unit.preparePlaneForCoop(unit);
         }
     }
 }

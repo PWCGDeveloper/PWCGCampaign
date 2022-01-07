@@ -3,10 +3,10 @@ package pwcg.product.bos.plane.payload.aircraft;
 import java.util.Date;
 
 import pwcg.campaign.context.Country;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.IFlight;
@@ -15,7 +15,7 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
 {    
     private Date boostIntroDate;
 
-    public HurricaneMkIIPayload(TankType planeType, Date date)
+    public HurricaneMkIIPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(5);
@@ -71,7 +71,7 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        HurricaneMkIIPayload clone = new HurricaneMkIIPayload(getTankType(), getDate());
+        HurricaneMkIIPayload clone = new HurricaneMkIIPayload(getPlaneType(), getDate());
 
         return super.copy(clone);
     }

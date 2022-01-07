@@ -8,12 +8,11 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
@@ -31,7 +30,6 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuEvent;
 import pwcg.mission.mcu.McuTREntity;
 import pwcg.mission.mcu.group.IPlaneRemover;
-import pwcg.mission.mcu.group.WingmanMcuGroup;
 
 /**
  * Plane is an instance of a plane. It derives from plane type and adds a crew,
@@ -64,14 +62,12 @@ public class PlaneMcu extends PlaneType implements Cloneable
     private int damageThreshold = 1;
     private int aiRTBDecision = 1;
     private int deleteAfterDeath = 1;
-    private WingmanMcuGroup wingmanCommands;
 
     private IPlanePayload payload = null;
 
     private McuTREntity entity;
 
     private Campaign campaign;
-    private CrewMember crewMember;
 
     public PlaneMcu()
     {
@@ -81,12 +77,11 @@ public class PlaneMcu extends PlaneType implements Cloneable
         this.linkTrId = entity.getIndex();
     }
 
-    public PlaneMcu(Campaign campaign, CrewMember crewMember)
+    public PlaneMcu(Campaign campaign)
     {
         super();
 
         this.campaign = campaign;
-        this.crewMember = crewMember;
 
         this.index = IndexGenerator.getInstance().getNextIndex();
         this.entity = new McuTREntity(index);
@@ -96,8 +91,8 @@ public class PlaneMcu extends PlaneType implements Cloneable
     public void buildPlane(PlaneType planeType, ICountry country) throws PWCGException
     {
         planeType.copyTemplate(this);
-        this.setName(crewMember.getNameAndRank());
-        this.setDesc(crewMember.getNameAndRank());
+        this.setName(planeType.getDisplayName());
+        this.setDesc(planeType.getDisplayName());
         startInAir = FlightStartPosition.START_IN_AIR;
         this.setCountry(country);
         setDeleteAfterDeath();
@@ -143,7 +138,6 @@ public class PlaneMcu extends PlaneType implements Cloneable
         plane.damageThreshold = this.damageThreshold;
         plane.aiRTBDecision = this.aiRTBDecision;
         plane.deleteAfterDeath = this.deleteAfterDeath;
-        plane.wingmanCommands = this.wingmanCommands;
         if (payload != null)
         {
             plane.payload = this.payload.copy();
@@ -158,7 +152,6 @@ public class PlaneMcu extends PlaneType implements Cloneable
         plane.linkTrId = plane.entity.getIndex();
 
         plane.campaign = this.campaign;
-        plane.crewMember = this.crewMember;
     }
 
     public void populateEntity(IFlight flight, PlaneMcu flightLeader)
@@ -339,11 +332,6 @@ public class PlaneMcu extends PlaneType implements Cloneable
             writer.newLine();
 
             entity.write(writer);
-
-            if (wingmanCommands != null)
-            {
-                wingmanCommands.write(writer);
-            }
         }
         catch (IOException e)
         {
@@ -361,11 +349,6 @@ public class PlaneMcu extends PlaneType implements Cloneable
         }
 
         return false;
-    }
-
-    public void setWingman(WingmanMcuGroup wingmanCommands)
-    {
-        this.wingmanCommands = wingmanCommands;
     }
 
     public String getName()
@@ -547,16 +530,6 @@ public class PlaneMcu extends PlaneType implements Cloneable
         this.fuel = fuel;
 
         validateFuel();
-    }
-
-    public CrewMember getCrewMember()
-    {
-        return crewMember;
-    }
-
-    public void replaceCrewMember(CrewMember newCrewMember)
-    {
-        this.crewMember = newCrewMember;
     }
 
     public Callsign getCallsign()

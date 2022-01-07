@@ -2,15 +2,15 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.mission.flight.IFlight;
 
 public class B25DRAFPayload extends PlanePayload implements IPlanePayload
 {
-    public B25DRAFPayload(TankType planeType, Date date)
+    public B25DRAFPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(5);
@@ -25,7 +25,7 @@ public class B25DRAFPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        B25DRAFPayload clone = new B25DRAFPayload(getTankType(), getDate());
+        B25DRAFPayload clone = new B25DRAFPayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
     

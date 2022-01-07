@@ -9,6 +9,7 @@ import pwcg.campaign.company.SkirmishProfileManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.newspapers.NewspaperManager;
+import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.skin.SkinManager;
 import pwcg.campaign.tank.TankTypeFactory;
@@ -76,4 +77,6 @@ public interface IPWCGContextManager
     void setCurrentMap(FrontMapIdentifier map) throws PWCGException;
 
     NewspaperManager getNewspaperManager();
+
+    PlaneTypeFactory getPlaneTypeFactory();
 }

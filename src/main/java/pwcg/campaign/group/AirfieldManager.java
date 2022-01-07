@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.company.Company;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
@@ -167,44 +166,4 @@ public class AirfieldManager
         }
         return closestAirfield;
     }
-
-    public List<Airfield> getNearbyOccupiedAirFieldsForSide(Side side, Date date, Coordinate referenceLocation, int radius) throws PWCGException
-    {
-        List<Airfield> airfieldsForSide = getAirFieldsForSide(date, side);
-        List<Airfield> occupiedAirfieldsForSide = filterOccupiedAirfields(airfieldsForSide, date);
-        
-        PositionFinder<Airfield> positionFinder = new PositionFinder<Airfield>();
-        List<Airfield> occupiedAirfieldsForSideInRadius = positionFinder.findWithinRadius(occupiedAirfieldsForSide, referenceLocation, radius);
-        return occupiedAirfieldsForSideInRadius;
-    }
-
-    private List<Airfield> filterOccupiedAirfields(List<Airfield> airfieldsToFilter, Date date) throws PWCGException
-    {
-        List<Airfield> airfieldsFiltered = new ArrayList<>();
-        
-        List<Company> activeSquadrons = PWCGContext.getInstance().getCompanyManager().getActiveCompaniesForCurrentMap(date);
-        for (Company squadron : activeSquadrons)
-        {
-            Airfield squadronAirfield = squadron.determineCurrentAirfieldCurrentMap(date);
-            if (isAirfieldInList(airfieldsToFilter, squadronAirfield))
-            {
-                airfieldsFiltered.add(squadronAirfield);
-            }
-        }
-        return airfieldsFiltered;
-    }
-    
-    private boolean isAirfieldInList(List<Airfield> airfields, Airfield airfieldToFind)
-    {
-        for (Airfield airfield : airfields)
-        {
-            if (airfield.getName().equals(airfieldToFind.getName()))
-            {
-                return true;
-            }
-        }
-        
-        return false;
-    }
-
 }

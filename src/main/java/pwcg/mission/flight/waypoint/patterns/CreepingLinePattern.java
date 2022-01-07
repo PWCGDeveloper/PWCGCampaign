@@ -81,7 +81,7 @@ public class CreepingLinePattern
         McuWaypoint nextCreepingWP = WaypointFactory.createDefinedWaypointType(waypointType, waypointAction);
         
         nextCreepingWP.setTriggerArea(wpTriggerArea);
-        nextCreepingWP.setDesc(flight.getSquadron().determineDisplayName(campaign.getDate()), waypointType.getName());
+        nextCreepingWP.setDesc(flight.getFlightInformation().getFlightName(), waypointType.getName());
 
         nextCreepingWP.setSpeed(lastWP.getSpeed());
         nextCreepingWP.setPriority(WaypointPriority.PRIORITY_LOW);          

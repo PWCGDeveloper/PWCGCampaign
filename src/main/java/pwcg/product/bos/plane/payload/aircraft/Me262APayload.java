@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.plane.payload.PlanePayloadDesignation;
 import pwcg.campaign.plane.payload.PlanePayloadElement;
-import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -20,7 +20,7 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     private Date gyroGunsightIntroDate;
     private Date autoValveIntroDate;
 
-    public Me262APayload(TankType planeType, Date date)
+    public Me262APayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -60,7 +60,7 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Me262APayload clone = new Me262APayload(getTankType(), getDate());
+        Me262APayload clone = new Me262APayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
@@ -72,7 +72,7 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
         {
             selectedPayloadId = selectGroundAttackPayload(flight);
         }
-        else if (flight.getFlightType() == FlightTypes.INTERCEPT)
+        else if (flight.getFlightType() == FlightTypes.LOW_ALT_CAP)
         {
             selectedPayloadId = selectInterceptPayload();
         }

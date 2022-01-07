@@ -37,17 +37,15 @@ public class MissionGenerator
         weather.createMissionWeather();
 
         Skirmish skirmish = getSkirmishForMission(participatingPlayers);
-        MissionSquadronFlightTypes playerFlightTypes = PlayerFlightTypeBuilder.buildPlayerFlightTypes(campaign, participatingPlayers, weather, skirmish, squadronRoleOverride);
         
         VehicleDefinition playerVehicleDefinition = null;
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, weather, skirmish, missionOptions);
+        Mission mission = buildMission(participatingPlayers, playerVehicleDefinition, weather, skirmish, missionOptions);
         
         return mission;
     }
 
     public Mission makeTestMissionFromFlightTypeWithSkirmish(
             MissionHumanParticipants participatingPlayers, 
-            MissionSquadronFlightTypes playerFlightTypes,
             Skirmish skirmish) throws PWCGException
     {
         MissionOptions missionOptions = new MissionOptions(campaign.getDate());
@@ -58,13 +56,12 @@ public class MissionGenerator
         weather.createMissionWeather();
 
         VehicleDefinition playerVehicleDefinition = null;
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, weather, skirmish, missionOptions);
+        Mission mission = buildMission(participatingPlayers, playerVehicleDefinition, weather, skirmish, missionOptions);
         return mission;
     }
 
     private Mission buildMission(
             MissionHumanParticipants participatingPlayers, 
-            MissionSquadronFlightTypes playerFlightTypes, 
             VehicleDefinition playerVehicleDefinition,
             MissionWeather weather, 
             Skirmish skirmish,
@@ -72,10 +69,10 @@ public class MissionGenerator
     {
         campaign.setCurrentMission(null);
         
-        CoordinateBox missionBorders = buildMissionBorders(participatingPlayers, skirmish, playerFlightTypes);
+        CoordinateBox missionBorders = buildMissionBorders(participatingPlayers, skirmish);
         Mission mission = new Mission(campaign, participatingPlayers, playerVehicleDefinition, missionBorders, weather, skirmish, missionOptions);
         campaign.setCurrentMission(mission);
-        mission.generate(playerFlightTypes);
+        mission.generate();
 
         return mission;
     }
@@ -86,9 +83,9 @@ public class MissionGenerator
         return skirmishBuilder.chooseBestSkirmish();
     }
 
-    private CoordinateBox buildMissionBorders(MissionHumanParticipants participatingPlayers, Skirmish skirmish, MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
+    private CoordinateBox buildMissionBorders(MissionHumanParticipants participatingPlayers, Skirmish skirmish) throws PWCGException
     {
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, skirmish, playerFlightTypes);
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, skirmish);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
         return missionBorders;
     }

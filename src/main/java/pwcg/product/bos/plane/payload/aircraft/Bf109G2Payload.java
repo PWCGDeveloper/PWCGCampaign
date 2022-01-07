@@ -2,16 +2,16 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PlanePayloadElement;
-import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
 public class Bf109G2Payload extends Bf109Payload implements IPlanePayload
 {
-    public Bf109G2Payload(TankType planeType, Date date)
+    public Bf109G2Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -30,7 +30,7 @@ public class Bf109G2Payload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109G2Payload clone = new Bf109G2Payload(getTankType(), getDate());
+        Bf109G2Payload clone = new Bf109G2Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
@@ -43,7 +43,7 @@ public class Bf109G2Payload extends Bf109Payload implements IPlanePayload
         {
             selectedPayloadId = selectGroundAttackPayload(flight);
         }
-        else if (flight.getFlightType() == FlightTypes.INTERCEPT)
+        else if (flight.getFlightType() == FlightTypes.LOW_ALT_CAP)
         {
             selectedPayloadId = selectInterceptPayload();
         }

@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.plane.payload.PlanePayloadDesignation;
 import pwcg.campaign.plane.payload.PlanePayloadElement;
-import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
@@ -21,7 +21,7 @@ public class Hs129B2Payload extends PlanePayload
     private Date mg17GunPodIntroDate;
     private Date mk101GunPodIntroDate;
 
-    public Hs129B2Payload(TankType planeType, Date date)
+    public Hs129B2Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(34);
@@ -72,7 +72,7 @@ public class Hs129B2Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Hs129B2Payload clone = new Hs129B2Payload(getTankType(), getDate());
+        Hs129B2Payload clone = new Hs129B2Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }

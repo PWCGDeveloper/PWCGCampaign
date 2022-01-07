@@ -40,7 +40,7 @@ public class MissionPlaneGenerator
     private void makeMissionPlaneEntry(Company squadron, PlaneMcu plane)
     {
         PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
-        missionPlaneData.setCrewMemberName(plane.getCrewMember().getName());
+        missionPlaneData.setCrewMemberName(plane.getCrewMember().getFlightName());
         missionPlaneData.setCrewMemberSerialNumber(plane.getCrewMember().getSerialNumber());
         missionPlaneData.setPlaneSerialNumber(plane.getSerialNumber());
         missionPlaneData.setSquadronId(squadron.getCompanyId());

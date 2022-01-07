@@ -2,15 +2,15 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.mission.flight.IFlight;
 
 public class SpitfireMkVbPayload extends PlanePayload implements IPlanePayload
 {
-    public SpitfireMkVbPayload(TankType planeType, Date date)
+    public SpitfireMkVbPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -33,7 +33,7 @@ public class SpitfireMkVbPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-    	SpitfireMkVbPayload clone = new SpitfireMkVbPayload(getTankType(), getDate());
+    	SpitfireMkVbPayload clone = new SpitfireMkVbPayload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }

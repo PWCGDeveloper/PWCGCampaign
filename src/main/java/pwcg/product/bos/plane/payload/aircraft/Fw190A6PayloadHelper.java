@@ -15,7 +15,7 @@ public class Fw190A6PayloadHelper
         {
             selectedPayloadId = selectGroundAttackPayload(flight);
         }
-        else if (flight.getFlightType() == FlightTypes.INTERCEPT)
+        else if (flight.getFlightType() == FlightTypes.LOW_ALT_CAP)
         {
             selectedPayloadId = selectInterceptPayload();
         }

@@ -594,7 +594,7 @@ public class NewCrewMemberDataEntryGUI extends JPanel implements ActionListener
 	    try
 	    {
     		cbSquadron.removeAllItems();
-            CampaignGeneratorSquadronFilter squadronFilter = new CampaignGeneratorSquadronFilter();
+            CampaignGeneratorCompanyFilter squadronFilter = new CampaignGeneratorCompanyFilter();
 	        String selectedRole = (String)cbRole.getSelectedItem();
 	        
 	        FrontMapIdentifier campaignMap = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();

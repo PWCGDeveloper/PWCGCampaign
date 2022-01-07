@@ -4,16 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.company.Company;
-import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
-import pwcg.campaign.tank.PwcgRole;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightFactory;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.factory.IFlightTypeFactory;
-import pwcg.mission.flight.factory.WeatherFlightTypeConverter;
 import pwcg.mission.options.MissionWeather;
 
 public class AiFlightBuilder
@@ -37,15 +32,11 @@ public class AiFlightBuilder
         }
         
         // TODO TC change by squadron to a limited number of AI flights
-        AiSquadronIncluder aiSquadronIncluder = new AiSquadronIncluder(mission);
-        List<Company> aiSquadronsForMission = aiSquadronIncluder.decideSquadronsForMission();
-        
-        for (Company squadron : aiSquadronsForMission)
-        {
-            FlightTypes flightType = determineFlightType(squadron);
-            flightType = WeatherFlightTypeConverter.getFlightType(flightType, missionWeather);
+        List<FlightBuildInformation> flightBuildInformationForMission = AIFlightPlanner.createFlightBuildInformationForMission(mission);
 
-            List<IFlight> flights = buildFlight(flightType, squadron);
+        for (FlightBuildInformation flightBuildInformation : flightBuildInformationForMission)
+        {
+            List<IFlight> flights = buildFlight(flightBuildInformation);
             for (IFlight flight : flights)
             {
                 missionFlights.add(flight);
@@ -54,32 +45,10 @@ public class AiFlightBuilder
         return missionFlights;
     }
 
-    private FlightTypes determineFlightType(Company squadron) throws PWCGException 
-    {
-        IFlightTypeFactory flightTypeFactory = makeFlightTypeFactory();
-        boolean isPlayerFlight = false;
-        PwcgRole missionRole = MissionRoleGenerator.getMissionRole(campaign, squadron);
-        FlightTypes flightType = flightTypeFactory.getFlightType(squadron, isPlayerFlight, missionRole);
-        return flightType;
-    }
-
-    private List<IFlight> buildFlight(FlightTypes flightType, Company squadron) throws PWCGException
+    private List<IFlight> buildFlight(FlightBuildInformation flightBuildInformation) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
-        List<IFlight> flights = flightFactory.buildFlight(mission, flightType);
+        List<IFlight> flights = flightFactory.buildFlight(flightBuildInformation);
         return flights;        
-    }
-
-    
-    private IFlightTypeFactory makeFlightTypeFactory() throws PWCGException
-    {
-        if (mission.getSkirmish() == null)
-        {
-            return PWCGFlightTypeAbstractFactory.createFlightTypeFactory(campaign);
-        }
-        else
-        {
-            return PWCGFlightTypeAbstractFactory.createSkirmishFlightTypeFactory(campaign, mission.getSkirmish());
-        }
     }
 }

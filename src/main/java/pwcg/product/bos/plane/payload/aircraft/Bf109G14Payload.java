@@ -2,16 +2,16 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PlanePayloadElement;
-import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
 public class Bf109G14Payload extends Bf109Payload implements IPlanePayload
 {
-    public Bf109G14Payload(TankType planeType, Date date)
+    public Bf109G14Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -31,7 +31,7 @@ public class Bf109G14Payload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109G14Payload clone = new Bf109G14Payload(getTankType(), getDate());
+        Bf109G14Payload clone = new Bf109G14Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
@@ -42,10 +42,6 @@ public class Bf109G14Payload extends Bf109Payload implements IPlanePayload
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             selectedPayloadId = selectGroundAttackPayload(flight);
-        }
-        else if (flight.getFlightType() == FlightTypes.INTERCEPT)
-        {
-            selectedPayloadId = selectInterceptPayload();
         }
         else
         {
@@ -69,31 +65,6 @@ public class Bf109G14Payload extends Bf109Payload implements IPlanePayload
         else
         {
             selectedPayloadId = 0;
-        }
-        return selectedPayloadId;
-    }
-    
-
-    private int selectInterceptPayload()
-    {
-        int selectedPayloadId = 0;
-
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 25)
-        {
-            selectedPayloadId = 0;
-        }
-        else if (diceRoll < 50)
-        {
-            selectedPayloadId = 3;
-        }
-        else if (diceRoll < 75)
-        {
-            selectedPayloadId = 4;
-        }
-        else
-        {
-            selectedPayloadId = 8;
         }
         return selectedPayloadId;
     }

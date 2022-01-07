@@ -12,7 +12,6 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.plot.FlightPathToWaypointPlotter;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
-import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSetLanding;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
@@ -275,15 +274,5 @@ public class WaypointPackage implements IWaypointPackage
                 mcu.setObject(leadPlane.getLinkTrId());
             }
         }
-    }
-
-    @Override
-    public void setLandingToTriggerOnPlane(int planeIndex) throws PWCGException
-    {
-        IMissionPointSetLanding landingMissionPoint = (IMissionPointSetLanding)getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_END);
-        if (landingMissionPoint != null)
-        {
-            landingMissionPoint.setLandOnPlane(planeIndex);
-        }        
     }
 }

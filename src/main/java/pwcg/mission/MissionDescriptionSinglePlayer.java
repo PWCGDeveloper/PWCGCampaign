@@ -82,7 +82,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 
         for (IFlight flight : squadronMap.values())
         {
-            setFlight(playerUnit.getSquadron().getCountry(), flight);
+            setFlight(playerUnit.getCountry(), flight);
         }
         
         return descSinglePlayerTemplate;
@@ -136,48 +136,6 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 				  "\n    Wind direction is " + windFrom + ".";			
 		
 		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<WIND>", windCond);
-	}
-	
-	private void setEscortedBy(IFlight playerFlight) throws PWCGException
-	{
-        String escortedByText = "";
-        IFlight escortForPlayerFlight = playerFlight.getAssociatedFlight();
-        if (escortForPlayerFlight != null)
-        {
-            escortedByText = "Escorted by " + escortForPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + 
-                    escortForPlayerFlight.getSquadron().determineDisplayName(campaign.getDate());
-        }
-	    
-	    descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<ESCORTED_BY>", escortedByText);
-	    singlePlayerHtmlTemplate = replace(singlePlayerHtmlTemplate, "<ESCORTED_BY>", escortedByText);
-	}
-
-	
-	private void setFlight(ICountry country, IFlight flight) throws PWCGException 
-	{
-		Campaign campaign =     PWCGContext.getInstance().getCampaign();
-		
-		String squadron = flight.getSquadron().determineDisplayName(campaign.getDate());
-		String aircraft = flight.getFlightPlanes().getFlightLeader().getDisplayName();
-		ICountry flightCountry = flight.getFlightInformation().getAirfield().determineCountryOnDate(campaign.getDate());
-		
-		if (country.isSameSide(flightCountry))
-		{
-			String friendlyInt = "    " + squadron + " flying " + aircraft;
-			friendlyIntList.add(friendlyInt + "\n");
-			
-			String friendlyInthtml = "<br>    " + friendlyInt;
-			friendlyIntHtmlList.add(friendlyInthtml);			
-		}
-		else
-		{
-			String enemyInt = "    " + squadron + " flying " + aircraft;
-			enemyIntList.add(enemyInt + "\n");
-			
-			String enemyInthtml = "<br>    " + enemyInt;
-			enemyIntHtmlList.add(enemyInthtml);
-		}
-
 	}
 
     private String replace(String str, String pattern, String replacement) 

@@ -3,10 +3,10 @@ package pwcg.product.bos.plane.payload;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.payload.IPlanePayloadFactory;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.IPlanePayloadFactory;
 import pwcg.campaign.plane.payload.PlanePayloadDesignation;
-import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.plane.BoSPlaneAttributeFactory;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
@@ -71,7 +71,7 @@ public class BoSPayloadFactory implements IPlanePayloadFactory
 {
 	public IPlanePayload createPayload(String planeTypeName, Date date) throws PWCGException 
 	{
-		TankType planeType = PWCGContext.getInstance().getTankTypeFactory().createTankTypeByAnyName(planeTypeName);
+		PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeName);
 		BosPlaneAttributeMapping attributeMapping = BoSPlaneAttributeFactory.createPlaneAttributeMap(planeTypeName);
 	    
         if (attributeMapping == BosPlaneAttributeMapping.BF109_E7)

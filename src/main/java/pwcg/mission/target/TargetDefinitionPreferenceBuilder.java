@@ -1,14 +1,12 @@
 package pwcg.mission.target;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightTypes;
 
 public class TargetDefinitionPreferenceBuilder
 {
@@ -50,45 +48,6 @@ public class TargetDefinitionPreferenceBuilder
         {
             targetTypes.add(flightInformation.getRoleBasedTarget());
         }
-
-        if (flightInformation.getFlightType() == FlightTypes.GROUND_HUNT)
-        {
-            targetTypes.addAll(addTransportTargets());
-        }
-
-        if (flightInformation.getFlightType() == FlightTypes.RAID)
-        {
-            targetTypes.addAll(addRaidTargets());
-        }
-    }
-
-    private List<TargetType> addTransportTargets()
-    {
-        List<TargetType> huntTargetTypes = new ArrayList<>();
-        huntTargetTypes.add(TargetType.TARGET_TRAIN);
-        huntTargetTypes.add(TargetType.TARGET_TRAIN);
-        huntTargetTypes.add(TargetType.TARGET_TRANSPORT);
-        huntTargetTypes.add(TargetType.TARGET_TRANSPORT);
-        huntTargetTypes.add(TargetType.TARGET_TRANSPORT);
-        huntTargetTypes.add(TargetType.TARGET_TRANSPORT);
-        huntTargetTypes.add(TargetType.TARGET_SHIPPING);
-        Collections.shuffle(huntTargetTypes);
-        return huntTargetTypes;
-    }
-
-    private List<TargetType> addRaidTargets()
-    {
-        List<TargetType> huntTargetTypes = new ArrayList<>();
-        huntTargetTypes.add(TargetType.TARGET_AIRFIELD);
-        huntTargetTypes.add(TargetType.TARGET_AIRFIELD);
-        huntTargetTypes.add(TargetType.TARGET_AIRFIELD);
-        huntTargetTypes.add(TargetType.TARGET_TRAIN);
-        huntTargetTypes.add(TargetType.TARGET_TRAIN);
-        huntTargetTypes.add(TargetType.TARGET_TRAIN);
-        huntTargetTypes.add(TargetType.TARGET_BRIDGE);
-        huntTargetTypes.add(TargetType.TARGET_BRIDGE);
-        Collections.shuffle(huntTargetTypes);
-        return huntTargetTypes;
     }
 
     private TargetType getTestTargetType()
@@ -116,7 +75,7 @@ public class TargetDefinitionPreferenceBuilder
         Skirmish skirmish = flightInformation.getMission().getSkirmish();
         if (skirmish != null)
         {
-            skirmishTargetType = skirmish.getTargetTypeForFlightType(flightInformation.getFlightType(), flightInformation.getSquadron().determineSide());
+            skirmishTargetType = skirmish.getTargetTypeForFlightType(flightInformation.getFlightType(), flightInformation.getCountry().getSide());
         }
         return skirmishTargetType;
     }

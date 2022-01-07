@@ -20,7 +20,7 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
     public TargetDefinition buildTargetDefinition() throws PWCGException
     {
         Coordinate targetLocation = createTargetLocation();
-        ICountry targetCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(flightInformation.getSquadron().determineEnemySide());
+        ICountry targetCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(flightInformation.getCountry().getSide().getOppositeSide());
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocation, targetCountry, "Planes");
         return targetDefinition;
     }
@@ -29,26 +29,13 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
     {
         TargetLocatorAir targetLocatorAir = new TargetLocatorAir(flightInformation);
 
-        if (flightInformation.getFlightType() == FlightTypes.PATROL || 
-            flightInformation.getFlightType() == FlightTypes.LOW_ALT_PATROL)
+        if (flightInformation.getFlightType() == FlightTypes.LOW_ALT_PATROL)
         {
             return targetLocatorAir.getFrontCoordinate();
         }
         else if (flightInformation.getFlightType() == FlightTypes.LOW_ALT_CAP)
         {
             return targetLocatorAir.getBattleCoordinate();
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.PATROL)
-        {
-            return targetLocatorAir.getBattleCoordinate();
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.INTERCEPT)
-        {
-            return targetLocatorAir.getInterceptCoordinate();
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.OFFENSIVE)
-        {
-            return targetLocatorAir.getEnemyTerritoryPatrolCoordinate();
         }
 
         throw new PWCGException("No target locations for flight type " + flightInformation.getFlightType());

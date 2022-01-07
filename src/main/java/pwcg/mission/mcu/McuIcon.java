@@ -202,7 +202,7 @@ public class McuIcon extends BaseFlightMcu
         position = flight.getFlightHomePosition().copy();
         position.setXPos(position.getXPos() + 5000);
         iconId = McuIconIdType.ICON_ID_FREE_FLIGHT;
-        setName(flight.getSquadron().determineDisplayName(date));
+        setName(flight.getFlightInformation().getFlightName());
         setDesc(MissionObjectiveFactory.formMissionObjective(flight, date));
 
         coalitions.add(CoalitionFactory.getCoalitionBySide(flight.getFlightInformation().getCountry().getSide()));

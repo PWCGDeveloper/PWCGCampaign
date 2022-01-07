@@ -2,10 +2,10 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -15,7 +15,7 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
 {
     private Date boostIntroDate;
 
-    public TempestMKVS2Payload(TankType planeType, Date date)
+    public TempestMKVS2Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -84,7 +84,7 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-    	TempestMKVS2Payload clone = new TempestMKVS2Payload(getTankType(), getDate());
+    	TempestMKVS2Payload clone = new TempestMKVS2Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }

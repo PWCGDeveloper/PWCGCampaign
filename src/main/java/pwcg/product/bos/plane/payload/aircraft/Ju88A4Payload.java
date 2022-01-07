@@ -2,10 +2,10 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -13,7 +13,7 @@ import pwcg.mission.target.TargetCategory;
 
 public class Ju88A4Payload extends PlanePayload
 {
-    public Ju88A4Payload(TankType planeType, Date date)
+    public Ju88A4Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(12);
@@ -39,7 +39,7 @@ public class Ju88A4Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Ju88A4Payload clone = new Ju88A4Payload(getTankType(), getDate());
+        Ju88A4Payload clone = new Ju88A4Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }

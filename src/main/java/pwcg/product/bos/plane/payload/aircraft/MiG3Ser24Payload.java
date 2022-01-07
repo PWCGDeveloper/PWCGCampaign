@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.plane.payload.PlanePayloadDesignation;
 import pwcg.campaign.plane.payload.PlanePayloadElement;
-import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
@@ -20,7 +20,7 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
 {
     private Date shvakIntroDate;
 
-    public MiG3Ser24Payload(TankType planeType, Date date)
+    public MiG3Ser24Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -55,7 +55,7 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        MiG3Ser24Payload clone = new MiG3Ser24Payload(getTankType(), getDate());
+        MiG3Ser24Payload clone = new MiG3Ser24Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }

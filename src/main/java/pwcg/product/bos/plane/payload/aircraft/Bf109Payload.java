@@ -2,9 +2,9 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
-import pwcg.campaign.plane.payload.PlanePayloadElement;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -13,7 +13,7 @@ import pwcg.mission.target.TargetCategory;
 public abstract class Bf109Payload extends PlanePayload
 {
     
-    public Bf109Payload(TankType planeType, Date date)
+    public Bf109Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
     }

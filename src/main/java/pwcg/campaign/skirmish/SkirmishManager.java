@@ -77,18 +77,6 @@ public class SkirmishManager
         return false;
     }
 
-    public TargetType getIconicTargetTypes(FlightInformation flightInformation) throws PWCGException
-    {
-        Skirmish missionSkirmish = flightInformation.getMission().getSkirmish();
-        if (missionSkirmish != null)
-        {
-            TargetType iconicTargetType = missionSkirmish.getTargetForFlightType(flightInformation);
-            return iconicTargetType;
-        }
-
-        return TargetType.TARGET_NONE;
-    }
-
     public Skirmishes getSkirmishes()
     {
         return skirmishes;

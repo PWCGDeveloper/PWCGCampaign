@@ -4,11 +4,11 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
@@ -58,11 +58,11 @@ public abstract class Flight implements IFlight
             writer.write("{");
             writer.newLine();
 
-            writer.write("  Name = \"Flight " + flightInformation.getName() + "\";");
+            writer.write("  Name = \"Flight " + flightInformation.getFlightName() + "\";");
             writer.newLine();
             writer.write("  Index = " + index + ";");
             writer.newLine();
-            writer.write("  Desc = \"Flight " + flightInformation.getName() + "\";");
+            writer.write("  Desc = \"Flight " + flightInformation.getFlightName() + "\";");
             writer.newLine();
 
             writer.newLine();
@@ -165,6 +165,13 @@ public abstract class Flight implements IFlight
     public FlightTypes getFlightType()
     {
         return flightInformation.getFlightType();
+    }
+    
+
+    @Override
+    public ICountry getCountry()
+    {
+        return flightInformation.getCountry();
     }
 
     @Override

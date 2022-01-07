@@ -32,7 +32,7 @@ public class CAPWaypointFactory
     {
         missionPointSet.addWaypoint(ingressWaypoint);
         
-        List<McuWaypoint> interceptWaypoints = createInterceptWaypoints();
+        List<McuWaypoint> interceptWaypoints = createInterceptWaypoints(ingressWaypoint);
         setWaypointsAsTarget(interceptWaypoints);
         missionPointSet.addWaypoints(interceptWaypoints);
 
@@ -42,11 +42,11 @@ public class CAPWaypointFactory
         return missionPointSet;
     }
 
-    private List<McuWaypoint> createInterceptWaypoints() throws PWCGException  
+    private List<McuWaypoint> createInterceptWaypoints(McuWaypoint ingressWaypoint) throws PWCGException  
     {
         List<McuWaypoint> targetWaypoints = new ArrayList<>();
         
-        McuWaypoint startWP = createInterceptFirstWP();
+        McuWaypoint startWP = createInterceptFirstWP(ingressWaypoint);
         targetWaypoints.add(startWP);       
         
         List<McuWaypoint> interceptWPs = this.createSearchPatternWaypoints(startWP);
@@ -55,27 +55,27 @@ public class CAPWaypointFactory
         return interceptWPs;        
     }
 
-    private McuWaypoint createInterceptFirstWP() throws PWCGException
+    private McuWaypoint createInterceptFirstWP(McuWaypoint ingressWaypoint) throws PWCGException
     {
         McuWaypoint patternFirstWP = WaypointFactory.createPatrolWaypointType();
         patternFirstWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
         patternFirstWP.setSpeed(flight.getFlightCruisingSpeed());
         patternFirstWP.setTargetWaypoint(true);
         
-        Coordinate coord = createPatternStartPosition();
-        double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getPosition());
+        Coordinate coord = createPatternStartPosition(ingressWaypoint);
+        double initialAngle = MathUtils.calcAngle(ingressWaypoint.getPosition(), flight.getTargetDefinition().getPosition());
         patternFirstWP.setPosition(coord);    
         patternFirstWP.getOrientation().setyOri(initialAngle);
         
         return patternFirstWP;
     }
     
-    private Coordinate createPatternStartPosition() throws PWCGException
+    private Coordinate createPatternStartPosition(McuWaypoint ingressWaypoint) throws PWCGException
     {
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int crossDistance = productSpecific.getInterceptCrossDiameterDistance();
 
-        double movementAngle = MathUtils.calcAngle(flight.getTargetDefinition().getPosition(), flight.getFlightHomePosition());
+        double movementAngle = MathUtils.calcAngle(flight.getTargetDefinition().getPosition(), ingressWaypoint.getPosition());
         Coordinate patternStartPosition = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), movementAngle, (crossDistance / 2));
         patternStartPosition.setYPos(flight.getFlightInformation().getAltitude());
         return patternStartPosition;

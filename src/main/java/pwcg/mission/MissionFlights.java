@@ -22,17 +22,11 @@ public class MissionFlights
         this.campaign = mission.getCampaign();
     }
     
-    public void generateFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
+    public void generateFlights() throws PWCGException
     {        
         AiFlightBuilder aiFlightBuilder = new AiFlightBuilder(campaign, mission);
         List<IFlight> aiFlights = aiFlightBuilder.createAiFlights(mission.getWeather());
         flights.addAll(aiFlights);
-    }
-
-    public void finalizeMissionFlights() throws PWCGException
-    {
-        MissionFlightFinalizer flightFinalizer = new MissionFlightFinalizer(campaign, mission);
-        flightFinalizer.finalizeMissionFlights();
     }
 
     public List<IFlight> getAiFlightsForSide(Side side) throws PWCGException

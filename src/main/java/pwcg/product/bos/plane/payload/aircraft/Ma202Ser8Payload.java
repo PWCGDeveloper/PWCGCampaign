@@ -2,10 +2,10 @@ package pwcg.product.bos.plane.payload.aircraft;
 
 import java.util.Date;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
+import pwcg.campaign.plane.payload.PlanePayloadElement;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -13,7 +13,7 @@ import pwcg.mission.target.TargetCategory;
 
 public class Ma202Ser8Payload extends PlanePayload implements IPlanePayload
 {
-    public Ma202Ser8Payload(TankType planeType, Date date)
+    public Ma202Ser8Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -32,7 +32,7 @@ public class Ma202Ser8Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Ma202Ser8Payload clone = new Ma202Ser8Payload(getTankType(), getDate());
+        Ma202Ser8Payload clone = new Ma202Ser8Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
@@ -45,7 +45,7 @@ public class Ma202Ser8Payload extends PlanePayload implements IPlanePayload
         {
             selectedPayloadId = selectGroundAttackPayload(flight);
         }
-        else if (flight.getFlightType() == FlightTypes.INTERCEPT)
+        else if (flight.getFlightType() == FlightTypes.LOW_ALT_CAP)
         {
             selectedPayloadId = selectInterceptPayload();
         }

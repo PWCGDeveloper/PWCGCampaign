@@ -90,12 +90,12 @@ public class Mission
         finalizer = new MissionFinalizer(this);
     }
 
-    public void generate(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
+    public void generate() throws PWCGException
     {
         validate();
         createStructuresBoxForMission();
         createGroundUnits();
-        generateFlights(playerFlightTypes);
+        generateFlights();
         createPlayerVehicle();
     }
 
@@ -123,9 +123,9 @@ public class Mission
         structureBorders = structureBorderBuilder.buildBorderForMission();
     }
 
-    private void generateFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
+    private void generateFlights() throws PWCGException
     {
-        missionFlights.generateFlights(playerFlightTypes);
+        missionFlights.generateFlights();
     }
 
     private void validate() throws PWCGException

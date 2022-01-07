@@ -8,22 +8,19 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
-import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypointSet implements IMissionPointSet
 {
     private IFlight flight;
-    private AirStartPattern airStartPattern;
     private McuWaypoint ingressWaypoint;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
 
-    public MissionPointFlightBeginVirtual(IFlight flight, AirStartPattern airStartNearAirfield, McuWaypoint ingressWaypoint)
+    public MissionPointFlightBeginVirtual(IFlight flight, McuWaypoint ingressWaypoint)
     {
         this.flight = flight;
-        this.airStartPattern = airStartNearAirfield;
         this.ingressWaypoint = ingressWaypoint;
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_BEGIN_VIRTUAL;
     }
@@ -78,7 +75,7 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
 
     private void createAirStartWaypoint() throws PWCGException
     {
-        McuWaypoint airStartWaypoint = AirStartWaypointFactory.createAirStart(flight, airStartPattern, ingressWaypoint);
+        McuWaypoint airStartWaypoint = AirStartWaypointFactory.createAirStart(flight, ingressWaypoint);
         super.addWaypoint(airStartWaypoint);
     }
 

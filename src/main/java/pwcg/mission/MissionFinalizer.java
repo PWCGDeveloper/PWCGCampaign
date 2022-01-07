@@ -10,17 +10,16 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.ground.builder.IndirectFireAssignmentHandler;
 import pwcg.mission.ground.unittypes.GroundUnitEngagableAAAEvaluator;
-import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.group.MissionObjectiveGroup;
 import pwcg.mission.mcu.group.StopAttackingNearAirfieldSequence;
 import pwcg.mission.options.MissionOptions;
+import pwcg.mission.playerunit.PlayerVehicleMcu;
 
 public class MissionFinalizer
 {
     private Mission mission;
     private Campaign campaign;
     private MissionPlayerUnits units;
-    private MissionFlights flights;
     private boolean isFinalized = false;
     private MissionFrontLineIconBuilder frontLineIconBuilder;
     private MissionWaypointIconBuilder waypointIconBuilder = new MissionWaypointIconBuilder();
@@ -35,7 +34,6 @@ public class MissionFinalizer
         this.mission = mission;
         this.campaign = mission.getCampaign();
         this.units = mission.getPlayerUnits();
-        this.flights = mission.getFlights();
     }
 
     public void finalizeMission() throws PWCGException
@@ -47,7 +45,7 @@ public class MissionFinalizer
 
             setMissionScript(mission.getMissionOptions());
 
-            mission.getFlights().finalizeMissionFlights();
+            mission.getPlayerUnits().finalizeMissionUnits();
             mission.getGroundUnitBuilder().finalizeGroundUnits();
             
             frontLineIconBuilder.buildFrontLineIcons();
@@ -72,7 +70,7 @@ public class MissionFinalizer
 
     private void setMissionScript(MissionOptions missionOptions) throws PWCGException
     {
-        List<IVehicle> playerVehicles = units.getReferencePlayerUnit().getVehicles();
+        List<PlayerVehicleMcu> playerVehicles = units.getReferencePlayerUnit().getVehicles();
         String playerScript = playerVehicles.get(0).getScript();
         missionOptions.setPlayerConfig(playerScript);
     }

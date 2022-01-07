@@ -46,13 +46,10 @@ public class GroundAttackPackageTest
     {
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
 
-        Company playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
-        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.GROUND_ATTACK, playerSquadron);
-
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(150000,  0, 150000), 100000);
 
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders);
-        mission.generate(playerFlightTypes);
+        mission.generate();
 
         campaign.setCurrentMission(mission);
     }

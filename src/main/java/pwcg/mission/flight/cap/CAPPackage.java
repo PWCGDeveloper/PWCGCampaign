@@ -3,12 +3,10 @@ package pwcg.mission.flight.cap;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.Mission;
+import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
@@ -19,23 +17,16 @@ public class CAPPackage implements IFlightPackage
 {	
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
-    private FlightTypes flightType;
     private List<IFlight> packageFlights = new ArrayList<>();
 
-    public CAPPackage(FlightTypes flightType)
+    public CAPPackage()
     {
-        this.flightType = flightType;
     }
 
     @Override
-    public List<IFlight> createPackage (Mission mission, ICountry country) throws PWCGException 
+    public List<IFlight> createFlightPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
-        if (flightType != FlightTypes.INTERCEPT && flightType != FlightTypes.LOW_ALT_CAP)
-        {
-            throw new PWCGException("Invalid intercept flight type " + flightType);
-        }
-        
-        this.flightInformation = FlightInformationFactory.buildFlightInformation(mission, country, flightType, planeType);
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation);
         this.targetDefinition = buildTargetDefintion();
 
         CAPFlight interceptFlight = new CAPFlight (flightInformation, targetDefinition);

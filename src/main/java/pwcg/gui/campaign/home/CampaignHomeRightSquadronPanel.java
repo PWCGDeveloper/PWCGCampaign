@@ -46,7 +46,7 @@ public class CampaignHomeRightSquadronPanel extends JPanel
 
     private JPanel makePlaquePanel(int squadronId) throws PWCGException 
     {
-        CampaignHomeSquadronPlaque squadronPlaque = new CampaignHomeSquadronPlaque(campaign);
+        CampaignHomeCompanyPlaque squadronPlaque = new CampaignHomeCompanyPlaque(campaign);
         squadronPlaque.makeDescPanel(squadronId);
         return squadronPlaque;
     }

@@ -15,10 +15,6 @@ public interface IFlightPlanes
 
     List<PlaneMcu> getAiPlanes() throws PWCGException;
 
-    List<PlaneMcu> getPlayerPlanes() throws PWCGException;
-
-    PlaneMcu getPlaneForCrewMember(Integer crewMemberSerialNumber);
-
     PlaneMcu getPlaneByLinkTrId(Integer planeLinkTrId);
 
     PlaneMcu getFlightLeader();
@@ -32,8 +28,6 @@ public interface IFlightPlanes
     List<Integer> getPlaneLinkTrIds();
 
     void setPlanePosition(Integer planeLinkTrId, Coordinate planeCoords, Orientation planeOrientation, int startingPoint);
-
-    void preparePlaneForCoop(IFlight flight) throws PWCGException;
 
     void write(BufferedWriter writer) throws PWCGException;
 

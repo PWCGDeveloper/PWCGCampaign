@@ -746,7 +746,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 	    try
 	    {
     		cbCompany.removeAllItems();
-            CampaignGeneratorSquadronFilter companyFilter = new CampaignGeneratorSquadronFilter();
+            CampaignGeneratorCompanyFilter companyFilter = new CampaignGeneratorCompanyFilter();
 	        String selectedRole = (String)cbRole.getSelectedItem();
             List<String> companyNames = companyFilter.makeSquadronChoices(
                     campaignDate, dateCorrectedService, parent.getCampaignGeneratorDO().getFrontMap(), selectedRole, parent.getCampaignGeneratorDO().isCommandRank());

@@ -7,32 +7,27 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPlanes;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionPointFlightActivateVirtual implements IMissionPointSet, IVirtualActivate
 {    
-    private IFlight flight;
-
     private MissionBeginUnit missionBeginUnit;
     private McuTimer missionBeginTimer = null;
     private boolean linkToNextTarget = false;
     private MissionPointSetType missionPointSetType;
 
-    public MissionPointFlightActivateVirtual(IFlight flight)
+    public MissionPointFlightActivateVirtual()
     {
-        this.flight = flight;
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ACTIVATE;
     }
     
-    public void createFlightActivate() throws PWCGException, PWCGException 
+    public void createFlightActivate(McuWaypoint ingressWaypoint) throws PWCGException, PWCGException 
     {
-        createFlightMissionBegin();
-        createActivation();  
+        createFlightMissionBegin(ingressWaypoint);
+        createActivation(ingressWaypoint);  
     }
 
     @Override
@@ -83,20 +78,18 @@ public class MissionPointFlightActivateVirtual implements IMissionPointSet, IVir
         missionBeginTimer.write(writer);
     }
     
-    private void createFlightMissionBegin() throws PWCGException
+    private void createFlightMissionBegin(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        missionBeginUnit = new MissionBeginUnit(flight.getFlightHomePosition());
+        missionBeginUnit = new MissionBeginUnit(ingressWaypoint.getPosition().copy());
         missionBeginUnit.setStartTime(1);
     }
 
-    private void createActivation() throws PWCGException
-    {
-        FlightInformation flightInformation = flight.getFlightInformation();
-   
+    private void createActivation(McuWaypoint ingressWaypoint) throws PWCGException
+    {   
         missionBeginTimer = new McuTimer();
         missionBeginTimer.setName("Mission Begin VWP Timer");
         missionBeginTimer.setDesc("Mission Begin VWP Timer");
-        missionBeginTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
+        missionBeginTimer.setPosition(ingressWaypoint.getPosition().copy());        
         missionBeginTimer.setTime(1);
     }
 

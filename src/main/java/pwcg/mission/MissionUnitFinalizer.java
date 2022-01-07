@@ -7,18 +7,18 @@ import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
 import pwcg.mission.mcu.group.virtual.IVirtualWaypoint;
 import pwcg.mission.utils.AiAdjuster;
 
-public class MissionFlightFinalizer
+public class MissionUnitFinalizer
 {
     private Campaign campaign;
     private Mission mission;
     
-    public MissionFlightFinalizer (Campaign campaign, Mission mission)
+    public MissionUnitFinalizer (Campaign campaign, Mission mission)
     {
         this.campaign = campaign;
         this.mission = mission;
     }
     
-    public void finalizeMissionFlights() throws PWCGException 
+    public void finalizeMissionUnits() throws PWCGException 
     {
         convertForCoop();
         finalizeFlights();        

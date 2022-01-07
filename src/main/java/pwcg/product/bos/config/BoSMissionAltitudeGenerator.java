@@ -35,18 +35,9 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
             altitude = determineLowAltitudeBombingAltitude();
             altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
         }
-        else if (flightType == FlightTypes.GROUND_ATTACK || flightType == FlightTypes.GROUND_HUNT)
+        else if (flightType == FlightTypes.GROUND_ATTACK)
         {
             altitude = determineGroundAttackAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.RAID)
-        {
-            altitude = determineRaidAltitude();
-        }
-        else if (flightType == FlightTypes.BOMB)
-        {
-            altitude = determineHighAltitudeBombingAltitude();
             altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
         }
         else if (flightType == FlightTypes.PARATROOP_DROP || flightType == FlightTypes.CARGO_DROP)
@@ -110,26 +101,10 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         return altitude;
     }
 
-    private int determineHighAltitudeBombingAltitude()
-    {
-        int altitude = 3000;
-        int randomAlt = RandomNumberGenerator.getRandom(2000);
-        altitude = altitude + randomAlt;            
-        return altitude;
-    }
-
     private int determineLowAltitudePatrolAltitude()
     {
         int altitude = 1500;
         int randomAlt = RandomNumberGenerator.getRandom(1000);
-        altitude = altitude + randomAlt;            
-        return altitude;
-    }
-
-    private int determineRaidAltitude()
-    {
-        int altitude = 300;
-        int randomAlt = RandomNumberGenerator.getRandom(300);
         altitude = altitude + randomAlt;            
         return altitude;
     }

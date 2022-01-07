@@ -117,20 +117,6 @@ public class Skirmish
         return FlightTypes.ANY;
     }
 
-    public TargetType getTargetForFlightType(PlayerUnitInformation unitInformation) throws PWCGException
-    {
-        List<SkirmishProfileElement> skirmishElementsForSide = getSkirmishProfileElementForSide(unitInformation.getCompany());
-        for (SkirmishProfileElement skirmishProfileElement : skirmishElementsForSide)
-        {
-            if (skirmishProfileElement.getPreferredFlightType() == unitInformation.getFlightType())
-            {
-                return skirmishProfileElement.getTargetType();
-            }
-        }
-
-        return TargetType.TARGET_NONE;
-    }
-
     public PwcgRole forceRoleConversion(PwcgRole role, Side side)
     {
         for (SkirmishForceRoleConversion forcedRoleConversion : forcedRoleConversions)

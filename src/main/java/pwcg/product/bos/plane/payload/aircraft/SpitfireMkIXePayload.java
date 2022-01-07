@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.campaign.plane.payload.PlanePayloadDesignation;
 import pwcg.campaign.plane.payload.PlanePayloadElement;
-import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.tank.TankType;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -22,7 +22,7 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     private Date gyroGunsightIntroDate;
     private Date highOctaneFuelIntroDate;
 
-    public SpitfireMkIXePayload(TankType planeType, Date date)
+    public SpitfireMkIXePayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -120,7 +120,7 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-    	SpitfireMkIXePayload clone = new SpitfireMkIXePayload(getTankType(), getDate());
+    	SpitfireMkIXePayload clone = new SpitfireMkIXePayload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }

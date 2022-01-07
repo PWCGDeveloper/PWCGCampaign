@@ -94,7 +94,7 @@ public class CrossWaypointPattern
         McuWaypoint nextCrossWP = WaypointFactory.createDefinedWaypointType(waypointType, waypointAction);
         
         nextCrossWP.setTriggerArea(wpTriggerArea);
-        nextCrossWP.setDesc(flight.getSquadron().determineDisplayName(campaign.getDate()), waypointType.getName());
+        nextCrossWP.setDesc(flight.getFlightInformation().getFlightName(), waypointType.getName());
 
         nextCrossWP.setSpeed(lastWP.getSpeed());
         nextCrossWP.setPriority(WaypointPriority.PRIORITY_LOW);          
