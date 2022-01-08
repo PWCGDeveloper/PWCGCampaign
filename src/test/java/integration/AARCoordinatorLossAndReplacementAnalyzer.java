@@ -180,7 +180,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             System.out.println(squadronPersonnel.getSquadron().determineDisplayName(campaign.getDate()));
             System.out.println(" Personnel size is " + squadronPersonnel.getCrewMembersWithAces().getActiveCount(campaign.getDate()));
             
-            Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronPersonnel.getSquadron().getCompanyId());
+            Equipment equipment = campaign.getEquipmentManager().getEquipmentForCompany(squadronPersonnel.getSquadron().getCompanyId());
             System.out.println(" Equipment size is " + equipment.getActiveEquippedTanks().size());
         }
     }

@@ -7,14 +7,14 @@ import javax.swing.JOptionPane;
 
 import pwcg.campaign.tank.EquippedTank;
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.rofmap.brief.model.BriefingFlight;
+import pwcg.gui.rofmap.brief.model.BriefingUnit;
 
-public class BriefingPlanePicker
+public class BriefingTankPicker
 {
-    private BriefingFlight missionEditHandler;
+    private BriefingUnit missionEditHandler;
     private JComponent parent;
     
-    public BriefingPlanePicker(BriefingFlight missionEditHandler, JComponent parent)
+    public BriefingTankPicker(BriefingUnit missionEditHandler, JComponent parent)
     {
         this.missionEditHandler = missionEditHandler;
         this.parent = parent;
@@ -22,7 +22,7 @@ public class BriefingPlanePicker
 
     public Integer pickPlane(Integer crewMemberSerialNumber) throws PWCGException
     {       
-        List<EquippedTank> squadronPlanes = missionEditHandler.getSortedUnassignedPlanes();
+        List<EquippedTank> squadronPlanes = missionEditHandler.getSortedUnassignedTanks();
         Object[] possibilities = new Object[squadronPlanes.size()];
         for (int i = 0; i < squadronPlanes.size(); ++i)
         {

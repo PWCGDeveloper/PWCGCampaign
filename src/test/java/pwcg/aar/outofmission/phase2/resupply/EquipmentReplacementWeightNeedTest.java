@@ -125,22 +125,22 @@ public class EquipmentReplacementWeightNeedTest
     
     private void deactivateAircraft() throws PWCGException
     {
-        Equipment gruppo21 = campaign.getEquipmentManager().getEquipmentForSquadron(20115021);
+        Equipment gruppo21 = campaign.getEquipmentManager().getEquipmentForCompany(20115021);
         destroyPlanesInSquadron(gruppo21, 3);
 
-        Equipment i_jg51 = campaign.getEquipmentManager().getEquipmentForSquadron(20111051);
+        Equipment i_jg51 = campaign.getEquipmentManager().getEquipmentForCompany(20111051);
         destroyPlanesInSquadron(i_jg51, 2);
 
-        Equipment ii_jg52 = campaign.getEquipmentManager().getEquipmentForSquadron(20112052);
+        Equipment ii_jg52 = campaign.getEquipmentManager().getEquipmentForCompany(20112052);
         destroyPlanesInSquadron(ii_jg52, 1);
 
-        Equipment i_kg53 = campaign.getEquipmentManager().getEquipmentForSquadron(20131053);
+        Equipment i_kg53 = campaign.getEquipmentManager().getEquipmentForCompany(20131053);
         destroyPlanesInSquadron(i_kg53, 5);
 
-        Equipment vvs_312Reg = campaign.getEquipmentManager().getEquipmentForSquadron(10121312);
+        Equipment vvs_312Reg = campaign.getEquipmentManager().getEquipmentForCompany(10121312);
         destroyPlanesInSquadron(vvs_312Reg, 4);
 
-        Equipment vvs_175Reg = campaign.getEquipmentManager().getEquipmentForSquadron(10121175);
+        Equipment vvs_175Reg = campaign.getEquipmentManager().getEquipmentForCompany(10121175);
         destroyPlanesInSquadron(vvs_175Reg, 2);
     }
 

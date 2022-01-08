@@ -34,7 +34,7 @@ public class CampaignEquipmentManagerTest
     public void makeAircraftForSquadronTest () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190);
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getCompanyId());
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForCompany(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getCompanyId());
         for (EquippedTank plane : equipment.getActiveEquippedTanks().values())
         {
             assert(plane.getType().contentEquals(PlaneAttributeMapping.FW190_A3.getTankType()));
@@ -49,7 +49,7 @@ public class CampaignEquipmentManagerTest
         List<Integer> planesToReplace = new ArrayList<>();
         
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190);
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getCompanyId());
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForCompany(SquadronTestProfile.GROSS_DEUTSCHLAND_PROFILE_FW190.getCompanyId());
         int count = 0;
         for (EquippedTank plane : equipment.getActiveEquippedTanks().values())
         {

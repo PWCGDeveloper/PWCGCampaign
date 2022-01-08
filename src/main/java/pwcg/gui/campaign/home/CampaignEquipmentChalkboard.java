@@ -48,7 +48,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         this.setBorder(PwcgBorderFactory.createCampaignHomeChalkboardBoxBorder());        
 
         CrewMember referencePlayer = campaign.findReferencePlayer();            
-        Map<Integer, EquippedTank> planesForSquadron = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getCompanyId()).getActiveEquippedTanks();
+        Map<Integer, EquippedTank> planesForSquadron = campaign.getEquipmentManager().getEquipmentForCompany(referencePlayer.getCompanyId()).getActiveEquippedTanks();
         
         JPanel equipmentPanel = createEquipmentListPanel(campaign, planesForSquadron);
         this.add(equipmentPanel, BorderLayout.CENTER);

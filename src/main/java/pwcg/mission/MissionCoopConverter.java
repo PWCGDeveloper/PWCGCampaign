@@ -14,7 +14,7 @@ public class MissionCoopConverter
         MissionOptions missionOptions = mission.getMissionOptions();
         missionOptions.setMissionType(MissionType.COOP_MISSION);
 
-        for (PlayerUnit unit : mission.getPlayerUnits().getPlayerUnits())
+        for (PlayerUnit unit : mission.getUnits().getPlayerUnits())
         {
             unit.preparePlaneForCoop();
         }

@@ -67,7 +67,7 @@ public class CompanyViability
             return false;
         }
         
-        Equipment companyEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(company.getCompanyId());
+        Equipment companyEquipment = campaign.getEquipmentManager().getEquipmentForCompany(company.getCompanyId());
         if (companyEquipment == null)
         {
             return false;

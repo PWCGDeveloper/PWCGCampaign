@@ -61,7 +61,7 @@ public class PlaneFactoryTest
 
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BOMB);
 
-        PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
+        PlaneMcuFactory planeFactory = new PlaneMcuFactory(flightInformation);
         List<PlaneMcu> assignedPlanes = planeFactory.createPlanesForFlight(4);
 
         boolean playerFound = false;
@@ -95,7 +95,7 @@ public class PlaneFactoryTest
 
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BOMB);
 
-        PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
+        PlaneMcuFactory planeFactory = new PlaneMcuFactory(flightInformation);
         List<PlaneMcu> assignedPlanes = planeFactory.createPlanesForFlight(4);
 
         List<CrewMember> players = campaign.getPersonnelManager().getAllActivePlayers().getCrewMemberList();

@@ -49,7 +49,7 @@ public class WW2PayloadTest
         PWCGContext.setProduct(PWCGProduct.BOS);
 
         Mockito.when(flight.getTargetDefinition()).thenReturn(targetDefinition);
-        Mockito.when(flight.getSquadron()).thenReturn(squadron);
+        Mockito.when(flight.getCompany()).thenReturn(squadron);
         Mockito.when(squadron.getCountry()).thenReturn(country);
         Mockito.when(country.getCountry()).thenReturn(Country.RUSSIA);
 

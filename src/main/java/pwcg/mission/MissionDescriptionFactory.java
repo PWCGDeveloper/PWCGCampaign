@@ -14,7 +14,7 @@ public class MissionDescriptionFactory
 	    }
 	    else
 	    {
-            return new MissionDescriptionSinglePlayer(campaign, mission, mission.getPlayerUnits().getReferencePlayerUnit());
+            return new MissionDescriptionSinglePlayer(campaign, mission, mission.getUnits().getReferencePlayerUnit());
 	    }
 	}
 

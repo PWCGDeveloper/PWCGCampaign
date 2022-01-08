@@ -49,7 +49,7 @@ public class FlightPlaneBuilder
 
 	private List<PlaneMcu> createPlanes(int numPlanesInFlight) throws PWCGException 
     {        
-        PlaneMCUFactory planeGeneratorPlayer = new PlaneMCUFactory(flightInformation);
+        PlaneMcuFactory planeGeneratorPlayer = new PlaneMcuFactory(flightInformation);
         List<PlaneMcu> planes = planeGeneratorPlayer.createPlanesForFlight(numPlanesInFlight);
 		return planes;
     }

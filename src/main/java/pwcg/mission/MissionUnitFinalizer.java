@@ -66,7 +66,7 @@ public class MissionUnitFinalizer
             {
                 if (vwp != null)
                 {
-                    for (int planeIndex : flight.getMission().getPlayerUnits().determinePlayerVehicleIds())
+                    for (int planeIndex : flight.getMission().getUnits().determinePlayerVehicleIds())
                     {
                         vwp.setVwpTriggerObject(planeIndex);
                     }

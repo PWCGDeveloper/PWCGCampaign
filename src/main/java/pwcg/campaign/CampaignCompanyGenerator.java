@@ -41,6 +41,6 @@ public class CampaignCompanyGenerator
         EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialCompanyEquipper equipmentStaffer = new InitialCompanyEquipper(campaign, company, equipmentWeightCalculator);
         Equipment companyEquipment = equipmentStaffer.generateEquipment();
-        campaign.getEquipmentManager().addEquipmentForSquadron(company.getCompanyId(), companyEquipment);
+        campaign.getEquipmentManager().addEquipmentForCompany(company.getCompanyId(), companyEquipment);
     }
 }

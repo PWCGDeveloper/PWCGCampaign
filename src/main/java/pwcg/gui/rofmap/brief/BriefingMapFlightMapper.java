@@ -2,16 +2,16 @@ package pwcg.gui.rofmap.brief;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
-import pwcg.gui.rofmap.brief.model.BriefingFlight;
+import pwcg.gui.rofmap.brief.model.BriefingUnit;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
+import pwcg.mission.playerunit.PlayerUnit;
 
 public class BriefingMapFlightMapper
 {
-    private BriefingFlight briefingMissionHandler;
+    private BriefingUnit briefingMissionHandler;
     private BriefingMapPanel mapPanel;
 
-    public BriefingMapFlightMapper(BriefingFlight briefingMissionHandler, BriefingMapPanel mapPanel) throws PWCGException
+    public BriefingMapFlightMapper(BriefingUnit briefingMissionHandler, BriefingMapPanel mapPanel) throws PWCGException
     {
         this.briefingMissionHandler = briefingMissionHandler;
         this.mapPanel = mapPanel;
@@ -28,20 +28,20 @@ public class BriefingMapFlightMapper
         Mission mission = briefingMissionHandler.getMission();
         mapPanel.clearVirtualPoints();
 
-        for (IFlight playerFlight : mission.getFlights().getPlayerUnits())
+        for (PlayerUnit playerUnit : mission.getUnits().getPlayerUnits())
         {
-            mapPanel.makeMapPanelVirtualPoints(playerFlight);
+            mapPanel.makeMapPanelVirtualPoints(playerUnit);
         }
 
-        for (IFlight flight : mission.getFlights().getAiFlights())
+        for (PlayerUnit playerUnit : mission.getUnits().getAiUnits())
         {
-            mapFlightAndLinkedFlights(flight);
+            mapFlightAndLinkedFlights(playerUnit);
         }
     }
 
-    private void mapFlightAndLinkedFlights(IFlight flight) throws PWCGException
+    private void mapFlightAndLinkedFlights(PlayerUnit playerUnit) throws PWCGException
     {
-        mapPanel.makeMapPanelVirtualPoints(flight);
+        mapPanel.makeMapPanelVirtualPoints(playerUnit);
     }
 
     private void mapFlightBox() throws PWCGException

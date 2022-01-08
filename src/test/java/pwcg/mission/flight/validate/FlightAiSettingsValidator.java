@@ -39,7 +39,7 @@ public class FlightAiSettingsValidator
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
-        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getPlayerUnits().get(0);
+        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getUnits().get(0);
         flight.finalizeFlight();
 
         validatePlaneAI(mission);
@@ -52,7 +52,7 @@ public class FlightAiSettingsValidator
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
-        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getPlayerUnits().get(0);
+        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getUnits().get(0);
         flight.finalizeFlight();
 
         validatePlaneAI(mission);
@@ -65,7 +65,7 @@ public class FlightAiSettingsValidator
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.BOMB, MissionProfile.DAY_TACTICAL_MISSION);
-        BombingFlight flight = (BombingFlight) mission.getFlights().getPlayerUnits().get(0);
+        BombingFlight flight = (BombingFlight) mission.getFlights().getUnits().get(0);
 		flight.finalizeFlight();
 		
 		validatePlaneAI(mission);
@@ -78,7 +78,7 @@ public class FlightAiSettingsValidator
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
-        PatrolFlight flight = (PatrolFlight) mission.getFlights().getPlayerUnits().get(0);
+        PatrolFlight flight = (PatrolFlight) mission.getFlights().getUnits().get(0);
 		flight.finalizeFlight();
 		
         validatePlaneAI(mission);
@@ -91,7 +91,7 @@ public class FlightAiSettingsValidator
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.INTERCEPT, MissionProfile.DAY_TACTICAL_MISSION);
-        InterceptFlight flight = (InterceptFlight) mission.getFlights().getPlayerUnits().get(0);
+        InterceptFlight flight = (InterceptFlight) mission.getFlights().getUnits().get(0);
 		flight.finalizeFlight();
 		
         validatePlaneAI(mission);
@@ -104,7 +104,7 @@ public class FlightAiSettingsValidator
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.BALLOON_DEFENSE, MissionProfile.DAY_TACTICAL_MISSION);
-        IFlight flight = (IFlight) mission.getFlights().getPlayerUnits().get(0);
+        IFlight flight = (IFlight) mission.getFlights().getUnits().get(0);
         flight.finalizeFlight();
 
         validatePlaneAI(mission);

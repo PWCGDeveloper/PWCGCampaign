@@ -6,41 +6,41 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
+import pwcg.mission.playerunit.PlayerUnit;
 
 public class BriefingData
 {
     private String missionTime = "08:30";
-    private Map<Integer, BriefingFlight> briefingMissionFlights = new HashMap<>();
-    private int selectedSquadronId = 0;
+    private Map<Integer, BriefingUnit> briefingMissionFlights = new HashMap<>();
+    private int selectedCompanyId = 0;
     private Mission mission;
     private Map<Integer, String> aiFlightsToDisplay = new HashMap<>();
 
-    public BriefingData(Mission mission, Map<Integer, BriefingFlight> briefingMissionFlights)
+    public BriefingData(Mission mission, Map<Integer, BriefingUnit> briefingMissionFlights)
     {
         this.mission = mission;
         this.briefingMissionFlights = briefingMissionFlights;
     }
 
-    public BriefingFlight getActiveBriefingFlight()
+    public BriefingUnit getActiveBriefingUnit()
     {
-        return briefingMissionFlights.get(selectedSquadronId);
+        return briefingMissionFlights.get(selectedCompanyId);
     }
     
-    public IFlight getSelectedFlight()
+    public PlayerUnit getSelectedUnit()
     {
-        IFlight playerFlight = mission.getFlights().getPlayerFlightForSquadron(selectedSquadronId);
+        PlayerUnit playerFlight = mission.getUnits().getPlayerUnitForCompany(selectedCompanyId);
         return playerFlight;
     }
 
-    public List<BriefingFlight> getBriefingFlights()
+    public List<BriefingUnit> getBriefingUnits()
     {
         return new ArrayList<>(briefingMissionFlights.values());
     }
     
-    public void changeSelectedFlight(int squadronId)
+    public void changeSelectedUnit(int companyId)
     {
-        selectedSquadronId = squadronId;
+        selectedCompanyId = companyId;
     }
 
     public Mission getMission()

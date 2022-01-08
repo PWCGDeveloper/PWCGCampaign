@@ -11,49 +11,49 @@ import pwcg.core.location.Orientation;
 
 public class UnitVehicles
 {
-    private List<PlayerVehicleMcu> vehicles = new ArrayList<>();
+    private List<TankMcu> tanks = new ArrayList<>();
 
     public UnitVehicles(PlayerUnit unit)
     {
-        this.vehicles = unit.getVehicles();
+        this.tanks = unit.getTanks();
     }
 
-    public List<PlayerVehicleMcu> getAiVehicles() throws PWCGException 
+    public List<TankMcu> getAiTanks() throws PWCGException 
     {
-        List<PlayerVehicleMcu> aiVehicles = new ArrayList<>();
-        for (PlayerVehicleMcu vehicle : vehicles)
+        List<TankMcu> aiVehicles = new ArrayList<>();
+        for (TankMcu tank : tanks)
         {
-            if (!vehicle.getCrewMember().isPlayer())
+            if (!tank.getCrewMember().isPlayer())
             {
-                aiVehicles.add(vehicle);
+                aiVehicles.add(tank);
             }
         }
 
         return aiVehicles;
     }
 
-    public List<PlayerVehicleMcu> getPlayerVehicles() throws PWCGException 
+    public List<TankMcu> getPlayerTanks() throws PWCGException 
     {
-        List<PlayerVehicleMcu> playerVehicles = new ArrayList<>();
-        for (PlayerVehicleMcu vehicle : vehicles)
+        List<TankMcu> playerVehicles = new ArrayList<>();
+        for (TankMcu tank : tanks)
         {
-            if (vehicle.getCrewMember().isPlayer())
+            if (tank.getCrewMember().isPlayer())
             {
-                playerVehicles.add(vehicle);
+                playerVehicles.add(tank);
             }
         }
 
         return playerVehicles;
     }
 
-    public PlayerVehicleMcu getVehicleForCrewMember(Integer crewMemberSerialNumber)
+    public TankMcu getTankForCrewMember(Integer crewMemberSerialNumber)
     {
-        PlayerVehicleMcu crewMemberVehicle = null;
-        for (PlayerVehicleMcu vehicle : vehicles)
+        TankMcu crewMemberVehicle = null;
+        for (TankMcu tank : tanks)
         {
-            if (vehicle.getCrewMember().getSerialNumber() == crewMemberSerialNumber)
+            if (tank.getCrewMember().getSerialNumber() == crewMemberSerialNumber)
             {
-                crewMemberVehicle = vehicle;
+                crewMemberVehicle = tank;
                 break;
             }
         }
@@ -61,14 +61,14 @@ public class UnitVehicles
         return crewMemberVehicle;
     }
 
-    public PlayerVehicleMcu getVehicleByLinkTrId(Integer vehicleLinkTrId)
+    public TankMcu getTankByLinkTrId(Integer tankLinkTrId)
     {
-        PlayerVehicleMcu crewMemberVehicle = null;
-        for (PlayerVehicleMcu vehicle : vehicles)
+        TankMcu crewMemberVehicle = null;
+        for (TankMcu tank : tanks)
         {
-            if (vehicle.getLinkTrId() == vehicleLinkTrId)
+            if (tank.getLinkTrId() == tankLinkTrId)
             {
-                crewMemberVehicle = vehicle;
+                crewMemberVehicle = tank;
                 break;
             }
         }
@@ -76,74 +76,74 @@ public class UnitVehicles
         return crewMemberVehicle;
     }
 
-    public PlayerVehicleMcu getUnitLeader()
+    public TankMcu getUnitLeader()
     {
-        return vehicles.get(0);
+        return tanks.get(0);
     }
 
-    public List<PlayerVehicleMcu> getVehicles()
+    public List<TankMcu> getTanks()
     {
-        return vehicles;
+        return tanks;
     }
 
     public void setFuelForUnit(double myFuel) 
     {
-        for (PlayerVehicleMcu vehicle : getVehicles())
+        for (TankMcu tank : getTanks())
         {
-            vehicle.setFuel(myFuel);
+            tank.setFuel(myFuel);
         }
     }
 
     public int getUnitCruisingSpeed()
     {
-        int cruisingSpeed = vehicles.get(0).getCruisingSpeed();
-        for (PlayerVehicleMcu vehicle : vehicles)
+        int cruisingSpeed = tanks.get(0).getCruisingSpeed();
+        for (TankMcu tank : tanks)
         {
-            if (vehicle.getCruisingSpeed() < cruisingSpeed)
+            if (tank.getCruisingSpeed() < cruisingSpeed)
             {
-                cruisingSpeed = vehicle.getCruisingSpeed();
+                cruisingSpeed = tank.getCruisingSpeed();
             }
         }
         
         return cruisingSpeed;
     }
 
-    public void setVehicles(List<PlayerVehicleMcu> vehicles) throws PWCGException
+    public void setTanks(List<TankMcu> tanks) throws PWCGException
     {
-        this.vehicles = vehicles;        
+        this.tanks = tanks;        
     }
     
-    public List<Integer> getVehicleLinkTrIds()
+    public List<Integer> getTankLinkTrIds()
     {
-        List<Integer> vehicleLinkIds = new ArrayList<>();
-        for (PlayerVehicleMcu vehicle : vehicles)
+        List<Integer> tankLinkIds = new ArrayList<>();
+        for (TankMcu tank : tanks)
         {
-            vehicleLinkIds.add(vehicle.getLinkTrId());
+            tankLinkIds.add(tank.getLinkTrId());
         }
-        return vehicleLinkIds;        
+        return tankLinkIds;        
     }
     
-    public void setVehiclePosition(Integer vehicleLinkTrId, Coordinate vehicleCoords, Orientation vehicleOrientation)
+    public void setTankPosition(Integer tankLinkTrId, Coordinate tankCoords, Orientation tankOrientation)
     {
-        PlayerVehicleMcu vehicle = this.getVehicleByLinkTrId(vehicleLinkTrId);
-        vehicle.setPosition(vehicleCoords);
-        vehicle.setOrientation(vehicleOrientation);
-        vehicle.populateEntity(getUnitLeader());
+        TankMcu tank = this.getTankByLinkTrId(tankLinkTrId);
+        tank.setPosition(tankCoords);
+        tank.setOrientation(tankOrientation);
+        tank.populateEntity(getUnitLeader());
     }
 
 
-    public void prepareVehicleForCoop() throws PWCGException
+    public void prepareTankForCoop() throws PWCGException
     {
-        for (PlayerVehicleMcu vehicle : vehicles)
+        for (TankMcu tank : tanks)
         {
-            if (vehicle.isActivePlayerVehicle())
+            if (tank.isActivePlayerTank())
             {
-                vehicle.setCoopStart(1);
-                vehicle.setAiLevel(AiSkillLevel.ACE);
+                tank.setCoopStart(1);
+                tank.setAiLevel(AiSkillLevel.ACE);
             }
             else
             {
-                vehicle.setCoopStart(0);
+                tank.setCoopStart(0);
             }
         }
     }
@@ -151,17 +151,17 @@ public class UnitVehicles
 
     public void write(BufferedWriter writer) throws PWCGException 
     {
-        for (int i = 0; i < vehicles.size(); ++i)
+        for (int i = 0; i < tanks.size(); ++i)
         {
-            PlayerVehicleMcu vehicle = vehicles.get(i);
-            vehicle.write(writer);
+            TankMcu tank = tanks.get(i);
+            tank.write(writer);
         }
     }
     
 
     public int getUnitSize()
     {
-        return vehicles.size();
+        return tanks.size();
     }
   
     public void finalize() throws PWCGException

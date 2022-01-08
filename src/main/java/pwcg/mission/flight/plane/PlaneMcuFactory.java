@@ -9,11 +9,11 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightInformation;
 
-public class PlaneMCUFactory
+public class PlaneMcuFactory
 {    
     private FlightInformation flightInformation;
 	
-    public PlaneMCUFactory(FlightInformation flightInformation)
+    public PlaneMcuFactory(FlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }

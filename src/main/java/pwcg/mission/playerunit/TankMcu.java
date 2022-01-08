@@ -14,6 +14,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.tank.EquippedTank;
+import pwcg.campaign.tank.TankType;
 import pwcg.campaign.tank.payload.ITankPayload;
 import pwcg.campaign.tank.payload.TankPayloadFactory;
 import pwcg.campaign.utils.IndexGenerator;
@@ -30,7 +31,7 @@ import pwcg.core.utils.PWCGLogger.LogCategory;
 import pwcg.mission.mcu.McuEvent;
 import pwcg.mission.mcu.McuTREntity;
 
-public class PlayerVehicleMcu extends EquippedTank implements Cloneable
+public class TankMcu extends EquippedTank implements Cloneable
 {
     private String name = "";
     private int index;
@@ -60,7 +61,7 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
     private Campaign campaign;
     private CrewMember crewMember;
 
-    public PlayerVehicleMcu()
+    public TankMcu()
     {
         super();
         this.index = IndexGenerator.getInstance().getNextIndex();
@@ -68,7 +69,7 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         this.linkTrId = entity.getIndex();
     }
 
-    public PlayerVehicleMcu(Campaign campaign, CrewMember crewMember)
+    public TankMcu(Campaign campaign, CrewMember crewMember)
     {
         super();
 
@@ -80,9 +81,9 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         this.linkTrId = entity.getIndex();
     }
     
-    public void buildVehicle(EquippedTank equippedVehicle, ICountry country) throws PWCGException
+    public void buildTank(TankType tankType, ICountry country) throws PWCGException
     {
-        equippedVehicle.copyTemplate(this);
+        tankType.copyTemplate(this);
         this.setName(crewMember.getNameAndRank());
         this.setDesc(crewMember.getNameAndRank());
         this.setCountry(country);
@@ -98,53 +99,53 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         }
     }
 
-    public PlayerVehicleMcu copy()
+    public TankMcu copy()
     {
-        PlayerVehicleMcu vehicle = new PlayerVehicleMcu();
-        copyTemplate(vehicle);
-        return vehicle;
+        TankMcu tank = new TankMcu();
+        copyTemplate(tank);
+        return tank;
     }
 
-    private void copyTemplate(PlayerVehicleMcu vehicle)
+    private void copyTemplate(TankMcu tank)
     {
-        super.copyTemplate(vehicle);
+        super.copyTemplate(tank);
 
-        vehicle.name = this.name;
-        vehicle.position = this.position;
-        vehicle.orientation = this.orientation;
-        vehicle.skin = this.skin;
-        vehicle.aiSkillLevel = this.aiSkillLevel;
-        vehicle.coopStart = this.coopStart;
-        vehicle.numberInFormation = this.numberInFormation;
-        vehicle.vulnerable = this.vulnerable;
-        vehicle.engageable = this.engageable;
-        vehicle.limitAmmo = this.limitAmmo;
-        vehicle.callsign = this.callsign;
-        vehicle.callnum = this.callnum;
-        vehicle.time = this.time;
-        vehicle.fuel = this.fuel;
-        vehicle.damageReport = this.damageReport;
-        vehicle.country = CountryFactory.makeCountryByCountry(this.country.getCountry());
-        vehicle.damageThreshold = this.damageThreshold;
-        vehicle.deleteAfterDeath = this.deleteAfterDeath;
+        tank.name = this.name;
+        tank.position = this.position;
+        tank.orientation = this.orientation;
+        tank.skin = this.skin;
+        tank.aiSkillLevel = this.aiSkillLevel;
+        tank.coopStart = this.coopStart;
+        tank.numberInFormation = this.numberInFormation;
+        tank.vulnerable = this.vulnerable;
+        tank.engageable = this.engageable;
+        tank.limitAmmo = this.limitAmmo;
+        tank.callsign = this.callsign;
+        tank.callnum = this.callnum;
+        tank.time = this.time;
+        tank.fuel = this.fuel;
+        tank.damageReport = this.damageReport;
+        tank.country = CountryFactory.makeCountryByCountry(this.country.getCountry());
+        tank.damageThreshold = this.damageThreshold;
+        tank.deleteAfterDeath = this.deleteAfterDeath;
         if (payload != null)
         {
-            vehicle.payload = this.payload.copy();
+            tank.payload = this.payload.copy();
         }
         else
         {
-            vehicle.payload = null;
+            tank.payload = null;
         }
 
-        vehicle.index = IndexGenerator.getInstance().getNextIndex();
-        vehicle.entity = this.entity.copy(vehicle.index);
-        vehicle.linkTrId = vehicle.entity.getIndex();
+        tank.index = IndexGenerator.getInstance().getNextIndex();
+        tank.entity = this.entity.copy(tank.index);
+        tank.linkTrId = tank.entity.getIndex();
 
-        vehicle.campaign = this.campaign;
-        vehicle.crewMember = this.crewMember;
+        tank.campaign = this.campaign;
+        tank.crewMember = this.crewMember;
     }
 
-    public void populateEntity(PlayerVehicleMcu unitLeader)
+    public void populateEntity(TankMcu unitLeader)
     {
         if (unitLeader.getIndex() != index)
         {
@@ -152,24 +153,24 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         }
     }
 
-    public boolean isActivePlayerVehicle() throws PWCGException
+    public boolean isActivePlayerTank() throws PWCGException
     {
-        boolean isPlayerVehicle = false;
+        boolean isPlayerTank = false;
         if (getAiLevel() == AiSkillLevel.PLAYER)
         {
-            isPlayerVehicle = true;
+            isPlayerTank = true;
         }
 
-        CrewMembers squadronMembers = campaign.getPersonnelManager().getAllActivePlayers();
-        if (squadronMembers.isCrewMember(serialNumber))
+        CrewMembers companyMembers = campaign.getPersonnelManager().getAllActivePlayers();
+        if (companyMembers.isCrewMember(serialNumber))
         {
-            isPlayerVehicle = true;
+            isPlayerTank = true;
         }
 
-        return isPlayerVehicle;
+        return isPlayerTank;
     }
     
-    public ITankPayload buildVehiclePayload(PlayerUnit unit, Date date) throws PWCGException
+    public ITankPayload buildTankPayload(PlayerUnit unit, Date date) throws PWCGException
     {
         TankPayloadFactory payloadFactory = new TankPayloadFactory();        
         payload = payloadFactory.createPayload(this.getType(), date);
@@ -177,7 +178,7 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         return payload.copy();
     }
 
-    public ITankPayload buildStandardVehiclePayload(Date date) throws PWCGException
+    public ITankPayload buildStandardTankPayload(Date date) throws PWCGException
     {
         TankPayloadFactory payloadFactory = new TankPayloadFactory();        
         payload = payloadFactory.createPayload(this.getType(), date);
@@ -185,7 +186,7 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         return payload.copy();
     }
 
-    public void setVehiclePayload(ITankPayload payload) throws PWCGException
+    public void setTankPayload(ITankPayload payload) throws PWCGException
     {
         if (payload != null)
         {
@@ -193,7 +194,7 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         }
     }
 
-    public ITankPayload getVehiclePayload() throws PWCGException
+    public ITankPayload getTankPayload() throws PWCGException
     {
         if (payload != null)
         {
@@ -335,7 +336,7 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         }
     }
 
-    public void populateEntity(PlayerUnit unit, PlayerVehicleMcu unitLeader)
+    public void populateEntity(PlayerUnit unit, TankMcu unitLeader)
     {
         if (unitLeader.getIndex() != index)
         {
@@ -564,9 +565,9 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
         entity.setTarget(target);
     }
 
-    public void copyEntityIndexFromVehicle(PlayerVehicleMcu unitLeaderVehicleMcu)
+    public void copyEntityIndexFromTank(TankMcu unitLeaderTankMcu)
     {
-        entity.setIndex(unitLeaderVehicleMcu.entity.getIndex());
+        entity.setIndex(unitLeaderTankMcu.entity.getIndex());
         linkTrId = entity.getIndex();
     }
 
@@ -604,6 +605,11 @@ public class PlayerVehicleMcu extends EquippedTank implements Cloneable
     public McuTREntity getEntity()
     {
         return entity;
+    }
+
+    public CrewMember getCommander()
+    {
+        return null;
     }
     
     

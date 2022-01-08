@@ -18,37 +18,37 @@ import pwcg.core.utils.DateUtils;
 public class CompanyPersonnel
 {
     private Campaign campaign;
-    private Company squadron;
-    private CrewMembers squadronMembers = new CrewMembers();
+    private Company company;
+    private CrewMembers companyMembers = new CrewMembers();
 
-    public CompanyPersonnel (Campaign campaign, Company squadron)
+    public CompanyPersonnel (Campaign campaign, Company company)
     {
         this.campaign = campaign;
-        this.squadron = squadron;
+        this.company = company;
     }
 
-    public void setCrewMembers(CrewMembers squadronMembers)
+    public void setCrewMembers(CrewMembers companyMembers)
     {
-        this.squadronMembers = squadronMembers;
+        this.companyMembers = companyMembers;
     }
 
     public void addCrewMember(CrewMember crewMember) throws PWCGException
     {
-        squadronMembers.addToCrewMemberCollection(crewMember);
+        companyMembers.addToCrewMemberCollection(crewMember);
     }
 
     public void removeCrewMember(CrewMember crewMember) throws PWCGException
     {
-        if (!squadronMembers.isCrewMember(crewMember.getSerialNumber()))
+        if (!companyMembers.isCrewMember(crewMember.getSerialNumber()))
         {
-            throw new PWCGException("Not member of squadron");
+            throw new PWCGException("Not member of company");
         }
-        squadronMembers.removeCrewMember(crewMember.getSerialNumber());
+        companyMembers.removeCrewMember(crewMember.getSerialNumber());
     }
 
     public boolean isSquadronPersonnelViable() throws PWCGException
     {
-        int vialbleCrewMembers = squadronMembers.getActiveCount(campaign.getDate());
+        int vialbleCrewMembers = companyMembers.getActiveCount(campaign.getDate());
         if (vialbleCrewMembers > (Company.COMPANY_STAFF_SIZE / 2))
         {
             return true;
@@ -61,14 +61,14 @@ public class CompanyPersonnel
 
     public CrewMember getCrewMember(Integer serialNumber) throws PWCGException
     {
-        return squadronMembers.getCrewMemberCollection().get(serialNumber);
+        return companyMembers.getCrewMemberCollection().get(serialNumber);
     }
 
     public boolean isActiveCrewMember(Integer serialNumber) throws PWCGException
     {
-        List<CrewMember> squadronMembersList = new ArrayList<>();
-        squadronMembersList.addAll(squadronMembers.getCrewMemberCollection().values());
-        for (CrewMember crewMember : squadronMembersList)
+        List<CrewMember> companyMembersList = new ArrayList<>();
+        companyMembersList.addAll(companyMembers.getCrewMemberCollection().values());
+        for (CrewMember crewMember : companyMembersList)
         {
             if (crewMember.getSerialNumber() == serialNumber)
             {
@@ -82,7 +82,7 @@ public class CompanyPersonnel
         CrewMember crewMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
         if (crewMember != null)
         {
-            if (crewMember.getCompanyId() == squadron.getCompanyId())
+            if (crewMember.getCompanyId() == company.getCompanyId())
             {
                 return true;
             }
@@ -117,18 +117,18 @@ public class CompanyPersonnel
 
     public Company getSquadron()
     {
-        return squadron;
+        return company;
     }
 
     public CrewMembers getCrewMembersWithAces() throws PWCGException
     {
         CrewMembers activeCrewMembersAndAces = new CrewMembers();
-        for (CrewMember crewMember : squadronMembers.getCrewMemberList())
+        for (CrewMember crewMember : companyMembers.getCrewMemberList())
         {
             activeCrewMembersAndAces.addToCrewMemberCollection(crewMember);
         }
 
-        List<TankAce> aces = campaign.getPersonnelManager().getCampaignAces().getActiveCampaignAcesBySquadron(squadron.getCompanyId());
+        List<TankAce> aces = campaign.getPersonnelManager().getCampaignAces().getActiveCampaignAcesBySquadron(company.getCompanyId());
         for (CrewMember ace : aces)
         {
             activeCrewMembersAndAces.addToCrewMemberCollection(ace);
@@ -139,7 +139,7 @@ public class CompanyPersonnel
     
     public boolean isPlayerSquadron()
     {
-        for (CrewMember crewMember : squadronMembers.getCrewMemberList())
+        for (CrewMember crewMember : companyMembers.getCrewMemberList())
         {
             if (crewMember.isPlayer())
             {
@@ -152,7 +152,7 @@ public class CompanyPersonnel
 
     public CrewMembers getCrewMembers()
     {
-        return squadronMembers;
+        return companyMembers;
     }
 
     public CrewMembers getPlayersByStatus(int status)
@@ -184,7 +184,7 @@ public class CompanyPersonnel
     public CrewMembers getPlayers()
     {
         CrewMembers players = new CrewMembers();
-        for (CrewMember crewMember : squadronMembers.getCrewMemberList())
+        for (CrewMember crewMember : companyMembers.getCrewMemberList())
         {
             if (crewMember.isPlayer())
             {

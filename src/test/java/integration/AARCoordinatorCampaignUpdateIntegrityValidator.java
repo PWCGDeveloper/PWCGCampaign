@@ -94,7 +94,7 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     {
         for (LogPlane lostPlane : equipmentLosses.values())
         {
-            EquippedTank lostPlaneFromEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(lostPlane.getSquadronId()).getEquippedTank(lostPlane.getPlaneSerialNumber());
+            EquippedTank lostPlaneFromEquipment = campaign.getEquipmentManager().getEquipmentForCompany(lostPlane.getSquadronId()).getEquippedTank(lostPlane.getPlaneSerialNumber());
             assert (lostPlaneFromEquipment != null);
             assert (lostPlaneFromEquipment.getPlaneStatus() == TankStatus.STATUS_DESTROYED);
         }

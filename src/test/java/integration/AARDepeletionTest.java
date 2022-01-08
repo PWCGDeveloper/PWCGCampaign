@@ -50,7 +50,7 @@ public class AARDepeletionTest
                     CompanyPersonnel squadronpersonnel = campaign.getPersonnelManager().getCompanyPersonnel(squadron.getCompanyId());
                     int numActiveCrewMembers = squadronpersonnel.getCrewMembers().getActiveCount(campaign.getDate());
                     
-                    Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId());
+                    Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForCompany(squadron.getCompanyId());
                     int numActivePlanes = squadronEquipment.getActiveEquippedTanks().size();
                     
                     printIterationResults(squadron, numActiveCrewMembers, numActivePlanes);

@@ -12,22 +12,22 @@ import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.BriefingDataInitializer;
 import pwcg.gui.rofmap.brief.BriefingPayloadHelper;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
-import pwcg.mission.playerunit.crew.CrewVehiclePayloadPairing;
+import pwcg.mission.playerunit.PlayerUnit;
+import pwcg.mission.playerunit.crew.CrewTankPayloadPairing;
 
-public class BriefingFlight
+public class BriefingUnit
 {
-    private int squadronId;
-    private BriefingFlightParameters briefingFlightParameters;
+    private int companyId;
+    private BriefingUnitParameters briefingUnitParameters;
     private BriefingCrewMemberAssignmentData briefingAssignmentData;
     private double selectedFuel = 1.0;
     private Mission mission;
 
-    public BriefingFlight(Mission mission, BriefingFlightParameters briefingFlightParameters, int squadronId)
+    public BriefingUnit(Mission mission, BriefingUnitParameters briefingUnitParameters, int squadronId)
     {
         this.mission = mission;
-        this.squadronId = squadronId;
-        this.briefingFlightParameters = briefingFlightParameters;
+        this.companyId = squadronId;
+        this.briefingUnitParameters = briefingUnitParameters;
         briefingAssignmentData = new BriefingCrewMemberAssignmentData();
     }
     
@@ -42,9 +42,9 @@ public class BriefingFlight
         initializeFuel();
     }
 
-    public void changePlane(Integer crewMemberSerialNumber, Integer planeSerialNumber) throws PWCGException
+    public void changeTank(Integer crewMemberSerialNumber, Integer tankSerialNumber) throws PWCGException
     {
-        briefingAssignmentData.changePlane(crewMemberSerialNumber, planeSerialNumber);
+        briefingAssignmentData.changePlane(crewMemberSerialNumber, tankSerialNumber);
 
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.setPayloadForChangedPlane(crewMemberSerialNumber);
@@ -53,13 +53,13 @@ public class BriefingFlight
 
     public void assignCrewMemberFromBriefing(Integer crewMemberSerialNumber) throws PWCGException
     {
-        EquippedTank planeForCrewMember = this.getSortedUnassignedPlanes().get(0);
-        assignCrewMemberAndPlaneFromBriefing(crewMemberSerialNumber, planeForCrewMember.getSerialNumber());
+        EquippedTank tankForCrewMember = this.getSortedUnassignedTanks().get(0);
+        assignCrewMemberAndTankFromBriefing(crewMemberSerialNumber, tankForCrewMember.getSerialNumber());
     }
 
-    public void assignCrewMemberAndPlaneFromBriefing(Integer crewMemberSerialNumber, Integer planeSerialNumber) throws PWCGException
+    public void assignCrewMemberAndTankFromBriefing(Integer crewMemberSerialNumber, Integer tankSerialNumber) throws PWCGException
     {
-        briefingAssignmentData.assignCrewMember(crewMemberSerialNumber, planeSerialNumber);
+        briefingAssignmentData.assignCrewMember(crewMemberSerialNumber, tankSerialNumber);
         
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.setPayloadForAddedPlane(crewMemberSerialNumber);
@@ -81,12 +81,12 @@ public class BriefingFlight
         return CrewMemberSorter.sortCrewMembers(mission.getCampaign(), briefingAssignmentData.getUnassignedCrewMembers());
     }
 
-    public List<EquippedTank> getSortedUnassignedPlanes() throws PWCGException 
+    public List<EquippedTank> getSortedUnassignedTanks() throws PWCGException 
     {       
         return TankSorter.sortEquippedTanksByGoodness(new ArrayList<EquippedTank>(briefingAssignmentData.getUnassignedPlanes().values()));
     }
 
-    public CrewVehiclePayloadPairing getPairingByCrewMember(Integer crewMemberSerialNumber) throws PWCGException 
+    public CrewTankPayloadPairing getPairingByCrewMember(Integer crewMemberSerialNumber) throws PWCGException 
     {       
         return briefingAssignmentData.findAssignedCrewPairingByCrewMember(crewMemberSerialNumber);
     }
@@ -101,9 +101,9 @@ public class BriefingFlight
         this.mission = mission;
     }
 
-    public BriefingFlightParameters getBriefingFlightParameters()
+    public BriefingUnitParameters getBriefingUnitParameters()
     {
-        return briefingFlightParameters;
+        return briefingUnitParameters;
     }
 
     public BriefingCrewMemberAssignmentData getBriefingAssignmentData()
@@ -111,7 +111,7 @@ public class BriefingFlight
         return briefingAssignmentData;
     }
 
-    public List<CrewVehiclePayloadPairing> getCrews()
+    public List<CrewTankPayloadPairing> getCrews()
     {
         return briefingAssignmentData.getCrews();
     }
@@ -136,15 +136,14 @@ public class BriefingFlight
         this.selectedFuel = selectedFuel;
     }
 
-    public int getSquadronId()
+    public int getCompanyId()
     {
-        return squadronId;
+        return companyId;
     }
     
-
     private void initializeFuel()
     {
-        IFlight flight = mission.getFlights().getPlayerFlightForSquadron(squadronId);
-        this.selectedFuel = flight.getFlightPlanes().getFlightLeader().getFuel();
+        PlayerUnit unit = mission.getUnits().getPlayerUnitForCompany(companyId);
+        this.selectedFuel = unit.getLeadVehicle().getFuel();
     }
 }

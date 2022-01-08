@@ -7,7 +7,7 @@ import pwcg.campaign.company.Company;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.playerunit.PlayerUnit;
-import pwcg.mission.playerunit.PlayerVehicleMcu;
+import pwcg.mission.playerunit.TankMcu;
 
 public class MissionPlaneGenerator
 {
@@ -21,7 +21,7 @@ public class MissionPlaneGenerator
     
     public List<PwcgGeneratedMissionVehicleData> generateMissionPlaneData() throws PWCGException
     {
-        for (PlayerUnit unit : mission.getPlayerUnits().getPlayerUnits())
+        for (PlayerUnit unit : mission.getUnits().getPlayerUnits())
         {
             makePlaneEntriesForUnit(unit);
         }
@@ -31,13 +31,13 @@ public class MissionPlaneGenerator
 
     private void makePlaneEntriesForUnit(PlayerUnit unit)
     {
-        for (PlayerVehicleMcu vehicle : unit.getVehicles())
+        for (TankMcu vehicle : unit.getTanks())
         {
             makeMissionPlaneEntry(unit.getCompany(), vehicle);
         }
     }
 
-    private void makeMissionPlaneEntry(Company squadron, PlayerVehicleMcu vehicle)
+    private void makeMissionPlaneEntry(Company squadron, TankMcu vehicle)
     {
         PwcgGeneratedMissionVehicleData missionPlaneData = new PwcgGeneratedMissionVehicleData();
         missionPlaneData.setCrewMemberName(vehicle.getCrewMember().getNameAndRank());

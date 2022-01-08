@@ -20,7 +20,7 @@ public class MissionUnitWriter
 	
 	public void writeFlights(BufferedWriter writer) throws PWCGException
 	{
-        writePlayerUnits(mission.getPlayerUnits().getPlayerUnits(), writer);
+        writePlayerUnits(mission.getUnits().getPlayerUnits(), writer);
         if (!TestDriver.getInstance().isCreatePlayerOnly())
         {
             writeFlights(mission.getFlights().getAiFlights(), writer);

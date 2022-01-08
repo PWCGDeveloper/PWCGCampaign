@@ -43,8 +43,7 @@ public class CrewMember implements Cloneable
 
     protected int activeStatus = CrewMemberStatus.STATUS_ACTIVE;
     protected Country country = Country.NEUTRAL;
-    protected int batttlesFought = 0;
-    protected int aggressiveness = 0;
+    protected int battlesFought = 0;
     protected AiSkillLevel aiSkillLevel = AiSkillLevel.NOVICE;
     protected int skill = AiSkillLevel.NOVICE.getAiSkillLevel();
     protected List<Skin> skins = new ArrayList<Skin>();
@@ -67,8 +66,7 @@ public class CrewMember implements Cloneable
         clone.rank = this.rank;
         clone.picName = this.picName;
         clone.activeStatus = this.activeStatus;
-        clone.batttlesFought = this.batttlesFought;
-        clone.aggressiveness = this.aggressiveness;
+        clone.battlesFought = this.battlesFought;
         clone.aiSkillLevel = this.aiSkillLevel;
         clone.companyId = this.companyId;
         clone.serialNumber = this.serialNumber;
@@ -466,22 +464,12 @@ public class CrewMember implements Cloneable
 
     public int getBattlesFought()
     {
-        return batttlesFought;
+        return battlesFought;
     }
 
     public void setBattlesFought(int batttlesFought)
     {
-        this.batttlesFought = batttlesFought;
-    }
-
-    public int getAggressiveness()
-    {
-        return aggressiveness;
-    }
-
-    public void setAggressiveness(int aggressiveness)
-    {
-        this.aggressiveness = aggressiveness;
+        this.battlesFought = batttlesFought;
     }
 
     public AiSkillLevel getAiSkillLevel()

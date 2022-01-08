@@ -4,35 +4,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.rofmap.brief.builder.BriefingFlightParametersBuilder;
-import pwcg.gui.rofmap.brief.model.BriefingFlight;
-import pwcg.gui.rofmap.brief.model.BriefingFlightParameters;
+import pwcg.gui.rofmap.brief.builder.BriefingUnitParametersBuilder;
+import pwcg.gui.rofmap.brief.model.BriefingUnit;
+import pwcg.gui.rofmap.brief.model.BriefingUnitParameters;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.playerunit.PlayerUnit;
 
 public class BriefingMissionFlightSetBuilder
 {
-    public static Map<Integer, BriefingFlight> buildBriefingMissions(Mission mission) throws PWCGException
+    public static Map<Integer, BriefingUnit> buildBriefingMissions(Mission mission) throws PWCGException
     {
-        Map<Integer, BriefingFlight> briefingMissionFlights = new HashMap<>();
-        for (IFlight playerFlight : mission.getFlights().getPlayerUnits())
+        Map<Integer, BriefingUnit> briefingMissionFlights = new HashMap<>();
+        for (PlayerUnit playerUnit : mission.getUnits().getPlayerUnits())
         {
             
-            BriefingFlightParameters briefingFlightParameters = buildBriefingFlightParameters(playerFlight);
+            BriefingUnitParameters briefingFlightParameters = buildBriefingFlightParameters(playerUnit);
 
-            BriefingFlight briefingMissionFlight = new BriefingFlight(mission, briefingFlightParameters, playerFlight.getSquadron().getCompanyId());
-            briefingMissionFlight.initializeFromMission(playerFlight.getSquadron());
+            BriefingUnit briefingMissionFlight = new BriefingUnit(mission, briefingFlightParameters, playerUnit.getCompany().getCompanyId());
+            briefingMissionFlight.initializeFromMission(playerUnit.getCompany());
 
-            briefingMissionFlights.put(playerFlight.getSquadron().getCompanyId(), briefingMissionFlight);
+            briefingMissionFlights.put(playerUnit.getCompany().getCompanyId(), briefingMissionFlight);
         }
         
         return briefingMissionFlights;
     }
     
-    private static BriefingFlightParameters buildBriefingFlightParameters(IFlight playerFlight) throws PWCGException
+    private static BriefingUnitParameters buildBriefingFlightParameters(PlayerUnit playerUnit) throws PWCGException
     {     
-        BriefingFlightParametersBuilder briefingFlightParametersBuilder = new BriefingFlightParametersBuilder(playerFlight);
-        BriefingFlightParameters briefingFlightParameters = briefingFlightParametersBuilder.buildBriefParametersContext();
+        BriefingUnitParametersBuilder briefingFlightParametersBuilder = new BriefingUnitParametersBuilder(playerUnit);
+        BriefingUnitParameters briefingFlightParameters = briefingFlightParametersBuilder.buildBriefParametersContext();
         return briefingFlightParameters;
     }
 }

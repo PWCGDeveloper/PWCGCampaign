@@ -211,7 +211,7 @@ public class VictoryEvaluationTest
         mission.finalizeMission();
         mission.write();
         
-        List<PlaneMcu> playerFlightPlanes = mission.getFlights().getPlayerUnits().get(0).getFlightPlanes().getPlanes();
+        List<PlaneMcu> playerFlightPlanes = mission.getFlights().getUnits().get(0).getFlightPlanes().getPlanes();
         Map<Integer, Integer> playerFlightVictories = new HashMap<>();
         for(PlaneMcu plane : playerFlightPlanes)
         {
@@ -314,7 +314,7 @@ public class VictoryEvaluationTest
             List<PlaneMcu> enemyPlanesForFlight = flight.getFlightPlanes().getAiPlanes();
             if (enemyPlanesForFlight.size() >= 2)
             {
-                if (flight.getSquadron().determineSquadronPrimaryRoleCategory(mission.getCampaign().getDate()) == PwcgRoleCategory.FIGHTER)
+                if (flight.getCompany().determineSquadronPrimaryRoleCategory(mission.getCampaign().getDate()) == PwcgRoleCategory.FIGHTER)
                 {
                      return enemyPlanesForFlight;                    
                 }
@@ -329,7 +329,7 @@ public class VictoryEvaluationTest
         int playerAid = -1;
         
         Coordinate location = new Coordinate(500000, 0, 50000);
-        List<PlaneMcu> playerFlightPlanes = mission.getFlights().getPlayerUnits().get(0).getFlightPlanes().getPlanes();
+        List<PlaneMcu> playerFlightPlanes = mission.getFlights().getUnits().get(0).getFlightPlanes().getPlanes();
         
         for (PlaneMcu friendlyPlane : playerFlightPlanes)
         {

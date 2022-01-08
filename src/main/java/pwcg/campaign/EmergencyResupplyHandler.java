@@ -82,7 +82,7 @@ public class EmergencyResupplyHandler
     {
         for (int squadronId : campaign.getEquipmentManager().getEquipmentAllCompanies().keySet())
         {
-            Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronId);
+            Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForCompany(squadronId);
             if (!squadronEquipment.isCompanyEquipmentViable())
             {
                 makeSquadronEquipmentViable(squadronEquipment, squadronId);

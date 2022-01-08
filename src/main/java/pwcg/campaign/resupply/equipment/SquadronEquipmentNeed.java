@@ -21,7 +21,7 @@ public class SquadronEquipmentNeed implements ISquadronNeed
     @Override
     public void determineResupplyNeeded() throws PWCGException
     {
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId());
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForCompany(squadron.getCompanyId());
         int activeSquadronSize = equipment.getActiveEquippedTanks().size();
         int recentlyInactive = equipment.getRecentlyInactiveEquippedTanks(campaign.getDate()).size();
       

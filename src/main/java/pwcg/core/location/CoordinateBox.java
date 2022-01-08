@@ -59,7 +59,7 @@ public class CoordinateBox
         List<Coordinate> flightWaypointCoordinates = new ArrayList<>();
         for (IFlight flight : flights)
         {
-            for (MissionPoint missionPoint : flight.getWaypointPackage().getFlightMissionPoints())
+            for (MissionPoint missionPoint : flight.getWaypointPackage().getMissionPoints())
             {
                 flightWaypointCoordinates.add(missionPoint.getPosition());
             }

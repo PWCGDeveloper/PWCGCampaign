@@ -146,7 +146,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         equipmentRetirementSelectionPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         CrewMember referencePlayer = campaign.getReferencePlayer();
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getCompanyId());
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForCompany(referencePlayer.getCompanyId());
 
         JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Retire (Requested Planes)");
         equipmentRetirementSelectionPanel.add(titleLabel);
@@ -196,7 +196,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         equipmentChangeSelectionGrid.setAlignmentX(Component.LEFT_ALIGNMENT);
         
         CrewMember referencePlayer = campaign.getReferencePlayer();
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getCompanyId());
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForCompany(referencePlayer.getCompanyId());
 
         JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Change (Assigned Planes)");
         equipmentChangeSelectionGrid.add(titleLabel);
@@ -366,7 +366,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
                 continue;
             }
             
-            campaign.getEquipmentManager().destroyPlane(serialNumber, campaign.getDate());
+            campaign.getEquipmentManager().destroyTank(serialNumber, campaign.getDate());
         }
     }
 

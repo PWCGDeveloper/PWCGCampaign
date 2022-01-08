@@ -15,7 +15,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
-import pwcg.gui.rofmap.brief.model.BriefingFlight;
+import pwcg.gui.rofmap.brief.model.BriefingUnit;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGLabelFactory;
@@ -56,7 +56,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 		editorPanel.setOpaque(false);
 		editorPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
-        BriefingFlight activeBriefingFlight = briefingData.getActiveBriefingFlight();
+        BriefingUnit activeBriefingFlight = briefingData.getActiveBriefingUnit();
         waypointDetailsPanel = new BriefingEditorDetailsPanel(false);
         waypointDetailsPanel.buildWaypointPanel(activeBriefingFlight);
         
@@ -75,7 +75,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 	{
 	    JComponent previousPanel = waypointDetailsPanel.getWaypointPanel();
 	    
-        BriefingFlight activeBriefingFlight = briefingData.getActiveBriefingFlight();
+        BriefingUnit activeBriefingFlight = briefingData.getActiveBriefingUnit();
         waypointDetailsPanel = new BriefingEditorDetailsPanel(true);
         waypointDetailsPanel.buildWaypointPanel(activeBriefingFlight);
         
@@ -188,7 +188,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 	{
 	    int index = 0;
 	    
-        BriefingFlight activeBriefingFlight = briefingData.getActiveBriefingFlight();
+        BriefingUnit activeBriefingFlight = briefingData.getActiveBriefingUnit();
 	    double selectedFuel = activeBriefingFlight.getSelectedFuel();
 	    
         if (selectedFuel > .95)
@@ -287,7 +287,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
         int valueAsInt = Integer.valueOf (valueString);
         Double selectedFuel = Double.valueOf (valueAsInt).doubleValue() / 100.0;
         
-        BriefingFlight activeBriefingFlight = briefingData.getActiveBriefingFlight();
+        BriefingUnit activeBriefingFlight = briefingData.getActiveBriefingUnit();
         activeBriefingFlight.setSelectedFuel(selectedFuel);
     }
 

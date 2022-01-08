@@ -350,7 +350,7 @@ public class Mission
         return finalizer;
     }
 
-    public MissionPlayerUnits getPlayerUnits()
+    public MissionPlayerUnits getUnits()
     {
         return missionPlayerUnits;
     }

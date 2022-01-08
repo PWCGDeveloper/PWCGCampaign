@@ -20,7 +20,7 @@ public class TargetDefinitionBuilderAAATruck implements ITargetDefinitionBuilder
     public TargetDefinition buildTargetDefinition() throws PWCGException
     {
 
-        Coordinate truckCoordinate = unitInformation.getMission().getPlayerUnits().getReferencePlayerUnit().getLeadVehicle().getPosition();
+        Coordinate truckCoordinate = unitInformation.getMission().getUnits().getReferencePlayerUnit().getLeadVehicle().getPosition();
         IGroundUnit targetGroundUnit = getBestTargetGroundUnit(unitInformation.getCountry().getSide().getOppositeSide(), truckCoordinate);
 
         TargetDefinition targetDefinition = new TargetDefinition(targetGroundUnit.getVehicleClass().getTargetType(), truckCoordinate, targetGroundUnit.getCountry(), targetGroundUnit.getVehicleClass().getName());

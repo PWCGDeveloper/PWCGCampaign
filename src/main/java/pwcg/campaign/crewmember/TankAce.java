@@ -27,8 +27,7 @@ public class TankAce extends CrewMember
         target.picName = this.picName;
         target.activeStatus = this.activeStatus;
         target.country = this.country;
-        target.batttlesFought = this.batttlesFought;
-        target.aggressiveness = this.aggressiveness;
+        target.battlesFought = this.battlesFought;
         target.aiSkillLevel = this.aiSkillLevel;
         target.serialNumber = this.serialNumber;
 

@@ -20,7 +20,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.mission.MissionGeneratorHelper;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
-import pwcg.gui.rofmap.brief.update.BriefingMissionUpdater;
+import pwcg.gui.rofmap.brief.update.BriefingUnitUpdater;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -28,14 +28,14 @@ import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
 
-public class BriefingDescriptionScreen extends ImageResizingPanel implements ActionListener, IFlightChanged
+public class BriefingDescriptionScreen extends ImageResizingPanel implements ActionListener, IUnitChanged
 {
 	private static final long serialVersionUID = 1L;
 
 	private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Mission mission;
     private BriefingData briefingData;
-    private BriefingFlightChooser briefingFlightChooser;
+    private BriefingCompanyChooser briefingFlightChooser;
     private BriefingDescriptionChalkboard briefingChalkboard;
     
 	public BriefingDescriptionScreen(CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, Mission mission) throws PWCGException 
@@ -60,7 +60,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
 	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingDescriptionScreen);
             this.setImageFromName(imagePath);
 
-            briefingFlightChooser = new BriefingFlightChooser(mission, this);
+            briefingFlightChooser = new BriefingCompanyChooser(mission, this);
             briefingFlightChooser.createBriefingSquadronSelectPanel();
 
 			this.removeAll();
@@ -161,9 +161,9 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     }
 
     @Override
-    public void flightChanged(Company squadron) throws PWCGException
+    public void unitChanged(Company squadron) throws PWCGException
     {
-        briefingData.changeSelectedFlight(squadron.getCompanyId());
+        briefingData.changeSelectedUnit(squadron.getCompanyId());
         briefingChalkboard.setMissionText();
     }
 
@@ -180,7 +180,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
 
-        BriefingMissionUpdater.pushEditsToMission(briefingData);
+        BriefingUnitUpdater.pushEditsToMission(briefingData);
         
         campaign.setCurrentMission(mission);
         
@@ -191,6 +191,6 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     public void refreshScreen() throws PWCGException
     {
         briefingChalkboard.setMissionText();
-        briefingFlightChooser.setSelectedButton(briefingData.getSelectedFlight().getSquadron().getCompanyId());
+        briefingFlightChooser.setSelectedButton(briefingData.getSelectedUnit().getCompany().getCompanyId());
     }
 }

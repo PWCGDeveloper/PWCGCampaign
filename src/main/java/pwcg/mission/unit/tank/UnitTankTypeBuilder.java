@@ -1,4 +1,4 @@
-package pwcg.mission.flight.plane;
+package pwcg.mission.unit.tank;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,12 +11,12 @@ import pwcg.campaign.tank.TankSorter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
-public class UnitTankTypePlaneTypeBuilder
+public class UnitTankTypeBuilder
 {
     private int numTanks;
     private Equipment equipmentForCompany;
     
-    public UnitTankTypePlaneTypeBuilder(Equipment equipmentForSquadron, int numTanks)
+    public UnitTankTypeBuilder(Equipment equipmentForSquadron, int numTanks)
     {
         this.equipmentForCompany = equipmentForSquadron;
         this.numTanks = numTanks;

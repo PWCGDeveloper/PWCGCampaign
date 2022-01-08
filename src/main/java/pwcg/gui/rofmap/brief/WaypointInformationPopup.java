@@ -48,7 +48,7 @@ public class WaypointInformationPopup extends JPopupMenu
         
         int currentMapIndex = 0;
         BriefingMapPoint previousMapPoint = null;
-        for (BriefingMapPoint briefingMapPoint : BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters().getBriefingMapMapPoints())
+        for (BriefingMapPoint briefingMapPoint : BriefingContext.getInstance().getBriefingData().getActiveBriefingUnit().getBriefingUnitParameters().getBriefingMapMapPoints())
         {
             if (previousMapPoint != null)
             {

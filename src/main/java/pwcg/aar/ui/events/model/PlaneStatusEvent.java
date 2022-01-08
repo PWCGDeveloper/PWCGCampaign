@@ -45,7 +45,7 @@ public class PlaneStatusEvent extends AARCrewMemberEvent
     public String getPlaneLostText(Campaign campaign) throws PWCGException
     {
         CampaignEquipmentManager campaignEquipmentManager = campaign.getEquipmentManager();
-        EquippedTank shotDownPlane = campaignEquipmentManager.destroyPlane(planeSerialNumber, campaign.getDate());
+        EquippedTank shotDownPlane = campaignEquipmentManager.destroyTank(planeSerialNumber, campaign.getDate());
 
         CampaignPersonnelManager campaignPersonnelManager = campaign.getPersonnelManager();
         CrewMember shotDownCrewMember = campaignPersonnelManager.getAnyCampaignMember(super.getCrewMemberSerialNumber());
@@ -63,7 +63,7 @@ public class PlaneStatusEvent extends AARCrewMemberEvent
     public String getPlaneAddedToDepotText(Campaign campaign) throws PWCGException
     {
         CampaignEquipmentManager campaignEquipmentManager = campaign.getEquipmentManager();
-        EquippedTank shotDownPlane = campaignEquipmentManager.destroyPlane(planeSerialNumber, campaign.getDate());
+        EquippedTank shotDownPlane = campaignEquipmentManager.destroyTank(planeSerialNumber, campaign.getDate());
 
         String prettyDate = DateUtils.getDateStringPretty(campaign.getDate());
         String planeEventText = 
@@ -77,7 +77,7 @@ public class PlaneStatusEvent extends AARCrewMemberEvent
     public String getPlaneWithdrawnFromServiceText(Campaign campaign) throws PWCGException
     {
         CampaignEquipmentManager campaignEquipmentManager = campaign.getEquipmentManager();
-        EquippedTank shotDownPlane = campaignEquipmentManager.destroyPlane(planeSerialNumber, campaign.getDate());
+        EquippedTank shotDownPlane = campaignEquipmentManager.destroyTank(planeSerialNumber, campaign.getDate());
 
         String prettyDate = DateUtils.getDateStringPretty(campaign.getDate());
         String planeEventText = 

@@ -41,7 +41,7 @@ public class CampaignEquipmentIOJson
 
     public static void writeEquipmentForSquadron(Campaign campaign, int squadronId) throws PWCGException
     {
-        Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronId);
+        Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForCompany(squadronId);
 
         PwcgJsonWriter<Equipment> jsonWriterEquipment = new PwcgJsonWriter<>();
         String campaignEquipmentReplacementDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\";
@@ -74,7 +74,7 @@ public class CampaignEquipmentIOJson
             JsonObjectReader<Equipment> jsoReader = new JsonObjectReader<>(Equipment.class);
             Equipment squadronEquipment = jsoReader.readJsonFile(campaignEquipmentDir, jsonFile.getName());
             int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
-            campaign.getEquipmentManager().addEquipmentForSquadron(squadronId, squadronEquipment);
+            campaign.getEquipmentManager().addEquipmentForCompany(squadronId, squadronEquipment);
             
             for (EquippedTank equippedPlane : squadronEquipment.getEquippedTanks().values())
             {

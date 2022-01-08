@@ -199,7 +199,7 @@ public class CampaignIntelligenceCompanyDetailsPanel extends JPanel
 
         intelBuffer.append("\n        " + aircraftInventoryText + "\n");        
         intelBuffer.append("        ----------------------------------------\n");          
-        Map<Integer, EquippedTank> aircraftOnInventory = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId()).getActiveEquippedTanks();
+        Map<Integer, EquippedTank> aircraftOnInventory = campaign.getEquipmentManager().getEquipmentForCompany(squadron.getCompanyId()).getActiveEquippedTanks();
         List<EquippedTank> sortedAircraftOnInventory = TankSorter.sortEquippedTanksByGoodness(new ArrayList<EquippedTank>(aircraftOnInventory.values()));
         for (int i = 0; i < sortedAircraftOnInventory.size(); ++i)
         {

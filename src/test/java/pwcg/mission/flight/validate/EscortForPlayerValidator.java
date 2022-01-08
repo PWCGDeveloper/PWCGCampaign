@@ -28,7 +28,7 @@ public class EscortForPlayerValidator
     public EscortForPlayerValidator (MissionFlights missionFlights) throws PWCGException
     {
         this.missionFlights = missionFlights;
-        this.playerFlight = missionFlights.getPlayerUnits().get(0);
+        this.playerFlight = missionFlights.getUnits().get(0);
         
         List<IFlight> escortForPlayerFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORT);
         if (!escortForPlayerFlights.isEmpty())
@@ -39,7 +39,7 @@ public class EscortForPlayerValidator
     
     public void validateEscortForPlayer() throws PWCGException
     {
-        IFlight playerFlight = missionFlights.getPlayerUnits().get(0);
+        IFlight playerFlight = missionFlights.getUnits().get(0);
         if (playerFlight.getMission().isNightMission())
         {
             validateNoEscortForPlayer();

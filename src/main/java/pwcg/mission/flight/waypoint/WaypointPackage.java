@@ -30,7 +30,7 @@ public class WaypointPackage implements IWaypointPackage
     }
 
     @Override
-    public List<MissionPoint> getFlightMissionPoints() throws PWCGException
+    public List<MissionPoint> getMissionPoints() throws PWCGException
     {
         List<MissionPoint> waypointsCoordinates = new ArrayList<>();
         for (IMissionPointSet missionPointSet : missionPointSets)
@@ -43,7 +43,7 @@ public class WaypointPackage implements IWaypointPackage
     @Override
     public MissionPoint getMissionPointByAction(WaypointAction action) throws PWCGException
     {
-        List<MissionPoint> allMissionPoints = getFlightMissionPoints();
+        List<MissionPoint> allMissionPoints = getMissionPoints();
         for (MissionPoint missionPoint : allMissionPoints)
         {
             if (missionPoint.getAction() == action)

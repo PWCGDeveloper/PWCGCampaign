@@ -16,7 +16,7 @@
 			"label": "Use detailed victory description",
 			"help": "0 \u003d Use fog of war victory description, 1 \u003d Use detailed victory description"
 		},
-		"ShowAllFLightsInBreifing": {
+		"ShowAllUnitsInBreifing": {
 			"value": "0",
 			"label": "Show all flights in briefing",
 			"help": "Intended for debugging.  Would be a cheat in the game"

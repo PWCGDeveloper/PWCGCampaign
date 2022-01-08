@@ -4,9 +4,7 @@ import java.io.BufferedWriter;
 import java.util.List;
 
 import pwcg.campaign.company.Company;
-import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 
 public class PlayerUnit
@@ -23,12 +21,12 @@ public class PlayerUnit
         return null;
     }
 
-    public List<PlayerVehicleMcu> getVehicles()
+    public List<TankMcu> getTanks()
     {
-        return null;
+        return unitVehicles.getTanks();
     }
 
-    public PlayerVehicleMcu getLeadVehicle()
+    public TankMcu getLeadVehicle()
     {
         return null;
     }
@@ -43,9 +41,14 @@ public class PlayerUnit
         return null;
     }
 
+    public UnitVehicles getUnitTanks()
+    {
+        return unitVehicles;
+    }
+
     public void preparePlaneForCoop() throws PWCGException
     {
-        unitVehicles.prepareVehicleForCoop();        
+        unitVehicles.prepareTankForCoop();        
     }
 
     public void write(BufferedWriter writer)

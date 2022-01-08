@@ -7,10 +7,9 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.payload.IPlanePayloadFactory;
-import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PlanePayloadDesignation;
+import pwcg.campaign.tank.payload.ITankPayload;
+import pwcg.campaign.tank.payload.TankPayloadDesignation;
+import pwcg.campaign.tank.payload.TankPayloadFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 
@@ -25,9 +24,9 @@ public class BriefingPayloadPicker
         this.briefingData = briefingData;
     }
 
-    public int pickPayload(String planeType, Date date) throws PWCGException 
+    public int pickPayload(String tankType, Date date) throws PWCGException 
     {       
-        List<String> payloadDescriptions = getAvailablePayloadTypes(planeType, date);
+        List<String> payloadDescriptions = getAvailablePayloadTypes(tankType, date);
         Object[] possibilities = payloadDescriptions.toArray();
         
         String payloadDescription = (String)JOptionPane.showInputDialog(
@@ -39,18 +38,18 @@ public class BriefingPayloadPicker
                 possibilities, 
                 "");
         
-        int pickedPayload = getPayloadIndex(planeType, payloadDescription, date);
+        int pickedPayload = getPayloadIndex(tankType, payloadDescription, date);
         
         return pickedPayload;
     }    
 
-    private List<String> getAvailablePayloadTypes(String planeTypeName, Date date) throws PWCGException 
+    private List<String> getAvailablePayloadTypes(String tankTypeName, Date date) throws PWCGException 
     {
-        IPlanePayloadFactory payloadfactory = PWCGContext.getInstance().getPlanePayloadFactory();
-        IPlanePayload payload = payloadfactory.createPayload(planeTypeName, date);
+        TankPayloadFactory payloadfactory = new TankPayloadFactory();
+        ITankPayload payload = payloadfactory.createPayload(tankTypeName, date);
         
         List<String> payloadDescriptions = new ArrayList<>();
-        for (PlanePayloadDesignation payloadDesignation : payload.getAvailablePayloadDesignations(briefingData.getSelectedFlight()))
+        for (TankPayloadDesignation payloadDesignation : payload.getAvailablePayloadDesignations(briefingData.getSelectedUnit()))
         {
             payloadDescriptions.add(payloadDesignation.getPayloadDescription());
         }
@@ -58,10 +57,10 @@ public class BriefingPayloadPicker
         return payloadDescriptions;
     }
 
-    private int getPayloadIndex(String planeTypeName, String payloadDescription, Date date) throws PWCGException
+    private int getPayloadIndex(String tankTypeName, String payloadDescription, Date date) throws PWCGException
     {
-        IPlanePayloadFactory payloadfactory = PWCGContext.getInstance().getPlanePayloadFactory();
-        IPlanePayload payload = payloadfactory.createPayload(planeTypeName, date);
+        TankPayloadFactory payloadfactory = new TankPayloadFactory();
+        ITankPayload payload = payloadfactory.createPayload(tankTypeName, date);
         
         return payload.getPayloadIdByDescription(payloadDescription);
     }

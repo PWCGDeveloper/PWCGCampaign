@@ -54,7 +54,7 @@ public class HurricanePayloadTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
 
-        Mockito.when(flight.getSquadron()).thenReturn(squadron);
+        Mockito.when(flight.getCompany()).thenReturn(squadron);
         Mockito.when(flight.getTargetDefinition()).thenReturn(targetDefinition);
     }
 

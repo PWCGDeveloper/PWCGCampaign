@@ -10,50 +10,44 @@ import pwcg.core.exception.PWCGException;
 public class ClaimDenier
 {
     private Campaign campaign;
-    private TankTypeFactory planeFactory;
-  
-    public ClaimDenier (Campaign campaign, TankTypeFactory planeFactory)
+    private TankTypeFactory tankFactory;
+
+    public ClaimDenier(Campaign campaign, TankTypeFactory tankFactory)
     {
         this.campaign = campaign;
-        this.planeFactory = planeFactory;
+        this.tankFactory = tankFactory;
     }
-    
-    public ClaimDeniedEvent determineClaimDenied(Integer playerSerialNumber, PlayerVictoryDeclaration declaration) throws PWCGException 
+
+    public ClaimDeniedEvent determineClaimDenied(Integer playerSerialNumber, PlayerVictoryDeclaration declaration) throws PWCGException
     {
         if (!declaration.isConfirmed())
         {
-            return createPlaneDenied(playerSerialNumber, declaration);                
+            return createPlaneDenied(playerSerialNumber, declaration);
         }
-        
+
         return null;
     }
 
     private ClaimDeniedEvent createPlaneDenied(Integer playerSerialNumber, PlayerVictoryDeclaration declaration) throws PWCGException
     {
-        String planeDesc = getPlaneDescription(declaration);
+        String tankDesc = getPlaneDescription(declaration);
         CrewMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
-        
+
         boolean isNewsworthy = false;
-        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, planeDesc, player.getCompanyId(), player.getSerialNumber(), campaign.getDate(), isNewsworthy);
-        
+        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, tankDesc, player.getCompanyId(), player.getSerialNumber(), campaign.getDate(),
+                isNewsworthy);
+
         return claimDenied;
     }
 
     private String getPlaneDescription(PlayerVictoryDeclaration playerDeclaration)
     {
-        String planeDesc = "Unknown";
-        if (playerDeclaration.getAircraftType().equals(TankType.BALLOON))
+        String tankDesc = "Unknown";
+        TankType tank = tankFactory.createTankTypeByAnyName(playerDeclaration.getAircraftType());
+        if (tank != null)
         {
-            planeDesc = TankType.BALLOON;
+            tankDesc = tank.getDisplayName();
         }
-        else
-        {
-            TankType plane = planeFactory.createTankTypeByAnyName(playerDeclaration.getAircraftType());
-            if (plane != null)
-            {
-                planeDesc = plane.getDisplayName();
-            }                        
-        }
-        return planeDesc;
+        return tankDesc;
     }
 }

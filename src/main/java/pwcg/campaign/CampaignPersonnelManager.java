@@ -18,7 +18,7 @@ import pwcg.core.exception.PWCGException;
 public class CampaignPersonnelManager 
 {
 	private Campaign campaign = null;
-    private Map<Integer, CompanyPersonnel> squadronPersonnelAllSquadrons = new HashMap<>();
+    private Map<Integer, CompanyPersonnel> companyPersonnelAllSquadrons = new HashMap<>();
     private Map<Integer, PersonnelReplacementsService> personnelReplacementsServices = new HashMap<>();
 	private CampaignAces campaignAces = new CampaignAces();
 
@@ -29,17 +29,17 @@ public class CampaignPersonnelManager
 
 	public Map<Integer, CompanyPersonnel> getCampaignPersonnel()
 	{
-		return new HashMap<Integer, CompanyPersonnel>(squadronPersonnelAllSquadrons);
+		return new HashMap<Integer, CompanyPersonnel>(companyPersonnelAllSquadrons);
 	}
 
     public CompanyPersonnel getCompanyPersonnel(Integer squadronId)
     {
-        return squadronPersonnelAllSquadrons.get(squadronId);
+        return companyPersonnelAllSquadrons.get(squadronId);
     }
 
 	public void addPersonnelForCompany(CompanyPersonnel campaignPersonnel)
 	{
-	    squadronPersonnelAllSquadrons.put(campaignPersonnel.getSquadron().getCompanyId(), campaignPersonnel);
+	    companyPersonnelAllSquadrons.put(campaignPersonnel.getSquadron().getCompanyId(), campaignPersonnel);
 	}
 
 	public CampaignAces getCampaignAces()
@@ -59,7 +59,7 @@ public class CampaignPersonnelManager
 
     public List<CompanyPersonnel> getAllCompanyPersonnel()
     {
-        return new ArrayList<CompanyPersonnel>(squadronPersonnelAllSquadrons.values());
+        return new ArrayList<CompanyPersonnel>(companyPersonnelAllSquadrons.values());
     }    
 
     public Map<Integer, CrewMember> getAllCampaignMembers() throws PWCGException
@@ -166,7 +166,7 @@ public class CampaignPersonnelManager
             return crewMember;
         }        
 
-        for (CompanyPersonnel squadronPersonnel : squadronPersonnelAllSquadrons.values())
+        for (CompanyPersonnel squadronPersonnel : companyPersonnelAllSquadrons.values())
         {
             crewMember = squadronPersonnel.getCrewMember(serialNumber);
             if (crewMember != null)

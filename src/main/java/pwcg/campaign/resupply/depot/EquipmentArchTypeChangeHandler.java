@@ -40,7 +40,7 @@ public class EquipmentArchTypeChangeHandler
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         for (Company squadron : squadronManager.getActiveCompanies(campaign.getDate()))
         {
-            Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId());
+            Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForCompany(squadron.getCompanyId());
             if (squadronEquipment != null)
             {
                 Set<Integer> planesToRemove = new HashSet<>();
@@ -66,7 +66,7 @@ public class EquipmentArchTypeChangeHandler
     {
         for (Company squadron : squadronsToEquip)
         {
-            Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId());
+            Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForCompany(squadron.getCompanyId());
             int numPlanesNeeded = Company.COMPANY_EQUIPMENT_SIZE - squadronEquipment.getActiveEquippedTanks().size();
 
             TankType bestTankType = getBestTankTypeForSquadron(squadron);

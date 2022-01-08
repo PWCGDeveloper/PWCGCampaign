@@ -49,7 +49,7 @@ public class PlayerFlightFCTypeFrenchTest
 	{
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
-        PatrolFlight flight = (PatrolFlight) mission.getFlights().getPlayerUnits().get(0);
+        PatrolFlight flight = (PatrolFlight) mission.getFlights().getUnits().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);
@@ -69,7 +69,7 @@ public class PlayerFlightFCTypeFrenchTest
 	{
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.OFFENSIVE, MissionProfile.DAY_TACTICAL_MISSION);
-        OffensiveFlight flight = (OffensiveFlight) mission.getFlights().getPlayerUnits().get(0);
+        OffensiveFlight flight = (OffensiveFlight) mission.getFlights().getUnits().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);
@@ -89,7 +89,7 @@ public class PlayerFlightFCTypeFrenchTest
 	{        
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
-        PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getFlights().getPlayerUnits().get(0);
+        PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getFlights().getUnits().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);

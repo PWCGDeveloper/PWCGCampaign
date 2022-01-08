@@ -143,7 +143,7 @@ public class FlightSizeCalculatorTest
 
         Mockito.when(flightInformation.getCampaign()).thenReturn(campaign);
         Mockito.when(flightInformation.getFlightType()).thenReturn(flightType);
-        Mockito.when(flightInformation.getSquadron()).thenReturn(squadron);
+        Mockito.when(flightInformation.getCompany()).thenReturn(squadron);
         Mockito.when(squadron.getCountry()).thenReturn(country);
         
 		FlightSizeCalculator flightSizeCalculator = new FlightSizeCalculator(flightInformation);

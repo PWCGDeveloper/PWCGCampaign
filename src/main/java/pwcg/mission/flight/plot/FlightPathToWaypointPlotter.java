@@ -33,7 +33,7 @@ public class FlightPathToWaypointPlotter
     {
         double totalDistance = 0;
         MissionPoint previousMissionPoint = null;
-        for (MissionPoint missionPoint : flight.getWaypointPackage().getFlightMissionPoints())
+        for (MissionPoint missionPoint : flight.getWaypointPackage().getMissionPoints())
         {
             if (previousMissionPoint != null)
             {

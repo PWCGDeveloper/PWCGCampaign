@@ -136,7 +136,7 @@ public class DuringCampaignAirVictimGenerator implements IVictimGenerator
 
     public EquippedTank generateVictimPlane() throws PWCGException 
     {        
-        EquippedTank victimPlane = campaign.getEquipmentManager().getAnyActivePlaneFromSquadron(victimSquadron.getCompanyId());
+        EquippedTank victimPlane = campaign.getEquipmentManager().getAnyActiveTankFromCompany(victimSquadron.getCompanyId());
         return victimPlane;
     }
 

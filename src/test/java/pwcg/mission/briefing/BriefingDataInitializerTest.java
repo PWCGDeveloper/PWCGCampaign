@@ -87,7 +87,7 @@ public class BriefingDataInitializerTest
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         
         Mockito.when(campaign.getEquipmentManager()).thenReturn(equipmentManager);
-        Mockito.when(equipmentManager.getEquipmentForSquadron(Mockito.any())).thenReturn(equipment);
+        Mockito.when(equipmentManager.getEquipmentForCompany(Mockito.any())).thenReturn(equipment);
         Mockito.when(equipment.getActiveEquippedTanks()).thenReturn(equippedPlanes);
 
         Mockito.when(personnelManager.getCompanyPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
@@ -137,8 +137,8 @@ public class BriefingDataInitializerTest
         assert(briefingAssignmentData.getCrews().size() == 2);
         assert(briefingAssignmentData.getUnassignedCrewMembers().size() == 2);
         assert(briefingAssignmentData.getUnassignedPlanes().size() == 2);
-        assert(briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getPlane().getType().equals("bf109f4"));
-        assert(briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPlane().getType().equals("bf109f2"));
+        assert(briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getTank().getType().equals("bf109f4"));
+        assert(briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getTank().getType().equals("bf109f2"));
         assert(briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getCrewMember().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
         assert(briefingAssignmentData.findAssignedCrewPairingByCrewMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getCrewMember().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
     }

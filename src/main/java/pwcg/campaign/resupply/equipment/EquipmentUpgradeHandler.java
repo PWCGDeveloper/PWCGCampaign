@@ -57,7 +57,7 @@ public class EquipmentUpgradeHandler
 
     private void upgradeEquipment(Company squadron) throws PWCGException
     {
-        Equipment equipmentForSquadron = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId());
+        Equipment equipmentForSquadron = campaign.getEquipmentManager().getEquipmentForCompany(squadron.getCompanyId());
         EquipmentDepot equipmentDepot = campaign.getEquipmentManager().getEquipmentDepotForService(squadron.getService());
 
         List<EquippedTank> sortedPlanes = getPlanesForSquadronWorstToBest(equipmentForSquadron);

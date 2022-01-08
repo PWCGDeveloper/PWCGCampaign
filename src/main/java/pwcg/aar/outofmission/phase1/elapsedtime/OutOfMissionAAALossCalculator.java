@@ -55,7 +55,7 @@ public class OutOfMissionAAALossCalculator
             int shotDownDiceRoll = RandomNumberGenerator.getRandom(1000);
             if (shotDownDiceRoll <= oddsShotDown)
             {
-                EquippedTank planeShotDownByAAA = campaign.getEquipmentManager().destroyPlaneFromSquadron(crewMember.getCompanyId(), campaign.getDate());
+                EquippedTank planeShotDownByAAA = campaign.getEquipmentManager().destroyTankFromCompany(crewMember.getCompanyId(), campaign.getDate());
 
                 LogPlane logPlane = new LogPlane(AARContextEventSequence.getNextOutOfMissionEventSequenceNumber());
                 logPlane.initializeFromOutOfMission(campaign, planeShotDownByAAA, crewMember);

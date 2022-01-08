@@ -12,8 +12,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingData;
-import pwcg.gui.rofmap.brief.model.BriefingFlight;
-import pwcg.gui.rofmap.brief.model.BriefingFlightParameters;
+import pwcg.gui.rofmap.brief.model.BriefingUnit;
+import pwcg.gui.rofmap.brief.model.BriefingUnitParameters;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
@@ -46,17 +46,17 @@ public class BriefingDataBuilderTest
         BriefingDataBuilder briefingDataBuilder = new BriefingDataBuilder(mission);
         BriefingData briefingData = briefingDataBuilder.buildBriefingData();
         assert(briefingData != null);
-        assert(briefingData.getActiveBriefingFlight() != null);
-        assert(briefingData.getActiveBriefingFlight().getBriefingFlightParameters().getBriefingMapMapPoints().size() > 4);
-        assert(briefingData.getActiveBriefingFlight().getBriefingAssignmentData().getCrews().size() > 0);
+        assert(briefingData.getActiveBriefingUnit() != null);
+        assert(briefingData.getActiveBriefingUnit().getBriefingUnitParameters().getBriefingMapMapPoints().size() > 4);
+        assert(briefingData.getActiveBriefingUnit().getBriefingAssignmentData().getCrews().size() > 0);
         
-        IFlight flight = briefingData.getSelectedFlight();
-        Assertions.assertTrue (flight.getSquadron().getCompanyId() == SquadronTestProfile.KG53_PROFILE.getCompanyId());
+        IFlight flight = briefingData.getSelectedUnit();
+        Assertions.assertTrue (flight.getCompany().getCompanyId() == SquadronTestProfile.KG53_PROFILE.getCompanyId());
 
-        BriefingFlight briefingFlight = briefingData.getActiveBriefingFlight();
-        Assertions.assertTrue (briefingFlight.getSquadronId() == SquadronTestProfile.KG53_PROFILE.getCompanyId());
+        BriefingUnit briefingFlight = briefingData.getActiveBriefingUnit();
+        Assertions.assertTrue (briefingFlight.getCompanyId() == SquadronTestProfile.KG53_PROFILE.getCompanyId());
         
-        BriefingFlightParameters briefingFlightParameters = briefingFlight.getBriefingFlightParameters();
+        BriefingUnitParameters briefingFlightParameters = briefingFlight.getBriefingUnitParameters();
         List<BriefingMapPoint>  briefingMapMapPoints = briefingFlightParameters.getBriefingMapMapPoints();
         for (BriefingMapPoint briefingMapMapPoint : briefingMapMapPoints)
         {

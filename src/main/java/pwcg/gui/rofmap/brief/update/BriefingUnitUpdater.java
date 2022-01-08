@@ -4,11 +4,11 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingData;
-import pwcg.gui.rofmap.brief.model.BriefingFlight;
+import pwcg.gui.rofmap.brief.model.BriefingUnit;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
+import pwcg.mission.playerunit.PlayerUnit;
 
-public class BriefingMissionUpdater
+public class BriefingUnitUpdater
 {
 
     public static void finalizeMission(BriefingData briefingContext) throws PWCGException
@@ -30,33 +30,33 @@ public class BriefingMissionUpdater
         Mission mission = briefingData.getMission();
         if (!mission.getFinalizer().isFinalized())
         {
-            pushFlightParametersToMission(briefingData);
+            pushUnitParametersToMission(briefingData);
             pushCrewAndPayloadToMission(briefingData);
             pushFuelToMission(briefingData);
             
         }
     }
 
-    private static void pushFlightParametersToMission(BriefingData briefingData) throws PWCGException
+    private static void pushUnitParametersToMission(BriefingData briefingData) throws PWCGException
     {
         Mission mission = briefingData.getMission();
         mission.getMissionOptions().getMissionTime().setMissionTime(briefingData.getMissionTime());
 
-        for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
+        for (BriefingUnit briefingUnit : briefingData.getBriefingUnits())
         {
-            IFlight playerFlight = mission.getFlights().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
-            playerFlight.getWaypointPackage().updateWaypointsFromBriefing(briefingFlight.getBriefingFlightParameters().getBriefingMapMapPoints());
+            PlayerUnit playerUnit = mission.getUnits().getPlayerUnitForCompany(briefingUnit.getCompanyId());
+            playerUnit.getWaypointPackage().updateWaypointsFromBriefing(briefingUnit.getBriefingUnitParameters().getBriefingMapMapPoints());
         }
     }
 
     private static void pushCrewAndPayloadToMission(BriefingData briefingData) throws PWCGException
     {
         Mission mission = briefingData.getMission();
-        for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
+        for (BriefingUnit briefingUnit : briefingData.getBriefingUnits())
         {
-            IFlight playerFlight = mission.getFlights().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
-            BriefingFlightCrewPlaneUpdater crewePlaneUpdater = new BriefingFlightCrewPlaneUpdater(mission.getCampaign(), playerFlight);
-            crewePlaneUpdater.updatePlayerPlanes(briefingFlight.getBriefingAssignmentData().getCrews());
+            PlayerUnit playerUnit = mission.getUnits().getPlayerUnitForCompany(briefingUnit.getCompanyId());
+            BriefingCrewTankUpdater crewePlaneUpdater = new BriefingCrewTankUpdater(mission.getCampaign(), playerUnit);
+            crewePlaneUpdater.updatePlayerTanks(briefingUnit.getBriefingAssignmentData().getCrews());
         }
     }
     
@@ -66,10 +66,10 @@ public class BriefingMissionUpdater
         Mission mission = briefingData.getMission();
         mission.getMissionOptions().getMissionTime().setMissionTime(briefingData.getMissionTime());
 
-        for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
+        for (BriefingUnit briefingUnit : briefingData.getBriefingUnits())
         {
-            IFlight playerFlight = mission.getFlights().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
-            playerFlight.getFlightPlanes().setFuelForFlight(briefingFlight.getSelectedFuel());
+            PlayerUnit playerUnit = mission.getUnits().getPlayerUnitForCompany(briefingUnit.getCompanyId());
+            playerUnit.getUnitTanks().setFuelForUnit(briefingUnit.getSelectedFuel());
         }
     }
 

@@ -41,7 +41,7 @@ public class VirtualWaypointStartFinderNearFrontTest
     public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        Mockito.when(flight.getSquadron()).thenReturn(squadron);
+        Mockito.when(flight.getCompany()).thenReturn(squadron);
         Mockito.when(flight.getCampaign()).thenReturn(campaign);
         Mockito.when(squadron.determineSide()).thenReturn(Side.AXIS);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));

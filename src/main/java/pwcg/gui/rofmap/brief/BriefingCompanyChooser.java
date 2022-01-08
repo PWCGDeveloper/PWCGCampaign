@@ -22,18 +22,18 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
+import pwcg.mission.playerunit.PlayerUnit;
 
-public class BriefingFlightChooser implements ActionListener
+public class BriefingCompanyChooser implements ActionListener
 {
     private Mission mission;
-    private IFlightChanged flightChanged;
+    private IUnitChanged flightChanged;
     private JPanel flightChooserPanel;
 
     private ButtonGroup flightChooserButtonGroup = new ButtonGroup();
     private Map<Integer, ButtonModel> flightChooserButtonModels = new HashMap<>();
 
-    public BriefingFlightChooser(Mission mission, IFlightChanged flightChanged)
+    public BriefingCompanyChooser(Mission mission, IUnitChanged flightChanged)
     {
         this.mission = mission;
         this.flightChanged = flightChanged;
@@ -54,9 +54,9 @@ public class BriefingFlightChooser implements ActionListener
         flightChooserButtonPanelGrid.add(spacerLabel3);
 
         Map<Integer, Company> playerSquadronsInMission = new HashMap<>();
-        for (IFlight playerFlight : mission.getFlights().getPlayerUnits())
+        for (PlayerUnit playerUnit : mission.getUnits().getPlayerUnits())
         {
-            Company squadron = playerFlight.getSquadron();
+            Company squadron = playerUnit.getCompany();
             playerSquadronsInMission.put(squadron.getCompanyId(), squadron);
         }
 
@@ -110,7 +110,7 @@ public class BriefingFlightChooser implements ActionListener
             
             setSelectedButton(squadronId);
 
-            flightChanged.flightChanged(squadron);
+            flightChanged.unitChanged(squadron);
         }
         catch (Exception e)
         {

@@ -28,12 +28,12 @@ public class CampaignUpdateNewCompanyEquipper
         CompanyManager squadronManager = PWCGContext.getInstance().getCompanyManager();
         for (Company squadron : squadronManager.getActiveCompanies(campaign.getDate()))
         {
-            if (campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getCompanyId()) == null)
+            if (campaign.getEquipmentManager().getEquipmentForCompany(squadron.getCompanyId()) == null)
             {
                 EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
                 InitialCompanyEquipper equipmentStaffer = new InitialCompanyEquipper(campaign, squadron, equipmentWeightCalculator);
                 Equipment squadronEquipment = equipmentStaffer.generateEquipment();
-                campaign.getEquipmentManager().addEquipmentForSquadron(squadron.getCompanyId(), squadronEquipment);
+                campaign.getEquipmentManager().addEquipmentForCompany(squadron.getCompanyId(), squadronEquipment);
                 squadronsEquipped.add(squadron.getCompanyId());
                 CampaignEquipmentIOJson.writeEquipmentForSquadron(campaign, squadron.getCompanyId());
             }

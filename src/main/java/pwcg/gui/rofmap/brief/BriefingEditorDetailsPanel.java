@@ -14,7 +14,7 @@ import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.rofmap.brief.model.BriefingFlight;
+import pwcg.gui.rofmap.brief.model.BriefingUnit;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
@@ -30,7 +30,7 @@ public class BriefingEditorDetailsPanel
         this.isEditable = isEditable;
     }
     
-    public void buildWaypointPanel(BriefingFlight activeBriefingFlight) throws PWCGException
+    public void buildWaypointPanel(BriefingUnit activeBriefingFlight) throws PWCGException
     {
         waypointPanel.setOpaque(false);
         
@@ -45,7 +45,7 @@ public class BriefingEditorDetailsPanel
 		createMissionParametersHeader(constraints, waypointDetailsPanel);
 	            
         BriefingMapPoint previousMapPoint = null;
-	    for (BriefingMapPoint briefingMapPoint : activeBriefingFlight.getBriefingFlightParameters().getBriefingMapMapPoints())
+	    for (BriefingMapPoint briefingMapPoint : activeBriefingFlight.getBriefingUnitParameters().getBriefingMapMapPoints())
 	    {
 	        IWaypointDetails waypointViewer = buildWaypointViewer(briefingMapPoint.getWaypointID());
 	        waypointViewer.initializeWPEdit(previousMapPoint, briefingMapPoint);

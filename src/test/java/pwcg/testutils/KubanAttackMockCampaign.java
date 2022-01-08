@@ -71,7 +71,7 @@ public class KubanAttackMockCampaign
         Mockito.when(squadronPersonnel.isSquadronPersonnelViable()).thenReturn(true);
         
         Mockito.when(campaign.getEquipmentManager()).thenReturn(equipmentManager);
-        Mockito.when(equipmentManager.getEquipmentForSquadron(Mockito.any())).thenReturn(squadronEquipment);
+        Mockito.when(equipmentManager.getEquipmentForCompany(Mockito.any())).thenReturn(squadronEquipment);
         Mockito.when(squadronEquipment.isCompanyEquipmentViable()).thenReturn(true);
 
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
@@ -89,7 +89,7 @@ public class KubanAttackMockCampaign
     {
         Mockito.when(flightInformation.getCampaign()).thenReturn(campaign);
         Mockito.when(flightInformation.getMission()).thenReturn(mission);
-        Mockito.when(flightInformation.getSquadron()).thenReturn(squadron);
+        Mockito.when(flightInformation.getCompany()).thenReturn(squadron);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.DIVE_BOMB);
     }
 

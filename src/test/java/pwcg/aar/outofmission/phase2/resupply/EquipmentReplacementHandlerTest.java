@@ -109,7 +109,7 @@ public class EquipmentReplacementHandlerTest
 
         int numInactivated = 0;
         Company playerSquadron = campaign.determinePlayerCompanies().get(0);
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForCompany(playerSquadron.getCompanyId());
         for (EquippedTank equippedPlane : equipment.getActiveEquippedTanks().values())
         {
             Company squadron = PWCGContext.getInstance().getCompanyManager().getCompany(playerSquadron.getCompanyId());

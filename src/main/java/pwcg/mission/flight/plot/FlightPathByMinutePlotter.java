@@ -14,7 +14,7 @@ public class FlightPathByMinutePlotter
 {
     public List<Coordinate> plotCoordinatesByMinute(IFlight flight) throws PWCGException 
     {        
-        List<MissionPoint> allMissionCoordinates = flight.getWaypointPackage().getFlightMissionPoints();
+        List<MissionPoint> allMissionCoordinates = flight.getWaypointPackage().getMissionPoints();
         if (allMissionCoordinates == null || allMissionCoordinates.size() < 2)
         {
             return this.generatePathNoWaypoints(flight);

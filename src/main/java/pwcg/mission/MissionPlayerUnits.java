@@ -31,7 +31,12 @@ public class MissionPlayerUnits
 
     public List<PlayerUnit> getPlayerUnits()
     {
-        return playerUnits;
+        return null;
+    }
+
+    public List<PlayerUnit> getAiUnits()
+    {
+        return null;
     }
 
     public PlayerUnit getReferencePlayerUnit()
@@ -44,6 +49,11 @@ public class MissionPlayerUnits
     {
         MissionUnitFinalizer unitFinalizer = new MissionUnitFinalizer(campaign, mission);
         unitFinalizer.finalizeMissionUnits();
+    }
+
+    public PlayerUnit getPlayerUnitForCompany(int companyId)
+    {
+        return null;
     }
 
 }

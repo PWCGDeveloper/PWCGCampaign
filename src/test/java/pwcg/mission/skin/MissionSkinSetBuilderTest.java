@@ -45,7 +45,7 @@ public class MissionSkinSetBuilderTest
         Mockito.when(flight.getFlightPlanes()).thenReturn(flightPlanes);
         Mockito.when(flightPlanes.getPlanes()).thenReturn(planes);
         
-        Mockito.when(flight.getSquadron()).thenReturn(squadron);
+        Mockito.when(flight.getCompany()).thenReturn(squadron);
         Mockito.when(squadron.determineSquadronCountry(Mockito.any())).thenReturn(country);
         
         planes.clear();

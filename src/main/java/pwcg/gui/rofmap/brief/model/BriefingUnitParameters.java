@@ -7,7 +7,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 
-public class BriefingFlightParameters
+public class BriefingUnitParameters
 {
     private List<BriefingMapPoint> briefingMapPoints = new ArrayList<>();
     private int selectedMapPointIndex = -1;

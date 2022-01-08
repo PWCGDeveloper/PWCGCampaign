@@ -68,7 +68,7 @@ public class PlayerFlightTypeBoSInterceptTest
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.STRATEGIC_INTERCEPT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
         
-        IFlight playerFlight = mission.getFlights().getPlayerUnits().get(0);
+        IFlight playerFlight = mission.getFlights().getUnits().get(0);
         if (playerFlight.getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             playerFlight = null;

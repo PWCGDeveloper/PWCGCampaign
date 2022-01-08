@@ -74,7 +74,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
         buildTitleDescription(campaign.getCampaignData().getName(), playerUnit.getUnitInformation().getCompany().determineDisplayName(campaign.getDate()));
 
         HashMap<String, PlayerUnit> companyMap = new HashMap<>();
-        for (PlayerUnit unit : mission.getPlayerUnits().getPlayerUnits())
+        for (PlayerUnit unit : mission.getUnits().getPlayerUnits())
         {
             companyMap.put(unit.getCompany().determineDisplayName(campaign.getDate()), unit);
         }

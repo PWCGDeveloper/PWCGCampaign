@@ -37,7 +37,7 @@ public class VirtualWaypointPlotter
 
     private List<VirtualWayPointCoordinate> plotAllCoordinates() throws PWCGException 
     {        
-        List<MissionPoint> allMissionCoordinates = flight.getWaypointPackage().getFlightMissionPoints();
+        List<MissionPoint> allMissionCoordinates = flight.getWaypointPackage().getMissionPoints();
         if (allMissionCoordinates == null || allMissionCoordinates.size() == 0)
         {
             return this.generateVwpForNoWaypoints(flight);

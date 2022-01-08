@@ -62,7 +62,7 @@ public class GroundAttackAntiArmorPackageTest
 
         MissionFlights missionFlights = mission.getFlights();
         
-        IFlight playerFlight = missionFlights.getPlayerUnits().get(0);
+        IFlight playerFlight = missionFlights.getUnits().get(0);
         assert(playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_ARMOR);
         
         List<IFlight> escortFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORT);

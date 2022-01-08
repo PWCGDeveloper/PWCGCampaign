@@ -6,7 +6,6 @@ import java.util.List;
 import pwcg.campaign.tank.TankType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.playerunit.PlayerUnit;
 
 public abstract class TankPayload implements ITankPayload
@@ -39,9 +38,9 @@ public abstract class TankPayload implements ITankPayload
 	}
 	
     @Override
-    public List<TankPayloadDesignation> getAvailablePayloadDesignations(IFlight flight) throws PWCGException
+    public List<TankPayloadDesignation> getAvailablePayloadDesignations(PlayerUnit unit) throws PWCGException
     {
-        return getAvailablePayloadDesignationsForPlane(flight);
+        return getAvailablePayloadDesignationsForTank(unit);
     }
 
     @Override
@@ -50,7 +49,7 @@ public abstract class TankPayload implements ITankPayload
         return payloads.getSelectedPayloadDesignation();
     }
 
-    protected List<TankPayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight) throws PWCGException
+    protected List<TankPayloadDesignation> getAvailablePayloadDesignationsForTank(PlayerUnit unit) throws PWCGException
     {
         return payloads.getPayloadDesignations().getAllAvailablePayloadDesignations();
     }

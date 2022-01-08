@@ -100,18 +100,18 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testEquipmentReplacedWhenTimePassed () throws PWCGException
     {
-        Map<Integer, EquippedTank> activePlanes = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId()).getActiveEquippedTanks();
+        Map<Integer, EquippedTank> activePlanes = campaign.getEquipmentManager().getEquipmentForCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId()).getActiveEquippedTanks();
         for (EquippedTank equippedPlane : activePlanes.values())
         {
             equippedPlane.setPlaneStatus(TankStatus.STATUS_DESTROYED);
-            Map<Integer, EquippedTank> activePlanesLeft = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId()).getActiveEquippedTanks();
+            Map<Integer, EquippedTank> activePlanesLeft = campaign.getEquipmentManager().getEquipmentForCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId()).getActiveEquippedTanks();
             if (activePlanesLeft.size() < 3)
             {
                 break;
             }
         }
         
-        Map<Integer, EquippedTank> activePlanesLeft = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId()).getActiveEquippedTanks();
+        Map<Integer, EquippedTank> activePlanesLeft = campaign.getEquipmentManager().getEquipmentForCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId()).getActiveEquippedTanks();
         int numLeaves = 0;
         int numPlanes = activePlanesLeft.size();
         while (numPlanes < 9)
@@ -125,7 +125,7 @@ public class AARExtendedTimeHandlerTest
             else
             {
                 ++numLeaves;
-                activePlanesLeft = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId()).getActiveEquippedTanks();
+                activePlanesLeft = campaign.getEquipmentManager().getEquipmentForCompany(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getCompanyId()).getActiveEquippedTanks();
                 numPlanes = activePlanesLeft.size();
             }
         }

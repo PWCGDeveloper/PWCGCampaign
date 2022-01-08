@@ -29,12 +29,12 @@ import pwcg.gui.image.ImageCache;
 import pwcg.gui.rofmap.MapPanelBase;
 import pwcg.gui.rofmap.brief.builder.BriefingMapPointFactory;
 import pwcg.gui.rofmap.brief.model.BriefingData;
-import pwcg.gui.rofmap.brief.model.BriefingFlightParameters;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
+import pwcg.gui.rofmap.brief.model.BriefingUnitParameters;
 import pwcg.gui.utils.MapPointInfoPopup;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.playerunit.PlayerUnit;
 import pwcg.mission.target.AssaultDefinition;
 
 public class BriefingMapPanel extends MapPanelBase implements ActionListener
@@ -45,8 +45,8 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
     private Mission mission;
     private BriefingMapGUI parent;
 	
-    private List <FlightMap> alliedVirtualPoints = new ArrayList<FlightMap>();
-    private List <FlightMap> axisVirtualPoints = new ArrayList<FlightMap>();
+    private List <UnitMap> alliedVirtualPoints = new ArrayList<UnitMap>();
+    private List <UnitMap> axisVirtualPoints = new ArrayList<UnitMap>();
     private CoordinateBox missionBorders = new CoordinateBox();
     
 	public BriefingMapPanel(BriefingMapGUI parent) throws PWCGException
@@ -114,7 +114,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         Color requestedColor = g.getColor();
  
         BriefingMapPoint previousMapPoint = null;
-        BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
+        BriefingUnitParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingUnit().getBriefingUnitParameters();
         for (BriefingMapPoint mapPoint : briefingFlightParameters.getBriefingMapMapPoints())
         {            
             g.setColor(requestedColor);
@@ -150,7 +150,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         }
     }
 
-    private void drawAiFlightWaypoints(Graphics g, List<FlightMap> flightMaps) throws PWCGException 
+    private void drawAiFlightWaypoints(Graphics g, List<UnitMap> unitMaps) throws PWCGException 
     {
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
@@ -158,30 +158,30 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         Color requestedColor = g.getColor();
  
         BriefingData briefingData = BriefingContext.getInstance().getBriefingData();
-        for (FlightMap flightMap : flightMaps)
+        for (UnitMap unitMap : unitMaps)
         {
-            if (briefingData.getAiFlightsToDisplay().containsKey(flightMap.squadronId))
+            if (briefingData.getAiFlightsToDisplay().containsKey(unitMap.companyId))
             {
-                paintWaypointLines(g, g2, requestedColor, flightMap);
+                paintWaypointLines(g, g2, requestedColor, unitMap);
             }
         }
         
-        for (FlightMap flightMap : flightMaps)
+        for (UnitMap unitMap : unitMaps)
         {
-            if (briefingData.getAiFlightsToDisplay().containsKey(flightMap.squadronId))
+            if (briefingData.getAiFlightsToDisplay().containsKey(unitMap.companyId))
             {
-                paintWaypoints(g, g2, flightMap);
+                paintWaypoints(g, g2, unitMap);
             }
         }
         
         drawMissionBorders(g, g2);
     }
 
-    private void paintWaypoints(Graphics g, Graphics2D g2, FlightMap flightMap) throws PWCGException
+    private void paintWaypoints(Graphics g, Graphics2D g2, UnitMap unitMap) throws PWCGException
     {
-        for (int i = 0; i < flightMap.mapPoints.size(); ++i)
+        for (int i = 0; i < unitMap.mapPoints.size(); ++i)
         {
-            BriefingMapPoint mapPoint = flightMap.mapPoints.get(i);
+            BriefingMapPoint mapPoint = unitMap.mapPoints.get(i);
             if (i == 0)
             {
                 g.setColor(Color.GREEN);
@@ -192,9 +192,9 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
                 g.setColor(Color.BLACK);
                 Font font = PWCGMonitorFonts.getPrimaryFont();
                 g.setFont(font);
-                g.drawString((flightMap.flightType + "/" + flightMap.planeType), point.x + 4, point.y);
+                g.drawString((unitMap.unitType + "/" + unitMap.tankType), point.x + 4, point.y);
             }
-            if (i == (flightMap.mapPoints.size()-1) )
+            if (i == (unitMap.mapPoints.size()-1) )
             {
                 g.setColor(Color.RED);
                 Point point = super.coordinateToPoint(mapPoint.getPosition());
@@ -211,13 +211,13 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         }
     }
 
-    private void paintWaypointLines(Graphics g, Graphics2D g2, Color requestedColor, FlightMap flightMap)
+    private void paintWaypointLines(Graphics g, Graphics2D g2, Color requestedColor, UnitMap unitMap)
     {
         BriefingMapPoint prevMapPoint = null;
         
-         for (int i = 0; i < flightMap.mapPoints.size(); ++i)
+         for (int i = 0; i < unitMap.mapPoints.size(); ++i)
          {
-            BriefingMapPoint mapPoint = flightMap.mapPoints.get(i);
+            BriefingMapPoint mapPoint = unitMap.mapPoints.get(i);
             g.setColor(requestedColor);
 
             Point point = super.coordinateToPoint(mapPoint.getPosition());
@@ -262,33 +262,33 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         axisVirtualPoints.clear();        
     }
 
-    public void makeMapPanelVirtualPoints(IFlight flight) throws PWCGException
+    public void makeMapPanelVirtualPoints(PlayerUnit unit) throws PWCGException
     {       
-        FlightMap flightMap = buildFlightMap(flight);
-        if (flight.getFlightInformation().getCountry().getSideNoNeutral() == Side.ALLIED)
+        UnitMap unitMap = buildFlightMap(unit);
+        if (unit.getUnitInformation().getCountry().getSideNoNeutral() == Side.ALLIED)
         {
-            alliedVirtualPoints.add(flightMap);
+            alliedVirtualPoints.add(unitMap);
         }
         else
         {
-            axisVirtualPoints.add(flightMap);
+            axisVirtualPoints.add(unitMap);
         }
     }
 
-    private FlightMap buildFlightMap(IFlight flight) throws PWCGException
+    private UnitMap buildFlightMap(PlayerUnit unit) throws PWCGException
     {
-        FlightMap flightMap = new FlightMap();
-        flightMap.flightType = flight.getFlightType().toString();
-        flightMap.planeType = flight.getFlightPlanes().getFlightLeader().getDisplayName();
-        flightMap.squadronId = flight.getSquadron().getCompanyId();
+        UnitMap unitMap = new UnitMap();
+        unitMap.unitType = unit.getUnitInformation().getUnitMissionType().name();
+        unitMap.tankType = unit.getUnitTanks().getUnitLeader().getDisplayName();
+        unitMap.companyId = unit.getCompany().getCompanyId();
         
-        for (MissionPoint waypoint : flight.getWaypointPackage().getFlightMissionPoints())
+        for (MissionPoint waypoint : unit.getWaypointPackage().getMissionPoints())
         {
             BriefingMapPoint mapPoint = BriefingMapPointFactory.missionPointToMapPoint(waypoint);
-            flightMap.mapPoints.add(mapPoint);
+            unitMap.mapPoints.add(mapPoint);
         }
         
-        return flightMap;
+        return unitMap;
     }
 
 	public void mouseMovedCallback(MouseEvent e) 
@@ -318,8 +318,8 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	    {
 	        if (!mission.getFinalizer().isFinalized())
 	        {
-	            BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
-    	    	BriefingMapPoint selectedMapPoint = briefingFlightParameters.getSelectedMapPoint();
+	            BriefingUnitParameters briefingUnitParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingUnit().getBriefingUnitParameters();
+    	    	BriefingMapPoint selectedMapPoint = briefingUnitParameters.getSelectedMapPoint();
     	    	if (selectedMapPoint != null)
     	    	{
     		        Point point = new Point();
@@ -329,7 +329,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
     		        try
     		        {
     		            Coordinate updatedPosition = this.pointToCoordinate(point);
-    		            briefingFlightParameters.updatePosition(updatedPosition);
+    		            briefingUnitParameters.updatePosition(updatedPosition);
     		        }
     		        catch (Exception e)
     		        {
@@ -354,8 +354,8 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		else
 		{
 			int selectedMapPointIndex = determineSelectedWaypointIndex(mouseEvent.getX(), mouseEvent.getY());
-	        BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
-			briefingFlightParameters.setSelectedMapPointIndex(selectedMapPointIndex);    			
+	        BriefingUnitParameters briefingUnitParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingUnit().getBriefingUnitParameters();
+			briefingUnitParameters.setSelectedMapPointIndex(selectedMapPointIndex);    			
     		if (selectedMapPointIndex == NO_MAP_POINT_SELECTED)
     		{
     			super.leftClickCallback(mouseEvent);
@@ -385,8 +385,8 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		if (!mission.getFinalizer().isFinalized())
 		{
     		int selectedMapPointIndex = determineSelectedWaypointIndex(e.getX(), e.getY());
-            BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
-			briefingFlightParameters.setActionMapPointIndex(selectedMapPointIndex);    			
+            BriefingUnitParameters briefingUnitParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingUnit().getBriefingUnitParameters();
+			briefingUnitParameters.setActionMapPointIndex(selectedMapPointIndex);    			
     		if (selectedMapPointIndex >= 0)
     		{
     			WaypointActionPopup menu = new WaypointActionPopup(this);
@@ -421,20 +421,20 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 			return;			
 		}
 
-        BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
-		if (briefingFlightParameters.getSelectedMapPointIndex() != NO_MAP_POINT_SELECTED)
+        BriefingUnitParameters briefingUnitParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingUnit().getBriefingUnitParameters();
+		if (briefingUnitParameters.getSelectedMapPointIndex() != NO_MAP_POINT_SELECTED)
 	    {
 	        Point point = new Point();
 	        point.x = mouseEvent.getX();
 	        point.y = mouseEvent.getY();
         	Coordinate newCoord = this.pointToCoordinate(point);
-        	briefingFlightParameters.updatePosition(newCoord);
+        	briefingUnitParameters.updatePosition(newCoord);
 
 	        refresh();
 	    }
 
 
-		briefingFlightParameters.setSelectedMapPointIndex(NO_MAP_POINT_SELECTED);
+		briefingUnitParameters.setSelectedMapPointIndex(NO_MAP_POINT_SELECTED);
 	}
 
 	public void rightClickReleasedCallback(MouseEvent e) 
@@ -450,8 +450,8 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	{
 		int selectedMapPointIndex = NO_MAP_POINT_SELECTED;
 		int lastValidIndex = NO_MAP_POINT_SELECTED;
-        BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
-		for (BriefingMapPoint mapPoint :  briefingFlightParameters.getBriefingMapMapPoints())
+        BriefingUnitParameters briefingUnitParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingUnit().getBriefingUnitParameters();
+		for (BriefingMapPoint mapPoint :  briefingUnitParameters.getBriefingMapMapPoints())
 		{
 			++lastValidIndex;
 			
@@ -478,8 +478,8 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		upperLeft.x = 10000000;
 		upperLeft.y = 10000000;
 		
-        BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
-        for (BriefingMapPoint mapPoint :  briefingFlightParameters.getBriefingMapMapPoints())
+        BriefingUnitParameters briefingUnitParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingUnit().getBriefingUnitParameters();
+        for (BriefingMapPoint mapPoint :  briefingUnitParameters.getBriefingMapMapPoints())
 		{
 			Point point = super.coordinateToPoint(mapPoint.getPosition());
 			
@@ -502,20 +502,20 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		try
 		{
 			String action = arg0.getActionCommand();
-	        BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
+	        BriefingUnitParameters briefingUnitParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingUnit().getBriefingUnitParameters();
 			if (action.contains("Add"))
 			{
-				if (briefingFlightParameters.getActionMapPointIndex() >= 0)
+				if (briefingUnitParameters.getActionMapPointIndex() >= 0)
 				{
-                    BriefingMapPoint selectedActionPoint = briefingFlightParameters.getSelectedActionMapPoint();
+                    BriefingMapPoint selectedActionPoint = briefingUnitParameters.getSelectedActionMapPoint();
                     parent.waypointAddedNotification(selectedActionPoint.getWaypointID());
 				}
 			}
 			else if (action.contains("Remove"))
 			{
-				if (briefingFlightParameters.getActionMapPointIndex() >= 0)
+				if (briefingUnitParameters.getActionMapPointIndex() >= 0)
 				{
-				    BriefingMapPoint selectedActionPoint = briefingFlightParameters.getSelectedActionMapPoint();
+				    BriefingMapPoint selectedActionPoint = briefingUnitParameters.getSelectedActionMapPoint();
                     parent.waypointRemovedNotification(selectedActionPoint.getWaypointID());
 				}
 			}
@@ -530,11 +530,11 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		
 	}
 	
-	private class FlightMap
+	private class UnitMap
 	{
-        String flightType;
-        String planeType;
-        int squadronId;
+        String unitType;
+        String tankType;
+        int companyId;
         List<BriefingMapPoint> mapPoints = new ArrayList<BriefingMapPoint>();
 	}
 

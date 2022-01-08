@@ -129,7 +129,7 @@ public class TestPreliminaryDataBuilder
         CrewMembers squadronMembersInMission = preliminaryData.getCampaignMembersInMission();
         for (CrewMember crewMember : squadronMembersInMission.getCrewMemberCollection().values())
         {
-            Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(crewMember.getCompanyId());
+            Equipment equipment = campaign.getEquipmentManager().getEquipmentForCompany(crewMember.getCompanyId());
             List<EquippedTank> planesForSquadron = new ArrayList<>(equipment.getActiveEquippedTanks().values());
             int planeIndex = RandomNumberGenerator.getRandom(planesForSquadron.size());
             EquippedTank equippedPlane = planesForSquadron.get(planeIndex);

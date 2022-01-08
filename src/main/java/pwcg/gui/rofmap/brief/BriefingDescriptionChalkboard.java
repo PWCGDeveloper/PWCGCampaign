@@ -16,14 +16,14 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.brief.model.BriefingData;
-import pwcg.gui.rofmap.brief.model.BriefingFlight;
+import pwcg.gui.rofmap.brief.model.BriefingUnit;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescriptionFactory;
-import pwcg.mission.playerunit.crew.CrewVehiclePayloadPairing;
+import pwcg.mission.playerunit.crew.CrewTankPayloadPairing;
 
 public class BriefingDescriptionChalkboard extends ImageResizingPanel
 {
@@ -93,7 +93,7 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
         
         
 
-        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, mission, briefingContext.getSelectedFlight());
+        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, mission, briefingContext.getSelectedUnit());
         String missionDescriptionText = missionDescription.createDescription();
         
         StringBuffer missionDescriptionBuffer = new StringBuffer("");
@@ -109,18 +109,14 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
     private String getMissionPrefix()
     {
         String missionPrefix = "Mission: \n";
-        if (mission.isNightMission())
-        {
-            missionPrefix = "Mission: Night Mission!\n";
-        }
         return missionPrefix;
     }
 
     private String makeCrewMemberList() throws PWCGException 
     {
-        BriefingFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
+        BriefingUnit activeMissionHandler = briefingContext.getActiveBriefingUnit();
         StringBuffer assignedCrewMembersBuffer = new StringBuffer ("Assigned CrewMembers:\n");
-        for (CrewVehiclePayloadPairing crewPlane : activeMissionHandler.getCrews())
+        for (CrewTankPayloadPairing crewPlane : activeMissionHandler.getCrews())
         {
             assignedCrewMembersBuffer.append("    " + crewPlane.getCrewMember().getNameAndRank() + "\n");
         }

@@ -14,8 +14,8 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.gui.rofmap.brief.builder.BriefingDataBuilder;
 import pwcg.gui.rofmap.brief.model.BriefingData;
-import pwcg.gui.rofmap.brief.model.BriefingFlight;
-import pwcg.gui.rofmap.brief.model.BriefingFlightParameters;
+import pwcg.gui.rofmap.brief.model.BriefingUnit;
+import pwcg.gui.rofmap.brief.model.BriefingUnitParameters;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
@@ -50,7 +50,7 @@ public class BriefingMissionUpdaterTest
     public void testBriefingUpdates() throws PWCGException
     {
         changeWaypointData();
-        BriefingMissionUpdater.pushEditsToMission(briefingData);
+        BriefingUnitUpdater.pushEditsToMission(briefingData);
         
         for (McuWaypoint waypoint : mission.getFlights().getPlayerFlightForSquadron(SquadronTestProfile.KG53_PROFILE.getCompanyId()).getWaypointPackage().getAllWaypoints())
         {
@@ -83,8 +83,8 @@ public class BriefingMissionUpdaterTest
 
     private void changeWaypointData()
     {
-        BriefingFlight briefingFlight = briefingData.getActiveBriefingFlight();
-        BriefingFlightParameters briefingFlightParameters = briefingFlight.getBriefingFlightParameters();
+        BriefingUnit briefingFlight = briefingData.getActiveBriefingUnit();
+        BriefingUnitParameters briefingFlightParameters = briefingFlight.getBriefingUnitParameters();
         List<BriefingMapPoint>  briefingMapMapPoints = briefingFlightParameters.getBriefingMapMapPoints();
         
         BriefingMapPoint targetApproachBriefingMapMapPoint = null;

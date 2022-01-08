@@ -76,7 +76,7 @@ public class EquipmentUpgradeHandlerTest
         // replace planes in squadron with different quality 109s, but all worse
         // than the very good planes in the depot
         Company playerSquadron = campaign.determinePlayerCompanies().get(0);
-        Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
+        Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForCompany(playerSquadron.getCompanyId());
         for (EquippedTank planeInSquadronBeforeTest : equipmentForSquadronBeforeTest.getActiveEquippedTanks().values())
         {
             equipmentForSquadronBeforeTest.removeEquippedTank(planeInSquadronBeforeTest.getSerialNumber());
@@ -115,7 +115,7 @@ public class EquipmentUpgradeHandlerTest
         // The worst planes in the squadrons should be replaced and now be in
         // the depot
         EquipmentDepot equipmentDepotAfterTest = campaign.getEquipmentManager().getEquipmentDepotForService(armedService.getServiceId());
-        Equipment equipmentForSquadronAfterTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
+        Equipment equipmentForSquadronAfterTest = campaign.getEquipmentManager().getEquipmentForCompany(playerSquadron.getCompanyId());
         for (int planeThatShouldBeReplaced : planesThatShouldBeReplaced)
         {
             Assertions.assertTrue (equipmentForSquadronAfterTest.getEquippedTank(planeThatShouldBeReplaced) == null);
@@ -163,7 +163,7 @@ public class EquipmentUpgradeHandlerTest
         // replace planes in player squadron with very good quality 109s, to
         // avoid the need for replacement
         Company playerSquadron = campaign.determinePlayerCompanies().get(0);
-        Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
+        Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForCompany(playerSquadron.getCompanyId());
         for (EquippedTank planeInSquadronBeforeTest : equipmentForSquadronBeforeTest.getActiveEquippedTanks().values())
         {
             equipmentForSquadronBeforeTest.removeEquippedTank(planeInSquadronBeforeTest.getSerialNumber());
@@ -191,7 +191,7 @@ public class EquipmentUpgradeHandlerTest
         }
 
         // No planes should be replaced in the player squadron
-        Equipment equipmentForPlayerSquadronAfterTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
+        Equipment equipmentForPlayerSquadronAfterTest = campaign.getEquipmentManager().getEquipmentForCompany(playerSquadron.getCompanyId());
         for (int depotPlane : veryGoodPlanesInDepot)
         {
             Assertions.assertTrue (equipmentForPlayerSquadronAfterTest.getEquippedTank(depotPlane) == null);
@@ -240,7 +240,7 @@ public class EquipmentUpgradeHandlerTest
         // Clear out the squadron and add better planes than we have in the
         // depot
         Company playerSquadron = campaign.determinePlayerCompanies().get(0);
-        Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
+        Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForCompany(playerSquadron.getCompanyId());
 
         for (EquippedTank planeInSquadronBeforeTest : equipmentForSquadronBeforeTest.getActiveEquippedTanks().values())
         {
@@ -262,7 +262,7 @@ public class EquipmentUpgradeHandlerTest
         equipmentUpgradeHandler.upgradeEquipment(armedService);
 
         EquipmentDepot equipmentDepotAfterTest = campaign.getEquipmentManager().getEquipmentDepotForService(armedService.getServiceId());
-        Equipment equipmentForSquadronAfterTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getCompanyId());
+        Equipment equipmentForSquadronAfterTest = campaign.getEquipmentManager().getEquipmentForCompany(playerSquadron.getCompanyId());
 
         // Good planes in the squadron should stay in the squadron
         for (int planeThatShouldNotBeReplaced : goodPlanesInTheSquadron)

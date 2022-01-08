@@ -48,7 +48,7 @@ public class PlayerFlightTypeBoSBombTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.BOMB, MissionProfile.DAY_TACTICAL_MISSION);
-        BombingFlight flight = (BombingFlight) mission.getFlights().getPlayerUnits().get(0);
+        BombingFlight flight = (BombingFlight) mission.getFlights().getUnits().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);
@@ -80,7 +80,7 @@ public class PlayerFlightTypeBoSBombTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.LOW_ALT_BOMB, MissionProfile.DAY_TACTICAL_MISSION);
-        BombingFlight flight = (BombingFlight) mission.getFlights().getPlayerUnits().get(0);
+        BombingFlight flight = (BombingFlight) mission.getFlights().getUnits().get(0);
         mission.finalizeMission();
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();

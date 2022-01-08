@@ -45,7 +45,7 @@ public class PlayerFlightTypeBoSAttackTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
-        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getPlayerUnits().get(0);
+        GroundAttackFlight flight = (GroundAttackFlight) mission.getFlights().getUnits().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         Assertions.assertTrue (targetMissionPoint != null);

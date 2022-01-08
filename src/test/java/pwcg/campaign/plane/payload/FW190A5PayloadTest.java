@@ -51,7 +51,7 @@ public class FW190A5PayloadTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
 
-        Mockito.when(flight.getSquadron()).thenReturn(squadron);
+        Mockito.when(flight.getCompany()).thenReturn(squadron);
         Mockito.when(flight.getCampaign()).thenReturn(campaign);
         Mockito.when(flight.getTargetDefinition()).thenReturn(targetDefinition);
     }

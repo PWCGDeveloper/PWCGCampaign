@@ -8,20 +8,20 @@ import java.util.Map;
 import pwcg.campaign.crewmember.CrewMember;
 import pwcg.campaign.tank.EquippedTank;
 
-public class CrewVehiclePayloadPairing
+public class CrewTankPayloadPairing
 {
     public static final String NO_PLANE_ASSIGNED = "No plane assigned";
     public static final int NO_PAYLOAD_ASSIGNED = -1;
     
     private CrewMember crewMember;
-    private EquippedTank plane;
+    private EquippedTank vehicle;
     private int payloadId = NO_PAYLOAD_ASSIGNED;
     private Map<String, String> modifications = new HashMap<>();
 
-    public CrewVehiclePayloadPairing(CrewMember crewMember, EquippedTank plane)
+    public CrewTankPayloadPairing(CrewMember crewMember, EquippedTank plane)
     {
         this.crewMember = crewMember;
-        this.plane = plane;
+        this.vehicle = plane;
     }
     
     public CrewMember getCrewMember()
@@ -29,14 +29,14 @@ public class CrewVehiclePayloadPairing
         return crewMember;
     }
 
-    public EquippedTank getPlane()
+    public EquippedTank getTank()
     {
-        return plane;
+        return vehicle;
     }
 
     public void setPlane(EquippedTank plane)
     {
-        this.plane = plane;
+        this.vehicle = plane;
     }
 
     public int getPayloadId()
