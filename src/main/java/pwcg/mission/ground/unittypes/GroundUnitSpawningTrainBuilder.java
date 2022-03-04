@@ -80,18 +80,18 @@ public class GroundUnitSpawningTrainBuilder
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            baseTrainCars = 3;
-            randomTrainCars = 3;
+            baseTrainCars = 2;
+            randomTrainCars = 2;
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            baseTrainCars = 4;
-            randomTrainCars = 5;
+            baseTrainCars = 3;
+            randomTrainCars = 2;
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
         {
-            baseTrainCars = 5;
-            randomTrainCars = 7;
+            baseTrainCars = 3;
+            randomTrainCars = 3;
         }
         
         int numUnits = baseTrainCars + (RandomNumberGenerator.getRandom(randomTrainCars - baseTrainCars));
