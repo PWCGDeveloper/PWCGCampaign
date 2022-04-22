@@ -80,7 +80,7 @@ public class StrategicTargetLocator
         possibleTargets = getBlockTargets("railway");
         List<IFixedPosition> morePossibleTargets = getBlockTargets("railroad");
         possibleTargets.addAll(morePossibleTargets);
-        List<IFixedPosition> evenMorePossibleTargets = getBlockTargets("rwstation");
+        List<IFixedPosition> evenMorePossibleTargets = getBlockTargets("rw");
         possibleTargets.addAll(evenMorePossibleTargets);
         return possibleTargets;
     }
@@ -115,11 +115,12 @@ public class StrategicTargetLocator
         GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         List<Block> blocks = groupManager.getStandaloneBlocks();
         
-        while (targets.size() == 0 && preferredRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)
+        int currentRadius = preferredRadius;
+        while (targets.size() == 0 && currentRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)
         {
             for (Block block : blocks)
             {
-                if (block.getModel().contains(blockType))
+                if (block.getModel().toLowerCase().contains(blockType))
                 {
                     if (block.determineCountryOnDate(flightInformation.getCampaign().getDate()).isNeutral())
                     {
@@ -129,14 +130,14 @@ public class StrategicTargetLocator
                     if (block.determineCountryOnDate(flightInformation.getCampaign().getDate()).getSide() == flightInformation.getSquadron().determineEnemySide())
                     {
                         double distanceToTarget = MathUtils.calcDist(targetLocation, block.getPosition());
-                        if (distanceToTarget < preferredRadius)
+                        if (distanceToTarget < currentRadius)
                         {
                             targets.add(block);
                         }
                     }
                 }
             }
-            preferredRadius += 20000;
+            currentRadius += 5000;
         }
 
         return targets;

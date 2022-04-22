@@ -13,6 +13,8 @@ import pwcg.campaign.battle.BattleManager;
 import pwcg.campaign.battle.NoBattlePeriod;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.io.transport.MapTransport;
+import pwcg.campaign.io.transport.TransportReader;
 import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.campaign.skirmish.SkirmishManager;
 import pwcg.campaign.target.preference.TargetPreferenceManager;
@@ -48,6 +50,8 @@ public abstract class PWCGMap
     protected AmphibiousAssaultManager amphibiousAssaultManager;
     protected SkirmishManager skirmishManager;
     protected List<NoBattlePeriod> noBattlePeriods = new ArrayList<>();
+    protected MapTransport mapTransportRoads = new MapTransport();
+    protected MapTransport mapTransportRail = new MapTransport();
 
     public PWCGMap()
     {
@@ -93,6 +97,10 @@ public abstract class PWCGMap
         
         targetPreferenceManager = new TargetPreferenceManager();
         targetPreferenceManager.configure(mapName);
+        
+        TransportReader transportReader = new TransportReader();
+        mapTransportRail = transportReader.readTransportFile(mapName, "railroads.ini");
+        mapTransportRoads = transportReader.readTransportFile(mapName, "roads.ini");
     }
 
     public int getDaysBetweenMissionForDate(Date date) throws PWCGException
@@ -244,5 +252,13 @@ public abstract class PWCGMap
     public SkirmishManager getSkirmishManager()
     {
         return skirmishManager;
+    }
+    public MapTransport getMapTransportRoads()
+    {
+        return mapTransportRoads;
+    }
+    public MapTransport getMapTransportRail()
+    {
+        return mapTransportRail;
     }
 }

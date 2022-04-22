@@ -1,0 +1,26 @@
+{
+	"type": "gothag5",
+	"archType": "gotha",
+	"side": "AXIS",
+	"displayName": "Gotha G.V",
+	"script": "LuaScripts\\WorldObjects\\Planes\\gothag5.txt",
+	"model": "graphics\\planes\\gothag5\\gothag5.mgm",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+	],
+	"desc": "",
+	"cruisingSpeed": 80,
+	"climbOutRate": 80,
+	"goodness": 80,
+	"range": 1000,
+	"isFlyable": true,
+	"isNovice": true,
+	"roleCategories": [
+		"STRATEGIC_BOMBER"
+	],
+	"introduction": "19140801",
+	"endProduction": "19181201",
+	"withdrawal": "19181111"
+}

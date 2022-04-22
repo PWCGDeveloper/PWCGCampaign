@@ -1,0 +1,26 @@
+{
+	"type": "handleypage400",
+	"archType": "handleypage",
+	"side": "ALLIED",
+	"displayName": "Handley Page 400",
+	"script": "LuaScripts\\WorldObjects\\Planes\\handleypage400.txt",
+	"model": "graphics\\planes\\handleypage400\\handleypage400.mgm",
+	"primaryUsedBy": [
+        "BRITAIN"
+	],
+	"stockModifications": [
+	],
+	"desc": "",
+	"cruisingSpeed": 80,
+	"climbOutRate": 80,
+	"goodness": 80,
+	"range": 1000,
+	"isFlyable": true,
+	"isNovice": true,
+	"roleCategories": [
+		"STRATEGIC_BOMBER"
+	],
+	"introduction": "19140801",
+	"endProduction": "19181201",
+	"withdrawal": "19181111"
+}

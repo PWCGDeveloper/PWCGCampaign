@@ -74,6 +74,10 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         {
             return FlightTypes.RAID;
         }
+        else if (missionRole == PwcgRole.ROLE_STRAT_BOMB)
+        {
+            return FlightTypes.STRATEGIC_BOMB;
+        }
         else
         {
             throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));

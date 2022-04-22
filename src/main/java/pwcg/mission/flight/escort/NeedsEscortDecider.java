@@ -47,21 +47,13 @@ public class NeedsEscortDecider
     
     private static int getEsortOddsForFlightType(IFlight escortedFlight) throws PWCGException
     {
-        if (FlightTypes.isTacticalLevelBombingFlight(escortedFlight.getFlightType()))
+        if (escortedFlight.getFlightType() == FlightTypes.RAID)
         {
-            return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualBombingEscortedOddsKey);
+            return 0;
         }
-        else if (FlightTypes.isGroundAttackFlight(escortedFlight.getFlightType()))
+        else if (escortedFlight.getFlightType() == FlightTypes.ANTI_SHIPPING)
         {
-            return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualGroundAttackEscortedOddsKey);
-        }
-        else if (escortedFlight.getFlightType() == FlightTypes.DIVE_BOMB)
-        {
-            return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualDiveBombEscortedOddsKey);
-        }
-        else if (escortedFlight.getFlightType() == FlightTypes.TRANSPORT)
-        {
-            return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualTransportEscortedOddsKey);
+            return 0;
         }
         else if (escortedFlight.getFlightType() == FlightTypes.STRATEGIC_BOMB)
         {
@@ -74,6 +66,22 @@ public class NeedsEscortDecider
         else if (escortedFlight.getFlightType() == FlightTypes.CARGO_DROP)
         {
             return 80;
+        }
+        else if (escortedFlight.getFlightType() == FlightTypes.DIVE_BOMB)
+        {
+            return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualDiveBombEscortedOddsKey);
+        }
+        else if (escortedFlight.getFlightType() == FlightTypes.TRANSPORT)
+        {
+            return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualTransportEscortedOddsKey);
+        }
+        else if (FlightTypes.isTacticalLevelBombingFlight(escortedFlight.getFlightType()))
+        {
+            return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualBombingEscortedOddsKey);
+        }
+        else if (FlightTypes.isGroundAttackFlight(escortedFlight.getFlightType()))
+        {
+            return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualGroundAttackEscortedOddsKey);
         }
         
         return 0;

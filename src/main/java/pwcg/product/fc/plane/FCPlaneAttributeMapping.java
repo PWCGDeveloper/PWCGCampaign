@@ -12,7 +12,8 @@ public enum FCPlaneAttributeMapping implements IPlaneAttributeMapping
     FOKKERD7("fokkerd7"),
     FOKKERD7F("fokkerd7f"),
     FOKKERD8("fokkerd8"),
-    dfwc5("dfwc5"),
+    DFWCV("dfwc5"),
+    GOTHAGV("gothag5"),
     HALBERSTADTCLII("halberstadtcl2"),
     HALBERSTADTCLIIAU("halberstadtcl2au"),
 
@@ -28,7 +29,9 @@ public enum FCPlaneAttributeMapping implements IPlaneAttributeMapping
     BREGUET14("breguet14"),
     BRISTOLF2BF2("bristolf2bf2"),
     BRISTOLF2BF3("bristolf2bf3"), 
+    HANDLEYPAGE400("handleypage400"), 
     BALLOON(PlaneType.BALLOON);
+    
     
 	private String planeType;
 	private String[] staticPlaneMatches;

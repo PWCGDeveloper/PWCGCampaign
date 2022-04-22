@@ -1,0 +1,55 @@
+{
+	"country": "GERMANY",
+	"squadronId": 401003,
+	"name": "Boghol 3",
+	"fileName": "Boghol 3.json",
+	"skill": 80,
+	"planeAssignments": [
+		{
+			"archType": "gotha",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Gouzeaucourt"
+	},
+	"skins": [
+		{
+			"skinName": "gothac5_skin_00",
+			"planeType": "gothac5",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19180424",
+			"squadId": 401003,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "BLACK"
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 40101,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"endDate": "19181201",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRAT_BOMB",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		
+	}
+}

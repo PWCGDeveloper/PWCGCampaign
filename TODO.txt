@@ -1,1 +1,9 @@
 Remove end date from nigh mission odds
+
+New planes
+- aircraft file - done
+- aircraft  picture - done
+- aircraft profile picture - done
+- add to squadrons
+- payload
+- set name from log file

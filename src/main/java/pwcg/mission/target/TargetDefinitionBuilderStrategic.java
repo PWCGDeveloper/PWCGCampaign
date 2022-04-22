@@ -3,12 +3,11 @@ package pwcg.mission.target;
 import java.util.Collections;
 import java.util.List;
 
-import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.locator.StrategicTargetLocator;
 
 public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilder
@@ -33,12 +32,12 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
 
     private List<TargetDefinition> getAvailableStrategicTargets(Coordinate proposedTargetPosition) throws PWCGException
     {
-        TargetRadius targetRadius = new TargetRadius();
-        targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int radius = productSpecific.getLargeMissionRadius();
 
         StrategicTargetLocator strategicTargetLocator = new StrategicTargetLocator(
                 flightInformation,
-                Double.valueOf(targetRadius.getInitialTargetRadius()).intValue(),
+                radius,
                 proposedTargetPosition);
         
         List<TargetDefinition> availableTargets = strategicTargetLocator.getStrategicTargetAvailability();
@@ -48,21 +47,15 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
 
     private TargetDefinition findStrategicTarget(List<TargetDefinition> availableTargets) throws PWCGException
     {
+        Collections.shuffle(availableTargets);
         List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorStrategic.getTargetTypePriorities(flightInformation);
-        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getGroundUnitBuilder().getAllMissionGroundUnits();
-        Collections.shuffle(shuffledGroundUnits);
-
-        FrontLinesForMap frontlines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
         for (TargetType desiredTargetType : shuffledTargetTypes)
         {
             for (TargetDefinition targetDefinition : availableTargets)
             {
                 if (desiredTargetType == targetDefinition.getTargetType())
                 {
-                    if (frontlines.isFarFromFront(targetDefinition.getPosition(), flightInformation.getSquadron().determineSide(), flightInformation.getCampaign().getDate()))
-                    {
-                        return targetDefinition;
-                    }
+                    return targetDefinition;
                 }
             }
         }

@@ -40,6 +40,7 @@ import pwcg.product.bos.plane.payload.aircraft.IL2M43Payload;
 import pwcg.product.bos.plane.payload.aircraft.Ju52Payload;
 import pwcg.product.bos.plane.payload.aircraft.Ju87D3Payload;
 import pwcg.product.bos.plane.payload.aircraft.Ju88A4Payload;
+import pwcg.product.bos.plane.payload.aircraft.Ju88C6Payload;
 import pwcg.product.bos.plane.payload.aircraft.La5FNS2Payload;
 import pwcg.product.bos.plane.payload.aircraft.La5S8Payload;
 import pwcg.product.bos.plane.payload.aircraft.Lagg3S29Payload;
@@ -161,6 +162,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.JU88_A4)
         {
             return new Ju88A4Payload(planeType, date);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.JU88_C6)
+        {
+            return new Ju88C6Payload(planeType, date);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.Ma202_SER8)
         {

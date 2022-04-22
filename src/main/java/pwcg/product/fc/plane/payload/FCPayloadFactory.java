@@ -46,9 +46,13 @@ public class FCPayloadFactory implements IPayloadFactory
         {
             return new FokkerD8Payload(planeType, date);
         }
-        else if (attributeMapping == FCPlaneAttributeMapping.dfwc5)
+        else if (attributeMapping == FCPlaneAttributeMapping.DFWCV)
         {
             return new DFWCVPayload(planeType, date);
+        }
+        else if (attributeMapping == FCPlaneAttributeMapping.GOTHAGV)
+        {
+            return new GothaGVPayload(planeType, date);
         }
         else if (attributeMapping == FCPlaneAttributeMapping.HALBERSTADTCLII)
         {
@@ -101,6 +105,10 @@ public class FCPayloadFactory implements IPayloadFactory
         else if (attributeMapping == FCPlaneAttributeMapping.BRISTOLF2BF3)
         {
             return new BristolF2B3Payload(planeType, date);
+        }
+        else if (attributeMapping == FCPlaneAttributeMapping.HANDLEYPAGE400)
+        {
+            return new HandleyPage400Payload(planeType, date);
         }
 
         throw new PWCGException ("No payload for plane " + planeTypeName);

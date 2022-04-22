@@ -127,6 +127,9 @@ public enum FlightTypes
     {
         if (flightType == FlightTypes.GROUND_ATTACK || 
             flightType == FlightTypes.GROUND_HUNT   ||
+            flightType == FlightTypes.TRAIN_BUST    ||
+            flightType == FlightTypes.TANK_BUST     ||
+            flightType == FlightTypes.ANTI_SHIPPING ||
             flightType == FlightTypes.RAID)
         {
             return true;

@@ -1,0 +1,51 @@
+{
+	"country": "BRITAIN",
+	"squadronId": 302100,
+	"name": "No 100 Squadron RFC",
+	"fileName": "No 100 Squadron RFC.json",
+	"skill": 70,
+	"planeAssignments": [
+		{
+			"archType": "handleypage",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Mont St Eloi"
+	},
+	"skins": [
+		{
+			"skinName": "handleypage_skin_03",
+			"planeType": "handleypage",
+			"startDate": "19170601",
+			"endDate": "19171014",
+			"squadId": 302100,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 30201,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"endDate": "19181201",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRAT_BOMB",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		
+	}
+}

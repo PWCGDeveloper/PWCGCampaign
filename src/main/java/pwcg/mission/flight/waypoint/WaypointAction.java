@@ -22,7 +22,7 @@ public enum WaypointAction
 	WP_ACTION_RENDEZVOUS("Rendezvous", false, true),
 
 	WP_ACTION_TARGET_APPROACH("Target Approach", true, true),
-	WP_ACTION_TARGET_FINAL("Target Final", false, true),
+	WP_ACTION_TARGET_FINAL("Target Final", true, true),
 	WP_ACTION_TARGET_EGRESS("Target Egress", true, false),
 	
     WP_ACTION_ATTACK("Attack", false, true),
