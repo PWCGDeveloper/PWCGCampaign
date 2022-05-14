@@ -1,0 +1,27 @@
+{
+	"type": "soptriplane",
+	"archType": "soptriplane",
+	"side": "ALLIED",
+	"displayName": "Sopwith Triplane",
+	"script": "LuaScripts\\WorldObjects\\Planes\\soptriplane.txt",
+	"model": "graphics\\planes\\soptriplane\\soptriplane.mgm",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 150,
+	"climbOutRate": 280,
+	"goodness": 51,
+	"range": 250,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER",
+		"ATTACK"
+	],
+	"introduction": "19170401",
+	"endProduction": "19171201",
+	"withdrawal": "19180101"
+}

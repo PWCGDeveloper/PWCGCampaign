@@ -27,10 +27,15 @@ import pwcg.product.bos.map.IMapSeason;
 public abstract class PWCGMap
 {
     public abstract ICountry getGroundCountryForMapBySide(Side side);
+
     public abstract int getRainChances();
+
     protected abstract void configureTransitionDates() throws PWCGException;
+
     protected abstract Map<String, Integer> getMissionSpacingMyDate();
+
     protected abstract IMapClimate buildMapClimate();
+
     protected abstract IMapSeason buildMapSeason();
 
     protected FrontMapIdentifier mapIdentifier = null;
@@ -40,7 +45,7 @@ public abstract class PWCGMap
     protected FrontDatesForMap frontDatesForMap;
     protected DrifterManager drifterManager = null;
     protected AirfieldManager airfieldManager = null;
-    protected GroupManager groupManager = null; 
+    protected GroupManager groupManager = null;
     protected ShippingLaneManager shippingLaneManager = null;
     protected TargetPreferenceManager targetPreferenceManager = null;
     protected MapArea mapArea = null;
@@ -61,43 +66,42 @@ public abstract class PWCGMap
     {
         String mapName = getMapName();
         mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
-        
+
         battleManager = new BattleManager(mapIdentifier);
         battleManager.initialize();
-        
+
         amphibiousAssaultManager = new AmphibiousAssaultManager(mapIdentifier);
         amphibiousAssaultManager.initialize();
-        
-        
+
         skirmishManager = new SkirmishManager(mapIdentifier);
         skirmishManager.initialize();
 
         frontDatesForMap = new FrontDatesForMap(mapIdentifier);
         configureTransitionDates();
-    	frontDatesForMap.cleanUnwantedDateDirectories(mapName);
-    	for (Date frontDate : frontDatesForMap.getFrontDates())
-    	{
-    		FrontLinesForMap frontLinesForMap = new FrontLinesForMap(mapName);
+        frontDatesForMap.cleanUnwantedDateDirectories(mapName);
+        for (Date frontDate : frontDatesForMap.getFrontDates())
+        {
+            FrontLinesForMap frontLinesForMap = new FrontLinesForMap(mapName);
             frontLinesForMap.configureForDate(frontDate);
             frontLinesForMapByDate.put(frontDate, frontLinesForMap);
-    	}
-        
+        }
+
         drifterManager = new DrifterManager();
         drifterManager.configure(mapName);
-        
+
         groupManager = new GroupManager();
         groupManager.configure(mapName, airfieldManager);
-        
+
         shippingLaneManager = new ShippingLaneManager();
         shippingLaneManager.configure(mapName);
 
         airfieldManager = new AirfieldManager();
-        
+
         airfieldManager.configure(mapIdentifier);
-        
+
         targetPreferenceManager = new TargetPreferenceManager();
         targetPreferenceManager.configure(mapName);
-        
+
         TransportReader transportReader = new TransportReader();
         mapTransportRail = transportReader.readTransportFile(mapName, "railroads.ini");
         mapTransportRoads = transportReader.readTransportFile(mapName, "roads.ini");
@@ -106,7 +110,7 @@ public abstract class PWCGMap
     public int getDaysBetweenMissionForDate(Date date) throws PWCGException
     {
         int numDaysSpacing = 2;
-        
+
         Map<String, Integer> missionSpacingMyDate = getMissionSpacingMyDate();
         for (String mapDate : missionSpacingMyDate.keySet())
         {
@@ -115,12 +119,12 @@ public abstract class PWCGMap
             {
                 break;
             }
-            
+
             numDaysSpacing = missionSpacingMyDate.get(mapDate);
         }
         return numDaysSpacing;
     }
-    
+
     public boolean isNoDynamicBattlePeriod(Date date) throws PWCGException
     {
         for (NoBattlePeriod noBattlePeriod : noBattlePeriods)
@@ -175,7 +179,7 @@ public abstract class PWCGMap
 
     public FrontLinesForMap getFrontLinesForMap(Date date) throws PWCGException
     {
-    	Date frontDate = frontDatesForMap.getFrontDateForDate(date);
+        Date frontDate = frontDatesForMap.getFrontDateForDate(date);
         return frontLinesForMapByDate.get(frontDate);
     }
 
@@ -193,12 +197,12 @@ public abstract class PWCGMap
     {
         return groupManager;
     }
-    
+
     public DrifterManager getDrifterManager()
     {
         return drifterManager;
     }
-    
+
     public ShippingLaneManager getShippingLaneManager()
     {
         return shippingLaneManager;
@@ -213,12 +217,12 @@ public abstract class PWCGMap
     {
         return mapArea;
     }
-        
+
     public MapArea getUsableMapArea()
     {
         return usableMapArea;
     }
-        
+
     public FrontDatesForMap getFrontDatesForMap()
     {
         return frontDatesForMap;
@@ -248,15 +252,17 @@ public abstract class PWCGMap
     {
         return amphibiousAssaultManager;
     }
-    
+
     public SkirmishManager getSkirmishManager()
     {
         return skirmishManager;
     }
+
     public MapTransport getMapTransportRoads()
     {
         return mapTransportRoads;
     }
+
     public MapTransport getMapTransportRail()
     {
         return mapTransportRail;

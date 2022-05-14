@@ -68,7 +68,11 @@ public class FCPayloadFactory implements IPayloadFactory
         }
         else if (attributeMapping == FCPlaneAttributeMapping.CAMEL)
         {
-            return new CamelPayload(planeType, date);
+            return new SopwithCamelPayload(planeType, date);
+        }
+        else if (attributeMapping == FCPlaneAttributeMapping.TRIPE)
+        {
+            return new SopwithTriplanePayload(planeType, date);
         }
         else if (attributeMapping == FCPlaneAttributeMapping.DOLPHIN)
         {

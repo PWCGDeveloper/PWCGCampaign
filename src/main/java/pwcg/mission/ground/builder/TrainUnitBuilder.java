@@ -1,5 +1,7 @@
 package pwcg.mission.ground.builder;
 
+import java.util.List;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
@@ -7,6 +9,8 @@ import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PositionFinder;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -58,31 +62,70 @@ public class TrainUnitBuilder
 
     private GroundUnitInformation createGroundUnitInformation() throws PWCGException
     {
-        Coordinate destination = getTrainDestination();
+        Coordinate startPosition = getRailStartLocation(station.getPosition());
+        Coordinate destination = getTrainDestination(startPosition);
 
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 country, 
                 TargetType.TARGET_TRAIN,
-                station.getPosition(), 
+                startPosition, 
                 destination,
                 station.getOrientation());
                 
         groundUnitInformation.setDestination(destination);
         return groundUnitInformation;
     }
+    
+    private Coordinate getRailStartLocation(Coordinate referenceCoordinate) 
+    {
+        double closest = PositionFinder.ABSURDLY_LARGE_DISTANCE;
+        Coordinate startPosition = null;
+        for (List<Coordinate> railRoute : PWCGContext.getInstance().getCurrentMap().getMapTransportRail().getTransportRoutes())
+        {
+            for (Coordinate railCoordinate : railRoute)
+            {
+                double distance = MathUtils.calcDist(referenceCoordinate, railCoordinate);
+                if (distance < closest)
+                {
+                    closest = distance;
+                    startPosition = railCoordinate.copy();
+                }
+            }
+        }
+        
+        if (startPosition == null)
+        {
+            startPosition = referenceCoordinate.copy();
+        }
 
-    private Coordinate getTrainDestination() throws PWCGException
+        return startPosition;
+    }
+
+    private Coordinate getTrainDestination(Coordinate startPosition) throws PWCGException
     {
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Block destinationStation = groupData.getRailroadStationFinder().getDestinationTrainPosition(station.getPosition(), country, campaign.getDate());
+        Coordinate railDestinationCoordinate = null;
         if (destinationStation != null)
         {
-            return destinationStation.getPosition();
+            double closest = PositionFinder.ABSURDLY_LARGE_DISTANCE;
+            for (Coordinate railCoordinate : PWCGContext.getInstance().getCurrentMap().getMapTransportRail().getAllTransportCoordinates())
+            {
+                double distance = MathUtils.calcDist(destinationStation.getPosition(), railCoordinate);
+                if (distance < closest)
+                {
+                    closest = distance;
+                    railDestinationCoordinate = railCoordinate.copy();
+                }
+            }
         }
-        else
+        
+        if (railDestinationCoordinate == null)
         {
-            return station.getPosition();
+            railDestinationCoordinate = startPosition.copy();
         }
+        
+        return railDestinationCoordinate;
     }
 }

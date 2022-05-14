@@ -2,7 +2,7 @@
 	"type": "handleypage400",
 	"archType": "handleypage",
 	"side": "ALLIED",
-	"displayName": "Handley Page 400",
+	"displayName": "Handley Page O/400",
 	"script": "LuaScripts\\WorldObjects\\Planes\\handleypage400.txt",
 	"model": "graphics\\planes\\handleypage400\\handleypage400.mgm",
 	"primaryUsedBy": [

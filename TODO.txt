@@ -2,6 +2,9 @@ Remove end date from nigh mission odds
 
 New planes
 - aircraft file - done
+    - change model
+    - change or set archtype
+    - change goodness to unique value
 - aircraft  picture - done
 - aircraft profile picture - done
 - add to squadrons

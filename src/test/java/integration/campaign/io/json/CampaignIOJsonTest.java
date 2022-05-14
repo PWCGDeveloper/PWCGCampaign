@@ -83,7 +83,7 @@ public class CampaignIOJsonTest
     	ArmedService germanArmedService = armedServiceManager.getArmedServiceByName(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE_NAME, campaign.getDate());
         PersonnelReplacementsService germanReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(germanArmedService.getServiceId());
         assert(germanReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
-        assert(germanReplacements.getDailyReplacementRate() == 22);
+        assert(germanReplacements.getDailyReplacementRate() == 23);
         assert(germanReplacements.getLastReplacementDate().equals(campaign.getDate()));
 
         ArmedService belgianArmedService = armedServiceManager.getArmedServiceByName(FCServiceManager.AVIATION_MILITAIRE_BELGE_NAME, campaign.getDate());

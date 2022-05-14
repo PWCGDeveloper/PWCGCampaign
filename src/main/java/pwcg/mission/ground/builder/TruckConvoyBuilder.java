@@ -1,5 +1,7 @@
 package pwcg.mission.ground.builder;
 
+import java.util.List;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
@@ -7,6 +9,8 @@ import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PositionFinder;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -68,31 +72,73 @@ public class TruckConvoyBuilder
 
     private GroundUnitInformation createGroundUnitInformationForUnit() throws PWCGException
     {
-        Coordinate destination = getConvoyDestination();
+        Coordinate startPosition = getRoadStartLocation(bridge.getPosition());
+        Coordinate destination = getConvoyDestination(startPosition);
 
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 country, 
                 TargetType.TARGET_TRANSPORT,
-                bridge.getPosition(), 
+                startPosition, 
                 destination,
                 bridge.getOrientation());
 
         groundUnitInformation.setDestination(destination);
         return groundUnitInformation;
     }
+    
+    private Coordinate getRoadStartLocation(Coordinate referenceCoordinate) 
+    {
+        double closest = PositionFinder.ABSURDLY_LARGE_DISTANCE;
+        Coordinate startPosition = null;
+        for (List<Coordinate> railRoute : PWCGContext.getInstance().getCurrentMap().getMapTransportRoads().getTransportRoutes())
+        {
+            for (Coordinate railCoordinate : railRoute)
+            {
+                double distance = MathUtils.calcDist(referenceCoordinate, railCoordinate);
+                if (distance < closest)
+                {                    
+                    if (distance > 1000) 
+                    {
+                        closest = distance;
+                        startPosition = railCoordinate.copy();
+                    }
+                }
+            }
+        }
+        
+        if (startPosition == null)
+        {
+            startPosition = referenceCoordinate.copy();
+        }
 
-    private Coordinate getConvoyDestination() throws PWCGException
+        return startPosition;
+    }
+
+    private Coordinate getConvoyDestination(Coordinate startPosition) throws PWCGException
     {
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Bridge destinationBridge = groupData.getBridgeFinder().findDestinationBridge(bridge.getPosition(), country.getSide(), campaign.getDate());
-        if (destinationBridge != null)
+        Coordinate roadDestinationCoordinate = null;
+       if (destinationBridge != null)
         {
-            return destinationBridge.getPosition();
+            double closest = PositionFinder.ABSURDLY_LARGE_DISTANCE;
+            for (Coordinate railCoordinate : PWCGContext.getInstance().getCurrentMap().getMapTransportRoads().getAllTransportCoordinates())
+            {
+                double distance = MathUtils.calcDist(destinationBridge.getPosition(), railCoordinate);
+                if (distance < closest)
+                {
+                    closest = distance;
+                    roadDestinationCoordinate = railCoordinate.copy();
+                }
+            }
         }
-        else
+        
+        if (roadDestinationCoordinate == null)
         {
-            return bridge.getPosition();
+            roadDestinationCoordinate = startPosition.copy();
         }
+        
+        return roadDestinationCoordinate;
     }
 }

@@ -169,6 +169,7 @@ public enum PayloadElement
     CAMERA(PayloadElementCategory.CARGO, "Camera", 10),
 
 	STANDARD(PayloadElementCategory.WEAPON, "Standard Payload", 0),
+    LESS_AMMO(PayloadElementCategory.WEAPON, "Less Ammo", 0),
     ADDITIONAL_AMMO(PayloadElementCategory.WEAPON, "Additional Ammo", 200),
     REMOVE_INNER_GUNS(PayloadElementCategory.WEAPON, "Remove Inner Guns", 0),
 

@@ -6,7 +6,7 @@
 		"GERMANY"
 	],
 	"stockModifications": [],
-	"displayName": "Ju88 C-6",
+	"displayName": "Ju 88 C-6",
 	"script": "LuaScripts\\WorldObjects\\Planes\\ju88c6.txt",
 	"model": "graphics\\planes\\ju88c6\\ju88c6.mgm",
 	"desc": "",

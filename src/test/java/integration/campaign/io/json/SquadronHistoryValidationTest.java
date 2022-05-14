@@ -28,17 +28,11 @@ public class SquadronHistoryValidationTest
         List<Squadron> squadrons = SquadronIOJson.readJson();
         Assertions.assertTrue (squadrons.size() > 0);
         
-        boolean success = true;
         for (Squadron squadron : squadrons)
         {
             verifyVVSTransition(squadron);
-            if (!verifyBoSTransitionDates(squadron))
-            {
-                success = false;
-            }
-        }
-        
-        assert(success);
+            verifyBoSTransitionDates(squadron);
+        }        
     }
     
     private void verifyVVSTransition(Squadron squadron) throws PWCGException
@@ -62,24 +56,13 @@ public class SquadronHistoryValidationTest
         }
     }
     
-    private boolean verifyBoSTransitionDates(Squadron squadron) throws PWCGException
+    private void verifyBoSTransitionDates(Squadron squadron) throws PWCGException
     {
         SquadHistory squadronHistory = squadron.getSquadHistory();
-        boolean success = true;
-        try 
+        if (squadronHistory != null)
         {
-            if (squadronHistory != null)
-            {
-                validateBoSSquadHistoryEntries(squadronHistory);
-            }
-        }
-        catch (PWCGException e)
-        {
-            System.out.println(e.getMessage());
-            success = false;
-        }
-        
-        return success;
+            validateBoSSquadHistoryEntries(squadronHistory);
+        }        
     }
 
     private void validateBoSSquadHistoryEntries(SquadHistory squadronHistory) throws PWCGException

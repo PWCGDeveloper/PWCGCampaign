@@ -9,9 +9,9 @@ import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
-public class CamelPayload extends PlanePayload implements IPlanePayload
+public class SopwithCamelPayload extends PlanePayload implements IPlanePayload
 {
-    public CamelPayload(PlaneType planeType, Date date)
+    public SopwithCamelPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -29,7 +29,7 @@ public class CamelPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        CamelPayload clone = new CamelPayload(getPlaneType(), getDate());
+        SopwithCamelPayload clone = new SopwithCamelPayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 

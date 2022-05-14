@@ -25,6 +25,7 @@ public enum FCPlaneAttributeMapping implements IPlaneAttributeMapping
     SE5A("se5a"),
     DOLPHIN("sopdolphin"),
     CAMEL("sopcamel"),
+    TRIPE("soptriplane"),
     DH4("aircodh4"),
     BREGUET14("breguet14"),
     BRISTOLF2BF2("bristolf2bf2"),

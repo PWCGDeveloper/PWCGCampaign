@@ -32,14 +32,6 @@ public class RailroadStationFinder
         Block closestStation = positionFinder.selectClosestPosition(getTrainPositionsBySide(side, date), referenceLocation);
         return closestStation;
     }
-    
-    public Block getNearbyTrainPosition(Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException
-    {
-        PositionFinder<Block> positionFinder = new PositionFinder<Block>();
-        List<Block> trainStationsForSide = getTrainPositionsBySide(side, date);
-        Block selectedStation = positionFinder.selectPositionWithinExpandingRadius(trainStationsForSide, referenceLocation, radius, radius );
-        return selectedStation;
-    }
 
     public Block getDestinationTrainPosition(Coordinate startingPosition, ICountry country, Date date) throws PWCGException
     {
