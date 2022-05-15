@@ -33,9 +33,11 @@ public class StructureBorderBuilder
 
     public CoordinateBox getBordersForStructuresConsideringFlights(List<IFlight> playerFlights) throws PWCGException
     {
-        CoordinateBox structureBorders = expandMissionBordersForPlayerFields();
+        CoordinateBox structureBorders = CoordinateBox.copy(missionBorders);
+        structureBorders = expandMissionBordersForPlayerFields(structureBorders);
         structureBorders = expandMissionBordersForPlayerFlightRoutes(structureBorders, playerFlights);
-        return applyStructureExpansion(structureBorders);
+        structureBorders = applyStructureExpansion(structureBorders);
+        return structureBorders;
     }
 
     private CoordinateBox applyStructureExpansion(CoordinateBox structureBorders) throws PWCGException
@@ -44,21 +46,20 @@ public class StructureBorderBuilder
         String currentCpuAllowanceSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigStructuresKey);
         if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            return applySpreadToBox(structureBorders, 3);
+            return applySpreadToBox(structureBorders, 6);
         }
         else if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
-            return applySpreadToBox(structureBorders, 2);
+            return applySpreadToBox(structureBorders, 4);
         }
         else
         {
-            return applySpreadToBox(structureBorders, 1);
+            return applySpreadToBox(structureBorders, 2);
         }
     }
 
-    private CoordinateBox expandMissionBordersForPlayerFields() throws PWCGException
+    private CoordinateBox expandMissionBordersForPlayerFields(CoordinateBox structureBorders) throws PWCGException
     {
-        CoordinateBox structureBorders = CoordinateBox.copy(missionBorders);
         
         List<Coordinate> airfieldCoordinates = new ArrayList<>();
         for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())

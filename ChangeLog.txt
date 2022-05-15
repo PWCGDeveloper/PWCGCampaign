@@ -1,3 +1,14 @@
+13.8.1
+Added Sopwith Triplane
+Extended structure box to include more structures
+Box displayed on briefing map is now the structure box and not the active area box.
+
+13.8.0
+Added Ju88c
+Added HP400
+Added Gotha
+Made target final approach editable
+
 13.7.1
 Configured in game P-51 B skins
 
