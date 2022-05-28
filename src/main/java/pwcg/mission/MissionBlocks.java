@@ -5,7 +5,8 @@ import java.util.List;
 
 import pwcg.campaign.group.BlockDefinition;
 import pwcg.campaign.group.BlockDefinitionManager;
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.NonScriptedBlock;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -13,18 +14,20 @@ import pwcg.core.utils.MathUtils;
 public class MissionBlocks
 {
     private Mission mission;
-    private List<FixedPosition> structuresForMission = new ArrayList<>();
+    private List<ScriptedFixedPosition> structuresForMission = new ArrayList<>();
+    private List<NonScriptedBlock> nonScriptedStructuresForMission = new ArrayList<>();
 
-    public MissionBlocks(Mission mission, List<FixedPosition> structuresForMission)
+    public MissionBlocks(Mission mission, List<ScriptedFixedPosition> structuresForMission, List<NonScriptedBlock> nonScriptedStructuresForMission)
     {
         this.mission = mission;
         this.structuresForMission = structuresForMission;
+        this.nonScriptedStructuresForMission = nonScriptedStructuresForMission;
     }
 
-    public List<FixedPosition> getStructuresWithinMissionBorders()
+    public List<ScriptedFixedPosition> getStructuresWithinMissionBorders()
     {
-        List<FixedPosition> structuresWithinMissionBorders = new ArrayList<>();
-        for (FixedPosition structure : structuresForMission)
+        List<ScriptedFixedPosition> structuresWithinMissionBorders = new ArrayList<>();
+        for (ScriptedFixedPosition structure : structuresForMission)
         {
             if (mission.getStructureBorders().isInBox(structure.getPosition()))
             {
@@ -34,7 +37,12 @@ public class MissionBlocks
         return structuresWithinMissionBorders;
     }
 
-    public List<FixedPosition> getAllStructuresForMission()
+    public List<NonScriptedBlock> getNonScriptedStructuresForMission()
+    {
+        return nonScriptedStructuresForMission;
+    }
+
+    public List<ScriptedFixedPosition> getAllStructuresForMission()
     {
         return structuresForMission;
     }
@@ -42,17 +50,17 @@ public class MissionBlocks
     public void adjustBlockDamageAndSmoke() throws PWCGException
     {
         adjustBlockDurability();
-        List<FixedPosition> damagedStructures = adjustBlockDamage();
+        List<ScriptedFixedPosition> damagedStructures = adjustBlockDamage();
         createBlockSmoke(damagedStructures);
     }
     
-    private void createBlockSmoke(List<FixedPosition> damagedStructures) throws PWCGException
+    private void createBlockSmoke(List<ScriptedFixedPosition> damagedStructures) throws PWCGException
     {
         MissionBlockSmoke missionBlockSmoke = new MissionBlockSmoke(mission);      
         missionBlockSmoke.addSmokeToDamagedAreas(damagedStructures);
     }
 
-    private List<FixedPosition> adjustBlockDamage() throws PWCGException
+    private List<ScriptedFixedPosition> adjustBlockDamage() throws PWCGException
     {
         MissionBlockDamageDecorator missionBlockDamage = new MissionBlockDamageDecorator();      
         return missionBlockDamage.setDamageToFixedPositions(structuresForMission, mission.getCampaign().getDate());
@@ -61,7 +69,7 @@ public class MissionBlocks
     private void adjustBlockDurability()
     {
         BlockDefinitionManager blockDefinitionManager = BlockDefinitionManager.getInstance();
-        for (FixedPosition fixedPosition : structuresForMission)
+        for (ScriptedFixedPosition fixedPosition : structuresForMission)
         {
             BlockDefinition blockDefinition = blockDefinitionManager.getBlockDefinition(fixedPosition);
             if (blockDefinition != null)
@@ -73,8 +81,8 @@ public class MissionBlocks
 
     public void removeExtraStructures(Coordinate truckCoordinates, int keepRadius)
     {
-        List<FixedPosition> structuresToKeep = new ArrayList<>();
-        for (FixedPosition structureForMission : structuresForMission)
+        List<ScriptedFixedPosition> structuresToKeep = new ArrayList<>();
+        for (ScriptedFixedPosition structureForMission : structuresForMission)
         {
             double distance = MathUtils.calcDist(truckCoordinates, structureForMission.getPosition());
             if (distance < keepRadius)

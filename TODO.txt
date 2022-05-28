@@ -1,5 +1,11 @@
 Remove end date from nigh mission odds
 
+Pat, can you please enable the German 37mm AA gun when you update for the Sopwith Triplane? It is labeled M-Flak  in the editor.
+FC fuel air start resets to 60%
+Hi Pat. I noticed in the configured skins for the Spitfire XIV that quite a few skins are labeled Mk. IXe, and also point to the IXe model in the game’s directory instead of to the XIV.
+
+
+
 New planes
 - aircraft file - done
     - change model

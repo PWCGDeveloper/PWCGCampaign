@@ -1,6 +1,6 @@
 package pwcg.campaign.group;
 
-public class Group extends FixedPosition
+public class Group extends ScriptedFixedPosition
 {
 	public Group ()
 	{    

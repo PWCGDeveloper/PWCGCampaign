@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
+import pwcg.campaign.group.NonScriptedBlock;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -221,4 +222,85 @@ public class GroupIO
             throw new PWCGException(e.getMessage());
         }
 	}
+
+
+    public static NonScriptedBlock readGround(BufferedReader reader) throws PWCGException
+    {
+        try
+        {
+            NonScriptedBlock ground = new NonScriptedBlock();
+            Coordinate coords = new Coordinate();
+            Orientation ori = new Orientation();
+            
+            boolean stop = false;
+
+            while (!stop)
+            {
+                String line = reader.readLine();
+                if (line == null)
+                {
+                    throw new PWCGException ("Bad group at readBlock");
+                }
+                
+                line = line.trim();
+                
+                if (line.contains("}"))
+                {
+                    stop = true;
+                }
+                else if (line.contains(DevIOConstants.NAME))
+                {
+                    ground.setName(Parsers.getString(line));
+                }
+                else if (line.contains(DevIOConstants.LINK))
+                {
+                    ground.setLinkTrId(Parsers.getInt(line));
+                }
+                else if (line.contains(DevIOConstants.XPOS))
+                {
+                    coords.setXPos(Parsers.getDouble(line));
+                }
+                else if (line.contains(DevIOConstants.YPOS))
+                {
+                    coords.setYPos(Parsers.getDouble(line));
+                }
+                else if (line.contains(DevIOConstants.ZPOS))
+                {
+                    coords.setZPos(Parsers.getDouble(line));
+                }
+                else if (line.contains(DevIOConstants.YORI))
+                {
+                    ori.setyOri(Parsers.getDouble(line));
+                }
+                else if (line.contains(DevIOConstants.MODEL))
+                {
+                    ground.setModel(Parsers.getString(line));
+                }           
+                else if (line.contains(DevIOConstants.DESC))
+                {
+                    ground.setDesc(Parsers.getString(line));
+                }
+                else if (line.contains(DevIOConstants.DAMAGEREP))
+                {
+                    ground.setDamageReport(Parsers.getInt(line));
+                }
+                else if (line.contains(DevIOConstants.DAMAGETHRESH))
+                {
+                    ground.setDamageThreshold(Parsers.getInt(line));
+                }
+                else if (line.contains(DevIOConstants.COUNTRY))
+                {
+                }
+            }
+            ground.setPosition(coords);
+            ground.setOrientation(ori);
+            
+            return ground;
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGException(e.getMessage());
+        }
+    }
 }

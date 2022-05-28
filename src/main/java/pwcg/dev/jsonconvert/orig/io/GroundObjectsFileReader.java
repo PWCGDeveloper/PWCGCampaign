@@ -8,17 +8,19 @@ import java.util.List;
 
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
+import pwcg.campaign.group.NonScriptedBlock;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 
-public class GroundObjectsFile 
+public class GroundObjectsFileReader 
 {
     
     private List<Block> railroadStations = new ArrayList<>();
     private List<Block> standaloneBlocks = new ArrayList<>();
-    private List<Bridge> bridges = new ArrayList<Bridge>();
     private List<Block> airfieldBlocks = new ArrayList<>();
+    private List<NonScriptedBlock> groundObjects = new ArrayList<>();
+    private List<Bridge> bridges = new ArrayList<Bridge>();
 
     public void readGroundObjectsFromFile (String fileName) throws PWCGException 
 	{
@@ -34,7 +36,6 @@ public class GroundObjectsFile
 				if (line.startsWith(DevIOConstants.BLOCK))
 				{
                     Block block = GroupIO.readBlock(reader);
-					// Standalone RR stations
                     if (PwcgBuildingIdentifier.isAirfield(block))
                     {
                         airfieldBlocks.add(block);
@@ -53,6 +54,11 @@ public class GroundObjectsFile
                 {
                     Bridge bridge = GroupIO.readBridge(reader);
                     bridges.add(bridge);
+                }
+                else if (line.startsWith(DevIOConstants.GROUND))
+                {
+                    NonScriptedBlock ground = GroupIO.readGround(reader);
+                    groundObjects.add(ground);
                 }
 			}
 			
@@ -83,6 +89,11 @@ public class GroundObjectsFile
     public List<Block> getAirfieldBlocks()
     {
         return airfieldBlocks;
+    }
+
+    public List<NonScriptedBlock> getGroundObjects()
+    {
+        return groundObjects;
     }
 	
 	

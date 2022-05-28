@@ -10,7 +10,8 @@ public class GroundStructureGroup
 	private List<Block> railroadStations = new ArrayList<Block>();
 	private List<Block> standaloneBlocks = new ArrayList<Block>();
 	private List<Bridge> bridges = new ArrayList<Bridge>();
-	private List<Block> airfieldBlocks = new ArrayList<Block>();
+    private List<Block> airfieldBlocks = new ArrayList<Block>();
+    private List<NonScriptedBlock> nonScriptedGround = new ArrayList<NonScriptedBlock>();
 
 	public List<Block> getRailroadStations()
 	{
@@ -52,9 +53,19 @@ public class GroundStructureGroup
 		this.airfieldBlocks = airfieldBlocks;
 	}
 
-	public void generateEntityRelationships()
+	public List<NonScriptedBlock> getNonScriptedGround()
+    {
+        return nonScriptedGround;
+    }
+
+    public void setNonScriptedGround(List<NonScriptedBlock> nonScriptedGround)
+    {
+        this.nonScriptedGround = nonScriptedGround;
+    }
+
+    public void generateEntityRelationships()
 	{
-        List<FixedPosition> fixedPositions = new ArrayList<>();
+        List<ScriptedFixedPosition> fixedPositions = new ArrayList<>();
         fixedPositions.addAll(railroadStations);
         fixedPositions.addAll(bridges);
         fixedPositions.addAll(airfieldBlocks);

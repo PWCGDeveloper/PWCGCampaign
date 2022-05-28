@@ -10,7 +10,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.mcu.McuTREntity;
 
-public class FakeAirfield extends FixedPosition implements Cloneable
+public class FakeAirfield extends ScriptedFixedPosition implements Cloneable
 {
     private Callsign callsign = Callsign.NONE;
     private int callnum = 0;

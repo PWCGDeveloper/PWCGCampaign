@@ -6,8 +6,9 @@ import java.util.List;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.NonScriptedBlock;
 import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -18,7 +19,8 @@ import pwcg.core.location.CoordinateBox;
 public class MissionBlockBuilder
 {
     private Mission mission;
-    private List<FixedPosition> structuresForMission = new ArrayList<>();
+    private List<ScriptedFixedPosition> structuresForMission = new ArrayList<>();
+    private List<NonScriptedBlock> nonScriptedStructuresForMission = new ArrayList<>();
 
     public MissionBlockBuilder(Mission mission, CoordinateBox structureBorder)
     {
@@ -28,19 +30,35 @@ public class MissionBlockBuilder
     public MissionBlocks buildFixedPositionsForMission() throws PWCGException
     {
         getBlocks();
-        MissionBlocks missionBlocks = new MissionBlocks(mission, structuresForMission);
+        MissionBlocks missionBlocks = new MissionBlocks(mission, structuresForMission, nonScriptedStructuresForMission);
         return missionBlocks;
     }
 
     private void getBlocks() throws PWCGException
     {
         getAirfieldsForPatrol();
-        getTrainStationsPatrol();
+        getTrainStationsForPatrol();
         getBridgesForPatrol();
         getStandaloneBlocksPatrol();
+        getNonScriptedBlocksForPatrol();
     }
 
-    private void getTrainStationsPatrol() throws PWCGException
+    private void getNonScriptedBlocksForPatrol() throws PWCGException
+    {
+        List<NonScriptedBlock> selectedNonScriptedStructures = new ArrayList<>();
+        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        for (NonScriptedBlock selectedNonScriptedStructure : groupData.getNonScriptedBlocks())
+        {
+            if (isBlockIncluded(selectedNonScriptedStructure.getPosition()))
+            {
+                selectedNonScriptedStructures.add(selectedNonScriptedStructure);
+            }
+        }
+
+        nonScriptedStructuresForMission.addAll(selectedNonScriptedStructures);
+    }
+
+    private void getTrainStationsForPatrol() throws PWCGException
     {
         List<Block> selectedRRStations = new ArrayList<>();
         GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();

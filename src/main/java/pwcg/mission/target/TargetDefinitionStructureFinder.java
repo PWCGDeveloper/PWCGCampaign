@@ -10,7 +10,7 @@ import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.group.Block;
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
@@ -23,14 +23,14 @@ import pwcg.mission.ground.building.PwcgStructure;
 public class TargetDefinitionStructureFinder
 {
     private FlightInformation flightInformation;
-    private Map<Integer, FixedPosition> targetStructures = new HashMap<>();
+    private Map<Integer, ScriptedFixedPosition> targetStructures = new HashMap<>();
 
     public TargetDefinitionStructureFinder(FlightInformation flightInformation) throws PWCGException
     {
         this.flightInformation = flightInformation;
     }
 
-    public List<FixedPosition> findTargetStructures() throws PWCGException
+    public List<ScriptedFixedPosition> findTargetStructures() throws PWCGException
     {        
         addTargetStructuresFromMissionBox();
         addTargetStructuresFromNearbyAirfields();
@@ -40,7 +40,7 @@ public class TargetDefinitionStructureFinder
 
     private void addTargetStructuresFromMissionBox() throws PWCGException
     {
-        for (FixedPosition structure : flightInformation.getMission().getMissionBlocks().getStructuresWithinMissionBorders())
+        for (ScriptedFixedPosition structure : flightInformation.getMission().getMissionBlocks().getStructuresWithinMissionBorders())
         {
             ICountry structureCountry = structure.getCountry(flightInformation.getCampaign().getDate());
             if (structureCountry.getSide() == flightInformation.getCountry().getSide().getOppositeSide())

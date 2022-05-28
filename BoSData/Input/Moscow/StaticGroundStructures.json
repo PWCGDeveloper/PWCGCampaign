@@ -1,0 +1,3177 @@
+{
+  "groundObjects": [
+    {
+      "index": 16913,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b11.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 139140.0,
+        "yPos": 0.0,
+        "zPos": 256501.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16914,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b12.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 136142.0,
+        "yPos": 0.0,
+        "zPos": 256388.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16915,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b13.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 133417.0,
+        "yPos": 0.0,
+        "zPos": 256456.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16916,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b21.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 139131.0,
+        "yPos": 0.0,
+        "zPos": 253934.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16917,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b22.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 136132.0,
+        "yPos": 0.0,
+        "zPos": 253942.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16918,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b23.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 133659.0,
+        "yPos": 0.0,
+        "zPos": 253735.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16919,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b24.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 131119.0,
+        "yPos": 0.0,
+        "zPos": 254625.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16920,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b31.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 143506.0,
+        "yPos": 0.0,
+        "zPos": 251544.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16921,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b32.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 141108.0,
+        "yPos": 0.0,
+        "zPos": 251497.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16922,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b33.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 138682.0,
+        "yPos": 0.0,
+        "zPos": 251417.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16923,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b34.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 135960.0,
+        "yPos": 0.0,
+        "zPos": 251392.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16924,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b35.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 133615.0,
+        "yPos": 0.0,
+        "zPos": 251169.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16925,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b36.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 131117.0,
+        "yPos": 0.0,
+        "zPos": 251424.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16926,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b37.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 128490.0,
+        "yPos": 0.0,
+        "zPos": 252083.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16927,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b41.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 141337.0,
+        "yPos": 0.0,
+        "zPos": 248921.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16928,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b42.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 138610.0,
+        "yPos": 0.0,
+        "zPos": 248918.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16929,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b43.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 136120.0,
+        "yPos": 0.0,
+        "zPos": 248893.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16930,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b44.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 133617.0,
+        "yPos": 0.0,
+        "zPos": 248925.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16931,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b45.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 130935.0,
+        "yPos": 0.0,
+        "zPos": 248921.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16932,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b51.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 143734.0,
+        "yPos": 0.0,
+        "zPos": 246404.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16933,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b52.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 141113.0,
+        "yPos": 0.0,
+        "zPos": 246421.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16934,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b53.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 138638.0,
+        "yPos": 0.0,
+        "zPos": 246430.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16935,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b54.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 136149.0,
+        "yPos": 0.0,
+        "zPos": 246455.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16936,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b55.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 133362.0,
+        "yPos": 0.0,
+        "zPos": 246367.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16937,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b56.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 131109.0,
+        "yPos": 0.0,
+        "zPos": 246524.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16938,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b61.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 143637.0,
+        "yPos": 0.0,
+        "zPos": 244678.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16939,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b62.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 141155.0,
+        "yPos": 0.0,
+        "zPos": 244695.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16940,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b64.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 136072.0,
+        "yPos": 0.0,
+        "zPos": 244659.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16941,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b65.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 134067.0,
+        "yPos": 0.0,
+        "zPos": 244672.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16942,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b71.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 143329.0,
+        "yPos": 0.0,
+        "zPos": 243366.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16943,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b72.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 141089.0,
+        "yPos": 0.0,
+        "zPos": 243269.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16944,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b63.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 138684.0,
+        "yPos": 0.0,
+        "zPos": 244740.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 16977,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\b73.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 135016.0,
+        "yPos": 0.0,
+        "zPos": 243361.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17606,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 138672.0,
+        "yPos": 0.0,
+        "zPos": 247026.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17607,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 138293.0,
+        "yPos": 0.0,
+        "zPos": 247113.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17608,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 137326.0,
+        "yPos": 0.0,
+        "zPos": 246160.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17609,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 136951.0,
+        "yPos": 0.0,
+        "zPos": 246058.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17610,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 139678.0,
+        "yPos": 0.0,
+        "zPos": 245580.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17611,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 139300.0,
+        "yPos": 0.0,
+        "zPos": 245668.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17612,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 138272.0,
+        "yPos": 0.0,
+        "zPos": 244657.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17613,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 137889.0,
+        "yPos": 0.0,
+        "zPos": 244591.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17614,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 140936.0,
+        "yPos": 0.0,
+        "zPos": 246620.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17615,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 140557.0,
+        "yPos": 0.0,
+        "zPos": 246707.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17616,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 139979.0,
+        "yPos": 0.0,
+        "zPos": 247956.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17617,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 139600.0,
+        "yPos": 0.0,
+        "zPos": 248043.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17618,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 142124.0,
+        "yPos": 0.0,
+        "zPos": 245370.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17619,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 141745.0,
+        "yPos": 0.0,
+        "zPos": 245457.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17620,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 140589.0,
+        "yPos": 0.0,
+        "zPos": 244496.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17621,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 140206.0,
+        "yPos": 0.0,
+        "zPos": 244430.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17622,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 135647.0,
+        "yPos": 0.0,
+        "zPos": 244701.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17623,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 135272.0,
+        "yPos": 0.0,
+        "zPos": 244599.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17624,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 135540.0,
+        "yPos": 0.0,
+        "zPos": 246934.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17625,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 135162.0,
+        "yPos": 0.0,
+        "zPos": 247022.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17626,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 137178.0,
+        "yPos": 0.0,
+        "zPos": 248221.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17627,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 136799.0,
+        "yPos": 0.0,
+        "zPos": 248308.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17628,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 142267.0,
+        "yPos": 0.0,
+        "zPos": 248421.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17629,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 141888.0,
+        "yPos": 0.0,
+        "zPos": 248508.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17630,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 135654.0,
+        "yPos": 0.0,
+        "zPos": 249126.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17631,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 135275.0,
+        "yPos": 0.0,
+        "zPos": 249213.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17632,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 138631.0,
+        "yPos": 0.0,
+        "zPos": 249035.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17633,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 138248.0,
+        "yPos": 0.0,
+        "zPos": 248969.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17634,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 130633.0,
+        "yPos": 0.0,
+        "zPos": 249861.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17635,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 130254.0,
+        "yPos": 0.0,
+        "zPos": 249948.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17636,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 129288.0,
+        "yPos": 0.0,
+        "zPos": 248995.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17637,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 128913.0,
+        "yPos": 0.0,
+        "zPos": 248893.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17638,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 131640.0,
+        "yPos": 0.0,
+        "zPos": 248415.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17639,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 131261.0,
+        "yPos": 0.0,
+        "zPos": 248503.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17640,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 130234.0,
+        "yPos": 0.0,
+        "zPos": 247492.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17641,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 129850.0,
+        "yPos": 0.0,
+        "zPos": 247426.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17642,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 132898.0,
+        "yPos": 0.0,
+        "zPos": 249455.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17643,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 132519.0,
+        "yPos": 0.0,
+        "zPos": 249542.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17644,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 131941.0,
+        "yPos": 0.0,
+        "zPos": 250792.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17645,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 131562.0,
+        "yPos": 0.0,
+        "zPos": 250879.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17646,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 134086.0,
+        "yPos": 0.0,
+        "zPos": 248205.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17647,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 133707.0,
+        "yPos": 0.0,
+        "zPos": 248292.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17648,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 132551.0,
+        "yPos": 0.0,
+        "zPos": 247331.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17649,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 132168.0,
+        "yPos": 0.0,
+        "zPos": 247265.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17650,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 127609.0,
+        "yPos": 0.0,
+        "zPos": 247536.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17651,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 127234.0,
+        "yPos": 0.0,
+        "zPos": 247435.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17652,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 127502.0,
+        "yPos": 0.0,
+        "zPos": 249769.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17653,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 127123.0,
+        "yPos": 0.0,
+        "zPos": 249857.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17654,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 129139.0,
+        "yPos": 0.0,
+        "zPos": 251057.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17655,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 128761.0,
+        "yPos": 0.0,
+        "zPos": 251144.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17656,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 134228.0,
+        "yPos": 0.0,
+        "zPos": 251256.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17657,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 133850.0,
+        "yPos": 0.0,
+        "zPos": 251343.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17658,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 127616.0,
+        "yPos": 0.0,
+        "zPos": 251961.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17659,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 127237.0,
+        "yPos": 0.0,
+        "zPos": 252048.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17660,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 130593.0,
+        "yPos": 0.0,
+        "zPos": 251870.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17661,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 130210.0,
+        "yPos": 0.0,
+        "zPos": 251804.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17662,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 140156.0,
+        "yPos": 0.0,
+        "zPos": 253091.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17663,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 139777.0,
+        "yPos": 0.0,
+        "zPos": 253178.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17664,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 138811.0,
+        "yPos": 0.0,
+        "zPos": 252225.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17665,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 138436.0,
+        "yPos": 0.0,
+        "zPos": 252123.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17666,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 141163.0,
+        "yPos": 0.0,
+        "zPos": 251645.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17667,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 140784.0,
+        "yPos": 0.0,
+        "zPos": 251733.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17668,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 139756.0,
+        "yPos": 0.0,
+        "zPos": 250722.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17669,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 139373.0,
+        "yPos": 0.0,
+        "zPos": 250656.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17670,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 142420.0,
+        "yPos": 0.0,
+        "zPos": 252686.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17671,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 142041.0,
+        "yPos": 0.0,
+        "zPos": 252773.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17672,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 141463.0,
+        "yPos": 0.0,
+        "zPos": 254022.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17673,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 141085.0,
+        "yPos": 0.0,
+        "zPos": 254109.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17674,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 143608.0,
+        "yPos": 0.0,
+        "zPos": 251435.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17675,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 143230.0,
+        "yPos": 0.0,
+        "zPos": 251523.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17676,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 142073.0,
+        "yPos": 0.0,
+        "zPos": 250561.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17677,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 141690.0,
+        "yPos": 0.0,
+        "zPos": 250495.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17678,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 137131.0,
+        "yPos": 0.0,
+        "zPos": 250767.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17679,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 136756.0,
+        "yPos": 0.0,
+        "zPos": 250665.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17680,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 137025.0,
+        "yPos": 0.0,
+        "zPos": 252999.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17681,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 136646.0,
+        "yPos": 0.0,
+        "zPos": 253087.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17682,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 138662.0,
+        "yPos": 0.0,
+        "zPos": 254287.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17683,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 138283.0,
+        "yPos": 0.0,
+        "zPos": 254374.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17684,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 143751.0,
+        "yPos": 0.0,
+        "zPos": 254486.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17685,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 143372.0,
+        "yPos": 0.0,
+        "zPos": 254574.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17686,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 137138.0,
+        "yPos": 0.0,
+        "zPos": 255191.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17687,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 136760.0,
+        "yPos": 0.0,
+        "zPos": 255279.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17688,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 140115.0,
+        "yPos": 0.0,
+        "zPos": 255100.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17689,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 139732.0,
+        "yPos": 0.0,
+        "zPos": 255034.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17690,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 132118.0,
+        "yPos": 0.0,
+        "zPos": 255926.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17691,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 131739.0,
+        "yPos": 0.0,
+        "zPos": 256013.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17692,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 130772.0,
+        "yPos": 0.0,
+        "zPos": 255060.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17693,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 130397.0,
+        "yPos": 0.0,
+        "zPos": 254958.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17694,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 133124.0,
+        "yPos": 0.0,
+        "zPos": 254480.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17695,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 132746.0,
+        "yPos": 0.0,
+        "zPos": 254568.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17696,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 131718.0,
+        "yPos": 0.0,
+        "zPos": 253557.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17697,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 131335.0,
+        "yPos": 0.0,
+        "zPos": 253491.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17698,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 134382.0,
+        "yPos": 0.0,
+        "zPos": 255521.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17699,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 134003.0,
+        "yPos": 0.0,
+        "zPos": 255608.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17700,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 133425.0,
+        "yPos": 0.0,
+        "zPos": 256857.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17701,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 133046.0,
+        "yPos": 0.0,
+        "zPos": 256944.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17702,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 135570.0,
+        "yPos": 0.0,
+        "zPos": 254270.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17703,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 135191.0,
+        "yPos": 0.0,
+        "zPos": 254358.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17704,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 134035.0,
+        "yPos": 0.0,
+        "zPos": 253396.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17705,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 133652.0,
+        "yPos": 0.0,
+        "zPos": 253330.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17706,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 129093.0,
+        "yPos": 0.0,
+        "zPos": 253602.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17707,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 128718.0,
+        "yPos": 0.0,
+        "zPos": 253500.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17708,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 128986.0,
+        "yPos": 0.0,
+        "zPos": 255835.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17709,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 128608.0,
+        "yPos": 0.0,
+        "zPos": 255922.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17710,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 130624.0,
+        "yPos": 0.0,
+        "zPos": 257122.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17711,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 130245.0,
+        "yPos": 0.0,
+        "zPos": 257209.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17712,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 135713.0,
+        "yPos": 0.0,
+        "zPos": 257321.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17713,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 135334.0,
+        "yPos": 0.0,
+        "zPos": 257409.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17714,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 129100.0,
+        "yPos": 0.0,
+        "zPos": 258026.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17715,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 128721.0,
+        "yPos": 0.0,
+        "zPos": 258114.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17716,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 132077.0,
+        "yPos": 0.0,
+        "zPos": 257935.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17717,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 131694.0,
+        "yPos": 0.0,
+        "zPos": 257869.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17718,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 143658.0,
+        "yPos": 0.0,
+        "zPos": 246747.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17719,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 143279.0,
+        "yPos": 0.0,
+        "zPos": 246835.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17720,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 143879.0,
+        "yPos": 0.0,
+        "zPos": 248978.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17721,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 143501.0,
+        "yPos": 0.0,
+        "zPos": 249066.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17722,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 144912.0,
+        "yPos": 0.0,
+        "zPos": 250760.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17723,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 144533.0,
+        "yPos": 0.0,
+        "zPos": 250847.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17724,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 146100.0,
+        "yPos": 0.0,
+        "zPos": 249510.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17725,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 145721.0,
+        "yPos": 0.0,
+        "zPos": 249597.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17726,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 145228.0,
+        "yPos": 0.0,
+        "zPos": 246316.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17727,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 144845.0,
+        "yPos": 0.0,
+        "zPos": 246251.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17728,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 129092.0,
+        "yPos": 0.0,
+        "zPos": 245587.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17729,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 128716.0,
+        "yPos": 0.0,
+        "zPos": 245486.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17730,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 131804.0,
+        "yPos": 0.0,
+        "zPos": 245508.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17731,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 131429.0,
+        "yPos": 0.0,
+        "zPos": 245406.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17732,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 133566.0,
+        "yPos": 0.0,
+        "zPos": 246241.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17733,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 133187.0,
+        "yPos": 0.0,
+        "zPos": 246329.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17734,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 800",
+      "position": {
+        "xPos": 147418.0,
+        "yPos": 0.0,
+        "zPos": 245173.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17735,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 2900",
+      "position": {
+        "xPos": 147039.0,
+        "yPos": 0.0,
+        "zPos": 245260.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17736,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1000",
+      "position": {
+        "xPos": 143881.0,
+        "yPos": 0.0,
+        "zPos": 244784.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17737,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3100",
+      "position": {
+        "xPos": 143503.0,
+        "yPos": 0.0,
+        "zPos": 244871.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17738,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 1200",
+      "position": {
+        "xPos": 146442.0,
+        "yPos": 0.0,
+        "zPos": 247642.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 17739,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\aerostat.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Aerostat 3300",
+      "position": {
+        "xPos": 146067.0,
+        "yPos": 0.0,
+        "zPos": 247540.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

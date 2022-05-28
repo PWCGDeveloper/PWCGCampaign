@@ -49,7 +49,7 @@ public class BlockDefinitionManager
         return blockDefinitions.get(name.toLowerCase());
     }
 
-    public BlockDefinition getBlockDefinition(FixedPosition fixedPosition)
+    public BlockDefinition getBlockDefinition(ScriptedFixedPosition fixedPosition)
     {
         File script = new File(fixedPosition.getScript());
         String name = script.getName().split("\\.")[0];

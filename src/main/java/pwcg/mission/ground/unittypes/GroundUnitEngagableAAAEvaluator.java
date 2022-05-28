@@ -1,6 +1,6 @@
 package pwcg.mission.ground.unittypes;
 
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -54,7 +54,7 @@ public class GroundUnitEngagableAAAEvaluator
 
     private static boolean isAAAGuardingStructure(Mission mission, IGroundUnit groundUnit) throws PWCGException
     {
-        for (FixedPosition block : mission.getMissionBlocks().getAllStructuresForMission())
+        for (ScriptedFixedPosition block : mission.getMissionBlocks().getAllStructuresForMission())
         {
             if (isCloseEnough(block.getPosition(), groundUnit.getPosition()))
             {

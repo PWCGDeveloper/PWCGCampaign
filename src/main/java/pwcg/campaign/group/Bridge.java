@@ -6,7 +6,7 @@ import java.io.IOException;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
-public class Bridge extends FixedPosition
+public class Bridge extends ScriptedFixedPosition
 {
 	public Bridge()
 	{

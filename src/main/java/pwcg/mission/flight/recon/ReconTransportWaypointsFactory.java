@@ -11,7 +11,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.campaign.group.GroupManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -55,7 +55,7 @@ public class ReconTransportWaypointsFactory
         Side enemySide = flight.getFlightInformation().getCountry().getSide().getOppositeSide();
         ICountry enemycountry = CountryFactory.makeMapReferenceCountry(enemySide);
 
-        List <FixedPosition> allFixedPositionsInRadius = new ArrayList<FixedPosition>();
+        List <ScriptedFixedPosition> allFixedPositionsInRadius = new ArrayList<ScriptedFixedPosition>();
         double maxRadius = 40000.0;
         
         while (allFixedPositionsInRadius.size() <= 2)
@@ -81,15 +81,15 @@ public class ReconTransportWaypointsFactory
             numWaypoints = allFixedPositionsInRadius.size();
         }
         
-        Map<String, FixedPosition> locationsIncluded = new HashMap<String, FixedPosition>();
+        Map<String, ScriptedFixedPosition> locationsIncluded = new HashMap<String, ScriptedFixedPosition>();
 
-        List <FixedPosition> remainingFixedPositions = allFixedPositionsInRadius;
+        List <ScriptedFixedPosition> remainingFixedPositions = allFixedPositionsInRadius;
         Coordinate lastCoord = flight.getTargetDefinition().getPosition().copy();
         for (int i = 0; i < numWaypoints; ++i)
         {
             int index = getNextFixedPosition(remainingFixedPositions, lastCoord, locationsIncluded);
             
-            FixedPosition fixedPosition = remainingFixedPositions.get(index);
+            ScriptedFixedPosition fixedPosition = remainingFixedPositions.get(index);
             McuWaypoint wp = createWP(fixedPosition.getPosition().copy());
             targetWaypoints.add(wp);
 
@@ -108,14 +108,14 @@ public class ReconTransportWaypointsFactory
         return key;
 	}
 
-	private int getNextFixedPosition(List <FixedPosition> remainingFixedPositions, Coordinate lastCoord, Map<String, FixedPosition> locationsIncluded) 
+	private int getNextFixedPosition(List <ScriptedFixedPosition> remainingFixedPositions, Coordinate lastCoord, Map<String, ScriptedFixedPosition> locationsIncluded) 
 	{
 	    int index = 0;
 	    double leastDistance = PositionFinder.ABSURDLY_LARGE_DISTANCE;
 	    
 	    for (int i = 0; i < remainingFixedPositions.size(); ++i)
 	    {
-	        FixedPosition fixedPosition = remainingFixedPositions.get(i);
+	        ScriptedFixedPosition fixedPosition = remainingFixedPositions.get(i);
 	        String locationKey = formLocationKey(fixedPosition.getPosition());
 	        if (!locationsIncluded.containsKey(locationKey))
 	        {

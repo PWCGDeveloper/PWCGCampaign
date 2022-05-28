@@ -11,7 +11,7 @@ import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.Bridge;
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -22,10 +22,10 @@ public class MissionBlockDamageDecorator
     private static final int DISTANCE_TO_FRONT_LINE_FOR_DAMAGE = 20000;
     private static final int SAFE_DISTANCE_TO_AIRFIELD = 3000;
 
-    public List<FixedPosition> setDamageToFixedPositions(List<FixedPosition> fixedPositions, Date date) throws PWCGException
+    public List<ScriptedFixedPosition> setDamageToFixedPositions(List<ScriptedFixedPosition> fixedPositions, Date date) throws PWCGException
     {
-        List<FixedPosition> fixedPositionCloseToFront = new ArrayList<>();
-        for (FixedPosition fixedPosition : fixedPositions)
+        List<ScriptedFixedPosition> fixedPositionCloseToFront = new ArrayList<>();
+        for (ScriptedFixedPosition fixedPosition : fixedPositions)
         {
             if (isCloseToFront(fixedPosition, date))
             {
@@ -43,7 +43,7 @@ public class MissionBlockDamageDecorator
         return fixedPositionCloseToFront;
     }
     
-    private boolean isCloseToFront(FixedPosition fixedPosition,Date date) throws PWCGException
+    private boolean isCloseToFront(ScriptedFixedPosition fixedPosition,Date date) throws PWCGException
     {
         FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
         
@@ -62,7 +62,7 @@ public class MissionBlockDamageDecorator
         return false;
     }
     
-    private boolean isCloseToAirfield(FixedPosition fixedPosition) throws PWCGException
+    private boolean isCloseToAirfield(ScriptedFixedPosition fixedPosition) throws PWCGException
     {
         AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         Airfield field = airfieldManager.getAirfieldFinder().findClosestAirfield(fixedPosition.getPosition());
@@ -75,7 +75,7 @@ public class MissionBlockDamageDecorator
         return false;
     }
 
-    private void damageFixedPositionsCloseToFront(FixedPosition fixedPosition) throws PWCGException
+    private void damageFixedPositionsCloseToFront(ScriptedFixedPosition fixedPosition) throws PWCGException
     {
         Map<Integer, Double> damaged = new HashMap<>();;
         for (int i = 0; i < 10; ++i)

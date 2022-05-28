@@ -7,7 +7,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -32,9 +32,9 @@ public class MissionBlockSmoke
         this.mission = mission;        
     }
     
-    public List<SmokeGroup> addSmokeToDamagedAreas(List<FixedPosition> fixedPositions) throws PWCGException
+    public List<SmokeGroup> addSmokeToDamagedAreas(List<ScriptedFixedPosition> fixedPositions) throws PWCGException
     {                
-        List<FixedPosition> filteredPositions = filterPositions(fixedPositions);
+        List<ScriptedFixedPosition> filteredPositions = filterPositions(fixedPositions);
                 
         ConfigManagerCampaign configManager = mission.getCampaign().getCampaignConfigManager();
         maxSmokingPositions = configManager.getIntConfigParam(ConfigItemKeys.MaxSmokeInMissionKey);
@@ -45,10 +45,10 @@ public class MissionBlockSmoke
         return smokingPositions;
     }
     
-    private  List<FixedPosition> filterPositions(List<FixedPosition> fixedPositions) throws PWCGException 
+    private  List<ScriptedFixedPosition> filterPositions(List<ScriptedFixedPosition> fixedPositions) throws PWCGException 
     {
-        List<FixedPosition> filteredPositions = new ArrayList<>();
-        for (FixedPosition fixedPosition : fixedPositions)
+        List<ScriptedFixedPosition> filteredPositions = new ArrayList<>();
+        for (ScriptedFixedPosition fixedPosition : fixedPositions)
         {
             if (fixedPosition.getName().toLowerCase().contains("bridge"))
             {
@@ -70,7 +70,7 @@ public class MissionBlockSmoke
         return filteredPositions;
     }
 
-    private boolean isNearFront(FixedPosition fixedPosition) throws PWCGException
+    private boolean isNearFront(ScriptedFixedPosition fixedPosition) throws PWCGException
     {
         FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(mission.getCampaign().getDate());
 
@@ -91,7 +91,7 @@ public class MissionBlockSmoke
         return true;
     }
 
-    private boolean isNearAirfield(FixedPosition fixedPosition)
+    private boolean isNearAirfield(ScriptedFixedPosition fixedPosition)
     {
         Airfield airfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getClosestAirfield(fixedPosition.getPosition());
         if (airfield != null)
@@ -106,9 +106,9 @@ public class MissionBlockSmoke
         return false;
     }
 
-    private void smokeNearBattle(List<FixedPosition> fixedPositions) throws PWCGException
+    private void smokeNearBattle(List<ScriptedFixedPosition> fixedPositions) throws PWCGException
     {
-        for (FixedPosition fixedPosition : fixedPositions)
+        for (ScriptedFixedPosition fixedPosition : fixedPositions)
         {
             if (mission.getBattleManager().isNearAnyBattle(fixedPosition.getPosition()))
             {
@@ -117,9 +117,9 @@ public class MissionBlockSmoke
         }
     }
 
-    private void smokeNearPlayer(List<FixedPosition> fixedPositions) throws PWCGException
+    private void smokeNearPlayer(List<ScriptedFixedPosition> fixedPositions) throws PWCGException
     {
-        for (FixedPosition fixedPosition : fixedPositions)
+        for (ScriptedFixedPosition fixedPosition : fixedPositions)
         {
             int roll =  RandomNumberGenerator.getRandom(100);
             if (roll <= 10)

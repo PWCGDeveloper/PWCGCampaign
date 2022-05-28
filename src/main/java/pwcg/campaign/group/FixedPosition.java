@@ -3,8 +3,6 @@ package pwcg.campaign.group;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -13,15 +11,11 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.CountryDesignator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.io.IOConstants;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.mission.ground.building.PwcgBuildingIdentifier;
-import pwcg.mission.ground.building.PwcgStructure;
-import pwcg.mission.mcu.McuTREntity;
 
 public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosition
 {
@@ -29,13 +23,8 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
     protected int linkTrId;
     protected String desc = "";
     protected String model = "";
-    protected String script = "";
-    protected int durability = 1000;
     protected int damageReport = 50;
     protected int damageThreshold = 1;
-    protected int deleteAfterDeath = 0;
-    protected Map<Integer, Double> damaged = new HashMap<>();
-    protected McuTREntity entity = null;
 
     public FixedPosition()
     {
@@ -52,9 +41,7 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         clone.linkTrId = this.linkTrId;
         clone.orientation = this.orientation.copy();
         clone.model = this.model;
-        clone.script = this.script;
         clone.desc = this.desc;
-        clone.durability = this.durability;
         clone.damageReport = this.damageReport;
         clone.damageThreshold = this.damageThreshold;
 
@@ -71,10 +58,6 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
             writer.newLine();
             writer.write("    Model = \"" + model + "\";");
             writer.newLine();
-            writer.write("    Script = \"" + script + "\";");
-            writer.newLine();
-
-            determineCountry().writeAdjusted(writer);
 
             writer.write("    DamageReport = " + damageReport + ";");
             writer.newLine();
@@ -82,16 +65,11 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
             writer.newLine();
             writer.write("    Desc = \"" + desc + "\";");
             writer.newLine();
-            writer.write("    Durability = " + durability + ";");
-            writer.newLine();
             writer.write("    LinkTrId = " + linkTrId + ";");
-            writer.newLine();
-            writer.write("    DeleteAfterDeath = " + deleteAfterDeath + ";");
             writer.newLine();
 
             position.write(writer);
             orientation.write(writer);
-            writeDamaged(writer);
         }
         catch (IOException e)
         {
@@ -114,50 +92,6 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
     public ICountry determineCountryOnDate(Date date) throws PWCGException
     {
         return CountryDesignator.determineCountry(position, date);
-    }
-
-    public void buildEntity()
-    {
-        entity = new McuTREntity(index);
-        linkTrId = entity.getIndex();
-        
-        entity.setPosition(position.copy());
-        entity.setOrientation(orientation.copy());
-        entity.enableEntity();
-        
-        setEntityName();
-    }
-
-    private void setEntityName()
-    {
-        if (PwcgBuildingIdentifier.identifyBuilding(model) == PwcgStructure.BRIDGE)
-        {
-            entity.setName("Bridge entity");
-        }
-        else
-        {
-            entity.setName("Block entity");
-        }
-    }
-
-    private void writeDamaged(BufferedWriter writer) throws IOException
-    {
-        if (damaged.size() > 0)
-        {
-            writer.write("  " + IOConstants.DAMAGED);
-            writer.newLine();
-            writer.write("  {");
-            writer.newLine();
-            for (Integer damageItemId : damaged.keySet())
-            {
-                String damageEntry = String.format("        %d = 0.6;", damageItemId);
-                writer.write(damageEntry);
-                writer.newLine();
-            }
-
-            writer.write("  }");
-            writer.newLine();
-        }
     }
 
     public ICountry getCountry(Date date) throws PWCGException
@@ -216,26 +150,6 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         this.model = model;
     }
 
-    public String getScript()
-    {
-        return script;
-    }
-
-    public void setScript(String script)
-    {
-        this.script = script;
-    }
-
-    public int getDurability()
-    {
-        return durability;
-    }
-
-    public void setDurability(int durability)
-    {
-        this.durability = durability;
-    }
-
     public int getDamageReport()
     {
         return damageReport;
@@ -254,25 +168,5 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
     public void setDamageThreshold(int damageThreshold)
     {
         this.damageThreshold = damageThreshold;
-    }
-
-    public int getDeleteAfterDeath()
-    {
-        return deleteAfterDeath;
-    }
-
-    public void setDeleteAfterDeath(int deleteAfterDeath)
-    {
-        this.deleteAfterDeath = deleteAfterDeath;
-    }
-
-    public Map<Integer, Double> getDamaged()
-    {
-        return damaged;
-    }
-
-    public void setDamaged(Map<Integer, Double> damaged)
-    {
-        this.damaged = damaged;
     }
 }

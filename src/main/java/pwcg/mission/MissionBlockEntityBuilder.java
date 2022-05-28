@@ -3,7 +3,7 @@ package pwcg.mission;
 import java.util.List;
 
 import pwcg.campaign.group.Bridge;
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
@@ -22,7 +22,7 @@ public class MissionBlockEntityBuilder
     public void buildEntitiesForTargetStructures(MissionBlocks missionBlocks) throws PWCGException
     {
         List<Coordinate> missionTargetCoordiinates = mission.getFlights().getTargetCoordinatesForPlayerFlights();
-        for (FixedPosition structure : missionBlocks.getAllStructuresForMission())
+        for (ScriptedFixedPosition structure : missionBlocks.getAllStructuresForMission())
         {
             if (isNearTarget(structure, missionTargetCoordiinates))
             {
@@ -34,7 +34,7 @@ public class MissionBlockEntityBuilder
         }
     }
 
-    private boolean isNearTarget(FixedPosition structure, List<Coordinate> missionTargetCoordiinates) throws PWCGException
+    private boolean isNearTarget(ScriptedFixedPosition structure, List<Coordinate> missionTargetCoordiinates) throws PWCGException
     {
         List<Coordinate> nearbyTargetLocations = Coordinate.findWithinRadius(missionTargetCoordiinates, structure.getPosition(), 7000.0);
         if (nearbyTargetLocations.size() > 0)
@@ -45,7 +45,7 @@ public class MissionBlockEntityBuilder
     }
     
     
-    private boolean isBuildEntity(FixedPosition structure) throws PWCGException
+    private boolean isBuildEntity(ScriptedFixedPosition structure) throws PWCGException
     {
         if (structure.determineCountry().isNeutral())
         {

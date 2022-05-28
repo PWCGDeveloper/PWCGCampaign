@@ -40,9 +40,9 @@ public class GroupManager
         townFinder = new TownFinder(townLocations);
 	}
 
-    public List<FixedPosition> getAllFixedPosition() 
+    public List<ScriptedFixedPosition> getAllFixedPosition() 
     {
-        List<FixedPosition>fixedPositions = new ArrayList<FixedPosition>();
+        List<ScriptedFixedPosition>fixedPositions = new ArrayList<ScriptedFixedPosition>();
         fixedPositions.addAll(groundStructureGroup.getRailroadStations());
         fixedPositions.addAll(groundStructureGroup.getBridges());
         return fixedPositions;
@@ -61,6 +61,11 @@ public class GroupManager
     public List<Block> getAirfieldBlocks() 
     {
         return groundStructureGroup.getAirfieldBlocks();
+    }
+
+    public List<NonScriptedBlock> getNonScriptedBlocks() 
+    {
+        return groundStructureGroup.getNonScriptedGround();
     }
 
     public LocationSet getTownLocations()

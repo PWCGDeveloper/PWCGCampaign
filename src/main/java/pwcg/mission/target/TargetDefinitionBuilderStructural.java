@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
@@ -26,8 +26,8 @@ public class TargetDefinitionBuilderStructural
     public List<TargetDefinition> findTargetStructures() throws PWCGException
     {
         TargetDefinitionStructureFinder targetDefinitionStructureFinder = new TargetDefinitionStructureFinder(flightInformation);
-        List<FixedPosition> targetStructures = targetDefinitionStructureFinder.findTargetStructures();
-        for (FixedPosition structure : targetStructures)
+        List<ScriptedFixedPosition> targetStructures = targetDefinitionStructureFinder.findTargetStructures();
+        for (ScriptedFixedPosition structure : targetStructures)
         {
             ICountry structureCountry = structure.getCountry(flightInformation.getCampaign().getDate());
             if (structureCountry.getSide() == flightInformation.getCountry().getSide().getOppositeSide())
@@ -43,7 +43,7 @@ public class TargetDefinitionBuilderStructural
         return targetDefinitions;
     }
 
-    private boolean includeBuilding(FixedPosition structure, PwcgStructure building)
+    private boolean includeBuilding(ScriptedFixedPosition structure, PwcgStructure building)
     {
         if (building == PwcgStructure.CHURCH            || 
             building == PwcgStructure.STATIC_VEHICLE    || 
@@ -64,7 +64,7 @@ public class TargetDefinitionBuilderStructural
         return true;
     }
 
-    private boolean isValidTargetStructureForAirfield(FixedPosition structure, PwcgStructure building)
+    private boolean isValidTargetStructureForAirfield(ScriptedFixedPosition structure, PwcgStructure building)
     {
         boolean isvalidAirfield = true;
 
@@ -85,7 +85,7 @@ public class TargetDefinitionBuilderStructural
         return isvalidAirfield;
     }
     
-    private Airfield getAirfieldForBuildingStructure(FixedPosition structure, PwcgStructure building)
+    private Airfield getAirfieldForBuildingStructure(ScriptedFixedPosition structure, PwcgStructure building)
     {
         if (building.toTargetType() == TargetType.TARGET_AIRFIELD)
         {
@@ -95,14 +95,14 @@ public class TargetDefinitionBuilderStructural
         return null;
     }
 
-    private void createTargetDefinitionFromStructures(FixedPosition structure, TargetType targetType, PwcgStructure building) throws PWCGException
+    private void createTargetDefinitionFromStructures(ScriptedFixedPosition structure, TargetType targetType, PwcgStructure building) throws PWCGException
     {
         String targetName = buildTargetName(structure, building);
         TargetDefinition targetDefinition = new TargetDefinition(targetType, structure.getPosition().copy(), structure.getCountry(flightInformation.getCampaign().getDate()), targetName);
         targetDefinitions.add(targetDefinition);
     }
     
-    private String buildTargetName(FixedPosition structure, PwcgStructure building)
+    private String buildTargetName(ScriptedFixedPosition structure, PwcgStructure building)
     {
         Airfield airfield = getAirfieldForBuildingStructure(structure, building);
         if (airfield != null)

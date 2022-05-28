@@ -6,7 +6,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.Block;
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
@@ -32,7 +32,7 @@ public class MissionBlockBuilderTest
         mission.finalizeMission();
         
         boolean airfieldStructuresFound = false;
-        for (FixedPosition blockForPatrol : mission.getMissionBlocks().getAllStructuresForMission())
+        for (ScriptedFixedPosition blockForPatrol : mission.getMissionBlocks().getAllStructuresForMission())
         {
             if (blockForPatrol instanceof Block)
             {

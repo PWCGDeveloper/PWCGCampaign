@@ -44,7 +44,7 @@ public class Ju88C6Payload extends PlanePayload
     
     protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        int selectedPayloadId = 1;
+        int selectedPayloadId = 2;
         if (flight.getFlightType() == FlightTypes.TRAIN_BUST)
         {
             selectedPayloadId = 6;
@@ -66,7 +66,7 @@ public class Ju88C6Payload extends PlanePayload
 
     private int selectGroundAttackPayload(IFlight flight)
     {
-        int selectedPayloadId = 1;
+        int selectedPayloadId = 2;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
             selectedPayloadId = 2;

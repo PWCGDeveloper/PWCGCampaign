@@ -9,7 +9,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
-import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjectPlacer;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjects;
@@ -27,7 +27,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.vehicle.IVehicle;
 
-public class Airfield extends FixedPosition implements Cloneable
+public class Airfield extends ScriptedFixedPosition implements Cloneable
 {
     private List<Runway> runways = new ArrayList<>();
     private AirfieldObjects airfieldObjects;

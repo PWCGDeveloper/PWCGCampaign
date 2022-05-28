@@ -6,10 +6,10 @@ import java.io.IOException;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
-public class Block extends ScriptedFixedPosition
+public class NonScriptedBlock extends FixedPosition
 {	
 
-    public Block()
+    public NonScriptedBlock()
     {
         super();
     }
@@ -18,7 +18,7 @@ public class Block extends ScriptedFixedPosition
 	{
         try
         {            
-    		writer.write("Block");
+    		writer.write("Ground");
     		writer.newLine();
     		writer.write("{");
     		writer.newLine();
@@ -28,11 +28,6 @@ public class Block extends ScriptedFixedPosition
     		writer.write("}");
     		writer.newLine();
     		writer.newLine();
-    		
-    		if (entity != null)
-    		{
-                entity.write(writer);
-    		}
         }
         catch (IOException e)
         {

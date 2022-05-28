@@ -1,0 +1,5058 @@
+{
+  "groundObjects": [
+    {
+      "index": 100057,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 319090.0,
+        "yPos": 0.0,
+        "zPos": 128535.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 214.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100058,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317987.0,
+        "yPos": 0.0,
+        "zPos": 129534.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 165.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100059,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317634.0,
+        "yPos": 0.0,
+        "zPos": 131393.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 121.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100060,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318741.0,
+        "yPos": 0.0,
+        "zPos": 129233.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 143.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100061,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_45_ex.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318470.0,
+        "yPos": 0.0,
+        "zPos": 129407.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 284.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100062,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318418.0,
+        "yPos": 0.0,
+        "zPos": 129337.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 240.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100063,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318363.0,
+        "yPos": 0.0,
+        "zPos": 129177.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 40.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100064,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 319659.0,
+        "yPos": 0.0,
+        "zPos": 128004.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 103.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100065,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 319493.0,
+        "yPos": 0.0,
+        "zPos": 128085.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 203.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100066,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318549.0,
+        "yPos": 0.0,
+        "zPos": 129372.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 150.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100067,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318636.0,
+        "yPos": 0.0,
+        "zPos": 129323.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 150.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100068,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318364.0,
+        "yPos": 0.0,
+        "zPos": 129254.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 234.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100069,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 319010.0,
+        "yPos": 0.0,
+        "zPos": 128574.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 308.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100070,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318039.0,
+        "yPos": 0.0,
+        "zPos": 130972.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 131.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100071,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318291.0,
+        "yPos": 0.0,
+        "zPos": 130723.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 133.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100072,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318427.0,
+        "yPos": 0.0,
+        "zPos": 130578.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 133.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100073,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318473.0,
+        "yPos": 0.0,
+        "zPos": 130529.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 133.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100074,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317460.0,
+        "yPos": 0.0,
+        "zPos": 131178.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 304.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100075,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317290.0,
+        "yPos": 0.0,
+        "zPos": 131424.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 304.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100076,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x80.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 316963.0,
+        "yPos": 0.0,
+        "zPos": 130048.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 16.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100077,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 316952.0,
+        "yPos": 0.0,
+        "zPos": 130142.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 287.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100078,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 319039.0,
+        "yPos": 0.0,
+        "zPos": 128430.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 34.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100079,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x200.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318403.0,
+        "yPos": 0.0,
+        "zPos": 129016.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100080,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 318526.0,
+        "yPos": 0.0,
+        "zPos": 128896.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100081,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317964.0,
+        "yPos": 0.0,
+        "zPos": 130646.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 310.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100082,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall500.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 314060.0,
+        "yPos": 0.0,
+        "zPos": 133115.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100083,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 315887.0,
+        "yPos": 0.0,
+        "zPos": 131505.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 322.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100084,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall200.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 315805.0,
+        "yPos": 0.0,
+        "zPos": 131549.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 316.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100085,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 314966.0,
+        "yPos": 0.0,
+        "zPos": 131435.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100086,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x80.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 314886.0,
+        "yPos": 0.0,
+        "zPos": 131541.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 44.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100087,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 314826.0,
+        "yPos": 0.0,
+        "zPos": 131551.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 44.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100088,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 314838.0,
+        "yPos": 0.0,
+        "zPos": 131529.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 133.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100089,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 314961.0,
+        "yPos": 0.0,
+        "zPos": 131409.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 315.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100090,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317016.0,
+        "yPos": 0.0,
+        "zPos": 131038.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 269.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100091,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x80.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 316840.0,
+        "yPos": 0.0,
+        "zPos": 131025.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 267.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100092,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 316891.0,
+        "yPos": 0.0,
+        "zPos": 131059.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 267.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100093,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 316866.0,
+        "yPos": 0.0,
+        "zPos": 131067.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 357.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100094,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317002.0,
+        "yPos": 0.0,
+        "zPos": 131060.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 179.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100095,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 315098.0,
+        "yPos": 0.0,
+        "zPos": 131363.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100096,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317666.0,
+        "yPos": 0.0,
+        "zPos": 129663.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 71.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100097,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x80.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317544.0,
+        "yPos": 0.0,
+        "zPos": 129716.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 73.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100098,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317486.0,
+        "yPos": 0.0,
+        "zPos": 129696.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 72.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100099,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317508.0,
+        "yPos": 0.0,
+        "zPos": 129683.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 162.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100100,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317673.0,
+        "yPos": 0.0,
+        "zPos": 129637.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100101,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 314613.0,
+        "yPos": 0.0,
+        "zPos": 134415.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 81.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100102,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 316045.0,
+        "yPos": 0.0,
+        "zPos": 128340.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 135.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100103,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 314569.0,
+        "yPos": 0.0,
+        "zPos": 134118.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 81.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100104,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 314120.0,
+        "yPos": 0.0,
+        "zPos": 134018.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 271.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100105,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 314113.0,
+        "yPos": 0.0,
+        "zPos": 134318.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 271.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100106,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 317313.0,
+        "yPos": 0.0,
+        "zPos": 131200.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 124.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100107,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 325317.0,
+        "yPos": 0.0,
+        "zPos": 108615.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 299.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100108,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 325463.0,
+        "yPos": 0.0,
+        "zPos": 108354.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 299.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100109,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 325610.0,
+        "yPos": 0.0,
+        "zPos": 108093.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 299.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100110,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 325795.0,
+        "yPos": 0.0,
+        "zPos": 107892.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 326.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100111,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 325642.0,
+        "yPos": 0.0,
+        "zPos": 108994.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 271.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100112,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 326298.0,
+        "yPos": 0.0,
+        "zPos": 108048.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 68.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100113,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 326340.0,
+        "yPos": 0.0,
+        "zPos": 108327.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 94.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100114,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 326322.0,
+        "yPos": 0.0,
+        "zPos": 108608.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 273.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100115,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 286512.0,
+        "yPos": 0.0,
+        "zPos": 86408.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 224.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100116,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_radial_500_ex.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 286684.0,
+        "yPos": 0.0,
+        "zPos": 85548.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 330.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100117,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 286491.0,
+        "yPos": 0.0,
+        "zPos": 85698.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 320.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100118,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 286675.0,
+        "yPos": 0.0,
+        "zPos": 85895.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 301.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100119,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 286204.0,
+        "yPos": 0.0,
+        "zPos": 86007.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 277.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100120,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263444.0,
+        "yPos": 0.0,
+        "zPos": 99475.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 114.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100121,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 264033.0,
+        "yPos": 0.0,
+        "zPos": 100401.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 234.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100122,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263469.0,
+        "yPos": 0.0,
+        "zPos": 96562.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 247.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100123,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262144.0,
+        "yPos": 0.0,
+        "zPos": 97652.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 289.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100124,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262569.0,
+        "yPos": 0.0,
+        "zPos": 97513.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 289.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100125,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263155.0,
+        "yPos": 0.0,
+        "zPos": 97753.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 289.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100126,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263953.0,
+        "yPos": 0.0,
+        "zPos": 98281.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 257.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100127,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263887.0,
+        "yPos": 0.0,
+        "zPos": 97989.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 257.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100128,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 266243.0,
+        "yPos": 0.0,
+        "zPos": 100278.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 107.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100129,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 266184.0,
+        "yPos": 0.0,
+        "zPos": 100468.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 107.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100130,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263223.0,
+        "yPos": 0.0,
+        "zPos": 98406.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100131,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263148.0,
+        "yPos": 0.0,
+        "zPos": 98405.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100132,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x200.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262646.0,
+        "yPos": 0.0,
+        "zPos": 97666.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 291.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100133,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262836.0,
+        "yPos": 0.0,
+        "zPos": 96575.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 246.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100134,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262597.0,
+        "yPos": 0.0,
+        "zPos": 96894.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 246.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100135,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce80x150.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263266.0,
+        "yPos": 0.0,
+        "zPos": 96053.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 66.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100136,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce80x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262113.0,
+        "yPos": 0.0,
+        "zPos": 96688.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 67.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100137,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce80x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262932.0,
+        "yPos": 0.0,
+        "zPos": 94129.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 107.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100138,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263960.0,
+        "yPos": 0.0,
+        "zPos": 94385.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 359.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100139,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263960.0,
+        "yPos": 0.0,
+        "zPos": 94417.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 179.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100140,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_30.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263916.0,
+        "yPos": 0.0,
+        "zPos": 94400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 269.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100141,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263225.0,
+        "yPos": 0.0,
+        "zPos": 94632.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 157.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100142,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262990.0,
+        "yPos": 0.0,
+        "zPos": 94871.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 111.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100143,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_135_in.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263058.0,
+        "yPos": 0.0,
+        "zPos": 94703.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 247.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100144,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262881.0,
+        "yPos": 0.0,
+        "zPos": 95149.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 111.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100145,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263321.0,
+        "yPos": 0.0,
+        "zPos": 94431.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 75.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100146,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263463.0,
+        "yPos": 0.0,
+        "zPos": 94854.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 68.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100147,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_90_ex.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263398.0,
+        "yPos": 0.0,
+        "zPos": 94697.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 69.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100148,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263538.0,
+        "yPos": 0.0,
+        "zPos": 95039.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 67.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100149,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263575.0,
+        "yPos": 0.0,
+        "zPos": 95131.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 67.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100150,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263331.0,
+        "yPos": 0.0,
+        "zPos": 94721.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 337.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100151,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263240.0,
+        "yPos": 0.0,
+        "zPos": 94760.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 337.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100152,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 264803.0,
+        "yPos": 0.0,
+        "zPos": 96045.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 33.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100153,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 264802.0,
+        "yPos": 0.0,
+        "zPos": 95708.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100154,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 264231.0,
+        "yPos": 0.0,
+        "zPos": 96244.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100155,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 264251.0,
+        "yPos": 0.0,
+        "zPos": 93635.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 121.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100156,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263919.0,
+        "yPos": 0.0,
+        "zPos": 94038.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 178.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100157,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 264093.0,
+        "yPos": 0.0,
+        "zPos": 93889.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 121.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100158,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_135_ex.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263996.0,
+        "yPos": 0.0,
+        "zPos": 94036.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 223.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100159,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 264352.0,
+        "yPos": 0.0,
+        "zPos": 94160.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 314.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100160,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_90cor_ex.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 264310.0,
+        "yPos": 0.0,
+        "zPos": 94199.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 315.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100161,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 264276.0,
+        "yPos": 0.0,
+        "zPos": 94168.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 44.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100162,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262380.0,
+        "yPos": 0.0,
+        "zPos": 90243.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 219.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100163,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262717.0,
+        "yPos": 0.0,
+        "zPos": 90401.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 171.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100164,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262942.0,
+        "yPos": 0.0,
+        "zPos": 90368.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 171.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100165,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 261877.0,
+        "yPos": 0.0,
+        "zPos": 90520.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 172.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100166,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 262171.0,
+        "yPos": 0.0,
+        "zPos": 90480.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 172.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100167,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x200.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 263576.0,
+        "yPos": 0.0,
+        "zPos": 95813.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 357.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100168,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 254210.0,
+        "yPos": 0.0,
+        "zPos": 132003.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 108.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100169,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 254055.0,
+        "yPos": 0.0,
+        "zPos": 132731.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100170,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_promenade100x50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 254030.0,
+        "yPos": 0.0,
+        "zPos": 132435.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 103.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100171,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_promenade100x50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 254007.0,
+        "yPos": 0.0,
+        "zPos": 132531.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 103.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100172,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_promenade100x50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 254132.0,
+        "yPos": 0.0,
+        "zPos": 132168.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 315.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100173,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_promenade100x50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 254089.0,
+        "yPos": 0.0,
+        "zPos": 132241.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 286.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100174,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_promenade100x50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 253972.0,
+        "yPos": 0.0,
+        "zPos": 132617.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 297.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100175,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 229279.0,
+        "yPos": 0.0,
+        "zPos": 118126.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 306.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100176,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_45_in.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 229159.0,
+        "yPos": 0.0,
+        "zPos": 118272.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 81.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100177,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_45_in.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 229112.0,
+        "yPos": 0.0,
+        "zPos": 118238.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 171.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100178,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 229159.0,
+        "yPos": 0.0,
+        "zPos": 118159.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 125.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100179,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 229217.0,
+        "yPos": 0.0,
+        "zPos": 118079.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 125.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100180,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 227621.0,
+        "yPos": 0.0,
+        "zPos": 119364.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 33.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100181,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 226860.0,
+        "yPos": 0.0,
+        "zPos": 118486.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 195.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100182,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 226765.0,
+        "yPos": 0.0,
+        "zPos": 118458.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 195.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100183,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 193522.0,
+        "yPos": 0.0,
+        "zPos": 87411.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 313.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100184,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192649.0,
+        "yPos": 0.0,
+        "zPos": 88280.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 92.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100185,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192359.0,
+        "yPos": 0.0,
+        "zPos": 88375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 272.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100186,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192347.0,
+        "yPos": 0.0,
+        "zPos": 88675.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 272.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100187,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192335.0,
+        "yPos": 0.0,
+        "zPos": 88973.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 272.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100188,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192323.0,
+        "yPos": 0.0,
+        "zPos": 89263.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 272.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100189,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192149.0,
+        "yPos": 0.0,
+        "zPos": 89459.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100190,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_45_in.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192308.0,
+        "yPos": 0.0,
+        "zPos": 89453.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100191,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_90_ex.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192369.0,
+        "yPos": 0.0,
+        "zPos": 88131.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100192,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_30.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192365.0,
+        "yPos": 0.0,
+        "zPos": 88212.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 271.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100193,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192366.0,
+        "yPos": 0.0,
+        "zPos": 88172.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100194,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192415.0,
+        "yPos": 0.0,
+        "zPos": 88129.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100195,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192161.0,
+        "yPos": 0.0,
+        "zPos": 91296.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 273.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100196,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 192143.0,
+        "yPos": 0.0,
+        "zPos": 91595.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 273.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100197,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189940.0,
+        "yPos": 0.0,
+        "zPos": 91689.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 91.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100198,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189312.0,
+        "yPos": 0.0,
+        "zPos": 91030.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 271.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100199,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190481.0,
+        "yPos": 0.0,
+        "zPos": 94221.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 341.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100200,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190139.0,
+        "yPos": 0.0,
+        "zPos": 94336.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 341.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100201,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_90cor_in.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189984.0,
+        "yPos": 0.0,
+        "zPos": 94387.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 341.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100202,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_90cor_ex.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190623.0,
+        "yPos": 0.0,
+        "zPos": 94171.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 252.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100203,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_90cor_ex.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190603.0,
+        "yPos": 0.0,
+        "zPos": 94111.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 161.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100204,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_30.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190617.0,
+        "yPos": 0.0,
+        "zPos": 94144.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 252.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100205,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190308.0,
+        "yPos": 0.0,
+        "zPos": 94279.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 340.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100206,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_90_ex.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190319.0,
+        "yPos": 0.0,
+        "zPos": 94201.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 251.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100207,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190467.0,
+        "yPos": 0.0,
+        "zPos": 94154.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 161.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100208,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_90_in.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190267.0,
+        "yPos": 0.0,
+        "zPos": 94066.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 162.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100209,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_90_in.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190220.0,
+        "yPos": 0.0,
+        "zPos": 94082.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 70.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100210,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190005.0,
+        "yPos": 0.0,
+        "zPos": 94458.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 254.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100211,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_30.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190241.0,
+        "yPos": 0.0,
+        "zPos": 94069.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 162.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100212,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190295.0,
+        "yPos": 0.0,
+        "zPos": 94134.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 252.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100213,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_30.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190281.0,
+        "yPos": 0.0,
+        "zPos": 94092.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 251.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100214,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189639.0,
+        "yPos": 0.0,
+        "zPos": 92131.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100215,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190138.0,
+        "yPos": 0.0,
+        "zPos": 92151.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100216,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189939.0,
+        "yPos": 0.0,
+        "zPos": 92143.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100217,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190116.0,
+        "yPos": 0.0,
+        "zPos": 91814.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 272.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100218,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189495.0,
+        "yPos": 0.0,
+        "zPos": 92080.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 92.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100219,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 190125.0,
+        "yPos": 0.0,
+        "zPos": 91582.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 272.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100220,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189638.0,
+        "yPos": 0.0,
+        "zPos": 91321.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100221,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189870.0,
+        "yPos": 0.0,
+        "zPos": 91330.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100222,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189727.0,
+        "yPos": 0.0,
+        "zPos": 93120.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 315.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100223,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189453.0,
+        "yPos": 0.0,
+        "zPos": 93344.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 322.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100224,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189775.0,
+        "yPos": 0.0,
+        "zPos": 92941.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 230.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100225,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 189264.0,
+        "yPos": 0.0,
+        "zPos": 93487.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 322.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100226,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 191913.0,
+        "yPos": 0.0,
+        "zPos": 91347.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 93.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100227,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce80x150.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 200202.0,
+        "yPos": 0.0,
+        "zPos": 51637.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 350.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100228,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce80x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 200828.0,
+        "yPos": 0.0,
+        "zPos": 51680.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 128.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100229,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 199370.0,
+        "yPos": 0.0,
+        "zPos": 51882.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 141.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100230,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 199547.0,
+        "yPos": 0.0,
+        "zPos": 51984.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 321.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100231,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 199369.0,
+        "yPos": 0.0,
+        "zPos": 52125.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 321.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100232,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 200352.0,
+        "yPos": 0.0,
+        "zPos": 51741.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 67.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100233,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_45_in.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 199191.0,
+        "yPos": 0.0,
+        "zPos": 52256.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 95.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100234,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_30.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 199240.0,
+        "yPos": 0.0,
+        "zPos": 52228.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 321.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100235,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 199128.0,
+        "yPos": 0.0,
+        "zPos": 52192.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 50.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100236,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 203658.0,
+        "yPos": 0.0,
+        "zPos": 51629.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 165.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100237,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 203851.0,
+        "yPos": 0.0,
+        "zPos": 51581.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 165.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100238,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_135_ex.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 203925.0,
+        "yPos": 0.0,
+        "zPos": 51560.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 205.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100239,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 203945.0,
+        "yPos": 0.0,
+        "zPos": 51491.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 101.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100240,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 175585.0,
+        "yPos": 0.0,
+        "zPos": 43678.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 115.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100241,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 175023.0,
+        "yPos": 0.0,
+        "zPos": 43691.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 114.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100242,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 177694.0,
+        "yPos": 0.0,
+        "zPos": 43646.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100243,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 177869.0,
+        "yPos": 0.0,
+        "zPos": 43743.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100244,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 177623.0,
+        "yPos": 0.0,
+        "zPos": 43955.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 158.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100245,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 177345.0,
+        "yPos": 0.0,
+        "zPos": 44066.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 158.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100246,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 177798.0,
+        "yPos": 0.0,
+        "zPos": 43867.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 138.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100247,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 177871.0,
+        "yPos": 0.0,
+        "zPos": 43801.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 138.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100248,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 176504.0,
+        "yPos": 0.0,
+        "zPos": 43631.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 294.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100249,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 149558.0,
+        "yPos": 0.0,
+        "zPos": 85877.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 29.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100250,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 149297.0,
+        "yPos": 0.0,
+        "zPos": 85731.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 29.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100251,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 149123.0,
+        "yPos": 0.0,
+        "zPos": 85633.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 29.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100252,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 149287.0,
+        "yPos": 0.0,
+        "zPos": 85552.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 209.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100253,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 149547.0,
+        "yPos": 0.0,
+        "zPos": 85700.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 209.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100254,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 149721.0,
+        "yPos": 0.0,
+        "zPos": 85798.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 209.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100255,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 149070.0,
+        "yPos": 0.0,
+        "zPos": 85429.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 209.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100256,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 144810.0,
+        "yPos": 0.0,
+        "zPos": 82070.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 218.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100257,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 145042.0,
+        "yPos": 0.0,
+        "zPos": 82257.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 218.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100258,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 145252.0,
+        "yPos": 0.0,
+        "zPos": 82426.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 218.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100259,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 145187.0,
+        "yPos": 0.0,
+        "zPos": 82497.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 38.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100260,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 144954.0,
+        "yPos": 0.0,
+        "zPos": 82311.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 38.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100261,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 144743.0,
+        "yPos": 0.0,
+        "zPos": 82143.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 38.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100262,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 98491.0,
+        "yPos": 0.0,
+        "zPos": 87773.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 112.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100263,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 59074.0,
+        "yPos": 0.0,
+        "zPos": 393368.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 61.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100264,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 59176.0,
+        "yPos": 0.0,
+        "zPos": 393560.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 61.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100265,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x200.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 48015.0,
+        "yPos": 0.0,
+        "zPos": 360731.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 310.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100266,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 48695.0,
+        "yPos": 0.0,
+        "zPos": 360250.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 132.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100267,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x200.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 48146.0,
+        "yPos": 0.0,
+        "zPos": 360580.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 310.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100268,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 48375.0,
+        "yPos": 0.0,
+        "zPos": 360317.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 310.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100269,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x200.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 48277.0,
+        "yPos": 0.0,
+        "zPos": 360430.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 310.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100270,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 48962.0,
+        "yPos": 0.0,
+        "zPos": 359975.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 132.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100271,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 48493.0,
+        "yPos": 0.0,
+        "zPos": 360472.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 132.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100272,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x200.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 87034.0,
+        "yPos": 0.0,
+        "zPos": 313438.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 92.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100273,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce20x100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 87074.0,
+        "yPos": 0.0,
+        "zPos": 313762.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 64.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100274,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall200.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 86784.0,
+        "yPos": 0.0,
+        "zPos": 313079.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 359.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100275,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 86794.0,
+        "yPos": 0.0,
+        "zPos": 313329.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 356.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100276,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 86953.0,
+        "yPos": 0.0,
+        "zPos": 313920.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 330.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100277,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall200.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 86822.0,
+        "yPos": 0.0,
+        "zPos": 313578.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 349.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100278,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 86845.0,
+        "yPos": 0.0,
+        "zPos": 313696.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 76.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100279,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 153013.0,
+        "yPos": 0.0,
+        "zPos": 270788.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100280,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 156215.0,
+        "yPos": 0.0,
+        "zPos": 269969.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 309.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100281,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 149281.0,
+        "yPos": 0.0,
+        "zPos": 270314.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 149.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100282,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 149538.0,
+        "yPos": 0.0,
+        "zPos": 270163.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 149.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100283,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 153350.0,
+        "yPos": 0.0,
+        "zPos": 271037.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 236.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100284,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 153273.0,
+        "yPos": 0.0,
+        "zPos": 270920.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 236.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100285,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 153197.0,
+        "yPos": 0.0,
+        "zPos": 270804.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 236.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100286,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 153120.0,
+        "yPos": 0.0,
+        "zPos": 270688.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 236.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100287,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 150043.0,
+        "yPos": 0.0,
+        "zPos": 269373.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 348.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100288,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 182345.0,
+        "yPos": 0.0,
+        "zPos": 254866.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 222.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100289,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 182272.0,
+        "yPos": 0.0,
+        "zPos": 254347.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 205.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100290,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 182146.0,
+        "yPos": 0.0,
+        "zPos": 254286.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 205.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100291,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 182799.0,
+        "yPos": 0.0,
+        "zPos": 254626.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 294.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100292,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 182676.0,
+        "yPos": 0.0,
+        "zPos": 254899.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 294.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100293,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 182583.0,
+        "yPos": 0.0,
+        "zPos": 255392.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 70.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100294,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 230771.0,
+        "yPos": 0.0,
+        "zPos": 245622.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 306.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100295,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 230592.0,
+        "yPos": 0.0,
+        "zPos": 245863.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 306.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100296,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 251267.0,
+        "yPos": 0.0,
+        "zPos": 221508.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 234.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100297,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 251349.0,
+        "yPos": 0.0,
+        "zPos": 221621.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 234.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100298,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_pierce140x400.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 254498.0,
+        "yPos": 0.0,
+        "zPos": 194133.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 296.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100299,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 254215.0,
+        "yPos": 0.0,
+        "zPos": 195164.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 282.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100300,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 144861.0,
+        "yPos": 0.0,
+        "zPos": 179557.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 304.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100301,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 144699.0,
+        "yPos": 0.0,
+        "zPos": 179801.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 101.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100302,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 144756.0,
+        "yPos": 0.0,
+        "zPos": 179614.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 124.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100303,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 144767.0,
+        "yPos": 0.0,
+        "zPos": 179727.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 281.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100304,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 145273.0,
+        "yPos": 0.0,
+        "zPos": 179317.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 302.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100305,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 145155.0,
+        "yPos": 0.0,
+        "zPos": 179422.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100306,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 145134.0,
+        "yPos": 0.0,
+        "zPos": 179356.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100307,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 144049.0,
+        "yPos": 0.0,
+        "zPos": 179575.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 97.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100308,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 144036.0,
+        "yPos": 0.0,
+        "zPos": 179674.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 97.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100309,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 122532.0,
+        "yPos": 0.0,
+        "zPos": 175144.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 278.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100310,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce50x300.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 121991.0,
+        "yPos": 0.0,
+        "zPos": 174789.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 278.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100311,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_45_in.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 310486.0,
+        "yPos": 0.0,
+        "zPos": 180258.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 166.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100312,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 310747.0,
+        "yPos": 0.0,
+        "zPos": 180023.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 139.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100313,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_30.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 310529.0,
+        "yPos": 0.0,
+        "zPos": 180294.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 30.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100314,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_ang_45_in.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 310567.0,
+        "yPos": 0.0,
+        "zPos": 180306.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 75.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100315,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_30.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 310507.0,
+        "yPos": 0.0,
+        "zPos": 180206.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 122.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100316,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 310677.0,
+        "yPos": 0.0,
+        "zPos": 180082.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 140.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100317,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 310623.0,
+        "yPos": 0.0,
+        "zPos": 180158.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 110.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100318,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_eu_seafront_linear_100.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 310768.0,
+        "yPos": 0.0,
+        "zPos": 179950.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 71.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100319,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 111264.0,
+        "yPos": 0.0,
+        "zPos": 288874.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 179.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100320,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_mall.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 111264.0,
+        "yPos": 0.0,
+        "zPos": 288853.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 359.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100321,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_promenade100x50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 111305.0,
+        "yPos": 0.0,
+        "zPos": 288864.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 100322,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_promenade100x50.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 111302.0,
+        "yPos": 0.0,
+        "zPos": 288864.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}
