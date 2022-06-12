@@ -11,18 +11,19 @@ import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
-public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
+public class MosquitoFBMkVIS2Payload extends PlanePayload implements IPlanePayload
 {
     private Date smallBombIntroDate;
     private Date rp3IntroDate;
     private Date gyroGunsightIntroDate;
     private Date highOctaneFuelIntroDate;
 
-    public SpitfireMkIXePayload(PlaneType planeType, Date date)
+    public MosquitoFBMkVIS2Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         setNoOrdnancePayloadId(0);
@@ -47,23 +48,52 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     @Override
     protected void initialize()
 	{
-        setAvailablePayload(-5, "100000000", PayloadElement.OCTANE_150_FUEL);
-        setAvailablePayload(-4, "10000000", PayloadElement.MERLIN_70_ENGINE);
-        setAvailablePayload(-3, "1000000", PayloadElement.SPITFIRE_CLIPPED_WINGS);
-        setAvailablePayload(-2, "100000", PayloadElement.MIRROR);
-        setAvailablePayload(-1, "10000", PayloadElement.GYRO_GUNSIGHT);
+        setAvailablePayload(-3, "100000000", PayloadElement.EXHAUST_OPEN);
+        setAvailablePayload(-2, "10000000", PayloadElement.LB_25_BOOST);
+        setAvailablePayload(-1, "1000000", PayloadElement.GYRO_GUNSIGHT);
         
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "11", PayloadElement.SC500_X1);
-        setAvailablePayload(2, "101", PayloadElement.SC250_X2);
-        setAvailablePayload(4, "1001", PayloadElement.RP3_AP_X2);
+        setAvailablePayload(2, "1", PayloadElement.SC250_X2);
+        setAvailablePayload(6, "1", PayloadElement.SC250_X4);
+        setAvailablePayload(8, "1", PayloadElement.SC500_X2);
+        setAvailablePayload(12, "1", PayloadElement.SC500_X4);
+        
+        setAvailablePayload(50, "11", PayloadElement.CANNON_57MM, PayloadElement.MG_4X);
+        setAvailablePayload(68, "101", PayloadElement.CANNON_57MM, PayloadElement.MG_2X);
+        
+        setAvailablePayload(14, "1001", PayloadElement.RP3_HE_X8);
+        setAvailablePayload(16, "1001", PayloadElement.RP3_AP_X8);
+        setAvailablePayload(18, "1001", PayloadElement.SC250_X2, PayloadElement.RP3_HE_X8);
+        setAvailablePayload(20, "1001", PayloadElement.SC250_X2, PayloadElement.RP3_AP_X8);
+        
+        setAvailablePayload(26, "10001", PayloadElement.RP3_MKIIII_HE_X8);
+        setAvailablePayload(28, "10001", PayloadElement.RP3_MKIIII_AP_X8);
+        setAvailablePayload(30, "10001", PayloadElement.SC250_X2, PayloadElement.RP3_MKIIII_HE_X8);
+        setAvailablePayload(32, "10001", PayloadElement.SC250_X2, PayloadElement.RP3_MKIIII_AP_X8);
+        
+        setAvailablePayload(38, "100001", PayloadElement.RP3_MKIIIIT_HE_X8);
+        setAvailablePayload(40, "100001", PayloadElement.RP3_MKIIIIT_AP_X8);
+        setAvailablePayload(42, "100001", PayloadElement.SC250_X2, PayloadElement.RP3_MKIIIIT_HE_X8);
+        setAvailablePayload(44, "100001", PayloadElement.SC250_X2, PayloadElement.RP3_MKIIIIT_AP_X8);
 	}
 
     @Override
     protected int createWeaponsPayloadForPlane(IFlight flight)
     {
         int selectedPayloadId = 0;
-        if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
+        if (flight.getFlightType() == FlightTypes.TRAIN_BUST)
+        {
+            selectedPayloadId = 20;
+        }
+        else if (flight.getFlightType() == FlightTypes.ANTI_SHIPPING)
+        {
+            selectedPayloadId = 8;
+        }
+        else if (flight.getFlightType() == FlightTypes.RAID)
+        {
+            selectedPayloadId = 2;
+        }
+        else if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             selectedPayloadId = selectGroundAttackPayload(flight);
         }
@@ -73,7 +103,7 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
 
     protected int selectGroundAttackPayload(IFlight flight)
     {
-        int selectedPayloadId = 1;
+        int selectedPayloadId = 2;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
             selectLightTargetPayload();
@@ -84,15 +114,15 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectLightTargetPayload();
+            selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPayloadId = 1;
+            selectHeavyTargetPayload(flight);
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPayloadId = 1;
+            selectHeavyTargetPayload(flight);
         }
         return selectedPayloadId;
     }
@@ -100,19 +130,78 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     private int selectLightTargetPayload()
     {
         int selectedPayloadId = 1;
-        if (getDate().after(smallBombIntroDate))
+        int diceRoll = RandomNumberGenerator.getRandom(100);
+        if (diceRoll < 40)
         {
-            selectedPayloadId = 2;
+            selectedPayloadId =  1;
+        }
+        else if (diceRoll < 70)
+        {
+            selectedPayloadId =  14;
+        }
+        else if (diceRoll < 90)
+        {
+            selectedPayloadId =  26;
+        }
+        else
+        {
+            selectedPayloadId =  38;
         }
         return selectedPayloadId;
     }
 
     private int selectArmoredTargetPayload()
     {
-        int selectedPayloadId = 1;
-        if (getDate().after(rp3IntroDate))
+        int selectedPayloadId = 16;
+        int diceRoll = RandomNumberGenerator.getRandom(100);
+        if (diceRoll < 20)
         {
-            selectedPayloadId = 4;
+            selectedPayloadId =  8;
+        }
+        else if (diceRoll < 70)
+        {
+            selectedPayloadId =  16;
+        }
+        else if (diceRoll < 90)
+        {
+            selectedPayloadId =  28;
+        }
+        else
+        {
+            selectedPayloadId =  40;
+        }
+        return selectedPayloadId;
+    }
+
+    private int selectMediumTargetPayload()
+    {
+        int selectedPayloadId = 8;
+        int diceRoll = RandomNumberGenerator.getRandom(100);
+        if (diceRoll < 40)
+        {
+            selectedPayloadId =  8;
+        }
+        else if (diceRoll < 70)
+        {
+            selectedPayloadId =  16;
+        }
+        else if (diceRoll < 90)
+        {
+            selectedPayloadId =  28;
+        }
+        else
+        {
+            selectedPayloadId =  40;
+        }
+        return selectedPayloadId;
+    }
+
+    private int selectHeavyTargetPayload(IFlight flight)
+    {
+        int selectedPayloadId = 12;
+        if (flight.getFlightType() == FlightTypes.RAID) 
+        {
+            selectedPayloadId = 8;
         }
         return selectedPayloadId;
     }
@@ -120,7 +209,7 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-    	SpitfireMkIXePayload clone = new SpitfireMkIXePayload(getPlaneType(), getDate());
+    	MosquitoFBMkVIS2Payload clone = new MosquitoFBMkVIS2Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }

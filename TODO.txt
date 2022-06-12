@@ -1,9 +1,17 @@
 Remove end date from nigh mission odds
 
-Pat, can you please enable the German 37mm AA gun when you update for the Sopwith Triplane? It is labeled M-Flak  in the editor.
 FC fuel air start resets to 60%
 Hi Pat. I noticed in the configured skins for the Spitfire XIV that quite a few skins are labeled Mk. IXe, and also point to the IXe model in the game’s directory instead of to the XIV.
 
+
+GroundAttackPackageTest > groundAttackAirfieldTargetTest() FAILED
+    java.lang.AssertionError at GroundAttackPackageTest.java:78
+
+FlightAiSettingsValidator > groundAttackFlightWithFighterTest() FAILED
+    java.lang.AssertionError at FlightAiSettingsValidator.java:130
+
+GroundAttackAntiArmorPackageTest > groundAttackTankBustRoleTest() FAILED
+    java.lang.AssertionError at GroundAttackAntiArmorPackageTest.java:66
 
 
 New planes

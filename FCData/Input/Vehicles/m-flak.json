@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\m-flak\\",
+  "vehicleType": "m-flak",
+  "vehicleName": "m-flak",
+  "displayName": "AAA Artillery",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19160101",
+  "endDate": "19181201",
+  "rarityWeight": 15,
+  "vehicleClass": "AAAArtillery"
+}

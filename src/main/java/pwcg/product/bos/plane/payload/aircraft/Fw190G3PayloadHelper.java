@@ -20,7 +20,19 @@ public class Fw190G3PayloadHelper
     private static int selectFW190G3GroundAttackPayload(IFlight flight)
     {
         int selectedPayloadId = 48;
-        if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
+        if (flight.getFlightType() == FlightTypes.TRAIN_BUST)
+        {
+            selectedPayloadId = 52;
+        }
+        else if (flight.getFlightType() == FlightTypes.ANTI_SHIPPING)
+        {
+            selectedPayloadId = 54;
+        }
+        else if (flight.getFlightType() == FlightTypes.RAID)
+        {
+            selectedPayloadId = 52;
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
             selectedPayloadId = 49;
         }

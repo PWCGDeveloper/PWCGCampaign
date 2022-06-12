@@ -1,5 +1,6 @@
 package pwcg.product.fc.plane.payload;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -9,6 +10,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -39,6 +41,10 @@ public class FCPayloadFactoryTest
 			{
 			    assert(bosPlaneType.getStockModifications().get(0) == PayloadElement.COCKPIT_LIGHT);
 			}
+            
+            payload.selectNoOrdnancePayload();
+            PayloadDesignation payloadDesignation = payload.getSelectedPayloadDesignation();
+            Assertions.assertNotNull(payloadDesignation); 
 		}
 	}
 }

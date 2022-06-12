@@ -21,6 +21,7 @@ public class A20BPayload extends PlanePayload implements IPlanePayload
     protected void initialize()
 	{
         setAvailablePayload(-1, "1000", PayloadElement.RPK10);
+        setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "1", PayloadElement.FAB100M_X8);
         setAvailablePayload(2, "1", PayloadElement.FAB100M_X16);
         setAvailablePayload(3, "11", PayloadElement.FAB100M_X20);

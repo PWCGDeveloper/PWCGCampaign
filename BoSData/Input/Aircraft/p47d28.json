@@ -8,8 +8,7 @@
 	"stockModifications": [
 		"MIRROR",
 		"P47_GUNSIGHT",
-		"MN28",
-		"OCTANE_150_FUEL"
+		"MN28"
 	],
 	"displayName": "P-47D-28",
 	"script": "LuaScripts\\WorldObjects\\Planes\\p47d28.txt",

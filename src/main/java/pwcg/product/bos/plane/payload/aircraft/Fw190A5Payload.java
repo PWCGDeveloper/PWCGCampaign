@@ -112,7 +112,19 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
     private int setGenericBombLoad(IFlight flight) throws PWCGException
     {
         int selectedPayloadId = 1;
-        if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
+        if (flight.getFlightType() == FlightTypes.TRAIN_BUST)
+        {
+            selectedPayloadId = 2;
+        }
+        else if (flight.getFlightType() == FlightTypes.ANTI_SHIPPING)
+        {
+            selectedPayloadId = 3;
+        }
+        else if (flight.getFlightType() == FlightTypes.RAID)
+        {
+            selectedPayloadId = 2;
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
             selectedPayloadId = selectSoftTargetPayload(flight);
         }

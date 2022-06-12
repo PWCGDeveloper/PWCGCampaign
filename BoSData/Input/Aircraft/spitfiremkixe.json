@@ -7,8 +7,7 @@
 	],
 	"stockModifications": [
 		"MIRROR",
-		"GYRO_GUNSIGHT",
-		"OCTANE_150_FUEL"
+		"GYRO_GUNSIGHT"
 	],
 	"displayName": "Spitfire Mk.IXe",
 	"script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkixe.txt",

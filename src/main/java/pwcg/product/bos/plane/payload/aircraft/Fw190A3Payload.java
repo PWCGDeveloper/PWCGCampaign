@@ -39,7 +39,19 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
     protected int createWeaponsPayloadForPlane(IFlight flight)
     {
         int selectedPayloadId = createStandardPayload();
-        if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
+        if (flight.getFlightType() == FlightTypes.TRAIN_BUST)
+        {
+            selectedPayloadId = 2;
+        }
+        else if (flight.getFlightType() == FlightTypes.ANTI_SHIPPING)
+        {
+            selectedPayloadId = 3;
+        }
+        else if (flight.getFlightType() == FlightTypes.RAID)
+        {
+            selectedPayloadId = 2;
+        }
+        else if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             selectedPayloadId = selectGroundAttackPayload(flight);
         }

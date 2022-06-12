@@ -1,7 +1,18 @@
-13.8.1
+13.9.0
+Added Mosquito
+- No 4 Squadron RAF
+Removed 150 octane as a stock modification
+- Allied planes on the continent were not flying with 150 octane
+- You can still select it as an option
+
+13.9.0
 Added Sopwith Triplane
-Extended structure box to include more structures
+Added M-Flak 37mm WWI flak cannon
+Added "Ground" structures.  These are structures without scripts.
+- If you thought things were missing, these might be thoios things.
+Extended structure box to include more structures.
 Box displayed on briefing map is now the structure box and not the active area box.
+Fixed erroneous Ju88c payload (payload 12 error);
 
 13.8.0
 Added Ju88c

@@ -56,7 +56,8 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     SPITFIRE_MKXIV("spitfiremkxiv", "static_spitfiremkixe", "static_lagg3_net"),
     TEMPEST_MKVS2("tempestmkvs2", "static_tempestmkvs2", "static_lagg3_net"),
     TYPHOON_MKIB("typhoonmkib", "static_typhoon", "static_lagg3_net"),
-    
+    MOSQUITO_FB_MKVI_S2("mosquitofbmkvis2", "static_a20raf"),
+
     U2_VS("u2vs", "static_u2vs"),
     IL2_M41("il2m41", "static_il2", "static_il2_net"),
     IL2_M42("il2m42", "static_il2", "static_il2_net"),

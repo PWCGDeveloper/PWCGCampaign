@@ -55,7 +55,7 @@ public class PlaneTypeFactoryTest
         assert(availableGermanPlaneTypes.size() == 9);
 
         List<PlaneType> availableBritishPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.BRITAIN), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
-        assert(availableBritishPlaneTypes.size() == 2);
+        assert(availableBritishPlaneTypes.size() == 3);
 
         List<PlaneType> availableAmericanPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.USA), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
         assert(availableAmericanPlaneTypes.size() == 2);

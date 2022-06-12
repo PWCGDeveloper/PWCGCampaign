@@ -135,16 +135,6 @@
 				"startDate": "19390801",
 				"endDate": "19450601",
 				"nightMissionOdds": 5
-			},
-			{
-				"startDate": "19400901",
-				"endDate": "19410501",
-				"nightMissionOdds": 50
-			},
-			{
-				"startDate": "19410501",
-				"endDate": "19450601",
-				"nightMissionOdds": 5
 			}
 		]
 	},

@@ -15,7 +15,7 @@ public class Ju88C6Payload extends PlanePayload
     public Ju88C6Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        setNoOrdnancePayloadId(12);
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()

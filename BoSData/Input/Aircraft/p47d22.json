@@ -6,8 +6,7 @@
 		"USA"
 	],
 	"stockModifications": [
-		"MN28",
-		"OCTANE_150_FUEL"
+		"MN28"
 	],
 	"displayName": "P-47D-22",
 	"script": "LuaScripts\\WorldObjects\\Planes\\p47d22.txt",

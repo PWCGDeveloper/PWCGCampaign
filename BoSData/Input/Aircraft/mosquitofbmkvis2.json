@@ -1,0 +1,30 @@
+{
+	"type": "mosquitofbmkvis2",
+	"archType": "mosquito",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [
+		"LB_25_BOOST",
+		"GYRO_GUNSIGHT"
+	],
+	"displayName": "Mosquito F.B. Mk.VI ser.2",
+	"script": "LuaScripts\\WorldObjects\\Planes\\mosquitofbmkvis2.txt",
+	"model": "graphics\\planes\\mosquitofbmkvis2\\mosquitofbmkvis2.mgm",
+	"desc": "",
+	"cruisingSpeed": 350,
+	"climbOutRate": 1500,
+	"goodness": 75,
+	"range": 1200,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"ATTACK",
+		"FIGHTER"
+	],
+	"introduction": "19420901",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

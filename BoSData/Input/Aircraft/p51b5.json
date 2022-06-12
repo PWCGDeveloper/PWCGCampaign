@@ -8,8 +8,7 @@
 	"stockModifications": [
 		"MIRROR",
 		"P51_GUNSIGHT",
-		"PACKARD_ENGINE",
-		"OCTANE_150_FUEL"
+		"PACKARD_ENGINE"
 	],
 	"tacticalCodeColor": "BLACK",
 	"displayName": "P-51B-5",

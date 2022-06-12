@@ -1,5 +1,6 @@
 package pwcg.product.bos.plane.payload;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -9,6 +10,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -37,8 +39,12 @@ public class BoSPayloadFactoryTest
             
             if (bosPlaneType.getType().equals(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType()))
             {
-                assert(payload.getSelectedModifications().get(0) == PayloadElement.MIRROR);
+                Assertions.assertEquals(PayloadElement.MIRROR, payload.getSelectedModifications().get(0));
             }
+            
+            payload.selectNoOrdnancePayload();
+            PayloadDesignation payloadDesignation = payload.getSelectedPayloadDesignation();
+            Assertions.assertNotNull(payloadDesignation); 
         }
     }
 }
