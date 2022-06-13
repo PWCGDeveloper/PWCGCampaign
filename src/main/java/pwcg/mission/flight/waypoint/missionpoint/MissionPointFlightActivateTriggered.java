@@ -57,7 +57,7 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
     {
-        takeoffStartTimer.setTarget(nextTargetIndex);
+        takeoffStartTimer.setTimerTarget(nextTargetIndex);
     }
 
     @Override
@@ -142,10 +142,10 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
     private void createTargetAssociations()
     {
         missionBeginUnit.linkToMissionBegin(takeoffCheckZone.getIndex());
-        takeoffCheckZone.setTarget(activationTimer.getIndex());
-        activationTimer.setTarget(activationEntity.getIndex());
-        activationTimer.setTarget(takeoffStartTimer.getIndex());
-        takeoffStartTimer.setTarget(takeoffStartTimer.getIndex());
+        takeoffCheckZone.setCheckZoneTarget(activationTimer.getIndex());
+        activationTimer.setTimerTarget(activationEntity.getIndex());
+        activationTimer.setTimerTarget(takeoffStartTimer.getIndex());
+        takeoffStartTimer.setTimerTarget(takeoffStartTimer.getIndex());
     }
 
     private void createObjectAssociations(PlaneMcu plane)

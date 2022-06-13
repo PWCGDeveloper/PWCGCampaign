@@ -62,7 +62,7 @@ public class MissionPointHuntSet extends MissionPointSetMultipleWaypointSet impl
         huntTimer.setName("Ground Unit Hunt Timer");
         huntTimer.setDesc("Ground Unit Hunt Timer");
         huntTimer.setPosition(firstWaypointAfter.getPosition());
-        huntTimer.setTarget(firstWaypointAfter.getIndex());        
+        huntTimer.setTimerTarget(firstWaypointAfter.getIndex());        
 
         McuWaypoint lastWaypointBefore = super.getLastWaypointBefore();
         lastWaypointBefore.setTarget(huntTimer.getIndex());

@@ -44,7 +44,7 @@ public class GroundUnitElement
         {
             if (previousElement == null)
             {
-                activateTimer.setTarget(element.getEntryPoint());
+                activateTimer.setTimerTarget(element.getEntryPoint());
             }
             else
             {
@@ -102,7 +102,7 @@ public class GroundUnitElement
 
     private void createTargetAssociations()
     {
-        activateTimer.setTarget(spawn.getIndex());
+        activateTimer.setTimerTarget(spawn.getIndex());
     }
 
     private void createObjectAssociations()

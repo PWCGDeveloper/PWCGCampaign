@@ -192,7 +192,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
 
     private void createTargetAssociations() throws PWCGException
     {
-        formationTimer.setTarget(formationEntity.getIndex());
+        formationTimer.setTimerTarget(formationEntity.getIndex());
         
         flight.getFlightPlanes().getFlightLeader().setOnMessages(
                 McuMessage.ONTAKEOFF,

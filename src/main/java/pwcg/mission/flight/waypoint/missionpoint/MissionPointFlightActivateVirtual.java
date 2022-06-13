@@ -43,7 +43,7 @@ public class MissionPointFlightActivateVirtual implements IMissionPointSet, IVir
     @Override
     public void linkMissionBeginToFirstVirtualWaypoint(int firstVirtualWaypointIndex) throws PWCGException
     {
-        missionBeginTimer.setTarget(firstVirtualWaypointIndex);
+        missionBeginTimer.setTimerTarget(firstVirtualWaypointIndex);
     }
 
     @Override

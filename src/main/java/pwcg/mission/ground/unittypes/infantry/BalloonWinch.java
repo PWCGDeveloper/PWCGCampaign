@@ -85,9 +85,9 @@ public class BalloonWinch
 	private void createGroundTargetAssociations()
 	{
 		missionBeginUnit.linkToMissionBegin(winchCheckZoneTimer.getIndex());
-        winchCheckZoneTimer.setTarget(winchCheckZone.getIndex());
-        winchCheckZone.setTarget(winchDownTimer.getIndex());
-        winchDownTimer.setTarget(winchDownWP.getIndex());
+        winchCheckZoneTimer.setTimerTarget(winchCheckZone.getIndex());
+        winchCheckZone.setCheckZoneTarget(winchDownTimer.getIndex());
+        winchDownTimer.setTimerTarget(winchDownWP.getIndex());
 	}
 
     public void write(BufferedWriter writer) throws PWCGException 

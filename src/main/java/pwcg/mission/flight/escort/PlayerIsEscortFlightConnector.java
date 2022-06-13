@@ -33,7 +33,7 @@ public class PlayerIsEscortFlightConnector
 
         McuWaypoint escortedIngressWP = escortedFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_INGRESS);
 
-        coverTimer.setTarget(escortedIngressWP.getIndex());
+        coverTimer.setTimerTarget(escortedIngressWP.getIndex());
     }
 
     private void connectEscortedEgressToEscortForceComplete() throws PWCGException

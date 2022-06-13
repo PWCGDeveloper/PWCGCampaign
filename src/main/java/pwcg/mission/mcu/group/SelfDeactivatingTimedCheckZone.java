@@ -76,36 +76,36 @@ public class SelfDeactivatingTimedCheckZone
     
     private void linkTargets()
     {
-        activateCZTimer.setTarget(checkZone.getIndex());
-        activateCZTimer.setTarget(waitTimer.getIndex());
+        activateCZTimer.setTimerTarget(checkZone.getIndex());
+        activateCZTimer.setTimerTarget(waitTimer.getIndex());
 
-        checkZone.setTarget(checkZoneTriggeredTimer.getIndex());
-        checkZoneTriggeredTimer.setTarget(checkZoneTriggeredExternalTimer.getIndex());
-        checkZoneTriggeredTimer.setTarget(deactivateCZTimer.getIndex());
+        checkZone.setCheckZoneTarget(checkZoneTriggeredTimer.getIndex());
+        checkZoneTriggeredTimer.setTimerTarget(checkZoneTriggeredExternalTimer.getIndex());
+        checkZoneTriggeredTimer.setTimerTarget(deactivateCZTimer.getIndex());
 
-        waitTimer.setTarget(waitTriggeredTimer.getIndex());
-        waitTriggeredTimer.setTarget(waitTriggeredExternalTimer.getIndex());
-        waitTriggeredTimer.setTarget(deactivateCZTimer.getIndex());
+        waitTimer.setTimerTarget(waitTriggeredTimer.getIndex());
+        waitTriggeredTimer.setTimerTarget(waitTriggeredExternalTimer.getIndex());
+        waitTriggeredTimer.setTimerTarget(deactivateCZTimer.getIndex());
 
-        deactivateCZTimer.setTarget(deactivateCZ.getIndex());
+        deactivateCZTimer.setTimerTarget(deactivateCZ.getIndex());
 
-        deactivateCZ.setTarget(checkZone.getIndex());        
-        deactivateCZ.setTarget(waitTimer.getIndex());    
+        deactivateCZ.setDeactivateTarget(checkZone.getIndex());        
+        deactivateCZ.setDeactivateTarget(waitTimer.getIndex());    
     }
 
     private void makeSubtitles()
     {
         Coordinate subtitlePosition = coordinate.copy();
         McuSubtitle waitTriggeredSubtitle = McuSubtitle.makeActivatedSubtitle("CZ Wait Triggered: " + sequenceNumber, subtitlePosition);
-        waitTriggeredTimer.setTarget(waitTriggeredSubtitle.getIndex());
+        waitTriggeredTimer.setTimerTarget(waitTriggeredSubtitle.getIndex());
         subTitleList.add(waitTriggeredSubtitle);
 
         McuSubtitle czTriggeredSubtitle = McuSubtitle.makeActivatedSubtitle("CZ Triggered: " + sequenceNumber, subtitlePosition);
-        checkZoneTriggeredTimer.setTarget(czTriggeredSubtitle.getIndex());
+        checkZoneTriggeredTimer.setTimerTarget(czTriggeredSubtitle.getIndex());
         subTitleList.add(czTriggeredSubtitle);
 
         McuSubtitle thisVwpDisabledSubtitle = McuSubtitle.makeActivatedSubtitle("CZ Disabled: " + sequenceNumber, subtitlePosition);
-        deactivateCZTimer.setTarget(thisVwpDisabledSubtitle.getIndex());
+        deactivateCZTimer.setTimerTarget(thisVwpDisabledSubtitle.getIndex());
         subTitleList.add(thisVwpDisabledSubtitle);
     }
 
@@ -158,12 +158,12 @@ public class SelfDeactivatingTimedCheckZone
 
     public void setCheckZoneTriggeredTarget(int targetMcuIndex)
     {
-        checkZoneTriggeredExternalTimer.setTarget(targetMcuIndex);
+        checkZoneTriggeredExternalTimer.setTimerTarget(targetMcuIndex);
     }
 
     public void setCheckZoneTimedOutTarget(int targetMcuIndex)
     {
-        waitTriggeredExternalTimer.setTarget(targetMcuIndex);
+        waitTriggeredExternalTimer.setTimerTarget(targetMcuIndex);
     }
 
     public void setCheckZoneTriggerObject(int objectMcuIndex)

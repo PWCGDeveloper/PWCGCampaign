@@ -42,7 +42,7 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
     {
-        missionBeginTimer.setTarget(nextTargetIndex);
+        missionBeginTimer.setTimerTarget(nextTargetIndex);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
     private void createTargetAssociations()
     {
         missionBeginUnit.linkToMissionBegin(missionBeginTimer.getIndex());
-        missionBeginTimer.setTarget(activationEntity.getIndex());
+        missionBeginTimer.setTimerTarget(activationEntity.getIndex());
     }
 
     private void createObjectAssociations(PlaneMcu plane)

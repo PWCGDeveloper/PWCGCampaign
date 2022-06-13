@@ -23,7 +23,7 @@ public class FirePot
 
 		firePotCommand.setPosition(firePotPosition);
 
-		firePotTimer.setTarget(firePotCommand.getIndex());
+		firePotTimer.setTimerTarget(firePotCommand.getIndex());
         
         firePot.setPosition(firePotPosition.copy());
         firePot.populateEntity();

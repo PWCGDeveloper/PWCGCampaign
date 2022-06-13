@@ -170,4 +170,9 @@ public class McuTREntity extends BaseFlightMcu
         return output.toString();
 
     }
+
+    public void setEntityTarget(int linkTrId) 
+    {
+        super.setTarget(linkTrId);
+    }
 }

@@ -14,7 +14,7 @@ public class McuAttackArea extends BaseFlightMcu
 	private int attackGTargets = 0;
 	private int attackRadius = 20000;
 	private int time = 6000;
-	private WaypointPriority priority = WaypointPriority.PRIORITY_HIGH;
+	private WaypointPriority priority = WaypointPriority.PRIORITY_MED;
 
 	public McuAttackArea (AttackAreaType attackAreaType)
 	{
@@ -115,5 +115,10 @@ public class McuAttackArea extends BaseFlightMcu
     public void setAttackRadius(int attackRadius)
     {
         this.attackRadius = attackRadius;
+    }
+
+    public void setAttackAreaTarget(int linkTrId)
+    {
+        super.setTarget(linkTrId);
     }
 }

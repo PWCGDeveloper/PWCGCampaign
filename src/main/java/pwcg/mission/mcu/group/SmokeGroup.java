@@ -108,9 +108,9 @@ public class SmokeGroup
     private void setTargetAssociations()
     {        
         missionBeginUnit.linkToMissionBegin(smokeCheckZoneTimer.getIndex());
-        smokeCheckZoneTimer.setTarget(smokeStartCheckZone.getIndex());
-        smokeStartCheckZone.setTarget(smokeStartTimer.getIndex());
-        smokeStartTimer.setTarget(activateSmoke.getIndex());
+        smokeCheckZoneTimer.setTimerTarget(smokeStartCheckZone.getIndex());
+        smokeStartCheckZone.setCheckZoneTarget(smokeStartTimer.getIndex());
+        smokeStartTimer.setTimerTarget(activateSmoke.getIndex());
     }
 
     private void setObjectAssociations()

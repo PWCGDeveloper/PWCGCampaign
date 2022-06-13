@@ -66,4 +66,9 @@ public class McuMissionStart extends BaseFlightMcu
 		return output.toString();
 
 	}
+
+    public void setMissionBeginTarget(int target)
+    {
+        super.setTarget(target);
+    }
 }

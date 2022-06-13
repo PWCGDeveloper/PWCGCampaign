@@ -28,11 +28,11 @@ public class ReconPhotoMcuSet
 	public void createTargetAssociationsForPhotography(McuWaypoint prevWP, McuWaypoint nextWP) throws PWCGException
 	{
 		prevWP.setTarget(cameraStartTimer.getIndex());
-		cameraStartTimer.setTarget(startCamera.getIndex());
+		cameraStartTimer.setTimerTarget(startCamera.getIndex());
 
 		counter.setTarget(stopCamera.getIndex());
 		counter.setTarget(nextWaypointTimer.getIndex());
-		nextWaypointTimer.setTarget(nextWP.getIndex());
+		nextWaypointTimer.setTimerTarget(nextWP.getIndex());
 	}
 
 	public void write(BufferedWriter writer) throws PWCGException 

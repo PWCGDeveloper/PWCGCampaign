@@ -64,7 +64,7 @@ public class FlareSequence
         {
             if (previousFlare == null)
             {
-                flareMasterTimer.setTarget(flare.getEntryPoint());
+                flareMasterTimer.setTimerTarget(flare.getEntryPoint());
             }
             else
             {

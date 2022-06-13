@@ -1,6 +1,7 @@
 package pwcg.mission.flight;
 
 import java.io.BufferedWriter;
+import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
@@ -25,7 +26,7 @@ public interface IFlight
     
     FlightInformation getFlightInformation();
 
-    IFlightPlanes getFlightPlanes();
+    FlightPlanes getFlightPlanes();
 
     IWaypointPackage getWaypointPackage();
 
@@ -58,4 +59,8 @@ public interface IFlight
     void setAssociatedFlight(IFlight associatedFlight);
 
     IFlight getAssociatedFlight();
+
+    List<Integer> getAllPlanesIdsInFlight();
+
+    void setEnemiesForFlight(List<Integer> enemyPlaneIds);
 }

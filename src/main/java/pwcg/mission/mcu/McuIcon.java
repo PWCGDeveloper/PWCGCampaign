@@ -354,4 +354,8 @@ public class McuIcon extends BaseFlightMcu
         MissionStringHandler.getInstance().registerMissionText(lCDesc, desc);
     }
 
+    public void setIconTarget(int target) 
+    {
+        super.setTarget(target);
+    }
 }

@@ -64,15 +64,15 @@ public class SelfDeactivatingCheckZone
 
     private void linkTargets()
     {
-        activateCZTimer.setTarget(checkZone.getIndex());
+        activateCZTimer.setTimerTarget(checkZone.getIndex());
 
         // 2. If the CZ triggers, deactivate the CZ to avoid repeat triggers
-        checkZone.setTarget(deactivateCZTimer.getIndex());
-        deactivateCZTimer.setTarget(deactivateCZ.getIndex());
+        checkZone.setCheckZoneTarget(deactivateCZTimer.getIndex());
+        deactivateCZTimer.setTimerTarget(deactivateCZ.getIndex());
         
         // Deactivate both the CZ and the activate timer
-        deactivateCZ.setTarget(checkZone.getIndex());        
-        deactivateCZ.setTarget(activateCZTimer.getIndex());    
+        deactivateCZ.setDeactivateTarget(checkZone.getIndex());        
+        deactivateCZ.setDeactivateTarget(activateCZTimer.getIndex());    
     }
     
     public void write(BufferedWriter writer) throws PWCGException
@@ -119,7 +119,7 @@ public class SelfDeactivatingCheckZone
 
     public void setCheckZoneTarget(int targetMcuIndex)
     {
-        checkZone.setTarget(targetMcuIndex);
+        checkZone.setCheckZoneTarget(targetMcuIndex);
     }
 
     public int getCheckZoneIndex()

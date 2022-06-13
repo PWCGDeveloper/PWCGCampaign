@@ -29,6 +29,7 @@ public class MissionFinalizer
     private MissionAirfieldIconBuilder airfieldIconBuilder = new MissionAirfieldIconBuilder();
     private MissionSquadronIconBuilder squadronIconBuilder;
     private MissionAssaultIconBuilder assaultIconBuilder = new MissionAssaultIconBuilder();
+    private MissionFighterTargetBuilder fighterTargetBuilder = new MissionFighterTargetBuilder();
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
     private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
@@ -68,6 +69,8 @@ public class MissionFinalizer
                 squadronIconBuilder.createSquadronIcons(flights.getPlayerFlights());
             }
 
+            fighterTargetBuilder.buildFighterTargets(mission);
+            
             if (mission.getCampaign().getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
             {
                 finalizeForSinglePlayer();

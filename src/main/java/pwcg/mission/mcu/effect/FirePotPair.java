@@ -31,8 +31,8 @@ public class FirePotPair
 			firePots.add(firePot);
 		}
 		
-        sourceTimer.setTarget(firePots.get(0).getFirePotTimer().getIndex());
-        firePots.get(0).getFirePotTimer().setTarget(firePots.get(1).getFirePotTimer().getIndex());
+        sourceTimer.setTimerTarget(firePots.get(0).getFirePotTimer().getIndex());
+        firePots.get(0).getFirePotTimer().setTimerTarget(firePots.get(1).getFirePotTimer().getIndex());
 	}
     
     public Coordinate calculateFirePotPosition(Coordinate firstFirePotPosition, double orientation, double distanceBetween, int firepotIndex) throws PWCGException

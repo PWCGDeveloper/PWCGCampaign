@@ -38,13 +38,13 @@ public class GroundAspectDirectFire implements IGroundAspect
 
     public void addTarget(int targetIndex)
     {
-        attackEntity.setTarget(targetIndex);
+        attackEntity.setAttackTarget(targetIndex);
     }
 
     @Override
     public void linkToNextElement(int targetIndex)
     {
-        attackTimer.setTarget(targetIndex);
+        attackTimer.setTimerTarget(targetIndex);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class GroundAspectDirectFire implements IGroundAspect
 
     private void createTargetAssociations() 
     {
-        attackTimer.setTarget(attackEntity.getIndex());
+        attackTimer.setTimerTarget(attackEntity.getIndex());
     }
     
     private void createObjectAssociations() 

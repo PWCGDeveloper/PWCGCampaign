@@ -51,7 +51,7 @@ public class EscortMcuSequence
         cover  = new McuCover();
         cover.setPosition(rendevousPosition);
         cover.setObject(flightLeader.getLinkTrId());
-        cover.setTarget(escortedFlight.getFlightPlanes().getFlightLeader().getLinkTrId());
+        cover.setCoverTarget(escortedFlight.getFlightPlanes().getFlightLeader().getLinkTrId());
 
         coverTimer  = new McuTimer();
         coverTimer.setName("Cover Timer");
@@ -102,11 +102,11 @@ public class EscortMcuSequence
         McuWaypoint rtbWP = WaypointGeneratorUtils.findWaypointByType(escortFlight.getWaypointPackage().getAllWaypoints(), 
                 WaypointType.EGRESS_WAYPOINT.getName());
 
-        coverTimer.setTarget(cover.getIndex());        
+        coverTimer.setTimerTarget(cover.getIndex());        
         
-        forceCompleteTimer.setTarget(forceComplete.getIndex());
-        forceCompleteTimer.setTarget(escortCompleteTimer.getIndex());
-        escortCompleteTimer.setTarget(rtbWP.getIndex());
+        forceCompleteTimer.setTimerTarget(forceComplete.getIndex());
+        forceCompleteTimer.setTimerTarget(escortCompleteTimer.getIndex());
+        escortCompleteTimer.setTimerTarget(rtbWP.getIndex());
     }
     
     public void write(BufferedWriter writer) throws PWCGException 
@@ -129,7 +129,7 @@ public class EscortMcuSequence
 
     public void setLinkToNextTarget(int nextIndex)
     {
-        forceCompleteTimer.setTarget(nextIndex);        
+        forceCompleteTimer.setTimerTarget(nextIndex);        
     }
 
     // These getters are for test purposes

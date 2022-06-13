@@ -126,10 +126,10 @@ public class VirtualWaypointEscort
 
     private void createTargetAssociations()
     {
-        activateEscortTimer.setTarget(activateEscort.getIndex());
-        activateEscortTimer.setTarget(coverTimer.getIndex());
-        coverTimer.setTarget(cover.getIndex());
-        cover.setTarget(vwpPlanes.getLeadActivatePlane().getLinkTrId());
+        activateEscortTimer.setTimerTarget(activateEscort.getIndex());
+        activateEscortTimer.setTimerTarget(coverTimer.getIndex());
+        coverTimer.setTimerTarget(cover.getIndex());
+        cover.setCoverTarget(vwpPlanes.getLeadActivatePlane().getLinkTrId());
     }
 
     private void createObjectAssociations()

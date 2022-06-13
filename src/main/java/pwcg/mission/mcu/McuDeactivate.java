@@ -57,4 +57,9 @@ public class McuDeactivate extends BaseFlightMcu
 		return output.toString();
 
 	}
+
+    public void setDeactivateTarget(int target)
+    {
+        super.setTarget(target);
+    }
 }

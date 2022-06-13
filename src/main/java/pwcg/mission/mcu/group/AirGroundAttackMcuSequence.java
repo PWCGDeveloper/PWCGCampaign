@@ -36,7 +36,7 @@ public class AirGroundAttackMcuSequence
     private McuAttackArea attackArea;
     private McuCounter bingoBombsCounter;
     private McuTimer exitAttackTimer = new McuTimer();
-    private McuDeactivate killTimeoutTimerEntity = new McuDeactivate();
+    private McuDeactivate killTimeoutDeactivateEntity = new McuDeactivate();
     private McuForceComplete forceCompleteDropOrnance;
 
     public AirGroundAttackMcuSequence(IFlight flight)
@@ -105,13 +105,13 @@ public class AirGroundAttackMcuSequence
         attackAreaDeactivateEntity.write(writer);
         bingoBombsCounter.write(writer);
         exitAttackTimer.write(writer);
-        killTimeoutTimerEntity.write(writer);
+        killTimeoutDeactivateEntity.write(writer);
         forceCompleteDropOrnance.write(writer);
     }
 
     public void setLinkToNextTarget(int targetIndex)
     {
-        exitAttackTimer.setTarget(targetIndex);
+        exitAttackTimer.setTimerTarget(targetIndex);
     }
 
     public BaseFlightMcu getAttackAreaMcu()
@@ -127,19 +127,19 @@ public class AirGroundAttackMcuSequence
     private void createTargetAssociations() 
     {
         missionBeginUnitCheckZone.linkCheckZoneTarget(activateTimer.getIndex());
-        activateTimer.setTarget(attackArea.getIndex());
-        activateTimer.setTarget(attackAreaTimeoutTimer.getIndex());
-        activateTimer.setTarget(bingoBombsCounter.getIndex());
+        activateTimer.setTimerTarget(attackArea.getIndex());
+        activateTimer.setTimerTarget(attackAreaTimeoutTimer.getIndex());
+        activateTimer.setTimerTarget(bingoBombsCounter.getIndex());
         
-        bingoBombsCounter.setTarget(exitAttackTimer.getIndex());
-        attackAreaTimeoutTimer.setTarget(exitAttackTimer.getIndex());
+        bingoBombsCounter.setCounterTarget(exitAttackTimer.getIndex());
+        attackAreaTimeoutTimer.setTimerTarget(exitAttackTimer.getIndex());
 
-        exitAttackTimer.setTarget(killTimeoutTimerEntity.getIndex());
-        exitAttackTimer.setTarget(attackAreaDeactivateEntity.getIndex());
-        exitAttackTimer.setTarget(forceCompleteDropOrnance.getIndex());
+        exitAttackTimer.setTimerTarget(killTimeoutDeactivateEntity.getIndex());
+        exitAttackTimer.setTimerTarget(attackAreaDeactivateEntity.getIndex());
+        exitAttackTimer.setTimerTarget(forceCompleteDropOrnance.getIndex());
         
-        attackAreaDeactivateEntity.setTarget(attackArea.getIndex());
-        killTimeoutTimerEntity.setTarget(attackAreaTimeoutTimer.getIndex());
+        attackAreaDeactivateEntity.setDeactivateTarget(attackArea.getIndex());
+        killTimeoutDeactivateEntity.setDeactivateTarget(attackAreaTimeoutTimer.getIndex());
     }
 
     private void buildAttackAreaElements(int attackTime, int bingoLoiterTimeSeconds) 
@@ -170,10 +170,10 @@ public class AirGroundAttackMcuSequence
         bingoBombsCounter.setDesc("Bingo bombs counter");
         bingoBombsCounter.setPosition(targetDefinition.getPosition());
 
-        killTimeoutTimerEntity.setName("Timeout Timer Deactivate");
-        killTimeoutTimerEntity.setDesc("Timeout Time Deactivate");
-        killTimeoutTimerEntity.setOrientation(new Orientation());
-        killTimeoutTimerEntity.setPosition(targetDefinition.getPosition());
+        killTimeoutDeactivateEntity.setName("Timeout Timer Deactivate");
+        killTimeoutDeactivateEntity.setDesc("Timeout Time Deactivate");
+        killTimeoutDeactivateEntity.setOrientation(new Orientation());
+        killTimeoutDeactivateEntity.setPosition(targetDefinition.getPosition());
 
         int emergencyDropOrdnance = 1;
         forceCompleteDropOrnance = new McuForceComplete(WaypointPriority.PRIORITY_HIGH, emergencyDropOrdnance);
@@ -199,7 +199,7 @@ public class AirGroundAttackMcuSequence
     {
         for (IVehicle vehicle : vehicles)
         {
-            attackArea.setTarget(vehicle.getLinkTrId());
+            attackArea.setAttackAreaTarget(vehicle.getLinkTrId());
         }
         
     }    

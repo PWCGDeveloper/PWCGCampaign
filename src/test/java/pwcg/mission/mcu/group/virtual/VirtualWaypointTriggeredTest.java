@@ -15,7 +15,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightPlanes;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.IndexLinkValidator;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
@@ -28,7 +28,7 @@ public class VirtualWaypointTriggeredTest
 {
     @Mock private IFlight flight;
     @Mock private FlightInformation flightInformation;
-    @Mock private IFlightPlanes flightPlanes;
+    @Mock private FlightPlanes flightPlanes;
     private PlaneMcu plane1;
     private PlaneMcu plane2;
     @Mock private IWaypointPackage waypointPackage = new WaypointPackage(flight);

@@ -9,8 +9,8 @@ import pwcg.mission.flight.waypoint.WaypointPriority;
 
 public class McuAttack extends BaseFlightMcu
 {
-	private int attackGroup  = 1;
-	private WaypointPriority priority = WaypointPriority.PRIORITY_HIGH;
+	private int attackGroup  = 1; // Attack all members of the group (1) or just the leader (0).  Always 1.
+	private WaypointPriority priority = WaypointPriority.PRIORITY_MED;
 
 	public McuAttack ()
 	{
@@ -28,14 +28,6 @@ public class McuAttack extends BaseFlightMcu
             
         return clone;
     }
-
-	public int getAttackGroup() {
-		return attackGroup;
-	}
-
-	public void setAttackGroup(int attackGroup) {
-		this.attackGroup = attackGroup;
-	}
 
 	public WaypointPriority getPriority() {
 		return priority;
@@ -72,4 +64,9 @@ public class McuAttack extends BaseFlightMcu
             throw new PWCGException(e.getMessage());
         }
 	}	
+    
+    public void setAttackTarget(int target) 
+    {
+        super.setTarget(target);
+    }
 }

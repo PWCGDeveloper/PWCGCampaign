@@ -68,4 +68,9 @@ public class McuProximity extends BaseFlightMcu
 	{
 		this.closer = closer;
 	}
+
+    public void setProximityTarget(int target)
+    {
+        super.setTarget(target);
+    }
 }

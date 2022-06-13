@@ -33,7 +33,7 @@ import pwcg.gui.rofmap.brief.model.BriefingPilotAssignmentData;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlights;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightPlanes;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -52,7 +52,7 @@ public class BriefingDataInitializerTest
     @Mock protected Mission mission;
     @Mock protected MissionFlights missionFlightBuilder;
     @Mock protected IFlight flight;
-    @Mock protected IFlightPlanes flightPlanes;
+    @Mock protected FlightPlanes flightPlanes;
     @Mock protected PlaneMcu plane1;
     @Mock protected PlaneMcu plane2;
     @Mock protected PlaneMcu plane3;

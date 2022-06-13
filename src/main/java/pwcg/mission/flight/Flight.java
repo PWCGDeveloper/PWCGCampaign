@@ -2,6 +2,7 @@ package pwcg.mission.flight;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
@@ -99,7 +100,7 @@ public abstract class Flight implements IFlight
         return flightInformation;
     }
 
-    public IFlightPlanes getFlightPlanes()
+    public FlightPlanes getFlightPlanes()
     {
         return flightPlanes;
     }
@@ -160,6 +161,22 @@ public abstract class Flight implements IFlight
          }
     }
 
+    @Override
+    public void setEnemiesForFlight(List<Integer> enemyPlaneIds)
+    {
+        flightPlanes.setTargetsForPlanes(enemyPlaneIds);
+        virtualWaypointPackage.setTargetsForPlanesInAllVWPs(enemyPlaneIds);
+    }
+
+    @Override
+    public List<Integer> getAllPlanesIdsInFlight()
+    {
+        List<Integer> planeIdsInFlight = flightPlanes.getPlaneLinkTrIds();
+        List<Integer> vwpPlaneIdsInFlight = virtualWaypointPackage.getPlanesIdsForAllVWP();
+        planeIdsInFlight.addAll(vwpPlaneIdsInFlight);
+        return planeIdsInFlight;
+    }
+    
     private void finalizeSkinsForFlight() throws PWCGException
     {
         MissionSkinGenerator.assignSkinsForFlight(this);

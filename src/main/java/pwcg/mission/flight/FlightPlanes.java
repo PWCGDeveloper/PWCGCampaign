@@ -10,7 +10,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.plane.PlaneMcu;
 
-public class FlightPlanes implements IFlightPlanes
+public class FlightPlanes
 {
     private List<PlaneMcu> planes = new ArrayList<PlaneMcu>();
     private IFlight flight;
@@ -32,7 +32,6 @@ public class FlightPlanes implements IFlightPlanes
         }
     }
 
-    @Override
     public List<PlaneMcu> getAiPlanes() throws PWCGException 
     {
         List<PlaneMcu> aiPlanes = new ArrayList<>();
@@ -47,7 +46,6 @@ public class FlightPlanes implements IFlightPlanes
         return aiPlanes;
     }
 
-    @Override
     public List<PlaneMcu> getPlayerPlanes() throws PWCGException 
     {
         List<PlaneMcu> playerPlanes = new ArrayList<>();
@@ -62,7 +60,6 @@ public class FlightPlanes implements IFlightPlanes
         return playerPlanes;
     }
 
-    @Override
     public PlaneMcu getPlaneForPilot(Integer pilotSerialNumber)
     {
         PlaneMcu pilotPlane = null;
@@ -78,7 +75,6 @@ public class FlightPlanes implements IFlightPlanes
         return pilotPlane;
     }
 
-    @Override
     public PlaneMcu getPlaneByLinkTrId(Integer planeLinkTrId)
     {
         PlaneMcu pilotPlane = null;
@@ -94,19 +90,16 @@ public class FlightPlanes implements IFlightPlanes
         return pilotPlane;
     }
 
-    @Override
     public PlaneMcu getFlightLeader()
     {
         return planes.get(0);
     }
 
-    @Override
     public List<PlaneMcu> getPlanes()
     {
         return planes;
     }
 
-    @Override
     public void setFuelForFlight(double myFuel) 
     {
         for (PlaneMcu plane : getPlanes())
@@ -129,13 +122,11 @@ public class FlightPlanes implements IFlightPlanes
         return cruisingSpeed;
     }
 
-    @Override
     public void setPlanes(List<PlaneMcu> planes) throws PWCGException
     {
         this.planes = planes;        
     }
     
-    @Override
     public List<Integer> getPlaneLinkTrIds()
     {
         List<Integer> planeLinkIds = new ArrayList<>();
@@ -146,7 +137,6 @@ public class FlightPlanes implements IFlightPlanes
         return planeLinkIds;        
     }
     
-    @Override
     public void setPlanePosition(Integer planeLinkTrId, Coordinate planeCoords, Orientation planeOrientation, int startingPoint)
     {
         PlaneMcu plane = this.getPlaneByLinkTrId(planeLinkTrId);
@@ -157,7 +147,6 @@ public class FlightPlanes implements IFlightPlanes
     }
 
 
-    @Override
     public void preparePlaneForCoop(IFlight flight) throws PWCGException
     {
         for (PlaneMcu plane : planes)
@@ -175,7 +164,6 @@ public class FlightPlanes implements IFlightPlanes
     }
     
 
-    @Override
     public void write(BufferedWriter writer) throws PWCGException 
     {
         for (int i = 0; i < planes.size(); ++i)
@@ -186,7 +174,6 @@ public class FlightPlanes implements IFlightPlanes
     }
     
 
-    @Override
     public int getFlightSize()
     {
         return planes.size();
@@ -196,5 +183,13 @@ public class FlightPlanes implements IFlightPlanes
     public void finalize() throws PWCGException
     {
         
+    }
+
+    public void setTargetsForPlanes(List<Integer> enemyPlanes)
+    {
+        for (PlaneMcu planeForVwp : planes)
+        {
+            planeForVwp.addTargets(enemyPlanes);
+        }
     }
 }

@@ -54,9 +54,9 @@ public class StopAttackingNearAirfieldSequence
     {
 
         missionBeginUnit.linkToMissionBegin(checkZoneTimer.getIndex());
-        checkZoneTimer.setTarget(activateCheckZone.getIndex());
-        activateCheckZone.setTarget(goAwayTimer.getIndex());
-        goAwayTimer.setTarget(goAwayWaypoint.getIndex());
+        checkZoneTimer.setTimerTarget(activateCheckZone.getIndex());
+        activateCheckZone.setCheckZoneTarget(goAwayTimer.getIndex());
+        goAwayTimer.setTimerTarget(goAwayWaypoint.getIndex());
     }
 
     private void setObjectAssociations(PlaneMcu plane, McuWaypoint goAwayWaypoint)

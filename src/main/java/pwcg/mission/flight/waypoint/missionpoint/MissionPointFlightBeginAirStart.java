@@ -110,8 +110,8 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
 
     private void createTargetAssociations() throws PWCGException
     {
-        formationTimer.setTarget(formationEntity.getIndex());
-        formationTimer.setTarget(this.getFirstWaypoint().getIndex());
+        formationTimer.setTimerTarget(formationEntity.getIndex());
+        formationTimer.setTimerTarget(this.getFirstWaypoint().getIndex());
     }
 
     private void createObjectAssociations(PlaneMcu plane)

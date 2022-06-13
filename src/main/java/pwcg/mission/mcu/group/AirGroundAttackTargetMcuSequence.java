@@ -14,7 +14,7 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.mcu.McuAttackTarget;
+import pwcg.mission.mcu.McuAttack;
 import pwcg.mission.mcu.McuCounter;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuEvent;
@@ -39,10 +39,10 @@ public class AirGroundAttackTargetMcuSequence
     private McuTimer attackActivateTimer = new McuTimer();
     private McuTimer attackTimeoutTimer = new McuTimer();
     private McuDeactivate attackDeactivateEntity = new McuDeactivate();
-    private McuAttackTarget attackTarget = new McuAttackTarget();
+    private McuAttack attackTarget = new McuAttack();
     private McuCounter bingoBombsCounter;
     private McuTimer exitAttackTimer = new McuTimer();
-    private McuDeactivate killTimeoutTimerEntity = new McuDeactivate();
+    private McuDeactivate killTimeoutDeactivateEntity = new McuDeactivate();
     private McuForceComplete forceCompleteDropOrdnance;
     private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
 
@@ -89,7 +89,7 @@ public class AirGroundAttackTargetMcuSequence
         attackDeactivateEntity.write(writer);
         bingoBombsCounter.write(writer);
         exitAttackTimer.write(writer);
-        killTimeoutTimerEntity.write(writer);
+        killTimeoutDeactivateEntity.write(writer);
         forceCompleteDropOrdnance.write(writer);
         
         McuSubtitle.writeSubtitles(subTitleList, writer);
@@ -140,7 +140,7 @@ public class AirGroundAttackTargetMcuSequence
 
         for (IVehicle vehicle : vehicles)
         {
-            attackTarget.setTarget(vehicle.getLinkTrId());
+            attackTarget.setAttackTarget(vehicle.getLinkTrId());
         }
         
     }
@@ -148,28 +148,28 @@ public class AirGroundAttackTargetMcuSequence
     private void setLinkToNextTarget() throws PWCGException
     {
         McuWaypoint egressWaypoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS);
-        exitAttackTimer.setTarget(egressWaypoint.getIndex());
+        exitAttackTimer.setTimerTarget(egressWaypoint.getIndex());
     }
 
     private void createTargetAssociations() 
     {
         missionBeginUnit.linkToMissionBegin(proximityStartTimer.getIndex());
-        proximityStartTimer.setTarget(mcuProximity.getIndex());
-        mcuProximity.setTarget(attackActivateTimer.getIndex());
+        proximityStartTimer.setTimerTarget(mcuProximity.getIndex());
+        mcuProximity.setProximityTarget(attackActivateTimer.getIndex());
         
-        attackActivateTimer.setTarget(attackTarget.getIndex());
-        attackActivateTimer.setTarget(attackTimeoutTimer.getIndex());
-        attackActivateTimer.setTarget(bingoBombsCounter.getIndex());
+        attackActivateTimer.setTimerTarget(attackTarget.getIndex());
+        attackActivateTimer.setTimerTarget(attackTimeoutTimer.getIndex());
+        attackActivateTimer.setTimerTarget(bingoBombsCounter.getIndex());
         
-        bingoBombsCounter.setTarget(exitAttackTimer.getIndex());
-        attackTimeoutTimer.setTarget(exitAttackTimer.getIndex());
+        bingoBombsCounter.setCounterTarget(exitAttackTimer.getIndex());
+        attackTimeoutTimer.setTimerTarget(exitAttackTimer.getIndex());
 
-        exitAttackTimer.setTarget(killTimeoutTimerEntity.getIndex());
-        exitAttackTimer.setTarget(attackDeactivateEntity.getIndex());
-        exitAttackTimer.setTarget(forceCompleteDropOrdnance.getIndex());
+        exitAttackTimer.setTimerTarget(killTimeoutDeactivateEntity.getIndex());
+        exitAttackTimer.setTimerTarget(attackDeactivateEntity.getIndex());
+        exitAttackTimer.setTimerTarget(forceCompleteDropOrdnance.getIndex());
         
-        attackDeactivateEntity.setTarget(attackTarget.getIndex());
-        killTimeoutTimerEntity.setTarget(attackTimeoutTimer.getIndex());
+        attackDeactivateEntity.setDeactivateTarget(attackTarget.getIndex());
+        killTimeoutDeactivateEntity.setDeactivateTarget(attackTimeoutTimer.getIndex());
     }
 
     private void makeSubtitles() throws PWCGException
@@ -177,19 +177,19 @@ public class AirGroundAttackTargetMcuSequence
         Coordinate subtitlePosition = targetDefinition.getPosition();
         
         McuSubtitle proximitySubtitle = McuSubtitle.makeActivatedSubtitle("Proximity triggered ", subtitlePosition);
-        mcuProximity.setTarget(proximitySubtitle.getIndex());
+        mcuProximity.setProximityTarget(proximitySubtitle.getIndex());
         subTitleList.add(proximitySubtitle);
         
         McuSubtitle attackTriggeredSubtitle = McuSubtitle.makeActivatedSubtitle("Attack triggered ", subtitlePosition);
-        attackActivateTimer.setTarget(attackTriggeredSubtitle.getIndex());
+        attackActivateTimer.setTimerTarget(attackTriggeredSubtitle.getIndex());
         subTitleList.add(attackTriggeredSubtitle);
 
         McuSubtitle bingoSubtitle = McuSubtitle.makeActivatedSubtitle("Stop attack due to bingo count ", subtitlePosition);
-        bingoBombsCounter.setTarget(bingoSubtitle.getIndex());
+        bingoBombsCounter.setCounterTarget(bingoSubtitle.getIndex());
         subTitleList.add(bingoSubtitle);
         
         McuSubtitle timeoutSubtitle = McuSubtitle.makeActivatedSubtitle("Stop attack due to attack timeout: ", subtitlePosition);
-        attackTimeoutTimer.setTarget(timeoutSubtitle.getIndex());
+        attackTimeoutTimer.setTimerTarget(timeoutSubtitle.getIndex());
         subTitleList.add(timeoutSubtitle);
     }
 
@@ -235,10 +235,10 @@ public class AirGroundAttackTargetMcuSequence
         bingoBombsCounter.setDesc("Bingo bombs counter");
         bingoBombsCounter.setPosition(targetDefinition.getPosition());
 
-        killTimeoutTimerEntity.setName("Timeout Timer Deactivate");
-        killTimeoutTimerEntity.setDesc("Timeout Time Deactivate");
-        killTimeoutTimerEntity.setOrientation(new Orientation());
-        killTimeoutTimerEntity.setPosition(targetDefinition.getPosition());
+        killTimeoutDeactivateEntity.setName("Timeout Timer Deactivate");
+        killTimeoutDeactivateEntity.setDesc("Timeout Time Deactivate");
+        killTimeoutDeactivateEntity.setOrientation(new Orientation());
+        killTimeoutDeactivateEntity.setPosition(targetDefinition.getPosition());
 
         int emergencyDropOrdnance = 1;
         forceCompleteDropOrdnance = new McuForceComplete(WaypointPriority.PRIORITY_HIGH, emergencyDropOrdnance);

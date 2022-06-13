@@ -144,4 +144,9 @@ public class McuCheckZone extends BaseFlightMcu
     {
         return triggerCoalitions;
     }
+
+    public void setCheckZoneTarget(int target)
+    {
+        super.setTarget(target);        
+    }
 }

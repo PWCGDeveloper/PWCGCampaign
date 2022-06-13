@@ -71,7 +71,7 @@ public class GroundAspectFormationMovement implements IGroundAspect
     @Override
     public void linkToNextElement(int targetIndex)
     {
-        waypointTimer.setTarget(targetIndex);
+        waypointTimer.setTimerTarget(targetIndex);
     }
 
     @Override
@@ -93,9 +93,9 @@ public class GroundAspectFormationMovement implements IGroundAspect
 
     private void createTargetAssociations() 
     {
-        formationTimer.setTarget(formation.getIndex());
-        formationTimer.setTarget(waypointTimer.getIndex());
-        waypointTimer.setTarget(waypoint.getIndex());
+        formationTimer.setTimerTarget(formation.getIndex());
+        formationTimer.setTimerTarget(waypointTimer.getIndex());
+        waypointTimer.setTimerTarget(waypoint.getIndex());
     }
     
     private void createObjectAssociations() 

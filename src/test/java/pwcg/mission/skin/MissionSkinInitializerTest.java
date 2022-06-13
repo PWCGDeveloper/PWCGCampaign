@@ -16,7 +16,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightPlanes;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,7 +25,7 @@ public class MissionSkinInitializerTest
     @Mock private Campaign campaign;
     @Mock private Squadron squadron;
     @Mock private IFlight flight;
-    @Mock private IFlightPlanes flightPlanes;
+    @Mock private FlightPlanes flightPlanes;
     @Mock private ICountry country;
 
     private PlaneMcu plane1 = new PlaneMcu();

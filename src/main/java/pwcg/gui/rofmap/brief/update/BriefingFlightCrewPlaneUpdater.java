@@ -127,7 +127,7 @@ public class BriefingFlightCrewPlaneUpdater
         PlaneMcu flightmember = playerFlight.getFlightPlanes().getFlightLeader();
         PlaneMcu updatedPlaneMcu = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
                 playerFlight.getFlightInformation().getCountry(), crewPlane.getPilot());
-        updatedPlaneMcu.setTarget(flightmember.getLinkTrId());
+        updatedPlaneMcu.setPlaneEntityTarget(flightmember.getLinkTrId());
         updatedPlaneMcu.setFuel(flightmember.getFuel());
 
         return updatedPlaneMcu;

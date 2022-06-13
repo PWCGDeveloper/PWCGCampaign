@@ -38,7 +38,7 @@ public class MissionBeginUnit
 		missionBeginTimer.setDesc("Mission Begin Timer");
 		missionBeginTimer.setPosition(position.copy());
 		
-		missionBegin.setTarget(missionBeginTimer.getIndex());
+		missionBegin.setMissionBeginTarget(missionBeginTimer.getIndex());
 	}
 
 	public void write(BufferedWriter writer) throws PWCGException
@@ -63,7 +63,7 @@ public class MissionBeginUnit
 
 	public void linkToMissionBegin (int targetIndex) 
 	{
-		missionBeginTimer.setTarget(targetIndex);
+		missionBeginTimer.setTimerTarget(targetIndex);
 	}
 
     public void setStartTime(int time)

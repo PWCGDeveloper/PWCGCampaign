@@ -26,7 +26,7 @@ public class FirePotSeries extends Effect
     {
         missionBegin = new McuMissionStart();
         missionBegin.setPosition(startPosition.copy());
-        missionBegin.setTarget(fireTriggerTimer.getIndex());
+        missionBegin.setMissionBeginTarget(fireTriggerTimer.getIndex());
         
         fireTriggerTimer.setTime(1);
         fireTriggerTimer.setPosition(startPosition.copy());

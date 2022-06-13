@@ -39,7 +39,7 @@ public class GroundAspectMovement implements IGroundAspect
         waypointTimer.setName("Vehicle WP Timer");
         waypointTimer.setDesc("Vehicle WP TImer");
         waypointTimer.setPosition(vehicle.getPosition().copy());
-        waypointTimer.setTarget(waypoint.getIndex());
+        waypointTimer.setTimerTarget(waypoint.getIndex());
 
         createTargetAssociations();
         createObjectAssociations();
@@ -48,7 +48,7 @@ public class GroundAspectMovement implements IGroundAspect
     @Override
     public void linkToNextElement(int targetIndex)
     {
-        waypointTimer.setTarget(targetIndex);
+        waypointTimer.setTimerTarget(targetIndex);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class GroundAspectMovement implements IGroundAspect
 
     private void createTargetAssociations() 
     {
-        waypointTimer.setTarget(waypoint.getIndex());
+        waypointTimer.setTimerTarget(waypoint.getIndex());
     }
     
     private void createObjectAssociations() 

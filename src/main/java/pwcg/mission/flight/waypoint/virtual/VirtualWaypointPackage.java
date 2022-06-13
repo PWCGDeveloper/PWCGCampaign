@@ -115,4 +115,24 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
         IVirtualActivate activateMissionPointSet = (IVirtualActivate)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ACTIVATE);
         activateMissionPointSet.linkMissionBeginToFirstVirtualWaypoint(firstVirtualWayPoint.getEntryPoint());
     }
+    
+    
+    public List<Integer> getPlanesIdsForAllVWP()
+    {
+        List<Integer> planeIdsForAllVWPs = new ArrayList<>();
+        for (VirtualWaypoint vwp : virtualWaypoints)
+        {
+            List<Integer> planeIdsForVWP = vwp.getPlanesIdsForVWP();
+            planeIdsForAllVWPs.addAll(planeIdsForVWP);
+        }
+        return planeIdsForAllVWPs;
+    }
+    
+    public void setTargetsForPlanesInAllVWPs(List<Integer> enemyPlanes)
+    {
+        for (VirtualWaypoint vwp : virtualWaypoints)
+        {
+            vwp.setTargetsForPlanesInVWP(enemyPlanes);
+        }
+    }
 }

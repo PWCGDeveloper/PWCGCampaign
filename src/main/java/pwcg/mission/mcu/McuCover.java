@@ -49,4 +49,9 @@ public class McuCover extends BaseFlightMcu
         }
 	}
 
+    public void setCoverTarget(int linkTrId)
+    {
+        super.setTarget(linkTrId);
+    }
+
 }

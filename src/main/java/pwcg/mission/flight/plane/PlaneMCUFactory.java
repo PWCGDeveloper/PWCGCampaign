@@ -74,7 +74,7 @@ public class PlaneMCUFactory
 	            if (index > 0)
 	            {
 	                PlaneMcu leadPlane = planesForFlight.get(0);
-	                plane.setTarget(leadPlane.getLinkTrId());
+	                plane.setPlaneEntityTarget(leadPlane.getLinkTrId());
 	            }
 	            planesForFlight.add(plane);
         	}

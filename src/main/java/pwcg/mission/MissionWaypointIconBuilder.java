@@ -54,7 +54,7 @@ public class MissionWaypointIconBuilder
             }
             if (prevIcon != null)
             {
-                prevIcon.setTarget(icon.getIndex());
+                prevIcon.setIconTarget(icon.getIndex());
             }
             prevIcon = icon;
             waypointIcons.add(icon);
@@ -87,7 +87,7 @@ public class MissionWaypointIconBuilder
                         if (productSpecificConfiguration.usePosition1()) {
                             prevIcon.setLineType(McuIconLineType.ICON_LINE_TYPE_POSITION2);
                         }
-                        prevIcon.setTarget(icon.getIndex());
+                        prevIcon.setIconTarget(icon.getIndex());
                         prevIcon = icon;
                         waypointIcons.add(icon);
 
@@ -99,7 +99,7 @@ public class MissionWaypointIconBuilder
                             if (productSpecificConfiguration.usePosition1()) {
                                 prevIcon.setLineType(McuIconLineType.ICON_LINE_TYPE_POSITION2);
                             }
-                            prevIcon.setTarget(icon.getIndex());
+                            prevIcon.setIconTarget(icon.getIndex());
                             prevIcon = icon;
                             waypointIcons.add(icon);
                         }
@@ -111,7 +111,7 @@ public class MissionWaypointIconBuilder
             {
                 MissionPoint target = playerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_ATTACK);
                 icon = McuIconFactory.buildWaypointActionIcon(WaypointAction.WP_ACTION_ATTACK, target, playerFlight.getFlightInformation().getCountry().getSide());
-                prevIcon.setTarget(icon.getIndex());
+                prevIcon.setIconTarget(icon.getIndex());
                 prevIcon = icon;
                 waypointIcons.add(icon);
             }
@@ -122,8 +122,8 @@ public class MissionWaypointIconBuilder
         {
             McuIcon icon = McuIconFactory.buildWaypointActionIcon(WaypointAction.WP_ACTION_LANDING, landing, playerFlight.getFlightInformation().getCountry().getSide());
             if (prevIcon != null)
-                prevIcon.setTarget(icon.getIndex());
-            icon.setTarget(firstIcon.getIndex());
+                prevIcon.setIconTarget(icon.getIndex());
+            icon.setIconTarget(firstIcon.getIndex());
             waypointIcons.add(icon);
         }
     }

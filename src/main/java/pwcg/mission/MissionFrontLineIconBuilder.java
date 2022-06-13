@@ -76,7 +76,7 @@ public class MissionFrontLineIconBuilder
         	McuIcon source = icons.get(i-1);
         	McuIcon target = icons.get(i);
         	
-        	source.setTarget(target.getIndex());
+        	source.setIconTarget(target.getIndex());
         }
 	}
 

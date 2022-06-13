@@ -42,7 +42,7 @@ public class MissionObjectiveGroup
 
         missionObjectiveTimer.setPosition(squadronLocation);
         missionBeginUnit.linkToMissionBegin(missionObjectiveTimer.getIndex());
-        missionObjectiveTimer.setTarget(missionObjective.getIndex());
+        missionObjectiveTimer.setTimerTarget(missionObjective.getIndex());
     }
 
     public void createFailureMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
@@ -61,7 +61,7 @@ public class MissionObjectiveGroup
                         missionBeginUnit.getStartTimeindex(),
                         missionObjectiveTimer.getIndex());
         
-        missionObjectiveTimer.setTarget(missionObjective.getIndex());
+        missionObjectiveTimer.setTimerTarget(missionObjective.getIndex());
         missionObjectiveTimer.setPosition(squadronLocation);
 
         McuEvent planeDamagedEvent = new McuEvent(McuEvent.ONPLANECRASHED, missionObjectiveTimer.getIndex());

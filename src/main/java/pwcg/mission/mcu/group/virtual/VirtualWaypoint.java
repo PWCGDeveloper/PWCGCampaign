@@ -2,6 +2,8 @@ package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
@@ -206,5 +208,23 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     public boolean isShouldLinkToAttack()
     {
         return shouldLinkToAttack;
+    }
+
+    public List<Integer> getPlanesIdsForVWP()
+    {
+        List<Integer> planeIdsForVWP = new ArrayList<>();
+        for (PlaneMcu planeForVwp : vwpPlanes.getAllPlanes())
+        {
+            planeIdsForVWP.add(planeForVwp.getLinkTrId());
+        }
+        return planeIdsForVWP;
+    }
+
+    public void setTargetsForPlanesInVWP(List<Integer> enemyPlanes)
+    {
+        for (PlaneMcu planeForVwp : vwpPlanes.getAllPlanes())
+        {
+            planeForVwp.addTargets(enemyPlanes);
+        }
     }
 }

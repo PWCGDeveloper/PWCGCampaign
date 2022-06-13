@@ -30,7 +30,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlights;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightPlanes;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
@@ -46,7 +46,7 @@ public class AssaultBuilderTest
     @Mock private MissionFlights missionFlightBuilder;
     @Mock private IFlight playerFlight;
     @Mock private ICountry country;
-    @Mock private IFlightPlanes flightPlanes;
+    @Mock private FlightPlanes flightPlanes;
     @Mock private PlaneMcu playerPlane;
 
     @BeforeEach

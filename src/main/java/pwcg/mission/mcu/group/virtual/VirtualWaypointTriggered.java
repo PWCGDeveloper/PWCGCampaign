@@ -88,21 +88,21 @@ public class VirtualWaypointTriggered
     {
         Coordinate subtitlePosition = vwpCoordinate.getPosition().copy();
         McuSubtitle activatedSubtitle = McuSubtitle.makeActivatedSubtitle("VWP Activate: " + vwpIdentifier + " " + vwpPlanes.getLeadActivatePlane().getName(), subtitlePosition);
-        activateTimer.setTarget(activatedSubtitle.getIndex());
+        activateTimer.setTimerTarget(activatedSubtitle.getIndex());
         subTitleList.add(activatedSubtitle);
     }
 
     private void createTargetAssociations()
     {
-        activateTimer.setTarget(activate.getIndex());
-        formationTimer.setTarget(formation.getIndex());
+        activateTimer.setTimerTarget(activate.getIndex());
+        formationTimer.setTimerTarget(formation.getIndex());
         
         int wpIndex = vwpCoordinate.getWaypointIdentifier();
-        waypointTimer.setTarget(wpIndex);
+        waypointTimer.setTimerTarget(wpIndex);
 
-        activateTimer.setTarget(formationTimer.getIndex());
-        formationTimer.setTarget(waypointTimer.getIndex());
-        waypointTimer.setTarget(escortTimer.getIndex());
+        activateTimer.setTimerTarget(formationTimer.getIndex());
+        formationTimer.setTimerTarget(waypointTimer.getIndex());
+        waypointTimer.setTimerTarget(escortTimer.getIndex());
     }
 
     private void createObjectAssociations()
@@ -153,7 +153,7 @@ public class VirtualWaypointTriggered
     
     public void linkToEscort(int escortAcvtivateTarget)
     {
-        escortTimer.setTarget(escortAcvtivateTarget);
+        escortTimer.setTimerTarget(escortAcvtivateTarget);
     }
 
     public int getEntryPoint()

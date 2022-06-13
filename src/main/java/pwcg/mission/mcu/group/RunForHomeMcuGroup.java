@@ -50,7 +50,7 @@ public class RunForHomeMcuGroup
         cover  = new McuCover();
         cover.setPosition(coverStartWaypoint.getPosition());
         cover.setObject(coveringPlane.getLinkTrId());
-        cover.setTarget(planeToCover.getLinkTrId());
+        cover.setCoverTarget(planeToCover.getLinkTrId());
 
         coverTimer  = new McuTimer();
         coverTimer.setName("Cover Timer");
@@ -59,7 +59,7 @@ public class RunForHomeMcuGroup
         coverTimer.setTime(1);
         
         coverStartWaypoint.setTarget(coverTimer.getIndex());
-        coverTimer.setTarget(cover.getIndex());
+        coverTimer.setTimerTarget(cover.getIndex());
     }
     
     private McuWaypoint getCoverStartWaypoint() throws PWCGException
@@ -93,7 +93,7 @@ public class RunForHomeMcuGroup
         forceCompleteFinishCover.setObject(coveringPlane.getLinkTrId());
         
         coverFinishWaypoint.setTarget(finishCoverTimer.getIndex());
-        finishCoverTimer.setTarget(forceCompleteFinishCover.getIndex());
+        finishCoverTimer.setTimerTarget(forceCompleteFinishCover.getIndex());
     }
     
     private McuWaypoint getCoverFinishWaypoint() throws PWCGException

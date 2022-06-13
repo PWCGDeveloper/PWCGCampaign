@@ -49,4 +49,9 @@ public class McuCounter extends BaseFlightMcu
             throw new PWCGException(e.getMessage());
         }
 	}
+
+    public void setCounterTarget(int target)
+    {
+        super.setTarget(target);
+    }
 }

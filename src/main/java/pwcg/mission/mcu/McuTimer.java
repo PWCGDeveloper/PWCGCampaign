@@ -71,4 +71,9 @@ public class McuTimer extends BaseFlightMcu
 	public void setRandom(int random) {
 		this.random = random;
 	}
+    
+    public void setTimerTarget(int target) 
+    {
+        super.setTarget(target);
+    }
 }

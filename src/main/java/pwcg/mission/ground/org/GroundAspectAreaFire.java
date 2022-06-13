@@ -52,7 +52,7 @@ public class GroundAspectAreaFire implements IGroundAspect
     @Override
     public void linkToNextElement(int targetIndex)
     {
-        attackAreaTimer.setTarget(targetIndex);
+        attackAreaTimer.setTimerTarget(targetIndex);
     }
 
 	@Override
@@ -70,7 +70,7 @@ public class GroundAspectAreaFire implements IGroundAspect
 
     private void createTargetAssociations() 
     {
-        attackAreaTimer.setTarget(attackArea.getIndex());
+        attackAreaTimer.setTimerTarget(attackArea.getIndex());
     }
     
     private void createObjectAssociations() 

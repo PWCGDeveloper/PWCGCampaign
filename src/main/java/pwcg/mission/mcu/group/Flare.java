@@ -45,7 +45,7 @@ public class Flare
     
     private void createTargetAssociations()
     {
-        flareTimer.setTarget(flare.getIndex());        
+        flareTimer.setTimerTarget(flare.getIndex());        
     }
     
     private void createObjectAssociations(int flareVehicleId)
@@ -66,6 +66,6 @@ public class Flare
     
     public void setNextTarget(int nextTarget)
     {
-        flareTimer.setTarget(nextTarget);        
+        flareTimer.setTimerTarget(nextTarget);        
     }
 }

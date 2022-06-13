@@ -112,11 +112,11 @@ public class MissionAssaultIconBuilder
 
     private void linkIconsIntoArrow(ArrowIcon arrowIcon)
     {
-        arrowIcon.tail.setTarget(arrowIcon.preAssaultPoint.getIndex());
-        arrowIcon.preAssaultPoint.setTarget(arrowIcon.assaultPoint.getIndex());
-        arrowIcon.assaultPoint.setTarget(arrowIcon.destinationPoint.getIndex());
-        arrowIcon.destinationPoint.setTarget(arrowIcon.postDestinationPoint.getIndex());
-        arrowIcon.postDestinationPoint.setTarget(arrowIcon.head.getIndex());
+        arrowIcon.tail.setIconTarget(arrowIcon.preAssaultPoint.getIndex());
+        arrowIcon.preAssaultPoint.setIconTarget(arrowIcon.assaultPoint.getIndex());
+        arrowIcon.assaultPoint.setIconTarget(arrowIcon.destinationPoint.getIndex());
+        arrowIcon.destinationPoint.setIconTarget(arrowIcon.postDestinationPoint.getIndex());
+        arrowIcon.postDestinationPoint.setIconTarget(arrowIcon.head.getIndex());
     }
 
     public void write(BufferedWriter writer) throws PWCGException

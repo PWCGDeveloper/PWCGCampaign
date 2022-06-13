@@ -108,7 +108,7 @@ public abstract class GroundUnit implements IGroundUnit
     {
         for (GroundUnitElement element : groundElements)
         {
-            activateGroundUnitUnitTimer.setTarget(element.getEntryPoint());
+            activateGroundUnitUnitTimer.setTimerTarget(element.getEntryPoint());
             element.linkAspects();
         }
     }
@@ -325,7 +325,7 @@ public abstract class GroundUnit implements IGroundUnit
         Coordinate subtitlePosition = activateGroundUnitUnitTimer.getPosition();
         
         McuSubtitle activateGroundUnitUnitTimerSubtitle = McuSubtitle.makeActivatedSubtitle("Ground unit activation triggered ", subtitlePosition);
-        activateGroundUnitUnitTimer.setTarget(activateGroundUnitUnitTimerSubtitle.getIndex());
+        activateGroundUnitUnitTimer.setTimerTarget(activateGroundUnitUnitTimerSubtitle.getIndex());
     }
 
     public GroundUnitType getGroundUnitType()
