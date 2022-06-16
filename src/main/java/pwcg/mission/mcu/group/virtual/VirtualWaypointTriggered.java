@@ -28,6 +28,7 @@ public class VirtualWaypointTriggered
 
     private McuTimer activateTimer = new McuTimer();
     private McuTimer formationTimer = new McuTimer();
+    private McuTimer attackTimer = new McuTimer();
     private McuTimer waypointTimer = new McuTimer();
     private McuTimer escortTimer = new McuTimer();
     private int vwpIdentifier = 1;
@@ -55,30 +56,36 @@ public class VirtualWaypointTriggered
     {
         activate.setPosition(vwpCoordinate.getPosition().copy());
         activate.setOrientation(vwpCoordinate.getOrientation().copy());
-        activate.setName("Activate");
-        activate.setDesc("Activate");
+        activate.setName("VWP Activate");
+        activate.setDesc("VWP Activate");
         
         activateTimer.setTime(1);
         activateTimer.setPosition(vwpCoordinate.getPosition().copy());
         activateTimer.setOrientation(vwpCoordinate.getOrientation().copy());
-        activateTimer.setName("Activate Timer");
-        activateTimer.setDesc("Activate Timer");
+        activateTimer.setName("VWP Activate Timer");
+        activateTimer.setDesc("VWP Activate Timer");
+        
+        attackTimer.setTime(1);
+        attackTimer.setPosition(vwpCoordinate.getPosition().copy());
+        attackTimer.setOrientation(vwpCoordinate.getOrientation().copy());
+        attackTimer.setName("VWP Attack Timer");
+        attackTimer.setDesc("VWP Attack Timer");
 
         waypointTimer.setTime(1);
         waypointTimer.setPosition(vwpCoordinate.getPosition().copy());
         waypointTimer.setOrientation(vwpCoordinate.getOrientation().copy());
-        waypointTimer.setName("Activate WP Timer");
-        waypointTimer.setDesc("Activate WP Timer");
+        waypointTimer.setName("VWP Waypoint Timer");
+        waypointTimer.setDesc("VWP Waypoint Timer");
 
         escortTimer.setTime(1);
         escortTimer.setPosition(vwpCoordinate.getPosition().copy());
         escortTimer.setOrientation(vwpCoordinate.getOrientation().copy());
-        escortTimer.setName("Escort Timer");
-        escortTimer.setDesc("Escort Timer");
+        escortTimer.setName("VWP Escort Timer");
+        escortTimer.setDesc("VWP Escort Timer");
 
         formationTimer.setPosition(vwpCoordinate.getPosition().copy());
-        formationTimer.setName("Formation Timer");
-        formationTimer.setDesc("Formation Timer");
+        formationTimer.setName("VWP Formation Timer");
+        formationTimer.setDesc("VWP Formation Timer");
 
         formation = new McuFormation(flight.getFlightInformation().getFormationType(), McuFormation.FORMATION_DENSITY_LOOSE);
         formation.setPosition(vwpCoordinate.getPosition().copy());
@@ -96,13 +103,24 @@ public class VirtualWaypointTriggered
     {
         activateTimer.setTimerTarget(activate.getIndex());
         formationTimer.setTimerTarget(formation.getIndex());
-        
+
+        triggerAttackMcuForPlanes();
+
         int wpIndex = vwpCoordinate.getWaypointIdentifier();
         waypointTimer.setTimerTarget(wpIndex);
 
         activateTimer.setTimerTarget(formationTimer.getIndex());
-        formationTimer.setTimerTarget(waypointTimer.getIndex());
+        formationTimer.setTimerTarget(attackTimer.getIndex());
+        attackTimer.setTimerTarget(waypointTimer.getIndex());
         waypointTimer.setTimerTarget(escortTimer.getIndex());
+    }
+
+    private void triggerAttackMcuForPlanes()
+    {
+        for (PlaneMcu plane : vwpPlanes.getAllPlanes())
+        {
+            attackTimer.setTimerTarget(plane.getFighterAttack().getIndex());
+        }
     }
 
     private void createObjectAssociations()
@@ -133,9 +151,9 @@ public class VirtualWaypointTriggered
     
             activate.write(writer);
             formation.write(writer);
-    
             activateTimer.write(writer);
             formationTimer.write(writer);
+            attackTimer.write(writer);            
             waypointTimer.write(writer);
             escortTimer.write(writer);
             

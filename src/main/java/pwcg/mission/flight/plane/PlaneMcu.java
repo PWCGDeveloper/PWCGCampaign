@@ -83,7 +83,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.index = IndexGenerator.getInstance().getNextIndex();
         this.entity = new McuTREntity(index);
         this.linkTrId = entity.getIndex();
-        fighterAttack.setObject(this.linkTrId);
+        this.fighterAttack.setObject(this.linkTrId);
     }
 
     public PlaneMcu(Campaign campaign, SquadronMember pilot)
@@ -96,6 +96,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.index = IndexGenerator.getInstance().getNextIndex();
         this.entity = new McuTREntity(index);
         this.linkTrId = entity.getIndex();
+        this.fighterAttack.setObject(this.linkTrId);
     }
     
     public void buildPlane(EquippedPlane equippedPlane, ICountry country) throws PWCGException
@@ -161,7 +162,10 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         plane.index = IndexGenerator.getInstance().getNextIndex();
         plane.entity = this.entity.copy(plane.index);
         plane.linkTrId = plane.entity.getIndex();
+        
         plane.fighterAttack = this.fighterAttack.copy();
+        plane.fighterAttack.clearObjects();
+        plane.fighterAttack.setObject(plane.linkTrId);
 
         plane.campaign = this.campaign;
         plane.pilot = this.pilot;
@@ -365,10 +369,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             writer.newLine();
 
             entity.write(writer);
-            if (fighterAttack.getTargets().size() > 0)
-            {
-                fighterAttack.write(writer);
-            }
+            fighterAttack.write(writer);
             
             if (wingmanCommands != null)
             {

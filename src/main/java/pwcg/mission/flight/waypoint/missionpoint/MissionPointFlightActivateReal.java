@@ -13,6 +13,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuActivate;
+import pwcg.mission.mcu.McuFactory;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -98,11 +99,7 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
         activationEntity.setDesc("Activate entity");
         activationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
 
-        missionBeginTimer = new McuTimer();
-        missionBeginTimer.setName("Activation Timer");
-        missionBeginTimer.setDesc("Activation Timer");
-        missionBeginTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        missionBeginTimer.setTime(1);
+        missionBeginTimer = McuFactory.createTimer(flight, "Mission Begin", 1);
     }
 
     private void createTargetAssociations()

@@ -18,6 +18,7 @@ import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuCheckZone;
+import pwcg.mission.mcu.McuFactory;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -126,17 +127,8 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
         activationEntity.setDesc("Activate entity");
         activationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
 
-        activationTimer = new McuTimer();
-        activationTimer.setName("Activation Timer");
-        activationTimer.setDesc("Activation Timer");
-        activationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        activationTimer.setTime(1);
-
-        takeoffStartTimer = new McuTimer();
-        takeoffStartTimer.setName("Takeoff Start Timer");
-        takeoffStartTimer.setDesc("Takeoff Start  Timer");
-        takeoffStartTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        takeoffStartTimer.setTime(delaySeconds);
+        activationTimer = McuFactory.createTimer(flight, "Activation", 1);
+        takeoffStartTimer = McuFactory.createTimer(flight, "Takeoff Start", delaySeconds);
     }
 
     private void createTargetAssociations()

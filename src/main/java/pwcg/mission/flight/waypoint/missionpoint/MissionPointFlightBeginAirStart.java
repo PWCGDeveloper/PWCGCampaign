@@ -12,6 +12,7 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.mcu.BaseFlightMcu;
+import pwcg.mission.mcu.McuFactory;
 import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
@@ -24,6 +25,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
 
     private McuTimer formationTimer = null;
     private McuFormation formationEntity = null;
+    private McuTimer attackTimer = null;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
 
@@ -38,6 +40,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     public void createFlightBegin() throws PWCGException, PWCGException
     {
         createFormation();
+        createAttack();
         createAirStartWaypoint();  
     }
 
@@ -83,7 +86,9 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     public void write(BufferedWriter writer) throws PWCGException
     {
         formationTimer.write(writer);
-        formationEntity.write(writer);
+        formationEntity.write(writer);        
+        attackTimer.write(writer);
+
         super.write(writer);
     }
 
@@ -94,11 +99,12 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
         formationEntity = new McuFormation(flightInformation.getFormationType(), McuFormation.FORMATION_DENSITY_LOOSE);
         formationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition());
 
-        formationTimer = new McuTimer();
-        formationTimer.setName(flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + ": Formation Timer");
-        formationTimer.setDesc("Formation timer entity for " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
-        formationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
-        formationTimer.setTime(2);
+        formationTimer = McuFactory.createTimer(flight, "Formation", 2);
+    }
+    
+    private void createAttack() throws PWCGException
+    {
+        attackTimer = McuFactory.createTimer(flight, "Attack", 1);
     }
 
     private void createAirStartWaypoint() throws PWCGException
@@ -111,7 +117,18 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     private void createTargetAssociations() throws PWCGException
     {
         formationTimer.setTimerTarget(formationEntity.getIndex());
-        formationTimer.setTimerTarget(this.getFirstWaypoint().getIndex());
+        formationTimer.setTimerTarget(attackTimer.getIndex());
+
+        triggerAttackMcuForPlanes();
+        attackTimer.setTimerTarget(this.getFirstWaypoint().getIndex());
+    }
+
+    private void triggerAttackMcuForPlanes()
+    {
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+        {
+            attackTimer.setTimerTarget(plane.getFighterAttack().getIndex());
+        }
     }
 
     private void createObjectAssociations(PlaneMcu plane)
