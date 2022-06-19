@@ -1,0 +1,31 @@
+{
+	"type": "ar234b2",
+	"archType": "ar234",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+    	"BRAKING_PARACHUTE",
+    	"MIRROR",
+    	"BOMB_SIGHT"
+	],
+	"displayName": "Ar 234 B-2",
+	"script": "LuaScripts\\WorldObjects\\Planes\\ar234b2.txt",
+	"model": "graphics\\planes\\ar234b2\\ar234b2.mgm",
+	"desc": "",
+	"cruisingSpeed": 500,
+	"climbOutRate": 1000,
+	"goodness": 87,
+	"range": 800,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"ATTACK",
+		"RECON"
+	],
+	"introduction": "19440501",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

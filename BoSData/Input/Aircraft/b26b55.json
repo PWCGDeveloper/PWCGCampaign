@@ -1,0 +1,26 @@
+{
+	"type": "b26b55",
+	"archType": "b26",
+	"side": "ALLIED",
+	"displayName": "B-26B-55",
+	"primaryUsedBy": [
+		"USA"
+	],
+	"stockModifications": [],
+	"script": "LuaScripts\\WorldObjects\\Planes\\b26b55.txt",
+	"model": "graphics\\planes\\b26b55\\b26b55.mgm",
+	"desc": "",
+	"cruisingSpeed": 290,
+	"climbOutRate": 650,
+	"goodness": 65,
+	"range": 1300,
+	"isFlyable": false,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"BOMBER"
+	],
+	"introduction": "19410601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

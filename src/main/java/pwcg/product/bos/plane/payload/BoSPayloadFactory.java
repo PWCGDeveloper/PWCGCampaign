@@ -11,7 +11,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.plane.BoSPlaneAttributeFactory;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 import pwcg.product.bos.plane.payload.aircraft.A20BPayload;
+import pwcg.product.bos.plane.payload.aircraft.Ar234B2Payload;
 import pwcg.product.bos.plane.payload.aircraft.B25DRAFPayload;
+import pwcg.product.bos.plane.payload.aircraft.B26B55Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109E7Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109F2Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109F4Payload;
@@ -168,6 +170,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         {
             return new Ju88C6Payload(planeType, date);
         }
+        else if (attributeMapping == BosPlaneAttributeMapping.AR234_B2)
+        {
+            return new Ar234B2Payload(planeType, date);
+        }
         else if (attributeMapping == BosPlaneAttributeMapping.Ma202_SER8)
         {
             return new Ma202Ser8Payload(planeType, date);
@@ -257,6 +263,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.B25)
         {
             return new B25DRAFPayload(planeType, date);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.B26)
+        {
+            return new B26B55Payload(planeType, date);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.C47)
         {

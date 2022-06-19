@@ -29,6 +29,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     HS129_B2S("hs129b2", "static_hs129b2"),
     JU88_A4("ju88a4", "static_ju88", "static_ju88_open", "static_ju88_net"),
     JU88_C6("ju88c6", "static_ju88_open", "static_ju88_net"),
+    AR234_B2("ar234b2", "static_ju88_net"),
     JU87_D3("ju87d3", "static_ju87", "static_ju87_net", "static_ju87_open"),
     JU52("ju523mg4e", "static_ju52"),
 
@@ -66,7 +67,8 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     PE2_S87("pe2s87", "static_pe2", "static_pe2_open"),
     A20B("a20b", "static_a20b"),
     C47("c47a", "static_a20b"),
-    B25("b25draf", "static_b25d");
+    B25("b25draf", "static_b25d"),
+    B26("b26b55", "static_b25d");
 
     
 	private String planeType;
