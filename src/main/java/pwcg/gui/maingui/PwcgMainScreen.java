@@ -44,7 +44,7 @@ import pwcg.gui.maingui.config.PwcgIconicMissionGenerationScreen;
 import pwcg.gui.maingui.config.PwcgPlanesOwnedConfigurationScreen;
 import pwcg.gui.maingui.config.PwcgSkinConfigurationAnalysisScreen;
 import pwcg.gui.maingui.coop.PwcgCoopGlobalAdminScreen;
-import pwcg.gui.rofmap.editmap.EditorMapGUI;
+import pwcg.gui.rofmap.editmap.FrontLinesEditorMapGUI;
 import pwcg.gui.rofmap.infoMap.InfoMapGUI;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
@@ -515,7 +515,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
     private void showPWCGEditMap() throws PWCGException 
     {
         Date mapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
-        EditorMapGUI editMapGUI = new EditorMapGUI(mapDate);
+        FrontLinesEditorMapGUI editMapGUI = new FrontLinesEditorMapGUI(mapDate);
         editMapGUI.makeGUI();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(editMapGUI);

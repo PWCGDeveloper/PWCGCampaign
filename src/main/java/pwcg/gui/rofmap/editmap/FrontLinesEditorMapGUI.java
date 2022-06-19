@@ -37,13 +37,13 @@ import pwcg.gui.utils.CampaignTransitionDates;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 
-public class EditorMapGUI extends MapGUI implements ActionListener
+public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
 {
     private static String MAP_DELIMITER = "Map: ";
     
     private static final long serialVersionUID = 1L;
 
-    private EditorMapPanel editorMapPanel = null;
+    private FrontLinesEditorMapPanel editorMapPanel = null;
     private JComboBox<String> cbDate = new JComboBox<String>();
     private ButtonGroup mapButtonGroup = new ButtonGroup();
     private ButtonGroup editModeButtonGroup = new ButtonGroup();
@@ -52,7 +52,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
     private JCheckBox displayAirfields = null;
     private JCheckBox displayCities = null;
 
-    public EditorMapGUI(Date mapDate) throws PWCGException  
+    public FrontLinesEditorMapGUI(Date mapDate) throws PWCGException  
     {        
         super(mapDate);
 
@@ -85,7 +85,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
     {
         JPanel infoMapPanel = new JPanel(new BorderLayout());
 
-        editorMapPanel = new EditorMapPanel(this);
+        editorMapPanel = new FrontLinesEditorMapPanel(this);
         
         mapScroll = new MapScroll(editorMapPanel);  
         editorMapPanel.setMapBackground(100);
@@ -360,32 +360,32 @@ public class EditorMapGUI extends MapGUI implements ActionListener
             {
                 if (action.contains("CreateFront"))
                 {
-                    editorMapPanel.setEditMode(EditorMapPanel.EDIT_MODE_CREATE_NEW_FRONT);
+                    editorMapPanel.setEditMode(FrontLinesEditorMapPanel.EDIT_MODE_CREATE_NEW_FRONT);
                 }
                 else if (action.contains("Mode:AddFront"))
                 {
-                    editorMapPanel.setEditMode(EditorMapPanel.EDIT_MODE_ADD_FRONT);
+                    editorMapPanel.setEditMode(FrontLinesEditorMapPanel.EDIT_MODE_ADD_FRONT);
                 }
                 else if (action.contains("Mode:DeleteFront"))
                 {
-                    editorMapPanel.setEditMode(EditorMapPanel.EDIT_MODE_DELETE_FRONT);
+                    editorMapPanel.setEditMode(FrontLinesEditorMapPanel.EDIT_MODE_DELETE_FRONT);
                 }
                 else if (action.contains("EditFront"))
                 {
-                    editorMapPanel.setEditMode(EditorMapPanel.EDIT_MODE_EDIT_FRONT);
+                    editorMapPanel.setEditMode(FrontLinesEditorMapPanel.EDIT_MODE_EDIT_FRONT);
                 }
                 else if (action.contains("EditCity"))
                 {
-                    editorMapPanel.setEditMode(EditorMapPanel.EDIT_MODE_ADD_MAP_LOCATIONS);
+                    editorMapPanel.setEditMode(FrontLinesEditorMapPanel.EDIT_MODE_ADD_MAP_LOCATIONS);
                 }
                 else if (action.contains("EditNone"))
                 {
-                    editorMapPanel.setEditMode(EditorMapPanel.EDIT_MODE_NONE);
+                    editorMapPanel.setEditMode(FrontLinesEditorMapPanel.EDIT_MODE_NONE);
                 }
             }
             
-            editorMapPanel.setWhatToDisplay(EditorMapPanel.DISPLAY_AIRFIELDS, displayAirfields.isSelected());
-            editorMapPanel.setWhatToDisplay(EditorMapPanel.DISPLAY_CITIES, displayCities.isSelected());
+            editorMapPanel.setWhatToDisplay(FrontLinesEditorMapPanel.DISPLAY_AIRFIELDS, displayAirfields.isSelected());
+            editorMapPanel.setWhatToDisplay(FrontLinesEditorMapPanel.DISPLAY_CITIES, displayCities.isSelected());
         }
         catch (Exception e)
         {

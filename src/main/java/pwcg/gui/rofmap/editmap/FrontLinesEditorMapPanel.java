@@ -35,10 +35,10 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapPanelBase;
 
-public class EditorMapPanel extends MapPanelBase
+public class FrontLinesEditorMapPanel extends MapPanelBase
 {
 	public static int DISPLAY_AIRFIELDS = 0;
-	public static int DISPLAY_CITIES = 0;
+    public static int DISPLAY_CITIES = 0;
 
     public static int EDIT_MODE_NONE = 0;
 
@@ -58,7 +58,7 @@ public class EditorMapPanel extends MapPanelBase
     private MapLocationEditor mapLocationEditor = null;
 
 
-	public EditorMapPanel(MapGUI parent) throws PWCGException  
+	public FrontLinesEditorMapPanel(MapGUI parent) throws PWCGException  
 	{
 		super(parent);
 		mapLocationEditor = new MapLocationEditor(this);
@@ -112,7 +112,6 @@ public class EditorMapPanel extends MapPanelBase
 		        {
 		            drawCross(g, af.getPosition(), af.getName());
 		        }
-		        //writeFile(graphicsFromImage);
 			}            
 
             Coordinate prevCoordinate = null;

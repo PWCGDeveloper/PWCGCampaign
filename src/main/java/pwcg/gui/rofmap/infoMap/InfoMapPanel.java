@@ -17,6 +17,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.group.AifieldsForJets;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
@@ -94,7 +95,7 @@ public class InfoMapPanel extends MapPanelBase
 		        Map<String, Airfield> allAF = airfieldData.getAllAirfields();
 		        for (Airfield af : allAF.values())
 		        {
-		            drawPointsByCountry(g, af.getPosition(), af.determineCountryOnDate(parent.getMapDate()));
+		            drawAirfieldPointsByCountry(g, af);
 		        }        
 			}
 			
@@ -224,6 +225,36 @@ public class InfoMapPanel extends MapPanelBase
         drawPoints(g, coordinate, color);
     }
 
+    private void drawAirfieldPointsByCountry(Graphics g, Airfield airfield) throws PWCGException 
+    {
+        Coordinate coordinate = airfield.getPosition();
+        ICountry country =  airfield.determineCountryOnDate(parent.getMapDate());
+        Color color = ColorMap.UNKNOWN;
+                        
+        if (country == null)
+        {
+            color = ColorMap.PAPER_FOREGROUND;
+        }
+        else if (country.getSide() == Side.AXIS)
+        {
+            color = ColorMap.GERMAN_AIRFIELD_PINK;
+            if(AifieldsForJets.getInstance().isJetAirfield(airfield.getName()))
+            {
+                color = ColorMap.BELGIAN_GOLD;
+            }
+        }
+        else if (country.getSide() == Side.ALLIED)
+        {
+            color = ColorMap.ALLIED_AIRFIELD_PINK;
+        }
+        else if (country.isNeutral())
+        {
+            color = ColorMap.NEUTRAL;
+        }
+        
+        drawPoints(g, coordinate, color);
+    }
+            
 	private void drawPoints(Graphics g, Coordinate coordinate, Color color) 
 	{
         Graphics2D g2 = (Graphics2D) g;

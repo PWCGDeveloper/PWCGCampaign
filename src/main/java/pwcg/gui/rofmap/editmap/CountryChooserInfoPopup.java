@@ -11,7 +11,7 @@ public class CountryChooserInfoPopup extends JPopupMenu
 {
 	private static final long serialVersionUID = 1L;
 
-	public CountryChooserInfoPopup(EditorMapPanel parent, EditorMapPoint mapPoint)
+	public CountryChooserInfoPopup(FrontLinesEditorMapPanel parent, FrontLinesMapPoint mapPoint)
     {
 		JMenuItem mapPointItemName = new JMenuItem(mapPoint.name + " (" + mapPoint.index + ")");
     	add(mapPointItemName);

@@ -7,7 +7,7 @@ public class FrontActionPopup extends JPopupMenu
 {
 	private static final long serialVersionUID = 1L;
 
-	public FrontActionPopup(EditorMapPanel parent)
+	public FrontActionPopup(FrontLinesEditorMapPanel parent)
     {
     	JMenuItem addWpItem = new JMenuItem("Add Front Point");
     	JMenuItem delWpItem = new JMenuItem("Remove Front Point");

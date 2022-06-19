@@ -14,16 +14,16 @@
 		}
 	],
 	"airfields": {
-		"19440901": "Woensdrecht",
-		"19440925": "Gilze-Rijen",
-		"19440928": "Bonninghardt-Sud",
-		"19441101": "Koln-Butzweilerhof",
-		"19441220": "Koln-Ostheim",
-		"19441225": "Koln-Ostheim",
+		"19440901": "Essen-Mulheim",
+		"19440925": "Essen-Mulheim",
+		"19440928": "Essen-Mulheim",
+		"19441101": "Essen-Mulheim",
+		"19441220": "Essen-Mulheim",
+		"19441225": "Essen-Mulheim",
 		"19441229": "Essen-Mulheim",
-		"19450207": "Bonn-Hangelar_3960",
-		"19450310": "Dortmund",
-		"19450404": "Zellhausen"
+		"19450207": "Rheine",
+		"19450310": "Rheine",
+		"19450404": "Rheine"
 	},
 	"skins": [
 	],
@@ -38,11 +38,11 @@
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
-						"weight": 40
+						"weight": 30
 					},
 					{
 						"role": "ROLE_RAIDER",
-						"weight": 50
+						"weight": 70
 					}
 				]
 			}
