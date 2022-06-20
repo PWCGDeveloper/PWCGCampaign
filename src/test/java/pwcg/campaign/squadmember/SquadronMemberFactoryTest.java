@@ -24,7 +24,7 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.CampaignCacheBase;
+import pwcg.testutils.TestCampaignFactoryBase;
 import pwcg.testutils.SquadronTestProfile;
 
 @ExtendWith(MockitoExtension.class)
@@ -66,8 +66,8 @@ public class SquadronMemberFactoryTest
 
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setCampaignName(CampaignCacheBase.TEST_CAMPAIGN_NAME);
-        generatorModel.setPlayerName(CampaignCacheBase.TEST_PLAYER_NAME);
+        generatorModel.setCampaignName(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
+        generatorModel.setPlayerName(TestCampaignFactoryBase.TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);

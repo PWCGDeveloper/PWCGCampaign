@@ -7,7 +7,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignCacheFC extends CampaignCacheBase
+public class TestCampaignFactoryFC extends TestCampaignFactoryBase
 {
     public static final String JASTA_11_PROFILE = "Jasta11Profile";
     public static final String ESC_103_PROFILE = "Esc103Profile";

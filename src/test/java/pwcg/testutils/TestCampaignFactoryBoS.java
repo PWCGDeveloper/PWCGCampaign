@@ -7,7 +7,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCache
+public class TestCampaignFactoryBoS extends TestCampaignFactoryBase implements ICampaignCache
 {    
     protected Campaign makeCampaignFromModel(CampaignGeneratorModel generatorModel) throws PWCGException
     {

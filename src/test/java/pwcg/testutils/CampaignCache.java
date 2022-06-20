@@ -8,8 +8,8 @@ import pwcg.core.utils.CampaignRemover;
 
 public class CampaignCache
 {
-    private static ICampaignCache bosCampaignCache = new CampaignCacheBoS();
-    private static ICampaignCache fcCampaignCache = new CampaignCacheFC();
+    private static ICampaignCache bosCampaignCache = new TestCampaignFactoryBoS();
+    private static ICampaignCache fcCampaignCache = new TestCampaignFactoryFC();
 
     public static Campaign makeCampaign(SquadronTestProfile campaignProfile) throws PWCGException
     {
@@ -30,7 +30,7 @@ public class CampaignCache
 
     public static Campaign makeCampaignOnDisk(SquadronTestProfile campaignProfile) throws PWCGException
     {
-        CampaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);
+        CampaignRemover.deleteCampaign(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
         System.out.println("Remove Test Campaign");
 
         Campaign campaign = makeCampaign(campaignProfile);

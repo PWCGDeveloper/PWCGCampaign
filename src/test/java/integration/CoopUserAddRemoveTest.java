@@ -21,7 +21,7 @@ import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBase;
+import pwcg.testutils.TestCampaignFactoryBase;
 import pwcg.testutils.SquadronTestProfile;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -108,7 +108,7 @@ public class CoopUserAddRemoveTest
         CoopUserManager.getIntance().removeCoopUser(coopuser);
         
         coopCampaign = new Campaign();
-        coopCampaign.open(CampaignCacheBase.TEST_CAMPAIGN_NAME);
+        coopCampaign.open(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
 
         String coopUserDir = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir();                    
         File coopUserFile = new File(coopUserDir + coopuser + ".json");

@@ -19,7 +19,7 @@ import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-public abstract class CampaignCacheBase implements ICampaignCache
+public abstract class TestCampaignFactoryBase implements ICampaignCache
 {
     public static final String TEST_CAMPAIGN_NAME = "Test Campaign";
     public static final String TEST_PLAYER_NAME = "Test Player";

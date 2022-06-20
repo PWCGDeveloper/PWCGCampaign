@@ -22,7 +22,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.CampaignCacheBase;
+import pwcg.testutils.TestCampaignFactoryBase;
 import pwcg.testutils.SquadronTestProfile;
 
 @ExtendWith(MockitoExtension.class)
@@ -42,7 +42,7 @@ public class CampaignGeneratorTest
         SquadronMember player = campaign.findReferencePlayer();
         Assertions.assertTrue (player.determineSquadron().getSquadronId() == SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
         Assertions.assertTrue (player.determineSquadron().determineSquadronCountry(campaign.getDate()).getCountry() == Country.FRANCE);
-        Assertions.assertTrue (campaign.getCampaignData().getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
+        Assertions.assertTrue (campaign.getCampaignData().getName().equals(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME));
         assert(campaign.getPersonnelManager().getAllSquadronPersonnel().size() > 30);
         
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
@@ -74,8 +74,8 @@ public class CampaignGeneratorTest
 
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setCampaignName(CampaignCacheBase.TEST_CAMPAIGN_NAME);
-        generatorModel.setPlayerName(CampaignCacheBase.TEST_PLAYER_NAME);
+        generatorModel.setCampaignName(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
+        generatorModel.setPlayerName(TestCampaignFactoryBase.TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);

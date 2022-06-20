@@ -10,6 +10,7 @@ import pwcg.core.logfiles.event.IAType2;
 import pwcg.core.logfiles.event.IAType3;
 import pwcg.core.logfiles.event.IAType6;
 import pwcg.core.logfiles.event.LogEventFactory;
+import pwcg.core.utils.PWCGLogger;
 
 public class LogLineParser
 {
@@ -54,8 +55,15 @@ public class LogLineParser
 
     private void parseDamagedEvent(String line) throws PWCGException
     {
-        IAType2 atype2 = LogEventFactory.createAType2(line);
-        logEventData.addDamageEvent(atype2);
+        try
+        {
+            IAType2 atype2 = LogEventFactory.createAType2(line);
+            logEventData.addDamageEvent(atype2);
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.log(PWCGLogger.LogLevel.ERROR, "Mangled damage log found: " + line);
+        }
     }
 
     private void parseDestroyedEvent(String line) throws PWCGException

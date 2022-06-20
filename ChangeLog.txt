@@ -3,6 +3,7 @@ Added Mosquito
 - No 4 Squadron RAF
 Added AR 234
 - III/KG 76
+- Change payload to add rocket assist
 Added B-26
 - 322nd BG
 - 387th BG
@@ -10,6 +11,7 @@ Added B-26
 - Alternative is to add an A20 as a personal plane through equipment request.
 Moved I?KG 51 flying Me-262s to jet capable fields.
  - Longer flights, but at least takeoff should be doable.
+Made attempt to get fighter flights more aggressive
 Removed 150 octane as a stock modification
 - Allied planes on the continent were not flying with 150 octane
 - You can still select it as an option

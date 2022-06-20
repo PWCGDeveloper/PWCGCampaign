@@ -26,7 +26,7 @@ import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.fc.country.FCServiceManager;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBase;
+import pwcg.testutils.TestCampaignFactoryBase;
 import pwcg.testutils.SquadronTestProfile;
 
 @ExtendWith(MockitoExtension.class)
@@ -52,7 +52,7 @@ public class CampaignIOJsonTest
     private void readCampaign() throws PWCGException
     {
         Campaign campaign = new Campaign();
-        campaign.open(CampaignCacheBase.TEST_CAMPAIGN_NAME);
+        campaign.open(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
         PWCGContext.getInstance().setCampaign(campaign);
 
         validateCoreCampaign(campaign);        
@@ -72,9 +72,9 @@ public class CampaignIOJsonTest
         }
         
         Assertions.assertTrue (campaign.getDate().equals(DateUtils.getDateYYYYMMDD(SquadronTestProfile.JASTA_11_PROFILE.getDateString())));
-        Assertions.assertTrue (campaign.getCampaignData().getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
+        Assertions.assertTrue (campaign.getCampaignData().getName().equals(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME));
         SquadronMember player = campaign.findReferencePlayer();
-        Assertions.assertTrue (player.getName().equals(CampaignCacheBase.TEST_PLAYER_NAME));
+        Assertions.assertTrue (player.getName().equals(TestCampaignFactoryBase.TEST_PLAYER_NAME));
     }
 
     private void validatePersonnelReplacements(Campaign campaign) throws PWCGException
@@ -156,6 +156,6 @@ public class CampaignIOJsonTest
 
     private void deleteCampaign()
     {
-        CampaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);
+        CampaignRemover.deleteCampaign(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
     }
 }
