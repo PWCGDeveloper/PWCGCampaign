@@ -211,7 +211,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     {
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            attackTimer.setTimerTarget(plane.getFighterAttack().getIndex());
+            // attackTimer.setTimerTarget(plane.getFighterAttack().getIndex());
         }
     }
 
