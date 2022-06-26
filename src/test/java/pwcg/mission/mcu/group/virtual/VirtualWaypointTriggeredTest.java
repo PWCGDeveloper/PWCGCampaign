@@ -38,9 +38,9 @@ public class VirtualWaypointTriggeredTest
     @BeforeEach
     public void setupTest()
     {        
-        plane1 = new PlaneMcu();
+        plane1 = new PlaneMcu(flight.getCampaign());
         plane1.setName("Plane 1");
-        plane2 = new PlaneMcu();
+        plane2 = new PlaneMcu(flight.getCampaign());
         plane2.setName("Plane 2");
 
         List<PlaneMcu> planes = new ArrayList<>();
@@ -71,7 +71,8 @@ public class VirtualWaypointTriggeredTest
         assert(IndexLinkValidator.isIndexInTargetList(activate.getActivateTimer().getTargets(), activate.getFormationTimer().getIndex()));
         assert(IndexLinkValidator.isIndexInTargetList(activate.getActivateTimer().getTargets(), activate.getActivate().getIndex()));
 
-        assert(IndexLinkValidator.isIndexInTargetList(activate.getFormationTimer().getTargets(), activate.getWaypointTimer().getIndex()));   
+        assert(IndexLinkValidator.isIndexInTargetList(activate.getFormationTimer().getTargets(), activate.getAttackTimer().getIndex()));   
+        assert(IndexLinkValidator.isIndexInTargetList(activate.getAttackTimer().getTargets(), activate.getWaypointTimer().getIndex()));   
         assert(IndexLinkValidator.isIndexInTargetList(activate.getFormationTimer().getTargets(), activate.getFormation().getIndex()));
         assert(activate.getFormation().getObjects().size() == 1);
 

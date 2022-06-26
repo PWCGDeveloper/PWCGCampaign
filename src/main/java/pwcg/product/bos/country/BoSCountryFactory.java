@@ -9,14 +9,8 @@ import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 
-public class BoSCountryFactory implements ICountryFactory
+public class BoSCountryFactory extends NeutralCountryFactory implements ICountryFactory
 {
-
-    public ICountry makeNeutralCountry()
-    {
-        return new BoSCountry(BoSCountry.NEUTRAL_CODE);
-    }
-
     public ICountry makeMapReferenceCountry(Side side)
     {
         if (side == Side.ALLIED)

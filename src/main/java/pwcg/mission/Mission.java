@@ -186,7 +186,7 @@ public class Mission
 
     private String writeMissionDescriptionFile() throws PWCGException
     {
-        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this);
+        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(this);
         String missionDescriptionText = missionDescription.createDescription();
 
         MissionDescriptionFile missionDescriptionFile = new MissionDescriptionFile();

@@ -19,7 +19,8 @@ public class MapImageOverlay
 	{
 	    BufferedImage overlay = null;
 	    
-	    String mapOverlayPath = getOverlayPath(mapImageFileName);	     
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
+	    String mapOverlayPath = getOverlayPath(campaign, mapImageFileName);	     
 	    if(mapOverlayPath != null)
 	    {
 	        overlay = ImageRetriever.getImageFromFile(mapOverlayPath);
@@ -28,9 +29,8 @@ public class MapImageOverlay
         return overlay;
 	}
 
-    private static String getOverlayPath(String mapFileName) throws PWCGException
+    private static String getOverlayPath(Campaign campaign, String mapFileName) throws PWCGException
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         if (campaign == null)
         {
             return null;

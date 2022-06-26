@@ -243,7 +243,7 @@ public class MissionFileWriter implements IMissionFile
 
                     Double angleBeaconLeft = MathUtils.adjustAngle(takeoffOrientation, -90);
 
-                    Campaign campaign = PWCGContext.getInstance().getCampaign();
+                    Campaign campaign = mission.getCampaign();
                     ConfigManager configManager = campaign.getCampaignConfigManager();
                     int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
                     Coordinate beaconCoordMoveLeft = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation(mission).getPosition(), angleBeaconLeft, windsockDistance);
@@ -277,7 +277,7 @@ public class MissionFileWriter implements IMissionFile
 
                     Double angleRight = MathUtils.adjustAngle(takeoffOrientation.getyOri(), 90);
 
-                    Campaign campaign = PWCGContext.getInstance().getCampaign();
+                    Campaign campaign = mission.getCampaign();
                     ConfigManager configManager = campaign.getCampaignConfigManager();
                     int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
                     Coordinate pos1 = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation(mission).getPosition(), angleRight, windsockDistance);

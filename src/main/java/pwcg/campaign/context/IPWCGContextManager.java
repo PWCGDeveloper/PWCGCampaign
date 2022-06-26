@@ -23,8 +23,6 @@ public interface IPWCGContextManager
 
     Date getEarliestPwcgDate() throws PWCGException;
 
-    Campaign getCampaign();
-
     PWCGMap getCurrentMap();
 
     PWCGMap getMapByMapName(String mapName);
@@ -74,4 +72,6 @@ public interface IPWCGContextManager
     void setCurrentMap(FrontMapIdentifier map) throws PWCGException;
 
     NewspaperManager getNewspaperManager();
+
+    Campaign getCampaign();
 }

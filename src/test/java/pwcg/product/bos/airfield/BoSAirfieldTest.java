@@ -174,6 +174,7 @@ public class BoSAirfieldTest
         Airfield airfield = (Airfield) PWCGContext.getInstance().getAirfieldAllMaps(airfieldName);
 
         Mockito.when(mission.getWeather()).thenReturn(weather);
+        Mockito.when(mission.getCampaign()).thenReturn(campaign);
         Mockito.when(weather.getWindDirection()).thenReturn(90);        
         assert(airfield.getChart(mission).equals(refChart));
 	}

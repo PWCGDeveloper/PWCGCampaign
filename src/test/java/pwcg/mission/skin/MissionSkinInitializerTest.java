@@ -28,15 +28,19 @@ public class MissionSkinInitializerTest
     @Mock private FlightPlanes flightPlanes;
     @Mock private ICountry country;
 
-    private PlaneMcu plane1 = new PlaneMcu();
-    private PlaneMcu plane2 = new PlaneMcu();
-    private PlaneMcu plane3 = new PlaneMcu();
+    private PlaneMcu plane1;
+    private PlaneMcu plane2;
+    private PlaneMcu plane3;
 
     private List<PlaneMcu> planes = new ArrayList<>();
     
     @BeforeEach
     public void setupTest() throws PWCGException
     {
+        plane1 = new PlaneMcu(campaign);
+        plane2 = new PlaneMcu(campaign);
+        plane3 = new PlaneMcu(campaign);
+
         Mockito.when(flight.getCampaign()).thenReturn(campaign);
 
         Mockito.when(flight.getFlightPlanes()).thenReturn(flightPlanes);

@@ -9,8 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
@@ -87,13 +85,9 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
 
     public void setMissionText() throws PWCGException 
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-
         String missionPrefix = getMissionPrefix();
-        
-        
 
-        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, mission, briefingContext.getSelectedFlight());
+        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(mission, briefingContext.getSelectedFlight());
         String missionDescriptionText = missionDescription.createDescription();
         
         StringBuffer missionDescriptionBuffer = new StringBuffer("");

@@ -2,17 +2,12 @@ package pwcg.campaign.group;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IFixedPosition;
-import pwcg.campaign.context.Country;
-import pwcg.campaign.context.CountryDesignator;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.io.IOConstants;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
@@ -66,7 +61,8 @@ public class ScriptedFixedPosition extends FixedPosition implements Cloneable, I
             writer.write("    Script = \"" + script + "\";");
             writer.newLine();
 
-            determineCountry().writeAdjusted(writer);
+            Campaign campaign = PWCGContext.getInstance().getCampaign();
+            determineCountry(campaign).writeAdjusted(writer);
 
             writer.write("    DamageReport = " + damageReport + ";");
             writer.newLine();
@@ -90,22 +86,6 @@ public class ScriptedFixedPosition extends FixedPosition implements Cloneable, I
             PWCGLogger.logException(e);
             throw new PWCGException(e.getMessage());
         }
-    }
-    
-    public ICountry determineCountry() throws PWCGException
-    {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        if (campaign != null)
-        {
-            return CountryDesignator.determineCountry(position, campaign.getDate());
-        }
-            
-        return CountryFactory.makeCountryByCountry(Country.NEUTRAL);
-    }
-
-    public ICountry determineCountryOnDate(Date date) throws PWCGException
-    {
-        return CountryDesignator.determineCountry(position, date);
     }
 
     public void buildEntity()

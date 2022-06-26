@@ -134,7 +134,7 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
     
     private void showIntelMap() throws PWCGException 
     {
-        IntelMapGUI map = new IntelMapGUI(campaign.getDate());
+        IntelMapGUI map = new IntelMapGUI(campaign);
         map.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(map);
     }

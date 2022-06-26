@@ -38,10 +38,10 @@ public class MissionDescriptionAAATruck implements IMissionDescription
 
 	private String campaignDateString = "";
 	
-    public MissionDescriptionAAATruck (Campaign campaign, Mission mission)
+    public MissionDescriptionAAATruck (Mission mission)
     {
         this.mission = mission;
-        this.campaign = campaign;
+        this.campaign = mission.getCampaign();
         campaignDateString = DateUtils.getDateStringDashDelimitedYYYYMMDD(campaign.getDate());
     }
 

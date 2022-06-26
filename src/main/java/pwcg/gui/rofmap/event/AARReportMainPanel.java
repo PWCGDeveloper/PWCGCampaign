@@ -152,7 +152,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
             AARPilotsTransferredPanel pilotsTransferredPanelSet = new AARPilotsTransferredPanel(campaign);
             allEventPanels.add(pilotsTransferredPanelSet);
 
-            AARPilotLeavePanel pilotsLeavePanelSet = new AARPilotLeavePanel();
+            AARPilotLeavePanel pilotsLeavePanelSet = new AARPilotLeavePanel(campaign);
             allEventPanels.add(pilotsLeavePanelSet);
 
             AARMedalPanel pilotsMedalPanelSet = new AARMedalPanel(campaign);
@@ -161,7 +161,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
             AARPromotionPanel pilotsPromotionPanelSet = new AARPromotionPanel(campaign);
             allEventPanels.add(pilotsPromotionPanelSet);
 
-            AARNewsPanel newsPanelSet = new AARNewsPanel();
+            AARNewsPanel newsPanelSet = new AARNewsPanel(campaign);
             allEventPanels.add(newsPanelSet);
             
             for (IAAREventPanel eventPanel : allEventPanels)
@@ -184,7 +184,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
     {
         if (reasonToAdvanceTime == EventPanelReason.EVENT_PANEL_REASON_AAR)
         {
-            AARCombatReportPanel combatReportPanelSet = new AARCombatReportPanel();
+            AARCombatReportPanel combatReportPanelSet = new AARCombatReportPanel(campaign);
             allEventPanels.add(combatReportPanelSet);
         }
         else if (reasonToAdvanceTime == EventPanelReason.EVENT_PANEL_REASON_LEAVE)

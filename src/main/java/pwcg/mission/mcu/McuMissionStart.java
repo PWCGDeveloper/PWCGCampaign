@@ -46,10 +46,7 @@ public class McuMissionStart extends BaseFlightMcu
             throw new PWCGException(e.getMessage());
         }
 	}
-	
-	/**
-	 * @see rof.campaign.mcu.BaseFlightMcu#toString()
-	 */
+
 	public String toString()
 	{
 		StringBuffer output = new StringBuffer("");

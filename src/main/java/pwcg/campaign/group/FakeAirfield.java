@@ -3,6 +3,7 @@ package pwcg.campaign.group;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
@@ -12,6 +13,7 @@ import pwcg.mission.mcu.McuTREntity;
 
 public class FakeAirfield extends ScriptedFixedPosition implements Cloneable
 {
+    private Campaign campaign;
     private Callsign callsign = Callsign.NONE;
     private int callnum = 0;
     private String chart = "";
@@ -29,6 +31,8 @@ public class FakeAirfield extends ScriptedFixedPosition implements Cloneable
     public FakeAirfield (Airfield airfield, Mission mission) throws PWCGException
     {
         super();
+        
+        campaign = mission.getCampaign();
         
         entity = new McuTREntity(index);
         linkTrId = entity.getIndex();
@@ -70,7 +74,7 @@ public class FakeAirfield extends ScriptedFixedPosition implements Cloneable
             
             super.write(writer);
                         
-            writer.write("    Callsign = " + callsign.getNum(determineCountry().getCountry()) + ";");
+            writer.write("    Callsign = " + callsign.getNum(determineCountry(campaign).getCountry()) + ";");
             writer.newLine();
             writer.write("    Callnum = " + callnum + ";");
             writer.newLine();

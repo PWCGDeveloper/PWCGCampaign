@@ -8,12 +8,6 @@ import pwcg.campaign.context.Country;
 
 public class FCCountryFactory implements ICountryFactory
 {
-
-    public ICountry makeNeutralCountry()
-    {
-        return new FCCountry(Country.NEUTRAL);
-    }
-
     public ICountry makeMapReferenceCountry(Side side)
     {
         if (side == Side.ALLIED)

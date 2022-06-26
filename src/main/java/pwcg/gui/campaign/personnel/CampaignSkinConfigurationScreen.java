@@ -38,7 +38,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
 {
     private static final long serialVersionUID = 1L;
     
-    private SkinSessionManager skinSessionManager = new SkinSessionManager();
+    private SkinSessionManager skinSessionManager;
     private Campaign campaign;
     private CampaignSkinConfigurationPilotPanel skinControlPanel;
     private CampaignSkinConfigurationSelectionPanel skinSelectionPanel;
@@ -49,6 +49,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         this.setLayout(new RelativeLayout());
 
         this.campaign = campaign;
+        skinSessionManager = new SkinSessionManager(campaign);
     }
 
     public void makePanels() throws PWCGException 

@@ -1,7 +1,6 @@
 package pwcg.gui.rofmap.brief.update;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
@@ -20,7 +19,7 @@ public class BriefingMissionUpdater
             mission.finalizeMission();
             mission.write();
 
-            Campaign campaign = PWCGContext.getInstance().getCampaign();
+            Campaign campaign = briefingContext.getCampaign();
             campaign.setCurrentMission(mission);
         }
     }

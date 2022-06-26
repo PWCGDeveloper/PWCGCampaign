@@ -14,6 +14,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.product.bos.country.BoSCountryFactory;
+import pwcg.product.bos.country.NeutralCountryFactory;
 import pwcg.product.fc.country.FCCountryFactory;
 
 public class CountryFactory
@@ -21,8 +22,7 @@ public class CountryFactory
 
     public static ICountry makeNeutralCountry()
     {
-        ICountryFactory countryFactory = getCountryFactory();        
-        return countryFactory.makeNeutralCountry();
+        return NeutralCountryFactory.makeNeutralCountry();
     }
 
     public static ICountry makeMapReferenceCountry(Side side)

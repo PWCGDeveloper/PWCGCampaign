@@ -4,7 +4,6 @@ import pwcg.aar.ui.events.model.PromotionEvent;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -15,18 +14,19 @@ public class CampaignReportPromotionGUI extends AARDocumentIconPanel
 	private static final long serialVersionUID = 1L;
 	private PromotionEvent promotionEvent = null;
     private SquadronMember promotionRecipient;
+    private Campaign campaign;
 
 	public CampaignReportPromotionGUI(Campaign campaign, PromotionEvent promotionEvent) throws PWCGException
 	{
 		super();
-		this.promotionEvent = promotionEvent;
+        this.campaign = campaign;
+        this.promotionEvent = promotionEvent;
 		this.promotionRecipient = campaign.getPersonnelManager().getAnyCampaignMember(promotionEvent.getPilotSerialNumber());
 		makePanel();		
 	}
 
     protected String getHeaderText() throws PWCGException
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         String promotionHeaderText = promotionRecipient.determineService(campaign.getDate()).getName() + "\n\n";
 
         promotionHeaderText += "To all who shall see these presents, greeting: \n\n";
@@ -35,9 +35,7 @@ public class CampaignReportPromotionGUI extends AARDocumentIconPanel
     }
 
     protected String getBodyText() throws PWCGException
-	{
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        
+	{        
         String promotionText = "Know ye that reposing special trust and confidence in the fidelity and abilities of ";
         promotionText += "NAME I do hereby appoint him RANK of the SERVICE of NATION, ";
         promotionText += "to rank as such from DATE.  He is carefully and diligently to discharge the duty of ";

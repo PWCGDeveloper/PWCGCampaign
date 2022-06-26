@@ -21,21 +21,21 @@ public class PWCGErrorBundler
 {
 	static public final String ERROR_DIR_ROOT = "ErrorReport";
 	
-	String targetErrorFileName = "";
+    private Campaign campaign;
+    private String targetErrorFileName = "";
 	
-    String programDataDir; 
-    String targetDataDir; 
+    private String programDataDir; 
+    private String targetDataDir; 
 
-	public PWCGErrorBundler()
+	public PWCGErrorBundler(Campaign campaign)
 	{
+	    this.campaign = campaign;
 	}
 
 	public void bundleDebuggingData()
 	{
 		try
-		{
-		    Campaign campaign = PWCGContext.getInstance().getCampaign();
-	        
+		{	        
 			targetErrorFileName = campaign.getCampaignData().getName() + DateUtils.getDateStringYYYYMMDDHHMMSS(new Date());
 		    programDataDir = createSourceCampaignDirPath(); 
 		    targetDataDir = createTargetDirCampaignPath(); 
@@ -174,14 +174,12 @@ public class PWCGErrorBundler
 
 	private String createTargetDirCampaignPath() 
 	{
-		Campaign campaign  = PWCGContext.getInstance().getCampaign();
 		String errorDateDir = PWCGContext.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\" + campaign.getCampaignData().getName();
 		return errorDateDir;
 	}
 
 	private String createSourceCampaignDirPath()
 	{
-		Campaign campaign  = PWCGContext.getInstance().getCampaign();
 		String campaignDirPath = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName(); 
 		
 		return campaignDirPath;

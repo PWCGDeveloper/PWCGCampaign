@@ -22,12 +22,12 @@ public class OutOfMissionCommandChangeHandler
         
         for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
-            if (player.determineIsSquadronMemberCommander())
+            if (player.determineIsSquadronMemberCommander(campaign))
             {
             	SquadronPersonnel playerPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(player.getSquadronId());
                 for (SquadronMember squadronMember : playerPersonnel.getSquadronMembers().getSquadronMemberList())
                 {
-                    if (!squadronMember.isPlayer() && squadronMember.determineIsSquadronMemberCommander())
+                    if (!squadronMember.isPlayer() && squadronMember.determineIsSquadronMemberCommander(campaign))
                     {
                         squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_TRANSFERRED, campaign.getDate(), null);
                         personnelLosses.addPersonnelTransferredHome(squadronMember);

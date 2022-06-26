@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -45,7 +44,7 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 	private int pageNum = 0;
 	private Map<Integer, StringBuffer> pages = new TreeMap<>();
 
-	public CampaignSquadronLogScreen (int logsForSquadronId)
+	public CampaignSquadronLogScreen (Campaign campaign, int logsForSquadronId)
 	{        
         super("");
         this.setLayout(new BorderLayout());
@@ -53,7 +52,7 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 
         this.logsForSquadronId = logsForSquadronId;
 
-		this.campaign = PWCGContext.getInstance().getCampaign();
+		this.campaign = campaign;
 	}
 
 	public void makeVisible(boolean visible) 
@@ -69,7 +68,7 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
         Map<Integer, StringBuffer> summaryPages = summaryPageBuilder.buildSummaryPage();
         pages.putAll(summaryPages);
 
-        CampaignSquadronLogDetailPageBuilder detailPageBuilder = new CampaignSquadronLogDetailPageBuilder(logsForSquadronId);
+        CampaignSquadronLogDetailPageBuilder detailPageBuilder = new CampaignSquadronLogDetailPageBuilder(campaign, logsForSquadronId);
         Map<Integer, StringBuffer> detailPages = detailPageBuilder.buildDetailPages();
         pages.putAll(detailPages);
         

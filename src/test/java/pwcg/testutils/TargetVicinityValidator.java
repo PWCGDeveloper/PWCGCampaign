@@ -60,7 +60,7 @@ public class TargetVicinityValidator
 
         Airfield airfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flight.getTargetDefinition().getTargetName());
         double distanceToAirfield = MathUtils.calcDist(flight.getTargetDefinition().getPosition(), airfield.getPosition());
-        System.out.println("Distance to " + airfield.getName() + " " + airfield.determineCountry().getCountryName() +  " distance is " + distanceToAirfield);
+        System.out.println("Distance to " + airfield.getName() + " " + airfield.determineCountry(flight.getCampaign()).getCountryName() +  " distance is " + distanceToAirfield);
 
         Assertions.assertTrue (distanceToAirfield < 5000);
     }

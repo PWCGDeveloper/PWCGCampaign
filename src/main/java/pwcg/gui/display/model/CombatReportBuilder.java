@@ -13,7 +13,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
@@ -120,9 +119,7 @@ public class CombatReportBuilder
 
 
     private String createFlownFromReport() throws PWCGException
-    {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        
+    {        
         String flownFromStatement = "\n";
 
         flownFromStatement += " The mission was flown from " + reportSquadronMember.determineSquadron().determineCurrentAirfieldName(campaign.getDate()) + " aerodrome.\n";
@@ -166,7 +163,7 @@ public class CombatReportBuilder
         for (PlaneStatusEvent planeLostEvent :squadronPlanesLostInMission.values())
         {
             EquippedPlane lostPlane = campaign.getEquipmentManager().getAnyPlaneWithPreference(planeLostEvent.getPlaneSerialNumber());
-            planesLostAppend += "    " + lostPlane.getDisplayName() + ": " + lostPlane.getDisplayMarkings() + "\n";
+            planesLostAppend += "    " + lostPlane.getDisplayName() + ": " + lostPlane.getDisplayMarkings(campaign) + "\n";
         }
         
         if (planesLostAppend.length() > 0)

@@ -24,7 +24,6 @@ public interface IVehicle extends IPWCGObject
     public void setEngageable(int engageable);
     public String getDescription();
     public String getScript();
-    public ICountry getCountry() throws PWCGException;
     public Coordinate getPosition();
     public Orientation getOrientation();
     public int getBeaconChannel();

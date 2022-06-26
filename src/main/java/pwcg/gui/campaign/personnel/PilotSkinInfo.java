@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
@@ -16,16 +15,19 @@ import pwcg.core.exception.PWCGException;
 
 public class PilotSkinInfo
 {
+    private Campaign campaign = null;
     private SquadronMember pilot = null;
     private Map <String, Skin> planeSkinMap = new HashMap <String, Skin>();
 
 	/**
+	 * @param campaign 
 	 * @param pilot
 	 * @param squadron
 	 */
-	public PilotSkinInfo(SquadronMember pilot)
+	public PilotSkinInfo(Campaign campaign, SquadronMember pilot)
 	{
-	    this.pilot = pilot;
+        this.campaign = campaign;
+        this.pilot = pilot;
 	}
 
     /**
@@ -34,7 +36,6 @@ public class PilotSkinInfo
      */
     public void initialize() throws PWCGException
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         SquadronMember referencePlayer = campaign.findReferencePlayer();
         Squadron squadron = referencePlayer.determineSquadron();
         

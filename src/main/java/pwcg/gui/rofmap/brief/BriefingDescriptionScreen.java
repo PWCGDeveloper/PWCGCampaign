@@ -9,8 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -178,11 +176,9 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
 
     private void backToCampaign() throws PWCGException
     {
-        Campaign campaign  = PWCGContext.getInstance().getCampaign();
-
         BriefingMissionUpdater.pushEditsToMission(briefingData);
         
-        campaign.setCurrentMission(mission);
+        mission.getCampaign().setCurrentMission(mission);
         
         campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().popFromContextStack();

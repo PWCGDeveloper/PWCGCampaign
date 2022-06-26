@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.payload.IPayloadFactory;
@@ -42,6 +43,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
     private JPanel pilotPanel;
     private BriefingData briefingContext;
+    private Campaign campaign;
     private BriefingPilotSelectionScreen parent;
     private ButtonGroup assignedPilotButtonGroup = new ButtonGroup();
     private Map<Integer, JRadioButton> activePilotRadioButtons = new HashMap<>();
@@ -63,6 +65,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
         
         this.briefingContext = briefingContext;
         this.parent = parent;
+        this.campaign = briefingContext.getMission().getCampaign();
     }
     
     public void makePanel() throws PWCGException 
@@ -202,7 +205,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
     private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
     {
-        String planeName = formPlaneName(crewPlane.getPlane().getDisplayName(), crewPlane.getPlane().getDisplayMarkings());
+        String planeName = formPlaneName(crewPlane.getPlane().getDisplayName(), crewPlane.getPlane().getDisplayMarkings(campaign));
         JButton planeButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planeName, 
                 "Change Plane:" + crewPlane.getPilot().getSerialNumber(), "Change aircraft for  " + crewPlane.getPilot().getNameAndRank(), parent);
         planeButton.setVerticalAlignment(SwingConstants.TOP);
@@ -317,7 +320,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
             if (sortedUnassignedPlanes.size() > i)
             {
                 EquippedPlane unassignedPlane = sortedUnassignedPlanes.get(i);
-                String planeNameText = formPlaneName(unassignedPlane.getDisplayName(), unassignedPlane.getDisplayMarkings());
+                String planeNameText = formPlaneName(unassignedPlane.getDisplayName(), unassignedPlane.getDisplayMarkings(campaign));
                 JLabel planeLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel(planeNameText);
                 unassignedPilotGrid.add(planeLabel);
             }

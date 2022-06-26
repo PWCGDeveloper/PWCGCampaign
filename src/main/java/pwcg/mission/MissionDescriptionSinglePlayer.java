@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
@@ -53,10 +52,10 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	private ArrayList<String> enemyIntHtmlList = new ArrayList<String>();
 	private ArrayList<String> friendlyIntHtmlList = new ArrayList<String>();
 	
-    public MissionDescriptionSinglePlayer (Campaign campaign, Mission mission, IFlight  playerFlight)
+    public MissionDescriptionSinglePlayer (Mission mission, IFlight  playerFlight)
     {
         this.mission = mission;
-        this.campaign = campaign;
+        this.campaign = mission.getCampaign();
         this.playerFlight = playerFlight;
         campaignDateString = DateUtils.getDateStringDashDelimitedYYYYMMDD(campaign.getDate());
     }
@@ -158,8 +157,6 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	
 	private void setFlight(ICountry country, IFlight flight) throws PWCGException 
 	{
-		Campaign campaign =     PWCGContext.getInstance().getCampaign();
-		
 		String squadron = flight.getSquadron().determineDisplayName(campaign.getDate());
 		String aircraft = flight.getFlightPlanes().getFlightLeader().getDisplayName();
 		ICountry flightCountry = flight.getFlightInformation().getAirfield().determineCountryOnDate(campaign.getDate());

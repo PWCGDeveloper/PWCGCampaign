@@ -29,6 +29,7 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
  */
 public class SkinSessionManager
 {
+    private Campaign campaign;
     private SquadronMember pilot = null;
     private Map <Integer, PilotSkinInfo> pilotSkinSets = new HashMap <>();
     
@@ -36,15 +37,15 @@ public class SkinSessionManager
     private boolean nonSquadronSkinsSelected = false;
     private boolean looseSkinsSelected = false;
 
-    public SkinSessionManager()
+    public SkinSessionManager(Campaign campaign)
     {
+        this.campaign = campaign;
     }
 
     public List<Skin> getSquadronSkins(String selectedPlane) throws PWCGException
     {
         List<Skin> skinNames = new ArrayList<>();
 
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         Squadron squad = pilot.determineSquadron();
 
         List<Skin> squadronSkins = PWCGContext.getInstance().getSkinManager().getSkinsBySquadronPlaneDate(selectedPlane, squad.getSquadronId(), campaign.getDate());
@@ -56,8 +57,6 @@ public class SkinSessionManager
     public List<Skin> getNonSquadronSkins(String selectedPlane) throws PWCGException
     {
         List<Skin> skinNames = new ArrayList<>();
-        
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
 
         List<Skin> unaffiliatedSkins = PWCGContext.getInstance().getSkinManager().getSkinsBySquadronPlaneDate(selectedPlane, Skin.PERSONAL_SKIN, campaign.getDate());
 
@@ -107,7 +106,6 @@ public class SkinSessionManager
     {
         List<Skin> skinNames = new ArrayList<>();
 
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         Date campaignDate = campaign.getDate();
 
         for (Skin skin : skins)
@@ -133,7 +131,6 @@ public class SkinSessionManager
 
     private boolean isSkinInUseByAnotherPilot(Skin skinToCheck) throws PWCGException
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(pilot.getSquadronId());
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadMember : squadronMembers.getSquadronMemberList())
@@ -177,7 +174,7 @@ public class SkinSessionManager
     {
         if (!pilotSkinSets.containsKey(pilot.getSerialNumber()))
         {
-            PilotSkinInfo pilotSkinSet = new PilotSkinInfo(pilot);
+            PilotSkinInfo pilotSkinSet = new PilotSkinInfo(campaign, pilot);
             pilotSkinSet.initialize();
             pilotSkinSets.put(pilot.getSerialNumber(), pilotSkinSet);
         }

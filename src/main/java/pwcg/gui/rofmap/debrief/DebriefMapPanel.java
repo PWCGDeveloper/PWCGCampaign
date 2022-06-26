@@ -38,6 +38,7 @@ public class DebriefMapPanel  extends MapPanelBase
 	private List <DebriefMapPoint> eventPoints = new ArrayList<DebriefMapPoint>();
 	private DebriefStates debriefState = DebriefStates.PAUSE;
 	private int atEvent = -1;
+	private Campaign campaign;
 
 	enum DebriefStates
 	{
@@ -45,10 +46,10 @@ public class DebriefMapPanel  extends MapPanelBase
         NEXT
 	}
 
-	public DebriefMapPanel(DebriefMapGUI parent) throws PWCGException 
+	public DebriefMapPanel(Campaign campaign, DebriefMapGUI parent) throws PWCGException 
 	{
 		super(parent);
-
+		this.campaign = campaign;
 		this.parent = parent;
 	}
 
@@ -247,9 +248,7 @@ public class DebriefMapPanel  extends MapPanelBase
         String displayVictim = victoryEvent.getVictim().getName();
         
         if (displayVictim.length() > 0)
-        {
-            Campaign campaign = PWCGContext.getInstance().getCampaign();
-            
+        {            
             VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
             Victory victory = victoryBuilder.buildVictory(campaign.getDate(), victoryEvent);
 

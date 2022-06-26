@@ -11,7 +11,6 @@ import javax.swing.JTabbedPane;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AceLeaveEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
@@ -21,11 +20,12 @@ public class AARPilotLeavePanel extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
+    private Campaign campaign;
 
-    public AARPilotLeavePanel()
+    public AARPilotLeavePanel(Campaign campaign)
 	{
         super();
-
+        this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
 	}
 
@@ -74,7 +74,6 @@ public class AARPilotLeavePanel extends AARDocumentPanel
 
 	private HashMap<String, CampaignReportAceLeaveGUI> createPilotLeaveList() throws PWCGException 
 	{
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         HashMap<String, CampaignReportAceLeaveGUI> pilotLeaveGuiList = new HashMap<String, CampaignReportAceLeaveGUI>();
 
         List<AceLeaveEvent> aceLeaveEvents = aarCoordinator.getAarContext().getUiDebriefData().getAceLeavePanelData().getAcesOnLeaveDuringElapsedTime();

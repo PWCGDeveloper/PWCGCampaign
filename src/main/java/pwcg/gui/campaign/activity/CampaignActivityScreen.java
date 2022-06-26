@@ -197,7 +197,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        CampaignSquadronLogScreen logDisplay = new CampaignSquadronLogScreen(referencePlayer.getSquadronId());
+        CampaignSquadronLogScreen logDisplay = new CampaignSquadronLogScreen(campaign, referencePlayer.getSquadronId());
         logDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(logDisplay);

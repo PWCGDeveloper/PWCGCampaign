@@ -13,7 +13,6 @@ import javax.swing.JTextArea;
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -32,14 +31,14 @@ public class AARCombatReportPanel extends AARDocumentPanel implements ActionList
     private boolean shouldDisplay = false;
     private CombatReport combatReport;
 
-	public AARCombatReportPanel()
+	public AARCombatReportPanel(Campaign campaign)
 	{
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         this.shouldDisplay = true;
         this.aarCoordinator = AARCoordinator.getInstance();
-		this.campaign = PWCGContext.getInstance().getCampaign();
+		this.campaign = campaign;
 	}
 
 	public void makePanel()  
@@ -89,7 +88,6 @@ public class AARCombatReportPanel extends AARDocumentPanel implements ActionList
 	{
 		try
 		{
-	        Campaign campaign = PWCGContext.getInstance().getCampaign();
 			combatReportPanel.writeCombatReport(campaign);
 		}
 		catch (Exception e)

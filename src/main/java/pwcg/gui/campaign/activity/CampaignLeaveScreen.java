@@ -18,7 +18,6 @@ import javax.swing.SwingConstants;
 
 import pwcg.aar.ui.events.model.LeaveEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
@@ -58,7 +57,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         this.setOpaque(false);
 
         this.parent = parent;
-        this.campaign = PWCGContext.getInstance().getCampaign();
+        this.campaign = parent.getCampaign();
     }
 
     public void makeVisible(boolean visible)

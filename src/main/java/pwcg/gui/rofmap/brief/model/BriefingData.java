@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.Campaign;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 
@@ -41,6 +42,11 @@ public class BriefingData
     public void changeSelectedFlight(int squadronId)
     {
         selectedSquadronId = squadronId;
+    }
+
+    public Campaign getCampaign()
+    {
+        return mission.getCampaign();
     }
 
     public Mission getMission()

@@ -54,7 +54,7 @@ public class AARCoordinator
         {
             PWCGLogger.logException(e);
             MissionResultErrorBundleCreator errorBundleCreator = new MissionResultErrorBundleCreator();
-            errorBundleFileName = errorBundleCreator.createErrorBundle();
+            errorBundleFileName = errorBundleCreator.createErrorBundle(campaign);
         }
     }    
     
@@ -78,7 +78,7 @@ public class AARCoordinator
         {
             PWCGLogger.logException(e);
             MissionResultErrorBundleCreator errorBundleCreator = new MissionResultErrorBundleCreator();
-            errorBundleFileName = errorBundleCreator.createErrorBundle();
+            errorBundleFileName = errorBundleCreator.createErrorBundle(campaign);
         }
 
         campaign.setCurrentMission(null);
@@ -98,7 +98,7 @@ public class AARCoordinator
         {
             PWCGLogger.logException(e);
             MissionResultErrorBundleCreator errorBundleCreator = new MissionResultErrorBundleCreator();
-            errorBundleFileName = errorBundleCreator.createErrorBundle();
+            errorBundleFileName = errorBundleCreator.createErrorBundle(campaign);
         }
 
         campaign.setCurrentMission(null);

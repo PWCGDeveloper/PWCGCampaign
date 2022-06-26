@@ -11,7 +11,6 @@ import javax.swing.JTabbedPane;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.newspapers.Newspaper;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -28,12 +27,14 @@ public class AARNewsPanel extends AARDocumentPanel
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
     private JTabbedPane eventTabPane;
+    private Campaign campaign;
 
     private HashMap<String, JPanel> newsGuiList = new HashMap<>();
 
-    public AARNewsPanel()
+    public AARNewsPanel(Campaign campaign)
 	{
         super();
+        this.campaign = campaign;
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -84,7 +85,6 @@ public class AARNewsPanel extends AARDocumentPanel
 
 	private HashMap<String, JPanel> createPilotNewsList() throws PWCGException 
 	{
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         makeHistoricalNewspaperEvents();
         makeHistoricalAceEvents(campaign);
         makeEndOfWarEvents(campaign);

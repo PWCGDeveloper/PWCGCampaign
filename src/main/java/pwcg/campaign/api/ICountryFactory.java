@@ -5,7 +5,6 @@ import pwcg.campaign.context.Country;
 
 public interface ICountryFactory
 {
-    public ICountry makeNeutralCountry();
     public ICountry makeMapReferenceCountry(Side side);
     public ICountry makeCountryByCode(int countryCode);
     public ICountry makeCountryByService(ArmedService service);

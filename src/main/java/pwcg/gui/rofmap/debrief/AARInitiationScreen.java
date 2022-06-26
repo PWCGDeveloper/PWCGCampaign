@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
@@ -41,7 +40,7 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-		this.campaign = PWCGContext.getInstance().getCampaign();
+		this.campaign = home.getCampaign();
         this.home = home;
 	}
 

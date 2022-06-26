@@ -108,7 +108,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
     {
         JPanel debriefMapCenterPanel = new JPanel(new BorderLayout());
 
-        mapPanel = new DebriefMapPanel(this);
+        mapPanel = new DebriefMapPanel(campaign, this);
         mapScroll = new MapScroll(mapPanel);  
         mapPanel.setMapBackground(100);
         
@@ -243,7 +243,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         MissionResultLogFileCleaner missionResultLogFileCleaner = new MissionResultLogFileCleaner(directoryReader);
         missionResultLogFileCleaner.cleanMissionResultLogFiles();
         
-        MissionFileCleaner missionFileCleaner = new MissionFileCleaner();
+        MissionFileCleaner missionFileCleaner = new MissionFileCleaner(campaign);
         missionFileCleaner.cleanMissionFiles();
 
         showMissionEvents();

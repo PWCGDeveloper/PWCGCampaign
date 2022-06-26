@@ -6,7 +6,6 @@ import java.util.TreeMap;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignLog;
 import pwcg.campaign.CampaignLogEntry;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
@@ -21,15 +20,14 @@ public class CampaignSquadronLogDetailPageBuilder
     private int charsPerLine = 50;
     private int logsForSquadronId = 0;
 
-    public CampaignSquadronLogDetailPageBuilder (int logsForSquadronId)
+    public CampaignSquadronLogDetailPageBuilder (Campaign campaign, int logsForSquadronId)
 	{        
         this.logsForSquadronId = logsForSquadronId;
+        this.campaign = campaign;
 
         calculateLinesPerPage();
         calculateCharsPerLine();
         adjustTextForFontSize();
-
-		this.campaign = PWCGContext.getInstance().getCampaign();
 	}
 
     public Map<Integer, StringBuffer> buildDetailPages()

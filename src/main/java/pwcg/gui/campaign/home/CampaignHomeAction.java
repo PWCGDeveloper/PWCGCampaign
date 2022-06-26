@@ -41,7 +41,7 @@ public class CampaignHomeAction
             
             if (action.equalsIgnoreCase("CampError"))
             {
-                PWCGErrorBundler errorBundler = new PWCGErrorBundler();
+                PWCGErrorBundler errorBundler = new PWCGErrorBundler(campaignHome.getCampaign());
                 errorBundler.bundleDebuggingData();
                 ErrorDialog.internalError("Error during AAR process - please post " + errorBundler.getTargetErrorFileName() + ".zip");
             }

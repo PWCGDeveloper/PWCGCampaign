@@ -204,6 +204,11 @@ public class VirtualWaypointTriggered
         return waypointTimer;
     }
 
+    public McuTimer getAttackTimer()
+    {
+        return attackTimer;
+    }
+
     public McuTimer getEscortTimer()
     {
         return escortTimer;

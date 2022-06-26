@@ -44,11 +44,11 @@ public class IntelMapGUI extends MapGUI implements ActionListener
     private Campaign campaign = null;
     private JPanel rightPanel;
 
-	public IntelMapGUI(Date mapDate) throws PWCGException  
+	public IntelMapGUI(Campaign campaign) throws PWCGException  
 	{
-		super(mapDate);
+		super(campaign.getDate());
 		setLayout(new BorderLayout());
-		this.campaign = PWCGContext.getInstance().getCampaign();
+		this.campaign = campaign;
 	}
 
 	public void makePanels() 
@@ -60,7 +60,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 			setOpaque(false);
 			setBackground(bg);
 
-	        List<FrontMapIdentifier> airfieldMaps = AirfieldManager.getMapIdForAirfield(campaign.findReferencePlayer().determineSquadron().determineCurrentAirfieldName(campaign.getDate()));
+	        List<FrontMapIdentifier> airfieldMaps = AirfieldManager.getMapIdForAirfield(campaign.findReferencePlayer().determineSquadron().determineCurrentAirfieldName(mapDate));
             PWCGContext.getInstance().changeContext(airfieldMaps.get(0));
 								
 			this.add(BorderLayout.EAST, makeRightPanel(-1));
@@ -84,7 +84,6 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         mapScroll = new MapScroll(mapPanel);  
         mapPanel.setData();
 
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         makeMapPanelPoints(campaign.getDate());
         
         centerIntelMap();
@@ -194,7 +193,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadId);
 		if (squadron != null)
 		{
-			squadronText = squadron.determineSquadronDescription(mapDate);
+			squadronText = squadron.determineSquadronDescription(campaign);
 		}
 
 		Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();

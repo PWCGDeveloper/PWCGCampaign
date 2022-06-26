@@ -3,7 +3,6 @@ package pwcg.mission.skin;
 import java.util.Date;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -39,7 +38,7 @@ public class MissionPlayerFlightSkinGenerator
 
 	private void setUserAssignedPilotSkin(SquadronMember pilot, PlaneMcu plane) 
 	{
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
+        Campaign campaign = flight.getCampaign();
         
 		for (Skin pilotSkin : pilot.getSkins())
 		{

@@ -312,11 +312,11 @@ public class Squadron
         return null;
 	}
 
-	public String determineSquadronDescription(Date date) throws PWCGException 
+	public String determineSquadronDescription(Campaign campaign) throws PWCGException 
 	{
 		String squadronDescription = "";
 		
-		squadronDescription += "\nSquadron: " + determineDisplayName(date) + "\n\n";
+		squadronDescription += "\nSquadron: " + determineDisplayName(campaign.getDate()) + "\n\n";
 		
         String status = determineSkillDescription();
         if (status != null && status.length() > 0)
@@ -324,24 +324,23 @@ public class Squadron
             squadronDescription += "Status: " + status + "\n\n";
         }
         
-        Callsign callsign = determineCurrentCallsign(date);
+        Callsign callsign = determineCurrentCallsign(campaign.getDate());
         if (callsign != Callsign.NONE)
         {
             squadronDescription += "Callsign: " + callsign + "\n\n";
         }
 
 		squadronDescription += "Stationed at: ";
-		String fieldName = determineCurrentAirfieldName(date);
+		String fieldName = determineCurrentAirfieldName(campaign.getDate());
 		squadronDescription += fieldName + "\n\n";
 		
-		List<PlaneType> planes = determineCurrentAircraftList(date);
+		List<PlaneType> planes = determineCurrentAircraftList(campaign.getDate());
 		squadronDescription += "Flying the:\n";
 		for (PlaneType plane : planes)
 		{
 			squadronDescription += "    " + plane.getDisplayName() + "\n";
 		}
 
-		Campaign campaign =     PWCGContext.getInstance().getCampaign();
 		List<Ace> aces =  PWCGContext.getInstance().getAceManager().
 		                getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), campaign.getDate(), getSquadronId());
 

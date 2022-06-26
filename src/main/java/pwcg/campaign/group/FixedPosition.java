@@ -9,7 +9,6 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.CountryDesignator;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
@@ -78,9 +77,8 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         }
     }
     
-    public ICountry determineCountry() throws PWCGException
+    public ICountry determineCountry(Campaign campaign) throws PWCGException
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         if (campaign != null)
         {
             return CountryDesignator.determineCountry(position, campaign.getDate());

@@ -47,7 +47,7 @@ public class MissionBlockEntityBuilder
     
     private boolean isBuildEntity(ScriptedFixedPosition structure) throws PWCGException
     {
-        if (structure.determineCountry().isNeutral())
+        if (structure.determineCountry(mission.getCampaign()).isNeutral())
         {
             return false;
         }        

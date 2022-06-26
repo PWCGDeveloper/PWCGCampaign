@@ -105,17 +105,6 @@ public class StaticObject extends Block implements IVehicle
     }
 
     @Override
-    public ICountry getCountry() throws PWCGException
-    {
-        if (country == null || country.isNeutral())
-        {
-            return determineCountry();
-        }
-        
-        return country;
-    }
-
-    @Override
     public String getVehicleType()
     {
         return desc;

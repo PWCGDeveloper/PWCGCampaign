@@ -37,7 +37,7 @@ public class MissionSkinGeneratorTest
     public MissionSkinGeneratorTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        plane1 = new PlaneMcu();
+        plane1 = new PlaneMcu(campaign);
     }
     
     @BeforeEach

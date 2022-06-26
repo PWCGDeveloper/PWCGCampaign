@@ -81,7 +81,7 @@ public class PromotionArbitrator implements IPromotionEventHandler
         SquadronMembers activePersonnel = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(playerPersonnel.getSquadronMembers().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : activePersonnel.getSquadronMemberList())
         {
-            if (squadronMember.determineIsSquadronMemberCommander())
+            if (squadronMember.determineIsSquadronMemberCommander(campaign))
             {
                 squadronHasCommander = true;
             }

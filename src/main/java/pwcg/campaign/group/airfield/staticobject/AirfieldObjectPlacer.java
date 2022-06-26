@@ -111,7 +111,7 @@ public class AirfieldObjectPlacer
     private void addStaticPlane(HotSpot hotSpot) throws PWCGException
     {
         AirfieldStaticPlanePlacer airfieldStaticPlane = new AirfieldStaticPlanePlacer();
-        IStaticPlane staticPlane = airfieldStaticPlane.getStaticPlane(airfield, airfieldCountry, campaign.getDate(), hotSpot.getPosition());
+        IStaticPlane staticPlane = airfieldStaticPlane.getStaticPlane(campaign, airfield, airfieldCountry,  hotSpot.getPosition());
         if (staticPlane != null)
         {
         	airfieldObjects.addStaticPlane(staticPlane);

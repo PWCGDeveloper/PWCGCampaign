@@ -214,7 +214,7 @@ public class CampaignSquadronPersonnelUpdaterTest
                 .filterActiveAIAndPlayerAndAces(squadronMembers.getSquadronMembers().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : activeSquadronMembers.getSquadronMemberList())
         {
-            if (squadronMember.determineIsSquadronMemberCommander() && !squadronMember.isPlayer())
+            if (squadronMember.determineIsSquadronMemberCommander(campaign) && !squadronMember.isPlayer())
             {
                 commander = squadronMember;
             }

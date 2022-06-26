@@ -1,7 +1,6 @@
 package pwcg.campaign.group.airfield.staticobject;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
@@ -22,10 +21,10 @@ import pwcg.core.utils.RandomNumberGenerator;
 public class AirfieldStaticPlanePlacer
 {
 
-    public IStaticPlane getStaticPlane(Airfield airfield, ICountry airfieldCountry, Date date, Coordinate position) throws PWCGException  
+    public IStaticPlane getStaticPlane(Campaign campaign, Airfield airfield, ICountry airfieldCountry, Coordinate position) throws PWCGException  
     {
         Orientation objectOrientation = Orientation.createRandomOrientation();
-        IStaticPlane staticPlane = getStaticPlaneForField(airfield, date);
+        IStaticPlane staticPlane = getStaticPlaneForField(campaign, airfield);
         if (staticPlane != null)
         {
             staticPlane.setPosition(position);
@@ -37,19 +36,17 @@ public class AirfieldStaticPlanePlacer
         return null;
     }
 
-    private IStaticPlane getStaticPlaneForField(Airfield airfield, Date date) throws PWCGException 
+    private IStaticPlane getStaticPlaneForField(Campaign campaign, Airfield airfield) throws PWCGException 
     {
         IStaticPlane selectedStaticPlane = null;
         
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, date);
+        Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, campaign.getDate());
         if (squadronForField == null)
         {
             return null;
         }
-            
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-    
+                
         // All planes for all squadrons at this airfield
         List<String> planeNames = new ArrayList<String>();
         for (PlaneType plane : squadronForField.determineCurrentAircraftList(campaign.getDate()))

@@ -66,36 +66,6 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
         }
     }
 
-    @Override
-    public String toString()
-    {
-        StringBuffer output = new StringBuffer("");
-        output.append("Airfield\n");
-        output.append("{\n");
-
-        output.append("  Name = \"" + name + "\";");
-        output.append("  Index = " + index + ";\n");
-        output.append("  XPos = " + position.getXPos() + ";\n");
-        output.append("  YPos = " + position.getYPos() + ";\n");
-        output.append("  ZPos = " + position.getZPos() + ";\n");
-        output.append("  YOri = " + orientation.getyOri() + ";\n");
-
-        try
-        {
-            output.append("  Country = " + determineCountry().getCountryName() + ";\n");
-        }
-        catch (PWCGException e)
-        {
-            e.printStackTrace();
-        }
-
-        output.append("}\n");
-        output.append("\n");
-        output.append("\n");
-
-        return output.toString();
-    }
-
     public void initializeAirfieldFromLocation(PWCGLocation planePosition)
     {
         this.position = planePosition.getPosition().copy();
@@ -208,7 +178,7 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
 
     public PWCGLocation getFakeAirfieldLocation(Mission mission) throws PWCGException
     {
-        ConfigManagerCampaign configManager = PWCGContext.getInstance().getCampaign().getCampaignConfigManager();
+        ConfigManagerCampaign configManager = mission.getCampaign().getCampaignConfigManager();
         if (configManager.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey) == 2)
         {
             // The game sometimes seems to go funny if the airfield location is on the runway when

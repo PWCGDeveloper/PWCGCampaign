@@ -79,7 +79,12 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
 
     public PlaneMcu()
     {
+    }
+    
+    public PlaneMcu(Campaign campaign)
+    {
         super();
+        this.campaign = campaign;
         this.index = IndexGenerator.getInstance().getNextIndex();
         this.entity = new McuTREntity(index);
         this.linkTrId = entity.getIndex();
@@ -238,11 +243,8 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         }
     }
 
-    public void setPlaneSkinWithCheck(Skin newSkin)
+    public void setPlaneSkinWithCheck(Skin newSkin, Date campaignDate)
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        Date campaignDate = campaign.getDate();
-
         if (!(campaignDate.before(newSkin.getStartDate())))
         {
             if (!(campaignDate.after(newSkin.getEndDate())))
@@ -360,7 +362,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             writer.write("  WMMask = " + payload.generateFullModificationMask() + ";");
             writer.newLine();
 
-            Campaign campaign = PWCGContext.getInstance().getCampaign();
             campaign.getPlaneMarkingManager().writeTacticalCodes(writer, campaign, this);
 
             writer.write("}");
@@ -691,11 +692,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     public McuTREntity getEntity()
     {
         return entity;
-    }
-    
-    public void addFighterfTarget(int target)
-    {
-        fighterAttack.setAttackTarget(target);
     }
     
     public void addTargets(List<Integer> targets)

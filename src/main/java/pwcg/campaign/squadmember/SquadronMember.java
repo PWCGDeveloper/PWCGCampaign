@@ -334,9 +334,8 @@ public class SquadronMember implements Cloneable
         return squadron;
     }
 
-    public boolean determineIsSquadronMemberCommander() throws PWCGException
+    public boolean determineIsSquadronMemberCommander(Campaign campaign) throws PWCGException
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         IRankHelper rankObj = RankFactory.createRankHelper();
         int rankPos = rankObj.getRankPosByService(getRank(), determineService(campaign.getDate()));
         if (rankPos == 0)
