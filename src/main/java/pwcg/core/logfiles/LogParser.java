@@ -4,7 +4,6 @@ import java.util.List;
 
 import pwcg.aar.inmission.phase1.parse.AAREventAnalyzer;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 
 public class LogParser 
@@ -25,11 +24,8 @@ public class LogParser
 
     private void debugLogData(LogEventData logEventData)
     {
-        if (TestDriver.getInstance().isDebugAARLogs())
-        {
-            AAREventAnalyzer analyzer = new AAREventAnalyzer(logEventData);
-            analyzer.analyze();
-        }
+        AAREventAnalyzer analyzer = new AAREventAnalyzer(logEventData);
+        analyzer.analyze();
     }
 }
 
