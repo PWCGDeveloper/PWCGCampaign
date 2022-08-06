@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ClaimDenier;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.logfiles.event.IAType17;
 import pwcg.core.logfiles.event.IAType18;
@@ -261,5 +263,34 @@ public class LogEventData
             return false;
         }
         return true;
+    }
+    
+    public Map<String, Double> getDamagedBy(String victimId)
+    {
+        Map<String, Double> damagedBy = new TreeMap<>();
+        for (IAType2 damaged : this.getDamageEvents())
+        {
+            if (damaged.getVictim().equals(victimId))
+            {
+                IAType12 damagedVictor = this.getVehicle(damaged.getVictor());
+                String damagedByVictorId = ClaimDenier.UNKNOWN;
+                if (damagedVictor != null)
+                {
+                    damagedByVictorId = damagedVictor.getId();
+                }
+
+                if (damagedBy.containsKey(damagedByVictorId)) 
+                {
+                    double damagedByValue = damagedBy.get(damagedByVictorId);
+                    damagedByValue += damaged.getDamageLevel();
+                    damagedBy.put(damagedByVictorId, damagedByValue);
+                }
+                else
+                {
+                    damagedBy.put(damagedByVictorId, damaged.getDamageLevel());
+                }
+             }
+        }
+        return damagedBy;
     }
 }

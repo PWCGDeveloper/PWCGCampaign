@@ -9,6 +9,7 @@ import pwcg.core.exception.PWCGException;
 
 public class ClaimDenier
 {
+    public static final String UNKNOWN = "Unknown";
     private Campaign campaign;
     private PlaneTypeFactory planeFactory;
   
@@ -41,7 +42,7 @@ public class ClaimDenier
 
     private String getPlaneDescription(PlayerVictoryDeclaration playerDeclaration)
     {
-        String planeDesc = "Unknown";
+        String planeDesc = UNKNOWN;
         if (playerDeclaration.getAircraftType().equals(PlaneType.BALLOON))
         {
             planeDesc = PlaneType.BALLOON;
