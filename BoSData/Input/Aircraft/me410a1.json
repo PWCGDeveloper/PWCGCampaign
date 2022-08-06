@@ -1,0 +1,27 @@
+{
+	"type": "me410a1",
+	"archType": "me410",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "Me 410 A-1",
+	"script": "LuaScripts\\WorldObjects\\Planes\\me410a1.txt",
+	"model": "graphics\\planes\\me410a1\\me410a1.mgm",
+	"desc": "",
+	"cruisingSpeed": 380,
+	"climbOutRate": 800,
+	"goodness": 45,
+	"range": 1200,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"ATTACK",
+		"FIGHTER"
+	],
+	"introduction": "19430601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

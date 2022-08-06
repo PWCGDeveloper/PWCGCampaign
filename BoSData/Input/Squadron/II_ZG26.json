@@ -75,8 +75,12 @@
 				]
 			},
 			{
-				"startDate": "19410501",
+				"startDate": "19410901",
 				"weightedRoles": [
+					{
+						"role": "ROLE_ANTI_SHIPPPING",
+						"weight": 20
+					},
 					{
 						"role": "ROLE_RECON",
 						"weight": 5

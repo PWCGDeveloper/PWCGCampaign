@@ -1,3 +1,13 @@
+13.11.0
+Add Me410
+- III ZG 26 starting in June 1943
+Move Fokker D8 introduction to August 1918.  Allows player to select as a private plane.
+Output AAR results to the error log.  Allows players to see what the log files are saying.
+
+
+13.10.1
+Remove attempt to get fighters more aggressive.
+
 13.10.0
 Added Mosquito
 - No 4 Squadron RAF

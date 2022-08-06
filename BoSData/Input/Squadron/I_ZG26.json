@@ -10,6 +10,11 @@
 		{
 			"archType": "bf110",
 			"squadronIntroduction": "19390801",
+			"squadronWithdrawal": "19440801"
+		},
+		{
+			"archType": "me410",
+			"squadronIntroduction": "19440601",
 			"squadronWithdrawal": "19450601"
 		}
 	],
