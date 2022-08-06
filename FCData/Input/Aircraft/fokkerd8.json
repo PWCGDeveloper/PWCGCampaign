@@ -16,7 +16,7 @@
 	"desc": "",
 	"cruisingSpeed": 140,
 	"climbOutRate": 320,
-	"goodness": 80,
+	"goodness": 81,
 	"range": 200,
 	"isFlyable": true,
 	"isNovice": false,
@@ -24,7 +24,7 @@
 	"roleCategories": [
 		"FIGHTER"
 	],
-	"introduction": "19181001",
+	"introduction": "19180801",
 	"endProduction": "19181201",
 	"withdrawal": "19181201"
 }
