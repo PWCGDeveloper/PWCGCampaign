@@ -30,37 +30,23 @@ public class AARVictoryEvaluator
     private Campaign campaign;
     private PwcgMissionData pwcgMissionData;
     private AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator;
-    private AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator;
     
     public AARVictoryEvaluator(
     		Campaign campaign,
     		PwcgMissionData pwcgMissionData,
-    		AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator,
     		AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator)
     {
         this.campaign = campaign;
         this.pwcgMissionData = pwcgMissionData;
-        this.fuzzyVictoryEvaluator = fuzzyVictoryEvaluator;
         this.aarDestroyedStatusEvaluator = aarDestroyedStatusEvaluator;
     }
 
     public void evaluateVictories() throws PWCGException
     {
-        buildVictoryList();
-        applyFuzzyVictoryMethods();
-        
+        buildVictoryList();        
         victoryResults.addAll(aarDestroyedStatusEvaluator.getDeadLogVehicleList());
     }
     
-    private void applyFuzzyVictoryMethods() throws PWCGException
-    {
-        for (LogVictory victoryResult : victoryResults)
-        {
-            fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
-        }
-
-    }
-
     private void buildVictoryList() throws PWCGException 
     {
         for (LogVictory logVictory : aarDestroyedStatusEvaluator.getDeadLogVehicleList())

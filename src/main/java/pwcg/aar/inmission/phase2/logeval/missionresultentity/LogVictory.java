@@ -1,13 +1,11 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
-import pwcg.aar.inmission.phase2.logeval.AARDamageStatus;
 import pwcg.core.location.Coordinate;
 
 public class LogVictory extends LogBase
 {
     private LogAIEntity victor = new LogUnknown();
     private LogAIEntity victim = new LogUnknown();
-    private AARDamageStatus damageInformation;
     private Coordinate location;
     private boolean confirmed = false;
     
@@ -23,7 +21,14 @@ public class LogVictory extends LogBase
 
     public void setVictor(LogAIEntity victor)
     {
-        this.victor = victor;
+        if (victor != null)
+        {
+            this.victor = victor;
+        }
+        else
+        {
+            System.out.println("No victor");
+        }
     }
 
     public LogAIEntity getVictim()
@@ -54,19 +59,5 @@ public class LogVictory extends LogBase
     public void setConfirmed(boolean confirmed)
     {
         this.confirmed = confirmed;
-    }
-
-    public boolean didPilotDamagePlane(String victorId)
-    {
-        if(damageInformation == null)
-        {
-            return false;
-        }
-        return damageInformation.didPilotDamagePlane(victorId);
-    }
-
-    public void setDamageInformation(AARDamageStatus damageInformation)
-    {
-        this.damageInformation = damageInformation;
     }
 }

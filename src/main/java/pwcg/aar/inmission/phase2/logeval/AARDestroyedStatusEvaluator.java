@@ -8,7 +8,9 @@ import java.util.Map;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ClaimDenier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.IAType3;
@@ -20,13 +22,11 @@ public class AARDestroyedStatusEvaluator
 
     private AARVehicleBuilder vehicleBuilder;
     private LogEventData logEventData;
-    private AARDamageStatusEvaluator damageStatusEvaluator;
 
-    public AARDestroyedStatusEvaluator(LogEventData logEventData, AARVehicleBuilder aarVehicleBuilder, AARDamageStatusEvaluator damageStatusEvaluator)
+    public AARDestroyedStatusEvaluator(LogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
     {
         this.logEventData = logEventData;
         this.vehicleBuilder = aarVehicleBuilder;
-        this.damageStatusEvaluator = damageStatusEvaluator;
     }
 
     public void buildDeadLists() throws PWCGException
@@ -59,23 +59,37 @@ public class AARDestroyedStatusEvaluator
         }
         else
         {
-            addDamagedByInformation(logVictory, logVictim);
+            LogAIEntity logVictorByDamage = getMostDamagedBy(logVictim);
+            if (logVictorByDamage != null)
+            {
+                logVictory.setVictor(logVictorByDamage);
+            }
         }
 
         deadLogVehicles.add(logVictory);
     }
 
-    private void addDamagedByInformation(LogVictory logVictory, LogAIEntity logVictim) throws PWCGException
+    private LogAIEntity getMostDamagedBy(LogAIEntity logVictim) throws PWCGException
     {
-        AARDamageStatus damageStatus = damageStatusEvaluator.getDamageStatusForVehicle(logVictim.getId());
-        if (damageStatus != null)
+        LogAIEntity logVictorByDamage = new LogUnknown();
+                
+        Map<String, Double> damagedBy = logEventData.getDamagedBy(logVictim.getId());
+        double mostDamage = 0.0;
+        for (String mostDamagedById : damagedBy.keySet())
         {
-            logVictory.setDamageInformation(damageStatus);
+            if (mostDamagedById.equals(ClaimDenier.UNKNOWN))
+            {
+                continue;
+            }
+
+            double damagedByValue = damagedBy.get(mostDamagedById);
+            if (damagedByValue > mostDamage)
+            {
+                logVictorByDamage = vehicleBuilder.getVehicle(mostDamagedById);
+                mostDamage = damagedByValue;
+            }
         }
-        else
-        {
-            logVictory.setDamageInformation(new AARDamageStatus(logVictim.getId()));
-        }
+        return logVictorByDamage;
     }
 
     private void addDeadPilot(IAType3 atype3)

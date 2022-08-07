@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ClaimDenier;
 import pwcg.core.logfiles.event.IAType12;
@@ -267,7 +266,7 @@ public class LogEventData
     
     public Map<String, Double> getDamagedBy(String victimId)
     {
-        Map<String, Double> damagedBy = new TreeMap<>();
+        Map<String, Double> damagedBy = new HashMap<>();
         for (IAType2 damaged : this.getDamageEvents())
         {
             if (damaged.getVictim().equals(victimId))

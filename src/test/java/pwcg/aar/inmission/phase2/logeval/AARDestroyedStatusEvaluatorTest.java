@@ -77,17 +77,12 @@ public class AARDestroyedStatusEvaluatorTest
 
         AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(
                         logEventData,
-                        aarVehicleBuilder,
-                        aarDamageStatusEvaluator);
+                        aarVehicleBuilder);
 
         aarDestroyedStatusEvaluator.buildDeadLists();
         List<LogVictory> vehiclesDestroyed = aarDestroyedStatusEvaluator.getDeadLogVehicleList();
 
         Assertions.assertTrue(vehiclesDestroyed.size() == 3);
-        for (LogVictory victory : vehiclesDestroyed)
-        {
-            Assertions.assertFalse(victory.didPilotDamagePlane(VICTIM_1));
-        }
     }
 
     /**
@@ -111,8 +106,7 @@ public class AARDestroyedStatusEvaluatorTest
 
         AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(
                         logEventData,
-                        aarVehicleBuilder,
-                        aarDamageStatusEvaluator);
+                        aarVehicleBuilder);
 
         aarDestroyedStatusEvaluator.buildDeadLists();
         List<LogVictory> vehiclesDestroyed = aarDestroyedStatusEvaluator.getDeadLogVehicleList();
@@ -153,8 +147,7 @@ public class AARDestroyedStatusEvaluatorTest
  
         AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(
                         logEventData,
-                        aarVehicleBuilder,
-                        aarDamageStatusEvaluator);
+                        aarVehicleBuilder);
 
         aarDestroyedStatusEvaluator.buildDeadLists();
         List<LogVictory> vehiclesDestroyed = aarDestroyedStatusEvaluator.getDeadLogVehicleList();
@@ -162,9 +155,5 @@ public class AARDestroyedStatusEvaluatorTest
         Assertions.assertTrue(vehiclesDestroyed.size() == 3);
 
         Assertions.assertTrue(vehiclesDestroyed.size() == 3);
-        for (LogVictory victory : vehiclesDestroyed)
-        {
-            Assertions.assertTrue(victory.didPilotDamagePlane(VICTOR));
-        }
     }
 }
