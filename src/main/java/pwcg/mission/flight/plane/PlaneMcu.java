@@ -30,9 +30,9 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogCategory;
 import pwcg.mission.flight.FlightStartPosition;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.mcu.McuAttack;
 import pwcg.mission.mcu.McuEvent;
 import pwcg.mission.mcu.McuTREntity;
+import pwcg.mission.mcu.group.FighterAttackCommand;
 import pwcg.mission.mcu.group.IPlaneRemover;
 import pwcg.mission.mcu.group.WingmanMcuGroup;
 
@@ -68,7 +68,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     private int aiRTBDecision = 1;
     private int deleteAfterDeath = 1;
     private WingmanMcuGroup wingmanCommands;
-    private McuAttack fighterAttack = new McuAttack();
+    private FighterAttackCommand fighterAttackCommand;
 
     private IPlanePayload payload = null;
 
@@ -88,7 +88,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.index = IndexGenerator.getInstance().getNextIndex();
         this.entity = new McuTREntity(index);
         this.linkTrId = entity.getIndex();
-        this.fighterAttack.setObject(this.linkTrId);
+        fighterAttackCommand = new FighterAttackCommand(this.linkTrId);
     }
 
     public PlaneMcu(Campaign campaign, SquadronMember pilot)
@@ -101,7 +101,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.index = IndexGenerator.getInstance().getNextIndex();
         this.entity = new McuTREntity(index);
         this.linkTrId = entity.getIndex();
-        this.fighterAttack.setObject(this.linkTrId);
+        fighterAttackCommand = new FighterAttackCommand(this.linkTrId);
     }
     
     public void buildPlane(EquippedPlane equippedPlane, ICountry country) throws PWCGException
@@ -168,10 +168,8 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         plane.entity = this.entity.copy(plane.index);
         plane.linkTrId = plane.entity.getIndex();
         
-        plane.fighterAttack = this.fighterAttack.copy();
-        plane.fighterAttack.clearObjects();
-        plane.fighterAttack.setObject(plane.linkTrId);
-
+        plane.fighterAttackCommand = new FighterAttackCommand(plane.linkTrId);
+        
         plane.campaign = this.campaign;
         plane.pilot = this.pilot;
     }
@@ -370,7 +368,8 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             writer.newLine();
 
             entity.write(writer);
-            fighterAttack.write(writer);
+            
+            fighterAttackCommand.write(writer);
             
             if (wingmanCommands != null)
             {
@@ -433,11 +432,8 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         {
             entity.setPosition(position.copy());
         }
-        
-        if (fighterAttack != null)
-        {
-            fighterAttack.setPosition(position.copy());
-        }
+
+        fighterAttackCommand.setPosition(position.copy());
     }
 
     public Orientation getOrientation()
@@ -454,10 +450,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             entity.setOrientation(orientation.copy());
         }
         
-        if (fighterAttack != null)
-        {
-            fighterAttack.setOrientation(orientation.copy());
-        }
+        fighterAttackCommand.setOrientation(orientation.copy());
     }
 
     public Skin getPlaneSkin()
@@ -696,14 +689,11 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     
     public void addTargets(List<Integer> targets)
     {
-        for (int target : targets)
-        {
-            fighterAttack.setAttackTarget(target);
-        }
+        fighterAttackCommand.addTargets(targets);
     }
-
-    public McuAttack getFighterAttack()
+    
+    public int getFighterAttackTarget()
     {
-        return fighterAttack;
+        return fighterAttackCommand.getFighterAttackTarget();
     }
 }

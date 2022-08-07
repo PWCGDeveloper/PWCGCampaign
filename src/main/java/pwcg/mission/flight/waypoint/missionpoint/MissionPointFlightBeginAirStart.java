@@ -127,7 +127,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     {
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            attackTimer.setTimerTarget(plane.getFighterAttack().getIndex());
+            attackTimer.setTimerTarget(plane.getFighterAttackTarget());
         }
     }
 

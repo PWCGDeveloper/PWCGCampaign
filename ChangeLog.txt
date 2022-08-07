@@ -1,8 +1,16 @@
 13.11.0
 Add Me410
 - III ZG 26 starting in June 1943
-Move Fokker D8 introduction to August 1918.  Allows player to select as a private plane.
+Changed victory assignment logic in AAR
+- Better damage records allows me to determine who did the most damage
+- Victory goes by log assignment or by who did the most damage.
+- Unclaimed player victories are still assigned to flight mates.
 Output AAR results to the error log.  Allows players to see what the log files are saying.
+- If you are wondering why you did or did not get credit, look at the PWCGErrorLog.txt file
+Another attempt at triggering an ATtackj MCU to attack all enemy planes
+- This time I wait until the first WP is reached on take off.
+- Worked in a couple of tests
+Move Fokker D8 introduction to August 1918.  Allows player to select as a private plane.
 
 
 13.10.1
@@ -19,7 +27,7 @@ Added B-26
 - 387th BG
 - Anybody currently running an A-20 career with 387th will have to transfer to 410th BG.
 - Alternative is to add an A20 as a personal plane through equipment request.
-Moved I?KG 51 flying Me-262s to jet capable fields.
+Moved I/KG 51 flying Me-262s to jet capable fields.
  - Longer flights, but at least takeoff should be doable.
 Made attempt to get fighter flights more aggressive
 Removed 150 octane as a stock modification

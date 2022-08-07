@@ -119,7 +119,7 @@ public class VirtualWaypointTriggered
     {
         for (PlaneMcu plane : vwpPlanes.getAllPlanes())
         {
-            attackTimer.setTimerTarget(plane.getFighterAttack().getIndex());
+            attackTimer.setTimerTarget(plane.getFighterAttackTarget());
         }
     }
 

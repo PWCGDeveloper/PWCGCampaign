@@ -198,7 +198,6 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     private void createTargetAssociations() throws PWCGException
     {
         formationTimer.setTimerTarget(formationEntity.getIndex());
-        formationTimer.setTimerTarget(attackTimer.getIndex());
         triggerAttackMcuForPlanes();
 
         flight.getFlightPlanes().getFlightLeader().setOnMessages(
@@ -207,11 +206,12 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
                 super.getFirstWaypoint().getIndex());
     }
 
-    private void triggerAttackMcuForPlanes()
+    private void triggerAttackMcuForPlanes() throws PWCGException
     {
+        waypoints.getFirstWaypoint().setTarget(attackTimer.getIndex());
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            // attackTimer.setTimerTarget(plane.getFighterAttack().getIndex());
+            attackTimer.setTimerTarget(plane.getFighterAttackTarget());
         }
     }
 
