@@ -1,3 +1,8 @@
+13.11.1
+Bring down bombing altitude a bit
+- 3K meters at the lowest, 7K at the highest
+
+
 13.11.0
 Add Me410
 - III ZG 26 starting in June 1943
