@@ -20,11 +20,12 @@ public class P51B5Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
-        setAvailablePayload(-5, "100000000", PayloadElement.MIRROR);
-        setAvailablePayload(-4, "10000000", PayloadElement.MALCOLM_CANOPY);
-        setAvailablePayload(-3, "100000", PayloadElement.OCTANE_150_FUEL);
-        setAvailablePayload(-2, "10000", PayloadElement.PACKARD_ENGINE);
-        setAvailablePayload(-1, "1000", PayloadElement.P51_GUNSIGHT);
+        setAvailablePayload(-6, "100000000", PayloadElement.MIRROR);
+        setAvailablePayload(-5, "10000000", PayloadElement.MALCOLM_CANOPY);
+        setAvailablePayload(-4, "100000", PayloadElement.OCTANE_150_FUEL);
+        setAvailablePayload(-3, "10000", PayloadElement.PACKARD_ENGINE);
+        setAvailablePayload(-2, "1000", PayloadElement.GYRO_GUNSIGHT);
+        setAvailablePayload(-1, "100", PayloadElement.P51_GUNSIGHT);
 	    
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.M64_X2);
@@ -33,12 +34,6 @@ public class P51B5Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(4, "11", PayloadElement.LB1000x2);
         setAvailablePayload(5, "11", PayloadElement.M8_X6);
         setAvailablePayload(6, "11", PayloadElement.M64_X2, PayloadElement.M8_X6);
-        
-        
-        setAvailablePayload(4, "1001", PayloadElement.M64_X2);
-        setAvailablePayload(8, "10001", PayloadElement.M65_X2);
-        setAvailablePayload(12, "100001", PayloadElement.P51_ROCKETS);
-
 	}
  
     @Override
