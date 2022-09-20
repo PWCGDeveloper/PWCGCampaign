@@ -1,0 +1,70 @@
+{
+  "locationSetName": "Barges",
+  "locations": [
+    {
+      "name": "Barge",
+      "position": {
+        "xPos": 127321.0,
+        "yPos": 0.0,
+        "zPos": 89782.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 290.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Barge",
+      "position": {
+        "xPos": 135912.0,
+        "yPos": 0.0,
+        "zPos": 82143.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 35.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Barge",
+      "position": {
+        "xPos": 135860.0,
+        "yPos": 0.0,
+        "zPos": 89434.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 228.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Barge",
+      "position": {
+        "xPos": 65212.0,
+        "yPos": 0.0,
+        "zPos": 165267.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 143.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Barge",
+      "position": {
+        "xPos": 68942.0,
+        "yPos": 0.0,
+        "zPos": 163974.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

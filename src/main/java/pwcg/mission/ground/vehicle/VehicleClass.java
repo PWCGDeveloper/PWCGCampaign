@@ -20,6 +20,7 @@ public enum VehicleClass implements IWeight
     MachineGun(false, "Machine Gun", GroundUnitType.INFANTRY_UNIT, TargetType.TARGET_INFANTRY, 10),
     
     Tank(false, "Tank", GroundUnitType.TANK_UNIT, TargetType.TARGET_ARMOR, 2),
+    Infantry(false, "Infantry", GroundUnitType.INFANTRY_UNIT, TargetType.TARGET_INFANTRY, 20),
     
     LandCanvas(false, "Canvas", GroundUnitType.STATIC_UNIT, TargetType.TARGET_NONE, 0),
     RadioBeacon(false, "Radio Beacon", GroundUnitType.STATIC_UNIT, TargetType.TARGET_NONE, 0),

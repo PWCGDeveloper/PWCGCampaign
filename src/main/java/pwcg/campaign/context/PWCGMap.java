@@ -57,6 +57,7 @@ public abstract class PWCGMap
     protected List<NoBattlePeriod> noBattlePeriods = new ArrayList<>();
     protected MapTransport mapTransportRoads = new MapTransport();
     protected MapTransport mapTransportRail = new MapTransport();
+    protected boolean hasShips = false;
 
     public PWCGMap()
     {
@@ -267,4 +268,11 @@ public abstract class PWCGMap
     {
         return mapTransportRail;
     }
+
+    public boolean hasShips()
+    {
+        return hasShips;
+    }
+    
+    
 }

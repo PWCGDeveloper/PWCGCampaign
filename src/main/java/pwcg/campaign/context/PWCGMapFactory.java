@@ -6,6 +6,7 @@ import pwcg.product.bos.map.east1944.East1944Map;
 import pwcg.product.bos.map.east1945.East1945Map;
 import pwcg.product.bos.map.kuban.KubanMap;
 import pwcg.product.bos.map.moscow.MoscowMap;
+import pwcg.product.bos.map.normandy.NormandyMap;
 import pwcg.product.bos.map.stalingrad.StalingradMap;
 import pwcg.product.fc.map.arras.ArrasMap;
 
@@ -28,6 +29,11 @@ public class PWCGMapFactory
         if (frontMapIdentifier == FrontMapIdentifier.BODENPLATTE_MAP)
         {
             map = new BodenplatteMap();
+            map.configure();
+        }
+        if (frontMapIdentifier == FrontMapIdentifier.NORMANDY_MAP)
+        {
+            map = new NormandyMap();
             map.configure();
         }
         if (frontMapIdentifier == FrontMapIdentifier.KUBAN_MAP)

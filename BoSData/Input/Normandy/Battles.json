@@ -1,0 +1,22 @@
+{
+  "battles": [
+    {
+      "name": "Normandy Invasion",
+      "neCorner": {
+        "xPos": 384000,
+        "yPos": 0.0,
+        "zPos": 384000
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "USA",
+      "defendercountry": "GERMANY",
+      "startDate": "19440606",
+      "stopDate": "19440901",
+      "map": "NORMANDY_MAP"
+    }
+  ]
+}

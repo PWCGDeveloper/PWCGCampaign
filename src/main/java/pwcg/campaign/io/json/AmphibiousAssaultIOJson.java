@@ -23,4 +23,11 @@ public class AmphibiousAssaultIOJson
         }
 		return amphibiousAssaultsForMap;
 	}
+	
+
+    public static void writeJson(String directory, String filename, AmphibiousAssault amphibiousAssault) throws PWCGException
+    {
+        PwcgJsonWriter<AmphibiousAssault> jsonWriter = new PwcgJsonWriter<>();
+        jsonWriter.writeAsJson(amphibiousAssault, directory, filename);
+    }
 }

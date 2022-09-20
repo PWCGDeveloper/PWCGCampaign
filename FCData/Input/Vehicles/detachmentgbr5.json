@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\infantry\\",
+  "vehicleType": "detachmentgbr5",
+  "vehicleName": "Detachment GBR",
+  "displayName": "infantry",
+  "countries": [
+    "BRITAIN", "USA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "Infantry"
+}

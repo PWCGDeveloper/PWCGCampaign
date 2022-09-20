@@ -1,0 +1,353 @@
+{
+  "targetPreferences": [
+    {
+      "startDate": "19410601",
+      "endDate": "19411001",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_AIRFIELD",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19410601",
+      "endDate": "19411001",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_TRAIN",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19410601",
+      "endDate": "19411001",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_PORT",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19410601",
+      "endDate": "19411001",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_FACTORY",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19410601",
+      "endDate": "19411001",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_CITY",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19410601",
+      "endDate": "19411001",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_RAIL",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19410601",
+      "endDate": "19411001",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "40"
+    },
+	{
+      "startDate": "19411001",
+      "endDate": "19440501",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_AIRFIELD",
+      "oddsOfUse": "60"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19440501",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_TRAIN",
+      "oddsOfUse": "60"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19440501",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_PORT",
+      "oddsOfUse": "60"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19440501",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_FACTORY",
+      "oddsOfUse": "60"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19440501",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_RAIL",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19440501",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_CITY",
+      "oddsOfUse": "60"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19440501",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "60"
+    },
+	{
+      "startDate": "19440501",
+      "endDate": "19440605",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_AIRFIELD",
+      "oddsOfUse": "60"
+    },
+    {
+      "startDate": "19440501",
+      "endDate": "19440605",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_TRAIN",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19440501",
+      "endDate": "19440605",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_RAIL",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19440501",
+      "endDate": "19440605",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_BRIDGE",
+      "oddsOfUse": "80"
+    },
+    {
+      "startDate": "19440606",
+      "endDate": "19440901",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_TRAIN",
+      "oddsOfUse": "120"
+    },
+    {
+      "startDate": "19440606",
+      "endDate": "19440901",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_TRANSPORT",
+      "oddsOfUse": "120"
+    },
+    {
+      "startDate": "19440606",
+      "endDate": "19440901",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_ARMOR",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19440606",
+      "endDate": "19440901",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_INFANTRY",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19440606",
+      "endDate": "19440901",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_ARTILLERY",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19440606",
+      "endDate": "19440901",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_BRIDGE",
+      "oddsOfUse": "40"
+    },
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    {
+      "startDate": "19410601",
+      "endDate": "19410715",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_PORT",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19410601",
+      "endDate": "19410715",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19410601",
+      "endDate": "19410715",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_FACTORY",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19410601",
+      "endDate": "19410715",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_RAIL",
+      "oddsOfUse": "40"
+    },
+	{
+      "startDate": "1940716",
+      "endDate": "19410812",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_PORT",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "1940716",
+      "endDate": "19410812",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "1940716",
+      "endDate": "19410812",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_AIRFIELD",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "1940716",
+      "endDate": "19410812",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_FACTORY",
+      "oddsOfUse": "20"
+    },
+    {
+      "startDate": "1940716",
+      "endDate": "19410812",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_RAIL",
+      "oddsOfUse": "20"
+    },
+	{
+      "startDate": "19410813",
+      "endDate": "19410910",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_PORT",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19410813",
+      "endDate": "19410910",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19410813",
+      "endDate": "19410910",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_AIRFIELD",
+      "oddsOfUse": "100"
+    },
+	{
+      "startDate": "19410911",
+      "endDate": "19411001",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_PORT",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19410911",
+      "endDate": "19411001",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_FACTORY",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19410911",
+      "endDate": "19411001",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_CITY",
+      "oddsOfUse": "100"
+    },
+
+	{
+      "startDate": "19411001",
+      "endDate": "19440605",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_AIRFIELD",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19440605",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_RAIL",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19440605",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_PORT",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19440605",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19440606",
+      "endDate": "19440901",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_TRANSPORT",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19440606",
+      "endDate": "19440901",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_ARMOR",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19440606",
+      "endDate": "19440901",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_INFANTRY",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19440606",
+      "endDate": "19440901",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_ARTILLERY",
+      "oddsOfUse": "100"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19440605",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "50"
+    }
+  ]
+}

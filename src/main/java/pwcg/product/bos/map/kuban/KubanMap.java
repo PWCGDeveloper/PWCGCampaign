@@ -35,6 +35,7 @@ public class KubanMap extends PWCGMap
     public KubanMap()
     {
         super();
+        hasShips = true;
     }
 
     public void configure() throws PWCGException

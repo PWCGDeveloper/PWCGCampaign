@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\infantry\\",
+  "vehicleType": "detachmentusa5",
+  "vehicleName": "Detachment USA",
+  "displayName": "infantry",
+  "countries": [
+    "RUSSIA", "USA", "GERMANY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "Infantry"
+}

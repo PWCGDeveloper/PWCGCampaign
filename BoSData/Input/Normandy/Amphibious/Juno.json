@@ -1,0 +1,114 @@
+{
+  "skirmishName": "Juno",
+  "landingStartDate": "19440606",
+  "landingStopDate": "19440608",
+  "aggressorCountry": "BRITAIN",
+  "defendingCountry": "GERMANY",
+  "landingCraftBackOff": 0,
+  "shipDefinitions": [
+    {
+      "shipType": "lcm",
+      "destination": {
+        "xPos": 137210.0,
+        "yPos": 0.0,
+        "zPos": 136985.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 136041.0,
+        "yPos": 3.0,
+        "zPos": 143981.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 137384.0,
+        "yPos": 1.0,
+        "zPos": 136200.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 136780.0,
+        "yPos": 2.0,
+        "zPos": 142018.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 137064.0,
+        "yPos": 2.0,
+        "zPos": 138157.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 137010.0,
+        "yPos": 0.0,
+        "zPos": 140649.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lcm",
+      "destination": {
+        "xPos": 136929.0,
+        "yPos": 1.0,
+        "zPos": 139116.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lcm",
+      "destination": {
+        "xPos": 135733.0,
+        "yPos": 6.0,
+        "zPos": 144560.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,5166 @@
+{
+  "locationSetName": "MapLocations",
+  "locations": [
+    {
+      "name": "Burley",
+      "position": {
+        "xPos": 304440.0,
+        "yPos": 0.0,
+        "zPos": 50983.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 156.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Abbeville",
+      "position": {
+        "xPos": 223887.0,
+        "yPos": 0.0,
+        "zPos": 301849.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 235.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airaines",
+      "position": {
+        "xPos": 209088.0,
+        "yPos": 0.0,
+        "zPos": 310412.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 356.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Aldershot",
+      "position": {
+        "xPos": 349870.0,
+        "yPos": 0.0,
+        "zPos": 118110.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 144.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Alencon",
+      "position": {
+        "xPos": 36410.0,
+        "yPos": 0.0,
+        "zPos": 177435.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 275.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Alfriston",
+      "position": {
+        "xPos": 300961.0,
+        "yPos": 0.0,
+        "zPos": 182215.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 73.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Alton",
+      "position": {
+        "xPos": 339411.0,
+        "yPos": 0.0,
+        "zPos": 103325.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 310.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Amaye-sur-Seulles",
+      "position": {
+        "xPos": 108918.0,
+        "yPos": 0.0,
+        "zPos": 118926.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 265.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Amiens",
+      "position": {
+        "xPos": 200405.0,
+        "yPos": 0.0,
+        "zPos": 335775.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Andover",
+      "position": {
+        "xPos": 347314.0,
+        "yPos": 0.0,
+        "zPos": 66766.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 133.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Appledore",
+      "position": {
+        "xPos": 326005.0,
+        "yPos": 0.0,
+        "zPos": 226531.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 76.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Argentan",
+      "position": {
+        "xPos": 70612.0,
+        "yPos": 0.0,
+        "zPos": 169238.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 339.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Arromanches-les-Bains",
+      "position": {
+        "xPos": 137295.0,
+        "yPos": 0.0,
+        "zPos": 126176.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Arundel",
+      "position": {
+        "xPos": 306217.0,
+        "yPos": 0.0,
+        "zPos": 131876.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 156.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ash",
+      "position": {
+        "xPos": 354117.0,
+        "yPos": 0.0,
+        "zPos": 259825.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 296.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ashford",
+      "position": {
+        "xPos": 339404.0,
+        "yPos": 0.0,
+        "zPos": 231464.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 68.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Asnelles",
+      "position": {
+        "xPos": 137162.0,
+        "yPos": 0.0,
+        "zPos": 128556.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 11.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Audresselles",
+      "position": {
+        "xPos": 303605.0,
+        "yPos": 0.0,
+        "zPos": 283482.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 330.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Audruicq",
+      "position": {
+        "xPos": 310774.0,
+        "yPos": 0.0,
+        "zPos": 317502.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 336.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ault",
+      "position": {
+        "xPos": 223137.0,
+        "yPos": 0.0,
+        "zPos": 274878.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 126.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Aumale",
+      "position": {
+        "xPos": 186621.0,
+        "yPos": 0.0,
+        "zPos": 297513.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 265.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Aunay-sur-Odon",
+      "position": {
+        "xPos": 102145.0,
+        "yPos": 0.0,
+        "zPos": 124756.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 291.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Auxi-le-Chateau",
+      "position": {
+        "xPos": 238870.0,
+        "yPos": 0.0,
+        "zPos": 322523.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 194.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Avranches",
+      "position": {
+        "xPos": 66230.0,
+        "yPos": 0.0,
+        "zPos": 70348.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 306.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bacqueville-en-Caux",
+      "position": {
+        "xPos": 187494.0,
+        "yPos": 0.0,
+        "zPos": 242845.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bailly-en-Riviere",
+      "position": {
+        "xPos": 202140.0,
+        "yPos": 0.0,
+        "zPos": 267147.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 349.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Balleroy",
+      "position": {
+        "xPos": 119995.0,
+        "yPos": 0.0,
+        "zPos": 109759.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 59.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Barfleur",
+      "position": {
+        "xPos": 175249.0,
+        "yPos": 0.0,
+        "zPos": 80001.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 142.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Barneville-Carteret",
+      "position": {
+        "xPos": 143523.0,
+        "yPos": 0.0,
+        "zPos": 41786.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 355.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Basingstoke",
+      "position": {
+        "xPos": 352058.0,
+        "yPos": 0.0,
+        "zPos": 93756.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 79.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Battle",
+      "position": {
+        "xPos": 312570.0,
+        "yPos": 0.0,
+        "zPos": 205969.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bayeux",
+      "position": {
+        "xPos": 130869.0,
+        "yPos": 0.0,
+        "zPos": 119939.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 24.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bazenville",
+      "position": {
+        "xPos": 133430.0,
+        "yPos": 0.0,
+        "zPos": 128318.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 103.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Beaumont-Hague",
+      "position": {
+        "xPos": 174999.0,
+        "yPos": 0.0,
+        "zPos": 38435.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 209.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Beaumont-en-Auge",
+      "position": {
+        "xPos": 130675.0,
+        "yPos": 0.0,
+        "zPos": 179232.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Beauvais",
+      "position": {
+        "xPos": 69839.0,
+        "yPos": 0.0,
+        "zPos": 85339.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bellefontaine",
+      "position": {
+        "xPos": 65505.0,
+        "yPos": 0.0,
+        "zPos": 99191.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 24.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Benouville",
+      "position": {
+        "xPos": 126673.0,
+        "yPos": 0.0,
+        "zPos": 150152.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 65.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Beny-sur-Mer",
+      "position": {
+        "xPos": 132112.0,
+        "yPos": 0.0,
+        "zPos": 139493.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 358.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Berck-sur-Mer",
+      "position": {
+        "xPos": 257002.0,
+        "yPos": 0.0,
+        "zPos": 282428.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 132.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bernay",
+      "position": {
+        "xPos": 109514.0,
+        "yPos": 0.0,
+        "zPos": 214108.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 272.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bernieres-sur-Mer",
+      "position": {
+        "xPos": 136680.0,
+        "yPos": 0.0,
+        "zPos": 140307.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 190.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Beuvron-en-Auge",
+      "position": {
+        "xPos": 120721.0,
+        "yPos": 0.0,
+        "zPos": 167765.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 333.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Beuzeville",
+      "position": {
+        "xPos": 138090.0,
+        "yPos": 0.0,
+        "zPos": 196111.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 34.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bexhill",
+      "position": {
+        "xPos": 304383.0,
+        "yPos": 0.0,
+        "zPos": 203914.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 352.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Birling Gap",
+      "position": {
+        "xPos": 293800.0,
+        "yPos": 0.0,
+        "zPos": 185345.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bognor Regis",
+      "position": {
+        "xPos": 298789.0,
+        "yPos": 0.0,
+        "zPos": 123551.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bolbec",
+      "position": {
+        "xPos": 163452.0,
+        "yPos": 0.0,
+        "zPos": 205410.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 209.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bonnebosq",
+      "position": {
+        "xPos": 122563.0,
+        "yPos": 0.0,
+        "zPos": 176870.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 5.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Boulogne-sur-Mer",
+      "position": {
+        "xPos": 294064.0,
+        "yPos": 0.0,
+        "zPos": 284079.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 352.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bourbourg",
+      "position": {
+        "xPos": 318552.0,
+        "yPos": 0.0,
+        "zPos": 325560.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 244.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bourg-Achard",
+      "position": {
+        "xPos": 139552.0,
+        "yPos": 0.0,
+        "zPos": 230669.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 165.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bournemouth",
+      "position": {
+        "xPos": 292672.0,
+        "yPos": 0.0,
+        "zPos": 39791.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Branville",
+      "position": {
+        "xPos": 129826.0,
+        "yPos": 0.0,
+        "zPos": 173367.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bretteville-lOrgueilleuse",
+      "position": {
+        "xPos": 123124.0,
+        "yPos": 0.0,
+        "zPos": 134024.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 353.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Breville",
+      "position": {
+        "xPos": 126654.0,
+        "yPos": 0.0,
+        "zPos": 154708.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 145.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bricquebec",
+      "position": {
+        "xPos": 153249.0,
+        "yPos": 0.0,
+        "zPos": 52916.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 136.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Brighstone",
+      "position": {
+        "xPos": 283338.0,
+        "yPos": 0.0,
+        "zPos": 72489.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Brighton",
+      "position": {
+        "xPos": 303085.0,
+        "yPos": 0.0,
+        "zPos": 161666.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Brionne",
+      "position": {
+        "xPos": 121758.0,
+        "yPos": 0.0,
+        "zPos": 223414.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 342.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Broadstairs",
+      "position": {
+        "xPos": 364219.0,
+        "yPos": 0.0,
+        "zPos": 271405.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 177.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Brockenhurst",
+      "position": {
+        "xPos": 303008.0,
+        "yPos": 0.0,
+        "zPos": 60351.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 133.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Burgess Hill",
+      "position": {
+        "xPos": 317829.0,
+        "yPos": 0.0,
+        "zPos": 160652.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 62.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cabourg",
+      "position": {
+        "xPos": 130865.0,
+        "yPos": 0.0,
+        "zPos": 163210.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 94.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Caen",
+      "position": {
+        "xPos": 120250.0,
+        "yPos": 0.0,
+        "zPos": 144907.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 326.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cagny",
+      "position": {
+        "xPos": 116167.0,
+        "yPos": 0.0,
+        "zPos": 152456.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 39.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Calais",
+      "position": {
+        "xPos": 319181.0,
+        "yPos": 0.0,
+        "zPos": 301375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cambremer",
+      "position": {
+        "xPos": 116804.0,
+        "yPos": 0.0,
+        "zPos": 174604.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 238.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Canterbury",
+      "position": {
+        "xPos": 354633.0,
+        "yPos": 0.0,
+        "zPos": 246079.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 311.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cany-Barville",
+      "position": {
+        "xPos": 187459.0,
+        "yPos": 0.0,
+        "zPos": 217071.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 164.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Carentan",
+      "position": {
+        "xPos": 134435.0,
+        "yPos": 0.0,
+        "zPos": 80836.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 284.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Carpiquet",
+      "position": {
+        "xPos": 120276.0,
+        "yPos": 0.0,
+        "zPos": 138346.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 291.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Carrouges",
+      "position": {
+        "xPos": 51682.0,
+        "yPos": 0.0,
+        "zPos": 160404.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 332.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Caumont",
+      "position": {
+        "xPos": 110087.0,
+        "yPos": 0.0,
+        "zPos": 112359.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 268.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cayeux-sur-Mer",
+      "position": {
+        "xPos": 232174.0,
+        "yPos": 0.0,
+        "zPos": 277774.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 296.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chambois",
+      "position": {
+        "xPos": 78068.0,
+        "yPos": 0.0,
+        "zPos": 179016.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 229.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Charing",
+      "position": {
+        "xPos": 346063.0,
+        "yPos": 0.0,
+        "zPos": 226605.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 35.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chartres",
+      "position": {
+        "xPos": 39272.0,
+        "yPos": 0.0,
+        "zPos": 280444.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 203.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chatham",
+      "position": {
+        "xPos": 363606.0,
+        "yPos": 0.0,
+        "zPos": 208290.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 305.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chausey",
+      "position": {
+        "xPos": 86935.0,
+        "yPos": 0.0,
+        "zPos": 37380.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 108.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chef-du-Pont",
+      "position": {
+        "xPos": 143700.0,
+        "yPos": 0.0,
+        "zPos": 73796.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 330.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cherbourg-Octeville",
+      "position": {
+        "xPos": 170940.0,
+        "yPos": 0.0,
+        "zPos": 52512.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 26.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cherence-le-Roussel",
+      "position": {
+        "xPos": 67856.0,
+        "yPos": 0.0,
+        "zPos": 96214.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cheux",
+      "position": {
+        "xPos": 118241.0,
+        "yPos": 0.0,
+        "zPos": 132885.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 27.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chichester",
+      "position": {
+        "xPos": 304248.0,
+        "yPos": 0.0,
+        "zPos": 116278.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 99.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cintheaux",
+      "position": {
+        "xPos": 105938.0,
+        "yPos": 0.0,
+        "zPos": 149773.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Colleville",
+      "position": {
+        "xPos": 130630.0,
+        "yPos": 0.0,
+        "zPos": 149568.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 97.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Colleville-sur-Mer",
+      "position": {
+        "xPos": 138851.0,
+        "yPos": 0.0,
+        "zPos": 109544.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 160.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Conches-en-Ouche",
+      "position": {
+        "xPos": 95135.0,
+        "yPos": 0.0,
+        "zPos": 240136.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 328.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Conchil-le-Temple",
+      "position": {
+        "xPos": 254584.0,
+        "yPos": 0.0,
+        "zPos": 288823.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Conde-sur-Noireau",
+      "position": {
+        "xPos": 83458.0,
+        "yPos": 0.0,
+        "zPos": 130926.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cosham",
+      "position": {
+        "xPos": 304823.0,
+        "yPos": 0.0,
+        "zPos": 95859.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 318.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Coudehard",
+      "position": {
+        "xPos": 82051.0,
+        "yPos": 0.0,
+        "zPos": 181451.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 290.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Courseulles",
+      "position": {
+        "xPos": 136406.0,
+        "yPos": 0.0,
+        "zPos": 136892.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 230.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Courville-sur-Eure",
+      "position": {
+        "xPos": 39189.0,
+        "yPos": 0.0,
+        "zPos": 263228.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 352.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Coutances",
+      "position": {
+        "xPos": 105517.0,
+        "yPos": 0.0,
+        "zPos": 65818.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 127.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cowes",
+      "position": {
+        "xPos": 296125.0,
+        "yPos": 0.0,
+        "zPos": 79620.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 144.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Crawley",
+      "position": {
+        "xPos": 334728.0,
+        "yPos": 0.0,
+        "zPos": 157910.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 196.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Criel-sur-Mer",
+      "position": {
+        "xPos": 213448.0,
+        "yPos": 0.0,
+        "zPos": 265336.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 333.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Criquetot-lEsneval",
+      "position": {
+        "xPos": 171452.0,
+        "yPos": 0.0,
+        "zPos": 190389.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 332.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Croisy-sur-Andelle",
+      "position": {
+        "xPos": 151753.0,
+        "yPos": 0.0,
+        "zPos": 272150.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 190.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Crowborough",
+      "position": {
+        "xPos": 327140.0,
+        "yPos": 0.0,
+        "zPos": 183915.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 98.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dargnies",
+      "position": {
+        "xPos": 216749.0,
+        "yPos": 0.0,
+        "zPos": 280538.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 49.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Desvres",
+      "position": {
+        "xPos": 286446.0,
+        "yPos": 0.0,
+        "zPos": 301581.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 30.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dial Post",
+      "position": {
+        "xPos": 318336.0,
+        "yPos": 0.0,
+        "zPos": 146248.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 117.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dober_castle",
+      "position": {
+        "xPos": 337306.0,
+        "yPos": 0.0,
+        "zPos": 263762.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dol-de-Bretagne",
+      "position": {
+        "xPos": 51283.0,
+        "yPos": 0.0,
+        "zPos": 41584.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 65.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Domfront",
+      "position": {
+        "xPos": 54645.0,
+        "yPos": 0.0,
+        "zPos": 123490.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 16.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dorking",
+      "position": {
+        "xPos": 348566.0,
+        "yPos": 0.0,
+        "zPos": 147473.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 175.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Doudeville",
+      "position": {
+        "xPos": 180259.0,
+        "yPos": 0.0,
+        "zPos": 227841.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 38.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Douvres",
+      "position": {
+        "xPos": 132023.0,
+        "yPos": 0.0,
+        "zPos": 143299.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 305.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dover",
+      "position": {
+        "xPos": 338292.0,
+        "yPos": 0.0,
+        "zPos": 261614.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 318.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dozule",
+      "position": {
+        "xPos": 125552.0,
+        "yPos": 0.0,
+        "zPos": 168246.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dreux",
+      "position": {
+        "xPos": 71058.0,
+        "yPos": 0.0,
+        "zPos": 271193.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 125.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dunkerque",
+      "position": {
+        "xPos": 327980.0,
+        "yPos": 0.0,
+        "zPos": 337913.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 129.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "East Grinstead",
+      "position": {
+        "xPos": 336325.0,
+        "yPos": 0.0,
+        "zPos": 169995.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 119.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "East Wittering",
+      "position": {
+        "xPos": 296679.0,
+        "yPos": 0.0,
+        "zPos": 109471.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 23.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Eastbourne",
+      "position": {
+        "xPos": 296817.0,
+        "yPos": 0.0,
+        "zPos": 191372.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 127.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Eastleigh",
+      "position": {
+        "xPos": 319721.0,
+        "yPos": 0.0,
+        "zPos": 76423.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 96.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Eastoke",
+      "position": {
+        "xPos": 298550.0,
+        "yPos": 0.0,
+        "zPos": 102410.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 16.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Elbeuf",
+      "position": {
+        "xPos": 132595.0,
+        "yPos": 0.0,
+        "zPos": 245092.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 184.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Etampes",
+      "position": {
+        "xPos": 37832.0,
+        "yPos": 0.0,
+        "zPos": 329758.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 158.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Etrepagny",
+      "position": {
+        "xPos": 134938.0,
+        "yPos": 0.0,
+        "zPos": 288426.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 178.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Etretat",
+      "position": {
+        "xPos": 178551.0,
+        "yPos": 0.0,
+        "zPos": 186714.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Eu",
+      "position": {
+        "xPos": 217477.0,
+        "yPos": 0.0,
+        "zPos": 272918.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 111.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Evrecy",
+      "position": {
+        "xPos": 110775.0,
+        "yPos": 0.0,
+        "zPos": 134089.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 238.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Evreux",
+      "position": {
+        "xPos": 102273.0,
+        "yPos": 0.0,
+        "zPos": 254899.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 338.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Falaise",
+      "position": {
+        "xPos": 88425.0,
+        "yPos": 0.0,
+        "zPos": 156619.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 178.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Fareham",
+      "position": {
+        "xPos": 306563.0,
+        "yPos": 0.0,
+        "zPos": 87270.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 58.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Farnham",
+      "position": {
+        "xPos": 346567.0,
+        "yPos": 0.0,
+        "zPos": 115299.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Fauville-en-Caux",
+      "position": {
+        "xPos": 172313.0,
+        "yPos": 0.0,
+        "zPos": 213982.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 272.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Faversham",
+      "position": {
+        "xPos": 357802.0,
+        "yPos": 0.0,
+        "zPos": 233983.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 278.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Feuquieres-en-Vimeu",
+      "position": {
+        "xPos": 218633.0,
+        "yPos": 0.0,
+        "zPos": 285583.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 93.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Fleet",
+      "position": {
+        "xPos": 354856.0,
+        "yPos": 0.0,
+        "zPos": 113161.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 353.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Flers",
+      "position": {
+        "xPos": 72415.0,
+        "yPos": 0.0,
+        "zPos": 129862.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 261.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Folkestone",
+      "position": {
+        "xPos": 331829.0,
+        "yPos": 0.0,
+        "zPos": 253618.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 3.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Fontenay-le-Pesnel",
+      "position": {
+        "xPos": 118666.0,
+        "yPos": 0.0,
+        "zPos": 128470.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 179.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Forges-les-Eaux",
+      "position": {
+        "xPos": 168819.0,
+        "yPos": 0.0,
+        "zPos": 282519.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 334.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Foucarmont",
+      "position": {
+        "xPos": 195211.0,
+        "yPos": 0.0,
+        "zPos": 284056.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 179.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Fougeres",
+      "position": {
+        "xPos": 28421.0,
+        "yPos": 0.0,
+        "zPos": 81885.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 211.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Freshwater",
+      "position": {
+        "xPos": 288145.0,
+        "yPos": 0.0,
+        "zPos": 64489.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 11.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Frevent",
+      "position": {
+        "xPos": 244077.0,
+        "yPos": 0.0,
+        "zPos": 334349.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Fruges",
+      "position": {
+        "xPos": 270460.0,
+        "yPos": 0.0,
+        "zPos": 322627.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gace",
+      "position": {
+        "xPos": 76837.0,
+        "yPos": 0.0,
+        "zPos": 193075.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 334.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gaillefontaine",
+      "position": {
+        "xPos": 173531.0,
+        "yPos": 0.0,
+        "zPos": 288001.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 121.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gamaches",
+      "position": {
+        "xPos": 210551.0,
+        "yPos": 0.0,
+        "zPos": 282759.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 178.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gisors",
+      "position": {
+        "xPos": 132312.0,
+        "yPos": 0.0,
+        "zPos": 300303.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Godalming",
+      "position": {
+        "xPos": 343152.0,
+        "yPos": 0.0,
+        "zPos": 127938.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 287.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Goderville",
+      "position": {
+        "xPos": 171652.0,
+        "yPos": 0.0,
+        "zPos": 197713.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 121.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gorron",
+      "position": {
+        "xPos": 34700.0,
+        "yPos": 0.0,
+        "zPos": 111316.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 302.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gosport",
+      "position": {
+        "xPos": 297977.0,
+        "yPos": 0.0,
+        "zPos": 91219.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 176.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gournay-en-Bray",
+      "position": {
+        "xPos": 154877.0,
+        "yPos": 0.0,
+        "zPos": 296329.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 335.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Grandcourt",
+      "position": {
+        "xPos": 202623.0,
+        "yPos": 0.0,
+        "zPos": 278307.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 324.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Grandvilliers",
+      "position": {
+        "xPos": 175532.0,
+        "yPos": 0.0,
+        "zPos": 311286.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 339.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Granville",
+      "position": {
+        "xPos": 82794.0,
+        "yPos": 0.0,
+        "zPos": 54192.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 189.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gravelines",
+      "position": {
+        "xPos": 323015.0,
+        "yPos": 0.0,
+        "zPos": 320702.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 351.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Grentheville",
+      "position": {
+        "xPos": 116218.0,
+        "yPos": 0.0,
+        "zPos": 150269.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ground",
+      "position": {
+        "xPos": 302258.0,
+        "yPos": 0.0,
+        "zPos": 134109.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 357.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Guildford",
+      "position": {
+        "xPos": 349251.0,
+        "yPos": 0.0,
+        "zPos": 131553.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Guines",
+      "position": {
+        "xPos": 309158.0,
+        "yPos": 0.0,
+        "zPos": 302957.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 298.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hailsham",
+      "position": {
+        "xPos": 307367.0,
+        "yPos": 0.0,
+        "zPos": 189427.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 281.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hamstreet",
+      "position": {
+        "xPos": 329944.0,
+        "yPos": 0.0,
+        "zPos": 231031.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 222.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Haslemere",
+      "position": {
+        "xPos": 332222.0,
+        "yPos": 0.0,
+        "zPos": 120663.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 339.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hastings",
+      "position": {
+        "xPos": 306296.0,
+        "yPos": 0.0,
+        "zPos": 210639.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 77.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hautil",
+      "position": {
+        "xPos": 101807.0,
+        "yPos": 0.0,
+        "zPos": 320057.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 273.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Havant",
+      "position": {
+        "xPos": 306228.0,
+        "yPos": 0.0,
+        "zPos": 101547.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 301.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hawkhurst",
+      "position": {
+        "xPos": 326594.0,
+        "yPos": 0.0,
+        "zPos": 206497.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 69.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Haywards Heath",
+      "position": {
+        "xPos": 322766.0,
+        "yPos": 0.0,
+        "zPos": 163841.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 280.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Headcorn",
+      "position": {
+        "xPos": 341294.0,
+        "yPos": 0.0,
+        "zPos": 214593.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 338.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Heathfield",
+      "position": {
+        "xPos": 317802.0,
+        "yPos": 0.0,
+        "zPos": 190534.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hebecrevon",
+      "position": {
+        "xPos": 114639.0,
+        "yPos": 0.0,
+        "zPos": 86411.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 334.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Henfield",
+      "position": {
+        "xPos": 314856.0,
+        "yPos": 0.0,
+        "zPos": 152092.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hermanville",
+      "position": {
+        "xPos": 132040.0,
+        "yPos": 0.0,
+        "zPos": 148639.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 339.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Herne Bay",
+      "position": {
+        "xPos": 362726.0,
+        "yPos": 0.0,
+        "zPos": 247814.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 345.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hesdin",
+      "position": {
+        "xPos": 254670.0,
+        "yPos": 0.0,
+        "zPos": 316252.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 349.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Highcliffe",
+      "position": {
+        "xPos": 294738.0,
+        "yPos": 0.0,
+        "zPos": 51208.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 164.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Honfleur",
+      "position": {
+        "xPos": 146050.0,
+        "yPos": 0.0,
+        "zPos": 189533.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 279.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Horley",
+      "position": {
+        "xPos": 342316.0,
+        "yPos": 0.0,
+        "zPos": 160084.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Horndean",
+      "position": {
+        "xPos": 313063.0,
+        "yPos": 0.0,
+        "zPos": 101132.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 79.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Horsham",
+      "position": {
+        "xPos": 329538.0,
+        "yPos": 0.0,
+        "zPos": 148418.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 143.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Houdan",
+      "position": {
+        "xPos": 77514.0,
+        "yPos": 0.0,
+        "zPos": 288922.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 203.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Houlgate",
+      "position": {
+        "xPos": 133308.0,
+        "yPos": 0.0,
+        "zPos": 165317.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 169.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hythe",
+      "position": {
+        "xPos": 330069.0,
+        "yPos": 0.0,
+        "zPos": 246873.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 275.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Isigny",
+      "position": {
+        "xPos": 135603.0,
+        "yPos": 0.0,
+        "zPos": 91036.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 154.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "LAigle",
+      "position": {
+        "xPos": 73742.0,
+        "yPos": 0.0,
+        "zPos": 217281.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 302.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "La Chapelle-en-Juger",
+      "position": {
+        "xPos": 114804.0,
+        "yPos": 0.0,
+        "zPos": 82609.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 23.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "La Ferte-Mace",
+      "position": {
+        "xPos": 54165.0,
+        "yPos": 0.0,
+        "zPos": 144889.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 337.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "La Fiere",
+      "position": {
+        "xPos": 145264.0,
+        "yPos": 0.0,
+        "zPos": 72330.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 92.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "La Haye-du-Puits",
+      "position": {
+        "xPos": 132972.0,
+        "yPos": 0.0,
+        "zPos": 58870.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 332.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "La Pointe Du Hoc",
+      "position": {
+        "xPos": 143477.0,
+        "yPos": 0.0,
+        "zPos": 99457.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 109.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "La Riviere",
+      "position": {
+        "xPos": 137962.0,
+        "yPos": 0.0,
+        "zPos": 133845.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 285.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Landean",
+      "position": {
+        "xPos": 34968.0,
+        "yPos": 0.0,
+        "zPos": 85615.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 233.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lassay",
+      "position": {
+        "xPos": 37214.0,
+        "yPos": 0.0,
+        "zPos": 134398.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 65.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Beny-Bocage",
+      "position": {
+        "xPos": 93205.0,
+        "yPos": 0.0,
+        "zPos": 109805.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Bourg-Saint-Leonard",
+      "position": {
+        "xPos": 73139.0,
+        "yPos": 0.0,
+        "zPos": 179002.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Dezert",
+      "position": {
+        "xPos": 122876.0,
+        "yPos": 0.0,
+        "zPos": 86174.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 324.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Havre",
+      "position": {
+        "xPos": 153913.0,
+        "yPos": 0.0,
+        "zPos": 179052.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 91.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Mele-sur-Sarthe",
+      "position": {
+        "xPos": 45502.0,
+        "yPos": 0.0,
+        "zPos": 197403.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 145.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Mesnil-Tove",
+      "position": {
+        "xPos": 66851.0,
+        "yPos": 0.0,
+        "zPos": 95850.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 283.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Molay-Littry",
+      "position": {
+        "xPos": 127092.0,
+        "yPos": 0.0,
+        "zPos": 107742.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 3.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Neubourg",
+      "position": {
+        "xPos": 116711.0,
+        "yPos": 0.0,
+        "zPos": 237074.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 234.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Touquet",
+      "position": {
+        "xPos": 269736.0,
+        "yPos": 0.0,
+        "zPos": 284384.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 331.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Treport",
+      "position": {
+        "xPos": 218655.0,
+        "yPos": 0.0,
+        "zPos": 269306.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 343.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lebisey",
+      "position": {
+        "xPos": 123613.0,
+        "yPos": 0.0,
+        "zPos": 146329.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 119.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Les Pieux",
+      "position": {
+        "xPos": 158273.0,
+        "yPos": 0.0,
+        "zPos": 40115.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 334.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lessay",
+      "position": {
+        "xPos": 125008.0,
+        "yPos": 0.0,
+        "zPos": 59970.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 27.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lewes",
+      "position": {
+        "xPos": 307854.0,
+        "yPos": 0.0,
+        "zPos": 172061.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 99.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lieurey",
+      "position": {
+        "xPos": 125429.0,
+        "yPos": 0.0,
+        "zPos": 207478.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 101.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lillebonne",
+      "position": {
+        "xPos": 157679.0,
+        "yPos": 0.0,
+        "zPos": 209659.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 83.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lion-sur-Mer",
+      "position": {
+        "xPos": 132829.0,
+        "yPos": 0.0,
+        "zPos": 149206.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 26.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lisieux",
+      "position": {
+        "xPos": 115852.0,
+        "yPos": 0.0,
+        "zPos": 187687.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 254.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Little Common",
+      "position": {
+        "xPos": 304966.0,
+        "yPos": 0.0,
+        "zPos": 201819.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 72.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Littlehampton",
+      "position": {
+        "xPos": 301215.0,
+        "yPos": 0.0,
+        "zPos": 132681.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 24.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Londinieres",
+      "position": {
+        "xPos": 193283.0,
+        "yPos": 0.0,
+        "zPos": 272135.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 131.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Longues-sur-Mer",
+      "position": {
+        "xPos": 137233.0,
+        "yPos": 0.0,
+        "zPos": 120533.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 311.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Longueville-sur-Scie",
+      "position": {
+        "xPos": 188340.0,
+        "yPos": 0.0,
+        "zPos": 250991.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 265.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Louviers",
+      "position": {
+        "xPos": 124093.0,
+        "yPos": 0.0,
+        "zPos": 256440.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 78.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lydd",
+      "position": {
+        "xPos": 317346.0,
+        "yPos": 0.0,
+        "zPos": 234901.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 54.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lymington",
+      "position": {
+        "xPos": 296782.0,
+        "yPos": 0.0,
+        "zPos": 61704.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 73.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lyndhurst",
+      "position": {
+        "xPos": 309415.0,
+        "yPos": 0.0,
+        "zPos": 60348.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 321.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Maidstone",
+      "position": {
+        "xPos": 352652.0,
+        "yPos": 0.0,
+        "zPos": 207278.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 77.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Maltot",
+      "position": {
+        "xPos": 114063.0,
+        "yPos": 0.0,
+        "zPos": 140224.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 220.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mamers",
+      "position": {
+        "xPos": 28042.0,
+        "yPos": 0.0,
+        "zPos": 198208.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 89.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mantes-la-Jolie",
+      "position": {
+        "xPos": 99965.0,
+        "yPos": 0.0,
+        "zPos": 295503.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 294.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Margate",
+      "position": {
+        "xPos": 365678.0,
+        "yPos": 0.0,
+        "zPos": 267256.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 299.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Marigny",
+      "position": {
+        "xPos": 111455.0,
+        "yPos": 0.0,
+        "zPos": 80475.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 252.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Marquise",
+      "position": {
+        "xPos": 302214.0,
+        "yPos": 0.0,
+        "zPos": 293269.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 11.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Marseille-en-Beauvaisis",
+      "position": {
+        "xPos": 165371.0,
+        "yPos": 0.0,
+        "zPos": 312655.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 350.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Martinville",
+      "position": {
+        "xPos": 133900.0,
+        "yPos": 0.0,
+        "zPos": 200772.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 136.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "May-sur-Orne",
+      "position": {
+        "xPos": 110998.0,
+        "yPos": 0.0,
+        "zPos": 144155.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Merville",
+      "position": {
+        "xPos": 130067.0,
+        "yPos": 0.0,
+        "zPos": 156637.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 181.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mezidon-Canon",
+      "position": {
+        "xPos": 107888.0,
+        "yPos": 0.0,
+        "zPos": 166015.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Middle Wallop",
+      "position": {
+        "xPos": 339430.0,
+        "yPos": 0.0,
+        "zPos": 59276.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 64.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Midhurst",
+      "position": {
+        "xPos": 320701.0,
+        "yPos": 0.0,
+        "zPos": 119066.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 252.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mondeville",
+      "position": {
+        "xPos": 119287.0,
+        "yPos": 0.0,
+        "zPos": 148641.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mont Fleury",
+      "position": {
+        "xPos": 136810.0,
+        "yPos": 0.0,
+        "zPos": 132785.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 6.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mont Les Moulins",
+      "position": {
+        "xPos": 140712.0,
+        "yPos": 0.0,
+        "zPos": 107150.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Montebourg",
+      "position": {
+        "xPos": 155283.0,
+        "yPos": 0.0,
+        "zPos": 71642.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 312.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Montivilliers",
+      "position": {
+        "xPos": 160516.0,
+        "yPos": 0.0,
+        "zPos": 185031.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 320.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Montreuil",
+      "position": {
+        "xPos": 264249.0,
+        "yPos": 0.0,
+        "zPos": 296518.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 321.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mortagne-au-Perche",
+      "position": {
+        "xPos": 46695.0,
+        "yPos": 0.0,
+        "zPos": 211651.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 148.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mortain",
+      "position": {
+        "xPos": 61302.0,
+        "yPos": 0.0,
+        "zPos": 101878.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 265.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Moyon",
+      "position": {
+        "xPos": 100377.0,
+        "yPos": 0.0,
+        "zPos": 89428.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 157.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Neufchatel-Hardelot",
+      "position": {
+        "xPos": 281884.0,
+        "yPos": 0.0,
+        "zPos": 288318.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 43.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Neufchatel-en-Bray",
+      "position": {
+        "xPos": 182129.0,
+        "yPos": 0.0,
+        "zPos": 275165.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 228.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "New Alresford",
+      "position": {
+        "xPos": 332655.0,
+        "yPos": 0.0,
+        "zPos": 89792.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 206.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "New Romney",
+      "position": {
+        "xPos": 320998.0,
+        "yPos": 0.0,
+        "zPos": 237288.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 323.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Newport",
+      "position": {
+        "xPos": 289192.0,
+        "yPos": 0.0,
+        "zPos": 79775.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 89.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ninfield",
+      "position": {
+        "xPos": 309520.0,
+        "yPos": 0.0,
+        "zPos": 200942.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 227.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Niton",
+      "position": {
+        "xPos": 277323.0,
+        "yPos": 0.0,
+        "zPos": 80251.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 283.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Nonancourt",
+      "position": {
+        "xPos": 74967.0,
+        "yPos": 0.0,
+        "zPos": 259307.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 214.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Norrey-en-Bessin",
+      "position": {
+        "xPos": 121754.0,
+        "yPos": 0.0,
+        "zPos": 133466.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 12.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Noyelles-sur-Mer",
+      "position": {
+        "xPos": 233281.0,
+        "yPos": 0.0,
+        "zPos": 292878.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 252.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Octeville-sur-Mer",
+      "position": {
+        "xPos": 161625.0,
+        "yPos": 0.0,
+        "zPos": 179614.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 173.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Oisemont",
+      "position": {
+        "xPos": 207485.0,
+        "yPos": 0.0,
+        "zPos": 297959.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 12.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Orbec",
+      "position": {
+        "xPos": 102212.0,
+        "yPos": 0.0,
+        "zPos": 201045.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 242.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ouistreham",
+      "position": {
+        "xPos": 131740.0,
+        "yPos": 0.0,
+        "zPos": 152008.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ourville-en-Caux",
+      "position": {
+        "xPos": 180995.0,
+        "yPos": 0.0,
+        "zPos": 214605.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Park Gate",
+      "position": {
+        "xPos": 308899.0,
+        "yPos": 0.0,
+        "zPos": 81733.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 201.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Pavilly",
+      "position": {
+        "xPos": 163123.0,
+        "yPos": 0.0,
+        "zPos": 239736.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 132.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Percy",
+      "position": {
+        "xPos": 91151.0,
+        "yPos": 0.0,
+        "zPos": 83921.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 181.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Periers",
+      "position": {
+        "xPos": 121425.0,
+        "yPos": 0.0,
+        "zPos": 68835.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 298.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Petersfield",
+      "position": {
+        "xPos": 322609.0,
+        "yPos": 0.0,
+        "zPos": 105682.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 210.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Petworth",
+      "position": {
+        "xPos": 321503.0,
+        "yPos": 0.0,
+        "zPos": 128379.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 93.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Polegate",
+      "position": {
+        "xPos": 302334.0,
+        "yPos": 0.0,
+        "zPos": 188457.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 181.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Pont-Audemer",
+      "position": {
+        "xPos": 139126.0,
+        "yPos": 0.0,
+        "zPos": 209079.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 99.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Pont-Hebert",
+      "position": {
+        "xPos": 118895.0,
+        "yPos": 0.0,
+        "zPos": 88778.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Pont-lEveque",
+      "position": {
+        "xPos": 131733.0,
+        "yPos": 0.0,
+        "zPos": 184884.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 40.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Pontoise",
+      "position": {
+        "xPos": 107605.0,
+        "yPos": 0.0,
+        "zPos": 324608.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 75.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Port en Bessin",
+      "position": {
+        "xPos": 138730.0,
+        "yPos": 0.0,
+        "zPos": 116303.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 72.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Portbail",
+      "position": {
+        "xPos": 138354.0,
+        "yPos": 0.0,
+        "zPos": 47673.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 155.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Portsmouth",
+      "position": {
+        "xPos": 300065.0,
+        "yPos": 0.0,
+        "zPos": 97179.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 159.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Pouppeville",
+      "position": {
+        "xPos": 143192.0,
+        "yPos": 0.0,
+        "zPos": 84261.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 329.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Putanges-Pont-Ecrepin",
+      "position": {
+        "xPos": 73546.0,
+        "yPos": 0.0,
+        "zPos": 152959.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 191.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Quettehou",
+      "position": {
+        "xPos": 166074.0,
+        "yPos": 0.0,
+        "zPos": 76887.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 49.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Quiberville",
+      "position": {
+        "xPos": 200249.0,
+        "yPos": 0.0,
+        "zPos": 237484.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 341.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Quineville",
+      "position": {
+        "xPos": 157877.0,
+        "yPos": 0.0,
+        "zPos": 77845.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 33.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rambouillet",
+      "position": {
+        "xPos": 61830.0,
+        "yPos": 0.0,
+        "zPos": 306271.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 133.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ramsgate",
+      "position": {
+        "xPos": 360709.0,
+        "yPos": 0.0,
+        "zPos": 269764.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 188.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ranville",
+      "position": {
+        "xPos": 125880.0,
+        "yPos": 0.0,
+        "zPos": 152044.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 140.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rauray",
+      "position": {
+        "xPos": 116870.0,
+        "yPos": 0.0,
+        "zPos": 129857.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 62.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Redhill",
+      "position": {
+        "xPos": 348748.0,
+        "yPos": 0.0,
+        "zPos": 159480.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 280.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ringwood",
+      "position": {
+        "xPos": 306628.0,
+        "yPos": 0.0,
+        "zPos": 44818.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 11.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rinxent",
+      "position": {
+        "xPos": 302537.0,
+        "yPos": 0.0,
+        "zPos": 294504.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 183.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rochester",
+      "position": {
+        "xPos": 366933.0,
+        "yPos": 0.0,
+        "zPos": 204748.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 233.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Romagny",
+      "position": {
+        "xPos": 60078.0,
+        "yPos": 0.0,
+        "zPos": 100171.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 39.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Romsey",
+      "position": {
+        "xPos": 322197.0,
+        "yPos": 0.0,
+        "zPos": 66137.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 322.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Roncey",
+      "position": {
+        "xPos": 99456.0,
+        "yPos": 0.0,
+        "zPos": 73598.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rouen",
+      "position": {
+        "xPos": 149097.0,
+        "yPos": 0.0,
+        "zPos": 251680.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 87.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Royal Tunbridge Wells",
+      "position": {
+        "xPos": 338553.0,
+        "yPos": 0.0,
+        "zPos": 190341.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 206.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rue",
+      "position": {
+        "xPos": 242639.0,
+        "yPos": 0.0,
+        "zPos": 290027.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 197.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ryde",
+      "position": {
+        "xPos": 292537.0,
+        "yPos": 0.0,
+        "zPos": 88606.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 174.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rye",
+      "position": {
+        "xPos": 317056.0,
+        "yPos": 0.0,
+        "zPos": 222469.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 318.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint Margaret*s at Cliffe",
+      "position": {
+        "xPos": 340358.0,
+        "yPos": 0.0,
+        "zPos": 267033.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 140.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Aignan",
+      "position": {
+        "xPos": 108911.0,
+        "yPos": 0.0,
+        "zPos": 150281.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 355.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Andre-de-lEpine",
+      "position": {
+        "xPos": 115558.0,
+        "yPos": 0.0,
+        "zPos": 97475.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Arnoult",
+      "position": {
+        "xPos": 137602.0,
+        "yPos": 0.0,
+        "zPos": 177711.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 59.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Aubin-sur-Mer",
+      "position": {
+        "xPos": 135726.0,
+        "yPos": 0.0,
+        "zPos": 143862.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 175.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Barthelemy",
+      "position": {
+        "xPos": 64766.0,
+        "yPos": 0.0,
+        "zPos": 100965.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Brice-en-Cogles",
+      "position": {
+        "xPos": 35173.0,
+        "yPos": 0.0,
+        "zPos": 70147.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 171.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Come-du-Mont",
+      "position": {
+        "xPos": 137857.0,
+        "yPos": 0.0,
+        "zPos": 78639.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 282.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Georges-du-Vievre",
+      "position": {
+        "xPos": 127258.0,
+        "yPos": 0.0,
+        "zPos": 213594.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 235.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Gilles",
+      "position": {
+        "xPos": 112021.0,
+        "yPos": 0.0,
+        "zPos": 85658.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 195.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Hilaire-du-Harcouet",
+      "position": {
+        "xPos": 53714.0,
+        "yPos": 0.0,
+        "zPos": 90082.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 79.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-James",
+      "position": {
+        "xPos": 47693.0,
+        "yPos": 0.0,
+        "zPos": 73758.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 159.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Jouin-Bruneva",
+      "position": {
+        "xPos": 171419.0,
+        "yPos": 0.0,
+        "zPos": 182792.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 188.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Lambert",
+      "position": {
+        "xPos": 79371.0,
+        "yPos": 0.0,
+        "zPos": 176668.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 341.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Laurent-sur-Mer",
+      "position": {
+        "xPos": 140077.0,
+        "yPos": 0.0,
+        "zPos": 107349.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Lo",
+      "position": {
+        "xPos": 113150.0,
+        "yPos": 0.0,
+        "zPos": 91306.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 85.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Manvieu",
+      "position": {
+        "xPos": 120275.0,
+        "yPos": 0.0,
+        "zPos": 134112.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 291.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Martin-aux-Buneaux",
+      "position": {
+        "xPos": 192736.0,
+        "yPos": 0.0,
+        "zPos": 211330.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 134.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Martin-de-Varreville",
+      "position": {
+        "xPos": 148180.0,
+        "yPos": 0.0,
+        "zPos": 81501.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 339.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Martin-des-Besaces",
+      "position": {
+        "xPos": 101162.0,
+        "yPos": 0.0,
+        "zPos": 109530.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 170.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Omer",
+      "position": {
+        "xPos": 297191.0,
+        "yPos": 0.0,
+        "zPos": 331459.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 213.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Pierre-Eglise",
+      "position": {
+        "xPos": 175005.0,
+        "yPos": 0.0,
+        "zPos": 69344.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Pierre-sur-Dives",
+      "position": {
+        "xPos": 101970.0,
+        "yPos": 0.0,
+        "zPos": 168781.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 304.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Riquier",
+      "position": {
+        "xPos": 227671.0,
+        "yPos": 0.0,
+        "zPos": 310493.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 252.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Romain-de-Colbosc",
+      "position": {
+        "xPos": 158754.0,
+        "yPos": 0.0,
+        "zPos": 197033.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Saens",
+      "position": {
+        "xPos": 175485.0,
+        "yPos": 0.0,
+        "zPos": 263819.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 287.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Sauveur-le-Vicomte",
+      "position": {
+        "xPos": 143844.0,
+        "yPos": 0.0,
+        "zPos": 59749.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 349.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Sever-Calvados",
+      "position": {
+        "xPos": 82887.0,
+        "yPos": 0.0,
+        "zPos": 94002.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 6.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Sylvain",
+      "position": {
+        "xPos": 106056.0,
+        "yPos": 0.0,
+        "zPos": 155200.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 219.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Vaast-en-Auge",
+      "position": {
+        "xPos": 132089.0,
+        "yPos": 0.0,
+        "zPos": 171092.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Valery-en-Caux",
+      "position": {
+        "xPos": 195916.0,
+        "yPos": 0.0,
+        "zPos": 223112.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 353.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Valery-sur-Somme",
+      "position": {
+        "xPos": 233074.0,
+        "yPos": 0.0,
+        "zPos": 287566.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 67.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sainte-Gauburge-Sainte-Colo",
+      "position": {
+        "xPos": 68340.0,
+        "yPos": 0.0,
+        "zPos": 202698.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 170.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sainte-Marie-du-Mont",
+      "position": {
+        "xPos": 142564.0,
+        "yPos": 0.0,
+        "zPos": 82066.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 158.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sainte-Mere-Eglise",
+      "position": {
+        "xPos": 146188.0,
+        "yPos": 0.0,
+        "zPos": 75661.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 297.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sainteny",
+      "position": {
+        "xPos": 127022.0,
+        "yPos": 0.0,
+        "zPos": 75534.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 342.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Salisbury",
+      "position": {
+        "xPos": 331835.0,
+        "yPos": 0.0,
+        "zPos": 45845.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saltdean",
+      "position": {
+        "xPos": 300171.0,
+        "yPos": 0.0,
+        "zPos": 168667.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 110.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Samer",
+      "position": {
+        "xPos": 283514.0,
+        "yPos": 0.0,
+        "zPos": 294701.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 161.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sandown",
+      "position": {
+        "xPos": 284706.0,
+        "yPos": 0.0,
+        "zPos": 89513.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 210.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sandwich",
+      "position": {
+        "xPos": 353523.0,
+        "yPos": 0.0,
+        "zPos": 264713.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 122.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sassetot-le-Mauconduit",
+      "position": {
+        "xPos": 189374.0,
+        "yPos": 0.0,
+        "zPos": 209157.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 337.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Seaford",
+      "position": {
+        "xPos": 296946.0,
+        "yPos": 0.0,
+        "zPos": 178217.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 214.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Seaview",
+      "position": {
+        "xPos": 291424.0,
+        "yPos": 0.0,
+        "zPos": 92544.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 295.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sees",
+      "position": {
+        "xPos": 55535.0,
+        "yPos": 0.0,
+        "zPos": 184476.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 8.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Selsey",
+      "position": {
+        "xPos": 293201.0,
+        "yPos": 0.0,
+        "zPos": 115564.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 212.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Senonches",
+      "position": {
+        "xPos": 51547.0,
+        "yPos": 0.0,
+        "zPos": 247712.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 296.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sevenoaks",
+      "position": {
+        "xPos": 352459.0,
+        "yPos": 0.0,
+        "zPos": 184621.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 237.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Shanklin",
+      "position": {
+        "xPos": 281839.0,
+        "yPos": 0.0,
+        "zPos": 88154.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 282.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Shoreham-by-Sea",
+      "position": {
+        "xPos": 304111.0,
+        "yPos": 0.0,
+        "zPos": 151685.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 89.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Singleton",
+      "position": {
+        "xPos": 312490.0,
+        "yPos": 0.0,
+        "zPos": 118068.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 141.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sittingbourne",
+      "position": {
+        "xPos": 359544.0,
+        "yPos": 0.0,
+        "zPos": 222333.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 304.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sourdeval",
+      "position": {
+        "xPos": 69561.0,
+        "yPos": 0.0,
+        "zPos": 103228.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 175.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Southampton",
+      "position": {
+        "xPos": 312767.0,
+        "yPos": 0.0,
+        "zPos": 72747.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 87.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "St Vaast la Hougue",
+      "position": {
+        "xPos": 165825.0,
+        "yPos": 0.0,
+        "zPos": 79677.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "St-Barhelemy",
+      "position": {
+        "xPos": 162459.0,
+        "yPos": 0.0,
+        "zPos": 181940.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 296.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Steyning",
+      "position": {
+        "xPos": 309426.0,
+        "yPos": 0.0,
+        "zPos": 148168.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 133.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Stone Cross",
+      "position": {
+        "xPos": 302003.0,
+        "yPos": 0.0,
+        "zPos": 191863.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 345.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Storrington",
+      "position": {
+        "xPos": 313095.0,
+        "yPos": 0.0,
+        "zPos": 138710.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 197.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tenterden",
+      "position": {
+        "xPos": 329562.0,
+        "yPos": 0.0,
+        "zPos": 218499.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 47.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tessel",
+      "position": {
+        "xPos": 116906.0,
+        "yPos": 0.0,
+        "zPos": 129318.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 96.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tessy-sur-Vire",
+      "position": {
+        "xPos": 97333.0,
+        "yPos": 0.0,
+        "zPos": 93519.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 322.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Thiberville",
+      "position": {
+        "xPos": 115173.0,
+        "yPos": 0.0,
+        "zPos": 204531.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 189.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Thury-Harcourt",
+      "position": {
+        "xPos": 98301.0,
+        "yPos": 0.0,
+        "zPos": 136309.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 23.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tilly-la-Campagne",
+      "position": {
+        "xPos": 112174.0,
+        "yPos": 0.0,
+        "zPos": 149026.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 301.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tilly-sur-Seulles",
+      "position": {
+        "xPos": 119201.0,
+        "yPos": 0.0,
+        "zPos": 125500.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 135.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Torigni-sur-Vire",
+      "position": {
+        "xPos": 104043.0,
+        "yPos": 0.0,
+        "zPos": 99471.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 253.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Totton",
+      "position": {
+        "xPos": 315115.0,
+        "yPos": 0.0,
+        "zPos": 65608.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 68.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Touffreville",
+      "position": {
+        "xPos": 120565.0,
+        "yPos": 0.0,
+        "zPos": 154880.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 320.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Touques",
+      "position": {
+        "xPos": 138050.0,
+        "yPos": 0.0,
+        "zPos": 178612.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Trevieres",
+      "position": {
+        "xPos": 134508.0,
+        "yPos": 0.0,
+        "zPos": 105461.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 296.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Troarn",
+      "position": {
+        "xPos": 120061.0,
+        "yPos": 0.0,
+        "zPos": 158098.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 170.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Trouville-sur-Mer",
+      "position": {
+        "xPos": 139645.0,
+        "yPos": 0.0,
+        "zPos": 177388.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 336.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Trun",
+      "position": {
+        "xPos": 82220.0,
+        "yPos": 0.0,
+        "zPos": 173239.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 227.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Valmont",
+      "position": {
+        "xPos": 182638.0,
+        "yPos": 0.0,
+        "zPos": 208173.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 51.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Varaville",
+      "position": {
+        "xPos": 127952.0,
+        "yPos": 0.0,
+        "zPos": 159615.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 343.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ventnor",
+      "position": {
+        "xPos": 278061.0,
+        "yPos": 0.0,
+        "zPos": 86438.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 179.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Verneuil",
+      "position": {
+        "xPos": 71034.0,
+        "yPos": 0.0,
+        "zPos": 239615.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 313.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vernon",
+      "position": {
+        "xPos": 111656.0,
+        "yPos": 0.0,
+        "zPos": 278658.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 315.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Verrieres",
+      "position": {
+        "xPos": 112238.0,
+        "yPos": 0.0,
+        "zPos": 146798.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Veules-les-Roses",
+      "position": {
+        "xPos": 197398.0,
+        "yPos": 0.0,
+        "zPos": 228562.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 352.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Veulettes-sur-Mer",
+      "position": {
+        "xPos": 194273.0,
+        "yPos": 0.0,
+        "zPos": 213968.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 41.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vierville-sur-Mer",
+      "position": {
+        "xPos": 141611.0,
+        "yPos": 0.0,
+        "zPos": 105774.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 331.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Villedieu-les-Poeles",
+      "position": {
+        "xPos": 82639.0,
+        "yPos": 0.0,
+        "zPos": 81516.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 328.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Villers-Bocage",
+      "position": {
+        "xPos": 109067.0,
+        "yPos": 0.0,
+        "zPos": 123413.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 244.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Villers-sur-Mer",
+      "position": {
+        "xPos": 135468.0,
+        "yPos": 0.0,
+        "zPos": 171349.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 121.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Villerville",
+      "position": {
+        "xPos": 144274.0,
+        "yPos": 0.0,
+        "zPos": 180754.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 56.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vimont",
+      "position": {
+        "xPos": 113502.0,
+        "yPos": 0.0,
+        "zPos": 156529.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 330.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vimoutiers",
+      "position": {
+        "xPos": 91583.0,
+        "yPos": 0.0,
+        "zPos": 185407.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 337.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vire",
+      "position": {
+        "xPos": 82058.0,
+        "yPos": 0.0,
+        "zPos": 105890.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 255.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vron",
+      "position": {
+        "xPos": 247892.0,
+        "yPos": 0.0,
+        "zPos": 297071.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 341.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "West Meon",
+      "position": {
+        "xPos": 322851.0,
+        "yPos": 0.0,
+        "zPos": 92756.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 274.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Whitchurch",
+      "position": {
+        "xPos": 349483.0,
+        "yPos": 0.0,
+        "zPos": 77639.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 8.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Whitfield",
+      "position": {
+        "xPos": 341429.0,
+        "yPos": 0.0,
+        "zPos": 261332.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 6.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Whitstable",
+      "position": {
+        "xPos": 362506.0,
+        "yPos": 0.0,
+        "zPos": 243320.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 172.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wimereux",
+      "position": {
+        "xPos": 297630.0,
+        "yPos": 0.0,
+        "zPos": 284746.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 278.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Winchelsea",
+      "position": {
+        "xPos": 313782.0,
+        "yPos": 0.0,
+        "zPos": 220839.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 183.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Winchester",
+      "position": {
+        "xPos": 330105.0,
+        "yPos": 0.0,
+        "zPos": 78345.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 169.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wissant",
+      "position": {
+        "xPos": 310815.0,
+        "yPos": 0.0,
+        "zPos": 288217.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Worthing",
+      "position": {
+        "xPos": 301362.0,
+        "yPos": 0.0,
+        "zPos": 143990.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 353.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wroxall",
+      "position": {
+        "xPos": 280074.0,
+        "yPos": 0.0,
+        "zPos": 84546.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 259.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Yarmouth",
+      "position": {
+        "xPos": 290344.0,
+        "yPos": 0.0,
+        "zPos": 65359.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 320.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Yport",
+      "position": {
+        "xPos": 181863.0,
+        "yPos": 0.0,
+        "zPos": 193754.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Yvetot",
+      "position": {
+        "xPos": 168529.0,
+        "yPos": 0.0,
+        "zPos": 225647.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

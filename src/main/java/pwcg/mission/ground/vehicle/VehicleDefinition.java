@@ -88,6 +88,66 @@ public class VehicleDefinition implements IWeight
         return endDate;
     }
 
+    public void setScriptDir(String scriptDir)
+    {
+        this.scriptDir = scriptDir;
+    }
+
+    public void setModelDir(String modelDir)
+    {
+        this.modelDir = modelDir;
+    }
+
+    public void setVehicleName(String vehicleName)
+    {
+        this.vehicleName = vehicleName;
+    }
+
+    public void setVehicleType(String vehicleType)
+    {
+        this.vehicleType = vehicleType;
+    }
+
+    public void setDisplayName(String displayName)
+    {
+        this.displayName = displayName;
+    }
+
+    public void setCountries(List<Country> countries)
+    {
+        this.countries = countries;
+    }
+
+    public void setStartDate(Date startDate)
+    {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(Date endDate)
+    {
+        this.endDate = endDate;
+    }
+
+    public void setRarityWeight(int rarityWeight)
+    {
+        this.rarityWeight = rarityWeight;
+    }
+
+    public void setVehicleClass(VehicleClass vehicleClass)
+    {
+        this.vehicleClass = vehicleClass;
+    }
+
+    public void setAssociatedBlock(String associatedBlock)
+    {
+        this.associatedBlock = associatedBlock;
+    }
+
+    public void setVehicleLength(int vehicleLength)
+    {
+        this.vehicleLength = vehicleLength;
+    }
+
     public boolean shouldUse(VehicleRequestDefinition requestDefinition) throws PWCGException
     {
         if (vehicleClass != requestDefinition.getVehicleClass())

@@ -17,11 +17,11 @@ public class CargoRouteManager
 {
     private static int MINIMUM_DISTANCE_TO_DESTINATION = 7000;
     
-    public static CargoRoute getCargoRouteForSide (Campaign campaign, MissionHumanParticipants participatingPlayers, Side side) throws PWCGException
+    public static CargoShipRoute getCargoRouteForSide (Campaign campaign, MissionHumanParticipants participatingPlayers, Side side) throws PWCGException
     {
         Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(participatingPlayers.getAllParticipatingPlayers().get(0).getSquadronId());
         Coordinate playerSquadronPosition = squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getPosition();
-        CargoRoute cargoRouteForSide = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager().getNearbyCargoShipRouteBySide(campaign.getDate(), playerSquadronPosition, side);
+        CargoShipRoute cargoRouteForSide = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager().getNearbyCargoShipRouteBySide(campaign.getDate(), playerSquadronPosition, side);
         
         if (cargoRouteForSide != null)
         {
@@ -32,7 +32,7 @@ public class CargoRouteManager
         return cargoRouteForSide;
     }
     
-    private static Coordinate getInRangeStartPosition(CargoRoute cargoRoute, Coordinate playerSquadronPosition) throws PWCGException
+    private static Coordinate getInRangeStartPosition(CargoShipRoute cargoRoute, Coordinate playerSquadronPosition) throws PWCGException
     {
         Coordinate routeStartPosition = getConvoyInitialStartPosition(cargoRoute);
         double distanceFromPlayer = MathUtils.calcDist(routeStartPosition, playerSquadronPosition);
@@ -55,7 +55,7 @@ public class CargoRouteManager
         return routeStartPosition;
     }
 
-    private static Coordinate getConvoyInitialStartPosition(CargoRoute cargoRoute) throws PWCGException
+    private static Coordinate getConvoyInitialStartPosition(CargoShipRoute cargoRoute) throws PWCGException
     {
         double routeDistance = MathUtils.calcDist(cargoRoute.getRouteStartPosition(), cargoRoute.getRouteDestination());
         int startPosOnRoute = 0;

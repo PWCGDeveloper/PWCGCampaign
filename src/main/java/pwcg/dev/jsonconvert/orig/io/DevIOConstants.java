@@ -11,6 +11,7 @@ public class DevIOConstants
 
 	// MCU Icon
     public static final String MCU_ICON = "MCU_Icon";
+    public static final String MCU_WAYPOINT = "MCU_Waypoint";
     public static final String LCNAME = "LCName";
 
     // Mission File Analyzer
@@ -80,6 +81,8 @@ public class DevIOConstants
 	public static final String PLANE  = "Plane";
 	public static final String PLANES = "Planes";
 	public static final String PLANETYPE		= "PWCGType";
+    public static final String VEHICLE = "Vehicle";
+    public static final String SHIP = "Ship";
 	
 	public static final String RANK = "Rank";
 	public static final String REGION = "Region";

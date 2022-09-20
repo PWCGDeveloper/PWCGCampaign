@@ -15,10 +15,10 @@ public class ShippingLane
 	private Date startDate;
 	private Date endDate;
 	
-	/**
-	 * @throws PWCGException 
-	 * 
-	 */
+    public ShippingLane()
+    {
+    }
+    
 	public ShippingLane(Coordinate nwCorner, Coordinate seCorner, Country country)
 	{
 		this.neCorner = nwCorner.copy();
@@ -60,4 +60,19 @@ public class ShippingLane
 	{
 		this.endDate = endDate;
 	}
+
+    public void setNeCorner(Coordinate neCorner)
+    {
+        this.neCorner = neCorner;
+    }
+
+    public void setSwCorner(Coordinate swCorner)
+    {
+        this.swCorner = swCorner;
+    }
+
+    public void setCountry(Country country)
+    {
+        this.country = country;
+    }
 }

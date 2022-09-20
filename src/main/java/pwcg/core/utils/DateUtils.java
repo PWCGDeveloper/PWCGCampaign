@@ -272,7 +272,7 @@ public class DateUtils
         }
         else
         {              
-            return DateUtils.getDateYYYYMMDD("19411001");            
+            return DateUtils.getDateYYYYMMDD("19410601");            
         }
     }
 

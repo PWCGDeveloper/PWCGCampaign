@@ -13,7 +13,7 @@ public class ShippingLaneManager
 {
 
     private ShippingLanes shippingLanes = new ShippingLanes();
-    private CargoRoutes cargoRoutes = new CargoRoutes();
+    private CargoShipRoutes cargoRoutes = new CargoShipRoutes();
     private ShipEncounterZones shipEncounterZones = new ShipEncounterZones();
 
     public ShippingLaneManager()
@@ -31,7 +31,7 @@ public class ShippingLaneManager
         cargoRoutes = CargoRoutesIOJson.readJson(mapName);
         if (cargoRoutes == null)
         {
-            cargoRoutes = new CargoRoutes();
+            cargoRoutes = new CargoShipRoutes();
         }
 
         shipEncounterZones = ShipEncounterZonesIOJson.readJson(mapName);
@@ -46,9 +46,9 @@ public class ShippingLaneManager
         return shippingLanes.getClosestShippingLaneBySide(targetGeneralLocation, side);
     }
 
-    public CargoRoute getNearbyCargoShipRouteBySide(Date date, Coordinate targetGeneralLocation, Side side) throws PWCGException
+    public CargoShipRoute getNearbyCargoShipRouteBySide(Date date, Coordinate targetGeneralLocation, Side side) throws PWCGException
     {
-        CargoRoute cargoRoute = cargoRoutes.getNearbyCargoShipRouteBySide(date, targetGeneralLocation, side);
+        CargoShipRoute cargoRoute = cargoRoutes.getNearbyCargoShipRouteBySide(date, targetGeneralLocation, side);
         if (cargoRoute != null)
         {
             return cargoRoute.copy();
@@ -59,9 +59,9 @@ public class ShippingLaneManager
         }
     }
 
-    public CargoRoute getCargoShipRouteByName(String skirmishName) throws PWCGException
+    public CargoShipRoute getCargoShipRouteByName(String skirmishName) throws PWCGException
     {
-        CargoRoute cargoRoute = cargoRoutes.getCargoShipRouteByName(skirmishName);
+        CargoShipRoute cargoRoute = cargoRoutes.getCargoShipRouteByName(skirmishName);
         return cargoRoute;
     }
 

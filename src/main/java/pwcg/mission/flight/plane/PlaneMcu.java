@@ -433,7 +433,10 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             entity.setPosition(position.copy());
         }
 
-        fighterAttackCommand.setPosition(position.copy());
+        if (fighterAttackCommand != null)
+        {
+            fighterAttackCommand.setPosition(position.copy());
+        }
     }
 
     public Orientation getOrientation()
@@ -450,7 +453,11 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             entity.setOrientation(orientation.copy());
         }
         
-        fighterAttackCommand.setOrientation(orientation.copy());
+
+        if (fighterAttackCommand != null)
+        {
+            fighterAttackCommand.setOrientation(orientation.copy());
+        }
     }
 
     public Skin getPlaneSkin()

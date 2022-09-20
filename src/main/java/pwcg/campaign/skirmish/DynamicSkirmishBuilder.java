@@ -6,7 +6,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.shipping.CargoRoute;
+import pwcg.campaign.shipping.CargoShipRoute;
 import pwcg.campaign.shipping.CargoRouteManager;
 import pwcg.campaign.shipping.ShipEncounterZone;
 import pwcg.campaign.shipping.ShipEncounterZoneManager;
@@ -61,7 +61,7 @@ public class DynamicSkirmishBuilder
     {
         Side playerSide = participatingPlayers.getMissionPlayerSides().get(0);
         Side shipSide = playerSide.getOppositeSide();
-        CargoRoute cargoRoute = CargoRouteManager.getCargoRouteForSide(campaign, participatingPlayers, shipSide);
+        CargoShipRoute cargoRoute = CargoRouteManager.getCargoRouteForSide(campaign, participatingPlayers, shipSide);
 
         if (cargoRoute != null)
         {

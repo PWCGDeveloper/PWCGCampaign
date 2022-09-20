@@ -189,6 +189,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
             addToMapGrid(mapGrid, FrontMapIdentifier.KUBAN_MAP);
             addToMapGrid(mapGrid, FrontMapIdentifier.EAST1944_MAP);
             addToMapGrid(mapGrid, FrontMapIdentifier.EAST1945_MAP);
+            addToMapGrid(mapGrid, FrontMapIdentifier.NORMANDY_MAP);
             addToMapGrid(mapGrid, FrontMapIdentifier.BODENPLATTE_MAP);
         }
         else if (PWCGContext.getProduct() == PWCGProduct.FC)

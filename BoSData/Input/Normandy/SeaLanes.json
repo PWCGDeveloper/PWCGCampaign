@@ -1,0 +1,141 @@
+{
+  "axisShippingLanes": [
+    {
+      "neCorner": {
+        "xPos": 210820.0,
+        "yPos": 0.0,
+        "zPos": 41086.0
+      },
+      "swCorner": {
+        "xPos": 182122.0,
+        "yPos": 0.0,
+        "zPos": 99429.0
+      },
+      "country": "GERMANY",
+      "startDate": "19410615",
+      "endDate": "19440601"
+    },
+    {
+      "neCorner": {
+        "xPos": 181185.0,
+        "yPos": 0.0,
+        "zPos": 110668.0
+      },
+      "swCorner": {
+        "xPos": 152379.0,
+        "yPos": 0.0,
+        "zPos": 159525.0
+      },
+      "country": "GERMANY",
+      "startDate": "19410615",
+      "endDate": "19440601"
+    },
+    {
+      "neCorner": {
+        "xPos": 221561.0,
+        "yPos": 0.0,
+        "zPos": 170103.0
+      },
+      "swCorner": {
+        "xPos": 203985.0,
+        "yPos": 0.0,
+        "zPos": 244690.0
+      },
+      "country": "GERMANY",
+      "startDate": "19410615",
+      "endDate": "19440601"
+    },
+    {
+      "neCorner": {
+        "xPos": 351175.0,
+        "yPos": 0.0,
+        "zPos": 312865.0
+      },
+      "swCorner": {
+        "xPos": 332376.0,
+        "yPos": 0.0,
+        "zPos": 339088.0
+      },
+      "country": "GERMANY",
+      "startDate": "19410615",
+      "endDate": "19440601"
+    }
+  ],
+  "alliedShippingLanes": [
+    {
+      "neCorner": {
+        "xPos": 366763.0,
+        "yPos": 0.0,
+        "zPos": 280464.0
+      },
+      "swCorner": {
+        "xPos": 332852.0,
+        "yPos": 0.0,
+        "zPos": 299316.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19410601",
+      "endDate": "19440901"
+    },
+    {
+      "neCorner": {
+        "xPos": 325682.0,
+        "yPos": 0.0,
+        "zPos": 256233.0
+      },
+      "swCorner": {
+        "xPos": 312623.0,
+        "yPos": 0.0,
+        "zPos": 270398.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19410601",
+      "endDate": "19440901"
+    },
+    {
+      "neCorner": {
+        "xPos": 303969.0,
+        "yPos": 0.0,
+        "zPos": 226288.0
+      },
+      "swCorner": {
+        "xPos": 282434.0,
+        "yPos": 0.0,
+        "zPos": 244164.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19410601",
+      "endDate": "19440901"
+    },
+    {
+      "neCorner": {
+        "xPos": 272017.0,
+        "yPos": 0.0,
+        "zPos": 39917.0
+      },
+      "swCorner": {
+        "xPos": 242099.0,
+        "yPos": 0.0,
+        "zPos": 109751.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19410601",
+      "endDate": "19440901"
+    },
+    {
+      "neCorner": {
+        "xPos": 289395.0,
+        "yPos": 0.0,
+        "zPos": 130585.0
+      },
+      "swCorner": {
+        "xPos": 252178.0,
+        "yPos": 0.0,
+        "zPos": 229513.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19410601",
+      "endDate": "19440901"
+    }
+  ]
+}

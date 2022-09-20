@@ -3,8 +3,12 @@ package pwcg.dev.jsonconvert;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.campaign.group.NonScriptedBlockPositions;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.GroundStructureGroup;
 import pwcg.campaign.group.NonScriptedBlock;
+import pwcg.campaign.group.NonScriptedBlockPositions;
+import pwcg.campaign.io.json.GroundObjectIOJson;
 import pwcg.campaign.io.json.NonScriptedBlockPositionIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
@@ -32,10 +36,13 @@ public class GameGroundObjectToJsonConverter
     
     private void readAllMaps() throws PWCGException
     {
-        readMap("Moscow");
-        readMap("Stalingrad");
-        readMap("Kuban");
-        readMap("Rheinland");
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        
+//        readMap("Moscow");
+//        readMap("Stalingrad");
+//        readMap("Kuban");
+        readMap("Normandy");
+//        readMap("Rheinland");
     }
     
     private void readMap(String mapName) throws PWCGException 
@@ -52,16 +59,32 @@ public class GameGroundObjectToJsonConverter
             readGameInputFile(reader, groupFilePath);
         }
         
-        NonScriptedBlockPositions groundObjectsForMap = new NonScriptedBlockPositions();
+        writeGroundObjects(reader, mapName);        
+        writeNonScriptedGroundObjects(reader, mapName);
+    }
+
+    private void writeGroundObjects(GroundObjectsFileReader reader, String mapName) throws PWCGException
+    {
+        GroundStructureGroup groundStructureGroup = new GroundStructureGroup();
+        groundStructureGroup.setAirfieldBlocks(reader.getAirfieldBlocks());
+        groundStructureGroup.setBridges(reader.getBridges());
+        groundStructureGroup.setRailroadStations(reader.getRailroadStations());
+        groundStructureGroup.setStandaloneBlocks(reader.getStandaloneBlocks());
+        GroundObjectIOJson.writeJson(groundStructureGroup, mapName, "GroundStructures");
+    }
+
+    private void writeNonScriptedGroundObjects(GroundObjectsFileReader reader, String mapName) throws PWCGException
+    {
+        String mapOutputDirectory = outputDirectory + mapName + "\\";
+        NonScriptedBlockPositions nonScriptedGroundObjectsForMap = new NonScriptedBlockPositions();
         for (NonScriptedBlock ground : reader.getGroundObjects())
         {
-            groundObjectsForMap.addNonScriptedGround(ground);
+            nonScriptedGroundObjectsForMap.addNonScriptedGround(ground);
         }
         
-        String mapOutputDirectory = outputDirectory + mapName + "\\";
-        NonScriptedBlockPositionIOJson.writeJson(groundObjectsForMap, mapOutputDirectory, "StaticGroundStructures");
+        NonScriptedBlockPositionIOJson.writeJson(nonScriptedGroundObjectsForMap, mapOutputDirectory, "StaticGroundStructures");
     }
-    
+
     private void readGameInputFile(GroundObjectsFileReader reader, String groupFilePath) throws PWCGException
     {
         reader.readGroundObjectsFromFile(groupFilePath);

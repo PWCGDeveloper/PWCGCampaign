@@ -54,6 +54,7 @@ public class AssaultSegmentBuilder
 
     private void createAssault() throws PWCGException
     {
+        assaultingInfantry();
         assaultingTanks();
         assaultingMachineGun();
         assaultingMachineGunFlares();
@@ -65,11 +66,22 @@ public class AssaultSegmentBuilder
         }
     }
 
+    private void assaultingInfantry() throws PWCGException
+    {
+        Coordinate infantryAssaultStartPosition = MathUtils.calcNextCoord(
+                assaultDefinition.getDefensePosition(), 
+                assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS);  
+        
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(infantryAssaultStartPosition, "Infantry", TargetType.TARGET_INFANTRY);
+        IGroundUnit assaultInfantryUnit = assaultFactory.createAssaultInfantryUnit (groundUnitInformation);
+        battleSegmentUnitCollection.addGroundUnit(assaultInfantryUnit);
+    }
+
     private void assaultingMachineGun() throws PWCGException
     { 
         Coordinate machineGunStartPosition = MathUtils.calcNextCoord(
                 assaultDefinition.getDefensePosition(), 
-                assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS);  
+                assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 20.0);  
 
         GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(machineGunStartPosition, "Machine Gun", TargetType.TARGET_INFANTRY);
         IGroundUnit assaultingMachineGunUnit = assaultFactory.createMachineGunUnit (groundUnitInformation);

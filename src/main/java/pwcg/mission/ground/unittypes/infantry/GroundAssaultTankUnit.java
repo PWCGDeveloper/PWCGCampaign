@@ -1,6 +1,5 @@
 package pwcg.mission.ground.unittypes.infantry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
@@ -39,15 +38,15 @@ public class GroundAssaultTankUnit extends GroundUnit
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            return GroundUnitNumberCalculator.calcNumUnits(3, 5);
+            return GroundUnitNumberCalculator.calcNumUnits(2, 4);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            return GroundUnitNumberCalculator.calcNumUnits(4, 7);
+            return GroundUnitNumberCalculator.calcNumUnits(4, 6);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
         {
-            return GroundUnitNumberCalculator.calcNumUnits(6, 10);
+            return GroundUnitNumberCalculator.calcNumUnits(6, 8);
         }
         
         throw new PWCGException ("No unit size provided for ground unit");
@@ -55,29 +54,16 @@ public class GroundAssaultTankUnit extends GroundUnit
 
     private List<Coordinate> createVehicleStartPositions(int numvehicles) throws PWCGException 
     {
-        return createVehiclePositions(pwcgGroundUnitInformation.getPosition().copy(), numvehicles);        
+        double spacing = 30.0;
+        return createWedgeVehiclePositions(pwcgGroundUnitInformation.getPosition().copy(), numvehicles, spacing);        
     }
 
     private List<Coordinate> createVehicleDestinationPositions(int numvehicles) throws PWCGException 
     {
-        return createVehiclePositions(pwcgGroundUnitInformation.getDestination(), numvehicles);
+        double spacing = 30.0;
+        Coordinate destination = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getDestination(), pwcgGroundUnitInformation.getOrientation().getyOri(), 3000.0);
+        return createWedgeVehiclePositions(destination, numvehicles, spacing);
     }
-
-    private List<Coordinate> createVehiclePositions(Coordinate firstVehicleCoordinate, int numvehicles) throws PWCGException 
-    {
-        double tankFacingAngle = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
-        double placementOrientation = MathUtils.adjustAngle (tankFacingAngle, 90.0);        
-        
-        double tankSpacing = 75.0;
-        Coordinate tankCoords = firstVehicleCoordinate.copy();
-        List<Coordinate> vehicleLocations = new ArrayList<>();
-		for (int i = 0; i < numvehicles; ++i)
-		{	
-            vehicleLocations.add(tankCoords);
-			tankCoords = MathUtils.calcNextCoord(tankCoords, placementOrientation, tankSpacing);
-		}
-        return vehicleLocations;		
-	}
 
     private void addAspects(List<Coordinate> destinations) throws PWCGException
     {       

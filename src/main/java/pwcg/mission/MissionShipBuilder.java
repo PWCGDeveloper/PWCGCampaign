@@ -5,7 +5,6 @@ import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.shipping.ShippingLane;
 import pwcg.core.config.ConfigItemKeys;
@@ -36,7 +35,7 @@ public class MissionShipBuilder
     
     public List<GroundUnitCollection> createMissionShips() throws PWCGException 
     {
-        if (shouldMakeShips())
+        if (PWCGContext.getInstance().getCurrentMap().hasShips())
         {
             makeShips();
         }
@@ -52,16 +51,6 @@ public class MissionShipBuilder
             PWCGLogger.log(LogLevel.INFO, "Unit count balloon : " + groundUnitCollection.getUnitCount());
         }
         return missionBalloonUnitCount;
-    }
-
-    private boolean shouldMakeShips() throws PWCGException
-    {
-        if (PWCGContext.getInstance().getCurrentMap().getMapIdentifier() == FrontMapIdentifier.KUBAN_MAP)
-        {
-            return true;
-        }
-
-        return false;
     }
 
     private void makeShips() throws PWCGException

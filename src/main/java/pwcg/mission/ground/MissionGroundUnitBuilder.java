@@ -100,7 +100,8 @@ public class MissionGroundUnitBuilder
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        for (GroundUnitCollection groundUnit : getAllMissionGroundUnits())
+        List<GroundUnitCollection> groundUnits = getAllMissionGroundUnits();
+        for (GroundUnitCollection groundUnit : groundUnits)
         {
             groundUnit.write(writer);
         }

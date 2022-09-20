@@ -337,4 +337,31 @@ public class Vehicle implements Cloneable, IVehicle
     {
         return linkTrId;
     }
+
+    public void setScript(String script)
+    {
+        this.script = script;
+    }
+
+    public void setModel(String model)
+    {
+        this.model = model;
+    }
+
+    public void setVehicleName(String vehicleName)
+    {
+        this.vehicleName = vehicleName;
+    }
+
+    public void setIndex(int index)
+    {
+        this.index = index;
+    }
+
+    public void setLinkTrId(int linkTrId)
+    {
+        this.linkTrId = linkTrId;
+    }
+    
+    
 }

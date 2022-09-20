@@ -17,6 +17,13 @@ public class AssaultGroundUnitFactory
         return atDefenseUnit;
     }
 
+    public IGroundUnit createAssaultInfantryUnit(GroundUnitInformation groundUnitInformation) throws PWCGException
+    {
+        IGroundUnit infantryAssaultUnit = new GroundAssaultInfantryUnit(groundUnitInformation);
+        infantryAssaultUnit.createGroundUnit();
+        return infantryAssaultUnit;
+    }
+
     public IGroundUnit createAssaultTankUnit (GroundUnitInformation groundUnitInformation) throws PWCGException
     {
         IGroundUnit tankAssaultUnit = new GroundAssaultTankUnit(groundUnitInformation);
@@ -59,6 +66,4 @@ public class AssaultGroundUnitFactory
         aaaBattery.createGroundUnit();
         return aaaBattery;
     }
-
-
 }

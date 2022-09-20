@@ -1,0 +1,212 @@
+{
+  "routeDefinitions": [
+    {
+      "name": "Dunkirk Cargo Route",
+      "routeStartDate": "19410601",
+      "routeStopDate": "19410610",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 333692.0,
+        "yPos": 0.0,
+        "zPos": 334618.0
+      },
+      "routeDestination": {
+        "xPos": 336002.0,
+        "yPos": 0.0,
+        "zPos": 265673.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 309956.0,
+        "yPos": 0.0,
+        "zPos": 249558.0
+      },
+      "routeDestination": {
+        "xPos": 329801.0,
+        "yPos": 0.0,
+        "zPos": 254122.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 309890.0,
+        "yPos": 0.0,
+        "zPos": 244582.0
+      },
+      "routeDestination": {
+        "xPos": 328682.0,
+        "yPos": 0.0,
+        "zPos": 247039.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 346162.0,
+        "yPos": 0.0,
+        "zPos": 280093.0
+      },
+      "routeDestination": {
+        "xPos": 358477.0,
+        "yPos": 0.0,
+        "zPos": 270176.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 280904.0,
+        "yPos": 0.0,
+        "zPos": 207807.0
+      },
+      "routeDestination": {
+        "xPos": 295115.0,
+        "yPos": 0.0,
+        "zPos": 192782.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 283642.0,
+        "yPos": 0.0,
+        "zPos": 200698.0
+      },
+      "routeDestination": {
+        "xPos": 304435.0,
+        "yPos": 0.0,
+        "zPos": 211106.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 277161.0,
+        "yPos": 0.0,
+        "zPos": 180495.0
+      },
+      "routeDestination": {
+        "xPos": 296269.0,
+        "yPos": 0.0,
+        "zPos": 175001.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 280814.0,
+        "yPos": 0.0,
+        "zPos": 157552.0
+      },
+      "routeDestination": {
+        "xPos": 300869.0,
+        "yPos": 0.0,
+        "zPos": 161378.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 281501.0,
+        "yPos": 0.0,
+        "zPos": 134946.0
+      },
+      "routeDestination": {
+        "xPos": 299609.0,
+        "yPos": 0.0,
+        "zPos": 145091.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 274976.0,
+        "yPos": 0.0,
+        "zPos": 130178.0
+      },
+      "routeDestination": {
+        "xPos": 297138.0,
+        "yPos": 0.0,
+        "zPos": 97724.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 267180.0,
+        "yPos": 0.0,
+        "zPos": 116316.0
+      },
+      "routeDestination": {
+        "xPos": 296187.0,
+        "yPos": 0.0,
+        "zPos": 95604.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 263492.0,
+        "yPos": 0.0,
+        "zPos": 101614.0
+      },
+      "routeDestination": {
+        "xPos": 295185.0,
+        "yPos": 0.0,
+        "zPos": 97699.0
+      }
+    },
+    {
+      "name": "BoB Cargo Route",
+      "routeStartDate": "19410615",
+      "routeStopDate": "19411001",
+      "country": "BRITAIN",
+      "routeStartPosition": {
+        "xPos": 260647.0,
+        "yPos": 0.0,
+        "zPos": 67897.0
+      },
+      "routeDestination": {
+        "xPos": 290760.0,
+        "yPos": 0.0,
+        "zPos": 41709.0
+      }
+    }
+  ]
+}

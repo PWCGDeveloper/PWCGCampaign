@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.shipping.CargoRoute;
+import pwcg.campaign.shipping.CargoShipRoute;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -37,7 +37,7 @@ public class CargoRouteBattleBuilder implements IBattleBuilder
         
         if (mission.getSkirmish() != null && mission.getSkirmish().isCargoRouteBattle())
         {
-            CargoRoute cargoRoute = getCargoRoutesForSkirmish(mission.getSkirmish());
+            CargoShipRoute cargoRoute = getCargoRoutesForSkirmish(mission.getSkirmish());
             TargetDefinition targetDefinition = makeTargetDefinition(cargoRoute);        
             ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(mission.getCampaign(), targetDefinition, cargoRoute.getRouteDestination());
             VehicleClass shipType = ShipTypeChooser.chooseShipType(targetDefinition.getCountry().getSide());
@@ -50,13 +50,13 @@ public class CargoRouteBattleBuilder implements IBattleBuilder
         return convoysOnCargoRoute;
     }
 
-    private CargoRoute getCargoRoutesForSkirmish(Skirmish skirmish) throws PWCGException
+    private CargoShipRoute getCargoRoutesForSkirmish(Skirmish skirmish) throws PWCGException
     {
-        CargoRoute cargoRouteForSide = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager().getCargoShipRouteByName(skirmish.getSkirmishName());
+        CargoShipRoute cargoRouteForSide = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager().getCargoShipRouteByName(skirmish.getSkirmishName());
         return cargoRouteForSide;
     }
 
-    private TargetDefinition makeTargetDefinition(CargoRoute cargoRoute) throws PWCGException
+    private TargetDefinition makeTargetDefinition(CargoShipRoute cargoRoute) throws PWCGException
     {
         ICountry shipCountry = CountryFactory.makeCountryByCountry(cargoRoute.getCountry());
         Coordinate startPosition = getConvoyStartPosition(cargoRoute);
@@ -64,7 +64,7 @@ public class CargoRouteBattleBuilder implements IBattleBuilder
         return targetDefinition;
     }
     
-    private Coordinate getConvoyStartPosition(CargoRoute cargoRoute) throws PWCGException
+    private Coordinate getConvoyStartPosition(CargoShipRoute cargoRoute) throws PWCGException
     {
         double routeDistance = MathUtils.calcDist(cargoRoute.getRouteStartPosition(), cargoRoute.getRouteDestination());
         int startPosOnRoute = 0;

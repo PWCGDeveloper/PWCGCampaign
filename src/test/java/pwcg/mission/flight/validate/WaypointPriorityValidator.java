@@ -24,19 +24,11 @@ public class WaypointPriorityValidator
         else
         {
             expectedWaypointPriority = WaypointPriority.PRIORITY_MED;
-            if (FlightTypes.isHighPriorityFlight(flight.getFlightType()))
-            {
-                throw new PWCGException("No high priority flights");
-            }
         }
 
         for (McuWaypoint waypoint : flight.getWaypointPackage().getAllWaypoints())
         {
-            if (FlightTypes.isHighPriorityFlight(flight.getFlightType())) 
-            {
-                Assertions.assertTrue (waypoint.getPriority() == WaypointPriority.PRIORITY_HIGH);    
-            }
-            else if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
+            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
             {
                 Assertions.assertTrue (waypoint.getPriority() != WaypointPriority.PRIORITY_LOW);
             }

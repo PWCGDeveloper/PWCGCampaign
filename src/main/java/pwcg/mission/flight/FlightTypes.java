@@ -67,11 +67,6 @@ public enum FlightTypes
         return flightTypesByCategory;
     }
 
-    public static boolean isHighPriorityFlight(FlightTypes flightType)
-    {
-        return false;
-    }
-
     public static boolean isLowAltFlightType(FlightTypes flightType)
     {
         if (flightType == FlightTypes.ARTILLERY_SPOT    || 

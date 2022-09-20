@@ -11,6 +11,7 @@ public enum FrontMapIdentifier
     KUBAN_MAP("Kuban", PWCGFront.WWII_EASTERN_FRONT),
     EAST1944_MAP("East1944", PWCGFront.WWII_EASTERN_FRONT),
     EAST1945_MAP("East1945", PWCGFront.WWII_EASTERN_FRONT),
+    NORMANDY_MAP("Normandy", PWCGFront.WWII_WESTERN_FRONT),
     BODENPLATTE_MAP("Bodenplatte", PWCGFront.WWII_WESTERN_FRONT),
     ARRAS_MAP("Arras", PWCGFront.WWI_WESTERN_FRONT);
 
@@ -43,6 +44,7 @@ public enum FrontMapIdentifier
         frontNameIdentifierMap.put(KUBAN_MAP.getMapName(), KUBAN_MAP);            
         frontNameIdentifierMap.put(EAST1944_MAP.getMapName(), EAST1944_MAP);
         frontNameIdentifierMap.put(EAST1945_MAP.getMapName(), EAST1945_MAP);
+        frontNameIdentifierMap.put(NORMANDY_MAP.getMapName(), NORMANDY_MAP);            
         frontNameIdentifierMap.put(BODENPLATTE_MAP.getMapName(), BODENPLATTE_MAP);            
 
         frontNameIdentifierMap.put(ARRAS_MAP.getMapName(), ARRAS_MAP);            

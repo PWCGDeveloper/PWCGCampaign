@@ -20,15 +20,15 @@ public class CityNameBuilder
 {    
     public static void main(String[] args) throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.setProduct(PWCGProduct.BOS);
 
         CityNameBuilder jsonConverter = new CityNameBuilder();
-        jsonConverter.getCityNames("Arras");
+        jsonConverter.getCityNames("Normandy");
     }
 
     private void getCityNames (String mapName) throws PWCGException 
     {
-        String filename = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\Arras_ALL.Group";     
+        String filename = "D:\\Temp\\Normandy_Cities.Group";     
         readGroundObjectsFromFile(filename, mapName);
 
     }
@@ -50,9 +50,13 @@ public class CityNameBuilder
                 if (line.startsWith(DevIOConstants.NAME))
                 {
                     cityName = Parsers.getString(line);
+                    cityName = stripNumbers(cityName);
                     if (!(cityName.equals("Cities") || cityName.equals("Block")))
                     {
-                        cityFound = true;
+                        if (!cityName.toLowerCase().contains("bridge") && !cityName.toLowerCase().contains("wagon"))
+                        {
+                            cityFound = true;
+                        }
                     }
                 }
 
@@ -86,4 +90,18 @@ public class CityNameBuilder
             throw new PWCGException(e.getMessage());
         }
 	}
+
+    private String stripNumbers(String cityName)
+    {
+        if (Character.isDigit(cityName.charAt(0)))
+        {
+            int index = cityName.indexOf("-");
+            if (index > 0)
+            {
+                cityName = cityName.substring(index+1);
+            }
+        }
+
+        return cityName;
+    }
 }

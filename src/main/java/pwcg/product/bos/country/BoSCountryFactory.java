@@ -24,6 +24,10 @@ public class BoSCountryFactory extends NeutralCountryFactory implements ICountry
             {
                 return new BoSCountry(BoSCountry.USA_CODE);
             }
+            else if (map.getMapIdentifier() == FrontMapIdentifier.NORMANDY_MAP)
+            {
+                return new BoSCountry(BoSCountry.USA_CODE);
+            }
             else
             {
                 return new BoSCountry(BoSCountry.RUSSIA_CODE);

@@ -1,3 +1,36 @@
+Normandy
+Map image Early                             - done
+Map image Invasion
+Front lines                                 - done
+Import ground objects                       
+- Seperate D-Day objects ... how?
+Squadron assignments to airfields
+
+Normandy Map Data
+- Define battles                            - done
+- Airfield locations                        - done
+- Define barge positions                    - done
+- define shipping lanes                     - done
+- define cargo routes                       - done
+- define amphibious invasion locations      - done - need to import
+- Import ground structures                  - done 
+- Import town names                         - done
+- Extract and import in game ini files      - done 
+
+Special events / skirmishes
+- Dunkirk - June 1 - 7
+- BoB Coastal shipping, ports, airfields - 17th July to 12th August
+- BoB Airfields - 13th August – 6th September
+- BoB Cities or Ports - 7th September – 2nd October
+- Rodeos 1942
+- Dieppe - August 19 1942
+- American bombing 1943
+- D-Day
+- Goodwood
+- Cobra
+- Mortain
+- Falaise
+
 Remove end date from nigh mission odds
 
 FC fuel air start resets to 60%
@@ -12,15 +45,3 @@ FlightAiSettingsValidator > groundAttackFlightWithFighterTest() FAILED
 
 GroundAttackAntiArmorPackageTest > groundAttackTankBustRoleTest() FAILED
     java.lang.AssertionError at GroundAttackAntiArmorPackageTest.java:66
-
-
-New planes
-- aircraft file - done
-    - change model
-    - change or set archtype
-    - change goodness to unique value
-- aircraft  picture - done
-- aircraft profile picture - done
-- add to squadrons
-- payload
-- set name from log file

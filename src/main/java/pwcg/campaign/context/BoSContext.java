@@ -59,6 +59,7 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
         PWCGMap kubanMap = PWCGMapFactory.getMap(FrontMapIdentifier.KUBAN_MAP);
         PWCGMap east1944Map = PWCGMapFactory.getMap(FrontMapIdentifier.EAST1944_MAP);
         PWCGMap east1945Map = PWCGMapFactory.getMap(FrontMapIdentifier.EAST1945_MAP);
+        PWCGMap normandyMap = PWCGMapFactory.getMap(FrontMapIdentifier.NORMANDY_MAP);
         PWCGMap bodenplatteMap = PWCGMapFactory.getMap(FrontMapIdentifier.BODENPLATTE_MAP);
         
         pwcgMaps.put(moscowMap.getMapIdentifier(), moscowMap);
@@ -66,6 +67,7 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
         pwcgMaps.put(kubanMap.getMapIdentifier(), kubanMap);
         pwcgMaps.put(east1944Map.getMapIdentifier(), east1944Map);
         pwcgMaps.put(east1945Map.getMapIdentifier(), east1945Map);
+        pwcgMaps.put(normandyMap.getMapIdentifier(), normandyMap);
         pwcgMaps.put(bodenplatteMap.getMapIdentifier(), bodenplatteMap);
 
         super.initialize();

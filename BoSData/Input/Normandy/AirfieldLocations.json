@@ -1,0 +1,2818 @@
+{
+  "locationSetName": "Airfields",
+  "locations": [
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 143456.0,
+            "yPos": 40.0,
+            "zPos": 100967.0
+          },
+          "endPos": {
+            "xPos": 143351.3652893838,
+            "yPos": 0.0,
+            "zPos": 102463.34607538974
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-1 Saint Pierre du Mont",
+      "position": {
+        "xPos": 143456.0,
+        "yPos": 0.0,
+        "zPos": 100967.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 94.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 134224.0,
+            "yPos": 30.0,
+            "zPos": 84544.0
+          },
+          "endPos": {
+            "xPos": 134484.4722665004,
+            "yPos": 0.0,
+            "zPos": 86021.21162951831
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-10 Carentan",
+      "position": {
+        "xPos": 134224.0,
+        "yPos": 0.0,
+        "zPos": 84544.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 80.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 131518.0,
+            "yPos": 35.0,
+            "zPos": 90673.0
+          },
+          "endPos": {
+            "xPos": 132047.9192642332,
+            "yPos": 0.0,
+            "zPos": 91521.04809615643
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-11 Saint Lambert",
+      "position": {
+        "xPos": 131518.0,
+        "yPos": 0.0,
+        "zPos": 90673.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 58.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 119299.0,
+            "yPos": 133.0,
+            "zPos": 112660.0
+          },
+          "endPos": {
+            "xPos": 119712.4560337255,
+            "yPos": 0.0,
+            "zPos": 114101.89254390748
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-12 Lignerolles",
+      "position": {
+        "xPos": 119299.0,
+        "yPos": 0.0,
+        "zPos": 112660.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 74.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 132325.0,
+            "yPos": 39.0,
+            "zPos": 116406.0
+          },
+          "endPos": {
+            "xPos": 133141.95855252253,
+            "yPos": 0.0,
+            "zPos": 115147.99414808185
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-13 Tour en Bessin",
+      "position": {
+        "xPos": 132325.0,
+        "yPos": 0.0,
+        "zPos": 116406.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 303.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 137397.0,
+            "yPos": 33.0,
+            "zPos": 70154.0
+          },
+          "endPos": {
+            "xPos": 138140.1448254774,
+            "yPos": 0.0,
+            "zPos": 70823.13060635886
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-14 Cretteville",
+      "position": {
+        "xPos": 137397.0,
+        "yPos": 0.0,
+        "zPos": 70154.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 141060.0,
+            "yPos": 13.0,
+            "zPos": 81906.0
+          },
+          "endPos": {
+            "xPos": 141434.6065934159,
+            "yPos": 0.0,
+            "zPos": 82833.18385456679
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-16 Brucheville",
+      "position": {
+        "xPos": 141060.0,
+        "yPos": 0.0,
+        "zPos": 81906.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 68.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 132098.0,
+            "yPos": 26.0,
+            "zPos": 77087.0
+          },
+          "endPos": {
+            "xPos": 132305.91169081777,
+            "yPos": 0.0,
+            "zPos": 76108.8523992662
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-17 Meautis",
+      "position": {
+        "xPos": 132098.0,
+        "yPos": 0.0,
+        "zPos": 77087.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 282.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 117279.0,
+            "yPos": 124.0,
+            "zPos": 99869.0
+          },
+          "endPos": {
+            "xPos": 118271.54615164132,
+            "yPos": 0.0,
+            "zPos": 99990.86934340515
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-19 La Vielle",
+      "position": {
+        "xPos": 117279.0,
+        "yPos": 0.0,
+        "zPos": 99869.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 7.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 139748.0,
+            "yPos": 31.0,
+            "zPos": 98189.0
+          },
+          "endPos": {
+            "xPos": 140748.0,
+            "yPos": 0.0,
+            "zPos": 98189.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-2 Criqueville",
+      "position": {
+        "xPos": 139748.0,
+        "yPos": 0.0,
+        "zPos": 98189.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 50449.0,
+            "yPos": 31.0,
+            "zPos": 60680.0
+          },
+          "endPos": {
+            "xPos": 50707.81904510252,
+            "yPos": 0.0,
+            "zPos": 61645.925826289065
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-28 Pontorson",
+      "position": {
+        "xPos": 50449.0,
+        "yPos": 0.0,
+        "zPos": 60680.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 75.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 138655.0,
+            "yPos": 33.0,
+            "zPos": 95156.0
+          },
+          "endPos": {
+            "xPos": 139553.79404629915,
+            "yPos": 0.0,
+            "zPos": 94717.62885321092
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-3 Cardonville",
+      "position": {
+        "xPos": 138655.0,
+        "yPos": 0.0,
+        "zPos": 95156.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 334.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 138583.0,
+            "yPos": 35.0,
+            "zPos": 100594.0
+          },
+          "endPos": {
+            "xPos": 139071.35223168574,
+            "yPos": 0.0,
+            "zPos": 99175.72213660102
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-4 Deux Jumeaux",
+      "position": {
+        "xPos": 138583.0,
+        "yPos": 0.0,
+        "zPos": 100594.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 289.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 126754.0,
+            "yPos": 31.0,
+            "zPos": 100010.0
+          },
+          "endPos": {
+            "xPos": 127526.55711236509,
+            "yPos": 0.0,
+            "zPos": 101295.75095105317
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-5 Chippelle",
+      "position": {
+        "xPos": 126754.0,
+        "yPos": 0.0,
+        "zPos": 100010.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 59.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 146843.0,
+            "yPos": 34.0,
+            "zPos": 76421.0
+          },
+          "endPos": {
+            "xPos": 147416.57643635105,
+            "yPos": 0.0,
+            "zPos": 77240.15204428899
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-6 Beuzeville",
+      "position": {
+        "xPos": 146843.0,
+        "yPos": 0.0,
+        "zPos": 76421.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 55.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 153983.0,
+            "yPos": 22.0,
+            "zPos": 75121.0
+          },
+          "endPos": {
+            "xPos": 154190.91169081777,
+            "yPos": 0.0,
+            "zPos": 76099.1476007338
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-7 Azeville",
+      "position": {
+        "xPos": 153983.0,
+        "yPos": 0.0,
+        "zPos": 75121.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 78.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 144251.0,
+            "yPos": 27.0,
+            "zPos": 68331.0
+          },
+          "endPos": {
+            "xPos": 144625.6065934159,
+            "yPos": 0.0,
+            "zPos": 69258.18385456679
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "A-8 Picauville",
+      "position": {
+        "xPos": 144251.0,
+        "yPos": 0.0,
+        "zPos": 68331.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 68.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 227830.0,
+            "yPos": 69.0,
+            "zPos": 301885.0
+          },
+          "endPos": {
+            "xPos": 229239.53893117886,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Abbeville Drucat",
+      "position": {
+        "xPos": 227830.0,
+        "yPos": 0.0,
+        "zPos": 301885.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 301948.0,
+            "yPos": 7.0,
+            "zPos": 114402.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 113563.32943205457
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Apuldram",
+      "position": {
+        "xPos": 301948.0,
+        "yPos": 0.0,
+        "zPos": 114402.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 237.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 337054.0,
+            "yPos": 39.0,
+            "zPos": 228297.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 228812.03807491006
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Ashford",
+      "position": {
+        "xPos": 337054.0,
+        "yPos": 0.0,
+        "zPos": 228297.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 149.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 129875.0,
+            "yPos": 56.0,
+            "zPos": 145134.0
+          },
+          "endPos": {
+            "xPos": 130569.658370459,
+            "yPos": 0.0,
+            "zPos": 144414.66019966136
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-10 Plumetot",
+      "position": {
+        "xPos": 129875.0,
+        "yPos": 0.0,
+        "zPos": 145134.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 314.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 137377.0,
+            "yPos": 63.0,
+            "zPos": 122512.0
+          },
+          "endPos": {
+            "xPos": 137861.80962024635,
+            "yPos": 0.0,
+            "zPos": 121637.3802928606
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-11 Longues",
+      "position": {
+        "xPos": 137377.0,
+        "yPos": 0.0,
+        "zPos": 122512.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 299.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 123446.0,
+            "yPos": 86.0,
+            "zPos": 122071.0
+          },
+          "endPos": {
+            "xPos": 124234.01075360672,
+            "yPos": 0.0,
+            "zPos": 122686.66147532566
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-12 Ellon",
+      "position": {
+        "xPos": 123446.0,
+        "yPos": 0.0,
+        "zPos": 122071.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 38.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 118915.0,
+            "yPos": 70.0,
+            "zPos": 138629.0
+          },
+          "endPos": {
+            "xPos": 119796.67787843871,
+            "yPos": 0.0,
+            "zPos": 137415.4745084376
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-17 Carpiquet",
+      "position": {
+        "xPos": 118915.0,
+        "yPos": 0.0,
+        "zPos": 138629.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 306.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 120462.0,
+            "yPos": 97.0,
+            "zPos": 130632.0
+          },
+          "endPos": {
+            "xPos": 120669.91169081775,
+            "yPos": 0.0,
+            "zPos": 129653.8523992662
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-18 Cristot",
+      "position": {
+        "xPos": 120462.0,
+        "yPos": 0.0,
+        "zPos": 130632.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 282.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 120363.0,
+            "yPos": 89.0,
+            "zPos": 121220.0
+          },
+          "endPos": {
+            "xPos": 120700.4265815158,
+            "yPos": 0.0,
+            "zPos": 122681.55509717786
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-19 Lingevres",
+      "position": {
+        "xPos": 120363.0,
+        "yPos": 0.0,
+        "zPos": 121220.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 77.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 133214.0,
+            "yPos": 58.0,
+            "zPos": 129418.0
+          },
+          "endPos": {
+            "xPos": 133787.57643635105,
+            "yPos": 0.0,
+            "zPos": 130237.15204428899
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-2 Bazenville",
+      "position": {
+        "xPos": 133214.0,
+        "yPos": 0.0,
+        "zPos": 129418.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 55.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 132443.0,
+            "yPos": 51.0,
+            "zPos": 140234.0
+          },
+          "endPos": {
+            "xPos": 133433.26806874157,
+            "yPos": 0.0,
+            "zPos": 140094.82689903994
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-4 Beny sur Mer",
+      "position": {
+        "xPos": 132443.0,
+        "yPos": 0.0,
+        "zPos": 140234.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 352.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 129053.0,
+            "yPos": 57.0,
+            "zPos": 136656.0
+          },
+          "endPos": {
+            "xPos": 130014.26169593832,
+            "yPos": 0.0,
+            "zPos": 136380.362644183
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-5 Camilly",
+      "position": {
+        "xPos": 129053.0,
+        "yPos": 0.0,
+        "zPos": 136656.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 126445.0,
+            "yPos": 69.0,
+            "zPos": 130194.0
+          },
+          "endPos": {
+            "xPos": 127102.55672018361,
+            "yPos": 0.0,
+            "zPos": 131542.19106944875
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-6 Coulombs",
+      "position": {
+        "xPos": 126445.0,
+        "yPos": 0.0,
+        "zPos": 130194.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 64.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 128295.0,
+            "yPos": 58.0,
+            "zPos": 125895.0
+          },
+          "endPos": {
+            "xPos": 128329.8994967025,
+            "yPos": 0.0,
+            "zPos": 126894.3908270191
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-7 Martragny",
+      "position": {
+        "xPos": 128295.0,
+        "yPos": 0.0,
+        "zPos": 125895.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 129788.0,
+            "yPos": 47.0,
+            "zPos": 131169.0
+          },
+          "endPos": {
+            "xPos": 130332.63903501503,
+            "yPos": 0.0,
+            "zPos": 132007.67056794543
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B-9 Lantheuil",
+      "position": {
+        "xPos": 129788.0,
+        "yPos": 0.0,
+        "zPos": 131169.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 57.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 135080.0,
+            "yPos": 48.0,
+            "zPos": 133270.0
+          },
+          "endPos": {
+            "xPos": 135823.1448254774,
+            "yPos": 0.0,
+            "zPos": 133939.13060635887
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "B3 Saint Croix sur Mer",
+      "position": {
+        "xPos": 135080.0,
+        "yPos": 0.0,
+        "zPos": 133270.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 301554.0,
+            "yPos": 40.0,
+            "zPos": 64271.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 65771.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Beaulieu",
+      "position": {
+        "xPos": 301554.0,
+        "yPos": 0.0,
+        "zPos": 64271.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 110114.0,
+            "yPos": 150.0,
+            "zPos": 228590.0
+          },
+          "endPos": {
+            "xPos": 110629.03807491006,
+            "yPos": 0.0,
+            "zPos": 229447.1673007021
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Beaumont le Roger",
+      "position": {
+        "xPos": 110114.0,
+        "yPos": 0.0,
+        "zPos": 228590.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 59.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 151897.0,
+            "yPos": 100.0,
+            "zPos": 325189.0
+          },
+          "endPos": {
+            "xPos": 150516.24271982134,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Beauvais Tille",
+      "position": {
+        "xPos": 151897.0,
+        "yPos": 0.0,
+        "zPos": 325189.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 203.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 259673.0,
+            "yPos": 8.0,
+            "zPos": 284825.0
+          },
+          "endPos": {
+            "xPos": 259085.2147477075,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Berck sur Mer",
+      "position": {
+        "xPos": 259673.0,
+        "yPos": 0.0,
+        "zPos": 284825.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 234.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 304576.0,
+            "yPos": 16.0,
+            "zPos": 45778.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 45708.24352625587
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Bisterne",
+      "position": {
+        "xPos": 304576.0,
+        "yPos": 0.0,
+        "zPos": 45778.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 184.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 358393.0,
+            "yPos": 96.0,
+            "zPos": 111533.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 112959.58477444273
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Blackbushe",
+      "position": {
+        "xPos": 358393.0,
+        "yPos": 0.0,
+        "zPos": 111533.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 72.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 299904.0,
+            "yPos": 6.0,
+            "zPos": 120988.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 121682.65837045899
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Bognor",
+      "position": {
+        "xPos": 299904.0,
+        "yPos": 0.0,
+        "zPos": 120988.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 136.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 289652.0,
+            "yPos": 55.0,
+            "zPos": 281814.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Boulogne Alprech",
+      "position": {
+        "xPos": 289652.0,
+        "yPos": 0.0,
+        "zPos": 281814.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 131.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 325116.0,
+            "yPos": 2.0,
+            "zPos": 232401.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 232505.52846326766
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Brenzett",
+      "position": {
+        "xPos": 325116.0,
+        "yPos": 0.0,
+        "zPos": 232401.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 174.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 315568.0,
+            "yPos": 9.0,
+            "zPos": 298053.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Calais Coquelles",
+      "position": {
+        "xPos": 315568.0,
+        "yPos": 0.0,
+        "zPos": 298053.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 54.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 317350.0,
+            "yPos": 32.0,
+            "zPos": 167666.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 168104.37114678908
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Chailey",
+      "position": {
+        "xPos": 317350.0,
+        "yPos": 0.0,
+        "zPos": 167666.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 154.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 133182.0,
+            "yPos": 99.0,
+            "zPos": 311822.0
+          },
+          "endPos": {
+            "xPos": 132622.80709652926,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Chaumont en Vexin",
+      "position": {
+        "xPos": 133182.0,
+        "yPos": 0.0,
+        "zPos": 311822.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 236.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 339774.0,
+            "yPos": 77.0,
+            "zPos": 70584.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 70323.5277334996
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Chilbolton",
+      "position": {
+        "xPos": 339774.0,
+        "yPos": 0.0,
+        "zPos": 70584.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 190.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 320133.0,
+            "yPos": 3.0,
+            "zPos": 308759.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Clais Marck",
+      "position": {
+        "xPos": 320133.0,
+        "yPos": 0.0,
+        "zPos": 308759.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 264.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 321218.0,
+            "yPos": 15.0,
+            "zPos": 142747.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 143686.6926207859
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Coolham",
+      "position": {
+        "xPos": 321218.0,
+        "yPos": 0.0,
+        "zPos": 142747.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 110.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 112660.0,
+            "yPos": 90.0,
+            "zPos": 320367.0
+          },
+          "endPos": {
+            "xPos": 111580.99029949201,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Cormeilles en Vexin",
+      "position": {
+        "xPos": 112660.0,
+        "yPos": 0.0,
+        "zPos": 320367.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 224.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 242508.0,
+            "yPos": 71.0,
+            "zPos": 304185.0
+          },
+          "endPos": {
+            "xPos": 243317.01699437495,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Crecy en Ponthieu",
+      "position": {
+        "xPos": 242508.0,
+        "yPos": 0.0,
+        "zPos": 304185.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 36.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 309934.0,
+            "yPos": 22.0,
+            "zPos": 182410.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 182969.19290347074
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Deanland",
+      "position": {
+        "xPos": 309934.0,
+        "yPos": 0.0,
+        "zPos": 182410.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 146.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 198747.0,
+            "yPos": 101.0,
+            "zPos": 249203.0
+          },
+          "endPos": {
+            "xPos": 198277.52843721412,
+            "yPos": 0.0,
+            "zPos": 248320.05240714108
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Dieppe Saint Aubin",
+      "position": {
+        "xPos": 198747.0,
+        "yPos": 0.0,
+        "zPos": 249203.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 242.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 66412.0,
+            "yPos": 134.0,
+            "zPos": 271289.0
+          },
+          "endPos": {
+            "xPos": 67838.58477444273,
+            "yPos": 0.0,
+            "zPos": 271752.52549156244
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Dreux",
+      "position": {
+        "xPos": 66412.0,
+        "yPos": 0.0,
+        "zPos": 271289.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 327918.0,
+            "yPos": 7.0,
+            "zPos": 328898.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Dunkerque Mardyck",
+      "position": {
+        "xPos": 327918.0,
+        "yPos": 0.0,
+        "zPos": 328898.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 79.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 335722.0,
+            "yPos": 51.0,
+            "zPos": 134441.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 133070.6818135361
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Dunsfold",
+      "position": {
+        "xPos": 335722.0,
+        "yPos": 0.0,
+        "zPos": 134441.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 246.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 103084.0,
+            "yPos": 139.0,
+            "zPos": 261431.0
+          },
+          "endPos": {
+            "xPos": 103031.65075494625,
+            "yPos": 0.0,
+            "zPos": 259931.91375947135
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Evreux Fauville",
+      "position": {
+        "xPos": 103084.0,
+        "yPos": 0.0,
+        "zPos": 261431.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 268.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 105458.0,
+            "yPos": 137.0,
+            "zPos": 261624.0
+          },
+          "endPos": {
+            "xPos": 104884.42356364895,
+            "yPos": 0.0,
+            "zPos": 260804.847955711
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Evreux Huest",
+      "position": {
+        "xPos": 105458.0,
+        "yPos": 0.0,
+        "zPos": 261624.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 235.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 302647.0,
+            "yPos": 6.0,
+            "zPos": 129113.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 129700.7852522925
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Ford",
+      "position": {
+        "xPos": 302647.0,
+        "yPos": 0.0,
+        "zPos": 129113.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 144.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 295560.0,
+            "yPos": 95.0,
+            "zPos": 182698.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 183682.8077530122
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Friston",
+      "position": {
+        "xPos": 295560.0,
+        "yPos": 0.0,
+        "zPos": 182698.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 80.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 308545.0,
+            "yPos": 35.0,
+            "zPos": 108759.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 108863.52846326765
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Funtington",
+      "position": {
+        "xPos": 308545.0,
+        "yPos": 0.0,
+        "zPos": 108759.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 174.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 75440.0,
+            "yPos": 163.0,
+            "zPos": 323198.0
+          },
+          "endPos": {
+            "xPos": 74986.00950026046,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Guyancourt",
+      "position": {
+        "xPos": 75440.0,
+        "yPos": 0.0,
+        "zPos": 323198.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 117.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 334929.0,
+            "yPos": 159.0,
+            "zPos": 251933.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 252710.14596145696
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Hawkinge",
+      "position": {
+        "xPos": 334929.0,
+        "yPos": 0.0,
+        "zPos": 251933.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 51.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 342788.0,
+            "yPos": 30.0,
+            "zPos": 218797.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 219797.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Headcorn",
+      "position": {
+        "xPos": 342788.0,
+        "yPos": 0.0,
+        "zPos": 218797.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 335770.0,
+            "yPos": 32.0,
+            "zPos": 220290.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 220805.03807491006
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "High Halden",
+      "position": {
+        "xPos": 335770.0,
+        "yPos": 0.0,
+        "zPos": 220290.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 294645.0,
+            "yPos": 8.0,
+            "zPos": 48944.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 48155.98924639327
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Highcliffe",
+      "position": {
+        "xPos": 294645.0,
+        "yPos": 0.0,
+        "zPos": 48944.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 232.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 299627.0,
+            "yPos": 64.0,
+            "zPos": 50838.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 52096.00585191814
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Holmsley South",
+      "position": {
+        "xPos": 299627.0,
+        "yPos": 0.0,
+        "zPos": 50838.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 57.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 341695.0,
+            "yPos": 56.0,
+            "zPos": 164997.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 165958.2616959383
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Horne",
+      "position": {
+        "xPos": 341695.0,
+        "yPos": 0.0,
+        "zPos": 164997.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 106.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 300212.0,
+            "yPos": 11.0,
+            "zPos": 41263.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 41625.8828433995
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Huen",
+      "position": {
+        "xPos": 300212.0,
+        "yPos": 0.0,
+        "zPos": 41263.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 166.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 310581.0,
+            "yPos": 21.0,
+            "zPos": 45976.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 45976.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Ibsley",
+      "position": {
+        "xPos": 310581.0,
+        "yPos": 0.0,
+        "zPos": 45976.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 334268.0,
+            "yPos": 41.0,
+            "zPos": 233572.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 234326.70958022279
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Kingsnortrh",
+      "position": {
+        "xPos": 334268.0,
+        "yPos": 0.0,
+        "zPos": 233572.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 131.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 343505.0,
+            "yPos": 180.0,
+            "zPos": 98300.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 99298.62953475458
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Lasham",
+      "position": {
+        "xPos": 343505.0,
+        "yPos": 0.0,
+        "zPos": 98300.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 87.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 339832.0,
+            "yPos": 21.0,
+            "zPos": 215801.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 216785.8077530122
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Lashenden",
+      "position": {
+        "xPos": 339832.0,
+        "yPos": 0.0,
+        "zPos": 215801.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 100.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 68462.0,
+            "yPos": 178.0,
+            "zPos": 306891.0
+          },
+          "endPos": {
+            "xPos": 68991.91926423319,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Les Mesnuls",
+      "position": {
+        "xPos": 68462.0,
+        "yPos": 0.0,
+        "zPos": 306891.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 302.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 40107.0,
+            "yPos": 156.0,
+            "zPos": 173465.0
+          },
+          "endPos": {
+            "xPos": 40636.91926423321,
+            "yPos": 0.0,
+            "zPos": 174313.04809615642
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Lonrai",
+      "position": {
+        "xPos": 40107.0,
+        "yPos": 0.0,
+        "zPos": 173465.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 58.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 297400.0,
+            "yPos": 17.0,
+            "zPos": 64099.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 64323.95105434387
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Lymington",
+      "position": {
+        "xPos": 297400.0,
+        "yPos": 0.0,
+        "zPos": 64099.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 167.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 332076.0,
+            "yPos": 106.0,
+            "zPos": 242221.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 243221.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Lympne",
+      "position": {
+        "xPos": 332076.0,
+        "yPos": 0.0,
+        "zPos": 242221.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 361374.0,
+            "yPos": 51.0,
+            "zPos": 263752.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 264736.8077530122
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Manston",
+      "position": {
+        "xPos": 361374.0,
+        "yPos": 0.0,
+        "zPos": 263752.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 100.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 298916.0,
+            "yPos": 7.0,
+            "zPos": 70139.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 70397.81904510251
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Needs Oar Point",
+      "position": {
+        "xPos": 298916.0,
+        "yPos": 0.0,
+        "zPos": 70139.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 165.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 327763.0,
+            "yPos": 2.0,
+            "zPos": 235898.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 235507.26887151072
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Newchurch",
+      "position": {
+        "xPos": 327763.0,
+        "yPos": 0.0,
+        "zPos": 235898.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 337.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 60782.0,
+            "yPos": 131.0,
+            "zPos": 280375.0
+          },
+          "endPos": {
+            "xPos": 61411.32039104983,
+            "yPos": 0.0,
+            "zPos": 281152.145961457
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Nogent le Roi",
+      "position": {
+        "xPos": 60782.0,
+        "yPos": 0.0,
+        "zPos": 280375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 51.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 159034.0,
+            "yPos": 92.0,
+            "zPos": 177266.0
+          },
+          "endPos": {
+            "xPos": 159832.6355100473,
+            "yPos": 0.0,
+            "zPos": 177867.81502315204
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Octeville sur Mer",
+      "position": {
+        "xPos": 159034.0,
+        "yPos": 0.0,
+        "zPos": 177266.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 35011.0,
+            "yPos": 151.0,
+            "zPos": 316644.0
+          },
+          "endPos": {
+            "xPos": 35184.64817766693,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Oysonville",
+      "position": {
+        "xPos": 35011.0,
+        "yPos": 0.0,
+        "zPos": 316644.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 280.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 172701.0,
+            "yPos": 137.0,
+            "zPos": 65652.0
+          },
+          "endPos": {
+            "xPos": 174189.819227462,
+            "yPos": 0.0,
+            "zPos": 65469.19598489228
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Plane",
+      "position": {
+        "xPos": 172701.0,
+        "yPos": 0.0,
+        "zPos": 65652.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 353.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 192202.0,
+            "yPos": 176.0,
+            "zPos": 313702.0
+          },
+          "endPos": {
+            "xPos": 192202.0,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Poix Nord",
+      "position": {
+        "xPos": 192202.0,
+        "yPos": 0.0,
+        "zPos": 313702.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 87935.0,
+            "yPos": 146.0,
+            "zPos": 264757.0
+          },
+          "endPos": {
+            "xPos": 88899.18141452981,
+            "yPos": 0.0,
+            "zPos": 263607.93333532155
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Saint Andre de lEure",
+      "position": {
+        "xPos": 87935.0,
+        "yPos": 0.0,
+        "zPos": 264757.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 310.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 294347.0,
+            "yPos": 86.0,
+            "zPos": 328474.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Saint Omer",
+      "position": {
+        "xPos": 294347.0,
+        "yPos": 0.0,
+        "zPos": 328474.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 86.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 295609.0,
+            "yPos": 5.0,
+            "zPos": 116105.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 116734.32039104983
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Selsey",
+      "position": {
+        "xPos": 295609.0,
+        "yPos": 0.0,
+        "zPos": 116105.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 141.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 37863.0,
+            "yPos": 144.0,
+            "zPos": 289994.0
+          },
+          "endPos": {
+            "xPos": 37393.52843721411,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Sours",
+      "position": {
+        "xPos": 37863.0,
+        "yPos": 0.0,
+        "zPos": 289994.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 118.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 340299.0,
+            "yPos": 19.0,
+            "zPos": 212460.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 211463.80530190826
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Staplehurst",
+      "position": {
+        "xPos": 340299.0,
+        "yPos": 0.0,
+        "zPos": 212460.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 275.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 305839.0,
+            "yPos": 10.0,
+            "zPos": 121477.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 122157.98574960932
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Tangmere",
+      "position": {
+        "xPos": 305839.0,
+        "yPos": 0.0,
+        "zPos": 121477.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 153.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 302880.0,
+            "yPos": 5.0,
+            "zPos": 106395.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 106264.26638587851
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Thorney Island",
+      "position": {
+        "xPos": 302880.0,
+        "yPos": 0.0,
+        "zPos": 106395.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 346592.0,
+            "yPos": 0.0,
+            "zPos": 58793.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 60173.75728017865
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Thruxton",
+      "position": {
+        "xPos": 346592.0,
+        "yPos": 0.0,
+        "zPos": 58793.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 67.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 136548.0,
+            "yPos": 124.0,
+            "zPos": 204537.0
+          },
+          "endPos": {
+            "xPos": 137291.1448254774,
+            "yPos": 0.0,
+            "zPos": 205206.13060635887
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Triqueville",
+      "position": {
+        "xPos": 136548.0,
+        "yPos": 0.0,
+        "zPos": 204537.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 75917.0,
+            "yPos": 175.0,
+            "zPos": 333671.0
+          },
+          "endPos": {
+            "xPos": 76490.57643635104,
+            "yPos": 0.0,
+            "zPos": 281500.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Velizy Villacoublay",
+      "position": {
+        "xPos": 75917.0,
+        "yPos": 0.0,
+        "zPos": 333671.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 305.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 307228.0,
+            "yPos": 27.0,
+            "zPos": 117421.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 118050.32039104983
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Westhampnett",
+      "position": {
+        "xPos": 307228.0,
+        "yPos": 0.0,
+        "zPos": 117421.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 141.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 299493.0,
+            "yPos": 12.0,
+            "zPos": 46848.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 46726.130656594854
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Winkton",
+      "position": {
+        "xPos": 299493.0,
+        "yPos": 0.0,
+        "zPos": 46848.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 187.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 332572.0,
+            "yPos": 42.0,
+            "zPos": 225834.0
+          },
+          "endPos": {
+            "xPos": 281500.0,
+            "yPos": 0.0,
+            "zPos": 226068.65169756036
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Woodchurch",
+      "position": {
+        "xPos": 332572.0,
+        "yPos": 0.0,
+        "zPos": 225834.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

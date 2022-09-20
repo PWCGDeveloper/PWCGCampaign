@@ -12,4 +12,10 @@ public class ShippingLaneIOJson
 		ShippingLanes shippingLanes = jsonReader.readJsonFile(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "SeaLanes.json");
 		return shippingLanes;
 	}
+
+    public static void writeJson(String directory, String filename, ShippingLanes shippingLanes) throws PWCGException
+    {
+        PwcgJsonWriter<ShippingLanes> jsonWriter = new PwcgJsonWriter<>();
+        jsonWriter.writeAsJson(shippingLanes, directory, filename);
+    }
 }

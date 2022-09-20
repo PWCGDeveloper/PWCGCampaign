@@ -36,4 +36,24 @@ public class AmphibiousAssaultShipDefinition
         this.landingCraftGroundUnit = landingCraftGroundUnit;
     }
 
+    public void setShipType(String shipType)
+    {
+        this.shipType = shipType;
+    }
+
+    public void setDestination(Coordinate destination)
+    {
+        this.destination = destination;
+    }
+
+    public void setOrientation(Orientation orientation)
+    {
+        this.orientation = orientation;
+    }
+
+    public void setLandingCraftGroundUnit(GroundUnitCollection landingCraftGroundUnit)
+    {
+        this.landingCraftGroundUnit = landingCraftGroundUnit;
+    }
+
 }

@@ -1,0 +1,140 @@
+{
+  "skirmishName": "Sword",
+  "landingStartDate": "19440606",
+  "landingStopDate": "19440608",
+  "aggressorCountry": "BRITAIN",
+  "defendingCountry": "GERMANY",
+  "landingCraftBackOff": 0,
+  "shipDefinitions": [
+    {
+      "shipType": "lcm",
+      "destination": {
+        "xPos": 132557.0,
+        "yPos": 1.0,
+        "zPos": 149844.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 133788.0,
+        "yPos": 2.0,
+        "zPos": 147657.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lcm",
+      "destination": {
+        "xPos": 132251.0,
+        "yPos": 1.0,
+        "zPos": 150691.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lcm",
+      "destination": {
+        "xPos": 133971.0,
+        "yPos": 5.0,
+        "zPos": 147319.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lcm",
+      "destination": {
+        "xPos": 132890.0,
+        "yPos": 1.0,
+        "zPos": 149268.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 133444.0,
+        "yPos": 3.0,
+        "zPos": 148165.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 133180.0,
+        "yPos": 2.0,
+        "zPos": 148723.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 134167.0,
+        "yPos": 6.0,
+        "zPos": 147007.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 132129.0,
+        "yPos": 1.0,
+        "zPos": 151129.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lca",
+      "destination": {
+        "xPos": 132404.0,
+        "yPos": 1.0,
+        "zPos": 150231.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

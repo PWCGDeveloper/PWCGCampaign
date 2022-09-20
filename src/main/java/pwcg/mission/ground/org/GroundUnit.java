@@ -319,6 +319,24 @@ public abstract class GroundUnit implements IGroundUnit
         
         makeSubtitles();
     }
+    
+    protected List<Coordinate> createLineAcrossVehiclePositions(Coordinate centralVehicleCoordinate, int numvehicles, double spacing) throws PWCGException 
+    {
+        double facingAngle = pwcgGroundUnitInformation.getOrientation().getyOri();        
+        return GroundUnitPositionCalculatorLineAcross.createLineAcrossVehiclePositions(centralVehicleCoordinate, facingAngle, numvehicles, spacing);        
+    }
+    
+    protected List<Coordinate> createLineAsternVehiclePositions(Coordinate centralVehicleCoordinate, int numvehicles, double spacing) throws PWCGException 
+    {
+        double facingAngle = pwcgGroundUnitInformation.getOrientation().getyOri();        
+        return GroundUnitPositionCalculatorLineAstern.createLineAsternVehiclePositions(centralVehicleCoordinate, facingAngle, numvehicles, spacing);        
+    }
+    
+    protected List<Coordinate> createWedgeVehiclePositions(Coordinate centralVehicleCoordinate, int numvehicles, double spacing) throws PWCGException 
+    {
+        double facingAngle = pwcgGroundUnitInformation.getOrientation().getyOri();        
+        return GroundUnitPositionCalculatorWedge.createWedgeVehiclePositions(centralVehicleCoordinate, facingAngle, numvehicles, spacing);        
+    }
 
     private void makeSubtitles() throws PWCGException
     {
