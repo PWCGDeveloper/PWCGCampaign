@@ -1,34 +1,39 @@
 {
 	"skirmishes": [
 		{
-			"skirmishName": "Falaise",
+			"skirmishName": "Mortain",
 			"swCorner": {
-				"xPos": 70000,
+				"xPos": 52000,
 				"yPos": 0.0,
-				"zPos": 140000
+				"zPos": 94000
 			},
 			"neCorner": {
-				"xPos": 102000,
+				"xPos": 71000,
 				"yPos": 0.0,
-				"zPos": 180000
+				"zPos": 110000
 			},
-			"startDate": "19440813",
-			"stopDate": "19440820",
+			"startDate": "19440808",
+			"stopDate": "19440812",
 			"iconicFlightTypes": [
+				{
+					"side": "ALLIED",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
 				{
 					"side": "AXIS",
 					"flightType": "GROUND_ATTACK",
 					"maxForcedFlightTypes": 1
 				},
 				{
-					"side": "ALLIED",
+					"side": "AXIS",
 					"flightType": "LOW_ALT_CAP",
 					"maxForcedFlightTypes": 1
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
-			"attackerAir": "ALLIED",
-			"attackerGround": "ALLIED"
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
 		}
 	]
 }

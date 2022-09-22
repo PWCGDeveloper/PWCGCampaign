@@ -1,0 +1,24 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "Liberation",
+			"swCorner": {
+				"xPos": 32000,
+				"yPos": 0.0,
+				"zPos": 150000
+			},
+			"neCorner": {
+				"xPos": 132000,
+				"yPos": 0.0,
+				"zPos": 180000
+			},
+			"startDate": "19440821",
+			"stopDate": "19440831",
+			"iconicFlightTypes": [
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
+			"attackerAir": "ALLIED",
+			"attackerGround": "ALLIED"
+		}
+	]
+}

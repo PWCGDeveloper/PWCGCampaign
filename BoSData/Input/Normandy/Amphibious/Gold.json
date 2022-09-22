@@ -4,7 +4,7 @@
   "landingStopDate": "19440608",
   "aggressorCountry": "BRITAIN",
   "defendingCountry": "GERMANY",
-  "landingCraftBackOff": 0,
+  "landingCraftBackOff": 300,
   "shipDefinitions": [
     {
       "shipType": "lcm",

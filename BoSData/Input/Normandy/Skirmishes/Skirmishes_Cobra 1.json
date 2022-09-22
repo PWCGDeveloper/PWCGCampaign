@@ -1,19 +1,19 @@
 {
 	"skirmishes": [
 		{
-			"skirmishName": "Falaise",
+			"skirmishName": "Cobra Part 1",
 			"swCorner": {
-				"xPos": 70000,
+				"xPos": 100000,
 				"yPos": 0.0,
-				"zPos": 140000
+				"zPos": 70000
 			},
 			"neCorner": {
-				"xPos": 102000,
+				"xPos": 125000,
 				"yPos": 0.0,
-				"zPos": 180000
+				"zPos": 150000
 			},
-			"startDate": "19440813",
-			"stopDate": "19440820",
+			"startDate": "19440721",
+			"stopDate": "19440730",
 			"iconicFlightTypes": [
 				{
 					"side": "AXIS",

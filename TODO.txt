@@ -1,10 +1,13 @@
 Normandy
 Map image Early                             - done
-Map image Invasion
 Front lines                                 - done
-Import ground objects                       
-- Seperate D-Day objects ... how?
-Squadron assignments to airfields
+Squadron assignments to airfields           - done
+Newspapers
+
+Map Split
+- Map image Invasion
+- Import ground objects                       
+    - Seperate D-Day objects ... how?
 
 Normandy Map Data
 - Define battles                            - done
@@ -12,7 +15,7 @@ Normandy Map Data
 - Define barge positions                    - done
 - define shipping lanes                     - done
 - define cargo routes                       - done
-- define amphibious invasion locations      - done - need to import
+- define amphibious invasion locations      - done
 - Import ground structures                  - done 
 - Import town names                         - done
 - Extract and import in game ini files      - done 

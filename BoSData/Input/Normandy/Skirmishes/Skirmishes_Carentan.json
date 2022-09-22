@@ -1,19 +1,19 @@
 {
 	"skirmishes": [
 		{
-			"skirmishName": "Falaise",
+			"skirmishName": "Carentan",
 			"swCorner": {
-				"xPos": 70000,
+				"xPos": 100000,
 				"yPos": 0.0,
-				"zPos": 140000
+				"zPos": 40000
 			},
 			"neCorner": {
-				"xPos": 102000,
+				"xPos": 190000,
 				"yPos": 0.0,
-				"zPos": 180000
+				"zPos": 146000
 			},
-			"startDate": "19440813",
-			"stopDate": "19440820",
+			"startDate": "19440620",
+			"stopDate": "19440626",
 			"iconicFlightTypes": [
 				{
 					"side": "AXIS",
