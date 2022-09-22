@@ -1,67 +1,67 @@
 {
-	"country": "USA",
-	"squadronId": 102322584,
-	"name": "322nd Bomber Group",
-	"fileName": "322nd BG.json",
-	"skill": 65,
-	"unitIdCode": "ER",
-	"planeAssignments": [
-		{
-			"archType": "b26",
-			"squadronIntroduction": "19440401",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-        "19440901": "Nivelles",
-        "19440925": "LeCulot",
-        "19440928": "LeCulot East",
-        "19441101": "Eindhoven",
-        "19441220": "Gilze-Rijen",
-        "19441225": "St.Trond",
-        "19441229": "Diest",
-        "19450207": "Bierset",
-        "19450310": "Asch",
-        "19450404": "Koln-Ostheim"
-	},
-	"skins": [
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10102,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19420801",
-				"weightedRoles": [
-					{
-						"role": "ROLE_RECON",
-						"weight": 5
-					},
-					{
-						"role": "ROLE_BOMB",
-						"weight": 80
-					},
-					{
-						"role": "ROLE_RAIDER",
-						"weight": 10
-					}
-				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 10
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "ROUGHMAN"
-	}
+  "country": "USA",
+  "squadronId": 102322584,
+  "name": "322nd Bomber Group",
+  "fileName": "322nd BG.json",
+  "skill": 65,
+  "unitIdCode": "ER",
+  "planeAssignments": [
+    {
+      "archType": "b26",
+      "squadronIntroduction": "19430601",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19430601": "Dunsfold",
+    "19440721": "Apuldram",
+    "19440901": "Nivelles",
+    "19440925": "LeCulot",
+    "19440928": "LeCulot East",
+    "19441101": "Eindhoven",
+    "19441220": "Gilze-Rijen",
+    "19441225": "St.Trond",
+    "19441229": "Diest",
+    "19450207": "Bierset",
+    "19450310": "Asch",
+    "19450404": "Koln-Ostheim"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 10102,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19430601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 5
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_RAIDER",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "nightMissionOdds": 10
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19410801": "ROUGHMAN"
+  }
 }
