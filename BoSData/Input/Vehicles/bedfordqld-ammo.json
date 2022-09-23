@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\bedfordqld-ammo\\",
+  "vehicleType": "bedfordqld-ammo",
+  "vehicleName": "Bedford QLD ammo",
+  "displayName": "truck",
+  "countries": [
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 100,
+  "vehicleClass": "Truck"
+}

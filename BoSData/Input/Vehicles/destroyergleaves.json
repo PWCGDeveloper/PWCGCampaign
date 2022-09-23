@@ -1,0 +1,16 @@
+{
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\destroyergleaves\\",
+	"vehicleType": "destroyergleaves",
+	"vehicleName": "Destroyer Gleaves-class",
+	"displayName": "destroyer",
+	"countries": [
+        "USA",
+		"BRITAIN"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 20,
+	"vehicleClass": "ShipWarship",
+	"vehicleLength": 230
+}

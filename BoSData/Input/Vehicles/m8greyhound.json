@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\m8greyhound\\",
+  "vehicleType": "m8greyhound",
+  "vehicleName": "M8 Greyhound",
+  "displayName": "armored car",
+  "countries": [
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460101",
+  "rarityWeight": 20,
+  "vehicleClass": "Tank"
+}

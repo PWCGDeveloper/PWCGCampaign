@@ -5,11 +5,7 @@
 	"vehicleName": "Georgia AA Gunship",
 	"displayName": "large river gunship",
 	"countries": [
-		"GERMANY",
-		"ITALY",
-		"RUSSIA",
-		"USA",
-		"BRITAIN"
+		"RUSSIA"
 	],
 	"startDate": "19390901",
 	"endDate": "19460724",

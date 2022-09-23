@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\humbermkiv\\",
+  "vehicleType": "humbermkiv",
+  "vehicleName": "Humber Mk.IV",
+  "displayName": "armored car",
+  "countries": [
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460101",
+  "rarityWeight": 20,
+  "vehicleClass": "Tank"
+}

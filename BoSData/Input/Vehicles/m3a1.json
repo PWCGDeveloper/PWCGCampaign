@@ -1,11 +1,12 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\m16\\",
-  "vehicleType": "m16",
-  "vehicleName": "M-16 Half Track",
+  "modelDir": "vehicles\\m3a1\\",
+  "vehicleType": "m3a1",
+  "vehicleName": "M3A1 Half-track",
   "displayName": "half track",
   "countries": [
-    "USA"
+    "USA",
+    "BRITAIN"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

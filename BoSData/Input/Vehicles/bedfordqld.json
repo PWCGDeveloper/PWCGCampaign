@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\bedfordqld\\",
+  "vehicleType": "bedfordqld",
+  "vehicleName": "Bedford QLD",
+  "displayName": "truck",
+  "countries": [
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 100,
+  "vehicleClass": "Truck"
+}

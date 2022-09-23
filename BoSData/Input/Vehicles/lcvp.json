@@ -1,15 +1,18 @@
 {
 	"scriptDir": "ships\\",
-	"modelDir": "ships\\landboata\\",
-	"vehicleType": "landboata",
-	"vehicleName": "Landing Craft",
+	"modelDir": "ships\\lcvp\\",
+	"vehicleType": "lcvp",
+	"vehicleName": "Landing Craft LCVP",
 	"displayName": "landing craft",
 	"countries": [
-		"GERMANY"
+        "RUSSIA",
+        "USA",
+        "BRITAIN",
+        "FRANCE"
 	],
 	"startDate": "19390901",
 	"endDate": "19460724",
-	"rarityWeight": 5,
+	"rarityWeight": 50,
 	"vehicleClass": "ShipLandingCraft",
 	"vehicleLength": 100
 }

@@ -231,7 +231,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         usaaf.setEndDate(DateUtils.getEndOfWar());
         usaaf.setServiceColorMap(new AmericanColorMap());
         usaaf.setGeneralRankForService("General");
-        usaaf.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
+        usaaf.setStartDate(DateUtils.getDateYYYYMMDD("19430601"));
         usaaf.setDailyPersonnelReplacementRatePerSquadron(3.0);
         usaaf.setDailyEquipmentReplacementRatePerSquadron(3.0);
 
@@ -274,7 +274,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         raf.setEndDate(DateUtils.getEndOfWar());
         raf.setServiceColorMap(new RAFColorMap());
         raf.setGeneralRankForService("Air Vice-Marshal");
-        raf.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
+        raf.setStartDate(DateUtils.getDateYYYYMMDD("19410601"));
         raf.setDailyPersonnelReplacementRatePerSquadron(2.0);
         raf.setDailyEquipmentReplacementRatePerSquadron(2.0);
 

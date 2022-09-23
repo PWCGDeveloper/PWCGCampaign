@@ -1,0 +1,15 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\dodge-wc54-ambulance\\",
+  "vehicleType": "dodge-wc54-ambulance",
+  "vehicleName": "Dodge WC54 Ambulance",
+  "displayName": "truck",
+  "countries": [
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 100,
+  "vehicleClass": "Truck"
+}

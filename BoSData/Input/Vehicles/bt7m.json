@@ -5,10 +5,11 @@
   "vehicleName": "BT-7",
   "displayName": "BT-7",
   "countries": [
-    "RUSSIA"
+    "RUSSIA", 
+    "BRITAIN"
   ],
   "startDate": "19390901",
-  "endDate": "19440209",
+  "endDate": "19420601",
   "rarityWeight": 40,
   "vehicleClass": "Tank"
 }

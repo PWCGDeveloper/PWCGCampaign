@@ -1,16 +1,18 @@
 {
 	"scriptDir": "ships\\",
-	"modelDir": "ships\\1124\\",
-	"vehicleType": "1124",
-	"vehicleName": "BK-1124 Gunboat",
+	"modelDir": "ships\\penicheb\\",
+	"vehicleType": "penicheb",
+	"vehicleName": "Peniche type B",
 	"displayName": "barge",
 	"countries": [
-		"GERMANY",
+        "GERMANY",
+		"USA",
+		"BRITAIN",
 		"RUSSIA"
 	],
 	"startDate": "19390901",
 	"endDate": "19460724",
-	"rarityWeight": 20,
+	"rarityWeight": 100,
 	"vehicleClass": "Drifter",
 	"vehicleLength": 50
 }

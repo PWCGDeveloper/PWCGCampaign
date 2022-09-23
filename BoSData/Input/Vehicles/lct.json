@@ -1,11 +1,12 @@
 {
 	"scriptDir": "ships\\",
-	"modelDir": "ships\\landboata\\",
-	"vehicleType": "landboata",
-	"vehicleName": "Landing Craft",
+	"modelDir": "ships\\lct\\",
+	"vehicleType": "lct",
+	"vehicleName": "Landing Craft LCT",
 	"displayName": "landing craft",
 	"countries": [
-		"GERMANY"
+		"USA",
+		"BRITAIN"
 	],
 	"startDate": "19390901",
 	"endDate": "19460724",

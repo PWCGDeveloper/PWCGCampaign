@@ -39,6 +39,7 @@ public class TestCampaignFactoryBoS extends TestCampaignFactoryBase implements I
         makeProfile(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190);
         makeProfile(SquadronTestProfile.JG_52_PROFILE_STALINGRAD);
         makeProfile(SquadronTestProfile.JG_26_PROFILE_WEST);
+        makeProfile(SquadronTestProfile.LW_BOB_PROFILE);
         makeProfile(SquadronTestProfile.JV44_PROFILE);
         makeProfile(SquadronTestProfile.KG53_PROFILE);
         makeProfile(SquadronTestProfile.KG53__STALINGRAD_PROFILE);
@@ -49,8 +50,10 @@ public class TestCampaignFactoryBoS extends TestCampaignFactoryBase implements I
         makeProfile(SquadronTestProfile.FG_362_PROFILE);
         makeProfile(SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
         makeProfile(SquadronTestProfile.FG_354_BODENPLATTE_PROFILE);
+        makeProfile(SquadronTestProfile.USAAF_NORMANDY);
         makeProfile(SquadronTestProfile.RAF_326_BODENPLATTE_PROFILE);
         makeProfile(SquadronTestProfile.RAF_184_PROFILE);
+        makeProfile(SquadronTestProfile.RAF_BOB_PROFILE);
         makeProfile(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         makeProfile(SquadronTestProfile.EAST1944_PROFILE);
         makeProfile(SquadronTestProfile.EAST1945_PROFILE);

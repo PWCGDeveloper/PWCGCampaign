@@ -276,21 +276,6 @@ public class DateUtils
         }
     }
 
-    public static Date getStartofWWIIItaly() throws PWCGException
-    {
-        return DateUtils.getDateYYYYMMDD("19420101");            
-    }
-
-    public static Date getStartofWWIIUSA() throws PWCGException
-    {
-        return DateUtils.getDateYYYYMMDD("19440801");            
-    }
-
-    public static Date getStartofWWIIBritain() throws PWCGException
-    {
-        return DateUtils.getDateYYYYMMDD("19440801");            
-    }
-
     public static Date getRAFDate() throws PWCGException
     {
         return DateUtils.getDateYYYYMMDD("19180401");

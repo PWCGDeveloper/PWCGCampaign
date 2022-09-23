@@ -1,11 +1,11 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\m16\\",
-  "vehicleType": "m16",
-  "vehicleName": "M-16 Half Track",
-  "displayName": "half track",
+  "modelDir": "vehicles\\morrisc9b\\",
+  "vehicleType": "morrisc9b",
+  "vehicleName": "Morris C9B",
+  "displayName": "Truck AAA",
   "countries": [
-    "USA"
+    "BRITAIN"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

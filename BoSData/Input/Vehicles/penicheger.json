@@ -1,0 +1,15 @@
+{
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\penicheger\\",
+	"vehicleType": "penicheger",
+	"vehicleName": "German AAA Peniche",
+	"displayName": "barge",
+	"countries": [
+		"GERMANY"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 60,
+	"vehicleClass": "DrifterAAA",
+	"vehicleLength": 50
+}

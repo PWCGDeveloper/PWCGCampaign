@@ -8,6 +8,10 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
 { 
 	protected BoSContext()
     {
+        campaignStartDates.add("01/06/1941");
+        campaignStartDates.add("01/07/1941");
+        campaignStartDates.add("01/08/1941");
+        campaignStartDates.add("01/09/1941");
         campaignStartDates.add("01/10/1941");
         campaignStartDates.add("01/11/1941");
         campaignStartDates.add("01/12/1941");

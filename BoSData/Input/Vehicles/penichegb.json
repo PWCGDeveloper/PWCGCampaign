@@ -1,0 +1,17 @@
+{
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\penichegb\\",
+	"vehicleType": "penichegb",
+	"vehicleName": "British AAA Peniche",
+	"displayName": "barge",
+	"countries": [
+		"USA",
+		"BRITAIN",
+		"RUSSIA"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 60,
+	"vehicleClass": "DrifterAAA",
+	"vehicleLength": 50
+}

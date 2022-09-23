@@ -1,13 +1,12 @@
 {
 	"scriptDir": "ships\\",
-	"modelDir": "ships\\largetankershiptype1\\",
-    "vehicleType": "largetankershiptype1",
-	"vehicleName": "Tanker Ship",
+	"modelDir": "ships\\largetankershiptype1ger\\",
+	"vehicleType": "largetankershiptype1ger",
+    "vehicleName": "Large Tanker Ship type 1 ger",
 	"displayName": "tanker",
 	"countries": [
-		"RUSSIA",
-		"USA",
-		"BRITAIN"
+		"GERMANY",
+		"ITALY"
 	],
 	"startDate": "19390901",
 	"endDate": "19460724",
