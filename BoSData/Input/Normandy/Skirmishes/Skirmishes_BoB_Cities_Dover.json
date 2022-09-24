@@ -1,0 +1,29 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "BoB Cities Dover",
+			"swCorner": {
+				"xPos": 335000,
+				"yPos": 0.0,
+				"zPos": 260000
+			},
+			"neCorner": {
+				"xPos": 338000,
+				"yPos": 0.0,
+				"zPos": 254000
+			},
+			"startDate": "19410907",
+			"stopDate": "19411001",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "BOMB",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_CARPET_BOMB",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}

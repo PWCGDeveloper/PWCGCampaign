@@ -1,0 +1,29 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "BoB Cities Brighton",
+			"swCorner": {
+				"xPos": 300000,
+				"yPos": 0.0,
+				"zPos": 195000
+			},
+			"neCorner": {
+				"xPos": 305000,
+				"yPos": 0.0,
+				"zPos": 163000
+			},
+			"startDate": "19410907",
+			"stopDate": "19411001",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "BOMB",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_CARPET_BOMB",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}

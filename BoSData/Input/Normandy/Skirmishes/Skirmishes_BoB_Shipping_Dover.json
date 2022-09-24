@@ -1,0 +1,29 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "BoB Shipping Dover",
+			"swCorner": {
+				"xPos": 311000,
+				"yPos": 0.0,
+				"zPos": 250000
+			},
+			"neCorner": {
+				"xPos": 331000,
+				"yPos": 0.0,
+				"zPos": 290000
+			},
+			"startDate": "19410717",
+			"stopDate": "19410812",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "ANTI_SHIPPING",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_SHIPPING",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}

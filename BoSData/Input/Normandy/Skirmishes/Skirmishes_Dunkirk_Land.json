@@ -1,0 +1,39 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "Dunkirk Land",
+			"swCorner": {
+				"xPos": 321000,
+				"yPos": 0.0,
+				"zPos": 330000
+			},
+			"neCorner": {
+				"xPos": 332000,
+				"yPos": 0.0,
+				"zPos": 340000
+			},
+			"startDate": "19410601",
+			"stopDate": "19410610",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "AXIS",
+					"flightType": "LOW_ALT_CAP",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "LOW_ALT_CAP",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}

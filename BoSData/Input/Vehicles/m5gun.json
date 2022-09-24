@@ -5,7 +5,8 @@
   "vehicleName": "M-5 76.2mm AT Gun",
   "displayName": "anti tank gun",
   "countries": [
-    "USA"
+    "USA",
+    "BRITAIN"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

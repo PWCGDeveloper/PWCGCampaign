@@ -1,0 +1,29 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "BoB Cities Canterbury",
+			"swCorner": {
+				"xPos": 352000,
+				"yPos": 0.0,
+				"zPos": 243000
+			},
+			"neCorner": {
+				"xPos": 355000,
+				"yPos": 0.0,
+				"zPos": 248000
+			},
+			"startDate": "19410907",
+			"stopDate": "19411001",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "BOMB",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_CARPET_BOMB",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}

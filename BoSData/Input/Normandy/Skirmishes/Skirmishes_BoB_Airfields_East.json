@@ -1,0 +1,29 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "BoB Airfields East",
+			"swCorner": {
+				"xPos": 320000,
+				"yPos": 0.0,
+				"zPos": 205000
+			},
+			"neCorner": {
+				"xPos": 350000,
+				"yPos": 0.0,
+				"zPos": 260000
+			},
+			"startDate": "19410813",
+			"stopDate": "19410906",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "DIVE_BOMB",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}

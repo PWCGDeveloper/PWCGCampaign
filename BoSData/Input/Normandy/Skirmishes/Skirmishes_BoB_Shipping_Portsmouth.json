@@ -1,0 +1,29 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "BoB Shipping Portsmouth",
+			"swCorner": {
+				"xPos": 262000,
+				"yPos": 0.0,
+				"zPos": 95000
+			},
+			"neCorner": {
+				"xPos": 292000,
+				"yPos": 0.0,
+				"zPos": 110000
+			},
+			"startDate": "19410717",
+			"stopDate": "19410812",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "ANTI_SHIPPING",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_SHIPPING",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}

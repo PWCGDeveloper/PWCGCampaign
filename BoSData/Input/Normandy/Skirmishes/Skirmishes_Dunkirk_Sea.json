@@ -1,0 +1,29 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "Dunkirk Sea",
+			"swCorner": {
+				"xPos": 332000,
+				"yPos": 0.0,
+				"zPos": 290000
+			},
+			"neCorner": {
+				"xPos": 350000,
+				"yPos": 0.0,
+				"zPos": 340000
+			},
+			"startDate": "19410601",
+			"stopDate": "19410610",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "ANTI_SHIPPING",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_SHIPPING",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}

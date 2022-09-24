@@ -1,0 +1,29 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "BoB Cities Portsmouth",
+			"swCorner": {
+				"xPos": 295000,
+				"yPos": 0.0,
+				"zPos": 90000
+			},
+			"neCorner": {
+				"xPos": 307000,
+				"yPos": 0.0,
+				"zPos": 100000
+			},
+			"startDate": "19410907",
+			"stopDate": "19411001",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "BOMB",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_CARPET_BOMB",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}

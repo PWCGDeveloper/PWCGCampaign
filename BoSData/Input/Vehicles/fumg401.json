@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\fumg401\\",
+  "vehicleType": "fumg401",
+  "vehicleName": "FuMG-401 Freya LZ-A Radar",
+  "displayName": "radar",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 100,
+  "vehicleClass": "Radar"
+}

@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\chl\\",
+  "vehicleType": "chl",
+  "vehicleName": "Chain Home Low Radar",
+  "displayName": "radar",
+  "countries": [
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 100,
+  "vehicleClass": "Radar"
+}

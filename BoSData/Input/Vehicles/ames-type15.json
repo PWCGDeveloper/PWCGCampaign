@@ -1,0 +1,15 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\ames-type15\\",
+  "vehicleType": "ames-type15",
+  "vehicleName": "AMES Type 15 Radar",
+  "displayName": "radar",
+  "countries": [
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 100,
+  "vehicleClass": "Radar"
+}

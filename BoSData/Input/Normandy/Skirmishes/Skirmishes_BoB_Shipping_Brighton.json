@@ -1,0 +1,29 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "BoB Shipping Brighton",
+			"swCorner": {
+				"xPos": 271000,
+				"yPos": 0.0,
+				"zPos": 130000
+			},
+			"neCorner": {
+				"xPos": 295000,
+				"yPos": 0.0,
+				"zPos": 170000
+			},
+			"startDate": "19410717",
+			"stopDate": "19410812",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "ANTI_SHIPPING",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_SHIPPING",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}
