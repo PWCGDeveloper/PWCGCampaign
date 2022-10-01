@@ -86,7 +86,14 @@ public class MissionGroundUnitBuilder
     private void createAAAForMission() throws PWCGException 
     {
         AAAManager aaaManager = new AAAManager(campaign, mission);
-        aaaManager.getAAAForMission(this);
+        if (!PWCGContext.getInstance().getCurrentMap().isLimited(campaign.getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
+        {
+            aaaManager.getAAAForMission(this);
+        }
+        else
+        {
+            aaaManager.getAAAKeyPositionForMission(this);
+        }
     }
 
     private void generateBalloons() throws PWCGException

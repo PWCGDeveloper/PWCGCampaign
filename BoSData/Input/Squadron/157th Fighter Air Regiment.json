@@ -73,7 +73,7 @@
 			"category": "Squadron",
 			"definedInGame": true,
 			"winter": false,
-			"useTacticalCodes": false,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "BLACK"
 		},
 		{
@@ -87,7 +87,7 @@
 			"category": "Squadron",
 			"definedInGame": true,
 			"winter": true,
-			"useTacticalCodes": false,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "BLACK"
 		},
 		{
@@ -101,7 +101,7 @@
 			"category": "Squadron",
 			"definedInGame": true,
 			"winter": false,
-			"useTacticalCodes": false,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "BLACK"
 		}
 	],

@@ -34,7 +34,92 @@
     "19450310": "Gilze-Rijen",
     "19450404": "Bonninghardt-Sud"
   },
-  "skins": [],
+  "skins": [
+        {
+            "skinName": "a20b_skin_4",
+            "planeType": "a20b",
+            "archTypes": [],
+            "startDate": "19390801",
+            "endDate": "19420401",
+            "squadId": 103002139,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": ""
+        },
+        {
+            "skinName": "a20b_skin_3",
+            "planeType": "a20b",
+            "archTypes": [],
+            "startDate": "19420401",
+            "endDate": "19440601",
+            "squadId": 103002139,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": ""
+        },
+        {
+            "skinName": "a20b_skin_5",
+            "planeType": "a20b",
+            "archTypes": [],
+            "startDate": "19440601",
+            "endDate": "19440706",
+            "squadId": 103002139,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": ""
+        },
+        {
+            "skinName": "a20b_skin_6",
+            "planeType": "a20b",
+            "archTypes": [],
+            "startDate": "19440706",
+            "endDate": "19440825",
+            "squadId": 103002139,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": ""
+        },
+        {
+            "skinName": "a20b_skin_7",
+            "planeType": "a20b",
+            "archTypes": [],
+            "startDate": "19440825",
+            "endDate": "19450103",
+            "squadId": 103002139,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": ""
+        },
+        {
+            "skinName": "a20b_skin_3",
+            "planeType": "a20b",
+            "archTypes": [],
+            "startDate": "19450103",
+            "endDate": "19450601",
+            "squadId": 103002139,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": ""
+        }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

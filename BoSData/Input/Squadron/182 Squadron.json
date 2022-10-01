@@ -1,171 +1,269 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 103083182,
-  "name": "182 Squadron",
-  "fileName": "182 Squadron.json",
-  "skill": 65,
-  "unitIdCode": "XM",
-  "planeAssignments": [
-    {
-      "archType": "hurricane",
-      "squadronIntroduction": "19390801",
-      "squadronWithdrawal": "19421001"
-    },
-    {
-      "archType": "typhoon",
-      "squadronIntroduction": "19421001",
-      "squadronWithdrawal": "19440401"
-    },
-    {
-      "archType": "tempest",
-      "squadronIntroduction": "19440401",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19410601": "Ashford",
-    "19410610": "High Halden",
-    "19410717": "Funtington",
-    "19410813": "Woodchurch",
-    "19410902": "Apuldram",
-    "19411101": "Lympne",
-    "19420819": "Deanland",
-    "19420820": "Manston",
-    "19440501": "Bognor",
-    "19440721": "A-13 Tour en Bessin",
-    "19440928": "GraveKeent",
-    "19441101": "Mill",
-    "19441220": "Volkel",
-    "19441225": "Volkel",
-    "19441229": "GraveKeent",
-    "19450207": "Schijndel",
-    "19450310": "Heesch",
-    "19450404": "Coesfeld-Lette"
-  },
-  "skins": [
-    {
-      "skinName": "tempestmkvs2_skin_05",
-      "planeType": "tempestmkvs2",
-      "archTypes": [],
-      "startDate": "19390801",
-      "endDate": "19450601",
-      "squadId": 103083182,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": true,
-      "winter": false,
-      "useTacticalCodes": false,
-      "tacticalCodeColor": "BLACK"
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": [
-      {
-        "date": "19390801",
-        "squadName": "3 Squadron",
-        "armedServiceName": "Royal Air Force",
-        "skill": 65
-      },
-      {
-        "date": "19440901",
-        "squadName": "182 Squadron",
-        "armedServiceName": "Royal Air Force",
-        "skill": 65
-      }
-    ]
-  },
-  "serviceId": 10103,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19390801",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 50
-          }
-        ]
-      },
-      {
-        "startDate": "19410615",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 50
-          },
-          {
-            "role": "ROLE_STRATEGIC_INTERCEPT",
-            "weight": 50
-          }
-        ]
-      },
-      {
-        "startDate": "19411001",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 50
-          },
-          {
-            "role": "ROLE_RAIDER",
-            "weight": 40
-          }
-        ]
-      },
-      {
-        "startDate": "19421001",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 60
-          },
-          {
-            "role": "ROLE_RAIDER",
-            "weight": 40
-          }
-        ]
-      },
-      {
-        "startDate": "19440606",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 5
-          },
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 60
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 20
-          },
-          {
-            "role": "ROLE_RAIDER",
-            "weight": 10
-          },
-          {
-            "role": "ROLE_TRAIN_BUSTER",
-            "weight": 10
-          },
-          {
-            "role": "ROLE_TANK_BUSTER",
-            "weight": 10
-          }
-        ]
-      }
-    ]
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "nightMissionOdds": 7
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {
-    "19410801": "BEARSKIN"
-  }
+	"country": "BRITAIN",
+	"squadronId": 103083182,
+	"name": "182 Squadron",
+	"fileName": "182 Squadron.json",
+	"skill": 65,
+	"unitIdCode": "XM",
+	"planeAssignments": [
+		{
+			"archType": "hurricane",
+			"squadronIntroduction": "19390801",
+			"squadronWithdrawal": "19421001"
+		},
+		{
+			"archType": "typhoon",
+			"squadronIntroduction": "19421001",
+			"squadronWithdrawal": "19440401"
+		},
+		{
+			"archType": "tempest",
+			"squadronIntroduction": "19440401",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19410601": "Ashford",
+		"19410610": "High Halden",
+		"19410717": "Funtington",
+		"19410813": "Woodchurch",
+		"19410902": "Apuldram",
+		"19411101": "Lympne",
+		"19420819": "Deanland",
+		"19420820": "Manston",
+		"19440501": "Bognor",
+		"19440721": "A-13 Tour en Bessin",
+		"19440928": "GraveKeent",
+		"19441101": "Mill",
+		"19441220": "Volkel",
+		"19441225": "Volkel",
+		"19441229": "GraveKeent",
+		"19450207": "Schijndel",
+		"19450310": "Heesch",
+		"19450404": "Coesfeld-Lette"
+	},
+	"skins": [
+        {
+            "skinName": "hurricanemkii_skin_03",
+            "planeType": "hurricanemkii",
+            "archTypes": [],
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": 103083182,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "hurricanemkii_skin_04",
+            "planeType": "hurricanemkii",
+            "archTypes": [],
+            "startDate": "19420301",
+            "endDate": "19450601",
+            "squadId": 103083182,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
+        },
+        {
+            "skinName": "typhoonmkib_skin_00",
+            "planeType": "typhoonmkib",
+            "archTypes": [],
+            "startDate": "19390801",
+            "endDate": "19440601",
+            "squadId": 103083182,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
+        },
+        {
+            "skinName": "tempestmkvs2_skin_04",
+            "planeType": "tempestmkvs2",
+            "archTypes": [],
+            "startDate": "19390801",
+            "endDate": "19440601",
+            "squadId": 103083182,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
+        },
+        {
+            "skinName": "tempestmkvs2_skin_01",
+            "planeType": "tempestmkvs2",
+            "archTypes": [],
+            "startDate": "19440601",
+            "endDate": "19440706",
+            "squadId": 103083182,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
+        },
+        {
+            "skinName": "tempestmkvs2_skin_02",
+            "planeType": "tempestmkvs2",
+            "archTypes": [],
+            "startDate": "19440706",
+            "endDate": "19440825",
+            "squadId": 103083182,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
+        },
+        {
+            "skinName": "tempestmkvs2_skin_03",
+            "planeType": "tempestmkvs2",
+            "archTypes": [],
+            "startDate": "19440825",
+            "endDate": "19450103",
+            "squadId": 103083182,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
+        },
+        {
+            "skinName": "tempestmkvs2_skin_00",
+            "planeType": "tempestmkvs2",
+            "archTypes": [],
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": 103083182,
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
+        }
+	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19390801",
+				"squadName": "3 Squadron",
+				"armedServiceName": "Royal Air Force",
+				"skill": 65
+			},
+			{
+				"date": "19440901",
+				"squadName": "182 Squadron",
+				"armedServiceName": "Royal Air Force",
+				"skill": 65
+			}
+		]
+	},
+	"serviceId": 10103,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19390801",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 50
+					}
+				]
+			},
+			{
+				"startDate": "19410615",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 50
+					},
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 50
+					}
+				]
+			},
+			{
+				"startDate": "19411001",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 50
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 40
+					}
+				]
+			},
+			{
+				"startDate": "19421001",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 60
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 40
+					}
+				]
+			},
+			{
+				"startDate": "19440606",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 60
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 10
+					},
+					{
+						"role": "ROLE_TRAIN_BUSTER",
+						"weight": 10
+					},
+					{
+						"role": "ROLE_TANK_BUSTER",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"nightMissionOdds": 7
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "BEARSKIN"
+	}
 }

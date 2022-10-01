@@ -40,7 +40,7 @@ public class HurricaneMkIIPayloadRAF
     {
         try
         {
-            hispanoIntroDate = DateUtils.getDateYYYYMMDD("19410601");
+            hispanoIntroDate = DateUtils.getDateYYYYMMDD("19420101");
             boforsIntroDate = DateUtils.getDateYYYYMMDD("19430102");
         }
         catch (Exception e)

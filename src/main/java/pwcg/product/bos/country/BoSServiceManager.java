@@ -307,7 +307,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         freeFrench.setEndDate(DateUtils.getEndOfWar());
         freeFrench.setServiceColorMap(new FrenchColorMap());
         freeFrench.setGeneralRankForService("Air Vice-Marshal");
-        freeFrench.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
+        freeFrench.setStartDate(DateUtils.getDateYYYYMMDD("19440101"));
         freeFrench.setDailyPersonnelReplacementRatePerSquadron(1.0);
         freeFrench.setDailyEquipmentReplacementRatePerSquadron(1.0);
 
@@ -340,7 +340,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         rcaf.setEndDate(DateUtils.getEndOfWar());
         rcaf.setServiceColorMap(new FrenchColorMap());
         rcaf.setGeneralRankForService("Air Vice-Marshal");
-        rcaf.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
+        rcaf.setStartDate(DateUtils.getDateYYYYMMDD("19410601"));
         rcaf.setDailyPersonnelReplacementRatePerSquadron(1.0);
         rcaf.setDailyEquipmentReplacementRatePerSquadron(1.0);
 

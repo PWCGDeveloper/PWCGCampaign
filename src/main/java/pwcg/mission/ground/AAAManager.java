@@ -25,30 +25,48 @@ public class AAAManager
 
 	public void getAAAForMission (MissionGroundUnitBuilder missionGroundUnitBuilder) throws PWCGException
 	{
+        getAAAFrontLinesForMission(missionGroundUnitBuilder);
+        getAAAKeyPositionForMission(missionGroundUnitBuilder);
+	}
+	   
+	public void getAAAFrontLinesForMission (MissionGroundUnitBuilder missionGroundUnitBuilder) throws PWCGException
+	{
 		List<GroundUnitCollection> allAAA = new ArrayList<>();
 		        
 		AAAFrontLinesBuilder aaaFrontLinesBuilder = new AAAFrontLinesBuilder(campaign);
 		List<GroundUnitCollection> frontAAA = aaaFrontLinesBuilder.generateAAAEmplacements();
 		allAAA.addAll(frontAAA);
-				
+
+        selectAndAddAAAForMission(missionGroundUnitBuilder, allAAA);
+	}
+
+    public void getAAAKeyPositionForMission (MissionGroundUnitBuilder missionGroundUnitBuilder) throws PWCGException
+    {
+        List<GroundUnitCollection> allAAA = new ArrayList<>();
+                
         String currentGroundSetting = campaign.getCampaignConfigManager().getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
         if (!currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
-		{
-        	AAABridgeBuilder aaaBridgeBuilder = new AAABridgeBuilder(campaign);
-    		List<GroundUnitCollection> bridgeAAA = aaaBridgeBuilder.createAAAForBridges();
-    		allAAA.addAll(bridgeAAA);
+        {
+            AAABridgeBuilder aaaBridgeBuilder = new AAABridgeBuilder(campaign);
+            List<GroundUnitCollection> bridgeAAA = aaaBridgeBuilder.createAAAForBridges();
+            allAAA.addAll(bridgeAAA);
 
-    		AAARailroadBuilder aaaRailroadBuilder = new AAARailroadBuilder(campaign);
-    		List<GroundUnitCollection> railroadAAA = aaaRailroadBuilder.createAAAForRailroads();
-    		allAAA.addAll(railroadAAA);
-		}
-		
+            AAARailroadBuilder aaaRailroadBuilder = new AAARailroadBuilder(campaign);
+            List<GroundUnitCollection> railroadAAA = aaaRailroadBuilder.createAAAForRailroads();
+            allAAA.addAll(railroadAAA);
+        }
+        
+        selectAndAddAAAForMission(missionGroundUnitBuilder, allAAA);
+    }
+
+    private void selectAndAddAAAForMission(MissionGroundUnitBuilder missionGroundUnitBuilder, List<GroundUnitCollection> allAAA) throws PWCGException
+    {
         List<GroundUnitCollection> selectedAAA = selectAAAForMission(allAAA);
         for (GroundUnitCollection aaa : selectedAAA)
         {
             missionGroundUnitBuilder.addMissionAAA(aaa);
         }
-	}
+    }
 
 
 	private List<GroundUnitCollection> selectAAAForMission(List<GroundUnitCollection> allAAA) throws PWCGException, PWCGException
