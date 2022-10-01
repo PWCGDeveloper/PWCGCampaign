@@ -1,5 +1,5 @@
 {
-  "skirmishName": "Dieppe",
+  "skirmishName": "Dieppe Amphibious Assault",
   "landingStartDate": "19420819",
   "landingStopDate": "19420819",
   "aggressorCountry": "BRITAIN",
@@ -8,6 +8,7 @@
   "shipDefinitions": [
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 205879.0,
         "yPos": 60.0,
@@ -21,6 +22,7 @@
     },
     {
       "shipType": "lcm",
+	  "shipClass": "LANDING_CRAFT_TANK",
       "destination": {
         "xPos": 205367.0,
         "yPos": 46.0,
@@ -34,6 +36,7 @@
     },
     {
       "shipType": "lcm",
+	  "shipClass": "LANDING_CRAFT_TANK",
       "destination": {
         "xPos": 202468.0,
         "yPos": 41.0,
@@ -47,6 +50,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 204988.0,
         "yPos": 66.0,
@@ -60,6 +64,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 204562.0,
         "yPos": 46.0,
@@ -73,6 +78,7 @@
     },
     {
       "shipType": "lcm",
+	  "shipClass": "LANDING_CRAFT_TANK",
       "destination": {
         "xPos": 202113.0,
         "yPos": 3.0,
@@ -86,6 +92,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 202778.0,
         "yPos": 74.0,
@@ -99,6 +106,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 203027.0,
         "yPos": 42.0,
@@ -112,6 +120,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 204044.0,
         "yPos": 42.0,
@@ -125,6 +134,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 201938.0,
         "yPos": 30.0,
@@ -135,6 +145,48 @@
         "yOri": 175.0,
         "zOri": 0.0
       }
-    }
+    },
+	{
+		"shipType": "destroyergleaves",
+		"shipClass": "DESTROYER",
+		"destination": {
+			"xPos": 203200.0,
+			"yPos": 0.0,
+			"zPos": 246800.0
+		},
+		"orientation": {
+			"xOri": 0.0,
+			"yOri": 270.0,
+			"zOri": 0.0
+		}
+	},
+	{
+		"shipType": "destroyergleaves",
+		"shipClass": "DESTROYER",
+		"destination": {
+			"xPos": 205000.0,
+			"yPos": 0.0,
+			"zPos": 249200.0
+		},
+		"orientation": {
+			"xOri": 0.0,
+			"yOri": 270.0,
+			"zOri": 0.0
+		}
+	},
+	{
+		"shipType": "destroyergleaves",
+		"shipClass": "DESTROYER",
+		"destination": {
+			"xPos": 206500.0,
+			"yPos": 0.0,
+			"zPos": 252200.0
+		},
+		"orientation": {
+			"xOri": 0.0,
+			"yOri": 270.0,
+			"zOri": 0.0
+		}
+	}
   ]
 }

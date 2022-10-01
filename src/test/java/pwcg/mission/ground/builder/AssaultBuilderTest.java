@@ -135,6 +135,10 @@ public class AssaultBuilderTest
                 {
                     Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
+                else if (groundUnit.getVehicleClass() == VehicleClass.Infantry)
+                {
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
+                }
                 else if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryHowitzer)
                 {
                     Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
@@ -163,6 +167,10 @@ public class AssaultBuilderTest
                     Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.Tank)
+                {
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
+                }
+                else if (groundUnit.getVehicleClass() == VehicleClass.Infantry)
                 {
                     Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }

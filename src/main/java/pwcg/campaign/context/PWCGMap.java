@@ -58,6 +58,7 @@ public abstract class PWCGMap
     protected MapTransport mapTransportRoads = new MapTransport();
     protected MapTransport mapTransportRail = new MapTransport();
     protected boolean hasShips = false;
+    protected List<GroundLimitationPeriod> groundLimitations = new ArrayList<>();
 
     public PWCGMap()
     {
@@ -149,6 +150,20 @@ public abstract class PWCGMap
         }
         return false;
     }
+    
+    public boolean isLimited(Date date, PwcgMapGroundUnitLimitation limitation) throws PWCGException
+    {
+        for (GroundLimitationPeriod limitationPeriod : groundLimitations)
+        {
+            if (limitationPeriod.isLimited(date, limitation))
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
 
     public IMapClimate getMapClimate()
     {

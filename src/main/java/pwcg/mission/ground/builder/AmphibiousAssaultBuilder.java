@@ -50,7 +50,7 @@ public class AmphibiousAssaultBuilder implements IBattleBuilder
     {
         for (AmphibiousAssaultShipDefinition shipDefinition :shipsForMission)
         {
-            if (shipDefinition.getShipType().startsWith("land"))
+            if (shipDefinition.getShipClass() == AmphibiousAssaultShipClass.LANDING_CRAFT || shipDefinition.getShipClass() == AmphibiousAssaultShipClass.LANDING_CRAFT_TANK)
             {
                 AmphibiousAssaultAttackBuilder amphibiousAssaultShipBuilder = new AmphibiousAssaultAttackBuilder(mission, amphibiousAssault, shipDefinition);
                 GroundUnitCollection assault = amphibiousAssaultShipBuilder.generateAmphibiousAssaultAttack();
@@ -63,7 +63,7 @@ public class AmphibiousAssaultBuilder implements IBattleBuilder
     {
         for (AmphibiousAssaultShipDefinition shipDefinition : shipsForMission)
         {
-            if (shipDefinition.getShipType().startsWith("land"))
+            if (shipDefinition.getShipClass() == AmphibiousAssaultShipClass.LANDING_CRAFT)
             {
                 AmphibiousDefenseBuilder amphibiousDefenseBuilder = new AmphibiousDefenseBuilder(mission, amphibiousAssault, shipDefinition);
                 GroundUnitCollection defense = amphibiousDefenseBuilder.generateAmphibiousAssaultDefense();

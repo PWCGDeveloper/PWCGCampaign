@@ -1,0 +1,34 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "Normandy Juno",
+			"swCorner": {
+				"xPos": 125000,
+				"yPos": 0.0,
+				"zPos": 136000
+			},
+			"neCorner": {
+				"xPos": 140000,
+				"yPos": 0.0,
+				"zPos": 145000
+			},
+			"startDate": "18440606",
+			"stopDate": "18440608",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "LOW_ALT_CAP",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_INVASION",
+			"attackerAir": "ALLIED",
+			"attackerGround": "ALLIED"
+		}
+	]
+}

@@ -50,28 +50,38 @@ public class AmphibiousAssaultAttackBuilder
     {
         buildPositionAndOrientation();
 
-        assaultingTanks();
+        if (landingCraftDefinition.getShipClass() == AmphibiousAssaultShipClass.LANDING_CRAFT)
+        {
+            assaultingInfantry();
+        }
+        else
+        {
+            assaultingTanks();
+        }
+        
         assaultingAAAMachineGun();
         finishGroundUnitCollection();
                 
         return amphibiousAssaultAttack;        
     }
 
-    private void finishGroundUnitCollection() throws PWCGException
+    private void assaultingInfantry() throws PWCGException
     {
-        List<IGroundUnit> primaryAssaultSegmentGroundUnits = new ArrayList<>();
-        primaryAssaultSegmentGroundUnits.add(amphibiousAssaultAttack.getPrimaryGroundUnit());
-        amphibiousAssaultAttack.setPrimaryGroundUnit(primaryAssaultSegmentGroundUnits.get(0));
-        amphibiousAssaultAttack.finishGroundUnitCollection();
-        
-        amphibiousAssaultAttack.setCheckZoneTriggerDistance(250);
-        amphibiousAssaultAttack.setCheckZoneTriggerUnit(landingCraftDefinition.getLandingCraftGroundUnit().getGroundUnits().get(0).getVehicles().get(0).getEntity().getIndex());
-    }
+        Coordinate infantryAssaultStartPosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getAssaultPosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 150);  
 
-    private void buildPositionAndOrientation() throws PWCGException
-    {
-        amphibiousPositionBuilder = new AmphibiousPositionBuilder(landingCraftDefinition);
-        amphibiousPositionBuilder.buildPositionAndOrientation();
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(infantryAssaultStartPosition, "Infantry", TargetType.TARGET_ARMOR, GroundUnitSize.GROUND_UNIT_SIZE_LOW);
+        if (amphibiousAssault.getAggressorCountry() == Country.BRITAIN)
+        {
+            groundUnitInformation.setRequestedUnitType("detachmentgbr5");
+        }
+        else
+        {
+            groundUnitInformation.setRequestedUnitType("detachmentusa5");
+        }
+        
+        IGroundUnit assaultTankUnit = assaultFactory.createAssaultTankUnit (groundUnitInformation);
+        amphibiousAssaultAttack.addGroundUnit(assaultTankUnit);
+        
     }
 
     private void assaultingTanks() throws PWCGException
@@ -83,7 +93,11 @@ public class AmphibiousAssaultAttackBuilder
         {
             groundUnitInformation.setRequestedUnitType("t70");
         }
-        else if (amphibiousAssault.getAggressorCountry() == Country.USA || amphibiousAssault.getAggressorCountry() == Country.BRITAIN)
+        else if (amphibiousAssault.getSkirmishName().equals("Dieppe Amphibious Assault"))
+        {
+            groundUnitInformation.setRequestedUnitType("m4a2");
+        }
+        else
         {
             groundUnitInformation.setRequestedUnitType("m4a3");
         }
@@ -116,5 +130,20 @@ public class AmphibiousAssaultAttackBuilder
         return groundUnitInformation;
     }
 
+    private void buildPositionAndOrientation() throws PWCGException
+    {
+        amphibiousPositionBuilder = new AmphibiousPositionBuilder(landingCraftDefinition);
+        amphibiousPositionBuilder.buildPositionAndOrientation();
+    }
 
+    private void finishGroundUnitCollection() throws PWCGException
+    {
+        List<IGroundUnit> primaryAssaultSegmentGroundUnits = new ArrayList<>();
+        primaryAssaultSegmentGroundUnits.add(amphibiousAssaultAttack.getPrimaryGroundUnit());
+        amphibiousAssaultAttack.setPrimaryGroundUnit(primaryAssaultSegmentGroundUnits.get(0));
+        amphibiousAssaultAttack.finishGroundUnitCollection();
+        
+        amphibiousAssaultAttack.setCheckZoneTriggerDistance(250);
+        amphibiousAssaultAttack.setCheckZoneTriggerUnit(landingCraftDefinition.getLandingCraftGroundUnit().getGroundUnits().get(0).getVehicles().get(0).getEntity().getIndex());
+    }
 }

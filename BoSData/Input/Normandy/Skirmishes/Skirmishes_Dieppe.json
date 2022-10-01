@@ -1,0 +1,34 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "Dieppe Amphibious Assault",
+			"swCorner": {
+				"xPos": 200000,
+				"yPos": 0.0,
+				"zPos": 242000
+			},
+			"neCorner": {
+				"xPos": 215000,
+				"yPos": 0.0,
+				"zPos": 255000
+			},
+			"startDate": "19420819",
+			"stopDate": "19420819",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "LOW_ALT_CAP",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_INVASION",
+			"attackerAir": "ALLIED",
+			"attackerGround": "ALLIED"
+		}
+	]
+}

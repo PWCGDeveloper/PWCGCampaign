@@ -8,6 +8,7 @@ import java.util.Date;
 public class PWCGLogger 
 {
     private static LogLevel activeLogLevel = LogLevel.INFO;
+    private static boolean logToConsole = true;
     public enum LogLevel 
     {
         DEBUG,
@@ -95,11 +96,13 @@ public class PWCGLogger
 
         try
         {
-            if (logThisMessage(logLevel))
+            if (logToConsole)
             {
-                // For the console
                 System.out.println(message);
-                
+            }
+            
+            if (logThisMessage(logLevel))
+            {                
                 // to the file
                 if (logLevel != LogLevel.DEBUG)
                 {

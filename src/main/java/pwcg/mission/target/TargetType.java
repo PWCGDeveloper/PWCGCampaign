@@ -4,6 +4,7 @@ public enum TargetType
 {
     TARGET_NONE("None", TargetCategory.TARGET_CATEGORY_NONE),
     
+    TARGET_RADAR("RaDAR", TargetCategory.TARGET_CATEGORY_SOFT),
     TARGET_ARTILLERY("Artillery", TargetCategory.TARGET_CATEGORY_SOFT),
     TARGET_ARMOR("Armor", TargetCategory.TARGET_CATEGORY_ARMORED),
     TARGET_INFANTRY("Infantry", TargetCategory.TARGET_CATEGORY_SOFT),

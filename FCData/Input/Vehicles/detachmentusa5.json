@@ -5,10 +5,11 @@
   "vehicleName": "Detachment USA",
   "displayName": "infantry",
   "countries": [
-    "FRANCE", "GERMANY"
+    "FRANCE", 
+    "GERMANY"
   ],
-  "startDate": "19390901",
-  "endDate": "19460724",
+  "startDate": "19140801",
+  "endDate": "19181201",
   "rarityWeight": 80,
   "vehicleClass": "Infantry"
 }

@@ -33,9 +33,9 @@ public class InitialReplacementEquipperTest
     @Test
     public void testEquipGermanReplacementsEarly() throws PWCGException
     {
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420501"));
+        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19410601"));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
-        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.NORMANDY_MAP);
         PWCGContext.getInstance().setCampaign(campaign);
         
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
@@ -43,7 +43,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 16);
+        assert(equipment.getAvailableDepotPlanes().size() == 42);
         
         boolean me110e2Found = false;
         boolean he111h6Found = false;
@@ -96,7 +96,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 18);
+        assert(equipment.getAvailableDepotPlanes().size() == 48);
         
         boolean me110g2Found = false;
         boolean he111h6Found = false;

@@ -1,5 +1,5 @@
 {
-  "skirmishName": "Gold",
+  "skirmishName": "Normandy Gold",
   "landingStartDate": "19440606",
   "landingStopDate": "19440608",
   "aggressorCountry": "BRITAIN",
@@ -8,6 +8,7 @@
   "shipDefinitions": [
     {
       "shipType": "lcm",
+	  "shipClass": "LANDING_CRAFT_TANK",
       "destination": {
         "xPos": 138307.0,
         "yPos": 48.0,
@@ -21,6 +22,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 138433.0,
         "yPos": 10.0,
@@ -34,6 +36,7 @@
     },
     {
       "shipType": "lcm",
+	  "shipClass": "LANDING_CRAFT_TANK",
       "destination": {
         "xPos": 138412.0,
         "yPos": 70.0,
@@ -47,6 +50,7 @@
     },
     {
       "shipType": "lcm",
+	  "shipClass": "LANDING_CRAFT_TANK",
       "destination": {
         "xPos": 138567.0,
         "yPos": 40.0,
@@ -60,6 +64,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 138538.0,
         "yPos": 8.0,
@@ -73,6 +78,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 138544.0,
         "yPos": 29.0,
@@ -86,6 +92,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 138667.0,
         "yPos": 6.0,
@@ -99,6 +106,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 138387.0,
         "yPos": 28.0,
@@ -112,6 +120,7 @@
     },
     {
       "shipType": "lca",
+	  "shipClass": "LANDING_CRAFT",
       "destination": {
         "xPos": 138338.0,
         "yPos": 45.0,
@@ -122,6 +131,48 @@
         "yOri": 182.0,
         "zOri": 0.0
       }
-    }
+    },
+	{
+		"shipType": "destroyergleaves",
+		"shipClass": "DESTROYER",
+		"destination": {
+			"xPos": 118000.0,
+			"yPos": 0.0,
+			"zPos": 124200.0
+		},
+		"orientation": {
+			"xOri": 0.0,
+			"yOri": 270.0,
+			"zOri": 0.0
+		}
+	},
+	{
+		"shipType": "destroyergleaves",
+		"shipClass": "DESTROYER",
+		"destination": {
+			"xPos": 120000.0,
+			"yPos": 0.0,
+			"zPos": 124200.0
+		},
+		"orientation": {
+			"xOri": 0.0,
+			"yOri": 270.0,
+			"zOri": 0.0
+		}
+	},
+	{
+		"shipType": "destroyergleaves",
+		"shipClass": "DESTROYER",
+		"destination": {
+			"xPos": 122000.0,
+			"yPos": 0.0,
+			"zPos": 124400.0
+		},
+		"orientation": {
+			"xOri": 0.0,
+			"yOri": 270.0,
+			"zOri": 0.0
+		}
+	}
   ]
 }

@@ -107,7 +107,7 @@ public class EquipmentReplacementWeightByNeedTest
         assert(me109Weight > ju88Weight);
         assert(ju87Weight > he111Weight);
         assert(he111Weight > ju52Weight);
-        assert(me110Weight == ju52Weight);
+        assert(me110Weight > ju52Weight);
     }
 
     @Test

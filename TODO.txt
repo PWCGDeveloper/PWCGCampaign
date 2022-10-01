@@ -2,6 +2,9 @@ Normandy
 Map image Early                             - done
 Front lines                                 - done
 Squadron assignments to airfields           - done
+Vehicles                                    - done
+Add infantry to amphibious assaults         - done
+Unit type matches landing craft             - done
 Newspapers
 
 Map Split
@@ -21,18 +24,19 @@ Normandy Map Data
 - Extract and import in game ini files      - done 
 
 Special events / skirmishes
-- Dunkirk - June 1 - 7
-- BoB Coastal shipping, ports, airfields - 17th July to 12th August
-- BoB Airfields - 13th August – 6th September
-- BoB Cities or Ports - 7th September – 2nd October
-- Rodeos 1942
-- Dieppe - August 19 1942                       - done
-- American bombing 1943
-- D-Day                                         - done
-- Goodwood                                      - done
-- Cobra                                         - done
-- Mortain                                       - done
-- Falaise                                       - done
+- Dunkirk - June 1 - 7                      - done
+- BoB Pause Phase 6/11 to 7/16              - Counts on target preferences
+- BoB Coastal shipping 7/17 to 8/12         - done
+- BoB Airfields 8/13 to 9/6                 - done
+- BoB Cities or Ports 9/7 to 10/1           - done
+- Rodeos 1942                               - Counts on target preferences
+- Dieppe - August 19 1942                   - done
+- American bombing 1943                     - Counts on target preferences
+- D-Day                                     - done
+- Goodwood                                  - done
+- Cobra                                     - done
+- Mortain                                   - done
+- Falaise                                   - done
 
 Remove end date from nigh mission odds
 

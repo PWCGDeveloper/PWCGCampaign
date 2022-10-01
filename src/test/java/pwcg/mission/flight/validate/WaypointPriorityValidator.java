@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypeCategory;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPriority;

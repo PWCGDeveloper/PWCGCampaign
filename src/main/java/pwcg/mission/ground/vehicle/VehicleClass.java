@@ -10,14 +10,14 @@ import pwcg.mission.target.TargetType;
 public enum VehicleClass implements IWeight
 {
     AAAArtillery(false, "AA Artillery", GroundUnitType.AAA_UNIT, TargetType.TARGET_ARTILLERY, 10),
-    AAAMachineGun(false, "AA MAchine Gun", GroundUnitType.AAA_UNIT, TargetType.TARGET_INFANTRY, 10),
-    
-    ArtilleryHowitzer(false, "Artillery", GroundUnitType.ARTILLERY_UNIT, TargetType.TARGET_ARTILLERY, 10),
-    
-    Balloon(false, "Balloon", GroundUnitType.BALLOON_UNIT, TargetType.TARGET_BALLOON, 0),
-    
+    AAAMachineGun(false, "AA MAchine Gun", GroundUnitType.AAA_UNIT, TargetType.TARGET_INFANTRY, 10),    
     ArtilleryAntiTank(false, "Anti Tank Gun", GroundUnitType.INFANTRY_UNIT, TargetType.TARGET_INFANTRY, 10),
     MachineGun(false, "Machine Gun", GroundUnitType.INFANTRY_UNIT, TargetType.TARGET_INFANTRY, 10),
+    ArtilleryHowitzer(false, "Artillery", GroundUnitType.ARTILLERY_UNIT, TargetType.TARGET_ARTILLERY, 10),
+    
+    Radar(false, "Radar", GroundUnitType.RADAR_UNIT, TargetType.TARGET_RADAR, 10),
+
+    Balloon(false, "Balloon", GroundUnitType.BALLOON_UNIT, TargetType.TARGET_BALLOON, 0),
     
     Tank(false, "Tank", GroundUnitType.TANK_UNIT, TargetType.TARGET_ARMOR, 2),
     Infantry(false, "Infantry", GroundUnitType.INFANTRY_UNIT, TargetType.TARGET_INFANTRY, 20),

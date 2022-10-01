@@ -7,7 +7,8 @@
 	"landingCraftBackOff": 200,
 	"shipDefinitions": [
 		{
-			"shipType": "landboata",
+			"shipType": "lcvp",
+			"shipClass": "LANDING_CRAFT",
 			"destination": {
 				"xPos": 231924.0,
 				"yOri": 40.0,
@@ -20,7 +21,8 @@
 			}
 		},
 		{
-			"shipType": "landboata",
+			"shipType": "lcvp",
+            "shipClass": "LANDING_CRAFT",
 			"destination": {
 				"xPos": 231833.0,
 				"yOri": 40.0,
@@ -33,7 +35,8 @@
 			}
 		},
 		{
-			"shipType": "landboata",
+			"shipType": "lcvp",
+            "shipClass": "LANDING_CRAFT",
 			"destination": {
 				"xPos": 231737.0,
 				"yOri": 40.0,
@@ -46,7 +49,8 @@
 			}
 		},
 		{
-			"shipType": "landboata",
+			"shipType": "lcvp",
+            "shipClass": "LANDING_CRAFT",
 			"destination": {
 				"xPos": 231620.0,
 				"yOri": 40.0,
@@ -59,7 +63,8 @@
 			}
 		},
 		{
-			"shipType": "landboata",
+			"shipType": "lcvp",
+            "shipClass": "LANDING_CRAFT",
 			"destination": {
 				"xPos": 231532.0,
 				"yOri": 40.0,
@@ -72,7 +77,8 @@
 			}
 		},
 		{
-			"shipType": "landboata",
+			"shipType": "lcvp",
+            "shipClass": "LANDING_CRAFT",
 			"destination": {
 				"xPos": 231435.0,
 				"yOri": 40.0,

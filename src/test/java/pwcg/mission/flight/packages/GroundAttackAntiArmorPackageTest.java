@@ -63,7 +63,8 @@ public class GroundAttackAntiArmorPackageTest
         MissionFlights missionFlights = mission.getFlights();
         
         IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
-        assert(playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_ARMOR);
+        assert(playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_ARMOR || 
+               playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_INFANTRY);
         
         List<IFlight> escortFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORT);
         assert(escortFlights.size() == 1);
@@ -73,7 +74,6 @@ public class GroundAttackAntiArmorPackageTest
         
         assert(playerFlight.getAssociatedFlight() != null);
         assert(playerFlight.getAssociatedFlight().getFlightInformation().getNecessaryFlightType() == NecessaryFlightType.PLAYER_ESCORT);
-
         TargetVicinityValidator.verifyProximityToTargetUnit(playerFlight);
 
         TestDriver.getInstance().reset();

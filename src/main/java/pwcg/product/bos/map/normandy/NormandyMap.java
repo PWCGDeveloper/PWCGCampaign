@@ -1,5 +1,7 @@
 package pwcg.product.bos.map.normandy;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -7,7 +9,9 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.GroundLimitationPeriod;
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.context.PwcgMapGroundUnitLimitation;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -34,10 +38,24 @@ public class NormandyMap extends PWCGMap
         missionSpacingMyDate.put("19440801", 2); 
     } 
 
-    public NormandyMap()
+    public NormandyMap() throws PWCGException
     {
         super();
         hasShips = true;
+        
+        
+        List<PwcgMapGroundUnitLimitation> groundLimitationForMap = new ArrayList<>();
+        groundLimitationForMap.add(PwcgMapGroundUnitLimitation.LIMITATION_BATTLE);
+        groundLimitationForMap.add(PwcgMapGroundUnitLimitation.LIMITATION_BALLOON);
+        
+        GroundLimitationPeriod groundLimitationPeriodBeforeDieppe = new GroundLimitationPeriod(
+                DateUtils.getDateYYYYMMDD("19410611"), DateUtils.getDateYYYYMMDD("19420818"), groundLimitationForMap);
+        
+        GroundLimitationPeriod groundLimitationPeriodBeforeNormandy = new GroundLimitationPeriod(
+                DateUtils.getDateYYYYMMDD("19420820"), DateUtils.getDateYYYYMMDD("19440605"), groundLimitationForMap);
+
+        groundLimitations.add(groundLimitationPeriodBeforeDieppe);
+        groundLimitations.add(groundLimitationPeriodBeforeNormandy);
     }
 
     public void configure() throws PWCGException
@@ -69,8 +87,8 @@ public class NormandyMap extends PWCGMap
         this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19410601"), DateUtils.getDateYYYYMMDD("19440901"));
 
         this.frontDatesForMap.addFrontDate("19410601"); // Dunkirk
-        this.frontDatesForMap.addFrontDate("19410610"); // BoB shipping phase
-        this.frontDatesForMap.addFrontDate("19410717"); // BoB Aiirfield + Shipping phase
+        this.frontDatesForMap.addFrontDate("19410610"); // BoB pause phase
+        this.frontDatesForMap.addFrontDate("19410717"); // BoB shipping phase
         this.frontDatesForMap.addFrontDate("19410813"); // BoB Airfield Phase
         this.frontDatesForMap.addFrontDate("19410902"); // BoB City Phase
         this.frontDatesForMap.addFrontDate("19411101"); // End of BoB

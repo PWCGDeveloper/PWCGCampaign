@@ -100,7 +100,7 @@ public class EquipmentReplacementHandlerTest
         deactivateSquadronEquipment();
       
         EquipmentResupplyData equipmentTransferData = squadronTransferHandler.resupplyForLosses(armedService);
-        Assertions.assertTrue (equipmentTransferData.getTransferCount() == 3);
+        Assertions.assertEquals (6, equipmentTransferData.getTransferCount());
     }
 
     private void deactivateSquadronEquipment() throws PWCGException
