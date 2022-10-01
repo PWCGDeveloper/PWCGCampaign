@@ -231,9 +231,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 139860.0,
+        "xPos": 137717.0,
         "yPos": 0.0,
-        "zPos": 75625.0
+        "zPos": 75795.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -247,9 +247,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 139300.0,
+        "xPos": 135547.0,
         "yPos": 0.0,
-        "zPos": 78519.0
+        "zPos": 77345.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -263,9 +263,25 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 137993.0,
+        "xPos": 133377.0,
         "yPos": 0.0,
-        "zPos": 81600.0
+        "zPos": 79670.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "USA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 132253.5,
+        "yPos": 0.0,
+        "zPos": 81917.5
       },
       "orientation": {
         "xOri": 0.0,
@@ -279,9 +295,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 135939.0,
+        "xPos": 131130.0,
         "yPos": 0.0,
-        "zPos": 85428.0
+        "zPos": 84165.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -291,13 +307,13 @@
     },
     {
       "country": {
-        "country": "RUSSIA"
+        "country": "USA"
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 135612.0,
+        "xPos": 129967.5,
         "yPos": 0.0,
-        "zPos": 89022.5
+        "zPos": 86025.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -311,9 +327,25 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 134631.0,
+        "xPos": 128805.0,
         "yPos": 0.0,
-        "zPos": 92057.0
+        "zPos": 87885.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 128340.0,
+        "yPos": 0.0,
+        "zPos": 90055.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -327,9 +359,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 132370.0,
+        "xPos": 127642.0,
         "yPos": 0.0,
-        "zPos": 95557.0
+        "zPos": 93232.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -343,9 +375,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 130122.5,
+        "xPos": 126557.0,
         "yPos": 0.0,
-        "zPos": 96874.5
+        "zPos": 95170.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -359,9 +391,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 127875.0,
+        "xPos": 125705.0,
         "yPos": 0.0,
-        "zPos": 98192.0
+        "zPos": 97727.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -839,9 +871,25 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 134928.84375,
+        "xPos": 135005.0,
         "yPos": 0.0,
-        "zPos": 150463.0
+        "zPos": 151900.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "USA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 138105.0,
+        "yPos": 0.0,
+        "zPos": 153140.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -855,9 +903,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 139614.6875,
+        "xPos": 143065.0,
         "yPos": 0.0,
-        "zPos": 150049.0
+        "zPos": 154070.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -871,9 +919,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 144300.53125,
+        "xPos": 148025.0,
         "yPos": 0.0,
-        "zPos": 149635.0
+        "zPos": 154690.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -887,9 +935,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 148986.375,
+        "xPos": 153140.0,
         "yPos": 0.0,
-        "zPos": 149221.0
+        "zPos": 155930.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -903,9 +951,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 158358.0625,
+        "xPos": 157790.0,
         "yPos": 0.0,
-        "zPos": 148393.0
+        "zPos": 157945.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -919,9 +967,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 167729.75,
+        "xPos": 166005.0,
         "yPos": 0.0,
-        "zPos": 147565.0
+        "zPos": 160115.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -935,9 +983,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 177101.4375,
+        "xPos": 173910.0,
         "yPos": 0.0,
-        "zPos": 146737.0
+        "zPos": 161045.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -951,9 +999,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 186473.125,
+        "xPos": 182435.0,
         "yPos": 0.0,
-        "zPos": 145909.0
+        "zPos": 162440.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -967,9 +1015,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 195844.8125,
+        "xPos": 192355.0,
         "yPos": 0.0,
-        "zPos": 145081.0
+        "zPos": 165540.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -983,9 +1031,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 205216.5,
+        "xPos": 198710.0,
         "yPos": 0.0,
-        "zPos": 144253.0
+        "zPos": 168020.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -999,9 +1047,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 214588.1875,
+        "xPos": 204910.0,
         "yPos": 0.0,
-        "zPos": 143425.0
+        "zPos": 169570.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1015,9 +1063,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 223959.875,
+        "xPos": 212195.0,
         "yPos": 0.0,
-        "zPos": 142597.0
+        "zPos": 170810.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1031,9 +1079,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 233331.5625,
+        "xPos": 218860.0,
         "yPos": 0.0,
-        "zPos": 141769.0
+        "zPos": 172670.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1047,9 +1095,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 239922.8671875,
+        "xPos": 225680.0,
         "yPos": 0.0,
-        "zPos": 143996.375
+        "zPos": 173290.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1063,9 +1111,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 246514.171875,
+        "xPos": 233740.0,
         "yPos": 0.0,
-        "zPos": 146223.75
+        "zPos": 173600.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1079,9 +1127,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 253105.4765625,
+        "xPos": 240870.0,
         "yPos": 0.0,
-        "zPos": 148451.125
+        "zPos": 174375.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1095,9 +1143,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 259696.78125,
+        "xPos": 247380.0,
         "yPos": 0.0,
-        "zPos": 150678.5
+        "zPos": 175150.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1111,9 +1159,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 266288.0859375,
+        "xPos": 256060.0,
         "yPos": 0.0,
-        "zPos": 152905.875
+        "zPos": 176235.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1127,9 +1175,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 272879.390625,
+        "xPos": 263965.0,
         "yPos": 0.0,
-        "zPos": 155133.25
+        "zPos": 176545.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1143,9 +1191,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 279470.6953125,
+        "xPos": 270475.0,
         "yPos": 0.0,
-        "zPos": 157360.625
+        "zPos": 176700.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1159,9 +1207,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 286062.0,
+        "xPos": 276675.0,
         "yPos": 0.0,
-        "zPos": 159588.0
+        "zPos": 176390.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1175,9 +1223,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 286649.0,
+        "xPos": 281170.0,
         "yPos": 0.0,
-        "zPos": 167339.0
+        "zPos": 179645.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1191,9 +1239,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 285827.0,
+        "xPos": 283650.0,
         "yPos": 0.0,
-        "zPos": 174855.0
+        "zPos": 183055.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1207,9 +1255,9 @@
       },
       "name": "AlliedFrontLine",
       "position": {
-        "xPos": 284300.0,
+        "xPos": 284580.0,
         "yPos": 0.0,
-        "zPos": 181196.0
+        "zPos": 187550.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2823,9 +2871,9 @@
       },
       "name": "AxisFrontLine",
       "position": {
-        "xPos": 123922.0,
+        "xPos": 122682.0,
         "yPos": 0.0,
-        "zPos": 97572.5
+        "zPos": 97262.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2839,9 +2887,9 @@
       },
       "name": "AxisFrontLine",
       "position": {
-        "xPos": 126557.0,
+        "xPos": 123457.0,
         "yPos": 0.0,
-        "zPos": 95983.75
+        "zPos": 94782.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2855,9 +2903,9 @@
       },
       "name": "AxisFrontLine",
       "position": {
-        "xPos": 129192.0,
+        "xPos": 124542.0,
         "yPos": 0.0,
-        "zPos": 94395.0
+        "zPos": 92612.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2871,9 +2919,9 @@
       },
       "name": "AxisFrontLine",
       "position": {
-        "xPos": 130371.0,
+        "xPos": 125860.0,
         "yPos": 0.0,
-        "zPos": 92572.5
+        "zPos": 90055.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2887,9 +2935,9 @@
       },
       "name": "AxisFrontLine",
       "position": {
-        "xPos": 131550.0,
+        "xPos": 127022.0,
         "yPos": 0.0,
-        "zPos": 90750.0
+        "zPos": 88040.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2903,9 +2951,9 @@
       },
       "name": "AxisFrontLine",
       "position": {
-        "xPos": 132950.5,
+        "xPos": 127875.0,
         "yPos": 0.0,
-        "zPos": 86222.0
+        "zPos": 85870.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2919,9 +2967,9 @@
       },
       "name": "AxisFrontLine",
       "position": {
-        "xPos": 133650.75,
+        "xPos": 129115.0,
         "yPos": 0.0,
-        "zPos": 83958.0
+        "zPos": 83467.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2935,9 +2983,9 @@
       },
       "name": "AxisFrontLine",
       "position": {
-        "xPos": 134351.0,
+        "xPos": 129967.0,
         "yPos": 0.0,
-        "zPos": 81694.0
+        "zPos": 80832.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2951,9 +2999,9 @@
       },
       "name": "AxisFrontLine",
       "position": {
-        "xPos": 135005.0,
+        "xPos": 131750.0,
         "yPos": 0.0,
-        "zPos": 77679.0
+        "zPos": 77422.0
       },
       "orientation": {
         "xOri": 0.0,
