@@ -4,36 +4,55 @@
 		"p47d22_skin_00": {
 			"skinName": "p47d22_skin_00",
 			"planeType": "p47d22",
-			"startDate": "19400801",
-			"endDate": "19450601",
+            "startDate": "19430601",
+            "endDate": "19440601",
 			"squadId": -2,
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
 		},
-		"p47d22_skin_01": {
-			"skinName": "p47d22_skin_01",
-			"planeType": "p47d22",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "USA",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"p47d22_skin_08": {
-			"skinName": "p47d22_skin_08",
-			"planeType": "p47d22",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "USA",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
+        "p47d22_skin_01": {
+            "skinName": "p47d22_skin_01",
+            "planeType": "p47d22",
+            "startDate": "19440201",
+            "endDate": "19440601",
+            "squadId": -2,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        "p47d22_skin_02": {
+            "skinName": "p47d22_skin_02",
+            "planeType": "p47d22",
+            "startDate": "19440601",
+            "endDate": "19440706",
+            "squadId": -2,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        "p47d22_skin_03": {
+            "skinName": "p47d22_skin_03",
+            "planeType": "p47d22",
+            "startDate": "19440706",
+            "endDate": "19440825",
+            "squadId": -2,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
 		"p47d22_skin_04": {
 			"skinName": "p47d22_skin_04",
 			"planeType": "p47d22",
@@ -43,7 +62,9 @@
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "BLACK"
 		},
 		"p47d22_skin_05": {
 			"skinName": "p47d22_skin_05",
@@ -54,19 +75,36 @@
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "BLACK"
 		},
-		"p47d22_skin_12": {
-			"skinName": "p47d22_skin_07",
-			"planeType": "p47d22",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "USA",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
+        "p47d22_skin_08": {
+            "skinName": "p47d22_skin_08",
+            "planeType": "p47d22",
+            "startDate": "19400801",
+            "endDate": "19450601",
+            "squadId": -1,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "BLACK"
+        },
+        "p47d22_skin_12": {
+            "skinName": "p47d22_skin_07",
+            "planeType": "p47d22",
+            "startDate": "19400801",
+            "endDate": "19450601",
+            "squadId": -1,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "BLACK"
+        },
 		"p47d22_skin_10": {
 			"skinName": "p47d22_skin_10",
 			"planeType": "p47d22",
@@ -76,7 +114,9 @@
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "BLACK"
 		},
 		"P-47D22_Okie_366": {
 			"skinName": "P-47D22_Okie_366",

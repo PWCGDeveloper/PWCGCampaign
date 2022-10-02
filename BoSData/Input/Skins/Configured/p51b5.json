@@ -4,28 +4,28 @@
 		"p51b5_skin_00": {
 			"skinName": "p51b5_skin_00",
 			"planeType": "p51b5",
-			"startDate": "19400801",
-			"endDate": "19440501",
+            "startDate": "19430601",
+            "endDate": "19440601",
 			"squadId": -2,
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK"
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
 		},
 		"p51b5_skin_01": {
 			"skinName": "p51b5_skin_01",
 			"planeType": "p51b5",
-			"startDate": "19400801",
-			"endDate": "19440501",
+            "startDate": "19440201",
+            "endDate": "19440601",
 			"squadId": -2,
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "SKY"
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
 		},
 		"p51b5_skin_02": {
 			"skinName": "p51b5_skin_02",
@@ -41,13 +41,15 @@
 		"p51b5_skin_03": {
 			"skinName": "p51b5_skin_03",
 			"planeType": "p51b5",
-			"startDate": "19440501",
-			"endDate": "19450601",
+            "startDate": "19440601",
+            "endDate": "19440706",
 			"squadId": -2,
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
 		},
 		"p51b5_skin_04": {
 			"skinName": "p51b5_skin_04",
@@ -63,13 +65,15 @@
 		"p51b5_skin_05": {
 			"skinName": "p51b5_skin_05",
 			"planeType": "p51b5",
-			"startDate": "19440501",
-			"endDate": "19450601",
+            "startDate": "19440706",
+            "endDate": "19440825",
 			"squadId": -2,
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
 		},
 		"p51b5_skin_06": {
 			"skinName": "p51b5_skin_06",
@@ -85,13 +89,15 @@
 		"p51b5_skin_07": {
 			"skinName": "p51b5_skin_07",
 			"planeType": "p51b5",
-			"startDate": "19440501",
-			"endDate": "19450601",
+            "startDate": "19440825",
+            "endDate": "19450103",
 			"squadId": -2,
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
 		},
 		"p51b5_skin_08": {
 			"skinName": "p51b5_skin_08",

@@ -18,7 +18,7 @@ public class MissionSkinGeneratorHelper
 
     public static void chooseFactorySkin(PlaneMcu plane, List<Skin> factorySkins)
     {
-        PWCGLogger.log(LogLevel.DEBUG, "SKIN: Choose novice skin");
+        PWCGLogger.log(LogLevel.DEBUG, "SKIN: Choose factory skin");
         
         Skin skin = pickSkin(plane.getType(), factorySkins);
         if (skin != null)
@@ -28,7 +28,7 @@ public class MissionSkinGeneratorHelper
         }
         else
         {
-            PWCGLogger.log(LogLevel.DEBUG, "SKIN: novice skin - no generic available");
+            PWCGLogger.log(LogLevel.DEBUG, "SKIN: factory skin - no generic available");
         }
     }
 

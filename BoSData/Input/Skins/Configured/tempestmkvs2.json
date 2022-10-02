@@ -4,68 +4,66 @@
 		"tempestmkvs2_skin_00": {
 			"skinName": "tempestmkvs2_skin_00",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
-			"endDate": "19450601",
+            "startDate": "19390801",
+            "endDate": "19450601",
 			"squadId": -2,
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
 		},
 		"tempestmkvs2_skin_01": {
 			"skinName": "tempestmkvs2_skin_01",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
-			"endDate": "19450601",
+            "endDate": "19440706",
 			"squadId": -2,
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
-		},
-		"tempestmkvs2_skin_11": {
-			"skinName": "tempestmkvs2_skin_11",
-			"planeType": "tempestmkvs2",
-			"startDate": "19450601",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Britain",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
 		},
 		"tempestmkvs2_skin_02": {
 			"skinName": "tempestmkvs2_skin_02",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
+            "startDate": "19440706",
+            "endDate": "19440825",
+			"squadId": -2,
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
 		},
 		"tempestmkvs2_skin_03": {
 			"skinName": "tempestmkvs2_skin_03",
 			"planeType": "tempestmkvs2",
-			"startDate": "19450601",
-			"endDate": "19450601",
-			"squadId": -1,
+            "startDate": "19440825",
+            "endDate": "19450103",
+			"squadId": -2,
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
 		},
 		"tempestmkvs2_skin_04": {
 			"skinName": "tempestmkvs2_skin_04",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
+            "startDate": "19390801",
+            "endDate": "19440601",
+			"squadId": -2,
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
 		},
 		"tempestmkvs2_skin_07": {
 			"skinName": "tempestmkvs2_skin_07",
@@ -76,7 +74,9 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
 		},
 		"tempestmkvs2_skin_09": {
 			"skinName": "tempestmkvs2_skin_09",
@@ -87,7 +87,9 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
 		},
 		"tempestmkvs2_skin_10": {
 			"skinName": "tempestmkvs2_skin_10",
@@ -98,8 +100,22 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
 		},
+        "tempestmkvs2_skin_11": {
+            "skinName": "tempestmkvs2_skin_11",
+            "planeType": "tempestmkvs2",
+            "startDate": "19450601",
+            "endDate": "19450601",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
+        },
 		"JN751": {
 			"skinName": "JN751",
 			"planeType": "tempestmkvs2",
@@ -109,7 +125,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
 		},
 		"JN754_SWEETMAN": {
 			"skinName": "JN754_SWEETMAN",
@@ -120,7 +137,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
 		},
 		"JN763_IREMONGER": {
 			"skinName": "JN763_IREMONGER",
@@ -131,7 +149,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
 		},
 		"JN765": {
 			"skinName": "JN765",
@@ -142,7 +161,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
 		},
 		"JN812": {
 			"skinName": "JN812",
@@ -153,7 +173,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
 		},
 		"LE GRAND CHARLES": {
 			"skinName": "LE GRAND CHARLES",
@@ -164,7 +185,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
 		},
 		"MPG_4K_TempestMkVs2_274Sqn_JJ-M_March1945": {
 			"skinName": "MPG_4K_TempestMkVs2_274Sqn_JJ-M_March1945",
@@ -186,7 +208,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
 		},
 		"REMY VAN LIERDE": {
 			"skinName": "REMY VAN LIERDE",
@@ -197,7 +220,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "SKY"          
 		}
 	}
 }

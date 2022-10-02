@@ -4,8 +4,8 @@
 		"p51d15_skin_00_00": {
 			"skinName": "p51d15_skin_00_00",
 			"planeType": "p51d15",
-			"startDate": "19400801",
-			"endDate": "19450601",
+            "startDate": "19430601",
+            "endDate": "19440601",
 			"squadId": -2,
 			"country": "USA",
 			"category": "Configured",
@@ -17,37 +17,41 @@
 		"p51d15_skin_00_01": {
 			"skinName": "p51d15_skin_00_01",
 			"planeType": "p51d15",
-			"startDate": "19400801",
-			"endDate": "19450601",
+            "startDate": "19440601",
+            "endDate": "19440706",
 			"squadId": -2,
-			"country": "Britain",
+			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "SKY"
+            "tacticalCodeColor": "BLACK"
 		},
 		"p51d15_skin_00_02": {
 			"skinName": "p51d15_skin_00_02",
 			"planeType": "p51d15",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
+            "startDate": "19440706",
+            "endDate": "19440825",
+			"squadId": -2,
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
 		},
 		"p51d15_skin_00_03": {
 			"skinName": "p51d15_skin_00_03",
 			"planeType": "p51d15",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
+            "startDate": "19440825",
+            "endDate": "19450103",
+			"squadId": -2,
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
 		},
 		"p51d15_skin_00_04": {
 			"skinName": "p51d15_skin_00_04",
