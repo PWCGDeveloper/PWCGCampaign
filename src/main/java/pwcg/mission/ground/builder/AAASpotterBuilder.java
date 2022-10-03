@@ -9,8 +9,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundUnitCollection;
-import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
@@ -29,17 +27,12 @@ public class AAASpotterBuilder
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         
         GroundUnitCollection spotterMG = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
-        if (spotterMG != null)
+        ICountry ownerOfLocation = CountryDesignator.determineCountry(position, campaign.getDate());
+        if (ownerOfLocation.getCountry() == spotterCountry.getCountry())
         {
-            ICountry ownerOfLocation = CountryDesignator.determineCountry(position, campaign.getDate());
-            if (ownerOfLocation.getCountry() == spotterCountry.getCountry())
-            {
-                IGroundUnit groundUnit = spotterMG.getGroundUnits().get(0);
-                IVehicle vehicle = groundUnit.getVehicles().get(0);
-                vehicle.setSpotterRange(SPOTTER_RANGE);
-            }
+            SpotterDecorator.createSpotter(spotterMG, SPOTTER_RANGE);
         }
-
+        
         return spotterMG;
     }
 }

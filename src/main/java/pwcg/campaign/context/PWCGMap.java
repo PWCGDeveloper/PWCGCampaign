@@ -59,6 +59,7 @@ public abstract class PWCGMap
     protected MapTransport mapTransportRail = new MapTransport();
     protected boolean hasShips = false;
     protected List<GroundLimitationPeriod> groundLimitations = new ArrayList<>();
+    protected List<RadarPeriod> radarPeriods = new ArrayList<>();
 
     public PWCGMap()
     {
@@ -287,6 +288,21 @@ public abstract class PWCGMap
     public boolean hasShips()
     {
         return hasShips;
+    }
+
+    public boolean hasRadars(Side side, Date date) throws PWCGException
+    {
+        for (RadarPeriod radarPeriod : radarPeriods)
+        {
+            if (radarPeriod.getSide() == side)
+            {
+                if (DateUtils.isDateInRange(date, radarPeriod.getStartDate(), radarPeriod.getEndDate()))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     
     

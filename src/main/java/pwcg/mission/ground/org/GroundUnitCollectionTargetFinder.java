@@ -104,6 +104,14 @@ public class GroundUnitCollectionTargetFinder
         {
             return groundUnitsForSideByUnitType.get(GroundUnitType.TRANSPORT_UNIT).get(0);
         }
+        else if (groundUnitsForSideByUnitType.containsKey(GroundUnitType.TRANSPORT_UNIT))
+        {
+            return groundUnitsForSideByUnitType.get(GroundUnitType.TRANSPORT_UNIT).get(0);
+        }
+        else if (groundUnitsForSideByUnitType.containsKey(GroundUnitType.RADAR_UNIT))
+        {
+            return groundUnitsForSideByUnitType.get(GroundUnitType.RADAR_UNIT).get(0);
+        }
         else 
         {
             throw new PWCGException("No target unit found for infantry ground collection");

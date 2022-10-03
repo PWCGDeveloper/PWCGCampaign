@@ -8,6 +8,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.context.RadarPeriod;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -48,7 +49,8 @@ public class BodenplatteMap extends PWCGMap
         usableMapArea = new BodenplatteMapUsableArea();
 
         buildArmedServicesActiveForMap();
-        
+        buildRadarPeriods();
+
         super.configure();
     }
 
@@ -59,6 +61,22 @@ public class BodenplatteMap extends PWCGMap
         armedServicesActiveForMap.add(BoSServiceManager.RCAF);
         armedServicesActiveForMap.add(BoSServiceManager.FREE_FRENCH);
         armedServicesActiveForMap.add(BoSServiceManager.LUFTWAFFE);
+    }
+
+    private void buildRadarPeriods() throws PWCGException
+    {
+        RadarPeriod alliedRadarPeriod = new RadarPeriod();
+        alliedRadarPeriod.setSide(Side.ALLIED);
+        alliedRadarPeriod.setStartDate(DateUtils.getDateYYYYMMDD("19400101"));
+        alliedRadarPeriod.setEndDate(DateUtils.getDateYYYYMMDD("19450601"));
+        
+        RadarPeriod axisRadarPeriod = new RadarPeriod();
+        axisRadarPeriod.setSide(Side.AXIS);
+        axisRadarPeriod.setStartDate(DateUtils.getDateYYYYMMDD("19400101"));
+        axisRadarPeriod.setEndDate(DateUtils.getDateYYYYMMDD("19450601"));
+        
+        radarPeriods.add(alliedRadarPeriod);
+        radarPeriods.add(axisRadarPeriod);
     }
 
     @Override

@@ -18,6 +18,7 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBalloonBuilder;
+import pwcg.mission.MissionRadarBuilder;
 import pwcg.mission.MissionShipBuilder;
 import pwcg.mission.ground.builder.IBattleBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -34,6 +35,7 @@ public class MissionGroundUnitBuilder
     private List<GroundUnitCollection> missionDrifters = new ArrayList<>();
     private List<GroundUnitCollection> missionBalloons = new ArrayList<>();
     private List<GroundUnitCollection> missionShips = new ArrayList<>();
+    private List<GroundUnitCollection> missionRadars = new ArrayList<>();
     private List<GroundUnitCollection> flightSpecificGroundUnits = new ArrayList<>();
     private List<GroundUnitCollection> AAA = new ArrayList<>();
     private List<GroundUnitCollection> airfieldVehicles = new ArrayList<>();
@@ -46,21 +48,23 @@ public class MissionGroundUnitBuilder
 
     public void generateGroundUnitsForMission() throws PWCGException 
     {
-        if (!PWCGContext.getInstance().getCurrentMap().isLimited(campaign.getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
-        {
-            generateBattle();
-        }
-        
+        generateBattle();
         generateTrains();
         generateTrucks();
         generateDrifters();
         generateBalloons();
         generateShips();
         createAAAForMission();
+        createrRadarsForMission();
     }
 
     private void generateBattle() throws PWCGException 
     {
+        if (PWCGContext.getInstance().getCurrentMap().isLimited(campaign.getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
+        {
+            return;
+        }
+
         IBattleBuilder battleBuilder = MissionBattleBuilderFactory.getBattleBuilder(mission);
         missionBattles = battleBuilder.generateBattle();
     }
@@ -83,6 +87,18 @@ public class MissionGroundUnitBuilder
         missionDrifters = drifterBuilder.generateMissionDrifters();
     }
 
+    private void generateBalloons() throws PWCGException
+    {
+        MissionBalloonBuilder balloonBuilder = new MissionBalloonBuilder(mission);
+        missionBalloons = balloonBuilder.createMissionBalloons();
+    }
+
+    private void generateShips() throws PWCGException
+    {
+        MissionShipBuilder shipBuilder = new MissionShipBuilder(mission);
+        missionShips = shipBuilder.createMissionShips();
+    }
+
     private void createAAAForMission() throws PWCGException 
     {
         AAAManager aaaManager = new AAAManager(campaign, mission);
@@ -96,16 +112,10 @@ public class MissionGroundUnitBuilder
         }
     }
 
-    private void generateBalloons() throws PWCGException
+    private void createrRadarsForMission() throws PWCGException
     {
-        MissionBalloonBuilder balloonBuilder = new MissionBalloonBuilder(mission);
-        missionBalloons = balloonBuilder.createMissionBalloons();
-    }
-
-    private void generateShips() throws PWCGException
-    {
-        MissionShipBuilder shipBuilder = new MissionShipBuilder(mission);
-        missionShips = shipBuilder.createMissionShips();
+        MissionRadarBuilder radarBuilder = new MissionRadarBuilder(mission);
+        missionRadars = radarBuilder.buildRadarsForMission();
     }
 
     public void write(BufferedWriter writer) throws PWCGException
@@ -125,6 +135,7 @@ public class MissionGroundUnitBuilder
         allMissionGroundUnits.addAll(missionTrucks);
         allMissionGroundUnits.addAll(missionBalloons);
         allMissionGroundUnits.addAll(missionShips);
+        allMissionGroundUnits.addAll(missionRadars);
         allMissionGroundUnits.addAll(missionDrifters);
         allMissionGroundUnits.addAll(AAA);
         allMissionGroundUnits.addAll(airfieldVehicles);
@@ -165,6 +176,7 @@ public class MissionGroundUnitBuilder
         eliminateDuplicateGroundUnitsFromCollection(missionDrifters);
         eliminateDuplicateGroundUnitsFromCollection(missionShips);
         eliminateDuplicateGroundUnitsFromCollection(airfieldVehicles);
+        eliminateDuplicateGroundUnitsFromCollection(missionRadars);
         eliminateDuplicateGroundUnitsFromCollection(AAA);
     }
     
