@@ -37,15 +37,19 @@ public class MissionSkinSetBuilder
 
             List<Skin> factorySkinsForPlane = skinManager.getSkinsBySquadronPlaneDate(plane.getType(), Skin.FACTORY_GENERIC, date);
             factorySkinsForPlane = SkinFilter.skinFilterSeason(factorySkinsForPlane, season);
+            factorySkinsForPlane = SkinFilter.skinFilterCountry(factorySkinsForPlane, flight.getSquadron().getCountry().getCountryName());
 
             List<Skin> squadronSkinsForPlane = skinManager.getSquadronSkinsByPlaneSquadronDate(plane.getType(), squadron.getSquadronId(), date);
             squadronSkinsForPlane = SkinFilter.skinFilterSeason(squadronSkinsForPlane, season);
+            squadronSkinsForPlane = SkinFilter.skinFilterCountry(factorySkinsForPlane, flight.getSquadron().getCountry().getCountryName());
 
             List<Skin> squadronPersonalSkinsForPlane = skinManager.getSkinsByPlaneSquadronDateInUse(plane.getType(), squadron.getSquadronId(), date);
             squadronPersonalSkinsForPlane = SkinFilter.skinFilterSeason(squadronPersonalSkinsForPlane, season);
+            squadronPersonalSkinsForPlane = SkinFilter.skinFilterCountry(factorySkinsForPlane, flight.getSquadron().getCountry().getCountryName());
 
             List<Skin> nonSquadronPersonalSkinsForPlane = skinManager.getPersonalSkinsByPlaneCountryDateInUse(plane.getType(), squadron.determineSquadronCountry(date).getCountryName(), date);
             nonSquadronPersonalSkinsForPlane = SkinFilter.skinFilterSeason(nonSquadronPersonalSkinsForPlane, season);
+            nonSquadronPersonalSkinsForPlane = SkinFilter.skinFilterCountry(factorySkinsForPlane, flight.getSquadron().getCountry().getCountryName());
 
             missionSkinSet.addFactorySkins(plane.getType(), factorySkinsForPlane);
             missionSkinSet.addSquadronSkins(plane.getType(), squadronSkinsForPlane);

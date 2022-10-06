@@ -17,8 +17,8 @@ public class NormandyMapSeason extends MapSeasonBase implements IMapSeason
         winter.setTextureMap("graphics\\LANDSCAPE_Normandy_su\\textures.tini");
         winter.setForrestMap("graphics\\LANDSCAPE_Normandy_su\\trees\\woods.wds");
         winter.setGuiMap("normandy-summer-early");
-        winter.setSeasonAbbreviation(MapSeasonalParameters.WINTER_ABREV);
-        winter.setSeason(MapSeasonalParameters.WINTER_STRING);
+        winter.setSeasonAbbreviation(MapSeasonalParameters.SUMMER_ABREV);
+        winter.setSeason(MapSeasonalParameters.SUMMER_STRING);
     }
 
     protected void makeSpring()

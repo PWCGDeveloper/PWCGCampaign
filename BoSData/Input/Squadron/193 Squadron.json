@@ -72,7 +72,7 @@
             "archTypes": [],
             "startDate": "19390801",
             "endDate": "19440601",
-            "squadId": 103083184,
+            "squadId": 103084193,
             "country": "Britain",
             "category": "Squadron",
             "definedInGame": true,
@@ -86,7 +86,7 @@
             "archTypes": [],
             "startDate": "19440601",
             "endDate": "19440706",
-            "squadId": 103083184,
+            "squadId": 103084193,
             "country": "Britain",
             "category": "Squadron",
             "definedInGame": true,
@@ -100,7 +100,7 @@
             "archTypes": [],
             "startDate": "19440706",
             "endDate": "19440825",
-            "squadId": 103083184,
+            "squadId": 103084193,
             "country": "Britain",
             "category": "Squadron",
             "definedInGame": true,
@@ -236,6 +236,6 @@
 	},
 	"conversionPeriods": [],
 	"callsigns": {
-		"19410801": "ANGEL"
+		"19390801": "ANGEL"
 	}
 }

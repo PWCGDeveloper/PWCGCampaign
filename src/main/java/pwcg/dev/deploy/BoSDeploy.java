@@ -23,7 +23,30 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("Kuban", null);
         directoriesToCopy.put("East1944", null);
         directoriesToCopy.put("East1945", null);
+        directoriesToCopy.put("Normandy", null);        
         directoriesToCopy.put("Bodenplatte", null);        
+
+        // Normandy dates
+        directoriesToCopy.put("19410601", null);
+        directoriesToCopy.put("19410610", null);
+        directoriesToCopy.put("19410717", null);
+        directoriesToCopy.put("19410813", null);
+        directoriesToCopy.put("19410902", null);
+        directoriesToCopy.put("19411101", null);
+        directoriesToCopy.put("19420819", null);
+        directoriesToCopy.put("19420820", null);
+        directoriesToCopy.put("19430601", null);
+        directoriesToCopy.put("19440501", null);
+        directoriesToCopy.put("19440606", null);
+        directoriesToCopy.put("19440609", null);
+        directoriesToCopy.put("19440620", null);
+        directoriesToCopy.put("19440627", null);
+        directoriesToCopy.put("19440721", null);
+        directoriesToCopy.put("19440731", null);
+        directoriesToCopy.put("19440808", null);
+        directoriesToCopy.put("19440813", null);
+        directoriesToCopy.put("19440821", null);
+        directoriesToCopy.put("19440901", null);
 
         // Bodenplatte dates
         directoriesToCopy.put("19440901", null);

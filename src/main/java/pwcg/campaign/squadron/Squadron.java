@@ -777,10 +777,10 @@ public class Squadron
             SquadHistoryEntry squadHistoryEntry = getSquadronHistoryEntryForDate(date);
             if (squadHistoryEntry != null)
             {
-                code = squadHistoryEntry.getUnitIdCode();
-                if (code == null)
+                String historyCode = squadHistoryEntry.getUnitIdCode();
+                if (historyCode != null)
                 {
-                    code = "";
+                    code = historyCode;
                 }
             }
         }

@@ -1,3 +1,25 @@
+Alpha 2 Planned
+Troops in the water near a convoy.
+
+Alpha 3 Planned
+
+Fixed
+Russian skins on British planes
+Inappropriate smoke
+Inappropriate damage to radar towers
+All radio call signs not enabled before August 1941
+P-51D introduction too late.  Moved it up to April 1944.
+Sometimes unit codes are not used (when a squadron has more than one name over time).
+Winter track marks and other winter stuff on Normandy map
+Airfield "Plane" is now "Maupertus"
+
+Low Priority
+All the post-invasion Allied airfields in Normandy are available as fields before the invasion 
+AA in the water:  AA "corridors" at the ends of runways, which sometimes go into the water if the field is right next to the coast.
+
+
+
+ 
 Normandy
 Map image Early                             - done
 Front lines                                 - done
@@ -6,6 +28,7 @@ Vehicles                                    - done
 Add infantry to amphibious assaults         - done
 Unit type matches landing craft             - done
 Newspapers
+Night bombing and intercepts
 
 Map Split
 - Map image Invasion

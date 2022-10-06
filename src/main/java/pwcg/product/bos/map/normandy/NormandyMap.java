@@ -50,7 +50,7 @@ public class NormandyMap extends PWCGMap
         groundLimitationForMap.add(PwcgMapGroundUnitLimitation.LIMITATION_BALLOON);
         
         GroundLimitationPeriod groundLimitationPeriodBeforeDieppe = new GroundLimitationPeriod(
-                DateUtils.getDateYYYYMMDD("19410611"), DateUtils.getDateYYYYMMDD("19420818"), groundLimitationForMap);
+                DateUtils.getDateYYYYMMDD("19410610"), DateUtils.getDateYYYYMMDD("19420818"), groundLimitationForMap);
         
         GroundLimitationPeriod groundLimitationPeriodBeforeNormandy = new GroundLimitationPeriod(
                 DateUtils.getDateYYYYMMDD("19420820"), DateUtils.getDateYYYYMMDD("19440605"), groundLimitationForMap);

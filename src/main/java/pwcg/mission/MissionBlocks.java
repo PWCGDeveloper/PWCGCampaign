@@ -3,6 +3,8 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PwcgMapGroundUnitLimitation;
 import pwcg.campaign.group.BlockDefinition;
 import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.campaign.group.NonScriptedBlock;
@@ -49,6 +51,11 @@ public class MissionBlocks
 
     public void adjustBlockDamageAndSmoke() throws PWCGException
     {
+        if (PWCGContext.getInstance().getCurrentMap().isLimited(mission.getCampaign().getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
+        {
+            return;
+        }
+
         adjustBlockDurability();
         List<ScriptedFixedPosition> damagedStructures = adjustBlockDamage();
         createBlockSmoke(damagedStructures);

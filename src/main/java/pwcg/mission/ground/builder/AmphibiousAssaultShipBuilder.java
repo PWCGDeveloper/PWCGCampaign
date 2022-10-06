@@ -65,7 +65,8 @@ public class AmphibiousAssaultShipBuilder
         GroundUnitCollection landingCraftGroundUnit = new GroundUnitCollection(mission.getCampaign(), "Landing Craft", groundUnitCollectionData);
         for (AmphibiousAssaultShipDefinition amphibiousAssaultShip : shipsForMission)
         {
-            if (amphibiousAssaultShip.getShipClass() == AmphibiousAssaultShipClass.LANDING_CRAFT)
+            if (amphibiousAssaultShip.getShipClass() == AmphibiousAssaultShipClass.LANDING_CRAFT || 
+                amphibiousAssaultShip.getShipClass() == AmphibiousAssaultShipClass.LANDING_CRAFT_TANK)
             {
                 GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit(amphibiousAssaultShip);
                 LandingCraftUnit landingCraftUnit = new LandingCraftUnit(groundUnitInformation);
