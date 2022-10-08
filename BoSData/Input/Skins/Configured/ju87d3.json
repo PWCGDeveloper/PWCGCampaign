@@ -1,32 +1,49 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"ju87d3_skin_00": {
-			"skinName": "ju87d3_skin_00",
-			"planeType": "ju87d3",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"ju87d3_skin_01": {
-			"skinName": "ju87d3_skin_01",
-			"planeType": "ju87d3",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": true
-		},
+        "ju87d3_default": {
+            "skinName": "ju87d3",
+            "planeType": "ju87d3",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+        "ju87d3_blank_01": {
+            "skinName": "ju87d3_blank_01",
+            "planeType": "ju87d3",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+        "ju87d3_blank_03": {
+            "skinName": "ju87d3_blank_03",
+            "planeType": "ju87d3",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
 		"ju87d3_skin_02": {
 			"skinName": "ju87d3_skin_02",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -37,7 +54,7 @@
 		"ju87d3_skin_03": {
 			"skinName": "ju87d3_skin_03",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -48,7 +65,7 @@
 		"ju87d3_skin_04": {
 			"skinName": "ju87d3_skin_04",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20121002,
 			"country": "Germany",
@@ -59,7 +76,7 @@
 		"ju87d3_skin_06": {
 			"skinName": "ju87d3_skin_06",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20121002,
 			"country": "Germany",
@@ -70,7 +87,7 @@
 		"ju87d3_skin_07": {
 			"skinName": "ju87d3_skin_07",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -81,7 +98,7 @@
 		"Ju87D_ST NM": {
 			"skinName": "Ju87D_ST NM",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -92,7 +109,7 @@
 		"Ju87D_5B-LK": {
 			"skinName": "Ju87D_5B-LK",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -103,7 +120,7 @@
 		"Ju-87D-3_6G-FR": {
 			"skinName": "Ju-87D-3_6G-FR",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -114,7 +131,7 @@
 		"Ju-87D-3_RUDEL": {
 			"skinName": "Ju-87D-3_RUDEL",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -125,7 +142,7 @@
 		"Ju-87D-3_S2-OL": {
 			"skinName": "Ju-87D-3_S2-OL",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -136,7 +153,7 @@
 		"Ju-87D-3_t6-AD": {
 			"skinName": "Ju-87D-3_t6-AD",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -147,7 +164,7 @@
 		"Ju-87D-3_T6-AN": {
 			"skinName": "Ju-87D-3_T6-AN",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -158,7 +175,7 @@
 		"Ju-87D-8 NJGS italy Swastika": {
 			"skinName": "Ju-87D-8 NJGS italy Swastika",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -169,7 +186,7 @@
 		"Ju-87D-8_1.NSGr1_Germany_1944": {
 			"skinName": "Ju-87D-8_1.NSGr1_Germany_1944",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -180,7 +197,7 @@
 		"S7-AH": {
 			"skinName": "S7-AH",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -191,7 +208,7 @@
 		"Ju-87_D-3_Default_4k": {
 			"skinName": "Ju-87_D-3_Default_4k",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Germany",
@@ -202,7 +219,7 @@
 		"4k_Ju87D_Stab II.StG2_T6-DC_summer_FoxbatRU": {
 			"skinName": "4k_Ju87D_Stab II.StG2_T6-DC_summer_FoxbatRU",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20121002,
 			"country": "Germany",
@@ -213,7 +230,7 @@
 		"Ju-87D1 StabIII_SG2 T6+AD Gustav Prefler Winter": {
 			"skinName": "Ju-87D1 StabIII_SG2 T6+AD Gustav Prefler Winter",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20121002,
 			"country": "Germany",
@@ -224,7 +241,7 @@
 		"Ju87D_9_Stg2 Wnr 2799": {
 			"skinName": "Ju87D_9_Stg2 Wnr 2799",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20122002,
 			"country": "Germany",
@@ -235,7 +252,7 @@
 		"Ju87D_StabII_StG2_T6+BC": {
 			"skinName": "Ju87D_StabII_StG2_T6+BC",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20122002,
 			"country": "Germany",
@@ -246,7 +263,7 @@
 		"G Winter": {
 			"skinName": "G Winter",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -257,7 +274,7 @@
 		"Ju-87D  J9-LL Winter": {
 			"skinName": "Ju-87D  J9-LL Winter",
 			"planeType": "ju87d3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",

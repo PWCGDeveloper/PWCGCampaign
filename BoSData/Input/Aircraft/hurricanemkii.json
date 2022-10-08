@@ -3,7 +3,8 @@
 	"archType": "hurricane",
 	"side": "ALLIED",
 	"primaryUsedBy": [
-		"RUSSIA"
+		"RUSSIA",
+        "BRITAIN"
 	],
 	"stockModifications": [
 		"MIRROR",

@@ -62,7 +62,7 @@ public class InterceptOpposingFlightBuilder implements IOpposingFlightBuilder
 
     private Squadron determineOpposingSquadron() throws PWCGException
     {
-        List<PwcgRole> opposingFlightRoles = new ArrayList<>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_DIVE_BOMB));
+        List<PwcgRole> opposingFlightRoles = new ArrayList<>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_DIVE_BOMB, PwcgRole.ROLE_RAIDER));
         OpposingSquadronChooser opposingSquadronChooser = new OpposingSquadronChooser(campaign, opposingFlightRoles, playerSquadron.determineEnemySide(), 1);
         List<Squadron> viableSquadrons = opposingSquadronChooser.getOpposingSquadrons();
         if (viableSquadrons.size() > 0)

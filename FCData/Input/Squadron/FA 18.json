@@ -16,7 +16,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "dfwc5_skin_00",
+			"skinName": "dfwc5_default",
 			"planeType": "dfwc5",
 			"archTypes": [],
 			"startDate": "19170601",

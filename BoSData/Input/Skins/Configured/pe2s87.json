@@ -1,21 +1,23 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"pe2s87_skin_00": {
-			"skinName": "pe2s87_skin_00",
-			"planeType": "pe2s87",
-			"startDate": "19400801",
-			"endDate": "19440301",
-			"squadId": -2,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
+        "pe2s87_default": {
+            "skinName": "pe2s87",
+            "planeType": "pe2s87",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"          
+        },
 		"pe2s87_skin_01": {
 			"skinName": "pe2s87_skin_01",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19440301",
 			"squadId": -2,
 			"country": "Russia",
@@ -37,7 +39,7 @@
 		"pe2s87_skin_05": {
 			"skinName": "pe2s87_skin_05",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -48,7 +50,7 @@
 		"pe2s87_skin_08": {
 			"skinName": "pe2s87_skin_08",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -59,7 +61,7 @@
 		"pe2s87_skin_09": {
 			"skinName": "pe2s87_skin_09",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -92,7 +94,7 @@
 		"Pe2s87_40": {
 			"skinName": "Pe2s87_40",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -103,7 +105,7 @@
 		"Pe2s87_Pike B_N": {
 			"skinName": "Pe2s87_Pike B_N",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -114,7 +116,7 @@
 		"Pe2s87_Pike Winter B_N": {
 			"skinName": "Pe2s87_Pike Winter B_N",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -125,7 +127,7 @@
 		"Pe2s87_Pike Winter": {
 			"skinName": "Pe2s87_Pike Winter",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -136,7 +138,7 @@
 		"Pe2s87_Pike": {
 			"skinName": "Pe2s87_Pike",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -147,7 +149,7 @@
 		"Pe2s87_White51": {
 			"skinName": "Pe2s87_White51",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -158,7 +160,7 @@
 		"Pe2s87_winter 16": {
 			"skinName": "Pe2s87_winter 16",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -169,7 +171,7 @@
 		"Pe2s87_winter 26": {
 			"skinName": "Pe2s87_winter 26",
 			"planeType": "pe2s87",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",

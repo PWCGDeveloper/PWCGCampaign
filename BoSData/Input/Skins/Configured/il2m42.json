@@ -1,21 +1,23 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"il2m42_skin_00": {
-			"skinName": "il2m42_skin_00",
+		"il2m42_default": {
+			"skinName": "il2m42",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"          
 		},
 		"il2m42_skin_01": {
 			"skinName": "il2m42_skin_01",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
@@ -26,7 +28,7 @@
 		"il2m42_skin_02": {
 			"skinName": "il2m42_skin_02",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -37,7 +39,7 @@
 		"il2m42_skin_03": {
 			"skinName": "il2m42_skin_03",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -48,7 +50,7 @@
 		"il2m42_skin_04": {
 			"skinName": "il2m42_skin_04",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -59,7 +61,7 @@
 		"il2m42_skin_05": {
 			"skinName": "il2m42_skin_05",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -70,7 +72,7 @@
 		"il2m42_skin_06": {
 			"skinName": "il2m42_skin_06",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 10121062,
 			"country": "Russia",
@@ -81,7 +83,7 @@
 		"il2m42_skin_07": {
 			"skinName": "il2m42_skin_07",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -92,7 +94,7 @@
 		"il2m42_skin_08": {
 			"skinName": "il2m42_skin_08",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -103,7 +105,7 @@
 		"il2m42_skin_09": {
 			"skinName": "il2m42_skin_09",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -114,7 +116,7 @@
 		"il2m42_skin_10": {
 			"skinName": "il2m42_skin_10",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -125,7 +127,7 @@
 		"IL-2 AM-38F n 912": {
 			"skinName": "IL-2 AM-38F n 912",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -136,7 +138,7 @@
 		"IL-2 AM-38F THE EAGLE": {
 			"skinName": "IL-2 AM-38F THE EAGLE",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -147,7 +149,7 @@
 		"IL-2 AM-38F WHITE15": {
 			"skinName": "IL-2 AM-38F WHITE15",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -158,7 +160,7 @@
 		"IL2M42 SOUTH": {
 			"skinName": "IL2M42 SOUTH",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -169,7 +171,7 @@
 		"IL2M42_99": {
 			"skinName": "IL2M42_99",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -180,7 +182,7 @@
 		"IL2M42_803": {
 			"skinName": "IL2M42_803",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -191,7 +193,7 @@
 		"IL2M42_ANNA CARA": {
 			"skinName": "IL2M42_ANNA CARA",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -202,7 +204,7 @@
 		"IL-2M42_CHUVIKOV_4k": {
 			"skinName": "IL-2M42_CHUVIKOV_4k",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -213,7 +215,7 @@
 		"IL2M42_IGNASHKIN_4k": {
 			"skinName": "IL2M42_IGNASHKIN_4k",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -224,7 +226,7 @@
 		"IL2M42_KUROCHKIN_4k": {
 			"skinName": "IL2M42_KUROCHKIN_4k",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -235,7 +237,7 @@
 		"IL2M42_LESNYH_4k": {
 			"skinName": "IL2M42_LESNYH_4k",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -246,7 +248,7 @@
 		"IL2M42_no.13": {
 			"skinName": "IL2M42_no.13",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -257,7 +259,7 @@
 		"IL2M42_PONOMAREV_4K": {
 			"skinName": "IL2M42_PONOMAREV_4K",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -268,7 +270,7 @@
 		"IL2M42_SHUST_4k": {
 			"skinName": "IL2M42_SHUST_4k",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -279,7 +281,7 @@
 		"IL2M42_smert_fashizmu_4k": {
 			"skinName": "IL2M42_smert_fashizmu_4k",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -290,7 +292,7 @@
 		"IL2M42_VALERY_CHKALOV": {
 			"skinName": "IL2M42_VALERY_CHKALOV",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -301,7 +303,7 @@
 		"IL-2M42_VALERY_CHKALOV_4k": {
 			"skinName": "IL-2M42_VALERY_CHKALOV_4k",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -312,7 +314,7 @@
 		"IL2M42_ZA STALINA_4k": {
 			"skinName": "IL2M42_ZA STALINA_4k",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -323,7 +325,7 @@
 		"IL2M42_ZUB_GVARDEITSY_4K": {
 			"skinName": "IL2M42_ZUB_GVARDEITSY_4K",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -334,7 +336,7 @@
 		"ZaOtradnova": {
 			"skinName": "ZaOtradnova",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -345,7 +347,7 @@
 		"IL-2 AM-38F N14_Winter": {
 			"skinName": "IL-2 AM-38F N14_Winter",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -356,7 +358,7 @@
 		"IL-2 AM-38F RED4 Winter": {
 			"skinName": "IL-2 AM-38F RED4 Winter",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -367,7 +369,7 @@
 		"IL-2 AM-38F RED11 Winter": {
 			"skinName": "IL-2 AM-38F RED11 Winter",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -378,7 +380,7 @@
 		"IL-2 AM-38F RED28_Winter": {
 			"skinName": "IL-2 AM-38F RED28_Winter",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -389,7 +391,7 @@
 		"IL-2 AM-38F_red5_Winter": {
 			"skinName": "IL-2 AM-38F_red5_Winter",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -400,7 +402,7 @@
 		"IL2M42_4k_3s505th_gareyev_Winter": {
 			"skinName": "IL2M42_4k_3s505th_gareyev_Winter",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -411,7 +413,7 @@
 		"IL2M42_the white_Winter": {
 			"skinName": "IL2M42_the white_Winter",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -422,7 +424,7 @@
 		"IL2M42_winter14": {
 			"skinName": "IL2M42_winter14",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -433,7 +435,7 @@
 		"IL2M42WH6": {
 			"skinName": "IL2M42WH6",
 			"planeType": "il2m42",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",

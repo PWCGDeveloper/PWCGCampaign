@@ -1,65 +1,115 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"p40e1_skin_00": {
-			"skinName": "p40e1_skin_00",
-			"planeType": "p40e1",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"p40e1_skin_01": {
-			"skinName": "p40e1_skin_01",
-			"planeType": "p40e1",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": true
-		},
+        "p40e1_default": {
+            "skinName": "p40e1",
+            "planeType": "p40e1",
+            "startDate": "19390801",
+            "endDate": "19440301",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"          
+        },
+        "p40e1_blank_01": {
+            "skinName": "p40e1_blank_01",
+            "planeType": "p40e1",
+            "startDate": "19390801",
+            "endDate": "19440301",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        "p40e1_blank_02": {
+            "skinName": "p40e1_blank_02",
+            "planeType": "p40e1",
+            "startDate": "19390801",
+            "endDate": "19440301",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        "p40e1_blank_03": {
+            "skinName": "p40e1_blank_03",
+            "planeType": "p40e1",
+            "startDate": "19390801",
+            "endDate": "19440301",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"          
+        },
+        "p40e1_blank_04": {
+            "skinName": "p40e1_blank_04",
+            "planeType": "p40e1",
+            "startDate": "19430801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"          
+        },
+        "p40e1_blank_06": {
+            "skinName": "p40e1_blank_06",
+            "planeType": "p40e1",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"          
+        },
+        "p40e1_blank_08": {
+            "skinName": "p40e1_blank_08",
+            "planeType": "p40e1",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
+        },
+        
+        
+        
 		"p40e1_skin_02": {
 			"skinName": "p40e1_skin_02",
 			"planeType": "p40e1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
-		},
-		"p40e1_skin_04": {
-			"skinName": "p40e1_skin_04",
-			"planeType": "p40e1",
-			"startDate": "19440801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"p40e1_skin_05": {
-			"skinName": "p40e1_skin_05",
-			"planeType": "p40e1",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": true
 		},
 		"p40e1_skin_09": {
 			"skinName": "p40e1_skin_09",
 			"planeType": "p40e1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -70,7 +120,7 @@
 		"P40E1_RU53": {
 			"skinName": "P40E1_RU53",
 			"planeType": "p40e1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -81,7 +131,7 @@
 		"P40E1 Soviet no 26 winter": {
 			"skinName": "P40E1 Soviet no 26 winter",
 			"planeType": "p40e1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -92,7 +142,7 @@
 		"P40E1_russian 70": {
 			"skinName": "P40E1_russian 70",
 			"planeType": "p40e1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",

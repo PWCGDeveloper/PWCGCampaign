@@ -1,21 +1,23 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"bf109e7_skin_00": {
-			"skinName": "bf109e7_skin_00",
+		"bf109e7_default": {
+			"skinName": "bf109e7",
 			"planeType": "bf109e7",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": false
 		},
 		"bf109e7_skin_01": {
 			"skinName": "bf109e7_skin_01",
 			"planeType": "bf109e7",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Germany",

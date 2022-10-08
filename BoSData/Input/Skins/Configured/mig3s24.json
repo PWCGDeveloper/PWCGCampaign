@@ -1,21 +1,23 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"mig3s24_skin_00": {
-			"skinName": "mig3s24_skin_00",
+		"mig3s24_default": {
+			"skinName": "mig3s24",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"          
 		},
 		"mig3s24_skin_01": {
 			"skinName": "mig3s24_skin_01",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
@@ -26,7 +28,7 @@
 		"mig3s24_skin_02": {
 			"skinName": "mig3s24_skin_02",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -37,7 +39,7 @@
 		"mig3s24_skin_03": {
 			"skinName": "mig3s24_skin_03",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -48,7 +50,7 @@
 		"mig3s24_skin_04": {
 			"skinName": "mig3s24_skin_04",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -59,7 +61,7 @@
 		"mig3s24_skin_05": {
 			"skinName": "mig3s24_skin_05",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -70,7 +72,7 @@
 		"mig3s24_skin_06": {
 			"skinName": "mig3s24_skin_06",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -81,7 +83,7 @@
 		"mig3s24_skin_07": {
 			"skinName": "mig3s24_skin_07",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -92,7 +94,7 @@
 		"mig3s24_skin_08": {
 			"skinName": "mig3s24_skin_08",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -103,7 +105,7 @@
 		"mig3s24_skin_09": {
 			"skinName": "mig3s24_skin_09",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -114,7 +116,7 @@
 		"mig3s24_skin_10": {
 			"skinName": "mig3s24_skin_10",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -125,7 +127,7 @@
 		"Mig3s24_3A": {
 			"skinName": "Mig3s24_3A",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -136,7 +138,7 @@
 		"Mig3s24_black4": {
 			"skinName": "Mig3s24_black4",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -147,7 +149,7 @@
 		"Mig3s24_green14": {
 			"skinName": "Mig3s24_green14",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -158,7 +160,7 @@
 		"Mig3s24_KUBAN": {
 			"skinName": "Mig3s24_KUBAN",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -169,7 +171,7 @@
 		"Mig3s24_NO 57": {
 			"skinName": "Mig3s24_NO 57",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -180,7 +182,7 @@
 		"Mig3s24_NO 95": {
 			"skinName": "Mig3s24_NO 95",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -191,7 +193,7 @@
 		"Mig3s24_NO 562": {
 			"skinName": "Mig3s24_NO 562",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -202,7 +204,7 @@
 		"Mig3s24_NO17": {
 			"skinName": "Mig3s24_NO17",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -213,7 +215,7 @@
 		"Mig3s24_white 12": {
 			"skinName": "Mig3s24_white 12",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -224,7 +226,7 @@
 		"Mig3s24_WHITE-tail": {
 			"skinName": "Mig3s24_WHITE-tail",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -235,7 +237,7 @@
 		"Mig3s24_winter ivan": {
 			"skinName": "Mig3s24_winter ivan",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -246,7 +248,7 @@
 		"Mig3s24_winter no2": {
 			"skinName": "Mig3s24_winter no2",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -257,7 +259,7 @@
 		"Mig3s24_winter02": {
 			"skinName": "Mig3s24_winter02",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -268,7 +270,7 @@
 		"Mig3s24_winter3": {
 			"skinName": "Mig3s24_winter3",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -279,7 +281,7 @@
 		"Mig3s24_winter85": {
 			"skinName": "Mig3s24_winter85",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -290,7 +292,7 @@
 		"Mig3s24_winter90": {
 			"skinName": "Mig3s24_winter90",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -301,7 +303,7 @@
 		"Mig3s24_winterStalin": {
 			"skinName": "Mig3s24_winterStalin",
 			"planeType": "mig3s24",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",

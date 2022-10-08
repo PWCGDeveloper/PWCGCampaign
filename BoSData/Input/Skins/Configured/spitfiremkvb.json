@@ -1,83 +1,214 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"spitfiremkvb_skin_00": {
-			"skinName": "spitfiremkvb_skin_00",
-			"planeType": "spitfiremkvb",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"spitfiremkvb_skin_01": {
-			"skinName": "spitfiremkvb_skin_01",
-			"planeType": "spitfiremkvb",
-			"startDate": "19400801",
-			"endDate": "19440301",
-			"squadId": -2,
-			"country": "Britain",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"spitfiremkvb_skin_04": {
-			"skinName": "spitfiremkvb_skin_04",
-			"planeType": "spitfiremkvb",
-			"startDate": "19440101",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Britain",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"spitfiremkvb_skin_09": {
-			"skinName": "spitfiremkvb_skin_09",
-			"planeType": "spitfiremkvb",
-			"startDate": "19440601",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Britain",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"spitfiremkvb_skin_05": {
-			"skinName": "spitfiremkvb_skin_05",
-			"planeType": "spitfiremkvb",
-			"startDate": "19400801",
-			"endDate": "19440301",
-			"squadId": -1,
-			"country": "Britain",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"spitfiremkvb_skin_07": {
-			"skinName": "spitfiremkvb_skin_08",
-			"planeType": "spitfiremkvb",
-			"startDate": "19440101",
-			"endDate": "19450601",
-			"squadId": 103084326,
-			"country": "Britain",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"spitfiremkvb_skin_08": {
-			"skinName": "spitfiremkvb_skin_08",
-			"planeType": "spitfiremkvb",
-			"startDate": "19440101",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Britain",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
+        "spitfiremkvb_default": {
+            "skinName": "spitfiremkvb",
+            "planeType": "spitfiremkvb",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russian",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "winter": false
+        },
+        "spitfiremkvb_blank_01": {
+            "skinName": "spitfiremkvb_blank_01",
+            "planeType": "spitfiremkvb",
+            "startDate": "19390801",
+            "endDate": "19430801",
+            "squadId": -2,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY",
+            "winter": false
+        },
+        "spitfiremkvb_blank_02": {
+            "skinName": "spitfiremkvb_blank_02",
+            "planeType": "spitfiremkvb",
+            "startDate": "19430601",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY",
+            "winter": false
+        },
+        "spitfiremkvb_blank_05": {
+            "skinName": "spitfiremkvb_blank_05",
+            "planeType": "spitfiremkvb",
+            "startDate": "19440601",
+            "endDate": "19440717",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY",
+            "winter": false
+        },
+        "spitfiremkvb_blank_06": {
+            "skinName": "spitfiremkvb_blank_06",
+            "planeType": "spitfiremkvb",
+            "startDate": "19440717",
+            "endDate": "19450103",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY",
+            "winter": false
+        },
+        "spitfiremkvb_blank_07": {
+            "skinName": "spitfiremkvb_blank_07",
+            "planeType": "spitfiremkvb",
+            "startDate": "19440825",
+            "endDate": "19450601",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY",
+            "winter": false
+        },
+        "spitfiremkvb_default": {
+            "skinName": "spitfiremkvb_default",
+            "planeType": "spitfiremkvb",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": false
+        },
+        "spitfiremkvb_skin_03": {
+            "skinName": "spitfiremkvb_skin_03",
+            "planeType": "spitfiremkvb",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -1,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
+        },
+        "spitfiremkvb_skin_04": {
+            "skinName": "spitfiremkvb_skin_04",
+            "planeType": "spitfiremkvb",
+            "startDate": "19440601",
+            "endDate": "19440717",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
+        },
+        "spitfiremkvb_skin_05": {
+            "skinName": "spitfiremkvb_skin_05",
+            "planeType": "spitfiremkvb",
+            "startDate": "19390801",
+            "endDate": "19430801",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
+        },
+        "spitfiremkvb_skin_07": {
+            "skinName": "spitfiremkvb_skin_07",
+            "planeType": "spitfiremkvb",
+            "startDate": "19440601",
+            "endDate": "19440717",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
+        },
+        "spitfiremkvb_skin_08": {
+            "skinName": "spitfiremkvb_skin_08",
+            "planeType": "spitfiremkvb",
+            "startDate": "19440601",
+            "endDate": "19440717",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
+        },
+        "spitfiremkvb_skin_09": {
+            "skinName": "spitfiremkvb_skin_09",
+            "planeType": "spitfiremkvb",
+            "startDate": "19440601",
+            "endDate": "19440825",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
+        },
+        "spitfiremkvb_skin_11": {
+            "skinName": "spitfiremkvb_skin_11",
+            "planeType": "spitfiremkvb",
+            "startDate": "19430801",
+            "endDate": "19450601",
+            "squadId": -1,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
+        },
+        "spitfiremkvb_skin_12": {
+            "skinName": "spitfiremkvb_skin_12",
+            "planeType": "spitfiremkvb",
+            "startDate": "19440601",
+            "endDate": "19440825",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
+        },
+        "spitfiremkvb_skin_14": {
+            "skinName": "spitfiremkvb_skin_14",
+            "planeType": "spitfiremkvb",
+            "startDate": "19440601",
+            "endDate": "19440825",
+            "squadId": -1,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
+        },
 		"SpitfireMkVb_soviet arrows": {
 			"skinName": "SpitfireMkVb_soviet arrows",
 			"planeType": "spitfiremkvb",
@@ -87,17 +218,21 @@
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_soviet20": {
 			"skinName": "SpitfireMkVb_soviet20",
 			"planeType": "spitfiremkvb",
-			"startDate": "19440101",
-			"endDate": "19450601",
+            "startDate": "19440601",
+            "endDate": "19450103",
 			"squadId": -1,
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_soviet green": {
@@ -109,6 +244,8 @@
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_SOVIET78": {
@@ -120,6 +257,8 @@
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_soviet65": {
@@ -131,6 +270,8 @@
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"Spitfire_EN522_John Ratten ": {
@@ -142,6 +283,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_5-AL": {
@@ -153,6 +296,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_126KILL": {
@@ -164,6 +309,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_BA-U": {
@@ -175,6 +322,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_BETTE": {
@@ -186,6 +335,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_DUTY DICK GERMAN": {
@@ -197,6 +348,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_DUTY DICK": {
@@ -208,6 +361,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_FU C_Colin Rusty Leith": {
@@ -219,6 +374,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_GOBELS": {
@@ -230,6 +387,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_GW B 966": {
@@ -241,6 +400,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_J-MC": {
@@ -252,6 +413,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_KIWI": {
@@ -263,6 +426,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_MN-P": {
@@ -274,6 +439,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_PB": {
@@ -285,6 +452,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_PINOCHIO": {
@@ -296,6 +465,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb_Wojtek": {
@@ -307,6 +478,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		},
 		"SpitfireMkVb-AVR-J": {
@@ -318,6 +491,8 @@
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
 			"winter": false
 		}
 	}

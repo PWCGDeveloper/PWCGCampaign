@@ -1,8 +1,76 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"tempestmkvs2_skin_00": {
-			"skinName": "tempestmkvs2_skin_00",
+        "tempestmkvs2_default": {
+            "skinName": "tempestmkvs2_default",
+            "planeType": "tempestmkvs2",
+            "startDate": "19390801",
+            "endDate": "19440601",
+            "squadId": -2,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
+        },
+        "tempestmkvs2_blank_01": {
+            "skinName": "tempestmkvs2_blank_01",
+            "planeType": "tempestmkvs2",
+            "startDate": "19440601",
+            "endDate": "19440706",
+            "squadId": -2,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
+        },
+        "tempestmkvs2_blank_02": {
+            "skinName": "tempestmkvs2_blank_02",
+            "planeType": "tempestmkvs2",
+            "startDate": "19440706",
+            "endDate": "19440825",
+            "squadId": -2,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
+        },
+        "tempestmkvs2_blank_03": {
+            "skinName": "tempestmkvs2_blank_03",
+            "planeType": "tempestmkvs2",
+            "startDate": "19440825",
+            "endDate": "19450103",
+            "squadId": -2,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
+        },
+        "tempestmkvs2_blank_04": {
+            "skinName": "tempestmkvs2_blank_04",
+            "planeType": "tempestmkvs2",
+            "startDate": "19450101",
+            "endDate": "19440601",
+            "squadId": -2,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
+        },
+
+
+
+		"tempestmkvs2_default": {
+			"skinName": "tempestmkvs2_default",
 			"planeType": "tempestmkvs2",
             "startDate": "19390801",
             "endDate": "19450601",
@@ -68,7 +136,7 @@
 		"tempestmkvs2_skin_07": {
 			"skinName": "tempestmkvs2_skin_07",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -81,7 +149,7 @@
 		"tempestmkvs2_skin_09": {
 			"skinName": "tempestmkvs2_skin_09",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -94,7 +162,7 @@
 		"tempestmkvs2_skin_10": {
 			"skinName": "tempestmkvs2_skin_10",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -119,7 +187,7 @@
 		"JN751": {
 			"skinName": "JN751",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -131,7 +199,7 @@
 		"JN754_SWEETMAN": {
 			"skinName": "JN754_SWEETMAN",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -143,7 +211,7 @@
 		"JN763_IREMONGER": {
 			"skinName": "JN763_IREMONGER",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -155,7 +223,7 @@
 		"JN765": {
 			"skinName": "JN765",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -167,7 +235,7 @@
 		"JN812": {
 			"skinName": "JN812",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -179,7 +247,7 @@
 		"LE GRAND CHARLES": {
 			"skinName": "LE GRAND CHARLES",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -191,7 +259,7 @@
 		"MPG_4K_TempestMkVs2_274Sqn_JJ-M_March1945": {
 			"skinName": "MPG_4K_TempestMkVs2_274Sqn_JJ-M_March1945",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -202,7 +270,7 @@
 		"JN769": {
 			"skinName": "JN769",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -214,7 +282,7 @@
 		"REMY VAN LIERDE": {
 			"skinName": "REMY VAN LIERDE",
 			"planeType": "tempestmkvs2",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",

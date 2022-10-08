@@ -72,7 +72,7 @@
             "tacticalCodeColor": "SKY"
         },
         {
-            "skinName": "typhoonmkib_skin_00",
+            "skinName": "typhoonmkib_default",
             "planeType": "typhoonmkib",
             "archTypes": [],
             "startDate": "19390801",
@@ -142,7 +142,7 @@
             "tacticalCodeColor": "SKY"
         },
         {
-            "skinName": "tempestmkvs2_skin_00",
+            "skinName": "tempestmkvs2_default",
             "planeType": "tempestmkvs2",
             "archTypes": [],
             "startDate": "19390801",

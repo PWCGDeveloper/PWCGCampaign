@@ -1,16 +1,18 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"yak9s1t_skin_00": {
-			"skinName": "yak9s1t_skin_00",
+		"yak9s1t_default": {
+			"skinName": "yak9s1t",
 			"planeType": "yak9s1t",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"          
 		},
 		"yak9s1t_skin_10": {
 			"skinName": "yak9s1t_skin_10",
@@ -37,7 +39,7 @@
 		"yak9s1t_skin_02": {
 			"skinName": "yak9s1t_skin_02",
 			"planeType": "yak9s1t",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19440301",
 			"squadId": -1,
 			"country": "Russia",

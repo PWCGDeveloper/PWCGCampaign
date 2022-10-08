@@ -14,11 +14,11 @@
 		{
 			"archType": "typhoon",
 			"squadronIntroduction": "19430101",
-			"squadronWithdrawal": "19430331"
+			"squadronWithdrawal": "19430401"
 		},
 		{
 			"archType": "tempest",
-			"squadronIntroduction": "19440401",
+			"squadronIntroduction": "19430401",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -44,118 +44,6 @@
 		"19450404": "Kirchhellen"
 	},
 	"skins": [
-		{
-			"skinName": "hurricanemkii_skin_03",
-			"planeType": "hurricanemkii",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 103083056,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE"
-		},
-		{
-			"skinName": "hurricanemkii_skin_04",
-			"planeType": "hurricanemkii",
-			"archTypes": [],
-			"startDate": "19420301",
-			"endDate": "19450601",
-			"squadId": 103083056,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "SKY"
-		},
-        {
-            "skinName": "typhoonmkib_skin_00",
-            "planeType": "typhoonmkib",
-            "archTypes": [],
-            "startDate": "19390801",
-            "endDate": "19440601",
-            "squadId": 103083056,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "tempestmkvs2_skin_04",
-            "planeType": "tempestmkvs2",
-            "archTypes": [],
-            "startDate": "19390801",
-            "endDate": "19440601",
-            "squadId": 103083056,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "tempestmkvs2_skin_01",
-            "planeType": "tempestmkvs2",
-            "archTypes": [],
-            "startDate": "19440601",
-            "endDate": "19440706",
-            "squadId": 103083056,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "tempestmkvs2_skin_02",
-            "planeType": "tempestmkvs2",
-            "archTypes": [],
-            "startDate": "19440706",
-            "endDate": "19440825",
-            "squadId": 103083056,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "tempestmkvs2_skin_03",
-            "planeType": "tempestmkvs2",
-            "archTypes": [],
-            "startDate": "19440825",
-            "endDate": "19450103",
-            "squadId": 103083056,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "tempestmkvs2_skin_00",
-            "planeType": "tempestmkvs2",
-            "archTypes": [],
-            "startDate": "19390801",
-            "endDate": "19450601",
-            "squadId": 103083056,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        }
 	],
 	"squadHistory": {
 		"squadHistoryEntries": []

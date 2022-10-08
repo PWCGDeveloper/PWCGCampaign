@@ -1,21 +1,23 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"yak7bs36_skin_00": {
-			"skinName": "yak7bs36_skin_00",
+		"yak7bs36_default": {
+			"skinName": "yak7bs36",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"          
 		},
 		"yak7bs36_skin_01": {
 			"skinName": "yak7bs36_skin_01",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
@@ -26,7 +28,7 @@
 		"yak7bs36_skin_02": {
 			"skinName": "yak7bs36_skin_02",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -37,7 +39,7 @@
 		"yak7bs36_skin_03": {
 			"skinName": "yak7bs36_skin_03",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -48,7 +50,7 @@
 		"yak7bs36_skin_04": {
 			"skinName": "yak7bs36_skin_04",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -59,7 +61,7 @@
 		"yak7bs36_skin_05": {
 			"skinName": "yak7bs36_skin_05",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19440601",
 			"squadId": -1,
 			"country": "Russia",
@@ -81,7 +83,7 @@
 		"yak7bs36_skin_07": {
 			"skinName": "yak7bs36_skin_07",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -92,7 +94,7 @@
 		"yak7bs36_skin_08": {
 			"skinName": "yak7bs36_skin_08",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -103,7 +105,7 @@
 		"yak7bs36_skin_09": {
 			"skinName": "yak7bs36_skin_09",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -114,7 +116,7 @@
 		"yak7bs36_skin_10": {
 			"skinName": "yak7bs36_skin_10",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -125,7 +127,7 @@
 		"yak7bs36_skin_11": {
 			"skinName": "yak7bs36_skin_11",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -136,7 +138,7 @@
 		"yak7bs36_skin_12": {
 			"skinName": "yak7bs36_skin_12",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -147,7 +149,7 @@
 		"yak7bs36 SK": {
 			"skinName": "yak7bs36 SK",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -158,7 +160,7 @@
 		"Yak7Bs36_3": {
 			"skinName": "Yak7Bs36_3",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -169,7 +171,7 @@
 		"Yak7Bs36_KNM": {
 			"skinName": "Yak7Bs36_KNM",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -180,7 +182,7 @@
 		"Yak7Bs36_7": {
 			"skinName": "Yak7Bs36_7",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -191,7 +193,7 @@
 		"Yak7Bs36_29": {
 			"skinName": "Yak7Bs36_29",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -202,7 +204,7 @@
 		"Yak7Bs36_THP": {
 			"skinName": "Yak7Bs36_THP",
 			"planeType": "yak7bs36",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",

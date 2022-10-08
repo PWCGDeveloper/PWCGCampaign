@@ -1,21 +1,23 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"il2m41_skin_00": {
-			"skinName": "il2m41_skin_00",
+		"il2m41_default": {
+			"skinName": "il2m41",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"          
 		},
 		"il2m41_skin_01": {
 			"skinName": "il2m41_skin_01",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
@@ -26,7 +28,7 @@
 		"il2m41_skin_02": {
 			"skinName": "il2m41_skin_02",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
@@ -37,7 +39,7 @@
 		"il2m41_skin_03": {
 			"skinName": "il2m41_skin_03",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",
@@ -48,7 +50,7 @@
 		"il2m41_skin_05": {
 			"skinName": "il2m41_skin_05",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -59,7 +61,7 @@
 		"il2m41_skin_06": {
 			"skinName": "il2m41_skin_06",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -70,7 +72,7 @@
 		"il2m41_skin_07": {
 			"skinName": "il2m41_skin_07",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -81,7 +83,7 @@
 		"IL2M41_1 ka": {
 			"skinName": "IL2M41_1 ka",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -92,7 +94,7 @@
 		"IL2M41_4k_8RED_174shap": {
 			"skinName": "IL2M41_4k_8RED_174shap",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -103,7 +105,7 @@
 		"IL2M41_08 41": {
 			"skinName": "IL2M41_08 41",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -114,7 +116,7 @@
 		"IL2M41_09_1941g": {
 			"skinName": "IL2M41_09_1941g",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -125,7 +127,7 @@
 		"IL2M41_243_SHAP_white_2_4k": {
 			"skinName": "IL2M41_243_SHAP_white_2_4k",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -136,7 +138,7 @@
 		"IL2M41_BEL27": {
 			"skinName": "IL2M41_BEL27",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -147,7 +149,7 @@
 		"IL2M41_DAVYDENKO_4k": {
 			"skinName": "IL2M41_DAVYDENKO_4k",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -158,7 +160,7 @@
 		"IL2M41_Desna_3_4k": {
 			"skinName": "IL2M41_Desna_3_4k",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -169,7 +171,7 @@
 		"IL2M41_red_2_4k": {
 			"skinName": "IL2M41_red_2_4k",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -180,7 +182,7 @@
 		"IL2M41_SMERT_OKKUP_4k": {
 			"skinName": "IL2M41_SMERT_OKKUP_4k",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -191,7 +193,7 @@
 		"IL2M41_SMIRNOV_4k": {
 			"skinName": "IL2M41_SMIRNOV_4k",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -202,7 +204,7 @@
 		"IL2M41_white_10_4k": {
 			"skinName": "IL2M41_white_10_4k",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -213,7 +215,7 @@
 		"IL2m41_yellow_2_4k": {
 			"skinName": "IL2m41_yellow_2_4k",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -224,7 +226,7 @@
 		"IL2M41_ZA_RODINU_4k": {
 			"skinName": "IL2M41_ZA_RODINU_4k",
 			"planeType": "il2m41",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",

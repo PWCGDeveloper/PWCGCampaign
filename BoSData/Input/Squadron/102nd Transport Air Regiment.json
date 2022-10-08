@@ -58,20 +58,6 @@
 		"19450501": "ef_PetitBrogel"
 	},
 	"skins": [
-		{
-			"skinName": "c47a_skin_07",
-			"planeType": "c47a",
-			"archTypes": [],
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 10112102,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
 	],
 	"squadHistory": {
 		"squadHistoryEntries": []

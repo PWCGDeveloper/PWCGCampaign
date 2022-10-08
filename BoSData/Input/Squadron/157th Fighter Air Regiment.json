@@ -63,10 +63,10 @@
 	},
 	"skins": [
 		{
-			"skinName": "hurricanemkii_skin_00",
+			"skinName": "hurricanemkii_default",
 			"planeType": "hurricanemkii",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19430601",
 			"squadId": 10111157,
 			"country": "Russia",
@@ -80,7 +80,7 @@
 			"skinName": "hurricanemkii_skin_01",
 			"planeType": "hurricanemkii",
 			"archTypes": [],
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19430601",
 			"squadId": 10111157,
 			"country": "Russia",

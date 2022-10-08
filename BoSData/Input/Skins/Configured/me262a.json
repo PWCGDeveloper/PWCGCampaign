@@ -1,21 +1,75 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"me262a_skin_00": {
-			"skinName": "me262a_skin_00",
-			"planeType": "me262a",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
+        "me262a_default": {
+            "skinName": "me262a",
+            "planeType": "me262a",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": false
+        },
+        "me262a_blank_01": {
+            "skinName": "me262a_blank_01",
+            "planeType": "me262a",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "winter": false
+        },
+        "me262a_blank_02": {
+            "skinName": "me262a_blank_02",
+            "planeType": "me262a",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+        "me262a_blank_03": {
+            "skinName": "me262a_blank_03",
+            "planeType": "me262a",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "winter": false
+        },
+        "me262a_blank_04": {
+            "skinName": "me262a_blank_04",
+            "planeType": "me262a",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "YELLOW",
+            "winter": false
+        },
 		"me262a_skin_01": {
 			"skinName": "me262a_skin_01",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -26,7 +80,7 @@
 		"me262a_skin_03": {
 			"skinName": "me262a_skin_03",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -37,7 +91,7 @@
 		"me262a_skin_04": {
 			"skinName": "me262a_skin_04",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -48,7 +102,7 @@
 		"me262a_skin_05": {
 			"skinName": "me262a_skin_05",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -59,7 +113,7 @@
 		"me262a_skin_07": {
 			"skinName": "me262a_skin_07",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111044,
 			"country": "Germany",
@@ -70,7 +124,7 @@
 		"me262a_skin_08": {
 			"skinName": "me262a_skin_08",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -81,7 +135,7 @@
 		"me262a_skin_09": {
 			"skinName": "me262a_skin_09",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -92,7 +146,7 @@
 		"me262a_skin_10": {
 			"skinName": "me262a_skin_10",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -103,7 +157,7 @@
 		"Me262A EK 262 11b": {
 			"skinName": "Me262A EK 262 11b",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -114,7 +168,7 @@
 		"Me262A_4k_3_JG7_5Y v5 cs": {
 			"skinName": "Me262A_4k_3_JG7_5Y v5 cs",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111044,
 			"country": "Germany",
@@ -125,7 +179,7 @@
 		"Me262A_4k_mid green cover v4": {
 			"skinName": "Me262A_4k_mid green cover v4",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111044,
 			"country": "Germany",
@@ -136,7 +190,7 @@
 		"Me262A_4k_mistel v9": {
 			"skinName": "Me262A_4k_mistel v9",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20131051,
 			"country": "Germany",
@@ -147,7 +201,7 @@
 		"Me262A_4k_mistel v16": {
 			"skinName": "Me262A_4k_mistel v16",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20131051,
 			"country": "Germany",
@@ -158,7 +212,7 @@
 		"Me262A_4k_mistel v23": {
 			"skinName": "Me262A_4k_mistel v23",
 			"planeType": "me262a",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20131051,
 			"country": "Germany",

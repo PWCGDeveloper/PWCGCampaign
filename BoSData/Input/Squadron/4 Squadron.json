@@ -29,78 +29,7 @@
 		"19450310": "Gilze-Rijen",
 		"19450404": "Bonninghardt-Sud"
 	},
-	"skins": [
-        {
-            "skinName": "mosquitofbmkvis2_skin_00",
-            "planeType": "mosquitofbmkvis2",
-            "archTypes": [],
-            "startDate": "19390801",
-            "endDate": "19440601",
-            "squadId": 103083004,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "mosquitofbmkvis2_skin_01",
-            "planeType": "mosquitofbmkvis2",
-            "archTypes": [],
-            "startDate": "19440601",
-            "endDate": "19440706",
-            "squadId": 103083004,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "mosquitofbmkvis2_skin_02",
-            "planeType": "mosquitofbmkvis2",
-            "archTypes": [],
-            "startDate": "19440706",
-            "endDate": "19440825",
-            "squadId": 103083004,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "mosquitofbmkvis2_skin_03",
-            "planeType": "mosquitofbmkvis2",
-            "archTypes": [],
-            "startDate": "19440825",
-            "endDate": "19450103",
-            "squadId": 103084193,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "mosquitofbmkvis2_skin_04",
-            "planeType": "mosquitofbmkvis2",
-            "archTypes": [],
-            "startDate": "19450103",
-            "endDate": "19450601",
-            "squadId": 103084193,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        }
-	],
+    "skins": [],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},

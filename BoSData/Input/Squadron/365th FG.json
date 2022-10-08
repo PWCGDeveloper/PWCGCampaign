@@ -31,7 +31,7 @@
   },
   "skins": [
         {
-            "skinName": "p47d22_skin_00",
+            "skinName": "p47d22_default",
             "planeType": "p47d22",
             "archTypes": [],
             "startDate": "19430601",
@@ -129,7 +129,7 @@
             "tacticalCodeColor": "WHITE"
         },
         {
-            "skinName": "p47d28_skin_00",
+            "skinName": "p47d28_default",
             "planeType": "p47d28",
             "archTypes": [],
             "startDate": "19440201",
@@ -185,7 +185,7 @@
             "tacticalCodeColor": "BLACK"
         },
         {
-            "skinName": "p47d28_skin_00",
+            "skinName": "p47d28_default",
             "planeType": "p47d28",
             "archTypes": [],
             "startDate": "19450103",

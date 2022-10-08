@@ -44,7 +44,7 @@
             "tacticalCodeColor": "WHITE"
         },
         {
-            "skinName": "p38j25_skin_00",
+            "skinName": "p38j25_default",
             "planeType": "p38j25",
             "archTypes": [],
             "startDate": "19440201",
@@ -100,7 +100,7 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "p38j25_skin_00",
+			"skinName": "p38j25_default",
 			"planeType": "p38j25",
 			"archTypes": [],
 			"startDate": "19450103",

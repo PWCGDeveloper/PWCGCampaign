@@ -1,8 +1,8 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"typhoonmkib_skin_00": {
-			"skinName": "typhoonmkib_skin_00",
+		"typhoonmkib_default": {
+			"skinName": "typhoonmkib_default",
 			"planeType": "typhoonmkib",
             "startDate": "19390801",
             "endDate": "19440601",
@@ -14,8 +14,8 @@
             "useTacticalCodes": true,
             "tacticalCodeColor": "SKY"          
 		},
-		"typhoonmkib_skin_01": {
-			"skinName": "typhoonmkib_skin_01",
+		"typhoonmkib_blank_01": {
+			"skinName": "typhoonmkib_blank_01",
 			"planeType": "typhoonmkib",
             "startDate": "19440601",
             "endDate": "19440706",
@@ -27,8 +27,8 @@
             "useTacticalCodes": true,
             "tacticalCodeColor": "SKY"          
 		},
-		"typhoonmkib_skin_02": {
-			"skinName": "typhoonmkib_skin_02",
+		"typhoonmkib_blank_02": {
+			"skinName": "typhoonmkib_blank_02",
 			"planeType": "typhoonmkib",
             "startDate": "19440706",
             "endDate": "19440825",
@@ -40,8 +40,8 @@
             "useTacticalCodes": true,
             "tacticalCodeColor": "SKY"          
 		},
-		"typhoonmkib_skin_03": {
-			"skinName": "typhoonmkib_skin_03",
+		"typhoonmkib_blank_03": {
+			"skinName": "typhoonmkib_blank_03",
 			"planeType": "typhoonmkib",
             "startDate": "19440825",
             "endDate": "19450103",
@@ -53,8 +53,8 @@
 			"useTacticalCodes": true,
 			"tacticalCodeColor": "SKY"			
 		},
-		"typhoonmkib_skin_04": {
-			"skinName": "typhoonmkib_skin_04",
+		"typhoonmkib_blank_04": {
+			"skinName": "typhoonmkib_blank_04",
 			"planeType": "typhoonmkib",
             "startDate": "19450103",
             "endDate": "19450601",
@@ -69,7 +69,7 @@
 		"typhoonmkib_skin_05": {
 			"skinName": "typhoonmkib_skin_05",
 			"planeType": "typhoonmkib",
-			"startDate": "19440501",
+			"startDate": "19440601",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -77,12 +77,12 @@
 			"definedInGame": true,
             "winter": false,
             "useTacticalCodes": false,
-            "tacticalCodeColor": "SKY"          
+            "tacticalCodeColor": ""          
 		},
 		"typhoonmkib_skin_06": {
 			"skinName": "typhoonmkib_skin_06",
 			"planeType": "typhoonmkib",
-			"startDate": "19440501",
+			"startDate": "19440601",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -90,12 +90,12 @@
 			"definedInGame": true,
             "winter": false,
             "useTacticalCodes": false,
-            "tacticalCodeColor": "SKY"          
+            "tacticalCodeColor": ""          
 		},
 		"typhoonmkib_skin_07": {
 			"skinName": "typhoonmkib_skin_07",
 			"planeType": "typhoonmkib",
-			"startDate": "19440501",
+			"startDate": "19440601",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -103,12 +103,12 @@
 			"definedInGame": true,
             "winter": false,
             "useTacticalCodes": false,
-            "tacticalCodeColor": "SKY"          
+            "tacticalCodeColor": ""          
 		},
 		"typhoonmkib_skin_08": {
 			"skinName": "typhoonmkib_skin_08",
 			"planeType": "typhoonmkib",
-			"startDate": "19440501",
+			"startDate": "19440601",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Britain",
@@ -116,7 +116,7 @@
 			"definedInGame": true,
             "winter": false,
             "useTacticalCodes": false,
-            "tacticalCodeColor": "SKY"          
+            "tacticalCodeColor": ""          
 		},
 		"typhoonmkib_skin_09": {
 			"skinName": "typhoonmkib_skin_09",
@@ -129,7 +129,7 @@
 			"definedInGame": true,
             "winter": false,
             "useTacticalCodes": false,
-            "tacticalCodeColor": "SKY"          
+            "tacticalCodeColor": ""          
 		}
 	}
 }

@@ -16,7 +16,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "gothac5_skin_00",
+			"skinName": "gothac5_default",
 			"planeType": "gothac5",
 			"archTypes": [],
 			"startDate": "19170601",

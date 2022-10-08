@@ -1,9 +1,13 @@
-Alpha 2 Planned
+TODO
 Troops in the water near a convoy.
+Smoke/Damage still not fixed.
 
-Alpha 3 Planned
 
-Fixed
+Alpha 3 Fixed
+Some Typhoon mods availability pushed to mid 1944
+Gap in 56 squadron assigned planes
+
+Alpha 2 Fixed
 Russian skins on British planes
 Inappropriate smoke
 Inappropriate damage to radar towers

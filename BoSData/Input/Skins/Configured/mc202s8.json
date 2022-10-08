@@ -1,21 +1,23 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"mc202s8_skin_00": {
-			"skinName": "mc202s8_skin_00",
+		"mc202s8_default": {
+			"skinName": "mc202s8",
 			"planeType": "mc202s8",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19440301",
 			"squadId": -2,
 			"country": "Italy",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"          
 		},
 		"mc202s8_skin_01": {
 			"skinName": "mc202s8_skin_01",
 			"planeType": "mc202s8",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19440301",
 			"squadId": -2,
 			"country": "Italy",
@@ -37,7 +39,7 @@
 		"mc202s8_skin_05": {
 			"skinName": "mc202s8_skin_05",
 			"planeType": "mc202s8",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Italy",
@@ -48,7 +50,7 @@
 		"mc202s8_skin_06": {
 			"skinName": "mc202s8_skin_06",
 			"planeType": "mc202s8",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Italy",
@@ -59,7 +61,7 @@
 		"mc202s8_skin_07": {
 			"skinName": "mc202s8_skin_07",
 			"planeType": "mc202s8",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Italy",
@@ -70,7 +72,7 @@
 		"mc202s8_skin_08": {
 			"skinName": "mc202s8_skin_08",
 			"planeType": "mc202s8",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Italy",
@@ -81,7 +83,7 @@
 		"mc202s8_skin_10": {
 			"skinName": "mc202s8_skin_10",
 			"planeType": "mc202s8",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Italy",

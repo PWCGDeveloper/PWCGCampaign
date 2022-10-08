@@ -27,78 +27,8 @@
 		"19450310": "Asch",
 		"19450404": "Koln-Ostheim"
 	},
-	"skins": [
-		{
-			"skinName": "a20b_skin_8",
-			"planeType": "a20b",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19440601",
-			"squadId": 102321445,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": ""
-		},
-		{
-			"skinName": "a20b_skin_10",
-			"planeType": "a20b",
-			"archTypes": [],
-			"startDate": "19440601",
-			"endDate": "19440706",
-			"squadId": 102321445,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": ""
-		},
-		{
-			"skinName": "a20b_skin_11",
-			"planeType": "a20b",
-			"archTypes": [],
-			"startDate": "19440706",
-			"endDate": "19440825",
-			"squadId": 102321445,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": ""
-		},
-		{
-			"skinName": "a20b_skin_12",
-			"planeType": "a20b",
-			"archTypes": [],
-			"startDate": "19440825",
-			"endDate": "19450103",
-			"squadId": 102321445,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": ""
-		},
-		{
-			"skinName": "a20b_skin_8",
-			"planeType": "a20b",
-			"archTypes": [],
-			"startDate": "19450103",
-			"endDate": "19450601",
-			"squadId": 102321445,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": ""
-		}
-	],
+    "skins": [
+    ],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},

@@ -21,6 +21,8 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
     private Date mkIIIRocketsIntroDate;
     private Date doubleRocketsIntroDate;
     private Date boostIntroDate;
+    private Date fourBladePropDate;
+    private Date dustDeflectorDate;
 
     public TyphoonMkIbPayload(PlaneType planeType, Date date)
     {
@@ -36,6 +38,8 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
             doubleRocketsIntroDate = DateUtils.getDateYYYYMMDD("19440901");
             mkIIIRocketsIntroDate = DateUtils.getDateYYYYMMDD("19441216");
             boostIntroDate = DateUtils.getDateYYYYMMDD("19440628");
+            fourBladePropDate = DateUtils.getDateYYYYMMDD("19440601");
+            dustDeflectorDate = DateUtils.getDateYYYYMMDD("19440601");
         }
         catch (Exception e)
         {
@@ -150,11 +154,19 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
     @Override
     protected void loadAvailableStockModifications()
     {
-        registerStockModification(PayloadElement.DUST_DEFLECTOR);
-        registerStockModification(PayloadElement.FOUR_PLADE_PROP);
         if (getDate().after(boostIntroDate))
         {
             registerStockModification(PayloadElement.LB_11_BOOST);
+        }
+        
+        if (getDate().after(dustDeflectorDate))
+        {
+            registerStockModification(PayloadElement.DUST_DEFLECTOR);
+        }
+    
+        if (getDate().after(fourBladePropDate))
+        {
+            registerStockModification(PayloadElement.FOUR_PLADE_PROP);
         }
     }
     

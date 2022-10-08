@@ -1,43 +1,88 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"p39l1_skin_00": {
-			"skinName": "p39l1_skin_00",
-			"planeType": "p39l1",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"p39l1_skin_01": {
-			"skinName": "p39l1_skin_01",
-			"planeType": "p39l1",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": true
-		},
-		"p39l1_skin_03": {
-			"skinName": "p39l1_skin_03",
-			"planeType": "p39l1",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
+        "p39l1_default": {
+            "skinName": "p39l1",
+            "planeType": "p39l1",
+            "startDate": "19390801",
+            "endDate": "19440301",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"          
+        },
+        "p39l1_blank_01": {
+            "skinName": "p39l1_blank_01",
+            "planeType": "p39l1",
+            "startDate": "19390801",
+            "endDate": "19440301",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        "p39l1_blank_02": {
+            "skinName": "p39l1_blank_02",
+            "planeType": "p39l1",
+            "startDate": "19390801",
+            "endDate": "19440301",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"          
+        },
+        "p39l1_blank_03": {
+            "skinName": "p39l1_blank_03",
+            "planeType": "p39l1",
+            "startDate": "19430801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"          
+        },
+        "p39l1_blank_04": {
+            "skinName": "p39l1_blank_04",
+            "planeType": "p39l1",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"          
+        },
+        "p39l1_blank_05": {
+            "skinName": "p39l1_blank_05",
+            "planeType": "p39l1",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"          
+        },
 		"p39l1_skin_11": {
 			"skinName": "p39l1_skin_11",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -48,7 +93,7 @@
 		"p39l1_skin_12": {
 			"skinName": "p39l1_skin_12",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -59,7 +104,7 @@
 		"p39l1_skin_13": {
 			"skinName": "p39l1_skin_13",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -70,7 +115,7 @@
 		"p39l1_skin_14": {
 			"skinName": "p39l1_skin_14",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -81,7 +126,7 @@
 		"p39l1  NO42": {
 			"skinName": "p39l1  NO42",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -92,7 +137,7 @@
 		"p39l1 EAGLE": {
 			"skinName": "p39l1 EAGLE",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -103,7 +148,7 @@
 		"P39L1_NO 31": {
 			"skinName": "P39L1_NO 31",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -114,7 +159,7 @@
 		"P39L-1-95": {
 			"skinName": "P39L-1-95",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -125,7 +170,7 @@
 		"P39L-1-103": {
 			"skinName": "P39L-1-103",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -136,7 +181,7 @@
 		"P39L-1-BX-228": {
 			"skinName": "P39L-1-BX-228",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -147,7 +192,7 @@
 		"P39L-1-RECHKALOV 1944": {
 			"skinName": "P39L-1-RECHKALOV 1944",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -158,7 +203,7 @@
 		"P39L-1-SHUKOV": {
 			"skinName": "P39L-1-SHUKOV",
 			"planeType": "p39l1",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",

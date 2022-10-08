@@ -1,32 +1,49 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"fw190a3_skin_00": {
-			"skinName": "fw190a3_skin_00",
-			"planeType": "fw190a3",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
-		},
-		"fw190a3_skin_01": {
-			"skinName": "fw190a3_skin_01",
-			"planeType": "fw190a3",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": true
-		},
+        "fw190a3_default": {
+            "skinName": "fw190a3",
+            "planeType": "fw190a3",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": false
+        },
+        "fw190a3_blank_01": {
+            "skinName": "fw190a3_blank_01",
+            "planeType": "fw190a3",
+            "startDate": "19390801",
+            "endDate": "19430401",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": true
+        },
+        "fw190a3_blank_02": {
+            "skinName": "fw190a3_blank_02",
+            "planeType": "fw190a3",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": false
+        },
 		"fw190a3_skin_02": {
 			"skinName": "fw190a3_skin_02",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -37,7 +54,7 @@
 		"fw190a3_skin_04": {
 			"skinName": "fw190a3_skin_04",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -48,7 +65,7 @@
 		"fw190a3_skin_06": {
 			"skinName": "fw190a3_skin_06",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -59,7 +76,7 @@
 		"fw190a3_skin_07": {
 			"skinName": "fw190a3_skin_07",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111051,
 			"country": "Germany",
@@ -70,7 +87,7 @@
 		"fw190a3_skin_09": {
 			"skinName": "fw190a3_skin_09",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111051,
 			"country": "Germany",
@@ -81,7 +98,7 @@
 		"10_JG2_nonHK": {
 			"skinName": "10_JG2_nonHK",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -92,7 +109,7 @@
 		"190A3_JG5_Blue_11_Winter": {
 			"skinName": "190A3_JG5_Blue_11_Winter",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -103,7 +120,7 @@
 		"Fw-190 A2 JFS 4 Blue 4": {
 			"skinName": "Fw-190 A2 JFS 4 Blue 4",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -114,7 +131,7 @@
 		"Fw-190 A6 3_JG11 Yellow 9": {
 			"skinName": "Fw-190 A6 3_JG11 Yellow 9",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -125,7 +142,7 @@
 		"FW190_White16": {
 			"skinName": "FW190_White16",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -136,7 +153,7 @@
 		"FW190a3 Robert-Olejnik": {
 			"skinName": "FW190a3 Robert-Olejnik",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -147,7 +164,7 @@
 		"FW190a3_Black3_4k": {
 			"skinName": "FW190a3_Black3_4k",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -158,7 +175,7 @@
 		"FW190a3_JG2_Faber_noHK": {
 			"skinName": "FW190a3_JG2_Faber_noHK",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -169,7 +186,7 @@
 		"FW190a3_Nowotny_noHK": {
 			"skinName": "FW190a3_Nowotny_noHK",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -180,7 +197,7 @@
 		"FW190a4_4JG2_Kairouan airfield_Tunisia": {
 			"skinName": "FW190a4_4JG2_Kairouan airfield_Tunisia",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -191,7 +208,7 @@
 		"FW190a4_11SKG10": {
 			"skinName": "FW190a4_11SKG10",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -202,7 +219,7 @@
 		"Uschi_yelow7_nonHK": {
 			"skinName": "Uschi_yelow7_nonHK",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -213,7 +230,7 @@
 		"FW190a3_BlackDoubleChevronHistorical Winter": {
 			"skinName": "FW190a3_BlackDoubleChevronHistorical Winter",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -224,7 +241,7 @@
 		"Wulfs 190": {
 			"skinName": "Wulfs 190",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Germany",
@@ -235,7 +252,7 @@
 		"Fw-190 A3 10_JG1 White 12": {
 			"skinName": "Fw-190 A3 10_JG1 White 12",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111001,
 			"country": "Germany",
@@ -246,7 +263,7 @@
 		"FW190_JG1_Eberhard Burath": {
 			"skinName": "FW190_JG1_Eberhard Burath",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111001,
 			"country": "Germany",
@@ -257,7 +274,7 @@
 		"FW190a3_1.-JG1-I": {
 			"skinName": "FW190a3_1.-JG1-I",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111001,
 			"country": "Germany",
@@ -268,7 +285,7 @@
 		"Fw-190A4 9_JG1 Yellow 1 Leeuwarden Holland 1943": {
 			"skinName": "Fw-190A4 9_JG1 Yellow 1 Leeuwarden Holland 1943",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111001,
 			"country": "Germany",
@@ -279,7 +296,7 @@
 		"III_JG1": {
 			"skinName": "III_JG1",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111001,
 			"country": "Germany",
@@ -290,7 +307,7 @@
 		"JG1 Fw190A3 Johannes Rathenow": {
 			"skinName": "JG1 Fw190A3 Johannes Rathenow",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111001,
 			"country": "Germany",
@@ -301,7 +318,7 @@
 		"2.JG51 B2 1943": {
 			"skinName": "2.JG51 B2 1943",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111051,
 			"country": "Germany",
@@ -312,7 +329,7 @@
 		"PatrikSchorner": {
 			"skinName": "PatrikSchorner",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111051,
 			"country": "Germany",
@@ -323,7 +340,7 @@
 		"FW190a3_4096_Stab I.JG51 v21": {
 			"skinName": "FW190a3_4096_Stab I.JG51 v21",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111051,
 			"country": "Germany",
@@ -334,7 +351,7 @@
 		"FW-190A3_JG51_Chevron_summer": {
 			"skinName": "FW-190A3_JG51_Chevron_summer",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111051,
 			"country": "Germany",
@@ -345,7 +362,7 @@
 		"FW190a3_JG51_White9": {
 			"skinName": "FW190a3_JG51_White9",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20111051,
 			"country": "Germany",
@@ -356,7 +373,7 @@
 		"Fw-190 F3 2_SG1 Red G Kursk": {
 			"skinName": "Fw-190 F3 2_SG1 Red G Kursk",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20122004,
 			"country": "Germany",
@@ -367,7 +384,7 @@
 		"FW190a3_5_Schl.G1_WF2": {
 			"skinName": "FW190a3_5_Schl.G1_WF2",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20122004,
 			"country": "Germany",
@@ -378,7 +395,7 @@
 		"black13_8_JG2_1": {
 			"skinName": "black13_8_JG2_1",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20112002,
 			"country": "Germany",
@@ -389,7 +406,7 @@
 		"FW190a3_hanning": {
 			"skinName": "FW190a3_hanning",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20112002,
 			"country": "Germany",
@@ -400,7 +417,7 @@
 		"FW190a3_JG2_Faber": {
 			"skinName": "FW190a3_JG2_Faber",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20112002,
 			"country": "Germany",
@@ -411,7 +428,7 @@
 		"FW190a3_Nowak": {
 			"skinName": "FW190a3_Nowak",
 			"planeType": "fw190a3",
-			"startDate": "19400801",
+			"startDate": "19390801",
 			"endDate": "19450601",
 			"squadId": 20112002,
 			"country": "Germany",
