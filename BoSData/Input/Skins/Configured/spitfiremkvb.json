@@ -79,19 +79,6 @@
             "tacticalCodeColor": "SKY",
             "winter": false
         },
-        "spitfiremkvb_default": {
-            "skinName": "spitfiremkvb_default",
-            "planeType": "spitfiremkvb",
-            "startDate": "19390801",
-            "endDate": "19450601",
-            "squadId": -2,
-            "country": "Russia",
-            "category": "Configured",
-            "definedInGame": true,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK",
-            "winter": false
-        },
         "spitfiremkvb_skin_03": {
             "skinName": "spitfiremkvb_skin_03",
             "planeType": "spitfiremkvb",
