@@ -65,30 +65,55 @@ public class MissionGroundUnitBuilder
             return;
         }
 
+        if (mission.isSeaSkirmish())
+        {
+            return;
+        }
+
         IBattleBuilder battleBuilder = MissionBattleBuilderFactory.getBattleBuilder(mission);
         missionBattles = battleBuilder.generateBattle();
     }
 
     private void generateTrains() throws PWCGException 
     {
+        if (mission.isSeaSkirmish())
+        {
+            return;
+        }
+
         MissionTrainBuilder trainBuilder = new MissionTrainBuilder(campaign, mission);
         missionTrains = trainBuilder.generateMissionTrains();
     }
 
     private void generateTrucks() throws PWCGException 
     {
+        if (mission.isSeaSkirmish())
+        {
+            return;
+        }
+
         MissionTruckConvoyBuilder truckConvoyBuilder = new MissionTruckConvoyBuilder(campaign, mission);
         missionTrucks = truckConvoyBuilder.generateMissionTrucks();
     }
 
     private void generateDrifters() throws PWCGException
     {
+        if (mission.isSeaSkirmish())
+        {
+            return;
+        }
+
         MissionDrifterBuilder drifterBuilder = new MissionDrifterBuilder(campaign, mission);
         missionDrifters = drifterBuilder.generateMissionDrifters();
     }
 
     private void generateBalloons() throws PWCGException
     {
+        if (mission.isSeaSkirmish())
+        {
+            return;
+        }
+
         MissionBalloonBuilder balloonBuilder = new MissionBalloonBuilder(mission);
         missionBalloons = balloonBuilder.createMissionBalloons();
     }

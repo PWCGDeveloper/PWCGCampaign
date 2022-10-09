@@ -4,8 +4,15 @@ Smoke/Damage still not fixed.
 
 
 Alpha 3 Fixed
+Skins - in game skins for every plane corrected.
 Some Typhoon mods availability pushed to mid 1944
 Gap in 56 squadron assigned planes
+Do not put troops and ground units in place for iconic anti shipping missions
+- Mostly impacts Dunkirk 
+Added code to not kill pilots who bail out
+- Used to avoid killing everybody that bails out over the channel
+- If you are going down over water, don't ditch.  PWCG can't pick that up.  Bail out.
+
 
 Alpha 2 Fixed
 Russian skins on British planes

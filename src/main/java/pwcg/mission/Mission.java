@@ -11,6 +11,7 @@ import pwcg.campaign.io.json.CampaignMissionIOJson;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.skin.SkinsInUse;
 import pwcg.campaign.skirmish.Skirmish;
+import pwcg.campaign.skirmish.SkirmishProfileType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -387,5 +388,15 @@ public class Mission
     public MissionFinalizer getFinalizer()
     {
         return finalizer;
+    }
+
+    public boolean isSeaSkirmish()
+    {
+        if (skirmish != null && 
+            skirmish.getProfileType() == SkirmishProfileType.SKIRMISH_PROFILE_ANTI_SHIPPING)
+        {
+            return true;
+        }
+        return false;
     }
 }

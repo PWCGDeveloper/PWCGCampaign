@@ -13,6 +13,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ClaimDenier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
+import pwcg.core.logfiles.event.IAType18;
 import pwcg.core.logfiles.event.IAType3;
 
 public class AARDestroyedStatusEvaluator
@@ -97,8 +98,28 @@ public class AARDestroyedStatusEvaluator
         LogPilot deadPilot = matchDeadBotToCrewMember(atype3);
         if (deadPilot != null)
         {
-            deadLogPilots.put(deadPilot.getSerialNumber(), deadPilot);
+            if (!deadPilotBailedOut(atype3))
+            {
+                deadLogPilots.put(deadPilot.getSerialNumber(), deadPilot);
+            }
         }
+    }
+
+    private boolean deadPilotBailedOut(IAType3 atype3)
+    {
+        for (IAType18 bailout : logEventData.getBailoutEvents())
+        {
+            if (bailout.getBotId().equals(atype3.getVictim()))
+            {
+                return true;
+            }
+            
+            if (bailout.getVehicleId().equals(atype3.getVictim()))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private LogPilot matchDeadBotToCrewMember(IAType3 atype3)
