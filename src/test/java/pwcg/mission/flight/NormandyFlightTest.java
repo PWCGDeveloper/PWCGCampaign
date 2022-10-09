@@ -144,12 +144,6 @@ public class NormandyFlightTest
     }
 
     @Test
-    public void rodeoTest() throws PWCGException
-    {
-        // verify no ground units
-    }
-
-    @Test
     public void dieppeTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_BOB_PROFILE);
@@ -160,8 +154,11 @@ public class NormandyFlightTest
 
         Assertions.assertTrue(mission.getSkirmish() != null);
         Assertions.assertEquals(SkirmishProfileType.SKIRMISH_PROFILE_INVASION, mission.getSkirmish().getProfileType());
-        Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY));
-        Assertions.assertTrue(FlightTypeFinder.hasFlightType(mission, FlightTypes.GROUND_ATTACK));
+        Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_ARMOR) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_SHIPPING));
+        Assertions.assertTrue(FlightTypeFinder.hasFlightType(mission, FlightTypes.GROUND_ATTACK) ||
+                FlightTypeFinder.hasFlightType(mission, FlightTypes.ANTI_SHIPPING));
 
         MissionFlightValidator.validateMission(mission);
     }
@@ -177,7 +174,8 @@ public class NormandyFlightTest
 
         Assertions.assertTrue(mission.getSkirmish() == null);
         Assertions.assertFalse(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY));
-        Assertions.assertFalse(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY));
+        Assertions.assertFalse(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_ARMOR));
 
         MissionFlightValidator.validateMission(mission);
     }
@@ -193,7 +191,8 @@ public class NormandyFlightTest
 
         Assertions.assertTrue(mission.getSkirmish() == null);
         Assertions.assertFalse(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY));
-        Assertions.assertFalse(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY));
+        Assertions.assertFalse(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_ARMOR));
 
         MissionFlightValidator.validateMission(mission);
     }
@@ -208,9 +207,13 @@ public class NormandyFlightTest
         mission.finalizeMission();
 
         Assertions.assertTrue(mission.getSkirmish() != null);
-        Assertions.assertEquals(SkirmishProfileType.SKIRMISH_PROFILE_ANTI_INFANTRY, mission.getSkirmish().getProfileType());
-        Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY));
-        Assertions.assertTrue(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY));
+        Assertions.assertEquals(SkirmishProfileType.SKIRMISH_PROFILE_INVASION, mission.getSkirmish().getProfileType());
+        Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_ARMOR) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_SHIPPING));
+        Assertions.assertTrue(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_ARMOR) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_SHIPPING));
 
         MissionFlightValidator.validateMission(mission);
     }
@@ -218,51 +221,54 @@ public class NormandyFlightTest
     @Test
     public void cherbourgTest() throws PWCGException
     {
-        // verify no ground units
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.USAAF_NORMANDY);
+        campaign.setDate(DateUtils.getDateYYYYMMDD("19440701"));
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
+
+        Assertions.assertTrue(mission.getSkirmish() != null);
+        Assertions.assertEquals(SkirmishProfileType.SKIRMISH_PROFILE_ANTI_INFANTRY, mission.getSkirmish().getProfileType());
+        Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY));
+        Assertions.assertTrue(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_ARMOR));
+
+        MissionFlightValidator.validateMission(mission);
     }
 
     @Test
     public void mortainTest() throws PWCGException
     {
-        // verify no ground units
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.USAAF_NORMANDY);
+        campaign.setDate(DateUtils.getDateYYYYMMDD("19440810"));
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
+
+        Assertions.assertTrue(mission.getSkirmish() != null);
+        Assertions.assertEquals(SkirmishProfileType.SKIRMISH_PROFILE_ANTI_INFANTRY, mission.getSkirmish().getProfileType());
+        Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY));
+        Assertions.assertTrue(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_ARMOR));
+
+        MissionFlightValidator.validateMission(mission);
     }
 
     @Test
     public void falaiseTest() throws PWCGException
     {
-        // verify no ground units
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.USAAF_NORMANDY);
+        campaign.setDate(DateUtils.getDateYYYYMMDD("19440810"));
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
+
+        Assertions.assertTrue(mission.getSkirmish() != null);
+        Assertions.assertEquals(SkirmishProfileType.SKIRMISH_PROFILE_ANTI_INFANTRY, mission.getSkirmish().getProfileType());
+        Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY));
+        Assertions.assertTrue(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY) ||
+                FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_ARMOR));
+
+        MissionFlightValidator.validateMission(mission);
     }
-
-    /*
-     * @Test public void hasAttackOnVolkelTest() throws PWCGException { Campaign
-     * campaign = CampaignCache.makeCampaign(SquadronTestProfile.
-     * RAF_326_BODENPLATTE_PROFILE);
-     * campaign.setDate(DateUtils.getDateYYYYMMDD("19450101")); MissionGenerator
-     * missionGenerator = new MissionGenerator(campaign); Mission mission =
-     * missionGenerator.makeMission(TestMissionBuilderUtility.
-     * buildTestParticipatingHumans(campaign)); mission.finalizeMission();
-     * 
-     * Assertions.assertTrue (mission.getSkirmish() != null);
-     * Assertions.assertTrue
-     * (mission.getSkirmish().getSkirmishName().contentEquals(
-     * "Bodenplatte-Volkel"));
-     * 
-     * CoordinateBox missionBox = mission.getMissionBorders(); Squadron
-     * playerSquadron =
-     * PWCGContext.getInstance().getSquadronManager().getSquadron(campaign.
-     * getReferencePlayer().getSquadronId()); Coordinate playerLocation =
-     * playerSquadron.determineCurrentPosition(campaign.getDate());
-     * assert(missionBox.isInBox(playerLocation));
-     * 
-     * assert(MissionInformationUtils.verifyFlightTypeInMission(mission,
-     * FlightTypes.GROUND_ATTACK, Side.AXIS));
-     * assert(MissionInformationUtils.verifyFlightTypeInMission(mission,
-     * FlightTypes.SCRAMBLE, Side.ALLIED));
-     * assert(MissionInformationUtils.verifyFlightTargets(mission,
-     * FlightTypes.GROUND_ATTACK, TargetType.TARGET_AIRFIELD, Side.AXIS));
-     * assert(MissionInformationUtils.verifyFlightTargets(mission,
-     * FlightTypes.BOMB, TargetType.TARGET_AIRFIELD, Side.AXIS));
-     * MissionFlightValidator.validateMission(mission); }
-     */
-
 }

@@ -12,13 +12,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightPlanes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 @ExtendWith(MockitoExtension.class)
@@ -57,8 +59,10 @@ public class MissionSkinSetBuilderTest
     @Test
     public void buildMissionSkinSetForSummer() throws Exception
     {
+        Mockito.when(flight.getSquadron()).thenReturn(squadron);
         Mockito.when(squadron.getSquadronId()).thenReturn(20111003);
-        Mockito.when(country.getCountryName()).thenReturn("Germany");
+        ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
+        Mockito.when(squadron.getCountry()).thenReturn(country);
 
         Mockito.when(plane1.getType()).thenReturn("bf109f4");
         Mockito.when(plane2.getType()).thenReturn("bf109f4");
@@ -76,8 +80,10 @@ public class MissionSkinSetBuilderTest
     @Test
     public void buildMissionSkinSetForWinter() throws PWCGException
     {
+        Mockito.when(flight.getSquadron()).thenReturn(squadron);
         Mockito.when(squadron.getSquadronId()).thenReturn(10111011);
-        Mockito.when(country.getCountryName()).thenReturn("Russia");
+        ICountry country = CountryFactory.makeCountryByCountry(Country.RUSSIA);
+        Mockito.when(squadron.getCountry()).thenReturn(country);
 
         Mockito.when(plane1.getType()).thenReturn("lagg3s29");
         Mockito.when(plane2.getType()).thenReturn("lagg3s29");
@@ -87,7 +93,7 @@ public class MissionSkinSetBuilderTest
 
         MissionSkinSet missionSkinSet = MissionSkinSetBuilder.buildWinterMissionSkinSet(flight);
         assert(missionSkinSet.getFactorySkins("lagg3s29").size() > 0);
-        assert(missionSkinSet.getSquadronSkins("lagg3s29").size() == 0);
+        assert(missionSkinSet.getSquadronSkins("lagg3s29").size() > 0);
         assert(missionSkinSet.getSquadronPersonalSkins("lagg3s29").size() > 0);
         assert(missionSkinSet.getNonSquadronPersonalSkin("lagg3s29").size() > 0);
     }
@@ -95,8 +101,10 @@ public class MissionSkinSetBuilderTest
     @Test
     public void buildMissionSkinSetForDiffentPlaneTypesInFlight() throws PWCGException
     {
+        Mockito.when(flight.getSquadron()).thenReturn(squadron);
         Mockito.when(squadron.getSquadronId()).thenReturn(20111003);
-        Mockito.when(country.getCountryName()).thenReturn("Germany");
+        ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
+        Mockito.when(squadron.getCountry()).thenReturn(country);
 
         Mockito.when(plane1.getType()).thenReturn("bf109f4");
         Mockito.when(plane2.getType()).thenReturn("bf109f4");
