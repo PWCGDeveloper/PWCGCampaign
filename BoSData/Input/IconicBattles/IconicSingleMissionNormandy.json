@@ -1,0 +1,124 @@
+{
+	"iconicMissions": [
+		{
+			"mapName": "Dunkirk",
+			"campaignName": "Dunkirk Land",
+			"dateString": "19410602",
+			"iconicBattleParticipants": [
+				103083056,
+				103083182,
+				103002139,
+				103084066,
+				20111026,
+				20103026,
+				20122002,
+				20131053
+			]
+		},
+		{
+			"mapName": "Normandy",
+			"campaignName": "BoB Shipping Brighton",
+			"dateString": "19410718",
+			"iconicBattleParticipants": [
+                103083056,
+                103083182,
+                103002139,
+                103084066,
+                20111026,
+                20103026,
+                20122002,
+                20131053
+			]
+		},
+		{
+			"mapName": "Normandy",
+			"campaignName": "BoB Airfields East",
+			"dateString": "19410813",
+			"iconicBattleParticipants": [
+                103083056,
+                103083182,
+                103002139,
+                103084066,
+                20111026,
+                20103026,
+                20122002,
+                20131053
+			]
+		},
+		{
+			"mapName": "Normandy",
+			"campaignName": "BoB Cities Brighton",
+			"dateString": "19410910",
+			"iconicBattleParticipants": [
+                103083056,
+                103083182,
+                103002139,
+                103084066,
+                20111026,
+                20103026,
+                20122002
+			]
+		},
+		{
+			"mapName": "Normandy",
+			"campaignName": "Dieppe Amphibious Assault",
+			"dateString": "19420819",
+			"iconicBattleParticipants": [
+                103083056,
+                103083182,
+                103002139,
+                103084066,
+                20111026,
+                20103026,
+                20122002
+			]
+		},
+        {
+            "mapName": "Normandy",
+            "campaignName": "Normandy Omaha",
+            "dateString": "19440606",
+            "iconicBattleParticipants": [
+                102352486,
+                102366389,
+                102363033,
+                102322584,
+                20111001,
+                20111077,
+                20122004,
+                20131051
+            ]
+        },
+        {
+            "mapName": "Normandy",
+            "campaignName": "Normandy Juno",
+            "dateString": "19440606",
+            "iconicBattleParticipants": [
+                103083056,
+                103084193,
+                103002139,
+                103084066,
+                20111001,
+                20111077,
+                20122004,
+                20131051
+            ]
+        },
+		{
+			"mapName": "Normandy",
+			"campaignName": "Falaise",
+			"dateString": "19440815",
+			"iconicBattleParticipants": [
+                102352486,
+                102366389,
+                102363033,
+                103083056,
+                103002139,
+                103084066,
+                20111001,
+                20111077,
+                20122004,
+                20131051
+			]
+		}
+	]
+}

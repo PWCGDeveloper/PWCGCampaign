@@ -99,8 +99,8 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
         buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("Iconic Missions:"));
         addMissionsForMapToButtonPanel(buttonPanel, "Stalingrad");
         addMissionsForMapToButtonPanel(buttonPanel, "Kuban");
+        addMissionsForMapToButtonPanel(buttonPanel, "Normandy");
         addMissionsForMapToButtonPanel(buttonPanel, "Rhine");
-        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
         buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
         buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
 
