@@ -181,23 +181,28 @@ public class MathUtils
     	binaryRepresentation.append(remainder);
     }
 
-    public static double distFromLine(final Coordinate lineStart, final Coordinate lineEnd, final Coordinate coord) throws PWCGException
+    public static double closestDistFromLine(final Coordinate lineStart, final Coordinate lineEnd, final Coordinate coord) throws PWCGException
     {
-        double xDist = lineEnd.getXPos() - lineStart.getXPos();
-        double zDist = lineEnd.getZPos() - lineStart.getZPos();
-        double distSquared = xDist * xDist + zDist * zDist;
-
-        if (distSquared == 0)
-            return calcDist(lineStart, coord);
-
-        double t = ((coord.getXPos() - lineStart.getXPos()) * xDist + (coord.getZPos() - lineStart.getZPos()) * zDist) / distSquared;
-        t = Math.max(0, Math.min(1,  t));
-
-        Coordinate proj = new Coordinate();
-        proj.setXPos(lineStart.getXPos() + t * xDist);
-        proj.setZPos(lineStart.getZPos() + t * zDist);
-
-        return calcDist(proj, coord);
+        double smallestDistance = PositionFinder.ABSURDLY_LARGE_DISTANCE;
+        Coordinate pointOnLine = lineStart.copy();
+        double angleStartToEnd = MathUtils.calcAngle(lineStart, lineEnd);
+        while (true) 
+        {
+           double distance = MathUtils.calcDist(coord, pointOnLine);
+           if (smallestDistance > distance)
+           {
+               smallestDistance = distance;
+           }
+           
+           pointOnLine = MathUtils.calcNextCoord(pointOnLine, angleStartToEnd, 50);
+           double distanceToEnd = MathUtils.calcDist(pointOnLine, lineEnd);
+           if (distanceToEnd < 75)
+           {
+               break;
+           }
+        }
+ 
+        return smallestDistance;
     }
 
     private static Integer angleCompare(final Coordinate prevPoint, final Coordinate base, final Coordinate a, final Coordinate b)

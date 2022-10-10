@@ -105,7 +105,7 @@ public class He111H6Payload extends PlanePayload
 
     private int selectStructureTargetPayload()
     {
-        return 7;
+        return 4;
     }
 
     @Override

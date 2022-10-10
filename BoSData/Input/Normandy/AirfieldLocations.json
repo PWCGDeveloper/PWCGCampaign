@@ -1484,14 +1484,14 @@
       "runways": [
         {
           "startPos": {
-            "xPos": 198747.0,
+            "xPos": 198760.0,
             "yPos": 101.0,
-            "zPos": 249203.0
+            "zPos": 249163.0
           },
           "endPos": {
-            "xPos": 198183.63412465694,
+            "xPos": 198340.0,
             "yPos": 0.0,
-            "zPos": 248143.46288856928
+            "zPos": 248775.0
           },
           "taxiToStart": [],
           "taxiFromEnd": []
@@ -1505,7 +1505,7 @@
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 242.0,
+        "yOri": 223.0,
         "zOri": 0.0
       }
     },

@@ -56,6 +56,11 @@ public class MissionBlocks
             return;
         }
 
+        if (mission.isSeaSkirmish())
+        {
+            return;
+        }
+
         adjustBlockDurability();
         List<ScriptedFixedPosition> damagedStructures = adjustBlockDamage();
         createBlockSmoke(damagedStructures);

@@ -66,6 +66,45 @@
             "tacticalCodeColor": "BLACK",
             "winter": false
         },
+        "ju88c6_blank_05": {
+            "skinName": "ju88c6_blank_05",
+            "planeType": "ju88c6",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+        "ju88c6_blank_06": {
+            "skinName": "ju88c6_blank_06",
+            "planeType": "ju88c6",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+        "ju88c6_blank_08": {
+            "skinName": "ju88c6_blank_08",
+            "planeType": "ju88c6",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -1,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
 		"ju88c6_skin_03": {
 			"skinName": "ju88c6_skin_03",
 			"planeType": "ju88c6",

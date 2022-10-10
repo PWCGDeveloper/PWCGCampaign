@@ -29,6 +29,8 @@ import pwcg.mission.ground.vehicle.IVehicle;
 
 public class Airfield extends ScriptedFixedPosition implements Cloneable
 {
+    private static final int RUNWAY_CLEARANCE = 150;
+    private static final int TAXI_CLEARANCE = 100;
     private List<Runway> runways = new ArrayList<>();
     private AirfieldObjects airfieldObjects;
 
@@ -267,9 +269,9 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
         {
             double runwayOrientation = getTakeoffLocation(mission).getOrientation().getyOri();
             Coordinate startOfRunway = getTakeoffLocation(mission).getPosition();
-            Coordinate endOfRunway = MathUtils.calcNextCoord(getTakeoffLocation(mission).getPosition(), runwayOrientation, 2000.0);
+            Coordinate endOfRunway = MathUtils.calcNextCoord(getTakeoffLocation(mission).getPosition(), runwayOrientation, 3000.0);
 
-            return MathUtils.distFromLine(startOfRunway, endOfRunway, pos) < 120;
+            return MathUtils.closestDistFromLine(startOfRunway, endOfRunway, pos) < RUNWAY_CLEARANCE;
         }
         else
         {
@@ -277,8 +279,10 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
             {
                 Coordinate extendedRunwayStart = MathUtils.calcNextCoord(r.getStartPos(), MathUtils.adjustAngle(r.getHeading(), 180), 300);
                 Coordinate extendedRunwayEnd = MathUtils.calcNextCoord(r.getEndPos(), r.getHeading(), 300);
-                if (MathUtils.distFromLine(extendedRunwayStart, extendedRunwayEnd, pos) < 120)
+                if (MathUtils.closestDistFromLine(extendedRunwayStart, extendedRunwayEnd, pos) < RUNWAY_CLEARANCE)
+                {
                     return true;
+                }
 
                 if (r.getParkingLocation() == null)
                 {
@@ -288,27 +292,39 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
                 Coordinate prevPoint = r.getParkingLocation().getPosition();
                 for (Coordinate p : r.getTaxiToStart())
                 {
-                    if (MathUtils.distFromLine(prevPoint, p, pos) < 50)
+                    if (MathUtils.closestDistFromLine(prevPoint, p, pos) < TAXI_CLEARANCE)
+                    {
                         return true;
+                    }
                     prevPoint = p;
                 }
-                if (MathUtils.distFromLine(prevPoint, r.getStartPos(), pos) < 50)
+                
+                if (MathUtils.closestDistFromLine(prevPoint, r.getStartPos(), pos) < TAXI_CLEARANCE)
+                {
                     return true;
+                }
 
                 prevPoint = r.getEndPos();
                 for (Coordinate p : r.getTaxiFromEnd())
                 {
-                    if (MathUtils.distFromLine(prevPoint, p, pos) < 50)
+                    if (MathUtils.closestDistFromLine(prevPoint, p, pos) < TAXI_CLEARANCE)
+                    {
                         return true;
+                    }
                     prevPoint = p;
                 }
-                if (MathUtils.distFromLine(prevPoint, r.getParkingLocation().getPosition(), pos) < 50)
+                
+                if (MathUtils.closestDistFromLine(prevPoint, r.getParkingLocation().getPosition(), pos) < TAXI_CLEARANCE)
+                {
                     return true;
+                }
 
                 double parkingOrientation = MathUtils.adjustAngle(r.getParkingLocation().getOrientation().getyOri(), 90);
                 Coordinate parkingEnd = MathUtils.calcNextCoord(r.getParkingLocation().getPosition(), parkingOrientation, 300);
-                if (MathUtils.distFromLine(r.getParkingLocation().getPosition(), parkingEnd, pos) < 80)
+                if (MathUtils.closestDistFromLine(r.getParkingLocation().getPosition(), parkingEnd, pos) < RUNWAY_CLEARANCE)
+                {
                     return true;
+                }
             }
         }
 

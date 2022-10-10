@@ -2,6 +2,30 @@
 
 	"newspapers": [
 		{
+			"imageName": "19410602Allied.jpg",
+			"newspaperEventDate": "19410602",
+			"side": "ALLIED",
+			"headline": "Evacuation!"
+		},
+		{
+			"imageName": "19410602Axis.jpg",
+			"newspaperEventDate": "19410602",
+			"side": "AXIS",
+			"headline": "Victory at Dunkirk!"
+		},
+		{
+			"imageName": "19410720Allied.jpg",
+			"newspaperEventDate": "19410720",
+			"side": "ALLIED",
+			"headline": "Britain's Heroes"
+		},
+		{
+			"imageName": "19410720Axis.jpg",
+			"newspaperEventDate": "19410720",
+			"side": "AXIS",
+			"headline": "Britain's Heroes"
+		},
+		{
 			"imageName": "19411005Allied.jpg",
 			"newspaperEventDate": "19411005",
 			"side": "ALLIED",
@@ -25,8 +49,18 @@
 			"side": "AXIS",
 			"headline": "Russians Suffer Massive Losses"
 		},	
-
-
+		{
+			"imageName": "19420819Allied.jpg",
+			"newspaperEventDate": "19420819",
+			"side": "ALLIED",
+			"headline": "Failure At Dieppe"
+		},
+		{
+			"imageName": "19420819Axis.jpg",
+			"newspaperEventDate": "19420819",
+			"side": "AXIS",
+			"headline": "Disaster At Dieppe"
+		},
 		{
 			"imageName": "19420820Allied.jpg",
 			"newspaperEventDate": "19420820",
@@ -111,7 +145,19 @@
 			"newspaperEventDate": "19421231",
 			"side": "AXIS",
 			"headline": "Heroic Sacrifice"
-		},		
+		},
+		{
+			"imageName": "19430603Allied.jpg",
+			"newspaperEventDate": "19430603",
+			"side": "ALLIED",
+			"headline": "Americans Over Here"
+		},
+		{
+			"imageName": "19430603Axis.jpg",
+			"newspaperEventDate": "19430603",
+			"side": "AXIS",
+			"headline": "Americans In England"
+		},
 		{
 			"imageName": "19431015Allied.jpg",
 			"newspaperEventDate": "19431015",
@@ -135,6 +181,30 @@
 			"newspaperEventDate": "19431101",
 			"side": "AXIS",
 			"headline": "Germany Holds Kerch!"
+		},
+		{
+			"imageName": "19440606Allied.jpg",
+			"newspaperEventDate": "19440606",
+			"side": "ALLIED",
+			"headline": "Invasion of France!"
+		},
+		{
+			"imageName": "19440606Allied.jpg",
+			"newspaperEventDate": "19440606",
+			"side": "AXIS",
+			"headline": "Defense of France!"
+		},
+		{
+			"imageName": "19440820Allied.jpg",
+			"newspaperEventDate": "19440820",
+			"side": "ALLIED",
+			"headline": "Victory At Falaise!"
+		},
+		{
+			"imageName": "19440820Axis.jpg",
+			"newspaperEventDate": "19440820",
+			"side": "AXIS",
+			"headline": "Germany Fights"
 		},
 		{
 			"imageName": "19440924Allied.jpg",

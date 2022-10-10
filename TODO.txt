@@ -1,9 +1,17 @@
 TODO
-Troops in the water near a convoy.
-Smoke/Damage still not fixed.
+There's still smoke rising in southeast England and the CH towers are still damaged, mission date is 08/06/1941.
+I just flew two Intercept missions with 41 Squadron out of Westhampnett and both times the bombers we were supposed to intercept turned back before coming into range, never having dropped their ordnance. If they hadn't shown up on "radar", we never even would have seen them.
 
 
-Alpha 3 Fixed
+
+Beta 2 Fixed
+Newspapers
+Played with the algorithm to try to keep airfield objects away from any area usable by real planes.
+III./ZG 26 flying ME410s out of Dieppe Saint Aubin do not have enough runway.
+Eliminated Ju88 North Africa skin
+
+
+Beta 1 Fixed
 Skins - in game skins for every plane corrected.
 Some Typhoon mods availability pushed to mid 1944
 Gap in 56 squadron assigned planes
@@ -38,8 +46,9 @@ Squadron assignments to airfields           - done
 Vehicles                                    - done
 Add infantry to amphibious assaults         - done
 Unit type matches landing craft             - done
-Newspapers
+Newspapers                                  - done
 Night bombing and intercepts
+Iprove scramble intercepts
 
 Map Split
 - Map image Invasion
