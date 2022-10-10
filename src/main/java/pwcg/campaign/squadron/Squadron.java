@@ -43,6 +43,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class Squadron 
 {
@@ -514,8 +516,14 @@ public class Squadron
         squadronInfo.append("Airfield: " + determineCurrentAirfieldName(campaignDate) + "\n");
         
     	PWCGMap map = getMapForAirfield(campaignDate);
-        squadronInfo.append("Map: " + map.getMapName() + "\n");
-
+        if (map != null)
+        {
+            squadronInfo.append("Map: " + map.getMapName() + "\n");
+        }
+        else
+        {
+            squadronInfo.append("Map: \n");
+        }
 
         squadronInfo.append("\n");
         squadronInfo.append("\n");
@@ -527,8 +535,16 @@ public class Squadron
     {
         String airfieldName = determineCurrentAirfieldName(campaignDate);
     	List<FrontMapIdentifier> airfieldMapIdentifiers = MapForAirfieldFinder.getMapForAirfield(airfieldName);
-    	PWCGMap map = PWCGContext.getInstance().getMapByMapId(airfieldMapIdentifiers.get(0));
-        return map;
+    	if (!airfieldMapIdentifiers.isEmpty())
+    	{
+    	    PWCGMap map = PWCGContext.getInstance().getMapByMapId(airfieldMapIdentifiers.get(0));
+    	    return map;
+    	}
+    	else
+    	{
+    	    PWCGLogger.log(LogLevel.ERROR, "No map associated with airfield " + airfieldName);
+    	    return null;
+    	}
     }
 
     public boolean isStartsCloseToFront(Date date) throws PWCGException

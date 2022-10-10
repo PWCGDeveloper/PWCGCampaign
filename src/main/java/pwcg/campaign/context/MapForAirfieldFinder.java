@@ -8,7 +8,6 @@ import pwcg.campaign.group.airfield.Airfield;
 
 public class MapForAirfieldFinder
 {
-
     public static List<FrontMapIdentifier> getMapForAirfield(String airfieldName)
     {
         List<FrontMapIdentifier> mapsForAirfield = new ArrayList<>();
