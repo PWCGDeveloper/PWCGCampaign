@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.Side;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigSimple;
@@ -42,6 +43,27 @@ public class AAAManager
 
     public void getAAAKeyPositionForMission (MissionGroundUnitBuilder missionGroundUnitBuilder) throws PWCGException
     {
+        List<GroundUnitCollection> allAAA = buildAAAKeyPositionForMission();
+        selectAndAddAAAForMission(missionGroundUnitBuilder, allAAA);
+    }
+
+    public void getAAAKeyPositionForSide (MissionGroundUnitBuilder missionGroundUnitBuilder, Side side) throws PWCGException
+    {
+        List<GroundUnitCollection> allAAA = buildAAAKeyPositionForMission();
+        List<GroundUnitCollection> allAAAForSide = new ArrayList<>();
+        for (GroundUnitCollection aaa : allAAA)
+        {
+            aaa.keepForSide(side);
+            if (!aaa.getGroundUnits().isEmpty())
+            {
+                allAAAForSide.add(aaa);
+            }
+        }
+        selectAndAddAAAForMission(missionGroundUnitBuilder, allAAAForSide);
+    }
+
+    public List<GroundUnitCollection> buildAAAKeyPositionForMission () throws PWCGException
+    {
         List<GroundUnitCollection> allAAA = new ArrayList<>();
                 
         String currentGroundSetting = campaign.getCampaignConfigManager().getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
@@ -56,7 +78,7 @@ public class AAAManager
             allAAA.addAll(railroadAAA);
         }
         
-        selectAndAddAAAForMission(missionGroundUnitBuilder, allAAA);
+        return allAAA;
     }
 
     private void selectAndAddAAAForMission(MissionGroundUnitBuilder missionGroundUnitBuilder, List<GroundUnitCollection> allAAA) throws PWCGException

@@ -399,4 +399,29 @@ public class Mission
         }
         return false;
     }
+
+    public Side getSideForLimitedAA()
+    {
+        if (skirmish == null)
+        {
+            return Side.NEUTRAL;
+        }
+        
+        if (skirmish.getProfileType() == SkirmishProfileType.SKIRMISH_PROFILE_INVASION)
+        {
+            return skirmish.getAttackerGround().getOppositeSide();
+        }
+        
+        if (skirmish.getProfileType() == SkirmishProfileType.SKIRMISH_PROFILE_ANTI_SHIPPING)
+        {
+            return skirmish.getAttackerAir();
+        }
+        
+        if (skirmish.getProfileType() == SkirmishProfileType.SKIRMISH_PROFILE_CARPET_BOMB)
+        {
+            return skirmish.getAttackerAir().getOppositeSide();
+        }
+        
+        return Side.NEUTRAL;
+    }
 }

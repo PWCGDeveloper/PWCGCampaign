@@ -10,6 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PwcgMapGroundUnitLimitation;
+import pwcg.campaign.skirmish.SkirmishProfileType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -127,13 +128,17 @@ public class MissionGroundUnitBuilder
     private void createAAAForMission() throws PWCGException 
     {
         AAAManager aaaManager = new AAAManager(campaign, mission);
-        if (!PWCGContext.getInstance().getCurrentMap().isLimited(campaign.getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
+        if (PWCGContext.getInstance().getCurrentMap().isLimited(campaign.getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
         {
-            aaaManager.getAAAForMission(this);
+            aaaManager.getAAAKeyPositionForMission(this);
+        }
+        else if (mission.getSideForLimitedAA() != Side.NEUTRAL)
+        {
+            aaaManager.getAAAKeyPositionForSide(this, mission.getSideForLimitedAA());
         }
         else
         {
-            aaaManager.getAAAKeyPositionForMission(this);
+            aaaManager.getAAAForMission(this);
         }
     }
 

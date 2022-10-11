@@ -301,4 +301,18 @@ public class GroundUnitCollection
         }
         groundUnits = groundUnitsToKeep;
     }
+
+    public void keepForSide(Side side) throws PWCGException
+    {
+        List<IGroundUnit> groundUnitsToKeep = new ArrayList<>();
+        for (IGroundUnit groundUnit : groundUnits)
+        {
+            if (groundUnit.getCountry().getSide() == side)
+            {
+                groundUnitsToKeep.add(groundUnit);
+            }
+        }
+        groundUnits = groundUnitsToKeep;
+         
+    }
 }

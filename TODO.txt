@@ -1,6 +1,7 @@
 
 MUST DO BEFORE RELEASE
-Add Normandy iconic missions
+No AAA for attacking invasion force - prevents AAA in water
+No post D-Day objects until after D-Day
 
 TODO
 Improve scramble missions
@@ -10,6 +11,7 @@ I just flew two Intercept missions with 41 Squadron out of Westhampnett and both
 
 Beta 2 Fixed
 Added Newspapers
+Added Normandy iconic missions as single fly missions (Main Menu->Iconic Missions)
 Played with the algorithm to try to keep airfield objects away from any area usable by real planes.
 III./ZG 26 flying ME410s out of Dieppe Saint Aubin do not have enough runway.
 Eliminated Ju88 North Africa skin
