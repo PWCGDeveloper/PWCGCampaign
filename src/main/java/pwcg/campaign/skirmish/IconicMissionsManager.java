@@ -40,16 +40,16 @@ public class IconicMissionsManager
         }
 	}
 
-    public IconicSingleMission getSelectedMissionProfile(String missionKey) throws PWCGException 
+    public IconicSingleMission getSelectedMissionProfile(String iconicMissionName) throws PWCGException 
     {     
         for (IconicSingleMission iconicMission : iconicMissions)
         {
-            if (iconicMission.getDateString().equals(missionKey))
+            if (iconicMission.getCampaignName().equals(iconicMissionName))
             {
                 return iconicMission;
             }
         }
-        throw new PWCGException("No iconic mission found for key " + missionKey);
+        throw new PWCGException("No iconic mission found for key " + iconicMissionName);
     }
 
     public List<IconicSingleMission> getIconicMissionsForMapByDate(String mapName)

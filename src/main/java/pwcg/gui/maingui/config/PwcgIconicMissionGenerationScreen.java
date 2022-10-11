@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -36,9 +37,10 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
 {
     private static final long serialVersionUID = 1L;
     private Map<String, IconicBattlesGUI> iconicBattleGUIs = new HashMap<String, IconicBattlesGUI>();
-    private String selectedIconicBattle;
+    private String selectedIconicBattleKey;
     private PwcgThreePanelUI pwcgThreePanel;
     private ButtonGroup buttonGroup = new ButtonGroup();
+    private TreeMap<String, IconicSingleMission> iconicMissionNames = new TreeMap<>();
 
     public PwcgIconicMissionGenerationScreen()
     {
@@ -116,22 +118,29 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
         buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
         for (IconicSingleMission iconicMission : IconicMissionsManager.getInstance().getIconicMissionsForMapByDate(mapName))
         {
-            buttonPanel.add(makeCategoryRadioButton(iconicMission.getMapName() + ": " + iconicMission.getCampaignName(), iconicMission.getDateString()));
+            String iconicMissionKey = formkey(iconicMission);
+            iconicMissionNames.put(iconicMissionKey, iconicMission);
+            buttonPanel.add(makeCategoryRadioButton(iconicMission.getMapName() + ": " + iconicMission.getCampaignName(), iconicMissionKey));
         }
     }
     
-    private JRadioButton makeCategoryRadioButton(String buttonText, String battleDate) throws PWCGException 
+    private String formkey(IconicSingleMission iconicMission)
+    {
+        return iconicMission.getDateString() + iconicMission.getCampaignName();
+    }
+
+    private JRadioButton makeCategoryRadioButton(String buttonText, String iconicMissionKey) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFont();
-        JRadioButton button = PWCGButtonFactory.makeRadioButton(buttonText, battleDate, "", font, fgColor, false, this);
+        JRadioButton button = PWCGButtonFactory.makeRadioButton(buttonText, iconicMissionKey, "", font, fgColor, false, this);
         buttonGroup.add(button);
         return button;
     }
 
-    IconicBattlesGUI createIconicBattlePanel(String battleKey) throws PWCGException 
+    private IconicBattlesGUI createIconicBattlePanel(String iconicBattleName) throws PWCGException 
     {        
-        IconicBattlesGUI selectedBattle = new IconicBattlesGUI (battleKey);
+        IconicBattlesGUI selectedBattle = new IconicBattlesGUI (iconicBattleName);
         selectedBattle.makeGUI();
         
         return selectedBattle;
@@ -149,9 +158,9 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
             }
             else if (action.equalsIgnoreCase("Generate Mission"))
             {
-                if (iconicBattleGUIs.containsKey(selectedIconicBattle))
+                if (iconicBattleGUIs.containsKey(selectedIconicBattleKey))
                 {
-                    IconicBattlesGUI selectedIconicBattleGUI = iconicBattleGUIs.get(selectedIconicBattle);
+                    IconicBattlesGUI selectedIconicBattleGUI = iconicBattleGUIs.get(selectedIconicBattleKey);
                     IconicBattlesGeneratorData iconicBattleData = selectedIconicBattleGUI.getIconicBattleData();
                     IconicBattlesGenerator iconicBattlesGenerator = new IconicBattlesGenerator(iconicBattleData);
                     iconicBattlesGenerator.generateIconicMission();
@@ -159,16 +168,17 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
             }
             else
             {
-                selectedIconicBattle = action;
+                selectedIconicBattleKey = action;
                 IconicBattlesGUI newIconicBattlePanel = null;
-                if (iconicBattleGUIs.containsKey(selectedIconicBattle))
+                if (iconicBattleGUIs.containsKey(selectedIconicBattleKey))
                 {
-                    newIconicBattlePanel = iconicBattleGUIs.get(selectedIconicBattle);
+                    newIconicBattlePanel = iconicBattleGUIs.get(selectedIconicBattleKey);
                 }
                 else
                 {
-                    newIconicBattlePanel = createIconicBattlePanel(selectedIconicBattle);
-                    iconicBattleGUIs.put(selectedIconicBattle, newIconicBattlePanel);
+                    String iconicMissionName = iconicMissionNames.get(selectedIconicBattleKey).getCampaignName();
+                    newIconicBattlePanel = createIconicBattlePanel(iconicMissionName);
+                    iconicBattleGUIs.put(selectedIconicBattleKey, newIconicBattlePanel);
                 }
 
                 pwcgThreePanel.setCenterPanel(newIconicBattlePanel);

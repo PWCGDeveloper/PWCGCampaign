@@ -1,74 +1,18 @@
 {
-  "skirmishName": "Normandy Utah",
+  "skirmishName": "Utah",
   "landingStartDate": "19440606",
   "landingStopDate": "19440608",
   "aggressorCountry": "USA",
   "defendingCountry": "GERMANY",
-  "landingCraftBackOff": 300,
+  "landingCraftBackOff": 0,
   "shipDefinitions": [
     {
       "shipType": "lcvp",
-	  "shipClass": "LANDING_CRAFT",
+      "shipClass": "LANDING_CRAFT",
       "destination": {
-        "xPos": 149353.0,
-        "yPos": 1.0,
-        "zPos": 83676.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 250.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "shipType": "lct",
-	  "shipClass": "LANDING_CRAFT_TANK",
-      "destination": {
-        "xPos": 147310.0,
-        "yPos": 1.0,
-        "zPos": 85394.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 250.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "shipType": "lcvp",
-	  "shipClass": "LANDING_CRAFT",
-      "destination": {
-        "xPos": 146537.0,
-        "yPos": 1.0,
-        "zPos": 85855.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 250.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "shipType": "lct",
-	  "shipClass": "LANDING_CRAFT",
-      "destination": {
-        "xPos": 147718.0,
-        "yPos": 1.0,
-        "zPos": 85063.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 250.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "shipType": "lct",
-	  "shipClass": "LANDING_CRAFT_TANK",
-      "destination": {
-        "xPos": 149081.0,
+        "xPos": 149325.0,
         "yPos": 0.0,
-        "zPos": 84045.0
+        "zPos": 84102.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -77,26 +21,12 @@
       }
     },
     {
-      "shipType": "lcvp",
-	  "shipClass": "LANDING_CRAFT",
+      "shipType": "lct",
+      "shipClass": "LANDING_CRAFT_TANK",
       "destination": {
-        "xPos": 148540.0,
-        "yPos": 1.0,
-        "zPos": 84430.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 250.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "shipType": "lcvp",
-	  "shipClass": "LANDING_CRAFT",
-      "destination": {
-        "xPos": 148145.0,
+        "xPos": 147368.0,
         "yPos": 0.0,
-        "zPos": 84743.0
+        "zPos": 85662.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -106,11 +36,39 @@
     },
     {
       "shipType": "lcvp",
-	  "shipClass": "LANDING_CRAFT",
+      "shipClass": "LANDING_CRAFT",
       "destination": {
-        "xPos": 149665.0,
-        "yPos": 1.0,
-        "zPos": 83450.0
+        "xPos": 146682.0,
+        "yPos": 0.0,
+        "zPos": 86107.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 250.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lct",
+      "shipClass": "LANDING_CRAFT_TANK",
+      "destination": {
+        "xPos": 147807.0,
+        "yPos": 0.0,
+        "zPos": 85315.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 250.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lct",
+      "shipClass": "LANDING_CRAFT_TANK",
+      "destination": {
+        "xPos": 149074.0,
+        "yPos": 0.0,
+        "zPos": 84338.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -120,11 +78,11 @@
     },
     {
       "shipType": "lcvp",
-	  "shipClass": "LANDING_CRAFT",
+      "shipClass": "LANDING_CRAFT",
       "destination": {
-        "xPos": 146965.0,
-        "yPos": 1.0,
-        "zPos": 85594.0
+        "xPos": 148561.0,
+        "yPos": 0.0,
+        "zPos": 84710.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -134,11 +92,11 @@
     },
     {
       "shipType": "lcvp",
-	  "shipClass": "LANDING_CRAFT",
+      "shipClass": "LANDING_CRAFT",
       "destination": {
-        "xPos": 146115.0,
-        "yPos": 1.0,
-        "zPos": 85930.0
+        "xPos": 148137.0,
+        "yPos": 0.0,
+        "zPos": 85054.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -146,47 +104,89 @@
         "zOri": 0.0
       }
     },
-	{
-		"shipType": "destroyergleaves",
-		"shipClass": "DESTROYER",
-		"destination": {
-			"xPos": 147000.0,
-			"yPos": 0.0,
-			"zPos": 86000.0
-		},
-		"orientation": {
-			"xOri": 0.0,
-			"yOri": 180.0,
-			"zOri": 0.0
-		}
-	},
-	{
-		"shipType": "destroyergleaves",
-		"shipClass": "DESTROYER",
-		"destination": {
-			"xPos": 148000.0,
-			"yPos": 0.0,
-			"zPos": 86300.0
-		},
-		"orientation": {
-			"xOri": 0.0,
-			"yOri": 180.0,
-			"zOri": 0.0
-		}
-	},
-	{
-		"shipType": "destroyergleaves",
-		"shipClass": "DESTROYER",
-		"destination": {
-			"xPos": 149000.0,
-			"yPos": 0.0,
-			"zPos": 86600.0
-		},
-		"orientation": {
-			"xOri": 0.0,
-			"yOri": 180.0,
-			"zOri": 0.0
-		}
-	}
+    {
+      "shipType": "lcvp",
+      "shipClass": "LANDING_CRAFT",
+      "destination": {
+        "xPos": 149548.0,
+        "yPos": 0.0,
+        "zPos": 83921.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 250.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lcvp",
+      "shipClass": "LANDING_CRAFT",
+      "destination": {
+        "xPos": 147119.0,
+        "yPos": 0.0,
+        "zPos": 85879.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 250.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "lcvp",
+      "shipClass": "LANDING_CRAFT",
+      "destination": {
+        "xPos": 146209.0,
+        "yPos": 0.0,
+        "zPos": 86199.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 250.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "destroyergleaves",
+      "shipClass": "DESTROYER",
+      "destination": {
+        "xPos": 147114.0,
+        "yPos": 0.0,
+        "zPos": 87458.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "destroyergleaves",
+      "shipClass": "DESTROYER",
+      "destination": {
+        "xPos": 148392.0,
+        "yPos": 0.0,
+        "zPos": 86558.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "shipType": "destroyergleaves",
+      "shipClass": "DESTROYER",
+      "destination": {
+        "xPos": 149384.0,
+        "yPos": 0.0,
+        "zPos": 85742.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    }
   ]
 }

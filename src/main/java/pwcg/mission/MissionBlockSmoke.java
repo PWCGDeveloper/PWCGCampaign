@@ -7,7 +7,6 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PwcgMapGroundUnitLimitation;
 import pwcg.campaign.group.ScriptedFixedPosition;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;

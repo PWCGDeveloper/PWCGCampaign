@@ -46,11 +46,11 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
     private ButtonGroup buttonGroup = new ButtonGroup();
     private IconicBattlesGeneratorData iconicBattleData = new IconicBattlesGeneratorData();
 
-	public IconicBattlesGUI(String iconicBattleKey) 
+	public IconicBattlesGUI(String iconicBattleName) 
 	{		
         super("");
         
-        iconicBattleData.setIconicBattleKey(iconicBattleKey);
+        iconicBattleData.setIconicBattleName(iconicBattleName);
         
         setLayout(new BorderLayout());
 	}
@@ -76,7 +76,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("Iconic Mission Squadrons"));
         buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
-        IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleKey());
+        IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleName());
         
         Set<Country> countriesInBattle = new HashSet<>();
         for (Integer squadronId : iconicMission.getIconicBattleParticipants())
@@ -132,8 +132,10 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
     private String formDescription(Integer squadronId) throws PWCGException
     {
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-        Date iconicBattleDate = DateUtils.getDateYYYYMMDD(iconicBattleData.getIconicBattleKey());
-        String description = squadron.determineDisplayName(iconicBattleDate) + " flying " + squadron.determineBestPlane(iconicBattleDate).getDisplayName();
+        IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleName());
+        Date campaignDate = DateUtils.getDateYYYYMMDD(iconicMission.getDateString());
+
+        String description = squadron.determineDisplayName(campaignDate) + " flying " + squadron.determineBestPlane(campaignDate).getDisplayName();
         return description;
     }
 

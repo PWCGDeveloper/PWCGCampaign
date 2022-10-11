@@ -61,7 +61,7 @@
 		},
 		{
 			"mapName": "Normandy",
-			"campaignName": "Dieppe Amphibious Assault",
+			"campaignName": "Dieppe",
 			"dateString": "19420819",
 			"iconicBattleParticipants": [
                 103083056,
@@ -75,7 +75,7 @@
 		},
         {
             "mapName": "Normandy",
-            "campaignName": "Normandy Omaha",
+            "campaignName": "Omaha",
             "dateString": "19440606",
             "iconicBattleParticipants": [
                 102352486,
@@ -84,14 +84,13 @@
                 102322584,
                 20111001,
                 20111077,
-                20122004,
-                20131051
+                20122004
             ]
         },
         {
             "mapName": "Normandy",
-            "campaignName": "Normandy Juno",
-            "dateString": "19440606",
+            "campaignName": "Juno",
+            "dateString": "19440607",
             "iconicBattleParticipants": [
                 103083056,
                 103084193,
@@ -99,8 +98,7 @@
                 103084066,
                 20111001,
                 20111077,
-                20122004,
-                20131051
+                20122004
             ]
         },
 		{
@@ -116,8 +114,7 @@
                 103084066,
                 20111001,
                 20111077,
-                20122004,
-                20131051
+                20122004
 			]
 		}
 	]

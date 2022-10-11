@@ -1,6 +1,7 @@
 package pwcg.gui.iconicbattles;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -10,9 +11,13 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.skirmish.IconicMissionsManager;
 import pwcg.campaign.skirmish.IconicSingleMission;
+import pwcg.campaign.skirmish.Skirmish;
+import pwcg.campaign.skirmish.SkirmishManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -24,7 +29,12 @@ import pwcg.gui.rofmap.brief.CampaignHomeGuiBriefingWrapper;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
+import pwcg.mission.MissionProfile;
+import pwcg.mission.MissionRoleGenerator;
+import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.aaatruck.AAATruckMissionPostProcessor;
+import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.factory.IFlightTypeFactory;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 import pwcg.mission.io.MissionFileNameBuilder;
@@ -64,7 +74,8 @@ public class IconicBattlesGenerator
 
     private void validateAAATruckMission() throws PWCGException
     {
-        if (iconicBattleData.getIconicBattleKey().contains("19431020"))
+        IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleName());
+        if (iconicMission.getDateString().contains("19431020"))
         {
             throw new PWCGException("How are you going to do anti shipping from a tank?");
         }
@@ -81,9 +92,9 @@ public class IconicBattlesGenerator
 
     private CampaignGeneratorModel makeCampaignModelForProfile() throws PWCGException
     {
-        IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleKey());
+        IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleName());
         Squadron squadron = findPlayerSquadronForMission();
-        Date campaignDate = DateUtils.getDateYYYYMMDD(iconicBattleData.getIconicBattleKey());
+        Date campaignDate = DateUtils.getDateYYYYMMDD(iconicMission.getDateString());
 
         ArmedService service = squadron.determineServiceForSquadron(campaignDate);
         String squadronName = squadron.determineDisplayName(campaignDate);
@@ -122,7 +133,7 @@ public class IconicBattlesGenerator
     private Squadron getSquadronForAAATruck() throws PWCGException
     {
         Side truckSide = getTruckSide();
-        IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleKey());
+        IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleName());
         for (Integer squadronId : iconicMission.getIconicBattleParticipants())
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
@@ -154,9 +165,31 @@ public class IconicBattlesGenerator
         }
         else
         {
-            mission = missionGenerator.makeMission(buildTestParticipatingHumans(campaign));
+            mission = generateAirMission(campaign, missionGenerator);
         }
                 
+        return mission;
+    }
+
+    private Mission generateAirMission(Campaign campaign, MissionGenerator missionGenerator) throws PWCGException
+    {
+        Mission mission;
+        SkirmishManager skirmishManager = PWCGContext.getInstance().getCurrentMap().getSkirmishManager();
+        Skirmish skirmish = skirmishManager.getSkirmishByName(iconicBattleData.getIconicBattleName());
+        Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(iconicBattleData.getSelectedSquadron());
+        
+        IFlightTypeFactory flightTypeFactory = PWCGFlightTypeAbstractFactory.createFlightTypeFactory(campaign);
+        PwcgRole missionRole = MissionRoleGenerator.getMissionRole(campaign, new HashMap<>(), playerSquadron);
+        FlightTypes flightType = flightTypeFactory.getFlightType(playerSquadron, true, missionRole);
+        
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(
+                flightType, playerSquadron);
+
+        mission = missionGenerator.makeMissionFromFlightTypeWithSkirmish(
+                buildTestParticipatingHumans(campaign),
+                playerFlightTypes,
+                MissionProfile.DAY_TACTICAL_MISSION,
+                skirmish);
         return mission;
     }
 

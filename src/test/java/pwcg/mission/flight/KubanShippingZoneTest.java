@@ -58,7 +58,7 @@ public class KubanShippingZoneTest
         }
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeTestMissionFromFlightTypeWithSkirmish(playerParticipants, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, shippingZoneSkirmish);
+        Mission mission = missionGenerator.makeMissionFromFlightTypeWithSkirmish(playerParticipants, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, shippingZoneSkirmish);
 
         Assertions.assertTrue (mission.getSkirmish() != null);
         Assertions.assertTrue (mission.getSkirmish().getSkirmishName().startsWith("Ship Encounter"));

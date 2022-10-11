@@ -4,19 +4,19 @@ import pwcg.mission.ground.vehicle.VehicleDefinition;
 
 public class IconicBattlesGeneratorData
 {
-    private String iconicBattleKey = "";
+    private String iconicBattleName = "";
     private int selectedSquadron = 0;
     private String selectedVehicleOrSquadron = "";
     private VehicleDefinition playerVehicleDefinition = null;
 
-    public String getIconicBattleKey()
+    public String getIconicBattleName()
     {
-        return iconicBattleKey;
+        return iconicBattleName;
     }
 
-    public void setIconicBattleKey(String iconicBattleKey)
+    public void setIconicBattleName(String iconicBattleKey)
     {
-        this.iconicBattleKey = iconicBattleKey;
+        this.iconicBattleName = iconicBattleKey;
     }
 
     public int getSelectedSquadron()

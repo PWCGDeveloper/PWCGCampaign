@@ -36,6 +36,18 @@ public class SkirmishManager
         }
 	}
 
+    public Skirmish getSkirmishByName(String skirmishName) throws PWCGException 
+    {     
+        for (Skirmish skirmish : skirmishes.getSkirmishes())
+        {
+            if (skirmish.getSkirmishName().equals(skirmishName))
+            {
+                return skirmish;
+            }
+        }
+        return null;
+    }
+
     public List<Skirmish> getSkirmishesForDate(Campaign campaign, MissionHumanParticipants participatingPlayers) throws PWCGException 
     {     
         List<Skirmish> skirmishesForCampaign =  getSetPieceSkirmishesForDate(campaign);

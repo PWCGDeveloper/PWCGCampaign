@@ -102,7 +102,7 @@ public class MissionGenerator
         return mission;
     }
 
-    public Mission makeTestMissionFromFlightTypeWithSkirmish(
+    public Mission makeMissionFromFlightTypeWithSkirmish(
             MissionHumanParticipants participatingPlayers, 
             MissionSquadronFlightTypes playerFlightTypes,
             MissionProfile missionProfile,

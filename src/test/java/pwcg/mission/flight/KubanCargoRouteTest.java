@@ -58,7 +58,7 @@ public class KubanCargoRouteTest
         }
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeTestMissionFromFlightTypeWithSkirmish(playerParticipants, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, cargoRouteSkirmish);
+        Mission mission = missionGenerator.makeMissionFromFlightTypeWithSkirmish(playerParticipants, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, cargoRouteSkirmish);
 
         Assertions.assertTrue (mission.getSkirmish() != null);
         Assertions.assertTrue (mission.getSkirmish().getSkirmishName().startsWith("Cargo"));
