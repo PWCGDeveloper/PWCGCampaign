@@ -11,7 +11,7 @@
             "category": "Configured",
             "definedInGame": true,
             "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
+            "tacticalCodeColor": "BLACK",
             "winter": false
         },
         "ju87d3_blank_01": {
@@ -24,11 +24,11 @@
             "category": "Configured",
             "definedInGame": true,
             "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "winter": false
+            "tacticalCodeColor": "BLACK",
+            "winter": true
         },
-        "ju87d3_blank_03": {
-            "skinName": "ju87d3_blank_03",
+        "ju87d3_blank_02": {
+            "skinName": "ju87d3_blank_02",
             "planeType": "ju87d3",
             "startDate": "19390801",
             "endDate": "19450601",

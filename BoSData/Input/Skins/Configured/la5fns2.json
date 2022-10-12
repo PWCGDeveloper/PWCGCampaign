@@ -14,12 +14,25 @@
             "useTacticalCodes": true,
             "tacticalCodeColor": "WHITE"          
 		},
+        "la5fns2_blank_01": {
+            "skinName": "la5fns2_blank_01",
+            "planeType": "la5fns2",
+            "startDate": "19430401",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
 		"la5fns2_skin_01": {
 			"skinName": "la5fns2_skin_01",
 			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": true,

@@ -25,7 +25,7 @@
             "definedInGame": true,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLACK",
-            "winter": true
+            "winter": false
         },
         "bf109g6_blank_02": {
             "skinName": "bf109g6_blank_02",

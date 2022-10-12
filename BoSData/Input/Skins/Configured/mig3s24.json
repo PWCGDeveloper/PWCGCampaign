@@ -1,19 +1,45 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"mig3s24_default": {
-			"skinName": "mig3s24",
-			"planeType": "mig3s24",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
+        "mig3s24_default": {
+            "skinName": "mig3s24",
+            "planeType": "mig3s24",
+            "startDate": "19390801",
+            "endDate": "19440301",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"          
-		},
+        },
+        "mig3s24_blank_01": {
+            "skinName": "mig3s24_blank_01",
+            "planeType": "mig3s24",
+            "startDate": "19390801",
+            "endDate": "19430401",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": true
+        },
+        "mig3s24_blank_02": {
+            "skinName": "mig3s24_blank_02",
+            "planeType": "mig3s24",
+            "startDate": "19390801",
+            "endDate": "19430901",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
 		"mig3s24_skin_01": {
 			"skinName": "mig3s24_skin_01",
 			"planeType": "mig3s24",

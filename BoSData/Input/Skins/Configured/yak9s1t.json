@@ -1,22 +1,35 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"yak9s1t_default": {
-			"skinName": "yak9s1t",
-			"planeType": "yak9s1t",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
+        "yak9s1t_default": {
+            "skinName": "yak9s1t",
+            "planeType": "yak9s1t",
+            "startDate": "19390801",
+            "endDate": "19431001",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"          
-		},
-		"yak9s1t_skin_10": {
-			"skinName": "yak9s1t_skin_10",
-			"planeType": "yak9s1t",
+        },
+        "yak9s1t_blank_01": {
+            "skinName": "yak9s1t_blank_01",
+            "planeType": "yak9s1t",
+            "startDate": "19430401",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+		"yak9s1tt_skin_10": {
+			"skinName": "yak9s1tt_skin_10",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -2,
@@ -25,9 +38,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"yak9s1t_skin_01": {
-			"skinName": "yak9s1t_skin_01",
-			"planeType": "yak9s1t",
+		"yak9s1tt_skin_01": {
+			"skinName": "yak9s1tt_skin_01",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19440601",
 			"squadId": -1,
@@ -36,9 +49,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"yak9s1t_skin_02": {
-			"skinName": "yak9s1t_skin_02",
-			"planeType": "yak9s1t",
+		"yak9s1tt_skin_02": {
+			"skinName": "yak9s1tt_skin_02",
+			"planeType": "yak9s1tt",
 			"startDate": "19390801",
 			"endDate": "19440301",
 			"squadId": -1,
@@ -47,9 +60,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"yak9s1t_skin_03": {
-			"skinName": "yak9s1t_skin_03",
-			"planeType": "yak9s1t",
+		"yak9s1tt_skin_03": {
+			"skinName": "yak9s1tt_skin_03",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19440601",
 			"squadId": -1,
@@ -58,9 +71,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"yak9s1t_skin_04": {
-			"skinName": "yak9s1t_skin_04",
-			"planeType": "yak9s1t",
+		"yak9s1tt_skin_04": {
+			"skinName": "yak9s1tt_skin_04",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19440601",
 			"squadId": -1,
@@ -69,9 +82,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"yak9s1t_skin_05": {
-			"skinName": "yak9s1t_skin_05",
-			"planeType": "yak9s1t",
+		"yak9s1tt_skin_05": {
+			"skinName": "yak9s1tt_skin_05",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19440601",
 			"squadId": -1,
@@ -80,9 +93,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"yak9s1t_skin_06": {
-			"skinName": "yak9s1t_skin_06",
-			"planeType": "yak9s1t",
+		"yak9s1tt_skin_06": {
+			"skinName": "yak9s1tt_skin_06",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -91,9 +104,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"yak9s1t_skin_07": {
-			"skinName": "yak9s1t_skin_07",
-			"planeType": "yak9s1t",
+		"yak9s1tt_skin_07": {
+			"skinName": "yak9s1tt_skin_07",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -102,9 +115,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"yak9s1t_skin_08": {
-			"skinName": "yak9s1t_skin_08",
-			"planeType": "yak9s1t",
+		"yak9s1tt_skin_08": {
+			"skinName": "yak9s1tt_skin_08",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -113,9 +126,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"yak9s1t_skin_09": {
-			"skinName": "yak9s1t_skin_09",
-			"planeType": "yak9s1t",
+		"yak9s1tt_skin_09": {
+			"skinName": "yak9s1tt_skin_09",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -126,7 +139,7 @@
 		},
 		"Yak9Ts1_845_SHCHERBAKOV": {
 			"skinName": "Yak9Ts1_845_SHCHERBAKOV",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -137,7 +150,7 @@
 		},
 		"Yak9Ts1_845_SOLOVIEV": {
 			"skinName": "Yak9Ts1_845_SOLOVIEV",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -148,7 +161,7 @@
 		},
 		"Yak9Ts1_GEORGII BAYEVSKII": {
 			"skinName": "Yak9Ts1_GEORGII BAYEVSKII",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -159,7 +172,7 @@
 		},
 		"Yak9Ts1_KOGRUSHEV": {
 			"skinName": "Yak9Ts1_KOGRUSHEV",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -170,7 +183,7 @@
 		},
 		"Yak9Ts1_KISELEV": {
 			"skinName": "Yak9Ts1_KISELEV",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -181,7 +194,7 @@
 		},
 		"Yak9Ts1_RENE CHALLE": {
 			"skinName": "Yak9Ts1_RENE CHALLE",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": 10111999,
@@ -192,7 +205,7 @@
 		},
 		"Yak9Ts1_LOUIS QUERNE": {
 			"skinName": "Yak9Ts1_LOUIS QUERNE",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": 10111999,
@@ -203,7 +216,7 @@
 		},
 		"Yak9Ts1_MARCELLE LEFEVRE": {
 			"skinName": "Yak9Ts1_MARCELLE LEFEVRE",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": 10111999,
@@ -214,7 +227,7 @@
 		},
 		"Yak9Ts1_PIERRE POUYADE": {
 			"skinName": "Yak9Ts1_PIERRE POUYADE",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": 10111999,
@@ -225,7 +238,7 @@
 		},
 		"Yak9Ts1_MASHENKIN_1943": {
 			"skinName": "Yak9Ts1_MASHENKIN_1943",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19430101",
 			"endDate": "19440101",
 			"squadId": -1,
@@ -236,7 +249,7 @@
 		},
 		"Yak9Ts1_MENKIN": {
 			"skinName": "Yak9Ts1_MENKIN",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -247,7 +260,7 @@
 		},
 		"Yak9Ts1_PESKAREV": {
 			"skinName": "Yak9Ts1_PESKAREV",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -258,7 +271,7 @@
 		},
 		"Yak9Ts1_VENSKIJ": {
 			"skinName": "Yak9Ts1_VENSKIJ",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -269,7 +282,7 @@
 		},
 		"Yak9Ts1_WHITE 7": {
 			"skinName": "Yak9Ts1_WHITE 7",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -280,7 +293,7 @@
 		},
 		"Yak9Ts1_WHITE 21": {
 			"skinName": "Yak9Ts1_WHITE 21",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -291,7 +304,7 @@
 		},
 		"Yak9Ts1_WHITE 53": {
 			"skinName": "Yak9Ts1_WHITE 53",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -302,7 +315,7 @@
 		},
 		"Yak9Ts1_WHITE 66": {
 			"skinName": "Yak9Ts1_WHITE 66",
-			"planeType": "yak9s1t",
+			"planeType": "yak9s1tt",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,

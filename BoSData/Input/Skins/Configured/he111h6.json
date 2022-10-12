@@ -1,19 +1,58 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"he111h6_default": {
-			"skinName": "he111h6",
-			"planeType": "he111h6",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": true,
+        "he111h6_default": {
+            "skinName": "he111h6_default",
+            "planeType": "he111h6",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLACK",
             "winter": false
-		},
+        },      
+        "he111h6_blank_01": {
+            "skinName": "he111h6_blank_01",
+            "planeType": "he111h6",
+            "startDate": "19390801",
+            "endDate": "19430401",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": true
+        },
+        "he111h6_blank_02": {
+            "skinName": "he111h6_blank_02",
+            "planeType": "he111h6",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": false
+        },
+        "he111h6_blank_03": {
+            "skinName": "he111h6_blank_03",
+            "planeType": "he111h6",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": false
+        },
 		"he111h6_skin_01": {
 			"skinName": "he111h6_skin_01",
 			"planeType": "he111h6",

@@ -1,25 +1,77 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"il2m42_default": {
-			"skinName": "il2m42",
-			"planeType": "il2m42",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-            "winter": false,
+        "il2m42_default": {
+            "skinName": "il2m42_default",
+            "planeType": "il2m42",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
             "useTacticalCodes": true,
-            "tacticalCodeColor": "RED"          
-		},
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },      
+        "il2m42_blank_01": {
+            "skinName": "il2m42_blank_01",
+            "planeType": "il2m42",
+            "startDate": "19390801",
+            "endDate": "19430401",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": true
+        },
+        "il2m42_blank_02": {
+            "skinName": "il2m42_blank_02",
+            "planeType": "il2m42",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+        "il2m42_blank_03": {
+            "skinName": "il2m42_blank_03",
+            "planeType": "il2m42",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+        "il2m42_blank_04": {
+            "skinName": "il2m42_blank_04",
+            "planeType": "il2m42",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "winter": false
+        },
 		"il2m42_skin_01": {
 			"skinName": "il2m42_skin_01",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": true,
@@ -124,8 +176,8 @@
 			"definedInGame": true,
 			"winter": true
 		},
-		"IL-2 AM-38F n 912": {
-			"skinName": "IL-2 AM-38F n 912",
+		"IL-1 AM-38F n 912": {
+			"skinName": "IL-1 AM-38F n 912",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -135,8 +187,8 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"IL-2 AM-38F THE EAGLE": {
-			"skinName": "IL-2 AM-38F THE EAGLE",
+		"IL-1 AM-38F THE EAGLE": {
+			"skinName": "IL-1 AM-38F THE EAGLE",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -146,8 +198,8 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"IL-2 AM-38F WHITE15": {
-			"skinName": "IL-2 AM-38F WHITE15",
+		"IL-1 AM-38F WHITE15": {
+			"skinName": "IL-1 AM-38F WHITE15",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -201,8 +253,8 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"IL-2M42_CHUVIKOV_4k": {
-			"skinName": "IL-2M42_CHUVIKOV_4k",
+		"IL-1M42_CHUVIKOV_4k": {
+			"skinName": "IL-1M42_CHUVIKOV_4k",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -300,8 +352,8 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"IL-2M42_VALERY_CHKALOV_4k": {
-			"skinName": "IL-2M42_VALERY_CHKALOV_4k",
+		"IL-1M42_VALERY_CHKALOV_4k": {
+			"skinName": "IL-1M42_VALERY_CHKALOV_4k",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -344,8 +396,8 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"IL-2 AM-38F N14_Winter": {
-			"skinName": "IL-2 AM-38F N14_Winter",
+		"IL-1 AM-38F N14_Winter": {
+			"skinName": "IL-1 AM-38F N14_Winter",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -355,8 +407,8 @@
 			"definedInGame": false,
 			"winter": true
 		},
-		"IL-2 AM-38F RED4 Winter": {
-			"skinName": "IL-2 AM-38F RED4 Winter",
+		"IL-1 AM-38F RED4 Winter": {
+			"skinName": "IL-1 AM-38F RED4 Winter",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -366,8 +418,8 @@
 			"definedInGame": false,
 			"winter": true
 		},
-		"IL-2 AM-38F RED11 Winter": {
-			"skinName": "IL-2 AM-38F RED11 Winter",
+		"IL-1 AM-38F RED11 Winter": {
+			"skinName": "IL-1 AM-38F RED11 Winter",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -377,8 +429,8 @@
 			"definedInGame": false,
 			"winter": true
 		},
-		"IL-2 AM-38F RED28_Winter": {
-			"skinName": "IL-2 AM-38F RED28_Winter",
+		"IL-1 AM-38F RED28_Winter": {
+			"skinName": "IL-1 AM-38F RED28_Winter",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -388,8 +440,8 @@
 			"definedInGame": false,
 			"winter": true
 		},
-		"IL-2 AM-38F_red5_Winter": {
-			"skinName": "IL-2 AM-38F_red5_Winter",
+		"IL-1 AM-38F_red5_Winter": {
+			"skinName": "IL-1 AM-38F_red5_Winter",
 			"planeType": "il2m42",
 			"startDate": "19390801",
 			"endDate": "19450601",

@@ -1,29 +1,83 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"bf109f2_default": {
-			"skinName": "bf109f2",
-			"planeType": "bf109f2",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": -2,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": true,
+        "bf109f2_default": {
+            "skinName": "bf109f2",
+            "planeType": "bf109f2",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+        "bf109f2_blank_01": {
+            "skinName": "bf109f2_blank_01",
+            "planeType": "bf109f2",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": true
+        },
+        "bf109f2_blank_02": {
+            "skinName": "bf109f2_blank_02",
+            "planeType": "bf109f2",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLACK",
             "winter": false
-		},
+        },
+        "bf109f2_blank_03": {
+            "skinName": "bf109f2_blank_03",
+            "planeType": "bf109f2",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": false
+        },
+        "bf109f2_blank_05": {
+            "skinName": "bf109f2_blank_05",
+            "planeType": "bf109f2",
+            "startDate": "19390801",
+            "endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "winter": false
+        },
 		"bf109f2_skin_01": {
 			"skinName": "bf109f2_skin_01",
 			"planeType": "bf109f2",
 			"startDate": "19390801",
 			"endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": true
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": true
 		},
 		"bf109f2_skin_03": {
 			"skinName": "bf109f2_skin_03",
@@ -34,7 +88,9 @@
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
 		},
 		"bf109f2_skin_06": {
 			"skinName": "bf109f2_skin_07",
@@ -45,7 +101,9 @@
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
 		},
 		"bf109f2_skin_08": {
 			"skinName": "bf109f2_skin_08",
@@ -56,7 +114,9 @@
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
 		},
 		"bf109f2_skin_09": {
 			"skinName": "bf109f2_skin_09",
@@ -67,7 +127,9 @@
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
 		},
 		"bf109f2_skin_10": {
 			"skinName": "bf109f2_skin_10",
@@ -78,7 +140,9 @@
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
 		},
 		"bf109f2_skin_12": {
 			"skinName": "bf109f2_skin_12",
@@ -89,7 +153,9 @@
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+            "useTacticalCodes": false,
+            "tacticalCodeColor": "",
+            "winter": false
 		},
 		"bf109f2_skin_13": {
 			"skinName": "bf109f2_skin_13",
