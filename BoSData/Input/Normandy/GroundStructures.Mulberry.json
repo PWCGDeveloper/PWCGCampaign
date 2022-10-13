@@ -1,0 +1,6610 @@
+{
+  "railroadStations": [],
+  "standaloneBlocks": [
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_block.txt",
+      "index": 264583,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_block.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 141275.0,
+        "yPos": 0.0,
+        "zPos": 109325.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 129.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264585,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142098.0,
+        "yPos": 0.0,
+        "zPos": 107934.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 289.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_a.txt",
+      "index": 264587,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142029.0,
+        "yPos": 0.0,
+        "zPos": 108050.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 297.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264589,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 141522.0,
+        "yPos": 0.0,
+        "zPos": 108853.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 123.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264591,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143280.0,
+        "yPos": 0.0,
+        "zPos": 106651.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 299.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264593,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143204.0,
+        "yPos": 0.0,
+        "zPos": 106756.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 306.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264595,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143341.0,
+        "yPos": 0.0,
+        "zPos": 106485.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 292.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264597,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143114.0,
+        "yPos": 0.0,
+        "zPos": 106842.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 331.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264599,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142999.0,
+        "yPos": 0.0,
+        "zPos": 106979.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 126.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264601,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142865.0,
+        "yPos": 0.0,
+        "zPos": 107179.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 298.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264603,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142761.0,
+        "yPos": 0.0,
+        "zPos": 107311.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 306.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_block.txt",
+      "index": 264605,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_block.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 141666.0,
+        "yPos": 0.0,
+        "zPos": 108644.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 299.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264607,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 141968.0,
+        "yPos": 0.0,
+        "zPos": 108157.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 136.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_a.txt",
+      "index": 264609,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 141907.0,
+        "yPos": 0.0,
+        "zPos": 108260.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 98.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264611,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143058.0,
+        "yPos": 0.0,
+        "zPos": 105912.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 40.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264613,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143140.0,
+        "yPos": 0.0,
+        "zPos": 105993.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 230.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264615,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143212.0,
+        "yPos": 0.0,
+        "zPos": 106086.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 235.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264617,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143178.0,
+        "yPos": 0.0,
+        "zPos": 106037.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264659,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143269.0,
+        "yPos": 0.0,
+        "zPos": 108052.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 302.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264661,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142995.0,
+        "yPos": 0.0,
+        "zPos": 108488.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264663,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143468.0,
+        "yPos": 0.0,
+        "zPos": 107781.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 145.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264665,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143384.0,
+        "yPos": 0.0,
+        "zPos": 107902.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 151.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264667,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143419.0,
+        "yPos": 0.0,
+        "zPos": 107844.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 109.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264669,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143554.0,
+        "yPos": 0.0,
+        "zPos": 107661.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 303.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264671,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143159.0,
+        "yPos": 0.0,
+        "zPos": 108215.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 122.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264673,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143069.0,
+        "yPos": 0.0,
+        "zPos": 108326.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 95.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264675,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143108.0,
+        "yPos": 0.0,
+        "zPos": 108275.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 141.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264677,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142805.0,
+        "yPos": 0.0,
+        "zPos": 108754.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 125.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264679,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142889.0,
+        "yPos": 0.0,
+        "zPos": 108646.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 316.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264681,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142681.0,
+        "yPos": 0.0,
+        "zPos": 108953.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 297.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264683,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142715.0,
+        "yPos": 0.0,
+        "zPos": 108881.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 116.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264715,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 143764.0,
+        "yPos": 0.0,
+        "zPos": 106593.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 276.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264719,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142006.0,
+        "yPos": 0.0,
+        "zPos": 108037.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 125.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264731,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142441.0,
+        "yPos": 0.0,
+        "zPos": 105751.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 138.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_a.txt",
+      "index": 264733,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 142562.0,
+        "yPos": 0.0,
+        "zPos": 108693.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 314.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264735,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 140800.0,
+        "yPos": 0.0,
+        "zPos": 109395.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 24.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264737,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 141009.0,
+        "yPos": 0.0,
+        "zPos": 109490.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 203.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264763,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 140641.0,
+        "yPos": 0.0,
+        "zPos": 109318.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 179.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264783,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139076.0,
+        "yPos": 0.0,
+        "zPos": 124735.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264785,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138707.0,
+        "yPos": 0.0,
+        "zPos": 124717.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 6.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264787,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138935.0,
+        "yPos": 0.0,
+        "zPos": 124741.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 3.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_block.txt",
+      "index": 264789,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_block.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139448.0,
+        "yPos": 0.0,
+        "zPos": 125511.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 262.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264791,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139414.0,
+        "yPos": 0.0,
+        "zPos": 125167.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 96.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_a.txt",
+      "index": 264793,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139441.0,
+        "yPos": 0.0,
+        "zPos": 124980.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 274.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_a.txt",
+      "index": 264795,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139175.0,
+        "yPos": 0.0,
+        "zPos": 124900.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 253.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264797,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139181.0,
+        "yPos": 0.0,
+        "zPos": 124788.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 233.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264799,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139123.0,
+        "yPos": 0.0,
+        "zPos": 124758.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 183.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264801,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139158.0,
+        "yPos": 0.0,
+        "zPos": 124742.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264803,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138940.0,
+        "yPos": 0.0,
+        "zPos": 124790.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 283.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264805,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138530.0,
+        "yPos": 0.0,
+        "zPos": 125962.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 11.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264807,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138533.0,
+        "yPos": 0.0,
+        "zPos": 124698.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 186.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264809,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138602.0,
+        "yPos": 0.0,
+        "zPos": 124720.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 187.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264811,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139509.0,
+        "yPos": 0.0,
+        "zPos": 124941.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 253.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264813,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139431.0,
+        "yPos": 0.0,
+        "zPos": 124716.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 64.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264815,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139611.0,
+        "yPos": 0.0,
+        "zPos": 125374.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 83.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264817,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139593.0,
+        "yPos": 0.0,
+        "zPos": 125249.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 254.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264819,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139579.0,
+        "yPos": 0.0,
+        "zPos": 125114.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 255.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264821,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139583.0,
+        "yPos": 0.0,
+        "zPos": 125180.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 89.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264823,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139563.0,
+        "yPos": 0.0,
+        "zPos": 125211.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 264.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264825,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139603.0,
+        "yPos": 0.0,
+        "zPos": 125536.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 83.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264827,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139631.0,
+        "yPos": 0.0,
+        "zPos": 125639.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 262.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264829,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139639.0,
+        "yPos": 0.0,
+        "zPos": 125805.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 80.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264831,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139667.0,
+        "yPos": 0.0,
+        "zPos": 125873.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 262.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264833,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139691.0,
+        "yPos": 0.0,
+        "zPos": 126058.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 249.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264835,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139687.0,
+        "yPos": 0.0,
+        "zPos": 125935.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 258.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264837,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139688.0,
+        "yPos": 0.0,
+        "zPos": 125998.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 290.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264839,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139447.0,
+        "yPos": 0.0,
+        "zPos": 126142.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 330.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264841,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139368.0,
+        "yPos": 0.0,
+        "zPos": 126521.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 290.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264843,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139441.0,
+        "yPos": 0.0,
+        "zPos": 126124.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 153.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264845,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139448.0,
+        "yPos": 0.0,
+        "zPos": 126188.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 236.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264847,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139355.0,
+        "yPos": 0.0,
+        "zPos": 126622.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 282.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264849,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139427.0,
+        "yPos": 0.0,
+        "zPos": 126353.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 108.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_block.txt",
+      "index": 264851,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_block.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139317.0,
+        "yPos": 0.0,
+        "zPos": 126929.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 92.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_a.txt",
+      "index": 264853,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139327.0,
+        "yPos": 0.0,
+        "zPos": 126638.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 110.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264855,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139335.0,
+        "yPos": 0.0,
+        "zPos": 127314.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 93.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264857,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138236.0,
+        "yPos": 0.0,
+        "zPos": 128567.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 340.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_a.txt",
+      "index": 264859,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139309.0,
+        "yPos": 0.0,
+        "zPos": 127526.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 278.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264861,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139350.0,
+        "yPos": 0.0,
+        "zPos": 127642.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 281.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264863,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139326.0,
+        "yPos": 0.0,
+        "zPos": 127700.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 131.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264865,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139090.0,
+        "yPos": 0.0,
+        "zPos": 128064.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 109.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264867,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139018.0,
+        "yPos": 0.0,
+        "zPos": 128217.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 318.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264869,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138970.0,
+        "yPos": 0.0,
+        "zPos": 128257.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 139.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264871,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138666.0,
+        "yPos": 0.0,
+        "zPos": 128191.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 177.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264873,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138754.0,
+        "yPos": 0.0,
+        "zPos": 128225.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 264875,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138756.0,
+        "yPos": 0.0,
+        "zPos": 128287.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 269.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264877,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138654.0,
+        "yPos": 0.0,
+        "zPos": 128427.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 158.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_5.txt",
+      "index": 264879,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_5.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138389.0,
+        "yPos": 0.0,
+        "zPos": 128528.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 158.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 264881,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138176.0,
+        "yPos": 0.0,
+        "zPos": 128610.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 338.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264883,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139279.0,
+        "yPos": 0.0,
+        "zPos": 126540.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 41.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_a.txt",
+      "index": 264885,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139318.0,
+        "yPos": 0.0,
+        "zPos": 127245.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 95.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_a.txt",
+      "index": 264887,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139291.0,
+        "yPos": 0.0,
+        "zPos": 127333.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 269.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264889,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139307.0,
+        "yPos": 0.0,
+        "zPos": 127416.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 96.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264891,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139344.0,
+        "yPos": 0.0,
+        "zPos": 127557.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 251.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_a.txt",
+      "index": 264893,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139190.0,
+        "yPos": 0.0,
+        "zPos": 127877.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 309.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_block.txt",
+      "index": 264895,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_block.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139211.0,
+        "yPos": 0.0,
+        "zPos": 127791.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 305.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 264923,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 139496.0,
+        "yPos": 0.0,
+        "zPos": 125833.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 76.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_flooded_ship_b.txt",
+      "index": 265113,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_flooded_ship_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138588.0,
+        "yPos": 0.0,
+        "zPos": 127135.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 159.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 265129,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138413.0,
+        "yPos": 0.0,
+        "zPos": 124673.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 7.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 265131,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138417.0,
+        "yPos": 0.0,
+        "zPos": 124690.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 193.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix_3.txt",
+      "index": 265133,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138018.0,
+        "yPos": 0.0,
+        "zPos": 128678.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 158.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 265141,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138447.0,
+        "yPos": 0.0,
+        "zPos": 128484.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 337.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 265143,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138576.0,
+        "yPos": 0.0,
+        "zPos": 128423.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 201.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Blocks\\mlbr_phoenix.txt",
+      "index": 265145,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\buildings\\mlbr_phoenix.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Block",
+      "position": {
+        "xPos": 138394.0,
+        "yPos": 0.0,
+        "zPos": 128508.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 160.0,
+        "zOri": 0.0
+      }
+    }
+  ],
+  "bridges": [
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264619,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142572.0,
+        "yPos": 0.0,
+        "zPos": 105927.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 41.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264621,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142937.0,
+        "yPos": 0.0,
+        "zPos": 105943.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 312.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264623,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142886.0,
+        "yPos": 0.0,
+        "zPos": 105996.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 314.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264625,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 143034.0,
+        "yPos": 0.0,
+        "zPos": 106015.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 314.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264627,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 143020.0,
+        "yPos": 0.0,
+        "zPos": 106004.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 127.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264629,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142976.0,
+        "yPos": 0.0,
+        "zPos": 106061.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 127.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264631,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 143143.0,
+        "yPos": 0.0,
+        "zPos": 106089.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 118.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264633,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 143108.0,
+        "yPos": 0.0,
+        "zPos": 106153.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 118.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264635,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142867.0,
+        "yPos": 0.0,
+        "zPos": 106198.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264637,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142388.0,
+        "yPos": 0.0,
+        "zPos": 105769.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 40.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 264639,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142889.0,
+        "yPos": 0.0,
+        "zPos": 106242.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264641,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142848.0,
+        "yPos": 0.0,
+        "zPos": 106146.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 81.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 264643,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142899.0,
+        "yPos": 0.0,
+        "zPos": 106263.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264645,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 143008.0,
+        "yPos": 0.0,
+        "zPos": 106031.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 59.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264647,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142709.0,
+        "yPos": 0.0,
+        "zPos": 106208.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 213.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 264649,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142818.0,
+        "yPos": 0.0,
+        "zPos": 106279.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 213.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264651,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142853.0,
+        "yPos": 0.0,
+        "zPos": 106302.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 32.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264653,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142834.0,
+        "yPos": 0.0,
+        "zPos": 106290.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 33.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264655,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142873.0,
+        "yPos": 0.0,
+        "zPos": 106315.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 213.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264657,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142824.0,
+        "yPos": 0.0,
+        "zPos": 106310.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 231.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264685,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 141636.0,
+        "yPos": 0.0,
+        "zPos": 108672.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 210.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264687,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 141615.0,
+        "yPos": 0.0,
+        "zPos": 108660.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 30.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264689,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 141575.0,
+        "yPos": 0.0,
+        "zPos": 108636.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 210.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264691,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 141595.0,
+        "yPos": 0.0,
+        "zPos": 108648.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 210.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264693,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 141651.0,
+        "yPos": 0.0,
+        "zPos": 108662.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 59.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264695,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 141650.0,
+        "yPos": 0.0,
+        "zPos": 108654.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 194.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264697,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142507.0,
+        "yPos": 0.0,
+        "zPos": 106075.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 213.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264699,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142307.0,
+        "yPos": 0.0,
+        "zPos": 105938.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 214.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 264701,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142189.0,
+        "yPos": 0.0,
+        "zPos": 105856.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 34.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264703,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142199.0,
+        "yPos": 0.0,
+        "zPos": 105863.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 34.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 264705,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142277.0,
+        "yPos": 0.0,
+        "zPos": 105674.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 40.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264707,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142287.0,
+        "yPos": 0.0,
+        "zPos": 105682.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 40.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264709,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142295.0,
+        "yPos": 0.0,
+        "zPos": 105689.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 220.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264711,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142666.0,
+        "yPos": 0.0,
+        "zPos": 106011.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 59.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264713,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142667.0,
+        "yPos": 0.0,
+        "zPos": 106022.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 277.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264717,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142137.0,
+        "yPos": 0.0,
+        "zPos": 108279.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 233.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264721,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142181.0,
+        "yPos": 0.0,
+        "zPos": 106069.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 30.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 264723,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142055.0,
+        "yPos": 0.0,
+        "zPos": 105996.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 29.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264725,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142065.0,
+        "yPos": 0.0,
+        "zPos": 106002.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 30.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264727,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142075.0,
+        "yPos": 0.0,
+        "zPos": 106008.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 210.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264729,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142318.0,
+        "yPos": 0.0,
+        "zPos": 106148.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 209.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264739,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 143032.0,
+        "yPos": 0.0,
+        "zPos": 105926.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 23.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264741,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140326.0,
+        "yPos": 0.0,
+        "zPos": 109917.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 264743,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140190.0,
+        "yPos": 0.0,
+        "zPos": 109864.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264745,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140201.0,
+        "yPos": 0.0,
+        "zPos": 109869.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264747,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140212.0,
+        "yPos": 0.0,
+        "zPos": 109873.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 201.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264749,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140552.0,
+        "yPos": 0.0,
+        "zPos": 110005.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264751,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140995.0,
+        "yPos": 0.0,
+        "zPos": 108235.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 264753,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140864.0,
+        "yPos": 0.0,
+        "zPos": 108171.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264755,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140875.0,
+        "yPos": 0.0,
+        "zPos": 108177.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264757,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140885.0,
+        "yPos": 0.0,
+        "zPos": 108182.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 206.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264759,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140698.0,
+        "yPos": 0.0,
+        "zPos": 110061.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264761,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 140676.0,
+        "yPos": 0.0,
+        "zPos": 110053.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 264765,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 141619.0,
+        "yPos": 0.0,
+        "zPos": 106677.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 342.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264767,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 141602.0,
+        "yPos": 0.0,
+        "zPos": 108692.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 350.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264769,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 141596.0,
+        "yPos": 0.0,
+        "zPos": 108655.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 108.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264771,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 143060.0,
+        "yPos": 0.0,
+        "zPos": 105988.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 314.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264773,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142953.0,
+        "yPos": 0.0,
+        "zPos": 106091.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 128.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264775,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142962.0,
+        "yPos": 0.0,
+        "zPos": 105916.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 312.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264777,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 142905.0,
+        "yPos": 0.0,
+        "zPos": 106276.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264779,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 143090.0,
+        "yPos": 0.0,
+        "zPos": 106186.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 118.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264781,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138299.0,
+        "yPos": 0.0,
+        "zPos": 125935.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 190.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264897,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137913.0,
+        "yPos": 0.0,
+        "zPos": 125946.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 86.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 264899,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138448.0,
+        "yPos": 0.0,
+        "zPos": 125963.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 281.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264901,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138489.0,
+        "yPos": 0.0,
+        "zPos": 125971.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 11.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 264903,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137833.0,
+        "yPos": 0.0,
+        "zPos": 126060.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264905,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138217.0,
+        "yPos": 0.0,
+        "zPos": 125942.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 36.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 264907,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138530.0,
+        "yPos": 0.0,
+        "zPos": 125979.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 101.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264909,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137905.0,
+        "yPos": 0.0,
+        "zPos": 125867.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 8.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264911,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138060.0,
+        "yPos": 0.0,
+        "zPos": 125892.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 189.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264913,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137833.0,
+        "yPos": 0.0,
+        "zPos": 125857.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 8.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264915,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138255.0,
+        "yPos": 0.0,
+        "zPos": 125953.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 205.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264917,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138127.0,
+        "yPos": 0.0,
+        "zPos": 125923.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 30.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264919,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138147.0,
+        "yPos": 0.0,
+        "zPos": 125935.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264921,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138794.0,
+        "yPos": 0.0,
+        "zPos": 126092.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 110.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 264925,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138905.0,
+        "yPos": 0.0,
+        "zPos": 126241.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 205.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264927,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138923.0,
+        "yPos": 0.0,
+        "zPos": 126204.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 295.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 264929,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138941.0,
+        "yPos": 0.0,
+        "zPos": 126166.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264931,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138887.0,
+        "yPos": 0.0,
+        "zPos": 126280.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 295.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 264933,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138806.0,
+        "yPos": 0.0,
+        "zPos": 126432.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 208.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264935,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138826.0,
+        "yPos": 0.0,
+        "zPos": 126395.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 298.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 264937,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138858.0,
+        "yPos": 0.0,
+        "zPos": 126337.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264939,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138514.0,
+        "yPos": 0.0,
+        "zPos": 126206.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 14.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264941,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138838.0,
+        "yPos": 0.0,
+        "zPos": 126374.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 298.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264943,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138877.0,
+        "yPos": 0.0,
+        "zPos": 126301.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 295.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264945,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138547.0,
+        "yPos": 0.0,
+        "zPos": 126376.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 71.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 264947,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138604.0,
+        "yPos": 0.0,
+        "zPos": 126373.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 240.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264949,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138786.0,
+        "yPos": 0.0,
+        "zPos": 126469.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 298.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 264951,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138752.0,
+        "yPos": 0.0,
+        "zPos": 126525.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 211.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264953,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138774.0,
+        "yPos": 0.0,
+        "zPos": 126489.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 301.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264955,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138467.0,
+        "yPos": 0.0,
+        "zPos": 125988.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264957,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138734.0,
+        "yPos": 0.0,
+        "zPos": 126304.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 194.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264959,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138499.0,
+        "yPos": 0.0,
+        "zPos": 126244.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 194.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264961,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138265.0,
+        "yPos": 0.0,
+        "zPos": 126180.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 195.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264963,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138032.0,
+        "yPos": 0.0,
+        "zPos": 126115.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 195.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264965,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137880.0,
+        "yPos": 0.0,
+        "zPos": 126073.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 264967,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137929.0,
+        "yPos": 0.0,
+        "zPos": 127129.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 174.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 264969,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137810.0,
+        "yPos": 0.0,
+        "zPos": 126054.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264971,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138570.0,
+        "yPos": 0.0,
+        "zPos": 126574.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 208.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264973,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138356.0,
+        "yPos": 0.0,
+        "zPos": 126460.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 208.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264975,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138142.0,
+        "yPos": 0.0,
+        "zPos": 126346.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 208.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 264977,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137929.0,
+        "yPos": 0.0,
+        "zPos": 126232.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 208.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264979,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138730.0,
+        "yPos": 0.0,
+        "zPos": 126560.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 301.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264981,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138718.0,
+        "yPos": 0.0,
+        "zPos": 126580.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 302.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 264983,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138683.0,
+        "yPos": 0.0,
+        "zPos": 126636.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 212.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264985,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138705.0,
+        "yPos": 0.0,
+        "zPos": 126600.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 301.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 264987,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138613.0,
+        "yPos": 0.0,
+        "zPos": 126739.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 304.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 264989,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138637.0,
+        "yPos": 0.0,
+        "zPos": 126704.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 214.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 264991,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138661.0,
+        "yPos": 0.0,
+        "zPos": 126670.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 304.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 264993,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137811.0,
+        "yPos": 0.0,
+        "zPos": 126169.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 264995,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137790.0,
+        "yPos": 0.0,
+        "zPos": 126158.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 264997,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137768.0,
+        "yPos": 0.0,
+        "zPos": 126146.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 264999,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137737.0,
+        "yPos": 0.0,
+        "zPos": 126130.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 27.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 265001,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137748.0,
+        "yPos": 0.0,
+        "zPos": 126135.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 27.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 265003,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137786.0,
+        "yPos": 0.0,
+        "zPos": 126048.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 265005,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137752.0,
+        "yPos": 0.0,
+        "zPos": 126039.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 14.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 265007,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137764.0,
+        "yPos": 0.0,
+        "zPos": 126042.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 14.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 265009,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137750.0,
+        "yPos": 0.0,
+        "zPos": 125845.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 7.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 265011,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137762.0,
+        "yPos": 0.0,
+        "zPos": 125846.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 8.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 265013,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137785.0,
+        "yPos": 0.0,
+        "zPos": 125850.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 8.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265015,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137880.0,
+        "yPos": 0.0,
+        "zPos": 126132.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265017,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137909.0,
+        "yPos": 0.0,
+        "zPos": 126136.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265019,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138101.0,
+        "yPos": 0.0,
+        "zPos": 126187.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265021,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138107.0,
+        "yPos": 0.0,
+        "zPos": 126204.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 92.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265023,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138064.0,
+        "yPos": 0.0,
+        "zPos": 125920.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 142.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265025,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138522.0,
+        "yPos": 0.0,
+        "zPos": 126286.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 137.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 265027,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138410.0,
+        "yPos": 0.0,
+        "zPos": 126440.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 78.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 265029,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138426.0,
+        "yPos": 0.0,
+        "zPos": 126420.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 309.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265031,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138434.0,
+        "yPos": 0.0,
+        "zPos": 126403.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 179.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265033,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138299.0,
+        "yPos": 0.0,
+        "zPos": 126403.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 232.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265035,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138221.0,
+        "yPos": 0.0,
+        "zPos": 126435.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 135.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265037,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138732.0,
+        "yPos": 0.0,
+        "zPos": 126385.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 70.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265039,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138786.0,
+        "yPos": 0.0,
+        "zPos": 126084.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265041,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138735.0,
+        "yPos": 0.0,
+        "zPos": 126375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 204.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265043,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138126.0,
+        "yPos": 0.0,
+        "zPos": 127072.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 342.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265045,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138175.0,
+        "yPos": 0.0,
+        "zPos": 127064.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265047,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138079.0,
+        "yPos": 0.0,
+        "zPos": 127075.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 165.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265049,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138269.0,
+        "yPos": 0.0,
+        "zPos": 127068.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 272.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265051,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138398.0,
+        "yPos": 0.0,
+        "zPos": 127069.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 258.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265053,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138357.0,
+        "yPos": 0.0,
+        "zPos": 127071.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 95.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265055,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138889.0,
+        "yPos": 0.0,
+        "zPos": 126247.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 208.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265057,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138731.0,
+        "yPos": 0.0,
+        "zPos": 126506.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 322.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265059,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138737.0,
+        "yPos": 0.0,
+        "zPos": 126504.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 125.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265061,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138313.0,
+        "yPos": 0.0,
+        "zPos": 126228.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 299.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265063,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138486.0,
+        "yPos": 0.0,
+        "zPos": 126567.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 212.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265065,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138503.0,
+        "yPos": 0.0,
+        "zPos": 126598.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 295.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265067,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138501.0,
+        "yPos": 0.0,
+        "zPos": 126466.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 250.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265069,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138490.0,
+        "yPos": 0.0,
+        "zPos": 126473.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 57.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265071,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138514.0,
+        "yPos": 0.0,
+        "zPos": 126454.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 284.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265073,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138677.0,
+        "yPos": 0.0,
+        "zPos": 126346.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 237.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265075,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138690.0,
+        "yPos": 0.0,
+        "zPos": 126426.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 57.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265077,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138712.0,
+        "yPos": 0.0,
+        "zPos": 126409.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 246.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265079,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138646.0,
+        "yPos": 0.0,
+        "zPos": 126404.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 250.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265081,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138611.0,
+        "yPos": 0.0,
+        "zPos": 126445.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 57.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265083,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138617.0,
+        "yPos": 0.0,
+        "zPos": 126353.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 250.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 265085,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138750.0,
+        "yPos": 0.0,
+        "zPos": 124997.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 297.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 265087,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138993.0,
+        "yPos": 0.0,
+        "zPos": 124764.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 14.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 265089,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138086.0,
+        "yPos": 0.0,
+        "zPos": 127113.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_3.txt",
+      "index": 265091,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_3.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137857.0,
+        "yPos": 0.0,
+        "zPos": 127134.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 177.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 265093,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137808.0,
+        "yPos": 0.0,
+        "zPos": 127136.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 177.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265095,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137819.0,
+        "yPos": 0.0,
+        "zPos": 127209.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 165.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 265097,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138010.0,
+        "yPos": 0.0,
+        "zPos": 127159.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 358.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 265099,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138402.0,
+        "yPos": 0.0,
+        "zPos": 127191.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 174.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265101,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137947.0,
+        "yPos": 0.0,
+        "zPos": 127111.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 46.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 265103,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138919.0,
+        "yPos": 0.0,
+        "zPos": 124993.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 356.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 265105,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138921.0,
+        "yPos": 0.0,
+        "zPos": 125026.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 274.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_b.txt",
+      "index": 265107,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_b.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138529.0,
+        "yPos": 0.0,
+        "zPos": 127177.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 158.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_pierhead_a.txt",
+      "index": 265109,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_pierhead_a.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138569.0,
+        "yPos": 0.0,
+        "zPos": 127161.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 338.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 265111,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138547.0,
+        "yPos": 0.0,
+        "zPos": 127170.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 338.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 265115,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138160.0,
+        "yPos": 0.0,
+        "zPos": 127215.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 174.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_10.txt",
+      "index": 265117,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_10.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137919.0,
+        "yPos": 0.0,
+        "zPos": 127238.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 174.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 265119,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137787.0,
+        "yPos": 0.0,
+        "zPos": 127251.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 265121,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137763.0,
+        "yPos": 0.0,
+        "zPos": 127254.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_1.txt",
+      "index": 265123,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_1.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137738.0,
+        "yPos": 0.0,
+        "zPos": 127256.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 265125,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137703.0,
+        "yPos": 0.0,
+        "zPos": 127259.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 353.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge.txt",
+      "index": 265127,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137715.0,
+        "yPos": 0.0,
+        "zPos": 127258.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 265135,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137862.0,
+        "yPos": 0.0,
+        "zPos": 128568.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 290.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 265137,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137763.0,
+        "yPos": 0.0,
+        "zPos": 125986.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 358.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265147,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138701.0,
+        "yPos": 0.0,
+        "zPos": 128199.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 274.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265149,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138652.0,
+        "yPos": 0.0,
+        "zPos": 128232.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 297.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 265151,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137844.0,
+        "yPos": 0.0,
+        "zPos": 128245.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 330.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_ramp.txt",
+      "index": 265153,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_ramp.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137859.0,
+        "yPos": 0.0,
+        "zPos": 128339.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 65.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265156,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 138551.0,
+        "yPos": 0.0,
+        "zPos": 126216.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 14.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "deleteAfterDeath": 0,
+      "durability": 25000,
+      "damaged": {},
+      "script": "LuaScripts\\WorldObjects\\Bridges\\mlbr_bridge_float.txt",
+      "index": 265158,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\bridges\\mlbr_bridge_float.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Bridge",
+      "position": {
+        "xPos": 137887.0,
+        "yPos": 0.0,
+        "zPos": 127162.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 178.0,
+        "zOri": 0.0
+      }
+    }
+  ],
+  "airfieldBlocks": [],
+  "nonScriptedGround": []
+}

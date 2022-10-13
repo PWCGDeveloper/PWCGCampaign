@@ -363,6 +363,19 @@ public class DateUtils
         {
             return true;
         }
+        if (date.before(startRange))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    static public boolean isDateOnOrAfter (Date date, Date startRange) throws PWCGException
+    {
+        if (date.equals(startRange))
+        {
+            return true;
+        }
         if (date.after(startRange))
         {
             return true;

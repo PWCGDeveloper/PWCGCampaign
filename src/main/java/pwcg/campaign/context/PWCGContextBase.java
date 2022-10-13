@@ -69,6 +69,8 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     {
         frontMapIdentifier = StalingradMapResolver.resolveStalingradMap(campaign, frontMapIdentifier);
         currentMap = frontMapIdentifier;
+        
+        this.getCurrentMap().getGroupManager().configureForDate(currentMap.getMapName(), campaign);
     }
 
     @Override

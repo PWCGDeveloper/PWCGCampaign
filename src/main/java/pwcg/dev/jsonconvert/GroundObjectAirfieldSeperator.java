@@ -1,6 +1,7 @@
 package pwcg.dev.jsonconvert;
 
 import pwcg.campaign.group.GroundStructureGroup;
+import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.io.json.GroundObjectIOJson;
 
 public class GroundObjectAirfieldSeperator
@@ -11,7 +12,7 @@ public class GroundObjectAirfieldSeperator
         {
             String mapName = "East1945";
             
-            GroundStructureGroup groundStructureGroup = GroundObjectIOJson.readJson(mapName);
+            GroundStructureGroup groundStructureGroup = GroundObjectIOJson.readJson(mapName, GroupManager.GROUND_STRUCTURE_FILE_NAME);
             groundStructureGroup.generateAirfieldRelationships();
             GroundObjectIOJson.writeJson(groundStructureGroup, mapName, "NewGroundStructures.json");
             

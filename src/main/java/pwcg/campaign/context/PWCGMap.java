@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.battle.AmphibiousAssaultManager;
@@ -93,7 +94,7 @@ public abstract class PWCGMap
         drifterManager.configure(mapName);
 
         groupManager = new GroupManager();
-        groupManager.configure(mapName, airfieldManager);
+        groupManager.configure(mapName);
 
         shippingLaneManager = new ShippingLaneManager();
         shippingLaneManager.configure(mapName);
@@ -303,6 +304,11 @@ public abstract class PWCGMap
             }
         }
         return false;
+    }
+
+    public void configureForDate(Campaign campaign) throws PWCGException
+    {
+        groupManager.configureForDate(mapIdentifier.getMapName(), campaign);        
     }
     
     

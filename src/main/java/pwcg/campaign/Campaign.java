@@ -318,6 +318,7 @@ public class Campaign
     public void setDate(Date date) throws PWCGException
     {
         campaignData.setDate(date);
+        PWCGContext.getInstance().getCurrentMap().configureForDate(this);
     }
 
     public SerialNumber getSerialNumber()

@@ -14,7 +14,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 import pwcg.dev.jsonconvert.orig.io.GroundObjectsFileReader;
 
-public class GameGroundObjectToJsonConverter
+public class GameGroundObjectDDayToJsonConverter
 {
     private static final String inputDirectory = "D:\\PWCG\\MapObjects\\";
     private static final String outputDirectory = "D:\\PWCG\\workspacePWCG\\PWCGCampaign\\BoSData\\Input\\";
@@ -25,7 +25,7 @@ public class GameGroundObjectToJsonConverter
     {
         try
         {
-            GameGroundObjectToJsonConverter converter = new GameGroundObjectToJsonConverter();
+            GameGroundObjectDDayToJsonConverter converter = new GameGroundObjectDDayToJsonConverter();
             converter.readAllMaps();
         }
         catch(Exception e)
@@ -38,11 +38,7 @@ public class GameGroundObjectToJsonConverter
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         
-//        readMap("Moscow");
-//        readMap("Stalingrad");
-//        readMap("Kuban");
         readMap("Normandy");
-//        readMap("Rheinland");
     }
     
     private void readMap(String mapName) throws PWCGException 
@@ -53,12 +49,8 @@ public class GameGroundObjectToJsonConverter
         DirectoryReader directoryReader = new DirectoryReader();
         directoryReader.sortFilesInDir(inputDirectory); 
         
-        for (String groupFile : directoryReader.getSortedFilesWithFilter(mapName))
+        for (String groupFile : directoryReader.getSortedFilesWithFilter("Normandy_Radars_Forts_Landing_zone"))
         {
-            if (groupFile.contains("Normandy_Radars_Forts_Landing_zone"))
-            {
-                continue;
-            }
             String groupFilePath = inputDirectory + groupFile;
             readGameInputFile(reader, groupFilePath);
         }
@@ -70,6 +62,9 @@ public class GameGroundObjectToJsonConverter
     private void readGameInputFile(GroundObjectsFileReader reader, String groupFilePath) throws PWCGException
     {
         reader.readGroundObjectsFromFile(groupFilePath);
+        reader.remove("mlbr");
+        reader.remove("rad_");
+        reader.remove("_rad");
     }
 
     private void writeGroundObjects(GroundObjectsFileReader reader, String mapName) throws PWCGException
@@ -79,7 +74,7 @@ public class GameGroundObjectToJsonConverter
         groundStructureGroup.addBridges(reader.getBridges());
         groundStructureGroup.addRailroadStations(reader.getRailroadStations());
         groundStructureGroup.addStandaloneBlocks(reader.getStandaloneBlocks());
-        GroundObjectIOJson.writeJson(groundStructureGroup, mapName, "GroundStructuresNew");
+        GroundObjectIOJson.writeJson(groundStructureGroup, mapName, "GroundStructures.19440501");
     }
 
     private void writeNonScriptedGroundObjects(GroundObjectsFileReader reader, String mapName) throws PWCGException
@@ -91,6 +86,6 @@ public class GameGroundObjectToJsonConverter
             nonScriptedGroundObjectsForMap.addNonScriptedGround(ground);
         }
         
-        NonScriptedBlockPositionIOJson.writeJson(nonScriptedGroundObjectsForMap, mapOutputDirectory, "StaticGroundStructuresNew");
+        NonScriptedBlockPositionIOJson.writeJson(nonScriptedGroundObjectsForMap, mapOutputDirectory, "StaticGroundStructures.19440501");
     }
 }

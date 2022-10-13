@@ -1,0 +1,61 @@
+{
+  "groundObjects": [
+    {
+      "index": 265138,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x40.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 137824.0,
+        "yPos": 0.0,
+        "zPos": 125483.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 265139,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x80.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 137830.0,
+        "yPos": 0.0,
+        "zPos": 125527.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "index": 265154,
+      "linkTrId": 0,
+      "desc": "",
+      "model": "graphics\\grounds\\port_pierce10x80.mgm",
+      "damageReport": 50,
+      "damageThreshold": 1,
+      "name": "Ground",
+      "position": {
+        "xPos": 137870.0,
+        "yPos": 0.0,
+        "zPos": 128353.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 349.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

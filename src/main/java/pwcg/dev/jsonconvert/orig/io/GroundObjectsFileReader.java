@@ -8,6 +8,7 @@ import java.util.List;
 
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
+import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.NonScriptedBlock;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -70,6 +71,66 @@ public class GroundObjectsFileReader
             throw new PWCGException(e.getMessage());
         }
 	}
+
+    public void filter(String filter)
+    {
+        List<Block> filteredRRBlocks = filterBlockSet(railroadStations, filter, false);
+        railroadStations = filteredRRBlocks;
+        
+        List<Block> filteredStandaloneBlocks = filterBlockSet(standaloneBlocks, filter, false);
+        standaloneBlocks = filteredStandaloneBlocks;
+        
+        List<Block> filteredAirfieldBlocks = filterBlockSet(airfieldBlocks, filter, false);
+        airfieldBlocks = filteredAirfieldBlocks;
+        
+        List<NonScriptedBlock> filteredGroundObjects = filterBlockSet(groundObjects, filter, false);
+        groundObjects = filteredGroundObjects;
+        
+        List<Bridge> filteredBridges = filterBlockSet(bridges, filter, false);
+        bridges = filteredBridges;
+    }
+    
+
+    public void remove(String filter)
+    {
+        List<Block> filteredRRBlocks = filterBlockSet(railroadStations, filter, true);
+        railroadStations = filteredRRBlocks;
+        
+        List<Block> filteredStandaloneBlocks = filterBlockSet(standaloneBlocks, filter, true);
+        standaloneBlocks = filteredStandaloneBlocks;
+        
+        List<Block> filteredAirfieldBlocks = filterBlockSet(airfieldBlocks, filter, true);
+        airfieldBlocks = filteredAirfieldBlocks;
+        
+        List<NonScriptedBlock> filteredGroundObjects = filterBlockSet(groundObjects, filter, true);
+        groundObjects = filteredGroundObjects;
+        
+        List<Bridge> filteredBridges = filterBlockSet(bridges, filter, true);
+        bridges = filteredBridges;
+    }
+
+    public static <T extends FixedPosition> List<T> filterBlockSet(List<T> blocks, String filter, boolean negative)
+    {
+        List<T> filteredBlocks = new ArrayList<T>(); 
+        for (T block : blocks)
+        {
+            if (negative)
+            {
+                if (!block.getModel().contains(filter))
+                {
+                    filteredBlocks.add(block);
+                }
+            }
+            else
+            {
+                if (block.getModel().contains(filter))
+                {
+                    filteredBlocks.add(block);
+                }
+            }
+        }
+        return filteredBlocks;
+    }
 
     public List<Block> getRailroadStations()
     {

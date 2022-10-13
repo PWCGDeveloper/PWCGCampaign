@@ -1,21 +1,23 @@
 
 MUST DO BEFORE RELEASE
-No AAA for attacking invasion force - prevents AAA in water
 No post D-Day objects until after D-Day
 
 TODO
 Improve scramble missions
-There's still smoke rising in southeast England and the CH towers are still damaged, mission date is 08/06/1941.
 I just flew two Intercept missions with 41 Squadron out of Westhampnett and both times the bombers we were supposed to intercept turned back before coming into range, never having dropped their ordnance. If they hadn't shown up on "radar", we never even would have seen them.
 
 
 Beta 2 Fixed
 Added Newspapers
 Added Normandy iconic missions as single fly missions (Main Menu->Iconic Missions)
+Added new 5.002 blank skins
 Played with the algorithm to try to keep airfield objects away from any area usable by real planes.
+Normandy invasion obstacles appear on May 1 1944
+Normandy mulberrys appear on June 15 1944
 III./ZG 26 flying ME410s out of Dieppe Saint Aubin do not have enough runway.
 Eliminated Ju88 North Africa skin
 Fixed issue that could prevent AAR from completing.
+Fixed issue of Allied AA in the water during landings
 
 
 Beta 1 Fixed

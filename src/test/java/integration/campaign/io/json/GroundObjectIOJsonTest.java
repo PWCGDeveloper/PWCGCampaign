@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.GroundStructureGroup;
+import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.io.json.GroundObjectIOJson;
 import pwcg.core.exception.PWCGException;
 
@@ -19,6 +20,30 @@ public class GroundObjectIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         String mapName = "Arras";
+        validateGroundStructures(mapName);
+    }
+    
+    @Test
+    public void readJsonNormandyTest() throws PWCGException
+    {
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        String mapName = "Normandy";
+        validateGroundStructures(mapName);
+    }
+    
+    @Test
+    public void readJsonNormandyAtDDayTest() throws PWCGException
+    {
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        String mapName = "Normandy";
+        validateGroundStructures(mapName);
+    }
+    
+    @Test
+    public void readJsonNormandyAfterDDayTest() throws PWCGException
+    {
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        String mapName = "Normandy";
         validateGroundStructures(mapName);
     }
     
@@ -56,10 +81,11 @@ public class GroundObjectIOJsonTest
 
     private GroundStructureGroup validateGroundStructures(String mapName) throws PWCGException, PWCGException
     {
-        GroundStructureGroup groundStructures = GroundObjectIOJson.readJson(mapName);
+        GroundStructureGroup groundStructures = GroundObjectIOJson.readJson(mapName, GroupManager.GROUND_STRUCTURE_FILE_NAME);
         Assertions.assertTrue (groundStructures.getRailroadStations().size() > 0);
         Assertions.assertTrue (groundStructures.getBridges().size() > 0);
         Assertions.assertTrue (groundStructures.getStandaloneBlocks().size() > 0);
+                
         return groundStructures;
     }
 

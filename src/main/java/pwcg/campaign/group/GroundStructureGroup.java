@@ -18,9 +18,9 @@ public class GroundStructureGroup
 		return railroadStations;
 	}
 
-	public void setRailroadStations(List<Block> railroadStations)
+	public void addRailroadStations(List<Block> railroadStations)
 	{
-		this.railroadStations = railroadStations;
+		this.railroadStations.addAll(railroadStations);
 	}
 
 	public List<Block> getStandaloneBlocks()
@@ -28,9 +28,9 @@ public class GroundStructureGroup
 		return standaloneBlocks;
 	}
 
-	public void setStandaloneBlocks(List<Block> standaloneBlocks)
+	public void addStandaloneBlocks(List<Block> standaloneBlocks)
 	{
-		this.standaloneBlocks = standaloneBlocks;
+        this.standaloneBlocks.addAll(standaloneBlocks);
 	}
 
 	public List<Bridge> getBridges()
@@ -38,9 +38,9 @@ public class GroundStructureGroup
 		return bridges;
 	}
 
-	public void setBridges(List<Bridge> bridges)
+	public void addBridges(List<Bridge> bridges)
 	{
-		this.bridges = bridges;
+        this.bridges.addAll(bridges);
 	}
 
 	public List<Block> getAirfieldBlocks()
@@ -48,9 +48,9 @@ public class GroundStructureGroup
 		return airfieldBlocks;
 	}
 
-	public void setAirfieldBlocks(List<Block> airfieldBlocks)
+	public void addAirfieldBlocks(List<Block> airfieldBlocks)
 	{
-		this.airfieldBlocks = airfieldBlocks;
+        this.airfieldBlocks.addAll(airfieldBlocks);
 	}
 
 	public List<NonScriptedBlock> getNonScriptedGround()
@@ -58,20 +58,10 @@ public class GroundStructureGroup
         return nonScriptedGround;
     }
 
-    public void setNonScriptedGround(List<NonScriptedBlock> nonScriptedGround)
+    public void addNonScriptedGround(List<NonScriptedBlock> nonScriptedGround)
     {
-        this.nonScriptedGround = nonScriptedGround;
-    }
-
-    public void generateEntityRelationships()
-	{
-        List<ScriptedFixedPosition> fixedPositions = new ArrayList<>();
-        fixedPositions.addAll(railroadStations);
-        fixedPositions.addAll(bridges);
-        fixedPositions.addAll(airfieldBlocks);
-        fixedPositions.addAll(standaloneBlocks);
-	}
-	
+        this.nonScriptedGround.addAll(nonScriptedGround);
+    }	
 
     public void generateAirfieldRelationships()
     {
