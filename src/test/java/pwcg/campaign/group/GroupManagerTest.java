@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
@@ -21,21 +20,18 @@ public class GroupManagerTest
     @Test
     public void readJsonNormandyTest() throws PWCGException
     {
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430601"));
         PWCGContext.setProduct(PWCGProduct.BOS);
         String mapName = "Normandy";
         GroupManager beforeNormandy = validateGroundStructures(mapName);
-        beforeNormandy.configureForDate(mapName, campaign);
+        beforeNormandy.configureForDate(mapName, DateUtils.getDateYYYYMMDD("19430601"));
 
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19440601"));
         PWCGContext.setProduct(PWCGProduct.BOS);
         GroupManager atNormandy = validateGroundStructures(mapName);
-        atNormandy.configureForDate(mapName, campaign);
+        atNormandy.configureForDate(mapName, DateUtils.getDateYYYYMMDD("19440601"));
 
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19440701"));
         PWCGContext.setProduct(PWCGProduct.BOS);
         GroupManager afterNormandy = validateGroundStructures(mapName);
-        afterNormandy.configureForDate(mapName, campaign);
+        afterNormandy.configureForDate(mapName, DateUtils.getDateYYYYMMDD("19440701"));
 
         Assertions.assertTrue(atNormandy.getStandaloneBlocks().size() > beforeNormandy.getStandaloneBlocks().size());
         Assertions.assertTrue(afterNormandy.getStandaloneBlocks().size() > atNormandy.getStandaloneBlocks().size());

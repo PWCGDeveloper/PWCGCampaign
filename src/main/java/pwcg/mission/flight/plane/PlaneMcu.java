@@ -158,6 +158,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         plane.aiRTBDecision = this.aiRTBDecision;
         plane.deleteAfterDeath = this.deleteAfterDeath;
         plane.wingmanCommands = this.wingmanCommands;
+        plane.skin = this.skin;
         if (payload != null)
         {
             plane.payload = this.payload.copy();
@@ -364,11 +365,14 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             writer.newLine();
 
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(this.getSquadronId());
-            TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, this);
-            if (tacticalCode != null)
+            if (skin.isUseTacticalCodes())
             {
-                writer.write("  TCode = \"" + tacticalCode.formCodeString() + "\";");
-                writer.write("  TCodeColor = \"" + tacticalCode.formCodeColorString() + "\";");
+                TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, this);
+                if (tacticalCode != null)
+                {
+                    writer.write("  TCode = \"" + tacticalCode.formCodeString() + "\";");
+                    writer.write("  TCodeColor = \"" + tacticalCode.formCodeColorString() + "\";");
+                }
             }
 
             writer.write("}");

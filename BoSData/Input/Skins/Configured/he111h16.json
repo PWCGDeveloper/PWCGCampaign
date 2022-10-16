@@ -2,7 +2,7 @@
   "skinSetType": "SKIN_CONFIGURED",
   "skins": {
         "he111h16_default": {
-            "skinName": "he111h16_default",
+            "skinName": "he111h16",
             "planeType": "he111h16",
             "startDate": "19390801",
             "endDate": "19450601",
@@ -58,7 +58,7 @@
 			"planeType": "he111h16",
 			"startDate": "19390801",
 			"endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,

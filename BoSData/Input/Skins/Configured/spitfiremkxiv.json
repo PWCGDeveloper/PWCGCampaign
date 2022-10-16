@@ -2,7 +2,7 @@
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
 		"spitfiremkxiv_default": {
-			"skinName": "spitfiremkxiv_default",
+			"skinName": "spitfiremkxiv",
 			"planeType": "spitfiremkxiv",
             "startDate": "19390801",
 			"endDate": "19440601",

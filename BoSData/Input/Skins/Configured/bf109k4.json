@@ -104,17 +104,6 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"Bf109G10": {
-			"skinName": "Bf109G10",
-			"planeType": "bf109k4",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"Bf109G10_14_JG300_11BLACK_v3": {
 			"skinName": "Bf109G10_14_JG300_11BLACK_v3",
 			"planeType": "bf109k4",
@@ -128,17 +117,6 @@
 		},
 		"Bf109G10Rosemarie": {
 			"skinName": "Bf109G10Rosemarie",
-			"planeType": "bf109k4",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
-		"Bf109K4": {
-			"skinName": "Bf109K4",
 			"planeType": "bf109k4",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -274,7 +252,7 @@
 			"planeType": "bf109k4",
 			"startDate": "19390801",
 			"endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": false,

@@ -2,7 +2,7 @@
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
 		"bf110e2_default": {
-			"skinName": "bf110e2_default",
+			"skinName": "bf110e2",
 			"planeType": "bf110e2",
 			"startDate": "19390801",
 			"endDate": "19450601",
@@ -71,7 +71,7 @@
 			"planeType": "bf110e2",
 			"startDate": "19390801",
 			"endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,

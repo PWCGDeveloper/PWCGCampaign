@@ -308,7 +308,7 @@ public abstract class PWCGMap
 
     public void configureForDate(Campaign campaign) throws PWCGException
     {
-        groupManager.configureForDate(mapIdentifier.getMapName(), campaign);        
+        groupManager.configureForDate(mapIdentifier.getMapName(), campaign.getDate());        
     }
     
     

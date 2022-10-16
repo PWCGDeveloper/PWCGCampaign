@@ -2,7 +2,7 @@
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
         "il2m42_default": {
-            "skinName": "il2m42_default",
+            "skinName": "il2m42",
             "planeType": "il2m42",
             "startDate": "19390801",
             "endDate": "19450601",

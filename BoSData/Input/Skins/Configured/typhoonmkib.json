@@ -2,7 +2,7 @@
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
 		"typhoonmkib_default": {
-			"skinName": "typhoonmkib_default",
+			"skinName": "typhoonmkib",
 			"planeType": "typhoonmkib",
             "startDate": "19390801",
             "endDate": "19440601",

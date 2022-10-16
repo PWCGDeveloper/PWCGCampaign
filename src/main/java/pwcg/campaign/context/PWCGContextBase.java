@@ -67,10 +67,13 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     @Override
     public void changeContext(FrontMapIdentifier frontMapIdentifier) throws PWCGException  
     {
-        frontMapIdentifier = StalingradMapResolver.resolveStalingradMap(campaign, frontMapIdentifier);
         currentMap = frontMapIdentifier;
-        
-        this.getCurrentMap().getGroupManager().configureForDate(currentMap.getMapName(), campaign);
+        if (campaign != null)
+        {
+            frontMapIdentifier = StalingradMapResolver.resolveStalingradMap(campaign, frontMapIdentifier);
+            currentMap = frontMapIdentifier;
+            this.getCurrentMap().getGroupManager().configureForDate(currentMap.getMapName(), campaign.getDate());
+        }
     }
 
     @Override

@@ -2,7 +2,7 @@
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
         "p51d15_default": {
-            "skinName": "p51d15_default",
+            "skinName": "p51d15",
             "planeType": "p51d15",
             "startDate": "19390801",
             "endDate": "19440601",
@@ -71,7 +71,7 @@
 			"planeType": "p51d15",
             "startDate": "19440601",
             "endDate": "19450101",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,
@@ -84,7 +84,7 @@
 			"planeType": "p51d15",
             "startDate": "19441001",
             "endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "USA",
 			"category": "Configured",
 			"definedInGame": true,

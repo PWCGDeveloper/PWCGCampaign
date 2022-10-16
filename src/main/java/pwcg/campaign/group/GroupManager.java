@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
@@ -46,25 +45,25 @@ public class GroupManager
         townFinder = new TownFinder(townLocations);
 	}
 
-    public void configureForDate(String mapName, Campaign campaign) throws PWCGException 
+    public void configureForDate(String mapName, Date date) throws PWCGException 
     {
         if (mapName.equals(FrontMapIdentifier.NORMANDY_MAP.getMapName()))
         {
-            if (DateUtils.isDateOnOrAfter(campaign.getDate(), DateUtils.getDateYYYYMMDD("19440501")))
+            if (DateUtils.isDateOnOrAfter(date, DateUtils.getDateYYYYMMDD("19440501")))
             {
-                loadAdditionalGroundStructures(mapName, campaign, GROUND_STRUCTURE_NORMANDY_FILE_NAME);
+                loadAdditionalGroundStructures(mapName, GROUND_STRUCTURE_NORMANDY_FILE_NAME);
                 buildFinders();
             }
             
-            if (DateUtils.isDateOnOrAfter(campaign.getDate(), DateUtils.getDateYYYYMMDD("19440615")))
+            if (DateUtils.isDateOnOrAfter(date, DateUtils.getDateYYYYMMDD("19440615")))
             {
-                loadAdditionalGroundStructures(mapName, campaign, GROUND_STRUCTURE_MULBERRY_FILE_NAME);
+                loadAdditionalGroundStructures(mapName, GROUND_STRUCTURE_MULBERRY_FILE_NAME);
                 buildFinders();
             }            
         }
     }
 
-    private void loadAdditionalGroundStructures(String mapName, Campaign campaign, String filename) throws PWCGException
+    private void loadAdditionalGroundStructures(String mapName, String filename) throws PWCGException
     {
         if (!groundFilesLoaded.contains(filename))
         {

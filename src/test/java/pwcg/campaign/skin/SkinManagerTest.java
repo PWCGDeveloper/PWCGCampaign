@@ -45,6 +45,27 @@ public class SkinManagerTest
         
         testSkins = skinManager.getSkinsByPlaneSquadronDateInUse(planeType, 20111052, DateUtils.getDateYYYYMMDD("19420401"));
         Assertions.assertTrue (testSkins.size() > 0);
+        
+        for (String planeName : skinManager.getAllSkinsByPlane().keySet())
+        {
+            for (Skin skin : skinManager.getSkinsForPlane(planeName).getConfiguredSkins().getSkins().values())
+            {
+                if (skin.getSkinName().toLowerCase().contains("blank"))
+                {
+                    Assertions.assertEquals (-2, skin.getSquadId());
+                    Assertions.assertEquals (true, skin.isUseTacticalCodes());
+                }
+                else if (skin.getSkinName().toLowerCase().equals(planeName.toLowerCase()))
+                {
+                    Assertions.assertEquals (-2, skin.getSquadId());
+                    Assertions.assertEquals (true, skin.isUseTacticalCodes());
+                }
+                else
+                {
+                    Assertions.assertNotEquals (-2, skin.getSquadId());
+                }
+            }
+        }
     }
 
 }

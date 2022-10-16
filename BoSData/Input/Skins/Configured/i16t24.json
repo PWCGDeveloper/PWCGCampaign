@@ -2,7 +2,7 @@
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
         "i16t24_default": {
-            "skinName": "i16t24_default",
+            "skinName": "i16t24",
             "planeType": "i16t24",
             "startDate": "19390801",
             "endDate": "19450601",
@@ -58,7 +58,7 @@
 			"planeType": "i16t24",
 			"startDate": "19390801",
 			"endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": true,

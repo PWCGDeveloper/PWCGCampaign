@@ -12,18 +12,18 @@
 			"definedInGame": true,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLACK",
-            "winter": true
+            "winter": false
 		},
 		"bf109g6late_skin_01": {
 			"skinName": "bf109g6late_skin_01",
 			"planeType": "bf109g6late",
 			"startDate": "19390801",
 			"endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": true
+			"winter": false
 		},
 		"bf109g6late_skin_02": {
 			"skinName": "bf109g6late_skin_02",
@@ -228,7 +228,7 @@
 			"planeType": "bf109g6late",
 			"startDate": "19390801",
 			"endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": false,
@@ -239,7 +239,7 @@
 			"planeType": "bf109g6late",
 			"startDate": "19390801",
 			"endDate": "19450601",
-			"squadId": -2,
+			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": false,
