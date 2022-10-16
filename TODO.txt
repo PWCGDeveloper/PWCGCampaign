@@ -1,6 +1,5 @@
 
 MUST DO BEFORE RELEASE
-No post D-Day objects until after D-Day
 
 TODO
 Improve scramble missions

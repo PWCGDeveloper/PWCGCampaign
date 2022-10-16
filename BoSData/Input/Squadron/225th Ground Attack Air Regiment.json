@@ -3,9 +3,11 @@
 	"squadronId": 10121225,
 	"name": "225th Ground Attack Air Regiment",
 	"fileName": "225th Ground Attack Air Regiment.json",
-	"skill": 25,
+	"skill": 50,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
+    "squadronTacticalCodeOverride": "RED",
+    "tacticalCodeStyle": 2,
 	"planeAssignments": [
 		{
 			"archType": "il2",

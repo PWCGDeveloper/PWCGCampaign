@@ -1,11 +1,12 @@
 {
 	"country": "GERMANY",
 	"squadronId": 20111077,
-	"name": "I./JG77",
-	"fileName": "I_JG77.json",
+	"name": "III./JG77",
+	"fileName": "III_JG77.json",
 	"skill": 70,
 	"unitIdCode": "",
-	"subUnitIdCode": "",
+	"subUnitIdCode": "~",
+    "squadronTacticalCodeOverride": "WHITE",
 	"planeAssignments": [
 		{
 			"archType": "bf109",

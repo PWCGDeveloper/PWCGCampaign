@@ -6,6 +6,8 @@
 	"skill": 60,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
+    "squadronTacticalCodeOverride": "RED",
+    "tacticalCodeStyle": 2,
 	"planeAssignments": [
 		{
 			"archType": "lagg",

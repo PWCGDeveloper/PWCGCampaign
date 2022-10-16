@@ -29,7 +29,7 @@ public class BriefingPlanePicker
         {
             EquippedPlane plane = squadronPlanes.get(i);
             PickerEntry entry = new PickerEntry();
-            entry.description = plane.getDisplayName() + " (" + plane.getDisplayMarkings(campaign) + ")";
+            entry.description = plane.getDisplayName() + " (" + plane.getAircraftIdCode() + ")";
             entry.plane = plane;
             possibilities[i] = entry;
         }

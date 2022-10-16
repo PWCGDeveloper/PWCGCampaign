@@ -5,6 +5,7 @@
 	"fileName": "410th BG.json",
 	"skill": 70,
 	"unitIdCode": "8U",
+    "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "a20",

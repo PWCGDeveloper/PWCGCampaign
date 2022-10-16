@@ -6,6 +6,8 @@
 	"skill": 30,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
+    "squadronTacticalCodeOverride": "WHITE",
+    "tacticalCodeStyle": 1,
 	"planeAssignments": [
 		{
 			"archType": "c47",

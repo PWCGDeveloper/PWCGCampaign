@@ -6,6 +6,7 @@
 	"skill": 35,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
+    "tacticalCodeStyle": 3,
 	"planeAssignments": [
 		{
 			"archType": "lagg",

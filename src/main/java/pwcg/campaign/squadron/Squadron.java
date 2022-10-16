@@ -35,6 +35,7 @@ import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.skin.Skin;
+import pwcg.campaign.skin.TacticalCodeColor;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -60,8 +61,6 @@ public class Squadron
     private String name = "";
     private String fileName = "";
 	private int skill = 50;
-	private String unitIdCode;
-	private String subUnitIdCode;
 	private List<SquadronPlaneAssignment> planeAssignments = new ArrayList<>();
     private Map<Date, String> airfields = new TreeMap<>();
 	private List<Skin> skins = new ArrayList<Skin>();
@@ -71,6 +70,10 @@ public class Squadron
     private NightMissionSet nightMissionOdds = new NightMissionSet();
 	private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
     private Map<Date, Callsign> callsigns = new TreeMap<>();
+    private String unitIdCode;
+    private String subUnitIdCode;
+    private TacticalCodeColor squadronTacticalCodeColorOverride = TacticalCodeColor.NONE;
+    private int tacticalCodeStyle = -1;
 	
 	public static boolean isPlayerSquadron (Campaign campaign, int squadronId)
 	{
@@ -813,7 +816,11 @@ public class Squadron
             SquadHistoryEntry squadHistoryEntry = getSquadronHistoryEntryForDate(date);
             if (squadHistoryEntry != null)
             {
-                code = squadHistoryEntry.getSubUnitIdCode();
+                String historySubUnitCode = squadHistoryEntry.getSubUnitIdCode();
+                if (historySubUnitCode != null)
+                {
+                    code = historySubUnitCode;
+                }
             }
         }
 
@@ -842,4 +849,21 @@ public class Squadron
 
         return true;
     }
+
+    public static Integer getSquadronEquipmentSize()
+    {
+        return SQUADRON_EQUIPMENT_SIZE;
+    }
+
+    public TacticalCodeColor getSquadronTacticalCodeColorOverride()
+    {
+        return squadronTacticalCodeColorOverride;
+    }
+
+    public int getTacticalCodeStyle()
+    {
+        return tacticalCodeStyle;
+    }
+    
+    
 }

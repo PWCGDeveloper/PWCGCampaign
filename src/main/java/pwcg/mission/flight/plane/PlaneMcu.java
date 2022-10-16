@@ -15,8 +15,11 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.skin.Skin;
+import pwcg.campaign.skin.TacticalCode;
+import pwcg.campaign.skin.TacticalCodeBuilder;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
@@ -360,7 +363,13 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             writer.write("  WMMask = " + payload.generateFullModificationMask() + ";");
             writer.newLine();
 
-            campaign.getPlaneMarkingManager().writeTacticalCodes(writer, campaign, this);
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(this.getSquadronId());
+            TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, this);
+            if (tacticalCode != null)
+            {
+                writer.write("  TCode = \"" + tacticalCode.formCodeString() + "\";");
+                writer.write("  TCodeColor = \"" + tacticalCode.formCodeColorString() + "\";");
+            }
 
             writer.write("}");
             writer.newLine();

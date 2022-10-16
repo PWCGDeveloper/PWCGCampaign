@@ -1,6 +1,5 @@
 package pwcg.product.bos.plane;
 
-import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,7 +15,6 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.product.bos.country.BoSServiceManager;
 
 public class BoSPlaneMarkingManager implements IPlaneMarkingManager
@@ -157,82 +155,5 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
             break;
         }
         return code;
-    }
-
-    @Override
-    public String determineDisplayMarkings(Campaign campaign, EquippedPlane equippedPlane) throws PWCGException
-    {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(equippedPlane.getSquadronId());
-
-        if (squadron.getService() == BoSServiceManager.LUFTWAFFE)
-        {
-            if (squadron.determineDisplayName(campaign.getDate()).contains("JG") || 
-                squadron.determineDisplayName(campaign.getDate()).contains("JV") || 
-                squadron.determineDisplayName(campaign.getDate()).contains("Sch.G") || 
-                (squadron.determineDisplayName(campaign.getDate()).contains("SG") && squadron.determineUnitIdCode(campaign.getDate()) == null))
-            {
-                return formGermanFighterCode(campaign, equippedPlane, squadron);
-            }
-            else
-            {
-                return formGermanBomberCode(campaign, equippedPlane, squadron);
-            }
-        }
-        else if (squadron.getService() == BoSServiceManager.VVS || squadron.getService() == BoSServiceManager.NORMANDIE)
-        {
-            return equippedPlane.getAircraftIdCode();
-        }
-        else if (squadron.getService() == BoSServiceManager.REGIA_AERONAUTICA || squadron.getService() == BoSServiceManager.USAAF
-                || squadron.getService() == BoSServiceManager.RAF || squadron.getService() == BoSServiceManager.FREE_FRENCH)
-        {
-            return squadron.determineUnitIdCode(campaign.getDate()) + "-" + equippedPlane.getAircraftIdCode();
-        }
-
-        return Integer.toString(equippedPlane.getSerialNumber());
-    }
-
-    private String formGermanFighterCode(Campaign campaign, EquippedPlane equippedPlane, Squadron squadron) throws PWCGException
-    {
-        String code = "";
-        String aircraftIdCode = equippedPlane.getAircraftIdCode();
-        if (aircraftIdCode != null)
-        {
-            code = equippedPlane.getAircraftIdCode();
-        }
-        else
-        {
-            return "";
-        }
-
-        String subUnitIdCode = squadron.determineSubUnitIdCode(campaign.getDate());
-        if (subUnitIdCode != null)
-        {
-            code += "+" + subUnitIdCode;
-        }
-        return code;
-    }
-
-    private String formGermanBomberCode(Campaign campaign, EquippedPlane equippedPlane, Squadron squadron) throws PWCGException
-    {
-        String code = squadron.determineUnitIdCode(campaign.getDate());
-        String aircraftIdCode = equippedPlane.getAircraftIdCode();
-        if (aircraftIdCode != null)
-        {
-            code += "+" + equippedPlane.getAircraftIdCode();
-        }
-
-        String subUnitIdCode = squadron.determineSubUnitIdCode(campaign.getDate());
-        if (subUnitIdCode != null)
-        {
-            code += subUnitIdCode;
-        }
-        return code;
-    }
-
-    @Override
-    public void writeTacticalCodes(BufferedWriter writer, Campaign campaign, PlaneMcu planeMcu) throws PWCGException
-    {
-        BoSPlaneMarkingWriter planeMarkingWriter = new BoSPlaneMarkingWriter();
-        planeMarkingWriter.writeTacticalCodes(writer, campaign, planeMcu);
     }
 }

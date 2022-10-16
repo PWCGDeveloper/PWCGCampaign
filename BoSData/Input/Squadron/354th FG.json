@@ -5,6 +5,7 @@
 	"fileName": "354th FG.json",
 	"skill": 80,
 	"unitIdCode": "AJ",
+    "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "p51",

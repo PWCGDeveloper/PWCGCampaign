@@ -2,6 +2,7 @@ package pwcg.campaign.skin;
 
 public enum TacticalCodeColor
 {
+    NONE("-1"),
     BLACK("0"),
     WHITE("1"),
     RED("2"),

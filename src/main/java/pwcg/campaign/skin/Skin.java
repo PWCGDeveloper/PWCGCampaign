@@ -23,7 +23,7 @@ public class Skin implements Cloneable
     private boolean definedInGame = false;
     private boolean winter = false;
     private boolean useTacticalCodes = false;
-    private TacticalCodeColor tacticalCodeColor = TacticalCodeColor.BLACK;
+    private TacticalCodeColor tacticalCodeColor = TacticalCodeColor.NONE;
 	
     public static int FACTORY_GENERIC = -2;
     public static int PERSONAL_SKIN = -1;

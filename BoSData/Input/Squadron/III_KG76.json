@@ -4,8 +4,8 @@
 	"name": "III./KG 76",
 	"fileName": "III_KG76.json",
 	"skill": 60,
-	"unitIdCode": "",
-	"subUnitIdCode": "",
+	"unitIdCode": "MT",
+	"subUnitIdCode": "H",
 	"planeAssignments": [
 		{
 			"archType": "ar234",

@@ -204,7 +204,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
         for (int i = 0; i < sortedAircraftOnInventory.size(); ++i)
         {
             EquippedPlane plane = sortedAircraftOnInventory.get(i);
-            intelBuffer.append("            " + plane.getDisplayName() + " (" + plane.getDisplayMarkings(campaign) + ")");
+            intelBuffer.append("            " + plane.getDisplayName() + " (" + plane.getAircraftIdCode() + ")");
             intelBuffer.append(".\n");          
         }
     }

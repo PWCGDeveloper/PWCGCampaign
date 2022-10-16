@@ -5,6 +5,7 @@
 	"fileName": "474th FG.json",
 	"skill": 70,
 	"unitIdCode": "7Y",
+    "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "p38",

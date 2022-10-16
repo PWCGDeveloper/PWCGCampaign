@@ -5,6 +5,7 @@
 	"fileName": "373rd FG.json",
 	"skill": 65,
 	"unitIdCode": "R3",
+    "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "p47",

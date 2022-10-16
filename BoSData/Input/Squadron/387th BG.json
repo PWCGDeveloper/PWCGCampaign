@@ -5,6 +5,7 @@
 	"fileName": "387th BG.json",
 	"skill": 70,
 	"unitIdCode": "TQ",
+    "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "b26",

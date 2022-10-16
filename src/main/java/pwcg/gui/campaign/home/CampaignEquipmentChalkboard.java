@@ -14,7 +14,6 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.config.InternationalizationManager;
@@ -58,7 +57,6 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
     private JPanel createEquipmentListPanel(Campaign campaign, Map<Integer, EquippedPlane> planesForSquadron) throws PWCGException
     {
         List<EquippedPlane> sortedAircraftOnInventory = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(planesForSquadron.values()));
-        IPlaneMarkingManager planeMarkingManager = campaign.getPlaneMarkingManager();
 
         Font font = PWCGMonitorFonts.getChalkboardFont();
 
@@ -122,7 +120,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
             constraints.gridy = i;
             equipmentChalkboardPanel.add(aircraftSerialNumberLabel, constraints);
  
-            JLabel lIdCode = PWCGLabelFactory.makeTransparentLabel(planeMarkingManager.determineDisplayMarkings(campaign, plane), ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+            JLabel lIdCode = PWCGLabelFactory.makeTransparentLabel(plane.getAircraftIdCode(), ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.15;
             constraints.gridx = 3;
             constraints.gridy = i;

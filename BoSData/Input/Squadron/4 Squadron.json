@@ -5,6 +5,7 @@
 	"fileName": "4 Squadron.json",
 	"skill": 65,
 	"unitIdCode": "MM",
+    "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "mosquito",

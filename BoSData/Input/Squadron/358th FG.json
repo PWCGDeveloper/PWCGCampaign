@@ -5,6 +5,7 @@
 	"fileName": "358th FG.json",
 	"skill": 80,
 	"unitIdCode": "CH",
+    "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "p47",

@@ -6,6 +6,7 @@
 	"skill": 60,
 	"unitIdCode": "",
 	"subUnitIdCode": "-",
+    "squadronTacticalCodeOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "fw190",

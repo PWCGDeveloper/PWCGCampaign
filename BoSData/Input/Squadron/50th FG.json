@@ -5,6 +5,7 @@
 	"fileName": "50th FG.json",
 	"skill": 65,
 	"unitIdCode": "T5",
+    "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "p47",

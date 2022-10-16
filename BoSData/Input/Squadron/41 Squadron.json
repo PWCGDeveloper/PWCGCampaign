@@ -5,6 +5,7 @@
 	"fileName": "41 Squadron.json",
 	"skill": 85,
 	"unitIdCode": "EB",
+    "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "spitfire",

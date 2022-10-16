@@ -6,6 +6,7 @@
 	"skill": 40,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
+    "tacticalCodeStyle": 4,
 	"planeAssignments": [
 		{
 			"archType": "il2",

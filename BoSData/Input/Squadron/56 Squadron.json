@@ -5,6 +5,7 @@
 	"fileName": "56 Squadron.json",
 	"skill": 65,
 	"unitIdCode": "US",
+    "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "hurricane",

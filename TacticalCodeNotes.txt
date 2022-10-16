@@ -1,0 +1,82 @@
+The game allows you to assign tactical codes.  Each aircraft/nation has a specific number of symbols allocated to specific positions.  The following is a combination of quick reference for what the game does and how it corresponds to historical markings.
+
+ 
+
+Colors for German:
+Black, White, Yellow, Red, Green, Blue
+
+ 
+
+Colors for German:
+Black, White, Yellow, Red, Blue
+
+ 
+
+Colors for Britain:
+White, Blue, Red, Sky
+
+ 
+
+Colors for USA:
+Black, White, Yellow, Red, Blue
+
+=========================================
+
+Russian:
+2 Numbers on the fuselage
+5 Possible number styles
+Russian colors
+
+ 
+
+Russian numbers from 1-10 come in 5 different styles.
+
+"%21", "%22","%23", "%24", "%25", "%26", "%27", "%28", "%29", "%2a"
+"0", "1","2", "3", "4", "5", "6", "7", "8", "9"
+"%3a", "%3b","%3c", "%3d", "%3e", "%3f", "%40", "A", "B", "C"
+"D", "E","F", "G", "H", "I", "J", "K", "L", "M"
+"N", "O","P", "Q", "R", "S", "T", "U", "V", "W"
+ 
+
+Exceptions:
+Lagg3 (have not yet looked at every plane)
+4 Numbers.  First two are fuselage and second two are tail.  
+
+ 
+
+Britain:
+3 Numbers/Letters
+1 style
+Usually Sky.  I think some white on bombers and sometimes blue early war.
+
+Seems to be consistent for all planes
+
+
+USA general:
+3 Numbers/Letters
+1 style
+Usually white if the skin is green or black if the skin is silver.
+While Red. Yellow, and Blue are options I have seen no evidence of their use except as outlines on black/white markings
+
+German:
+let the fun begin
+Bombers: 4 possible numbers/letters.
+Letters 1 and 2:Geschwader Identifier
+Cross +
+letter 3: Aircraft Id (red or otheer color)
+Letter 4: Staffel Id
+
+Fighter:
+Symbol 1 and 2: Number: Aircraft Id.  Can be Geschwader markings instead of a number
+Cross +
+Symbol 3: Gruppe Id.  Blank for I, - or ~ for II, | for 3, + or cocked ~ for IV
+- = %3b
+~ = %3e
+Cocked ~ = %3d
+
+<<  = Geschwader Commodore
+<|  = Geschwader Adjudant
+<-  = Geschwader IA
+<O| = Geschwader Technical Officer
+<|| = Geschwader Stab
+
