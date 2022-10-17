@@ -25,10 +25,6 @@ public class LogVictory extends LogBase
         {
             this.victor = victor;
         }
-        else
-        {
-            System.out.println("No victor");
-        }
     }
 
     public LogAIEntity getVictim()

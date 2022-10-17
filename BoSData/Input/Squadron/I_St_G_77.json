@@ -6,7 +6,7 @@
 	"skill": 65,
 	"unitIdCode": "S2",
 	"subUnitIdCode": "H",
-	"squadronTacticalCodeOverride": "BLACK",
+	"squadronTacticalCodeOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "ju87",

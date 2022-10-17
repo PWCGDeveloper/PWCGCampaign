@@ -6,6 +6,7 @@
   "skill": 50,
   "unitIdCode": "A1",
   "subUnitIdCode": "M",
+  "squadronTacticalCodeOverride": "YELLOW",
   "planeAssignments": [
     {
       "archType": "he111",

@@ -6,6 +6,7 @@
 	"skill": 60,
 	"unitIdCode": "3U",
 	"subUnitIdCode": "L",
+  "squadronTacticalCodeOverride": "BLUE",
 	"planeAssignments": [
 		{
 			"archType": "ju88c",

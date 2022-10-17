@@ -6,6 +6,7 @@
   "skill": 50,
   "unitIdCode": "F1",
   "subUnitIdCode": "L",
+  "squadronTacticalCodeOverride": "RED",
   "planeAssignments": [
     {
       "archType": "ju88",

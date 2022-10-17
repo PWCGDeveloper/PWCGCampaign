@@ -6,6 +6,7 @@
 	"skill": 60,
 	"unitIdCode": "9K",
 	"subUnitIdCode": "K",
+  "squadronTacticalCodeOverride": "GREEN",
 	"planeAssignments": [
 		{
 			"archType": "me262",

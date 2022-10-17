@@ -94,26 +94,23 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         fighterAttackCommand = new FighterAttackCommand(this.linkTrId);
     }
 
-    public PlaneMcu(Campaign campaign, SquadronMember pilot)
+    public PlaneMcu(Campaign campaign, ICountry country, EquippedPlane equippedPlane, SquadronMember pilot) throws PWCGException
     {
         super();
+        equippedPlane.copyTemplate(this);
 
         this.campaign = campaign;
         this.pilot = pilot;
+        this.setName(pilot.getNameAndRank());
+        this.setDesc(pilot.getNameAndRank());
+        this.setCountry(country);
+        startInAir = FlightStartPosition.START_IN_AIR;
 
         this.index = IndexGenerator.getInstance().getNextIndex();
         this.entity = new McuTREntity(index);
         this.linkTrId = entity.getIndex();
         fighterAttackCommand = new FighterAttackCommand(this.linkTrId);
-    }
-    
-    public void buildPlane(EquippedPlane equippedPlane, ICountry country) throws PWCGException
-    {
-        equippedPlane.copyTemplate(this);
-        this.setName(pilot.getNameAndRank());
-        this.setDesc(pilot.getNameAndRank());
-        startInAir = FlightStartPosition.START_IN_AIR;
-        this.setCountry(country);
+        
         setDeleteAfterDeath();
     }
 
@@ -371,7 +368,9 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
                 if (tacticalCode != null)
                 {
                     writer.write("  TCode = \"" + tacticalCode.formCodeString() + "\";");
+                    writer.newLine();
                     writer.write("  TCodeColor = \"" + tacticalCode.formCodeColorString() + "\";");
+                    writer.newLine();
                 }
             }
 

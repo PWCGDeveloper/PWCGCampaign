@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
@@ -18,21 +17,6 @@ public class TransportReader
     private MapTransport mapTransport = new MapTransport();
     private MapTransportSystem mapTransportSystem = new MapTransportSystem();
 
-    public static void main(String[] args) 
-    {
-        try
-        {
-            PWCGContext.setProduct(PWCGProduct.BOS);
-            TransportReader transportReader = new TransportReader();
-            MapTransport mapTransport = transportReader.readTransportFile("Bodenplatte", "railroads.ini");
-            System.out.println(mapTransport.toString());
-        }
-        catch (PWCGException e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
     public MapTransport readTransportFile (String mapName, String transportFileName) throws PWCGException
     {
         try 

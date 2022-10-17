@@ -6,6 +6,7 @@
   "skill": 70,
   "unitIdCode": "3U",
   "subUnitIdCode": "S",
+  "squadronTacticalCodeOverride": "YELLOW",
   "planeAssignments": [
     {
       "archType": "bf110",

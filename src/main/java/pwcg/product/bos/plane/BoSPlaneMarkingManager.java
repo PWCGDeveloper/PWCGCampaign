@@ -72,8 +72,9 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
     private void allocatePlaneIdCode(Campaign campaign, int squadronId, EquippedPlane equippedPlane, HashSet<String> codesForSquadron) throws PWCGException
     {
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        int armedServiceId = squadron.getService();
         String code = "";
-        if (squadron.getService() == BoSServiceManager.LUFTWAFFE)
+        if (armedServiceId == BoSServiceManager.LUFTWAFFE)
         {
             if (squadron.determineDisplayName(campaign.getDate()).contains("JG") || squadron.determineDisplayName(campaign.getDate()).contains("SG"))
             {
@@ -84,18 +85,22 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
                 code = pickAlphaCode(codesForSquadron);
             }
         }
-        else if (squadron.getService() == BoSServiceManager.VVS || squadron.getService() == BoSServiceManager.NORMANDIE)
+        else if (armedServiceId == BoSServiceManager.VVS || armedServiceId == BoSServiceManager.NORMANDIE)
         {
             code = pickHighNumericCode(codesForSquadron);
         }
-        else if (squadron.getService() == BoSServiceManager.REGIA_AERONAUTICA)
+        else if (armedServiceId == BoSServiceManager.REGIA_AERONAUTICA)
         {
             code = pickLowNumericCode(codesForSquadron);
         }
-        else if (squadron.getService() == BoSServiceManager.USAAF || squadron.getService() == BoSServiceManager.RAF
-                || squadron.getService() == BoSServiceManager.FREE_FRENCH)
+        else if (armedServiceId == BoSServiceManager.USAAF || armedServiceId == BoSServiceManager.RAF
+                || armedServiceId == BoSServiceManager.FREE_FRENCH || armedServiceId == BoSServiceManager.RCAF)
         {
             code = pickAlphaCode(codesForSquadron);
+        }
+        else
+        {
+            throw new PWCGException ("No tactical code generation for service " + armedServiceId);
         }
 
         if (!code.isEmpty())

@@ -41,8 +41,7 @@ public class PlaneMCUFactory
     
     public static PlaneMcu createPlaneMcuByPlaneType (Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot) throws PWCGException
     {
-        PlaneMcu plane = new PlaneMcu(campaign, pilot);
-        plane.buildPlane(equippedPlane, country);
+        PlaneMcu plane = new PlaneMcu(campaign, country, equippedPlane, pilot);
         return plane;
     }
 

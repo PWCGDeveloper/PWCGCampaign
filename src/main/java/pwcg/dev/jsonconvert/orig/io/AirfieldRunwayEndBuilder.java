@@ -25,23 +25,10 @@ public class AirfieldRunwayEndBuilder
             {
                 for (Runway runway : airfieldDescriptor.getRunways())
                 {
-                    
-                    if (airfieldDescriptor.getName().equalsIgnoreCase("newchurch"))
-                    {
-                        double angleToEnd = MathUtils.calcAngle(runway.getStartPos(), runway.getEndPos());
-                        System.out.println("Newchurch before " + angleToEnd);
-                    }
-
                     double angle = airfieldDescriptor.getOrientation().getyOri();
                     Coordinate startPos = runway.getStartPos().copy();
                     Coordinate endPos = MathUtils.calcNextCoord(startPos, angle, 1200);
                     runway.setEndPos(endPos);
-                    
-                    if (airfieldDescriptor.getName().equalsIgnoreCase("newchurch"))
-                    {
-                        double angleToEnd = MathUtils.calcAngle(startPos, runway.getEndPos());
-                        System.out.println("Newchurch after " + angleToEnd);
-                    }
                 }
             }
 

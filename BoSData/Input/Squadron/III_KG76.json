@@ -6,6 +6,7 @@
 	"skill": 60,
 	"unitIdCode": "MT",
 	"subUnitIdCode": "H",
+	"squadronTacticalCodeOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "ar234",
@@ -25,8 +26,7 @@
 		"19450310": "Rheine",
 		"19450404": "Rheine"
 	},
-	"skins": [
-	],
+	"skins": [],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
