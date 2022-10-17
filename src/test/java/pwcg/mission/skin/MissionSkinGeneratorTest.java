@@ -57,6 +57,7 @@ public class MissionSkinGeneratorTest
     public void buildMissionSkinSetForSummerJu87() throws Exception
     {
         Mockito.when(squadron.getSquadronId()).thenReturn(20121002);
+        Mockito.when(squadron.getCountry()).thenReturn(country);
         Mockito.when(country.getCountryName()).thenReturn("Germany");
         
         planes.clear();
@@ -74,6 +75,7 @@ public class MissionSkinGeneratorTest
     public void buildMissionSkinSetForSummerIl2M42() throws Exception
     {
         Mockito.when(squadron.getSquadronId()).thenReturn(10121062);
+        Mockito.when(squadron.getCountry()).thenReturn(country);
         Mockito.when(country.getCountryName()).thenReturn("Russia");
         
         planes.clear();

@@ -225,7 +225,7 @@ public class SquadronManagerCurrentMapAlliedTest
             {
                 foundKG51 = true;
             }
-            else if (squadronName.equals("I./JG77"))
+            else if (squadronName.equals("III./JG77"))
             {
                 foundJG77 = true;
             }

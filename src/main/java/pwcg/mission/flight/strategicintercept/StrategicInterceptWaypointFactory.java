@@ -14,7 +14,6 @@ import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointRouteSet;
 import pwcg.mission.flight.waypoint.patterns.WaypointPatternFactory;
 import pwcg.mission.mcu.McuWaypoint;
@@ -53,7 +52,11 @@ public class StrategicInterceptWaypointFactory
         McuWaypoint startWP = createInterceptFirstWP(ingressWaypoint);
         targetWaypoints.add(startWP);       
         
-        List<McuWaypoint> interceptWPs = this.createSearchPatternWaypoints(startWP, ingressWaypoint);
+        double searchAngle = calculateCreepingSearchAngle();
+        McuWaypoint startPatternWP = createInterceptStartPatternWP(searchAngle);
+        targetWaypoints.add(startPatternWP);       
+        
+        List<McuWaypoint> interceptWPs = this.createSearchPatternWaypoints(startPatternWP, searchAngle);
         targetWaypoints.addAll(interceptWPs);
         
         return interceptWPs;        
@@ -75,40 +78,52 @@ public class StrategicInterceptWaypointFactory
         return interceptWP;
     }
 
+    private McuWaypoint createInterceptStartPatternWP(double angleToPointBetweenIngressaAndEgress) throws PWCGException
+    {
+        Coordinate coord = createStartPatternCoordinate(angleToPointBetweenIngressaAndEgress);
+
+        McuWaypoint interceptWP = WaypointFactory.createPatrolWaypointType();
+        interceptWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
+        interceptWP.setSpeed(flight.getFlightCruisingSpeed());
+        interceptWP.setPosition(coord);    
+        interceptWP.setTargetWaypoint(true);
+        
+        double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getPosition());
+        interceptWP.getOrientation().setyOri(initialAngle);
+        
+        return interceptWP;
+    }
+
     private Coordinate createInterceptFirstWPCoordinates() throws PWCGException
     {
-        double angleToMovePattern = getPatternMoveAngleForPattern();
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-
-        int distanceToMovePattern = productSpecific.getInterceptCreepLegDistance();
-        
-        distanceToMovePattern = productSpecific.getInterceptCreepCrossDistance() * 4;
-        Coordinate coordinatesAfterFixedMove = MathUtils.calcNextCoord(getEnemyFlightTargetPosition(), angleToMovePattern, distanceToMovePattern);
-        
-        double shiftAngle = MathUtils.adjustAngle(angleToMovePattern, 90);
-        double distanceToShiftPattern = productSpecific.getInterceptCreepLegDistance() * .5;
-        coordinatesAfterFixedMove = MathUtils.calcNextCoord(coordinatesAfterFixedMove, shiftAngle, distanceToShiftPattern);
-        
-        coordinatesAfterFixedMove.setYPos(flight.getFlightInformation().getAltitude());
-
-        return coordinatesAfterFixedMove;
+        return targetFlight.getTargetDefinition().getPosition().copy();
     }
-
-    private double getPatternMoveAngleForPattern() throws PWCGException
+    
+    private Coordinate createStartPatternCoordinate(double angleToPointBetweenIngressaAndEgress) throws PWCGException
     {
-        double angleToMovePattern = 0.0;
-        angleToMovePattern = MathUtils.calcAngle(getEnemyFlightTargetPosition(), flight.getFlightHomePosition());
-        return angleToMovePattern;
+        Coordinate targetCoord = targetFlight.getTargetDefinition().getPosition().copy();
+        Coordinate startPatternCoordinate = MathUtils.calcNextCoord(targetCoord, angleToPointBetweenIngressaAndEgress, 10000);
+        return startPatternCoordinate;
+    }
+    
+    private double calculateCreepingSearchAngle() throws PWCGException
+    {
+        Coordinate targetFlightIngress = targetFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_INGRESS).getPosition().copy();
+        Coordinate targetFlightEgress = targetFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS).getPosition().copy();
+        double angleBetweenIngressaAndEgress = MathUtils.calcAngle(targetFlightIngress, targetFlightIngress);
+        double distanceBetweenIngressaAndEgress = MathUtils.calcDist(targetFlightIngress, targetFlightEgress);
+        Coordinate pointBetweenIngressaAndEgress = MathUtils.calcNextCoord(targetFlightIngress, angleBetweenIngressaAndEgress, distanceBetweenIngressaAndEgress / 2);
+        Coordinate targetCoord = targetFlight.getTargetDefinition().getPosition().copy();
+        double angleToPointBetweenIngressaAndEgress = MathUtils.calcAngle(targetCoord, pointBetweenIngressaAndEgress);
+        return angleToPointBetweenIngressaAndEgress;
     }
 
-    private List<McuWaypoint> createSearchPatternWaypoints (McuWaypoint lastWP, McuWaypoint playerIngressWaypoint) throws PWCGException
+    private List<McuWaypoint> createSearchPatternWaypoints (McuWaypoint startPatternCoordinate, double angle) throws PWCGException
     {
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int creepLegDistance = productSpecific.getInterceptCreepLegDistance();
         int creepCrossDistance = productSpecific.getInterceptCreepCrossDistance();
-        
-        double angle = calculateCreepingSearchAngle();
-                
+                        
         List<McuWaypoint> interceptWPs = WaypointPatternFactory.generateCreepingPattern(
                 flight.getCampaign(), 
                 flight, 
@@ -116,7 +131,7 @@ public class StrategicInterceptWaypointFactory
                 WaypointAction.WP_ACTION_PATROL, 
                 McuWaypoint.FLIGHT_AREA,
                 NUM_SEGMENTS_IN_INTERCEPT_CREEP,
-                lastWP,
+                startPatternCoordinate,
                 creepLegDistance,
                 creepCrossDistance,
                 angle);
@@ -127,22 +142,5 @@ public class StrategicInterceptWaypointFactory
         }
                         
         return interceptWPs;
-    }
-    
-    private double calculateCreepingSearchAngle() throws PWCGException
-    {
-        Coordinate playerFlightIngressPosition = flight.getFlightHomePosition();
-        
-        Coordinate enemyFlightTargetPosition = getEnemyFlightTargetPosition();
-        
-        double angle = MathUtils.calcAngle(playerFlightIngressPosition, enemyFlightTargetPosition);
-        return angle;
-    }
-
-    private Coordinate getEnemyFlightTargetPosition() throws PWCGException
-    {
-        MissionPoint enemyFlightTarget = targetFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TARGET_FINAL);
-        Coordinate enemyFlightTargetPosition = enemyFlightTarget.getPosition();
-        return enemyFlightTargetPosition;
     }
 }

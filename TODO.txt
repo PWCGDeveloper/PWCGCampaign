@@ -1,10 +1,19 @@
 
 MUST DO BEFORE RELEASE
+Make radars appear
+Fix order of British unit/aircraft markings.  Check US too.
+Improve scramble missions
 
 TODO
-Improve scramble missions
-I just flew two Intercept missions with 41 Squadron out of Westhampnett and both times the bombers we were supposed to intercept turned back before coming into range, never having dropped their ordnance. If they hadn't shown up on "radar", we never even would have seen them.
+I just flew two Intercept missions with 41 Squadron out of Westhampnett and both times the bombers we were supposed 
+to intercept turned back before coming into range, never having dropped their ordnance. If they hadn't shown up on "radar", 
+we never even would have seen them.
 
+Check skin assignment.  Seems to be using only factory skins
+Start creating unit skins.
+
+Normandy Release Fixed
+Improve strategic intercept mission waypoints
 
 Beta 2 Fixed
 Added Newspapers

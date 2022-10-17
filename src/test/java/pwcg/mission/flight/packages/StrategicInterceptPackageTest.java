@@ -19,6 +19,7 @@ import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.NecessaryFlightType;
+import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.PwcgTestBase;
@@ -65,12 +66,12 @@ public class StrategicInterceptPackageTest extends PwcgTestBase
     private void verifyInterceptOpposingIsCloseToPlayer(IFlight flight, IFlight opposingFlight)
     {
         List<McuWaypoint> targetWaypoints = flight.getWaypointPackage().getTargetWaypoints();
-        List<McuWaypoint> opposingTargetWaypoints = opposingFlight.getWaypointPackage().getTargetWaypoints();
+        List<BaseFlightMcu> opposingTargetWaypoints = opposingFlight.getWaypointPackage().getAllFlightPoints();
         
         boolean interceptIsCloseToTarget = false;
         for (McuWaypoint waypoint : targetWaypoints)
         {
-            for (McuWaypoint opposingWaypoint : opposingTargetWaypoints)
+            for (BaseFlightMcu opposingWaypoint : opposingTargetWaypoints)
             {
                 double distanceFromPlayerFlight = MathUtils.calcDist(waypoint.getPosition(), opposingWaypoint.getPosition());
                 if (distanceFromPlayerFlight < 10000)
