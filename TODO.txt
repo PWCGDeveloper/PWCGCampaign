@@ -10,6 +10,7 @@ Beta 2 Fixed
 Added Newspapers
 Added Normandy iconic missions as single fly missions (Main Menu->Iconic Missions)
 Added new 5.002 blank skins
+Lots of work in code and configs on tactical codes
 Played with the algorithm to try to keep airfield objects away from any area usable by real planes.
 Normandy invasion obstacles appear on May 1 1944
 Normandy mulberrys appear on June 15 1944

@@ -31,6 +31,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogCategory;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightStartPosition;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuEvent;
@@ -361,18 +362,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             writer.write("  WMMask = " + payload.generateFullModificationMask() + ";");
             writer.newLine();
 
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(this.getSquadronId());
-            if (skin.isUseTacticalCodes())
-            {
-                TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, this);
-                if (tacticalCode != null)
-                {
-                    writer.write("  TCode = \"" + tacticalCode.formCodeString() + "\";");
-                    writer.newLine();
-                    writer.write("  TCodeColor = \"" + tacticalCode.formCodeColorString() + "\";");
-                    writer.newLine();
-                }
-            }
+            writeTacticalCode(writer);
 
             writer.write("}");
             writer.newLine();
@@ -392,6 +382,28 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         {
             PWCGLogger.logException(e);
             throw new PWCGException(e.getMessage());
+        }
+    }
+
+    private void writeTacticalCode(BufferedWriter writer) throws PWCGException, IOException
+    {
+        if (skin == null)
+        {
+            PWCGLogger.log(LogLevel.INFO, "No skin designasated for plane " + this.getType());
+            return;
+        }
+        
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(this.getSquadronId());
+        if (skin.isUseTacticalCodes())
+        {
+            TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, this);
+            if (tacticalCode != null)
+            {
+                writer.write("  TCode = \"" + tacticalCode.formCodeString() + "\";");
+                writer.newLine();
+                writer.write("  TCodeColor = \"" + tacticalCode.formCodeColorString() + "\";");
+                writer.newLine();
+            }
         }
     }
 
