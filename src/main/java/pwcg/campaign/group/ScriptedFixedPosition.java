@@ -1,17 +1,10 @@
 package pwcg.campaign.group;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IFixedPosition;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.io.IOConstants;
 import pwcg.campaign.utils.IndexGenerator;
-import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.mission.mcu.McuTREntity;
@@ -48,46 +41,6 @@ public class ScriptedFixedPosition extends FixedPosition implements Cloneable, I
         return clone;
     }
 
-    public void write(BufferedWriter writer) throws PWCGException, PWCGException
-    {
-        try
-        {
-            writer.write("  Index = " + index + ";");
-            writer.newLine();
-            writer.write("  Name = \"" + name + "\";");
-            writer.newLine();
-            writer.write("    Model = \"" + model + "\";");
-            writer.newLine();
-            writer.write("    Script = \"" + script + "\";");
-            writer.newLine();
-
-            Campaign campaign = PWCGContext.getInstance().getCampaign();
-            determineCountry(campaign).writeAdjusted(writer);
-
-            writer.write("    DamageReport = " + damageReport + ";");
-            writer.newLine();
-            writer.write("    DamageThreshold = " + damageThreshold + ";");
-            writer.newLine();
-            writer.write("    Desc = \"" + desc + "\";");
-            writer.newLine();
-            writer.write("    Durability = " + durability + ";");
-            writer.newLine();
-            writer.write("    LinkTrId = " + linkTrId + ";");
-            writer.newLine();
-            writer.write("    DeleteAfterDeath = " + deleteAfterDeath + ";");
-            writer.newLine();
-
-            position.write(writer);
-            orientation.write(writer);
-            writeDamaged(writer);
-        }
-        catch (IOException e)
-        {
-            PWCGLogger.logException(e);
-            throw new PWCGException(e.getMessage());
-        }
-    }
-
     public void buildEntity()
     {
         entity = new McuTREntity(index);
@@ -109,26 +62,6 @@ public class ScriptedFixedPosition extends FixedPosition implements Cloneable, I
         else
         {
             entity.setName("Block entity");
-        }
-    }
-
-    private void writeDamaged(BufferedWriter writer) throws IOException
-    {
-        if (damaged.size() > 0)
-        {
-            writer.write("  " + IOConstants.DAMAGED);
-            writer.newLine();
-            writer.write("  {");
-            writer.newLine();
-            for (Integer damageItemId : damaged.keySet())
-            {
-                String damageEntry = String.format("        %d = 0.6;", damageItemId);
-                writer.write(damageEntry);
-                writer.newLine();
-            }
-
-            writer.write("  }");
-            writer.newLine();
         }
     }
 
