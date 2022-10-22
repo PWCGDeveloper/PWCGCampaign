@@ -1,15 +1,13 @@
 package pwcg.mission.flight.scramble;
 
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
-import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
-import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
-import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.flight.waypoint.patterns.InterceptAtTargetPattern;
 import pwcg.mission.target.TargetDefinition;
 
 public class PlayerScrambleFlight extends Flight implements IFlight
@@ -26,22 +24,13 @@ public class PlayerScrambleFlight extends Flight implements IFlight
         createWaypoints();
         createFlightCommonPostBuild();
     }
-
+    
     private void createWaypoints() throws PWCGException
     {
-        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_FIELD, this);
-
-        IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
-        this.getWaypointPackage().addMissionPointSet(flightActivate);
-
-        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_FROM_AIRFIELD, ingressWaypoint);
-        this.getWaypointPackage().addMissionPointSet(flightBegin);
-
-        ScrambleWaypointFactory missionWaypointFactory = new ScrambleWaypointFactory(this);
-        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
-        this.getWaypointPackage().addMissionPointSet(missionWaypoints);
-        
-        IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(this);
-        this.getWaypointPackage().addMissionPointSet(flightEnd);        
+        List<IMissionPointSet> interceptMissionSets = InterceptAtTargetPattern.generateInterceptSegments(this);
+        for (IMissionPointSet interceptMissionSet : interceptMissionSets)
+        {
+            this.getWaypointPackage().addMissionPointSet(interceptMissionSet);
+        }
     }
 }

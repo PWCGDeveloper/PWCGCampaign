@@ -5,6 +5,7 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointPriority;
+import pwcg.mission.flight.waypoint.begin.IngressBackoffUsingConfigsCalculator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
@@ -28,7 +29,8 @@ public class ScrambleOpposingGroundAttackFlight extends Flight implements IFligh
 
     private void createWaypoints() throws PWCGException
     {
-        McuWaypoint ingressWaypoint =ScrambleOpposingEntryWaypointFactory.createScrambleEntryWaypoints(this);
+        double ingressDistanceFromTarget = IngressBackoffUsingConfigsCalculator.calculateIngressDistanceFromTarget(this.getFlightInformation(), this.getTargetDefinition());
+        McuWaypoint ingressWaypoint =ScrambleOpposingEntryWaypointFactory.createScrambleEntryWaypoints(this, ingressDistanceFromTarget);
 
         ScrambleOpposingGroundAttackWaypointFactory missionWaypointFactory = new ScrambleOpposingGroundAttackWaypointFactory(this);
         IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);

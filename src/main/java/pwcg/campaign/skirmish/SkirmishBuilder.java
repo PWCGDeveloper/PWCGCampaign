@@ -2,7 +2,6 @@ package pwcg.campaign.skirmish;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
@@ -13,6 +12,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.MissionHumanParticipants;
 
 public class SkirmishBuilder
@@ -52,8 +52,8 @@ public class SkirmishBuilder
         
         if (!candidateSkirmishes.isEmpty())
         {
-            Collections.shuffle(candidateSkirmishes);
-            return candidateSkirmishes.get(0);
+            int selected = RandomNumberGenerator.getRandom(candidateSkirmishes.size());
+            return candidateSkirmishes.get(selected);
         }
         
         return null;

@@ -10,6 +10,7 @@ import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPackage;
+import pwcg.mission.flight.waypoint.begin.IngressBackoffUsingConfigsCalculator;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.builder.SearchLightBuilder;
@@ -33,7 +34,8 @@ public class StrategicBombingPackage implements IFlightPackage
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_BOMB);
         TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);
         
-        BombingFlight bombingFlight = new BombingFlight (flightInformation, targetDefinition);
+        double ingressDistanceFromTarget = IngressBackoffUsingConfigsCalculator.calculateIngressDistanceFromTarget(flightInformation, targetDefinition);
+        StrategicBombingFlight bombingFlight = new StrategicBombingFlight (flightInformation, targetDefinition, ingressDistanceFromTarget);
         bombingFlight.createFlight();
         
         createAAA(flightInformation, targetDefinition, bombingFlight);
@@ -42,6 +44,7 @@ public class StrategicBombingPackage implements IFlightPackage
         packageFlights.add(bombingFlight);
         return packageFlights;
     }
+
     
     private TargetDefinition buildTargetDefinition(FlightInformation flightInformation) throws PWCGException
     {

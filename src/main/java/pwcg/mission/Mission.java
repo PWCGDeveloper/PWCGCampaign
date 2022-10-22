@@ -163,7 +163,12 @@ public class Mission
 
     public double getPlayerDistanceToTarget() throws PWCGException
     {
-        return participatingPlayers.getPlayerDistanceToTarget(this);
+        return participatingPlayers.getAveragePlayerDistanceToTarget(this);
+    }
+
+    public double getPlayerDistanceToPosition(Coordinate position) throws PWCGException
+    {
+        return participatingPlayers.getPlayerDistanceToPosition(this, position);
     }
 
     private void createGroundUnits() throws PWCGException, PWCGException

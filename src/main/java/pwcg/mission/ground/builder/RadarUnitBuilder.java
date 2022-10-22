@@ -67,7 +67,8 @@ public class RadarUnitBuilder
         GroundUnitCollection groundUnitCollection = new GroundUnitCollection (campaign, "Radar", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(radarUnit);
         groundUnitCollection.setPrimaryGroundUnit(radarUnit);
-        groundUnitCollection.finishGroundUnitCollection();
+        int radarSpawnDistance = 75000;
+        groundUnitCollection.finishGroundUnitCollectionWithSpqwnDistance(radarSpawnDistance);
         SpotterDecorator.createSpotter(groundUnitCollection, RADAR_RANGE);
         return groundUnitCollection;
     }

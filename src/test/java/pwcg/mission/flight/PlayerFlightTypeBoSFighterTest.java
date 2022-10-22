@@ -128,8 +128,6 @@ public class PlayerFlightTypeBoSFighterTest
         virtualWaypointPackageValidator.validate();
         
         assert(mission.getFlights().getAiFlights().size() == 1);
-
-        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
 	@Test

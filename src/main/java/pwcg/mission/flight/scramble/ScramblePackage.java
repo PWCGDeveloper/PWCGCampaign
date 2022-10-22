@@ -48,17 +48,17 @@ public class ScramblePackage implements IFlightPackage
 
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder;
+        ITargetDefinitionBuilder opposingTargetDefinitionBuilder;
         if (this.flightInformation.isPlayerFlight())
         {
-            targetDefinitionBuilder = new TargetDefinitionBuilderOpposing(flightInformation);
+            opposingTargetDefinitionBuilder = new TargetDefinitionBuilderOpposing(flightInformation);
         }
         else
         {
-            targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
+            opposingTargetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
         }
 
-        TargetDefinition targetDefinition =  targetDefinitionBuilder.buildTargetDefinition();
+        TargetDefinition targetDefinition =  opposingTargetDefinitionBuilder.buildTargetDefinition();
         if (targetDefinition.getPosition().getYPos() < ScrambleWaypointFactory.SCRAMBLE_MINIMUM_ALTITUDE)
         {
             targetDefinition.getPosition().setYPos(ScrambleWaypointFactory.SCRAMBLE_MINIMUM_ALTITUDE);

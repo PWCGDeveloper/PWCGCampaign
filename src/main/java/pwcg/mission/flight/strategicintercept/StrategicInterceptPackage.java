@@ -36,7 +36,7 @@ public class StrategicInterceptPackage implements IFlightPackage
         List<IFlight> opposingFlights = makeOpposingFlights();
         packageFlights.addAll(opposingFlights);
 
-        resetFlightInformationAltitudeToMatchTargetFlightList(opposingFlights);
+        matchInterceptAltitudeToBombingFlightAltitude(opposingFlights);
         StrategicInterceptFlight interceptFlight = createPlayerFlight(opposingFlights);
         FlightSpotterBuilder.createSpottersForStrategicIntercept(interceptFlight, opposingFlights);
 
@@ -44,11 +44,10 @@ public class StrategicInterceptPackage implements IFlightPackage
         return packageFlights;
     }
 
-    private StrategicInterceptFlight createPlayerFlight(List<IFlight> opposingFlights) throws PWCGException
+    private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        StrategicInterceptFlight interceptFlight = new StrategicInterceptFlight (flightInformation, targetDefinition, opposingFlights.get(0));
-        interceptFlight.createFlight();
-        return interceptFlight;
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
+        return  targetDefinitionBuilder.buildTargetDefinition();
     }
 
     private List<IFlight> makeOpposingFlights() throws PWCGException
@@ -58,7 +57,7 @@ public class StrategicInterceptPackage implements IFlightPackage
         return opposingFlights;
     }
 
-    private void resetFlightInformationAltitudeToMatchTargetFlightList(List<IFlight> opposingFlights)
+    private void matchInterceptAltitudeToBombingFlightAltitude(List<IFlight> opposingFlights)
     {
         IFlight bomberFlight = opposingFlights.get(0);
         double maxAltitude = 0.0;
@@ -73,11 +72,12 @@ public class StrategicInterceptPackage implements IFlightPackage
         int altitudeAboveBombers = Double.valueOf(maxAltitude).intValue() + 300;
         flightInformation.setAltitude(altitudeAboveBombers);
     }
-    
-    private TargetDefinition buildTargetDefintion() throws PWCGException
-    {
-        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
-        return  targetDefinitionBuilder.buildTargetDefinition();
-    }
 
+    private StrategicInterceptFlight createPlayerFlight(List<IFlight> opposingFlights) throws PWCGException
+    {
+        targetDefinition.setOpposingFlight(opposingFlights.get(0));
+        StrategicInterceptFlight interceptFlight = new StrategicInterceptFlight (flightInformation, targetDefinition);
+        interceptFlight.createFlight();
+        return interceptFlight;
+    }
 }

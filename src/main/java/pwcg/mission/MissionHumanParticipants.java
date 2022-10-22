@@ -10,6 +10,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 
 public class MissionHumanParticipants 
@@ -81,7 +82,7 @@ public class MissionHumanParticipants
         return allParticipatingPlayers;
     }
     
-    public double getPlayerDistanceToTarget(Mission mission) throws PWCGException
+    public double getAveragePlayerDistanceToTarget(Mission mission) throws PWCGException
     {
         double totalPlayerDistanceToTarget = 0.0;
         for (int playersSquadronId : participatingPlayers.keySet())
@@ -92,6 +93,22 @@ public class MissionHumanParticipants
         
         double averagePlayerDistanceToTarget = totalPlayerDistanceToTarget / participatingPlayers.size();
         return averagePlayerDistanceToTarget;
+    }
+
+    public double getPlayerDistanceToPosition(Mission mission, Coordinate position) throws PWCGException
+    {
+        double maximumPlayerDistanceToPosition = 0.0;
+        for (int playersSquadronId : participatingPlayers.keySet())
+        {
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playersSquadronId);
+            double thisPlayerDistanceToPosition = MathUtils.calcDist(squadron.determineCurrentPosition(mission.getCampaign().getDate()), position);
+            if (thisPlayerDistanceToPosition > maximumPlayerDistanceToPosition)
+            {
+                maximumPlayerDistanceToPosition = thisPlayerDistanceToPosition;
+            }
+        }
+        
+        return maximumPlayerDistanceToPosition;
     }
 
     public List<Squadron> getMissionPlayerSquadrons() throws PWCGException

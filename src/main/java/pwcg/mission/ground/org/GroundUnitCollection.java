@@ -48,7 +48,13 @@ public class GroundUnitCollection
 
     public void finishGroundUnitCollection() throws PWCGException
     {
-        createCheckZone();
+        int groundUnitSpawnDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.GroundUnitSpawnDistanceKey);
+        finishGroundUnitCollectionWithSpqwnDistance(groundUnitSpawnDistance);
+    }
+
+    public void finishGroundUnitCollectionWithSpqwnDistance(int groundUnitSpawnDistance) throws PWCGException
+    {
+        createCheckZone(groundUnitSpawnDistance);
         createTargetAssociations();
     }
 
@@ -107,11 +113,8 @@ public class GroundUnitCollection
         return unitCount;
     }
 
-    private void createCheckZone() throws PWCGException
+    private void createCheckZone(int groundUnitSpawnDistance) throws PWCGException
     {
-        
-        int groundUnitSpawnDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.GroundUnitSpawnDistanceKey);
-
         missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Check Zone " + groundUnitName, getPosition(), groundUnitSpawnDistance);
         missionBeginUnit.setCheckZoneCoalitions(groundUnitCollectionData.getTriggerCoalitions());
     }

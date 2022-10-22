@@ -1,16 +1,13 @@
 package pwcg.mission.flight.waypoint.begin;
 
-import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class IngressWaypointAtTarget implements IIngressWaypoint
+public class IngressWaypointAtTarget
 {
     private IFlight flight;
 
@@ -19,9 +16,9 @@ public class IngressWaypointAtTarget implements IIngressWaypoint
         this.flight = flight;
     }
 
-    public McuWaypoint createIngressWaypoint() throws PWCGException  
+    public McuWaypoint createIngressWaypoint(double distanceFromTarget) throws PWCGException  
     {
-        Coordinate ingressCoords = getIngressWaypointAtTarget();
+        Coordinate ingressCoords = getIngressWaypointAtTarget(distanceFromTarget);
         ingressCoords.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
@@ -33,16 +30,10 @@ public class IngressWaypointAtTarget implements IIngressWaypoint
         return ingressWP;
     }
 
-    private Coordinate getIngressWaypointAtTarget() throws PWCGException 
-    {        
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int minDistanceToTarget = productSpecific.getIngressAtTargetMinDIstance();
-        int maxDistanceToTarget = productSpecific.getIngressAtTargetMaxDIstance();
-        int randomDistanceToTarget = RandomNumberGenerator.getRandom(maxDistanceToTarget - minDistanceToTarget);
-        int distanceToTarget = minDistanceToTarget + randomDistanceToTarget;
-        
+    private Coordinate getIngressWaypointAtTarget(double distanceFromTarget) throws PWCGException 
+    {                
         double angleFromTarget = MathUtils.calcAngle(flight.getTargetDefinition().getPosition(), flight.getFlightHomePosition());
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleFromTarget, distanceToTarget);
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleFromTarget, distanceFromTarget);
         return ingressCoordinate;
     }
 }

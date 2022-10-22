@@ -6,7 +6,6 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
-import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
@@ -14,9 +13,9 @@ import pwcg.mission.mcu.McuWaypoint;
 public class ScrambleOpposingEntryWaypointFactory
 {
 
-    public static McuWaypoint createScrambleEntryWaypoints(IFlight scrambleOpposingFlight) throws PWCGException
+    public static McuWaypoint createScrambleEntryWaypoints(IFlight scrambleOpposingFlight, double distanceToIngress) throws PWCGException
     {
-        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_AT_TARGET, scrambleOpposingFlight);
+        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypointAtTarget(scrambleOpposingFlight, distanceToIngress);
         moveIngressToScrambleOpposeStartPoint(scrambleOpposingFlight, ingressWaypoint);
         
         IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(scrambleOpposingFlight);

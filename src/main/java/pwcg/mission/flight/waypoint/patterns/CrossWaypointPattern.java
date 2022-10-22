@@ -42,12 +42,6 @@ public class CrossWaypointPattern
         this.waypointAction = waypointAction;
     }
 
-    /**
-     * Recursively generate cross, altering altitude per the request
-     * 
-     * @param missionWPs
-     * @throws PWCGException 
-     */
     public List<McuWaypoint> generateCrossWPSegments(McuWaypoint lastWP, double legDistance) throws PWCGException
     {
         int legCount = 0;
@@ -57,17 +51,8 @@ public class CrossWaypointPattern
         return crossWPs;
     }
 
-    /**
-     * Recursively generate cross segments.  
-     * A cross pattern looks like a  bar graph
-     * 
-     * @param missionWPs
-     * @throws PWCGException 
-     */
     private void generateCrossWPSegment(McuWaypoint lastWP, double legDistance, double orientation, int legCount) throws PWCGException
     {
-        // A leg is two waypoints, a long leg (diameter) and then a shorter one 
-        // (chord the size of radius)
         lastWP = generateCrossWP(lastWP, legDistance, orientation);
 
         double nextOrientation = MathUtils.adjustAngle(orientation, 120);
@@ -80,15 +65,7 @@ public class CrossWaypointPattern
             generateCrossWPSegment(lastWP, legDistance, nextOrientation, legCount);
         }
     }
-    
-    
 
-    /**
-     * Generate a single waypoint in the cross segment
-     * 
-     * @param missionWPs
-     * @throws PWCGException 
-     */
     private McuWaypoint generateCrossWP(McuWaypoint lastWP, double legDistance, double orientation) throws PWCGException
     {
         McuWaypoint nextCrossWP = WaypointFactory.createDefinedWaypointType(waypointType, waypointAction);

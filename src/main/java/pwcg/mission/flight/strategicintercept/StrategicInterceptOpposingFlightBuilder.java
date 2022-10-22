@@ -17,7 +17,8 @@ import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.NecessaryFlightType;
-import pwcg.mission.flight.bomb.BombingFlight;
+import pwcg.mission.flight.bomb.StrategicBombingFlight;
+import pwcg.mission.flight.waypoint.begin.IngressBackoffUsingConfigsCalculator;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
@@ -54,7 +55,7 @@ public class StrategicInterceptOpposingFlightBuilder
                     opposingBomberSquadron.getCountry(),
                     opposingTargetDefinition.getTargetName());
 
-            IFlight opposingBomberFlight = createBomberFlight(opposingBomberSquadron, opposingTargetDefinitionForFlight);
+            IFlight opposingBomberFlight = createStrategicBomberFlight(opposingBomberSquadron, opposingTargetDefinitionForFlight);
             if (opposingBomberFlight != null)
             {
                 opposingFlights.add(opposingBomberFlight);
@@ -62,26 +63,27 @@ public class StrategicInterceptOpposingFlightBuilder
         }
         return opposingFlights;
     }
-    
-    private IFlight createBomberFlight(Squadron opposingBomberSquadron, TargetDefinition opposingTargetDefinition) throws PWCGException
+
+    private TargetDefinition buildBaselineOpposingTargetDefintion(ICountry country) throws PWCGException
+    {
+        TargetDefinition opposingTargetDefinition = new TargetDefinition(TargetType.TARGET_CITY, playerTargetDefinition.getPosition(), country, "City");
+        return opposingTargetDefinition;
+    }
+
+    private IFlight createStrategicBomberFlight(Squadron opposingBomberSquadron, TargetDefinition opposingTargetDefinition) throws PWCGException
     {
         FlightInformation opposingFlightInformation = buildOpposingFlightInformation(opposingBomberSquadron);
-        IFlight opposingFlight = new BombingFlight(opposingFlightInformation, opposingTargetDefinition);
+        double ingressDistanceFromTarget = IngressBackoffUsingConfigsCalculator.calculateIngressDistanceFromTarget(opposingFlightInformation, opposingTargetDefinition);
+        IFlight opposingFlight = new StrategicBombingFlight(opposingFlightInformation, opposingTargetDefinition, ingressDistanceFromTarget);
         opposingFlight.createFlight();
         return opposingFlight;
     }
 
     private FlightInformation buildOpposingFlightInformation(Squadron opposingSquadron) throws PWCGException
     {
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(this.playerFlightInformation.getMission(), opposingSquadron, NecessaryFlightType.OPPOSING_FLIGHT);
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(playerFlightInformation.getMission(), opposingSquadron, NecessaryFlightType.OPPOSING_FLIGHT);
         FlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_BOMB);
         return opposingFlightInformation;
-    }
-
-    private TargetDefinition buildBaselineOpposingTargetDefintion(ICountry country) throws PWCGException
-    {
-        TargetDefinition opposingTargetDefinition = new TargetDefinition(TargetType.TARGET_CITY, playerTargetDefinition.getPosition(), country, "City");
-        return opposingTargetDefinition;
     }
     
     private int getNumOpposingFlights(List<Squadron> opposingBomberSquadrons) throws PWCGException

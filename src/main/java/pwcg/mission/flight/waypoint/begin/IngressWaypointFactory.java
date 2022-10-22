@@ -31,12 +31,23 @@ public class IngressWaypointFactory
         }
         else if (pattern == IngressWaypointPattern.INGRESS_AT_TARGET)
         {
-            return createIngressWaypointAtTarget(flight);
+            return createIngressWaypointAtTarget(flight, 0);
         }
         else
         {
             return createIngressWaypointNearField(flight);
         }
+    }
+    
+    public static McuWaypoint createIngressWaypointAtTarget(IFlight flight, double distanceToIngress) throws PWCGException
+    {
+        if (distanceToIngress < IngressBackoffUsingConfigsCalculator.MINIMUM_BACKOFF)
+        {
+            distanceToIngress = IngressBackoffUsingConfigsCalculator.calculateDistanbceToTargetFromConfigs();
+        }
+        IngressWaypointAtTarget ingressWaypointGenerator = new IngressWaypointAtTarget(flight);
+        McuWaypoint ingressWaypoint = ingressWaypointGenerator.createIngressWaypoint(distanceToIngress);
+        return ingressWaypoint;
     }
 
     private static McuWaypoint createIngressWaypointNearFront(IFlight flight) throws PWCGException  
@@ -56,13 +67,6 @@ public class IngressWaypointFactory
     private static McuWaypoint createIngressWaypointNearField(IFlight flight) throws PWCGException  
     {
         IIngressWaypoint ingressWaypointGenerator = new IngressWaypointNearField(flight);
-        McuWaypoint ingressWaypoint = ingressWaypointGenerator.createIngressWaypoint();
-        return ingressWaypoint;
-    }
-    
-    private static McuWaypoint createIngressWaypointAtTarget(IFlight flight) throws PWCGException
-    {
-        IIngressWaypoint ingressWaypointGenerator = new IngressWaypointAtTarget(flight);
         McuWaypoint ingressWaypoint = ingressWaypointGenerator.createIngressWaypoint();
         return ingressWaypoint;
     }

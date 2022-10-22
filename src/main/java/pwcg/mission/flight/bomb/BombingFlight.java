@@ -3,7 +3,6 @@ package pwcg.mission.flight.bomb;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
@@ -13,11 +12,15 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.target.TargetDefinition;
 
-public class BombingFlight extends Flight implements IFlight
+public class BombingFlight extends Flight
 {          
+    protected IngressWaypointPattern ingressWaypointPosition;
+    protected double distanceToIngress = 0;
+
     public BombingFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
     {
         super(flightInformation, targetDefinition);
+        ingressWaypointPosition = IngressWaypointPattern.INGRESS_NEAR_FRONT;
     }
 
     public void createFlight() throws PWCGException
@@ -31,8 +34,16 @@ public class BombingFlight extends Flight implements IFlight
 
     private void createWaypoints() throws PWCGException
     {
-        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_FRONT, this);
-
+        McuWaypoint ingressWaypoint;
+        if (ingressWaypointPosition == IngressWaypointPattern.INGRESS_AT_TARGET)
+        {
+            ingressWaypoint = IngressWaypointFactory.createIngressWaypointAtTarget(this, distanceToIngress);
+        }
+        else
+        {
+            ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(ingressWaypointPosition, this);
+        }
+        
         IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
         this.getWaypointPackage().addMissionPointSet(flightActivate);
 

@@ -261,13 +261,13 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     }
 
     @Override
-    public int getIngressAtTargetMinDIstance()
+    public int getIngressAtTargetMinDistance()
     {
         return INGRESS_AT_TARGET_MIN_DISTANCE;
     }
 
     @Override
-    public int getIngressAtTargetMaxDIstance()
+    public int getIngressAtTargetMaxDistance()
     {
         return INGRESS_AT_TARGET_MAX_DISTANCE;
     }
