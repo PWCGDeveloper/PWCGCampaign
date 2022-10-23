@@ -6,11 +6,16 @@ import org.junit.jupiter.api.Test;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.skirmish.Skirmish;
+import pwcg.campaign.skirmish.SkirmishManager;
 import pwcg.campaign.skirmish.SkirmishProfileType;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionProfile;
+import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.MissionFlightValidator;
 import pwcg.testutils.CampaignCache;
@@ -55,25 +60,50 @@ public class NormandyFlightTest
     }
 
     @Test
-    public void dunkirkTest() throws PWCGException
+    public void dunkirkSeaBritainTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19410601"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        SkirmishManager skirmishManager = PWCGContext.getInstance().getCurrentMap().getSkirmishManager();
+        Skirmish skirmish = skirmishManager.getSkirmishByName("Dunkirk Sea");
+        Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.RAF_BOB_PROFILE.getSquadronId());
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.LOW_ALT_CAP, playerSquadron);
+        Mission mission = missionGenerator.makeMissionFromFlightTypeWithSkirmish(
+                TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), 
+                playerFlightTypes, 
+                MissionProfile.DAY_TACTICAL_MISSION, 
+                skirmish);
         mission.finalizeMission();
+        
+        Assertions.assertNotNull(mission.getSkirmish());
+        Assertions.assertEquals(SkirmishProfileType.SKIRMISH_PROFILE_ANTI_SHIPPING, mission.getSkirmish().getProfileType());
+        Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_SHIPPING));
+        Assertions.assertTrue(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_SHIPPING));
+        MissionFlightValidator.validateMission(mission);
+    }
 
-        Assertions.assertTrue(mission.getSkirmish() != null);
-        if (mission.getSkirmish().getProfileType() == SkirmishProfileType.SKIRMISH_PROFILE_ANTI_SHIPPING)
-        {
-            Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_SHIPPING));
-            Assertions.assertTrue(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_SHIPPING));
-        }
-        else
-        {
-            Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY));
-            Assertions.assertTrue(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY));
-        }
+    @Test
+    public void dunkirkLandBritainTest() throws PWCGException
+    {
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_BOB_PROFILE);
+        campaign.setDate(DateUtils.getDateYYYYMMDD("19410601"));
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        SkirmishManager skirmishManager = PWCGContext.getInstance().getCurrentMap().getSkirmishManager();
+        Skirmish skirmish = skirmishManager.getSkirmishByName("Dunkirk Land");
+        Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.RAF_BOB_PROFILE.getSquadronId());
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.LOW_ALT_CAP, playerSquadron);
+        Mission mission = missionGenerator.makeMissionFromFlightTypeWithSkirmish(
+                TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), 
+                playerFlightTypes, 
+                MissionProfile.DAY_TACTICAL_MISSION, 
+                skirmish);
+        mission.finalizeMission();
+        
+        Assertions.assertNotNull(mission.getSkirmish());
+        Assertions.assertEquals(SkirmishProfileType.SKIRMISH_PROFILE_ANTI_INFANTRY, mission.getSkirmish().getProfileType());
+        Assertions.assertTrue(GroundUnitTypeFinder.hasGroundUnitType(mission, TargetType.TARGET_INFANTRY));
+        Assertions.assertTrue(FlightTypeFinder.hasFlightWithTargetType(mission, TargetType.TARGET_INFANTRY));
 
         MissionFlightValidator.validateMission(mission);
     }

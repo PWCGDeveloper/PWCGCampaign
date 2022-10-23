@@ -53,19 +53,6 @@
             "tacticalCodeColor": "BLACK",
             "winter": false
         },
-        "bf109f2_blank_05": {
-            "skinName": "bf109f2_blank_05",
-            "planeType": "bf109f2",
-            "startDate": "19390801",
-            "endDate": "19450601",
-            "squadId": -2,
-            "country": "Germany",
-            "category": "Configured",
-            "definedInGame": true,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK",
-            "winter": false
-        },
 		"bf109f2_skin_01": {
 			"skinName": "bf109f2_skin_01",
 			"planeType": "bf109f2",

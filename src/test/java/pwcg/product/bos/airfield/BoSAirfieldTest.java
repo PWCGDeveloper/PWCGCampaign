@@ -200,6 +200,11 @@ public class BoSAirfieldTest
 
 	                for (Runway runway : airfield.getAllRunways())
 	                {
+	                    if (runway.getTaxiFromEnd().isEmpty() || runway.getTaxiToStart().isEmpty())
+	                    {
+	                        continue;
+	                    }
+	                    
 	                    // Runway start/end should be at least 75m from last taxi point
 	                    // otherwise planes can take a long time to get into position
 	                    assert(MathUtils.calcDist(runway.getStartPos(), runway.getTaxiToStart().get(runway.getTaxiToStart().size() - 1)) >= 75);

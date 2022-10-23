@@ -19,6 +19,7 @@ import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.NecessaryFlightType;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.PwcgTestBase;
@@ -62,15 +63,15 @@ public class InterceptPackageTest extends PwcgTestBase
         return mission.getFlights();
     }
 
-    private void verifyInterceptOpposingIsCloseToPlayer(IFlight flight, IFlight opposingFlight)
+    private void verifyInterceptOpposingIsCloseToPlayer(IFlight flight, IFlight opposingFlight) throws PWCGException
     {
         List<McuWaypoint> targetWaypoints = flight.getWaypointPackage().getTargetWaypoints();
-        List<McuWaypoint> opposingTargetWaypoints = opposingFlight.getWaypointPackage().getTargetWaypoints();
+        List<MissionPoint> opposingTargetWaypoints = opposingFlight.getWaypointPackage().getFlightMissionPoints();
         
         boolean interceptIsCloseToTarget = false;
         for (McuWaypoint waypoint : targetWaypoints)
         {
-            for (McuWaypoint opposingWaypoint : opposingTargetWaypoints)
+            for (MissionPoint opposingWaypoint : opposingTargetWaypoints)
             {
                 double distanceFromBalloon = MathUtils.calcDist(waypoint.getPosition(), opposingWaypoint.getPosition());
                 if (distanceFromBalloon < 20000)

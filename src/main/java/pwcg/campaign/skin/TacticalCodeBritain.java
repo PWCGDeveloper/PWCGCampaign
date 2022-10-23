@@ -27,9 +27,9 @@ public class TacticalCodeBritain extends TacticalCode
             return null;
         }
 
-        codes.set(0, plane.getAircraftIdCode().substring(0, 1));
-        codes.set(1, squadronUnitCode.substring(0, 1));
-        codes.set(2, squadronUnitCode.substring(1, 2));
+        codes.set(0, squadronUnitCode.substring(0, 1));
+        codes.set(1, squadronUnitCode.substring(1, 2));
+        codes.set(2, plane.getAircraftIdCode().substring(0, 1));
 
         TacticalCodeColor color = determineTacticalCodeColor(squadron, plane);
         for (int i = 0; i < codes.size(); ++i)

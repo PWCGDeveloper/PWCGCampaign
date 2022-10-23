@@ -44,13 +44,13 @@ public class MissionShipBuilder
 
     public int getUnitCount() 
     {
-        int missionBalloonUnitCount = 0;
+        int unitCount = 0;
         for (GroundUnitCollection groundUnitCollection : missionShips)
         {
-            missionBalloonUnitCount += groundUnitCollection.getUnitCount();
-            PWCGLogger.log(LogLevel.INFO, "Unit count balloon : " + groundUnitCollection.getUnitCount());
+            unitCount += groundUnitCollection.getUnitCount();
+            PWCGLogger.log(LogLevel.INFO, "Unit count ships : " + groundUnitCollection.getUnitCount());
         }
-        return missionBalloonUnitCount;
+        return unitCount;
     }
 
     private void makeShips() throws PWCGException

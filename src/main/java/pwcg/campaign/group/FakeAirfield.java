@@ -73,7 +73,9 @@ public class FakeAirfield extends ScriptedFixedPosition implements Cloneable
             writer.newLine();
             
             super.write(writer);
-                        
+            writer.write("  Script = \"" + script + "\";");
+            writer.newLine();
+
             writer.write("    Callsign = " + callsign.getNum(determineCountry(campaign).getCountry()) + ";");
             writer.newLine();
             writer.write("    Callnum = " + callnum + ";");
