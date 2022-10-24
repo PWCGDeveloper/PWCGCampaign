@@ -16,7 +16,7 @@ public class SquadronIOJson
     {
         PwcgJsonWriter<Squadron> jsonWriter = new PwcgJsonWriter<>();
         String squadronDir = PWCGContext.getInstance().getDirectoryManager().getPwcgSquadronDir();
-        jsonWriter.writeAsJson(squadron, squadronDir, squadron.getFileName());
+        jsonWriter.writeAsJson(squadron, Squadron.class, squadronDir, squadron.getFileName());
     }
 
 	public static List<Squadron> readJson() throws PWCGException

@@ -61,19 +61,19 @@ public class Squadron
     private String name = "";
     private String fileName = "";
 	private int skill = 50;
-	private List<SquadronPlaneAssignment> planeAssignments = new ArrayList<>();
-    private Map<Date, String> airfields = new TreeMap<>();
-	private List<Skin> skins = new ArrayList<Skin>();
-	private SquadHistory squadHistory;
 	private int serviceId;
-    private SquadronRoleSet squadronRoles = new SquadronRoleSet();
-    private NightMissionSet nightMissionOdds = new NightMissionSet();
-	private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
-    private Map<Date, Callsign> callsigns = new TreeMap<>();
     private String unitIdCode;
     private String subUnitIdCode;
-    private TacticalCodeColor squadronTacticalCodeColorOverride = TacticalCodeColor.NONE;
     private int tacticalCodeStyle = -1;
+    private TacticalCodeColor squadronTacticalCodeColorOverride = TacticalCodeColor.NONE;
+    private List<SquadronPlaneAssignment> planeAssignments = new ArrayList<>();
+    private Map<Date, String> airfields = new TreeMap<>();
+    private SquadronRoleSet squadronRoles = new SquadronRoleSet();
+    private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
+    private SquadHistory squadHistory;
+    private Map<Date, Callsign> callsigns = new TreeMap<>();
+    private NightMissionSet nightMissionOdds = new NightMissionSet();
+    private List<Skin> skins = new ArrayList<Skin>();
 	
 	public static boolean isPlayerSquadron (Campaign campaign, int squadronId)
 	{
