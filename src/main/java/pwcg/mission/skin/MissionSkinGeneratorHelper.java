@@ -24,11 +24,11 @@ public class MissionSkinGeneratorHelper
         if (skin != null)
         {
             plane.setPlaneSkin(skin);
-            PWCGLogger.log(LogLevel.DEBUG, "SKIN: Assign generic skin: " + skin.getSkinName());
+            PWCGLogger.log(LogLevel.DEBUG, "SKIN: Assign factory skin: " + skin.getSkinName());
         }
         else
         {
-            PWCGLogger.log(LogLevel.DEBUG, "SKIN: factory skin - no generic available");
+            PWCGLogger.log(LogLevel.ERROR, "SKIN: factory skin - no factory available");
         }
     }
 

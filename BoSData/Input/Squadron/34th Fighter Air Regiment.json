@@ -66,62 +66,6 @@
 		"19450501": "ef_Deurne"
 	},
 	"skins": [
-		{
-			"skinName": "34th Fighter Air Regiment",
-			"planeType": "i16t24",
-			"archTypes": [],
-			"startDate": "19410801",
-			"endDate": "19450601",
-			"squadId": 10111034,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "34th Fighter Air Regiment W",
-			"planeType": "i16t24",
-			"archTypes": [],
-			"startDate": "19410801",
-			"endDate": "19410801",
-			"squadId": 10111034,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": true,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "34th Fighter Air Regiment",
-			"planeType": "yak1s69",
-			"archTypes": [],
-			"startDate": "19410801",
-			"endDate": "19450601",
-			"squadId": 10111034,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "34th Fighter Air Regiment",
-			"planeType": "yak1s127",
-			"archTypes": [],
-			"startDate": "19410801",
-			"endDate": "19450601",
-			"squadId": 10111034,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
 	],
 	"squadHistory": {
 		"squadHistoryEntries": [

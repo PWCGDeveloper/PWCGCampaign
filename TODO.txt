@@ -1,6 +1,5 @@
 
 MUST DO BEFORE RELEASE
-Fix order of British unit/aircraft markings.  Check US too.
 
 Check skin assignment.  Seems to be using only factory skins
 Start creating unit skins.
@@ -8,6 +7,8 @@ Start creating unit skins.
 Normandy Release Fixed
 Improve strategic intercept and scramble mission waypoints
 Fixed bombers on Normandy map turning towards home
+Fixed order of British unit/aircraft markings.  Check US too.
+Removed JG54 109 skin from use
 Increased range of radar unit spawn to make them appear on Normandy map
 
 

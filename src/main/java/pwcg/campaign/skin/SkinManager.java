@@ -74,6 +74,11 @@ public class SkinManager
         {
             PWCGLogger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDateInUse: Invalid plane " + planeName);
         }
+        
+        if (skinsForSquadronPlaneDate.isEmpty())
+        {
+            PWCGLogger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDateInUse: No skins " + planeName);
+        }
 		
 		return skinsForSquadronPlaneDate;
 	}

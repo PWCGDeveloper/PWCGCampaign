@@ -47,42 +47,6 @@
 		"19450501": "ef_Diest"
 	},
 	"skins": [
-		{
-			"skinName": "la5s8_skin_07",
-			"planeType": "la5s8",
-			"archTypes": [],
-			"startDate": "19440102",
-			"endDate": "19450601",
-			"squadId": 10111013,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false
-		},
-		{
-			"skinName": "la5s8_skin_02",
-			"planeType": "la5s8",
-			"archTypes": [],
-			"startDate": "19440102",
-			"endDate": "19450601",
-			"squadId": 10111013,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false
-		},
-		{
-			"skinName": "la5fns2_skin_05",
-			"planeType": "la5fns2",
-			"archTypes": [],
-			"startDate": "19440102",
-			"endDate": "19450601",
-			"squadId": 10111013,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false
-		}
 	],
 	"serviceId": 10101,
 	"squadronRoles": {
