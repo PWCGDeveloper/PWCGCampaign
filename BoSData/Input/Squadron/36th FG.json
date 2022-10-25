@@ -93,5 +93,149 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "FG36_Generic_Green",
+            "planeType": "p47d22",
+            "startDate": "19390901",
+            "endDate": "19440602",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "FG36_19440601_silver",
+            "planeType": "p47d22",
+            "startDate": "19440601",
+            "endDate": "19440801",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "FG36_19440707_silver",
+            "planeType": "p47d22",
+            "startDate": "19440707",
+            "endDate": "19440901",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "FG36_19440825_silver",
+            "planeType": "p47d22",
+            "startDate": "19440825",
+            "endDate": "19450201",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "FG36_generic_silver",
+            "planeType": "p47d22",
+            "startDate": "19441101",
+            "endDate": "19450601",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "FG36_Generic_Green",
+            "planeType": "p47d28",
+            "startDate": "19390901",
+            "endDate": "19440602",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "FG36_19440601_green",
+            "planeType": "p47d28",
+            "startDate": "19440601",
+            "endDate": "19440801",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "FG36_19440601_silver",
+            "planeType": "p47d28",
+            "startDate": "19440601",
+            "endDate": "19440801",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "FG36_19440707_silver",
+            "planeType": "p47d28",
+            "startDate": "19440707",
+            "endDate": "19440901",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "FG36_19440825_silver",
+            "planeType": "p47d28",
+            "startDate": "19440825",
+            "endDate": "19450201",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "FG36_generic_silver",
+            "planeType": "p47d28",
+            "startDate": "19441101",
+            "endDate": "19450601",
+            "squadId": 102036022,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        }
+	]
 }

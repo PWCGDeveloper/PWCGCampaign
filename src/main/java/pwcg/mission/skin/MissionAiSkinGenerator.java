@@ -38,7 +38,7 @@ public class MissionAiSkinGenerator
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squad, plane, date);
         if (shouldUsePersonalSkin(plane))
         {
-            chooseSquadronPersonalSkin(plane);
+            // chooseSquadronPersonalSkin(plane);
         }
     }
 

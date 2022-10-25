@@ -97,5 +97,136 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "p51b5_354_generic",
+            "planeType": "p51b5",
+            "startDate": "19390901",
+            "endDate": "19440602",
+            "squadId": 102362377,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "p51b5_354_19440601_green",
+            "planeType": "p51b5",
+            "startDate": "19440601",
+            "endDate": "19440801",
+            "squadId": 102362377,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "p51b5_354_19440601_silver",
+            "planeType": "p51b5",
+            "startDate": "19440601",
+            "endDate": "19440801",
+            "squadId": 102362377,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "p51b5_354_19440707",
+            "planeType": "p51b5",
+            "startDate": "19440707",
+            "endDate": "19440915",
+            "squadId": 102362377,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "p51b5_354_19440825",
+            "planeType": "p51b5",
+            "startDate": "19440825",
+            "endDate": "19450601",
+            "squadId": 102362377,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "p51d15_354_generic",
+            "planeType": "p51d15",
+            "startDate": "19390901",
+            "endDate": "19440602",
+            "squadId": 102362377,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "p51d15_354_19440601",
+            "planeType": "p51d15",
+            "startDate": "19440601",
+            "endDate": "19440801",
+            "squadId": 102362377,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "p51d15_354_19440706",
+            "planeType": "p51d15",
+            "startDate": "19440707",
+            "endDate": "19440915",
+            "squadId": 102362377,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "p51d15_354_19440825",
+            "planeType": "p51d15",
+            "startDate": "19440825",
+            "endDate": "19450601",
+            "squadId": 102362377,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "p51d15_354_generic",
+            "planeType": "p51d15",
+            "startDate": "194341101",
+            "endDate": "19450601",
+            "squadId": 102362377,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        }
+	]
 }

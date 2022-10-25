@@ -11,6 +11,7 @@ Skin related fixes
 - Fixed code issue where winter skin selection could clear the skin list 
 - Fixed order of British unit/aircraft markings.  Check US too.
 - Removed JG54 109 skin from use
+= Zremoved all squadron skin assignments to force use of blank skins
 - Fixed yak9t and Spitfire IX skin lists
 - Fixed several data issues with skins (Tempest, Hurricane, FW190s)
 
