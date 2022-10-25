@@ -4,9 +4,11 @@
 	"name": "III./KG 76",
 	"fileName": "III_KG76.json",
 	"skill": 60,
+	"serviceId": 20101,
 	"unitIdCode": "MT",
 	"subUnitIdCode": "H",
-	"squadronTacticalCodeOverride": "RED",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "ar234",
@@ -26,11 +28,6 @@
 		"19450310": "Rheine",
 		"19450404": "Rheine"
 	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -48,17 +45,20 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "DUCK"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
 				"startDate": "19400101",
-				"endDate": "19450601",
 				"nightMissionOdds": 5
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "DUCK"
-	}
+	"skins": []
 }

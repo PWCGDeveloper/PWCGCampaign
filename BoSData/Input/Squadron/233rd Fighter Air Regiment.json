@@ -4,10 +4,11 @@
 	"name": "233rd Fighter Air Regiment",
 	"fileName": "233rd Fighter Air Regiment.json",
 	"skill": 50,
+	"serviceId": 10101,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
-    "squadronTacticalCodeOverride": "BLUE",
-    "tacticalCodeStyle": 2,
+	"tacticalCodeStyle": 2,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "mig3",
@@ -70,95 +71,6 @@
 		"19450401": "ef_Soesterberg",
 		"19450501": "ef_Bierset"
 	},
-	"skins": [
-		{
-			"skinName": "233rd Fighter Air Regiment",
-			"planeType": "mig3s24",
-			"archTypes": [],
-			"startDate": "19410801",
-			"endDate": "19411101",
-			"squadId": 10111233,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "233rd Fighter Air Regiment W",
-			"planeType": "mig3s24",
-			"archTypes": [],
-			"startDate": "19411101",
-			"endDate": "19420301",
-			"squadId": 10111233,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "233rd Fighter Air Regiment",
-			"planeType": "mig3s24",
-			"archTypes": [],
-			"startDate": "19420301",
-			"endDate": "19450601",
-			"squadId": 10111233,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "233rd Fighter Air Regiment",
-			"planeType": "yak1s69",
-			"archTypes": [],
-			"startDate": "19420215",
-			"endDate": "19450601",
-			"squadId": 10111233,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "233rd Fighter Air Regiment",
-			"planeType": "yak1s127",
-			"archTypes": [],
-			"startDate": "19420215",
-			"endDate": "19450601",
-			"squadId": 10111233,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19420301",
-				"squadName": "15th Fighter Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 50
-			},
-			{
-				"date": "19430918",
-				"squadName": "298th Fighter Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 45
-			}
-		]
-	},
-	"serviceId": 10101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -226,15 +138,6 @@
 			}
 		]
 	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 3
-			}
-		]
-	},
 	"conversionPeriods": [
 		{
 			"conversionStartDate": "19420301",
@@ -245,7 +148,32 @@
 			"conversionCompleteDate": "19430917"
 		}
 	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19420301",
+				"squadName": "15th Fighter Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 50
+			},
+			{
+				"date": "19430918",
+				"squadName": "298th Fighter Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 45
+			}
+		]
+	},
 	"callsigns": {
 		"19390801": "FINCH"
-	}
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"skins": []
 }

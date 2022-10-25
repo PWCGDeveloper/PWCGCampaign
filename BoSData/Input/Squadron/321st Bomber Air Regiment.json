@@ -4,9 +4,11 @@
 	"name": "321st Bomber Air Regiment",
 	"fileName": "321st Bomber Air Regiment.json",
 	"skill": 25,
+	"serviceId": 10101,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
-    "tacticalCodeStyle": 5,
+	"tacticalCodeStyle": 5,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "pe2",
@@ -62,67 +64,6 @@
 		"19450401": "ef_Venlo",
 		"19450501": "ef_Helmond"
 	},
-	"skins": [
-		{
-			"skinName": "pe2s35_skin_07",
-			"planeType": "pe2s35",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 10131321,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "pe2s87_skin_07",
-			"planeType": "pe2s87",
-			"archTypes": [],
-			"startDate": "19440101",
-			"endDate": "19450601",
-			"squadId": 10131321,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "321st Bomber Air Regiment",
-			"planeType": "a20b",
-			"archTypes": [],
-			"startDate": "19420801",
-			"endDate": "19450601",
-			"squadId": 10131321,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19420301",
-				"squadName": "277th Bomber Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 40
-			},
-			{
-				"date": "19430918",
-				"squadName": "58th Bomber Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 40
-			}
-		]
-	},
-	"serviceId": 10101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -160,17 +101,8 @@
 					{
 						"role": "ROLE_ANTI_SHIPPING",
 						"weight": 50
-					}					
+					}
 				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 10
 			}
 		]
 	},
@@ -180,7 +112,32 @@
 			"conversionCompleteDate": "19420731"
 		}
 	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19420301",
+				"squadName": "277th Bomber Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 40
+			},
+			{
+				"date": "19430918",
+				"squadName": "58th Bomber Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 40
+			}
+		]
+	},
 	"callsigns": {
 		"19390801": "SEAGULL"
-	}
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"nightMissionOdds": 10
+			}
+		]
+	},
+	"skins": []
 }

@@ -4,9 +4,11 @@
 	"name": "I./KG51",
 	"fileName": "I_KG51.json",
 	"skill": 60,
+	"serviceId": 20101,
 	"unitIdCode": "9K",
 	"subUnitIdCode": "K",
-  "squadronTacticalCodeOverride": "GREEN",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "me262",
@@ -15,35 +17,17 @@
 		}
 	],
 	"airfields": {
-        "19440901": "Essen-Mulheim",
-        "19440925": "Essen-Mulheim",
-        "19440928": "Essen-Mulheim",
-        "19441101": "Essen-Mulheim",
-        "19441220": "Essen-Mulheim",
-        "19441225": "Essen-Mulheim",
-        "19441229": "Essen-Mulheim",
-        "19450207": "Munster-Handorf",
-        "19450310": "Hopsten",
-        "19450404": "Hopsten"
+		"19440901": "Essen-Mulheim",
+		"19440925": "Essen-Mulheim",
+		"19440928": "Essen-Mulheim",
+		"19441101": "Essen-Mulheim",
+		"19441220": "Essen-Mulheim",
+		"19441225": "Essen-Mulheim",
+		"19441229": "Essen-Mulheim",
+		"19450207": "Munster-Handorf",
+		"19450310": "Hopsten",
+		"19450404": "Hopsten"
 	},
-	"skins": [
-		{
-			"skinName": "me262a_skin_02",
-			"planeType": "me262a",
-			"archTypes": [],
-			"startDate": "19410101",
-			"endDate": "19450601",
-			"squadId": 20131051,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -57,17 +41,20 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "THRUSH"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
 				"startDate": "19400101",
-				"endDate": "19450601",
 				"nightMissionOdds": 10
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "THRUSH"
-	}
+	"skins": []
 }

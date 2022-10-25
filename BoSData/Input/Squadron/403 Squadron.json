@@ -4,8 +4,11 @@
 	"name": "403 Squadron",
 	"fileName": "403 Squadron.json",
 	"skill": 75,
+	"serviceId": 10106,
 	"unitIdCode": "KH",
-    "subUnitIdCode": "",
+	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "spitfire",
@@ -34,11 +37,6 @@
 		"19450310": "Schijndel",
 		"19450404": "Kirchhellen"
 	},
-    "skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10106,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -111,6 +109,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "BAFFIN"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -119,8 +124,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "BAFFIN"
-	}
+	"skins": []
 }

@@ -4,10 +4,11 @@
 	"name": "136th Bomber Air Regiment",
 	"fileName": "136th Bomber Air Regiment.json",
 	"skill": 30,
+	"serviceId": 10101,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
-    "squadronTacticalCodeOverride": "YELLOW",
-    "tacticalCodeStyle": 5,
+	"tacticalCodeStyle": 5,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "pe2",
@@ -64,53 +65,6 @@
 		"19450401": "ef_Kluis",
 		"19450501": "ef_Aachen"
 	},
-	"skins": [
-		{
-			"skinName": "pe2s35_skin_04",
-			"planeType": "pe2s35",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 10131136,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "a20b_skin_05",
-			"planeType": "a20b",
-			"archTypes": [],
-			"startDate": "19411101",
-			"endDate": "19450601",
-			"squadId": 10131136,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19420301",
-				"squadName": "45th Bomber Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 40
-			},
-			{
-				"date": "19430918",
-				"squadName": "244th Bomber Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 40
-			}
-		]
-	},
-	"serviceId": 10101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -148,12 +102,11 @@
 					{
 						"role": "ROLE_ANTI_SHIPPING",
 						"weight": 40
-					}					
+					}
 				]
 			},
 			{
 				"startDate": "19430418",
-				"endDate": "19431031",
 				"weightedRoles": [
 					{
 						"role": "ROLE_BOMB",
@@ -167,7 +120,6 @@
 			},
 			{
 				"startDate": "19431101",
-				"endDate": "19450601",
 				"weightedRoles": [
 					{
 						"role": "ROLE_BOMB",
@@ -176,17 +128,8 @@
 					{
 						"role": "ROLE_ANTI_SHIPPING",
 						"weight": 20
-					}					
+					}
 				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 10
 			}
 		]
 	},
@@ -196,7 +139,32 @@
 			"conversionCompleteDate": "19420331"
 		}
 	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19420301",
+				"squadName": "45th Bomber Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 40
+			},
+			{
+				"date": "19430918",
+				"squadName": "244th Bomber Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 40
+			}
+		]
+	},
 	"callsigns": {
 		"19390801": "GANNET"
-	}
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"nightMissionOdds": 10
+			}
+		]
+	},
+	"skins": []
 }

@@ -59,7 +59,8 @@ public class KubanShippingZoneTest
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightTypeWithSkirmish(playerParticipants, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, shippingZoneSkirmish);
-
+        mission.finalizeMission();
+        
         Assertions.assertTrue (mission.getSkirmish() != null);
         Assertions.assertTrue (mission.getSkirmish().getSkirmishName().startsWith("Ship Encounter"));
         boolean axisShipsFound = false;
@@ -103,7 +104,8 @@ public class KubanShippingZoneTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        
+        mission.finalizeMission();
+
         Assertions.assertTrue (mission.getSkirmish() == null);
         
         MissionFlightValidator.validateMission(mission);

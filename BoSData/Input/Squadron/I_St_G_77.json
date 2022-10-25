@@ -4,9 +4,11 @@
 	"name": "I./St.G.77",
 	"fileName": "I_St_G_77.json",
 	"skill": 65,
+	"serviceId": 20101,
 	"unitIdCode": "S2",
 	"subUnitIdCode": "H",
-	"squadronTacticalCodeOverride": "RED",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "ju87",
@@ -65,49 +67,6 @@
 		"19450401": "ef_Deurne",
 		"19450501": "ef_Chievres"
 	},
-	"skins": [
-		{
-			"skinName": "I_StG77",
-			"planeType": "ju87d3",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20121077,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "I_St_G_77_W",
-			"planeType": "ju87d3",
-			"archTypes": [],
-			"startDate": "19411001",
-			"endDate": "19450601",
-			"squadId": 20121077,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": true,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19431018",
-				"squadName": "I./SG77",
-				"armedServiceName": "Luftwaffe",
-				"skill": 60,
-				"unitIdCode": "",
-				"subUnitIdCode": ""
-			}
-		]
-	},
-	"serviceId": 20101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -163,6 +122,22 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19431018",
+				"squadName": "I./SG77",
+				"armedServiceName": "Luftwaffe",
+				"skill": 60,
+				"unitIdCode": "",
+				"subUnitIdCode": ""
+			}
+		]
+	},
+	"callsigns": {
+		"19410801": "HAWK"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -171,8 +146,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "HAWK"
-	}
+	"skins": []
 }

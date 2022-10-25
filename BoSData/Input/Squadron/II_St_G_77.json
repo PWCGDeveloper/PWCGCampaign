@@ -4,8 +4,11 @@
 	"name": "II./St.G.77",
 	"fileName": "II_St_G_77.json",
 	"skill": 60,
+	"serviceId": 20101,
 	"unitIdCode": "S2",
 	"subUnitIdCode": "N",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "ju87",
@@ -63,63 +66,6 @@
 		"19450401": "ef_LeCulot East",
 		"19450501": "ef_Chievres"
 	},
-	"skins": [
-		{
-			"skinName": "ju87d3_skin_11",
-			"planeType": "ju87d3",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20122077,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "II_Stg77",
-			"planeType": "fw190a5",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20122077,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "II_SG4",
-			"planeType": "fw190a8",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20122077,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19431018",
-				"squadName": "III./SG10",
-				"armedServiceName": "Luftwaffe",
-				"skill": 55,
-				"unitIdCode": "",
-				"subUnitIdCode": "~"
-			}
-		]
-	},
-	"serviceId": 20101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -175,6 +121,22 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19431018",
+				"squadName": "III./SG10",
+				"armedServiceName": "Luftwaffe",
+				"skill": 55,
+				"unitIdCode": "",
+				"subUnitIdCode": "~"
+			}
+		]
+	},
+	"callsigns": {
+		"19410801": "CRANE"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -183,8 +145,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "CRANE"
-	}
+	"skins": []
 }

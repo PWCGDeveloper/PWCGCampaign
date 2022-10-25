@@ -4,8 +4,11 @@
 	"name": "349 Squadron",
 	"fileName": "349 Squadron.json",
 	"skill": 70,
+	"serviceId": 10103,
 	"unitIdCode": "GE",
-    "subUnitIdCode": "",
+	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "spitfire",
@@ -23,11 +26,6 @@
 		"19450310": "GraveKeent",
 		"19450404": "Coesfeld-Lette"
 	},
-    "skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10103,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -117,6 +115,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "BAFFIN"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -125,8 +130,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "BAFFIN"
-	}
+	"skins": []
 }

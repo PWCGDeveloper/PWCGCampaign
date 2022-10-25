@@ -4,8 +4,11 @@
 	"name": "387th Bomber Group",
 	"fileName": "387th BG.json",
 	"skill": 70,
+	"serviceId": 10102,
 	"unitIdCode": "TQ",
-    "subUnitIdCode": "",
+	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "b26",
@@ -28,11 +31,6 @@
 		"19450310": "Ophoven",
 		"19450404": "Eudenbach/Asbach"
 	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10102,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -54,6 +52,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "ROUGHMAN"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -62,8 +67,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "ROUGHMAN"
-	}
+	"skins": []
 }

@@ -4,10 +4,11 @@
 	"name": "35th Guards Bomber Air Regiment",
 	"fileName": "35th Guards Bomber Air Regiment.json",
 	"skill": 50,
+	"serviceId": 10101,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
-    "squadronTacticalCodeOverride": "RED",
-    "tacticalCodeStyle": 5,
+	"tacticalCodeStyle": 5,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "pe2",
@@ -47,51 +48,6 @@
 		"19450401": "ef_Kluis",
 		"19450501": "ef_Ophoven"
 	},
-	"skins": [
-		{
-			"skinName": "pe2s35_skin_09",
-			"planeType": "pe2s35",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 10131035,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "pe2s35_skin_05",
-			"planeType": "pe2s35",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 10131132,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": true,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "pe2s87_skin_03",
-			"planeType": "pe2s87",
-			"archTypes": [],
-			"startDate": "19420101",
-			"endDate": "19420331",
-			"squadId": 10131035,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"serviceId": 10101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -121,17 +77,17 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19390801": "PELICAN"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
 				"startDate": "19440901",
-				"endDate": "19450601",
 				"nightMissionOdds": 10
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "PELICAN"
-	}
+	"skins": []
 }

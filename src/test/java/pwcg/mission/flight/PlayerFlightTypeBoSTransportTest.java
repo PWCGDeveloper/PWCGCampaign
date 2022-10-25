@@ -26,6 +26,7 @@ import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
+import pwcg.testutils.MissionSkinChecker;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -62,6 +63,7 @@ public class PlayerFlightTypeBoSTransportTest
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
     }
 
     @Test
@@ -85,6 +87,7 @@ public class PlayerFlightTypeBoSTransportTest
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
     }
 
     @Test
@@ -105,6 +108,7 @@ public class PlayerFlightTypeBoSTransportTest
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
     }
 
 
@@ -129,6 +133,7 @@ public class PlayerFlightTypeBoSTransportTest
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
     }
 
     @Test
@@ -152,6 +157,7 @@ public class PlayerFlightTypeBoSTransportTest
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

@@ -4,8 +4,11 @@
 	"name": "182 Squadron",
 	"fileName": "182 Squadron.json",
 	"skill": 65,
+	"serviceId": 10103,
 	"unitIdCode": "XM",
-    "subUnitIdCode": "",
+	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "hurricane",
@@ -43,137 +46,6 @@
 		"19450310": "Heesch",
 		"19450404": "Coesfeld-Lette"
 	},
-	"skins": [
-        {
-            "skinName": "hurricanemkii_skin_03",
-            "planeType": "hurricanemkii",
-            "archTypes": [],
-            "startDate": "19390801",
-            "endDate": "19450601",
-            "squadId": 103083182,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE"
-        },
-        {
-            "skinName": "hurricanemkii_skin_04",
-            "planeType": "hurricanemkii",
-            "archTypes": [],
-            "startDate": "19420301",
-            "endDate": "19450601",
-            "squadId": 103083182,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "typhoonmkib_default",
-            "planeType": "typhoonmkib",
-            "archTypes": [],
-            "startDate": "19390801",
-            "endDate": "19440601",
-            "squadId": 103083182,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "tempestmkvs2_skin_04",
-            "planeType": "tempestmkvs2",
-            "archTypes": [],
-            "startDate": "19390801",
-            "endDate": "19440601",
-            "squadId": 103083182,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "tempestmkvs2_skin_01",
-            "planeType": "tempestmkvs2",
-            "archTypes": [],
-            "startDate": "19440601",
-            "endDate": "19440706",
-            "squadId": 103083182,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "tempestmkvs2_skin_02",
-            "planeType": "tempestmkvs2",
-            "archTypes": [],
-            "startDate": "19440706",
-            "endDate": "19440825",
-            "squadId": 103083182,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "tempestmkvs2_skin_03",
-            "planeType": "tempestmkvs2",
-            "archTypes": [],
-            "startDate": "19440825",
-            "endDate": "19450103",
-            "squadId": 103083182,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        },
-        {
-            "skinName": "tempestmkvs2_default",
-            "planeType": "tempestmkvs2",
-            "archTypes": [],
-            "startDate": "19390801",
-            "endDate": "19450601",
-            "squadId": 103083182,
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"
-        }
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19390801",
-				"squadName": "3 Squadron",
-				"armedServiceName": "Royal Air Force",
-				"skill": 65
-			},
-			{
-				"date": "19440901",
-				"squadName": "182 Squadron",
-				"armedServiceName": "Royal Air Force",
-				"skill": 65
-			}
-		]
-	},
-	"serviceId": 10103,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -255,6 +127,26 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19390801",
+				"squadName": "3 Squadron",
+				"armedServiceName": "Royal Air Force",
+				"skill": 65
+			},
+			{
+				"date": "19440901",
+				"squadName": "182 Squadron",
+				"armedServiceName": "Royal Air Force",
+				"skill": 65
+			}
+		]
+	},
+	"callsigns": {
+		"19390801": "BEARSKIN"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -263,8 +155,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "BEARSKIN"
-	}
+	"skins": []
 }

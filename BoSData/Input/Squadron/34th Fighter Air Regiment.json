@@ -4,10 +4,11 @@
 	"name": "34th Fighter Air Regiment",
 	"fileName": "34th Fighter Air Regiment.json",
 	"skill": 35,
+	"serviceId": 10101,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
-    "squadronTacticalCodeOverride": "YELLOW",
-    "tacticalCodeStyle": 2,
+	"tacticalCodeStyle": 2,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "i16",
@@ -65,25 +66,6 @@
 		"19450401": "ef_Heesch",
 		"19450501": "ef_Deurne"
 	},
-	"skins": [
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19420301",
-				"squadName": "273rd Fighter Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 40
-			},
-			{
-				"date": "19430918",
-				"squadName": "274th Fighter Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 45
-			}
-		]
-	},
-	"serviceId": 10101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -109,22 +91,38 @@
 			}
 		]
 	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 3
-			}
-		]
-	},
 	"conversionPeriods": [
 		{
 			"conversionStartDate": "19420214",
 			"conversionCompleteDate": "19420228"
 		}
 	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19420301",
+				"squadName": "273rd Fighter Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 40
+			},
+			{
+				"date": "19430918",
+				"squadName": "274th Fighter Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 45
+			}
+		]
+	},
 	"callsigns": {
 		"19390801": "ORIOLE"
-	}
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"skins": []
 }

@@ -4,10 +4,11 @@
 	"name": "495th Fighter Air Regiment",
 	"fileName": "495th Fighter Air Regiment.json",
 	"skill": 40,
+	"serviceId": 10101,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
-    "squadronTacticalCodeOverride": "RED",
-    "tacticalCodeStyle": 1,
+	"tacticalCodeStyle": 1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "i16",
@@ -67,81 +68,6 @@
 		"19450401": "ef_Volkel",
 		"19450501": "ef_St.Trond"
 	},
-	"skins": [
-		{
-			"skinName": "495th Fighter Air Regiment",
-			"planeType": "i16t24",
-			"archTypes": [],
-			"startDate": "19410801",
-			"endDate": "19450601",
-			"squadId": 10111495,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "495th Fighter Air Regiment W",
-			"planeType": "i16t24",
-			"archTypes": [],
-			"startDate": "19410801",
-			"endDate": "19450601",
-			"squadId": 10111495,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": true,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "495th Fighter Air Regiment",
-			"planeType": "mig3s24",
-			"archTypes": [],
-			"startDate": "19410801",
-			"endDate": "19450601",
-			"squadId": 10111495,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "495th Fighter Air Regiment W",
-			"planeType": "mig3s24",
-			"archTypes": [],
-			"startDate": "19410801",
-			"endDate": "19450601",
-			"squadId": 10111495,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": true,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19420301",
-				"squadName": "439th Fighter Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 45
-			},
-			{
-				"date": "19430301",
-				"squadName": "45th Guards Fighter Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 60
-			}
-		]
-	},
-	"serviceId": 10101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -188,15 +114,6 @@
 			}
 		]
 	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 3
-			}
-		]
-	},
 	"conversionPeriods": [
 		{
 			"conversionStartDate": "19420301",
@@ -207,7 +124,32 @@
 			"conversionCompleteDate": "19430228"
 		}
 	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19420301",
+				"squadName": "439th Fighter Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 45
+			},
+			{
+				"date": "19430301",
+				"squadName": "45th Guards Fighter Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 60
+			}
+		]
+	},
 	"callsigns": {
 		"19390801": "BRAMBLING"
-	}
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"skins": []
 }

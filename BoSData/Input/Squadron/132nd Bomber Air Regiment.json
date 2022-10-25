@@ -4,10 +4,11 @@
 	"name": "132nd Bomber Air Regiment",
 	"fileName": "132nd Bomber Air Regiment.json",
 	"skill": 30,
+	"serviceId": 10101,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
-    "squadronTacticalCodeOverride": "YELLOW",
-    "tacticalCodeStyle": 4,
+	"tacticalCodeStyle": 4,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "pe2",
@@ -59,67 +60,6 @@
 		"19450401": "ef_Arnhem Deelen",
 		"19450501": "ef_Schijndel"
 	},
-	"skins": [
-		{
-			"skinName": "pe2s35_skin_06",
-			"planeType": "pe2s35",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 10131132,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "pe2s35_skin_05",
-			"planeType": "pe2s35",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 10131132,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": true,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "pe2s87_skin_08",
-			"planeType": "pe2s87",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 10131010,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19420301",
-				"squadName": "86th Bomber Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 30
-			},
-			{
-				"date": "19430918",
-				"squadName": "63rd Bomber Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 35
-			}
-		]
-	},
-	"serviceId": 10101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -149,17 +89,33 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19420301",
+				"squadName": "86th Bomber Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 30
+			},
+			{
+				"date": "19430918",
+				"squadName": "63rd Bomber Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 35
+			}
+		]
+	},
+	"callsigns": {
+		"19390801": "KITTIWAKE"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
 				"startDate": "19440901",
-				"endDate": "19450601",
 				"nightMissionOdds": 10
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "KITTIWAKE"
-	}
+	"skins": []
 }

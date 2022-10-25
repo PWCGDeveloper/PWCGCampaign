@@ -17,6 +17,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
 import pwcg.testutils.CampaignCache;
+import pwcg.testutils.MissionSkinChecker;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -95,6 +96,7 @@ public class PlayerFlightTypeBoSInterceptTest
 
         Assertions.assertTrue (expectedFlights == actualBombers);
         Assertions.assertTrue (expectedEscorts == actualEscorts);
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
 
 	}
 }

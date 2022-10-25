@@ -4,9 +4,11 @@
 	"name": "II./TG1",
 	"fileName": "II_TG1.json",
 	"skill": 50,
+	"serviceId": 20101,
 	"unitIdCode": "1Z",
 	"subUnitIdCode": "P",
-	"squadronTacticalCodeOverride": "YELLOW",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "ju52",
@@ -30,11 +32,6 @@
 		"19450310": "Werl",
 		"19450404": "Quackenbruck"
 	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -48,6 +45,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19410801": "PELICAN"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -56,8 +60,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "PELICAN"
-	}
+	"skins": []
 }

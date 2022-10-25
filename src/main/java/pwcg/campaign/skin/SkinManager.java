@@ -77,7 +77,7 @@ public class SkinManager
         
         if (skinsForSquadronPlaneDate.isEmpty())
         {
-            PWCGLogger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDateInUse: No skins " + planeName);
+            PWCGLogger.log(LogLevel.DEBUG, "getSkinsBySquadronPlaneDateInUse: No skins " + planeName);
         }
 		
 		return skinsForSquadronPlaneDate;

@@ -4,9 +4,11 @@
 	"name": "II./JG51",
 	"fileName": "II_JG51.json",
 	"skill": 90,
+	"serviceId": 20101,
 	"unitIdCode": "",
 	"subUnitIdCode": "-",
-	"squadronTacticalCodeOverride": "WHITE",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "bf109",
@@ -62,82 +64,6 @@
 		"19450401": "ef_Deurne",
 		"19450501": "ef_Chievres"
 	},
-	"skins": [
-		{
-			"skinName": "II_JG51",
-			"planeType": "bf109f2",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20112051,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "II_JG51",
-			"planeType": "bf109f4",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20112051,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "II_JG51",
-			"planeType": "bf109g2",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20112051,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "II_JG51",
-			"planeType": "bf109g6",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20112051,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "II_JG51",
-			"planeType": "bf109g14",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20112051,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -201,6 +127,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19410801": "ORIOLE"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -209,8 +142,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "ORIOLE"
-	}
+	"skins": []
 }

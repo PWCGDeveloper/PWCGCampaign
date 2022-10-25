@@ -6,8 +6,8 @@ import pwcg.campaign.squadmember.SerialNumber;
 
 public class CampaignData
 {
+    private String name = "";
 	private Date date = null;
-	private String name = "";
     private boolean isCoop = false;
     private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
     private SerialNumber serialNumber = new SerialNumber();

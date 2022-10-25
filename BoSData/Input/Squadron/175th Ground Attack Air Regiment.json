@@ -4,9 +4,11 @@
 	"name": "175th Ground Attack Air Regiment",
 	"fileName": "175th Ground Attack Air Regiment.json",
 	"skill": 25,
+	"serviceId": 10101,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
-    "tacticalCodeStyle": 3,
+	"tacticalCodeStyle": 3,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "il2",
@@ -57,81 +59,6 @@
 		"19450401": "ef_Bierset",
 		"19450501": "ef_PetitBrogel"
 	},
-	"skins": [
-		{
-			"skinName": "il2m41_default",
-			"planeType": "il2m41",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 10121175,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "175th Ground Attack Air Regiment",
-			"planeType": "il2m42",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 10121175,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "175th Ground Attack Air Regiment W",
-			"planeType": "il2m42",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19440401",
-			"squadId": 10121175,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": true,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "il2m43_skin_04",
-			"planeType": "il2m43",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 10121175,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19420301",
-				"squadName": "766th Ground Attack Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 30
-			},
-			{
-				"date": "19430918",
-				"squadName": "783rd Ground Attack Air Regiment",
-				"armedServiceName": "Voyenno-Vozdushnye Sily",
-				"skill": 30
-			}
-		]
-	},
-	"serviceId": 10101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -148,27 +75,42 @@
 					{
 						"role": "ROLE_TRAIN_BUSTER",
 						"weight": 10
-					}
-					,
+					},
 					{
 						"role": "ROLE_TANK_BUSTER",
 						"weight": 20
-					}					
+					}
 				]
 			}
 		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19420301",
+				"squadName": "766th Ground Attack Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 30
+			},
+			{
+				"date": "19430918",
+				"squadName": "783rd Ground Attack Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 30
+			}
+		]
+	},
+	"callsigns": {
+		"19390801": "EAGLE"
 	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
 				"startDate": "19440901",
-				"endDate": "19450601",
 				"nightMissionOdds": 10
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "EAGLE"
-	}
+	"skins": []
 }

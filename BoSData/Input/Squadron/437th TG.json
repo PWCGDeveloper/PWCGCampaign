@@ -4,8 +4,11 @@
 	"name": "437th Transport Group",
 	"fileName": "437th TG.json",
 	"skill": 30,
+	"serviceId": 10102,
 	"unitIdCode": "T2",
 	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "c47",
@@ -28,26 +31,6 @@
 		"19450310": "St.Trond",
 		"19450404": "Koln-Wahn"
 	},
-	"skins": [
-		{
-			"skinName": "c47a_skin_01",
-			"planeType": "c47a",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 102012437,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10102,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -61,6 +44,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19410801": "ROUGHMAN"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -69,8 +59,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "ROUGHMAN"
-	}
+	"skins": []
 }

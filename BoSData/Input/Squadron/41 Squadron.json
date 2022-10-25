@@ -4,8 +4,11 @@
 	"name": "41 Squadron",
 	"fileName": "41 Squadron.json",
 	"skill": 85,
+	"serviceId": 10103,
 	"unitIdCode": "EB",
-    "subUnitIdCode": "",
+	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "spitfire",
@@ -42,11 +45,6 @@
 		"19450324": "Eindhoven",
 		"19450404": "Eindhoven"
 	},
-    "skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10103,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -119,6 +117,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "MITOR"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -135,8 +140,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "MITOR"
-	}
+	"skins": []
 }

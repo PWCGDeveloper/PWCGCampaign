@@ -101,12 +101,19 @@ public class SkinFilter
             {
                 filteredSkins.add(skin);
             }
-            else if (!skin.isWinter() && season != Season.WINTER)
-            {
-                filteredSkins.add(skin);
-            }
         }
         
+        if (filteredSkins.isEmpty())
+        {
+            for (Skin skin : skins)
+            {
+                if (!skin.isWinter())
+                {
+                    filteredSkins.add(skin);
+                }
+            }
+        }
+
         return filteredSkins;
     }
 }

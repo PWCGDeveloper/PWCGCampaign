@@ -4,9 +4,11 @@
 	"name": "I./JG3",
 	"fileName": "I_JG3.json",
 	"skill": 85,
+	"serviceId": 20101,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
-    "squadronTacticalCodeOverride": "BLUE",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "bf109",
@@ -15,7 +17,7 @@
 		}
 	],
 	"airfields": {
-        "19410601": "B-19 Lingevres",
+		"19410601": "B-19 Lingevres",
 		"19420801": "Zimovskoy",
 		"19420906": "Golubinskiy",
 		"19421011": "Zimovskoy",
@@ -47,98 +49,42 @@
 		"19450401": "ef_Gilze-Rijen",
 		"19450501": "ef_Chievres"
 	},
-	"skins": [
-		{
-			"skinName": "I_JG3",
-			"planeType": "bf109f2",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20111003,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_JG3",
-			"planeType": "bf109f4",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20111003,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_JG3",
-			"planeType": "bf109g2",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20111003,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_JG3",
-			"planeType": "bf109g6",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20111003,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_JG3",
-			"planeType": "bf109g14",
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20111003,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
-            {
-                "startDate": "19390801",
-                "weightedRoles": [
-                    {
-                        "role": "ROLE_RECON",
-                        "weight": 5
-                    },
-                    {
-                        "role": "ROLE_FIGHTER",
-                        "weight": 70
-                    },
-                    {
-                        "role": "ROLE_RAIDER",
-                        "weight": 10
-                    }
-                ]
-            },
-            {
-                "startDate": "19411001",
-                "weightedRoles": [
-                    {
-                        "role": "ROLE_RECON",
-                        "weight": 5
-                    },
-                    {
-                        "role": "ROLE_FIGHTER",
-                        "weight": 70
-                    },
-                    {
-                        "role": "ROLE_RAIDER",
-                        "weight": 20
-                    }
-                ]
-            },
+			{
+				"startDate": "19390801",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19411001",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 20
+					}
+				]
+			},
 			{
 				"startDate": "19420801",
 				"weightedRoles": [
@@ -166,17 +112,20 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "SWIFT"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
 				"startDate": "19411001",
-				"endDate": "19450601",
 				"nightMissionOdds": 2
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "SWIFT"
-	}
+	"skins": []
 }

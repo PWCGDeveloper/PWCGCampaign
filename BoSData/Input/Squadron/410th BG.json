@@ -4,8 +4,11 @@
 	"name": "410th Bomber Group",
 	"fileName": "410th BG.json",
 	"skill": 70,
+	"serviceId": 10102,
 	"unitIdCode": "8U",
-    "subUnitIdCode": "",
+	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "a20",
@@ -28,12 +31,6 @@
 		"19450310": "Asch",
 		"19450404": "Koln-Ostheim"
 	},
-    "skins": [
-    ],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10102,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -55,6 +52,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "WOODBINE"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -63,8 +67,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "WOODBINE"
-	}
+	"skins": []
 }

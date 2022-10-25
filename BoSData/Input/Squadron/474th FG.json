@@ -4,8 +4,11 @@
 	"name": "474th Fighter Group",
 	"fileName": "474th FG.json",
 	"skill": 70,
+	"serviceId": 10102,
 	"unitIdCode": "7Y",
-    "subUnitIdCode": "",
+	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "p38",
@@ -29,96 +32,6 @@
 		"19450310": "Kelz",
 		"19450404": "Mainz-Finthen"
 	},
-	"skins": [
-        {
-            "skinName": "p38j25_skin_04",
-            "planeType": "p38j25",
-            "archTypes": [],
-            "startDate": "19430601",
-            "endDate": "19440601",
-            "squadId": 102363033,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE"
-        },
-        {
-            "skinName": "p38j25_default",
-            "planeType": "p38j25",
-            "archTypes": [],
-            "startDate": "19440201",
-            "endDate": "19440601",
-            "squadId": 102363033,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p38j25_skin_01",
-            "planeType": "p38j25",
-            "archTypes": [],
-            "startDate": "19440601",
-            "endDate": "19440706",
-            "squadId": 102363033,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p38j25_skin_02",
-            "planeType": "p38j25",
-            "archTypes": [],
-            "startDate": "19440706",
-            "endDate": "19440825",
-            "squadId": 102363033,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-		{
-			"skinName": "p38j25_skin_03",
-			"planeType": "p38j25",
-			"archTypes": [],
-			"startDate": "19440825",
-			"endDate": "19450103",
-			"squadId": 102363033,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK"
-		},
-		{
-			"skinName": "p38j25_default",
-			"planeType": "p38j25",
-			"archTypes": [],
-			"startDate": "19450103",
-			"endDate": "19450601",
-			"squadId": 102363033,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10102,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -190,6 +103,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "RIPPER"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -198,8 +118,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "RIPPER"
-	}
+	"skins": []
 }

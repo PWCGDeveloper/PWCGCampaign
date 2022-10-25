@@ -55,6 +55,7 @@ public class ArdennesFlightTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
         for (AssaultDefinition assaultDefinition : mission.getBattleManager().getMissionAssaultDefinitions())
@@ -79,6 +80,7 @@ public class ArdennesFlightTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
         for (AssaultDefinition assaultDefinition : mission.getBattleManager().getMissionAssaultDefinitions())
@@ -105,7 +107,8 @@ public class ArdennesFlightTest
         fg362Campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(fg362Campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(fg362Campaign));
-        
+        mission.finalizeMission();
+
         Assertions.assertTrue (mission.getSkirmish() == null);
     }
 }

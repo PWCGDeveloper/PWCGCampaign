@@ -4,8 +4,11 @@
 	"name": "322nd Bomber Group",
 	"fileName": "322nd BG.json",
 	"skill": 65,
+	"serviceId": 10102,
 	"unitIdCode": "ER",
 	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "b26",
@@ -27,11 +30,6 @@
 		"19450310": "Asch",
 		"19450404": "Koln-Ostheim"
 	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10102,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -53,6 +51,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19410801": "ROUGHMAN"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -61,8 +66,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "ROUGHMAN"
-	}
+	"skins": []
 }

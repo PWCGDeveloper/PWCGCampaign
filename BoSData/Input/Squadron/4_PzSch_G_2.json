@@ -4,8 +4,11 @@
 	"name": "4.(Pz)/Sch.G.2",
 	"fileName": "4_PzSch_G_2.json",
 	"skill": 70,
+	"serviceId": 20101,
 	"unitIdCode": "",
-	"subUnitIdCode": "\u25b2",
+	"subUnitIdCode": "?",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "hs129",
@@ -39,7 +42,24 @@
 		"19450401": "ef_Diest",
 		"19450501": "ef_Chievres"
 	},
-	"skins": [],
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_TANK_BUSTER",
+						"weight": 80
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
 	"squadHistory": {
 		"squadHistoryEntries": [
 			{
@@ -58,35 +78,16 @@
 			}
 		]
 	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19400101",
-				"weightedRoles": [
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 40
-					},
-					{
-						"role": "ROLE_TANK_BUSTER",
-						"weight": 80
-					}
-				]
-			}
-		]
+	"callsigns": {
+		"19390801": "STORK"
 	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
 				"startDate": "19400101",
-				"endDate": "19450601",
 				"nightMissionOdds": 10
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "STORK"
-	}
+	"skins": []
 }

@@ -34,6 +34,7 @@ import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.GroundUnitPositionVerifier;
 import pwcg.testutils.CampaignCache;
+import pwcg.testutils.MissionSkinChecker;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -72,8 +73,8 @@ public class PlayerFlightTypeBoSFighterTest
         virtualWaypointPackageValidator.validate();
 
         assert(mission.getFlights().getAiFlights().size() >= 3);
-        
         GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
 	}
 
     @Test
@@ -101,6 +102,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert(mission.getFlights().getAiFlights().size() >= 3);
 
         GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
     }
 
     @Test
@@ -128,6 +130,7 @@ public class PlayerFlightTypeBoSFighterTest
         virtualWaypointPackageValidator.validate();
         
         assert(mission.getFlights().getAiFlights().size() == 1);
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
     }
 
 	@Test
@@ -157,6 +160,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert(mission.getFlights().getAiFlights().size() >= 3);
 
         GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
 	}
 
 	@Test
@@ -186,6 +190,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert(mission.getFlights().getAiFlights().size() >= 3);
 
         GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
 	}
 
     @Test
@@ -211,6 +216,7 @@ public class PlayerFlightTypeBoSFighterTest
         virtualWaypointPackageValidator.validate();
 
         assert(mission.getFlights().getAiFlights().size() >= 3);
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

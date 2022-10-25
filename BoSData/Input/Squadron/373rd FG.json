@@ -4,8 +4,11 @@
 	"name": "373rd Fighter Group",
 	"fileName": "373rd FG.json",
 	"skill": 65,
+	"serviceId": 10102,
 	"unitIdCode": "R3",
-    "subUnitIdCode": "",
+	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "p47",
@@ -28,180 +31,6 @@
 		"19450310": "Venlo",
 		"19450404": "Wiesbaden-Erbenheim"
 	},
-	"skins": [
-        {
-            "skinName": "p47d22_default",
-            "planeType": "p47d22",
-            "archTypes": [],
-            "startDate": "19430601",
-            "endDate": "19440601",
-            "squadId": 102373410,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE"
-        },
-        {
-            "skinName": "p47d22_skin_01",
-            "planeType": "p47d22",
-            "archTypes": [],
-            "startDate": "19440201",
-            "endDate": "19440601",
-            "squadId": 102373410,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p47d22_skin_02",
-            "planeType": "p47d22",
-            "archTypes": [],
-            "startDate": "19440601",
-            "endDate": "19440706",
-            "squadId": 102373410,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p47d22_skin_03",
-            "planeType": "p47d22",
-            "archTypes": [],
-            "startDate": "19440706",
-            "endDate": "19440825",
-            "squadId": 102373410,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p47d22_skin_04",
-            "planeType": "p47d22",
-            "archTypes": [],
-            "startDate": "19440825",
-            "endDate": "19450103",
-            "squadId": 102373410,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p47d22_skin_01",
-            "planeType": "p47d22",
-            "archTypes": [],
-            "startDate": "19450103",
-            "endDate": "19450601",
-            "squadId": 102373410,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p47d28_skin_04",
-            "planeType": "p47d28",
-            "archTypes": [],
-            "startDate": "19430601",
-            "endDate": "19440601",
-            "squadId": 19450103,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE"
-        },
-        {
-            "skinName": "p47d28_default",
-            "planeType": "p47d28",
-            "archTypes": [],
-            "startDate": "19440201",
-            "endDate": "19440601",
-            "squadId": 19450103,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p47d28_skin_01",
-            "planeType": "p47d28",
-            "archTypes": [],
-            "startDate": "19440601",
-            "endDate": "19440706",
-            "squadId": 19450103,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p47d28_skin_02",
-            "planeType": "p47d28",
-            "archTypes": [],
-            "startDate": "19440706",
-            "endDate": "19440825",
-            "squadId": 19450103,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p47d28_skin_03",
-            "planeType": "p47d28",
-            "archTypes": [],
-            "startDate": "19440825",
-            "endDate": "19450103",
-            "squadId": 19450103,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        },
-        {
-            "skinName": "p47d28_default",
-            "planeType": "p47d28",
-            "archTypes": [],
-            "startDate": "19450103",
-            "endDate": "19450601",
-            "squadId": 19450103,
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"
-        }
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10102,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -248,6 +77,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "GRANITE"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -256,8 +92,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "GRANITE"
-	}
+	"skins": []
 }

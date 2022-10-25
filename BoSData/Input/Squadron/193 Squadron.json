@@ -4,8 +4,11 @@
 	"name": "193 Squadron",
 	"fileName": "193 Squadron.json",
 	"skill": 70,
+	"serviceId": 10103,
 	"unitIdCode": "DP",
-    "subUnitIdCode": "",
+	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "hurricane",
@@ -38,24 +41,6 @@
 		"19450310": "Schijndel",
 		"19450404": "Werl"
 	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19390801",
-				"squadName": "73 Squadron",
-				"armedServiceName": "Royal Air Force",
-				"skill": 70
-			},
-			{
-				"date": "19430101",
-				"squadName": "193 Squadron",
-				"armedServiceName": "Royal Air Force",
-				"skill": 70
-			}
-		]
-	},
-	"serviceId": 10103,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -120,6 +105,26 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19390801",
+				"squadName": "73 Squadron",
+				"armedServiceName": "Royal Air Force",
+				"skill": 70
+			},
+			{
+				"date": "19430101",
+				"squadName": "193 Squadron",
+				"armedServiceName": "Royal Air Force",
+				"skill": 70
+			}
+		]
+	},
+	"callsigns": {
+		"19390801": "ANGEL"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -136,8 +141,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "ANGEL"
-	}
+	"skins": []
 }

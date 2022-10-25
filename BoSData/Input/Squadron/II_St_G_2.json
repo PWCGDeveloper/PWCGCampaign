@@ -4,8 +4,11 @@
 	"name": "II./St.G.2",
 	"fileName": "II_St_G_2.json",
 	"skill": 60,
+	"serviceId": 20101,
 	"unitIdCode": "T6",
 	"subUnitIdCode": "M",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "ju87",
@@ -59,35 +62,6 @@
 		"19450401": "ef_LeCulot",
 		"19450501": "ef_Chievres"
 	},
-	"skins": [
-		{
-			"skinName": "II_StG2",
-			"planeType": "ju87d3",
-			"archTypes": [],
-			"startDate": "19390801",
-			"endDate": "19450601",
-			"squadId": 20122002,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19431018",
-				"squadName": "I./SG2",
-				"armedServiceName": "Luftwaffe",
-				"skill": 45,
-				"unitIdCode": "",
-				"subUnitIdCode": ""
-			}
-		]
-	},
-	"serviceId": 20101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -131,6 +105,22 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19431018",
+				"squadName": "I./SG2",
+				"armedServiceName": "Luftwaffe",
+				"skill": 45,
+				"unitIdCode": "",
+				"subUnitIdCode": ""
+			}
+		]
+	},
+	"callsigns": {
+		"19410801": "RAVEN"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -139,8 +129,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "RAVEN"
-	}
+	"skins": []
 }

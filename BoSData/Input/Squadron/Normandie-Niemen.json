@@ -4,10 +4,11 @@
 	"name": "Normandie-Niemen Air Regiment",
 	"fileName": "Normandie-Niemen.json",
 	"skill": 50,
+	"serviceId": 10104,
 	"unitIdCode": "",
 	"subUnitIdCode": "",
-    "squadronTacticalCodeOverride": "RED",
-    "tacticalCodeStyle": 2,
+	"tacticalCodeStyle": 2,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "yak",
@@ -47,26 +48,6 @@
 		"19450401": "ef_Mill",
 		"19450501": "ef_Gilze-Rijen"
 	},
-	"skins": [
-		{
-			"skinName": "yak1s127_skin_03",
-			"planeType": "yak1s127",
-			"archTypes": [],
-			"startDate": "19440101",
-			"endDate": "19450601",
-			"squadId": 10111999,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10104,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -92,17 +73,20 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "SWIFT"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
 				"startDate": "19440901",
-				"endDate": "19450601",
 				"nightMissionOdds": 3
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "SWIFT"
-	}
+	"skins": []
 }

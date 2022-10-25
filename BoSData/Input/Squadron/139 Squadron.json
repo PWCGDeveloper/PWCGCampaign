@@ -4,8 +4,11 @@
 	"name": "139 Squadron",
 	"fileName": "139 Squadron.json",
 	"skill": 70,
+	"serviceId": 10103,
 	"unitIdCode": "XD",
-    "subUnitIdCode": "",
+	"subUnitIdCode": "",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "a20",
@@ -35,11 +38,6 @@
 		"19450310": "Gilze-Rijen",
 		"19450404": "Bonninghardt-Sud"
 	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10103,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
@@ -70,6 +68,13 @@
 			}
 		]
 	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {
+		"19390801": "ACORN"
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
@@ -78,8 +83,5 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19390801": "ACORN"
-	}
+	"skins": []
 }

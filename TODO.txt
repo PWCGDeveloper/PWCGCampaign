@@ -1,16 +1,18 @@
 
 MUST DO BEFORE RELEASE
-
-Check skin assignment.  Seems to be using only factory skins
 Start creating unit skins.
 
-Normandy Release Fixed
+Beta 3 Fixed
 Improve strategic intercept and scramble mission waypoints
 Fixed bombers on Normandy map turning towards home
-Fixed order of British unit/aircraft markings.  Check US too.
-Removed JG54 109 skin from use
 Increased range of radar unit spawn to make them appear on Normandy map
-
+Skin related fixes
+- Added date considerations to skin selections
+- Fixed code issue where winter skin selection could clear the skin list 
+- Fixed order of British unit/aircraft markings.  Check US too.
+- Removed JG54 109 skin from use
+- Fixed yak9t and Spitfire IX skin lists
+- Fixed several data issues with skins (Tempest, Hurricane, FW190s)
 
 
 Beta 2 Fixed

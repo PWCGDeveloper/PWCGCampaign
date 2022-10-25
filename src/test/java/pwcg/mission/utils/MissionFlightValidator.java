@@ -11,6 +11,7 @@ import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
+import pwcg.testutils.MissionSkinChecker;
 
 public class MissionFlightValidator
 {
@@ -19,6 +20,7 @@ public class MissionFlightValidator
     {
         validateSquadronsUsedOnlyOnce(mission);
         validateAirfieldUsedOnlyOnce(mission);
+        MissionSkinChecker.verifyPlanesHaveSkins(mission);
     }
 
     private static void validateSquadronsUsedOnlyOnce(Mission mission) throws PWCGException
