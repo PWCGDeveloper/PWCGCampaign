@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "bf109",
@@ -149,5 +149,84 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "bf109f2_early_I_JG1",
+            "planeType": "bf109f2",
+            "startDate": "19390901",
+            "endDate": "19411215",
+            "squadId": 20111001,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "bf109f2_gray_I_JG1",
+            "planeType": "bf109f2",
+            "startDate": "19411201",
+            "endDate": "19450601",
+            "squadId": 20111001,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "bf109f2_green_I_JG1",
+            "planeType": "bf109f2",
+            "startDate": "19411201",
+            "endDate": "19450601",
+            "squadId": 20111001,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "bf109f4_generic_I_JG1",
+            "planeType": "bf109f4",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111001,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "bf109g2_generic_I_JG1",
+            "planeType": "bf109g2",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111001,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "bf109g4_generic_I_JG1",
+            "planeType": "bf109g4",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111001,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        }
+	]
 }

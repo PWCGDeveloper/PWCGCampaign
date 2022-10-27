@@ -4,7 +4,7 @@
         "bf109f2_default": {
             "skinName": "bf109f2",
             "planeType": "bf109f2",
-            "startDate": "19390801",
+            "startDate": "19420101",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -30,7 +30,7 @@
         "bf109f2_blank_02": {
             "skinName": "bf109f2_blank_02",
             "planeType": "bf109f2",
-            "startDate": "19390801",
+            "startDate": "19420101",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",

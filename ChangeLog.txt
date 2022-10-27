@@ -1,3 +1,27 @@
+14.0.0
+Integration of IL2 GB Normandy
+- Normandy Map
+- Dunkirk 1941
+- Battle of Britain 1941
+- Channel Front
+- Dieppe
+- Normandy
+- Newspapers
+- Normandy iconic missions
+Improve strategic intercept and scramble mission waypoints
+Radar on the channel front and on the Rhine map
+Blank skins and tactical codes
+Two new skin sets
+- Blank skins for US fighter squadrons
+- P-27 D22, P-47 D28, P-51 B5, P-51 D-15
+- About 100 new squadron skins based on the new blank skins
+Added code to not kill pilots who bail out
+- Used to avoid killing everybody that bails out over water
+- If you are going down over water, don't ditch.  PWCG can't pick that up.  Bail out.
+Fixed keep airfield objects away from any area usable by real planes.
+Fixed issue that could prevent AAR from completing.
+
+
 13.11.1
 Bring down bombing altitude a bit
 - 3K meters at the lowest, 7K at the highest

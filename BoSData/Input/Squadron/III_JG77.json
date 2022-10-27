@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "~",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "BLUE",
 	"planeAssignments": [
 		{
 			"archType": "bf109",
@@ -71,5 +71,175 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "bf109f2_early_III_JG77",
+            "planeType": "bf109f2",
+            "startDate": "19390901",
+            "endDate": "19411215",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109f2_gray_III_JG77",
+            "planeType": "bf109f2",
+            "startDate": "19411201",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109f2_green_III_JG77",
+            "planeType": "bf109f2",
+            "startDate": "19411201",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109f4_generic_III_JG77",
+            "planeType": "bf109f4",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109g2_generic_III_JG77",
+            "planeType": "bf109g2",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109g4_generic_III_JG77",
+            "planeType": "bf109g4",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109g6_III_JG77",
+            "planeType": "bf109g6",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109g6late_III_JG77",
+            "planeType": "bf109g6late",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109g14_generic_III_JG77",
+            "planeType": "bf109g14",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109g14_green_III_JG77",
+            "planeType": "bf109g14",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109k4_brown_III_JG77",
+            "planeType": "bf109k4",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109k4_gray_III_JG77",
+            "planeType": "bf109k4",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        },
+        {
+            "skinName": "bf109k4_green_III_JG77",
+            "planeType": "bf109k4",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        }
+	]
 }
