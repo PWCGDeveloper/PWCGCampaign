@@ -115,9 +115,6 @@ public class SkinManagerTest
     @Test
     public void validDateRangeTest() throws PWCGException
     {
-        List<String> hasNoBlanks = new ArrayList<>();
-        hasNoBlanks.add("bf109g6late");
-        
         for (String planeName : skinManager.getAllSkinsByPlane().keySet())
         {
             for (Skin skin : skinManager.getSkinsForPlane(planeName).getAllUsedByPWCG())

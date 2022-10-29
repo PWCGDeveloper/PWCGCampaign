@@ -194,7 +194,7 @@
             "squadId": 20111026,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "WHITE"
@@ -207,7 +207,7 @@
             "squadId": 20111026,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "WHITE"
@@ -220,7 +220,7 @@
             "squadId": 20111026,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "WHITE"
@@ -233,7 +233,7 @@
             "squadId": 20111026,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "WHITE"
@@ -246,7 +246,7 @@
             "squadId": 20111026,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "WHITE"
@@ -259,10 +259,114 @@
             "squadId": 20111026,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "WHITE"
-        }
+        },
+        {
+            "skinName": "fw190a3_I_JG26",
+            "planeType": "fw190a3",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "fw190a5_I_JG26",
+            "planeType": "fw190a5",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "fw190a6_I_JG26",
+            "planeType": "fw190a6",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "fw190a8_I_JG26",
+            "planeType": "fw190a8",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "fw190a8_green_I_JG26",
+            "planeType": "fw190a8",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "fw190d9_I_JG26",
+            "planeType": "fw190d9",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "fw190d9_brown_I_JG26",
+            "planeType": "fw190d9",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "fw190d9_gray_I_JG26",
+            "planeType": "fw190d9",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20111026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        }        
 	]
 }

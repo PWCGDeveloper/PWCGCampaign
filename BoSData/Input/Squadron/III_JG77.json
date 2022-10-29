@@ -80,7 +80,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -93,20 +93,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLUE"
-        },
-        {
-            "skinName": "bf109f2_green_III_JG77",
-            "planeType": "bf109f2",
-            "startDate": "19411201",
-            "endDate": "19450601",
-            "squadId": 20111077,
-            "country": "Germany",
-            "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -119,7 +106,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -132,7 +119,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -145,7 +132,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -158,7 +145,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -171,7 +158,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -184,7 +171,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -197,7 +184,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -210,7 +197,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -223,7 +210,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"
@@ -236,7 +223,7 @@
             "squadId": 20111077,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "BLUE"

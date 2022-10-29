@@ -136,7 +136,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -149,7 +149,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -162,7 +162,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -175,7 +175,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -188,7 +188,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -201,7 +201,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -214,7 +214,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -227,7 +227,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -240,7 +240,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -253,7 +253,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -266,7 +266,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -279,7 +279,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"
@@ -292,7 +292,7 @@
             "squadId": 20111003,
             "country": "Germany",
             "category": "Configured",
-            "definedInGame": true,
+            "definedInGame": false,
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "RED"

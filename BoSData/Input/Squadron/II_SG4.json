@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "-",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "fw190",
@@ -87,5 +87,58 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "fw190a3_II_SG4",
+            "planeType": "fw190a3",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20122004,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "fw190a5_II_SG4",
+            "planeType": "fw190a5",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20122004,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "fw190a6_II_SG4",
+            "planeType": "fw190a6",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20122004,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "fw190a8_II_SG4",
+            "planeType": "fw190a8",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20122004,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        }
+	]
 }
