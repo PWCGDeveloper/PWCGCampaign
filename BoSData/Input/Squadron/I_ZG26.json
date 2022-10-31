@@ -8,7 +8,7 @@
 	"unitIdCode": "3U",
 	"subUnitIdCode": "L",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "bf110",
@@ -139,5 +139,58 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "bf110e2_I_ZG26",
+            "planeType": "bf110e2",
+            "startDate": "19390901",
+            "endDate": "19411001",
+            "squadId": 20101026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "bf110e2_I_ZG26_east",
+            "planeType": "bf110e2",
+            "startDate": "19411001",
+            "endDate": "19450601",
+            "squadId": 20101026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "bf110g2_I_ZG26",
+            "planeType": "bf110g2",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20101026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "me410a1_I_ZG26",
+            "planeType": "me410a1",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20101026,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        }
+	]
 }

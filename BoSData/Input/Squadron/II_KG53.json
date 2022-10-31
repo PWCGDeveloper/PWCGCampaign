@@ -8,7 +8,7 @@
 	"unitIdCode": "A1",
 	"subUnitIdCode": "M",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "YELLOW",
 	"planeAssignments": [
 		{
 			"archType": "he111",
@@ -137,5 +137,58 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "he111h6_west_II_KG53",
+            "planeType": "he111h6",
+            "startDate": "19390901",
+            "endDate": "19411001",
+            "squadId": 20132053,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "he111h6_east_II_KG53",
+            "planeType": "he111h6",
+            "startDate": "19411001",
+            "endDate": "19450601",
+            "squadId": 20132053,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "he111h16_west_II_KG53",
+            "planeType": "he111h16",
+            "startDate": "19390901",
+            "endDate": "19411001",
+            "squadId": 20132053,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "he111h16_east_II_KG53",
+            "planeType": "he111h16",
+            "startDate": "19411001",
+            "endDate": "19450601",
+            "squadId": 20132053,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        }
+	]
 }

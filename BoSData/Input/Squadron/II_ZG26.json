@@ -8,7 +8,7 @@
 	"unitIdCode": "3U",
 	"subUnitIdCode": "S",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "YELLOW",
 	"planeAssignments": [
 		{
 			"archType": "bf110",
@@ -146,5 +146,32 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+		{
+			"skinName": "bf110e2_II_ZG26",
+			"planeType": "bf110e2",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "YELLOW"
+		},
+		{
+			"skinName": "bf110g2_II_ZG26",
+			"planeType": "bf110g2",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "YELLOW"
+		}
+	]
 }

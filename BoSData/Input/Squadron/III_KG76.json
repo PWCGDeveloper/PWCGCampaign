@@ -8,7 +8,7 @@
 	"unitIdCode": "MT",
 	"subUnitIdCode": "H",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "BLUE",
 	"planeAssignments": [
 		{
 			"archType": "ar234",

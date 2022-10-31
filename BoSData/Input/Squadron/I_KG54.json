@@ -8,7 +8,7 @@
 	"unitIdCode": "B3",
 	"subUnitIdCode": "L",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "BLUE",
 	"planeAssignments": [
 		{
 			"archType": "ju88",
@@ -115,5 +115,19 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+		{
+			"skinName": "ju88a4_west_I_KG54",
+			"planeType": "ju88a4",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 20131054,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLUE"
+		}
+	]
 }

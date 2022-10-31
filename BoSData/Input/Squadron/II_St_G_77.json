@@ -147,6 +147,32 @@
 	},
 	"skins": [
         {
+            "skinName": "ju87d3_west_II_stg77",
+            "planeType": "ju87d3",
+            "startDate": "19390901",
+            "endDate": "19411001",
+            "squadId": 20122077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "ju87d3_east_II_stg77",
+            "planeType": "ju87d3",
+            "startDate": "19411001",
+            "endDate": "19450601",
+            "squadId": 20122077,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },  
+        {
             "skinName": "fw190a3_II_StG77",
             "planeType": "fw190a3",
             "startDate": "19390901",

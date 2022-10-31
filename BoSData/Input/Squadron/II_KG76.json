@@ -8,7 +8,7 @@
 	"unitIdCode": "F1",
 	"subUnitIdCode": "N",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "ju88",
@@ -168,5 +168,32 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "ju88a4_west_II_KG76",
+            "planeType": "ju88a4",
+            "startDate": "19390901",
+            "endDate": "19411001",
+            "squadId": 20132076,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "ju88a4_east_II_KG76",
+            "planeType": "ju88a4",
+            "startDate": "19411001",
+            "endDate": "19450601",
+            "squadId": 20132076,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        }
+	]
 }

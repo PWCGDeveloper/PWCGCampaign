@@ -1,14 +1,14 @@
 {
 	"country": "GERMANY",
 	"squadronId": 20103026,
-	"name": "III./ZG 26",
+	"name": "II./ZG 76",
 	"fileName": "III_ZG26.json",
 	"skill": 60,
 	"serviceId": 20101,
 	"unitIdCode": "3U",
 	"subUnitIdCode": "S",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "WHITE",
 	"planeAssignments": [
 		{
 			"archType": "bf110",
@@ -143,7 +143,26 @@
 	},
 	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+			{
+				"date": "19390801",
+				"squadName": "II./ZG 76",
+				"armedServiceName": "Luftwaffe",
+				"skill": 70
+			},
+			{
+				"date": "19420101",
+				"squadName": "II./NJG 1",
+				"armedServiceName": "Luftwaffe",
+				"skill": 70
+			},
+			{
+				"date": "19430601",
+				"squadName": "I./ZG 76",
+				"armedServiceName": "Luftwaffe",
+				"skill": 70
+			}
+		]
 	},
 	"callsigns": {
 		"19410801": "DUCK"
@@ -151,14 +170,84 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19400101",
-				"nightMissionOdds": 20
+				"startDate": "19390801",
+				"nightMissionOdds": 5
 			},
 			{
-				"startDate": "19441001",
-				"nightMissionOdds": 50
+				"startDate": "19420101",
+				"nightMissionOdds": 100
+			},
+			{
+				"startDate": "19430601",
+				"nightMissionOdds": 10
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+		{
+			"skinName": "bf110e2_II_ZG76",
+			"planeType": "bf110e2",
+			"startDate": "19390901",
+			"endDate": "19420101",
+			"squadId": 20103026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "bf110e2_II_ZG76_night",
+			"planeType": "bf110e2",
+			"startDate": "19420101",
+			"endDate": "19430601",
+			"squadId": 20103026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "bf110g2_II_ZG76",
+			"planeType": "bf110g2",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 20103026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "me410a1_II_ZG76_1",
+			"planeType": "me410a1",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 20103026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "me410a1_II_ZG76_2",
+			"planeType": "me410a1",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 20103026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		}
+	]
 }

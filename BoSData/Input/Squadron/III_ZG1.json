@@ -8,11 +8,16 @@
 	"unitIdCode": "3U",
 	"subUnitIdCode": "L",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "BLACK",
 	"planeAssignments": [
 		{
-			"archType": "ju88c",
+			"archType": "bf110",
 			"squadronIntroduction": "19390801",
+			"squadronWithdrawal": "19420201"
+		},
+		{
+			"archType": "ju88c",
+			"squadronIntroduction": "19420201",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -44,17 +49,42 @@
 						"weight": 10
 					},
 					{
-						"role": "ROLE_ANTI_SHIPPING",
-						"weight": 50
+						"role": "ROLE_FIGHTER",
+						"weight": 70
 					},
 					{
 						"role": "ROLE_RAIDER",
-						"weight": 30
+						"weight": 10
 					}
 				]
 			},
 			{
 				"startDate": "19411001",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 10
+					},
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_ANTI_SHIPPING",
+						"weight": 30
+					}
+				]
+			},
+			{
+				"startDate": "19420201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_ANTI_SHIPPING",
@@ -150,5 +180,45 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "bf110e2_III_ZG1",
+            "planeType": "bf110e2",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20101001,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "ju88c6_III_ZG1_1",
+            "planeType": "ju88c6",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20101001,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "ju88c6_III_ZG1_2",
+            "planeType": "ju88c6",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20101001,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        }
+	]
 }

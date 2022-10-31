@@ -8,7 +8,7 @@
 	"unitIdCode": "T6",
 	"subUnitIdCode": "K",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "ju87",
@@ -130,5 +130,32 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+		{
+			"skinName": "ju87d3_west_I_stg2",
+			"planeType": "ju87d3",
+			"startDate": "19390901",
+			"endDate": "19411001",
+			"squadId": 20121002,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED"
+		},
+		{
+			"skinName": "ju87d3_east_I_stg2",
+			"planeType": "ju87d3",
+			"startDate": "19411001",
+			"endDate": "19450601",
+			"squadId": 20121002,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED"
+		}
+	]
 }

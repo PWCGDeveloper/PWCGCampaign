@@ -1,116 +1,23 @@
 
-MUST DO BEFORE RELEASE
-Start creating unit skins.
+TODO Skins
+Me109 late war skins should use bands. G6  late, g14, and K4 
+FW190 JG26 skins use yellow cowl only starting with the A5
 
-Beta 3 Fixed
-Improve strategic intercept and scramble mission waypoints
-Fixed bombers on Normandy map turning towards home
-Increased range of radar unit spawn to make them appear on Normandy map
-Skin related fixes
-- Added date considerations to skin selections
-- Fixed code issue where winter skin selection could clear the skin list 
-- Fixed order of British unit/aircraft markings.  Check US too.
-- Removed JG54 109 skin from use
-= Zremoved all squadron skin assignments to force use of blank skins
-- Fixed yak9t and Spitfire IX skin lists
-- Fixed several data issues with skins (Tempest, Hurricane, FW190s)
+German Destroyers
+German Stukas
+German Bombers
+US Bombers
+US P38
+Russian fighters
+Russian IL2s
+Russian bombers
 
 
-Beta 2 Fixed
-Added Newspapers
-Added Normandy iconic missions as single fly missions (Main Menu->Iconic Missions)
-Added new 5.002 blank skins
-Lots of work in code and configs on tactical codes
-Played with the algorithm to try to keep airfield objects away from any area usable by real planes.
-Normandy invasion obstacles appear on May 1 1944
-Normandy mulberrys appear on June 15 1944
-III./ZG 26 flying ME410s out of Dieppe Saint Aubin do not have enough runway.
-Eliminated Ju88 North Africa skin
-Fixed issue that could prevent AAR from completing.
-Fixed issue of Allied AA in the water during landings
-
-
-Beta 1 Fixed
-Skins - in game skins for every plane corrected.
-Some Typhoon mods availability pushed to mid 1944
-Gap in 56 squadron assigned planes
-Do not put troops and ground units in place for iconic anti shipping missions
-- Mostly impacts Dunkirk 
-Added code to not kill pilots who bail out
-- Used to avoid killing everybody that bails out over the channel
-- If you are going down over water, don't ditch.  PWCG can't pick that up.  Bail out.
-
-
-Alpha 2 Fixed
-Russian skins on British planes
-Inappropriate smoke
-Inappropriate damage to radar towers
-All radio call signs not enabled before August 1941
-P-51D introduction too late.  Moved it up to April 1944.
-Sometimes unit codes are not used (when a squadron has more than one name over time).
-Winter track marks and other winter stuff on Normandy map
-Airfield "Plane" is now "Maupertus"
-
-Low Priority
-All the post-invasion Allied airfields in Normandy are available as fields before the invasion 
-AA in the water:  AA "corridors" at the ends of runways, which sometimes go into the water if the field is right next to the coast.
-
-
-
- 
-Normandy
-Map image Early                             - done
-Front lines                                 - done
-Squadron assignments to airfields           - done
-Vehicles                                    - done
-Add infantry to amphibious assaults         - done
-Unit type matches landing craft             - done
-Newspapers                                  - done
+TODO Code
 Night bombing and intercepts
-Iprove scramble intercepts
-
 Map Split
 - Map image Invasion
 - Import ground objects                       
-    - Seperate D-Day objects ... how?
-
-Normandy Map Data
-- Define battles                            - done
-- Airfield locations                        - done
-- Define barge positions                    - done
-- define shipping lanes                     - done
-- define cargo routes                       - done
-- define amphibious invasion locations      - done
-- Import ground structures                  - done 
-- Import town names                         - done
-- Extract and import in game ini files      - done 
-
-Special events / skirmishes
-- Dunkirk - June 1 - 7                      - done
-- BoB Pause Phase 6/11 to 7/16              - Counts on target preferences
-- BoB Coastal shipping 7/17 to 8/12         - done
-- BoB Airfields 8/13 to 9/6                 - done
-- BoB Cities or Ports 9/7 to 10/1           - done
-- Rodeos 1942                               - Counts on target preferences
-- Dieppe - August 19 1942                   - done
-- American bombing 1943                     - Counts on target preferences
-- D-Day                                     - done
-- Goodwood                                  - done
-- Cobra                                     - done
-- Mortain                                   - done
-- Falaise                                   - done
-
+    - Separate D-Day objects ... how?
 Remove end date from nigh mission odds
-
 FC fuel air start resets to 60%
-Hi Pat. I noticed in the configured skins for the Spitfire XIV that quite a few skins are labeled Mk. IXe, and also point to the IXe model in the game’s directory instead of to the XIV.
-
-
-GroundAttackPackageTest > groundAttackAirfieldTargetTest() FAILED
-    java.lang.AssertionError at GroundAttackPackageTest.java:78
-
-FlightAiSettingsValidator > groundAttackFlightWithFighterTest() FAILED
-    java.lang.AssertionError at FlightAiSettingsValidator.java:130
-
-GroundAttackAntiArmorPackageTest > groundAttackTankBustRoleTest() FAILED
-    java.lang.AssertionError at GroundAttackAntiArmorPackageTest.java:66

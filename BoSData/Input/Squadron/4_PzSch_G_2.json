@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "?",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "BLUE",
 	"planeAssignments": [
 		{
 			"archType": "hs129",
@@ -89,5 +89,19 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "hs129b2_PSchG2",
+            "planeType": "hs129b2",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20144002,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLUE"
+        }
+	]
 }

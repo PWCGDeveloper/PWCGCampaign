@@ -8,11 +8,11 @@
 	"unitIdCode": "3U",
 	"subUnitIdCode": "L",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "WHITE",
 	"planeAssignments": [
 		{
 			"archType": "ju88c",
-			"squadronIntroduction": "19390801",
+			"squadronIntroduction": "19411001",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -136,5 +136,19 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "ju88c6_I_KG55",
+            "planeType": "ju88c6",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20101055,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        }
+	]
 }
