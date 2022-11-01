@@ -3,15 +3,38 @@ TODO Skins
 Me109 late war skins should use bands. G6  late, g14, and K4 
 FW190 JG26 skins use yellow cowl only starting with the A5
 
-German Destroyers
-German Stukas
-German Bombers
-US Bombers
-US P38
-Russian fighters
-Russian IL2s
-Russian bombers
+German
+Bf109 E7    (No?)
+Me262
+Hs129       (No?)
+Ju52
 
+US Bombers
+A20          (No?)
+c47
+
+US 
+P38          (No?)
+
+Russian fighters
+La5 S8
+La5 FN S2 
+P-39
+P-40
+Hurricane
+Spitfire V
+Spitfire IX
+
+Russian IL2s
+IL2 41
+IL2 42
+IL2 43
+
+Russian bombers
+A20
+Pe2 S35
+Pe2 S87
+c47
 
 TODO Code
 Night bombing and intercepts

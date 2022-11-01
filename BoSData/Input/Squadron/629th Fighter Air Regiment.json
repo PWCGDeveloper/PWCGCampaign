@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tacticalCodeStyle": 2,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "WHITE",
 	"planeAssignments": [
 		{
 			"archType": "i16",
@@ -126,5 +126,19 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+		{
+			"skinName": "i16t24_late_629",
+			"planeType": "i16t24",
+			"startDate": "19390901",
+			"endDate": "19420101",
+			"squadId": 10111629,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		}
+	]
 }

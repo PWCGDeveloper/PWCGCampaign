@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tacticalCodeStyle": 3,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "BLACK",
 	"planeAssignments": [
 		{
 			"archType": "mig3",
@@ -138,5 +138,84 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "mig3s24_27",
+            "planeType": "mig3s24",
+            "startDate": "19390901",
+            "endDate": "19420101",
+            "squadId": 10111027,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "lagg3s29_early_27",
+            "planeType": "lagg3s29",
+            "startDate": "19390901",
+            "endDate": "19420101",
+            "squadId": 10111027,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "lagg3s29_late_27",
+            "planeType": "lagg3s29",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10111027,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "la5s8_early_27",
+            "planeType": "la5s8",
+            "startDate": "19390901",
+            "endDate": "19431001",
+            "squadId": 10111027,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "la5s8_late_27",
+            "planeType": "la5s8",
+            "startDate": "19430501",
+            "endDate": "19450601",
+            "squadId": 10111027,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "la5fns2_27",
+            "planeType": "la5fns2",
+            "startDate": "19430501",
+            "endDate": "19450601",
+            "squadId": 10111027,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        }
+	]
 }

@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tacticalCodeStyle": 1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "i16",
@@ -127,13 +127,13 @@
 	"squadHistory": {
 		"squadHistoryEntries": [
 			{
-				"date": "19420301",
+				"date": "19420316",
 				"squadName": "439th Fighter Air Regiment",
 				"armedServiceName": "Voyenno-Vozdushnye Sily",
 				"skill": 45
 			},
 			{
-				"date": "19430301",
+				"date": "19430215",
 				"squadName": "45th Guards Fighter Air Regiment",
 				"armedServiceName": "Voyenno-Vozdushnye Sily",
 				"skill": 60
@@ -151,5 +151,45 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "mig3s24_495",
+            "planeType": "mig3s24",
+            "startDate": "19390901",
+            "endDate": "19420101",
+            "squadId": 10111495,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "i16t24_early_495",
+            "planeType": "i16t24",
+            "startDate": "19390901",
+            "endDate": "19420101",
+            "squadId": 10111495,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        },
+        {
+            "skinName": "i16t24_late_495",
+            "planeType": "i16t24",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10111495,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED"
+        }
+	]
 }
