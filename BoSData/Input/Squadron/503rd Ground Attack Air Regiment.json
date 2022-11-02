@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tacticalCodeStyle": 4,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "BLACK",
 	"planeAssignments": [
 		{
 			"archType": "il2",
@@ -105,5 +105,123 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "il2m41_early_503",
+            "planeType": "il2m41",
+            "startDate": "19390901",
+            "endDate": "19420201",
+            "squadId": 10121503,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m41_late_503",
+            "planeType": "il2m41",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121503,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m41_late2_503",
+            "planeType": "il2m41",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121503,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m42_503",
+            "planeType": "il2m42",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121503,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m42_camo_503",
+            "planeType": "il2m42",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121503,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m43_early_503",
+            "planeType": "il2m43",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121503,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m43_late1_503",
+            "planeType": "il2m43",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121503,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m43_late2_503",
+            "planeType": "il2m43",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121503,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m43_variant_503",
+            "planeType": "il2m43",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121503,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        }
+	]
 }

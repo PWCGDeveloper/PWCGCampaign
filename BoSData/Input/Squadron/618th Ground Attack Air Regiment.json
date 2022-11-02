@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tacticalCodeStyle": 1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "BLACK",
 	"planeAssignments": [
 		{
 			"archType": "il2",
@@ -85,5 +85,136 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "il2m41_early_618",
+            "planeType": "il2m41",
+            "startDate": "19390901",
+            "endDate": "19420201",
+            "squadId": 10121618,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m41_late_618",
+            "planeType": "il2m41",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121618,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m41_late2_618",
+            "planeType": "il2m41",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121618,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m41_camo_618",
+            "planeType": "il2m41",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121618,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m42_618",
+            "planeType": "il2m42",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121618,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m42_camo_618",
+            "planeType": "il2m42",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121618,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m43_early_618",
+            "planeType": "il2m43",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121618,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m43_late1_618",
+            "planeType": "il2m43",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121618,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m43_late2_618",
+            "planeType": "il2m43",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121618,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        },
+        {
+            "skinName": "il2m43_variant_618",
+            "planeType": "il2m43",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10121618,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK"
+        }
+	]
 }
