@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tacticalCodeStyle": 2,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "WHITE`",
 	"planeAssignments": [
 		{
 			"archType": "p40",
@@ -134,5 +134,45 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "p40e1_camo_126",
+            "planeType": "p40e1",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10111126,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "p39l1_early_126",
+            "planeType": "p39l1",
+            "startDate": "19390901",
+            "endDate": "19430701",
+            "squadId": 10111126,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "p39l1_late_126",
+            "planeType": "p39l1",
+            "startDate": "19430501",
+            "endDate": "19450601",
+            "squadId": 10111126,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        }
+	]
 }

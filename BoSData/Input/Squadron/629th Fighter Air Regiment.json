@@ -131,7 +131,7 @@
 			"skinName": "i16t24_late_629",
 			"planeType": "i16t24",
 			"startDate": "19390901",
-			"endDate": "19420101",
+			"endDate": "19450601",
 			"squadId": 10111629,
 			"country": "Russia",
 			"category": "Configured",
@@ -139,6 +139,32 @@
 			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE"
-		}
+		},
+		{
+			"skinName": "spitfiremkvb_629",
+			"planeType": "spitfiremkvb",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 10111629,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		},
+        {
+            "skinName": "spitfiremkixe_629",
+            "planeType": "spitfiremkixe",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10111629,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        }
 	]
 }

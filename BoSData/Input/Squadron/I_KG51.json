@@ -8,7 +8,7 @@
 	"unitIdCode": "9K",
 	"subUnitIdCode": "K",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "WHITE",
 	"planeAssignments": [
 		{
 			"archType": "me262",
@@ -56,5 +56,32 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "me262a_KG51_1",
+            "planeType": "me262a",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20131051,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "me262a_KG51_2",
+            "planeType": "me262a",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20131051,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        }
+	]
 }

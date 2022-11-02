@@ -5,14 +5,14 @@
             "skinName": "hurricanemkii",
             "planeType": "hurricanemkii",
             "startDate": "19390801",
-            "endDate": "19450601",
+            "endDate": "19440101",
             "squadId": -2,
             "country": "Russia",
             "category": "Configured",
             "definedInGame": true,
             "winter": false,
             "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"          
+            "tacticalCodeColor": "RED"          
         },
         "hurricanemkii_Blank_01": {
             "skinName": "hurricanemkii_Blank_01",
@@ -25,7 +25,7 @@
             "definedInGame": true,
             "winter": true,
             "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK"          
+            "tacticalCodeColor": "RED"          
         },
         "hurricanemkii_Blank_02": {
             "skinName": "hurricanemkii_Blank_02#1",
@@ -38,7 +38,7 @@
             "definedInGame": true,
             "winter": false,
             "useTacticalCodes": true,
-            "tacticalCodeColor": "SKY"          
+            "tacticalCodeColor": "RED"          
         },
         "hurricanemkii_Blank_03": {
             "skinName": "hurricanemkii_Blank_03",

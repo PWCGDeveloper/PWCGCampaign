@@ -8,7 +8,7 @@
 	"unitIdCode": "3T",
 	"subUnitIdCode": "M",
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "YELLOW",
 	"planeAssignments": [
 		{
 			"archType": "ju52",
@@ -98,5 +98,19 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "ju523mg4e_east",
+            "planeType": "ju523mg4e",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 20142002,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "YELLOW"
+        }
+	]
 }

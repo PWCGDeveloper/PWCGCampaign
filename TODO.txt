@@ -5,25 +5,13 @@ FW190 JG26 skins use yellow cowl only starting with the A5
 
 German
 Bf109 E7    (No?)
-Me262
 Hs129       (No?)
-Ju52
-
-US Bombers
-A20          (No?)
-c47
 
 US 
-P38          (No?)
+P38
 
 Russian fighters
-La5 S8
-La5 FN S2 
-P-39
-P-40
-Hurricane
-Spitfire V
-Spitfire IX
+Hurricane   (No?)
 
 Russian IL2s
 IL2 41
@@ -34,7 +22,6 @@ Russian bombers
 A20
 Pe2 S35
 Pe2 S87
-c47
 
 TODO Code
 Night bombing and intercepts

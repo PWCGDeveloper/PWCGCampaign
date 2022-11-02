@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tacticalCodeStyle": 1,
-	"squadronTacticalCodeColorOverride": "YELLOW",
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "hurricane",
