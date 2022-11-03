@@ -166,5 +166,123 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+		{
+			"skinName": "pe2s35_early_136",
+			"planeType": "pe2s35",
+			"startDate": "19390901",
+			"endDate": "19420201",
+			"squadId": 10131136,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "pe2s35_late1_136",
+			"planeType": "pe2s35",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 10131136,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "pe2s35_late2_136",
+			"planeType": "pe2s35",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 10131136,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "pe2s87_early_136",
+			"planeType": "pe2s87",
+			"startDate": "19390901",
+			"endDate": "19440101",
+			"squadId": 10131136,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "pe2s87_mid_136",
+			"planeType": "pe2s87",
+			"startDate": "19390901",
+			"endDate": "19440101",
+			"squadId": 10131136,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "pe2s87_late_136",
+			"planeType": "pe2s87",
+			"startDate": "19430601",
+			"endDate": "19450601",
+			"squadId": 10131136,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "a20b_camo1_136",
+			"planeType": "a20b",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 10131136,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "a20b_camo2_136",
+			"planeType": "a20b",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 10131136,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "a20b_camo3_136",
+			"planeType": "a20b",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": 10131136,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		}
+	]
 }

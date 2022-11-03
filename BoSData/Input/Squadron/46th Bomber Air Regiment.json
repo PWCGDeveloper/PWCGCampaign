@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tacticalCodeStyle": 2,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "WHITE",
 	"planeAssignments": [
 		{
 			"archType": "pe2",
@@ -117,5 +117,84 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "pe2s35_early_46",
+            "planeType": "pe2s35",
+            "startDate": "19390901",
+            "endDate": "19420201",
+            "squadId": 10131046,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "pe2s35_late1_46",
+            "planeType": "pe2s35",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10131046,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "pe2s35_late2_46",
+            "planeType": "pe2s35",
+            "startDate": "19390901",
+            "endDate": "19450601",
+            "squadId": 10131046,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "pe2s87_early_46",
+            "planeType": "pe2s87",
+            "startDate": "19390901",
+            "endDate": "19440101",
+            "squadId": 10131046,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "pe2s87_mid_46",
+            "planeType": "pe2s87",
+            "startDate": "19390901",
+            "endDate": "19440101",
+            "squadId": 10131046,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "pe2s87_late_46",
+            "planeType": "pe2s87",
+            "startDate": "19430601",
+            "endDate": "19450601",
+            "squadId": 10131046,
+            "country": "Russia",
+            "category": "Configured",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        }
+	]
 }

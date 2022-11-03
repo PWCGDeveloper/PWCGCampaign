@@ -3,11 +3,6 @@ TODO Skins
 Me109 late war skins should use bands. G6  late, g14, and K4 
 FW190 JG26 skins use yellow cowl only starting with the A5
 
-Russian IL2s
-IL2 41
-IL2 42
-IL2 43
-
 Russian bombers
 A20
 Pe2 S35
