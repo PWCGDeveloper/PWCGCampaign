@@ -1,12 +1,11 @@
+Soviet aircraft mentioned in German pilot log book over England.
+
+(On Pilot board) Clicking on all Top Aces: All, German pilot has RAF log book
+
 
 TODO Skins
 Me109 late war skins should use bands. G6  late, g14, and K4 
 FW190 JG26 skins use yellow cowl only starting with the A5
-
-Russian bombers
-A20
-Pe2 S35
-Pe2 S87
 
 TODO Code
 Night bombing and intercepts

@@ -244,11 +244,13 @@ public enum PayloadElement
     MG_4X(PayloadElementCategory.WEAPON, "4x Machine Guns", 0),
     
     
-    M64_X1(PayloadElementCategory.ORDNANCE_BOMB, "Mk 64 500 lb Bomb x1", 250),
-    M64_X2(PayloadElementCategory.ORDNANCE_BOMB, "Mk 64 500 lb Bomb x2", 500),
-    M64_X3(PayloadElementCategory.ORDNANCE_BOMB, "Mk 64 500 lb Bomb x3", 750),
-    M65_X2(PayloadElementCategory.ORDNANCE_BOMB, "Mk 65 1000 lb Bomb x2", 1000),
-    M8_X6(PayloadElementCategory.ORDNANCE_ROCKET, "Mk 8 Rocket x6", 600),
+    LB_250_BOMB_X2(PayloadElementCategory.ORDNANCE_BOMB, "250 lb Bomb x2", 250),
+    LB_500_BOMB_X1(PayloadElementCategory.ORDNANCE_BOMB, "500 lb Bomb x1", 250),
+    LB_500_BOMB_X2(PayloadElementCategory.ORDNANCE_BOMB, "500 lb Bomb x2", 500),
+    LB_500_BOMB_X3(PayloadElementCategory.ORDNANCE_BOMB, "500 lb Bomb x3", 750),
+    LB_500_BOMB_X4(PayloadElementCategory.ORDNANCE_BOMB, "500 lb Bomb x4", 1000),
+    LB_1000_BOMB_X2(PayloadElementCategory.ORDNANCE_BOMB, "1000 lb Bomb x2", 1000),
+    M8_ROCKET_X6(PayloadElementCategory.ORDNANCE_ROCKET, "Mk 8 Rocket x6", 600),
 
 	SC50_X2(PayloadElementCategory.ORDNANCE_BOMB, "50 kg Bomb x2", 100),
 	SC50_X4(PayloadElementCategory.ORDNANCE_BOMB, "50 kg Bomb x4", 200),

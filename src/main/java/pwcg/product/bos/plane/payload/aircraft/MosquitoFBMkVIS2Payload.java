@@ -18,10 +18,8 @@ import pwcg.mission.target.TargetCategory;
 
 public class MosquitoFBMkVIS2Payload extends PlanePayload implements IPlanePayload
 {
-    private Date smallBombIntroDate;
-    private Date rp3IntroDate;
     private Date gyroGunsightIntroDate;
-    private Date highOctaneFuelIntroDate;
+    private Date tsetseIntroDate;
 
     public MosquitoFBMkVIS2Payload(PlaneType planeType, Date date)
     {
@@ -34,10 +32,8 @@ public class MosquitoFBMkVIS2Payload extends PlanePayload implements IPlanePaylo
     {
         try
         {
-            smallBombIntroDate = DateUtils.getDateYYYYMMDD("19440610");
-            rp3IntroDate = DateUtils.getDateYYYYMMDD("19440610");
+            tsetseIntroDate = DateUtils.getDateYYYYMMDD("19440301");
             gyroGunsightIntroDate = DateUtils.getDateYYYYMMDD("19440801");
-            highOctaneFuelIntroDate = DateUtils.getDateYYYYMMDD("19440505");
         }
         catch (Exception e)
         {
@@ -53,28 +49,29 @@ public class MosquitoFBMkVIS2Payload extends PlanePayload implements IPlanePaylo
         setAvailablePayload(-1, "1000000", PayloadElement.GYRO_GUNSIGHT);
         
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(2, "1", PayloadElement.SC250_X2);
-        setAvailablePayload(6, "1", PayloadElement.SC250_X4);
-        setAvailablePayload(8, "1", PayloadElement.SC500_X2);
-        setAvailablePayload(12, "1", PayloadElement.SC500_X4);
+        setAvailablePayload(1, "1", PayloadElement.EXTRA_AMMO);
+        setAvailablePayload(2, "1", PayloadElement.LB250x2);
+        setAvailablePayload(6, "1", PayloadElement.LB250x4);
+        setAvailablePayload(8, "1", PayloadElement.LB_500_BOMB_X2);
+        setAvailablePayload(12, "1", PayloadElement.LB_500_BOMB_X4);
         
         setAvailablePayload(50, "11", PayloadElement.CANNON_57MM, PayloadElement.MG_4X);
         setAvailablePayload(68, "101", PayloadElement.CANNON_57MM, PayloadElement.MG_2X);
         
         setAvailablePayload(14, "1001", PayloadElement.RP3_HE_X8);
         setAvailablePayload(16, "1001", PayloadElement.RP3_AP_X8);
-        setAvailablePayload(18, "1001", PayloadElement.SC250_X2, PayloadElement.RP3_HE_X8);
-        setAvailablePayload(20, "1001", PayloadElement.SC250_X2, PayloadElement.RP3_AP_X8);
+        setAvailablePayload(18, "1001", PayloadElement.LB250x2, PayloadElement.RP3_HE_X8);
+        setAvailablePayload(20, "1001", PayloadElement.LB250x2, PayloadElement.RP3_AP_X8);
         
         setAvailablePayload(26, "10001", PayloadElement.RP3_MKIIII_HE_X8);
         setAvailablePayload(28, "10001", PayloadElement.RP3_MKIIII_AP_X8);
-        setAvailablePayload(30, "10001", PayloadElement.SC250_X2, PayloadElement.RP3_MKIIII_HE_X8);
-        setAvailablePayload(32, "10001", PayloadElement.SC250_X2, PayloadElement.RP3_MKIIII_AP_X8);
+        setAvailablePayload(30, "10001", PayloadElement.LB250x2, PayloadElement.RP3_MKIIII_HE_X8);
+        setAvailablePayload(32, "10001", PayloadElement.LB250x2, PayloadElement.RP3_MKIIII_AP_X8);
         
         setAvailablePayload(38, "100001", PayloadElement.RP3_MKIIIIT_HE_X8);
         setAvailablePayload(40, "100001", PayloadElement.RP3_MKIIIIT_AP_X8);
-        setAvailablePayload(42, "100001", PayloadElement.SC250_X2, PayloadElement.RP3_MKIIIIT_HE_X8);
-        setAvailablePayload(44, "100001", PayloadElement.SC250_X2, PayloadElement.RP3_MKIIIIT_AP_X8);
+        setAvailablePayload(42, "100001", PayloadElement.LB250x2, PayloadElement.RP3_MKIIIIT_HE_X8);
+        setAvailablePayload(44, "100001", PayloadElement.LB250x2, PayloadElement.RP3_MKIIIIT_AP_X8);
 	}
 
     @Override
@@ -239,30 +236,21 @@ public class MosquitoFBMkVIS2Payload extends PlanePayload implements IPlanePaylo
         {
             registerStockModification(PayloadElement.GYRO_GUNSIGHT);
         }
-        
-        if (getDate().after(highOctaneFuelIntroDate))
-        {
-            registerStockModification(PayloadElement.OCTANE_150_FUEL);
-        }
     }
     
     @Override
     protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
     {
         List<Integer>availablePayloads = new ArrayList<>();
-        List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1);
+        List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 2, 6, 8, 12, 14, 16, 18, 20, 26, 28, 30, 32);
         availablePayloads.addAll(alwaysAvailablePayloads);
         
-        if (getDate().after(smallBombIntroDate))
+        if (getDate().after(tsetseIntroDate))
         {
-            availablePayloads.add(2);
+            availablePayloads.add(50);
+            availablePayloads.add(68);
         }
-        
-        if (getDate().after(rp3IntroDate))
-        {
-            availablePayloads.add(4);
-        }
-        
+ 
         return getAvailablePayloadDesignations(availablePayloads);
     }
 }

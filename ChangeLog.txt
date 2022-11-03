@@ -1,3 +1,20 @@
+14..0.2
+Completion of blank Squadron skins.
+Over 600 skins added
+What is a "squadron skin?".  it is a skin configured in PWCG to be used as the generic squadron skin.  So it is a blank with a unit marking on it.  
+- All variations of an aircraft were done, so a P47D22 for a squadron will take up to 8 skins with green, silver, plain, and 3 variations of Normandy markings.
+- Russian aircraft might have multiple camo schemes over time and concurrently.  German planes often had multiple concurrent camo schemes.
+- No British squadron skins as they did not have squadron markings other than the code.  The existing blank skins are adequate.
+- The different paint schemes and markings will add some life and the use of codes will make every aircraft in the mission unique.
+Fixed Mosquito payloads not available in briefing
+Fixed Mosquito payload in Lb not Kg.
+Fixed "Dover Castle" typo
+
+
+14.0.1
+Initial blank skin drop
+American skins
+
 14.0.0
 Integration of IL2 GB Normandy
 - Normandy Map

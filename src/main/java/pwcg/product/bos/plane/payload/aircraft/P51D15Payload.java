@@ -28,8 +28,8 @@ public class P51D15Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.MG50CAL_4x);
         setAvailablePayload(2, "101", PayloadElement.ADDITIONAL_AMMO);
-        setAvailablePayload(4, "1001", PayloadElement.M64_X2);
-        setAvailablePayload(8, "10001", PayloadElement.M65_X2);
+        setAvailablePayload(4, "1001", PayloadElement.LB_500_BOMB_X2);
+        setAvailablePayload(8, "10001", PayloadElement.LB_1000_BOMB_X2);
         setAvailablePayload(12, "100001", PayloadElement.P51_ROCKETS);
 
 	}
