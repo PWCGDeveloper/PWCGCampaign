@@ -43,7 +43,7 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
 
 	public MissingSkinScreen(Map<String, List<MissingSkin>> selectedMissingSkins) 
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 

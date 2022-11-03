@@ -46,7 +46,7 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
     
 	public PwcgPlanesOwnedConfigurationScreen(PwcgMainScreen parent) 
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
 
 		this.parent = parent;

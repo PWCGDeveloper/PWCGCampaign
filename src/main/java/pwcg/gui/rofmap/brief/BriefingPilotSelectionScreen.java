@@ -57,7 +57,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
     public BriefingPilotSelectionScreen(CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
 
         this.campaignHomeGuiBriefingWrapper = campaignHomeGuiBriefingWrapper;
@@ -72,7 +72,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingPilotSelectionScreen);
-            this.setImageFromName(imagePath);
+            this.setThemedImageFromName(campaign, imagePath);
 
             briefingFlightChooser = new BriefingFlightChooser(mission, this);
             briefingFlightChooser.createBriefingSquadronSelectPanel();

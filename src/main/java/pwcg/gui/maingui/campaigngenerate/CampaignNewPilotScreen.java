@@ -38,7 +38,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
 
     public CampaignNewPilotScreen(Campaign campaign, IRefreshableParentUI parentScreen)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
         
@@ -51,7 +51,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignNewPilotScreen);
-            this.setImageFromName(imagePath);
+            this.setThemedImageFromName(campaign, imagePath);
 
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, SpacerPanelFactory.makeSpacerPercentPanel(20));

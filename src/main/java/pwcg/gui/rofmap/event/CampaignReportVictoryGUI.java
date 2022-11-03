@@ -15,7 +15,7 @@ public class CampaignReportVictoryGUI extends AARDocumentIconPanel
 	
 	public CampaignReportVictoryGUI(Campaign campaign, List<VictoryEvent> victoriesForPilot) throws PWCGException
 	{
-		super();
+		super(campaign);
         this.campaign = campaign;
         this.victoriesForPilot = victoriesForPilot;
         makePanel();        

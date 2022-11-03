@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.campaign.pilot.CampaignHomePilotPanel;
@@ -13,14 +14,16 @@ public class CampaignHomeRightAcesPanel extends JPanel
 {
     private static final long serialVersionUID = 1L;
 
+    private Campaign campaign;
     private CampaignHomeScreen campaignHome;
     
-    public CampaignHomeRightAcesPanel(CampaignHomeScreen campaignHome)  
+    public CampaignHomeRightAcesPanel(Campaign campaign, CampaignHomeScreen campaignHome)  
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
         
+        this.campaign = campaign;
         this.campaignHome = campaignHome;
     }
 
@@ -32,7 +35,7 @@ public class CampaignHomeRightAcesPanel extends JPanel
 
     private JPanel makePilotPanel(List<SquadronMember>sortedPilots) throws PWCGException
     {
-        CampaignHomePilotPanel pilotList = new CampaignHomePilotPanel(campaignHome);
+        CampaignHomePilotPanel pilotList = new CampaignHomePilotPanel(campaign, campaignHome);
         pilotList.makePanel(sortedPilots, "  Aces", "CampFlowPilot:");
         return pilotList;
     }

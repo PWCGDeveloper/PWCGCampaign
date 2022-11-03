@@ -36,7 +36,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 
 	public BriefingEditorPanel() throws PWCGException  
 	{
-		super("");
+		super();
 		this.setLayout(new BorderLayout());
 		this.setOpaque(false);
 		
@@ -49,7 +49,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = ContextSpecificImages.imagesMisc() + "Document.png";
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(mission.getCampaign(), imagePath);
 
 		editorPanel = new JPanel();
 		editorPanel.setLayout(new BorderLayout());

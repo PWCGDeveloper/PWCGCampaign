@@ -34,7 +34,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 	
 	public ConfigurationParametersGUI(JPanel configurationGlobalGUI, ConfigManager configManager, ConfigSet configSet) 
 	{		
-        super("");
+        super();
         setLayout(new BorderLayout());
         this.configSet = configSet;
         this.configManager = configManager;

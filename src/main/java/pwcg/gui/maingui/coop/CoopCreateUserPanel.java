@@ -33,7 +33,7 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
 
 	public CoopCreateUserPanel() 
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 	}

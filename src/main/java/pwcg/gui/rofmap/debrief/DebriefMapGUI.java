@@ -44,7 +44,6 @@ import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
@@ -209,7 +208,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PaperPart.jpg";
-		ImageResizingPanel debriefTextPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel debriefTextPanel = new ImageResizingPanel(campaign, imagePath);
 		debriefTextPanel.setLayout(new BorderLayout());
 		debriefTextPanel.setOpaque(false);
 		debriefTextPanel.setBackground(buttonBG);

@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.PictureManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
@@ -28,7 +29,6 @@ import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonNoBackground;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
@@ -37,20 +37,22 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
 {
 	private static final long serialVersionUID = 1L;
 	private ActionListener actionListener = null;
+	private Campaign campaign;
 
-	public CampaignHomePilotPanel(ActionListener actionListener)  
+	public CampaignHomePilotPanel( Campaign campaign, ActionListener actionListener)  
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
+        this.campaign = campaign;
         this.actionListener = actionListener;
 	}
 
 	public void makePanel(List<SquadronMember>pilots, String description, String action) throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.PlaqueBronzeBackground);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
         this.setBorder(PwcgBorderFactory.createPlaqueBackgroundBorder());
 
         JPanel pilotListGrid = new JPanel(new GridLayout(0, 1));
@@ -88,7 +90,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         pilotPanel.add(pilotStatusButton, BorderLayout.EAST);
         
         String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate.jpg";
-        ImageResizingPanel nameplatePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel nameplatePanel = new ImageResizingPanel(campaign, imagePath);
         nameplatePanel.setLayout(new BorderLayout());
                         
         Color buttonBG = ColorMap.CHALK_BACKGROUND;
@@ -120,7 +122,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
     {
         JLabel pilotPicLabel = null;
         String picPath = PictureManager.getPicturePath(pilot);
-        Image pilotPic = ImageCache.getInstance().getBufferedImage(picPath);
+        Image pilotPic = ImageCache.getInstance().getBufferedImageByTheme(picPath, pilot.determineService(campaign.getDate()));
         if (pilotPic != null)
         {
         	int imageHeight = PWCGMonitorSupport.getPilotPlateHeight();
@@ -140,7 +142,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
     private JPanel makeNamePlaque(String description) throws PWCGException  
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate.jpg";
-        ImageResizingPanel headerPlaquePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel headerPlaquePanel = new ImageResizingPanel(campaign, imagePath);
         headerPlaquePanel.setLayout(new BorderLayout());
 
         Color fgColor = ColorMap.PLAQUE_GOLD;
@@ -182,7 +184,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
             imagePath = ContextSpecificImages.imagesMisc() + "RIP.jpg";
         }
         
-        Image pilotStatusImage = ImageCache.getInstance().getBufferedImage(imagePath);
+        Image pilotStatusImage = ImageCache.getInstance().getBufferedImageByTheme(imagePath, pilot.determineService(campaign.getDate()));
         if (pilotStatusImage != null)
         {
             int imageHeight = PWCGMonitorSupport.getPilotPlateHeight();            

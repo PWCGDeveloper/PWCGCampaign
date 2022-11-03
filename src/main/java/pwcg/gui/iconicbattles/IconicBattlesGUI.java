@@ -48,7 +48,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
 
 	public IconicBattlesGUI(String iconicBattleName) 
 	{		
-        super("");
+        super();
         
         iconicBattleData.setIconicBattleName(iconicBattleName);
         

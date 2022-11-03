@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.image.ImageCache;
@@ -22,12 +23,26 @@ public class ImageResizingPanel extends JPanel
     protected String imagePath = "";
     private Map<String, JPanel> children = new HashMap<>();
 
+
+    public ImageResizingPanel()
+    {
+    }
+
     public ImageResizingPanel(String imagePath)
     {
         this.imagePath = imagePath;
         if (!imagePath.isEmpty())
         {
             setImageFromName(imagePath);
+        }
+    }
+
+    public ImageResizingPanel(Campaign campaign, String imagePath)
+    {
+        this.imagePath = imagePath;
+        if (!imagePath.isEmpty())
+        {
+            setThemedImageFromName(campaign, imagePath);
         }
     }
 
@@ -63,13 +78,13 @@ public class ImageResizingPanel extends JPanel
         this.image = image;
     }
 
-    public void setImageFromName(String imagePath)
+    public void setThemedImageFromName(Campaign campaign, String imagePath)
 	{
 		try 
 		{
             if (imagePath != "")
             {
-    			image = ImageCache.getInstance().getBufferedImage(imagePath);
+    			image = ImageCache.getInstance().getBufferedImageByTheme(imagePath, campaign.getReferenceService());
     			if (image == null)
     			{
     	                PWCGLogger.log(LogLevel.ERROR, "Request to load null resizing image: " + imagePath);
@@ -81,7 +96,26 @@ public class ImageResizingPanel extends JPanel
 			PWCGLogger.logException(ex);
 		}
 	}
-	
+
+    public void setImageFromName( String imagePath)
+    {
+        try 
+        {
+            if (imagePath != "")
+            {
+                image = ImageCache.getInstance().getBufferedImage(imagePath);
+                if (image == null)
+                {
+                        PWCGLogger.log(LogLevel.ERROR, "Request to load null resizing image: " + imagePath);
+                }
+            }
+        }
+        catch (Exception ex) 
+        {
+            PWCGLogger.logException(ex);
+        }
+    }
+
 	public Dimension getImageSize()
 	{
 		Dimension dimensions = new Dimension(image.getWidth(null),image.getHeight(null));

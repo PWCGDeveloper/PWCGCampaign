@@ -31,7 +31,7 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
 
     public CoopUserRemovePanel()
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
     }

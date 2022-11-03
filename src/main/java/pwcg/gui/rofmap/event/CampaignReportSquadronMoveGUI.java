@@ -1,6 +1,7 @@
 package pwcg.gui.rofmap.event;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -9,9 +10,9 @@ public class CampaignReportSquadronMoveGUI extends AARDocumentIconPanel
 	private static final long serialVersionUID = 1L;
 	private SquadronMoveEvent squadronMoveEvent = null;
 
-	public CampaignReportSquadronMoveGUI(SquadronMoveEvent squadronMoveEvent) throws PWCGException
+	public CampaignReportSquadronMoveGUI(Campaign campaign, SquadronMoveEvent squadronMoveEvent) throws PWCGException
 	{
-		super();
+		super(campaign);
 
         this.squadronMoveEvent = squadronMoveEvent;
 		makePanel();		

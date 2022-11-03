@@ -33,7 +33,7 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
 
     public CampaignIntelScreen(Campaign campaign)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -43,7 +43,7 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSimpleConfigurationScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));

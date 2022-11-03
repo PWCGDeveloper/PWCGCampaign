@@ -39,7 +39,7 @@ public class AARClaimPanels extends ImageResizingPanel
 
     public AARClaimPanels(Campaign campaign) throws PWCGException
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
         
@@ -49,7 +49,7 @@ public class AARClaimPanels extends ImageResizingPanel
     public void makePanels() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(30,30,100,120));
 
         this.add(makeTabbedClaimsPanel(), BorderLayout.CENTER);

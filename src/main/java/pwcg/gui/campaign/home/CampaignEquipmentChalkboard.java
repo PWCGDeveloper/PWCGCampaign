@@ -34,7 +34,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
     
     public CampaignEquipmentChalkboard(Campaign campaign)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -44,7 +44,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
     public void makePanels() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignEquipmentChalkboard);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
         this.setBorder(PwcgBorderFactory.createCampaignHomeChalkboardBoxBorder());        
 
         SquadronMember referencePlayer = campaign.findReferencePlayer();            

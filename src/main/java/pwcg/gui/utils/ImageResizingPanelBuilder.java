@@ -6,12 +6,6 @@ public class ImageResizingPanelBuilder
 {
     public static final String NO_IMAGE = "";
 
-	public static ImageResizingPanel makeImageResizingPanel(String imagePath)
-	{
-        ImageResizingPanel logCenterPanel = new ImageResizingPanel(imagePath);
-        return logCenterPanel;
-	}
-
     public static ImageResizingPanel makeImageResizingPanel(BufferedImage image)
     {
         ImageResizingPanel logCenterPanel = new ImageResizingPanel(image);

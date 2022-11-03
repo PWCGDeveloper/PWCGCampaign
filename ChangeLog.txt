@@ -8,8 +8,9 @@ What is a "squadron skin?".  it is a skin configured in PWCG to be used as the g
 - The different paint schemes and markings will add some life and the use of codes will make every aircraft in the mission unique.
 Fixed Mosquito payloads not available in briefing
 Fixed Mosquito payload in Lb not Kg.
+Fixed wrong image context sometimes used (RAF logbook for German pilot, etc.)
 Fixed "Dover Castle" typo
-
+Fixed Kingsnorth typo
 
 14.0.1
 Initial blank skin drop

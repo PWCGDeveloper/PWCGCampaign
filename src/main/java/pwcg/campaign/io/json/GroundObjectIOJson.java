@@ -1,8 +1,8 @@
 package pwcg.campaign.io.json;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.group.NonScriptedBlockPositions;
 import pwcg.campaign.group.GroundStructureGroup;
+import pwcg.campaign.group.NonScriptedBlockPositions;
 import pwcg.core.exception.PWCGException;
 
 public class GroundObjectIOJson 

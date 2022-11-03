@@ -14,9 +14,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import pwcg.campaign.ArmedService;
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -43,16 +40,6 @@ public class ImageCache
 	public BufferedImage getBufferedImage(String imagePath) throws PWCGException 
 	{
         imagePath = imagePath.toLowerCase();
-	    String themeImagePath = getThemePath(imagePath);
-	    if(themeImagePath != null)
-	    {
-    	    BufferedImage image = getBufferedImageForPath(themeImagePath);
-            if (image != null)
-            {
-                return image;
-            }
-	    }
-        
 	    BufferedImage image = getBufferedImageForPath(imagePath);
         if (image != null)
         {
@@ -63,6 +50,30 @@ public class ImageCache
         
         return image;
 	}
+
+    public BufferedImage getBufferedImageByTheme(String imagePath, ArmedService service) throws PWCGException 
+    {
+        imagePath = imagePath.toLowerCase();
+        String themeImagePath = getThemePath(imagePath, service);
+        if(themeImagePath != null)
+        {
+            BufferedImage image = getBufferedImageForPath(themeImagePath);
+            if (image != null)
+            {
+                return image;
+            }
+        }
+        
+        BufferedImage image = getBufferedImageForPath(imagePath);
+        if (image != null)
+        {
+            return image;
+        }
+        
+        PWCGLogger.log(LogLevel.DEBUG, "Image not found: " + imagePath);
+        
+        return image;
+    }
 
 	public BufferedImage getRotatedImage(String imagePath, int angle) throws PWCGException  
 	{
@@ -180,27 +191,19 @@ public class ImageCache
         return image;
     }
 
-    private String getThemePath(String imagePath) throws PWCGException
+    private String getThemePath(String imagePath, ArmedService service) throws PWCGException
     {
         if (!imagePath.contains("\\images\\")) 
         {
             return null;
         }
         
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        if (campaign == null)
+        if (service == null)
         {
             return null;
         }
         
-        SquadronMember referencePlayer = campaign.getReferencePlayer();
-        if (referencePlayer == null)
-        {
-            return null;
-        }
-        
-        ArmedService service = referencePlayer.determineService(campaign.getDate());
-        String substitute = "\\images\\themes\\" + service.getName() + "\\\\images\\"; 
+        String substitute = "\\images\\themes\\" + service.getName() + "\\images\\"; 
         String themeImagePath = imagePath.replace("\\images\\", substitute);
         return themeImagePath;
     }

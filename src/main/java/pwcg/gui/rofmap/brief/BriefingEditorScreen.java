@@ -34,7 +34,7 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
 
 	public BriefingEditorScreen(CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper) throws PWCGException  
 	{
-		super("");
+		super();
 		this.setLayout(new BorderLayout());
 		this.setOpaque(false);
 		
@@ -48,7 +48,7 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingEditorEditorScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(mission.getCampaign(), imagePath);
 
 		editorPanel = new BriefingEditorPanel();
 		editorPanel.makePanels();

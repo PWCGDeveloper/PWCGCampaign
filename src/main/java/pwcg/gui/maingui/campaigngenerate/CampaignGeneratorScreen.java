@@ -50,7 +50,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
 
     public CampaignGeneratorScreen(PwcgMainScreen mainGUI)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 

@@ -6,6 +6,7 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
+import pwcg.campaign.ArmedService;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
@@ -26,14 +27,14 @@ public class ImageScaledPanel extends JPanel
 	
     protected double imageToScreenRatio = 0;
 	
-	public ImageScaledPanel(String imagePath, double ratio)
+	public ImageScaledPanel(ArmedService service, String imagePath, double ratio)
 	{
 		try 
 		{
 		    this.imageToScreenRatio = ratio;
 		    this.imagePath = imagePath;
 		    
-			setImage(imagePath);
+			setImage(service, imagePath);
 		}
 		catch (Exception ex) 
 		{
@@ -46,13 +47,13 @@ public class ImageScaledPanel extends JPanel
 		this.setVisible(visible);
 	}
 
-	public void setImage(String imagePath)
+	private void setImage(ArmedService service, String imagePath)
 	{
 		try 
 		{
             if (imagePath != "")
             {
-    			image = ImageCache.getInstance().getBufferedImage(imagePath);
+    			image = ImageCache.getInstance().getBufferedImageByTheme(imagePath, service);
     			if (image == null)
     			{
     			    PWCGLogger.log(LogLevel.ERROR, "Request to load null image: " + imagePath);

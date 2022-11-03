@@ -13,8 +13,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import pwcg.campaign.ArmedService;
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -29,6 +32,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
 
     public static final int DOCUMENT_MARGIN = 100;
 
+    protected ArmedService service = null;
     protected String headerText = "";
     protected String bodyText = "";
     protected String footerImagePath = "";
@@ -42,8 +46,16 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
     protected abstract String getBodyText() throws PWCGException;
     protected abstract String getFooterImagePath() throws PWCGException;
     
-    public AARDocumentIconPanel()
+    public AARDocumentIconPanel(Campaign campaign)
     {
+        try
+        {
+            service = campaign.getReferenceService();
+        }
+        catch (PWCGException e)
+        {
+            PWCGLogger.log(LogLevel.ERROR, "No reference service found for campaign");
+        }
     }
 
     @Override
@@ -81,7 +93,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
     private BufferedImage buildFolderImage(BufferedImage documentImage) throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.DocumentFolder);
-        BufferedImage folderImage = ImageCache.getInstance().getBufferedImage(imagePath);
+        BufferedImage folderImage = ImageCache.getInstance().getBufferedImageByTheme(imagePath, service);
         
         int verticalStartPosition = 50;
         int horizontalStartPosition = 50;
@@ -96,7 +108,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
     private BufferedImage buildDocumentImage() throws PWCGException, IOException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        BufferedImage documentImage = ImageCache.getInstance().getBufferedImage(imagePath);
+        BufferedImage documentImage = ImageCache.getInstance().getBufferedImageByTheme(imagePath, service);
         originalDocumentImageGraphics = documentImage.getGraphics();
 
         BufferedImage documentImageWithHeader = addHeader(documentImage);

@@ -30,7 +30,6 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
@@ -46,7 +45,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
 
     public CampaignReferencePilotSelectorScreen(Campaign campaign,CampaignHomeScreen campaignHomeGui)
     {
-        super("");
+        super();
         this.setLayout(new RelativeLayout());
         this.setOpaque(false);
 
@@ -59,7 +58,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignReferencePilotSelectorScreen);
-            this.setImageFromName(imagePath);
+            this.setThemedImageFromName(campaign, imagePath);
             
             Binding navPanelBinding = BindingFactory.getBindingFactory().directLeftEdge();
             RelativeConstraints navPanelConstraints = new RelativeConstraints();
@@ -119,7 +118,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         gridPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel centerPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel centerPanel = new ImageResizingPanel(campaign, imagePath);
         centerPanel.setLayout(new BorderLayout());
         centerPanel.add(gridPanel, BorderLayout.NORTH);
         this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());

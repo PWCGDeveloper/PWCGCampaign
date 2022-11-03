@@ -86,7 +86,7 @@ public class AARPilotLossPanel extends AARDocumentPanel
         {
             if (pilotStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
             {
-                CampaignReportPilotStatusGUI pilotLostGui = new CampaignReportPilotStatusGUI(pilotStatusEvent);
+                CampaignReportPilotStatusGUI pilotLostGui = new CampaignReportPilotStatusGUI(campaign, pilotStatusEvent);
                 String tabName = "Pilot Lost: " + pilotStatusEvent.getPilotName();
                 pilotLostGuiList.put(tabName, pilotLostGui);
             }
@@ -97,7 +97,7 @@ public class AARPilotLossPanel extends AARDocumentPanel
         {
             if (pilotStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
             {
-                CampaignReportPilotStatusGUI pilotLostGui = new CampaignReportPilotStatusGUI(pilotStatusEvent);
+                CampaignReportPilotStatusGUI pilotLostGui = new CampaignReportPilotStatusGUI(campaign, pilotStatusEvent);
                 String tabName = "Pilot Lost: " + pilotStatusEvent.getPilotName();
                 pilotLostGuiList.put(tabName, pilotLostGui);
             }

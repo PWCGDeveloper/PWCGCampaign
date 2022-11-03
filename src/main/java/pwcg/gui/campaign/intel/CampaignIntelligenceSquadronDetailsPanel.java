@@ -70,11 +70,11 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
 
     private JPanel makeSquadronDetailsPanel() throws PWCGException
     {
-        ImageResizingPanel squadronDetailsPanel = new ImageResizingPanel("");
+        ImageResizingPanel squadronDetailsPanel = new ImageResizingPanel();
         squadronDetailsPanel.setOpaque(false);
         squadronDetailsPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        squadronDetailsPanel.setImageFromName(imagePath);
+        squadronDetailsPanel.setThemedImageFromName(campaign, imagePath);
         squadronDetailsPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         JPanel squadronDetailsHeaderPanel = formSquadronIntelHeader();

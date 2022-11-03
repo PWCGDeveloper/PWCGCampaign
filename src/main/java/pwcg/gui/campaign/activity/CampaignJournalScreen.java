@@ -30,7 +30,6 @@ import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PageTurner;
@@ -58,7 +57,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
 
     public CampaignJournalScreen(Campaign campaign) throws PWCGException
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -72,7 +71,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
     public void makePanels() throws PWCGException  
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignJournalScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         calculateLinesPerPage();
         getJournalEntries();
@@ -143,7 +142,8 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
     private JPanel  makeLogCenterPanel() throws PWCGException  
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenJournal);
-        ImageResizingPanel journalCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        
+        ImageResizingPanel journalCenterPanel = new ImageResizingPanel(campaign, imagePath);
         journalCenterPanel.setLayout(new BorderLayout());
         journalCenterPanel.setOpaque(false);
         

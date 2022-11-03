@@ -8,76 +8,54 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import pwcg.gui.image.ImageCache;
 import pwcg.gui.image.MapImageCache;
 
 public abstract class ImagePanel extends JPanel
 {
-	private static final long serialVersionUID = 1L;
-	
-	protected BufferedImage image;
+    private static final long serialVersionUID = 1L;
 
-	public ImagePanel()
-	{
-	}
+    protected BufferedImage image;
 
-	public ImagePanel(String imagePath)
-	{
-		try 
-		{
-			image = ImageCache.getInstance().getBufferedImage(imagePath);
-		}
-		catch (Exception ex) 
-		{
-		}
-	}
-
-	public ImagePanel(GridLayout layout)
-	{
-		super(layout);
-	}
-
-	public ImagePanel(BorderLayout layout)
-	{
-		super(layout);
-	}
-
-    public void setImage(String imagePath)
+    public ImagePanel()
     {
-        try 
-        {
-            image = ImageCache.getInstance().getBufferedImage(imagePath);
-        }
-        catch (Exception ex) 
-        {
-        }
+    }
+
+    public ImagePanel(GridLayout layout)
+    {
+        super(layout);
+    }
+
+    public ImagePanel(BorderLayout layout)
+    {
+        super(layout);
     }
 
     public void setMapImage(MapImageCache mapImageCache, String mapImageName)
     {
-        try 
+        try
         {
             image = mapImageCache.getMapImage(mapImageName);
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
         }
     }
-	
-	@Override
-	public void paintComponent(Graphics g) 
-	{
-		g.drawImage(image, 0, 0, null); // see javadoc for more info on the parameters
-	}
-	
-	public Dimension getImageSize()
-	{
-		Dimension dimensions = new Dimension();
-		if (image != null)
-		{
-			dimensions.width = image.getWidth();
-			dimensions.height = image.getHeight();
-		}
-		return dimensions;
-	}
+
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        g.drawImage(image, 0, 0, null); // see javadoc for more info on the
+                                        // parameters
+    }
+
+    public Dimension getImageSize()
+    {
+        Dimension dimensions = new Dimension();
+        if (image != null)
+        {
+            dimensions.width = image.getWidth();
+            dimensions.height = image.getHeight();
+        }
+        return dimensions;
+    }
 }

@@ -41,7 +41,7 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
 
     public PwcgMusicConfigScreen(PwcgMainScreen parent)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
 
         this.parent = parent;

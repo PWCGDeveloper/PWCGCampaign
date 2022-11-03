@@ -26,6 +26,8 @@ public class CampaignReportMedalGUI extends AARDocumentIconPanel
 
     public CampaignReportMedalGUI(Campaign campaign, MedalEvent medalEvent) throws PWCGException
     {
+        super(campaign);
+        
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 

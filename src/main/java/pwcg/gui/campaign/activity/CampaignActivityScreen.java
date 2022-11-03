@@ -34,7 +34,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
 
     public CampaignActivityScreen(Campaign campaign, CampaignHomeScreen campaignHome)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -45,7 +45,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSimpleConfigurationScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));

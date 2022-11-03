@@ -48,7 +48,7 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 
 	public CampaignPilotMedalBox(CampaignMedalScreen campaignMedalScreen, Campaign campaign, SquadronMember pilot)
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -63,7 +63,7 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
         SoundManager.getInstance().playSound("MedalCaseOpen.WAV");
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenMedalBox);
-        this.setImageFromName(imagePath);        
+        this.setThemedImageFromName(campaign, imagePath);        
         this.setBorder(PwcgBorderFactory.createMedalBoxBorder());
 
 	    this.add(BorderLayout.CENTER, makeCenterPanel());

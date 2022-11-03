@@ -36,7 +36,7 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
 
 	public AARInitiationScreen(CampaignHomeScreen home)  
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -47,7 +47,7 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
     public void makePanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.AARInitiationScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         this.add(makeNavigationPanel(), BorderLayout.WEST);
         this.add(makeCenterPanel(), BorderLayout.CENTER);

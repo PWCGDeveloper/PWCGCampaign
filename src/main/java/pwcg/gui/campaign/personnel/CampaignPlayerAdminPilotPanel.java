@@ -55,7 +55,7 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
 
     public CampaignPlayerAdminPilotPanel(Campaign campaign, IRefreshableParentUI parentScreen, List<CoopDisplayRecord> coopDisplayRecords)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
 
         this.campaign = campaign;
@@ -68,7 +68,7 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BlankDocument);
-            this.setImageFromName(imagePath);
+            this.setThemedImageFromName(campaign, imagePath);
             this.add(makeDisplay(), BorderLayout.CENTER);
         }
         catch (Throwable e)

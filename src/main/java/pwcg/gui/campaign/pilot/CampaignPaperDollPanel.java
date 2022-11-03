@@ -28,7 +28,7 @@ public class CampaignPaperDollPanel extends ImageResizingPanel
 
     public CampaignPaperDollPanel(Campaign campaign, SquadronMember pilot)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
 
         this.campaign = campaign;

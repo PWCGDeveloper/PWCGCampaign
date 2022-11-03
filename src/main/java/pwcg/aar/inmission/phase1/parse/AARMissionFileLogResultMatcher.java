@@ -6,10 +6,10 @@ import java.util.List;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.LogFileSet;
-import pwcg.core.logfiles.LogParser;
 import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.LogFileHeaderParser;
+import pwcg.core.logfiles.LogFileSet;
+import pwcg.core.logfiles.LogParser;
 
 public class AARMissionFileLogResultMatcher
 {

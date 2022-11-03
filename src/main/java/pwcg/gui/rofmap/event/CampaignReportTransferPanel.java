@@ -16,7 +16,7 @@ public class CampaignReportTransferPanel extends AARDocumentIconPanel
 
     public CampaignReportTransferPanel(Campaign campaign, TransferEvent transferEvent) throws PWCGException
     {
-        super();
+        super(campaign);
 
         this.campaign = campaign;        
         this.transferEvent = transferEvent;        

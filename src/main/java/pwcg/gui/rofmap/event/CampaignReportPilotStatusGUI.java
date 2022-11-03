@@ -1,6 +1,7 @@
 package pwcg.gui.rofmap.event;
 
 import pwcg.aar.ui.events.model.PilotStatusEvent;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -10,9 +11,9 @@ public class CampaignReportPilotStatusGUI extends AARDocumentIconPanel
 	private static final long serialVersionUID = 1L;
 	private PilotStatusEvent pilotLostEvent = null;
 	
-	public CampaignReportPilotStatusGUI(PilotStatusEvent pilotLostEvent) throws PWCGException
+	public CampaignReportPilotStatusGUI(Campaign campaign, PilotStatusEvent pilotLostEvent) throws PWCGException
 	{
-		super();
+		super(campaign);
         this.pilotLostEvent = pilotLostEvent;
         makePanel();
 	}

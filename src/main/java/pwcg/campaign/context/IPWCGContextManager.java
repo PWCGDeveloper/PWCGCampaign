@@ -72,6 +72,4 @@ public interface IPWCGContextManager
     void setCurrentMap(FrontMapIdentifier map) throws PWCGException;
 
     NewspaperManager getNewspaperManager();
-
-    Campaign getCampaign();
 }

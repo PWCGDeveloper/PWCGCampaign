@@ -50,7 +50,7 @@ public class CampaignHomeTopAcesCenterPanel extends JPanel
 
     private JPanel createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException
     {
-        CampaignPilotChalkboard pilotChalkboardBuilder = new CampaignPilotChalkboard();
+        CampaignPilotChalkboard pilotChalkboardBuilder = new CampaignPilotChalkboard(campaignHome.getCampaign());
         pilotChalkboardBuilder.makePanels(sortedPilots);
         return pilotChalkboardBuilder;
     }

@@ -42,7 +42,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
 
     public CampaignHomeScreen(PwcgMainScreen parent, Campaign campaign) throws PWCGException
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -57,7 +57,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignHomeScreen);
-            this.setImageFromName(imagePath);
+            this.setThemedImageFromName(campaign, imagePath);
             
             refreshInformation();
         }

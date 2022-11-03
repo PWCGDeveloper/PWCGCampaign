@@ -12,7 +12,7 @@ public class CampaignHomeCenterPanelFactory
     public static JPanel makeCampaignHomeCenterPanel(CampaignHomeScreen campaignHome, List<SquadronMember> sortedPilots) throws PWCGException  
     {
         CampaignHomeCenterPanel chalkboard = new CampaignHomeCenterPanel(campaignHome.getChalkboardSelector());
-        chalkboard.makePanel(sortedPilots);
+        chalkboard.makePanel(campaignHome.getCampaign(), sortedPilots);
         return chalkboard;
     }
 }

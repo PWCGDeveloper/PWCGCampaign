@@ -121,12 +121,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public Campaign getCampaign()
-    {
-        return campaign;
-    }
-
-    @Override
     public PWCGMap getCurrentMap()
     {
         return pwcgMaps.get(currentMap);

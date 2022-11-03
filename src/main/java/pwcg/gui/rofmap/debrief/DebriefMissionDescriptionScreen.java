@@ -37,7 +37,7 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
 
 	public DebriefMissionDescriptionScreen(Campaign campaign, CampaignHomeScreen homeGui) 
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 	    
@@ -51,7 +51,7 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
 		try
 		{
 	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.DebriefMissionDescriptionScreen);
-	        this.setImageFromName(imagePath);
+	        this.setThemedImageFromName(campaign, imagePath);
 
 			this.removeAll();	
 			this.add(BorderLayout.WEST, makeButtonPanel());

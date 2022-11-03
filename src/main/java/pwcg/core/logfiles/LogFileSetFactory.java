@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.logfiles.LogFileLocationFinder;
 import pwcg.core.utils.DirectoryReader;
 
 public class LogFileSetFactory

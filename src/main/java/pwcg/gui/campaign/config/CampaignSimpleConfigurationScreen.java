@@ -24,7 +24,6 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
@@ -62,7 +61,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
 
     public CampaignSimpleConfigurationScreen(Campaign campaign)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -72,7 +71,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSimpleConfigurationScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
 	    this.add(BorderLayout.CENTER, makeConfigControlPanel());
@@ -190,8 +189,8 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         JPanel structureButtonPanel = createStructureConfigPanel();
         
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel simpleConfigButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        simpleConfigButtonPanel.setImageFromName(imagePath);
+        ImageResizingPanel simpleConfigButtonPanel = new ImageResizingPanel(campaign, imagePath);
+        simpleConfigButtonPanel.setThemedImageFromName(campaign, imagePath);
         simpleConfigButtonPanel.setLayout(new GridLayout(0,1));
         simpleConfigButtonPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 

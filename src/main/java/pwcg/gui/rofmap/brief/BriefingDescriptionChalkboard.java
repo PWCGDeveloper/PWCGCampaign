@@ -34,7 +34,7 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
 
     public BriefingDescriptionChalkboard(Mission mission, BriefingData briefingContext)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
         
@@ -45,7 +45,7 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
     public void makePanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "Chalkboard.png";
-        JPanel briefingPanel = new ImageResizingPanel(imagePath);
+        JPanel briefingPanel = new ImageResizingPanel(mission.getCampaign(), imagePath);
         briefingPanel.setLayout(new BorderLayout());
         briefingPanel.setOpaque(false);
         briefingPanel.setBorder(BorderFactory.createEmptyBorder(75,100,50,50));

@@ -29,7 +29,6 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
@@ -50,7 +49,7 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
             CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, 
             MissionHumanParticipants participatingPlayers)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -64,7 +63,7 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingRoleChooser);
-            this.setImageFromName(imagePath);
+            this.setThemedImageFromName(campaign, imagePath);
 
             this.add(BorderLayout.WEST, makeNavigatePanel());
             this.add(BorderLayout.CENTER, makeCenterPanel());
@@ -99,7 +98,7 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
     private JPanel makeCenterPanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel roleSelectionPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel roleSelectionPanel = new ImageResizingPanel(campaign, imagePath);
         roleSelectionPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
 
         roleSelectionPanel.setLayout(new BorderLayout());

@@ -39,7 +39,7 @@ public class CampaignHomeRightSquadronPanel extends JPanel
 
     private JPanel makePilotPanel(List<SquadronMember>sortedPilots) throws PWCGException
     {
-        CampaignHomePilotPanel pilotList = new CampaignHomePilotPanel(campaignHome);
+        CampaignHomePilotPanel pilotList = new CampaignHomePilotPanel(campaign, campaignHome);
         pilotList.makePanel(sortedPilots, "  Roster", "CampFlowPilot:");
         return pilotList;
     }

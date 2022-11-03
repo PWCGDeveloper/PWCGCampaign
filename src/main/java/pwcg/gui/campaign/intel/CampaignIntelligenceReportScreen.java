@@ -32,7 +32,7 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 	
 	public CampaignIntelligenceReportScreen(Campaign campaign)
 	{
-        super("");
+        super();
         this.setLayout(new RelativeLayout());
         this.setOpaque(false);
 
@@ -53,7 +53,7 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignIntelligenceReportScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         JPanel navPanel  = makeNavigatePanel();
         JPanel contentPanels  = makeContentPanels();

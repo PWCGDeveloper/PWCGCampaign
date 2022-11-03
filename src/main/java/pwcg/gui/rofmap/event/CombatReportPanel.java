@@ -12,9 +12,9 @@ public class CombatReportPanel extends AARDocumentIconPanel
 	private static final long serialVersionUID = 1L;
 	private CombatReport combatReport;
 
-	public CombatReportPanel(CombatReport combatReport)
+	public CombatReportPanel(Campaign campaign, CombatReport combatReport)
 	{
-		super();
+		super(campaign);
 		this.setLayout(new BorderLayout());
 		this.setOpaque(false);
 		this.combatReport = combatReport;

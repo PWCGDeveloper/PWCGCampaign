@@ -44,7 +44,7 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
 
 	public PwcgSkinConfigurationAnalysisDisplayScreen(Map<String, PlaneType> planeTypesToDisplay) 
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 

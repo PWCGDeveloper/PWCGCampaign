@@ -31,7 +31,7 @@ public class DebriefDescriptionChalkboard extends ImageResizingPanel
 
     public DebriefDescriptionChalkboard(Campaign campaign, AARCoordinator aarCoordinator)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
         
@@ -42,7 +42,7 @@ public class DebriefDescriptionChalkboard extends ImageResizingPanel
     public void makePanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "Chalkboard.png";
-        JPanel briefingPanel = new ImageResizingPanel(imagePath);
+        JPanel briefingPanel = new ImageResizingPanel(campaign, imagePath);
         briefingPanel.setLayout(new BorderLayout());
         briefingPanel.setOpaque(false);
         briefingPanel.setBorder(BorderFactory.createEmptyBorder(75,100,50,50));

@@ -12,7 +12,7 @@ public class CampaignReportAceLeaveGUI extends AARDocumentIconPanel
 
 	public CampaignReportAceLeaveGUI(AceLeaveEvent aceLeaveEvent, Campaign campaign) throws PWCGException
 	{
-        super();
+        super(campaign);
 
         this.aceLeaveEvent = aceLeaveEvent;
         makePanel();

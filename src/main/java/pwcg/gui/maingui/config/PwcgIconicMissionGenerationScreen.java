@@ -44,7 +44,7 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
 
     public PwcgIconicMissionGenerationScreen()
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 

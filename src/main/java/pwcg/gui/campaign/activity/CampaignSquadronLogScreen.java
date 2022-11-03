@@ -24,7 +24,6 @@ import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PageTurner;
 
@@ -46,7 +45,7 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 
 	public CampaignSquadronLogScreen (Campaign campaign, int logsForSquadronId)
 	{        
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -62,7 +61,7 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSquadronLogScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         CampaignSquadronLogSummaryPageBuilder summaryPageBuilder = new CampaignSquadronLogSummaryPageBuilder(campaign, logsForSquadronId);
         Map<Integer, StringBuffer> summaryPages = summaryPageBuilder.buildSummaryPage();
@@ -104,7 +103,7 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 	private JPanel  makeLogCenterPanel() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenSquadronLog);
-        ImageResizingPanel logCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel logCenterPanel = new ImageResizingPanel(campaign, imagePath);
         logCenterPanel.setLayout(new BorderLayout());
         logCenterPanel.setOpaque(false);
         

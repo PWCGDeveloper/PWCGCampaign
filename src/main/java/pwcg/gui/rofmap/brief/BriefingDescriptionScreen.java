@@ -38,7 +38,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     
 	public BriefingDescriptionScreen(CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, Mission mission) throws PWCGException 
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
 	    
         this.campaignHomeGuiBriefingWrapper =  campaignHomeGuiBriefingWrapper;
@@ -56,7 +56,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
 		try
 		{
 	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingDescriptionScreen);
-            this.setImageFromName(imagePath);
+            this.setThemedImageFromName(mission.getCampaign(), imagePath);
 
             briefingFlightChooser = new BriefingFlightChooser(mission, this);
             briefingFlightChooser.createBriefingSquadronSelectPanel();

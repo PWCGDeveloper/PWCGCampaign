@@ -54,7 +54,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
 
 	public PwcgSkinConfigurationAnalysisScreen(PwcgMainScreen parent) 
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 

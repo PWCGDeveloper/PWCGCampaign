@@ -68,7 +68,7 @@ public class AARCombatReportPanel extends AARDocumentPanel implements ActionList
 
     private void createCombatReportGUI() throws PWCGException
     {
-        combatReportPanel = new CombatReportPanel (combatReport);
+        combatReportPanel = new CombatReportPanel (campaign, combatReport);
         combatReportPanel.makePanel();
     }
 

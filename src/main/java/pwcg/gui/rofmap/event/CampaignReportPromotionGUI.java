@@ -18,7 +18,7 @@ public class CampaignReportPromotionGUI extends AARDocumentIconPanel
 
 	public CampaignReportPromotionGUI(Campaign campaign, PromotionEvent promotionEvent) throws PWCGException
 	{
-		super();
+		super(campaign);
         this.campaign = campaign;
         this.promotionEvent = promotionEvent;
 		this.promotionRecipient = campaign.getPersonnelManager().getAnyCampaignMember(promotionEvent.getPilotSerialNumber());

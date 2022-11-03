@@ -25,7 +25,6 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
@@ -40,7 +39,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 
     public CampaignMedalScreen(Campaign campaign, SquadronMember pilot)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
 
         this.campaign = campaign;
@@ -50,7 +49,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignMedalScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         this.add(BorderLayout.WEST, makeNavigationPanel());
         this.add(BorderLayout.CENTER, makeCenterPanel());     
@@ -180,7 +179,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
     private JPanel formMedalTextPanel(Medal medal) throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel medalTextPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel medalTextPanel = new ImageResizingPanel(campaign, imagePath);
         medalTextPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
 
         String medalText = MedalText.getTextForMedal(pilot, medal);

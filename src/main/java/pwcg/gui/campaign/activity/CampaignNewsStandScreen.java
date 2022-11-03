@@ -44,7 +44,7 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
 
     public CampaignNewsStandScreen(Campaign campaign)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -55,7 +55,7 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
     public void makePanels() throws PWCGException 
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignNewsScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         pwcgThreePanel.setLeftPanel(makeNewsLeftPanel());
         pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());

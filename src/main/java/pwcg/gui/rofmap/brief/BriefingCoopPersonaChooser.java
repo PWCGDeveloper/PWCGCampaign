@@ -52,7 +52,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
 
     public BriefingCoopPersonaChooser(Campaign campaign, String missionChoice, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, boolean overrideRole)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -66,7 +66,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingCoopPersonaChooser);
-            this.setImageFromName(imagePath);
+            this.setThemedImageFromName(campaign, imagePath);
 
         	coopPersonaAccept = new CoopPersonaChooserPanel(campaign, this);
             coopPersonaAccept.makePanels();

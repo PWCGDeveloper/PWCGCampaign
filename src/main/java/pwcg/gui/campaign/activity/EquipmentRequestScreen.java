@@ -40,7 +40,6 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
@@ -58,7 +57,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
 
     public EquipmentRequestScreen(Campaign campaign)
     {
-        super("");
+        super();
         this.setLayout(new GridBagLayout());
         this.setOpaque(false);
 
@@ -68,7 +67,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     public void makePanels() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignLeaveScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         GridBagConstraints constraints = initializeGridbagConstraints();
 
@@ -108,7 +107,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     private JPanel makeCenterPanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel equipmentManagementPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel equipmentManagementPanel = new ImageResizingPanel(campaign, imagePath);
         equipmentManagementPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         JPanel equipmentSelectionPanel = makeEquipmentSelectionPanel();

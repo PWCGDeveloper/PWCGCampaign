@@ -27,17 +27,6 @@ public class ImagePanelLayout extends JPanel
 		}
 	}
 
-	public void setImage(String imagePath)
-	{
-		try 
-		{
-			image = ImageCache.getInstance().getBufferedImage(imagePath);
-		}
-		catch (Exception ex) 
-		{
-		}
-	}
-
 	@Override
 	public void paintComponent(Graphics g) 
 	{

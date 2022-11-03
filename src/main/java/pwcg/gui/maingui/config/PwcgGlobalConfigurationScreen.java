@@ -43,7 +43,7 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
 
     public PwcgGlobalConfigurationScreen()
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 

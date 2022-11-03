@@ -66,7 +66,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 
 	public PwcgMainScreen() 
 	{
-	    super("");
+	    super();
 		setLayout(new BorderLayout());
 		this.setBackground(Color.DARK_GRAY);
 		

@@ -39,7 +39,7 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 
 	public CampaignEquipmentDepotScreen(Campaign campaign)
 	{
-        super("");
+        super();
         this.setLayout(new GridBagLayout());
         this.setOpaque(false);
 
@@ -49,7 +49,7 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignEquipmentDepotScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
         
         GridBagConstraints constraints = initializeGridbagConstraints();
 
@@ -89,11 +89,11 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 
 	private JPanel makeCenterPanel() throws PWCGException 
 	{
-        ImageResizingPanel equipmentDepotPanel = new ImageResizingPanel("");
+        ImageResizingPanel equipmentDepotPanel = new ImageResizingPanel();
         equipmentDepotPanel.setOpaque(false);
         equipmentDepotPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        equipmentDepotPanel.setImageFromName(imagePath);
+        equipmentDepotPanel.setThemedImageFromName(campaign, imagePath);
         equipmentDepotPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
         
         Color tabBG = ColorMap.PAPER_BACKGROUND;

@@ -45,7 +45,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
 
     public CampaignSkinConfigurationScreen(Campaign campaign) 
     {
-        super("");
+        super();
         this.setLayout(new RelativeLayout());
 
         this.campaign = campaign;
@@ -56,7 +56,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
     {
         PWCGContext.getInstance().getSkinManager().initialize();
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSkinConfigurationScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         SquadronMember referencePlayer = campaign.findReferencePlayer();
         skinSessionManager.setPilot(referencePlayer);
@@ -113,7 +113,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
 
     private void createSkinSelectionPanel() throws PWCGException
     {
-        skinSelectionPanel = new CampaignSkinConfigurationSelectionPanel(this);
+        skinSelectionPanel = new CampaignSkinConfigurationSelectionPanel(campaign, this);
         skinSelectionPanel.makePanels();
 
         ImageToDisplaySizer.setDocumentSize(skinSelectionPanel);
@@ -122,7 +122,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
     private JPanel createPilotSelectionPanel() throws PWCGException, PWCGException
     {
         List<SquadronMember> pilotsNoAces = makePilotList();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomePilotsRightPanel(this, pilotsNoAces);
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomePilotsRightPanel(campaign, this, pilotsNoAces);
 
         return squadronPanel;
     }

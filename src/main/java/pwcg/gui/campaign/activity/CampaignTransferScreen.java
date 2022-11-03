@@ -50,7 +50,6 @@ import pwcg.gui.rofmap.event.AARReportMainPanel;
 import pwcg.gui.rofmap.event.AARReportMainPanel.EventPanelReason;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
@@ -75,7 +74,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 
 	public CampaignTransferScreen  (Campaign campaign, SquadronMember squadronMemberToTransfer, IRefreshableParentUI parentScreen, boolean passTime)
 	{
-        super("");
+        super();
         this.setLayout(new GridBagLayout());
         this.setOpaque(false);
 
@@ -88,7 +87,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignTransferScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         service = this.squadronMemberToTransfer.determineService(campaign.getDate());
 
@@ -148,9 +147,8 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 
 	private JPanel makeTransferDocumentPanel() throws PWCGException  
 	{
-		ImageResizingPanel transferCenterPanel = null;
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        transferCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel transferCenterPanel = new ImageResizingPanel(campaign, imagePath);
         transferCenterPanel.setLayout(new BorderLayout());
         transferCenterPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 

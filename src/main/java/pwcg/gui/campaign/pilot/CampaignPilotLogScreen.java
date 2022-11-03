@@ -26,7 +26,6 @@ import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 
@@ -45,7 +44,7 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 
     public CampaignPilotLogScreen(Campaign campaign, SquadronMember pilot)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
 
         this.pilot = pilot;  
@@ -55,7 +54,7 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignPilotLogScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         pilotLogPages = new PilotLogPages(campaign, pilot);
         pilotLogPages.makePages();
@@ -85,7 +84,7 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 	private JPanel  makeLogCenterPanel() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenPilotLog);
-        ImageResizingPanel campaignPilotLogPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel campaignPilotLogPanel = new ImageResizingPanel(campaign, imagePath);
         campaignPilotLogPanel.setLayout(new GridLayout(0,2));
         campaignPilotLogPanel.setOpaque(false);
 

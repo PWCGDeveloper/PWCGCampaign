@@ -34,7 +34,6 @@ import pwcg.gui.dialogs.HelpDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
@@ -52,7 +51,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
 
     public CampaignLeaveScreen(CampaignHomeScreen parent)
     {
-        super("");
+        super();
         this.setLayout(new GridBagLayout());
         this.setOpaque(false);
 
@@ -67,7 +66,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
     public void makePanels() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignLeaveScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         GridBagConstraints constraints = initializeGridbagConstraints();
 
@@ -127,7 +126,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
     private JPanel makeLeaveLetterPanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel leaveLetterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel leaveLetterPanel = new ImageResizingPanel(campaign, imagePath);
         leaveLetterPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
 
         leaveLetterPanel.setLayout(new BorderLayout());

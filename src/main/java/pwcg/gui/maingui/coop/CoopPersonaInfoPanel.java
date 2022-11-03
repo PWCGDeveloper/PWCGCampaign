@@ -36,7 +36,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
 
     public CoopPersonaInfoPanel()
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
     }

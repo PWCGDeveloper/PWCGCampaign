@@ -52,7 +52,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
 
     public CampaignPlayerAdminScreen(Campaign campaign)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -66,7 +66,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
             loadCoopRecords();
 
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignCoopAdminScreen);
-            this.setImageFromName(imagePath);
+            this.setThemedImageFromName(campaign, imagePath);
             
             JPanel navPanel  = makeNavigatePanel();
             this.add(navPanel, BorderLayout.WEST);

@@ -36,7 +36,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
     
 	public CoopPersonaChooserPanel(Campaign campaign, BriefingCoopPersonaChooser parent)
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 	    
@@ -49,7 +49,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
 		try
 		{
 	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-	        this.setImageFromName(imagePath);
+	        this.setThemedImageFromName(campaign, imagePath);
 	        this.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
 	        JPanel centerPanel = makeAcceptancePanel();

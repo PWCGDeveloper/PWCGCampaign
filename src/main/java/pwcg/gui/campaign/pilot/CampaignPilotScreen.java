@@ -62,7 +62,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 
     public CampaignPilotScreen(Campaign campaign, Squadron squad, SquadronMember pilot, CampaignHomeScreen parent)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
 
         this.pilot = pilot;
@@ -78,7 +78,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignPilotScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         this.add(BorderLayout.WEST, makenavigationPanel());
         centerPanel = makeCenterPanel();
@@ -123,7 +123,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 		pilotLogPanel.setOpaque(false);
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotLogBook.png";
-        ImageScaledPanel pilotLogBorderPanel = new ImageScaledPanel(imagePath, 0.75);
+        ImageScaledPanel pilotLogBorderPanel = new ImageScaledPanel(pilot.determineService(campaign.getDate()), imagePath, 0.75);
 		pilotLogBorderPanel.setLayout(new BorderLayout());
 		pilotLogBorderPanel.setOpaque(false);
 

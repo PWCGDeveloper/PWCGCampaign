@@ -24,7 +24,6 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 
@@ -37,7 +36,7 @@ public class CampaignDeleteScreen extends ImageResizingPanel implements ActionLi
 
     public CampaignDeleteScreen(PwcgMainScreen parent)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -86,7 +85,7 @@ public class CampaignDeleteScreen extends ImageResizingPanel implements ActionLi
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
         
-        ImageResizingPanel campaignSelectPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel campaignSelectPanel = new ImageResizingPanel(imagePath);
         campaignSelectPanel.setLayout(new BorderLayout());
         campaignSelectPanel.setOpaque(true);
         

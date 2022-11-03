@@ -62,12 +62,12 @@ public class CampaignSkinConfigurationPilotPanel extends ImageResizingPanel impl
 
     public CampaignSkinConfigurationPilotPanel(Campaign campaign, CampaignSkinConfigurationScreen parent) throws PWCGException
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(30, 30, 50, 70));
 
         this.campaign = campaign;

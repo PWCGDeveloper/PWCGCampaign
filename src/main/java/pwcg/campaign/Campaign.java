@@ -406,7 +406,13 @@ public class Campaign
         }
         return referencePlayer;
     }
-    
+
+    public ArmedService getReferenceService() throws PWCGException
+    {
+        SquadronMember referencePlayer = getReferencePlayer();
+        return referencePlayer.determineService(this.getDate());
+    }
+
     public IPlaneMarkingManager getPlaneMarkingManager()
     {
         return planeMarkingManager;

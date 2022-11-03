@@ -49,7 +49,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
     
     public AARReportMainPanel(Campaign campaign, IRefreshableParentUI parentScreen, EventPanelReason reasonToAdvanceTime)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -61,7 +61,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
     
     public AARReportMainPanel(Campaign campaign, IRefreshableParentUI parentScreen, EventPanelReason reasonToAdvanceTime, TransferEvent transferEventForTimeDueToTransfer)
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -74,7 +74,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
 	public void makePanels() throws PWCGException  
 	{        
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.AARReportMainPanel);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         makeAarEventPanels();            
 

@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
@@ -46,14 +47,14 @@ public class CampaignSkinConfigurationSelectionPanel extends ImageResizingPanel 
     private ButtonGroup skinButtonGroup = new ButtonGroup();
     private List<ButtonModel> skinButtonModels = new ArrayList<>();
 
-	public CampaignSkinConfigurationSelectionPanel(CampaignSkinConfigurationScreen parent) throws PWCGException
+	public CampaignSkinConfigurationSelectionPanel(Campaign campaign, CampaignSkinConfigurationScreen parent) throws PWCGException
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(30, 30, 50, 70));
         
         this.parent = parent;

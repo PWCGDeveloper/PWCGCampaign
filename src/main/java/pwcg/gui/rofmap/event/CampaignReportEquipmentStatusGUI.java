@@ -13,7 +13,7 @@ public class CampaignReportEquipmentStatusGUI extends AARDocumentIconPanel
 	
 	public CampaignReportEquipmentStatusGUI(Campaign campaign, PlaneStatusEvent pilotLostEvent) throws PWCGException
 	{
-		super();
+		super(campaign);
         this.campaign = campaign;
         this.equipmentStatusEvent = pilotLostEvent;
         makePanel();        

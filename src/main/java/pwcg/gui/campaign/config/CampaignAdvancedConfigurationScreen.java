@@ -31,7 +31,6 @@ import pwcg.gui.config.ConfigurationParametersGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
@@ -48,7 +47,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 
 	public CampaignAdvancedConfigurationScreen(Campaign campaign)
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -59,7 +58,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignAdvancedConfigurationScreen);
-        this.setImageFromName(imagePath);
+        this.setThemedImageFromName(campaign, imagePath);
 
         pwcgThreePanel.setLeftPanel(makeNavigatePanel());
         pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());
@@ -92,7 +91,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 	public JPanel makeBlankCenterPanel() throws PWCGException 
 	{		
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-		ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel blankPanel = new ImageResizingPanel(campaign, imagePath);
 		blankPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 		blankPanel.setLayout(new BorderLayout());
 		return blankPanel;

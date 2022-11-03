@@ -18,16 +18,16 @@ public class CampaignHomeRightPanelFactory
         return squadronPanel;
     }
     
-    public static JPanel makeCampaignHomePilotsRightPanel(ActionListener actionListener, List<SquadronMember> squadronMembers) throws PWCGException
+    public static JPanel makeCampaignHomePilotsRightPanel(Campaign campaign,ActionListener actionListener, List<SquadronMember> squadronMembers) throws PWCGException
     {
-        CampaignHomeRightSquadronNoPlaquePanel squadronPanel = new CampaignHomeRightSquadronNoPlaquePanel(actionListener);
+        CampaignHomeRightSquadronNoPlaquePanel squadronPanel = new CampaignHomeRightSquadronNoPlaquePanel(campaign, actionListener);
         squadronPanel.makePanel(squadronMembers);
         return squadronPanel;
     }
     
-    public static JPanel makeCampaignHomeAcesRightPanel(CampaignHomeScreen campaignHome, List<SquadronMember> aces) throws PWCGException
+    public static JPanel makeCampaignHomeAcesRightPanel(Campaign campaign, CampaignHomeScreen campaignHome, List<SquadronMember> aces) throws PWCGException
     {
-        CampaignHomeRightAcesPanel acesPanel = new CampaignHomeRightAcesPanel(campaignHome);
+        CampaignHomeRightAcesPanel acesPanel = new CampaignHomeRightAcesPanel(campaign, campaignHome);
         acesPanel.makePanel(aces);
         return acesPanel;
     }
