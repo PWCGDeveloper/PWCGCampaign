@@ -69,7 +69,7 @@ public class TargetLocationFinder
     {
         Coordinate flightTargetCoordinates = null;
         GroupManager groupManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
-        Bridge bridge = groupManager.getBridgeFinder().findBridgeForSideWithinRadius(side, campaign.getDate(), targetGeneralLocation, radius);
+        Bridge bridge = groupManager.getBridgeFinder().findBridgeForSideWithinRadius(campaign, side, targetGeneralLocation, radius);
         if (bridge != null)
         {
             flightTargetCoordinates = bridge.getPosition();

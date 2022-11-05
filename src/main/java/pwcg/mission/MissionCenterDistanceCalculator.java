@@ -1,9 +1,7 @@
 package pwcg.mission;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.skirmish.TargetDistance;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PositionFinder;
@@ -25,7 +23,7 @@ public class MissionCenterDistanceCalculator
         int missionCenterMaxDistance = PositionFinder.ABSURDLY_LARGE_DISTANCE;
         
         int missionCenterMaxDistanceFromBaseByConfig = determineMaxDistanceByConfig();
-        int missionCenterMaxDistanceFromBaseByRange = determineMaxDistanceByRange();
+        int missionCenterMaxDistanceFromBaseByRange = TargetDistance.findMaxTargetDistanceForPlayers(campaign, participatingPlayers);
         
         if (missionCenterMaxDistanceFromBaseByConfig < missionCenterMaxDistanceFromBaseByRange)
         {
@@ -47,28 +45,6 @@ public class MissionCenterDistanceCalculator
     private int determineMaxDistanceByConfig() throws PWCGException
     {
         int missionCenterMaxDistanceFromBase = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MissionBoxMaxDistanceFromBaseKey) * 1000;
-        return missionCenterMaxDistanceFromBase;
-    }
-    
-    private int determineMaxDistanceByRange() throws PWCGException
-    {
-        int missionCenterMaxDistanceFromBase = PositionFinder.ABSURDLY_LARGE_DISTANCE;
-        for (int playerSquadronId : participatingPlayers.getParticipatingSquadronIds())
-        {
-            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronId);
-            PlaneType planeForSquadron = playerSquadron.determineBestPlane(campaign.getDate());
-            int maxRange = planeForSquadron.getRange();
-            
-            int maxPercentOfRange = 40;
-            int missionCenterMaxDistanceFromBaseForPlayerSquadron = Double.valueOf((Integer.valueOf(maxRange).doubleValue()) * (Integer.valueOf(maxPercentOfRange).doubleValue() / 100.0)).intValue();
-            missionCenterMaxDistanceFromBaseForPlayerSquadron *= 1000;
-            
-            if (missionCenterMaxDistanceFromBase > missionCenterMaxDistanceFromBaseForPlayerSquadron)
-            {
-                missionCenterMaxDistanceFromBase = missionCenterMaxDistanceFromBaseForPlayerSquadron;
-            }
-        }
-
         return missionCenterMaxDistanceFromBase;
     }
 }

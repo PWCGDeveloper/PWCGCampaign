@@ -117,7 +117,7 @@
 			"help": "Size of the box that PWCG direct flights into.  Smaller means more flights in a tight area"
 		},
 		"MissionBoxMinDistanceFromBase": {
-			"value": "20",
+			"value": "15",
 			"label": "Min dist in km mission center from base",
 			"help": "Minimum distance of mission center from base (Not used in competitive mode)"
 		},

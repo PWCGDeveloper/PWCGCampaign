@@ -2,13 +2,13 @@ package pwcg.campaign.shipping;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.skirmish.SkirmishDistance;
+import pwcg.campaign.skirmish.TargetDistance;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 
@@ -21,18 +21,18 @@ public class CargoShipRoutes
         return routeDefinitions;
     }
 
-    public CargoShipRoute getNearbyCargoShipRouteBySide(Date date, Coordinate targetGeneralLocation, Side side) throws PWCGException
+    public CargoShipRoute getNearbyCargoShipRouteBySide(Campaign campaign, Squadron squadron, Side side) throws PWCGException
     {
         List<CargoShipRoute> nearbyRouteDefinitions = new ArrayList<>();
         for (CargoShipRoute cargoRoute : routeDefinitions)
         {
-            if (!DateUtils.isDateInRange(date, cargoRoute.getRouteStartDate(), cargoRoute.getRouteStopDate()))
+            if (!DateUtils.isDateInRange(campaign.getDate(), cargoRoute.getRouteStartDate(), cargoRoute.getRouteStopDate()))
             {
                 continue;
             }
             
-            double distance = MathUtils.calcDist(cargoRoute.getRouteDestination(), targetGeneralLocation);
-            if (distance < SkirmishDistance.findMaxSkirmishDistance())
+            double distance = MathUtils.calcDist(cargoRoute.getRouteDestination(), squadron.determineCurrentPosition(campaign.getDate()));
+            if (distance < TargetDistance.findMaxTargetDistanceForSquadron(campaign, squadron.getSquadronId()))
             {
                 nearbyRouteDefinitions.add(cargoRoute);
             }

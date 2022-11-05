@@ -47,7 +47,7 @@ public class BodenplatteFlightTest
     }
 
     @Test
-    public void hasAttackOnOphovenTest() throws PWCGException
+    public void hasAttackNearOphovenTest() throws PWCGException
     {        
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_354_BODENPLATTE_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19450101"));
@@ -71,7 +71,7 @@ public class BodenplatteFlightTest
     }
 
     @Test
-    public void hasAttackOnVolkelTest() throws PWCGException
+    public void hasAttackNearVolkelTest() throws PWCGException
     {        
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_326_BODENPLATTE_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19450101"));

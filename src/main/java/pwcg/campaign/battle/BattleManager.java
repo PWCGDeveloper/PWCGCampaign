@@ -2,16 +2,13 @@ package pwcg.campaign.battle;
 
 import java.util.Date;
 
-import pwcg.campaign.api.Side;
-import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.BattleIOJson;
-import pwcg.campaign.skirmish.SkirmishDistance;
+import pwcg.campaign.skirmish.TargetDistance;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 
 public class BattleManager
@@ -36,17 +33,17 @@ public class BattleManager
         }
 	}
 
-    public Battle getBattleForCampaign(FrontMapIdentifier mapId, Coordinate position, Date date) 
-    {     
+    public Battle getBattleForCampaign(Campaign campaign, Coordinate battleLocation)
+    {
         try
         {
             for (Battle battle : battles.getBattles())
             {
-                if (isBattleAtRightTime(date, battle))
+                if (isBattleAtRightTime(campaign.getDate(), battle))
                 {
-	                if (isBattleOnRightMap(battle, mapId))
+	                if (isBattleOnRightMap(battle, campaign.getCampaignMap()))
 	                {
-                        if (isBattleNearPlayer(position, battle, mapId, date))
+                        if (isBattleNearPlayer(campaign, battleLocation))
                         {
                             return battle;
                         }
@@ -87,13 +84,10 @@ public class BattleManager
         return false;
     }
     
-    private boolean isBattleNearPlayer(Coordinate position, Battle battle, FrontMapIdentifier matchingMap, Date date) throws PWCGException
+    private boolean isBattleNearPlayer(Campaign campaign, Coordinate battleLocation) throws PWCGException
     {
-        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getMapByMapId(matchingMap).getFrontLinesForMap(date);
-        Coordinate closestFrontLines = frontLineMarker.findClosestFrontCoordinateForSide(position, Side.ALLIED);
-
-        double distanceFromBattleFront = MathUtils.calcDist(closestFrontLines, position);
-        if (distanceFromBattleFront < SkirmishDistance.findMaxSkirmishDistance())
+        int distanceToPlayer = TargetDistance.findTargetDistanceToReferencePlayer(campaign, battleLocation);        
+        if (distanceToPlayer < TargetDistance.findMaxTargetDistanceForConfiguration(campaign))
         {
             return true;
         }

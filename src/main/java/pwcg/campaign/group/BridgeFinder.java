@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
@@ -33,10 +34,10 @@ public class BridgeFinder
         return closestBridge;
     }
 
-    public Bridge findBridgeForSideWithinRadius(Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException 
+    public Bridge findBridgeForSideWithinRadius(Campaign campaign, Side side, Coordinate referenceLocation, double radius) throws PWCGException 
     {
         PositionFinder<Bridge> positionFinder = new PositionFinder<Bridge>();
-        List<Bridge> bridgesForSide = findAllBridgesForSide(null, side, date);
+        List<Bridge> bridgesForSide = findAllBridgesForSide(campaign.getCampaignMap(), side, campaign.getDate());
         Bridge selectedBridge = positionFinder.selectPositionWithinExpandingRadius(
                 bridgesForSide, 
                 referenceLocation, 

@@ -3,7 +3,7 @@ package pwcg.campaign.shipping;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.skirmish.SkirmishDistance;
+import pwcg.campaign.skirmish.TargetDistance;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -20,28 +20,28 @@ public class CargoRouteManager
     public static CargoShipRoute getCargoRouteForSide (Campaign campaign, MissionHumanParticipants participatingPlayers, Side side) throws PWCGException
     {
         Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(participatingPlayers.getAllParticipatingPlayers().get(0).getSquadronId());
-        Coordinate playerSquadronPosition = squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getPosition();
-        CargoShipRoute cargoRouteForSide = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getShippingLaneManager().getNearbyCargoShipRouteBySide(campaign.getDate(), playerSquadronPosition, side);
+        CargoShipRoute cargoRouteForSide = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getShippingLaneManager().
+                getNearbyCargoShipRouteBySide(campaign, squadron, side);
         
         if (cargoRouteForSide != null)
         {
-            Coordinate routeStartPosition = getInRangeStartPosition(campaign, cargoRouteForSide, playerSquadronPosition);
+            Coordinate routeStartPosition = getInRangeStartPosition(campaign, cargoRouteForSide, squadron);
             cargoRouteForSide.setRouteStartPosition(routeStartPosition);
         }
         
         return cargoRouteForSide;
     }
     
-    private static Coordinate getInRangeStartPosition(Campaign campaign, CargoShipRoute cargoRoute, Coordinate playerSquadronPosition) throws PWCGException
+    private static Coordinate getInRangeStartPosition(Campaign campaign, CargoShipRoute cargoRoute, Squadron squadron) throws PWCGException
     {
         Coordinate routeStartPosition = getConvoyInitialStartPosition(campaign, cargoRoute);
-        double distanceFromPlayer = MathUtils.calcDist(routeStartPosition, playerSquadronPosition);
-        while (distanceFromPlayer > SkirmishDistance.findMaxSkirmishDistance())
+        double distanceFromPlayer = MathUtils.calcDist(routeStartPosition, squadron.determineCurrentPosition(campaign.getDate()));
+        while (distanceFromPlayer > TargetDistance.findMaxTargetDistanceForSquadron(campaign, squadron.getSquadronId()))
         {
             double angle = MathUtils.calcAngle(routeStartPosition, cargoRoute.getRouteDestination());
             routeStartPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), routeStartPosition.copy(), angle, 5000.0);
             
-            double adjustedDistanceFromPlayer = MathUtils.calcDist(routeStartPosition, playerSquadronPosition);
+            double adjustedDistanceFromPlayer = MathUtils.calcDist(routeStartPosition, squadron.determineCurrentPosition(campaign.getDate()));
             if (adjustedDistanceFromPlayer > distanceFromPlayer)
             {
                 PWCGLogger.log(LogLevel.ERROR, "Moving away from player.  Using destination");

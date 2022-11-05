@@ -2,7 +2,7 @@ package pwcg.campaign.shipping;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.skirmish.SkirmishDistance;
+import pwcg.campaign.skirmish.TargetDistance;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -16,7 +16,7 @@ public class ShipEncounterZoneManager
     {
         Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(participatingPlayers.getAllParticipatingPlayers().get(0).getSquadronId());
         Coordinate playerSquadronPosition = squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getPosition();
-        ShipEncounterZone shipEncounterZone = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getShippingLaneManager().getNearbyEncounterZone(campaign.getDate(), playerSquadronPosition);
+        ShipEncounterZone shipEncounterZone = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getShippingLaneManager().getNearbyEncounterZone(campaign, playerSquadronPosition);
         
         if (shipEncounterZone != null)
         {
@@ -34,7 +34,7 @@ public class ShipEncounterZoneManager
         Coordinate encounterPoint = coordinateBox.chooseCoordinateWithinBox();
 
         double distanceFromPlayer = MathUtils.calcDist(encounterPoint, playerSquadronPosition);
-        while (distanceFromPlayer > SkirmishDistance.findMaxSkirmishDistance())
+        while (distanceFromPlayer > TargetDistance.findMaxTargetDistanceForConfiguration(campaign))
         {
             double angle = MathUtils.calcAngle(encounterPoint, playerSquadronPosition);
             Coordinate adjustedEncounterPoint = MathUtils.calcNextCoord(campaign.getCampaignMap(), encounterPoint.copy(), angle, 3000.0);

@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
@@ -42,6 +43,7 @@ public class VirtualWaypointStartFinderNearFrontTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(flight.getSquadron()).thenReturn(squadron);
         Mockito.when(flight.getCampaign()).thenReturn(campaign);
+        Mockito.when(flight.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
         Mockito.when(squadron.determineSide()).thenReturn(Side.AXIS);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
     }

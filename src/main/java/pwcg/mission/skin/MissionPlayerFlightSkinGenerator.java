@@ -34,6 +34,10 @@ public class MissionPlayerFlightSkinGenerator
     {
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squad, plane, date);
         setUserAssignedPilotSkin(pilot, plane);
+        if (plane.getSkin() == null || plane.getSkin().getSkinName().isEmpty())
+        {
+            System.out.println("Foo");
+        }
     }
 
 	private void setUserAssignedPilotSkin(SquadronMember pilot, PlaneMcu plane) 

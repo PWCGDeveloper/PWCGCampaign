@@ -6,12 +6,8 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.MissionHumanParticipants;
 
@@ -34,7 +30,7 @@ public class SkirmishBuilder
         {
             return null;
         }
-        
+
         return chooseBestAvailableSkirmish(skirmishes);
     }
 
@@ -43,34 +39,35 @@ public class SkirmishBuilder
         List<Skirmish> candidateSkirmishes = new ArrayList<>();
         if (campaign.getDate().equals(DateUtils.getDateYYYYMMDD("19450101")))
         {
-            candidateSkirmishes = getClosestAirfieldForBodenplatte(skirmishes);
+            candidateSkirmishes = getClosestAirfieldsForBodenplatte(skirmishes);
         }
         else
         {
             candidateSkirmishes = getInRangeSkirmishes(skirmishes);
         }
-        
+
         if (!candidateSkirmishes.isEmpty())
         {
             int selected = RandomNumberGenerator.getRandom(candidateSkirmishes.size());
             return candidateSkirmishes.get(selected);
         }
-        
+
         return null;
     }
 
-    private List<Skirmish> getClosestAirfieldForBodenplatte(List<Skirmish> skirmishes) throws PWCGException
+    private List<Skirmish> getClosestAirfieldsForBodenplatte(List<Skirmish> skirmishes) throws PWCGException
     {
         Skirmish closestSkirmish = null;
         double closestDistance = 0;
         for (Skirmish skirmish : skirmishes)
         {
-            double distance = calculateDistance(skirmish, participatingPlayers.getAllParticipatingPlayers().get(0));
+            double distance = TargetDistance.calculateDistance(campaign, participatingPlayers.getAllParticipatingPlayers().get(0), skirmish.getCenter());
             if ((closestSkirmish == null) || (distance <  closestDistance))
             {
                 closestSkirmish = skirmish;
                 closestDistance = distance;
             }
+
         }
         
         if (closestSkirmish == null)
@@ -86,33 +83,11 @@ public class SkirmishBuilder
         List<Skirmish> candidateSkirmishes = new ArrayList<>();
         for (Skirmish skirmish : skirmishes)
         {
-            if (isWithinRange(skirmish))
+            if(TargetDistance.isWithinRange(campaign, participatingPlayers, skirmish.getCenter()))
             {
                 candidateSkirmishes.add(skirmish);
             }
         }
         return candidateSkirmishes;
-    }
-
-    private boolean isWithinRange(Skirmish skirmish) throws PWCGException
-    {
-        for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
-        {
-            double distance = calculateDistance(skirmish, player);
-            if (distance > SkirmishDistance.findMaxSkirmishDistance())
-            {
-                return false;
-            }            
-        }
-        return true;
-    }
-
-    private double calculateDistance(Skirmish skirmish, SquadronMember player) throws PWCGException
-    {
-        Coordinate skirmishCenter = skirmish.getCenter();
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-        Coordinate squadronPosition = squadron.determineCurrentPosition(campaign.getDate());
-        double distance = MathUtils.calcDist(skirmishCenter, squadronPosition);
-        return distance;
     }
 }

@@ -2,10 +2,10 @@ package pwcg.campaign.shipping;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.skirmish.SkirmishDistance;
+import pwcg.campaign.Campaign;
+import pwcg.campaign.skirmish.TargetDistance;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -21,19 +21,19 @@ public class ShipEncounterZones
         return shipEncounterZones;
     }
 
-    public ShipEncounterZone getNearbyShipEncounterZone(Date date, Coordinate targetGeneralLocation) throws PWCGException
+    public ShipEncounterZone getNearbyShipEncounterZone(Campaign campaign, Coordinate targetGeneralLocation) throws PWCGException
     {
         List<ShipEncounterZone> nearbyRouteDefinitions = new ArrayList<>();
         for (ShipEncounterZone shipEncounterZone : shipEncounterZones)
         {
-            if (!DateUtils.isDateInRange(date, shipEncounterZone.getStartDate(), shipEncounterZone.getEndDate()))
+            if (!DateUtils.isDateInRange(campaign.getDate(), shipEncounterZone.getStartDate(), shipEncounterZone.getEndDate()))
             {
                 continue;
             }
             
             CoordinateBox coordinateBox = CoordinateBox.coordinateBoxFromCorners(shipEncounterZone.getSwCorner(), shipEncounterZone.getNeCorner());
             double distance = MathUtils.calcDist(coordinateBox.getCenter(), targetGeneralLocation);
-            if (distance < SkirmishDistance.findMaxSkirmishDistance())
+            if (distance < TargetDistance.findMaxTargetDistanceForConfiguration(campaign))
             {
                 nearbyRouteDefinitions.add(shipEncounterZone);
             }

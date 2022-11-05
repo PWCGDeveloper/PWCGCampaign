@@ -1,11 +1,11 @@
 package pwcg.campaign.shipping;
 
-import java.util.Date;
-
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.CargoRoutesIOJson;
 import pwcg.campaign.io.json.ShipEncounterZonesIOJson;
 import pwcg.campaign.io.json.ShippingLaneIOJson;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
@@ -46,9 +46,9 @@ public class ShippingLaneManager
         return shippingLanes.getClosestShippingLaneBySide(targetGeneralLocation, side);
     }
 
-    public CargoShipRoute getNearbyCargoShipRouteBySide(Date date, Coordinate targetGeneralLocation, Side side) throws PWCGException
+    public CargoShipRoute getNearbyCargoShipRouteBySide(Campaign campaign, Squadron squadron, Side side) throws PWCGException
     {
-        CargoShipRoute cargoRoute = cargoRoutes.getNearbyCargoShipRouteBySide(date, targetGeneralLocation, side);
+        CargoShipRoute cargoRoute = cargoRoutes.getNearbyCargoShipRouteBySide(campaign, squadron, side);
         if (cargoRoute != null)
         {
             return cargoRoute.copy();
@@ -65,9 +65,9 @@ public class ShippingLaneManager
         return cargoRoute;
     }
 
-    public ShipEncounterZone getNearbyEncounterZone(Date date, Coordinate playerSquadronPosition) throws PWCGException
+    public ShipEncounterZone getNearbyEncounterZone(Campaign campaign, Coordinate playerSquadronPosition) throws PWCGException
     {
-        ShipEncounterZone shipEncounterZone = shipEncounterZones.getNearbyShipEncounterZone(date, playerSquadronPosition);
+        ShipEncounterZone shipEncounterZone = shipEncounterZones.getNearbyShipEncounterZone(campaign, playerSquadronPosition);
         return shipEncounterZone;
     }
 

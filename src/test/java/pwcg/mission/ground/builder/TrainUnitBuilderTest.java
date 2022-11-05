@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
@@ -40,6 +41,7 @@ public class TrainUnitBuilderTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.KUBAN_MAP);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         Mockito.when(station.getPosition()).thenReturn(new Coordinate (100000, 0, 100000));
         Mockito.when(station.getOrientation()).thenReturn(new Orientation (40));

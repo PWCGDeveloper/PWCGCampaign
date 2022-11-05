@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.config.ConfigItemKeys;
@@ -30,6 +31,7 @@ public class MissionWeatherTest
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19441001"));
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.BODENPLATTE_MAP);
 
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MaxWindKey)).thenReturn(20);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MinHazeKey)).thenReturn(2);

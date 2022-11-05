@@ -81,8 +81,7 @@ public class AssaultDefinitionGenerator
     private ICountry getDefendingCountryByMapCircumstances(Coordinate battleLocation) throws PWCGException
     {
         BattleManager battleManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getBattleManager();
-        Battle battle = battleManager.getBattleForCampaign(PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapIdentifier(), battleLocation,
-                campaign.getDate());
+        Battle battle = battleManager.getBattleForCampaign(campaign, battleLocation);
         if (battle != null)
         {
             int roll = RandomNumberGenerator.getRandom(100);

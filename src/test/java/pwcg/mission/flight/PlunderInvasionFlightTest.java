@@ -40,6 +40,7 @@ public class PlunderInvasionFlightTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19450323"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
         Assertions.assertTrue (mission.getSkirmish().getSkirmishName().contains("Plunder"));
@@ -64,7 +65,8 @@ public class PlunderInvasionFlightTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        
+        mission.finalizeMission();
+
         Assertions.assertTrue (mission.getSkirmish() == null);
         
         MissionFlightValidator.validateMission(mission);

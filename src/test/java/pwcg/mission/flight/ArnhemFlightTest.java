@@ -53,6 +53,7 @@ public class ArnhemFlightTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
         for (AssaultDefinition assaultDefinition : mission.getBattleManager().getMissionAssaultDefinitions())
@@ -90,6 +91,7 @@ public class ArnhemFlightTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
         for (AssaultDefinition assaultDefinition : mission.getBattleManager().getMissionAssaultDefinitions())
@@ -122,7 +124,8 @@ public class ArnhemFlightTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        
+        mission.finalizeMission();
+
         Assertions.assertTrue (mission.getSkirmish() == null);
         
         MissionFlightValidator.validateMission(mission);

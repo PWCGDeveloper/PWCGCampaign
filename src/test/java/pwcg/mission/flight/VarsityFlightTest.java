@@ -46,6 +46,7 @@ public class VarsityFlightTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
         Assertions.assertTrue (mission.getSkirmish().getSkirmishName().contains("Varsity"));
@@ -67,7 +68,8 @@ public class VarsityFlightTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        
+        mission.finalizeMission();
+
         Assertions.assertTrue (mission.getSkirmish() == null);
         
         MissionFlightValidator.validateMission(mission);

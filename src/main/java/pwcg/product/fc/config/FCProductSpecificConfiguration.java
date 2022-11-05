@@ -45,7 +45,6 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int MIN_DEPTH_OF_PENETRATION_OFFENSIVE = 3000;
     private static final int MAX_DEPTH_OF_PENETRATION_OFFENSIVE = 10000;
     private static final int MIN_DISTANCE_BETWEEN_PATROL_POINTS = 5000;
-    private static final int CLOSE_TO_BATTLE_DISTANCE = 40000;
 
     @Override
     public boolean useWaypointGoal()
@@ -378,11 +377,5 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public double getMinimumDistanceBetweenPatrolPoints()
     {
         return MIN_DISTANCE_BETWEEN_PATROL_POINTS;
-    }    
-
-    @Override
-    public int getCloseToBattleDistance()
-    {
-        return CLOSE_TO_BATTLE_DISTANCE;
-    }    
+    }
 }

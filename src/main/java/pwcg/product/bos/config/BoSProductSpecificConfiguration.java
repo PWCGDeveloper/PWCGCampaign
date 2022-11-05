@@ -45,7 +45,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int MIN_DEPTH_OF_PENETRATION_OFFENSIVE = 10000;
     private static final int MAX_DEPTH_OF_PENETRATION_OFFENSIVE = 50000;
     private static final int MIN_DISTANCE_BETWEEN_PATROL_POINTS = 10000;
-    private static final int CLOSE_TO_BATTLE_DISTANCE = 200000;
     
 
     @Override
@@ -399,11 +398,5 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public double getMinimumDistanceBetweenPatrolPoints()
     {
         return MIN_DISTANCE_BETWEEN_PATROL_POINTS;
-    }
-
-    @Override
-    public int getCloseToBattleDistance()
-    {
-        return CLOSE_TO_BATTLE_DISTANCE;
     }
 }

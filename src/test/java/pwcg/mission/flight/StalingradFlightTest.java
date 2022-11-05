@@ -40,6 +40,7 @@ public class StalingradFlightTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19420824"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
         
@@ -60,6 +61,7 @@ public class StalingradFlightTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19420910"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
 
@@ -80,6 +82,7 @@ public class StalingradFlightTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19421114"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
 
@@ -95,6 +98,7 @@ public class StalingradFlightTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19421220"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
 
@@ -115,7 +119,8 @@ public class StalingradFlightTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        
+        mission.finalizeMission();
+
         Assertions.assertTrue (mission.getSkirmish() == null);
         MissionFlightValidator.validateMission(mission);
     }
