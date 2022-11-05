@@ -3,6 +3,7 @@ package pwcg.mission.flight.intercept;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
@@ -20,8 +21,7 @@ import pwcg.mission.flight.waypoint.patterns.WaypointPatternFactory;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class InterceptWaypointFactory
-{
-    private FlightSearchPattern pattern = FlightSearchPattern.INTERCEPT_CROSS;
+{    
     public enum FlightSearchPattern
     {
         INTERCEPT_CIRCLE,
@@ -31,13 +31,16 @@ public class InterceptWaypointFactory
     
     private static final int NUM_LEGS_IN_INTERCEPT_CIRCLE = 6;
     private static final int NUM_SEGMENTS_IN_INTERCEPT_CREEP = 2;
+    private FlightSearchPattern pattern = FlightSearchPattern.INTERCEPT_CROSS;
 
+    private Campaign campaign;
     private IFlight flight;
     private MissionPointRouteSet missionPointSet = new MissionPointRouteSet();
 
     public InterceptWaypointFactory(IFlight flight) throws PWCGException
     {
         this.flight = flight;
+        this.campaign = flight.getCampaign();
     }
 
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
@@ -94,7 +97,7 @@ public class InterceptWaypointFactory
         // Move the WP a bit so it is not so precise
         double randomOffsetAngle = RandomNumberGenerator.getRandom(360);
         double randomOffsetDistance = RandomNumberGenerator.getRandom(5000);
-        Coordinate coordinatesAfterRandomMove = MathUtils.calcNextCoord(coordinatesAfterFixedMove, randomOffsetAngle, randomOffsetDistance);
+        Coordinate coordinatesAfterRandomMove = MathUtils.calcNextCoord(campaign.getCampaignMap(), coordinatesAfterFixedMove, randomOffsetAngle, randomOffsetDistance);
 
         coordinatesAfterRandomMove.setYPos(flight.getFlightInformation().getAltitude());
 
@@ -131,16 +134,16 @@ public class InterceptWaypointFactory
         if (pattern  == FlightSearchPattern.INTERCEPT_CROSS)
         {
             distanceToMovePattern = productSpecific.getInterceptCrossDiameterDistance() / 2;
-            coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleToMovePattern, distanceToMovePattern);
+            coordinatesAfterFixedMove = MathUtils.calcNextCoord(campaign.getCampaignMap(), flight.getTargetDefinition().getPosition(), angleToMovePattern, distanceToMovePattern);
         }
         else if (pattern  == FlightSearchPattern.INTERCEPT_CREEP)
         {
             distanceToMovePattern = productSpecific.getInterceptCreepCrossDistance() * 4;
-            coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleToMovePattern, distanceToMovePattern);
+            coordinatesAfterFixedMove = MathUtils.calcNextCoord(campaign.getCampaignMap(), flight.getTargetDefinition().getPosition(), angleToMovePattern, distanceToMovePattern);
             
             double shiftAngle = MathUtils.adjustAngle(angleToMovePattern, 90);
             double distanceToShiftPattern = productSpecific.getInterceptCreepLegDistance() * .5;
-            coordinatesAfterFixedMove = MathUtils.calcNextCoord(coordinatesAfterFixedMove, shiftAngle, distanceToShiftPattern);
+            coordinatesAfterFixedMove = MathUtils.calcNextCoord(campaign.getCampaignMap(), coordinatesAfterFixedMove, shiftAngle, distanceToShiftPattern);
         }
         else
         {
@@ -148,11 +151,11 @@ public class InterceptWaypointFactory
             
             double shiftAngle = MathUtils.adjustAngle(angleToMovePattern, 90);
             double distanceToShiftPattern = productSpecific.getInterceptInnerLoopDistance() / 1.5;
-            coordinatesAfterFixedMove = MathUtils.calcNextCoord(coordinatesAfterFixedMove, shiftAngle, distanceToShiftPattern);
+            coordinatesAfterFixedMove = MathUtils.calcNextCoord(campaign.getCampaignMap(), coordinatesAfterFixedMove, shiftAngle, distanceToShiftPattern);
             
             double shiftAngle2 = MathUtils.adjustAngle(angleToMovePattern, 180);
             double distanceToShiftPattern2 = productSpecific.getInterceptInnerLoopDistance() / 3;
-            coordinatesAfterFixedMove = MathUtils.calcNextCoord(coordinatesAfterFixedMove, shiftAngle2, distanceToShiftPattern2);
+            coordinatesAfterFixedMove = MathUtils.calcNextCoord(campaign.getCampaignMap(), coordinatesAfterFixedMove, shiftAngle2, distanceToShiftPattern2);
         }
         
         return coordinatesAfterFixedMove;

@@ -59,9 +59,9 @@ public class TransportFlight extends Flight implements IFlight
  
    	private void determineTargetAirfield() throws PWCGException
     {
-	    AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
+	    AirfieldManager airfieldManager = PWCGContext.getInstance().getMap(this.getCampaign().getCampaignMap()).getAirfieldManager();
 	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(
-	            this.getTargetDefinition().getPosition(), getCampaign().getDate(), this.getSquadron().getCountry().getSide());    
+	            this.getCampaign().getCampaignMap(), this.getTargetDefinition().getPosition(), getCampaign().getDate(), this.getSquadron().getCountry().getSide());    
     }
 
     public Airfield getArrivalAirfield()

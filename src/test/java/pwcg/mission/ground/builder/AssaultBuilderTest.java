@@ -29,8 +29,8 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlights;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightPlanes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
@@ -53,7 +53,6 @@ public class AssaultBuilderTest
     public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.STALINGRAD_MAP);
 
         List<IFlight> playerFlights = new ArrayList<>();
         List<PlaneMcu> playerFlightPlanes = new ArrayList<>();
@@ -63,6 +62,7 @@ public class AssaultBuilderTest
         
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
         Mockito.when(mission.getFlights()).thenReturn(missionFlightBuilder);
+        Mockito.when(mission.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
         Mockito.when(missionFlightBuilder.getPlayerFlights()).thenReturn(playerFlights);
         Mockito.when(squadron.getCountry()).thenReturn(country);
         Mockito.when(playerFlight.getSquadron()).thenReturn(squadron);
@@ -72,6 +72,7 @@ public class AssaultBuilderTest
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
     }
 

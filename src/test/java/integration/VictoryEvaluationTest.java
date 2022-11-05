@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import pwcg.aar.AARCoordinator;
@@ -45,6 +46,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
+@Tag("BOS")
 public class VictoryEvaluationTest
 {
     private int ENEMY_START_PLANE_ID = 301000;

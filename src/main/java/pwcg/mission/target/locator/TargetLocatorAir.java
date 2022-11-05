@@ -80,7 +80,7 @@ public class TargetLocatorAir
         int rendezvousDistanceFromFront = productSpecific.getRendezvousDistanceFromFront();
         Coordinate homePosition = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
         return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
-                nearbyEnemyFrontPosition, homePosition, rendezvousDistanceFromFront, flightInformation.getCampaign().getDate(), getFriendlySide());
+                flightInformation.getCampaignMap(), nearbyEnemyFrontPosition, homePosition, rendezvousDistanceFromFront, flightInformation.getCampaign().getDate(), getFriendlySide());
     }
 
     public Coordinate getEscortForPlayerRendezvousCoordinate() throws PWCGException
@@ -125,7 +125,7 @@ public class TargetLocatorAir
         if (!shuffledGroundUnits.isEmpty())
         {
             Coordinate battleCoordinate = shuffledGroundUnits.get(0).getPosition().copy();
-            FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
+            FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(flightInformation.getCampaignMap()).getFrontLinesForMap(flightInformation.getCampaign().getDate());
             Coordinate targetCoordinate = frontLinesForMap.findClosestFrontCoordinateForSide(battleCoordinate, flightInformation.getCountry().getSide());
             return targetCoordinate;
         }

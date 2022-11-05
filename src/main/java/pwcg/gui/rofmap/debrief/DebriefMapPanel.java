@@ -51,6 +51,8 @@ public class DebriefMapPanel  extends MapPanelBase
 		super(parent);
 		this.campaign = campaign;
 		this.parent = parent;
+		
+        super.initializeMap(campaign.getCampaignMap());
 	}
 
 	private void draw() 

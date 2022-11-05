@@ -8,6 +8,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.ICountryFactory;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
@@ -25,10 +26,10 @@ public class CountryFactory
         return NeutralCountryFactory.makeNeutralCountry();
     }
 
-    public static ICountry makeMapReferenceCountry(Side side)
+    public static ICountry makeMapReferenceCountry(FrontMapIdentifier mapIdentifier, Side side)
     {
         ICountryFactory countryFactory = getCountryFactory();        
-        return countryFactory.makeMapReferenceCountry(side);
+        return countryFactory.makeMapReferenceCountry(mapIdentifier, side);
     }
 
     public static ICountry makeCountryByCode(int countryCode)
@@ -64,10 +65,10 @@ public class CountryFactory
         return countryFactory;
     }
 
-    public static ICountry makeAssaultProximityCountry(Side side, Coordinate assaultPosition, Date date) throws PWCGException
+    public static ICountry makeAssaultProximityCountry(FrontMapIdentifier mapIdentifier, Side side, Coordinate assaultPosition, Date date) throws PWCGException
     {
         ICountry country = null;
-        List<Squadron> squadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsBySideAndProximity(side, date, assaultPosition, 10000);
+        List<Squadron> squadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsBySideAndProximity(mapIdentifier, side, date, assaultPosition, 10000);
         if (squadrons.size() > 0)
         {
             country = squadrons.get(0).getCountry();
@@ -75,7 +76,7 @@ public class CountryFactory
         
         if (country == null)
         {
-            country = makeMapReferenceCountry(side);
+            country = makeMapReferenceCountry(mapIdentifier, side);
         }
         
         if (country.getCountry() == Country.ITALY  || country.getCountry() == Country.AUSTRIA)

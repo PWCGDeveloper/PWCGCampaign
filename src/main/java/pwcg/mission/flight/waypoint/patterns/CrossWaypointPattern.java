@@ -80,7 +80,7 @@ public class CrossWaypointPattern
         crossWPOrientation.setyOri(orientation);
         nextCrossWP.setOrientation(crossWPOrientation);
 
-        Coordinate crossCoords = MathUtils.calcNextCoord(lastWP.getPosition().copy(), orientation, legDistance);
+        Coordinate crossCoords = MathUtils.calcNextCoord(flight.getCampaignMap(), lastWP.getPosition().copy(), orientation, legDistance);
         
         crossCoords.setYPos(lastWP.getPosition().getYPos());
         nextCrossWP.setPosition(crossCoords);

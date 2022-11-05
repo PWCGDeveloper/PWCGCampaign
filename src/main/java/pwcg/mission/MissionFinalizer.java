@@ -28,7 +28,7 @@ public class MissionFinalizer
     private MissionWaypointIconBuilder waypointIconBuilder = new MissionWaypointIconBuilder();
     private MissionAirfieldIconBuilder airfieldIconBuilder = new MissionAirfieldIconBuilder();
     private MissionSquadronIconBuilder squadronIconBuilder;
-    private MissionAssaultIconBuilder assaultIconBuilder = new MissionAssaultIconBuilder();
+    private MissionAssaultIconBuilder assaultIconBuilder;
     private MissionFighterTargetBuilder fighterTargetBuilder = new MissionFighterTargetBuilder();
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
     private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
@@ -47,6 +47,7 @@ public class MissionFinalizer
         {
             frontLineIconBuilder = new MissionFrontLineIconBuilder(campaign);
             squadronIconBuilder = new MissionSquadronIconBuilder(campaign);
+            assaultIconBuilder = new MissionAssaultIconBuilder(campaign);
 
             setMissionScript(mission.getMissionOptions());
 

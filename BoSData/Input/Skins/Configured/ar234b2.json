@@ -4,7 +4,7 @@
         "ar234b2_default": {
             "skinName": "ar234b2",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -17,7 +17,7 @@
         "ar234b2_blank_01": {
             "skinName": "ar234b2_blank_01",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -30,7 +30,7 @@
         "ar234b2_blank_02": {
             "skinName": "ar234b2_blank_02",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -43,7 +43,7 @@
         "ar234b2_blank_03": {
             "skinName": "ar234b2_blank_03",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -56,7 +56,7 @@
         "ar234b2_skin_04": {
             "skinName": "ar234b2_skin_06",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Germany",
@@ -69,7 +69,7 @@
         "ar234b2_skin_05": {
             "skinName": "ar234b2_skin_05#1",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Germany",
@@ -82,7 +82,7 @@
         "ar234b2_skin_06": {
             "skinName": "ar234b2_skin_06",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Germany",
@@ -95,7 +95,7 @@
         "ar234b2_skin_07": {
             "skinName": "ar234b2_skin_07",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Germany",
@@ -108,7 +108,7 @@
         "ar234b2_skin_08": {
             "skinName": "ar234b2_skin_08#1",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Germany",
@@ -121,7 +121,7 @@
         "ar234b2_skin_09": {
             "skinName": "ar234b2_skin_09",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Germany",
@@ -134,7 +134,7 @@
         "ar234b2_skin_10": {
             "skinName": "ar234b2_skin_10#1",
             "planeType": "ar234b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Germany",

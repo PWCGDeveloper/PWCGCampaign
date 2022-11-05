@@ -52,13 +52,9 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
     private JCheckBox displayAirfields = null;
     private JCheckBox displayCities = null;
 
-    public FrontLinesEditorMapGUI(Date mapDate) throws PWCGException  
+    public FrontLinesEditorMapGUI(FrontMapIdentifier mapIdentifier, Date mapDate) throws PWCGException  
     {        
-        super(mapDate);
-
-        // Default to static front.France map
-        PWCGContext.getInstance().initializeMap();
-        PWCGContext.getInstance().setCampaign(null);
+        super(mapIdentifier, mapDate);
     }
 
     public void makeGUI() 
@@ -85,7 +81,7 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
     {
         JPanel infoMapPanel = new JPanel(new BorderLayout());
 
-        editorMapPanel = new FrontLinesEditorMapPanel(this);
+        editorMapPanel = new FrontLinesEditorMapPanel(this, mapIdentifier);
         
         mapScroll = new MapScroll(editorMapPanel);  
         editorMapPanel.setMapBackground(100);
@@ -94,7 +90,7 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
         
         editorMapPanel.setData();
         
-        frontLineCreator = new FrontLineEditor(editorMapPanel);
+        frontLineCreator = new FrontLineEditor(mapIdentifier, editorMapPanel);
         editorMapPanel.setFrontLineCreator(frontLineCreator);
         
         return infoMapPanel;
@@ -245,7 +241,7 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
     {
         cbDate.removeAll();        
 
-        CampaignTransitionDates campaignTransitionDates = new CampaignTransitionDates();
+        CampaignTransitionDates campaignTransitionDates = new CampaignTransitionDates(mapIdentifier);
         List<String> newDateStrings = campaignTransitionDates.getCampaignTransitionDates();
         
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>((String[])newDateStrings.toArray( new String[newDateStrings.size()] ));
@@ -299,7 +295,7 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
 
     private void writeData() throws PWCGException 
     {
-        FrontLineWriter frontLineWriter = new FrontLineWriter(frontLineCreator.getUserCreatedFrontLines());
+        FrontLineWriter frontLineWriter = new FrontLineWriter(mapIdentifier, frontLineCreator.getUserCreatedFrontLines());
         frontLineWriter.finished();
     }
 
@@ -323,7 +319,7 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
             }   
             else if (action.contains("Refresh"))
             {               
-                PWCGContext.getInstance().getCurrentMap().configure();
+                PWCGContext.getInstance().getMap(mapIdentifier).configure();
                 editorMapPanel.resetFromActual();
             }   
             else if (action.contains("Mirror"))
@@ -344,12 +340,12 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
             {
                 int indexOfMapName = MAP_DELIMITER.length();
                 String mapName = action.substring(indexOfMapName);
-                FrontMapIdentifier mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
-                PWCGContext.getInstance().changeContext(mapIdentifier);
+                mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
+                editorMapPanel.initializeMap(mapIdentifier);
                 
                 setDateSelectionsByPossibleStartDatesAndMovingFront();
                 
-                Date newMapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
+                Date newMapDate = PWCGContext.getInstance().getMap(mapIdentifier).getFrontDatesForMap().getEarliestMapDate();
                 setMapDate(newMapDate);
                 editorMapPanel.setData();
                 
@@ -405,8 +401,8 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
 
     private void buildFrontLines() throws PWCGException
     {
-        List<FrontLinePoint> alliedLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(mapDate).getFrontLines(Side.ALLIED);
-        List<FrontLinePoint> axisLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(mapDate).getFrontLines(Side.AXIS);
+        List<FrontLinePoint> alliedLines = PWCGContext.getInstance().getMap(mapIdentifier).getFrontLinesForMap(mapDate).getFrontLines(Side.ALLIED);
+        List<FrontLinePoint> axisLines = PWCGContext.getInstance().getMap(mapIdentifier).getFrontLinesForMap(mapDate).getFrontLines(Side.AXIS);
         List<FrontLinePoint> allFrontLines = new ArrayList<>();
         allFrontLines.addAll(alliedLines);
         allFrontLines.addAll(axisLines);

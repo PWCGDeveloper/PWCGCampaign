@@ -66,12 +66,12 @@ public class AssaultDefinitionGenerator
         return defendingCountry;
     }
     
-    private ICountry getDefendingCountryFromSkirmish()
+    private ICountry getDefendingCountryFromSkirmish() throws PWCGException
     {
         if (mission.getSkirmish() != null)
         {
             Side defendingSide =  mission.getSkirmish().getAttackerGround().getOppositeSide();
-            ICountry defendingCountry = CountryFactory.makeMapReferenceCountry(defendingSide);
+            ICountry defendingCountry = CountryFactory.makeMapReferenceCountry(mission.getCampaignMap(), defendingSide);
             return defendingCountry;
         }
         
@@ -80,8 +80,8 @@ public class AssaultDefinitionGenerator
 
     private ICountry getDefendingCountryByMapCircumstances(Coordinate battleLocation) throws PWCGException
     {
-        BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
-        Battle battle = battleManager.getBattleForCampaign(PWCGContext.getInstance().getCurrentMap().getMapIdentifier(), battleLocation,
+        BattleManager battleManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getBattleManager();
+        Battle battle = battleManager.getBattleForCampaign(PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapIdentifier(), battleLocation,
                 campaign.getDate());
         if (battle != null)
         {
@@ -101,8 +101,8 @@ public class AssaultDefinitionGenerator
 
     private ICountry chooseSidesRandom() throws PWCGException
     {
-        ICountry alliedCountry = CountryFactory.makeAssaultProximityCountry(Side.ALLIED, assaultPosition, campaign.getDate());
-        ICountry axisCountry = CountryFactory.makeAssaultProximityCountry(Side.AXIS, assaultPosition, campaign.getDate());
+        ICountry alliedCountry = CountryFactory.makeAssaultProximityCountry(campaign.getCampaignMap(), Side.ALLIED, assaultPosition, campaign.getDate());
+        ICountry axisCountry = CountryFactory.makeAssaultProximityCountry(campaign.getCampaignMap(), Side.AXIS, assaultPosition, campaign.getDate());
 
         int roll = RandomNumberGenerator.getRandom(100);
         if (roll < 50)
@@ -119,12 +119,12 @@ public class AssaultDefinitionGenerator
     {
         if (defendingCountry.getSide() == Side.ALLIED)
         {
-            ICountry axisCountry = CountryFactory.makeAssaultProximityCountry(Side.AXIS, assaultPosition, campaign.getDate());
+            ICountry axisCountry = CountryFactory.makeAssaultProximityCountry(campaign.getCampaignMap(), Side.AXIS, assaultPosition, campaign.getDate());
             return axisCountry;
         }
         else
         {
-            ICountry alliedCountry = CountryFactory.makeAssaultProximityCountry(Side.ALLIED, assaultPosition, campaign.getDate());
+            ICountry alliedCountry = CountryFactory.makeAssaultProximityCountry(campaign.getCampaignMap(), Side.ALLIED, assaultPosition, campaign.getDate());
             return alliedCountry;
         }
     }
@@ -146,7 +146,7 @@ public class AssaultDefinitionGenerator
 
     private List<Coordinate> getDefensePositions(ICountry defendingCountry, BattleSize battleSize) throws PWCGException
     {
-        FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLines = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         int numAssaultSegments = AssaultDefinitionRange.determineNumberOfAssaultSegments(battleSize);
 
         int centerIndex = calculateCenterIndex(defendingCountry, frontLines, numAssaultSegments);
@@ -208,11 +208,11 @@ public class AssaultDefinitionGenerator
     
     private Coordinate getAssaultPositionAcrossFromAssaultingUnit(Side assaultingSide, Coordinate defensePosition) throws PWCGException
     {
-        FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLines = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         Coordinate assaultPosition = frontLines.findClosestFrontCoordinateForSide(defensePosition, assaultingSide);
 
         double angleFromDefensePosition = MathUtils.calcAngle(defensePosition, assaultPosition);
-        Coordinate assaultStartPosition = MathUtils.calcNextCoord(defensePosition, angleFromDefensePosition, DISTANCE_BETWEEN_COMBATANTS);
+        Coordinate assaultStartPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), defensePosition, angleFromDefensePosition, DISTANCE_BETWEEN_COMBATANTS);
         return assaultStartPosition;
     }
 }

@@ -24,8 +24,8 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.TestCampaignFactoryBase;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBase;
 
 @ExtendWith(MockitoExtension.class)
 public class SquadronMemberStatusTest

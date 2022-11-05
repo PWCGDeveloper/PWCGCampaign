@@ -130,7 +130,7 @@ public class Skirmish
         return false;
     }
 
-    public boolean hasFlighTypeForRole(Squadron squadron, PwcgRole role) throws PWCGException
+    public boolean hasFlightTypeForRole(Squadron squadron, PwcgRole role) throws PWCGException
     {
         List<SkirmishProfileElement> skirmishElementsForSide = getSkirmishProfileElementForSide(squadron);
         for (SkirmishProfileElement skirmishProfileElement : skirmishElementsForSide)

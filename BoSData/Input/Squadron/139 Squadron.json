@@ -12,7 +12,7 @@
 	"planeAssignments": [
 		{
 			"archType": "a20",
-			"squadronIntroduction": "19390801",
+			"squadronIntroduction": "19390901",
 			"squadronWithdrawal": "19420801"
 		},
 		{
@@ -73,7 +73,7 @@
 		"squadHistoryEntries": []
 	},
 	"callsigns": {
-		"19390801": "ACORN"
+		"19390901": "ACORN"
 	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [

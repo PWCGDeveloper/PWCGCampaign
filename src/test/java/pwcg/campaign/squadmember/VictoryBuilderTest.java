@@ -16,6 +16,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.config.ConfigItemKeys;
@@ -50,6 +51,7 @@ public class VictoryBuilderTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
 
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.DetailedVictoryDescriptionKey)).thenReturn(1);
         

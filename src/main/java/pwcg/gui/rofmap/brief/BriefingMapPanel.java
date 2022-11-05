@@ -55,6 +55,8 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         
         this.parent = parent;
         this.mission = BriefingContext.getInstance().getBriefingData().getMission();
+        
+        super.initializeMap(mission.getCampaignMap());
     }
 
     public void paintComponent(Graphics g)

@@ -65,7 +65,7 @@ public class OutOfMissionStructureVictoryEventGenerator
         StructureVictimGenerator duringCampaignVictimGenerator = new StructureVictimGenerator();
         PwcgStructure victimStructure = duringCampaignVictimGenerator.generateVictimStructure();
 
-        StructureVictoryBuilder outOfMissionVictoryGenerator = new StructureVictoryBuilder(squadronMember, victimStructure);
+        StructureVictoryBuilder outOfMissionVictoryGenerator = new StructureVictoryBuilder(campaign, squadronMember, victimStructure);
         Victory victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(campaign.getDate());
 
         if (victory != null)

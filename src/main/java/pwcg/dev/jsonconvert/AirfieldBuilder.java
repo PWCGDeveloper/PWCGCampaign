@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.AirfieldDescriptor;
@@ -65,7 +66,7 @@ public class AirfieldBuilder
                             runwayLength = 1500;
                         }
                         
-                        Coordinate runwayEndCoordinate = MathUtils.calcNextCoord(planeThatMarksRunway.getPosition(), planeThatMarksRunway.getOrientation().getyOri(), runwayLength);
+                        Coordinate runwayEndCoordinate = MathUtils.calcNextCoord(FrontMapIdentifier.NORMANDY_MAP, planeThatMarksRunway.getPosition(), planeThatMarksRunway.getOrientation().getyOri(), runwayLength);
 
                         
                         Runway runway = new Runway();

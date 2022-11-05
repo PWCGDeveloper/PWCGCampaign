@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -28,11 +29,13 @@ import pwcg.mission.mcu.McuWaypoint;
 public class ReconTransportWaypointsFactory
 {
     private IFlight flight;
+    private Campaign campaign;
     private MissionPointRouteSet missionPointSet = new MissionPointRouteSet();
 
     public ReconTransportWaypointsFactory(IFlight flight) throws PWCGException
     {
         this.flight = flight;
+        this.campaign = flight.getCampaign();
     }
 
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
@@ -53,19 +56,19 @@ public class ReconTransportWaypointsFactory
         List<McuWaypoint> targetWaypoints = new ArrayList<McuWaypoint>();
         
         Side enemySide = flight.getFlightInformation().getCountry().getSide().getOppositeSide();
-        ICountry enemycountry = CountryFactory.makeMapReferenceCountry(enemySide);
+        ICountry enemycountry = CountryFactory.makeMapReferenceCountry(flight.getCampaignMap(), enemySide);
 
         List <ScriptedFixedPosition> allFixedPositionsInRadius = new ArrayList<ScriptedFixedPosition>();
         double maxRadius = 40000.0;
         
         while (allFixedPositionsInRadius.size() <= 2)
         {
-    	    GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
+    	    GroupManager groupData =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
     	    List<Bridge> bridges = groupData.getBridgeFinder().findBridgesForSideWithinRadius(
-    	            enemycountry.getSide(), flight.getCampaign().getDate(), flight.getTargetDefinition().getPosition(), maxRadius);
+    	            campaign.getCampaignMap(), enemycountry.getSide(), flight.getCampaign().getDate(), flight.getTargetDefinition().getPosition(), maxRadius);
     	    
     	    List<Block> trainStations = groupData.getRailroadStationFinder().getTrainPositionWithinRadiusBySide(
-    	            enemycountry.getSide(), flight.getCampaign().getDate(), flight.getTargetDefinition().getPosition(), maxRadius);
+    	            campaign.getCampaignMap(), enemycountry.getSide(), flight.getCampaign().getDate(), flight.getTargetDefinition().getPosition(), maxRadius);
     	    
             allFixedPositionsInRadius.addAll(bridges);
             allFixedPositionsInRadius.addAll(trainStations);

@@ -4,7 +4,7 @@
         "p38j25_default": {
             "skinName": "p38j25",
             "planeType": "p38j25",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -2,
             "country": "USA",
@@ -56,7 +56,7 @@
         "p38j25_blank_04": {
             "skinName": "p38j25_blank_04",
             "planeType": "p38j25",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -2,
             "country": "USA",
@@ -108,7 +108,7 @@
 		"p38j25_skin_01": {
 			"skinName": "p38j25_skin_01",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440601",
 			"squadId": -1,
 			"country": "USA",
@@ -130,7 +130,7 @@
         "p38j25_skin_03": {
             "skinName": "p38j25_skin_03",
             "planeType": "p38j25",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -1,
             "country": "USA",
@@ -152,7 +152,7 @@
 		"p38j25_skin_05": {
 			"skinName": "p38j25_skin_05",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440601",
 			"squadId": -1,
 			"country": "USA",
@@ -163,7 +163,7 @@
 		"p38j25_skin_06": {
 			"skinName": "p38j25_skin_06",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440601",
 			"squadId": -1,
 			"country": "USA",
@@ -196,7 +196,7 @@
 		"p38j25_skin_10": {
 			"skinName": "p38j25_skin_10",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -251,7 +251,7 @@
 		"P38J25_California_Cutie": {
 			"skinName": "P38J25_California_Cutie",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -262,7 +262,7 @@
 		"P38J25_GLAMOUR_PUSS_II": {
 			"skinName": "P38J25_GLAMOUR_PUSS_II",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -273,7 +273,7 @@
 		"P38J25_SKYLARK_IV": {
 			"skinName": "P38J25_SKYLARK_IV",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -284,7 +284,7 @@
 		"P38J25_ LITTLE BUTCH": {
 			"skinName": "P38J25_ LITTLE BUTCH",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -295,7 +295,7 @@
 		"P38J25_GENTLE ANNIE": {
 			"skinName": "P38J25_GENTLE ANNIE",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -306,7 +306,7 @@
 		"P38J25_IN MEMORY OF_": {
 			"skinName": "P38J25_IN MEMORY OF_",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -317,7 +317,7 @@
 		"P38J25_JOURNEYS END": {
 			"skinName": "P38J25_JOURNEYS END",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -328,7 +328,7 @@
 		"P38J25_LUCKY LADY": {
 			"skinName": "P38J25_LUCKY LADY",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -339,7 +339,7 @@
 		"P38J25_MAMAS BOY": {
 			"skinName": "P38J25_MAMAS BOY",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -350,7 +350,7 @@
 		"P38J25_MISS MASS": {
 			"skinName": "P38J25_MISS MASS",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -361,7 +361,7 @@
 		"P38J25_MY LITTLE PIG": {
 			"skinName": "P38J25_MY LITTLE PIG",
 			"planeType": "p38j25",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",

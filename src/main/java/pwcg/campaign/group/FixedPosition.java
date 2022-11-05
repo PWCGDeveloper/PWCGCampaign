@@ -9,6 +9,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.CountryDesignator;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
@@ -81,21 +82,15 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
     {
         if (campaign != null)
         {
-            return CountryDesignator.determineCountry(position, campaign.getDate());
+            return CountryDesignator.determineCountry(campaign.getCampaignMap(), position, campaign.getDate());
         }
             
         return CountryFactory.makeCountryByCountry(Country.NEUTRAL);
     }
 
-    public ICountry determineCountryOnDate(Date date) throws PWCGException
+    public ICountry determineCountryOnDate(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
     {
-        return CountryDesignator.determineCountry(position, date);
-    }
-
-    public ICountry getCountry(Date date) throws PWCGException
-    {
-        ICountry icountry = determineCountryOnDate(date);
-        return icountry;
+        return CountryDesignator.determineCountry(mapIdentifier, position, date);
     }
 
     public int getIndex()

@@ -4,7 +4,7 @@
         "me410a1_default": {
             "skinName": "me410a1",
             "planeType": "me410a1",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -17,7 +17,7 @@
         "me410a1_blank_01": {
             "skinName": "me410a1_blank_01",
             "planeType": "me410a1",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -30,7 +30,7 @@
 		"me410a1_blank_02": {
 			"skinName": "me410a1_blank_02",
 			"planeType": "me410a1",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Germany",
@@ -43,7 +43,7 @@
         "me410a1_skin_05": {
             "skinName": "me410a1_skin_05",
             "planeType": "me410a1",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Germany",
@@ -54,7 +54,7 @@
         "me410a1_skin_06": {
             "skinName": "me410a1_skin_06",
             "planeType": "me410a1",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Germany",
@@ -65,7 +65,7 @@
 		"me410a1_skin_07": {
 			"skinName": "me410a1_skin_07",
 			"planeType": "me410a1",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111044,
 			"country": "Germany",
@@ -76,7 +76,7 @@
 		"me410a1_skin_08": {
 			"skinName": "me410a1_skin_08",
 			"planeType": "me410a1",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -87,7 +87,7 @@
 		"me410a1_skin_09": {
 			"skinName": "me410a1_skin_09",
 			"planeType": "me410a1",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -98,7 +98,7 @@
 		"me410a1_skin_10": {
 			"skinName": "me410a1_skin_10",
 			"planeType": "me410a1",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",

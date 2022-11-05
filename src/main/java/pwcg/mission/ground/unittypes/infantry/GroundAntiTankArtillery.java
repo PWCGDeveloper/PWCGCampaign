@@ -42,7 +42,7 @@ public class GroundAntiTankArtillery extends GroundUnit
 
         // AT Guns are behind the lines
         double initialPlacementAngle = MathUtils.adjustAngle (atGunFacingAngle, 180.0);      
-        Coordinate atGunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), initialPlacementAngle, 25.0);
+        Coordinate atGunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), pwcgGroundUnitInformation.getPosition(), initialPlacementAngle, 25.0);
         return atGunCoords;
     }
 

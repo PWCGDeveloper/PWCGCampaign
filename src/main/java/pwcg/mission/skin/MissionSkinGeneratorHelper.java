@@ -6,6 +6,7 @@ import java.util.List;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -67,14 +68,14 @@ public class MissionSkinGeneratorHelper
         }
     }
 
-    public static Skin chooseSquadronPersonalSkin(IFlight flight, PlaneMcu plane, List<Skin> squadronSkins)
+    public static Skin chooseSquadronPersonalSkin(IFlight flight, PlaneMcu plane, List<Skin> squadronSkins) throws PWCGException
     {
         Skin skin = pickSkin(plane.getType(), squadronSkins);
         if (skin != null)
         {
             plane.setPlaneSkin(skin);
             flight.getMission().addSkinInUse(skin);
-            Season season = PWCGContext.getInstance().getCurrentMap().getMapClimate().getSeason(flight.getCampaign().getDate());
+            Season season = PWCGContext.getInstance().getMap(flight.getCampaignMap()).getMapClimate().getSeason(flight.getCampaign().getDate());
             if ((season == Season.WINTER) && skin.isWinter())
             {
                 PWCGLogger.log(LogLevel.DEBUG, "SKIN: Assign squadron personal: " + skin.getSkinName());

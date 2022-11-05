@@ -52,10 +52,10 @@ public class OutOfMissionGroundVictoryBuilderTest
     @Test
     public void testVictoryAwarded () throws PWCGException
     {     
-        GroundVictimGenerator duringCampaignVictimGenerator = new GroundVictimGenerator(campaign.getDate(), squadronMember);
+        GroundVictimGenerator duringCampaignVictimGenerator = new GroundVictimGenerator(campaign, squadronMember);
         IVehicle victimVehicle = duringCampaignVictimGenerator.generateVictimVehicle();
 
-        AirToGroundVictoryBuilder victoryGenerator = new AirToGroundVictoryBuilder(squadronMember, victimVehicle);
+        AirToGroundVictoryBuilder victoryGenerator = new AirToGroundVictoryBuilder(campaign, squadronMember, victimVehicle);
         Victory victory = victoryGenerator.generateOutOfMissionVictory(campaign.getDate());
         
         Assertions.assertTrue (victory.getVictim().getAirOrGround() == Victory.VEHICLE);

@@ -28,7 +28,7 @@ public class MissionBorderBuilder
         
         int missionBoxRadius = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MissionBoxSizeKey) * 1000;
         Coordinate missionCenterCoordinate = missionCenterBuilder.findMissionCenter(missionBoxRadius);
-        CoordinateBox missionBox = CoordinateBox.coordinateBoxFromCenter(missionCenterCoordinate, missionBoxRadius);
+        CoordinateBox missionBox = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), missionCenterCoordinate, missionBoxRadius);
         return missionBox;
     }
 }

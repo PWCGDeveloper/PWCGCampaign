@@ -80,12 +80,12 @@
 		"squadHistoryEntries": []
 	},
 	"callsigns": {
-		"19390801": "TURKEY"
+		"19390901": "TURKEY"
 	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19390801",
+				"startDate": "19390901",
 				"nightMissionOdds": 50
 			},
 			{

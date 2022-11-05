@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PositionFinder;
@@ -25,17 +26,17 @@ public class BridgeFinder
         return closestBridge;
     }
     
-    public Bridge findClosestBridgeForSide (Side side, Date date, Coordinate referenceLocation) throws PWCGException 
+    public Bridge findClosestBridgeForSide (FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate referenceLocation) throws PWCGException 
     {
         PositionFinder<Bridge> positionFinder = new PositionFinder<Bridge>();
-        Bridge closestBridge = positionFinder.selectClosestPosition(findAllBridgesForSide(side, date), referenceLocation);
+        Bridge closestBridge = positionFinder.selectClosestPosition(findAllBridgesForSide(mapIdentifier, side, date), referenceLocation);
         return closestBridge;
     }
 
     public Bridge findBridgeForSideWithinRadius(Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException 
     {
         PositionFinder<Bridge> positionFinder = new PositionFinder<Bridge>();
-        List<Bridge> bridgesForSide = findAllBridgesForSide(side, date);
+        List<Bridge> bridgesForSide = findAllBridgesForSide(null, side, date);
         Bridge selectedBridge = positionFinder.selectPositionWithinExpandingRadius(
                 bridgesForSide, 
                 referenceLocation, 
@@ -44,27 +45,27 @@ public class BridgeFinder
         return selectedBridge;
     }
 
-    public List<Bridge> findBridgesForSideWithinRadius(Side side, Date date, Coordinate targetGeneralLocation, double radius) throws PWCGException 
+    public List<Bridge> findBridgesForSideWithinRadius(FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate targetGeneralLocation, double radius) throws PWCGException 
     {
         PositionFinder<Bridge> positionFinder = new PositionFinder<Bridge>();
-        List<Bridge> selectedBridges = positionFinder.findWithinExpandingRadius(findAllBridgesForSide(side, date), targetGeneralLocation, radius, radius);
+        List<Bridge> selectedBridges = positionFinder.findWithinExpandingRadius(findAllBridgesForSide(mapIdentifier, side, date), targetGeneralLocation, radius, radius);
         return selectedBridges;
     }
 
-    public Bridge findDestinationBridge(Coordinate location, Side side, Date date) throws PWCGException 
+    public Bridge findDestinationBridge(FrontMapIdentifier mapIdentifier, Coordinate location, Side side, Date date) throws PWCGException 
     {
         PositionFinder<Bridge> positionFinder = new PositionFinder<Bridge>();
-        List<Bridge> bridgesForSide = findAllBridgesForSide(side, date);
+        List<Bridge> bridgesForSide = findAllBridgesForSide(mapIdentifier, side, date);
         Bridge destinationBridge = positionFinder.selectDestinationPosition(bridgesForSide, location);
         return destinationBridge;
     }
 
-    public List<Bridge> findAllBridgesForSide(Side side, Date date) throws PWCGException 
+    public List<Bridge> findAllBridgesForSide(FrontMapIdentifier mapIdentifier, Side side, Date date) throws PWCGException 
     {
         List<Bridge>selectedBridges = new ArrayList<Bridge>();
         for (Bridge bridge : bridges)
         {
-            if (bridge.determineCountryOnDate(date).getSide() == side)
+            if (bridge.determineCountryOnDate(mapIdentifier, date).getSide() == side)
             {
                 selectedBridges.add(bridge);
             }

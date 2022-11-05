@@ -138,7 +138,7 @@ public class MissionWeather
 
     private void createRealWeather() throws PWCGException
     {
-        int chanceOfRain = PWCGContext.getInstance().getCurrentMap().getRainChances();
+        int chanceOfRain = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getRainChances();
         int overcastRoll = RandomNumberGenerator.getRandom(100);
         if (overcastRoll < chanceOfRain)
         {
@@ -173,7 +173,7 @@ public class MissionWeather
 
     private void clearWeather() throws PWCGException
     {
-        cloudConfig = SeasonStringBuilder.getClearSkys(campaign.getDate());
+        cloudConfig = SeasonStringBuilder.getClearSkys(campaign.getCampaignMap(), campaign.getDate());
         cloudLevel = 2500 + RandomNumberGenerator.getRandom(5000);
         cloudDensity = 400 + RandomNumberGenerator.getRandom(300);
         precLevel = 0;
@@ -196,7 +196,7 @@ public class MissionWeather
 
     private void lightWeather() throws PWCGException
     {
-        cloudConfig = SeasonStringBuilder.getLightSkys(campaign.getDate());
+        cloudConfig = SeasonStringBuilder.getLightSkys(campaign.getCampaignMap(), campaign.getDate());
         cloudLevel = 2000 + RandomNumberGenerator.getRandom(4000);
         cloudDensity = 300 + RandomNumberGenerator.getRandom(300);
         precType = PrecipitationType.CLEAR;
@@ -219,7 +219,7 @@ public class MissionWeather
 
     private void averageWeather() throws PWCGException
     {
-        cloudConfig = SeasonStringBuilder.getAverageSkys(campaign.getDate());
+        cloudConfig = SeasonStringBuilder.getAverageSkys(campaign.getCampaignMap(), campaign.getDate());
         cloudLevel = 1500 + RandomNumberGenerator.getRandom(4000);
         cloudDensity = 500 + RandomNumberGenerator.getRandom(400);
         precType = PrecipitationType.CLEAR;
@@ -242,7 +242,7 @@ public class MissionWeather
 
     private void heavyWeather() throws PWCGException
     {
-        cloudConfig = SeasonStringBuilder.getHeavySkys(campaign.getDate());
+        cloudConfig = SeasonStringBuilder.getHeavySkys(campaign.getCampaignMap(), campaign.getDate());
         cloudLevel = 1000 + RandomNumberGenerator.getRandom(3000);
         cloudDensity = 600 + RandomNumberGenerator.getRandom(600);
         precType = PrecipitationType.CLEAR;
@@ -265,14 +265,14 @@ public class MissionWeather
 
     private void overcastWeather() throws PWCGException
     {
-        cloudConfig = SeasonStringBuilder.getOvercastSkys(campaign.getDate());
+        cloudConfig = SeasonStringBuilder.getOvercastSkys(campaign.getCampaignMap(), campaign.getDate());
         cloudLevel = 1000 + RandomNumberGenerator.getRandom(1000);
         cloudDensity = 600 + RandomNumberGenerator.getRandom(1000);
         precLevel = 1 + RandomNumberGenerator.getRandom(8);
         turbulence = 1 + RandomNumberGenerator.getRandom(3);
 
         String precipitationType = "rain";
-        if (PWCGContext.getInstance().getCurrentMap().getMapClimate().getSeason(campaign.getDate()) == Season.WINTER)
+        if (PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapClimate().getSeason(campaign.getDate()) == Season.WINTER)
         {
             precType = PrecipitationType.SNOW;
             precipitationType = "snow";
@@ -317,9 +317,9 @@ public class MissionWeather
         }
     }
 
-    private void createTemperature()
+    private void createTemperature() throws PWCGException
     {
-        temperature = MissionWeatherTemperatature.calculateTemperature(campaign.getDate(), timeHours);
+        temperature = MissionWeatherTemperatature.calculateTemperature(campaign.getCampaignMap(), campaign.getDate(), timeHours);
     }
 
     public int getCloudLevel()

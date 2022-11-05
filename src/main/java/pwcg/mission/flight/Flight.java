@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
@@ -258,5 +259,11 @@ public abstract class Flight implements IFlight
     public IFlight getAssociatedFlight()
     {
         return associatedFlight;
+    }
+        
+    @Override
+    public FrontMapIdentifier getCampaignMap() throws PWCGException
+    {
+            return flightInformation.getCampaignMap();
     }
 }

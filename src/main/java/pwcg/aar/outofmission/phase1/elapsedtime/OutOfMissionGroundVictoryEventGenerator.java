@@ -62,10 +62,10 @@ public class OutOfMissionGroundVictoryEventGenerator
 
     private void generateVictory() throws PWCGException
     {
-        GroundVictimGenerator duringCampaignVictimGenerator = new GroundVictimGenerator(campaign.getDate(), squadronMember);
+        GroundVictimGenerator duringCampaignVictimGenerator = new GroundVictimGenerator(campaign, squadronMember);
         IVehicle victimVehicle = duringCampaignVictimGenerator.generateVictimVehicle();
 
-        AirToGroundVictoryBuilder outOfMissionVictoryGenerator = new AirToGroundVictoryBuilder(squadronMember, victimVehicle);
+        AirToGroundVictoryBuilder outOfMissionVictoryGenerator = new AirToGroundVictoryBuilder(campaign, squadronMember, victimVehicle);
         Victory victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(campaign.getDate());
 
         if (victory != null)

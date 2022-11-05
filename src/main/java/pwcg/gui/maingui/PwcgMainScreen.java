@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.campaign.factory.CountryFactory;
@@ -108,19 +109,14 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
     private void makeFrame() throws PWCGException
     {
         PWCGFrame.getInstance();
-        PWCGContext.getInstance().initializeMap();               
     }
 
 	public void refresh() 
 	{
 		try
 		{
-		    PWCGContext.getInstance().setCampaign(null);
-            PWCGContext.getInstance().initializeMap();    
-
 			setButtonsEnabled();
 
-			PWCGContext.getInstance().setCampaign(null);
 			pwcgThreePanel.setRightPanel(makeCampaignPanel());
             
             CampaignGuiContextManager.getInstance().clearContextStack();
@@ -369,7 +365,6 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 	{
 		Campaign campaign = new Campaign();
 		campaign.open(campaignName);	
-		PWCGContext.getInstance().setCampaign(campaign);
 
 		CampaignHomeScreen campaignGUI = new CampaignHomeScreen (this, campaign);
         CampaignGuiContextManager.getInstance().pushToContextStack(campaignGUI);
@@ -505,8 +500,9 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
         
-        Date mapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
-        InfoMapGUI infoMapGUI = new InfoMapGUI(mapDate);
+        FrontMapIdentifier mapIdentifier = PWCGContext.getInstance().getDefaultMapForProduct();
+        Date mapDate = PWCGContext.getInstance().getMap(mapIdentifier).getFrontDatesForMap().getEarliestMapDate();
+        InfoMapGUI infoMapGUI = new InfoMapGUI(mapIdentifier, mapDate);
         infoMapGUI.makeGUI();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(infoMapGUI);
@@ -514,8 +510,9 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 
     private void showPWCGEditMap() throws PWCGException 
     {
-        Date mapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
-        FrontLinesEditorMapGUI editMapGUI = new FrontLinesEditorMapGUI(mapDate);
+        FrontMapIdentifier mapIdentifier = PWCGContext.getInstance().getDefaultMapForProduct();
+        Date mapDate = PWCGContext.getInstance().getMap(mapIdentifier).getFrontDatesForMap().getEarliestMapDate();
+        FrontLinesEditorMapGUI editMapGUI = new FrontLinesEditorMapGUI(mapIdentifier, mapDate);
         editMapGUI.makeGUI();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(editMapGUI);

@@ -23,8 +23,6 @@ public class CampaignCache
             campaign = bosCampaignCache.makeCampaignForceCreation(campaignProfile);
         }
         
-        PWCGContext.getInstance().setCampaign(campaign);
-        PWCGContext.getInstance().changeContext(campaignProfile.getMapIdentifier());
         return campaign;
     }
 

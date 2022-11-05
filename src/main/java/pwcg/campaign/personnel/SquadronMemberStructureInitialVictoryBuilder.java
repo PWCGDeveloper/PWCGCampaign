@@ -174,7 +174,7 @@ public class SquadronMemberStructureInitialVictoryBuilder
         StructureVictimGenerator duringCampaignVictimGenerator = new StructureVictimGenerator();
         PwcgStructure victimStructure = duringCampaignVictimGenerator.generateVictimStructure();
 
-        StructureVictoryBuilder outOfMissionVictoryGenerator = new StructureVictoryBuilder(newPilot, victimStructure);
+        StructureVictoryBuilder outOfMissionVictoryGenerator = new StructureVictoryBuilder(campaign, newPilot, victimStructure);
         Victory victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(victoryDate);
 
         return victory;

@@ -28,7 +28,7 @@ public class FlightPathByMinutePlotter
         {
             Coordinate legStartPosition = allMissionCoordinates.get(index-1).getPosition();
             Coordinate legEndPosition = allMissionCoordinates.get(index).getPosition();            
-            List<Coordinate> vwpForLeg = generatePlotPointsForLeg(movementPerInterval, legStartPosition, legEndPosition);
+            List<Coordinate> vwpForLeg = generatePlotPointsForLeg(flight, movementPerInterval, legStartPosition, legEndPosition);
             flightPath.addAll(vwpForLeg);
         }
 
@@ -36,6 +36,7 @@ public class FlightPathByMinutePlotter
     }
 
     private List<Coordinate> generatePlotPointsForLeg(
+                    IFlight flight,
                     double movementPerInterval, 
                     Coordinate legStartPosition,
                     Coordinate legEndPosition) throws PWCGException
@@ -48,7 +49,7 @@ public class FlightPathByMinutePlotter
         Coordinate flightPosition = legStartPosition.copy();        
         for (int numPlotPointsBetweenWP = 0; numPlotPointsBetweenWP < numVirtualWp; ++numPlotPointsBetweenWP)
         {
-            Coordinate nextCoordinate = calculateNextFlightPathCoordinate(movementPerInterval, legEndPosition, angle, flightPosition);
+            Coordinate nextCoordinate = calculateNextFlightPathCoordinate(flight, movementPerInterval, legEndPosition, angle, flightPosition);
             flightPathForLeg.add(nextCoordinate);
             flightPosition = nextCoordinate;
         }
@@ -56,13 +57,14 @@ public class FlightPathByMinutePlotter
         return flightPathForLeg;
     }
 
-    private Coordinate calculateNextFlightPathCoordinate(double movementPerInterval, Coordinate legEndPosition, double angle, Coordinate flightPosition) throws PWCGException
+    private Coordinate calculateNextFlightPathCoordinate(
+            IFlight flight, double movementPerInterval, Coordinate legEndPosition, double angle, Coordinate flightPosition) throws PWCGException
     {
         double distanceToWP = MathUtils.calcDist(flightPosition, legEndPosition);
         Coordinate nextCoordinate = null;
         if (distanceToWP > movementPerInterval)
         {
-            nextCoordinate = MathUtils.calcNextCoord(flightPosition, angle, movementPerInterval);
+            nextCoordinate = MathUtils.calcNextCoord(flight.getCampaign().getCampaignMap(), flightPosition, angle, movementPerInterval);
         }
         else
         {

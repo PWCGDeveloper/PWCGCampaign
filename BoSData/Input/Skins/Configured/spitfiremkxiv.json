@@ -4,7 +4,7 @@
 		"spitfiremkxiv_default": {
 			"skinName": "spitfiremkxiv",
 			"planeType": "spitfiremkxiv",
-            "startDate": "19390801",
+            "startDate": "19390901",
 			"endDate": "19440601",
 			"squadId": -2,
 			"country": "Britain",
@@ -82,7 +82,7 @@
         "spitfiremkxiv_skin_04": {
             "skinName": "spitfiremkxiv_skin_04",
             "planeType": "spitfiremkxiv",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -1,
             "country": "Britain",

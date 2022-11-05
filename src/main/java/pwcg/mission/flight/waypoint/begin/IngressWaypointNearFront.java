@@ -68,7 +68,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
 
     private Coordinate getBestIngressPositionForCommonAIFlights() throws PWCGException 
     {
-        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         Coordinate closestFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
                 flight.getTargetDefinition().getPosition(), 
                 flight.getSquadron().determineSide());
@@ -77,13 +77,13 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         double angleFromFrontToHome = MathUtils.calcAngle(closestFrontLinesToTarget, flightHomeCoordinates);
 
         int distanceBehindFrontForIngress = getDistanceFromFront();
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(closestFrontLinesToTarget, angleFromFrontToHome, distanceBehindFrontForIngress);
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getCampaignMap(), closestFrontLinesToTarget, angleFromFrontToHome, distanceBehindFrontForIngress);
         return ingressCoordinate;
     }
 
     private Coordinate getBestIngressPositionForPatrol() throws PWCGException 
     {
-        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
 
         Coordinate closestFrontLinesToBase = frontLinesForMap.findClosestFrontCoordinateForSide(
                 flight.getSquadron().determineCurrentPosition(campaign.getDate()), 
@@ -95,19 +95,19 @@ public class IngressWaypointNearFront implements IIngressWaypoint
 
         double distanceBetweenBaseAndTarget = MathUtils.calcDist(closestFrontLinesToBase, closestFriendlyFrontLinesToTarget);
         double angleBetweenbaseAndTarget = MathUtils.calcAngle(closestFrontLinesToBase, closestFriendlyFrontLinesToTarget);
-        Coordinate positionBetweenbaseAndTarget = MathUtils.calcNextCoord(closestFrontLinesToBase, angleBetweenbaseAndTarget, (distanceBetweenBaseAndTarget / 2));
+        Coordinate positionBetweenbaseAndTarget = MathUtils.calcNextCoord(flight.getCampaignMap(), closestFrontLinesToBase, angleBetweenbaseAndTarget, (distanceBetweenBaseAndTarget / 2));
         
         Coordinate flightHomeCoordinates = flight.getSquadron().determineCurrentPosition(campaign.getDate());
         double angleFromFrontToHome = MathUtils.calcAngle(positionBetweenbaseAndTarget, flightHomeCoordinates);
 
         int distanceBehindFrontForIngress = getDistanceFromFront();
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(positionBetweenbaseAndTarget, angleFromFrontToHome, distanceBehindFrontForIngress);
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getCampaignMap(), positionBetweenbaseAndTarget, angleFromFrontToHome, distanceBehindFrontForIngress);
         return ingressCoordinate;
     }
 
     private Coordinate getBestIngressPositionBehindFriendlyLines() throws PWCGException 
     {
-        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
                 flight.getTargetDefinition().getPosition(), 
                 flight.getSquadron().determineSide().getOppositeSide());
@@ -117,6 +117,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         int distanceBehindFrontForIngress = getDistanceFromFront();
 
         return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
+                campaign.getCampaignMap(),
                 closestEnemyFrontLinesToTarget, 
                 closestFriendlyFrontLinesToTarget, 
                 distanceBehindFrontForIngress, 
@@ -126,13 +127,14 @@ public class IngressWaypointNearFront implements IIngressWaypoint
 
     private Coordinate getBestIngressPositionForEscortRendezvous() throws PWCGException 
     {
-        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
                 flight.getTargetDefinition().getPosition(), 
                 flight.getSquadron().determineSide().getOppositeSide());
         int distanceBehindFrontForIngress = getDistanceFromFront();
 
         return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
+                campaign.getCampaignMap(),
                 closestEnemyFrontLinesToTarget, 
                 flight.getFlightHomePosition(), 
                 distanceBehindFrontForIngress, 

@@ -28,7 +28,7 @@ public class MissionGroundUnitMoscowTest
     public void verifySmallerDistanceToFront () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-        FrontMapIdentifier map = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();
+        FrontMapIdentifier map = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapIdentifier();
         assert(map == FrontMapIdentifier.MOSCOW_MAP);
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);

@@ -22,12 +22,12 @@ public class FirePotBuilder
         
         Coordinate planePosition = takeoffLocation.getPosition().copy();
         Double angleOffsetFirePots = MathUtils.adjustAngle(airfieldOrientation, -90);
-        Coordinate positionLeftOfPlane = MathUtils.calcNextCoord(planePosition, angleOffsetFirePots, 60.0);
+        Coordinate positionLeftOfPlane = MathUtils.calcNextCoord(flight.getCampaign().getCampaignMap(), planePosition, angleOffsetFirePots, 60.0);
         
         double airfieldLength = MathUtils.calcDist(takeoffLocation.getPosition(), landingLocation.getPosition());
         double distanceBetween = airfieldLength / FirePotSeries.NUM_FIRE_POT_PAIRS;
 
-        firePotSeries.createSeries(positionLeftOfPlane, airfieldOrientation, distanceBetween);
+        firePotSeries.createSeries(flight.getCampaignMap(), positionLeftOfPlane, airfieldOrientation, distanceBetween);
         
         return firePotSeries;
     }

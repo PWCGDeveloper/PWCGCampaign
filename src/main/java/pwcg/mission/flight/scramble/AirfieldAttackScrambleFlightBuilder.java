@@ -57,7 +57,7 @@ public class AirfieldAttackScrambleFlightBuilder
 
     private Squadron getOpposingSquadrons() throws PWCGException
     {
-        Squadron squadronForAirfield = PWCGContext.getInstance().getSquadronManager().getClosestSquadron(targetDefinition.getPosition(), campaign.getDate());
+        Squadron squadronForAirfield = PWCGContext.getInstance().getSquadronManager().getClosestSquadron(campaign.getCampaignMap(), targetDefinition.getPosition(), campaign.getDate());
         return squadronForAirfield;
     }
 

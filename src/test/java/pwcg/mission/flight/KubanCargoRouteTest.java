@@ -11,7 +11,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.skirmish.DynamicSkirmishBuilder;
+import pwcg.campaign.skirmish.CargoRouteSkirmishBuilder;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -48,7 +48,7 @@ public class KubanCargoRouteTest
         
         MissionHumanParticipants playerParticipants = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
                 
-        DynamicSkirmishBuilder dynamicSkirmishBuilder = new DynamicSkirmishBuilder(campaign, playerParticipants);
+        CargoRouteSkirmishBuilder dynamicSkirmishBuilder = new CargoRouteSkirmishBuilder(campaign, playerParticipants);
         Skirmish cargoRouteSkirmish = dynamicSkirmishBuilder.buildSkirmishForCargoRoute();
                 
         MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
@@ -59,6 +59,7 @@ public class KubanCargoRouteTest
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightTypeWithSkirmish(playerParticipants, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, cargoRouteSkirmish);
+        mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
         Assertions.assertTrue (mission.getSkirmish().getSkirmishName().startsWith("Cargo"));
@@ -95,7 +96,8 @@ public class KubanCargoRouteTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        
+        mission.finalizeMission();
+
         Assertions.assertTrue (mission.getSkirmish() == null);
         
         MissionFlightValidator.validateMission(mission);

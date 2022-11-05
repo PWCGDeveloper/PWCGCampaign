@@ -33,7 +33,7 @@ public class MissionHeaderGenerator
         missionHeader.setDuty("" + myFlight.getFlightType());  // String to enum and back
         missionHeader.setAltitude(myFlight.getFlightInformation().getAltitude()); 
         
-        missionHeader.setMapName(PWCGContext.getInstance().getCurrentMap().getMapName()); 
+        missionHeader.setMapName(PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapName()); 
 
         String formattedTime = DateUtils.getDateAsMissionFileFormat(campaign.getDate());
         missionHeader.setTime(formattedTime);

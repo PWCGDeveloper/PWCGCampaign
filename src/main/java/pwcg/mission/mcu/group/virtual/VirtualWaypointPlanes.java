@@ -30,7 +30,7 @@ public class VirtualWaypointPlanes
     private void buildPlanesAtActivate() throws PWCGException
     {
         int altitudeOffset = 0;
-        VirtualWaypointPlaneBuilder vwpPlaneBuilder = new VirtualWaypointPlaneBuilder(vwpCoordinate, altitudeOffset);
+        VirtualWaypointPlaneBuilder vwpPlaneBuilder = new VirtualWaypointPlaneBuilder(flight.getCampaign(), vwpCoordinate, altitudeOffset);
         
         
         planesAtActivate = vwpPlaneBuilder.buildVwpPlanes(flight.getFlightPlanes().getPlanes(), flight.getFlightInformation().getFormationType());

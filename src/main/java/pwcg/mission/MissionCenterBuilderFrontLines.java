@@ -34,10 +34,10 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
 
         double angle = MathUtils.calcAngle(missionCenterCoordinateAxis, missionCenterCoordinateAllied);
         double distance = MathUtils.calcDist(missionCenterCoordinateAxis, missionCenterCoordinateAllied) / 2;
-        Coordinate missionCenterCoordinate = MathUtils.calcNextCoord(missionCenterCoordinateAxis, angle, distance);
+        Coordinate missionCenterCoordinate = MathUtils.calcNextCoord(campaign.getCampaignMap(), missionCenterCoordinateAxis, angle, distance);
         
-        MapArea usableMapArea = PWCGContext.getInstance().getCurrentMap().getUsableMapArea();
-        missionCenterCoordinate = MissionCenterAdjuster.keepWithinMap(missionCenterCoordinate.copy(), missionBoxRadius, usableMapArea);
+        MapArea usableMapArea = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getUsableMapArea();
+        missionCenterCoordinate = MissionCenterAdjuster.keepWithinMap(campaign.getCampaignMap(), missionCenterCoordinate.copy(), missionBoxRadius, usableMapArea);
 
         return missionCenterCoordinate;
     }
@@ -97,7 +97,7 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
             Side frontSide) throws PWCGException
     {
         List<Coordinate> squadronPositions = determineSquadronCoordinates();
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontPoints = frontLinesForMap.findAllFrontLinesForSide(frontSide);
         List<FrontLinePoint> selectedFrontPoints = new ArrayList<>();
 
@@ -179,7 +179,7 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
 
     private Coordinate findAlliedCoordinateNearAxisCoordinate(Coordinate axisCoordinate) throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         Coordinate alliedCoordinateCloseToAxisCoordinate = frontLinesForMap.findClosestFrontCoordinateForSide(axisCoordinate, Side.ALLIED);
         return alliedCoordinateCloseToAxisCoordinate;
     }

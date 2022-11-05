@@ -167,7 +167,6 @@ public class BoSAirfieldTest
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         campaign.setCampaignConfigManager(configManagerCampaign);
-        PWCGContext.getInstance().setCampaign(campaign);
 
         Mockito.when(configManagerCampaign.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey)).thenReturn(0);
 

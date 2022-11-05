@@ -5,6 +5,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.Mission;
 
 public class AmphibiousPositionBuilder
 {
@@ -19,10 +20,10 @@ public class AmphibiousPositionBuilder
         this.amphibiousAssaultShip = amphibiousAssaultShip;
     }
     
-    public void buildPositionAndOrientation() throws PWCGException
+    public void buildPositionAndOrientation(Mission mission) throws PWCGException
     {
-        defensePosition = MathUtils.calcNextCoord(amphibiousAssaultShip.getDestination(), amphibiousAssaultShip.getOrientation().getyOri(), 1500);
-        assaultPosition = MathUtils.calcNextCoord(amphibiousAssaultShip.getDestination(), amphibiousAssaultShip.getOrientation().getyOri(), 100);
+        defensePosition = MathUtils.calcNextCoord(mission.getCampaignMap(), amphibiousAssaultShip.getDestination(), amphibiousAssaultShip.getOrientation().getyOri(), 1500);
+        assaultPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), amphibiousAssaultShip.getDestination(), amphibiousAssaultShip.getOrientation().getyOri(), 100);
 
         double defenseAngle = MathUtils.adjustAngle(amphibiousAssaultShip.getOrientation().getyOri(), 180);
         defenseOrientation = new Orientation(defenseAngle);

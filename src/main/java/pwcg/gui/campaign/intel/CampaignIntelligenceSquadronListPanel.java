@@ -135,7 +135,7 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
     {
         List<Squadron> squadronsWithPrimaryRole = new ArrayList<>();
 
-        List<Squadron> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(campaign.getDate());
+        List<Squadron> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(campaign.getCampaignMap(), campaign.getDate());
         for (Squadron squadron : squadronsForMap)
         {
             if (includeSquadron(squadron, roleCategory))

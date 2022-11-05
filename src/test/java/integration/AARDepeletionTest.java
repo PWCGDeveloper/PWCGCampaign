@@ -1,12 +1,12 @@
 package integration;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -19,6 +19,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("BOS")
 public class AARDepeletionTest
 {
     private Campaign campaign;    
@@ -28,7 +29,6 @@ public class AARDepeletionTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.BODENPLATTE_MAP);
         campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.RAF_184_PROFILE);
         aarCoordinator = AARCoordinator.getInstance();
     }

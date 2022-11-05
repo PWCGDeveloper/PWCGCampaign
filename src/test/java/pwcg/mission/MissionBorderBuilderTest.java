@@ -5,7 +5,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.skirmish.Skirmish;
@@ -27,14 +26,12 @@ public class MissionBorderBuilderTest
     public MissionBorderBuilderTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.STALINGRAD_MAP);
     }
 
     @Test
     public void singlePlayerMissionBoxTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-        PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
         SquadronMember player = campaign.findReferencePlayer();
@@ -61,7 +58,6 @@ public class MissionBorderBuilderTest
     public void multiPlayerMissionBoxTest() throws PWCGException
     {
         Campaign coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
-        PWCGContext.getInstance().setCampaign(coopCampaign);
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         for (SquadronMember player: coopCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
@@ -87,7 +83,6 @@ public class MissionBorderBuilderTest
     public void buildBorderForSkirmishTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
-        PWCGContext.getInstance().setCampaign(campaign);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();

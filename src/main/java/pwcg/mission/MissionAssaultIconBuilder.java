@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -14,7 +15,13 @@ import pwcg.mission.target.AssaultDefinition;
 public class MissionAssaultIconBuilder
 {
     private List<ArrowIcon> assaultIcons = new ArrayList<>();
+    private Campaign campaign;
 
+    MissionAssaultIconBuilder(Campaign campaign)
+    {
+        this.campaign = campaign;
+    }
+    
     public void createAssaultIcons(List<AssaultDefinition> assaultDefinitions) throws PWCGException
     {
         for (AssaultDefinition assaultDefinition : assaultDefinitions)
@@ -56,7 +63,7 @@ public class MissionAssaultIconBuilder
     private McuIcon buildTail(AssaultDefinition assaultDefinition, double arrowOrientation) throws PWCGException
     {
         double oppositeArrowOrientation = MathUtils.adjustAngle(arrowOrientation, 180);
-        Coordinate tailPosition = MathUtils.calcNextCoord(assaultDefinition.getDefensePosition(), oppositeArrowOrientation, 9000.0);
+        Coordinate tailPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), assaultDefinition.getDefensePosition(), oppositeArrowOrientation, 9000.0);
 
         return McuIconFactory.buildAssaultIcon(tailPosition, arrowOrientation, assaultDefinition.getAssaultingCountry().getSide());
     }
@@ -64,10 +71,10 @@ public class MissionAssaultIconBuilder
     private McuIcon buildPreAssault(AssaultDefinition assaultDefinition, double arrowOrientation) throws PWCGException
     {
         double oppositeArrowOrientation = MathUtils.adjustAngle(arrowOrientation, 180);
-        Coordinate preAssaultPosition = MathUtils.calcNextCoord(assaultDefinition.getDefensePosition(), oppositeArrowOrientation, 8500.0);
+        Coordinate preAssaultPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), assaultDefinition.getDefensePosition(), oppositeArrowOrientation, 8500.0);
         
         double angleUp = MathUtils.adjustAngle(arrowOrientation, 90);
-        preAssaultPosition = MathUtils.calcNextCoord(preAssaultPosition, angleUp, 500.0);
+        preAssaultPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), preAssaultPosition, angleUp, 500.0);
 
         return McuIconFactory.buildAssaultIcon(preAssaultPosition, arrowOrientation, assaultDefinition.getAssaultingCountry().getSide());
     }
@@ -75,10 +82,10 @@ public class MissionAssaultIconBuilder
     private McuIcon buildAssault(AssaultDefinition assaultDefinition, double arrowOrientation) throws PWCGException
     {
         double oppositeArrowOrientation = MathUtils.adjustAngle(arrowOrientation, 180);
-        Coordinate assaultPosition = MathUtils.calcNextCoord(assaultDefinition.getDefensePosition(), oppositeArrowOrientation, 6000.0);
+        Coordinate assaultPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), assaultDefinition.getDefensePosition(), oppositeArrowOrientation, 6000.0);
         
         double angleUp = MathUtils.adjustAngle(arrowOrientation, 90);
-        assaultPosition = MathUtils.calcNextCoord(assaultPosition, angleUp, 3000.0);
+        assaultPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), assaultPosition, angleUp, 3000.0);
 
         return McuIconFactory.buildAssaultIcon(assaultPosition, arrowOrientation, assaultDefinition.getAssaultingCountry().getSide());
     }
@@ -88,23 +95,23 @@ public class MissionAssaultIconBuilder
         Coordinate defensePosition = assaultDefinition.getDefensePosition().copy();
         
         double angleUp = MathUtils.adjustAngle(arrowOrientation, 90);
-        defensePosition = MathUtils.calcNextCoord(defensePosition, angleUp, 3000.0);
+        defensePosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), defensePosition, angleUp, 3000.0);
 
         return McuIconFactory.buildAssaultIcon(defensePosition, arrowOrientation, assaultDefinition.getAssaultingCountry().getSide());
     }
 
     private McuIcon buildPostDestination(AssaultDefinition assaultDefinition, double arrowOrientation) throws PWCGException
     {
-        Coordinate preAssaultPosition = MathUtils.calcNextCoord(assaultDefinition.getDefensePosition(), arrowOrientation, 3000.0);
+        Coordinate preAssaultPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), assaultDefinition.getDefensePosition(), arrowOrientation, 3000.0);
         return McuIconFactory.buildAssaultIcon(preAssaultPosition, arrowOrientation, assaultDefinition.getAssaultingCountry().getSide());
     }
     
     private McuIcon buildHead(AssaultDefinition assaultDefinition, double arrowOrientation) throws PWCGException
     {
-        Coordinate headPosition = MathUtils.calcNextCoord(assaultDefinition.getDefensePosition(), arrowOrientation, 3000.0);
+        Coordinate headPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), assaultDefinition.getDefensePosition(), arrowOrientation, 3000.0);
         
         double angleUp = MathUtils.adjustAngle(arrowOrientation, 90);
-        headPosition = MathUtils.calcNextCoord(headPosition, angleUp, 1200.0);
+        headPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), headPosition, angleUp, 1200.0);
 
         return McuIconFactory.buildAssaultIcon( headPosition, arrowOrientation, assaultDefinition.getAssaultingCountry().getSide());
     }

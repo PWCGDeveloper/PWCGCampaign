@@ -63,7 +63,7 @@ public class TransportWaypointFactory
         double distanceBetweenAirfields = MathUtils.calcDist(fromAirfield.getTakeoffLocation(mission).getPosition(), toAirfield.getLandingLocation(mission).getPosition());
         distanceBetweenAirfields = distanceBetweenAirfields / 2;
         
-        Coordinate midPointCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation(mission).getPosition(), angleFromTargetToHomeAirfield, distanceBetweenAirfields);
+        Coordinate midPointCoords = MathUtils.calcNextCoord(flight.getCampaignMap(), fromAirfield.getTakeoffLocation(mission).getPosition(), angleFromTargetToHomeAirfield, distanceBetweenAirfields);
         midPointCoords.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint midPointWP = WaypointFactory.createMoveToWaypointType();
@@ -79,7 +79,7 @@ public class TransportWaypointFactory
         Mission mission = flight.getMission();
         double angleFromTargetToHomeAirfield = MathUtils.calcAngle(toAirfield.getLandingLocation(mission).getPosition(), lastWp.getPosition());
         
-        Coordinate destinationCoords = MathUtils.calcNextCoord(toAirfield.getLandingLocation(mission).getPosition(), angleFromTargetToHomeAirfield, 10000.0);
+        Coordinate destinationCoords = MathUtils.calcNextCoord(flight.getCampaignMap(), toAirfield.getLandingLocation(mission).getPosition(), angleFromTargetToHomeAirfield, 10000.0);
         destinationCoords.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint destinationWP = WaypointFactory.createMoveToWaypointType();

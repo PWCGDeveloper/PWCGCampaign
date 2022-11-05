@@ -246,9 +246,9 @@ public class MissionFileWriter implements IMissionFile
                     Campaign campaign = mission.getCampaign();
                     ConfigManager configManager = campaign.getCampaignConfigManager();
                     int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
-                    Coordinate beaconCoordMoveLeft = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation(mission).getPosition(), angleBeaconLeft, windsockDistance);
+                    Coordinate beaconCoordMoveLeft = MathUtils.calcNextCoord(mission.getCampaignMap(), flightAirfield.getTakeoffLocation(mission).getPosition(), angleBeaconLeft, windsockDistance);
 
-                    Coordinate beaconPos = MathUtils.calcNextCoord(beaconCoordMoveLeft, takeoffOrientation, 200.0);
+                    Coordinate beaconPos = MathUtils.calcNextCoord(mission.getCampaignMap(), beaconCoordMoveLeft, takeoffOrientation, 200.0);
 
                     radioBeacon.setPosition(beaconPos);
                     radioBeacon.setOrientation(flightAirfield.getOrientation().copy());
@@ -280,15 +280,15 @@ public class MissionFileWriter implements IMissionFile
                     Campaign campaign = mission.getCampaign();
                     ConfigManager configManager = campaign.getCampaignConfigManager();
                     int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
-                    Coordinate pos1 = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation(mission).getPosition(), angleRight, windsockDistance);
-                    pos1 = MathUtils.calcNextCoord(pos1, takeoffOrientation.getyOri(), -15.0);
+                    Coordinate pos1 = MathUtils.calcNextCoord(mission.getCampaignMap(), flightAirfield.getTakeoffLocation(mission).getPosition(), angleRight, windsockDistance);
+                    pos1 = MathUtils.calcNextCoord(mission.getCampaignMap(), pos1, takeoffOrientation.getyOri(), -15.0);
 
                     landCanvas.setPosition(pos1);
                     landCanvas.setOrientation(takeoffOrientation);
                     landCanvas.getEntity().enableEntity();
                     landCanvas.write(writer);
 
-                    Coordinate pos2 = MathUtils.calcNextCoord(pos1, takeoffOrientation.getyOri(), 5.0);
+                    Coordinate pos2 = MathUtils.calcNextCoord(mission.getCampaignMap(), pos1, takeoffOrientation.getyOri(), 5.0);
                     Orientation orient2 = takeoffOrientation.copy();
                     orient2.setyOri(angleRight);
 
@@ -303,7 +303,7 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeFakeAirfieldForAiReturnToBase(BufferedWriter writer) throws PWCGException
     {
-        Map<String, Airfield> allAirFields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields();
+        Map<String, Airfield> allAirFields =  PWCGContext.getInstance().getMap(mission.getCampaignMap()).getAirfieldManager().getAllAirfields();
         for (Airfield airfield : allAirFields.values())
         {
             FakeAirfield fakeAirfiield = new FakeAirfield(airfield, mission);

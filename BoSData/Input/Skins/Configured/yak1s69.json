@@ -4,7 +4,7 @@
         "yak1s69_default": {
             "skinName": "yak1s69",
             "planeType": "yak1s69",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440301",
             "squadId": -2,
             "country": "Russia",
@@ -17,7 +17,7 @@
         "yak1s69_blank_01": {
             "skinName": "yak1s69_blank_01",
             "planeType": "yak1s69",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19430401",
             "squadId": -2,
             "country": "Russia",
@@ -30,7 +30,7 @@
         "yak1s69_blank_02": {
             "skinName": "yak1s69_blank_02",
             "planeType": "yak1s69",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Russia",
@@ -43,7 +43,7 @@
 		"yak1s69_skin_03": {
 			"skinName": "yak1s69_skin_03",
 			"planeType": "yak1s69",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -54,7 +54,7 @@
 		"yak1s69_skin_04": {
 			"skinName": "yak1s69_skin_04",
 			"planeType": "yak1s69",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -65,7 +65,7 @@
 		"yak1s69_skin_05": {
 			"skinName": "yak1s69_skin_05",
 			"planeType": "yak1s69",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -76,7 +76,7 @@
 		"yak1s69_skin_06": {
 			"skinName": "yak1s69_skin_06",
 			"planeType": "yak1s69",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -87,7 +87,7 @@
 		"yak1s69_skin_07": {
 			"skinName": "yak1s69_skin_07",
 			"planeType": "yak1s69",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -98,7 +98,7 @@
 		"yak1s69_skin_08": {
 			"skinName": "yak1s69_skin_08",
 			"planeType": "yak1s69",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -109,7 +109,7 @@
 		"Yak1s69_IVANOVICH49": {
 			"skinName": "Yak1s69_IVANOVICH49",
 			"planeType": "yak1s69",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440501",
 			"squadId": -1,
 			"country": "Russia",
@@ -120,7 +120,7 @@
 		"Yak1s69_white31": {
 			"skinName": "Yak1s69_white31",
 			"planeType": "yak1s69",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440501",
 			"squadId": -1,
 			"country": "Russia",
@@ -131,7 +131,7 @@
 		"Yak1s69_NORMANDY4": {
 			"skinName": "Yak1s69_NORMANDY4",
 			"planeType": "yak1s69",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440501",
 			"squadId": 10111999,
 			"country": "Russia",
@@ -142,7 +142,7 @@
 		"Yak1s69_NORMANDY27": {
 			"skinName": "Yak1s69_NORMANDY27",
 			"planeType": "yak1s69",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440501",
 			"squadId": 10111999,
 			"country": "Russia",

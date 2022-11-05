@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
@@ -27,10 +28,12 @@ public class MissionBalloonBuilder
 {
     private List<GroundUnitCollection> missionBalloons = new ArrayList<>();
     private Mission mission;
+    private Campaign campaign;
 
     public MissionBalloonBuilder(Mission mission)
     {
         this.mission = mission;
+        this.campaign = mission.getCampaign();
     }
     
     public List<GroundUnitCollection> createMissionBalloons() throws PWCGException 
@@ -72,7 +75,7 @@ public class MissionBalloonBuilder
     private void makeBalloonsForSide(Side balloonSide) throws PWCGException
     {
         int numBalloons = detemineNumberBalloonsPerSide();
-        ICountry balloonCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(balloonSide);
+        ICountry balloonCountry = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroundCountryForMapBySide(balloonSide);
         for (int i = 0; i < numBalloons; ++i)
         {
             try
@@ -146,8 +149,8 @@ public class MissionBalloonBuilder
         do
         {
             Coordinate frontCoordinate = getFrontCoordinate(balloonSide);
-            FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(mission.getCampaign().getDate());
-            balloonCoordinate = frontLines.findPositionBehindLinesForSide(frontCoordinate, 5000, 3000, 6000, balloonSide);
+            FrontLinesForMap frontLines = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(mission.getCampaign().getDate());
+            balloonCoordinate = frontLines.findPositionBehindLinesForSide(campaign.getCampaignMap(), frontCoordinate, 5000, 3000, 6000, balloonSide);
             
             ++attemptCount;
         } 

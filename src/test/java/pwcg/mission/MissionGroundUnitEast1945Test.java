@@ -28,7 +28,7 @@ public class MissionGroundUnitEast1945Test
     public void verifySmallerDistanceToFront () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.EAST1945_PROFILE);
-        FrontMapIdentifier map = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();
+        FrontMapIdentifier map = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapIdentifier();
         assert(map == FrontMapIdentifier.EAST1945_MAP);
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);

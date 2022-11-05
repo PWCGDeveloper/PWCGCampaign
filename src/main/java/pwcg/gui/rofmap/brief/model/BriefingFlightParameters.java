@@ -3,6 +3,7 @@ package pwcg.gui.rofmap.brief.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -33,7 +34,7 @@ public class BriefingFlightParameters
         this.selectedMapPointIndex = selectedMapPointIndex;
     }
 
-    public void addBriefingMapMapPointsAtPosition() throws PWCGException
+    public void addBriefingMapMapPointsAtPosition(FrontMapIdentifier mapIdentifier) throws PWCGException
     {
         if (actionMapPointIndex >= 0)
         {
@@ -48,7 +49,7 @@ public class BriefingFlightParameters
                     double distance = MathUtils.calcDist(previousBriefingMapPoint.getPosition(), nextBriefingMapPoint.getPosition());
                     double heading = MathUtils.calcAngle(previousBriefingMapPoint.getPosition(), nextBriefingMapPoint.getPosition());
                     
-                    Coordinate newMapPointPosition = MathUtils.calcNextCoord(previousBriefingMapPoint.getPosition(), heading, (distance / 2));
+                    Coordinate newMapPointPosition = MathUtils.calcNextCoord(mapIdentifier, previousBriefingMapPoint.getPosition(), heading, (distance / 2));
                     newMapPointPosition.setYPos(previousBriefingMapPoint.getAltitude());
                     briefingMapPointToAdd.setPosition(newMapPointPosition);
                     this.briefingMapPoints.add(actionMapPointIndex+1, briefingMapPointToAdd);

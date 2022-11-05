@@ -65,7 +65,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	public DebriefMapGUI  (Campaign campaign, CampaignHomeScreen home) throws PWCGException
 	{
-	    super(campaign.getDate());
+	    super(campaign.getCampaignMap(), campaign.getDate());
 
         SoundManager.getInstance().playSound("BriefingStart.WAV");
 
@@ -145,7 +145,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
             }
         }
 
-        return PWCGContext.getInstance().getCurrentMap().getMapCenter();
+        return PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapCenter();
     }
 
 

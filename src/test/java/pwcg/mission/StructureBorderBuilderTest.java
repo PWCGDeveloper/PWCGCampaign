@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -30,14 +29,12 @@ public class StructureBorderBuilderTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.STALINGRAD_MAP);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
     }
 
     @Test
     public void structureLevelLow() throws PWCGException
     {
-        PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigStructuresKey, ConfigSimple.CONFIG_LEVEL_LOW);
@@ -64,7 +61,6 @@ public class StructureBorderBuilderTest
     @Test
     public void structureLevelMedium() throws PWCGException
     {
-        PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigStructuresKey, ConfigSimple.CONFIG_LEVEL_MED);
@@ -94,7 +90,6 @@ public class StructureBorderBuilderTest
     @Test
     public void structureLevelHigh() throws PWCGException
     {
-        PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigStructuresKey, ConfigSimple.CONFIG_LEVEL_HIGH);
@@ -124,7 +119,6 @@ public class StructureBorderBuilderTest
     @Test
     public void structureLevelCompare() throws PWCGException
     {
-        PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         
         SquadronMember player = campaign.findReferencePlayer();

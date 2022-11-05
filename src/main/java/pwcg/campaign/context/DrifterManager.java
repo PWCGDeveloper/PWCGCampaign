@@ -36,7 +36,7 @@ public class DrifterManager
         List<PWCGLocation> bargePositionsForSide = new ArrayList<>();
         for (PWCGLocation location : bargePositions.getLocations())
         {
-            if (location.getCountry(campaign.getDate()).getSide() == side)
+            if (location.getCountry(campaign.getCampaignMap(), campaign.getDate()).getSide() == side)
             {
                 bargePositionsForSide.add(location);
             }

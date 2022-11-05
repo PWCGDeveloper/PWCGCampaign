@@ -40,7 +40,7 @@ public class IngressWaypointNearField implements IIngressWaypoint
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         double distanceToIngress = productSpecificConfiguration.getInterceptInnerLoopDistance();
 
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getFlightHomePosition(), runwayOrientation, distanceToIngress);
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getCampaignMap(), flight.getFlightHomePosition(), runwayOrientation, distanceToIngress);
         ingressCoordinate.setYPos(flight.getFlightInformation().getAltitude() - 200);
         if (ingressCoordinate.getYPos() < 700)
         {
@@ -52,7 +52,7 @@ public class IngressWaypointNearField implements IIngressWaypoint
 
     private double getIngressOrientationNearField() throws PWCGException 
     {
-        Airfield airfield = flight.getSquadron().determineCurrentAirfieldCurrentMap(flight.getCampaign().getDate());
+        Airfield airfield = flight.getSquadron().determineCurrentAirfieldCurrentMap(flight.getCampaignMap(), flight.getCampaign().getDate());
         double runwayOrientation = airfield.getTakeoffLocation(flight.getMission()).getOrientation().getyOri();
         return runwayOrientation;
     }

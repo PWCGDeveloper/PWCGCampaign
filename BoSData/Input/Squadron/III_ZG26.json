@@ -12,7 +12,7 @@
 	"planeAssignments": [
 		{
 			"archType": "bf110",
-			"squadronIntroduction": "19390801",
+			"squadronIntroduction": "19390901",
 			"squadronWithdrawal": "19430601"
 		},
 		{
@@ -43,7 +43,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19390801",
+				"startDate": "19390901",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -145,7 +145,7 @@
 	"squadHistory": {
 		"squadHistoryEntries": [
 			{
-				"date": "19390801",
+				"date": "19390901",
 				"squadName": "II./ZG 76",
 				"armedServiceName": "Luftwaffe",
 				"skill": 70
@@ -170,7 +170,7 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19390801",
+				"startDate": "19390901",
 				"nightMissionOdds": 5
 			},
 			{

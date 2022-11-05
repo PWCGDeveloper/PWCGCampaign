@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -15,15 +16,21 @@ import pwcg.core.utils.DirectoryReader;
 public class CampaignTransitionDates
 {
     private DirectoryReader directoryReader = new DirectoryReader();
+    private FrontMapIdentifier mapIdentifier;
+    
+    public CampaignTransitionDates(FrontMapIdentifier mapIdentifier)
+    {
+        this.mapIdentifier = mapIdentifier;
+    }
 
     public List<String> getCampaignTransitionDates() throws PWCGException, PWCGException
     {
          Map<Date, Date> sortedDates = new TreeMap<Date, Date>();
 
-        Date mapStart = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
+        Date mapStart = PWCGContext.getInstance().getMap(mapIdentifier).getFrontDatesForMap().getEarliestMapDate();
         sortedDates.put(mapStart, mapStart);
 
-        Date mapEnd = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getLatestMapDate();
+        Date mapEnd = PWCGContext.getInstance().getMap(mapIdentifier).getFrontDatesForMap().getLatestMapDate();
         sortedDates.put(mapEnd, mapEnd);
         
         addMovingFrontDates(sortedDates);
@@ -58,7 +65,7 @@ public class CampaignTransitionDates
 
     private void addMovingFrontDates(Map<Date, Date> sortedDates) throws PWCGException
     {
-        String mapPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + PWCGContext.getInstance().getCurrentMap().getMapName();      
+        String mapPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + PWCGContext.getInstance().getMap(mapIdentifier).getMapName();      
         directoryReader.sortFilesInDir(mapPath);
         for (String filename : directoryReader.getDirectories()) 
         {

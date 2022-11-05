@@ -14,6 +14,7 @@ import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryDat
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.LogVictoryHelper;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -38,6 +39,7 @@ public class ClaimResolverCoopTest
         PWCGContext.setProduct(PWCGProduct.FC);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.ARRAS_MAP);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);
         Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);

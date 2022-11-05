@@ -28,7 +28,7 @@ public class MissionGroundUnitBodenplatteTest
     public void verifySmallerDistanceToFront () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
-        FrontMapIdentifier map = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();
+        FrontMapIdentifier map = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapIdentifier();
         assert(map == FrontMapIdentifier.BODENPLATTE_MAP);
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);

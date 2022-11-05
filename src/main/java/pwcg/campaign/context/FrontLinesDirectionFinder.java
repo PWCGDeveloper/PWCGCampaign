@@ -18,7 +18,7 @@ public class FrontLinesDirectionFinder
     
     public static FrontLinesDirection findFrontLinesDirection(Campaign campaign, Coordinate referenceLocation) throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         FrontLinesDirection frontLinesDirection = FrontLinesDirection.DIRECTION_NS;
         
         List<FrontLinePoint> frontLinePoints = frontLinesForMap.findClosestFrontPositionsForSide(referenceLocation, 20000, Side.AXIS);

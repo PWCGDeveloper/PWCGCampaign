@@ -10,6 +10,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
@@ -119,12 +120,12 @@ public class SquadronViability
     }
     
 
-    public static List<Squadron> reduceToCurrentMap(List<Squadron> squadrons, Date date) throws PWCGException 
+    public static List<Squadron> reduceToCurrentMap(FrontMapIdentifier mapIdentifier, List<Squadron> squadrons, Date date) throws PWCGException 
     {
         List<Squadron> listForMap = new ArrayList<Squadron>();
         for (Squadron squadron : squadrons)
         {
-            Airfield field = squadron.determineCurrentAirfieldCurrentMap(date);
+            Airfield field = squadron.determineCurrentAirfieldCurrentMap(mapIdentifier, date);
             if (field != null)
             {
                 listForMap.add(squadron);

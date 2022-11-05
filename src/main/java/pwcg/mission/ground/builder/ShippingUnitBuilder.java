@@ -97,7 +97,7 @@ public class ShippingUnitBuilder
     private GroundUnitInformation createEscortGroundUnitInformationForUnit() throws PWCGException
     {
         double angleAheadOfCargoShips = MathUtils.calcAngle(targetDefinition.getPosition(), destination);
-        Coordinate escortStartPosition = MathUtils.calcNextCoord(targetDefinition.getPosition(), angleAheadOfCargoShips, 2000);
+        Coordinate escortStartPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), targetDefinition.getPosition(), angleAheadOfCargoShips, 2000);
 
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 

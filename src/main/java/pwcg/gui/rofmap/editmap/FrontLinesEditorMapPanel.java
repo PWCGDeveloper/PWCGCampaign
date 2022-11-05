@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.AirfieldManager;
@@ -50,7 +51,7 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
 
 	private static final long serialVersionUID = 1L;
 	
-	private ICountry country = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
+	private ICountry country;
     private int editMode = EDIT_MODE_NONE;
     private Boolean[] whatToDisplay = new Boolean[8];
 
@@ -58,10 +59,12 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
     private MapLocationEditor mapLocationEditor = null;
 
 
-	public FrontLinesEditorMapPanel(MapGUI parent) throws PWCGException  
+	public FrontLinesEditorMapPanel(MapGUI parent, FrontMapIdentifier mapIdentifier) throws PWCGException  
 	{
 		super(parent);
-		mapLocationEditor = new MapLocationEditor(this);
+		country = CountryFactory.makeMapReferenceCountry(mapIdentifier, Side.ALLIED);
+        mapLocationEditor = new MapLocationEditor(this);
+        super.initializeMap(mapIdentifier);
 	}
 
 	public void setData() throws PWCGException 
@@ -95,7 +98,7 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
 	          
             if (whatToDisplay[DISPLAY_CITIES])
             {
-                GroupManager groupManager =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
+                GroupManager groupManager =  PWCGContext.getInstance().getMap(mapIdentifier).getGroupManager();
                 TownFinder townFinder = groupManager.getTownFinder();
                 LocationSet towns = townFinder.getTownLocations();
                 for (PWCGLocation town : towns.getLocations())
@@ -106,7 +109,7 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
 
 			if (whatToDisplay[DISPLAY_AIRFIELDS])
 			{
-		        AirfieldManager airfieldData =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
+		        AirfieldManager airfieldData =  PWCGContext.getInstance().getMap(mapIdentifier).getAirfieldManager();
 		        Map<String, Airfield> allAF = airfieldData.getAllAirfields();
 		        for (Airfield af : allAF.values())
 		        {
@@ -361,7 +364,7 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
 
     public void mirrorFrontLines() throws PWCGException
     {
-        FrontLineCreator frontLineCreator = new FrontLineCreator();
+        FrontLineCreator frontLineCreator = new FrontLineCreator(mapIdentifier);
         List<FrontLinePoint> modifiedFrontLines = frontLineCreator.createFrontLines(frontLineEditor.getUserCreatedFrontLines());
         frontLineEditor.replaceFrontLines(modifiedFrontLines);
         repaintMap();

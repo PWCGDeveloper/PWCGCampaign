@@ -28,7 +28,7 @@ public class MissionGroundUnitStalingradTest
     public void verifySmallerDistanceToFront () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-        FrontMapIdentifier map = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();
+        FrontMapIdentifier map = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapIdentifier();
         assert(map == FrontMapIdentifier.STALINGRAD_MAP);
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);

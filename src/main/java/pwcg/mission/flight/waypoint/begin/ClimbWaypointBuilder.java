@@ -81,7 +81,7 @@ public class ClimbWaypointBuilder
             return false;
         }
         
-        if (!flight.getSquadron().isStartsCloseToFront(campaign.getDate()))
+        if (!flight.getSquadron().isStartsCloseToFront(campaign.getCampaignMap(), campaign.getDate()))
         {
             return false;
         }

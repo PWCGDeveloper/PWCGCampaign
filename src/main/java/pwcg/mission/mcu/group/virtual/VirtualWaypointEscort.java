@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
@@ -19,6 +20,7 @@ import pwcg.mission.mcu.McuTimer;
 
 public class VirtualWaypointEscort
 {
+    private Campaign campaign;
     private VirtualWaypointPlanes vwpPlanes;
     private VirtualWayPointCoordinate vwpCoordinate;
     private VirtualWaypointTriggered vwpActivate;
@@ -31,8 +33,9 @@ public class VirtualWaypointEscort
     private List<PlaneMcu> escortPlanes = new ArrayList<>();
     private int index = IndexGenerator.getInstance().getNextIndex();
 
-    public VirtualWaypointEscort(VirtualWayPointCoordinate vwpCoordinate, Squadron escortSquadron, VirtualWaypointPlanes vwpPlanes, VirtualWaypointTriggered vwpActivate)
+    public VirtualWaypointEscort(Campaign campaign, VirtualWayPointCoordinate vwpCoordinate, Squadron escortSquadron, VirtualWaypointPlanes vwpPlanes, VirtualWaypointTriggered vwpActivate)
     {
+        this.campaign = campaign;
         this.vwpCoordinate = vwpCoordinate;
         this.escortSquadron = escortSquadron;
         this.vwpPlanes = vwpPlanes;
@@ -88,7 +91,7 @@ public class VirtualWaypointEscort
     private void buildEscortPlanes(FlightInformation vwpEscortFlightInformation) throws PWCGException
     {
         int altitudeOffset = 500;
-        VirtualWaypointPlaneBuilder vwpPlaneBuilder = new VirtualWaypointPlaneBuilder(vwpCoordinate, altitudeOffset);
+        VirtualWaypointPlaneBuilder vwpPlaneBuilder = new VirtualWaypointPlaneBuilder(campaign, vwpCoordinate, altitudeOffset);
         escortPlanes = vwpPlaneBuilder.buildVwpPlanes(vwpEscortFlightInformation.getPlanes(), vwpEscortFlightInformation.getFormationType());
     }
 

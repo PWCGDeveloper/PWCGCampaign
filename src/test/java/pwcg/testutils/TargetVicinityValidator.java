@@ -58,7 +58,7 @@ public class TargetVicinityValidator
         Coordinate attackPosition = attackMissionPoint.getAttackSequence().getAttackAreaMcu().getPosition();
         System.out.println("Attack Position at " + attackPosition);
 
-        Airfield airfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flight.getTargetDefinition().getTargetName());
+        Airfield airfield = PWCGContext.getInstance().getMap(flight.getCampaignMap()).getAirfieldManager().getAirfield(flight.getTargetDefinition().getTargetName());
         double distanceToAirfield = MathUtils.calcDist(flight.getTargetDefinition().getPosition(), airfield.getPosition());
         System.out.println("Distance to " + airfield.getName() + " " + airfield.determineCountry(flight.getCampaign()).getCountryName() +  " distance is " + distanceToAirfield);
 

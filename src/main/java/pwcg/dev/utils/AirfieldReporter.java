@@ -29,14 +29,14 @@ public class AirfieldReporter
             manager.configure(FrontMapIdentifier.STALINGRAD_MAP);
             
             PWCGLogger.log(LogLevel.DEBUG, "\n\n\n\n\nAllied");
-            for (Airfield field: manager.getAirFieldsForSide(date, Side.ALLIED))
+            for (Airfield field: manager.getAirFieldsForSide(FrontMapIdentifier.NORMANDY_MAP, date, Side.ALLIED))
             {
                 int distanceToFront = getDistanceToFront(field, Side.ALLIED, date);
                 PWCGLogger.log(LogLevel.DEBUG, field.getName() + "   Km to front: " + distanceToFront);
             }
             
             PWCGLogger.log(LogLevel.DEBUG, "\n\n\n\n\nAxis");
-            for (Airfield field: manager.getAirFieldsForSide(date, Side.AXIS))
+            for (Airfield field: manager.getAirFieldsForSide(FrontMapIdentifier.NORMANDY_MAP, date, Side.AXIS))
             {
                 int distanceToFront = getDistanceToFront(field, Side.AXIS, date);
                 PWCGLogger.log(LogLevel.DEBUG, field.getName() + "   Km to front: " + distanceToFront);
@@ -52,7 +52,7 @@ public class AirfieldReporter
     {
         Double distanceToFront = 0.0;
         
-        FrontLinesForMap frontLines =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
+        FrontLinesForMap frontLines =  PWCGContext.getInstance().getMap(FrontMapIdentifier.NORMANDY_MAP).getFrontLinesForMap(date);
         FrontLinePoint closestFront = frontLines.findClosestFrontPositionForSide(field.getPosition(), side);
         
         distanceToFront = MathUtils.calcDist(field.getPosition(), closestFront.getPosition());

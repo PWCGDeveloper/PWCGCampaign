@@ -56,7 +56,7 @@ public class AirfieldInEnemyTerritory
 
 	private void determineSquadronIsOnCorrectSide(FrontMapIdentifier mapId, Date startDate, Squadron squadron) throws PWCGException
 	{
-		Airfield squadronField = squadron.determineCurrentAirfieldCurrentMap(startDate);
+		Airfield squadronField = squadron.determineCurrentAirfieldCurrentMap(mapId, startDate);
 		if (squadronField != null)
 		{
 		    List<FrontMapIdentifier> mapsForAirfield = AirfieldManager.getMapIdForAirfield(squadronField.getName());
@@ -64,17 +64,17 @@ public class AirfieldInEnemyTerritory
 		    {
 		        if (mapForAirfield == mapId)
 		        {
-		            noteBadlyPlacedSquadron(startDate, squadron, squadronField, mapForAirfield);
+		            noteBadlyPlacedSquadron(mapForAirfield, startDate, squadron, squadronField, mapForAirfield);
 		        }
 		    }
 		}
 	}
 
-	private void noteBadlyPlacedSquadron(Date startDate, Squadron squadron, Airfield squadronField,
+	private void noteBadlyPlacedSquadron(FrontMapIdentifier mapId, Date startDate, Squadron squadron, Airfield squadronField,
 	        FrontMapIdentifier mapForAirfield) throws PWCGException
 	{
 		ICountry squadronCountry = squadron.determineSquadronCountry(startDate);
-		ICountry airfieldCountry = squadronField.determineCountryOnDate(startDate);
+		ICountry airfieldCountry = squadronField.determineCountryOnDate(mapForAirfield, startDate);
 		if (isBadlyPlaced(squadronCountry, airfieldCountry))
 		{
 			String key = formKey(squadron, squadronField);
@@ -83,7 +83,7 @@ public class AirfieldInEnemyTerritory
 					"\n   	field " + squadronField.getName() + 
 					"\n     map " + mapForAirfield + 
 					"\n     date " + DateUtils.getDateStringDashDelimitedYYYYMMDD(startDate) + 
-					"\n     side " + squadronField.determineCountryOnDate(startDate).getCountryName();
+					"\n     side " + squadronField.determineCountryOnDate(mapForAirfield, startDate).getCountryName();
 			badAirfields.put(key, message);
 		}
 	}

@@ -9,7 +9,6 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,7 +18,6 @@ import javax.swing.JTextPane;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -46,7 +44,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
 	public IntelMapGUI(Campaign campaign) throws PWCGException  
 	{
-		super(campaign.getDate());
+		super(campaign.getCampaignMap(), campaign.getDate());
 		setLayout(new BorderLayout());
 		this.campaign = campaign;
 	}
@@ -59,9 +57,6 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 			setSize(200, 200);
 			setOpaque(false);
 			setBackground(bg);
-
-	        List<FrontMapIdentifier> airfieldMaps = AirfieldManager.getMapIdForAirfield(campaign.findReferencePlayer().determineSquadron().determineCurrentAirfieldName(mapDate));
-            PWCGContext.getInstance().changeContext(airfieldMaps.get(0));
 								
 			this.add(BorderLayout.EAST, makeRightPanel(-1));
 			this.add(BorderLayout.CENTER, createMapPanel());
@@ -221,8 +216,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
             {
                 int indexOfMapName = MAP_DELIMITER.length();
                 String mapName = action.substring(indexOfMapName);
-                FrontMapIdentifier mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
-                PWCGContext.getInstance().changeContext(mapIdentifier);
+                mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
                 
                 JPanel mapCenterPanel = createMapPanel();
                 this.add(BorderLayout.CENTER, mapCenterPanel); 

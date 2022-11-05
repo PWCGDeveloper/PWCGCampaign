@@ -50,7 +50,6 @@ public class FranceAttackMockCampaign
     public void mockCampaignSetup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
 
         date = DateUtils.getDateYYYYMMDD("19180501");
         
@@ -58,11 +57,12 @@ public class FranceAttackMockCampaign
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(date);
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.ARRAS_MAP);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(missionGroundUnitResourceManager);
         
         
-        missionBorders = CoordinateBox.coordinateBoxFromCenter(myTestPosition, 100000);
+        missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), myTestPosition, 100000);
         Mockito.when(mission.getFlights()).thenReturn(missionFlightBuilder);
         Mockito.when(mission.getMissionBorders()).thenReturn(missionBorders);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);        

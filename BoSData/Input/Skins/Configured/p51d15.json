@@ -4,7 +4,7 @@
         "p51d15_default": {
             "skinName": "p51d15",
             "planeType": "p51d15",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -2,
             "country": "USA",
@@ -43,7 +43,7 @@
         "p51d15_blank_03": {
             "skinName": "p51d15_blank_03",
             "planeType": "p51d15",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -2,
             "country": "USA",
@@ -161,7 +161,7 @@
         "p51d15_skin_12": {
             "skinName": "p51d15_skin_12",
             "planeType": "p51d15",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": 102362377,
             "country": "USA",
@@ -172,7 +172,7 @@
         "p51d15_skin_13": {
             "skinName": "p51d15_skin_13",
             "planeType": "p51d15",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": 102362377,
             "country": "USA",
@@ -183,7 +183,7 @@
 		"352nd_Barbara_M": {
 			"skinName": "352nd_Barbara_M",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -194,7 +194,7 @@
 		"352nd_Hell_Ur_Bust": {
 			"skinName": "352nd_Hell_Ur_Bust",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -205,7 +205,7 @@
 		"352nd_Little_One_44": {
 			"skinName": "352nd_Little_One_44",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -216,7 +216,7 @@
 		"352nd_Miss_Helen": {
 			"skinName": "352nd_Miss_Helen",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -227,7 +227,7 @@
 		"352nd_Little_Rebel": {
 			"skinName": "352nd_Little_Rebel",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -238,7 +238,7 @@
 		"352nd_Ricky": {
 			"skinName": "352nd_Ricky",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -249,7 +249,7 @@
 		"352nd_Slender": {
 			"skinName": "352nd_Slender",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -260,7 +260,7 @@
 		"352nd_Stinky2_V1": {
 			"skinName": "352nd_Stinky2_V1",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -271,7 +271,7 @@
 		"352nd_StrawBoss2_v1": {
 			"skinName": "352nd_StrawBoss2_v1",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -282,7 +282,7 @@
 		"352nd_Sweet_N_Lovely_v1": {
 			"skinName": "352nd_Sweet_N_Lovely_v1",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -293,7 +293,7 @@
 		"352nd_Sweetie_Face": {
 			"skinName": "352nd_Sweetie_Face",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -304,7 +304,7 @@
 		"352nd_This_is_it": {
 			"skinName": "352nd_This_is_it",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102352486,
 			"country": "USA",
@@ -315,7 +315,7 @@
 		"343rd_FS_Cape_Cod_Express": {
 			"skinName": "343rd_FS_Cape_Cod_Express",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102362377,
 			"country": "USA",
@@ -326,7 +326,7 @@
 		"343rd_FS_Gunfighter": {
 			"skinName": "343rd_FS_Gunfighter",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102362377,
 			"country": "USA",
@@ -337,7 +337,7 @@
 		"343rd_FS_MillieG_Green": {
 			"skinName": "343rd_FS_MillieG_Green",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102362377,
 			"country": "USA",
@@ -348,7 +348,7 @@
 		"343rd_FS_Sonny_Boy": {
 			"skinName": "343rd_FS_Sonny_Boy",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102362377,
 			"country": "USA",
@@ -359,7 +359,7 @@
 		"343rd_Tenn_Belle": {
 			"skinName": "343rd_Tenn_Belle",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102362377,
 			"country": "USA",
@@ -370,7 +370,7 @@
 		"370th_Daddys_Girl_V1": {
 			"skinName": "370th_Daddys_Girl_V1",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102362377,
 			"country": "USA",
@@ -381,7 +381,7 @@
 		"P51D15NA_KATYDID": {
 			"skinName": "P51D15NA_KATYDID",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102362377,
 			"country": "USA",
@@ -392,7 +392,7 @@
 		"P51D15NA_LIL JAN": {
 			"skinName": "P51D15NA_LIL JAN",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102362377,
 			"country": "USA",
@@ -403,7 +403,7 @@
 		"P51D15NA_SATANS LADY": {
 			"skinName": "P51D15NA_SATANS LADY",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102362377,
 			"country": "USA",
@@ -414,7 +414,7 @@
 		"P51D15NA_SPUNKTOWN": {
 			"skinName": "P51D15NA_SPUNKTOWN",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102362377,
 			"country": "USA",
@@ -425,7 +425,7 @@
 		"P51D15NA_GENTLE ANNIE": {
 			"skinName": "P51D15NA_GENTLE ANNIE",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -436,7 +436,7 @@
 		"P51D15NA_RUGGED REBEL": {
 			"skinName": "P51D15NA_RUGGED REBEL",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -447,7 +447,7 @@
 		"355th FS 354th FG": {
 			"skinName": "355th FS 354th FG",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",
@@ -458,7 +458,7 @@
 		"356th FS 354th FG": {
 			"skinName": "356th FS 354th FG",
 			"planeType": "p51d15",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "USA",

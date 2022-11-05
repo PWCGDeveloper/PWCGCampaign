@@ -4,7 +4,7 @@
         "hs129b2_default": {
             "skinName": "hs129b2",
             "planeType": "hs129b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -17,7 +17,7 @@
         "hs129b2_blank_01": {
             "skinName": "hs129b2_blank_01",
             "planeType": "hs129b2",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19430401",
             "squadId": -2,
             "country": "Germany",
@@ -30,7 +30,7 @@
 		"hs129b2_skin_01": {
 			"skinName": "hs129b2_skin_01",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -41,7 +41,7 @@
 		"hs129b2_skin_02": {
 			"skinName": "hs129b2_skin_02",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -52,7 +52,7 @@
 		"hs129b2_skin_03": {
 			"skinName": "hs129b2_skin_03",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -63,7 +63,7 @@
 		"hs129b2_skin_04": {
 			"skinName": "hs129b2_skin_04",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -74,7 +74,7 @@
 		"hs129b2_skin_05": {
 			"skinName": "hs129b2_skin_05",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -85,7 +85,7 @@
 		"hs129b2_skin_06": {
 			"skinName": "hs129b2_skin_06",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -96,7 +96,7 @@
 		"hs129b2_skin_09": {
 			"skinName": "hs129b2_skin_09",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -107,7 +107,7 @@
 		"hs129b2_skin_10": {
 			"skinName": "hs129b2_skin_10",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -118,7 +118,7 @@
 		"hs129b2_skin_11": {
 			"skinName": "hs129b2_skin_11",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -129,7 +129,7 @@
 		"GD-CJ_Winter": {
 			"skinName": "GD-CJ_Winter",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -140,7 +140,7 @@
 		"HS129B2_K1 Winter": {
 			"skinName": "HS129B2_K1 Winter",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -151,7 +151,7 @@
 		"_NN+KF": {
 			"skinName": "_NN+KF",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -162,7 +162,7 @@
 		"HS129B2 10 blanco": {
 			"skinName": "HS129B2 10 blanco",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -173,7 +173,7 @@
 		"HS129B2_6SchG1 K sw": {
 			"skinName": "HS129B2_6SchG1 K sw",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -184,7 +184,7 @@
 		"HS129B2_X": {
 			"skinName": "HS129B2_X",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -195,7 +195,7 @@
 		"HS129B2_red L": {
 			"skinName": "HS129B2_red L",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -206,7 +206,7 @@
 		"Rudolf Ruffer": {
 			"skinName": "Rudolf Ruffer",
 			"planeType": "hs129b2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",

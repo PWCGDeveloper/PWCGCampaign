@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
@@ -18,6 +19,7 @@ import pwcg.core.utils.MathUtils;
 public class PathAlongFront
 {
     private static final int INVALID_FRONT_LINE_INDEX = -1;
+    private Campaign campaign;
     private FrontLinesForMap frontLinesForMap;
     private PathAlongFrontData pathAlongFrontData;
     private boolean incrementFrontIndex;
@@ -26,6 +28,11 @@ public class PathAlongFront
     private List<FrontLinePoint> frontLines = new ArrayList<>();
     private double remainingPathDistance = 100000.0;
 
+    public PathAlongFront (Campaign campaign)
+    {
+        this.campaign = campaign;
+    }
+    
     public List<Coordinate> createPathAlongFront(PathAlongFrontData pathAlongFrontData) throws PWCGException  
     {
         this.pathAlongFrontData = pathAlongFrontData;
@@ -42,7 +49,7 @@ public class PathAlongFront
     private void initializePathing(PathAlongFrontData pathAlongFrontData) throws PWCGException
     {
         frontLineSide = pathAlongFrontData.getSide().getOppositeSide();
-        frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(pathAlongFrontData.getDate());
+        frontLinesForMap =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(pathAlongFrontData.getDate());
         frontLines = frontLinesForMap.getFrontLines(frontLineSide);
         remainingPathDistance = pathAlongFrontData.getPathDistance();
         determineFrontPointMovementDirection();
@@ -54,7 +61,7 @@ public class PathAlongFront
         List<Coordinate> offsetCoordinatesForPath = new ArrayList<>();
         for (Coordinate pathPosition : coordinatesForPath)
         {
-            Coordinate offsetPathPosition = MathUtils.calcNextCoord(pathPosition, offsetAngle, pathAlongFrontData.getOffsetTowardsEnemy());
+            Coordinate offsetPathPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), pathPosition, offsetAngle, pathAlongFrontData.getOffsetTowardsEnemy());
             offsetCoordinatesForPath.add(offsetPathPosition);
         }
         
@@ -228,7 +235,7 @@ public class PathAlongFront
 
     private boolean isEdgeOffMap(Coordinate frontPosition) throws PWCGException
     {
-        MapArea usableMapArea = PWCGContext.getInstance().getCurrentMap().getUsableMapArea();
+        MapArea usableMapArea = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getUsableMapArea();
         if (!usableMapArea.isInMapArea(frontPosition))
         {
             return true;

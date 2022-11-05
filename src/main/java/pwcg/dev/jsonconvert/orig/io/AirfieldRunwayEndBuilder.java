@@ -17,8 +17,7 @@ public class AirfieldRunwayEndBuilder
         try 
         {
             PWCGContext.setProduct(PWCGProduct.BOS);
-            PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.NORMANDY_MAP); // Critical that correct map is chosen
-            String mapName = PWCGContext.getInstance().getCurrentMap().getMapName();
+            String mapName = PWCGContext.getInstance().getMap(FrontMapIdentifier.NORMANDY_MAP).getMapName();
             AirfieldDescriptorSet airfieldDescriptorSet = AirfieldDescriptorIOJson.readJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + 
                     mapName + "\\", "AirfieldLocations");
             for (AirfieldDescriptor airfieldDescriptor : airfieldDescriptorSet.getLocations())
@@ -27,7 +26,7 @@ public class AirfieldRunwayEndBuilder
                 {
                     double angle = airfieldDescriptor.getOrientation().getyOri();
                     Coordinate startPos = runway.getStartPos().copy();
-                    Coordinate endPos = MathUtils.calcNextCoord(startPos, angle, 1200);
+                    Coordinate endPos = MathUtils.calcNextCoord(FrontMapIdentifier.NORMANDY_MAP, startPos, angle, 1200);
                     runway.setEndPos(endPos);
                 }
             }

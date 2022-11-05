@@ -2,6 +2,7 @@ package pwcg.product.bos.map;
 
 import java.util.Date;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.options.MapSeasonalParameters;
@@ -27,9 +28,9 @@ public abstract class MapSeasonBase
         makeAutumn();
     }
 
-    public MapSeasonalParameters getSeasonBasedParameters(Date date) throws PWCGException
+    public MapSeasonalParameters getSeasonBasedParameters(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
     {
-        Season season = PWCGContext.getInstance().getCurrentMap().getMapClimate().getSeason(date);
+        Season season = PWCGContext.getInstance().getMap(mapIdentifier).getMapClimate().getSeason(date);
         if (season == Season.WINTER)
         {
             return winter;

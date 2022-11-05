@@ -39,7 +39,7 @@ public class FlightPositionAirStart
         Coordinate firstWaypointPosition = flight.getWaypointPackage().getAllWaypoints().get(0).getPosition();
         double angleBetweenFirstAndSecondWaypointReversed = MathUtils.adjustAngle(angleBetweenFirstAndSecondWaypoint, 180);
 
-        Coordinate startCoordinate = MathUtils.calcNextCoord(firstWaypointPosition, angleBetweenFirstAndSecondWaypointReversed, 1000);
+        Coordinate startCoordinate = MathUtils.calcNextCoord(flight.getCampaign().getCampaignMap(), firstWaypointPosition, angleBetweenFirstAndSecondWaypointReversed, 1000);
         startCoordinate.setYPos(WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude()));
         return startCoordinate;
     }
@@ -48,7 +48,8 @@ public class FlightPositionAirStart
     {
         setFlightOrientation(flight.getFlightPlanes().getPlanes(), angleBetweenFirstAndSecondWaypoint);
         setLeadPlanePosition(flight.getFlightPlanes().getFlightLeader(), startCoordinate);
-        FormationGenerator.generatePositionForPlaneInFormation(flight.getFlightPlanes().getPlanes(), flight.getFlightInformation().getFormationType());
+        FormationGenerator formationGenerator = new FormationGenerator(flight.getCampaign());
+        formationGenerator.generatePositionForPlaneInFormation(flight.getFlightPlanes().getPlanes(), flight.getFlightInformation().getFormationType());
     }
 
     private static void setFlightOrientation(List<PlaneMcu> planes, double orientationAngle)

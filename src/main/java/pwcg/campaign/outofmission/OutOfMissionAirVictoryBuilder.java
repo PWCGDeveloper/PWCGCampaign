@@ -127,10 +127,10 @@ public class OutOfMissionAirVictoryBuilder
         Coordinate squadronPosition = victorPilot.determineSquadron().determineCurrentPosition(date);
         if (squadronPosition != null)
         {
-            FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
+            FrontLinesForMap frontLines = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(date);
             FrontLinePoint eventPosition = frontLines.findCloseFrontPositionForSide(squadronPosition, 100000, enemySide);
     
-            eventLocationDescription =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(eventPosition.getPosition()).getName();
+            eventLocationDescription =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager().getTownFinder().findClosestTown(eventPosition.getPosition()).getName();
             if (eventLocationDescription == null || eventLocationDescription.isEmpty())
             {
                 eventLocationDescription = "";

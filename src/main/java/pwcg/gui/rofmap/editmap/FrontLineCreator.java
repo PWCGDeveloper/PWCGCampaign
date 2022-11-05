@@ -5,6 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGFront;
 import pwcg.core.exception.PWCGException;
@@ -13,13 +14,16 @@ import pwcg.core.utils.MathUtils;
 
 public class FrontLineCreator
 {        
-    public FrontLineCreator()
+    private FrontMapIdentifier mapIdentifier;
+
+    public FrontLineCreator(FrontMapIdentifier mapIdentifier)
     {
+        this.mapIdentifier = mapIdentifier;
     }
 
     public List<FrontLinePoint> createFrontLines(List<FrontLinePoint> userFrontLines) throws PWCGException
     {
-        if (PWCGContext.getInstance().getCurrentMap().getMapIdentifier().getFront() == PWCGFront.WWII_EASTERN_FRONT)
+        if (PWCGContext.getInstance().getMap(mapIdentifier).getMapIdentifier().getFront() == PWCGFront.WWII_EASTERN_FRONT)
         {
             return createAlliedLinesEastFront(userFrontLines);
         }
@@ -77,7 +81,7 @@ public class FrontLineCreator
 
     private FrontLinePoint createOppositePoint(Coordinate userCreatedPoint, int oppositeFrontLineAngle, String frontLinePointName) throws PWCGException
     {
-        Coordinate generatedPoint = MathUtils.calcNextCoord(userCreatedPoint, oppositeFrontLineAngle, 3000.0);
+        Coordinate generatedPoint = MathUtils.calcNextCoord(mapIdentifier, userCreatedPoint, oppositeFrontLineAngle, 3000.0);
 
         FrontLinePoint frontFrontLinePoint = new FrontLinePoint();
         frontFrontLinePoint.setPosition(generatedPoint);

@@ -3,6 +3,7 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
@@ -19,12 +20,14 @@ import pwcg.core.location.CoordinateBox;
 public class MissionBlockBuilder
 {
     private Mission mission;
+    private Campaign campaign;
     private List<ScriptedFixedPosition> structuresForMission = new ArrayList<>();
     private List<NonScriptedBlock> nonScriptedStructuresForMission = new ArrayList<>();
 
     public MissionBlockBuilder(Mission mission, CoordinateBox structureBorder)
     {
         this.mission = mission;
+        this.campaign = mission.getCampaign();
     }
 
     public MissionBlocks buildFixedPositionsForMission() throws PWCGException
@@ -46,7 +49,7 @@ public class MissionBlockBuilder
     private void getNonScriptedBlocksForPatrol() throws PWCGException
     {
         List<NonScriptedBlock> selectedNonScriptedStructures = new ArrayList<>();
-        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
         for (NonScriptedBlock selectedNonScriptedStructure : groupData.getNonScriptedBlocks())
         {
             if (isBlockIncluded(selectedNonScriptedStructure.getPosition()))
@@ -61,7 +64,7 @@ public class MissionBlockBuilder
     private void getTrainStationsForPatrol() throws PWCGException
     {
         List<Block> selectedRRStations = new ArrayList<>();
-        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
         for (Block rrStation : groupData.getRailroadList())
         {
             if (isBlockIncluded(rrStation.getPosition()))
@@ -76,7 +79,7 @@ public class MissionBlockBuilder
     private void getBridgesForPatrol() throws PWCGException
     {
         ArrayList<Bridge> selectedBridges = new ArrayList<>();
-        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
         List<Bridge> allBridges = groupData.getBridgeFinder().findAllBridges();
         for (Bridge bridge : allBridges)
         {
@@ -92,7 +95,7 @@ public class MissionBlockBuilder
     private void getAirfieldsForPatrol() throws PWCGException
     {
         ArrayList<Block> selectedAirfieldStructures = new ArrayList<>();
-        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
         List<Block> allAirfieldStructures = groupData.getAirfieldBlocks();
         for (Block airfieldStructure : allAirfieldStructures)
         {
@@ -109,7 +112,7 @@ public class MissionBlockBuilder
     {
         List<Block> selectedBlocks = new ArrayList<>();
 
-        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
         for (Block block : groupData.getStandaloneBlocks())
         {
             if (isBlockIncluded(block.getPosition()))
@@ -140,7 +143,7 @@ public class MissionBlockBuilder
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
             Airfield airfield = squadron.determineCurrentAirfieldAnyMap(mission.getCampaign().getDate());
-            CoordinateBox airfieldBox = CoordinateBox.coordinateBoxFromCenter(airfield.getPosition(), 10000);
+            CoordinateBox airfieldBox = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), airfield.getPosition(), 10000);
             if (airfieldBox.isInBox(blockPosition))
             {
                 return true;

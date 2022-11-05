@@ -54,7 +54,7 @@ public class TransportReferenceLocationSelector
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
 
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontPointsWithinRadius = frontLinesForMap.findClosestFrontPositionsForSide(startCoords, CLOSE_ENOUGH_FOR_TRANSPORT, squadron.getCountry().getSide());
         List<FrontLinePoint> frontPointsFarEnoughAway = getPointsFarEnoughAway(startCoords, frontPointsWithinRadius);        
         return choosePoint(frontPointsWithinRadius, frontPointsFarEnoughAway);
@@ -91,8 +91,9 @@ public class TransportReferenceLocationSelector
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
 
-        AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-        List<Airfield> airfieldsWithinRadius = airfieldManager.getAirfieldFinder().getAirfieldsWithinRadiusBySide(startCoords, campaign.getDate(), CLOSE_ENOUGH_FOR_TRANSPORT, squadron.getCountry().getSide());
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager();
+        List<Airfield> airfieldsWithinRadius = airfieldManager.getAirfieldFinder().getAirfieldsWithinRadiusBySide(
+                campaign.getCampaignMap(), startCoords, campaign.getDate(), CLOSE_ENOUGH_FOR_TRANSPORT, squadron.getCountry().getSide());
         List<Airfield> airfieldsFarEnoughAway = getAirfieldsFarEnoughAway(startCoords, airfieldsWithinRadius);        
         return chooseAirfield(airfieldsWithinRadius, airfieldsFarEnoughAway);
     }
@@ -128,8 +129,8 @@ public class TransportReferenceLocationSelector
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
 
-        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
-        List<PWCGLocation> townsWithinRadius = groupManager.getTownFinder().findAllTownsForSide(squadron.getCountry().getSide(), campaign.getDate());
+        GroupManager groupManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
+        List<PWCGLocation> townsWithinRadius = groupManager.getTownFinder().findAllTownsForSide(campaign.getCampaignMap(), squadron.getCountry().getSide(), campaign.getDate());
                 
         List<PWCGLocation> townsWithinLimits = getTownsWithinLimits(startCoords, townsWithinRadius);        
         return chooseTown(townsWithinRadius, townsWithinLimits);

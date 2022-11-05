@@ -78,12 +78,6 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public void initializeMap() throws PWCGException  
-    {
-        changeContext(FrontMapIdentifier.MOSCOW_MAP);
-    }
-
-    @Override
     public IPayloadFactory getPayloadFactory() throws PWCGException  
     {
         return new BoSPayloadFactory();
@@ -93,5 +87,11 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
     public PWCGDirectoryProductManager getDirectoryManager()
     {
         return new PWCGDirectoryProductManager(PWCGProduct.BOS);
+    }
+
+    @Override
+    public FrontMapIdentifier getDefaultMapForProduct()
+    {
+        return FrontMapIdentifier.STALINGRAD_MAP;
     }
 }

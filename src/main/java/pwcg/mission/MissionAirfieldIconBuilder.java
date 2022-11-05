@@ -32,10 +32,10 @@ public class MissionAirfieldIconBuilder
 
     private void createAirfieldIconsForSide(Campaign campaign, Mission mission, Side side) throws PWCGException
     {
-        List<Airfield> airfields = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirFieldsForSide(campaign.getDate(), side);
+        List<Airfield> airfields = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager().getAirFieldsForSide(campaign.getCampaignMap(), campaign.getDate(), side);
 		for (Airfield airfield : airfields)
 		{
-	        McuIcon airfieldIcon = new McuIcon(airfield, airfield.getCountry(campaign.getDate()).getSide());
+	        McuIcon airfieldIcon = new McuIcon(airfield, airfield.getCountry(campaign.getCampaignMap(), campaign.getDate()).getSide());
             airfieldIcons.add(airfieldIcon);
 		}
     }

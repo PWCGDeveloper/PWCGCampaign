@@ -57,7 +57,6 @@ public class KubanAttackMockCampaign
     public void mockCampaignSetup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
 
         date = DateUtils.getDateYYYYMMDD("19430401");
         
@@ -71,13 +70,14 @@ public class KubanAttackMockCampaign
         Mockito.when(squadronPersonnel.isSquadronPersonnelViable()).thenReturn(true);
         
         Mockito.when(campaign.getEquipmentManager()).thenReturn(equipmentManager);
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.NORMANDY_MAP);
         Mockito.when(equipmentManager.getEquipmentForSquadron(Mockito.any())).thenReturn(squadronEquipment);
         Mockito.when(squadronEquipment.isSquadronEquipmentViable()).thenReturn(true);
 
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(missionGroundUnitResourceManager);
         
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(myTestPosition, 100000);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), myTestPosition, 100000);
         Mockito.when(mission.getFlights()).thenReturn(missionFlightBuilder);
         Mockito.when(mission.getMissionBorders()).thenReturn(missionBorders);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);

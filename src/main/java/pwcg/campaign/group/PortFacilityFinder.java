@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PositionFinder;
@@ -32,26 +33,26 @@ public class PortFacilityFinder
         return selectedBlock;
     }
 
-    public List<Block> getBlocksBySideWithinRadius(Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException 
+    public List<Block> getBlocksBySideWithinRadius(FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException 
     {
         PositionFinder<Block> positionFinder = new PositionFinder<Block>();
-        List<Block> selectedBlocks = positionFinder.findWithinExpandingRadius(this.getBlocksBySide(side, date), referenceLocation, radius, radius*3);
+        List<Block> selectedBlocks = positionFinder.findWithinExpandingRadius(this.getBlocksBySide(mapIdentifier, side, date), referenceLocation, radius, radius*3);
         return selectedBlocks;
     }
 
-    public Block getNearbyBlockPositionBySide(Side side, Date date, Coordinate targetGeneralLocation, double radius) throws PWCGException 
+    public Block getNearbyBlockPositionBySide(FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate targetGeneralLocation, double radius) throws PWCGException 
     {
         PositionFinder<Block> positionFinder = new PositionFinder<Block>();
-        Block selectedBlock = positionFinder.selectPositionWithinExpandingRadius(getBlocksBySide(side, date), targetGeneralLocation, radius, 300000.0);
+        Block selectedBlock = positionFinder.selectPositionWithinExpandingRadius(getBlocksBySide(mapIdentifier, side, date), targetGeneralLocation, radius, 300000.0);
         return selectedBlock;
     }
 
-    private List<Block> getBlocksBySide(Side side, Date date) throws PWCGException 
+    private List<Block> getBlocksBySide(FrontMapIdentifier mapIdentifier, Side side, Date date) throws PWCGException 
     {
         List<Block> blocksForSide = new ArrayList<>();
         for (Block block : this.getAllBlocks())
         {
-            if (block.determineCountryOnDate(date).getSide() == side)
+            if (block.determineCountryOnDate(mapIdentifier, date).getSide() == side)
             {
                 blocksForSide.add(block);
             }

@@ -36,7 +36,7 @@ public class WaypointGeneratorUtils
         boolean goNorth = true;
         
         // At northern edge - go south
-        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(side);
         if (startFrontIndex < closestToEdge)
         {
@@ -79,7 +79,7 @@ public class WaypointGeneratorUtils
         }
         
         // Don't go too far South
-        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(side);
         if (frontIndex > frontLines.size())
         {
@@ -97,7 +97,7 @@ public class WaypointGeneratorUtils
             return true;
         }
         
-        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(side);
         if (!goNorth && (frontIndex > (frontLines.size() - 4)))
         {

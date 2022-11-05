@@ -4,7 +4,7 @@
         "fw190d9_default": {
             "skinName": "fw190d9",
             "planeType": "fw190d9",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -17,7 +17,7 @@
         "fw190d9_blank_01": {
             "skinName": "fw190d9_blank_01",
             "planeType": "fw190d9",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -30,7 +30,7 @@
         "fw190d9_blank_03": {
             "skinName": "fw190d9_blank_03",
             "planeType": "fw190d9",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -43,7 +43,7 @@
 		"fw190d9_skin_03": {
 			"skinName": "fw190d9_skin_03",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -54,7 +54,7 @@
 		"fw190d9_skin_04": {
 			"skinName": "fw190d9_skin_04",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -65,7 +65,7 @@
 		"fw190d9_skin_05": {
 			"skinName": "fw190d9_skin_05",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -76,7 +76,7 @@
 		"fw190d9_skin_06": {
 			"skinName": "fw190d9_skin_06",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -87,7 +87,7 @@
 		"fw190d9_skin_07": {
 			"skinName": "fw190d9_skin_07",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -98,7 +98,7 @@
 		"fw190d9_skin_08": {
 			"skinName": "fw190d9_skin_08",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -109,7 +109,7 @@
 		"fw190d9_skin_09": {
 			"skinName": "fw190d9_skin_09",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -120,7 +120,7 @@
 		"fw190d9_skin_10": {
 			"skinName": "fw190d9_skin_10",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -131,7 +131,7 @@
 		"Fw190D9_1_JG_301_15Y": {
 			"skinName": "Fw190D9_1_JG_301_15Y",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -142,7 +142,7 @@
 		"Fw190D9_2JG_301_4black_v5": {
 			"skinName": "Fw190D9_2JG_301_4black_v5",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -153,7 +153,7 @@
 		"Fw190D9_4BLACK_v2": {
 			"skinName": "Fw190D9_4BLACK_v2",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -164,7 +164,7 @@
 		"Fw190D9_4JG51_1W": {
 			"skinName": "Fw190D9_4JG51_1W",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -175,7 +175,7 @@
 		"Fw190D9_6_JG3_Stab1": {
 			"skinName": "Fw190D9_6_JG3_Stab1",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -186,7 +186,7 @@
 		"Fw190D9_9_JG54_3W": {
 			"skinName": "Fw190D9_9_JG54_3W",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -197,7 +197,7 @@
 		"Fw190D9_11_JG54_4YELLOW_BUMS": {
 			"skinName": "Fw190D9_11_JG54_4YELLOW_BUMS",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -208,7 +208,7 @@
 		"Fw190D9_100_White": {
 			"skinName": "Fw190D9_100_White",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -219,7 +219,7 @@
 		"Fw190D9_BLACK4": {
 			"skinName": "Fw190D9_BLACK4",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -230,7 +230,7 @@
 		"Fw190D9_Erich Brunotte": {
 			"skinName": "Fw190D9_Erich Brunotte",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -241,7 +241,7 @@
 		"Fw190D9_JG54_12Black_V2": {
 			"skinName": "Fw190D9_JG54_12Black_V2",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -252,7 +252,7 @@
 		"Fw190D9_JG54_Stab_14black_v5": {
 			"skinName": "Fw190D9_JG54_Stab_14black_v5",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -263,7 +263,7 @@
 		"Fw190D9_Public Red 2 JG300 v4": {
 			"skinName": "Fw190D9_Public Red 2 JG300 v4",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -274,7 +274,7 @@
 		"Fw190D9_Public Red 2 JG300 v12": {
 			"skinName": "Fw190D9_Public Red 2 JG300 v12",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -285,7 +285,7 @@
 		"Fw190D9_Public TA152 Willi Retschke Stab JG301 v15": {
 			"skinName": "Fw190D9_Public TA152 Willi Retschke Stab JG301 v15",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -296,7 +296,7 @@
 		"Fw190D9_Public white 12 II.JG301 v7": {
 			"skinName": "Fw190D9_Public white 12 II.JG301 v7",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -307,7 +307,7 @@
 		"fw190d9_skin JG4 Black 1 v4": {
 			"skinName": "fw190d9_skin JG4 Black 1 v4",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -318,7 +318,7 @@
 		"fw190d9_skin4_yellow 13 v3": {
 			"skinName": "fw190d9_skin4_yellow 13 v3",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -329,7 +329,7 @@
 		"Fw190D9_Stab_61W": {
 			"skinName": "Fw190D9_Stab_61W",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -340,7 +340,7 @@
 		"Fw190D9_Stab_JG301_5B": {
 			"skinName": "Fw190D9_Stab_JG301_5B",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -351,7 +351,7 @@
 		"Fw190D9_Stab_JG301_15B": {
 			"skinName": "Fw190D9_Stab_JG301_15B",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -362,7 +362,7 @@
 		"Fw190D9_2_JG2_18B_v5": {
 			"skinName": "Fw190D9_2_JG2_18B_v5",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20112002,
 			"country": "Germany",
@@ -373,7 +373,7 @@
 		"Fw190D9_Public I.JG2 white 16 v25": {
 			"skinName": "Fw190D9_Public I.JG2 white 16 v25",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20112002,
 			"country": "Germany",
@@ -384,7 +384,7 @@
 		"Fw190D9_8_JG6_9Blue": {
 			"skinName": "Fw190D9_8_JG6_9Blue",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111006,
 			"country": "Germany",
@@ -395,7 +395,7 @@
 		"Fw190D9_Public blue 12 v14": {
 			"skinName": "Fw190D9_Public blue 12 v14",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111006,
 			"country": "Germany",
@@ -406,7 +406,7 @@
 		"D9_II_JG26_6_7": {
 			"skinName": "D9_II_JG26_6_7",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111026,
 			"country": "Germany",
@@ -417,7 +417,7 @@
 		"Fw190D9_2_JG26_8black_v2": {
 			"skinName": "Fw190D9_2_JG26_8black_v2",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111026,
 			"country": "Germany",
@@ -428,7 +428,7 @@
 		"Fw190D9_3_JG26_1YELLOW_v2": {
 			"skinName": "Fw190D9_3_JG26_1YELLOW_v2",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111026,
 			"country": "Germany",
@@ -439,7 +439,7 @@
 		"Fw190D9_3_JG26_8Y": {
 			"skinName": "Fw190D9_3_JG26_8Y",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111026,
 			"country": "Germany",
@@ -450,7 +450,7 @@
 		"Fw190D9_3JG26_10b": {
 			"skinName": "Fw190D9_3JG26_10b",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111026,
 			"country": "Germany",
@@ -461,7 +461,7 @@
 		"Fw190D9_5JG26_1w": {
 			"skinName": "Fw190D9_5JG26_1w",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111026,
 			"country": "Germany",
@@ -472,7 +472,7 @@
 		"Fw190D9_6JG26_1B": {
 			"skinName": "Fw190D9_6JG26_1B",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111026,
 			"country": "Germany",
@@ -483,7 +483,7 @@
 		"Fw190D9_7_JG26_7Brown_v5": {
 			"skinName": "Fw190D9_7_JG26_7Brown_v5",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111026,
 			"country": "Germany",
@@ -494,7 +494,7 @@
 		"Fw190D9_14_JG26_8B_v2": {
 			"skinName": "Fw190D9_14_JG26_8B_v2",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111026,
 			"country": "Germany",
@@ -505,7 +505,7 @@
 		"Fw190D9_Stab_JG26_10Yellow": {
 			"skinName": "Fw190D9_Stab_JG26_10Yellow",
 			"planeType": "fw190d9",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111026,
 			"country": "Germany",

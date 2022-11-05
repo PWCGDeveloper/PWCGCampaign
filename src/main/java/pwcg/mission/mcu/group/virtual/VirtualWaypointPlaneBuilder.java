@@ -3,6 +3,7 @@ package pwcg.mission.mcu.group.virtual;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -12,11 +13,13 @@ import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
 public class VirtualWaypointPlaneBuilder
 {
+    private Campaign campaign;
     private VirtualWayPointCoordinate vwpCoordinate;
     private int altitudeOffset;
 
-    public VirtualWaypointPlaneBuilder(VirtualWayPointCoordinate vwpCoordinate, int altitudeOffset)
+    public VirtualWaypointPlaneBuilder(Campaign campaign, VirtualWayPointCoordinate vwpCoordinate, int altitudeOffset)
     {
+        this.campaign = campaign;
         this.vwpCoordinate = vwpCoordinate;
         this.altitudeOffset = altitudeOffset;
     }
@@ -73,7 +76,8 @@ public class VirtualWaypointPlaneBuilder
 
     private void setFormationPlanePosition(List<PlaneMcu> planesAtActivate, int formationType) throws PWCGException
     {
-        FormationGenerator.generatePositionForPlaneInFormation(planesAtActivate, formationType);
+        FormationGenerator formationGenerator = new FormationGenerator(campaign);
+        formationGenerator.generatePositionForPlaneInFormation(planesAtActivate, formationType);
     }
 
     private void setPlaneDisabled(PlaneMcu plane)

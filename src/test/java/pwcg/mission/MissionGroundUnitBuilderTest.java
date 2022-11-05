@@ -40,7 +40,7 @@ public class MissionGroundUnitBuilderTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), new Coordinate(100000.0, 0.0, 100000.0), 75000);
         
         MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.GROUND_ATTACK);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
@@ -62,7 +62,7 @@ public class MissionGroundUnitBuilderTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), new Coordinate(100000.0, 0.0, 100000.0), 75000);
 
         MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.GROUND_ATTACK);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
@@ -100,7 +100,7 @@ public class MissionGroundUnitBuilderTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(150000.0, 0.0, 150000.0), 75000);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), new Coordinate(150000.0, 0.0, 150000.0), 75000);
 
         MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.GROUND_ATTACK);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
@@ -138,7 +138,7 @@ public class MissionGroundUnitBuilderTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), new Coordinate(100000.0, 0.0, 100000.0), 75000);
 
         MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.GROUND_ATTACK);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);

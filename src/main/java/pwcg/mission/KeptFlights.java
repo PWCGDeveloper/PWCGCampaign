@@ -39,7 +39,7 @@ public class KeptFlights
         keptFlightTypes.add(keptFlight.getFlightType());
         if (!keptFlight.getFlightInformation().isVirtual())
         {
-            keptFlightAirfields.add(keptFlight.getSquadron().determineCurrentAirfieldCurrentMap(keptFlight.getCampaign().getDate()));
+            keptFlightAirfields.add(keptFlight.getSquadron().determineCurrentAirfieldCurrentMap(keptFlight.getCampaign().getCampaignMap(), keptFlight.getCampaign().getDate()));
         }
     }
 
@@ -91,13 +91,13 @@ public class KeptFlights
         return keptFlights;
     }
 
-    public boolean airfieldInUseForTakeoff(IFlight flight)
+    public boolean airfieldInUseForTakeoff(IFlight flight) throws PWCGException
     {
         for (Airfield keptFlightAirfield : keptFlightAirfields)
         {
             if (!flight.getFlightInformation().isVirtual())
             {
-                Airfield flightAirfield = flight.getSquadron().determineCurrentAirfieldCurrentMap(flight.getCampaign().getDate());
+                Airfield flightAirfield = flight.getSquadron().determineCurrentAirfieldCurrentMap(flight.getCampaign().getCampaignMap(), flight.getCampaign().getDate());
                 if (keptFlightAirfield.getName().equals(flightAirfield.getName()))
                 {
                     return true;

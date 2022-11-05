@@ -1,5 +1,6 @@
 package pwcg.mission.flight.waypoint.missionpoint;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -11,11 +12,13 @@ import pwcg.mission.mcu.McuWaypoint;
 public class RendezvousMissionPointSetBuilder
 {
     private IFlight flightThatNeedsEscort;
+    private Campaign campaign;
     private MissionPointRouteSet missionPointSet = new MissionPointRouteSet();
 
     public RendezvousMissionPointSetBuilder(IFlight escortedFlight)
     {
         this.flightThatNeedsEscort = escortedFlight;
+        this.campaign = escortedFlight.getCampaign();
     }
 
     public IMissionPointSet createFlightRendezvousToPickUpEscort(McuWaypoint ingressWaypoint) throws PWCGException
@@ -75,11 +78,11 @@ public class RendezvousMissionPointSetBuilder
     {
         double distanceOutboundToIngress = MathUtils.calcDist(outpoundPosition, ingressPosition);
         double angleFromOutboundToIngress = MathUtils.calcAngle(outpoundPosition, ingressPosition);
-        Coordinate rendezvousPosition = MathUtils.calcNextCoord(outpoundPosition, angleFromOutboundToIngress, (distanceOutboundToIngress / 2));
+        Coordinate rendezvousPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), outpoundPosition, angleFromOutboundToIngress, (distanceOutboundToIngress / 2));
 
         if (distanceOutboundToIngress > 12000)
         {
-            rendezvousPosition = MathUtils.calcNextCoord(outpoundPosition, angleFromOutboundToIngress, 7000);
+            rendezvousPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), outpoundPosition, angleFromOutboundToIngress, 7000);
         }
         
         double rendezvousAltitude = calculatePlayerRendezvousAltitude(outpoundPosition, ingressPosition, rendezvousPosition);
@@ -90,7 +93,7 @@ public class RendezvousMissionPointSetBuilder
     private Coordinate calcualteAirStartRendezvousPosition(Coordinate outpoundPosition, Coordinate ingressPosition) throws PWCGException
     {
         double angleFromIngressToOutbound = MathUtils.calcAngle(outpoundPosition, ingressPosition);
-        Coordinate rendezvousPosition = MathUtils.calcNextCoord(ingressPosition, angleFromIngressToOutbound, 5000);
+        Coordinate rendezvousPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), ingressPosition, angleFromIngressToOutbound, 5000);
 
         double rendezvousAltitude = ingressPosition.getYPos();
         rendezvousPosition.setYPos(rendezvousAltitude);

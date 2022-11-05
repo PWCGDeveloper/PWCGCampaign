@@ -655,7 +655,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
             CampaignGeneratorSquadronFilter squadronFilter = new CampaignGeneratorSquadronFilter();
 	        String selectedRole = (String)cbRole.getSelectedItem();
 	        
-	        FrontMapIdentifier campaignMap = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();
+	        FrontMapIdentifier campaignMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapIdentifier();
             List<String> squadronNames = squadronFilter.makeSquadronChoices(campaign.getDate(), dateCorrectedService, campaignMap, selectedRole, parent.getNewPilotGeneratorDO().isCommandRank());
             
             for (String squadronName : squadronNames)

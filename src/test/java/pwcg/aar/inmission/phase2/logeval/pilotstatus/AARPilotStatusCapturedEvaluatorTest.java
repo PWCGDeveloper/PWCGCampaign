@@ -1,30 +1,33 @@
 package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.BehindEnemyLines;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.DateUtils;
 
 @ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AARPilotStatusCapturedEvaluatorTest
 {
-    @Mock
-    private BehindEnemyLines behindEnemyLines;
+    @Mock private BehindEnemyLines behindEnemyLines;
+    @Mock private Campaign campaign;
 
-    public AARPilotStatusCapturedEvaluatorTest() throws PWCGException
+    @BeforeAll
+    public void  setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.setProduct(PWCGProduct.FC);
     }
 
     /**
@@ -34,21 +37,19 @@ public class AARPilotStatusCapturedEvaluatorTest
     public void testCrewMemberAlwaysCaptured () throws PWCGException
     {
         Mockito.when(behindEnemyLines.isBehindEnemyLinesForCapture(
-        		ArgumentMatchers.<FrontMapIdentifier>any(),
         		ArgumentMatchers.<Coordinate>any(),
         		ArgumentMatchers.<Side>any())).thenReturn(true);
 
         Mockito.when(behindEnemyLines.getDistanceBehindLines(
-        		ArgumentMatchers.<FrontMapIdentifier>any(),
         		ArgumentMatchers.<Coordinate>any(),
         		ArgumentMatchers.<Side>any())).thenReturn(11.0);
 
         
-        AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(DateUtils.getDateYYYYMMDD("19170101"));
+        AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(campaign);
         aarPilotStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, new Coordinate(), Side.AXIS);
+            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(new Coordinate(), Side.AXIS);
             assert(captured == true);
         }
     }
@@ -60,24 +61,21 @@ public class AARPilotStatusCapturedEvaluatorTest
     public void testCrewMemberNotCapturedBecauseEscaped () throws PWCGException
     {
         Mockito.when(behindEnemyLines.isBehindEnemyLinesForCapture(
-        		ArgumentMatchers.<FrontMapIdentifier>any(),
         		ArgumentMatchers.<Coordinate>any(),
         		ArgumentMatchers.<Side>any())).thenReturn(true);
 
         Mockito.when(behindEnemyLines.getDistanceBehindLines(
-        		ArgumentMatchers.<FrontMapIdentifier>any(),
         		ArgumentMatchers.<Coordinate>any(),
         		ArgumentMatchers.<Side>any())).thenReturn(5.0);
 
-        
-        AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(DateUtils.getDateYYYYMMDD("19170101"));
+        AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(campaign);
         aarPilotStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         
         boolean wasCapturedAtLeastOnce = false;
         boolean escapedAtLeastOnce = false;
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, new Coordinate(), Side.AXIS);
+            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(new Coordinate(), Side.AXIS);
             if (captured)
             {
                 wasCapturedAtLeastOnce = true;
@@ -99,15 +97,14 @@ public class AARPilotStatusCapturedEvaluatorTest
     public void testCrewMemberNotCapturedBecauseNotBehindLines () throws PWCGException
     {
         Mockito.when(behindEnemyLines.isBehindEnemyLinesForCapture(
-        		ArgumentMatchers.<FrontMapIdentifier>any(),
         		ArgumentMatchers.<Coordinate>any(),
         		ArgumentMatchers.<Side>any())).thenReturn(false);
         
-        AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(DateUtils.getDateYYYYMMDD("19170101"));
+        AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(campaign);
         aarPilotStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, new Coordinate(), Side.AXIS);
+            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(new Coordinate(), Side.AXIS);
             assert(captured == false);
         }
     }
@@ -118,11 +115,11 @@ public class AARPilotStatusCapturedEvaluatorTest
     @Test
     public void testCrewMemberNotCapturedBecauseStillInTheAir () throws PWCGException
     {
-        AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(DateUtils.getDateYYYYMMDD("19170101"));
+        AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(campaign);
         aarPilotStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, null, Side.AXIS);
+            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(null, Side.AXIS);
             assert(captured == false);
         }
     }

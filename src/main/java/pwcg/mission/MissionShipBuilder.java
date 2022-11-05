@@ -3,6 +3,7 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -27,15 +28,17 @@ public class MissionShipBuilder
 {
     private List<GroundUnitCollection> missionShips = new ArrayList<>();
     private Mission mission;
+    private Campaign campaign;
 
     public MissionShipBuilder(Mission mission)
     {
         this.mission = mission;
+        this.campaign = mission.getCampaign();
     }
     
     public List<GroundUnitCollection> createMissionShips() throws PWCGException 
     {
-        if (PWCGContext.getInstance().getCurrentMap().hasShips())
+        if (PWCGContext.getInstance().getMap(campaign.getCampaignMap()).hasShips())
         {
             makeShips();
         }
@@ -76,15 +79,15 @@ public class MissionShipBuilder
     private Coordinate makeRandomDestination(TargetDefinition targetDefinition) throws PWCGException
     {
         int angle = RandomNumberGenerator.getRandom(360);
-        Coordinate destination = MathUtils.calcNextCoord(targetDefinition.getPosition(), angle, 50000);
+        Coordinate destination = MathUtils.calcNextCoord(campaign.getCampaignMap(), targetDefinition.getPosition(), angle, 50000);
         return destination;
     }
     
     private TargetDefinition makeTargetDefinition(Side shipSide) throws PWCGException
     {
-        ICountry shipCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(shipSide);
-        ShippingLane shippngLane = MissionAntiShippingSeaLaneFinder.getShippingLaneForMission(mission, shipSide);
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, shippngLane.getShippingLaneBorders().getCoordinateInBox(), shipCountry, "Ship");
+        ICountry shipCountry = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroundCountryForMapBySide(shipSide);
+        ShippingLane shippingLane = MissionAntiShippingSeaLaneFinder.getShippingLaneForMission(mission.getCampaignMap(), mission.getMissionBorders().getCenter(), shipSide);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, shippingLane.getShippingLaneBorders().getCoordinateInBox(), shipCountry, "Ship");
         return targetDefinition;
     }
     

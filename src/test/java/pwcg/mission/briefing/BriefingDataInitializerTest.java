@@ -32,8 +32,8 @@ import pwcg.gui.rofmap.brief.BriefingDataInitializer;
 import pwcg.gui.rofmap.brief.model.BriefingPilotAssignmentData;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlights;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightPlanes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.testutils.SquadronTestProfile;
 

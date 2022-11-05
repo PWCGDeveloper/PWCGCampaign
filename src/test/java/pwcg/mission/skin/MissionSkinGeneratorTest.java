@@ -18,8 +18,8 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightPlanes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 @ExtendWith(MockitoExtension.class)

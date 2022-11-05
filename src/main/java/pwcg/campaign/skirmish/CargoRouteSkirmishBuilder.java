@@ -14,12 +14,12 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.MissionHumanParticipants;
 
-public class DynamicSkirmishBuilder
+public class CargoRouteSkirmishBuilder
 {
     private Campaign campaign;
     private MissionHumanParticipants participatingPlayers;
     
-    public DynamicSkirmishBuilder(Campaign campaign, MissionHumanParticipants participatingPlayers)
+    public CargoRouteSkirmishBuilder(Campaign campaign, MissionHumanParticipants participatingPlayers)
     {
         this.campaign = campaign;
         this.participatingPlayers = participatingPlayers;

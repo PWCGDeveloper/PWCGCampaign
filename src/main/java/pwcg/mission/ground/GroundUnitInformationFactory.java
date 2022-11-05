@@ -17,7 +17,7 @@ public class GroundUnitInformationFactory
             Coordinate targetCoords,
             Orientation orientation) throws PWCGException
     {
-        GroundUnitInformation groundUnitInformation = new GroundUnitInformation();
+        GroundUnitInformation groundUnitInformation = new GroundUnitInformation(campaign);
         groundUnitInformation.setCountry(country);
         groundUnitInformation.setName(targetType.getTargetName());
         groundUnitInformation.setDate(campaign.getDate());

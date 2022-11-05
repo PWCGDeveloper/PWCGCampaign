@@ -100,7 +100,7 @@ public class TestPreliminaryDataBuilder
         preliminaryData.setPwcgMissionData(pwcgMissionData);
     }
 
-    private MissionHeader makePwcgMissionDataHeader()
+    private MissionHeader makePwcgMissionDataHeader() throws PWCGException
     {
         MissionHeader missionHeader = new MissionHeader();
         missionHeader.setMissionFileName("Test Campaign Patrol 01-11-1941");
@@ -114,7 +114,7 @@ public class TestPreliminaryDataBuilder
         missionHeader.setDuty("PATROL");
         missionHeader.setAltitude(3000); 
         
-        missionHeader.setMapName(PWCGContext.getInstance().getCurrentMap().getMapName()); 
+        missionHeader.setMapName(PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapName()); 
 
         String formattedTime = DateUtils.getDateAsMissionFileFormat(campaign.getDate());
         missionHeader.setTime(formattedTime);

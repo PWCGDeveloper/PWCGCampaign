@@ -14,7 +14,7 @@ public class VirtualWaypointEscortBuilder
     {
         try
         {
-            VirtualWaypointEscort vwpEscort = new VirtualWaypointEscort(vwpCoordinate, vwpEscortFlightInformation.getSquadron(), vwpPlanes, vwpActivate);
+            VirtualWaypointEscort vwpEscort = new VirtualWaypointEscort(vwpEscortFlightInformation.getCampaign(), vwpCoordinate, vwpEscortFlightInformation.getSquadron(), vwpPlanes, vwpActivate);
             vwpEscort.buildEscort(vwpEscortFlightInformation);
             return vwpEscort;
         }

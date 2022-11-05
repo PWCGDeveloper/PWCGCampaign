@@ -4,6 +4,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.CampaignModeChooser;
 import pwcg.campaign.skirmish.Skirmish;
+import pwcg.campaign.skirmish.SkirmishProfileType;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 
@@ -25,7 +26,14 @@ public class MissionBorderBuilderFactory
         }
         else if (skirmish != null)
         {
-            return new MissionCenterBuilderSkirmish(campaign, skirmish);
+            if (skirmish.getProfileType() == SkirmishProfileType.SKIRMISH_PROFILE_ANTI_SHIPPING)
+            {
+                return new MissionCenterBuilderAntiShipping(campaign.getCampaignMap(), skirmish.getCenter(), skirmish.getAttackerAir().getOppositeSide());
+            }
+            else
+            {
+                return new MissionCenterBuilderSkirmish(campaign, skirmish);
+            }
         }
         else if (playerFlightTypes.isPlayerRaidFlight())
         {

@@ -37,8 +37,8 @@ public class FlightSpotterBuilder
             int spotterCount = 0;
             while (spotterCount < 6)
             {
-                Coordinate spotterPosition = MathUtils.calcNextCoord(targetPosition, angle, 10000 * spotterCount);
-                ICountry positionCountry = CountryDesignator.determineCountry(spotterPosition, playerFlight.getCampaign().getDate());
+                Coordinate spotterPosition = MathUtils.calcNextCoord(playerFlight.getCampaign().getCampaignMap(), targetPosition, angle, 10000 * spotterCount);
+                ICountry positionCountry = CountryDesignator.determineCountry(playerFlight.getCampaign().getCampaignMap(), spotterPosition, playerFlight.getCampaign().getDate());
                 if (positionCountry.getCountry() != playerFlight.getSquadron().getCountry().getCountry())
                 {
                     return;

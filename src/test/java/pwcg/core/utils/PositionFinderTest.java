@@ -6,6 +6,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
@@ -26,8 +27,11 @@ public class PositionFinderTest
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         double radius = productSpecific.getAdditionalInitialTargetRadius(FlightTypes.GROUND_ATTACK);
         double maxDistance = productSpecific.getAdditionalMaxTargetRadius(FlightTypes.GROUND_ATTACK);
-        AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-        Airfield airfield = positionFinder.selectPositionWithinExpandingRadius(airfieldManager.getAirFieldsForSide(DateUtils.getDateYYYYMMDD("19420701"), Side.AXIS), new Coordinate(10000, 0, 10000), radius, maxDistance);
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.KUBAN_MAP).getAirfieldManager();
+        Airfield referenceAirfield = airfieldManager.getAirfield("Kerch-2");
+        Coordinate lookupLocation = MathUtils.calcNextCoord(FrontMapIdentifier.KUBAN_MAP, referenceAirfield.getPosition(), 90, 15000);
+        Airfield airfield = positionFinder.selectPositionWithinExpandingRadius(airfieldManager.getAirFieldsForSide(
+                FrontMapIdentifier.KUBAN_MAP, DateUtils.getDateYYYYMMDD("19420701"), Side.AXIS), lookupLocation, radius, maxDistance);
         assert(airfield != null);
     }
 }

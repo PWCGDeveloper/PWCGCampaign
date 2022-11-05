@@ -42,11 +42,12 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
 	public BriefingMapGUI(Campaign campaign, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper) throws PWCGException  
 	{
-		super(campaign.getDate());
+		super(campaign.getCampaignMap(), campaign.getDate());
 		
         this.campaignHomeGuiBriefingWrapper =  campaignHomeGuiBriefingWrapper;
         this.briefingData =  BriefingContext.getInstance().getBriefingData();
         this.mission =  briefingData.getMission();
+        this.mapIdentifier =  mission.getCampaignMap();
 
 		setLayout(new BorderLayout());		
 	}    
@@ -267,7 +268,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         if (waypointID != McuWaypoint.NO_WAYPOINT_ID)
         {
             BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
-            briefingFlightParameters.addBriefingMapMapPointsAtPosition();
+            briefingFlightParameters.addBriefingMapMapPointsAtPosition(mapIdentifier);
             
             refreshMapScreen();
         }

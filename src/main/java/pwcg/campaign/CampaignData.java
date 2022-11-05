@@ -2,6 +2,7 @@ package pwcg.campaign;
 
 import java.util.Date;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.squadmember.SerialNumber;
 
 public class CampaignData
@@ -10,6 +11,7 @@ public class CampaignData
 	private Date date = null;
     private boolean isCoop = false;
     private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
+    private FrontMapIdentifier initialMap = FrontMapIdentifier.NO_MAP;
     private SerialNumber serialNumber = new SerialNumber();
     private int referencePlayerSerialNumber = 0;
 
@@ -66,5 +68,15 @@ public class CampaignData
     public void setReferencePlayerSerialNumber(int referencePlayerSerialNumber)
     {
         this.referencePlayerSerialNumber = referencePlayerSerialNumber;
+    }
+
+    public FrontMapIdentifier getInitialMap()
+    {
+        return initialMap;
+    }
+
+    public void setInitialMap(FrontMapIdentifier initialMap)
+    {
+        this.initialMap = initialMap;
     }
 }

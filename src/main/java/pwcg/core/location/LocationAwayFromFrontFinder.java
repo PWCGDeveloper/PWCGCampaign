@@ -6,16 +6,17 @@ import java.util.List;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 
 public class LocationAwayFromFrontFinder
 {
     
-    public static List<PWCGLocation> getLocationsAwayFromFront(List<PWCGLocation> possibleLocations, Side side, Date date) throws PWCGException
+    public static List<PWCGLocation> getLocationsAwayFromFront(FrontMapIdentifier mapIdentifier, List<PWCGLocation> possibleLocations, Side side, Date date) throws PWCGException
     {
         List<PWCGLocation> locationsAwayFromFront = new ArrayList<>();
-        FrontLinesForMap frontlines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
+        FrontLinesForMap frontlines = PWCGContext.getInstance().getMap(mapIdentifier).getFrontLinesForMap(date);
         for (PWCGLocation raidTarget : possibleLocations)
         {
             if (frontlines.isFarFromFront(raidTarget.getPosition(), side, date))

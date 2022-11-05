@@ -12,17 +12,17 @@
 	"planeAssignments": [
 		{
 			"archType": "hurricane",
-			"squadronIntroduction": "19390801",
-			"squadronWithdrawal": "19430101"
+			"squadronIntroduction": "19390901",
+			"squadronWithdrawal": "19430110"
 		},
 		{
 			"archType": "typhoon",
 			"squadronIntroduction": "19430101",
-			"squadronWithdrawal": "19430801"
+			"squadronWithdrawal": "19440515"
 		},
 		{
 			"archType": "tempest",
-			"squadronIntroduction": "19430801",
+			"squadronIntroduction": "19440501",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -50,7 +50,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19390801",
+				"startDate": "19390901",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -120,12 +120,12 @@
 		"squadHistoryEntries": []
 	},
 	"callsigns": {
-		"19390801": "TURKEY"
+		"19390901": "TURKEY"
 	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19390801",
+				"startDate": "19390901",
 				"nightMissionOdds": 5
 			}
 		]

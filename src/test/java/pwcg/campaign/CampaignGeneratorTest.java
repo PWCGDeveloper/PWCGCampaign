@@ -9,7 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.RankFactory;
@@ -22,8 +21,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.TestCampaignFactoryBase;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBase;
 
 @ExtendWith(MockitoExtension.class)
 public class CampaignGeneratorTest
@@ -31,7 +30,6 @@ public class CampaignGeneratorTest
 	public CampaignGeneratorTest() throws PWCGException
 	{
     	PWCGContext.setProduct(PWCGProduct.FC);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
 	}
 	
     @Test
@@ -83,8 +81,6 @@ public class CampaignGeneratorTest
         
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
         Campaign campaign = generator.generate();          
-
-        PWCGContext.getInstance().setCampaign(campaign);
         
         return campaign;
     }

@@ -22,8 +22,6 @@ public class RoFAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
 	@Test
 	public void airfieldCheckArrasTest() throws PWCGException 
 	{
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
-
         RoFAirfieldInEnemyTerritory airfieldFInder = new RoFAirfieldInEnemyTerritory();
         airfieldFInder.findEnemy(FrontMapIdentifier.ARRAS_MAP, DateUtils.getDateYYYYMMDD("19160101"), DateUtils.getDateYYYYMMDD("19181111"));
 	}

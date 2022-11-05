@@ -126,13 +126,13 @@ public class AirfieldManager
         return hasAirfield;
     }
 
-    public List<Airfield> getAirFieldsForSide(Date date, Side side) throws PWCGException
+    public List<Airfield> getAirFieldsForSide(FrontMapIdentifier mapIdentifier, Date date, Side side) throws PWCGException
     {
         ArrayList<Airfield> fieldsForSide = new ArrayList<Airfield>();
 
         for (Airfield airfield : airfields.values())
         {
-            if (airfield.determineCountryOnDate(date).getSide() == side)
+            if (airfield.determineCountryOnDate(mapIdentifier, date).getSide() == side)
             {
                 fieldsForSide.add(airfield);
             }
@@ -168,24 +168,24 @@ public class AirfieldManager
         return closestAirfield;
     }
 
-    public List<Airfield> getNearbyOccupiedAirFieldsForSide(Side side, Date date, Coordinate referenceLocation, int radius) throws PWCGException
+    public List<Airfield> getNearbyOccupiedAirFieldsForSide(FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate referenceLocation, int radius) throws PWCGException
     {
-        List<Airfield> airfieldsForSide = getAirFieldsForSide(date, side);
-        List<Airfield> occupiedAirfieldsForSide = filterOccupiedAirfields(airfieldsForSide, date);
+        List<Airfield> airfieldsForSide = getAirFieldsForSide(mapIdentifier, date, side);
+        List<Airfield> occupiedAirfieldsForSide = filterOccupiedAirfields(mapIdentifier, airfieldsForSide, date);
         
         PositionFinder<Airfield> positionFinder = new PositionFinder<Airfield>();
         List<Airfield> occupiedAirfieldsForSideInRadius = positionFinder.findWithinRadius(occupiedAirfieldsForSide, referenceLocation, radius);
         return occupiedAirfieldsForSideInRadius;
     }
 
-    private List<Airfield> filterOccupiedAirfields(List<Airfield> airfieldsToFilter, Date date) throws PWCGException
+    private List<Airfield> filterOccupiedAirfields(FrontMapIdentifier mapIdentifier, List<Airfield> airfieldsToFilter, Date date) throws PWCGException
     {
         List<Airfield> airfieldsFiltered = new ArrayList<>();
         
-        List<Squadron> activeSquadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(date);
+        List<Squadron> activeSquadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(mapIdentifier, date);
         for (Squadron squadron : activeSquadrons)
         {
-            Airfield squadronAirfield = squadron.determineCurrentAirfieldCurrentMap(date);
+            Airfield squadronAirfield = squadron.determineCurrentAirfieldCurrentMap(mapIdentifier, date);
             if (isAirfieldInList(airfieldsToFilter, squadronAirfield))
             {
                 airfieldsFiltered.add(squadronAirfield);

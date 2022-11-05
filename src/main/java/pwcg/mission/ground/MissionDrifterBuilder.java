@@ -65,7 +65,7 @@ public class MissionDrifterBuilder extends MissionUnitBuilder
         ArrayList<PWCGLocation> drifterPositionsForSide = new ArrayList<>();
         Campaign campaign = mission.getCampaign();
 
-        DrifterManager drifterManager =  PWCGContext.getInstance().getCurrentMap().getDrifterManager();
+        DrifterManager drifterManager =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getDrifterManager();
         for (PWCGLocation drifterPosition : drifterManager.getBargePositionsForSide(campaign, drifterSide))
         {
             drifterPositionsForSide.add(drifterPosition);
@@ -89,8 +89,8 @@ public class MissionDrifterBuilder extends MissionUnitBuilder
 
     private GroundUnitCollection makeDrifter(Side drifterSide, PWCGLocation drifterPosition) throws PWCGException
     {
-        ICountry drifterCountry = CountryFactory.makeMapReferenceCountry(drifterSide);
-        DrifterUnitBuilder drifterUnitBuilder =  new DrifterUnitBuilder(mission.getCampaign(), drifterPosition, drifterCountry);
+        ICountry drifterCountry = CountryFactory.makeMapReferenceCountry(campaign.getCampaignMap(), drifterSide);
+        DrifterUnitBuilder drifterUnitBuilder =  new DrifterUnitBuilder(campaign, drifterPosition, drifterCountry);
         GroundUnitCollection drifterUnit = drifterUnitBuilder.createDrifterUnit();
         return drifterUnit;
     }

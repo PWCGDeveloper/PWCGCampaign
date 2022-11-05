@@ -4,7 +4,7 @@
 		"la5fns2_default": {
 			"skinName": "la5fns2",
 			"planeType": "la5fns2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440301",
 			"squadId": -2,
 			"country": "Russia",
@@ -41,7 +41,7 @@
 		"la5fns2_skin_02": {
 			"skinName": "la5fns2_skin_04",
 			"planeType": "la5fns2",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440301",
 			"squadId": -1,
 			"country": "Russia",

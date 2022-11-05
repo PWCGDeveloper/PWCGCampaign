@@ -86,7 +86,6 @@ public class IconicBattlesGenerator
         CampaignGeneratorModel model = makeCampaignModelForProfile();        
         CampaignGenerator generator = new CampaignGenerator(model);
         Campaign campaign = generator.generate();          
-        PWCGContext.getInstance().setCampaign(campaign);
         return campaign;
     }
 
@@ -174,7 +173,7 @@ public class IconicBattlesGenerator
     private Mission generateAirMission(Campaign campaign, MissionGenerator missionGenerator) throws PWCGException
     {
         Mission mission;
-        SkirmishManager skirmishManager = PWCGContext.getInstance().getCurrentMap().getSkirmishManager();
+        SkirmishManager skirmishManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager();
         Skirmish skirmish = skirmishManager.getSkirmishByName(iconicBattleData.getIconicBattleName());
         Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(iconicBattleData.getSelectedSquadron());
         

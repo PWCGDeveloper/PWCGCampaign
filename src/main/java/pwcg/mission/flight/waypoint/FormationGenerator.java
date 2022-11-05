@@ -2,6 +2,7 @@ package pwcg.mission.flight.waypoint;
 
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
@@ -14,8 +15,14 @@ public class FormationGenerator
 {
     private static final int ECHELON_LEFT_ANGLE = 260;
     private static final int ECHELON_RIGHT_ANGLE = 110;
+    private Campaign campaign;
     
-    public static void generatePositionForPlaneInFormation(List<PlaneMcu> planes, int formationType) throws PWCGException
+    public FormationGenerator(Campaign campaign)
+    {
+        this.campaign = campaign;
+    }
+    
+    public void generatePositionForPlaneInFormation(List<PlaneMcu> planes, int formationType) throws PWCGException
     {
         Coordinate leadPlaneCoords = planes.get(0).getPosition().copy();
         for (PlaneMcu plane : planes)
@@ -40,17 +47,17 @@ public class FormationGenerator
         }
     }
 
-    private static void createEchelonRightFormation(Coordinate leadPlaneCoords, PlaneMcu plane) throws PWCGException
+    private void createEchelonRightFormation(Coordinate leadPlaneCoords, PlaneMcu plane) throws PWCGException
     {
         createEchelonFormation(leadPlaneCoords, plane, ECHELON_RIGHT_ANGLE);
     }
     
-    private static void createEchelonLeftFormation(Coordinate leadPlaneCoords, PlaneMcu plane) throws PWCGException
+    private void createEchelonLeftFormation(Coordinate leadPlaneCoords, PlaneMcu plane) throws PWCGException
     {
         createEchelonFormation(leadPlaneCoords, plane, ECHELON_LEFT_ANGLE);
     }
     
-    private static void createEchelonFormation(Coordinate leadPlaneCoords, PlaneMcu plane, int relativePlacementAngle) throws PWCGException
+    private void createEchelonFormation(Coordinate leadPlaneCoords, PlaneMcu plane, int relativePlacementAngle) throws PWCGException
     {
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int horizontalSpacing = productSpecific.getFormationHorizontalSpacing();
@@ -61,7 +68,7 @@ public class FormationGenerator
         placePlaneInFormation(leadPlaneCoords, plane, relativePlacementAngle, horizontalSpacing, verticalSpacing, movementMultiplier);
     }    
     
-    private static void createVeeFormation(Coordinate leadPlaneCoords, PlaneMcu plane) throws PWCGException
+    private void createVeeFormation(Coordinate leadPlaneCoords, PlaneMcu plane) throws PWCGException
     {
         if (plane.getNumberInFormation() == 0)
         {
@@ -84,11 +91,13 @@ public class FormationGenerator
     }
     
 
-    private static void placePlaneInFormation(Coordinate leadPlaneCoords, PlaneMcu plane, int relativePlacementAngle, int horizontalSpacing,
+    private void placePlaneInFormation(
+            Coordinate leadPlaneCoords, PlaneMcu plane, 
+            int relativePlacementAngle, int horizontalSpacing,
             int verticalSpacing, int movementMultiplier) throws PWCGException
     {
         double absolutePlacementAngle = MathUtils.adjustAngle(plane.getOrientation().getyOri(), relativePlacementAngle);
-        Coordinate planeInFormationCoords = MathUtils.calcNextCoord(leadPlaneCoords, absolutePlacementAngle, horizontalSpacing * movementMultiplier);
+        Coordinate planeInFormationCoords = MathUtils.calcNextCoord(campaign.getCampaignMap(), leadPlaneCoords, absolutePlacementAngle, horizontalSpacing * movementMultiplier);
         planeInFormationCoords.setYPos(leadPlaneCoords.getYPos() + (verticalSpacing * movementMultiplier));
         plane.setPosition(planeInFormationCoords);
     }

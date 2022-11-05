@@ -22,7 +22,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
@@ -35,7 +34,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.logfiles.LogEventData;
 import pwcg.core.logfiles.event.AType3;
 import pwcg.core.logfiles.event.IAType2;
-import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
 
 @ExtendWith(MockitoExtension.class)
@@ -60,7 +58,6 @@ public class AARPlayerStatusEvaluatorTest
     @BeforeEach
     public void setupTest() throws PWCGException
     {        
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
     }
 
     @Test
@@ -94,7 +91,6 @@ public class AARPlayerStatusEvaluatorTest
         Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).
             thenReturn(SquadronMemberStatus.STATUS_WOUNDED);
         Mockito.when(aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(
-        		ArgumentMatchers.<FrontMapIdentifier>any(), 
         		ArgumentMatchers.<Coordinate>any(), 
         		ArgumentMatchers.<Side>any())).thenReturn(true);
         Mockito.when(aarPilotStatusDeadEvaluator.isCrewMemberDead()).thenReturn(true);
@@ -120,10 +116,8 @@ public class AARPlayerStatusEvaluatorTest
     {
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryKey)).thenReturn(maxPlayerInjury);
-        Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
-        Mockito.when(missionHeader.getMapName()).thenReturn(FrontMapIdentifier.ARRAS_MAP.getMapName());
         		
-        AARPilotStatusEvaluator aarPilotStatusEvaluator = new AARPilotStatusEvaluator(campaign, pwcgMissionData, destroyedStatusEvaluator, logEventData, aarVehicleBuilder);
+        AARPilotStatusEvaluator aarPilotStatusEvaluator = new AARPilotStatusEvaluator(campaign, destroyedStatusEvaluator, logEventData, aarVehicleBuilder);
         aarPilotStatusEvaluator.setAarPilotStatusCapturedEvaluator(aarPilotStatusCapturedEvaluator);
         aarPilotStatusEvaluator.setAarPilotStatusWoundedEvaluator(aarPilotStatusWoundedEvaluator);
         aarPilotStatusEvaluator.setAarPilotStatusDeadEvaluator(aarPilotStatusDeadEvaluator);

@@ -6,7 +6,6 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.tabulate.campaignupdate.AARCampaignUpdateTabulator;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.InitialSquadronBuilder;
 import pwcg.campaign.resupply.depot.EquipmentArchTypeChangeHandler;
 import pwcg.campaign.resupply.depot.EquipmentDepotReplenisher;
@@ -52,9 +51,7 @@ public class CampaignUpdater
         EquipmentArchTypeChangeHandler archtypeChangeHandler = new EquipmentArchTypeChangeHandler(campaign, aarContext.getNewDate());
         archtypeChangeHandler.updateCampaignEquipmentForArchtypeChange();
         
-        finishCampaignUpdates(aarContext.getNewDate());
-                
-        PWCGContext.getInstance().setMapForCampaign(campaign);
+        finishCampaignUpdates(aarContext.getNewDate());                
     }
     
     private void tabulateCampaignUpdateData() throws PWCGException 

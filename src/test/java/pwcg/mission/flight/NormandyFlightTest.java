@@ -65,7 +65,7 @@ public class NormandyFlightTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19410601"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        SkirmishManager skirmishManager = PWCGContext.getInstance().getCurrentMap().getSkirmishManager();
+        SkirmishManager skirmishManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager();
         Skirmish skirmish = skirmishManager.getSkirmishByName("Dunkirk Sea");
         Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.RAF_BOB_PROFILE.getSquadronId());
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.LOW_ALT_CAP, playerSquadron);
@@ -89,7 +89,7 @@ public class NormandyFlightTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19410601"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        SkirmishManager skirmishManager = PWCGContext.getInstance().getCurrentMap().getSkirmishManager();
+        SkirmishManager skirmishManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager();
         Skirmish skirmish = skirmishManager.getSkirmishByName("Dunkirk Land");
         Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.RAF_BOB_PROFILE.getSquadronId());
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.LOW_ALT_CAP, playerSquadron);

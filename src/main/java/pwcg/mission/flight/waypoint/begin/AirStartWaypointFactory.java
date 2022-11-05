@@ -39,7 +39,7 @@ public class AirStartWaypointFactory
         double angleBackToBase = MathUtils.calcAngle(flight.getFlightHomePosition(), referenceWaypointForAirStart.getPosition());
         
         double angleBack = MathUtils.adjustAngle(angleBackToBase, 180);
-        Coordinate airStartPosition = MathUtils.calcNextCoord(referenceWaypointForAirStart.getPosition(), angleBack, 3000.0);
+        Coordinate airStartPosition = MathUtils.calcNextCoord(flight.getCampaign().getCampaignMap(), referenceWaypointForAirStart.getPosition(), angleBack, 3000.0);
         airStartPosition.setYPos(referenceWaypointForAirStart.getPosition().getYPos());
         
         McuWaypoint airStartWP = WaypointFactory.createAirStartWaypointType();
@@ -55,7 +55,7 @@ public class AirStartWaypointFactory
         double distaneToTravel = calculateDistanceFromAirStartToIngress(flight, referenceWaypointForAirStart, airfieldCoordinate);
         
         double angleFromFirstWPToAirfield = MathUtils.calcAngle(referenceWaypointForAirStart.getPosition(), airfieldCoordinate);
-        Coordinate airStartPosition = MathUtils.calcNextCoord(referenceWaypointForAirStart.getPosition(), angleFromFirstWPToAirfield, distaneToTravel);
+        Coordinate airStartPosition = MathUtils.calcNextCoord(flight.getCampaign().getCampaignMap(), referenceWaypointForAirStart.getPosition(), angleFromFirstWPToAirfield, distaneToTravel);
         airStartPosition.setYPos(referenceWaypointForAirStart.getPosition().getYPos());
         airStartPosition.setYPos(WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude()));
         

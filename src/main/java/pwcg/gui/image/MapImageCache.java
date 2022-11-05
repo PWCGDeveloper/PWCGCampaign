@@ -3,6 +3,7 @@ package pwcg.gui.image;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -16,9 +17,9 @@ public class MapImageCache implements Runnable
     private boolean isLoaded = false;
     private Thread mapLoadThread = null;
 
-    public MapImageCache()
+    public MapImageCache(FrontMapIdentifier mapIdentifier)
     {
-        this.mapFileNameBase = PWCGContext.getInstance().getCurrentMap().getMapName() + "Map";
+        this.mapFileNameBase = PWCGContext.getInstance().getMap(mapIdentifier).getMapName() + "Map";
     }
 
     public void loadCurrentMap()

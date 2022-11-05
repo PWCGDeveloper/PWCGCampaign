@@ -4,7 +4,7 @@
         "b25draf_default": {
             "skinName": "b25draf",
             "planeType": "b25draf",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -2,
             "country": "Britain",
@@ -30,7 +30,7 @@
 		"b25draf_blank_02": {
 			"skinName": "b25draf_blank_02",
 			"planeType": "b25draf",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "USA",

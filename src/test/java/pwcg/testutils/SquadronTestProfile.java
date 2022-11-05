@@ -47,16 +47,16 @@ public enum SquadronTestProfile
    private String key;
    private CampaignMode campaignMode;
    private boolean competitive = false;
-   private FrontMapIdentifier mapidentifier = FrontMapIdentifier.NO_MAP;
+   private FrontMapIdentifier mapIdentifier = FrontMapIdentifier.NO_MAP;
     
-   private SquadronTestProfile(String key, int squadronId, String dateString, CampaignMode campaignMode, FrontMapIdentifier mapidentifier, boolean iscompetitive)
+   private SquadronTestProfile(String key, int squadronId, String dateString, CampaignMode campaignMode, FrontMapIdentifier mapIdentifier, boolean iscompetitive)
    {
        this.key = key;
        this.squadronId = squadronId;
        this.dateString = dateString;
        this.campaignMode = campaignMode;
        this.competitive = iscompetitive;
-       this.mapidentifier = mapidentifier;
+       this.mapIdentifier = mapIdentifier;
    }
 
     public String getKey()
@@ -86,6 +86,6 @@ public enum SquadronTestProfile
 
     FrontMapIdentifier getMapIdentifier()
     {
-        return mapidentifier;
+        return mapIdentifier;
     }
 }

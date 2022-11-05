@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -22,7 +23,7 @@ public class FirePotSeries extends Effect
     {
     }
 
-    public void createSeries(Coordinate startPosition, double orientationDownRunway, double distanceBetween) throws PWCGException
+    public void createSeries(FrontMapIdentifier mapIdentifier, Coordinate startPosition, double orientationDownRunway, double distanceBetween) throws PWCGException
     {
         missionBegin = new McuMissionStart();
         missionBegin.setPosition(startPosition.copy());
@@ -31,22 +32,22 @@ public class FirePotSeries extends Effect
         fireTriggerTimer.setTime(1);
         fireTriggerTimer.setPosition(startPosition.copy());
 
-        makeFirePotPairs(startPosition, orientationDownRunway, distanceBetween);
+        makeFirePotPairs(mapIdentifier, startPosition, orientationDownRunway, distanceBetween);
     }
 
-    private void makeFirePotPairs(Coordinate startPosition, double orientationDownRunway, double distanceBetween) throws PWCGException
+    private void makeFirePotPairs(FrontMapIdentifier mapIdentifier, Coordinate startPosition, double orientationDownRunway, double distanceBetween) throws PWCGException
     {        
         for (int i = 0; i < NUM_FIRE_POT_PAIRS; ++i)
         {
             double metersAhead = (i + 1) * distanceBetween;
             
-            Coordinate firePotPosition = MathUtils.calcNextCoord(startPosition, orientationDownRunway, metersAhead);
+            Coordinate firePotPosition = MathUtils.calcNextCoord(mapIdentifier, startPosition, orientationDownRunway, metersAhead);
             firePotPosition.setYPos(0.0);
 
             double orientationAcrossRunway = MathUtils.adjustAngle(orientationDownRunway, 90);
             McuTimer pairTriggerSource = getSourceTimer();
             FirePotPair firePotPair  = new FirePotPair(pairTriggerSource);
-            firePotPair.createSeries(firePotPosition, orientationAcrossRunway, 120.0);
+            firePotPair.createSeries(mapIdentifier, firePotPosition, orientationAcrossRunway, 120.0);
             firePotPairs.add(firePotPair);
         }
     }

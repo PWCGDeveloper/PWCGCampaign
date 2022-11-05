@@ -4,6 +4,7 @@ import java.util.Date;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.CountryDesignator;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 
 public class PWCGLocation
@@ -58,8 +59,8 @@ public class PWCGLocation
 		this.orientation = orientation;
 	}
 
-	public ICountry getCountry(Date date) throws PWCGException
+	public ICountry getCountry(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
 	{
-		return CountryDesignator.determineCountry(position, date);
+		return CountryDesignator.determineCountry(mapIdentifier, position, date);
 	}
 }

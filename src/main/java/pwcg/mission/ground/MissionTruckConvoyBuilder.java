@@ -65,10 +65,10 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
         ArrayList<Bridge> bridgesForSide = new ArrayList<Bridge>();
         Campaign campaign = mission.getCampaign();
 
-        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
         for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
         {
-            if (bridge.determineCountryOnDate(campaign.getDate()).getSide() == truckSide)
+            if (bridge.determineCountryOnDate(campaign.getCampaignMap(), campaign.getDate()).getSide() == truckSide)
             {
                 bridgesForSide.add(bridge);
             }
@@ -109,7 +109,7 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
 
     private GroundUnitCollection makeTruckConvoy(Side truckSide, Bridge bridge) throws PWCGException
     {
-        ICountry truckCountry = CountryFactory.makeMapReferenceCountry(truckSide);
+        ICountry truckCountry = CountryFactory.makeMapReferenceCountry(campaign.getCampaignMap(), truckSide);
         TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(campaign, bridge, truckCountry);
         GroundUnitCollection truckUnit = groundUnitFactory.createTruckConvoy();
         return truckUnit;

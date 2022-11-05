@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapArea;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
@@ -75,10 +76,10 @@ public class MathUtils
         return degrees;
     }
 
-    public static Coordinate calcNextCoordWithMapAdjustments(final Coordinate coord1, double angle, double distance) throws PWCGException 
+    public static Coordinate calcNextCoordWithMapAdjustments(FrontMapIdentifier mapIdentifier, Coordinate coord1, double angle, double distance) throws PWCGException 
     {
-        Coordinate unadjustedCartesianCoord = calcNextCoord(coord1, angle, distance);
-        MapArea usableMapArea = PWCGContext.getInstance().getCurrentMap().getUsableMapArea();
+        Coordinate unadjustedCartesianCoord = calcNextCoord(mapIdentifier, coord1, angle, distance);
+        MapArea usableMapArea = PWCGContext.getInstance().getMap(mapIdentifier).getUsableMapArea();
         double cartesianX = adjustXForMap(unadjustedCartesianCoord.getXPos(), usableMapArea);
         double cartesianZ = adjustZForMap(unadjustedCartesianCoord.getZPos(), usableMapArea);
 
@@ -88,7 +89,7 @@ public class MathUtils
         return cartesianCoord;
     }
 
-	public static Coordinate calcNextCoord(final Coordinate coord1, double angle, double distance) throws PWCGException 
+	public static Coordinate calcNextCoord(FrontMapIdentifier mapIdentifier, Coordinate coord1, double angle, double distance) throws PWCGException 
 	{
 		if (distance == 0.0)
 		{
@@ -119,7 +120,7 @@ public class MathUtils
 		double zDiff = distance * StrictMath.sin(Math.toRadians(polarAngle));  // This is reversed because x is n/s
 		double xDiff = distance * StrictMath.cos(Math.toRadians(polarAngle));  // This is reversed because z is e/w
 		
-        MapArea mapArea = PWCGContext.getInstance().getCurrentMap().getMapArea();
+        MapArea mapArea = PWCGContext.getInstance().getMap(mapIdentifier).getMapArea();
 
 		double cartesianX = coord1.getXPos() + xDiff;		
         cartesianX = adjustXForMap(cartesianX, mapArea);
@@ -181,7 +182,7 @@ public class MathUtils
     	binaryRepresentation.append(remainder);
     }
 
-    public static double closestDistFromLine(final Coordinate lineStart, final Coordinate lineEnd, final Coordinate coord) throws PWCGException
+    public static double closestDistFromLine(FrontMapIdentifier mapIdentifier, Coordinate lineStart, final Coordinate lineEnd, final Coordinate coord) throws PWCGException
     {
         double smallestDistance = PositionFinder.ABSURDLY_LARGE_DISTANCE;
         Coordinate pointOnLine = lineStart.copy();
@@ -194,7 +195,7 @@ public class MathUtils
                smallestDistance = distance;
            }
            
-           pointOnLine = MathUtils.calcNextCoord(pointOnLine, angleStartToEnd, 50);
+           pointOnLine = MathUtils.calcNextCoord(mapIdentifier, pointOnLine, angleStartToEnd, 50);
            double distanceToEnd = MathUtils.calcDist(pointOnLine, lineEnd);
            if (distanceToEnd < 75)
            {

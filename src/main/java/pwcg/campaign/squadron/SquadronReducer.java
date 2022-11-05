@@ -11,6 +11,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.core.exception.PWCGException;
@@ -47,12 +48,12 @@ public class SquadronReducer
         return squadronsForSide;
     }
 
-    public static List<Squadron> reduceToCurrentMap(List<Squadron> squadrons, Date date) throws PWCGException 
+    public static List<Squadron> reduceToCurrentMap(FrontMapIdentifier mapIdentifier, List<Squadron> squadrons, Date date) throws PWCGException 
     {
         List<Squadron> squadronsForMap = new ArrayList<>();
         for (Squadron squadron : squadrons)
         {
-            Airfield field = squadron.determineCurrentAirfieldCurrentMap(date);
+            Airfield field = squadron.determineCurrentAirfieldCurrentMap(mapIdentifier, date);
             if (field != null)
             {
                 squadronsForMap.add(squadron);
@@ -107,10 +108,10 @@ public class SquadronReducer
         return new ArrayList<>(squadronsWithRole.values());
     }
 
-    public static List<Squadron> reduceToProximityOnCurrentMap(List<Squadron> squadrons, Date date, Coordinate referencePosition, double radius) throws PWCGException 
+    public static List<Squadron> reduceToProximityOnCurrentMap(FrontMapIdentifier mapIdentifier, List<Squadron> squadrons, Date date, Coordinate referencePosition, double radius) throws PWCGException 
     {
         List<Squadron> squadronsWithinRadius = new ArrayList<>();
-        List<Squadron> squadronsOnMap = reduceToCurrentMap(squadrons, date);
+        List<Squadron> squadronsOnMap = reduceToCurrentMap(mapIdentifier, squadrons, date);
         for (Squadron squadron : squadronsOnMap)
         {
             Coordinate squadronPosition = squadron.determineCurrentPosition(date);
@@ -124,10 +125,10 @@ public class SquadronReducer
         return squadronsWithinRadius;
     }
 
-    public static List<Squadron> sortByProximityOnCurrentMap(List<Squadron> squadrons, Date date, Coordinate referencePosition) throws PWCGException 
+    public static List<Squadron> sortByProximityOnCurrentMap(FrontMapIdentifier mapIdentifier, List<Squadron> squadrons, Date date, Coordinate referencePosition) throws PWCGException 
     {
         Map<Integer, Squadron> squadronsByProximity = new TreeMap<>();
-        List<Squadron> squadronsOnMap = reduceToCurrentMap(squadrons, date);
+        List<Squadron> squadronsOnMap = reduceToCurrentMap(mapIdentifier, squadrons, date);
         for (Squadron squadron : squadronsOnMap)
         {
             Coordinate squadronPosition = squadron.determineCurrentPosition(date);

@@ -43,7 +43,7 @@ public class EscortSquadronSelector
 
         List<Squadron> selectedSquadronsNoPlayer = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, side);
 
-        List<Squadron> inRangeSquadrons = SquadronReducer.sortByProximityOnCurrentMap(selectedSquadronsNoPlayer, campaign.getDate(), referenceCoordinate);
+        List<Squadron> inRangeSquadrons = SquadronReducer.sortByProximityOnCurrentMap(campaign.getCampaignMap(), selectedSquadronsNoPlayer, campaign.getDate(), referenceCoordinate);
         return inRangeSquadrons;
     }
     

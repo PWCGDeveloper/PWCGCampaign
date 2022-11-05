@@ -38,12 +38,6 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public void initializeMap() throws PWCGException  
-    {
-        changeContext(FrontMapIdentifier.ARRAS_MAP);
-    }
-
-    @Override
     public IPayloadFactory getPayloadFactory() throws PWCGException  
     {
         return new FCPayloadFactory();
@@ -53,5 +47,11 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
     public PWCGDirectoryProductManager getDirectoryManager()
     {
         return new PWCGDirectoryProductManager(PWCGProduct.FC);
+    }
+
+    @Override
+    public FrontMapIdentifier getDefaultMapForProduct()
+    {
+        return FrontMapIdentifier.ARRAS_MAP;
     }
 }

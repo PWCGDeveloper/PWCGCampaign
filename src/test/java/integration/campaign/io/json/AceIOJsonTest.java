@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -16,6 +17,7 @@ import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)
+@Tag("BOS")
 public class AceIOJsonTest
 {
     @Test

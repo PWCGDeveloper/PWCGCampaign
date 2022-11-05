@@ -102,7 +102,7 @@ public class VirtualWaypointStartFinder
     {
         Side side = flight.getSquadron().determineSide();
         Date campaignDate = flight.getCampaign().getDate();
-        FrontLinePoint closestFrontPosition = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaignDate).findClosestFrontPositionForSide(vwpCoordinate.getPosition(), side);
+        FrontLinePoint closestFrontPosition = PWCGContext.getInstance().getMap(flight.getCampaignMap()).getFrontLinesForMap(campaignDate).findClosestFrontPositionForSide(vwpCoordinate.getPosition(), side);
         double vwpDistanceToFront = MathUtils.calcDist(closestFrontPosition.getPosition(), vwpCoordinate.getPosition());
         return vwpDistanceToFront;
     }

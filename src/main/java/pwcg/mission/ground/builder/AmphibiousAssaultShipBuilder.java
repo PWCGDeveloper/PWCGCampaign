@@ -130,7 +130,7 @@ public class AmphibiousAssaultShipBuilder
     private Coordinate makeLandingCraftStartPosition(AmphibiousAssaultShipDefinition amphibiousAssaultShip) throws PWCGException
     {
         double angle = MathUtils.adjustAngle(amphibiousAssaultShip.getOrientation().getyOri(), 180);
-        Coordinate startPosition = MathUtils.calcNextCoord(amphibiousAssaultShip.getDestination(), angle, amphibiousAssault.getLandingCraftBackOff());
+        Coordinate startPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), amphibiousAssaultShip.getDestination(), angle, amphibiousAssault.getLandingCraftBackOff());
         return startPosition;
     }
  }

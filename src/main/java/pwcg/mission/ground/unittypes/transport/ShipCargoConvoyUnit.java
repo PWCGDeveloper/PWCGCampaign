@@ -72,7 +72,7 @@ public class ShipCargoConvoyUnit extends GroundUnit
         for (int i = 0; i < numvehicles; ++i)
         {   
             vehicleLocations.add(shipCoords);
-            shipCoords = MathUtils.calcNextCoord(shipCoords, placementOrientation, 1000.0);
+            shipCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), shipCoords, placementOrientation, 1000.0);
         }       
         return vehicleLocations;        
     }

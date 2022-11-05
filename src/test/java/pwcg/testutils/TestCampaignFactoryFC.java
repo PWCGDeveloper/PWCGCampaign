@@ -27,7 +27,6 @@ public class TestCampaignFactoryFC extends TestCampaignFactoryBase
     {
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
         Campaign campaign = generator.generate();
-        PWCGContext.getInstance().setCampaign(campaign);
         return campaign;
     }
 

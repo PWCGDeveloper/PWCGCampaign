@@ -53,7 +53,6 @@ public class PlayerFlightTypeCoopFighterTest
         for (SquadronTestProfile profile: campaigns.keySet()) 
         {
         	Campaign campaign = campaigns.get(profile);
-            PWCGContext.getInstance().setCampaign(campaign);
             patrolFlightTestImpl(campaign);
         }
     }
@@ -75,7 +74,6 @@ public class PlayerFlightTypeCoopFighterTest
         for (SquadronTestProfile profile: campaigns.keySet()) 
         {
         	Campaign campaign = campaigns.get(profile);
-            PWCGContext.getInstance().setCampaign(campaign);
             lowAltPatrolFlightTestImpl( campaign);
         }
     }
@@ -97,7 +95,6 @@ public class PlayerFlightTypeCoopFighterTest
         for (SquadronTestProfile profile: campaigns.keySet()) 
         {
         	Campaign campaign = campaigns.get(profile);
-            PWCGContext.getInstance().setCampaign(campaign);
             lowAltCapFlightTestImpl(campaign);
         }
     }
@@ -119,7 +116,6 @@ public class PlayerFlightTypeCoopFighterTest
         for (SquadronTestProfile profile: campaigns.keySet()) 
         {
         	Campaign campaign = campaigns.get(profile);
-            PWCGContext.getInstance().setCampaign(campaign);
             interceptFlightTestImpl(campaign);
         }
     }
@@ -141,7 +137,6 @@ public class PlayerFlightTypeCoopFighterTest
         for (SquadronTestProfile profile: campaigns.keySet()) 
         {
         	Campaign campaign = campaigns.get(profile);
-            PWCGContext.getInstance().setCampaign(campaign);
             offensiveFlightTestImpl(campaign);
         }
     }

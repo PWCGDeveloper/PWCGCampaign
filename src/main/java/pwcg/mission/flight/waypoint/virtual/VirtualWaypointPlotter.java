@@ -116,13 +116,13 @@ public class VirtualWaypointPlotter
         int vwpSeparationDistance = productSpecific.getVwpSeparationDistance();
         
         double backoffAngle = MathUtils.calcAngle(legEndPosition, legStartPosition);
-        Coordinate lastVwpOfLegPosition = MathUtils.calcNextCoord(legEndPosition, backoffAngle, END_OF_LEG_BACK_OFF_METERS);
+        Coordinate lastVwpOfLegPosition = MathUtils.calcNextCoord(flight.getCampaignMap(), legEndPosition, backoffAngle, END_OF_LEG_BACK_OFF_METERS);
         vwpCoordinatesForLeg.add(lastVwpOfLegPosition);
         
         int numberOfVwpsInLeg = calculateNumberOfVirtualWaypointsForLeg(legStartPosition, legEndPosition, vwpSeparationDistance);
         for (int i = 1; i < numberOfVwpsInLeg; ++i)
         {
-            Coordinate nextVwpOfLegDescending = MathUtils.calcNextCoord(lastVwpOfLegPosition, backoffAngle, (vwpSeparationDistance * i));
+            Coordinate nextVwpOfLegDescending = MathUtils.calcNextCoord(flight.getCampaignMap(), lastVwpOfLegPosition, backoffAngle, (vwpSeparationDistance * i));
             vwpCoordinatesForLeg.add(nextVwpOfLegDescending);
         }
         

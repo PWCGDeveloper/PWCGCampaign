@@ -12,7 +12,7 @@ public class StrategicBombObjective
         String objective = "Bomb the specified objective.  ";
 
         TargetType targetType = flight.getTargetDefinition().getTargetType();
-        String nearestTown = PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(flight.getTargetDefinition().getPosition()).getName();
+        String nearestTown = PWCGContext.getInstance().getMap(flight.getCampaign().getCampaignMap()).getGroupManager().getTownFinder().findClosestTown(flight.getTargetDefinition().getPosition()).getName();
         
         if (targetType == TargetType.TARGET_FACTORY)
         {

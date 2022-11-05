@@ -20,7 +20,7 @@ public class SkirmishTargetDefinitionBuilder implements ITargetDefinitionBuilder
 
     public TargetDefinition buildTargetDefinition() throws PWCGException
     {
-        TargetType iconicTargetType = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getIconicTargetTypes(flightInformation);
+        TargetType iconicTargetType = PWCGContext.getInstance().getMap(flightInformation.getCampaignMap()).getSkirmishManager().getIconicTargetTypes(flightInformation);
         if (iconicTargetType != TargetType.TARGET_NONE)
         {
             GroundTargetDefinitionCollector targetDefinitionCollector = new GroundTargetDefinitionCollector(flightInformation);
@@ -35,7 +35,7 @@ public class SkirmishTargetDefinitionBuilder implements ITargetDefinitionBuilder
     
     public static boolean isUseIconicMission(FlightInformation flightInformation) throws PWCGException
     {
-        TargetType iconicTargetType = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getIconicTargetTypes(flightInformation);
+        TargetType iconicTargetType = PWCGContext.getInstance().getMap(flightInformation.getCampaignMap()).getSkirmishManager().getIconicTargetTypes(flightInformation);
         if (iconicTargetType != TargetType.TARGET_NONE)
         {
             return true;

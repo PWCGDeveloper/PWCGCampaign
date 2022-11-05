@@ -12,7 +12,7 @@
 	"planeAssignments": [
 		{
 			"archType": "bf110",
-			"squadronIntroduction": "19390801",
+			"squadronIntroduction": "19390901",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -38,7 +38,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19390801",
+				"startDate": "19390901",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

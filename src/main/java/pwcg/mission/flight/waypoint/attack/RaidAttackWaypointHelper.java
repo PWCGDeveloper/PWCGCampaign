@@ -54,7 +54,7 @@ public class RaidAttackWaypointHelper
         int approachDistance = productSpecificConfiguration.getBombFinalApproachDistance() + 2000;
 
         double angleFromTargetToIngress = MathUtils.calcAngle(flight.getTargetDefinition().getPosition().copy(), ingressPosition.copy());
-        Coordinate targetApproachCoordinates = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleFromTargetToIngress, approachDistance);
+        Coordinate targetApproachCoordinates = MathUtils.calcNextCoord(flight.getCampaignMap(), flight.getTargetDefinition().getPosition(), angleFromTargetToIngress, approachDistance);
         targetApproachCoordinates.setYPos(attackAltitude);
         return targetApproachCoordinates;
     }
@@ -79,7 +79,7 @@ public class RaidAttackWaypointHelper
         int popupBombFinalApproachDistance = productSpecificConfiguration.getBombFinalApproachDistance() - 1000;
 
         double angleFromTargetToIngress = MathUtils.calcAngle(flight.getTargetDefinition().getPosition().copy(), ingressPosition.copy());
-		Coordinate targetPopupCoordinates = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleFromTargetToIngress, popupBombFinalApproachDistance);
+		Coordinate targetPopupCoordinates = MathUtils.calcNextCoord(flight.getCampaignMap(), flight.getTargetDefinition().getPosition(), angleFromTargetToIngress, popupBombFinalApproachDistance);
 		targetPopupCoordinates.setYPos(attackAltitude + 300);
 		return targetPopupCoordinates;
 	}
@@ -105,7 +105,7 @@ public class RaidAttackWaypointHelper
 
         double angleFromTarget = MathUtils.calcAngle(targetPopupWP.getPosition(), flight.getTargetDefinition().getPosition());
         double angleEgressFromTarget = MathUtils.adjustAngle(angleFromTarget, 240);
-        Coordinate egressCoordinate = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleEgressFromTarget, bombTargetEgressDistance);
+        Coordinate egressCoordinate = MathUtils.calcNextCoord(flight.getCampaignMap(), flight.getTargetDefinition().getPosition(), angleEgressFromTarget, bombTargetEgressDistance);
         egressCoordinate.setYPos(attackAltitude);
 		return egressCoordinate;
 	}

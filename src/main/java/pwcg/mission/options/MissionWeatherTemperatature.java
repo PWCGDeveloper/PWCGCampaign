@@ -2,14 +2,15 @@ package pwcg.mission.options;
 
 import java.util.Date;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.product.bos.map.IMapClimate;
 
 public class MissionWeatherTemperatature
 {
-    public static int calculateTemperature (Date date, int hour)
+    public static int calculateTemperature (FrontMapIdentifier mapIdentifier, Date date, int hour)
     {
-        IMapClimate climate = PWCGContext.getInstance().getCurrentMap().getMapClimate();
+        IMapClimate climate = PWCGContext.getInstance().getMap(mapIdentifier).getMapClimate();
         int meanTemperature = climate.getTemperature(date);
         int temperatureOffsetforTime = determineTemperatureOffsetForTimeOFDay(hour);
         return (meanTemperature + temperatureOffsetforTime);

@@ -73,7 +73,7 @@ public class VictoryBuilder
 
     private String getEventLocation(Coordinate eventPosition) throws PWCGException
     {
-        String eventLocation =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(eventPosition).getName();
+        String eventLocation =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager().getTownFinder().findClosestTown(eventPosition).getName();
         if (eventLocation == null || eventLocation.isEmpty())
         {
             eventLocation = "";

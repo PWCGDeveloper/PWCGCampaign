@@ -4,7 +4,7 @@
         "ju88c6_default": {
             "skinName": "ju88c6",
             "planeType": "ju88c6",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -43,7 +43,7 @@
         "ju88c6_blank_03": {
             "skinName": "ju88c6_blank_03",
             "planeType": "ju88c6",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -56,7 +56,7 @@
         "ju88c6_blank_04": {
             "skinName": "ju88c6_blank_04",
             "planeType": "ju88c6",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -69,7 +69,7 @@
         "ju88c6_blank_05": {
             "skinName": "ju88c6_blank_05",
             "planeType": "ju88c6",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -82,7 +82,7 @@
         "ju88c6_blank_06": {
             "skinName": "ju88c6_blank_06",
             "planeType": "ju88c6",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -95,7 +95,7 @@
         "ju88c6_blank_08": {
             "skinName": "ju88c6_blank_08",
             "planeType": "ju88c6",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -108,7 +108,7 @@
 		"ju88c6_skin_03": {
 			"skinName": "ju88c6_skin_03",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -119,7 +119,7 @@
 		"ju88c6_skin_04": {
 			"skinName": "ju88c6_skin_04",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -130,7 +130,7 @@
 		"ju88c6_skin_08": {
 			"skinName": "ju88c6_skin_08",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -141,7 +141,7 @@
 		"Ju88A4_4k_Stab_2KG53_3ZAC": {
 			"skinName": "Ju88A4_4k_Stab_2KG53_3ZAC",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -152,7 +152,7 @@
 		"Ju88A4_4k_STAB_3KG1_V4AD": {
 			"skinName": "Ju88A4_4k_STAB_3KG1_V4AD",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -163,7 +163,7 @@
 		"Ju88A4_7_KG30_4D+JR": {
 			"skinName": "Ju88A4_7_KG30_4D+JR",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -174,7 +174,7 @@
 		"Ju88A4_KG3_5K+AM": {
 			"skinName": "Ju88A4_KG3_5K+AM",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -185,7 +185,7 @@
 		"Ju88A4_KG30_4DEH": {
 			"skinName": "Ju88A4_KG30_4DEH",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -196,7 +196,7 @@
 		"Ju88A4_KG77_3Z+AH": {
 			"skinName": "Ju88A4_KG77_3Z+AH",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -207,7 +207,7 @@
 		"Ju88A4_LG1_L1+BB": {
 			"skinName": "Ju88A4_LG1_L1+BB",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -218,7 +218,7 @@
 		"Ju-88A-4_Non_Standard_1944": {
 			"skinName": "Ju-88A-4_Non_Standard_1944",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -229,7 +229,7 @@
 		"Ju88A4_U4+TK": {
 			"skinName": "Ju88A4_U4+TK",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -240,7 +240,7 @@
 		"4K_BoS_Ju88A4_4_K9-DH_KG51_foxbatRU": {
 			"skinName": "4K_BoS_Ju88A4_4_K9-DH_KG51_foxbatRU",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20131054,
 			"country": "Germany",
@@ -251,7 +251,7 @@
 		"I_KG54 Personal": {
 			"skinName": "I_KG54 Personal",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20131054,
 			"country": "Germany",
@@ -262,7 +262,7 @@
 		"Ju88A4_KG51_9K+DS": {
 			"skinName": "Ju88A4_KG51_9K+HR",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20131054,
 			"country": "Germany",
@@ -273,7 +273,7 @@
 		"Ju88A4_Stab_I_KG51_9K+AB": {
 			"skinName": "Ju88A4_Stab_I_KG51_9K+FB",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20131054,
 			"country": "Germany",
@@ -284,7 +284,7 @@
 		"Ju88A4_Stab_III_KG76_F1+DD": {
 			"skinName": "Ju88A4_Stab_III_KG76_F1+DD",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20132076,
 			"country": "Germany",
@@ -295,7 +295,7 @@
 		"Ju88A5_KG76_F1 GM_winter": {
 			"skinName": "Ju88A5_KG76_F1 GM_winter",
 			"planeType": "ju88c6",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20132076,
 			"country": "Germany",

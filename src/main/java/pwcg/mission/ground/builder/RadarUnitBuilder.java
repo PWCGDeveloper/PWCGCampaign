@@ -46,7 +46,7 @@ public class RadarUnitBuilder
     {
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
-                PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(side), 
+                PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroundCountryForMapBySide(side), 
                 TargetType.TARGET_RADAR,
                 radarPosition, 
                 radarPosition,

@@ -11,7 +11,6 @@ import org.junit.jupiter.api.TestInstance;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
@@ -37,7 +36,6 @@ public class AARCoordinatorInMissionTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         expectedResults = new ExpectedResults(campaign);
         aarCoordinator = AARCoordinator.getInstance();

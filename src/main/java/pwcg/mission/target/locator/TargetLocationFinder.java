@@ -53,13 +53,13 @@ public class TargetLocationFinder
     {
         Coordinate flightTargetCoordinates = null;
 
-        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
-        PWCGLocation town = groupManager.getTownFinder().findTownForSideWithinRadius(side, campaign.getDate(), targetGeneralLocation, radius);
+        GroupManager groupManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
+        PWCGLocation town = groupManager.getTownFinder().findTownForSideWithinRadius(campaign.getCampaignMap(), side, campaign.getDate(), targetGeneralLocation, radius);
         if (town != null)
         {
             flightTargetCoordinates = town.getPosition();
             int directionFromTown = RandomNumberGenerator.getRandom(360);
-            flightTargetCoordinates = MathUtils.calcNextCoord(flightTargetCoordinates, directionFromTown, 3000.0);
+            flightTargetCoordinates = MathUtils.calcNextCoord(campaign.getCampaignMap(), flightTargetCoordinates, directionFromTown, 3000.0);
         }
         
         return flightTargetCoordinates;
@@ -68,13 +68,13 @@ public class TargetLocationFinder
     public Coordinate findLocationNearBridge() throws PWCGException
     {
         Coordinate flightTargetCoordinates = null;
-        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
         Bridge bridge = groupManager.getBridgeFinder().findBridgeForSideWithinRadius(side, campaign.getDate(), targetGeneralLocation, radius);
         if (bridge != null)
         {
             flightTargetCoordinates = bridge.getPosition();
             int directionFromBridge = RandomNumberGenerator.getRandom(360);
-            flightTargetCoordinates = MathUtils.calcNextCoord(flightTargetCoordinates, directionFromBridge, 1000.0);
+            flightTargetCoordinates = MathUtils.calcNextCoord(campaign.getCampaignMap(), flightTargetCoordinates, directionFromBridge, 1000.0);
         }
         
         return flightTargetCoordinates;
@@ -82,14 +82,14 @@ public class TargetLocationFinder
     
     public Coordinate findLocationBehindEnemyLines() throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());        
-        Coordinate flightTargetCoordinates = frontLinesForMap.findPositionBehindLinesForSide(targetGeneralLocation, radius, 10000, 20000, side);
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());        
+        Coordinate flightTargetCoordinates = frontLinesForMap.findPositionBehindLinesForSide(campaign.getCampaignMap(), targetGeneralLocation, radius, 10000, 20000, side);
         return flightTargetCoordinates;
     }
     
     public Coordinate findLocationAtFront() throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());        
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());        
         FrontLinePoint targetCountryFrontPoint = frontLinesForMap.findCloseFrontPositionForSide(targetGeneralLocation, radius, side);
         return targetCountryFrontPoint.getPosition();
     }

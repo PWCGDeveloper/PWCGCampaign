@@ -33,7 +33,7 @@ public class IngressWaypointAtTarget
     private Coordinate getIngressWaypointAtTarget(double distanceFromTarget) throws PWCGException 
     {                
         double angleFromTarget = MathUtils.calcAngle(flight.getTargetDefinition().getPosition(), flight.getFlightHomePosition());
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleFromTarget, distanceFromTarget);
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getCampaignMap(), flight.getTargetDefinition().getPosition(), angleFromTarget, distanceFromTarget);
         return ingressCoordinate;
     }
 }

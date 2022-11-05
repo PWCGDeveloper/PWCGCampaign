@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -13,13 +14,15 @@ import pwcg.mission.flight.IFlight;
 
 public class RunwayPlacerLineAstern implements IRunwayPlacer
 {
-    private IFlight flight = null;
-    private Airfield airfield = null;
+    private Campaign campaign;
+    private IFlight flight;
+    private Airfield airfield;
     private int takeoffSpacing = 40;
 
     public RunwayPlacerLineAstern (IFlight flight, Airfield airfield, int takeoffSpacing)
     {
         this.flight = flight;
+        this.campaign = flight.getCampaign();
         this.airfield = airfield;
         this.takeoffSpacing = takeoffSpacing;
     }
@@ -58,7 +61,7 @@ public class RunwayPlacerLineAstern implements IRunwayPlacer
         double initialPlacementAngleAngle = MathUtils.adjustAngle(takeoffAngle, 270);
 
         Coordinate fieldPlanePosition = airfield.getTakeoffLocation(mission).getPosition().copy();
-        Coordinate initialCoord = MathUtils.calcNextCoord(fieldPlanePosition, initialPlacementAngleAngle, (25.0));
+        Coordinate initialCoord = MathUtils.calcNextCoord(campaign.getCampaignMap(), fieldPlanePosition, initialPlacementAngleAngle, (25.0));
         return initialCoord;
     }
     
@@ -68,7 +71,7 @@ public class RunwayPlacerLineAstern implements IRunwayPlacer
         double takeoffAngle = airfield.getTakeoffLocation(mission).getOrientation().getyOri();
         double nextlacementAngleAngle = MathUtils.adjustAngle(takeoffAngle, 180);
 
-        Coordinate nextTakeoffCoord = MathUtils.calcNextCoord(lastPosition, nextlacementAngleAngle, (takeoffSpacing));
+        Coordinate nextTakeoffCoord = MathUtils.calcNextCoord(campaign.getCampaignMap(), lastPosition, nextlacementAngleAngle, (takeoffSpacing));
         return nextTakeoffCoord;
     }
 }

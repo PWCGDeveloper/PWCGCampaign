@@ -11,11 +11,11 @@ import pwcg.campaign.context.PWCGMap;
 
 public class BoSCountryFactory extends NeutralCountryFactory implements ICountryFactory
 {
-    public ICountry makeMapReferenceCountry(Side side)
+    public ICountry makeMapReferenceCountry(FrontMapIdentifier mapIdentifier, Side side)
     {
         if (side == Side.ALLIED)
         {
-            PWCGMap map = PWCGContext.getInstance().getCurrentMap();
+            PWCGMap map = PWCGContext.getInstance().getMap(mapIdentifier);
             if (map == null)
             {
                 return new BoSCountry(BoSCountry.RUSSIA_CODE);

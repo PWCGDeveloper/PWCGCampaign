@@ -138,7 +138,7 @@ public class MissionBattleBuilder implements IBattleBuilder
         CoordinateBox battleLocationBorders = CoordinateBox.copy(mission.getMissionBorders());
         battleLocationBorders.expandBox(BATTLE_BOX_EXPANSION_FROM_MISSION);
 
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         for (FrontLinePoint frontLinePoint : frontLinesForMap.getFrontLines(Side.ALLIED))
         {
             if (battleLocationBorders.isInBox(frontLinePoint.getPosition()))

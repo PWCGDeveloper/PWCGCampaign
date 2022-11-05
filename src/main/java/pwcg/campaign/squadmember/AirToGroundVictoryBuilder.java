@@ -2,6 +2,7 @@ package pwcg.campaign.squadmember;
 
 import java.util.Date;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
@@ -15,11 +16,13 @@ import pwcg.mission.ground.vehicle.IVehicle;
 
 public class AirToGroundVictoryBuilder
 {
+    private Campaign campaign;
     private SquadronMember victorPilot;
     private IVehicle victimVehicle;
 
-    public AirToGroundVictoryBuilder (SquadronMember victorPilot, IVehicle victimVehicle)
+    public AirToGroundVictoryBuilder (Campaign campaign, SquadronMember victorPilot, IVehicle victimVehicle)
     {
+        this.campaign = campaign;
         this.victimVehicle = victimVehicle;
         this.victorPilot = victorPilot;
     }
@@ -115,10 +118,10 @@ public class AirToGroundVictoryBuilder
         Coordinate squadronPosition = victorPilot.determineSquadron().determineCurrentPosition(date);
         if (squadronPosition != null)
         {
-            FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
+            FrontLinesForMap frontLines = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(date);
             FrontLinePoint eventPosition = frontLines.findCloseFrontPositionForSide(squadronPosition, 100000, enemySide);
     
-            eventLocationDescription =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(eventPosition.getPosition()).getName();
+            eventLocationDescription =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager().getTownFinder().findClosestTown(eventPosition.getPosition()).getName();
             if (eventLocationDescription == null || eventLocationDescription.isEmpty())
             {
                 eventLocationDescription = "";

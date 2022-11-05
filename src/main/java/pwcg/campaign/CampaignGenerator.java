@@ -2,11 +2,9 @@ package pwcg.campaign;
 
 import java.util.List;
 
-import pwcg.campaign.context.FrontMapIdentifier;
-import pwcg.campaign.context.MapForAirfieldFinder;
+import pwcg.campaign.context.MapFinderForCampaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -33,7 +31,6 @@ public class CampaignGenerator
 
     private void createCampaignBasis() throws PWCGException
     {
-        setMapForNewCampaign();
         createCampaign();
         setCampaignAces();
     }
@@ -42,6 +39,7 @@ public class CampaignGenerator
 	{
 		campaign = new Campaign();
         campaign.initializeCampaignConfigs();
+        campaign.getCampaignData().setInitialMap(MapFinderForCampaign.findMapForSquadeonAndDate(generatorModel.getCampaignSquadron(), generatorModel.getCampaignDate()));
         campaign.setDate(generatorModel.getCampaignDate());
         campaign.getCampaignData().setName(generatorModel.getCampaignName());
         campaign.getCampaignData().setCampaignMode(generatorModel.getCampaignMode());
@@ -83,16 +81,6 @@ public class CampaignGenerator
             CampaignEquipmentManager equipmentGenerator = campaign.getEquipmentManager();
             equipmentGenerator.createEquipmentDepot(armedService);
         }
-    }
-
-    private void setMapForNewCampaign() throws PWCGException
-    {
-        Squadron squad = PWCGContext.getInstance().getSquadronManager().getSquadronByName(generatorModel.getSquadronName(), generatorModel.getCampaignDate());
-        Airfield airfield = squad.determineCurrentAirfieldAnyMap(generatorModel.getCampaignDate());
-        List<FrontMapIdentifier> airfieldMaps = MapForAirfieldFinder.getMapForAirfield(airfield.getName());
-        FrontMapIdentifier initialAirfieldMap = airfieldMaps.get(0);
-
-        PWCGContext.getInstance().changeContext(initialAirfieldMap);
     }
 
 	private void setCampaignAces() throws PWCGException

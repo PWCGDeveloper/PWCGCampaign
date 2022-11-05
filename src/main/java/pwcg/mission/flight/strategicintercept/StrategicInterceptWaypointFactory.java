@@ -102,7 +102,7 @@ public class StrategicInterceptWaypointFactory
     private Coordinate createStartPatternCoordinate(double angleToPointBetweenIngressaAndEgress) throws PWCGException
     {
         Coordinate targetCoord = targetFlight.getTargetDefinition().getPosition().copy();
-        Coordinate startPatternCoordinate = MathUtils.calcNextCoord(targetCoord, angleToPointBetweenIngressaAndEgress, 10000);
+        Coordinate startPatternCoordinate = MathUtils.calcNextCoord(targetFlight.getCampaignMap(), targetCoord, angleToPointBetweenIngressaAndEgress, 10000);
         return startPatternCoordinate;
     }
     
@@ -112,7 +112,7 @@ public class StrategicInterceptWaypointFactory
         Coordinate targetFlightEgress = targetFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS).getPosition().copy();
         double angleBetweenIngressaAndEgress = MathUtils.calcAngle(targetFlightIngress, targetFlightIngress);
         double distanceBetweenIngressaAndEgress = MathUtils.calcDist(targetFlightIngress, targetFlightEgress);
-        Coordinate pointBetweenIngressaAndEgress = MathUtils.calcNextCoord(targetFlightIngress, angleBetweenIngressaAndEgress, distanceBetweenIngressaAndEgress / 2);
+        Coordinate pointBetweenIngressaAndEgress = MathUtils.calcNextCoord(targetFlight.getCampaignMap(), targetFlightIngress, angleBetweenIngressaAndEgress, distanceBetweenIngressaAndEgress / 2);
         Coordinate targetCoord = targetFlight.getTargetDefinition().getPosition().copy();
         double angleToPointBetweenIngressaAndEgress = MathUtils.calcAngle(targetCoord, pointBetweenIngressaAndEgress);
         return angleToPointBetweenIngressaAndEgress;

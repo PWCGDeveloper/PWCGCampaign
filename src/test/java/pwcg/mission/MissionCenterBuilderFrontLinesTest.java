@@ -18,7 +18,6 @@ public class MissionCenterBuilderFrontLinesTest
     public MissionCenterBuilderFrontLinesTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.MOSCOW_MAP);
     }
     
     @Test
@@ -27,9 +26,9 @@ public class MissionCenterBuilderFrontLinesTest
         MapArea usableMapArea = new MoscowMapUsableArea();
 
         Coordinate missionCenterCoordinate = new Coordinate(usableMapArea.getxMin(), 0.0, usableMapArea.getzMin());
-        missionCenterCoordinate = MathUtils.calcNextCoord(missionCenterCoordinate, 45, 50000);
+        missionCenterCoordinate = MathUtils.calcNextCoord(FrontMapIdentifier.MOSCOW_MAP, missionCenterCoordinate, 45, 50000);
 
-        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(missionCenterCoordinate.copy(), 30000, usableMapArea);
+        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(FrontMapIdentifier.MOSCOW_MAP, missionCenterCoordinate.copy(), 30000, usableMapArea);
         Assertions.assertTrue (missionCenterCoordinate.equals(adjustedCoordinate));
     }
 
@@ -41,7 +40,7 @@ public class MissionCenterBuilderFrontLinesTest
 
         Coordinate missionCenterCoordinate = new Coordinate(mapArea.getxMin() + 50000, 0.0, mapArea.getzMax());
 
-        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(missionCenterCoordinate.copy(), 30000, usableMapArea);
+        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(FrontMapIdentifier.MOSCOW_MAP, missionCenterCoordinate.copy(), 30000, usableMapArea);
         Assertions.assertTrue (!missionCenterCoordinate.equals(adjustedCoordinate));
         Assertions.assertTrue (adjustedCoordinate.getXPos() - missionCenterCoordinate.getXPos() < 0.1);
         verifyInUsableMapArea(usableMapArea, adjustedCoordinate);
@@ -55,7 +54,7 @@ public class MissionCenterBuilderFrontLinesTest
 
         Coordinate missionCenterCoordinate = new Coordinate(mapArea.getxMin() + 50000, 0.0, usableMapArea.getzMin() - 5000);
 
-        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(missionCenterCoordinate.copy(), 30000, usableMapArea);
+        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(FrontMapIdentifier.MOSCOW_MAP, missionCenterCoordinate.copy(), 30000, usableMapArea);
         Assertions.assertTrue (!missionCenterCoordinate.equals(adjustedCoordinate));
         Assertions.assertTrue (Math.abs(adjustedCoordinate.getXPos() - missionCenterCoordinate.getXPos()) < 0.1);
         verifyInUsableMapArea(usableMapArea, adjustedCoordinate);
@@ -69,7 +68,7 @@ public class MissionCenterBuilderFrontLinesTest
 
         Coordinate missionCenterCoordinate = new Coordinate(mapArea.getxMin(), 0.0, usableMapArea.getzMin() + 50000);
 
-        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(missionCenterCoordinate.copy(), 30000, usableMapArea);
+        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(FrontMapIdentifier.MOSCOW_MAP, missionCenterCoordinate.copy(), 30000, usableMapArea);
         Assertions.assertTrue (!missionCenterCoordinate.equals(adjustedCoordinate));
         Assertions.assertTrue (adjustedCoordinate.getZPos() - missionCenterCoordinate.getZPos() < 0.1);
         verifyInUsableMapArea(usableMapArea, adjustedCoordinate);
@@ -83,7 +82,7 @@ public class MissionCenterBuilderFrontLinesTest
 
         Coordinate missionCenterCoordinate = new Coordinate(mapArea.getxMax(), 0.0, usableMapArea.getzMin() + 50000);
 
-        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(missionCenterCoordinate.copy(), 30000, usableMapArea);
+        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(FrontMapIdentifier.MOSCOW_MAP, missionCenterCoordinate.copy(), 30000, usableMapArea);
         Assertions.assertTrue (!missionCenterCoordinate.equals(adjustedCoordinate));
         Assertions.assertTrue (adjustedCoordinate.getZPos() - missionCenterCoordinate.getZPos() < 0.1);
         verifyInUsableMapArea(usableMapArea, adjustedCoordinate);
@@ -97,23 +96,23 @@ public class MissionCenterBuilderFrontLinesTest
 
         Coordinate missionCenterCoordinate = new Coordinate(mapArea.getxMin(), 0.0, usableMapArea.getzMin());
 
-        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(missionCenterCoordinate.copy(), 30000, usableMapArea);
+        Coordinate adjustedCoordinate = MissionCenterAdjuster.keepWithinMap(FrontMapIdentifier.MOSCOW_MAP, missionCenterCoordinate.copy(), 30000, usableMapArea);
         Assertions.assertTrue (!missionCenterCoordinate.equals(adjustedCoordinate));
         verifyInUsableMapArea(usableMapArea, adjustedCoordinate);
     }
 
     private void verifyInUsableMapArea(MapArea usableMapArea, Coordinate adjustedCoordinate) throws PWCGException
     {
-        Coordinate missionWestCoordinate = MathUtils.calcNextCoord(adjustedCoordinate, 270, 30000);
+        Coordinate missionWestCoordinate = MathUtils.calcNextCoord(FrontMapIdentifier.MOSCOW_MAP, adjustedCoordinate, 270, 30000);
         Assertions.assertTrue (missionWestCoordinate.getXPos() >= usableMapArea.getxMin());
 
-        Coordinate missionEastCoordinate = MathUtils.calcNextCoord(adjustedCoordinate, 90, 30000);
+        Coordinate missionEastCoordinate = MathUtils.calcNextCoord(FrontMapIdentifier.MOSCOW_MAP, adjustedCoordinate, 90, 30000);
         Assertions.assertTrue (missionEastCoordinate.getXPos() <= usableMapArea.getxMax());
 
-        Coordinate missionSouthCoordinate = MathUtils.calcNextCoord(adjustedCoordinate, 180, 30000);
+        Coordinate missionSouthCoordinate = MathUtils.calcNextCoord(FrontMapIdentifier.MOSCOW_MAP, adjustedCoordinate, 180, 30000);
         Assertions.assertTrue (missionSouthCoordinate.getZPos() >= usableMapArea.getzMin());
 
-        Coordinate missionNorthCoordinate = MathUtils.calcNextCoord(adjustedCoordinate, 0, 30000);
+        Coordinate missionNorthCoordinate = MathUtils.calcNextCoord(FrontMapIdentifier.MOSCOW_MAP, adjustedCoordinate, 0, 30000);
         Assertions.assertTrue (missionNorthCoordinate.getZPos() <= usableMapArea.getzMax());
     }
 }

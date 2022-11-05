@@ -6,10 +6,8 @@ import java.util.List;
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.BehindEnemyLines;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 
 /**
@@ -28,16 +26,13 @@ public class AARVictoryEvaluator
     private List <LogVictory> victoryResults = new ArrayList <LogVictory>();
     
     private Campaign campaign;
-    private PwcgMissionData pwcgMissionData;
     private AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator;
     
     public AARVictoryEvaluator(
     		Campaign campaign,
-    		PwcgMissionData pwcgMissionData,
     		AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator)
     {
         this.campaign = campaign;
-        this.pwcgMissionData = pwcgMissionData;
         this.aarDestroyedStatusEvaluator = aarDestroyedStatusEvaluator;
     }
 
@@ -60,10 +55,8 @@ public class AARVictoryEvaluator
         if (missionResultVictory.getVictim() instanceof LogPlane)
         {
             LogPlane victimPlane = (LogPlane)missionResultVictory.getVictim();
-            BehindEnemyLines pilotCapture = new BehindEnemyLines(campaign.getDate());
-            String missionMapName = pwcgMissionData.getMissionHeader().getMapName();
-            FrontMapIdentifier mapId = FrontMapIdentifier.getFrontMapIdentifierForName(missionMapName);
-            boolean inReportingRange = pilotCapture.inReportingRange(mapId, missionResultVictory.getLocation(), victimPlane.getCountry().getSide());
+            BehindEnemyLines pilotCapture = new BehindEnemyLines(campaign);
+            boolean inReportingRange = pilotCapture.inReportingRange(missionResultVictory.getLocation(), victimPlane.getCountry().getSide());
             victimPlane.setCrashedInSight(inReportingRange);
         }
     }

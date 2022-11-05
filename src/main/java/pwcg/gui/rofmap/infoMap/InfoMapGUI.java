@@ -54,12 +54,9 @@ public class InfoMapGUI extends MapGUI implements ActionListener
     private JCheckBox displayRailroadStations = null;
     private JCheckBox displayBridges = null;
 
-    public InfoMapGUI(Date mapDate) throws PWCGException  
+    public InfoMapGUI(FrontMapIdentifier mapIdentifier, Date mapDate) throws PWCGException  
     {        
-        super(mapDate);
-
-        PWCGContext.getInstance().initializeMap();
-        PWCGContext.getInstance().setCampaign(null);
+        super(mapIdentifier, mapDate);
     }
 
     public void makeGUI() 
@@ -86,7 +83,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
     {
         JPanel infoMapPanelCenter = new JPanel(new BorderLayout());
 
-        infoMapPanel = new InfoMapPanel(this);
+        infoMapPanel = new InfoMapPanel(this, mapIdentifier);
         
         mapScroll = new MapScroll(infoMapPanel);  
         infoMapPanel.setMapBackground(100);
@@ -212,14 +209,14 @@ public class InfoMapGUI extends MapGUI implements ActionListener
     private void setDateSelectionsByPossibleStartDatesAndMovingFront() throws PWCGException, PWCGException
     {
         cbDate.removeAll();        
-        CampaignTransitionDates campaignTransitionDates = new CampaignTransitionDates();
+        CampaignTransitionDates campaignTransitionDates = new CampaignTransitionDates(mapIdentifier);
         List<String> newDateStrings = campaignTransitionDates.getCampaignTransitionDates();
         
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>((String[])newDateStrings.toArray( new String[newDateStrings.size()] ));
         
         cbDate.setModel(model);
 
-        mapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
+        mapDate = PWCGContext.getInstance().getMap(mapIdentifier).getFrontDatesForMap().getEarliestMapDate();
     }
 
     private JPanel makeGroundStructureCheckBoxes() throws PWCGException
@@ -327,12 +324,12 @@ public class InfoMapGUI extends MapGUI implements ActionListener
             {
                 int indexOfMapName = MAP_DELIMITER.length();
                 String mapName = action.substring(indexOfMapName);
-                FrontMapIdentifier mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
-                PWCGContext.getInstance().changeContext(mapIdentifier);
+                mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
+                infoMapPanel.initializeMap(mapIdentifier);
                 
                 setDateSelectionsByPossibleStartDatesAndMovingFront();
                 
-                Date newMapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
+                Date newMapDate = PWCGContext.getInstance().getMap(mapIdentifier).getFrontDatesForMap().getEarliestMapDate();
                 setMapDate(newMapDate);
                 infoMapPanel.setData();
 

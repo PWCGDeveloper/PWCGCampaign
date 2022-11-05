@@ -3,6 +3,7 @@ package pwcg.mission.flight.offensive;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
@@ -11,6 +12,7 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
@@ -21,11 +23,15 @@ import pwcg.mission.mcu.McuWaypoint;
 public class OffensiveWaypointsAirfieldFactory
 {   
     private IFlight flight;
+    private Mission mission;
+    private Campaign campaign;
     private MissionPointRouteSet missionPointSet = new MissionPointRouteSet();
     
     public OffensiveWaypointsAirfieldFactory(IFlight flight) throws PWCGException
     {
         this.flight = flight;
+        this.mission = flight.getMission();
+        this.campaign = flight.getCampaign();
     }
 
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
@@ -49,7 +55,7 @@ public class OffensiveWaypointsAirfieldFactory
 	    sortedFixedPositions.sortPositionsByDirecton(allFixedPositionsInRadius);
 	    IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
 	    List <IFixedPosition> sortedPositions = sortedFixedPositions.getSortedPositionsWithMaxDistanceTTravelled(
-	            flight.getCampaign(), 
+	            campaign, 
 	            flight.getTargetDefinition().getPosition(), productSpecific.getSmallMissionRadius());
 	    
 	    for (IFixedPosition transportBlock : sortedPositions)
@@ -63,13 +69,13 @@ public class OffensiveWaypointsAirfieldFactory
 
     private List<IFixedPosition> findEnemyAirieldsForOffensivePatrol() throws PWCGException
     {
-        double missionTargetRadius = flight.getMission().getMissionBorders().getAreaRadius();
+        double missionTargetRadius = mission.getMissionBorders().getAreaRadius();
         Side enemySide = flight.getFlightInformation().getCountry().getSide().getOppositeSide();
         List <Airfield> enemyAirfields = new ArrayList<>();
         while (!stopLooking(enemyAirfields, missionTargetRadius))
         {
-            enemyAirfields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().
-                    getAirfieldsWithinRadiusBySide(flight.getMission().getMissionBorders().getCenter(), flight.getCampaign().getDate(), missionTargetRadius, enemySide);
+            enemyAirfields =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager().getAirfieldFinder().
+                    getAirfieldsWithinRadiusBySide(campaign.getCampaignMap(), mission.getMissionBorders().getCenter(), campaign.getDate(), missionTargetRadius, enemySide);
             missionTargetRadius += 10000.0;
         }
 

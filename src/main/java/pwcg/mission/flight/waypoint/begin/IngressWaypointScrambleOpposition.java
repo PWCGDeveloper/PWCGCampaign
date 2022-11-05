@@ -26,7 +26,7 @@ public class IngressWaypointScrambleOpposition implements IIngressWaypoint
 
     public McuWaypoint createIngressWaypoint() throws PWCGException  
     {
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         FrontLinePoint nearbyFrontPoint = frontLinesForMap.findCloseFrontPositionForSide(flight.getFlightHomePosition(), 20000, flight.getSquadron().getCountry().getSide());
         Coordinate nearbyFrontPosition = nearbyFrontPoint.getPosition();
                 
@@ -34,7 +34,7 @@ public class IngressWaypointScrambleOpposition implements IIngressWaypoint
         int attackIngressDistance = productSpecificConfiguration.getGroundAttackIngressDistance();
         
         double ingressAngle = MathUtils.calcAngle(nearbyFrontPosition, flight.getTargetDefinition().getPosition());
-        Coordinate ingressCoords = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), ingressAngle, attackIngressDistance);
+        Coordinate ingressCoords = MathUtils.calcNextCoord(flight.getCampaignMap(), flight.getTargetDefinition().getPosition(), ingressAngle, attackIngressDistance);
         
         Coordinate coord = new Coordinate();
         coord.setXPos(ingressCoords.getXPos());

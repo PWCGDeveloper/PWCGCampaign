@@ -14,15 +14,15 @@ import pwcg.core.utils.MathUtils;
 public class CountryDesignator
 {
     
-    public static ICountry determineCountry(Coordinate objectCoordinate, Date date) throws PWCGException
+    public static ICountry determineCountry(FrontMapIdentifier mapIdentifier, Coordinate objectCoordinate, Date date) throws PWCGException
     {
         ICountry country = CountryFactory.makeNeutralCountry();
         
-        FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
+        FrontLinesForMap frontLines = PWCGContext.getInstance().getMap(mapIdentifier).getFrontLinesForMap(date);
         
         Coordinate closestAllied = frontLines.findClosestFrontCoordinateForSide(objectCoordinate, Side.ALLIED);
         Coordinate closestAxis = frontLines.findClosestFrontCoordinateForSide(objectCoordinate, Side.AXIS);
-
+        
         double distanceToAllied = MathUtils.calcDist(objectCoordinate, closestAllied);
         double distanceToAxis = MathUtils.calcDist(objectCoordinate, closestAxis);
         
@@ -33,11 +33,11 @@ public class CountryDesignator
         {
             if (distanceToAxis < distanceToAllied)
             {
-                country = CountryFactory.makeMapReferenceCountry(Side.AXIS);
+                country = CountryFactory.makeMapReferenceCountry(mapIdentifier, Side.AXIS);
             }
             else
             {
-                country = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
+                country = CountryFactory.makeMapReferenceCountry(mapIdentifier, Side.ALLIED);
             }
         }
 

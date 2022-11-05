@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
@@ -88,10 +90,11 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
 
     public void addAirfieldObjects(Mission mission, ICountry airfieldCountry) throws PWCGException
     {
-        if (!(determineCountryOnDate(mission.getCampaign().getDate()).isNeutral()))
+        Campaign campaign = mission.getCampaign();
+        if (!(determineCountryOnDate(campaign.getCampaignMap(), campaign.getDate()).isNeutral()))
         {
             AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(mission, this, airfieldCountry);
-            airfieldObjects = airfieldObjectPlacer.createAirfieldObjects();
+            airfieldObjects = airfieldObjectPlacer.createAirfieldObjects(mission.getCampaignMap());
         }
     }
 
@@ -265,21 +268,23 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
 
     public boolean isNearRunwayOrTaxiway(Mission mission, Coordinate pos) throws PWCGException
     {
+        FrontMapIdentifier mapIdentifier = mission.getCampaignMap();
+        
         if (runways.size() == 0)
         {
             double runwayOrientation = getTakeoffLocation(mission).getOrientation().getyOri();
             Coordinate startOfRunway = getTakeoffLocation(mission).getPosition();
-            Coordinate endOfRunway = MathUtils.calcNextCoord(getTakeoffLocation(mission).getPosition(), runwayOrientation, 3000.0);
+            Coordinate endOfRunway = MathUtils.calcNextCoord(mapIdentifier, getTakeoffLocation(mission).getPosition(), runwayOrientation, 3000.0);
 
-            return MathUtils.closestDistFromLine(startOfRunway, endOfRunway, pos) < RUNWAY_CLEARANCE;
+            return MathUtils.closestDistFromLine(mapIdentifier, startOfRunway, endOfRunway, pos) < RUNWAY_CLEARANCE;
         }
         else
         {
             for (Runway r : runways)
             {
-                Coordinate extendedRunwayStart = MathUtils.calcNextCoord(r.getStartPos(), MathUtils.adjustAngle(r.getHeading(), 180), 300);
-                Coordinate extendedRunwayEnd = MathUtils.calcNextCoord(r.getEndPos(), r.getHeading(), 300);
-                if (MathUtils.closestDistFromLine(extendedRunwayStart, extendedRunwayEnd, pos) < RUNWAY_CLEARANCE)
+                Coordinate extendedRunwayStart = MathUtils.calcNextCoord(mapIdentifier, r.getStartPos(), MathUtils.adjustAngle(r.getHeading(), 180), 300);
+                Coordinate extendedRunwayEnd = MathUtils.calcNextCoord(mapIdentifier, r.getEndPos(), r.getHeading(), 300);
+                if (MathUtils.closestDistFromLine(mapIdentifier, extendedRunwayStart, extendedRunwayEnd, pos) < RUNWAY_CLEARANCE)
                 {
                     return true;
                 }
@@ -292,14 +297,14 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
                 Coordinate prevPoint = r.getParkingLocation().getPosition();
                 for (Coordinate p : r.getTaxiToStart())
                 {
-                    if (MathUtils.closestDistFromLine(prevPoint, p, pos) < TAXI_CLEARANCE)
+                    if (MathUtils.closestDistFromLine(mapIdentifier, prevPoint, p, pos) < TAXI_CLEARANCE)
                     {
                         return true;
                     }
                     prevPoint = p;
                 }
                 
-                if (MathUtils.closestDistFromLine(prevPoint, r.getStartPos(), pos) < TAXI_CLEARANCE)
+                if (MathUtils.closestDistFromLine(mapIdentifier, prevPoint, r.getStartPos(), pos) < TAXI_CLEARANCE)
                 {
                     return true;
                 }
@@ -307,21 +312,21 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
                 prevPoint = r.getEndPos();
                 for (Coordinate p : r.getTaxiFromEnd())
                 {
-                    if (MathUtils.closestDistFromLine(prevPoint, p, pos) < TAXI_CLEARANCE)
+                    if (MathUtils.closestDistFromLine(mapIdentifier, prevPoint, p, pos) < TAXI_CLEARANCE)
                     {
                         return true;
                     }
                     prevPoint = p;
                 }
                 
-                if (MathUtils.closestDistFromLine(prevPoint, r.getParkingLocation().getPosition(), pos) < TAXI_CLEARANCE)
+                if (MathUtils.closestDistFromLine(mapIdentifier, prevPoint, r.getParkingLocation().getPosition(), pos) < TAXI_CLEARANCE)
                 {
                     return true;
                 }
 
                 double parkingOrientation = MathUtils.adjustAngle(r.getParkingLocation().getOrientation().getyOri(), 90);
-                Coordinate parkingEnd = MathUtils.calcNextCoord(r.getParkingLocation().getPosition(), parkingOrientation, 300);
-                if (MathUtils.closestDistFromLine(r.getParkingLocation().getPosition(), parkingEnd, pos) < RUNWAY_CLEARANCE)
+                Coordinate parkingEnd = MathUtils.calcNextCoord(mapIdentifier, r.getParkingLocation().getPosition(), parkingOrientation, 300);
+                if (MathUtils.closestDistFromLine(mapIdentifier, r.getParkingLocation().getPosition(), parkingEnd, pos) < RUNWAY_CLEARANCE)
                 {
                     return true;
                 }
@@ -332,23 +337,23 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
     }
 
     @Override
-    public ICountry getCountry(Date date) throws PWCGException {
+    public ICountry determineCountryOnDate(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(this, date);
+        Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(mapIdentifier, this, date);
 
         if (squadronForField != null)
         {
             return squadronForField.getCountry();
         }
 
-        return super.getCountry(date);
+        return super.determineCountryOnDate(mapIdentifier, date);
     }
 
-    public List<Coordinate> getBoundary() throws PWCGException
+    public List<Coordinate> getBoundary(FrontMapIdentifier mapIdentifier) throws PWCGException
     {
         List<Coordinate> points = new ArrayList<>();
 
-        CoordinateBox box = CoordinateBox.coordinateBoxFromCenter(getPosition(), 500);
+        CoordinateBox box = CoordinateBox.coordinateBoxFromCenter(mapIdentifier, getPosition(), 500);
         points.add(box.getNE());
         points.add(box.getNW());
         points.add(box.getSE());
@@ -375,7 +380,7 @@ public class Airfield extends ScriptedFixedPosition implements Cloneable
             points.add(runway.getEndPos());
         }
 
-        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager = PWCGContext.getInstance().getMap(mapIdentifier).getGroupManager();
         List<Block>nearbyBlocks = groupManager.getBlockFinder().getBlocksWithinRadius(getPosition().copy(), 3000.0);
         for (Block block : nearbyBlocks)
         {

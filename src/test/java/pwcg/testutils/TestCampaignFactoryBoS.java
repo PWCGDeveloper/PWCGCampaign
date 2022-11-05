@@ -13,7 +13,6 @@ public class TestCampaignFactoryBoS extends TestCampaignFactoryBase implements I
     {
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
         Campaign campaign = generator.generate();          
-        PWCGContext.getInstance().setCampaign(campaign);
         return campaign;
     }
 

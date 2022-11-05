@@ -214,8 +214,6 @@ public class AARClaimPanel extends JPanel implements ActionListener
 		
 		try
 		{
-		    setMapForDebrief();
-		    
 			if (victoriesClaimedPanel != null)
 			{
 				JPanel victoriesClaimedPanel = makeClaimsPanel();
@@ -231,10 +229,5 @@ public class AARClaimPanel extends JPanel implements ActionListener
 		{
 			PWCGLogger.logException(e);
 		}
-	}
-
-	private void setMapForDebrief() throws PWCGException
-	{	    
-        PWCGContext.getInstance().changeContext(AARCoordinator.getInstance().getAarContext().getPreliminaryData().getPwcgMissionData().getMapId());
 	}
 }

@@ -18,7 +18,8 @@ public class ApproachWaypointGenerator
     {        
         PWCGLocation landingLocation = landingAirfield.getLandingLocation(flight.getMission());
         int LandingApproachWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.LandingApproachWaypointDistanceKey);
-        Coordinate approachCoords = MathUtils.calcNextCoord(landingLocation.getPosition(), landingLocation.getOrientation().getyOri() - 180, LandingApproachWaypointDistance);
+        Coordinate approachCoords = MathUtils.calcNextCoord(
+                flight.getCampaign().getCampaignMap(), landingLocation.getPosition(), landingLocation.getOrientation().getyOri() - 180, LandingApproachWaypointDistance);
         
         int ApproachWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.ApproachWaypointAltitudeKey);
         approachCoords.setYPos(landingAirfield.getPosition().getYPos() + ApproachWaypointAltitude);

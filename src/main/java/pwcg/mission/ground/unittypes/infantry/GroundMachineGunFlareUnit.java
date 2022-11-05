@@ -49,18 +49,18 @@ public class GroundMachineGunFlareUnit extends GroundUnit
         int numMachineGun = calcNumUnits();
         
         double initialPlacementAngle = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 180.0);      
-        Coordinate machineGunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), initialPlacementAngle, 50.0);
+        Coordinate machineGunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), pwcgGroundUnitInformation.getPosition(), initialPlacementAngle, 50.0);
 
         double startLocationOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 270);             
         double machingGunSpacing = 2000.0;
-        machineGunCoords = MathUtils.calcNextCoord(machineGunCoords, startLocationOrientation, ((numMachineGun * machingGunSpacing) / 2));       
+        machineGunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), machineGunCoords, startLocationOrientation, ((numMachineGun * machingGunSpacing) / 2));       
         
         double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 90.0);        
 
         for (int i = 0; i < numMachineGun; ++i)
         {   
             spawnerLocations.add(machineGunCoords);
-            machineGunCoords = MathUtils.calcNextCoord(machineGunCoords, placementOrientation, machingGunSpacing);
+            machineGunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), machineGunCoords, placementOrientation, machingGunSpacing);
         }       
         return spawnerLocations;       
     }   

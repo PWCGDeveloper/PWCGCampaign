@@ -16,7 +16,6 @@ import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignInitialWriter;
 import pwcg.campaign.CampaignMode;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -182,7 +181,6 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         Campaign campaign = makeCampaign();
          
         campaign.open(campaignGeneratorDO.getCampaignName());                    
-        PWCGContext.getInstance().setCampaign(campaign);
 
         SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
         for (SquadronMember player : players.getSquadronMemberList())

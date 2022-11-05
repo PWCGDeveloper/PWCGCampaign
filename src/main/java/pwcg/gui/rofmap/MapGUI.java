@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Point;
 import java.util.Date;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -15,10 +16,11 @@ public abstract class MapGUI extends ImageResizingPanel
 {
 	private static final long serialVersionUID = 1L;
 
+    protected FrontMapIdentifier mapIdentifier;
 	protected MapScroll mapScroll = null;
 	protected Date mapDate = null;
 
-	public MapGUI(Date mapDate) throws PWCGException
+	public MapGUI(FrontMapIdentifier mapIdentifier, Date mapDate) throws PWCGException
 	{
         super();
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.MapScreens);
@@ -26,6 +28,7 @@ public abstract class MapGUI extends ImageResizingPanel
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
+        this.mapIdentifier = mapIdentifier;
         setMapDate(mapDate);
 	}
 	
@@ -41,7 +44,7 @@ public abstract class MapGUI extends ImageResizingPanel
 	{
 		if (initialPosition == null)
 		{
-            Coordinate centerMapCoordinate = PWCGContext.getInstance().getCurrentMap().getMapCenter();
+            Coordinate centerMapCoordinate = PWCGContext.getInstance().getMap(mapIdentifier).getMapCenter();
 		    initialPosition = mapScroll.getMapPanel().coordinateToPoint(centerMapCoordinate);
 		}
 		else

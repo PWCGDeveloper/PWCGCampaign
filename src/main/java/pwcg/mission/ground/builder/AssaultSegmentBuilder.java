@@ -68,7 +68,7 @@ public class AssaultSegmentBuilder
 
     private void assaultingInfantry() throws PWCGException
     {
-        Coordinate infantryAssaultStartPosition = MathUtils.calcNextCoord(
+        Coordinate infantryAssaultStartPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS);  
         
@@ -79,7 +79,7 @@ public class AssaultSegmentBuilder
 
     private void assaultingMachineGun() throws PWCGException
     { 
-        Coordinate machineGunStartPosition = MathUtils.calcNextCoord(
+        Coordinate machineGunStartPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 20.0);  
 
@@ -90,7 +90,7 @@ public class AssaultSegmentBuilder
 
     private void assaultingMachineGunFlares() throws PWCGException
     { 
-        Coordinate machineGunStartPosition = MathUtils.calcNextCoord(
+        Coordinate machineGunStartPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 50.0);  
 
@@ -105,7 +105,7 @@ public class AssaultSegmentBuilder
 
     private void assaultingTanks() throws PWCGException
     {         
-        Coordinate tankAssaultStartPosition = MathUtils.calcNextCoord(
+        Coordinate tankAssaultStartPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 1000.0);  
         
@@ -116,7 +116,7 @@ public class AssaultSegmentBuilder
 
     private void assaultingArtillery() throws PWCGException
     { 
-        Coordinate artilleryAssaultPosition = MathUtils.calcNextCoord(
+        Coordinate artilleryAssaultPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 3500.0);          
 
@@ -127,7 +127,7 @@ public class AssaultSegmentBuilder
 
     private void assaultingAAAMachineGun() throws PWCGException
     { 
-        Coordinate aaaMgAssaultPosition = MathUtils.calcNextCoord(
+        Coordinate aaaMgAssaultPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 300.0);     
 
@@ -138,7 +138,7 @@ public class AssaultSegmentBuilder
 
     private void assaultingAAAArty() throws PWCGException
     { 
-        Coordinate aaaArtyAssaultPosition = MathUtils.calcNextCoord(
+        Coordinate aaaArtyAssaultPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 1500.0);            
 
@@ -188,7 +188,7 @@ public class AssaultSegmentBuilder
 
     private void defendingMachineGunFlares() throws PWCGException
     { 
-        Coordinate machineGunStartPosition = MathUtils.calcNextCoord(
+        Coordinate machineGunStartPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 50.0);  
 
@@ -216,7 +216,7 @@ public class AssaultSegmentBuilder
 
     private void defendingTanks() throws PWCGException
     {         
-        Coordinate tankDefenseStartPosition = MathUtils.calcNextCoord(
+        Coordinate tankDefenseStartPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getAssaultPosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 1000.0);  
         
@@ -227,7 +227,7 @@ public class AssaultSegmentBuilder
 
     private void defendingATGuns() throws PWCGException
     { 
-        Coordinate antiTankDefensePosition = MathUtils.calcNextCoord(
+        Coordinate antiTankDefensePosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 150.0);     
 
@@ -238,7 +238,7 @@ public class AssaultSegmentBuilder
 
     private void defendingArtillery() throws PWCGException
     { 
-        Coordinate artilleryDefensePosition = MathUtils.calcNextCoord(
+        Coordinate artilleryDefensePosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 3000.0);     
 
@@ -249,7 +249,7 @@ public class AssaultSegmentBuilder
     
     private void defendingAAAMachineGun() throws PWCGException
     {
-        Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(
+        Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 150.0);     
 
@@ -260,7 +260,7 @@ public class AssaultSegmentBuilder
     
     private void defendingAAAArty() throws PWCGException
     {
-        Coordinate aaaArtilleryDefensePosition = MathUtils.calcNextCoord(
+        Coordinate aaaArtilleryDefensePosition = MathUtils.calcNextCoord(mission.getCampaignMap(), 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 1000.0);     
 

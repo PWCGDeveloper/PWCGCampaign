@@ -42,7 +42,7 @@ public class TargetDefinitionStructureFinder
     {
         for (ScriptedFixedPosition structure : flightInformation.getMission().getMissionBlocks().getStructuresWithinMissionBorders())
         {
-            ICountry structureCountry = structure.getCountry(flightInformation.getCampaign().getDate());
+            ICountry structureCountry = structure.getCountry(flightInformation.getCampaignMap(), flightInformation.getCampaign().getDate());
             if (structureCountry.getSide() == flightInformation.getCountry().getSide().getOppositeSide())
             {
                 targetStructures.put(structure.getIndex(), structure);
@@ -52,10 +52,10 @@ public class TargetDefinitionStructureFinder
 
     private void addTargetStructuresFromNearbyAirfields() throws PWCGException
     {
-        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getMap(flightInformation.getCampaignMap()).getGroupManager();
         for (Block structure : groupData.getAirfieldBlocks())
         {
-            ICountry structureCountry = structure.getCountry(flightInformation.getCampaign().getDate());
+            ICountry structureCountry = structure.getCountry(flightInformation.getCampaignMap(), flightInformation.getCampaign().getDate());
             if (structureCountry.getSide() == flightInformation.getCountry().getSide().getOppositeSide())
             {
                 if (isBlockNearMissionCenterAirfield(structure))
@@ -68,10 +68,10 @@ public class TargetDefinitionStructureFinder
 
     private void addTargetStructuresFromNearbyCities() throws PWCGException
     {
-        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getMap(flightInformation.getCampaignMap()).getGroupManager();
         for (Block structure : groupData.getStandaloneBlocks())
         {
-            ICountry structureCountry = structure.getCountry(flightInformation.getCampaign().getDate());
+            ICountry structureCountry = structure.getCountry(flightInformation.getCampaignMap(), flightInformation.getCampaign().getDate());
             if (structureCountry.getSide() == flightInformation.getCountry().getSide().getOppositeSide())
             {
                 if (isBlockNearCityInMissionArea(structure))
@@ -87,7 +87,7 @@ public class TargetDefinitionStructureFinder
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         Coordinate missionCenter =  flightInformation.getMission().getMissionBorders().getCenter();
         int searchRadius = productSpecific.getMediumMissionRadius();
-        List<Airfield> airfieldsCloseToMissionCenter = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getWithinRadius(missionCenter, searchRadius);
+        List<Airfield> airfieldsCloseToMissionCenter = PWCGContext.getInstance().getMap(flightInformation.getCampaignMap()).getAirfieldManager().getAirfieldFinder().getWithinRadius(missionCenter, searchRadius);
         for (Airfield airfield : airfieldsCloseToMissionCenter)
         {
             double distanceFromAirfield = MathUtils.calcDist(structure.getPosition(), airfield.getPosition());

@@ -63,10 +63,10 @@ public class MissionTrainBuilder extends MissionUnitBuilder
         ArrayList<Block> stationsForSide = new ArrayList<Block>();
         Campaign campaign = mission.getCampaign();
  
-        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
         for (Block station : groupData.getRailroadList())
         {
-            if (trainSide == station.determineCountryOnDate(campaign.getDate()).getSide())
+            if (trainSide == station.determineCountryOnDate(campaign.getCampaignMap(), campaign.getDate()).getSide())
             {
                 stationsForSide.add(station);
             }
@@ -93,7 +93,7 @@ public class MissionTrainBuilder extends MissionUnitBuilder
 
     private GroundUnitCollection makeTrain(Side trainSide, Block station) throws PWCGException
     {
-        ICountry trainCountry = CountryFactory.makeMapReferenceCountry(trainSide);
+        ICountry trainCountry = CountryFactory.makeMapReferenceCountry(campaign.getCampaignMap(), trainSide);
         TrainUnitBuilder trainfactory =  new TrainUnitBuilder(campaign, station, trainCountry);
         GroundUnitCollection trainUnit = trainfactory.createTrainUnit();
         return trainUnit;

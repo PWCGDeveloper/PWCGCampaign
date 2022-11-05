@@ -38,7 +38,6 @@ public class FlightCrewBuilderCoopTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
-        PWCGContext.getInstance().setCampaign(coopCampaign);
     }
 
     @Test

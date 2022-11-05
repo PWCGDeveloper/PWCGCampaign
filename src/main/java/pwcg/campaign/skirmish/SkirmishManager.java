@@ -53,7 +53,7 @@ public class SkirmishManager
         List<Skirmish> skirmishesForCampaign =  getSetPieceSkirmishesForDate(campaign);
         if (skirmishesForCampaign.isEmpty())
         {
-            skirmishesForCampaign = getDynamicSkirmishesForDate(campaign, participatingPlayers);
+            skirmishesForCampaign = getCargoRouteSkirmishesForDate(campaign, participatingPlayers);
         }
         return skirmishesForCampaign;
     }
@@ -72,10 +72,10 @@ public class SkirmishManager
         return skirmishesForCampaign;
     }
 
-    private List<Skirmish> getDynamicSkirmishesForDate(Campaign campaign, MissionHumanParticipants participatingPlayers) throws PWCGException
+    private List<Skirmish> getCargoRouteSkirmishesForDate(Campaign campaign, MissionHumanParticipants participatingPlayers) throws PWCGException
     {
-        DynamicSkirmishBuilder dynamicSkirmishBuilder = new DynamicSkirmishBuilder(campaign, participatingPlayers);
-        List<Skirmish> skirmishesForCampaign = dynamicSkirmishBuilder.getSkirmishesForDate();
+        CargoRouteSkirmishBuilder cargoRouteSkirmishBuilder = new CargoRouteSkirmishBuilder(campaign, participatingPlayers);
+        List<Skirmish> skirmishesForCampaign = cargoRouteSkirmishBuilder.getSkirmishesForDate();
         return skirmishesForCampaign;
     }
 

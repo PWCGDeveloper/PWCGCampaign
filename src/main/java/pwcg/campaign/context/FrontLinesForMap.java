@@ -58,13 +58,6 @@ public class FrontLinesForMap
         }
     }
 
-    public double getOrientation(int index, Side side, Date date) throws PWCGException 
-    {
-        List<FrontLinePoint>frontLines = findAllFrontLinesForSide(side);
-        
-        return frontLines.get(index).getOrientation(date);
-    }
-
     public List<FrontLinePoint> getFrontLines(Side side) throws PWCGException 
     {
         List<FrontLinePoint>frontLines = findAllFrontLinesForSide(side);
@@ -79,7 +72,8 @@ public class FrontLinesForMap
         for (PWCGLocation frontLineLocation : frontLineLocations.getLocations())
         {
             FrontLinePoint frontLinePoint = new FrontLinePoint();
-            frontLinePoint.setLocation(frontLineLocation);
+            FrontMapIdentifier mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
+            frontLinePoint.setLocation(mapIdentifier, frontLineLocation);
             
             List<FrontLinePoint>frontLines = findAllFrontLinesForSide(frontLinePoint.getCountry().getSide());
             frontLines.add(frontLinePoint);
@@ -172,13 +166,13 @@ public class FrontLinesForMap
         return frontLines;
     }
 
-    public Coordinate findPositionBehindLinesForSide (Coordinate referencePoint, double radius, int minDistance, int maxDistance, Side side) throws PWCGException 
+    public Coordinate findPositionBehindLinesForSide (FrontMapIdentifier mapIdentifier, Coordinate referencePoint, double radius, int minDistance, int maxDistance, Side side) throws PWCGException 
     {
         FrontLinePoint targetCountryFrontPoint = findCloseFrontPositionForSide(referencePoint, radius, side);
         FrontLinePoint oppositeCountryFrontPoint = findCloseFrontPositionForSide(targetCountryFrontPoint.getPosition(), 1000, side.getOppositeSide());
         double angleBehindEnemyLines = MathUtils.calcAngle(oppositeCountryFrontPoint.getPosition(), targetCountryFrontPoint.getPosition());
         double distance = minDistance + RandomNumberGenerator.getRandom(maxDistance - minDistance);
-        Coordinate behindLinesPosition = MathUtils.calcNextCoord(targetCountryFrontPoint.getPosition(), angleBehindEnemyLines, distance);
+        Coordinate behindLinesPosition = MathUtils.calcNextCoord(mapIdentifier, targetCountryFrontPoint.getPosition(), angleBehindEnemyLines, distance);
         return behindLinesPosition;
     }
 

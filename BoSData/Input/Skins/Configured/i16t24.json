@@ -4,7 +4,7 @@
         "i16t24_default": {
             "skinName": "i16t24",
             "planeType": "i16t24",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Russia",
@@ -17,7 +17,7 @@
         "i16t24_blank_01": {
             "skinName": "i16t24_blank_01",
             "planeType": "i16t24",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19430401",
             "squadId": -2,
             "country": "Russia",
@@ -30,7 +30,7 @@
         "i16t24_blank_02": {
             "skinName": "i16t24_blank_02",
             "planeType": "i16t24",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Russia",
@@ -56,7 +56,7 @@
 		"i16t24_skin_01": {
 			"skinName": "i16t24_skin_01",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -67,7 +67,7 @@
 		"i16t24_skin_02": {
 			"skinName": "i16t24_skin_02",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -78,7 +78,7 @@
 		"i16t24_skin_03": {
 			"skinName": "i16t24_skin_03",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -89,7 +89,7 @@
 		"i16t24_skin_04": {
 			"skinName": "i16t24_skin_04",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -100,7 +100,7 @@
 		"i16t24_skin_05": {
 			"skinName": "i16t24_skin_05",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -111,7 +111,7 @@
 		"i16t24_skin_06": {
 			"skinName": "i16t24_skin_06",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -122,7 +122,7 @@
 		"i16t24_skin_07": {
 			"skinName": "i16t24_skin_07",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -133,7 +133,7 @@
 		"OF_IAP34_20": {
 			"skinName": "OF_IAP34_20",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111034,
 			"country": "Russia",
@@ -144,7 +144,7 @@
 		"OF_IAP34_23": {
 			"skinName": "OF_IAP34_23",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111034,
 			"country": "Russia",
@@ -155,7 +155,7 @@
 		"OF_IAP34_27": {
 			"skinName": "OF_IAP34_27",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111034,
 			"country": "Russia",
@@ -166,7 +166,7 @@
 		"OF_IAP34_31": {
 			"skinName": "OF_IAP34_31",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111034,
 			"country": "Russia",
@@ -177,7 +177,7 @@
 		"OF_IAP34_36": {
 			"skinName": "OF_IAP34_36",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111034,
 			"country": "Russia",
@@ -188,7 +188,7 @@
 		"OF_IAP495_1": {
 			"skinName": "OF_IAP495_1",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",
@@ -199,7 +199,7 @@
 		"OF_IAP495_6": {
 			"skinName": "OF_IAP495_6",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",
@@ -211,7 +211,7 @@
 		"OF_IAP495_11": {
 			"skinName": "OF_IAP495_11",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",
@@ -223,7 +223,7 @@
 		"OF_IAP495_13": {
 			"skinName": "OF_IAP495_13",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",
@@ -235,7 +235,7 @@
 		"OF_IAP495_16": {
 			"skinName": "OF_IAP495_16",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",
@@ -246,7 +246,7 @@
 		"I16Type redflags": {
 			"skinName": "I16Type redflags",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",
@@ -257,7 +257,7 @@
 		"I16Type24_3color": {
 			"skinName": "I16Type24_3color",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",
@@ -268,7 +268,7 @@
 		"I16Type24_FOR COMMUNISM": {
 			"skinName": "I16Type24_FOR COMMUNISM",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",
@@ -279,7 +279,7 @@
 		"I16Type24_NO 536": {
 			"skinName": "I16Type24_NO 536",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",
@@ -290,7 +290,7 @@
 		"I16Type24_NO11": {
 			"skinName": "I16Type24_NO11",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",
@@ -301,7 +301,7 @@
 		"I16Typewinter34": {
 			"skinName": "I16Typewinter34",
 			"planeType": "i16t24",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 10111495,
 			"country": "Russia",

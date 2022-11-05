@@ -31,9 +31,8 @@ public class MissionCenterBuilderSkirmishTest
     public void testNoSkirmish() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-        PWCGContext.getInstance().setCampaign(campaign);
 
-        List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        List<Skirmish> skirmishes = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         Assertions.assertTrue (skirmishes.size() == 0);
     }
 
@@ -41,7 +40,6 @@ public class MissionCenterBuilderSkirmishTest
     public void singlePlayerMissionBoxArnhemEarlyTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
-        PWCGContext.getInstance().setCampaign(campaign);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
 
         createMissionAtSkirmish(campaign);
@@ -51,7 +49,6 @@ public class MissionCenterBuilderSkirmishTest
     public void singlePlayerMissionBoxArnhemLateTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
-        PWCGContext.getInstance().setCampaign(campaign);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440928"));
 
         createMissionAtSkirmish(campaign);
@@ -61,7 +58,7 @@ public class MissionCenterBuilderSkirmishTest
     {
         MissionHumanParticipants participatingPlayers = makeParticipatingPlayers(campaign);
                 
-        List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        List<Skirmish> skirmishes = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         Assertions.assertTrue (skirmishes.size() > 0);
         
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();

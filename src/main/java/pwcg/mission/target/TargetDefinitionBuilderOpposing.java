@@ -47,7 +47,7 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
     private void buildOpposingTargetDefinition() throws PWCGException
     {
         Coordinate targetLocation = createTargetLocation();
-        ICountry targetCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(playerFlightInformation.getSquadron().determineEnemySide());
+        ICountry targetCountry = PWCGContext.getInstance().getMap(playerFlightInformation.getCampaignMap()).getGroundCountryForMapBySide(playerFlightInformation.getSquadron().determineEnemySide());
         targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocation, targetCountry, "Opposing Air");
         targetDefinition.setOpposingFlight(opposingFlight);
     }

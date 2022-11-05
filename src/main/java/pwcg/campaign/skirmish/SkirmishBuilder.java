@@ -28,7 +28,7 @@ public class SkirmishBuilder
 
     public Skirmish chooseBestSkirmish() throws PWCGException
     {
-        SkirmishManager skirmishManager = PWCGContext.getInstance().getCurrentMap().getSkirmishManager();
+        SkirmishManager skirmishManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager();
         List<Skirmish> skirmishes = skirmishManager.getSkirmishesForDate(campaign, participatingPlayers);
         if (skirmishes.isEmpty())
         {

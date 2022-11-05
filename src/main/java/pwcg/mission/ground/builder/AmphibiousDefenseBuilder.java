@@ -69,12 +69,12 @@ public class AmphibiousDefenseBuilder
     private void buildPositionAndOrientation() throws PWCGException
     {
         amphibiousPositionBuilder = new AmphibiousPositionBuilder(landingCraft);
-        amphibiousPositionBuilder.buildPositionAndOrientation();
+        amphibiousPositionBuilder.buildPositionAndOrientation(mission);
     }
 
     private void defendingMachineGun() throws PWCGException
     { 
-        Coordinate machineGunStartPosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 10);  
+        Coordinate machineGunStartPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 10);  
 
         GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(machineGunStartPosition, "Machine Gun", TargetType.TARGET_INFANTRY);
         AssaultGroundUnitFactory assaultFactory =  new AssaultGroundUnitFactory();
@@ -84,9 +84,9 @@ public class AmphibiousDefenseBuilder
 
     private void defendingATGuns() throws PWCGException
     { 
-        Coordinate antiTankDefensePosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 20);
+        Coordinate antiTankDefensePosition = MathUtils.calcNextCoord(mission.getCampaignMap(), amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 20);
         double toTheRight = MathUtils.adjustAngle( amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 90);
-        antiTankDefensePosition = MathUtils.calcNextCoord(antiTankDefensePosition.copy(), toTheRight, 75);  
+        antiTankDefensePosition = MathUtils.calcNextCoord(mission.getCampaignMap(), antiTankDefensePosition.copy(), toTheRight, 75);  
 
         GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(antiTankDefensePosition, "Anti Tank Gun", TargetType.TARGET_INFANTRY);
         IGroundUnit defenseAntiTankUnit = assaultFactory.createAntiTankGunUnit (groundUnitInformation);
@@ -95,7 +95,7 @@ public class AmphibiousDefenseBuilder
 
     private void defendingArtillery() throws PWCGException
     { 
-        Coordinate artilleryDefensePosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 1000);  
+        Coordinate artilleryDefensePosition = MathUtils.calcNextCoord(mission.getCampaignMap(), amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 1000);  
 
         GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(artilleryDefensePosition, "Artillery", TargetType.TARGET_ARTILLERY);
         IGroundUnit defenseArtilleryUnit = assaultFactory.createAssaultArtilleryUnit (groundUnitInformation);
@@ -104,9 +104,9 @@ public class AmphibiousDefenseBuilder
     
     private void defendingAAAMachineGun() throws PWCGException
     {
-        Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 30);  
+        Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(mission.getCampaignMap(), amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 30);  
         double toTheRight = MathUtils.adjustAngle( amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 90);
-        aaaMgDefensePosition = MathUtils.calcNextCoord(aaaMgDefensePosition.copy(), toTheRight, 50);  
+        aaaMgDefensePosition = MathUtils.calcNextCoord(mission.getCampaignMap(), aaaMgDefensePosition.copy(), toTheRight, 50);  
 
         GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(aaaMgDefensePosition, "Machine Gun AA", TargetType.TARGET_INFANTRY);
         IGroundUnit defenseAAMachineGunUnit = assaultFactory.createAAMachineGunUnitUnit(groundUnitInformation);

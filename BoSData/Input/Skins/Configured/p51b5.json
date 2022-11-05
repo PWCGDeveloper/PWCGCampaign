@@ -4,7 +4,7 @@
         "p51b5_default": {
             "skinName": "p51b5",
             "planeType": "p51b5",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -2,
             "country": "USA",
@@ -69,7 +69,7 @@
 		"p51b5_skin_10": {
 			"skinName": "p51b5_skin_10",
 			"planeType": "p51b5",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440601",
 			"squadId": -1,
 			"country": "USA",
@@ -91,7 +91,7 @@
 		"p51b5_skin_12": {
 			"skinName": "p51b5_skin_12",
 			"planeType": "p51b5",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440601",
 			"squadId": -1,
 			"country": "USA",

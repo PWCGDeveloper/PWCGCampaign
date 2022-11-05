@@ -41,17 +41,17 @@ public class MissionCenterBuilderRaid implements IMissionCenterBuilder
         Squadron squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
         Coordinate squadronLocation = squadron.determineCurrentPosition(campaign.getDate());
 
-        List<Airfield> airfieldTargets = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getNearbyOccupiedAirFieldsForSide(
-                squadron.determineSide().getOppositeSide(), campaign.getDate(), squadronLocation, missionBoxRadius * 2);
+        List<Airfield> airfieldTargets = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager().getNearbyOccupiedAirFieldsForSide(
+                campaign.getCampaignMap(), squadron.determineSide().getOppositeSide(), campaign.getDate(), squadronLocation, missionBoxRadius * 2);
         
-        RailroadStationFinder railroadStationFinder = PWCGContext.getInstance().getCurrentMap().getGroupManager().getRailroadStationFinder();
+        RailroadStationFinder railroadStationFinder = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager().getRailroadStationFinder();
         List<Block> railwaystations = railroadStationFinder.getTrainPositionWithinRadiusBySide(
-                squadron.determineSide().getOppositeSide(), campaign.getDate(), squadronLocation, missionBoxRadius * 2);
+                campaign.getCampaignMap(), squadron.determineSide().getOppositeSide(), campaign.getDate(), squadronLocation, missionBoxRadius * 2);
 
         
-        BridgeFinder bridgeFinder = PWCGContext.getInstance().getCurrentMap().getGroupManager().getBridgeFinder();
+        BridgeFinder bridgeFinder = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager().getBridgeFinder();
         List<Bridge> bridges = bridgeFinder.findBridgesForSideWithinRadius(
-                squadron.determineSide().getOppositeSide(), campaign.getDate(), squadronLocation, missionBoxRadius * 2);
+                campaign.getCampaignMap(), squadron.determineSide().getOppositeSide(), campaign.getDate(), squadronLocation, missionBoxRadius * 2);
 
         
         List<PWCGLocation> allRaidTargets = new ArrayList<>();
@@ -88,7 +88,7 @@ public class MissionCenterBuilderRaid implements IMissionCenterBuilder
         Squadron squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
 
         List<PWCGLocation> raidLocationsAwayFromFront = LocationAwayFromFrontFinder.getLocationsAwayFromFront(
-                raidLocations, squadron.determineSide().getOppositeSide(), campaign.getDate());
+                campaign.getCampaignMap(), raidLocations, squadron.determineSide().getOppositeSide(), campaign.getDate());
 
         return raidLocationsAwayFromFront;
     }

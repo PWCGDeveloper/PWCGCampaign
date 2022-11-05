@@ -32,7 +32,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19390801",
+				"startDate": "19390901",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RAIDER",
@@ -77,7 +77,7 @@
 		"squadHistoryEntries": []
 	},
 	"callsigns": {
-		"19390801": "CRANE"
+		"19390901": "CRANE"
 	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [

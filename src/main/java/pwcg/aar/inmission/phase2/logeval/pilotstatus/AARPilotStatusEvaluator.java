@@ -6,9 +6,7 @@ import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
-import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
@@ -21,22 +19,20 @@ import pwcg.core.logfiles.event.IAType3;
 public class AARPilotStatusEvaluator 
 {
     private Campaign campaign;
-    private PwcgMissionData pwcgMissionData;
     private LogEventData logEventData;
     private AARVehicleBuilder aarVehicleBuilder;
     private AARPilotStatusDeadEvaluator pilotStatusDeadEvaluator;
     private AARPilotStatusCapturedEvaluator pilotStatusCapturedEvaluator;
     private AARPilotStatusWoundedEvaluator pilotStatusWoundedEvaluator;
     
-    public AARPilotStatusEvaluator(Campaign campaign, PwcgMissionData pwcgMissionData, AARDestroyedStatusEvaluator destroyedStatusEvaluator, LogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
+    public AARPilotStatusEvaluator(Campaign campaign, AARDestroyedStatusEvaluator destroyedStatusEvaluator, LogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
     {
         this.campaign = campaign;
-        this.pwcgMissionData = pwcgMissionData;
         this.logEventData = logEventData;
         this.aarVehicleBuilder = aarVehicleBuilder;
 
         pilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
-        pilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(campaign.getDate());
+        pilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(campaign);
         pilotStatusWoundedEvaluator = new AARPilotStatusWoundedEvaluator();
     }
 
@@ -88,9 +84,7 @@ public class AARPilotStatusEvaluator
         if (resultPlane.getLandAt() != null)
         {
             Coordinate landingCoords = resultPlane.getLandAt();
-            String missionMapName = pwcgMissionData.getMissionHeader().getMapName();
-            FrontMapIdentifier mapId = FrontMapIdentifier.getFrontMapIdentifierForName(missionMapName);
-            boolean wasCaptured = pilotStatusCapturedEvaluator.isCrewMemberCaptured(mapId, landingCoords, resultPlane.getCountry().getSide());
+            boolean wasCaptured = pilotStatusCapturedEvaluator.isCrewMemberCaptured(landingCoords, resultPlane.getCountry().getSide());
             if (wasCaptured)
             {
                 resultCrewmember.setStatus(SquadronMemberStatus.STATUS_CAPTURED);

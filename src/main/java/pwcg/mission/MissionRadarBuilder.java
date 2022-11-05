@@ -3,6 +3,7 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.PWCGContext;
@@ -17,12 +18,14 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 public class MissionRadarBuilder
 {
     private Mission mission;
+    private Campaign campaign;
 
     private List<GroundUnitCollection> missionRadars = new ArrayList<>();
 
     public MissionRadarBuilder(Mission mission)
     {
         this.mission = mission;
+        this.campaign = mission.getCampaign();
     }
 
     public List<GroundUnitCollection> buildRadarsForMission() throws PWCGException
@@ -42,7 +45,7 @@ public class MissionRadarBuilder
     private List<Coordinate> getReferenceFrontLinePositions(Side side) throws PWCGException
     {
         List<Coordinate> frontLineReferences = new ArrayList<>();
-        List<FrontLinePoint> frontLinesForSide = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(mission.getCampaign().getDate()).getFrontLines(side);
+        List<FrontLinePoint> frontLinesForSide = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(mission.getCampaign().getDate()).getFrontLines(side);
         FrontLinePoint referencePoint = frontLinesForSide.get(0);
         for (FrontLinePoint frontLinePoint :  frontLinesForSide)
         {
@@ -61,10 +64,10 @@ public class MissionRadarBuilder
         List<Coordinate> radarPositions = new ArrayList<>();
         for (Coordinate frontLineReference :  frontLineReferences)
         {
-            TownFinder townFinder = PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder();
-            PWCGLocation town = townFinder.findClosestTownForSide(side, mission.getCampaign().getDate(), frontLineReference);
+            TownFinder townFinder = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager().getTownFinder();
+            PWCGLocation town = townFinder.findClosestTownForSide(campaign.getCampaignMap(), side, mission.getCampaign().getDate(), frontLineReference);
             double angle = MathUtils.calcAngle(frontLineReference, town.getPosition());
-            Coordinate radarPosition = MathUtils.calcNextCoord(town.getPosition(), angle, 5000);
+            Coordinate radarPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), town.getPosition(), angle, 5000);
             radarPositions.add(radarPosition);
         }
         return radarPositions;

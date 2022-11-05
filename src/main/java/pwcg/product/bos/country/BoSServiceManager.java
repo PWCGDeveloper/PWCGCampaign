@@ -307,7 +307,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         freeFrench.setEndDate(DateUtils.getEndOfWar());
         freeFrench.setServiceColorMap(new FrenchColorMap());
         freeFrench.setGeneralRankForService("Air Vice-Marshal");
-        freeFrench.setStartDate(DateUtils.getDateYYYYMMDD("19440101"));
+        freeFrench.setStartDate(DateUtils.getDateYYYYMMDD("19430301"));
         freeFrench.setDailyPersonnelReplacementRatePerSquadron(1.0);
         freeFrench.setDailyEquipmentReplacementRatePerSquadron(1.0);
 

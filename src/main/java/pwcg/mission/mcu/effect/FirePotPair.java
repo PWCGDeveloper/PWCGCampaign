@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -19,11 +20,11 @@ public class FirePotPair
 	    this.sourceTimer = sourceTimer;
 	}
 	
-	public void createSeries(Coordinate firstFirePotPosition, double orientation, double distanceBetween) throws PWCGException 
+	public void createSeries(FrontMapIdentifier mapIdentifier, Coordinate firstFirePotPosition, double orientation, double distanceBetween) throws PWCGException 
 	{
 		for (int i = 0; i < 2; ++i)
 		{
-		    Coordinate firePotPosition = calculateFirePotPosition(firstFirePotPosition, orientation, distanceBetween, i);
+		    Coordinate firePotPosition = calculateFirePotPosition(mapIdentifier, firstFirePotPosition, orientation, distanceBetween, i);
 		    int time = calculateFirePotStartTime(i);
 		    
 			FirePot firePot = new FirePot();
@@ -35,7 +36,7 @@ public class FirePotPair
         firePots.get(0).getFirePotTimer().setTimerTarget(firePots.get(1).getFirePotTimer().getIndex());
 	}
     
-    public Coordinate calculateFirePotPosition(Coordinate firstFirePotPosition, double orientation, double distanceBetween, int firepotIndex) throws PWCGException
+    public Coordinate calculateFirePotPosition(FrontMapIdentifier mapIdentifier, Coordinate firstFirePotPosition, double orientation, double distanceBetween, int firepotIndex) throws PWCGException
     {
         Coordinate firePotPosition = firstFirePotPosition;          
         if (firepotIndex%2 == 0)
@@ -44,7 +45,7 @@ public class FirePotPair
         }
         else
         {
-            firePotPosition = MathUtils.calcNextCoord(firstFirePotPosition, orientation, distanceBetween);
+            firePotPosition = MathUtils.calcNextCoord(mapIdentifier, firstFirePotPosition, orientation, distanceBetween);
         }
         firePotPosition.setYPos(0.0);
         return firePotPosition;

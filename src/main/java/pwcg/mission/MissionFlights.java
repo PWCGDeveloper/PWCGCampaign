@@ -299,11 +299,11 @@ public class MissionFlights
         return aiFlights;
     }
 
-    public IFlight getFlightForAirfield(Airfield airfield)
+    public IFlight getFlightForAirfield(Airfield airfield) throws PWCGException
     {
         for (IFlight flight : flights)
         {
-            Airfield squadronAirfield = flight.getSquadron().determineCurrentAirfieldCurrentMap(campaign.getDate());
+            Airfield squadronAirfield = flight.getSquadron().determineCurrentAirfieldCurrentMap(campaign.getCampaignMap(), campaign.getDate());
             if(squadronAirfield.getName().equals(airfield.getName()))
             {
                 return flight;

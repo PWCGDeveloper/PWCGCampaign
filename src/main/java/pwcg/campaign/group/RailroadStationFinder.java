@@ -6,6 +6,7 @@ import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PositionFinder;
@@ -26,34 +27,34 @@ public class RailroadStationFinder
         return closestStation;
     }
     
-    public Block getClosestTrainPositionBySide (Side side, Date date, Coordinate referenceLocation) throws PWCGException 
+    public Block getClosestTrainPositionBySide (FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate referenceLocation) throws PWCGException 
     {
         PositionFinder<Block> positionFinder = new PositionFinder<Block>();
-        Block closestStation = positionFinder.selectClosestPosition(getTrainPositionsBySide(side, date), referenceLocation);
+        Block closestStation = positionFinder.selectClosestPosition(getTrainPositionsBySide(mapIdentifier, side, date), referenceLocation);
         return closestStation;
     }
 
-    public Block getDestinationTrainPosition(Coordinate startingPosition, ICountry country, Date date) throws PWCGException
+    public Block getDestinationTrainPosition(FrontMapIdentifier mapIdentifier, Coordinate startingPosition, ICountry country, Date date) throws PWCGException
     {
         PositionFinder<Block> positionFinder = new PositionFinder<Block>();
-        List<Block> trainStationsForSide = getTrainPositionsBySide(country.getSide(), date);
+        List<Block> trainStationsForSide = getTrainPositionsBySide(mapIdentifier, country.getSide(), date);
         Block destinationRailroadStation = positionFinder.selectDestinationPosition(trainStationsForSide, startingPosition);
         return destinationRailroadStation;
     }
 
-    public List<Block> getTrainPositionWithinRadiusBySide(Side side, Date date, Coordinate targetGeneralLocation, double radius) throws PWCGException
+    public List<Block> getTrainPositionWithinRadiusBySide(FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate targetGeneralLocation, double radius) throws PWCGException
     {
         PositionFinder<Block> positionFinder = new PositionFinder<Block>();
-        List<Block> selectedStations = positionFinder.findWithinExpandingRadius(getTrainPositionsBySide(side, date), targetGeneralLocation, radius, radius);
+        List<Block> selectedStations = positionFinder.findWithinExpandingRadius(getTrainPositionsBySide(mapIdentifier, side, date), targetGeneralLocation, radius, radius);
         return selectedStations;
     }
     
-    private List<Block> getTrainPositionsBySide(Side side, Date date) throws PWCGException 
+    private List<Block> getTrainPositionsBySide(FrontMapIdentifier mapIdentifier, Side side, Date date) throws PWCGException 
     {
         List<Block>selectedRailroadStations = new ArrayList<Block>();
         for (Block railroadStations : railroadStations)
         {
-            if (railroadStations.determineCountryOnDate(date).getSide() == side)
+            if (railroadStations.determineCountryOnDate(mapIdentifier, date).getSide() == side)
             {
                 selectedRailroadStations.add(railroadStations);
             }

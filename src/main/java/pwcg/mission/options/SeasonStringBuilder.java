@@ -2,6 +2,7 @@ package pwcg.mission.options;
 
 import java.util.Date;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -9,39 +10,40 @@ import pwcg.core.utils.RandomNumberGenerator;
 
 public class SeasonStringBuilder 
 {
-    public static String getClearSkys(Date date) throws PWCGException
+    public static String getClearSkys(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
     {
-        String skys = addCloudPattern(date, "00_clear_");
+        String skys = addCloudPattern(mapIdentifier, date, "00_clear_");
         return skys;
     }
 
-    public static String getLightSkys(Date date) throws PWCGException
+    public static String getLightSkys(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
     {
-        String skys = addCloudPattern(date, "01_Light_");
+        String skys = addCloudPattern(mapIdentifier, date, "01_Light_");
         return skys;
     }
 
-    public static String getAverageSkys(Date date) throws PWCGException
+    public static String getAverageSkys(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
     {
-        String skys = addCloudPattern(date, "02_Medium_");
+        String skys = addCloudPattern(mapIdentifier, date, "02_Medium_");
         return skys;
     }
 
-    public static String getHeavySkys(Date date) throws PWCGException
+    public static String getHeavySkys(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
     {
-        String skys = addCloudPattern(date, "03_Heavy_");
+        String skys = addCloudPattern(mapIdentifier, date, "03_Heavy_");
         return skys;
     }
 
-    public static String getOvercastSkys(Date date) throws PWCGException
+    public static String getOvercastSkys(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
     {
-        String skys = addCloudPattern(date, "04_Overcast_");
+        String skys = addCloudPattern(mapIdentifier, date, "04_Overcast_");
         return skys;
     }
 
-    private static String addCloudPattern(Date date, String skys) throws PWCGException
+    private static String addCloudPattern(FrontMapIdentifier mapIdentifier, Date date, String skys) throws PWCGException
     {
-        MapSeasonalParameters mapSeasonalParameters = PWCGContext.getInstance().getCurrentMap().getMapSeason().getSeasonBasedParameters(date);
+        MapSeasonalParameters mapSeasonalParameters = PWCGContext.getInstance().getMap(mapIdentifier).getMapSeason().
+                getSeasonBasedParameters(mapIdentifier, date);
         String seasonString = mapSeasonalParameters.getSeason();
         String weather = seasonString + "\\" + skys;
         

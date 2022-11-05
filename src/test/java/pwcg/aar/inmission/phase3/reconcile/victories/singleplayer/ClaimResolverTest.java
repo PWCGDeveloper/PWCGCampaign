@@ -22,6 +22,7 @@ import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -66,6 +67,7 @@ public class ClaimResolverTest
         playerDeclarations.put(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, playerDeclarationSet);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.ARRAS_MAP);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);
         Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);

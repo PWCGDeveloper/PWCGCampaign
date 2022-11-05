@@ -1,15 +1,11 @@
 
 package pwcg.campaign.context;
 
-import java.util.Date;
-
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
-import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
@@ -50,36 +46,20 @@ public class FrontLinePoint extends PWCGLocation
     }
     
 
-    private void setCountryFromName(String name)
+    private void setCountryFromName(FrontMapIdentifier mapIdentifier, String name)
     {
         if (name.equals(ALLIED_FRONT_LINE))
         {
-            country = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
+            country = CountryFactory.makeMapReferenceCountry(mapIdentifier, Side.ALLIED);
         }
         else if (name.equals(AXIS_FRONT_LINE))
         {
-            country = CountryFactory.makeMapReferenceCountry(Side.AXIS);
+            country = CountryFactory.makeMapReferenceCountry(mapIdentifier, Side.AXIS);
         }
         else
         {
             PWCGLogger.log(LogLevel.ERROR, "Unidentifiable name for front line location " + name);
         }
-    }
-
-    public double getOrientation(Date date) throws PWCGException
-    {
-        if (getName().equals(FrontLinePoint.ALLIED_FRONT_LINE))
-        {
-            FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
-            Coordinate closestAxis = frontLinesForMap.findClosestFrontCoordinateForSide(this.getPosition(), Side.AXIS);
-            return MathUtils.calcAngle(this.getPosition(), closestAxis);
-        }
-        else
-        {   
-            FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
-            Coordinate closestAllied = frontLinesForMap.findClosestFrontCoordinateForSide(this.getPosition(), Side.ALLIED);
-            return MathUtils.calcAngle(this.getPosition(), closestAllied);
-        }        
     }
     
     public void setOrientation(double angle) throws PWCGException 
@@ -87,10 +67,10 @@ public class FrontLinePoint extends PWCGLocation
         getOrientation().setyOri(angle);
     }
 
-    public void setName(String name)
+    public void setName(FrontMapIdentifier mapIdentifier, String name)
     {
         this.name = name;
-        setCountryFromName(name);
+        setCountryFromName(mapIdentifier, name);
     }
 
     public PWCGLocation getLocation()
@@ -98,9 +78,9 @@ public class FrontLinePoint extends PWCGLocation
         return this;
     }
 
-    public void setLocation(PWCGLocation location)
+    public void setLocation(FrontMapIdentifier mapIdentifier,PWCGLocation location)
     {
         setFromLocation(location);
-        setCountryFromName(getName());
+        setCountryFromName(mapIdentifier, getName());
     }
 }

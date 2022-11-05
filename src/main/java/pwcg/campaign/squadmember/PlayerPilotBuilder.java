@@ -2,7 +2,6 @@ package pwcg.campaign.squadmember;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
@@ -31,7 +30,6 @@ public class PlayerPilotBuilder
     {
         campaign.write();        
         campaign.open(campaign.getCampaignData().getName());
-        PWCGContext.getInstance().setCampaign(campaign);
         if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
             createCoopUserAndPersona(campaign, newSquadronMember, coopUser);

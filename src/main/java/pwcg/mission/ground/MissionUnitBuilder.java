@@ -21,7 +21,7 @@ public abstract class MissionUnitBuilder
  
     protected boolean isBehindFrontLines(Coordinate position, Side targetSide) throws PWCGException
     {
-        Coordinate closestFrontCoordinate = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate()).findClosestFrontCoordinateForSide(position, targetSide);            
+        Coordinate closestFrontCoordinate = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate()).findClosestFrontCoordinateForSide(position, targetSide);            
         if (MathUtils.calcDist(closestFrontCoordinate, position) > 5000.0)
         {
             return true;

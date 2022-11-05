@@ -2,6 +2,7 @@ package pwcg.mission;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.shipping.ShippingLane;
@@ -12,14 +13,14 @@ import pwcg.core.location.Coordinate;
 
 public class MissionAntiShippingSeaLaneFinder
 {
-    public static ShippingLane getShippingLaneForMission(Mission mission, Side side) throws PWCGException
+    public static ShippingLane getShippingLaneForMission(FrontMapIdentifier mapIdentifier, Coordinate basePosition, Side side) throws PWCGException
     {
         ShippingLane shippingLane = null;
-        if (PWCGContext.getInstance().getCurrentMap().hasShips())
+        if (PWCGContext.getInstance().getMap(mapIdentifier).hasShips())
         {
-            PWCGMap map = PWCGContext.getInstance().getCurrentMap();
+            PWCGMap map = PWCGContext.getInstance().getMap(mapIdentifier);
             ShippingLaneManager shippingLaneManager = map.getShippingLaneManager();
-            shippingLane = shippingLaneManager.getClosestShippingLaneBySide(mission.getMissionBorders().getCenter(), side);
+            shippingLane = shippingLaneManager.getClosestShippingLaneBySide(basePosition, side);
         }
         
         return shippingLane;
@@ -27,7 +28,7 @@ public class MissionAntiShippingSeaLaneFinder
     
     public static boolean canFlyAntiShipping(Campaign campaign, Squadron squadron,ShippingLane shippingLane) throws PWCGException
     {
-        if (PWCGContext.getInstance().getCurrentMap().hasShips())
+        if (PWCGContext.getInstance().getMap(campaign.getCampaignMap()).hasShips())
         {
             Coordinate shippingLaneCenter = shippingLane.getShippingLaneBox().getCenter();
             return SquadronRange.positionIsInRange(campaign, squadron, shippingLaneCenter);

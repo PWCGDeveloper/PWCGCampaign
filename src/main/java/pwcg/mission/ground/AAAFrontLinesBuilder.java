@@ -34,7 +34,7 @@ public class AAAFrontLinesBuilder
 	
 	public List<GroundUnitCollection> generateAAAEmplacements () throws PWCGException
 	{
-        frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        frontLinesForMap =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
 
 		generateAAAEmplacementsForSide(Side.ALLIED);
 		generateAAAEmplacementsForSide(Side.AXIS);
@@ -102,8 +102,8 @@ public class AAAFrontLinesBuilder
     
     private void createAAAMg(Side side) throws PWCGException
     {
-        Coordinate aaaMgPosition = frontLinesForMap.findPositionBehindLinesForSide(lastAAAPosition, 1000, 50, 200, side);
-        ICountry icountry = CountryFactory.makeMapReferenceCountry(side);
+        Coordinate aaaMgPosition = frontLinesForMap.findPositionBehindLinesForSide(campaign.getCampaignMap(), lastAAAPosition, 1000, 50, 200, side);
+        ICountry icountry = CountryFactory.makeMapReferenceCountry(campaign.getCampaignMap(), side);
 
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaMgPosition, icountry, "AAA For Front Lines");
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
@@ -113,8 +113,8 @@ public class AAAFrontLinesBuilder
     
     private void createAAAArty(Side side) throws PWCGException
     {
-        Coordinate aaaArtyPosition = frontLinesForMap.findPositionBehindLinesForSide(lastAAAPosition, 1000, 1000, 2000, side);
-        ICountry icountry = CountryFactory.makeMapReferenceCountry(side);
+        Coordinate aaaArtyPosition = frontLinesForMap.findPositionBehindLinesForSide(campaign.getCampaignMap(), lastAAAPosition, 1000, 1000, 2000, side);
+        ICountry icountry = CountryFactory.makeMapReferenceCountry(campaign.getCampaignMap(), side);
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaArtyPosition, icountry, "AAA For Front Lines");
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         GroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);

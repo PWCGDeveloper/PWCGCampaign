@@ -33,7 +33,7 @@ public class CampaignDaysPassed
     
     public int getDaysBetweenMission() throws PWCGException 
     {
-        PWCGMap map = PWCGContext.getInstance().getCurrentMap();
+        PWCGMap map = PWCGContext.getInstance().getMap(campaign.getCampaignMap());
         return map.getDaysBetweenMissionForDate(campaign.getDate());
     }
 }

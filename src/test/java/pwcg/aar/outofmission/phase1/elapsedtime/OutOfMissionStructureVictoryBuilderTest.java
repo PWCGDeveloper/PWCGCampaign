@@ -51,7 +51,7 @@ public class OutOfMissionStructureVictoryBuilderTest
     @Test
     public void testVictoryAwarded () throws PWCGException
     {     
-        StructureVictoryBuilder victoryGenerator = new StructureVictoryBuilder(squadronMember, PwcgStructure.BRIDGE);
+        StructureVictoryBuilder victoryGenerator = new StructureVictoryBuilder(campaign, squadronMember, PwcgStructure.BRIDGE);
         Victory victory = victoryGenerator.generateOutOfMissionVictory(campaign.getDate());
         
         Assertions.assertTrue (victory.getVictim().getAirOrGround() == Victory.VEHICLE);

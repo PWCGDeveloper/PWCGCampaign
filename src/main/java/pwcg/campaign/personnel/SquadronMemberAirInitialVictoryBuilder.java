@@ -214,7 +214,7 @@ public class SquadronMemberAirInitialVictoryBuilder
     private Victory generateVictoryWithoutSquadron(Date victoryDate, SquadronMember newPilot) throws PWCGException
     {
         UnknownSquadronVictoryGenerator unknownSquadronVictoryGenerator = new UnknownSquadronVictoryGenerator(newPilot);
-        return unknownSquadronVictoryGenerator.generateOutOfMissionVictory(victoryDate);
+        return unknownSquadronVictoryGenerator.generateOutOfMissionVictory(campaign.getCampaignMap(), victoryDate);
     }
 
     private Victory generateVictoryFromActualSquadrons(Date victoryDate, Squadron victimSquadron, SquadronMember newPilot) throws PWCGException

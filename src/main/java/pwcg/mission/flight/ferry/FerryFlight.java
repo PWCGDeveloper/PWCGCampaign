@@ -54,8 +54,9 @@ public class FerryFlight extends Flight implements IFlight
         FlightInformation flightInformation = this.getFlightInformation();
         if (flightInformation.getCampaign().getSquadronMoveEvent() != null)
         {
-            Airfield fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
-            Airfield toAirfield = flightInformation.getSquadron().determineCurrentAirfieldCurrentMap(flightInformation.getCampaign().getDate());
+            Airfield fromAirfield = PWCGContext.getInstance().getMap(
+                    flightInformation.getCampaign().getCampaignMap()).getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
+            Airfield toAirfield = flightInformation.getSquadron().determineCurrentAirfieldCurrentMap(flightInformation.getCampaign().getCampaignMap(), flightInformation.getCampaign().getDate());
             FerryWaypointFactory missionWaypointFactory = new FerryWaypointFactory(this, fromAirfield, toAirfield);
             IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
             return missionWaypoints;

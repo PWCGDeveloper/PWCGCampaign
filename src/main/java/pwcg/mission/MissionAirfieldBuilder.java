@@ -47,7 +47,7 @@ public class MissionAirfieldBuilder
 
     private void selectAirfieldsWithinMissionBoundaries() throws PWCGException
     {
-        for (Airfield airfield :  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields().values())
+        for (Airfield airfield :  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager().getAllAirfields().values())
         {
             if (structureBorders.isInBox(airfield.getPosition()))
             {
@@ -80,14 +80,14 @@ public class MissionAirfieldBuilder
     
     private ICountry getAirfieldCountry(Airfield airfield) throws PWCGException
     {
-        ICountry airfieldCountry = airfield.getCountry(campaign.getDate());
+        ICountry airfieldCountry = airfield.getCountry(campaign.getCampaignMap(), campaign.getDate());
         if (airfieldCountry.getCountry() != Country.NEUTRAL)
         {
             return airfieldCountry;
         }
         
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, campaign.getDate());
+        Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(campaign.getCampaignMap(), airfield, campaign.getDate());
         if (squadronForField != null)
         {
             return squadronForField.getCountry();

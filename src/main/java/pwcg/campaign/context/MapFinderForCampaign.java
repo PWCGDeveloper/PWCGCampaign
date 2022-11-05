@@ -37,6 +37,21 @@ public class MapFinderForCampaign
         return mapIdentifier;
     }
 
+    public static FrontMapIdentifier findMapForSquadeonAndDate(Squadron squadron, Date date) throws PWCGException
+    {
+        FrontMapIdentifier mapIdentifier = FrontMapIdentifier.NO_MAP;
+
+        List<FrontMapIdentifier> mapIdentifiers = MapForAirfieldFinder.getMapForAirfield(squadron.determineCurrentAirfieldName(date));
+        if (mapIdentifiers.size() > 0)
+        {
+            mapIdentifier = mapIdentifiers.get(0);
+            mapIdentifier = StalingradMapResolver.resolveStalingradMap(date, mapIdentifier);
+            return mapIdentifier;
+        }
+        
+        return mapIdentifier;
+    }
+
     private static FrontMapIdentifier findMapByActivePlayer(Campaign campaign) throws PWCGException
     {
         SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
@@ -71,28 +86,13 @@ public class MapFinderForCampaign
         FrontMapIdentifier mapIdentifier = FrontMapIdentifier.NO_MAP;
         for (SquadronMember player : players)
         {
-            mapIdentifier = findMapForPlayer(campaign, player);
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+            mapIdentifier = findMapForSquadeonAndDate(squadron, campaign.getDate());
             if (mapIdentifier != FrontMapIdentifier.NO_MAP)
             {
                 break;
             }
         }
-        return mapIdentifier;
-    }
-
-    private static FrontMapIdentifier findMapForPlayer(Campaign campaign, SquadronMember player) throws PWCGException
-    {
-        FrontMapIdentifier mapIdentifier = FrontMapIdentifier.NO_MAP;
-
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-        List<FrontMapIdentifier> mapIdentifiers = MapForAirfieldFinder.getMapForAirfield(squadron.determineCurrentAirfieldName(campaign.getDate()));
-        if (mapIdentifiers.size() > 0)
-        {
-            mapIdentifier = mapIdentifiers.get(0);
-            mapIdentifier = StalingradMapResolver.resolveStalingradMap(campaign, mapIdentifier);
-            return mapIdentifier;
-        }
-        
         return mapIdentifier;
     }
 }

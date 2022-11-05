@@ -20,7 +20,7 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
     public TargetDefinition buildTargetDefinition() throws PWCGException
     {
         Coordinate targetLocation = createTargetLocation();
-        ICountry targetCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(flightInformation.getSquadron().determineEnemySide());
+        ICountry targetCountry = PWCGContext.getInstance().getMap(flightInformation.getCampaignMap()).getGroundCountryForMapBySide(flightInformation.getSquadron().determineEnemySide());
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocation, targetCountry, "Planes");
         return targetDefinition;
     }

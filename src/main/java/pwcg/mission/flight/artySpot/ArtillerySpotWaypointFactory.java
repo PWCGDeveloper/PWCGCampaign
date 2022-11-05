@@ -58,7 +58,7 @@ public class ArtillerySpotWaypointFactory
 		artillerySpotAdditionalWaypoint.setSpeed(flight.getFlightCruisingSpeed());
 
 		double distance = 2000.0;
-		Coordinate nextArtillerySpotCoordinate = MathUtils.calcNextCoord(lastWP.getPosition(), angle, distance);
+		Coordinate nextArtillerySpotCoordinate = MathUtils.calcNextCoord(flight.getCampaign().getCampaignMap(), lastWP.getPosition(), angle, distance);
         nextArtillerySpotCoordinate.setYPos(flight.getFlightInformation().getAltitude());
 		artillerySpotAdditionalWaypoint.setPosition(nextArtillerySpotCoordinate);	
 		artillerySpotAdditionalWaypoint.setTargetWaypoint(true);

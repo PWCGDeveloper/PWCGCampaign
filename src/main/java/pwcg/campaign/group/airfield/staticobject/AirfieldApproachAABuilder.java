@@ -6,6 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -39,7 +40,7 @@ public class AirfieldApproachAABuilder
         this.airfieldCountry = airfieldCountry;
     }
     
-    public List<GroundUnitCollection> addAirfieldApproachAA() throws PWCGException
+    public List<GroundUnitCollection> addAirfieldApproachAA(FrontMapIdentifier mapIdentifier) throws PWCGException
     {
         if (airfieldCountry.getCountry() == Country.NEUTRAL)
         {
@@ -48,7 +49,7 @@ public class AirfieldApproachAABuilder
         
         PWCGLocation landingPosition = airfield.getLandingLocation(mission);
         double aaProgressionAngle = airfield.getTakeoffLocation(mission).getOrientation().getyOri();
-        Coordinate aaStartPosition = MathUtils.calcNextCoord(landingPosition.getPosition(), aaProgressionAngle, 500.0);
+        Coordinate aaStartPosition = MathUtils.calcNextCoord(mapIdentifier, landingPosition.getPosition(), aaProgressionAngle, 500.0);
         
         List<Coordinate> aaCoordinates = buildAirfieldAAPositions(aaProgressionAngle, aaProgressionAngle, aaStartPosition);
         buildFlightPathAA(aaCoordinates);
@@ -65,9 +66,9 @@ public class AirfieldApproachAABuilder
         int numPairs = getNumAAGunPairs();
         for (int i = 0; i < numPairs; ++i)
         {
-            Coordinate aaCenterCoordinate = MathUtils.calcNextCoord(aaStartPosition, angleOut, (i * 1000));
-            Coordinate leftAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleLeft, 500);
-            Coordinate rightAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleRight, 500);
+            Coordinate aaCenterCoordinate = MathUtils.calcNextCoord(campaign.getCampaignMap(), aaStartPosition, angleOut, (i * 1000));
+            Coordinate leftAAPoint = MathUtils.calcNextCoord(campaign.getCampaignMap(), aaCenterCoordinate, angleLeft, 500);
+            Coordinate rightAAPoint = MathUtils.calcNextCoord(campaign.getCampaignMap(), aaCenterCoordinate, angleRight, 500);
             
             aaCoordinates.add(leftAAPoint);
             aaCoordinates.add(rightAAPoint);

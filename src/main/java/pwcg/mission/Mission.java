@@ -6,6 +6,7 @@ import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
 import pwcg.campaign.skin.Skin;
@@ -428,5 +429,10 @@ public class Mission
         }
         
         return Side.NEUTRAL;
+    }
+    
+    public FrontMapIdentifier getCampaignMap() throws PWCGException
+    {
+        return campaign.getCampaignMap();
     }
 }

@@ -3,6 +3,7 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PwcgMapGroundUnitLimitation;
 import pwcg.campaign.group.BlockDefinition;
@@ -16,12 +17,14 @@ import pwcg.core.utils.MathUtils;
 public class MissionBlocks
 {
     private Mission mission;
+    private Campaign campaign;
     private List<ScriptedFixedPosition> structuresForMission = new ArrayList<>();
     private List<NonScriptedBlock> nonScriptedStructuresForMission = new ArrayList<>();
 
     public MissionBlocks(Mission mission, List<ScriptedFixedPosition> structuresForMission, List<NonScriptedBlock> nonScriptedStructuresForMission)
     {
         this.mission = mission;
+        this.campaign = mission.getCampaign();
         this.structuresForMission = structuresForMission;
         this.nonScriptedStructuresForMission = nonScriptedStructuresForMission;
     }
@@ -51,7 +54,7 @@ public class MissionBlocks
 
     public void adjustBlockDamageAndSmoke() throws PWCGException
     {
-        if (PWCGContext.getInstance().getCurrentMap().isLimited(mission.getCampaign().getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
+        if (PWCGContext.getInstance().getMap(campaign.getCampaignMap()).isLimited(mission.getCampaign().getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
         {
             return;
         }
@@ -74,7 +77,7 @@ public class MissionBlocks
 
     private List<ScriptedFixedPosition> adjustBlockDamage() throws PWCGException
     {
-        MissionBlockDamageDecorator missionBlockDamage = new MissionBlockDamageDecorator();      
+        MissionBlockDamageDecorator missionBlockDamage = new MissionBlockDamageDecorator(campaign);      
         return missionBlockDamage.setDamageToFixedPositions(structuresForMission, mission.getCampaign().getDate());
     }
 

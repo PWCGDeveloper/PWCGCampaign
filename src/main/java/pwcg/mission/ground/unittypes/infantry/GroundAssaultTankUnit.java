@@ -61,7 +61,7 @@ public class GroundAssaultTankUnit extends GroundUnit
     private List<Coordinate> createVehicleDestinationPositions(int numvehicles) throws PWCGException 
     {
         double spacing = 30.0;
-        Coordinate destination = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getDestination(), pwcgGroundUnitInformation.getOrientation().getyOri(), 3000.0);
+        Coordinate destination = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), pwcgGroundUnitInformation.getDestination(), pwcgGroundUnitInformation.getOrientation().getyOri(), 3000.0);
         return createWedgeVehiclePositions(destination, numvehicles, spacing);
     }
 

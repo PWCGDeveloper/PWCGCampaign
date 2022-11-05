@@ -46,7 +46,7 @@ public class AirfieldTargetGroup extends GroundUnit
 
     public void createAirfield() throws PWCGException  
 	{
-        AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager();
         this.targetAirfield = airfieldManager.getAirfieldFinder().findClosestAirfield(pwcgGroundUnitInformation.getPosition());
 	}
 
@@ -92,14 +92,14 @@ public class AirfieldTargetGroup extends GroundUnit
 		ConfigManager configManager = campaign.getCampaignConfigManager();
 		int truckDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
 		Double angleTrucksLeft = MathUtils.adjustAngle(pwcgGroundUnitInformation.getOrientation().getyOri(), -90);
-		Coordinate initialTruckLocation = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), angleTrucksLeft, truckDistance);
+		Coordinate initialTruckLocation = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), pwcgGroundUnitInformation.getPosition(), angleTrucksLeft, truckDistance);
 		
 		return initialTruckLocation;
 	}
 
     private Coordinate findNextTruckLocation(Coordinate initialTruckLocation, int truckNumber) throws PWCGException, PWCGException
     {
-        Coordinate truckLocation = MathUtils.calcNextCoord(initialTruckLocation, pwcgGroundUnitInformation.getOrientation().getyOri(), (10 * truckNumber));
+        Coordinate truckLocation = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), initialTruckLocation, pwcgGroundUnitInformation.getOrientation().getyOri(), (10 * truckNumber));
         
         return truckLocation;
     }

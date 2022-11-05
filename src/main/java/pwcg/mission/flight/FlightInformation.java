@@ -5,6 +5,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
 import pwcg.campaign.group.airfield.Airfield;
@@ -160,7 +161,7 @@ public class FlightInformation
     public Airfield getDepartureAirfield() throws PWCGException
     {
         String airfieldName = squadron.determineCurrentAirfieldName(campaign.getDate());
-        Airfield departureAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
+        Airfield departureAirfield = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager().getAirfield(airfieldName);
         return departureAirfield;
     }
 
@@ -242,9 +243,9 @@ public class FlightInformation
         return squadron.determineCurrentAirfieldName(campaign.getDate());
     }
 
-    public Airfield getAirfield()
+    public Airfield getAirfield() throws PWCGException
     {
-        return squadron.determineCurrentAirfieldCurrentMap(campaign.getDate());
+        return squadron.determineCurrentAirfieldCurrentMap(campaign.getCampaignMap(), campaign.getDate());
     }
 
     public int getFlightId()
@@ -270,5 +271,10 @@ public class FlightInformation
     public NecessaryFlightType getNecessaryFlightType()
     {
         return necessaryFlightType;
+    }
+
+    public FrontMapIdentifier getCampaignMap() throws PWCGException
+    {
+        return campaign.getCampaignMap();
     }
 }

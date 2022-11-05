@@ -11,7 +11,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.skirmish.DynamicSkirmishBuilder;
+import pwcg.campaign.skirmish.CargoRouteSkirmishBuilder;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -48,7 +48,7 @@ public class KubanShippingZoneTest
         
         MissionHumanParticipants playerParticipants = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
                 
-        DynamicSkirmishBuilder dynamicSkirmishBuilder = new DynamicSkirmishBuilder(campaign, playerParticipants);
+        CargoRouteSkirmishBuilder dynamicSkirmishBuilder = new CargoRouteSkirmishBuilder(campaign, playerParticipants);
         Skirmish shippingZoneSkirmish = dynamicSkirmishBuilder.buildSkirmishForShippingEncounter();
                 
         MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();

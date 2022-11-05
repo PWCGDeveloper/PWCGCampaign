@@ -11,8 +11,9 @@ public class GroundAttackObjectiveStrategic
     static String getMissionObjective(IFlight flight) throws PWCGException 
     {
         String objectiveLocation =  MissionObjectiveLocation.getMissionObjectiveLocation(
+                flight.getCampaign(),
                 flight.getFlightInformation().getSquadron(), 
-                flight.getFlightInformation().getCampaign().getDate(), 
+                flight.getCampaign().getDate(), 
                 flight.getTargetDefinition().getPosition().copy());
         
         String objective = "Attack the specified objective using all available means.";
@@ -20,7 +21,7 @@ public class GroundAttackObjectiveStrategic
         
         if (targetType == TargetType.TARGET_AIRFIELD)
         {
-            Airfield target = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getClosestAirfield(flight.getTargetDefinition().getPosition().copy());
+            Airfield target = PWCGContext.getInstance().getMap(flight.getCampaign().getCampaignMap()).getAirfieldManager().getClosestAirfield(flight.getTargetDefinition().getPosition().copy());
             objective = "Attack the airfield at " + target.getName();
         }
         else if (targetType == TargetType.TARGET_BRIDGE)

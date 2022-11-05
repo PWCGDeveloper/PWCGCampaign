@@ -87,11 +87,11 @@ public class TruckConvoyBuilder
         return groundUnitInformation;
     }
     
-    private Coordinate getRoadStartLocation(Coordinate referenceCoordinate) 
+    private Coordinate getRoadStartLocation(Coordinate referenceCoordinate) throws PWCGException 
     {
         double closest = PositionFinder.ABSURDLY_LARGE_DISTANCE;
         Coordinate startPosition = null;
-        for (List<Coordinate> railRoute : PWCGContext.getInstance().getCurrentMap().getMapTransportRoads().getTransportRoutes())
+        for (List<Coordinate> railRoute : PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapTransportRoads().getTransportRoutes())
         {
             for (Coordinate railCoordinate : railRoute)
             {
@@ -117,13 +117,13 @@ public class TruckConvoyBuilder
 
     private Coordinate getConvoyDestination(Coordinate startPosition) throws PWCGException
     {
-        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
-        Bridge destinationBridge = groupData.getBridgeFinder().findDestinationBridge(bridge.getPosition(), country.getSide(), campaign.getDate());
+        GroupManager groupData =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
+        Bridge destinationBridge = groupData.getBridgeFinder().findDestinationBridge(campaign.getCampaignMap(), bridge.getPosition(), country.getSide(), campaign.getDate());
         Coordinate roadDestinationCoordinate = null;
        if (destinationBridge != null)
         {
             double closest = PositionFinder.ABSURDLY_LARGE_DISTANCE;
-            for (Coordinate railCoordinate : PWCGContext.getInstance().getCurrentMap().getMapTransportRoads().getAllTransportCoordinates())
+            for (Coordinate railCoordinate : PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapTransportRoads().getAllTransportCoordinates())
             {
                 double distance = MathUtils.calcDist(destinationBridge.getPosition(), railCoordinate);
                 if (distance < closest)

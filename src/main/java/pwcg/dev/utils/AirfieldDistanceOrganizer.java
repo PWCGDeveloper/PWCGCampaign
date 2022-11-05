@@ -63,18 +63,16 @@ public class AirfieldDistanceOrganizer
         {
         	PWCGContext.setProduct(PWCGProduct.BOS);
         	            
-            PWCGContext.getInstance();
-            PWCGContext.getInstance().changeContext(frontMapIdentifier);;
-                                 
-            AirfieldManager manager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
+            PWCGContext.getInstance();                                 
+            AirfieldManager manager = PWCGContext.getInstance().getMap(FrontMapIdentifier.NORMANDY_MAP).getAirfieldManager();
 
-            alliedAirfieldSet = sortAirfieldsByDistance(manager.getAirFieldsForSide(startDate, Side.ALLIED), startDate, Side.ALLIED);
+            alliedAirfieldSet = sortAirfieldsByDistance(manager.getAirFieldsForSide(FrontMapIdentifier.NORMANDY_MAP, startDate, Side.ALLIED), startDate, Side.ALLIED);
             PWCGLogger.log(LogLevel.DEBUG, "\n\n\nAllied");
             alliedAirfieldSet.side = Side.ALLIED;
             alliedAirfieldSet.date = startDate;
             alliedAirfieldSet.dump();
 
-            axisAirfieldSet = sortAirfieldsByDistance(manager.getAirFieldsForSide(startDate, Side.AXIS), startDate, Side.AXIS);
+            axisAirfieldSet = sortAirfieldsByDistance(manager.getAirFieldsForSide(FrontMapIdentifier.NORMANDY_MAP, startDate, Side.AXIS), startDate, Side.AXIS);
             PWCGLogger.log(LogLevel.DEBUG, "\n\n\nAxis");
             axisAirfieldSet.side = Side.AXIS;
             axisAirfieldSet.date = startDate;

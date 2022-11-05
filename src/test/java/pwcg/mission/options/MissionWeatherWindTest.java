@@ -11,7 +11,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.config.ConfigItemKeys;
@@ -29,7 +28,6 @@ public class MissionWeatherWindTest
     public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.BODENPLATTE_MAP);
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         

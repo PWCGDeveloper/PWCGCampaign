@@ -21,25 +21,25 @@ public class CargoRouteManager
     {
         Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(participatingPlayers.getAllParticipatingPlayers().get(0).getSquadronId());
         Coordinate playerSquadronPosition = squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getPosition();
-        CargoShipRoute cargoRouteForSide = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager().getNearbyCargoShipRouteBySide(campaign.getDate(), playerSquadronPosition, side);
+        CargoShipRoute cargoRouteForSide = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getShippingLaneManager().getNearbyCargoShipRouteBySide(campaign.getDate(), playerSquadronPosition, side);
         
         if (cargoRouteForSide != null)
         {
-            Coordinate routeStartPosition = getInRangeStartPosition(cargoRouteForSide, playerSquadronPosition);
+            Coordinate routeStartPosition = getInRangeStartPosition(campaign, cargoRouteForSide, playerSquadronPosition);
             cargoRouteForSide.setRouteStartPosition(routeStartPosition);
         }
         
         return cargoRouteForSide;
     }
     
-    private static Coordinate getInRangeStartPosition(CargoShipRoute cargoRoute, Coordinate playerSquadronPosition) throws PWCGException
+    private static Coordinate getInRangeStartPosition(Campaign campaign, CargoShipRoute cargoRoute, Coordinate playerSquadronPosition) throws PWCGException
     {
-        Coordinate routeStartPosition = getConvoyInitialStartPosition(cargoRoute);
+        Coordinate routeStartPosition = getConvoyInitialStartPosition(campaign, cargoRoute);
         double distanceFromPlayer = MathUtils.calcDist(routeStartPosition, playerSquadronPosition);
         while (distanceFromPlayer > SkirmishDistance.findMaxSkirmishDistance())
         {
             double angle = MathUtils.calcAngle(routeStartPosition, cargoRoute.getRouteDestination());
-            routeStartPosition = MathUtils.calcNextCoord(routeStartPosition.copy(), angle, 5000.0);
+            routeStartPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), routeStartPosition.copy(), angle, 5000.0);
             
             double adjustedDistanceFromPlayer = MathUtils.calcDist(routeStartPosition, playerSquadronPosition);
             if (adjustedDistanceFromPlayer > distanceFromPlayer)
@@ -55,7 +55,7 @@ public class CargoRouteManager
         return routeStartPosition;
     }
 
-    private static Coordinate getConvoyInitialStartPosition(CargoShipRoute cargoRoute) throws PWCGException
+    private static Coordinate getConvoyInitialStartPosition(Campaign campaign, CargoShipRoute cargoRoute) throws PWCGException
     {
         double routeDistance = MathUtils.calcDist(cargoRoute.getRouteStartPosition(), cargoRoute.getRouteDestination());
         int startPosOnRoute = 0;
@@ -66,7 +66,7 @@ public class CargoRouteManager
         }
         
         double angle = MathUtils.calcAngle(cargoRoute.getRouteStartPosition(), cargoRoute.getRouteDestination());
-        Coordinate startPosition = MathUtils.calcNextCoord(cargoRoute.getRouteStartPosition(), angle, startPosOnRoute);
+        Coordinate startPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), cargoRoute.getRouteStartPosition(), angle, startPosOnRoute);
         return startPosition;
     }
 }

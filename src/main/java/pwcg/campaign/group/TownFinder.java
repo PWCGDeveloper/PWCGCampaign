@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.LocationSet;
@@ -27,17 +28,17 @@ public class TownFinder
         return closestTown;
     }
 
-    public PWCGLocation findClosestTownForSide (Side side, Date date, Coordinate referenceLocation) throws PWCGException 
+    public PWCGLocation findClosestTownForSide (FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate referenceLocation) throws PWCGException 
     {
         PositionFinder<PWCGLocation> positionFinder = new PositionFinder<PWCGLocation>();
-        PWCGLocation closestTown = positionFinder.selectClosestPosition(findAllTownsForSide(side, date), referenceLocation);
+        PWCGLocation closestTown = positionFinder.selectClosestPosition(findAllTownsForSide(mapIdentifier, side, date), referenceLocation);
         return closestTown;
     }
 
-    public PWCGLocation findTownForSideWithinRadius(Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException 
+    public PWCGLocation findTownForSideWithinRadius(FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException 
     {
         PositionFinder<PWCGLocation> positionFinder = new PositionFinder<PWCGLocation>();
-        List<PWCGLocation> townsForSide = findAllTownsForSide(side, date);
+        List<PWCGLocation> townsForSide = findAllTownsForSide(mapIdentifier, side, date);
         PWCGLocation selectedTown = positionFinder.selectPositionWithinExpandingRadius(
                 townsForSide, 
                 referenceLocation, 
@@ -46,19 +47,19 @@ public class TownFinder
         return selectedTown;
     }
 
-    public List<PWCGLocation> findTownsForSideWithinRadius (Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException 
+    public List<PWCGLocation> findTownsForSideWithinRadius (FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException 
     {
         PositionFinder<PWCGLocation> positionFinder = new PositionFinder<PWCGLocation>();
-        List<PWCGLocation> closestTowns = positionFinder.findWithinExpandingRadius(findAllTownsForSide(side, date), referenceLocation, radius, radius * 3);
+        List<PWCGLocation> closestTowns = positionFinder.findWithinExpandingRadius(findAllTownsForSide(mapIdentifier, side, date), referenceLocation, radius, radius * 3);
         return closestTowns;
     }
 
-    public List<PWCGLocation> findAllTownsForSide (Side side, Date date) throws PWCGException 
+    public List<PWCGLocation> findAllTownsForSide (FrontMapIdentifier mapIdentifier, Side side, Date date) throws PWCGException 
     {       
-        List<PWCGLocation>townsForSide = new ArrayList<>();
+        List<PWCGLocation> townsForSide = new ArrayList<>();
         for (PWCGLocation town : townLocations.getLocations())
         {
-            if (town.getCountry(date).getSide() == side)
+            if (town.getCountry(mapIdentifier, date).getSide() == side)
             {
                 townsForSide.add(town);
             }

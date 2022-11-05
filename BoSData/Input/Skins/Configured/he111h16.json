@@ -4,7 +4,7 @@
         "he111h16_default": {
             "skinName": "he111h16",
             "planeType": "he111h16",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -17,7 +17,7 @@
         "he111h16_blank_01": {
             "skinName": "he111h16_blank_01",
             "planeType": "he111h16",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19430401",
             "squadId": -2,
             "country": "Germany",
@@ -30,7 +30,7 @@
         "he111h16_blank_02": {
             "skinName": "he111h16_blank_02",
             "planeType": "he111h16",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -43,7 +43,7 @@
         "he111h16_blank_03": {
             "skinName": "he111h16_blank_03",
             "planeType": "he111h16",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -56,7 +56,7 @@
 		"he111h16_skin_01": {
 			"skinName": "he111h16_skin_01",
 			"planeType": "he111h16",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -67,7 +67,7 @@
 		"he111h16_skin_02": {
 			"skinName": "he111h16_skin_02",
 			"planeType": "he111h16",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -78,7 +78,7 @@
 		"he111h16_skin_06": {
 			"skinName": "he111h16_skin_06",
 			"planeType": "he111h16",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -89,7 +89,7 @@
 		"he111h16_skin_07": {
 			"skinName": "he111h16_skin_07",
 			"planeType": "he111h16",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -100,7 +100,7 @@
 		"he111h16_skin_08": {
 			"skinName": "he111h16_skin_08",
 			"planeType": "he111h16",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -111,7 +111,7 @@
 		"he111h16_skin_09": {
 			"skinName": "he111h16_skin_09",
 			"planeType": "he111h16",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -122,7 +122,7 @@
 		"he111h16_skin_10": {
 			"skinName": "he111h16_skin_10",
 			"planeType": "he111h16",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",

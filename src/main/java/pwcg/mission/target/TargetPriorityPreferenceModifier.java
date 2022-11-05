@@ -13,7 +13,7 @@ public class TargetPriorityPreferenceModifier
     static int getTargetPreferenceWeight(FlightInformation flightInformation, TargetType targetType) throws PWCGException
     {
         Side side = flightInformation.getSquadron().getCountry().getSide();
-        List<TargetPreference> targetPreferences = PWCGContext.getInstance().getCurrentMap().getTargetPreferenceManager().getTargetPreference(flightInformation.getCampaign(), side);
+        List<TargetPreference> targetPreferences = PWCGContext.getInstance().getMap(flightInformation.getCampaignMap()).getTargetPreferenceManager().getTargetPreference(flightInformation.getCampaign(), side);
         
         int extraWeightForTargetType = 0;
         for (TargetPreference targetPreference : targetPreferences)

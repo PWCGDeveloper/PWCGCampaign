@@ -63,7 +63,7 @@ public class DrifterUnit extends GroundUnit
             drifterCoords.setYPos(0.0);
             spawnerLocations.add(drifterCoords);
 
-            drifterCoords = MathUtils.calcNextCoord(drifterCoords, placementOrientation, drifterSpacing);
+            drifterCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), drifterCoords, placementOrientation, drifterSpacing);
         }
         return spawnerLocations;       
     }

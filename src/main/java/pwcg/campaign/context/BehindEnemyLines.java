@@ -1,7 +1,6 @@
 package pwcg.campaign.context;
 
-import java.util.Date;
-
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
@@ -11,18 +10,18 @@ import pwcg.core.utils.MathUtils;
 
 public class BehindEnemyLines 
 {    
-	private Date date;
+	private Campaign campaign;
 	private String reason = "";
 	private String reasonCode = "";
 	
-    public BehindEnemyLines (Date date)
+    public BehindEnemyLines (Campaign campaign)
     {
-    	this.date = date;
+    	this.campaign = campaign;
     }
 
-    public boolean isBehindEnemyLinesForCapture(FrontMapIdentifier mapId, Coordinate landingCoordinates, Side friendlySide) throws PWCGException 
+    public boolean isBehindEnemyLinesForCapture(Coordinate landingCoordinates, Side friendlySide) throws PWCGException 
     {
-    	FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMapByMapId(mapId).getFrontLinesForMap(date);
+    	FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMapByMapId(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         
         Side enemySide = friendlySide.getOppositeSide();
 
@@ -62,9 +61,9 @@ public class BehindEnemyLines
         return true;
     }
 
-    public boolean inReportingRange(FrontMapIdentifier mapId, Coordinate landingCoordinates, Side friendlySide) throws PWCGException 
+    public boolean inReportingRange(Coordinate landingCoordinates, Side friendlySide) throws PWCGException 
     {
-    	FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMapByMapId(mapId).getFrontLinesForMap(date);
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMapByMapId(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
 
         Side enemySide = friendlySide.getOppositeSide();
 
@@ -100,11 +99,11 @@ public class BehindEnemyLines
         return false;
     }
 
-    public double getDistanceBehindLines(FrontMapIdentifier mapId, Coordinate landingCoordinates, Side friendlySide) throws PWCGException 
+    public double getDistanceBehindLines(Coordinate landingCoordinates, Side friendlySide) throws PWCGException 
     {
         Side enemySide = friendlySide.getOppositeSide();
        
-    	FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMapByMapId(mapId).getFrontLinesForMap(date);
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMapByMapId(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         Coordinate enemyCoordinates = frontLinesForMap.findClosestFrontCoordinateForSide(landingCoordinates, enemySide);
 
         double distanceToEnemy = MathUtils.calcDist(landingCoordinates, enemyCoordinates);
@@ -115,16 +114,16 @@ public class BehindEnemyLines
     private boolean notBehindLinesByAirfield(Coordinate landingCoordinates, Side pilotSide, boolean behindEnemyLines)
                     throws PWCGException
     {
-        Airfield closestAirfield =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().findClosestAirfield(landingCoordinates);
+        Airfield closestAirfield =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager().getAirfieldFinder().findClosestAirfield(landingCoordinates);
         if (closestAirfield != null)
         {
-            if (closestAirfield.getCountry(date).getCountry() == Country.NEUTRAL)
+            if (closestAirfield.getCountry(campaign.getCampaignMap(), campaign.getDate()).getCountry() == Country.NEUTRAL)
             {
             	reason = "You found friendly positions after coming down near the contested airfield of " + closestAirfield.getName();
                 behindEnemyLines = false;
             }
             
-            if (pilotSide == closestAirfield.determineCountryOnDate(date).getSide())
+            if (pilotSide == closestAirfield.determineCountryOnDate(campaign.getCampaignMap(), campaign.getDate()).getSide())
             {
             	reason = "You found friendly positions after coming down near the friendly airfield of " + closestAirfield.getName();
                 behindEnemyLines = false;
@@ -140,16 +139,16 @@ public class BehindEnemyLines
     private boolean behindLinesByGroup(Coordinate landingCoordinates, Side pilotSide, boolean behindEnemyLines)
                     throws PWCGException
     {
-        PWCGLocation closestTown =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(landingCoordinates);
+        PWCGLocation closestTown =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager().getTownFinder().findClosestTown(landingCoordinates);
         if (closestTown != null)
         {
-            if (closestTown.getCountry(date).getSide() == Side.NEUTRAL)
+            if (closestTown.getCountry(campaign.getCampaignMap(), campaign.getDate()).getSide() == Side.NEUTRAL)
             {
             	reason = "You found friendly positions after coming down near the contested town of " + closestTown.getName();
                 behindEnemyLines = false;
             }
             
-            if (pilotSide == closestTown.getCountry(date).getSide())
+            if (pilotSide == closestTown.getCountry(campaign.getCampaignMap(), campaign.getDate()).getSide())
             {
             	reason = "You found friendly positions after coming down near the friendly town of " + closestTown.getName();
                 behindEnemyLines = false;

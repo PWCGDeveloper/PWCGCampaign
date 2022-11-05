@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -17,6 +18,8 @@ public interface IFlight
     Mission getMission();
 
     Campaign getCampaign();
+        
+    public FrontMapIdentifier getCampaignMap() throws PWCGException;
 
     void write(BufferedWriter writer) throws PWCGException;
 

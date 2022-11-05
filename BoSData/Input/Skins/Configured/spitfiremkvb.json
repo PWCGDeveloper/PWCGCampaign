@@ -4,7 +4,7 @@
         "spitfiremkvb_default": {
             "skinName": "spitfiremkvb",
             "planeType": "spitfiremkvb",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Russian",
@@ -17,7 +17,7 @@
         "spitfiremkvb_blank_01": {
             "skinName": "spitfiremkvb_blank_01",
             "planeType": "spitfiremkvb",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19430801",
             "squadId": -2,
             "country": "Britain",
@@ -82,7 +82,7 @@
         "spitfiremkvb_skin_03": {
             "skinName": "spitfiremkvb_skin_03",
             "planeType": "spitfiremkvb",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Russia",
@@ -108,7 +108,7 @@
         "spitfiremkvb_skin_05": {
             "skinName": "spitfiremkvb_skin_05",
             "planeType": "spitfiremkvb",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19430801",
             "squadId": -1,
             "country": "Britain",

@@ -52,7 +52,7 @@ public class CargoRouteBattleBuilder implements IBattleBuilder
 
     private CargoShipRoute getCargoRoutesForSkirmish(Skirmish skirmish) throws PWCGException
     {
-        CargoShipRoute cargoRouteForSide = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager().getCargoShipRouteByName(skirmish.getSkirmishName());
+        CargoShipRoute cargoRouteForSide = PWCGContext.getInstance().getMap(mission.getCampaignMap()).getShippingLaneManager().getCargoShipRouteByName(skirmish.getSkirmishName());
         return cargoRouteForSide;
     }
 
@@ -75,7 +75,7 @@ public class CargoRouteBattleBuilder implements IBattleBuilder
         }
         
         double angle = MathUtils.calcAngle(cargoRoute.getRouteStartPosition(), cargoRoute.getRouteDestination());
-        Coordinate startPosition = MathUtils.calcNextCoord(cargoRoute.getRouteStartPosition(), angle, startPosOnRoute);
+        Coordinate startPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), cargoRoute.getRouteStartPosition(), angle, startPosOnRoute);
         return startPosition;
     }
 }

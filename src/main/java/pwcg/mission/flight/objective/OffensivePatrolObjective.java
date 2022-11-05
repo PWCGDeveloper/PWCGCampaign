@@ -10,7 +10,7 @@ public class OffensivePatrolObjective
     {
         String objective = "";
 
-        String objectiveName =  MissionObjectiveLocation.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy());
+        String objectiveName =  MissionObjectiveLocation.formMissionObjectiveLocation(flight.getCampaign(),flight.getTargetDefinition().getPosition().copy());
         if (flight.getOffensiveFlightType() == OffensiveFlightTypes.OFFENSIVE_FLIGHT_TRANSPORT)
         {
             if (!objectiveName.isEmpty())

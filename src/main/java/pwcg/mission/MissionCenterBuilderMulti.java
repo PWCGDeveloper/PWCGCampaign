@@ -31,8 +31,8 @@ public class MissionCenterBuilderMulti implements IMissionCenterBuilder
         Coordinate averagePlayerLocation = findAveragePlayerLocation();
         Coordinate missionCenterCoordinate = findMissionCenter(averagePlayerLocation);
                 
-        MapArea usableMapArea = PWCGContext.getInstance().getCurrentMap().getUsableMapArea();
-        missionCenterCoordinate = MissionCenterAdjuster.keepWithinMap(missionCenterCoordinate.copy(), missionBoxRadius, usableMapArea);
+        MapArea usableMapArea = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getUsableMapArea();
+        missionCenterCoordinate = MissionCenterAdjuster.keepWithinMap(campaign.getCampaignMap(), missionCenterCoordinate.copy(), missionBoxRadius, usableMapArea);
 
         return missionCenterCoordinate;
     }
@@ -45,7 +45,7 @@ public class MissionCenterBuilderMulti implements IMissionCenterBuilder
 
     private Coordinate findMissionCenter(Coordinate averagePlayerLocation) throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         Coordinate frontLineCoordinateCloseToCentralLocation = frontLinesForMap.findClosestFrontCoordinateForSide(averagePlayerLocation, Side.AXIS);
 
         Coordinate missionCenterCoordinateAxis = findAxisFrontCoordinateWithinRadiusOfMissionCenter(frontLineCoordinateCloseToCentralLocation);
@@ -53,7 +53,7 @@ public class MissionCenterBuilderMulti implements IMissionCenterBuilder
         
         double angle = MathUtils.calcAngle(missionCenterCoordinateAxis, missionCenterCoordinateAllied);
         double distance = MathUtils.calcDist(missionCenterCoordinateAxis, missionCenterCoordinateAllied) / 2;
-        Coordinate missionCenterCoordinate = MathUtils.calcNextCoord(missionCenterCoordinateAxis, angle, distance);
+        Coordinate missionCenterCoordinate = MathUtils.calcNextCoord(campaign.getCampaignMap(), missionCenterCoordinateAxis, angle, distance);
         
         return missionCenterCoordinate;
     }
@@ -62,7 +62,7 @@ public class MissionCenterBuilderMulti implements IMissionCenterBuilder
     {
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
 
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> nearbyFrontPointsAxis = frontLinesForMap.findClosestFrontPositionsForSide(
                 frontLineCoordinateCloseToCentralLocation, productSpecific.getSmallMissionRadius(), Side.AXIS);
         
@@ -73,7 +73,7 @@ public class MissionCenterBuilderMulti implements IMissionCenterBuilder
 
     private Coordinate findAlliedCoordinateNearAxisCoordinate(Coordinate axisCoordinate) throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
         Coordinate alliedCoordinateCloseToAxisCoordinate = frontLinesForMap.findClosestFrontCoordinateForSide(axisCoordinate, Side.ALLIED);
         return alliedCoordinateCloseToAxisCoordinate;
     }

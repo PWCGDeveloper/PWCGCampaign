@@ -122,9 +122,9 @@ public class GroupManager
         return townFinder.getTownLocations();
     }
 
-    public List<PWCGLocation> findTownsForSideWithinRadius(Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException
+    public List<PWCGLocation> findTownsForSideWithinRadius(FrontMapIdentifier mapIdentifier, Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException
     {
-        return townFinder.findTownsForSideWithinRadius(side, date, referenceLocation, radius);
+        return townFinder.findTownsForSideWithinRadius(mapIdentifier, side, date, referenceLocation, radius);
     }
 
     public TownFinder getTownFinder()

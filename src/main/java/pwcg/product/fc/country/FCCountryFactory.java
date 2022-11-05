@@ -5,10 +5,11 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.ICountryFactory;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 
 public class FCCountryFactory implements ICountryFactory
 {
-    public ICountry makeMapReferenceCountry(Side side)
+    public ICountry makeMapReferenceCountry(FrontMapIdentifier mapIdentifier, Side side)
     {
         if (side == Side.ALLIED)
         {

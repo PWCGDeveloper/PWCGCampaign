@@ -4,7 +4,7 @@
 		"p47d22_default": {
 			"skinName": "p47d22",
 			"planeType": "p47d22",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
 			"squadId": -2,
 			"country": "USA",
@@ -121,7 +121,7 @@
         "p47d22_skin_08": {
             "skinName": "p47d22_skin_08",
             "planeType": "p47d22",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": 102050010,
             "country": "USA",
@@ -186,7 +186,7 @@
 		"P-47D22_Okie_366": {
 			"skinName": "P-47D22_Okie_366",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102048492,
 			"country": "USA",
@@ -197,7 +197,7 @@
 		"P-47D22_Snafu_366": {
 			"skinName": "P-47D22_Snafu_366",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102048492,
 			"country": "USA",
@@ -208,7 +208,7 @@
 		"Sherman was Right": {
 			"skinName": "Sherman was Right",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102048492,
 			"country": "USA",
@@ -219,7 +219,7 @@
 		"P-47D22_Cecil_O_Dean_325thFG": {
 			"skinName": "P-47D22_Cecil_O_Dean_325thFG",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102050010,
 			"country": "USA",
@@ -230,7 +230,7 @@
 		"P-47D22_HerschelGreen_325thFG": {
 			"skinName": "P-47D22_HerschelGreen_325thFG",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102050010,
 			"country": "USA",
@@ -241,7 +241,7 @@
 		"P-47D22_topper_325thFG": {
 			"skinName": "P-47D22_topper_325thFG",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102050010,
 			"country": "USA",
@@ -252,7 +252,7 @@
 		"P-47D-22_LETHAL LIZ 2": {
 			"skinName": "P-47D-22_LETHAL LIZ 2",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102365386,
 			"country": "USA",
@@ -263,7 +263,7 @@
 		"P-47D-22_Y8-K": {
 			"skinName": "P-47D-22_Y8-K",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102365386,
 			"country": "USA",
@@ -274,7 +274,7 @@
 		"P-47D-22_EAGLE": {
 			"skinName": "P-47D-22_EAGLE",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102366389,
 			"country": "USA",
@@ -285,7 +285,7 @@
 		"P-47D-22_QUACK": {
 			"skinName": "P-47D-22_QUACK",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102366389,
 			"country": "USA",
@@ -296,7 +296,7 @@
 		"P-47D22_QueenCityMama_50": {
 			"skinName": "P-47D22_QueenCityMama_50",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102366389,
 			"country": "USA",
@@ -307,7 +307,7 @@
 		"P-47D22_Spirit_of_Atlantic_City": {
 			"skinName": "P-47D22_Spirit_of_Atlantic_City",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102366389,
 			"country": "USA",
@@ -318,7 +318,7 @@
 		"P-47D-22_THE_DEACON": {
 			"skinName": "P-47D-22_THE_DEACON",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102366389,
 			"country": "USA",
@@ -329,7 +329,7 @@
 		"P-47D-22_TRISS": {
 			"skinName": "P-47D-22_TRISS",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102366389,
 			"country": "USA",
@@ -340,7 +340,7 @@
 		"P-47D-22_HUCKLE DE BUCK": {
 			"skinName": "P-47D-22_HUCKLE DE BUCK",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102373410,
 			"country": "USA",
@@ -351,7 +351,7 @@
 		"P-47D22_LittleChief": {
 			"skinName": "P-47D22_LittleChief",
 			"planeType": "p47d22",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 102373410,
 			"country": "USA",

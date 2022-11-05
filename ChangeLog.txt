@@ -1,4 +1,4 @@
-14..0.2
+14.1.0
 Completion of blank Squadron skins.
 Over 600 skins added
 What is a "squadron skin?".  it is a skin configured in PWCG to be used as the generic squadron skin.  So it is a blank with a unit marking on it.  
@@ -9,6 +9,8 @@ What is a "squadron skin?".  it is a skin configured in PWCG to be used as the g
 Fixed Mosquito payloads not available in briefing
 Fixed Mosquito payload in Lb not Kg.
 Fixed wrong image context sometimes used (RAF logbook for German pilot, etc.)
+Fixed introduction date of Tempests to 56th squadron
+Moved introduction of Free French (326th Squadron) to March 1943
 Fixed "Dover Castle" typo
 Fixed Kingsnorth typo
 

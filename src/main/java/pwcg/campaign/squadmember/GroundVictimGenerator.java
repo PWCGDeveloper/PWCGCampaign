@@ -1,9 +1,9 @@
 package pwcg.campaign.squadmember;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PwcgRoleCategory;
@@ -17,20 +17,20 @@ import pwcg.mission.ground.vehicle.VehicleFactory;
 public class GroundVictimGenerator
 {    
     private SquadronMember squadronMember;
-    private Date date;
+    private Campaign campaign;
     
-    public GroundVictimGenerator (Date date, SquadronMember squadronMember) throws PWCGException
+    public GroundVictimGenerator (Campaign campaign, SquadronMember squadronMember) throws PWCGException
     {
-        this.date = date;
+        this.campaign = campaign;
         this.squadronMember = squadronMember;
     }
 
     public IVehicle generateVictimVehicle() throws PWCGException 
     {
-        ICountry victimCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(squadronMember.getSide().getOppositeSide());
+        ICountry victimCountry = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroundCountryForMapBySide(squadronMember.getSide().getOppositeSide());
         
         VehicleClass victimType = determineVehicleClass();
-        IVehicle victimVehicle = VehicleFactory.createVehicle(victimCountry, date, victimType);
+        IVehicle victimVehicle = VehicleFactory.createVehicle(victimCountry, campaign.getDate(), victimType);
         return victimVehicle;
     }
 

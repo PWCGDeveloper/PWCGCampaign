@@ -39,7 +39,8 @@ public class StrategicInterceptOpposingFlightBuilder
     {
         List<IFlight> opposingFlights = new ArrayList<>();
      
-        ICountry countryRepresentingOpposingSide = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(playerFlightInformation.getSquadron().determineSide().getOppositeSide());
+        ICountry countryRepresentingOpposingSide = PWCGContext.getInstance().getMap(
+                playerFlightInformation.getCampaign().getCampaignMap()).getGroundCountryForMapBySide(playerFlightInformation.getSquadron().determineSide().getOppositeSide());
         TargetDefinition opposingTargetDefinition = buildBaselineOpposingTargetDefintion(countryRepresentingOpposingSide);    
 
         List<Squadron> opposingBomberSquadrons = opposingFlightSquadronChooser.getOpposingBomberSquadron();

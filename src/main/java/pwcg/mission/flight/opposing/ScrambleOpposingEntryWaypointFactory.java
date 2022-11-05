@@ -32,7 +32,7 @@ public class ScrambleOpposingEntryWaypointFactory
         Coordinate basePosition = scrambleOpposingFlight.getFlightHomePosition();
         Coordinate targetPosition = scrambleOpposingFlight.getTargetDefinition().getPosition();
         double angleToBase = MathUtils.calcAngle(targetPosition, basePosition);
-        Coordinate scrambleIngressPosition = MathUtils.calcNextCoord(targetPosition, angleToBase, 20000);
+        Coordinate scrambleIngressPosition = MathUtils.calcNextCoord(scrambleOpposingFlight.getCampaign().getCampaignMap(), targetPosition, angleToBase, 20000);
         scrambleIngressPosition.setYPos(ingressWaypoint.getPosition().getYPos());
         ingressWaypoint.setPosition(scrambleIngressPosition);
     }

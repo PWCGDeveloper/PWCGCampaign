@@ -36,7 +36,7 @@ public class SkirmishBuilderTest
     {
         campaign.setDate(DateUtils.getDateYYYYMMDD("19441010"));
 
-        List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        List<Skirmish> skirmishes = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         Assertions.assertTrue (skirmishes.size() == 0);
     }
 

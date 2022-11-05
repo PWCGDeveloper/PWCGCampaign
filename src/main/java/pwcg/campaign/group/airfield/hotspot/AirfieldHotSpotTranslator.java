@@ -48,9 +48,9 @@ public class AirfieldHotSpotTranslator
     private List<HotSpot> selectHotSpotsFromEmptySpace() throws PWCGException
     {
         EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder(mission);
-        List<Coordinate> boundary = airfield.getBoundary();
+        List<Coordinate> boundary = airfield.getBoundary(mission.getCampaignMap());
         int targetNumber = (int) (Math.sqrt(MathUtils.polygonArea(boundary)) / SPOT_DENSITY);
-        return emptySpaceFinder.findEmptySpaces(boundary, targetNumber);
+        return emptySpaceFinder.findEmptySpaces(mission.getCampaignMap(), boundary, targetNumber);
     }
 
     private void classifyAirfieldHotspots() throws PWCGException

@@ -58,7 +58,7 @@ public class AAATruckPositionBuilder
         truckOrientation = selectedFriendlyUnit.getSpawns().get(0).getOrientation().copy();
 
         double angleOffset = MathUtils.adjustAngle(truckOrientation.getyOri(), 180);
-        truckPosition = MathUtils.calcNextCoord(selectedFriendlyUnit.getPosition(), angleOffset, DISTANCE_OFFSET);
+        truckPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), selectedFriendlyUnit.getPosition(), angleOffset, DISTANCE_OFFSET);
     }
 
     List<IGroundUnit> getBestGroundUnitsForVehicleClasses(Side truckSide) throws PWCGException

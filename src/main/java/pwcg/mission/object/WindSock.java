@@ -50,10 +50,10 @@ public class WindSock
         
         ConfigManager configManager = flight.getCampaign().getCampaignConfigManager();
         int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
-        Coordinate windSockCoordMoveLeft = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation(flight.getMission()).getPosition(), angleWindSockLeft, windsockDistance);
+        Coordinate windSockCoordMoveLeft = MathUtils.calcNextCoord(flight.getCampaignMap(), flightAirfield.getTakeoffLocation(flight.getMission()).getPosition(), angleWindSockLeft, windsockDistance);
 
         double angleBack = MathUtils.adjustAngle(takeoffOrientation, 180);
-        Coordinate windsockPos = MathUtils.calcNextCoord(windSockCoordMoveLeft, angleBack, -20.0);
+        Coordinate windsockPos = MathUtils.calcNextCoord(flight.getCampaignMap(), windSockCoordMoveLeft, angleBack, -20.0);
 
         return new WindSock(windsockPos);
     }

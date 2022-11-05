@@ -62,13 +62,13 @@ public class ShippingEncounterBattleBuilder implements IBattleBuilder
 
     private ShipEncounterZone getShipEncounterZoneForSkirmish(Skirmish skirmish) throws PWCGException
     {
-        ShipEncounterZone shipEncounterZone = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager().getShipEncounterByName(skirmish.getSkirmishName());
+        ShipEncounterZone shipEncounterZone = PWCGContext.getInstance().getMap(mission.getCampaignMap()).getShippingLaneManager().getShipEncounterByName(skirmish.getSkirmishName());
         return shipEncounterZone;
     }
 
     private void makeShipEncounterDefinitions(ShipEncounterZone shipEncounterZone) throws PWCGException
     {
-        ICountry alliedMapCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(Side.ALLIED);
+        ICountry alliedMapCountry = PWCGContext.getInstance().getMap(mission.getCampaignMap()).getGroundCountryForMapBySide(Side.ALLIED);
         Coordinate alliedStartPosition = getAlliedStartPosition(shipEncounterZone);
         TargetDefinition alliedTargetDefinition = makeTargetDefinition(shipEncounterZone, alliedMapCountry, alliedStartPosition);
         Coordinate alliedDestination = getDestination(shipEncounterZone, alliedTargetDefinition);
@@ -79,7 +79,7 @@ public class ShippingEncounterBattleBuilder implements IBattleBuilder
         shipEncounterDefinitions.add(alliedShipEncounterDefinition);
         
         
-        ICountry axisMapCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(Side.AXIS);
+        ICountry axisMapCountry = PWCGContext.getInstance().getMap(mission.getCampaignMap()).getGroundCountryForMapBySide(Side.AXIS);
         Coordinate axisStartPosition = getAxisStartPosition(shipEncounterZone, alliedStartPosition);
         TargetDefinition axisTargetDefinition = makeTargetDefinition(shipEncounterZone, axisMapCountry, axisStartPosition);
         Coordinate axisDestination = getDestination(shipEncounterZone, axisTargetDefinition);
@@ -94,7 +94,7 @@ public class ShippingEncounterBattleBuilder implements IBattleBuilder
     {
         int distance = 2000 + RandomNumberGenerator.getRandom(2000);
         double angle = RandomNumberGenerator.getRandom(360);
-        Coordinate startPosition = MathUtils.calcNextCoord(shipEncounterZone.getEncounterPoint(), angle, distance);
+        Coordinate startPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), shipEncounterZone.getEncounterPoint(), angle, distance);
         return startPosition;
     }
     
@@ -106,14 +106,14 @@ public class ShippingEncounterBattleBuilder implements IBattleBuilder
         axisAngle = MathUtils.adjustAngle(axisAngle, furtherOffset);
 
         int distance = 2000 + RandomNumberGenerator.getRandom(2000);
-        Coordinate startPosition = MathUtils.calcNextCoord(shipEncounterZone.getEncounterPoint(), axisAngle, distance);
+        Coordinate startPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), shipEncounterZone.getEncounterPoint(), axisAngle, distance);
         return startPosition;
     }
 
     private Coordinate getDestination (ShipEncounterZone shipEncounterZone, TargetDefinition targetDefinition) throws PWCGException
     {
         double angleToDestination = MathUtils.calcAngle(targetDefinition.getPosition(), shipEncounterZone.getEncounterPoint());
-        Coordinate startPosition = MathUtils.calcNextCoord(shipEncounterZone.getEncounterPoint(), angleToDestination, 4000);
+        Coordinate startPosition = MathUtils.calcNextCoord(mission.getCampaignMap(), shipEncounterZone.getEncounterPoint(), angleToDestination, 4000);
         return startPosition;
     }
     

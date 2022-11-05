@@ -26,8 +26,8 @@ import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.fc.country.FCServiceManager;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.TestCampaignFactoryBase;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBase;
 
 @ExtendWith(MockitoExtension.class)
 public class CampaignIOJsonTest
@@ -53,7 +53,6 @@ public class CampaignIOJsonTest
     {
         Campaign campaign = new Campaign();
         campaign.open(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
-        PWCGContext.getInstance().setCampaign(campaign);
 
         validateCoreCampaign(campaign);        
         validateFighterSquadronMembers(campaign);        

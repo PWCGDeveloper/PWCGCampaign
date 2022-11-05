@@ -9,7 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IArmedServiceManager;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
@@ -35,8 +34,6 @@ public class InitialReplacementEquipperTest
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19410601"));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
-        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.NORMANDY_MAP);
-        PWCGContext.getInstance().setCampaign(campaign);
         
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         ArmedService luftwaffe = serviceManager.getArmedService(20101);
@@ -82,8 +79,6 @@ public class InitialReplacementEquipperTest
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430201"));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
-        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
-        PWCGContext.getInstance().setCampaign(campaign);
 
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         ArmedService luftwaffe = serviceManager.getArmedService(20101);
@@ -207,8 +202,6 @@ public class InitialReplacementEquipperTest
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430101"));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
-        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
-        PWCGContext.getInstance().setCampaign(campaign);
 
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         ArmedService vvs = serviceManager.getArmedService(10101);
@@ -283,8 +276,6 @@ public class InitialReplacementEquipperTest
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430101"));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
-        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
-        PWCGContext.getInstance().setCampaign(campaign);
         
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         ArmedService regiaAeronautica = serviceManager.getArmedService(20202);

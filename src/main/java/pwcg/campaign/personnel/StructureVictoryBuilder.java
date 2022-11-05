@@ -2,6 +2,7 @@ package pwcg.campaign.personnel;
 
 import java.util.Date;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
@@ -20,11 +21,13 @@ import pwcg.mission.ground.building.PwcgStructure;
 
 public class StructureVictoryBuilder
 {
+    private Campaign campaign;
     private SquadronMember victorPilot;
     private PwcgStructure victimStructure;
 
-    public StructureVictoryBuilder (SquadronMember victorPilot, PwcgStructure victimStructure)
+    public StructureVictoryBuilder (Campaign campaign, SquadronMember victorPilot, PwcgStructure victimStructure)
     {
+        this.campaign = campaign;
         this.victimStructure = victimStructure;
         this.victorPilot = victorPilot;
     }
@@ -119,10 +122,10 @@ public class StructureVictoryBuilder
         Coordinate squadronPosition = victorPilot.determineSquadron().determineCurrentPosition(date);
         if (squadronPosition != null)
         {
-            FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
+            FrontLinesForMap frontLines = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(date);
             FrontLinePoint eventPosition = frontLines.findCloseFrontPositionForSide(squadronPosition, 100000, enemySide);
     
-            eventLocationDescription =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(eventPosition.getPosition()).getName();
+            eventLocationDescription =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager().getTownFinder().findClosestTown(eventPosition.getPosition()).getName();
             if (eventLocationDescription == null || eventLocationDescription.isEmpty())
             {
                 eventLocationDescription = "";

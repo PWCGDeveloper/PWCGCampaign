@@ -40,12 +40,12 @@ public class EnemySquadronFinderTest
     public void setupTest() throws PWCGException
      {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.STALINGRAD_MAP);
 
         ICountry squadronCountry = CountryFactory.makeCountryByCountry(Country.GERMANY);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
         
         Mockito.when(configManagerCampaign.getIntConfigParam(ConfigItemKeys.RemoveNonHistoricalSquadronsKey)).thenReturn(0);
@@ -57,10 +57,9 @@ public class EnemySquadronFinderTest
         Mockito.when(equipmentManager.getEquipmentForSquadron(Mockito.any())).thenReturn(equipment);
         Mockito.when(equipment.isSquadronEquipmentViable()).thenReturn(true);
         
-        Mockito.when(squadron.getCountry()).thenReturn(squadronCountry);
+        Mockito.when(squadron.getCountry()).thenReturn(squadronCountry);        
     }
     
-
     
     @Test
     public void findEnemySquadronFromCorner () throws PWCGException

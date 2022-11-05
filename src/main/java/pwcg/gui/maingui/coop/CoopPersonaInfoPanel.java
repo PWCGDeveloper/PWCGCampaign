@@ -14,7 +14,6 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.coop.CoopPersonaDataBuilder;
 import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
@@ -100,7 +99,6 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
             if (campaign.open(campaignName))
             {
                 CoopPersonaDataBuilder coopPersonaDataBuilder = new CoopPersonaDataBuilder();
-                PWCGContext.getInstance().setCampaign(campaign);
                 if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
                 {
                     List<CoopDisplayRecord> coopDisplayRecordsForUser = coopPersonaDataBuilder.getPlayerSquadronMembersForUser(campaign);

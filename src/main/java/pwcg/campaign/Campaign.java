@@ -11,6 +11,7 @@ import pwcg.campaign.context.MapFinderForCampaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.context.StalingradMapResolver;
 import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.campaign.io.json.CampaignIOJson;
 import pwcg.campaign.mode.ICampaignActive;
@@ -288,9 +289,9 @@ public class Campaign
         return false;
     }
 
-    public Season getSeason()
+    public Season getSeason() throws PWCGException
     {
-        return PWCGContext.getInstance().getCurrentMap().getMapClimate().getSeason(getDate());
+        return PWCGContext.getInstance().getMap(this.getCampaignMap()).getMapClimate().getSeason(getDate());
     }
 
     public SquadronMember findReferencePlayer() throws PWCGException
@@ -318,7 +319,7 @@ public class Campaign
     public void setDate(Date date) throws PWCGException
     {
         campaignData.setDate(date);
-        PWCGContext.getInstance().getCurrentMap().configureForDate(this);
+        PWCGContext.getInstance().getMap(this.getCampaignMap()).configureForDate(this);
     }
 
     public SerialNumber getSerialNumber()
@@ -394,6 +395,11 @@ public class Campaign
     public FrontMapIdentifier getCampaignMap() throws PWCGException
     {
         FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(this);
+        mapIdentifier = StalingradMapResolver.resolveStalingradMap(this.getDate(), mapIdentifier);
+        if (mapIdentifier == FrontMapIdentifier.NO_MAP)
+        {
+            mapIdentifier = campaignData.getInitialMap();
+        }
         return mapIdentifier;
     }
 

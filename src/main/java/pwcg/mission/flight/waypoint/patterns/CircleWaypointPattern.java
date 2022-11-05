@@ -47,7 +47,7 @@ public class CircleWaypointPattern
     {
         McuWaypoint firstCircleWP = createCircleWaypoint();
         
-        Coordinate circleCoords = MathUtils.calcNextCoord(circleCenter, entryAngle, legDistance);
+        Coordinate circleCoords = MathUtils.calcNextCoord(flight.getCampaignMap(), circleCenter, entryAngle, legDistance);
         circleCoords.setYPos(entryAlt);
         firstCircleWP.setPosition(circleCoords);
 
@@ -71,7 +71,7 @@ public class CircleWaypointPattern
         Orientation circleWPOrientation = new Orientation(circleWPOrientationAngle);
         nextCircleWP.setOrientation(circleWPOrientation);
 
-        Coordinate circleCoords = MathUtils.calcNextCoord(lastWP.getPosition().copy(), circleWPOrientationAngle, legDistance);
+        Coordinate circleCoords = MathUtils.calcNextCoord(flight.getCampaignMap(), lastWP.getPosition().copy(), circleWPOrientationAngle, legDistance);
         
         circleCoords.setYPos(lastWP.getPosition().getYPos() + deltaAlt);
 

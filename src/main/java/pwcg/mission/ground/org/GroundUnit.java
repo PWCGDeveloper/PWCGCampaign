@@ -201,7 +201,7 @@ public abstract class GroundUnit implements IGroundUnit
         {
             int distanceOffset = RandomNumberGenerator.getRandom(500);
             int directionOffset = RandomNumberGenerator.getRandom(360);
-            Coordinate fireCoordinates = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getDestination(), directionOffset, distanceOffset);
+            Coordinate fireCoordinates = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaign().getCampaignMap(), pwcgGroundUnitInformation.getDestination(), directionOffset, distanceOffset);
 
             IGroundAspect areaFire = GroundAspectFactory.createGroundAspectAreaFire(fireCoordinates, groundElement.getVehicle(), AttackAreaType.INDIRECT,
                     ARTY_ATTACK_AREA_RADIUS);
@@ -323,19 +323,13 @@ public abstract class GroundUnit implements IGroundUnit
     protected List<Coordinate> createLineAcrossVehiclePositions(Coordinate centralVehicleCoordinate, int numvehicles, double spacing) throws PWCGException 
     {
         double facingAngle = pwcgGroundUnitInformation.getOrientation().getyOri();        
-        return GroundUnitPositionCalculatorLineAcross.createLineAcrossVehiclePositions(centralVehicleCoordinate, facingAngle, numvehicles, spacing);        
+        return GroundUnitPositionCalculatorLineAcross.createLineAcrossVehiclePositions(pwcgGroundUnitInformation.getCampaignMap(), centralVehicleCoordinate, facingAngle, numvehicles, spacing);        
     }
-    
-    protected List<Coordinate> createLineAsternVehiclePositions(Coordinate centralVehicleCoordinate, int numvehicles, double spacing) throws PWCGException 
-    {
-        double facingAngle = pwcgGroundUnitInformation.getOrientation().getyOri();        
-        return GroundUnitPositionCalculatorLineAstern.createLineAsternVehiclePositions(centralVehicleCoordinate, facingAngle, numvehicles, spacing);        
-    }
-    
+
     protected List<Coordinate> createWedgeVehiclePositions(Coordinate centralVehicleCoordinate, int numvehicles, double spacing) throws PWCGException 
     {
         double facingAngle = pwcgGroundUnitInformation.getOrientation().getyOri();        
-        return GroundUnitPositionCalculatorWedge.createWedgeVehiclePositions(centralVehicleCoordinate, facingAngle, numvehicles, spacing);        
+        return GroundUnitPositionCalculatorWedge.createWedgeVehiclePositions(pwcgGroundUnitInformation.getCampaignMap(), centralVehicleCoordinate, facingAngle, numvehicles, spacing);        
     }
 
     private void makeSubtitles() throws PWCGException

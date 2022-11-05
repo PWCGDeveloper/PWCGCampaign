@@ -28,7 +28,7 @@ public class MissionGroundUnitKubanTest
     public void verifySmallerDistanceToFront () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_321_PROFILE);
-        FrontMapIdentifier map = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();
+        FrontMapIdentifier map = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapIdentifier();
         assert(map == FrontMapIdentifier.KUBAN_MAP);
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);

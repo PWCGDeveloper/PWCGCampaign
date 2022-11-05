@@ -4,5 +4,5 @@ public enum PWCGProduct
 {
     BOS,
     FC, 
-    NONE
+    NONE;
 }

@@ -4,7 +4,7 @@
         "bf109f4_default": {
             "skinName": "bf109f4",
             "planeType": "bf109f4",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -17,7 +17,7 @@
         "bf109f4_blank_01": {
             "skinName": "bf109f4_blank_01",
             "planeType": "bf109f4",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -30,7 +30,7 @@
         "bf109f4_blank_03": {
             "skinName": "bf109f4_blank_03",
             "planeType": "bf109f4",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -43,7 +43,7 @@
         "bf109f4_blank_05": {
             "skinName": "bf109f4_blank_05",
             "planeType": "bf109f4",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Germany",
@@ -56,7 +56,7 @@
 		"bf109f4_skin_01": {
 			"skinName": "bf109f4_skin_01",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -67,7 +67,7 @@
 		"bf109f4_skin_03": {
 			"skinName": "bf109f4_skin_03",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -78,7 +78,7 @@
 		"bf109f4_skin_04": {
 			"skinName": "bf109f4_skin_04",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -89,7 +89,7 @@
 		"bf109f4_skin_05": {
 			"skinName": "bf109f4_skin_05",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -100,7 +100,7 @@
 		"bf109f4_skin_07": {
 			"skinName": "bf109f4_skin_07",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20112052,
 			"country": "Germany",
@@ -111,7 +111,7 @@
 		"bf109f4_skin_10": {
 			"skinName": "bf109f4_skin_10",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -122,7 +122,7 @@
 		"bf109f4_skin_12": {
 			"skinName": "bf109f4_skin_12",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -133,7 +133,7 @@
 		"bf109f4_skin_13": {
 			"skinName": "bf109f4_skin_13",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -144,7 +144,7 @@
 		"109F4_7JG5_White_2": {
 			"skinName": "109F4_7JG5_White_2",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -155,7 +155,7 @@
 		"Bf 109F-4 _black2__rollwage": {
 			"skinName": "Bf 109F-4 _black2__rollwage",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -166,7 +166,7 @@
 		"Bf109F-4 Fritz Tegtmeier": {
 			"skinName": "Bf109F-4 Fritz Tegtmeier",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -177,7 +177,7 @@
 		"Bf109F4_Peter Bremer autumn": {
 			"skinName": "Bf109F4_Peter Bremer autumn",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -188,7 +188,7 @@
 		"Bf109F4_Commander_JG77_Gordon_Gollob": {
 			"skinName": "Bf109F4_Commander_JG77_Gordon_Gollob",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -199,7 +199,7 @@
 		"F4_Carganico_wnr10132": {
 			"skinName": "F4_Carganico_wnr10132",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -210,7 +210,7 @@
 		"F4_Carganico_wnr10256": {
 			"skinName": "F4_Carganico_wnr10256",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -221,7 +221,7 @@
 		"F4_Carganico_winter": {
 			"skinName": "F4_Carganico_winter",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -232,7 +232,7 @@
 		"4K BHH F-4 Late Default": {
 			"skinName": "4K BHH F-4 Late Default",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -243,7 +243,7 @@
 		"F4_Gray": {
 			"skinName": "F4_Gray",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -254,7 +254,7 @@
 		"F4_Green": {
 			"skinName": "F4_Green",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Germany",
@@ -265,7 +265,7 @@
 		"Bf109F4_7_JG3_W04_Hans Schleef": {
 			"skinName": "Bf109F4_7_JG3_W04_Hans Schleef",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -276,7 +276,7 @@
 		"Bf109F4_9_JG3_Y04_Von Boremski": {
 			"skinName": "Bf109F4_9_JG3_Y04_Von Boremski",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -287,7 +287,7 @@
 		"Bf109F4_9_JG3_Y07_Viktor Bauer": {
 			"skinName": "Bf109F4_9_JG3_Y07_Viktor Bauer",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -298,7 +298,7 @@
 		"Bf109F4_9_JG3_Y06_Georg_Schantke": {
 			"skinName": "Bf109F4_9_JG3_Y06_Georg_Schantke",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -309,7 +309,7 @@
 		"Bf109F4_9_JG3_Y09": {
 			"skinName": "Bf109F4_9_JG3_Y09",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -320,7 +320,7 @@
 		"Bf109F4_9_JG3_Y10_Diergardt": {
 			"skinName": "Bf109F4_9_JG3_Y10_Diergardt",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -331,7 +331,7 @@
 		"Bf109F4_9_JG3_Y12": {
 			"skinName": "Bf109F4_9_JG3_Y12",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -342,7 +342,7 @@
 		"Bf109F4_IIIJG3_Von_Einseidel": {
 			"skinName": "Bf109F4_IIIJG3_Von_Einseidel",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -353,7 +353,7 @@
 		"Detlew_Rohwer": {
 			"skinName": "Detlew_Rohwer",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -364,7 +364,7 @@
 		"Jurgen_Harder": {
 			"skinName": "Jurgen_Harder",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111003,
 			"country": "Germany",
@@ -375,7 +375,7 @@
 		"LT Hans Strelow Schwarze 10 of JG51": {
 			"skinName": "LT Hans Strelow Schwarze 10 of JG51",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20112051,
 			"country": "Germany",
@@ -386,7 +386,7 @@
 		"4.JG51 W1 Erich Hohagen": {
 			"skinName": "4.JG51 W1 Erich Hohagen",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20112051,
 			"country": "Germany",
@@ -397,7 +397,7 @@
 		"4.JG51 W2": {
 			"skinName": "4.JG51 W2",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20112051,
 			"country": "Germany",
@@ -408,7 +408,7 @@
 		"4.JG51 W4 Rudolf Nielinger": {
 			"skinName": "4.JG51 W4 Rudolf Nielinger",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20112051,
 			"country": "Germany",
@@ -419,7 +419,7 @@
 		"Bf 109F-4 9JG52 Yellow 5 Grislawski": {
 			"skinName": "Bf 109F-4 9JG52 Yellow 5 Grislawski",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111052,
 			"country": "Germany",
@@ -430,7 +430,7 @@
 		"Bf109F2_Walter_krupinsky_ver2": {
 			"skinName": "Bf109F2_Walter_krupinsky_ver2",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111052,
 			"country": "Germany",
@@ -441,7 +441,7 @@
 		"Bf109F4_5JG52_1": {
 			"skinName": "Bf109F4_5JG52_1",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111052,
 			"country": "Germany",
@@ -452,7 +452,7 @@
 		"Bf109F4_5JG52_7": {
 			"skinName": "Bf109F4_5JG52_7",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111052,
 			"country": "Germany",
@@ -463,7 +463,7 @@
 		"Stab.JG52 Maj. Hannes Trubebach": {
 			"skinName": "Stab.JG52 Maj. Hannes Trubebach",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111052,
 			"country": "Germany",
@@ -474,7 +474,7 @@
 		"Stab.JG52 Maj Hanns Trubenbach_wnr7087": {
 			"skinName": "Stab.JG52 Maj Hanns Trubenbach_wnr7087",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20111052,
 			"country": "Germany",
@@ -485,7 +485,7 @@
 		"Bf109F4_jg52_black12": {
 			"skinName": "Bf109F4_jg52_black12",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20112052,
 			"country": "Germany",
@@ -496,7 +496,7 @@
 		"Bf109F4_no7_Stab IIJG52": {
 			"skinName": "Bf109F4_no7_Stab IIJG52",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20112052,
 			"country": "Germany",
@@ -507,7 +507,7 @@
 		"4.JG77 Maj. Heinrinch Setz Jul 42": {
 			"skinName": "4.JG77 Maj. Heinrinch Setz Jul 42",
 			"planeType": "bf109f4",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": 20112052,
 			"country": "20111077",

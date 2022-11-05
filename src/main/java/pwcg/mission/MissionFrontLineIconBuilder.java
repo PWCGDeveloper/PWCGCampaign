@@ -44,7 +44,7 @@ public class MissionFrontLineIconBuilder
 
 	private List<McuIcon> createFrontPointIcons(Side side) throws PWCGException
 	{
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(campaign.getDate());
 		List<FrontLinePoint> frontPointsForSide = frontLinesForMap.getFrontLines(side);
 
 		List<McuIcon> iconsForFront = createFrontPoints(frontPointsForSide);

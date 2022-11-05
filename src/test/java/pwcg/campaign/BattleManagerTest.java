@@ -26,9 +26,7 @@ public class BattleManagerTest
     @Test
     public void getBattleTest () throws PWCGException
     {   
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
-
-    	BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
+    	BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.ARRAS_MAP).getBattleManager();
     	
     	Battle battle = battleManager.getBattleForCampaign(FrontMapIdentifier.ARRAS_MAP, new Coordinate(80000, 0, 80000), DateUtils.getDateYYYYMMDD("19171121"));
         Assertions.assertTrue (battle.getName().equals("Cambrai"));
@@ -39,8 +37,7 @@ public class BattleManagerTest
     @Test
     public void getBattleTestDateWrong () throws PWCGException
     {        
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
-        BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
+        BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.ARRAS_MAP).getBattleManager();
     	
     	Battle battle = battleManager.getBattleForCampaign(FrontMapIdentifier.ARRAS_MAP, new Coordinate(45000, 0, 220000), DateUtils.getDateYYYYMMDD("19180501"));
         Assertions.assertTrue (battle == null);
@@ -49,8 +46,7 @@ public class BattleManagerTest
     @Test
     public void getBattleTestCoordinatesWrong () throws PWCGException
     {        
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
-        BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
+        BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.ARRAS_MAP).getBattleManager();
     	
     	Battle battle = battleManager.getBattleForCampaign(FrontMapIdentifier.ARRAS_MAP, new Coordinate(45000, 0, 20000), DateUtils.getDateYYYYMMDD("19180501"));
         Assertions.assertTrue (battle == null);
@@ -59,8 +55,7 @@ public class BattleManagerTest
     @Test
     public void getBattleTestMapWrong () throws PWCGException
     {        
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
-        BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
+        BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.ARRAS_MAP).getBattleManager();
     	
     	Battle battle = battleManager.getBattleForCampaign(FrontMapIdentifier.ARRAS_MAP, new Coordinate(45000, 0, 220000), DateUtils.getDateYYYYMMDD("19180501"));
         Assertions.assertTrue (battle == null);

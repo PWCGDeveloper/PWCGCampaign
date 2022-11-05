@@ -44,6 +44,7 @@ public class IntelMapPanel extends MapPanelBase
 
         this.parent = parent;       
         this.campaign = campaign;       
+        super.initializeMap(campaign.getCampaignMap());
 	}
 
 	public void setData() throws PWCGException 
@@ -51,14 +52,14 @@ public class IntelMapPanel extends MapPanelBase
 	    Date date = campaign.getDate();
 
 		squadronPoints.clear();
-		List<Squadron> allSquadrons =  PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(date);
+		List<Squadron> allSquadrons =  PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(mapIdentifier, date);
 		for (Squadron squadron : allSquadrons)
 		{
 			addSquadronPoint(squadron);
 		}
 
 		airfieldPoints.clear();
-		AirfieldManager airfieldData =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
+		AirfieldManager airfieldData =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager();
         Map<String, Airfield> allAF = airfieldData.getAllAirfields();
 	    for (Airfield af : allAF.values())
 	    {
@@ -237,7 +238,7 @@ public class IntelMapPanel extends MapPanelBase
             IntelAirfieldMapPoint mapPoint = new IntelAirfieldMapPoint();
             mapPoint.name = field.getName();
             mapPoint.coord = field.getPosition().copy();
-            mapPoint.countryName = field.determineCountryOnDate(parent.getMapDate()).getCountryName();
+            mapPoint.countryName = field.determineCountryOnDate(mapIdentifier, parent.getMapDate()).getCountryName();
 
             airfieldPoints.put(mapPoint.name, mapPoint);
 		}
@@ -247,7 +248,7 @@ public class IntelMapPanel extends MapPanelBase
 	private void addSquadronPoint(Squadron squadron) throws PWCGException 
 	{
 		String fieldName = squadron.determineCurrentAirfieldName(parent.getMapDate());
-		Airfield field =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(fieldName);
+		Airfield field =  PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager().getAirfield(fieldName);
 
 		if (field != null)
 		{

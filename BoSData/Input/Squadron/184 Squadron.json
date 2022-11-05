@@ -12,7 +12,7 @@
 	"planeAssignments": [
 		{
 			"archType": "hurricane",
-			"squadronIntroduction": "19390801",
+			"squadronIntroduction": "19390901",
 			"squadronWithdrawal": "19440301"
 		},
 		{
@@ -48,7 +48,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19390801",
+				"startDate": "19390901",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -117,7 +117,7 @@
 	"squadHistory": {
 		"squadHistoryEntries": [
 			{
-				"date": "19390801",
+				"date": "19390901",
 				"squadName": "74 Squadron",
 				"armedServiceName": "Royal Air Force",
 				"skill": 70
@@ -131,12 +131,12 @@
 		]
 	},
 	"callsigns": {
-		"19390801": "CHARLIE"
+		"19390901": "CHARLIE"
 	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19390801",
+				"startDate": "19390901",
 				"nightMissionOdds": 5
 			},
 			{

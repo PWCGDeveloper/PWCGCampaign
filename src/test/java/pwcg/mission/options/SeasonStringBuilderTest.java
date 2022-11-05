@@ -16,13 +16,12 @@ public class SeasonStringBuilderTest
     public SeasonStringBuilderTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.BODENPLATTE_MAP);
     }
 
     @Test
     public void testClearSkies() throws PWCGException
     {
-        String skies = SeasonStringBuilder.getClearSkys(DateUtils.getDateYYYYMMDD("19441201"));
+        String skies = SeasonStringBuilder.getClearSkys(FrontMapIdentifier.BODENPLATTE_MAP, DateUtils.getDateYYYYMMDD("19441201"));
         assert(skies.startsWith("winter"));
         assert(skies.toLowerCase().contains("clear"));
         assert(skies.endsWith("_00\\sky.ini") || skies.endsWith("_02\\sky.ini") || skies.endsWith("_04\\sky.ini"));
@@ -31,7 +30,7 @@ public class SeasonStringBuilderTest
     @Test
     public void testLightSkies() throws PWCGException
     {
-        String skies = SeasonStringBuilder.getLightSkys(DateUtils.getDateYYYYMMDD("19441001"));
+        String skies = SeasonStringBuilder.getLightSkys(FrontMapIdentifier.NORMANDY_MAP, DateUtils.getDateYYYYMMDD("19441001"));
         assert(skies.startsWith("summer"));
         assert(skies.toLowerCase().contains("light"));
         assert(skies.endsWith("_00\\sky.ini") || skies.endsWith("_02\\sky.ini") || skies.endsWith("_04\\sky.ini"));
@@ -40,7 +39,7 @@ public class SeasonStringBuilderTest
     @Test
     public void testAverageSkies() throws PWCGException
     {
-        String skies = SeasonStringBuilder.getAverageSkys(DateUtils.getDateYYYYMMDD("19440901"));
+        String skies = SeasonStringBuilder.getAverageSkys(FrontMapIdentifier.NORMANDY_MAP, DateUtils.getDateYYYYMMDD("19440901"));
         assert(skies.startsWith("summer"));
         assert(skies.toLowerCase().contains("medium"));
     }
@@ -48,7 +47,7 @@ public class SeasonStringBuilderTest
     @Test
     public void testHeavySkies() throws PWCGException
     {
-        String skies = SeasonStringBuilder.getHeavySkys(DateUtils.getDateYYYYMMDD("19440301"));
+        String skies = SeasonStringBuilder.getHeavySkys(FrontMapIdentifier.NORMANDY_MAP, DateUtils.getDateYYYYMMDD("19440301"));
         assert(skies.startsWith("summer"));
         assert(skies.toLowerCase().contains("heavy"));
         assert(skies.endsWith("_05\\sky.ini") || skies.endsWith("_07\\sky.ini") || skies.endsWith("_09\\sky.ini"));
@@ -57,7 +56,7 @@ public class SeasonStringBuilderTest
     @Test
     public void testOvercastSkies() throws PWCGException
     {
-        String skies = SeasonStringBuilder.getOvercastSkys(DateUtils.getDateYYYYMMDD("19441201"));
+        String skies = SeasonStringBuilder.getOvercastSkys(FrontMapIdentifier.BODENPLATTE_MAP, DateUtils.getDateYYYYMMDD("19441201"));
         assert(skies.startsWith("winter"));
         assert(skies.toLowerCase().contains("overcast"));
         assert(skies.endsWith("_05\\sky.ini") || skies.endsWith("_07\\sky.ini") || skies.endsWith("_09\\sky.ini"));

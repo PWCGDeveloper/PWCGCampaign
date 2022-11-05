@@ -76,7 +76,6 @@ public class AceManagerTest
 
 
         PWCGContext.setProduct(PWCGProduct.FC);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
     	aceManager = new AceManager();
      	aceManager.configure();
     }

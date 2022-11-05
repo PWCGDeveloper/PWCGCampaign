@@ -1,5 +1,6 @@
 package pwcg.campaign.group.airfield.hotspot;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -16,10 +17,10 @@ public class AirfieldHotSpotDefinition
     }
     
     
-    public HotSpot convert(Coordinate position, Orientation orientation) throws PWCGException
+    public HotSpot convert(FrontMapIdentifier mapIdentifier, Coordinate position, Orientation orientation) throws PWCGException
     {
         double angleForThisField = MathUtils.adjustAngle(orientation.getyOri(), angle);
-        Coordinate hotSpotPosition = MathUtils.calcNextCoord(position.copy(), angleForThisField, distance);
+        Coordinate hotSpotPosition = MathUtils.calcNextCoord(mapIdentifier, position.copy(), angleForThisField, distance);
 
         Orientation hotSpotOrientation = Orientation.createRandomOrientation();
         

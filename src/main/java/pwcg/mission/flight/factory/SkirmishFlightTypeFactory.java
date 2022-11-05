@@ -30,7 +30,7 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
         missionRole = skirmish.forceRoleConversion(missionRole, squadron.determineSide());
         
         FlightTypes flightType = FlightTypes.ANY;
-        if (skirmish.hasFlighTypeForRole(squadron, missionRole))
+        if (skirmish.hasFlightTypeForRole(squadron, missionRole))
         {
             flightType = skirmish.getFlighTypeForRole(squadron, missionRole);
             PWCGLogger.log(LogLevel.DEBUG, "Skirmish flight type factory returned: " + flightType + " for role " + missionRole + " Squadron " + squadron.determineDisplayName(campaign.getDate()));

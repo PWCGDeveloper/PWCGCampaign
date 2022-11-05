@@ -34,14 +34,13 @@ public class SquadronMapFinder
     private void squadronIsOnMap() throws PWCGException  
     {     
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
         
         TreeMap<Integer, String> airfieldsOnMapSorted = new TreeMap<>();
         
         List<Squadron> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
         for (Squadron squadron : allSq)
         {
-            Airfield airfield = squadron.determineCurrentAirfieldCurrentMap(DateUtils.getDateYYYYMMDD("19430801"));
+            Airfield airfield = squadron.determineCurrentAirfieldCurrentMap(FrontMapIdentifier.NORMANDY_MAP, DateUtils.getDateYYYYMMDD("19430801"));
             if (airfield != null)
             {
                 airfieldsOnMapSorted.put(squadron.getSquadronId(), airfield.getName());

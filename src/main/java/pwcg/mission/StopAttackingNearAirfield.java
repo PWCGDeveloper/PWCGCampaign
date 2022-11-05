@@ -3,6 +3,7 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
@@ -87,12 +88,13 @@ public class StopAttackingNearAirfield
     
     private boolean isAirfieldForStopAttack(Airfield airfield) throws PWCGException
     {
-        if (airfield.getCountry(flight.getCampaign().getDate()).getSide() == flight.getSquadron().determineSide())
+        Campaign campaign = flight.getCampaign();
+        if (airfield.getCountry(campaign.getCampaignMap(), campaign.getDate()).getSide() == flight.getSquadron().determineSide())
         {
             return false;
         }
         
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flight.getCampaign().getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(flight.getCampaign().getDate());
         Coordinate closestEnemyFrontLines = frontLinesForMap.findClosestFrontCoordinateForSide(airfield.getPosition(), flight.getSquadron().determineEnemySide());
         double distanceFromAirfieldToFront = MathUtils.calcDist(airfield.getPosition(), closestEnemyFrontLines);
         

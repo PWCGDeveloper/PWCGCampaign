@@ -2,9 +2,12 @@ package pwcg.mission.ground;
 
 import java.util.Date;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.target.TargetType;
@@ -12,6 +15,7 @@ import pwcg.mission.target.TargetType;
 public class GroundUnitInformation
 {
     private ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
+    private Campaign campaign;
     private String name = "";
     private Date date;
     private Coordinate position = new Coordinate();
@@ -20,6 +24,11 @@ public class GroundUnitInformation
     private TargetType targetType = TargetType.TARGET_NONE;
     private GroundUnitSize unitSize = GroundUnitSize.GROUND_UNIT_SIZE_TINY;
     private String requestedUnitType = "";
+    
+    public GroundUnitInformation(Campaign campaign)
+    {
+        this.campaign = campaign;
+    }
 
     public ICountry getCountry()
     {
@@ -109,5 +118,15 @@ public class GroundUnitInformation
     public void setRequestedUnitType(String requestedUnitType)
     {
         this.requestedUnitType = requestedUnitType;
+    }
+
+    public Campaign getCampaign()
+    {
+        return campaign;
+    }
+
+    public FrontMapIdentifier getCampaignMap() throws PWCGException
+    {
+        return campaign.getCampaignMap();
     }
 }

@@ -4,7 +4,7 @@
         "a20b_default": {
             "skinName": "a20b",
             "planeType": "a20b",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Russia",
@@ -17,7 +17,7 @@
         "a20b_blank_01": {
             "skinName": "a20b_blank_01",
             "planeType": "a20b",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Russia",
@@ -30,7 +30,7 @@
         "a20b_blank_02": {
             "skinName": "a20b_blank_02",
             "planeType": "a20b",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -2,
             "country": "Russia",
@@ -56,7 +56,7 @@
         "a20b_blank_04": {
             "skinName": "a20b_blank_04",
             "planeType": "a20b",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19430301",
             "squadId": -2,
             "country": "Britain",
@@ -108,7 +108,7 @@
         "a20b_blank_08": {
             "skinName": "a20b_blank_08",
             "planeType": "a20b",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -2,
             "country": "USA",
@@ -160,7 +160,7 @@
 		"a20b_skin_04": {
 			"skinName": "a20b_skin_04",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -171,7 +171,7 @@
 		"a20b_skin_06": {
 			"skinName": "a20b_skin_06",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -182,7 +182,7 @@
 		"a20b_skin_07": {
 			"skinName": "a20b_skin_07",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -193,7 +193,7 @@
 		"a20b_skin_08": {
 			"skinName": "a20b_skin_08",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -204,7 +204,7 @@
 		"a20b_skin_09": {
 			"skinName": "a20b_skin_09",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -215,7 +215,7 @@
 		"a20b_skin_10": {
 			"skinName": "a20b_skin_10",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -226,7 +226,7 @@
         "a20b_skin_11": {
             "skinName": "a20b_skin_11",
             "planeType": "a20b",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19450601",
             "squadId": -1,
             "country": "Russia",
@@ -237,7 +237,7 @@
         "a20b_skin_13": {
             "skinName": "a20b_skin_13",
             "planeType": "a20b",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440401",
             "squadId": -1,
             "country": "USA",
@@ -259,7 +259,7 @@
 		"A20B_RUS MITH 2": {
 			"skinName": "A20B_RUS MITH 2",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -270,7 +270,7 @@
 		"A20B_RUS MITH 7": {
 			"skinName": "A20B_RUS MITH 7",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -281,7 +281,7 @@
 		"A20B_ CHIEFF": {
 			"skinName": "A20B_ CHIEFF",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -292,7 +292,7 @@
 		"A20B_THE WOLF": {
 			"skinName": "A20B_THE WOLF",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -303,7 +303,7 @@
 		"A20B_8U-U": {
 			"skinName": "A20B_8U-U",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -314,7 +314,7 @@
 		"A20B_47th_bombardment_24_sylvia": {
 			"skinName": "A20B_47th_bombardment_24_sylvia",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -325,7 +325,7 @@
 		"A20B_47th_bombardment_84": {
 			"skinName": "A20B_47th_bombardment_84",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -336,7 +336,7 @@
 		"A20B_47th_bombardment_94": {
 			"skinName": "A20B_47th_bombardment_94",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -347,7 +347,7 @@
 		"A20B_47th_bombardment_13011": {
 			"skinName": "A20B_47th_bombardment_13011",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -358,7 +358,7 @@
 		"A20B_SKONK WORKS": {
 			"skinName": "A20B_SKONK WORKS",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",
@@ -369,7 +369,7 @@
 		"MEAT HOUND": {
 			"skinName": "MEAT HOUND",
 			"planeType": "a20b",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -1,
 			"country": "Russia",

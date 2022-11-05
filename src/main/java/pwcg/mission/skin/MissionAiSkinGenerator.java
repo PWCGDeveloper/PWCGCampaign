@@ -42,7 +42,7 @@ public class MissionAiSkinGenerator
         }
     }
 
-    private void chooseSquadronPersonalSkin(PlaneMcu plane)
+    private void chooseSquadronPersonalSkin(PlaneMcu plane) throws PWCGException
     {
         List<Skin> squadronPersonalSkins = missionSkinSet.getSquadronPersonalSkins(plane.getType());
         squadronPersonalSkins = SkinFilter.skinFilterInUse(squadronPersonalSkins, flight.getMission().getSkinsInUse());

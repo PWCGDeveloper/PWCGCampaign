@@ -90,7 +90,7 @@ public class CreepingLinePattern
         creepingWPOrientation.setyOri(orientation);
         nextCreepingWP.setOrientation(creepingWPOrientation);
 
-        Coordinate creepingCoords = MathUtils.calcNextCoord(lastWP.getPosition().copy(), orientation, legDistance);
+        Coordinate creepingCoords = MathUtils.calcNextCoord(flight.getCampaignMap(), lastWP.getPosition().copy(), orientation, legDistance);
         
         creepingCoords.setYPos(lastWP.getPosition().getYPos());
         nextCreepingWP.setPosition(creepingCoords);

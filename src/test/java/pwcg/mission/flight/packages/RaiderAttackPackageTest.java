@@ -61,7 +61,7 @@ public class RaiderAttackPackageTest extends PwcgTestBase
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.RAID, playerSquadron);
 
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(150000,  0, 150000), 100000);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), new Coordinate(150000,  0, 150000), 100000);
 
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
         mission.generate(playerFlightTypes);

@@ -40,7 +40,7 @@ public class AAREvaluator
         aarDestroyedStatusEvaluator.buildDeadLists();
         
         aarPilotStatusEvaluator = new AARPilotStatusEvaluator(
-                campaign, aarContext.getPreliminaryData().getPwcgMissionData(), aarDestroyedStatusEvaluator, aarContext.getLogEventData(), aarVehicleBuilder);
+                campaign, aarDestroyedStatusEvaluator, aarContext.getLogEventData(), aarVehicleBuilder);
         aarPilotStatusEvaluator.determineFateOfCrewsInMission();
         
         aarEquipmentStatusEvaluator = new AAREquipmentStatusEvaluator(campaign, aarContext.getLogEventData(), aarVehicleBuilder);
@@ -77,7 +77,7 @@ public class AAREvaluator
     
     private AARVictoryEvaluator createAARVictoryEvaluator()
     {
-        return new AARVictoryEvaluator(campaign, aarContext.getPreliminaryData().getPwcgMissionData(), aarDestroyedStatusEvaluator);
+        return new AARVictoryEvaluator(campaign, aarDestroyedStatusEvaluator);
     }
 
     public AARDamageStatusEvaluator getAarDamageStatusEvaluator()

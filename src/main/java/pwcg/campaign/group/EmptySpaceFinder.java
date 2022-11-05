@@ -3,6 +3,7 @@ package pwcg.campaign.group;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.hotspot.HotSpot;
@@ -31,14 +32,14 @@ public class EmptySpaceFinder
         this.mission = mission;
     }
 
-    public List<HotSpot> findEmptySpaces (List<Coordinate> boundary, int targetNumber) throws PWCGException
+    public List<HotSpot> findEmptySpaces (FrontMapIdentifier mapIdentifier, List<Coordinate> boundary, int targetNumber) throws PWCGException
     {
         coordinateBox = CoordinateBox.coordinateBoxFromCoordinateList(boundary);
         this.boundary = boundary;
         this.targetNumber = targetNumber;
         
-        findBlocksInArea();
-        findAirfieldsInArea();
+        findBlocksInArea(mapIdentifier);
+        findAirfieldsInArea(mapIdentifier);
         findEmptySpacesInRequestedArea();
         
         return hotSpots;
@@ -118,16 +119,16 @@ public class EmptySpaceFinder
         return false;
     }
 
-    private void findBlocksInArea() throws PWCGException
+    private void findBlocksInArea(FrontMapIdentifier mapIdentifier) throws PWCGException
     {
-        GroupManager groupManager  = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager  = PWCGContext.getInstance().getMap(mapIdentifier).getGroupManager();
         blocksInArea = groupManager.getBlockFinder().getBlocksWithinRadius(coordinateBox.getCenter(), coordinateBox.getLongestEdge() + 1000.0);
     }
     
 
-    private void findAirfieldsInArea() throws PWCGException
+    private void findAirfieldsInArea(FrontMapIdentifier mapIdentifier) throws PWCGException
     {
-        AirfieldManager airfieldManager  = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
+        AirfieldManager airfieldManager  = PWCGContext.getInstance().getMap(mapIdentifier).getAirfieldManager();
         airfieldsInArea = airfieldManager.getAirfieldFinder().getWithinRadius(coordinateBox.getCenter(), coordinateBox.getLongestEdge() + 1000.0);
     }
 

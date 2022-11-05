@@ -6,12 +6,9 @@ import java.util.List;
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
-import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.MathUtils;
 
 public class SquadronMoveHandler
 {
@@ -48,11 +45,7 @@ public class SquadronMoveHandler
         boolean airfieldsOnSameMap = areAirfieldsOnTheSameMap(airfieldNameNow, airfieldNameNext);
         if (airfieldsOnSameMap)
         {
-            double distance = calculateDistanceBetweenAirfields(airfieldNameNow, airfieldNameNext);
-            if (distance < 50000.0)
-            {
-                needsFerry = true;
-            }
+            needsFerry = true;
         }
         
         return needsFerry;
@@ -75,17 +68,5 @@ public class SquadronMoveHandler
             }
         }
         return airfieldsOnSameMap;
-    }
-
-    private double calculateDistanceBetweenAirfields(String airfieldNameNow, String airfieldNameNext)
-    {
-        double distance = 1000000.0;
-        Airfield airfieldNow = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldNameNow);
-        Airfield airfieldNext = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldNameNext);
-        if (airfieldNow != null && airfieldNext != null)
-        {
-            distance = MathUtils.calcDist(airfieldNow.getPosition(), airfieldNext.getPosition());
-        }
-        return distance;
     }
 }

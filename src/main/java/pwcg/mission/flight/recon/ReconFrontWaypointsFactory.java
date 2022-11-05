@@ -47,7 +47,7 @@ public class ReconFrontWaypointsFactory
         PathAlongFrontDataBuilder pathAlongFrontDataBuilder = new PathAlongFrontDataBuilder(flight);
         PathAlongFrontData pathAlongFrontData = pathAlongFrontDataBuilder.buildPathAlongFrontData(ingressPosition, calculateDepthOfPenetration(), calculatePatrolDistance());
         
-        PathAlongFront pathAlongFront = new PathAlongFront();
+        PathAlongFront pathAlongFront = new PathAlongFront(flight.getCampaign());
         List<Coordinate> patrolCoordinates = pathAlongFront.createPathAlongFront(pathAlongFrontData);
         
         List<McuWaypoint> targetWaypoints = new ArrayList<McuWaypoint>();

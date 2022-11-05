@@ -112,7 +112,7 @@ public class StrategicTargetLocator
     {
         List<IFixedPosition> targets = new ArrayList<IFixedPosition>();
 
-        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager = PWCGContext.getInstance().getMap(flightInformation.getCampaignMap()).getGroupManager();
         List<Block> blocks = groupManager.getStandaloneBlocks();
         
         int currentRadius = preferredRadius;
@@ -122,12 +122,12 @@ public class StrategicTargetLocator
             {
                 if (block.getModel().toLowerCase().contains(blockType))
                 {
-                    if (block.determineCountryOnDate(flightInformation.getCampaign().getDate()).isNeutral())
+                    if (block.determineCountryOnDate(flightInformation.getCampaignMap(), flightInformation.getCampaign().getDate()).isNeutral())
                     {
                         continue;
                     }
     
-                    if (block.determineCountryOnDate(flightInformation.getCampaign().getDate()).getSide() == flightInformation.getSquadron().determineEnemySide())
+                    if (block.determineCountryOnDate(flightInformation.getCampaignMap(), flightInformation.getCampaign().getDate()).getSide() == flightInformation.getSquadron().determineEnemySide())
                     {
                         double distanceToTarget = MathUtils.calcDist(targetLocation, block.getPosition());
                         if (distanceToTarget < currentRadius)
@@ -147,7 +147,11 @@ public class StrategicTargetLocator
     {
         for (IFixedPosition target : targets)
         {
-            TargetDefinition targetDefinition = new TargetDefinition(targetType, target.getPosition(), target.getCountry(flightInformation.getCampaign().getDate()), targetType.getTargetName());
+            TargetDefinition targetDefinition = new TargetDefinition(
+                    targetType, 
+                    target.getPosition(), 
+                    target.determineCountryOnDate(flightInformation.getCampaignMap(), flightInformation.getCampaign().getDate()), 
+                    targetType.getTargetName());
             availableTargets.add(targetDefinition);
         }
     }

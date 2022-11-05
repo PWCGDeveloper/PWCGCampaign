@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
@@ -24,8 +23,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     BoSContext bosContextManager;
 
     protected Map<FrontMapIdentifier, PWCGMap> pwcgMaps = new HashMap<FrontMapIdentifier, PWCGMap>();
-    protected FrontMapIdentifier currentMap = null;
-    protected Campaign campaign = null;
     protected AceManager aceManager = new AceManager();
     protected SquadronManager squadronManager = new SquadronManager();
     protected NewspaperManager newspaperManager = new NewspaperManager();
@@ -52,9 +49,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     }
 
     protected void initialize() throws PWCGException 
-    {
-        initializeMap();
-        
+    {        
         planeTypeFactory.initialize();
         aceManager.configure();
         squadronManager.initialize();
@@ -62,39 +57,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
         skinManager.initialize();
         vehicleDefinitionManager.initialize();
         staticObjectDefinitionManager.initialize();
-    }
-
-    @Override
-    public void changeContext(FrontMapIdentifier frontMapIdentifier) throws PWCGException  
-    {
-        currentMap = frontMapIdentifier;
-        if (campaign != null)
-        {
-            frontMapIdentifier = StalingradMapResolver.resolveStalingradMap(campaign, frontMapIdentifier);
-            currentMap = frontMapIdentifier;
-            this.getCurrentMap().getGroupManager().configureForDate(currentMap.getMapName(), campaign.getDate());
-        }
-    }
-
-    @Override
-    public void setCampaign(Campaign campaign) throws PWCGException  
-    {
-        this.campaign = campaign;
-        if (campaign != null)
-        {
-        	setMapForCampaign(campaign);
-        }
-    }
-
-    @Override
-    public void setMapForCampaign(Campaign campaign) throws PWCGException
-    {
-        FrontMapIdentifier mapIdentifier = campaign.getCampaignMap();
-        if (mapIdentifier != null && mapIdentifier != FrontMapIdentifier.NO_MAP)
-        {
-            changeContext(mapIdentifier);
-            configurePwcgMaps();
-        }
     }
 
     @Override
@@ -121,9 +83,9 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public PWCGMap getCurrentMap()
+    public PWCGMap getMap(FrontMapIdentifier mapIdentifier)
     {
-        return pwcgMaps.get(currentMap);
+        return pwcgMaps.get(mapIdentifier);
     }
 
     @Override
@@ -195,12 +157,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public void setCurrentMap(FrontMapIdentifier mapIdentifier) throws PWCGException
-    {
-        changeContext(mapIdentifier);        
-    }
-
-    @Override
     public SquadronManager getSquadronManager()
     {
         return squadronManager;
@@ -263,8 +219,5 @@ public abstract class PWCGContextBase implements IPWCGContextManager
 
     @Override
     public abstract IPayloadFactory getPayloadFactory() throws PWCGException; 
-
-    @Override
-    public abstract void initializeMap() throws PWCGException;    
 
 }

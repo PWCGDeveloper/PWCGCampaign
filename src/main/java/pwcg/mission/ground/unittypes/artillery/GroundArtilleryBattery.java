@@ -40,14 +40,14 @@ public class GroundArtilleryBattery extends GroundUnit
 
         double startLocationOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 270);             
         double gunSpacing = 30.0;
-        Coordinate gunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), startLocationOrientation, ((numArtillery * gunSpacing) / 2));       
+        Coordinate gunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), pwcgGroundUnitInformation.getPosition(), startLocationOrientation, ((numArtillery * gunSpacing) / 2));       
         
         // Direction in which subsequent units will be placed
         double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 90.0);        
 
         for (int i = 0; i < numArtillery; ++i)
         {   
-            gunCoords = MathUtils.calcNextCoord(gunCoords, placementOrientation, gunSpacing);
+            gunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getCampaignMap(), gunCoords, placementOrientation, gunSpacing);
             spawnerLocations.add(gunCoords);
         }
         return spawnerLocations;

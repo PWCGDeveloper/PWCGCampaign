@@ -3,6 +3,7 @@ package integration.campaign.io.json;
 import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -14,6 +15,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 
 @ExtendWith(MockitoExtension.class)
+@Tag("BOS")
 public class AircraftIOJsonTest
 {
     @Test

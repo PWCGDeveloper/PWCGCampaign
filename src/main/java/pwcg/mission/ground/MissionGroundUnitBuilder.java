@@ -60,7 +60,7 @@ public class MissionGroundUnitBuilder
 
     private void generateBattle() throws PWCGException 
     {
-        if (PWCGContext.getInstance().getCurrentMap().isLimited(campaign.getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
+        if (PWCGContext.getInstance().getMap(campaign.getCampaignMap()).isLimited(campaign.getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
         {
             return;
         }
@@ -127,7 +127,7 @@ public class MissionGroundUnitBuilder
     private void createAAAForMission() throws PWCGException 
     {
         AAAManager aaaManager = new AAAManager(campaign, mission);
-        if (PWCGContext.getInstance().getCurrentMap().isLimited(campaign.getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
+        if (PWCGContext.getInstance().getMap(campaign.getCampaignMap()).isLimited(campaign.getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
         {
             aaaManager.getAAAKeyPositionForMission(this);
         }

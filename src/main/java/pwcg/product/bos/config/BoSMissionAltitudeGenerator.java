@@ -52,7 +52,7 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         }
         else if (flightType == FlightTypes.PARATROOP_DROP || flightType == FlightTypes.CARGO_DROP)
         {
-            altitude = determineParaDropFlightAltitude();
+            altitude = determineParaDropFlightAltitude(campaign);
             altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
         }
         else if (flightType == FlightTypes.SCRAMBLE)
@@ -62,7 +62,7 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         }
         else if (flightType == FlightTypes.TRANSPORT)
         {
-            altitude = determineTransportFlightAltitude();
+            altitude = determineTransportFlightAltitude(campaign);
             altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
         }
         else if (flightType == FlightTypes.SPY_EXTRACT)
@@ -213,13 +213,13 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         return altitude;
     }
     
-    private int determineParaDropFlightAltitude() throws PWCGException 
+    private int determineParaDropFlightAltitude(Campaign campaign) throws PWCGException 
     {
         int altitude = 800;
         int randomAltitude = RandomNumberGenerator.getRandom(800);
         int additionalAltitudeForMountains = 0;
 
-        FrontMapIdentifier map = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();
+        FrontMapIdentifier map = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapIdentifier();
         if (map == FrontMapIdentifier.KUBAN_MAP)
         {
             additionalAltitudeForMountains = 1000;
@@ -238,13 +238,13 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         return altitude;
     }
     
-    private int determineTransportFlightAltitude() throws PWCGException 
+    private int determineTransportFlightAltitude(Campaign campaign) throws PWCGException 
     {
         int altitude = 2000;
         int randomAltitude = RandomNumberGenerator.getRandom(2000);
         int additionalAltitudeForMountains = 0;
 
-        FrontMapIdentifier map = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();
+        FrontMapIdentifier map = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapIdentifier();
         if (map == FrontMapIdentifier.KUBAN_MAP)
         {
             additionalAltitudeForMountains = 1000;

@@ -76,7 +76,7 @@ public class CAPWaypointFactory
         int crossDistance = productSpecific.getInterceptCrossDiameterDistance();
 
         double movementAngle = MathUtils.calcAngle(flight.getTargetDefinition().getPosition(), flight.getFlightHomePosition());
-        Coordinate patternStartPosition = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), movementAngle, (crossDistance / 2));
+        Coordinate patternStartPosition = MathUtils.calcNextCoord(flight.getCampaign().getCampaignMap(), flight.getTargetDefinition().getPosition(), movementAngle, (crossDistance / 2));
         patternStartPosition.setYPos(flight.getFlightInformation().getAltitude());
         return patternStartPosition;
     }

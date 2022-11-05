@@ -49,7 +49,7 @@ public class ArmedServiceFinder
     private static List<ArmedService> getArmedServicesForMap(Campaign campaign) throws PWCGException
     {
         List<ArmedService> servicesForMap = new ArrayList<>();
-        PWCGMap map = PWCGContext.getInstance().getCurrentMap();
+        PWCGMap map = PWCGContext.getInstance().getMap(campaign.getCampaignMap());
         List<ArmedService> allServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
         for (ArmedService armedService : allServices)
         {

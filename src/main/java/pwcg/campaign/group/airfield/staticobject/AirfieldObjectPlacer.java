@@ -5,6 +5,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.AirfieldObjectSelectorFactory;
 import pwcg.campaign.factory.HotSpotTranslatorFactory;
 import pwcg.campaign.group.airfield.Airfield;
@@ -39,14 +40,14 @@ public class AirfieldObjectPlacer
         this.airfieldObjects = new AirfieldObjects();
     }
 
-    public AirfieldObjects createAirfieldObjects() throws PWCGException 
+    public AirfieldObjects createAirfieldObjects(FrontMapIdentifier mapIdentifier) throws PWCGException 
     {
         createApproachAA();
-        createHotSpotObjects();
+        createHotSpotObjects(mapIdentifier);
         return airfieldObjects;
     }
 
-    private void createHotSpotObjects() throws PWCGException
+    private void createHotSpotObjects(FrontMapIdentifier mapIdentifier) throws PWCGException
     {
         AirfieldHotSpotTranslator hotSpotTranslator = HotSpotTranslatorFactory.createHotSpotTranslatorFactory(mission, airfield);
         
@@ -59,7 +60,7 @@ public class AirfieldObjectPlacer
             }
             else if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_AAA)
             {
-                addAAA(hotSpot);
+                addAAA(mapIdentifier, hotSpot);
             }
             else if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_PLANE)
             {
@@ -67,7 +68,7 @@ public class AirfieldObjectPlacer
             }
             else 
             {
-                addAirfieldObject(hotSpot);
+                addAirfieldObject(mapIdentifier, hotSpot);
             }
         }
     }
@@ -82,9 +83,9 @@ public class AirfieldObjectPlacer
         }
     }
 
-    private void addAAA(HotSpot hotSpot) throws PWCGException
+    private void addAAA(FrontMapIdentifier mapIdentifier, HotSpot hotSpot) throws PWCGException
     {
-        if (!airfield.determineCountryOnDate(campaign.getDate()).isNeutral())
+        if (!airfield.determineCountryOnDate(mapIdentifier, campaign.getDate()).isNeutral())
         {            
             TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, hotSpot.getPosition(), airfieldCountry, "Airfield AAA");
             AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
@@ -118,10 +119,10 @@ public class AirfieldObjectPlacer
         }
     }
 
-    private void addAirfieldObject(HotSpot hotSpot) throws PWCGException 
+    private void addAirfieldObject(FrontMapIdentifier mapIdentifier, HotSpot hotSpot) throws PWCGException 
     {
         AirfieldObjectSelector  airfieldObjectSelector = AirfieldObjectSelectorFactory.createAirfieldObjectSelector(campaign.getDate());
-        IVehicle airfieldObject  = airfieldObjectSelector.createAirfieldObject(hotSpot, airfield, airfieldCountry);
+        IVehicle airfieldObject  = airfieldObjectSelector.createAirfieldObject(mapIdentifier, hotSpot, airfield, airfieldCountry);
         airfieldObjects.addAirfieldObject(airfieldObject);
     }
     
@@ -129,7 +130,7 @@ public class AirfieldObjectPlacer
     private void createApproachAA() throws PWCGException
     {
         AirfieldApproachAABuilder airfieldApproachAABuilder = new AirfieldApproachAABuilder(mission, airfield, airfieldCountry);
-        List<GroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA();
+        List<GroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA(mission.getCampaignMap());
         for (GroundUnitCollection aaaUnit : airfieldApproachAA)
         {
             mission.getGroundUnitBuilder().addMissionAAA(aaaUnit);

@@ -17,6 +17,7 @@ import java.util.List;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapArea;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
@@ -37,9 +38,10 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
 
     protected int scaleLevel = 100;
 
-    MouseAdapter mouseClickListener = null;
-    MouseMotionAdapter mouseMotionListener = null;
+    protected MouseAdapter mouseClickListener = null;
+    protected MouseMotionAdapter mouseMotionListener = null;
 
+    protected FrontMapIdentifier mapIdentifier;
     protected boolean movementEnabled = false;
     protected Point mapScrollPositionStart = new Point();
     protected Point mapScrollPositionNow = new Point();
@@ -50,8 +52,6 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
     public MapPanelBase(MapGUI parent) throws PWCGException
     {
         this.parent = parent;
-        this.mapImageCache = new MapImageCache();
-        mapImageCache.loadCurrentMap();
 
         PWCGMouseClickListener mouseClickListener = new PWCGMouseClickListener(this);
         PWCGMouseMotionListener mouseMotionListener = new PWCGMouseMotionListener(this);
@@ -62,11 +62,18 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         this.addMouseWheelListener(mouseWheelListener);
     }
 
+    public void initializeMap(FrontMapIdentifier mapIdentifier)
+    {
+        this.mapIdentifier = mapIdentifier;
+        this.mapImageCache = new MapImageCache(mapIdentifier);
+        mapImageCache.loadCurrentMap();
+    }
+
     public void setMapBackground(int zoom)
     {
         scaleLevel = zoom;
 
-        String mapImageName = PWCGContext.getInstance().getCurrentMap().getMapName() + "Map";
+        String mapImageName = PWCGContext.getInstance().getMap(mapIdentifier).getMapName() + "Map";
         if (scaleLevel < 100)
         {
             mapImageName += "0";
@@ -87,7 +94,7 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
             setSize(mapSize);
             setLayout(null);
 
-            MapArea mapArea = PWCGContext.getInstance().getCurrentMap().getMapArea();
+            MapArea mapArea = PWCGContext.getInstance().getMap(mapIdentifier).getMapArea();
 
             ratioWidth = mapSize.width / mapArea.getzMax();
             ratioHeight = mapSize.height / mapArea.getxMax();
@@ -197,7 +204,7 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
 
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(parent.getMapDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(mapIdentifier).getFrontLinesForMap(parent.getMapDate());
         List<FrontLinePoint> frontLinesAllied = frontLinesForMap.getFrontLines(Side.ALLIED);
         Point prev = null;
         for (FrontLinePoint frontCoord : frontLinesAllied)

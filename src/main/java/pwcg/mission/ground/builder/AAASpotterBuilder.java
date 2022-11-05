@@ -27,7 +27,7 @@ public class AAASpotterBuilder
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         
         GroundUnitCollection spotterMG = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
-        ICountry ownerOfLocation = CountryDesignator.determineCountry(position, campaign.getDate());
+        ICountry ownerOfLocation = CountryDesignator.determineCountry(campaign.getCampaignMap(), position, campaign.getDate());
         if (ownerOfLocation.getCountry() == spotterCountry.getCountry())
         {
             SpotterDecorator.createSpotter(spotterMG, SPOTTER_RANGE);

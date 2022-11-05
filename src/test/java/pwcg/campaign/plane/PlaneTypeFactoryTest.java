@@ -76,7 +76,7 @@ public class PlaneTypeFactoryTest
         for (PlaneType planeType : planeTypes.values())
         {
             assert(planeType.getArchType() != null);
-            assert(planeType.getIntroduction().after(DateUtils.getDateYYYYMMDD("19390901")));
+            assert(planeType.getIntroduction().after(DateUtils.getDateYYYYMMDD("19390801")));
             assert(planeType.getWithdrawal().before(DateUtils.getDateYYYYMMDD("1945601")));
             assert(planeType.getEndProduction().before(DateUtils.getDateYYYYMMDD("1945601")));
             assert(planeType.getRoleCategories().size() > 0);

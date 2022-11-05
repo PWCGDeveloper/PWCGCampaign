@@ -64,7 +64,8 @@ public class FerryWaypointFactory
         Mission mission = flight.getMission();
         double wpOrientation = MathUtils.calcAngle(fromAirfield.getTakeoffLocation(mission).getPosition(), toAirfield.getTakeoffLocation(mission).getPosition());
         int LandingApproachWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.LandingApproachWaypointDistanceKey);
-        Coordinate hopCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation(mission).getPosition().copy(), wpOrientation, LandingApproachWaypointDistance);
+        Coordinate hopCoords = MathUtils.calcNextCoord(
+                mission.getCampaignMap(), fromAirfield.getTakeoffLocation(mission).getPosition().copy(), wpOrientation, LandingApproachWaypointDistance);
         
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int initialWaypointAltitude = productSpecificConfiguration.getInitialWaypointAltitude();
@@ -82,7 +83,8 @@ public class FerryWaypointFactory
         Mission mission = flight.getMission();
         double wpOrientation = MathUtils.calcAngle(toAirfield.getTakeoffLocation(mission).getPosition(), fromAirfield.getTakeoffLocation(mission).getPosition());
         int LandingApproachWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.LandingApproachWaypointDistanceKey);
-        Coordinate hopCoords = MathUtils.calcNextCoord(toAirfield.getTakeoffLocation(mission).getPosition().copy(), wpOrientation, LandingApproachWaypointDistance);
+        Coordinate hopCoords = MathUtils.calcNextCoord(
+                mission.getCampaignMap(), toAirfield.getTakeoffLocation(mission).getPosition().copy(), wpOrientation, LandingApproachWaypointDistance);
         
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int initialWaypointAltitude = productSpecificConfiguration.getInitialWaypointAltitude();

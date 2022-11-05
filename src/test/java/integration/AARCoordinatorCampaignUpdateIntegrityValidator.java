@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -24,6 +25,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("BOS")
 public class AARCoordinatorCampaignUpdateIntegrityValidator
 {
     private Campaign campaign;    

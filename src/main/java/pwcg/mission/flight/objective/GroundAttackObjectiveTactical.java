@@ -41,7 +41,7 @@ public class GroundAttackObjectiveTactical
     public static String getObjectiveFromEnemyUnit(IGroundUnit enemyGroundUnit, FlightInformation flightInformation) throws PWCGException
     {
         String objectiveLocation =  MissionObjectiveLocation.getMissionObjectiveLocation(
-                flightInformation.getSquadron(), flightInformation.getCampaign().getDate(), enemyGroundUnit.getPosition().copy());
+                flightInformation.getCampaign(), flightInformation.getSquadron(), flightInformation.getCampaign().getDate(), enemyGroundUnit.getPosition().copy());
         
         String objective = "Attack the specified objective using all available means.";
         TargetType targetType = enemyGroundUnit.getTargetType();

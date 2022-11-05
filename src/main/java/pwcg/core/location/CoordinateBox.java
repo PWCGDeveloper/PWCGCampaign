@@ -3,6 +3,7 @@ package pwcg.core.location;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -31,11 +32,11 @@ public class CoordinateBox
         return coordinateBox;
     }
     
-    public static CoordinateBox coordinateBoxFromCenter(Coordinate center, int boxSize) throws PWCGException
+    public static CoordinateBox coordinateBoxFromCenter(FrontMapIdentifier mapIdentifier, Coordinate center, int boxSize) throws PWCGException
     {
         CoordinateBox coordinateBox = new CoordinateBox();
-        coordinateBox.calculateSW(center, boxSize);
-        coordinateBox.calculateNE(center, boxSize);
+        coordinateBox.calculateSW(mapIdentifier, center, boxSize);
+        coordinateBox.calculateNE(mapIdentifier, center, boxSize);
         return coordinateBox;
     }
     
@@ -257,17 +258,17 @@ public class CoordinateBox
         }
     }
 
-    private Coordinate calculateSW (Coordinate center, int boxSize) throws PWCGException
+    private Coordinate calculateSW (FrontMapIdentifier mapIdentifier, Coordinate center, int boxSize) throws PWCGException
     {
-        sw = MathUtils.calcNextCoord(center, 270, boxSize / 2);
-        sw = MathUtils.calcNextCoord(sw, 180, boxSize / 2);
+        sw = MathUtils.calcNextCoord(mapIdentifier, center, 270, boxSize / 2);
+        sw = MathUtils.calcNextCoord(mapIdentifier, sw, 180, boxSize / 2);
         return sw;
     }
     
-    private Coordinate calculateNE (Coordinate center, int boxSize) throws PWCGException
+    private Coordinate calculateNE (FrontMapIdentifier mapIdentifier, Coordinate center, int boxSize) throws PWCGException
     {
-        ne = MathUtils.calcNextCoord(center, 90, boxSize / 2);
-        ne = MathUtils.calcNextCoord(ne, 0, boxSize / 2);
+        ne = MathUtils.calcNextCoord(mapIdentifier, center, 90, boxSize / 2);
+        ne = MathUtils.calcNextCoord(mapIdentifier, ne, 0, boxSize / 2);
         return ne;
     }
 

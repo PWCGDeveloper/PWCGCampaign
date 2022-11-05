@@ -51,7 +51,8 @@ public class MissionFileOptionWriter
             writer.write("  Date = " + missionDate + ";");
             writer.newLine();
             
-            MapSeasonalParameters mapSeasonalParameters =PWCGContext.getInstance().getCurrentMap().getMapSeason().getSeasonBasedParameters(mission.getCampaign().getDate());
+            MapSeasonalParameters mapSeasonalParameters =PWCGContext.getInstance().getMap(mission.getCampaignMap()).getMapSeason().
+                    getSeasonBasedParameters(mission.getCampaignMap(), mission.getCampaign().getDate());
             
             writer.write("  HMap = \"" + mapSeasonalParameters.getHeightMap() + "\";");
             writer.newLine();

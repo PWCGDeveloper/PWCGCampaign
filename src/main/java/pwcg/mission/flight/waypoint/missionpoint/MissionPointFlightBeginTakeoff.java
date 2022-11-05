@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -28,6 +29,7 @@ import pwcg.mission.mcu.McuWaypoint;
 public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypointSet implements IMissionPointSet
 {
     private IFlight flight;
+    private Campaign campaign;
     private IMissionPointSet flightActivate;
     private McuTakeoff takeoffMcu = null;
     private McuTimer formationTimer = null;
@@ -39,6 +41,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     public MissionPointFlightBeginTakeoff(IFlight flight, IMissionPointSet flightActivate)
     {
         this.flight = flight;
+        this.campaign = flight.getCampaign();
         this.flightActivate = flightActivate;
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_BEGIN_TAKEOFF;
     }
@@ -177,7 +180,8 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         int takeoffWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.TakeoffWaypointAltitudeKey);
 
         double takeoffOrientation = flight.getFlightInformation().getAirfield().getTakeoffLocation(flight.getMission()).getOrientation().getyOri();
-        Coordinate initialClimbCoords = MathUtils.calcNextCoord(flight.getFlightInformation().getAirfield().getTakeoffLocation(flight.getMission()).getPosition().copy(), takeoffOrientation, takeoffWaypointDistance);
+        Coordinate initialClimbCoords = MathUtils.calcNextCoord(
+                campaign.getCampaignMap(), flight.getFlightInformation().getAirfield().getTakeoffLocation(flight.getMission()).getPosition().copy(), takeoffOrientation, takeoffWaypointDistance);
         initialClimbCoords.setYPos(takeoffWaypointAltitude);
 
         return initialClimbCoords;

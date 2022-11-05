@@ -3,6 +3,7 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
@@ -24,12 +25,14 @@ public class MissionBlockSmoke
     private static final int SAFE_DISTANCE_TO_AIRFIELD = 5000;
     
     private Mission mission;
+    private Campaign campaign;
     private List<SmokeGroup> smokingPositions = new ArrayList<>();
     private int maxSmokingPositions = 100;
     
     public MissionBlockSmoke(Mission mission)
     {
         this.mission = mission;        
+        this.campaign = mission.getCampaign();        
     }
     
     public List<SmokeGroup> addSmokeToDamagedAreas(List<ScriptedFixedPosition> fixedPositions) throws PWCGException
@@ -72,7 +75,7 @@ public class MissionBlockSmoke
 
     private boolean isNearFront(ScriptedFixedPosition fixedPosition) throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(mission.getCampaign().getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(mission.getCampaign().getDate());
 
         FrontLinePoint closestAlliedPosition = frontLinesForMap.findClosestFrontPositionForSide(fixedPosition.getPosition(), Side.ALLIED);
         double distanceToAlliedLines = MathUtils.calcDist(fixedPosition.getPosition(), closestAlliedPosition.getPosition());
@@ -91,9 +94,9 @@ public class MissionBlockSmoke
         return true;
     }
 
-    private boolean isNearAirfield(ScriptedFixedPosition fixedPosition)
+    private boolean isNearAirfield(ScriptedFixedPosition fixedPosition) throws PWCGException
     {
-        Airfield airfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getClosestAirfield(fixedPosition.getPosition());
+        Airfield airfield = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getAirfieldManager().getClosestAirfield(fixedPosition.getPosition());
         if (airfield != null)
         {
             double distanceToAirfield = MathUtils.calcDist(fixedPosition.getPosition(), airfield.getPosition());

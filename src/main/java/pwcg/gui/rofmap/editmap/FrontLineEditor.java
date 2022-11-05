@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.FrontLinePoint;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -21,10 +22,12 @@ public class FrontLineEditor
     private MapPanelBase mapPanel = null;
     
     private FrontLinePoint frontLinePointToEdit = null;
+    private FrontMapIdentifier mapIdentifier;
     
-    public FrontLineEditor(MapPanelBase mapPanel)
+    public FrontLineEditor(FrontMapIdentifier mapIdentifier, MapPanelBase mapPanel)
     {
         this.mapPanel = mapPanel;
+        this.mapIdentifier = mapIdentifier;
     }
 
     public void createFrontPoint(MouseEvent e)
@@ -111,7 +114,7 @@ public class FrontLineEditor
         
         double angle = MathUtils.calcAngle(selectedFrontPointRight.getPosition(), selectedFrontPointLeft.getPosition());
         double distance = MathUtils.calcDist(selectedFrontPointRight.getPosition(), selectedFrontPointLeft.getPosition());
-        Coordinate frontCoordinate = MathUtils.calcNextCoord(selectedFrontPointRight.getPosition(), angle, distance / 2);
+        Coordinate frontCoordinate = MathUtils.calcNextCoord( mapIdentifier, selectedFrontPointRight.getPosition(), angle, distance / 2);
 
         FrontLinePoint newFrontFrontLinePoint = makeFrontLinePoint(frontCoordinate, selectedFrontPointRight.getName());
         userFrontLines.add(selectedFrontPointIndex+1, newFrontFrontLinePoint);

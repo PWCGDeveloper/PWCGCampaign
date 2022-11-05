@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -21,10 +22,11 @@ import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.TestCampaignFactoryBase;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBase;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("BOS")
 public class CoopUserAddRemoveTest
 {
     private static Campaign coopCampaign;

@@ -4,7 +4,7 @@
         "c47a_default": {
             "skinName": "c47a",
             "planeType": "c47a",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -2,
             "country": "USA",
@@ -17,7 +17,7 @@
         "c47a_blank_01": {
             "skinName": "c47a_blank_01",
             "planeType": "c47a",
-            "startDate": "19390801",
+            "startDate": "19390901",
             "endDate": "19440601",
             "squadId": -2,
             "country": "Britain",
@@ -95,7 +95,7 @@
 		"c47a_blank_08": {
 			"skinName": "c47a_blank_07",
 			"planeType": "c47a",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19440601",
 			"squadId": -2,
 			"country": "USA",
@@ -108,7 +108,7 @@
 		"c47a_blank_10": {
 			"skinName": "c47a_blank_10",
 			"planeType": "c47a",
-			"startDate": "19390801",
+			"startDate": "19390901",
 			"endDate": "19450601",
 			"squadId": -2,
 			"country": "Russia",

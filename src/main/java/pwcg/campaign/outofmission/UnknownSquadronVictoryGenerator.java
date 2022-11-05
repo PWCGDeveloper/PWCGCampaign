@@ -5,6 +5,7 @@ import java.util.Date;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.OutOfMissionPlaneFinder;
 import pwcg.campaign.plane.PlaneType;
@@ -26,12 +27,12 @@ public class UnknownSquadronVictoryGenerator
         this.victorPilot = victorPilot;
     }
     
-    public Victory generateOutOfMissionVictory(Date date) throws PWCGException
+    public Victory generateOutOfMissionVictory(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
     {        
         Victory victory = null;
         try
         {
-            victory = createVictory(date);
+            victory = createVictory(mapIdentifier, date);
         }
         catch (PWCGException e)
         {
@@ -42,7 +43,7 @@ public class UnknownSquadronVictoryGenerator
         return victory;
     }
 
-    private Victory createVictory(Date date) throws PWCGException
+    private Victory createVictory(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
     {
         VictoryEntity victim = createVictim(date);
         VictoryEntity victor = createVictor(date);
@@ -52,7 +53,7 @@ public class UnknownSquadronVictoryGenerator
         {
 	        victory = new Victory();
 	        Squadron victorPilotSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(victorPilot.getSquadronId());
-            createVictoryHeader(date, victory, victorPilotSquadron.determineSquadronCountry(date).getSide().getOppositeSide());
+            createVictoryHeader(mapIdentifier, date, victory, victorPilotSquadron.determineSquadronCountry(date).getSide().getOppositeSide());
 	
 	        victory.setVictim(victim);
 	        victory.setVictor(victor);
@@ -62,12 +63,12 @@ public class UnknownSquadronVictoryGenerator
         return victory;
     }
 
-    private void createVictoryHeader(Date date, Victory victory, Side enemySide) throws PWCGException
+    private void createVictoryHeader(FrontMapIdentifier mapIdentifier, Date date, Victory victory, Side enemySide) throws PWCGException
     {
         victory.setDate(date);
         victory.setCrashedInSight(false);
    
-        String location = getEventLocation(enemySide, date);
+        String location = getEventLocation(mapIdentifier, enemySide, date);
         victory.setLocation(location);
     }
 
@@ -104,17 +105,17 @@ public class UnknownSquadronVictoryGenerator
         return victim;
     }
 
-    private String getEventLocation(Side enemySide, Date date) throws PWCGException
+    private String getEventLocation(FrontMapIdentifier mapIdentifier, Side enemySide, Date date) throws PWCGException
     {
         String eventLocationDescription = "";
         
         Coordinate squadronPosition = victorPilot.determineSquadron().determineCurrentPosition(date);
         if (squadronPosition != null)
         {
-            FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
+            FrontLinesForMap frontLines = PWCGContext.getInstance().getMap(mapIdentifier).getFrontLinesForMap(date);
             FrontLinePoint eventPosition = frontLines.findCloseFrontPositionForSide(squadronPosition, 100000, enemySide);
     
-            eventLocationDescription =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(eventPosition.getPosition()).getName();
+            eventLocationDescription =  PWCGContext.getInstance().getMap(mapIdentifier).getGroupManager().getTownFinder().findClosestTown(eventPosition.getPosition()).getName();
             if (eventLocationDescription == null || eventLocationDescription.isEmpty())
             {
                 eventLocationDescription = "";
