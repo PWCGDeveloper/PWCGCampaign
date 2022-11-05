@@ -15,6 +15,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetType;
 
 public class Skirmish
@@ -91,42 +92,61 @@ public class Skirmish
         return skirmishBox.getCenter();
     }
 
-    public boolean needsMoreIconicFlightType(FlightInformation flightInformation, int currentCount) throws PWCGException
+    public boolean needsMoreIconicFlightType(IFlight flight, int currentCount) throws PWCGException
     {
+        PWCGLogger.log(LogLevel.DEBUG,
+                "Skirmish " + skirmishName + " with progile type: " + profileType);
+        
         for (SkirmishIconicFlights iconicFlightType : iconicFlightTypes)
         {
-            if (iconicFlightType.getSide() == flightInformation.getSquadron().determineSide())
+            if (iconicFlightType.getSide() == flight.getSquadron().determineSide())
             {
-                if (iconicFlightType.getFlightType().isLowAltEquivalentFlightType(flightInformation.getFlightType()))
+                if (isCorrectFlightType(flight, iconicFlightType))
                 {
                     if (currentCount < iconicFlightType.getMaxForcedFlightTypes())
                     {
                         PWCGLogger.log(LogLevel.DEBUG,
-                                "Accept Skirmish: " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate())
-                                        + " flying " + flightInformation.getFlightType());
+                                "Accept Skirmish: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate())
+                                        + " flying " + flight.getFlightType());
                         return true;
                     }
                     else
                     {
                         PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because has enough of flight type: "
-                                + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
+                                + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
                     }
                 }
                 else
                 {
                     PWCGLogger.log(LogLevel.DEBUG,
-                            "Reject Skirmish because wrong flight type: "
-                                    + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + " flying "
-                                    + flightInformation.getFlightType());
+                            "Reject Skirmish because wrong flight and target type: "
+                                    + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()) + " flying "
+                                    + flight.getFlightType() + " against "
+                                    + flight.getTargetDefinition().getTargetType());
                 }
             }
             else
             {
                 PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because wrong side: "
-                        + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
+                        + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
             }
         }
 
+        return false;
+    }
+    
+    public boolean isCorrectFlightType(IFlight flight, SkirmishIconicFlights iconicFlightType)
+    {
+        if (iconicFlightType.getFlightType().isEquivalentFlightType(flight.getFlightType()))
+        {
+            return true;
+        }
+
+        if (SkirmishTargetTypeMatcher.isTargetTypeMatchesSkirmishProfile(profileType, flight.getTargetDefinition().getTargetType()))
+        {
+            return true;
+        }
+        
         return false;
     }
 

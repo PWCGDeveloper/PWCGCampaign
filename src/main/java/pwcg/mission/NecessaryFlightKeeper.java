@@ -75,7 +75,7 @@ public class NecessaryFlightKeeper
                 continue;
             }
 
-            if (!mission.getSkirmish().needsMoreIconicFlightType(flight.getFlightInformation(), numFlightsOfTypeKept))
+            if (!mission.getSkirmish().needsMoreIconicFlightType(flight, numFlightsOfTypeKept))
             {
                 PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because not iconic: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
                 continue;

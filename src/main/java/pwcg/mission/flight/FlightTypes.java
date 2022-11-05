@@ -198,7 +198,7 @@ public enum FlightTypes
         return true;
     }
 
-    public boolean isLowAltEquivalentFlightType(FlightTypes flightType)
+    public boolean isEquivalentFlightType(FlightTypes flightType)
     {
         if (this == flightType)
         {

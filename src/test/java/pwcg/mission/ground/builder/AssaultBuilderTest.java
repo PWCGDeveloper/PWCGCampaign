@@ -15,7 +15,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -39,15 +38,24 @@ import pwcg.mission.ground.vehicle.VehicleClass;
 @ExtendWith(MockitoExtension.class)
 public class AssaultBuilderTest
 {
-    @Mock private Campaign campaign;
-    @Mock private Mission mission;
-    @Mock private Squadron squadron;
-    @Mock private ConfigManagerCampaign configManager;
-    @Mock private MissionFlights missionFlightBuilder;
-    @Mock private IFlight playerFlight;
-    @Mock private ICountry country;
-    @Mock private FlightPlanes flightPlanes;
-    @Mock private PlaneMcu playerPlane;
+    @Mock
+    private Campaign campaign;
+    @Mock
+    private Mission mission;
+    @Mock
+    private Squadron squadron;
+    @Mock
+    private ConfigManagerCampaign configManager;
+    @Mock
+    private MissionFlights missionFlightBuilder;
+    @Mock
+    private IFlight playerFlight;
+    @Mock
+    private ICountry country;
+    @Mock
+    private FlightPlanes flightPlanes;
+    @Mock
+    private PlaneMcu playerPlane;
 
     @BeforeEach
     public void setupTest() throws PWCGException
@@ -56,10 +64,10 @@ public class AssaultBuilderTest
 
         List<IFlight> playerFlights = new ArrayList<>();
         List<PlaneMcu> playerFlightPlanes = new ArrayList<>();
-        
+
         playerFlights.add(playerFlight);
         playerFlightPlanes.add(playerPlane);
-        
+
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
         Mockito.when(mission.getFlights()).thenReturn(missionFlightBuilder);
         Mockito.when(mission.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
@@ -77,128 +85,90 @@ public class AssaultBuilderTest
     }
 
     @Test
-    public void createLargeAssaultWithoutBattleTest () throws PWCGException 
+    public void createLargeAssaultWithoutBattleTest() throws PWCGException
     {
-        try (MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class)) 
+        try (MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class))
         {
             mocked.when(() -> RandomNumberGenerator.getRandom(100)).thenReturn(49);
-    
+
             Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
-            createLargeAssaultTest ();
-            GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
-            validate(groundUnitGroup, Country.GERMANY, Country.RUSSIA);
+            createLargeAssaultTest();
+            GroundUnitCollection groundUnitGroup = createLargeAssaultTest();
+            validate(groundUnitGroup);
         }
     }
 
     @Test
-    public void createLargeAssaultDuringBattleTest () throws PWCGException 
+    public void createLargeAssaultDuringBattleTest() throws PWCGException
     {
-        try (MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class)) 
+        try (MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class))
         {
             mocked.when(() -> RandomNumberGenerator.getRandom(100)).thenReturn(79);
 
             Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420901"));
-            GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
-            validate(groundUnitGroup, Country.GERMANY, Country.RUSSIA);
+            GroundUnitCollection groundUnitGroup = createLargeAssaultTest();
+            validate(groundUnitGroup);
         }
     }
 
     @Test
-    public void createLargeAssaultDuringBattleWithAggressorDefendingTest () throws PWCGException 
+    public void createLargeAssaultDuringBattleWithAggressorDefendingTest() throws PWCGException
     {
-        try (MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class)) 
+        try (MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class))
         {
             mocked.when(() -> RandomNumberGenerator.getRandom(100)).thenReturn(81);
 
             Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420901"));
-            GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
-            validate(groundUnitGroup, Country.RUSSIA, Country.GERMANY);
+            GroundUnitCollection groundUnitGroup = createLargeAssaultTest();
+            validate(groundUnitGroup);
         }
     }
-    
-    public GroundUnitCollection createLargeAssaultTest () throws PWCGException 
+
+    public GroundUnitCollection createLargeAssaultTest() throws PWCGException
     {
         Coordinate assaultPosition = new Coordinate(150000, 0, 150000);
         GroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, assaultPosition);
-        
-        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() >= 10);
+
+        Assertions.assertTrue(groundUnitGroup.getGroundUnits().size() >= 10);
         groundUnitGroup.validate();
         return groundUnitGroup;
     }
 
-    private void validate(GroundUnitCollection groundUnitGroup, Country attacker, Country defender) throws PWCGException
+    private void validate(GroundUnitCollection groundUnitGroup) throws PWCGException
     {
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            if (groundUnit.getCountry().getCountry() == attacker)
+            if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryAntiTank)
             {
-                if (groundUnit.getVehicleClass() == VehicleClass.Tank)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.Infantry)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryHowitzer)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.MachineGun)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else
-                {
-                    throw new PWCGException("Unexpected unit type: " + groundUnit.getVehicleClass());
-                }
+                Assertions.assertTrue(groundUnit.getVehicles().size() >= 2);
             }
-            else if (groundUnit.getCountry().getCountry() == defender)
+            else if (groundUnit.getVehicleClass() == VehicleClass.Tank)
             {
-                if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryAntiTank)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.Tank)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.Infantry)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryHowitzer)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.MachineGun)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
-                {
-                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
-                }
-                else
-                {
-                    throw new PWCGException("Unexpected unit type: " + groundUnit.getVehicleClass());
-                }
+                Assertions.assertTrue(groundUnit.getVehicles().size() >= 2);
+            }
+            else if (groundUnit.getVehicleClass() == VehicleClass.Infantry)
+            {
+                Assertions.assertTrue(groundUnit.getVehicles().size() >= 2);
+            }
+            else if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryHowitzer)
+            {
+                Assertions.assertTrue(groundUnit.getVehicles().size() >= 2);
+            }
+            else if (groundUnit.getVehicleClass() == VehicleClass.MachineGun)
+            {
+                Assertions.assertTrue(groundUnit.getVehicles().size() >= 2);
+            }
+            else if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
+            {
+                Assertions.assertTrue(groundUnit.getVehicles().size() >= 2);
+            }
+            else if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
+            {
+                Assertions.assertTrue(groundUnit.getVehicles().size() >= 2);
             }
             else
             {
-                throw new PWCGException("Unit from unidentified nation in assault: " + groundUnit.getCountry().getCountry());
+                throw new PWCGException("Unexpected unit type: " + groundUnit.getVehicleClass());
             }
         }
     }
