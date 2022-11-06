@@ -19,19 +19,11 @@ public class MissionSkinInitializer
     {
         List<Skin> factorySkins = missionSkinSet.getFactorySkins(plane.getType());
         MissionSkinGeneratorHelper.chooseFactorySkin(plane, factorySkins);
-        if (plane.getSkin() == null || plane.getSkin().getSkinName().isEmpty())
-        {
-            System.out.println("Foo");
-        }
     }
 
     private static void setSquadronSkin(MissionSkinSet missionSkinSet, Squadron squadron, PlaneMcu plane, Date date)
     {
         List<Skin> squadronSkins = missionSkinSet.getSquadronSkins(plane.getType());
         MissionSkinGeneratorHelper.chooseSquadronSkin(squadron, plane, squadronSkins, date);
-        if (plane.getSkin() == null || plane.getSkin().getSkinName().isEmpty())
-        {
-            System.out.println("Foo");
-        }
     }
 }

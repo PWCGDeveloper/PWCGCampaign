@@ -37,7 +37,6 @@ public class AARLogFileSetFactoryTest
         filenames.add("missionReport(2016-09-11-22-51-08)[2].txt");
         filenames.add("missionReport(2016-09-11-22-51-08)[3].txt");
         filenames.add("missionReport(2016-09-11-22-51-08)[4].txt");
-        filenames.add("foo");
         filenames.add("missionReport(2016-08-25-22-51-08)[0].txt");
         filenames.add("missionReport(2016-08-25-22-51-08)[1].txt");
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);

@@ -28,16 +28,17 @@ public class MissionSkinGenerator
     
     static MissionSkinSet buildMissionSkinSet(IFlight flight) throws PWCGException
     {
+        MissionSkinSetBuilder skinSetBuilder = new MissionSkinSetBuilder(flight);
         if (flight.getCampaign().getSeason() == Season.WINTER)
         {
-            MissionSkinSet winterMissionSkinSet = MissionSkinSetBuilder.buildWinterMissionSkinSet(flight);
+            MissionSkinSet winterMissionSkinSet = skinSetBuilder.buildWinterMissionSkinSet();
             if (isWinterSkinSetValid(flight, winterMissionSkinSet))
             {
                 return winterMissionSkinSet;
             }
         }
         
-        MissionSkinSet missionSkinSet = MissionSkinSetBuilder.buildSummerMissionSkinSet(flight);
+        MissionSkinSet missionSkinSet = skinSetBuilder.buildSummerMissionSkinSet();
         return missionSkinSet;
     }
 

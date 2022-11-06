@@ -70,7 +70,8 @@ public class MissionSkinSetBuilderTest
      
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420501"));
 
-        MissionSkinSet missionSkinSet = MissionSkinSetBuilder.buildSummerMissionSkinSet(flight);
+        MissionSkinSetBuilder skinSetBuilder = new MissionSkinSetBuilder(flight);
+        MissionSkinSet missionSkinSet = skinSetBuilder.buildSummerMissionSkinSet();
         assert(missionSkinSet.getFactorySkins("bf109f4").size() > 0);
         assert(missionSkinSet.getSquadronSkins("bf109f4").size() > 0);
         assert(missionSkinSet.getSquadronPersonalSkins("bf109f4").size() > 0);
@@ -91,7 +92,8 @@ public class MissionSkinSetBuilderTest
      
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420101"));
 
-        MissionSkinSet missionSkinSet = MissionSkinSetBuilder.buildWinterMissionSkinSet(flight);
+        MissionSkinSetBuilder skinSetBuilder = new MissionSkinSetBuilder(flight);
+        MissionSkinSet missionSkinSet = skinSetBuilder.buildWinterMissionSkinSet();
         assert(missionSkinSet.getFactorySkins("lagg3s29").size() > 0);
         assert(missionSkinSet.getSquadronSkins("lagg3s29").size() > 0);
         assert(missionSkinSet.getSquadronPersonalSkins("lagg3s29").size() > 0);
@@ -112,7 +114,8 @@ public class MissionSkinSetBuilderTest
      
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420501"));
 
-        MissionSkinSet missionSkinSet = MissionSkinSetBuilder.buildSummerMissionSkinSet(flight);
+        MissionSkinSetBuilder skinSetBuilder = new MissionSkinSetBuilder(flight);
+        MissionSkinSet missionSkinSet = skinSetBuilder.buildSummerMissionSkinSet();
         assert(missionSkinSet.getFactorySkins("bf109f4").size() > 0);
         assert(missionSkinSet.getSquadronSkins("bf109f4").size() > 0);
         assert(missionSkinSet.getSquadronPersonalSkins("bf109f4").size() > 0);

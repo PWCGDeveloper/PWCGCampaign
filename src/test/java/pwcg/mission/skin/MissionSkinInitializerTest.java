@@ -76,7 +76,8 @@ public class MissionSkinInitializerTest
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420501"));
 
-        MissionSkinSet missionSkinSet = MissionSkinSetBuilder.buildSummerMissionSkinSet(flight);
+        MissionSkinSetBuilder skinSetBuilder = new MissionSkinSetBuilder(flight);
+        MissionSkinSet missionSkinSet = skinSetBuilder.buildSummerMissionSkinSet();
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane1, DateUtils.getDateYYYYMMDD("19420501"));
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane2, DateUtils.getDateYYYYMMDD("19420501"));
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane3, DateUtils.getDateYYYYMMDD("19420501"));
@@ -99,7 +100,8 @@ public class MissionSkinInitializerTest
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420101"));
 
-        MissionSkinSet missionSkinSet = MissionSkinSetBuilder.buildWinterMissionSkinSet(flight);
+        MissionSkinSetBuilder skinSetBuilder = new MissionSkinSetBuilder(flight);
+        MissionSkinSet missionSkinSet = skinSetBuilder.buildSummerMissionSkinSet();
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane1, DateUtils.getDateYYYYMMDD("19420101"));
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane2, DateUtils.getDateYYYYMMDD("19420101"));
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane3, DateUtils.getDateYYYYMMDD("19420101"));
@@ -122,7 +124,8 @@ public class MissionSkinInitializerTest
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420101"));
 
-        MissionSkinSet missionSkinSet = MissionSkinSetBuilder.buildWinterMissionSkinSet(flight);
+        MissionSkinSetBuilder skinSetBuilder = new MissionSkinSetBuilder(flight);
+        MissionSkinSet missionSkinSet = skinSetBuilder.buildSummerMissionSkinSet();
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane1, DateUtils.getDateYYYYMMDD("19420101"));
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane2, DateUtils.getDateYYYYMMDD("19420101"));
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane3, DateUtils.getDateYYYYMMDD("19420101"));
@@ -145,7 +148,8 @@ public class MissionSkinInitializerTest
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420501"));
 
-        MissionSkinSet missionSkinSet = MissionSkinSetBuilder.buildSummerMissionSkinSet(flight);
+        MissionSkinSetBuilder skinSetBuilder = new MissionSkinSetBuilder(flight);
+        MissionSkinSet missionSkinSet = skinSetBuilder.buildSummerMissionSkinSet();
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane1, DateUtils.getDateYYYYMMDD("19420501"));
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane2, DateUtils.getDateYYYYMMDD("19420501"));
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squadron, plane3, DateUtils.getDateYYYYMMDD("19420501"));

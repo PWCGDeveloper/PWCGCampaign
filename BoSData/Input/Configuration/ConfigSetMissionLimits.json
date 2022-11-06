@@ -102,7 +102,7 @@
 			"help": "Minimum distance of mission center from base (Not used in competitive mode)"
 		},
 		"MissionBoxMaxDistanceFromBase": {
-			"value": "80",
+			"value": "120",
 			"label": "Max dist in km mission center from base",
 			"help": "Maximum distance of mission center from base (Not used in competitive mode)"
 		}

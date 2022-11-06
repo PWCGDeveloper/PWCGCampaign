@@ -16,7 +16,7 @@ public class TargetDistance
 {
     public static int findMaxTargetDistanceForConfiguration(Campaign campaign) throws PWCGException
     {
-        return campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MissionBoxMinDistanceFromBaseKey) * 1000;
+        return campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MissionBoxMaxDistanceFromBaseKey) * 1000;
     }
 
     public static boolean isWithinRange(Campaign campaign, MissionHumanParticipants participatingPlayers, Coordinate battleLocation) throws PWCGException
