@@ -28,14 +28,24 @@ public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
         List<TargetType> shuffledTargetTypes = targetDefinitionPreferenceBuilder.getTargetPreferences();
         for (TargetType desiredTargetType : shuffledTargetTypes)
         {
-            for (TargetDefinition targetDefinition : availableTargets)
+            TargetDefinition targetDefinition = getDesiredTargetType(availableTargets, desiredTargetType);
+            if (targetDefinition != null)
             {
-                if (desiredTargetType == targetDefinition.getTargetType())
-                {
-                    return targetDefinition;
-                }
+                return targetDefinition;
             }
         }
         throw new PWCGException ("No targets available in mission");
+    }
+
+    private TargetDefinition getDesiredTargetType(List<TargetDefinition> availableTargets, TargetType desiredTargetType)
+    {
+        for (TargetDefinition targetDefinition : availableTargets)
+        {
+            if (desiredTargetType == targetDefinition.getTargetType())
+            {
+                return targetDefinition;
+            }
+        }
+        return null;
     }
 }

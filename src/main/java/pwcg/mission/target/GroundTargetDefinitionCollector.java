@@ -24,6 +24,7 @@ public class GroundTargetDefinitionCollector
         List<TargetDefinition> allTargets = new ArrayList<>();
         allTargets.addAll(targetaDefinitionsForGroundUnit);
         allTargets.addAll(targetaDefinitionsForStructure);
+        Collections.shuffle(allTargets);
         return allTargets;
     }
 

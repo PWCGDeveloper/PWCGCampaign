@@ -1,6 +1,7 @@
 package pwcg.mission.ground;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -17,6 +18,7 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.TrainUnitBuilder;
@@ -43,10 +45,9 @@ public class MissionTrainBuilder extends MissionUnitBuilder
         List<GroundUnitCollection> missionTrainsForSide = new ArrayList<>();
         int maxTrains = getMaxTrains();
         ArrayList<Block> stationsForSide = getRailroadsForTrains(trainSide);
-        Map<Double, Block> sortedStationsByDistance = sortTrainStationsByDistanceFromMission(stationsForSide);
-        for (Double stationDistance : sortedStationsByDistance.keySet())
+        List<Block> sortedStationsByDistance = sortTrainStationsByDistanceFromMission(stationsForSide);
+        for (Block station  : sortedStationsByDistance)
         {
-            Block station = sortedStationsByDistance.get(stationDistance);
             if (missionTrainsForSide.size() >= maxTrains)
             {
                 break;
@@ -75,20 +76,34 @@ public class MissionTrainBuilder extends MissionUnitBuilder
         return stationsForSide;
     }
     
-    private Map<Double, Block> sortTrainStationsByDistanceFromMission(ArrayList<Block> stationsForSide) throws PWCGException
-    {
+    private List<Block> sortTrainStationsByDistanceFromMission(ArrayList<Block> stationsForSide) throws PWCGException
+    {        
         Map<Double, Block> sortedStationsByDistance = new TreeMap<>();
-        
         Coordinate missionCenter = mission.getMissionBorders().getCenter();
         for (Block station : stationsForSide)
         {
-            if (mission.getStructureBorders().isInBox(station.getPosition()))
+            Double distanceFromMission = MathUtils.calcDist(missionCenter, station.getPosition());
+            sortedStationsByDistance.put(distanceFromMission, station);
+        }
+        
+        CoordinateBox expandedToFirstStation = CoordinateBox.copy(mission.getMissionBorders());
+        for (Block station : sortedStationsByDistance.values())
+        {
+            expandedToFirstStation.expandBoxCornersFromCoordinates(Arrays.asList(station.getPosition()));
+            expandedToFirstStation.expandBox(1000);
+            break;
+        }
+                
+        List<Block> inRangeTrains = new ArrayList<>();
+        for (Block station : sortedStationsByDistance.values())
+        {
+            if (expandedToFirstStation.isInBox(station.getPosition()))
             {
-                Double distanceFromMission = MathUtils.calcDist(missionCenter, station.getPosition());
-                sortedStationsByDistance.put(distanceFromMission, station);
+                inRangeTrains.add(station);
             }
         }
-        return sortedStationsByDistance;
+
+        return inRangeTrains;
     }
 
     private GroundUnitCollection makeTrain(Side trainSide, Block station) throws PWCGException
