@@ -16,6 +16,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointFactory;
+import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.flight.waypoint.begin.ClimbWaypointBuilder;
 import pwcg.mission.mcu.BaseFlightMcu;
@@ -168,6 +169,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         takeoffWP.setDesc(flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.TAKEOFF_WAYPOINT.getName());
         takeoffWP.setSpeed(flight.getFlightCruisingSpeed());
         takeoffWP.setPosition(initialClimbCoords);
+        takeoffWP.setPriority(WaypointPriority.PRIORITY_LOW);
         takeoffWP.setOrientation(flight.getFlightInformation().getAirfield().getTakeoffLocation(flight.getMission()).getOrientation().copy());
 
         super.addWaypoint(takeoffWP);

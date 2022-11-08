@@ -6,6 +6,8 @@ What is a "squadron skin?".  it is a skin configured in PWCG to be used as the g
 - Russian aircraft might have multiple camo schemes over time and concurrently.  German planes often had multiple concurrent camo schemes.
 - No British squadron skins as they did not have squadron markings other than the code.  The existing blank skins are adequate.
 - The different paint schemes and markings will add some life and the use of codes will make every aircraft in the mission unique.
+Changed takeoff WP priority to low to prevent unaggressive AI if takeoff WP is missed
+Many tweaks to iconic events to ensure intended actions are included in the mission
 Fixed Mosquito payloads not available in briefing
 Fixed Mosquito payload in Lb not Kg.
 Fixed wrong image context sometimes used (RAF logbook for German pilot, etc.)
@@ -13,10 +15,14 @@ Fixed introduction date of Tempests to 56th squadron
 Moved introduction of Free French (326th Squadron) to March 1943
 Fixed "Dover Castle" typo
 Fixed Kingsnorth typo
+Significant internal changes, mostly for testability.
+
 
 14.0.1
-Initial blank skin drop
-American skins
+Me 109 Blank Squadron Skins
+FW 190 Blank Squadron Skins
+Reorganized the skin packs download by plane
+
 
 14.0.0
 Integration of IL2 GB Normandy

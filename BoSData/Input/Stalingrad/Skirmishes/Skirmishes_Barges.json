@@ -3,14 +3,14 @@
 		{
 			"skirmishName": "Stalingrad-Barges",
 			"swCorner": {
-				"xPos": 131000,
+				"xPos": 110000,
 				"yPos": 0.0,
-				"zPos": 254500
+				"zPos": 250000
 			},
 			"neCorner": {
 				"xPos": 132000,
 				"yPos": 0.0,
-				"zPos": 255500
+				"zPos": 280000
 			},
 			"startDate": "19420908",
 			"stopDate": "19420912",

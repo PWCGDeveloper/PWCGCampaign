@@ -1,4 +1,10 @@
 Soviet aircraft mentioned in German pilot log book over England.
+On the 50th FG skins for the P-47D-28, the checkerboard pattern is off. Also, the green variants seem to have the Alpha of the silver ones.
+Verify call signs
+- Correct nation
+- In the mission, switch AI to a different call sign if there is a conflict
+- Verify mission file format
+
 
 (On Pilot board) Clicking on all Top Aces: All, German pilot has RAF log book
 
