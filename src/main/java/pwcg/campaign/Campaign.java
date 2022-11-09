@@ -53,6 +53,14 @@ public class Campaign
         campaignLogs = new CampaignLogs();
     }
 
+    public Campaign(PWCGProduct product)
+    {
+        campaignData.setProduct(product);
+        personnelManager = new CampaignPersonnelManager(this);
+        equipmentManager = new CampaignEquipmentManager(this);
+        campaignLogs = new CampaignLogs();
+    }
+    
     public boolean open(String campaignName) throws PWCGException
     {
         campaignData.setName(campaignName);
@@ -222,7 +230,7 @@ public class Campaign
     public boolean isValidCampaignForProduct() throws PWCGException
     {
         Date campaignDate = campaignData.getDate();
-        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        if (campaignData.getProduct() == PWCGProduct.FC)
         {
             if (campaignDate.after(DateUtils.getDateYYYYMMDD("19300101")))
             {
@@ -230,7 +238,7 @@ public class Campaign
             }
 
         }
-        if (PWCGContext.getProduct() == PWCGProduct.BOS)
+        if (campaignData.getProduct() == PWCGProduct.BOS)
         {
             if (campaignDate.before(DateUtils.getDateYYYYMMDD("19300101")))
             {
@@ -402,7 +410,12 @@ public class Campaign
         }
         return mapIdentifier;
     }
-
+    
+    public PWCGProduct getProduct() throws PWCGException
+    {
+        return campaignData.getProduct();
+    }
+    
     public SquadronMember getReferencePlayer() throws PWCGException
     {
         SquadronMember referencePlayer = personnelManager.getAnyCampaignMember(campaignData.getReferencePlayerSerialNumber());

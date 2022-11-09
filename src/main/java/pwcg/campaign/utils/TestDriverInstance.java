@@ -52,6 +52,23 @@ public class TestDriverInstance
         this.testMissionCenter = testMissionCenter;
     }
 
+    public void setCreatePlayerOnly(boolean createPlayerOnly)
+    {
+        this.createPlayerOnly = createPlayerOnly;
+    }
+
+    public void setWriteCampaignFile(boolean writeCampaignFile)
+    {
+        this.writeCampaignFile = writeCampaignFile;
+    }
+
+    public void setDebugAARLogs(boolean debugAARLogs)
+    {
+        this.debugAARLogs = debugAARLogs;
+    }
+
+
+
     public class TestFlightType
     {
         public FlightTypes playerFlightType = FlightTypes.ANY;

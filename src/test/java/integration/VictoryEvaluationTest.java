@@ -42,7 +42,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.io.MissionFileNameBuilder;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -58,7 +58,7 @@ public class VictoryEvaluationTest
     public void testSetup() throws Exception
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.JASTA_11_PROFILE);
+        campaign = TestCampaignFactoryBuilder.makeCampaignOnDisk(this.getClass().getCanonicalName(), SquadronTestProfile.JASTA_11_PROFILE);
     }
     
     @Test

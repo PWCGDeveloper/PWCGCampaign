@@ -16,7 +16,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.MissionSkinChecker;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -30,7 +30,7 @@ public class PlayerFlightTypeBoSInterceptTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JV44_PROFILE);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JV44_PROFILE);
     }
 
     @Test

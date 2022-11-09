@@ -14,9 +14,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
-import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.CampaignPilotGeneratorModel;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.context.IPWCGContextManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.RankFactory;
@@ -25,7 +26,6 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.SquadronTestProfile;
-import pwcg.testutils.TestCampaignFactoryBase;
 
 @ExtendWith(MockitoExtension.class)
 public class SquadronMemberStatusTest
@@ -44,7 +44,7 @@ public class SquadronMemberStatusTest
     @BeforeEach
     public void setupTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        IPWCGContextManager context = PWCGContext.getInstance(PWCGProduct.FC);
         campaignDate = DateUtils.getDateYYYYMMDD("19170801");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
@@ -53,7 +53,7 @@ public class SquadronMemberStatusTest
         List<Ace> aces = new ArrayList<>();
         Mockito.when(campaignAces.getActiveCampaignAcesBySquadron(Mockito.anyInt())).thenReturn(aces);
 
-        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId()); 
+        squadron = context.getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId()); 
         squadronPersonnel = new SquadronPersonnel(campaign, squadron);
 
         squadronMemberFactory = new  SquadronMemberFactory (campaign, squadron, squadronPersonnel);
@@ -105,19 +105,16 @@ public class SquadronMemberStatusTest
     public void testUpdateStatusPlayerWound() throws PWCGException
     {
         ArmedService service = squadron.determineServiceForSquadron(campaignDate);
-        String squadronName = squadron.determineDisplayName(campaignDate);
         
         IRankHelper rank = RankFactory.createRankHelper();
         String rankName = rank.getRankByService(2, service);
 
-        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
-        generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setPlayerName(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
-        generatorModel.setPlayerRank(rankName);
-        generatorModel.setPlayerRegion("");
-        generatorModel.setService(service);
-        generatorModel.setSquadronName(squadronName);
-        SquadronMember player = squadronMemberFactory.createPlayer(generatorModel);
+        CampaignPilotGeneratorModel pilotModel = new CampaignPilotGeneratorModel();
+        pilotModel.setPlayerName("Johnny Player");
+        pilotModel.setPlayerRank(rankName);
+        pilotModel.setPlayerRegion("");
+        pilotModel.setService(service);
+        SquadronMember player = squadronMemberFactory.createPlayer(pilotModel);
         Date returnDate = DateUtils.advanceTimeDays(campaign.getDate(), 90);
         player.setPilotActiveStatus(SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate(), returnDate);
         assert(player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED);
@@ -129,19 +126,16 @@ public class SquadronMemberStatusTest
     public void testUpdateStatusPlayerSeriousWound() throws PWCGException
     {
         ArmedService service = squadron.determineServiceForSquadron(campaignDate);
-        String squadronName = squadron.determineDisplayName(campaignDate);
         
         IRankHelper rank = RankFactory.createRankHelper();
         String rankName = rank.getRankByService(2, service);
 
-        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
-        generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setPlayerName(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
-        generatorModel.setPlayerRank(rankName);
-        generatorModel.setPlayerRegion("");
-        generatorModel.setService(service);
-        generatorModel.setSquadronName(squadronName);
-        SquadronMember player = squadronMemberFactory.createPlayer(generatorModel);
+        CampaignPilotGeneratorModel pilotModel = new CampaignPilotGeneratorModel();
+        pilotModel.setPlayerName("Johnny Player");
+        pilotModel.setPlayerRank(rankName);
+        pilotModel.setPlayerRegion("");
+        pilotModel.setService(service);
+        SquadronMember player = squadronMemberFactory.createPlayer(pilotModel);
         Date returnDate = DateUtils.advanceTimeDays(campaign.getDate(), 90);
         player.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), returnDate);
         assert(player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);

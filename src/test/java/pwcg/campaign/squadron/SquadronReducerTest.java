@@ -11,7 +11,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -26,7 +26,7 @@ public class SquadronReducerTest
     @Test
     public void anomaliesRemoved() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_52_PROFILE_STALINGRAD);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_52_PROFILE_STALINGRAD);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> allSquadrons = squadronManager.getAllSquadrons();
         List<Squadron> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
@@ -42,7 +42,7 @@ public class SquadronReducerTest
     @Test
     public void jg51NotAnAnomaly() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.REGIMENT_11_PROFILE);        
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> allSquadrons = squadronManager.getAllSquadrons();
         List<Squadron> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
@@ -67,7 +67,7 @@ public class SquadronReducerTest
     @Test
     public void noAnomaliesRemoved() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.REGIMENT_11_PROFILE);        
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> allSquadrons = squadronManager.getAllSquadrons();
         List<Squadron> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());

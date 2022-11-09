@@ -12,7 +12,7 @@ import pwcg.product.fc.map.arras.ArrasMap;
 
 public class PWCGMapFactory
 {
-    public static PWCGMap getMap(FrontMapIdentifier frontMapIdentifier) throws PWCGException
+    public static PWCGMap configureMap(FrontMapIdentifier frontMapIdentifier) throws PWCGException
     {
         PWCGMap map = null;
         

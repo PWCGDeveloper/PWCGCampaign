@@ -18,7 +18,7 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.MissionFlightValidator;
 import pwcg.mission.utils.MissionInformationUtils;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -31,11 +31,11 @@ public class StalingradFlightTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
     }
 
     @Test
-    public void hasBombTest() throws PWCGException
+    public void hasCityTargetTest() throws PWCGException
     {
         campaign.setDate(DateUtils.getDateYYYYMMDD("19420824"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
@@ -43,20 +43,15 @@ public class StalingradFlightTest
         mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
-        
-        boolean bombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.BOMB, Side.AXIS);
-        boolean lowAltBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.LOW_ALT_BOMB, Side.AXIS);
-        Assertions.assertTrue (bombFlightFound || lowAltBombFlightFound);
 
-        boolean bombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_CITY, Side.AXIS);
-        boolean lowAltBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.LOW_ALT_BOMB, TargetType.TARGET_CITY, Side.AXIS);
-        Assertions.assertTrue (bombFlightTargetFound || lowAltBombFlightTargetFound);
+        boolean cityTargetFound = MissionInformationUtils.verifyFlightTargets(mission, TargetType.TARGET_CITY, Side.AXIS);
+        Assertions.assertTrue (cityTargetFound);
 
         MissionFlightValidator.validateMission(mission);
     }
 
     @Test
-    public void hasDiveBombTest() throws PWCGException
+    public void hasDrifterTargetTest() throws PWCGException
     {
         campaign.setDate(DateUtils.getDateYYYYMMDD("19420910"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
@@ -65,13 +60,8 @@ public class StalingradFlightTest
 
         Assertions.assertTrue (mission.getSkirmish() != null);
 
-        boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
-        boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
-        Assertions.assertTrue (diveBombFlightFound || groundAttackFlightFound);
-
-        boolean diveBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.DIVE_BOMB, TargetType.TARGET_DRIFTER, Side.AXIS);
-        boolean groundAttackFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_DRIFTER, Side.AXIS);
-        Assertions.assertTrue (diveBombFlightTargetFound || groundAttackFlightTargetFound);
+        boolean drifterTargetFound = MissionInformationUtils.verifyFlightTargets(mission, TargetType.TARGET_DRIFTER, Side.AXIS);
+        Assertions.assertTrue (drifterTargetFound);
 
         MissionFlightValidator.validateMission(mission);
     }
@@ -85,9 +75,6 @@ public class StalingradFlightTest
         mission.finalizeMission();
 
         Assertions.assertTrue (mission.getSkirmish() != null);
-
-        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.ALLIED));
-        assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED));
 
         MissionFlightValidator.validateMission(mission);
     }

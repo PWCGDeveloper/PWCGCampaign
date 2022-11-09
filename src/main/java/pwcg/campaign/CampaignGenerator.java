@@ -4,6 +4,7 @@ import java.util.List;
 
 import pwcg.campaign.context.MapFinderForCampaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -19,25 +20,25 @@ public class CampaignGenerator
         this.generatorModel = generatorModel;
     }
 
-    public Campaign generate() throws PWCGException
+    public Campaign generate(PWCGProduct product) throws PWCGException
     {
         generatorModel.validateCampaignInputs();
-        createCampaignBasis();
+        createCampaignBasis(product);
         staffSquadrons();
         createPersonnelReplacements();
         createEquipmentReplacements();
         return campaign;
     }
 
-    private void createCampaignBasis() throws PWCGException
+    private void createCampaignBasis(PWCGProduct product) throws PWCGException
     {
-        createCampaign();
+        createCampaign(product);
         setCampaignAces();
     }
 
-    private void createCampaign() throws PWCGException
+    private void createCampaign(PWCGProduct product) throws PWCGException
 	{
-		campaign = new Campaign();
+		campaign = new Campaign(product);
         campaign.initializeCampaignConfigs();
         campaign.getCampaignData().setInitialMap(MapFinderForCampaign.findMapForSquadeonAndDate(generatorModel.getCampaignSquadron(), generatorModel.getCampaignDate()));
         campaign.setDate(generatorModel.getCampaignDate());
@@ -47,7 +48,7 @@ public class CampaignGenerator
 
     private void staffSquadrons() throws PWCGException
     {
-        List<Squadron> activeSquadronsOnCampaignStartDate = PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(generatorModel.getCampaignDate());
+        List<Squadron> activeSquadronsOnCampaignStartDate = PWCGContext.getInstance(campaign.getProduct()).getSquadronManager().getActiveSquadrons(generatorModel.getCampaignDate());
         for (Squadron squadron : activeSquadronsOnCampaignStartDate)
         {
             CampaignSquadronGenerator squadronGenerator = new CampaignSquadronGenerator(campaign, squadron);

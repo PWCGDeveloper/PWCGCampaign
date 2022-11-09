@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignGeneratorModel;
+import pwcg.campaign.CampaignPilotGeneratorModel;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.CountryFactory;
@@ -37,16 +37,17 @@ public class SquadronMemberFactory
         this.squadronPersonnel = squadronPersonnel;
     }
 
-    public SquadronMember createPlayer(CampaignGeneratorModel generatorModel) throws PWCGException 
+    public SquadronMember createPlayer(CampaignPilotGeneratorModel pilotModel) throws PWCGException 
     {
         SquadronMember player = new SquadronMember();
 
-        player.setName(generatorModel.getPlayerName());
-        player.setRank(generatorModel.getPlayerRank());
-        ICountry country = CountryFactory.makeCountryByService(generatorModel.getService());
+        player.setName(pilotModel.getPlayerName());
+        player.setRank(pilotModel.getPlayerRank());
+        player.setPlayerRegion(pilotModel.getPlayerRegion());
+        ICountry country = CountryFactory.makeCountryByService(pilotModel.getService());
+
         player.setCountry(country.getCountry());
         player.setAiSkillLevel(AiSkillLevel.PLAYER);
-        player.setPlayerRegion(generatorModel.getPlayerRegion());
         player.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
         player.setSquadronId(squadron.getSquadronId());
         player.setSerialNumber(campaign.getSerialNumber().getLastPlayerSerialNumber());

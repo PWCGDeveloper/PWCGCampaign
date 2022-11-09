@@ -16,7 +16,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -30,7 +30,7 @@ public class MissionCenterBuilderSkirmishTest
     @Test
     public void testNoSkirmish() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_MOSCOW);
 
         List<Skirmish> skirmishes = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         Assertions.assertTrue (skirmishes.size() == 0);
@@ -39,7 +39,7 @@ public class MissionCenterBuilderSkirmishTest
     @Test
     public void singlePlayerMissionBoxArnhemEarlyTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_362_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
 
         createMissionAtSkirmish(campaign);
@@ -48,7 +48,7 @@ public class MissionCenterBuilderSkirmishTest
     @Test
     public void singlePlayerMissionBoxArnhemLateTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_362_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440928"));
 
         createMissionAtSkirmish(campaign);

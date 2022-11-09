@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CoopUserIOJson;
@@ -21,14 +20,15 @@ import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
-import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
-import pwcg.testutils.TestCampaignFactoryBase;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Tag("BOS")
 public class CoopUserAddRemoveTest
 {
+    private static final String TEST_CAMPAIGN_NAME = "CoopUserAddRemoveTest Campaign";
+
     private static Campaign coopCampaign;
     private static final String coopuser = "New Coop";
     private static final String personaName = "My Pilot";
@@ -37,8 +37,7 @@ public class CoopUserAddRemoveTest
     @BeforeAll
     public void setupSuite() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.BOS);
-        coopCampaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
+        coopCampaign = TestCampaignFactoryBuilder.makeCampaignOnDisk(this.getClass().getCanonicalName(), SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
     }
 
     @AfterEach
@@ -109,8 +108,8 @@ public class CoopUserAddRemoveTest
     {
         CoopUserManager.getIntance().removeCoopUser(coopuser);
         
-        coopCampaign = new Campaign();
-        coopCampaign.open(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
+        coopCampaign = new Campaign(PWCGProduct.BOS);
+        coopCampaign.open(TEST_CAMPAIGN_NAME);
 
         String coopUserDir = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir();                    
         File coopUserFile = new File(coopUserDir + coopuser + ".json");

@@ -18,7 +18,7 @@ import pwcg.mission.MissionProfile;
 import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.MissionFlightValidator;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.FlightTypeFinder;
 import pwcg.testutils.GroundUnitTypeFinder;
 import pwcg.testutils.SquadronTestProfile;
@@ -34,7 +34,7 @@ public class NormandyFlightTest
     @Test
     public void buildUSEarlyTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.USAAF_NORMANDY);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.USAAF_NORMANDY);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19430601"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -48,7 +48,7 @@ public class NormandyFlightTest
     @Test
     public void buildLWEarly() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.LW_BOB_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.LW_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19410601"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -62,7 +62,7 @@ public class NormandyFlightTest
     @Test
     public void dunkirkSeaBritainTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_BOB_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.RAF_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19410601"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         SkirmishManager skirmishManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager();
@@ -86,7 +86,7 @@ public class NormandyFlightTest
     @Test
     public void dunkirkLandBritainTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_BOB_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.RAF_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19410601"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         SkirmishManager skirmishManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager();
@@ -111,7 +111,7 @@ public class NormandyFlightTest
     @Test
     public void bobPauseTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_BOB_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.RAF_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19410612"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -127,7 +127,7 @@ public class NormandyFlightTest
     @Test
     public void bobShippingTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.LW_BOB_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.LW_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19410718"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -144,7 +144,7 @@ public class NormandyFlightTest
     @Test
     public void bobAirfieldTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.LW_BOB_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.LW_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19410820"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -160,7 +160,7 @@ public class NormandyFlightTest
     @Test
     public void bobCityTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.LW_BOB_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.LW_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19410920"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -176,7 +176,7 @@ public class NormandyFlightTest
     @Test
     public void dieppeTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_BOB_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.RAF_BOB_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19420819"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -196,7 +196,7 @@ public class NormandyFlightTest
     @Test
     public void usEntersTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.USAAF_NORMANDY);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.USAAF_NORMANDY);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19430701"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -213,7 +213,7 @@ public class NormandyFlightTest
     @Test
     public void preNormandyTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.USAAF_NORMANDY);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.USAAF_NORMANDY);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440510"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -230,7 +230,7 @@ public class NormandyFlightTest
     @Test
     public void ddayTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.USAAF_NORMANDY);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.USAAF_NORMANDY);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440606"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -251,7 +251,7 @@ public class NormandyFlightTest
     @Test
     public void cherbourgTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.USAAF_NORMANDY);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.USAAF_NORMANDY);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440701"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -269,7 +269,7 @@ public class NormandyFlightTest
     @Test
     public void mortainTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.USAAF_NORMANDY);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.USAAF_NORMANDY);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440810"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -287,7 +287,7 @@ public class NormandyFlightTest
     @Test
     public void falaiseTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.USAAF_NORMANDY);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.USAAF_NORMANDY);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440810"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));

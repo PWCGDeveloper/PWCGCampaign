@@ -39,7 +39,7 @@ public class BattleManagerTest
         Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.ARRAS_MAP);
         Mockito.when(campaign.getReferencePlayer()).thenReturn(referencePlayer);
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
-        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MissionBoxMinDistanceFromBaseKey)).thenReturn(60);
+        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MissionBoxMaxDistanceFromBaseKey)).thenReturn(60);
         
         Mockito.when(referencePlayer.getSquadronId()).thenReturn(302056);
 

@@ -34,7 +34,7 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronMemberPicker;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -56,7 +56,7 @@ public class CampaignSquadronPersonnelUpdaterTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
 
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.ESC_103_PROFILE);
         aarContext = new AARContext(campaign);
         aarContext.setNewDate(DateUtils.advanceTimeDays(campaign.getDate(), 3));
     }

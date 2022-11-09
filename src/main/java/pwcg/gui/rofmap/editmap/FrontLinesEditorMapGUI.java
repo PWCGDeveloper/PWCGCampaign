@@ -318,7 +318,7 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
                 writeData();
             }   
             else if (action.contains("Refresh"))
-            {               
+            {
                 PWCGContext.getInstance().getMap(mapIdentifier).configure();
                 editorMapPanel.resetFromActual();
             }   

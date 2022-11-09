@@ -85,7 +85,7 @@ public class IconicBattlesGenerator
     {
         CampaignGeneratorModel model = makeCampaignModelForProfile();        
         CampaignGenerator generator = new CampaignGenerator(model);
-        Campaign campaign = generator.generate();          
+        Campaign campaign = generator.generate(PWCGContext.getProduct());          
         return campaign;
     }
 
@@ -101,7 +101,7 @@ public class IconicBattlesGenerator
         IRankHelper rank = RankFactory.createRankHelper();
         String rankName = rank.getRankByService(2, service);
     
-        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
+        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel(PWCGContext.getProduct());
         generatorModel.setCampaignDate(campaignDate);
         generatorModel.setCampaignName(iconicMission.getMapName() + " " + iconicMission.getCampaignName());
         generatorModel.setPlayerName("Iconic Player");

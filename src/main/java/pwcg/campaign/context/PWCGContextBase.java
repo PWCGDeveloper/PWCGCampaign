@@ -20,8 +20,6 @@ import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public abstract class PWCGContextBase implements IPWCGContextManager
 {
-    BoSContext bosContextManager;
-
     protected Map<FrontMapIdentifier, PWCGMap> pwcgMaps = new HashMap<FrontMapIdentifier, PWCGMap>();
     protected AceManager aceManager = new AceManager();
     protected SquadronManager squadronManager = new SquadronManager();

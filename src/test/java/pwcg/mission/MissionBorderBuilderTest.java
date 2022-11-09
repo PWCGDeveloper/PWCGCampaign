@@ -17,7 +17,7 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,33 +31,30 @@ public class MissionBorderBuilderTest
     @Test
     public void singlePlayerMissionBoxTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
         
-        for (int i = 0; i < 10; ++i)
-        {
-            Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
-            MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
+        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
-            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
-            
-            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
-            Coordinate missionBoxCenter = missionBorders.getCenter();
-            
-            Coordinate playerSquadronLocation = playerSquadron.determineCurrentPosition(campaign.getDate());
-            
-            double distanceToMission = MathUtils.calcDist(missionBoxCenter, playerSquadronLocation);
-            assert(distanceToMission < 85000);
-        }
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
+        
+        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
+        Coordinate missionBoxCenter = missionBorders.getCenter();
+        
+        Coordinate playerSquadronLocation = playerSquadron.determineCurrentPosition(campaign.getDate());
+        
+        double distanceToMission = MathUtils.calcDist(missionBoxCenter, playerSquadronLocation);
+        assert(distanceToMission < 100000);
     }
 
     @Test
     public void multiPlayerMissionBoxTest() throws PWCGException
     {
-        Campaign coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
+        Campaign coopCampaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         for (SquadronMember player: coopCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
@@ -65,24 +62,21 @@ public class MissionBorderBuilderTest
             participatingPlayers.addSquadronMember(player);
         }
         
-        for (int i = 0; i < 10; ++i)
-        {
-            Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
-            MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
+        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
 
-            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(coopCampaign, participatingPlayers, null, playerFlightTypes);
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(coopCampaign, participatingPlayers, null, playerFlightTypes);
 
-            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
-            Coordinate missionBoxCenter = missionBorders.getCenter();
-            assert(missionBoxCenter.getXPos() > 0.0);
-            assert(missionBoxCenter.getZPos() > 0.0);
-        }
+        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
+        Coordinate missionBoxCenter = missionBorders.getCenter();
+        assert(missionBoxCenter.getXPos() > 0.0);
+        assert(missionBoxCenter.getZPos() > 0.0);
     }
 
     @Test
     public void buildBorderForSkirmishTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_362_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();

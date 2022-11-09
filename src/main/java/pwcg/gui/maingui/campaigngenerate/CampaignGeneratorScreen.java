@@ -16,6 +16,7 @@ import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignInitialWriter;
 import pwcg.campaign.CampaignMode;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -220,7 +221,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         Date startDate = campaignGeneratorDO.getStartDate();
         CampaignMode campaignMode =  campaignGeneratorDO.getCampaignMode();
 
-        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
+        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel(PWCGContext.getProduct());
         generatorModel.setCampaignMode(campaignMode);
         generatorModel.setCampaignDate(startDate);
         generatorModel.setCampaignName(campaignName);
@@ -231,7 +232,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         generatorModel.setSquadronName(squadronName);
 
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
-        Campaign campaign = generator.generate();
+        Campaign campaign = generator.generate(PWCGContext.getProduct());
         
         CampaignInitialWriter.doInitialCampaignWrite(campaign);
         

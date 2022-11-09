@@ -25,7 +25,7 @@ import pwcg.mission.target.GroundTargetDefinitionFactory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetPriorityGeneratorTactical;
 import pwcg.mission.target.TargetType;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -40,7 +40,7 @@ public class TargetBuilderArrasTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.RFC_2_PROFILE);
 
         if (mission == null)
         {

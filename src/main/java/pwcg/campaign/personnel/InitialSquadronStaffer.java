@@ -4,7 +4,7 @@ import java.util.List;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignGeneratorModel;
+import pwcg.campaign.CampaignPilotGeneratorModel;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -36,9 +36,9 @@ public class InitialSquadronStaffer
         return squadronPersonnel;
     }
     
-    public void addPlayerToCampaign(CampaignGeneratorModel generatorModel) throws PWCGException
+    public void addPlayerToCampaign(CampaignPilotGeneratorModel pilotModel) throws PWCGException
     {
-        SquadronMember player =  squadronMemberFactory.createPlayer(generatorModel);
+        SquadronMember player =  squadronMemberFactory.createPlayer(pilotModel);
         addSquadronMember(player);
     }
 

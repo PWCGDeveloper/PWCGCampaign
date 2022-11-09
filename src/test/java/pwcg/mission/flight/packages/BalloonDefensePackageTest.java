@@ -23,7 +23,7 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.unittypes.infantry.BalloonUnit;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.PwcgTestBase;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -44,7 +44,7 @@ public class BalloonDefensePackageTest extends PwcgTestBase
 
     private IFlight buildFlight() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JASTA_11_PROFILE);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();

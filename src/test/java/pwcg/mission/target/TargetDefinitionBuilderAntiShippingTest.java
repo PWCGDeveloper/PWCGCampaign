@@ -19,7 +19,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.IFlight;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -30,7 +30,7 @@ public class TargetDefinitionBuilderAntiShippingTest
     public void antiShippingTargetTypeTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_KUBAN_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.STG77_KUBAN_PROFILE);
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.STG77_KUBAN_PROFILE.getSquadronId());
         

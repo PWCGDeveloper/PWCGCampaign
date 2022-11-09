@@ -63,4 +63,6 @@ public interface IPWCGContextManager
     PWCGMap getMap(FrontMapIdentifier mapIdentifier);
 
     FrontMapIdentifier getDefaultMapForProduct();
+    
+    PWCGProduct getProduct();
 }

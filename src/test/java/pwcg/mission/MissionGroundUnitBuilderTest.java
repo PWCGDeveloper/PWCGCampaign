@@ -21,7 +21,7 @@ import pwcg.mission.ground.MissionTrainBuilder;
 import pwcg.mission.ground.MissionTruckConvoyBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 import pwcg.testutils.TestMissionFlightTypeBuilder;
@@ -38,7 +38,7 @@ public class MissionGroundUnitBuilderTest
     @Test
     public void createBattle() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), new Coordinate(100000.0, 0.0, 100000.0), 75000);
         
@@ -60,7 +60,7 @@ public class MissionGroundUnitBuilderTest
     @Test
     public void createTrucks() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), new Coordinate(100000.0, 0.0, 100000.0), 75000);
 
@@ -98,7 +98,7 @@ public class MissionGroundUnitBuilderTest
     @Test
     public void createTrains() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), new Coordinate(150000.0, 0.0, 150000.0), 75000);
 
@@ -136,7 +136,7 @@ public class MissionGroundUnitBuilderTest
     @Test
     public void createAAA() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_365_BODENPLATTE_PROFILE);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(campaign.getCampaignMap(), new Coordinate(100000.0, 0.0, 100000.0), 75000);
 

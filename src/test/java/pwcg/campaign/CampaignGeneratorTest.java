@@ -22,15 +22,12 @@ import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.SquadronTestProfile;
-import pwcg.testutils.TestCampaignFactoryBase;
 
 @ExtendWith(MockitoExtension.class)
 public class CampaignGeneratorTest
 {
-	public CampaignGeneratorTest() throws PWCGException
-	{
-    	PWCGContext.setProduct(PWCGProduct.FC);
-	}
+    private static final String TEST_CAMPAIGN_NAME = "CampaignGeneratorTest Campaign";
+    private static final String TEST_PLAYER_NAME = "CampaignGeneratorTest Player";
 	
     @Test
     public void createWWICampaign () throws PWCGException
@@ -40,7 +37,7 @@ public class CampaignGeneratorTest
         SquadronMember player = campaign.findReferencePlayer();
         Assertions.assertTrue (player.determineSquadron().getSquadronId() == SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
         Assertions.assertTrue (player.determineSquadron().determineSquadronCountry(campaign.getDate()).getCountry() == Country.FRANCE);
-        Assertions.assertTrue (campaign.getCampaignData().getName().equals(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME));
+        Assertions.assertTrue (campaign.getCampaignData().getName().equals(TEST_CAMPAIGN_NAME));
         assert(campaign.getPersonnelManager().getAllSquadronPersonnel().size() > 30);
         
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
@@ -56,11 +53,11 @@ public class CampaignGeneratorTest
         }
     }
 
-    public Campaign generateCampaign(
+    private Campaign generateCampaign(
                     int squadronId,
                     Date campaignDate) throws PWCGException 
     {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance(PWCGProduct.FC).getSquadronManager();
         
         Squadron squadron = squadronManager.getSquadron(squadronId);
         
@@ -70,17 +67,17 @@ public class CampaignGeneratorTest
         IRankHelper rank = RankFactory.createRankHelper();
         String rankName = rank.getRankByService(2, service);
 
-        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
+        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel(PWCGProduct.FC);
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setCampaignName(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
-        generatorModel.setPlayerName(TestCampaignFactoryBase.TEST_PLAYER_NAME);
+        generatorModel.setCampaignName(TEST_CAMPAIGN_NAME);
+        generatorModel.setPlayerName(TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);
         generatorModel.setSquadronName(squadronName);
         
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
-        Campaign campaign = generator.generate();          
+        Campaign campaign = generator.generate(PWCGProduct.FC);          
         
         return campaign;
     }

@@ -10,6 +10,7 @@ import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -113,7 +114,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
             armedServicesByCountry.put(FCCountry.GERMANY_CODE, germanServices);
     
             // Deutsche Luftstreitkräfte (Germany)
-            ArmedService gas = new ArmedService();
+            ArmedService gas = new ArmedService(PWCGProduct.FC);
             createServiceGermanArmy(startDate, endDate, gas);
             germanServices.add(gas);
         }
@@ -152,7 +153,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
     private ArmedService createServiceUSAS(Date endDate) throws PWCGException
     {
-        ArmedService usas = new ArmedService();
+        ArmedService usas = new ArmedService(PWCGProduct.FC);
         usas.setServiceId(USAS);
         usas.setCountry(CountryFactory.makeCountryByCountry(Country.USA));
         usas.setNameCountry(CountryFactory.makeCountryByCountry(Country.USA));
@@ -179,7 +180,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
     private ArmedService createServiceRAF(Date endDate, Date rafStartDate) throws PWCGException
     {
-        ArmedService raf = new ArmedService();
+        ArmedService raf = new ArmedService(PWCGProduct.FC);
         raf.setServiceId(RAF);
         raf.setCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
         raf.setNameCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
@@ -207,7 +208,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
     private ArmedService createServiceRNAS(Date rafStartDate) throws PWCGException
     {
-        ArmedService rnas = new ArmedService();
+        ArmedService rnas = new ArmedService(PWCGProduct.FC);
         rnas.setServiceId(RNAS);
         rnas.setCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
         rnas.setNameCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
@@ -235,7 +236,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
     private ArmedService createServiceRFC(Date startDate, Date rafStartDate) throws PWCGException
     {
-        ArmedService rfc = new ArmedService();
+        ArmedService rfc = new ArmedService(PWCGProduct.FC);
         rfc.setServiceId(RFC);
         rfc.setCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
         rfc.setNameCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
@@ -263,7 +264,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
     private ArmedService createServiceBelgianArmy(Date startDate, Date endDate) throws PWCGException
     {
-        ArmedService belgianAF = new ArmedService();
+        ArmedService belgianAF = new ArmedService(PWCGProduct.FC);
         belgianAF.setServiceId(AVIATION_MILITAIRE_BELGE);
         belgianAF.setCountry(CountryFactory.makeCountryByCountry(Country.BELGIUM));
         belgianAF.setNameCountry(CountryFactory.makeCountryByCountry(Country.BELGIUM));
@@ -290,7 +291,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
     private ArmedService createServiceFrenchArmy(Date startDate, Date endDate) throws PWCGException
     {
-        ArmedService frenchArmy = new ArmedService();
+        ArmedService frenchArmy = new ArmedService(PWCGProduct.FC);
         frenchArmy.setServiceId(LAVIATION_MILITAIRE);
         frenchArmy.setCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
         frenchArmy.setNameCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
@@ -455,6 +456,12 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         ICountry country = CountryFactory.makeCountryByCode(countryCode);
     
         return getPrimaryServiceForNation(country.getCountry(), date);
+    }
+
+    @Override
+    public PWCGProduct getProduct()
+    {
+        return PWCGProduct.FC;
     }    
 
 }

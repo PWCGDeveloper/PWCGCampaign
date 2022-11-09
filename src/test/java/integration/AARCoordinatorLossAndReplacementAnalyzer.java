@@ -3,10 +3,7 @@ package integration;
 import java.util.Date;
 import java.util.Map;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import pwcg.aar.AARFactory;
 import pwcg.aar.AAROutOfMissionStepper;
@@ -23,26 +20,18 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@Tag("BOS")
 public class AARCoordinatorLossAndReplacementAnalyzer
 {
-    private Campaign campaign;    
-
-    @BeforeAll
-    public void setupSuite() throws PWCGException
-    {
-        PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.FG_354_BODENPLATTE_PROFILE);
-    }
-
     @Test
     public void runMissionAARLeave () throws PWCGException
     {
-    	Date newDate = DateUtils.getDateYYYYMMDD("19450301");
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaignOnDisk(this.getClass().getCanonicalName(), SquadronTestProfile.FG_354_BODENPLATTE_PROFILE);
+
+        Date newDate = DateUtils.getDateYYYYMMDD("19450301");
 
         int totalAirVictories = 0;
         int totalGroundVictories = 0;
@@ -120,7 +109,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             }
             
             
-            printShortHandedSquadrons();
+            printShortHandedSquadrons(campaign);
             
             System.out.println("=====================================================");
             System.out.println("Cycle: " + cycleNum);
@@ -174,7 +163,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
 
     }
 
-    private void printShortHandedSquadrons() throws PWCGException
+    private void printShortHandedSquadrons(Campaign campaign) throws PWCGException
     {
         System.out.println("=====================================================");
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())

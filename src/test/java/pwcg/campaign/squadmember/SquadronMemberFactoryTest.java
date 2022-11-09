@@ -14,8 +14,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
-import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.CampaignPilotGeneratorModel;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -25,7 +25,6 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.SquadronTestProfile;
-import pwcg.testutils.TestCampaignFactoryBase;
 
 @ExtendWith(MockitoExtension.class)
 public class SquadronMemberFactoryTest
@@ -59,29 +58,25 @@ public class SquadronMemberFactoryTest
     public void testCreatePlayer() throws PWCGException
     {                
         ArmedService service = squadron.determineServiceForSquadron(campaignDate);
-        String squadronName = squadron.determineDisplayName(campaignDate);
         
         IRankHelper rank = RankFactory.createRankHelper();
         String rankName = rank.getRankByService(2, service);
 
-        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
-        generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setCampaignName(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
-        generatorModel.setPlayerName(TestCampaignFactoryBase.TEST_PLAYER_NAME);
-        generatorModel.setPlayerRank(rankName);
-        generatorModel.setPlayerRegion("");
-        generatorModel.setService(service);
-        generatorModel.setSquadronName(squadronName);
+        CampaignPilotGeneratorModel pilotModel = new CampaignPilotGeneratorModel();
+        pilotModel.setPlayerName("Johnny Player");
+        pilotModel.setPlayerRank(rankName);
+        pilotModel.setPlayerRegion("");
+        pilotModel.setService(service);
 
         SquadronMemberFactory squadronMemberFactory = new  SquadronMemberFactory (campaign, squadron, squadronPersonnel);
-        SquadronMember player = squadronMemberFactory.createPlayer(generatorModel);
+        SquadronMember player = squadronMemberFactory.createPlayer(pilotModel);
         
         assert(player.isPlayer() == true);
         assert(player.getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER && player.getSerialNumber() < SerialNumber.AI_STARTING_SERIAL_NUMBER);
-        assert(player.getName().equals(generatorModel.getPlayerName()));
+        assert(player.getName().equals(pilotModel.getPlayerName()));
         assert(player.getPicName() != null && !player.getPicName().isEmpty());
-        assert(player.getPlayerRegion().equals(generatorModel.getPlayerRegion()));
-        assert(player.getRank().equals(generatorModel.getPlayerRank()));
+        assert(player.getPlayerRegion().equals(pilotModel.getPlayerRegion()));
+        assert(player.getRank().equals(pilotModel.getPlayerRank()));
         assert(player.getInactiveDate().equals(DateUtils.getEndOfWar()));
     }
 

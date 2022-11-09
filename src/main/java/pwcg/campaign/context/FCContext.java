@@ -30,7 +30,7 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
     @Override
     protected void initialize() throws PWCGException  
     {
-        PWCGMap arrasMap = PWCGMapFactory.getMap(FrontMapIdentifier.ARRAS_MAP);
+        PWCGMap arrasMap = PWCGMapFactory.configureMap(FrontMapIdentifier.ARRAS_MAP);
         
         pwcgMaps.put(arrasMap.getMapIdentifier(), arrasMap);
 
@@ -53,5 +53,11 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
     public FrontMapIdentifier getDefaultMapForProduct()
     {
         return FrontMapIdentifier.ARRAS_MAP;
+    }
+
+    @Override
+    public PWCGProduct getProduct()
+    {
+        return PWCGProduct.FC;
     }
 }

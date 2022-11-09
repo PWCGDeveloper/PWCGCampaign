@@ -4,9 +4,7 @@ import java.util.Date;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import pwcg.aar.AAROutOfMissionStepper;
 import pwcg.aar.data.AARContext;
@@ -21,11 +19,9 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@Tag("BOS")
 public class AARCoordinatorCampaignUpdateIntegrityValidator
 {
     private Campaign campaign;    
@@ -38,7 +34,7 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test

@@ -25,7 +25,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
 @ExtendWith(MockitoExtension.class)
@@ -42,7 +42,7 @@ public class EquipmentReplacementWeightNeedTest
         {
             runSetupOneTime = true;
             PWCGContext.setProduct(PWCGProduct.BOS);
-            campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
+            campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.KG53_PROFILE);
             deactivateAircraft();
         }
     }

@@ -9,7 +9,6 @@ import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ApproachWaypointGenerator
@@ -32,7 +31,6 @@ public class ApproachWaypointGenerator
         approachWP.setSpeed(flight.getFlightCruisingSpeed());
         approachWP.setPosition(approachCoords);
         approachWP.setOrientation(orient);
-        approachWP.setPriority(WaypointPriority.PRIORITY_MED);
         
         return approachWP;
     }

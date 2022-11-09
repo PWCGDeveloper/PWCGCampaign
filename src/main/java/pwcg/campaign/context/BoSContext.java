@@ -57,14 +57,14 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
 
     @Override
     protected void initialize() throws PWCGException  
-    {
-        PWCGMap moscowMap = PWCGMapFactory.getMap(FrontMapIdentifier.MOSCOW_MAP);
-        PWCGMap stalingradMap = PWCGMapFactory.getMap(FrontMapIdentifier.STALINGRAD_MAP);
-        PWCGMap kubanMap = PWCGMapFactory.getMap(FrontMapIdentifier.KUBAN_MAP);
-        PWCGMap east1944Map = PWCGMapFactory.getMap(FrontMapIdentifier.EAST1944_MAP);
-        PWCGMap east1945Map = PWCGMapFactory.getMap(FrontMapIdentifier.EAST1945_MAP);
-        PWCGMap normandyMap = PWCGMapFactory.getMap(FrontMapIdentifier.NORMANDY_MAP);
-        PWCGMap bodenplatteMap = PWCGMapFactory.getMap(FrontMapIdentifier.BODENPLATTE_MAP);
+    {        
+        PWCGMap moscowMap = PWCGMapFactory.configureMap(FrontMapIdentifier.MOSCOW_MAP);
+        PWCGMap stalingradMap = PWCGMapFactory.configureMap(FrontMapIdentifier.STALINGRAD_MAP);
+        PWCGMap kubanMap = PWCGMapFactory.configureMap(FrontMapIdentifier.KUBAN_MAP);
+        PWCGMap east1944Map = PWCGMapFactory.configureMap(FrontMapIdentifier.EAST1944_MAP);
+        PWCGMap east1945Map = PWCGMapFactory.configureMap(FrontMapIdentifier.EAST1945_MAP);
+        PWCGMap normandyMap = PWCGMapFactory.configureMap(FrontMapIdentifier.NORMANDY_MAP);
+        PWCGMap bodenplatteMap = PWCGMapFactory.configureMap(FrontMapIdentifier.BODENPLATTE_MAP);
         
         pwcgMaps.put(moscowMap.getMapIdentifier(), moscowMap);
         pwcgMaps.put(stalingradMap.getMapIdentifier(), stalingradMap);
@@ -93,5 +93,11 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
     public FrontMapIdentifier getDefaultMapForProduct()
     {
         return FrontMapIdentifier.STALINGRAD_MAP;
+    }
+
+    @Override
+    public PWCGProduct getProduct()
+    {
+        return PWCGProduct.BOS;
     }
 }

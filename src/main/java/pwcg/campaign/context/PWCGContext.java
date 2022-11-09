@@ -17,7 +17,7 @@ public class PWCGContext
     {
         try
         {
-            return buildProductContext();
+            return buildProductContext(product);
         }
         catch (Exception e)
         {
@@ -26,6 +26,22 @@ public class PWCGContext
         
         return null;
     }
+
+    public static IPWCGContextManager getInstance(PWCGProduct requestedProduct) 
+    {
+        try
+        {
+            product = requestedProduct;
+            return buildProductContext(product);
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.logException(e);
+        }
+        
+        return null;
+    }
+
 
     public static PWCGProduct getProduct()
     {
@@ -39,11 +55,11 @@ public class PWCGContext
             bosContextManager = null;
             fcContextManager = null;
             PWCGContext.product = product;
-            buildProductContext();
+            buildProductContext(product);
         }
     }
 
-    private static IPWCGContextManager buildProductContext() throws PWCGException
+    private static IPWCGContextManager buildProductContext(PWCGProduct product) throws PWCGException
     {
         if (product == PWCGProduct.BOS)
         {

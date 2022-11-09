@@ -25,9 +25,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.fc.country.FCServiceManager;
-import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
-import pwcg.testutils.TestCampaignFactoryBase;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @ExtendWith(MockitoExtension.class)
 public class CampaignIOJsonTest
@@ -45,14 +44,14 @@ public class CampaignIOJsonTest
 
     private void writeCampaign() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.JASTA_11_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaignOnDisk(this.getClass().getCanonicalName(), SquadronTestProfile.JASTA_11_PROFILE);
         CampaignIOJson.writeJson(campaign);
     }
 
     private void readCampaign() throws PWCGException
     {
         Campaign campaign = new Campaign();
-        campaign.open(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
+        campaign.open(this.getClass().getCanonicalName());
 
         validateCoreCampaign(campaign);        
         validateFighterSquadronMembers(campaign);        
@@ -71,9 +70,9 @@ public class CampaignIOJsonTest
         }
         
         Assertions.assertTrue (campaign.getDate().equals(DateUtils.getDateYYYYMMDD(SquadronTestProfile.JASTA_11_PROFILE.getDateString())));
-        Assertions.assertTrue (campaign.getCampaignData().getName().equals(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME));
+        Assertions.assertTrue (campaign.getCampaignData().getName().equals(this.getClass().getCanonicalName()));
         SquadronMember player = campaign.findReferencePlayer();
-        Assertions.assertTrue (player.getName().equals(TestCampaignFactoryBase.TEST_PLAYER_NAME));
+        Assertions.assertTrue (player.getName().equals(this.getClass().getCanonicalName()));
     }
 
     private void validatePersonnelReplacements(Campaign campaign) throws PWCGException
@@ -155,6 +154,6 @@ public class CampaignIOJsonTest
 
     private void deleteCampaign()
     {
-        CampaignRemover.deleteCampaign(TestCampaignFactoryBase.TEST_CAMPAIGN_NAME);
+        CampaignRemover.deleteCampaign(this.getClass().getCanonicalName());
     }
 }

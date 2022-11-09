@@ -23,7 +23,7 @@ import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.target.TargetType;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.PwcgTestBase;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -41,7 +41,7 @@ public class RaiderAttackPackageTest extends PwcgTestBase
         TestDriver.getInstance().enableTestDriver();
         TestDriver.getInstance().setTestPlayerTacticalTargetType(TargetType.TARGET_AIRFIELD);
         
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_362_PROFILE);
         MissionFlights missionFlights = buildFlight(campaign);
         IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
         assert(playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);

@@ -5,7 +5,6 @@ import java.util.List;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -25,11 +24,10 @@ import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@Tag("BOS")
 public class CoopPlayerInclusionTest
 {
     private Mission mission;
@@ -39,7 +37,7 @@ public class CoopPlayerInclusionTest
     public void setupSuite() throws Exception
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
+        coopCampaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         generateCoopUsers();
         generateHumanPilots();
     }

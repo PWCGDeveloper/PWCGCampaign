@@ -21,7 +21,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.options.MissionWeather;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
 @ExtendWith(MockitoExtension.class)
@@ -165,7 +165,7 @@ public class BoSAirfieldTest
 	@Test
 	public void airfieldCheckMoscowTest() throws PWCGException
 	{
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         campaign.setCampaignConfigManager(configManagerCampaign);
 
         Mockito.when(configManagerCampaign.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey)).thenReturn(0);

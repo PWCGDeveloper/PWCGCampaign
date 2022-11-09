@@ -7,6 +7,7 @@ import java.util.List;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 
@@ -18,6 +19,7 @@ public abstract class ArmedServiceManager
     public abstract ArmedService getArmedServiceByName(String armedServiceName, Date campaignDate) throws PWCGException ;
     protected abstract void initialize() ;
     public abstract ArmedService getPrimaryServiceForNation(Country country, Date date) throws PWCGException;
+    public abstract PWCGProduct getProduct();
 
     public ArmedService getArmedService(int armedServiceId) throws PWCGException
     {

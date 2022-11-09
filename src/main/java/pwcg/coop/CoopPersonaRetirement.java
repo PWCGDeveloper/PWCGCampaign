@@ -2,6 +2,7 @@ package pwcg.coop;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
@@ -10,7 +11,7 @@ class CoopPersonaRetirement
 {
     public static void retirePersona(String campaignName, int personaToRemove) throws PWCGException
     {
-        Campaign campaign = new Campaign();
+        Campaign campaign = new Campaign(PWCGContext.getProduct());
         if (campaign.open(campaignName))              
         {
             if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)

@@ -10,7 +10,17 @@ import pwcg.mission.target.TargetType;
 public class MissionInformationUtils
 {
 
-    public static boolean verifyFlightTargets(Mission mission, FlightTypes expectedFlightType, TargetType expectedTargetType, Side side) throws PWCGException
+    public static boolean verifyFlightTargets(Mission mission, TargetType expectedTargetType, Side side) throws PWCGException
+    {
+        boolean bombFlightTargetFound = MissionInformationUtils.verifyFlightTypeTargets(mission, FlightTypes.BOMB, expectedTargetType, Side.AXIS);
+        boolean diveBombFlightTargetFound = MissionInformationUtils.verifyFlightTypeTargets(mission, FlightTypes.DIVE_BOMB, expectedTargetType, Side.AXIS);
+        boolean groundAttackFlightTargetFound = MissionInformationUtils.verifyFlightTypeTargets(mission, FlightTypes.GROUND_ATTACK, expectedTargetType, Side.AXIS);
+        boolean isTargetTypeTargeted = (bombFlightTargetFound || diveBombFlightTargetFound || groundAttackFlightTargetFound);
+
+        return isTargetTypeTargeted;
+    }
+
+    private static boolean verifyFlightTypeTargets(Mission mission, FlightTypes expectedFlightType, TargetType expectedTargetType, Side side) throws PWCGException
     {
         for (IFlight flight : mission.getFlights().getAiFlightsForSide(side))
         {

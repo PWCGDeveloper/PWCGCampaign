@@ -30,7 +30,7 @@ public class CampaignSquadronGenerator
         InitialSquadronStaffer squadronStaffer = new InitialSquadronStaffer(campaign, squadron);
         if (squadron.getSquadronId() == generatorModel.getCampaignSquadron().getSquadronId())
         {
-            squadronStaffer.addPlayerToCampaign(generatorModel);
+            squadronStaffer.addPlayerToCampaign(generatorModel.getPilotModel());
         }
         SquadronPersonnel squadronPersonnel = squadronStaffer.generatePersonnel();
         campaign.getPersonnelManager().addPersonnelForSquadron(squadronPersonnel);

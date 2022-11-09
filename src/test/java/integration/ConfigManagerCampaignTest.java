@@ -3,9 +3,7 @@ package integration;
 import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -13,20 +11,16 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSet;
 import pwcg.core.exception.PWCGException;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@Tag("BOS")
 public class ConfigManagerCampaignTest
 {
-    private Campaign campaign;
-
     @Test
     public void testGlobalConfigurationInitialize() throws PWCGException 
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignOnDisk(SquadronTestProfile.STG77_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaignOnDisk(this.getClass().getCanonicalName(), SquadronTestProfile.STG77_PROFILE);
         
         String campaignConfigDir = campaign.getCampaignPathAutoCreateDirectory() + "config\\";
         ConfigManagerCampaign campaignConfigManager = new ConfigManagerCampaign(campaignConfigDir);

@@ -16,7 +16,7 @@ import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -31,7 +31,7 @@ public class CampaignEquipmentManagerTest
     @Test
     public void makeAircraftForSquadronTest () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190);
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190.getSquadronId());
         for (EquippedPlane plane : equipment.getActiveEquippedPlanes().values())
         {
@@ -46,7 +46,7 @@ public class CampaignEquipmentManagerTest
     {
         List<Integer> planesToReplace = new ArrayList<>();
         
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190);
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190.getSquadronId());
         int count = 0;
         for (EquippedPlane plane : equipment.getActiveEquippedPlanes().values())

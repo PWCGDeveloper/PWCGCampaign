@@ -25,13 +25,10 @@ public class WaypointPriorityValidator
             expectedWaypointPriority = WaypointPriority.PRIORITY_MED;
         }
 
+
         for (McuWaypoint waypoint : flight.getWaypointPackage().getAllWaypoints())
         {
-            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
-            {
-                Assertions.assertTrue (waypoint.getPriority() != WaypointPriority.PRIORITY_LOW);
-            }
-            else if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_LANDING_APPROACH))
+            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_LANDING_APPROACH))
             {
                 Assertions.assertTrue (waypoint.getPriority() == WaypointPriority.PRIORITY_MED);
             }
@@ -41,4 +38,4 @@ public class WaypointPriorityValidator
             }
         }
     }
-}
+ }

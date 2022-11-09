@@ -17,10 +17,9 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.target.AssaultDefinition;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.MissionFlightValidator;
 import pwcg.mission.utils.MissionInformationUtils;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -33,7 +32,7 @@ public class ArdennesFlightTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        fg362Campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
+        fg362Campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_362_PROFILE);
     }
 
     @Test
@@ -63,9 +62,6 @@ public class ArdennesFlightTest
             Assertions.assertTrue (assaultDefinition.getAssaultingCountry().getSide() == attackingSide);
 
         }
-
-        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, attackingSide.getOppositeSide()));
-        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.LOW_ALT_CAP, attackingSide));
     }
 
     @Test
@@ -90,8 +86,6 @@ public class ArdennesFlightTest
         }
 
         assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.CARGO_DROP, Side.ALLIED));
-        assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED));
-        assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_INFANTRY, Side.ALLIED));
         MissionFlightValidator.validateMission(mission);
     }
 

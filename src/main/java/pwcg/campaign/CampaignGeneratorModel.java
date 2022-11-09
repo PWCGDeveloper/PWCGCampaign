@@ -3,6 +3,7 @@ package pwcg.campaign;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
@@ -11,24 +12,32 @@ import pwcg.core.utils.DateUtils;
 
 public class CampaignGeneratorModel
 {
-    private ArmedService service;
+    private PWCGProduct product;
     private String campaignName;
-    private String playerName;
     private String userName;
-    private String playerRank;
     private String squadronName;
     private Date campaignDate;
-    private String playerRegion;
+    private CampaignPilotGeneratorModel pilotModel = new CampaignPilotGeneratorModel();
     private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
+
+    public CampaignGeneratorModel(PWCGProduct product)
+    {    
+        this.product = product;
+    }
+    
+    public PWCGProduct getProduct()
+    {
+        return product;
+    }
 
     public ArmedService getService()
     {
-        return service;
+        return pilotModel.getService();
     }
 
     public void setService(ArmedService service)
     {
-        this.service = service;
+        this.pilotModel.setService(service);
     }
 
     public String getCampaignName()
@@ -43,17 +52,17 @@ public class CampaignGeneratorModel
 
     public String getPlayerName()
     {
-        return playerName;
+        return pilotModel.getPlayerName();
     }
 
     public void setPlayerName(String playerName)
     {
-        this.playerName = playerName;
+        this.pilotModel.setPlayerName(playerName);
     }
 
     public String getPlayerRank()
     {
-        return playerRank;
+        return pilotModel.getPlayerRank();
     }
 
     public String getUserName()
@@ -68,7 +77,7 @@ public class CampaignGeneratorModel
 
     public void setPlayerRank(String playerRank)
     {
-        this.playerRank = playerRank;
+        this.pilotModel.setPlayerRank(playerRank);
     }
 
     public String getSquadronName()
@@ -93,12 +102,12 @@ public class CampaignGeneratorModel
 
     public String getPlayerRegion()
     {
-        return playerRegion;
+        return pilotModel.getPlayerRegion();
     }
 
     public void setPlayerRegion(String playerRegion)
     {
-        this.playerRegion = playerRegion;
+        this.pilotModel.setPlayerRegion(playerRegion);
     }
 
     public CampaignMode getCampaignMode()
@@ -159,6 +168,11 @@ public class CampaignGeneratorModel
         {
             setPlayerRegion("");
         }
+    }
+
+    public CampaignPilotGeneratorModel getPilotModel()
+    {
+        return pilotModel;
     }
 
 }

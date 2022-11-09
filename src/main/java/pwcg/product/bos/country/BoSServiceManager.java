@@ -9,6 +9,7 @@ import pwcg.campaign.ArmedServiceManager;
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -93,7 +94,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 
     private void createVVS(List<ArmedService> russianServices) throws PWCGException
     {
-        ArmedService vvs = new ArmedService();
+        ArmedService vvs = new ArmedService(PWCGProduct.BOS);
 		vvs.setServiceId(VVS);
         vvs.setCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         vvs.setNameCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
@@ -123,7 +124,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 
     private void createNormandie(List<ArmedService> russianServices) throws PWCGException
     {
-        ArmedService normandie = new ArmedService();
+        ArmedService normandie = new ArmedService(PWCGProduct.BOS);
         normandie.setServiceId(NORMANDIE);
         normandie.setCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         normandie.setNameCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
@@ -156,7 +157,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		List <ArmedService> germanServices = new ArrayList<ArmedService>();
 		armedServicesByCountry.put(BoSCountry.GERMANY_CODE, germanServices);
    
-		ArmedService luftwaffe = new ArmedService();
+		ArmedService luftwaffe = new ArmedService(PWCGProduct.BOS);
 		luftwaffe.setServiceId(LUFTWAFFE);
 		luftwaffe.setCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
 		luftwaffe.setNameCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
@@ -192,7 +193,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		List <ArmedService> italianServices = new ArrayList<ArmedService>();
 		armedServicesByCountry.put(BoSCountry.ITALY_CODE, italianServices);
    
-		ArmedService regiaAeronautica = new ArmedService();
+		ArmedService regiaAeronautica = new ArmedService(PWCGProduct.BOS);
 		regiaAeronautica.setServiceId(REGIA_AERONAUTICA);
 		regiaAeronautica.setCountry(CountryFactory.makeCountryByCountry(Country.ITALY));
         regiaAeronautica.setNameCountry(CountryFactory.makeCountryByCountry(Country.ITALY));
@@ -222,7 +223,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         List <ArmedService> americanServices = new ArrayList<ArmedService>();
         armedServicesByCountry.put(BoSCountry.USA_CODE, americanServices);
    
-        ArmedService usaaf = new ArmedService();
+        ArmedService usaaf = new ArmedService(PWCGProduct.BOS);
         usaaf.setServiceId(USAAF);
         usaaf.setCountry(CountryFactory.makeCountryByCountry(Country.USA));
         usaaf.setNameCountry(CountryFactory.makeCountryByCountry(Country.USA));
@@ -265,7 +266,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 
     private void createRAF(List<ArmedService> britishServices) throws PWCGException
     {
-        ArmedService raf = new ArmedService();
+        ArmedService raf = new ArmedService(PWCGProduct.BOS);
         raf.setServiceId(RAF);
         raf.setCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
         raf.setNameCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
@@ -298,7 +299,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 
     private void createFreeFrench(List<ArmedService> britishServices) throws PWCGException
     {
-        ArmedService freeFrench = new ArmedService();
+        ArmedService freeFrench = new ArmedService(PWCGProduct.BOS);
         freeFrench.setServiceId(FREE_FRENCH);
         freeFrench.setCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
         freeFrench.setNameCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
@@ -331,7 +332,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 
     private void createRCAF(List<ArmedService> britishServices) throws PWCGException
     {
-        ArmedService rcaf = new ArmedService();
+        ArmedService rcaf = new ArmedService(PWCGProduct.BOS);
         rcaf.setServiceId(RCAF);
         rcaf.setCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
         rcaf.setNameCountry(CountryFactory.makeCountryByCountry(Country.CANADA));
@@ -439,5 +440,11 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         {
             throw new PWCGException("");
         }
+    }    
+
+    @Override
+    public PWCGProduct getProduct()
+    {
+        return PWCGProduct.BOS;
     }    
 }

@@ -13,12 +13,11 @@ import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -36,7 +35,7 @@ public class AARCoordinatorInMissionTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         expectedResults = new ExpectedResults(campaign);
         aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.reset(campaign);
@@ -45,6 +44,11 @@ public class AARCoordinatorInMissionTest
     }
 
     @Test
+    public void runMissionAARZManyTimes () throws PWCGException
+    {
+        runMissionAAR();
+    }
+    
     public void runMissionAAR () throws PWCGException
     {
         createArtifacts ();
@@ -90,12 +94,4 @@ public class AARCoordinatorInMissionTest
         LogEventData missionLogRawData = missionLogEventsBuilder.makeLogEvents();
         aarCoordinator.getAarContext().setLogEventData(missionLogRawData);
     }
-    
-    public static SquadronPlaneAssignment getPlaneForSquadron(int SquadronId) throws PWCGException
-    {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronId);
-        List<SquadronPlaneAssignment> squadronPlaneAssignments = squadron.getPlaneAssignments();
-        return squadronPlaneAssignments.get(0);
-    }
-
 }

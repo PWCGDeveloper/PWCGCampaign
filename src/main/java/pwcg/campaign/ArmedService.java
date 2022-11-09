@@ -7,6 +7,7 @@ import java.util.List;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -15,7 +16,7 @@ import pwcg.gui.colors.IServiceColorMap;
 
 public class ArmedService
 {
-
+    private PWCGProduct product;
     private int serviceId;
     private String generalRankForService;
     private String serviceIcon;
@@ -32,12 +33,18 @@ public class ArmedService
     private int airVictoriesForgreatAce = 30;
     private int groundVictoriesForgreatAce = 100;
 
-    public ArmedService() throws PWCGException 
+    public ArmedService(PWCGProduct product) throws PWCGException 
     {
-        startDate = DateUtils.getBeginningOfGame();
-        endDate = DateUtils.getEndOfWar();
+        this.product = product;
+        this.startDate = DateUtils.getBeginningOfGame();
+        this.endDate = DateUtils.getEndOfWar();
     }
-        
+
+    public PWCGProduct getProduct()
+    {
+        return product;
+    }
+
     public int getServiceId()
     {
         return serviceId;

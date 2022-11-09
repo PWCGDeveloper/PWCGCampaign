@@ -294,7 +294,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 			String icon = "";
 			try
 			{
-				Campaign campaign = new Campaign();
+				Campaign campaign = new Campaign(PWCGContext.getProduct());
                 if (campaign.open(campaignName))              
 				{
     				if (!campaign.isCampaignActive())
@@ -363,7 +363,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 
 	private void loadCampaign(String campaignName) throws PWCGException 
 	{
-		Campaign campaign = new Campaign();
+		Campaign campaign = new Campaign(PWCGContext.getProduct());
 		campaign.open(campaignName);	
 
 		CampaignHomeScreen campaignGUI = new CampaignHomeScreen (this, campaign);

@@ -11,7 +11,7 @@ import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
 public class SquadronAirfieldTest
@@ -22,7 +22,7 @@ public class SquadronAirfieldTest
     public void getSquadronTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_BOB_PROFILE);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.RAF_BOB_PROFILE);
 
         while (DateUtils.isDateInRange(campaign.getDate(), DateUtils.getBeginningOfGame(), DateUtils.getEndOfWar()))
         {

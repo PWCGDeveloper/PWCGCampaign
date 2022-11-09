@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.coop.CoopPersonaDataBuilder;
 import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
@@ -95,7 +96,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
         List<String> campaigns = Campaign.getCampaignNames();
         for (String campaignName : campaigns)
         {
-            Campaign campaign = new Campaign();
+            Campaign campaign = new Campaign(PWCGContext.getProduct());
             if (campaign.open(campaignName))
             {
                 CoopPersonaDataBuilder coopPersonaDataBuilder = new CoopPersonaDataBuilder();

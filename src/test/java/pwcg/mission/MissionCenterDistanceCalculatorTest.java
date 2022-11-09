@@ -11,7 +11,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,7 +25,7 @@ public class MissionCenterDistanceCalculatorTest
     @Test
     public void verifySmallerDistanceToFront () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
@@ -47,7 +47,7 @@ public class MissionCenterDistanceCalculatorTest
     @Test
     public void verifyUseOfRangeIfMaxIsTooLarge () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
+        Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.KG53_PROFILE);
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();

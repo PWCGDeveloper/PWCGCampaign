@@ -25,7 +25,7 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.MissionFlightValidator;
 import pwcg.mission.utils.MissionInformationUtils;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -38,7 +38,7 @@ public class KubanShippingZoneTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_KUBAN_PROFILE);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.STG77_KUBAN_PROFILE);
     }
 
     @Test
@@ -82,13 +82,8 @@ public class KubanShippingZoneTest
         Assertions.assertTrue (alliedShipsFound);
         Assertions.assertTrue (axisShipsFound);
 
-        boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
-        boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
-        Assertions.assertTrue (diveBombFlightFound || groundAttackFlightFound);
-
-        boolean diveBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.DIVE_BOMB, TargetType.TARGET_SHIPPING, Side.AXIS);
-        boolean groundAttackFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_SHIPPING, Side.AXIS);
-        Assertions.assertTrue (diveBombFlightTargetFound || groundAttackFlightTargetFound);
+        boolean shippingTargetFound = MissionInformationUtils.verifyFlightTargets(mission, TargetType.TARGET_SHIPPING, Side.AXIS);
+        Assertions.assertTrue (shippingTargetFound);
 
         MissionFlightValidator.validateMission(mission);
     }

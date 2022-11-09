@@ -16,6 +16,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.logfiles.LogEventData;
@@ -86,7 +87,7 @@ public class MissionLogEventsBuilder
     {
         for (SquadronMember pilot : preliminaryData.getCampaignMembersInMission().getSquadronMemberCollection().values())
         {
-            SquadronPlaneAssignment planeAssignment = AARCoordinatorInMissionTest.getPlaneForSquadron(pilot.getSquadronId());
+            SquadronPlaneAssignment planeAssignment = getPlaneForSquadron(pilot.getSquadronId());
             PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
             List<PlaneType> planeTypesForSquadron = planeTypeFactory.createActivePlaneTypesForArchType(planeAssignment.getArchType(), campaign.getDate());
             int index = RandomNumberGenerator.getRandom(planeTypesForSquadron.size());
@@ -105,6 +106,16 @@ public class MissionLogEventsBuilder
             makeBot(planeSpawn);
         }
     }
+    
+    
+    private SquadronPlaneAssignment getPlaneForSquadron(int SquadronId) throws PWCGException
+    {
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronId);
+        List<SquadronPlaneAssignment> squadronPlaneAssignments = squadron.getPlaneAssignments();
+        return squadronPlaneAssignments.get(0);
+    }
+
+
 
     private void makeTrucks() throws PWCGException
     {

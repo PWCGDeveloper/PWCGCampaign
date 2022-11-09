@@ -53,7 +53,7 @@ public class WaypointFactory
 	{
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.LANDING_APPROACH_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_LANDING_APPROACH);
-		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
+		waypoint.setPriority(WaypointPriority.PRIORITY_MED);			
 		
 		return waypoint;
 	}

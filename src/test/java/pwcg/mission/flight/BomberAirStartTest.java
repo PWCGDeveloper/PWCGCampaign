@@ -17,7 +17,7 @@ import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.BombingAirStartFlightValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
@@ -30,7 +30,7 @@ public class BomberAirStartTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.KG53_PROFILE);
         
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.AllowAirStartsKey, "1");
     }

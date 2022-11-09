@@ -1,7 +1,7 @@
 package pwcg.campaign.squadmember;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignGeneratorModel;
+import pwcg.campaign.CampaignPilotGeneratorModel;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
@@ -45,17 +45,13 @@ public class SquadronMemberReplacer  implements ISquadronMemberReplacer
 	private SquadronMember addnewPilotToCampaign(String playerPilotName, String rank, Squadron newPlayerSquadron,
 			SquadronPersonnel newPlayerSquadronPersonnel) throws PWCGException 
 	{
-		CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
-        generatorModel.setPlayerRank(rank);
-        generatorModel.setPlayerName(playerPilotName);
-        generatorModel.setService(newPlayerSquadron.determineServiceForSquadron(campaign.getDate()));
-        generatorModel.setCampaignName(campaign.getCampaignData().getName());
-        generatorModel.setCampaignDate(campaign.getDate());
-        generatorModel.setSquadronName(newPlayerSquadron.determineDisplayName(campaign.getDate()));
-        generatorModel.validateCampaignInputs();
+	    CampaignPilotGeneratorModel pilotModel = new CampaignPilotGeneratorModel();
+        pilotModel.setPlayerRank(rank);
+        pilotModel.setPlayerName(playerPilotName);
+        pilotModel.setService(newPlayerSquadron.determineServiceForSquadron(campaign.getDate()));
         
         SquadronMemberFactory squadronMemberFactory = new SquadronMemberFactory(campaign, newPlayerSquadron, newPlayerSquadronPersonnel);
-        SquadronMember newPlayer = squadronMemberFactory.createPlayer(generatorModel);
+        SquadronMember newPlayer = squadronMemberFactory.createPlayer(pilotModel);
 
         newPlayerSquadronPersonnel.addSquadronMember(newPlayer);
 		return newPlayer;

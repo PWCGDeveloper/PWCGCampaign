@@ -25,7 +25,7 @@ import pwcg.campaign.squadmember.SquadronMemberVictories;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.testutils.CampaignCache;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.VictoryMaker;
 
@@ -43,7 +43,7 @@ public class PromotionEventHandlerTest
     public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.ESC_103_PROFILE);
     }
 
     @BeforeEach
