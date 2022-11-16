@@ -100,12 +100,12 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         vvs.setNameCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
 		vvs.setName(VVS_NAME);
 		vvs.setServiceIcon(VVS_ICON);
-		vvs.setStartDate(DateUtils.getBeginningOfGame());
 		vvs.setEndDate(DateUtils.getEndOfWar());
 		vvs.setServiceColorMap(new VVSColorMap());
 		vvs.setGeneralRankForService("General-lieutenant");
         vvs.setDailyPersonnelReplacementRatePerSquadron(2.2);
         vvs.setDailyEquipmentReplacementRatePerSquadron(3.0);
+        vvs.setStartDate(DateUtils.getBeginningOfEasternFront());
 
 		List<String> irasPics = new ArrayList<String>();
 		irasPics.add("Russian");
@@ -275,7 +275,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         raf.setEndDate(DateUtils.getEndOfWar());
         raf.setServiceColorMap(new RAFColorMap());
         raf.setGeneralRankForService("Air Vice-Marshal");
-        raf.setStartDate(DateUtils.getDateYYYYMMDD("19410601"));
+        raf.setStartDate(DateUtils.getBeginningOfWar());
         raf.setDailyPersonnelReplacementRatePerSquadron(2.0);
         raf.setDailyEquipmentReplacementRatePerSquadron(2.0);
 
@@ -341,7 +341,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         rcaf.setEndDate(DateUtils.getEndOfWar());
         rcaf.setServiceColorMap(new FrenchColorMap());
         rcaf.setGeneralRankForService("Air Vice-Marshal");
-        rcaf.setStartDate(DateUtils.getDateYYYYMMDD("19410601"));
+        rcaf.setStartDate(DateUtils.getBeginningOfWar());
         rcaf.setDailyPersonnelReplacementRatePerSquadron(1.0);
         rcaf.setDailyEquipmentReplacementRatePerSquadron(1.0);
 

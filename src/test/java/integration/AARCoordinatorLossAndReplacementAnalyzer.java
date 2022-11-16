@@ -166,7 +166,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     private void printShortHandedSquadrons(Campaign campaign) throws PWCGException
     {
         System.out.println("=====================================================");
-        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllActiveSquadronPersonnel(campaign.getDate()))
         {
             System.out.println(squadronPersonnel.getSquadron().determineDisplayName(campaign.getDate()));
             System.out.println(" Personnel size is " + squadronPersonnel.getSquadronMembersWithAces().getActiveCount(campaign.getDate()));

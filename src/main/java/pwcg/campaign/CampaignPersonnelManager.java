@@ -1,6 +1,7 @@
 package pwcg.campaign;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignPersonnelManager 
@@ -61,6 +63,22 @@ public class CampaignPersonnelManager
     {
         return new ArrayList<SquadronPersonnel>(squadronPersonnelAllSquadrons.values());
     }    
+    
+
+    public  List<SquadronPersonnel> getAllActiveSquadronPersonnel(Date date) throws PWCGException
+    {
+        ArrayList<SquadronPersonnel> activeSquadronPersonnel = new ArrayList<>();
+        for (SquadronPersonnel squadronPersonnel : getAllSquadronPersonnel())
+        {
+            Squadron squadron = squadronPersonnel.getSquadron();
+            if (squadron.isActive(campaign.getDate()))
+            {
+                activeSquadronPersonnel.add(squadronPersonnel);
+            }
+        }
+        return activeSquadronPersonnel;
+    }
+
 
     public Map<Integer, SquadronMember> getAllCampaignMembers() throws PWCGException
     {

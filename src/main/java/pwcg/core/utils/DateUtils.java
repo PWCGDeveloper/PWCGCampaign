@@ -281,6 +281,16 @@ public class DateUtils
         return DateUtils.getDateYYYYMMDD("19180401");
     }
 
+    public static Date getBeginningOfEasternFront() throws PWCGException
+    {
+        return DateUtils.getDateYYYYMMDD("19410601");
+    }
+
+    public static Date getBeginningOfWesternFront() throws PWCGException
+    {
+        return DateUtils.getDateYYYYMMDD("19411001");
+    }
+
 	public static List<Date> getFrontDates() throws PWCGException
 	{
 	    try

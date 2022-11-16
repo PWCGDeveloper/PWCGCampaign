@@ -40,7 +40,7 @@ public class CampaignGeneratorTest
         Assertions.assertTrue (campaign.getCampaignData().getName().equals(TEST_CAMPAIGN_NAME));
         assert(campaign.getPersonnelManager().getAllSquadronPersonnel().size() > 30);
         
-        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllActiveSquadronPersonnel(campaign.getDate()))
         {
             SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
             assert(squadronMembers.getSquadronMemberList().size() == Squadron.SQUADRON_STAFF_SIZE);

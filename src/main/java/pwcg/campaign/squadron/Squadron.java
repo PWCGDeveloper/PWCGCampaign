@@ -231,7 +231,16 @@ public class Squadron
         return false;
 	}
 
-    public Date determineActivetDate() throws PWCGException 
+	public boolean isActive(Date date) throws PWCGException 
+    {
+        if (date.before(determineActivetDate()))
+        {
+            return false;
+        }
+        return true;
+    }
+    
+    private Date determineActivetDate() throws PWCGException 
     {
         Date firstPlane = determineFirstAircraftDate();
         Date firstAirfield = determineFirstAirfieldDate();
@@ -250,7 +259,7 @@ public class Squadron
         return earliest;
     }
 
-    public Date determineFirstAircraftDate() throws PWCGException 
+    private Date determineFirstAircraftDate() throws PWCGException 
     {
         Date firstPlaneDate = DateUtils.getEndOfWar();
         for (SquadronPlaneAssignment planeAssignment : planeAssignments)
@@ -264,7 +273,7 @@ public class Squadron
         return firstPlaneDate;
     }
 
-    public Date determineFirstAirfieldDate() throws PWCGException 
+    private Date determineFirstAirfieldDate() throws PWCGException 
     {
         for (Date airfieldAssignmentDate : airfields.keySet())
         {

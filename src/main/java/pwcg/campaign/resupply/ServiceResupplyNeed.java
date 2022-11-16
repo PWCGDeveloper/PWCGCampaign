@@ -5,6 +5,7 @@ import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class ServiceResupplyNeed
@@ -23,12 +24,13 @@ public class ServiceResupplyNeed
     
     public void determineResupplyNeed() throws PWCGException
     {
-        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllActiveSquadronPersonnel(campaign.getDate()))
         {
-            int serviceIdForSquadron = squadronPersonnel.getSquadron().determineServiceForSquadron(campaign.getDate()).getServiceId();
+            Squadron squadron = squadronPersonnel.getSquadron();
+            int serviceIdForSquadron = squadron.determineServiceForSquadron(campaign.getDate()).getServiceId();
             if (serviceId == serviceIdForSquadron)
             {
-                ISquadronNeed squadronResupplyNeed = squadronNeedFactory.buildSquadronNeed(campaign, squadronPersonnel.getSquadron());
+                ISquadronNeed squadronResupplyNeed = squadronNeedFactory.buildSquadronNeed(campaign, squadron);
                 squadronResupplyNeed.determineResupplyNeeded();
                 
                 if (squadronResupplyNeed.needsResupply())
