@@ -4,6 +4,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
+import pwcg.campaign.context.Country;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
@@ -26,11 +29,13 @@ public class FakeAirfield extends ScriptedFixedPosition implements Cloneable
     private int rearmTime = 0;
     private int refuelTime = 0;
     private int maintenanceRadius = 1000;
+    protected ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
     private McuTREntity entity;
 
-    public FakeAirfield (Airfield airfield, Mission mission) throws PWCGException
+    public FakeAirfield (Airfield airfield, Mission mission, ICountry country) throws PWCGException
     {
         super();
+        this.country = country;
         
         campaign = mission.getCampaign();
         
@@ -57,7 +62,6 @@ public class FakeAirfield extends ScriptedFixedPosition implements Cloneable
     
     public void populateEntity()
     {
-        
         entity.setPosition(position);
         entity.setOrientation(orientation);
         entity.enableEntity();
@@ -75,6 +79,8 @@ public class FakeAirfield extends ScriptedFixedPosition implements Cloneable
             super.write(writer);
             writer.write("  Script = \"" + script + "\";");
             writer.newLine();
+
+            country.writeAdjusted(writer);
 
             writer.write("    Callsign = " + callsign.getNum(determineCountry(campaign).getCountry()) + ";");
             writer.newLine();

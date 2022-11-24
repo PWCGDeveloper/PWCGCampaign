@@ -80,7 +80,7 @@ public class CampaignEquipmentManager
         
         if (equippedPlane == null)
         {
-            throw new PWCGException ("Unable to locate equipped plane for serial number anywhere" + serialNumber);
+            throw new PWCGException ("Unable to locate equipped plane for serial number" + serialNumber);
         }
         
         return equippedPlane;

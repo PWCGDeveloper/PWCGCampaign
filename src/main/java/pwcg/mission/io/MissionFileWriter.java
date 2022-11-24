@@ -7,12 +7,17 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IMissionFile;
+import pwcg.campaign.context.Country;
+import pwcg.campaign.context.CountryDesignator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.FakeAirfield;
 import pwcg.campaign.group.airfield.Airfield;
+import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
@@ -306,9 +311,31 @@ public class MissionFileWriter implements IMissionFile
         Map<String, Airfield> allAirFields =  PWCGContext.getInstance().getMap(mission.getCampaignMap()).getAirfieldManager().getAllAirfields();
         for (Airfield airfield : allAirFields.values())
         {
-            FakeAirfield fakeAirfiield = new FakeAirfield(airfield, mission);
-            fakeAirfiield.write(writer);
+            ICountry country = getCountryForFakeAirfield(airfield);
+            if (country.getCountry() != Country.NEUTRAL)
+            {
+                FakeAirfield fakeAirfiield = new FakeAirfield(airfield, mission, country);
+                fakeAirfiield.write(writer);
+            }
+            
+            
         }
+    }
+    
+    private ICountry getCountryForFakeAirfield (Airfield airfield) throws PWCGException
+    {
+        ICountry country = CountryDesignator.determineCountry(mission.getCampaignMap(), airfield.getPosition(), mission.getCampaign().getDate());
+        if (country.getCountry() == Country.NEUTRAL)
+        {
+            SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+            List<Squadron> squadronsForField = squadronManager.getSquadronsForAirfield(airfield, mission.getCampaign());
+            if (!squadronsForField.isEmpty())
+            {
+                country = squadronsForField.get(0).getCountry();
+            }
+        }
+        return country;
+
     }
 
     private void writeSmoke(BufferedWriter writer) throws PWCGException

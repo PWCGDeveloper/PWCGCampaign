@@ -10,6 +10,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
 
 public class OutOfMissionLossHandler
 {
@@ -27,9 +28,16 @@ public class OutOfMissionLossHandler
     public void lossesOutOfMission(Map<Integer, SquadronMember> shotDownPilots, Map<Integer, LogPlane> shotDownPlanes) throws PWCGException
     {
         calculateHistoricalAceLosses();
-        calculateShotDownPersonnelLosses(shotDownPilots);
-        calculateShotDownEquipmentLosses(shotDownPlanes);
-        calculateAAALosses();
+        try
+        {
+            calculateShotDownPersonnelLosses(shotDownPilots);
+            calculateShotDownEquipmentLosses(shotDownPlanes);
+            calculateAAALosses();
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.logException(e);
+        }
     }
 
     private void calculateHistoricalAceLosses() throws PWCGException, PWCGException

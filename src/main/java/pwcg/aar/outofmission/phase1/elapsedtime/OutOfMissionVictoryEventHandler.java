@@ -10,6 +10,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.StructureVictimGenerator;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
 
 public class OutOfMissionVictoryEventHandler 
 {    
@@ -32,27 +33,34 @@ public class OutOfMissionVictoryEventHandler
         
         for (SquadronMember squadronMember : campaignMembersNotInMission.getSquadronMemberList())
         {
-            if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 
+            try
             {
-                PwcgRole missionRole = squadronMember.determineSquadron().getSquadronRoles().selectRoleForMission(campaign.getDate());
-                if (AirVictimGenerator.shouldUse(missionRole.getRoleCategory()))
+                if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 
                 {
-                    OutOfMissionAirVictoryEventGenerator airVictoryEventGenerator = new OutOfMissionAirVictoryEventGenerator(campaign, squadronMember);
-                    OutOfMissionVictoryData airVictories = airVictoryEventGenerator.outOfMissionVictoriesForSquadronMember();
-                    victoriesOutOMission.merge(airVictories);
+                    PwcgRole missionRole = squadronMember.determineSquadron().getSquadronRoles().selectRoleForMission(campaign.getDate());
+                    if (AirVictimGenerator.shouldUse(missionRole.getRoleCategory()))
+                    {
+                        OutOfMissionAirVictoryEventGenerator airVictoryEventGenerator = new OutOfMissionAirVictoryEventGenerator(campaign, squadronMember);
+                        OutOfMissionVictoryData airVictories = airVictoryEventGenerator.outOfMissionVictoriesForSquadronMember();
+                        victoriesOutOMission.merge(airVictories);
+                    }
+                    else if (GroundVictimGenerator.shouldUse(missionRole.getRoleCategory()))
+                    {
+                        OutOfMissionGroundVictoryEventGenerator groundVictoryEventGenerator = new OutOfMissionGroundVictoryEventGenerator(campaign, squadronMember);
+                        OutOfMissionVictoryData groundVictories = groundVictoryEventGenerator.outOfMissionVictoriesForSquadronMember();
+                        victoriesOutOMission.merge(groundVictories);
+                    }
+                    else if (StructureVictimGenerator.shouldUse(missionRole.getRoleCategory()))
+                    {
+                        OutOfMissionStructureVictoryEventGenerator structureVictoryEventGenerator = new OutOfMissionStructureVictoryEventGenerator(campaign, squadronMember);
+                        OutOfMissionVictoryData structureVictories = structureVictoryEventGenerator.outOfMissionVictoriesForSquadronMember();
+                        victoriesOutOMission.merge(structureVictories);
+                    }
                 }
-                else if (GroundVictimGenerator.shouldUse(missionRole.getRoleCategory()))
-                {
-                    OutOfMissionGroundVictoryEventGenerator groundVictoryEventGenerator = new OutOfMissionGroundVictoryEventGenerator(campaign, squadronMember);
-                    OutOfMissionVictoryData groundVictories = groundVictoryEventGenerator.outOfMissionVictoriesForSquadronMember();
-                    victoriesOutOMission.merge(groundVictories);
-                }
-                else if (StructureVictimGenerator.shouldUse(missionRole.getRoleCategory()))
-                {
-                    OutOfMissionStructureVictoryEventGenerator structureVictoryEventGenerator = new OutOfMissionStructureVictoryEventGenerator(campaign, squadronMember);
-                    OutOfMissionVictoryData structureVictories = structureVictoryEventGenerator.outOfMissionVictoriesForSquadronMember();
-                    victoriesOutOMission.merge(structureVictories);
-                }
+            }
+            catch (Exception e)
+            {
+                PWCGLogger.logException(e);
             }
         }
 

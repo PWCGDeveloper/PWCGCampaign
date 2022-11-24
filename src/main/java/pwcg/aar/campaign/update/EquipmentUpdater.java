@@ -7,6 +7,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.campaign.resupply.equipment.EquipmentResupplyRecord;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
 
 public class EquipmentUpdater 
 {
@@ -29,9 +30,16 @@ public class EquipmentUpdater
     {
         for (Integer planeSerialNumber : campaignUpdateData.getEquipmentLosses().getPlanesDestroyed().keySet())
         {
-            EquippedPlane equippedPlane = campaign.getEquipmentManager().getAnyPlaneWithPreference(planeSerialNumber);
-            equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
-            equippedPlane.setDateRemovedFromService(campaign.getDate());
+            try
+            {
+                EquippedPlane equippedPlane = campaign.getEquipmentManager().getAnyPlaneWithPreference(planeSerialNumber);
+                equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
+                equippedPlane.setDateRemovedFromService(campaign.getDate());
+            }
+            catch (Exception e)
+            {
+                PWCGLogger.logException(e);
+            }
         }
     }
 
