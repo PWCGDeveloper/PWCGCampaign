@@ -1,3 +1,11 @@
+14.1.2
+C47 is flyable in a campaign
+Fix something that I fixed in 14.1.1 (fixes failure to generate mission)
+
+14.1.1
+Fixed two issues that could cause AARs to fail
+Made an attempt at fixing AI flies to enemy base
+
 14.1.0
 Completion of blank Squadron skins.
 Over 600 skins added

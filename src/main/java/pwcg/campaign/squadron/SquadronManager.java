@@ -251,21 +251,4 @@ public class SquadronManager
 
         return null;
     }
-    
-
-    public List<Squadron> getSquadronsForAirfield(Airfield airfield, Campaign campaign) throws PWCGException 
-    {
-        List<Squadron> returnSquadList = new ArrayList<Squadron>();
-        for (Squadron squadron : getAllSquadrons())
-        {
-            Airfield airfieldForSquadron = squadron.determineCurrentAirfieldCurrentMap(campaign.getCampaignMap(), campaign.getDate());
-            if (airfieldForSquadron.getName().equals(airfield.getName()))
-            {
-                returnSquadList.add(squadron);
-            }
-        }
-
-         return returnSquadList;
-    }
-
 }

@@ -328,10 +328,10 @@ public class MissionFileWriter implements IMissionFile
         if (country.getCountry() == Country.NEUTRAL)
         {
             SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-            List<Squadron> squadronsForField = squadronManager.getSquadronsForAirfield(airfield, mission.getCampaign());
-            if (!squadronsForField.isEmpty())
+            Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(mission.getCampaignMap(), airfield, mission.getCampaign().getDate());
+            if (squadronForField != null)
             {
-                country = squadronsForField.get(0).getCountry();
+                country = squadronForField.getCountry();
             }
         }
         return country;

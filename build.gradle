@@ -43,14 +43,15 @@ jar {
 }
 
 test {
-  if (System.properties['test.profile'] != 'integration') {
-    useJUnitPlatform()
-    maxParallelForks = Runtime.runtime.availableProcessors()
-    exclude '**/*integration*'
-  } else {
-    useJUnitPlatform()
-    exclude '**/*pwcg/*'
-  }
+    if (System.properties['test.profile'] != 'integration') {
+        useJUnitPlatform()
+        maxParallelForks = Runtime.runtime.availableProcessors()
+        exclude '**/*integration*'
+    } 
+    else {
+        useJUnitPlatform()
+        exclude '**/*pwcg/*'
+    }
 }
 
 task copyJar(type: Exec) {
