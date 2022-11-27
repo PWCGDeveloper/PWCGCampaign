@@ -866,6 +866,10 @@ public class Squadron
 
     public TacticalCodeColor getSquadronTacticalCodeColorOverride()
     {
+        if (squadronTacticalCodeColorOverride == null)
+        {
+            return TacticalCodeColor.NONE;
+        }
         return squadronTacticalCodeColorOverride;
     }
 

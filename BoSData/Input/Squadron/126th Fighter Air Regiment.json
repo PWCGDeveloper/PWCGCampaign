@@ -8,7 +8,7 @@
 	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"tacticalCodeStyle": 2,
-	"squadronTacticalCodeColorOverride": "WHITE`",
+    "squadronTacticalCodeColorOverride": "WHITE",
 	"planeAssignments": [
 		{
 			"archType": "p40",

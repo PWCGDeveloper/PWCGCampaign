@@ -33,6 +33,7 @@ public class TacticalCodeRussia extends TacticalCode
         String aircraftCode = plane.getAircraftIdCode();
         if (aircraftCode != null && aircraftCode.length() == 1)
         {
+            codes.set(0, "%20");
             codes.set(1, plane.getAircraftIdCode().substring(0, 1));
         }
         else if (aircraftCode != null && aircraftCode.length() == 2)
@@ -76,21 +77,6 @@ public class TacticalCodeRussia extends TacticalCode
         
         return null;
     }
-
-    private TacticalCodeColor determineTacticalCodeColor(Squadron squadron, PlaneMcu plane) throws PWCGException
-    {
-        if (squadron.getSquadronTacticalCodeColorOverride() !=  TacticalCodeColor.NONE)
-        {
-            return squadron.getSquadronTacticalCodeColorOverride();
-        }
-        
-        if (plane.getSkin().getTacticalCodeColor() !=  TacticalCodeColor.NONE)
-        {
-            return plane.getSkin().getTacticalCodeColor();
-        }
-
-        return TacticalCodeColor.BLACK;
-    }
     
     private void createCodesForStyle(int style)
     {
@@ -113,6 +99,21 @@ public class TacticalCodeRussia extends TacticalCode
                 codes.set(i, styleList.get(codeIndex));
             }
         }
+    }
+
+    private TacticalCodeColor determineTacticalCodeColor(Squadron squadron, PlaneMcu plane) throws PWCGException
+    {
+        if (squadron.getSquadronTacticalCodeColorOverride() != TacticalCodeColor.NONE)
+        {
+            return squadron.getSquadronTacticalCodeColorOverride();
+        }
+        
+        if (plane.getSkin().getTacticalCodeColor() !=  TacticalCodeColor.NONE)
+        {
+            return plane.getSkin().getTacticalCodeColor();
+        }
+
+        return TacticalCodeColor.BLACK;
     }
 
 

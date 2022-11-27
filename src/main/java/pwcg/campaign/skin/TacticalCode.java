@@ -20,6 +20,10 @@ public abstract class TacticalCode
         {
             String code = codes.get(i);
             TacticalCodeColor color = colors.get(i);
+            if (color == null)
+            {
+                color = colors.get(0);
+            }
             TacticalCodeElement element = new TacticalCodeElement(code, color.getColorCode());
             tacticalCodeElements.add(element);
         }

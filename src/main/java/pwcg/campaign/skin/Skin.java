@@ -183,6 +183,11 @@ public class Skin implements Cloneable
 
     public TacticalCodeColor getTacticalCodeColor()
     {
+        if (tacticalCodeColor == null)
+        {
+            return TacticalCodeColor.NONE;
+        }
+
         return tacticalCodeColor;
     }
 }

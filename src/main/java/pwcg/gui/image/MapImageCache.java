@@ -87,8 +87,6 @@ public class MapImageCache implements Runnable
             return mapImageForDisplay;
         }
 
-        PWCGLogger.log(LogLevel.DEBUG, "Image not found: " + mapImageFileName);
-
         return null;
     }
 
