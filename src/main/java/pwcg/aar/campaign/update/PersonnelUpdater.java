@@ -9,6 +9,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.personnel.SquadronMemberFemaleGenerator;
+import pwcg.campaign.personnel.SquadronMemberNationalityConverter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -125,6 +126,7 @@ public class PersonnelUpdater
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(transferRecord.getTransferTo());
         transferRecord.getSquadronMember().setSquadronId(transferRecord.getTransferTo());
         SquadronMember converted = SquadronMemberFemaleGenerator.convertToFemale(campaign, transferRecord.getTransferTo(), transferRecord.getSquadronMember());
+        SquadronMemberNationalityConverter.convertIfNeeded(campaign,squadronPersonnel.getSquadron(),transferRecord.getSquadronMember());
         transferRecord.setSquadronMember(converted);
         squadronPersonnel.addSquadronMember(transferRecord.getSquadronMember());
     }

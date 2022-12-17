@@ -1,11 +1,7 @@
 package pwcg.campaign.squadmember;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.swing.ImageIcon;
 
@@ -62,6 +58,8 @@ public class SquadronMember implements Cloneable
     protected int squadronId = 0;
     protected Date inactiveDate;
     protected Date recoveryDate;
+    protected String nationality;
+    private String gameFriendlyNameAndRank;
 
     public SquadronMember()
     {
@@ -97,6 +95,7 @@ public class SquadronMember implements Cloneable
         clone.medals = new ArrayList<Medal>();
         clone.medals.addAll(this.medals);
         clone.inactiveDate = new Date(this.inactiveDate.getTime());
+        clone.nationality = this.nationality;
 
         return clone;
     }
@@ -232,6 +231,9 @@ public class SquadronMember implements Cloneable
         {
             return false;
         }
+
+        if (Objects.equals(searchName, this.getGameFriendlyNameAndRank()))
+            return true;
         
         String truncatedSearchName = truncateNameToGameMax(searchName);
         String truncatedName = truncateNameToGameMax(this.getName());
@@ -369,6 +371,7 @@ public class SquadronMember implements Cloneable
         if (PWCGStringValidator.isValidName(name))
         {
             this.name = name;
+            this.gameFriendlyNameAndRank = null; // reset just in case
         }
         else
         {
@@ -640,8 +643,25 @@ public class SquadronMember implements Cloneable
         return determineRankAbbrev() + " " + name;
     }
 
+    public String getGameFriendlyNameAndRank()
+    {
+        if (gameFriendlyNameAndRank == null){ // create on demand
+            gameFriendlyNameAndRank = NameNormalizer.normalize(determineRankAbbrev() + " " + name, 22);
+        }
+        return gameFriendlyNameAndRank;
+    }
+
+
     public Date getRecoveryDate()
     {
         return recoveryDate;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 }

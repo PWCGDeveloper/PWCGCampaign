@@ -12,6 +12,7 @@ import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalManager;
+import pwcg.campaign.personnel.SquadronMemberNationalityConverter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.PilotNames;
@@ -142,6 +143,7 @@ public class CampaignCleaner
                         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
                         String squaddieName = PilotNames.getInstance().getName(squadron.determineServiceForSquadron(campaign.getDate()), new HashMap<>());
                         squadronMember.setName(squaddieName);
+                        SquadronMemberNationalityConverter.convertIfNeeded(campaign, squadron, squadronMember);
                     }
                     
                     firstTime = false;

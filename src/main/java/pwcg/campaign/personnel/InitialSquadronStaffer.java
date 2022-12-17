@@ -48,6 +48,7 @@ public class InitialSquadronStaffer
         {
             ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
             SquadronMemberFemaleConverter.convertNightWitchesToFemale(campaign, service, squadronMember);
+            SquadronMemberNationalityConverter.convertIfNeeded(campaign, squadron, squadronMember);
             squadronPersonnel.addSquadronMember(squadronMember);
         }
     }

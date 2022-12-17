@@ -9,14 +9,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.personnel.CampaignValidatorMedals;
-import pwcg.campaign.personnel.PilotPictureBuilder;
-import pwcg.campaign.personnel.SquadronMemberAirInitialVictoryBuilder;
-import pwcg.campaign.personnel.SquadronMemberFemaleConverter;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronMemberGroundInitialVictoryBuilder;
-import pwcg.campaign.personnel.SquadronMemberStructureInitialVictoryBuilder;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.personnel.*;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
@@ -107,7 +100,8 @@ public class SquadronMemberFactory
         
         CampaignValidatorMedals medalFixer = new CampaignValidatorMedals(campaign);
         medalFixer.assignMissingMedalsForSquadMember(newPilot);
-        
+
+        newPilot = SquadronMemberNationalityConverter.convertIfNeeded(campaign, squadron, newPilot);
         newPilot = SquadronMemberFemaleConverter.possiblyConvertToFemale(service, newPilot, namesUsed);
         
         return newPilot;

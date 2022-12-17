@@ -102,8 +102,8 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
 
         this.campaign = campaign;
         this.pilot = pilot;
-        this.setName(pilot.getNameAndRank());
-        this.setDesc(pilot.getNameAndRank());
+        this.setName(pilot.getGameFriendlyNameAndRank());
+        this.setDesc(pilot.getGameFriendlyNameAndRank());
         this.setCountry(country);
         startInAir = FlightStartPosition.START_IN_AIR;
 

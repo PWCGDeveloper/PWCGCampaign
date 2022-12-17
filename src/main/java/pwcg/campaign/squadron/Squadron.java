@@ -64,6 +64,7 @@ public class Squadron
 	private int serviceId;
     private String unitIdCode;
     private String subUnitIdCode;
+    private String nationalityOverride;
     private int tacticalCodeStyle = -1;
     private TacticalCodeColor squadronTacticalCodeColorOverride = TacticalCodeColor.NONE;
     private List<SquadronPlaneAssignment> planeAssignments = new ArrayList<>();
@@ -877,6 +878,9 @@ public class Squadron
     {
         return tacticalCodeStyle;
     }
-    
+
+    public String getNationalityOverride() {
+        return nationalityOverride;
+    }
     
 }

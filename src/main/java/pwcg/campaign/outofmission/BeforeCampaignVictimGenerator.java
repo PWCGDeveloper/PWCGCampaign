@@ -9,6 +9,7 @@ import java.util.Map;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.personnel.SquadronMemberNationalityConverter;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.squadmember.PilotNames;
@@ -94,6 +95,7 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
                 String squaddieName = PilotNames.getInstance().getName(squadron.determineServiceForSquadron(campaignDate), new HashMap<>());
                 aiSquadronMember.setName(squaddieName);
                 aiSquadronMember.setRank(rankLists.getRankByService(rankPos, squadron.determineServiceForSquadron(campaignDate)));
+                SquadronMemberNationalityConverter.convertIfNeeded(campaign, squadron, aiSquadronMember);
 
                 squadMembers.add(aiSquadronMember);
             }
