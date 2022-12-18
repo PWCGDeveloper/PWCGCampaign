@@ -94,7 +94,8 @@ public class TacticalCodeGermanFighters
         }
         else if (plane.getAircraftIdCode().length() > 1) 
         {
-            codes.set(0, plane.getAircraftIdCode().substring(0,1));
+            // Do not use a two digit code as the game does not handle it properly
+            // codes.set(0, plane.getAircraftIdCode().substring(0,1));
             codes.set(1, plane.getAircraftIdCode().substring(1,2));
         }
         
