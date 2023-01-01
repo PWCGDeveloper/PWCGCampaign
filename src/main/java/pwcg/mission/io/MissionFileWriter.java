@@ -223,7 +223,7 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeFieldsInMission(BufferedWriter writer) throws PWCGException
     {
-        List<Airfield>  fieldsForPatrol = mission.getFieldsForPatrol();
+        List<Airfield>  fieldsForPatrol = mission.getMissionAirfields();
         for (Airfield field : fieldsForPatrol)
         {
             if (!field.isGroup())

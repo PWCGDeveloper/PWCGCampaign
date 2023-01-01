@@ -11,4 +11,5 @@ public interface IStaticPlane
     public void setPosition(Coordinate position);
     public void setOrientation(Orientation orientation);
     void write(BufferedWriter writer) throws PWCGException;
+    public Coordinate getPosition();
 }

@@ -9,6 +9,7 @@ import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.AirfieldObjectSelectorFactory;
 import pwcg.campaign.factory.HotSpotTranslatorFactory;
 import pwcg.campaign.group.airfield.Airfield;
+import pwcg.campaign.group.airfield.RunwayBlockageDetector;
 import pwcg.campaign.group.airfield.hotspot.AirfieldHotSpotTranslator;
 import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.campaign.group.airfield.hotspot.HotSpotType;
@@ -79,7 +80,10 @@ public class AirfieldObjectPlacer
         {
             SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
             GroundUnitCollection searchLightGroup = groundUnitFactory.createOneSearchLight(airfieldCountry, hotSpot.getPosition());
-            mission.getGroundUnitBuilder().addAirfieldVehicle(searchLightGroup);
+            if (!RunwayBlockageDetector.isRunwayBlocked(mission.getCampaignMap(), airfield, searchLightGroup.getPosition()))
+            {
+                mission.getGroundUnitBuilder().addAirfieldVehicle(searchLightGroup);
+            }
         }
     }
 
@@ -104,7 +108,10 @@ public class AirfieldObjectPlacer
 
             if (aaaUnit != null)
             {
-                mission.getGroundUnitBuilder().addMissionAAA(aaaUnit);
+                if (!RunwayBlockageDetector.isRunwayBlocked(mission.getCampaignMap(), airfield, aaaUnit.getPosition()))
+                {
+                    mission.getGroundUnitBuilder().addMissionAAA(aaaUnit);
+                }
             }
         }
     }
@@ -115,7 +122,10 @@ public class AirfieldObjectPlacer
         IStaticPlane staticPlane = airfieldStaticPlane.getStaticPlane(campaign, airfield, airfieldCountry,  hotSpot.getPosition());
         if (staticPlane != null)
         {
-        	airfieldObjects.addStaticPlane(staticPlane);
+            if (!RunwayBlockageDetector.isRunwayBlocked(mission.getCampaignMap(), airfield, staticPlane.getPosition()))
+            {
+                airfieldObjects.addStaticPlane(staticPlane);
+            }
         }
     }
 
@@ -123,7 +133,10 @@ public class AirfieldObjectPlacer
     {
         AirfieldObjectSelector  airfieldObjectSelector = AirfieldObjectSelectorFactory.createAirfieldObjectSelector(campaign.getDate());
         IVehicle airfieldObject  = airfieldObjectSelector.createAirfieldObject(mapIdentifier, hotSpot, airfield, airfieldCountry);
-        airfieldObjects.addAirfieldObject(airfieldObject);
+        if (!RunwayBlockageDetector.isRunwayBlocked(mission.getCampaignMap(), airfield, airfieldObject.getPosition()))
+        {
+            airfieldObjects.addAirfieldObject(airfieldObject);
+        }
     }
     
 
@@ -133,7 +146,10 @@ public class AirfieldObjectPlacer
         List<GroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA(mission.getCampaignMap());
         for (GroundUnitCollection aaaUnit : airfieldApproachAA)
         {
-            mission.getGroundUnitBuilder().addMissionAAA(aaaUnit);
+            if (!RunwayBlockageDetector.isRunwayBlocked(mission.getCampaignMap(), airfield, aaaUnit.getPosition()))
+            {
+                mission.getGroundUnitBuilder().addMissionAAA(aaaUnit);
+            }
         }
     }
 }

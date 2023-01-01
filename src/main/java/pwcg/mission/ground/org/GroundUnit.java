@@ -86,6 +86,18 @@ public abstract class GroundUnit implements IGroundUnit
             throw new PWCGException(e.getMessage());
         }
     }
+    
+    public void removeSpawn(McuSpawn spawn)
+    {
+        for (GroundUnitElement element : groundElements)
+        {
+            if (spawn.equals(element.getSpawn()))
+            {
+                groundElements.remove(element);
+                break;
+            }
+        }
+    }
 
     private void writeMcus(BufferedWriter writer) throws PWCGException
     {

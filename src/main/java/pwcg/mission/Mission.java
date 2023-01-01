@@ -18,6 +18,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.data.PwcgGeneratedMission;
+import pwcg.mission.finalize.MissionFinalizer;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.MissionGroundUnitBuilder;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
@@ -366,7 +367,7 @@ public class Mission
         return weather;
     }
 
-    public List<Airfield> getFieldsForPatrol() throws PWCGException
+    public List<Airfield> getMissionAirfields() throws PWCGException
     {
         return missionAirfields.getFieldsForPatrol();
     }
