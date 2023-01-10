@@ -6,6 +6,7 @@ import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
@@ -32,6 +33,7 @@ public class ArmedService
     private ICountry nameCountry = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
     private int airVictoriesForgreatAce = 30;
     private int groundVictoriesForgreatAce = 100;
+    private List<FrontMapIdentifier> mapsForService = new ArrayList<>();
 
     public ArmedService(PWCGProduct product) throws PWCGException 
     {
@@ -214,4 +216,15 @@ public class ArmedService
     {
         this.groundVictoriesForgreatAce = groundVictoriesForgreatAce;
     }
+
+    public List<FrontMapIdentifier> getMapsForService()
+    {
+        return mapsForService;
+    }
+
+    public void addMapsForService(List<FrontMapIdentifier> maps)
+    {
+        mapsForService.addAll(maps);
+    }
+
 }

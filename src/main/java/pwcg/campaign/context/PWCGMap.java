@@ -311,5 +311,38 @@ public abstract class PWCGMap
         groupManager.configureForDate(mapIdentifier.getMapName(), campaign.getDate());        
     }
     
-    
+
+    public static List<FrontMapIdentifier> getWWIIWesternMaps()
+    {
+        List<FrontMapIdentifier> maps = new ArrayList<>();
+        maps.add(FrontMapIdentifier.NORMANDY_MAP);
+        maps.add(FrontMapIdentifier.BODENPLATTE_MAP);
+        return maps;
+    }
+
+    public static List<FrontMapIdentifier> getWWIIEasternMaps()
+    {
+        List<FrontMapIdentifier> maps = new ArrayList<>();
+        maps.add(FrontMapIdentifier.MOSCOW_MAP);
+        maps.add(FrontMapIdentifier.STALINGRAD_MAP);
+        maps.add(FrontMapIdentifier.KUBAN_MAP);
+        maps.add(FrontMapIdentifier.EAST1944_MAP);
+        maps.add(FrontMapIdentifier.EAST1945_MAP);
+        return maps;
+    }
+
+    public static List<FrontMapIdentifier> getWWIIAllMaps()
+    {
+        List<FrontMapIdentifier> maps = new ArrayList<>();
+        maps.addAll(getWWIIWesternMaps());
+        maps.addAll(getWWIIEasternMaps());
+        return maps;
+    }
+
+    public static List<FrontMapIdentifier> getWWIAllMaps ()
+    {
+        List<FrontMapIdentifier> maps = new ArrayList<>();
+        maps.add(FrontMapIdentifier.ARRAS_MAP);
+        return maps;
+    }   
 }

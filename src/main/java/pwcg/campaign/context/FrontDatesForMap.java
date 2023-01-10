@@ -93,13 +93,16 @@ public class FrontDatesForMap
         return closestFrontDate;
     }
 
-    public boolean isMapActive(Date date)
+    public boolean isMapActiveForCampaignStart(Date date)
     {
         for (DateRange dateRange : mapActiveDates)
         {
             if (dateRange.isInDateRange(date))
             {
-                return true;
+                if (!date.equals(dateRange.getEndDate()))
+                {
+                    return true;
+                }
             }
         }
         return false;

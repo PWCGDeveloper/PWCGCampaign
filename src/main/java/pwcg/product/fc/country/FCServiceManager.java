@@ -10,6 +10,7 @@ import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
@@ -148,6 +149,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         gas.setAirVictoriesForgreatAce(20);
         gas.setGroundVictoriesForgreatAce(70);
 
+        gas.addMapsForService(PWCGMap.getWWIAllMaps());
+
         return gas;
     }
 
@@ -174,6 +177,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         
         usas.setAirVictoriesForgreatAce(10);
         usas.setGroundVictoriesForgreatAce(50);
+
+        usas.addMapsForService(PWCGMap.getWWIAllMaps());
 
         return usas;
     }
@@ -203,6 +208,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         raf.setAirVictoriesForgreatAce(20);
         raf.setGroundVictoriesForgreatAce(70);
 
+        raf.addMapsForService(PWCGMap.getWWIAllMaps());
+
         return raf;
     }
 
@@ -230,6 +237,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         
         rnas.setAirVictoriesForgreatAce(20);
         rnas.setGroundVictoriesForgreatAce(70);
+
+        rnas.addMapsForService(PWCGMap.getWWIAllMaps());
 
         return rnas;
     }
@@ -259,6 +268,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         rfc.setAirVictoriesForgreatAce(20);
         rfc.setGroundVictoriesForgreatAce(70);
 
+        rfc.addMapsForService(PWCGMap.getWWIAllMaps());
+
         return rfc;
     }
 
@@ -286,6 +297,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         belgianAF.setAirVictoriesForgreatAce(15);
         belgianAF.setGroundVictoriesForgreatAce(70);
 
+        belgianAF.addMapsForService(PWCGMap.getWWIAllMaps());
+
         return belgianAF;
     }
 
@@ -312,6 +325,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         
         frenchArmy.setAirVictoriesForgreatAce(20);
         frenchArmy.setGroundVictoriesForgreatAce(70);
+
+        frenchArmy.addMapsForService(PWCGMap.getWWIAllMaps());
 
         return frenchArmy;
     }

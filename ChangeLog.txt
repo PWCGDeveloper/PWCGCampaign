@@ -1,3 +1,7 @@
+14.1.3
+Another attempt at sweeping the runway clean.
+
+
 14.1.2
 C47 is flyable in a campaign
 Fix something that I fixed in 14.1.1 (fixes failure to generate mission)

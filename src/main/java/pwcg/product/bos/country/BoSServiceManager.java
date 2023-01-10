@@ -9,6 +9,7 @@ import pwcg.campaign.ArmedServiceManager;
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
@@ -119,6 +120,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         vvs.setAirVictoriesForgreatAce(20);
         vvs.setGroundVictoriesForgreatAce(100);
 
+        vvs.addMapsForService(PWCGMap.getWWIIEasternMaps());
+        
 		russianServices.add(vvs);
     }
 
@@ -148,6 +151,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         
         normandie.setAirVictoriesForgreatAce(20);
         normandie.setGroundVictoriesForgreatAce(100);
+
+        normandie.addMapsForService(PWCGMap.getWWIIEasternMaps());
 
         russianServices.add(normandie);
     }
@@ -185,6 +190,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		luftwaffe.setAirVictoriesForgreatAce(50);
 		luftwaffe.setGroundVictoriesForgreatAce(150);
 
+		luftwaffe.addMapsForService(PWCGMap.getWWIIAllMaps());
+
 		germanServices.add(luftwaffe);
 	}
 
@@ -214,6 +221,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         
 		regiaAeronautica.setAirVictoriesForgreatAce(15);
 		regiaAeronautica.setGroundVictoriesForgreatAce(80);
+
+		regiaAeronautica.addMapsForService(PWCGMap.getWWIIEasternMaps());
 
 		italianServices.add(regiaAeronautica);
 	}
@@ -250,6 +259,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         
         usaaf.setAirVictoriesForgreatAce(20);
         usaaf.setGroundVictoriesForgreatAce(100);
+
+        usaaf.addMapsForService(PWCGMap.getWWIIWesternMaps());
 
         americanServices.add(usaaf);
     }
@@ -294,6 +305,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         raf.setAirVictoriesForgreatAce(20);
         raf.setGroundVictoriesForgreatAce(100);
 
+        raf.addMapsForService(PWCGMap.getWWIIWesternMaps());
+
         britishServices.add(raf);
     }
 
@@ -327,6 +340,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         freeFrench.setAirVictoriesForgreatAce(20);
         freeFrench.setGroundVictoriesForgreatAce(100);
         
+        freeFrench.addMapsForService(PWCGMap.getWWIIWesternMaps());
+
         britishServices.add(freeFrench);
     }
 
@@ -360,6 +375,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         rcaf.setAirVictoriesForgreatAce(20);
         rcaf.setGroundVictoriesForgreatAce(100);
 
+        rcaf.addMapsForService(PWCGMap.getWWIIWesternMaps());
+        
         britishServices.add(rcaf);
     }
 

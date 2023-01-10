@@ -28,6 +28,7 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGProduct;
@@ -161,6 +162,10 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
             JPanel squadronPanel = createSquadronInfoPanel ();
             this.add(squadronPanel, BorderLayout.SOUTH);
             
+
+            setRolesInUI();
+            makeMapChoices();
+            makeStartDateChoices();
             evaluateUI();
 		}
 		catch (Exception e)
@@ -492,11 +497,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         campaignGeneratePanel.add(lMap, labelConstraints);
         
         cbMap = new JComboBox<String>();
-        cbMap.addItem("All Maps");
-        for (PWCGMap map : PWCGContext.getInstance().getAllMaps())
-        {
-            cbMap.addItem(map.getMapName());
-        }
+        makeMapChoices();
         
         cbMap.setOpaque(false);
         cbMap.setBackground(jComboBoxBackgroundColor);
@@ -599,7 +600,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 		panel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 	}
 
-	public void evaluateUI() throws PWCGException 
+	private void evaluateUI() throws PWCGException 
 	{
 	    initializeWidgets();
 
@@ -735,7 +736,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 	    try
 	    {
     		cbDate.removeAllItems();
-	    	for (String startDate : getDatesForMap())
+	    	for (String startDate : getCampaignStartDatesForMap())
 	    	{
 	    		cbDate.addItem(startDate);
 	    	}
@@ -752,14 +753,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 	    try
 	    {
 	        cbMap.removeAllItems();
-	        cbMap.addItem("All Maps");
-	        for (PWCGMap map : PWCGContext.getInstance().getAllMaps())
-	        {
-	            if (map.isMapHasService(parent.getCampaignGeneratorDO().getService().getServiceId())) 
-	            {
-	                cbMap.addItem(map.getMapName());
-	            }
-	        }
+	        loadMapsForService();
 	    }
 	    catch (Exception exp)
 	    {
@@ -768,9 +762,17 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 	    }
 	}
 
-	
+    private void loadMapsForService()
+    {
+        for (FrontMapIdentifier mapIdentifier : parent.getCampaignGeneratorDO().getService().getMapsForService())
+        {
+            PWCGMap map = PWCGContext.getInstance().getMap(mapIdentifier);
+            cbMap.addItem(map.getMapName());
+        }
+    }
+
     
-    private List<String> getDatesForMap() throws PWCGException
+    private List<String> getCampaignStartDatesForMap() throws PWCGException
     {
     	List<String> startDates = new ArrayList<>();
         for (String startDate : PWCGContext.getInstance().getCampaignStartDates())
@@ -787,7 +789,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
             	else
             	{
             	    
-            		if (map.getFrontDatesForMap().isMapActive(date))
+            		if (map.getFrontDatesForMap().isMapActiveForCampaignStart(date))
             		{
                     	startDates.add(startDate);
             		}
