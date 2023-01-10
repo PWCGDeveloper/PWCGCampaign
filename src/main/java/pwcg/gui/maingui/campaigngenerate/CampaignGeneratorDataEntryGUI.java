@@ -351,7 +351,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
 
-        lPlayerName = createCampaignGenMenuLabel("Player Name:", labelConstraints, campaignGeneratePanel, rowCount);
+        lPlayerName = createCampaignGenMenuLabel("Player Name", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lPlayerName, labelConstraints);
 
         playerNameTextBox = new JTextField(50);
@@ -361,7 +361,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         dataConstraints.gridx = 2;
         dataConstraints.gridy = rowCount;
         campaignGeneratePanel.add(playerNameTextBox, dataConstraints);
-
+        
         spacerColumn (campaignGeneratePanel, 3, rowCount + 0);
 
         ++rowCount;
@@ -827,9 +827,6 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 	{
 		try
 		{
-            String playerName = (String)playerNameTextBox.getText();
-            parent.getCampaignGeneratorDO().setPlayerPilotName(playerName);
-            
             if (ae.getActionCommand().equalsIgnoreCase("RegionChanged"))
             {
                 String region = (String)cbRegion.getSelectedItem();
@@ -882,6 +879,17 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
             }
             else if (ae.getActionCommand().equalsIgnoreCase("NextStep"))
             {
+                if (validatePlayerName())
+                {
+                    String playerName = (String)playerNameTextBox.getText();
+                    parent.getCampaignGeneratorDO().setPlayerPilotName(playerName);                
+                }
+                else
+                {
+                    ErrorDialog.userError("Player name must be English characters A-Z, a-z.  No numbers, special characters, or non-English characters");
+                    return;
+                }
+
                 parent.getCampaignGeneratorState().goToNextStep();
                 evaluateUI();
                 parent.evaluateCompletionState();
@@ -902,6 +910,26 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
+
+    protected boolean validatePlayerName () {
+        boolean isValid = true;
+        String playerNameAsEntered = (String)playerNameTextBox.getText();
+        
+        if (playerNameAsEntered == null || playerNameAsEntered.isEmpty())
+        {
+            return false;
+        }
+        
+        for (int i = 0; i < playerNameAsEntered.length(); ++i)
+        {
+            char c = playerNameAsEntered.charAt(i);
+            if( !(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z'))
+            {
+                isValid = false;
+            }
+        }
+        return isValid;
+    }
 
 
     private Date getDateFromComboBox() throws PWCGException 
