@@ -43,10 +43,13 @@ public class AARDamageStatusEvaluator
     {
         String victimId = atype2.getVictim();
         String victorId = atype2.getVictor();
-
-        LogDamage logDamage;
-        logDamage = createDamageRecord(atype2);
         if (uselessLog(atype2) || victimId == null || victorId == null)
+        {
+            return;
+        }
+
+        LogDamage logDamage = createDamageRecord(atype2);
+        if (logDamage == null)
         {
             return;
         }
