@@ -53,7 +53,7 @@ public class TacticalCodeGermanyTest
         Mockito.when(skin.isUseTacticalCodes()).thenReturn(true);
 
         TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
-        Assertions.assertEquals("14%20", tacticalCode.formCodeString());
+        Assertions.assertEquals("%204%20", tacticalCode.formCodeString());
         Assertions.assertEquals("444", tacticalCode.formCodeColorString());
     }
     
@@ -152,7 +152,7 @@ public class TacticalCodeGermanyTest
         Mockito.when(skin.isUseTacticalCodes()).thenReturn(true);
 
         TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
-        Assertions.assertEquals("14%20", tacticalCode.formCodeString());
+        Assertions.assertEquals("%204%20", tacticalCode.formCodeString());
         Assertions.assertEquals("000", tacticalCode.formCodeColorString());
     }
 

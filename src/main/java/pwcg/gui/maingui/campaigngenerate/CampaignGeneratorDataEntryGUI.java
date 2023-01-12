@@ -923,7 +923,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         for (int i = 0; i < playerNameAsEntered.length(); ++i)
         {
             char c = playerNameAsEntered.charAt(i);
-            if( !(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z'))
+            if( !(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z') && !(c == ' '))
             {
                 isValid = false;
             }

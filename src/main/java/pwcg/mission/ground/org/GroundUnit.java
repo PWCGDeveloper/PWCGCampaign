@@ -87,11 +87,11 @@ public abstract class GroundUnit implements IGroundUnit
         }
     }
     
-    public void removeSpawn(McuSpawn spawn)
+    public void removeGroundUnitElement(int groundElementIndexToRemove)
     {
         for (GroundUnitElement element : groundElements)
         {
-            if (spawn.equals(element.getSpawn()))
+            if (element.getIndex() == groundElementIndexToRemove)
             {
                 groundElements.remove(element);
                 break;
@@ -359,7 +359,8 @@ public abstract class GroundUnit implements IGroundUnit
 
     public List<GroundUnitElement> getGroundElements()
     {
-        return groundElements;
+        List<GroundUnitElement> groundElementsCopy = new ArrayList<>(); 
+        return groundElementsCopy;
     }
 
     public McuTimer getSpawnUnitTimer()

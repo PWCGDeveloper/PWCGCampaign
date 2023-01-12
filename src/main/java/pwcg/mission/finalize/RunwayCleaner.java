@@ -5,6 +5,7 @@ import pwcg.campaign.group.airfield.RunwayBlockageDetector;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitElement;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.mcu.McuSpawn;
 
@@ -38,11 +39,11 @@ public class RunwayCleaner
 
     private void removeObstructingGroundUnitElements(Airfield airfield, IGroundUnit groundUnit) throws PWCGException
     {
-        for (McuSpawn spawn : groundUnit.getSpawns())
+        for (GroundUnitElement groundElement : groundUnit.getGroundElements())
         {
-            if (RunwayBlockageDetector.isRunwayBlocked(mission.getCampaignMap(), airfield, spawn.getPosition()))
+            if (RunwayBlockageDetector.isRunwayBlocked(mission.getCampaignMap(), airfield, groundElement.getVehicleStartLocation()))
             {
-                groundUnit.removeSpawn(spawn);                
+                groundUnit.removeGroundUnitElement(groundElement.getIndex());                
             }
         }
     }

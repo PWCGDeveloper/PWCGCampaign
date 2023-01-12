@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -13,6 +14,7 @@ import pwcg.mission.mcu.McuTimer;
 
 public class GroundUnitElement
 {
+    private int index = IndexGenerator.getInstance().getNextIndex();
     private IVehicle vehicle;
     private McuTimer activateTimer = new McuTimer();
     private McuSpawn spawn = new McuSpawn();
@@ -133,6 +135,11 @@ public class GroundUnitElement
     public Coordinate getVehicleStartLocation()
     {
         return vehicleStartLocation;
+    }
+
+    public int getIndex()
+    {
+        return index;
     }
 
     public void convertGroundUnitElementToNotSpawning() throws PWCGException

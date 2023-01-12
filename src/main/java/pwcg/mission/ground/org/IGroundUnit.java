@@ -49,6 +49,6 @@ public interface IGroundUnit
 
     void convertGroundUnitToNotSpawning() throws PWCGException;
 
-    void removeSpawn(McuSpawn spawn);
+    void removeGroundUnitElement(int groundElementIndex);
 
 }
