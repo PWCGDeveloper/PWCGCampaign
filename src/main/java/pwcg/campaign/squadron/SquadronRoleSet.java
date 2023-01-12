@@ -29,6 +29,18 @@ public class SquadronRoleSet
         
         return selectedRole;
     }
+
+    public List<PwcgRole> getRolesForDate(Date date) throws PWCGException 
+    {
+        List<PwcgRole> rolesForDate = new ArrayList<>();
+        SquadronRolePeriod squadronRoleForDate = selectRoleSetByDate(date);
+        for (SquadronRoleWeight role : squadronRoleForDate.getWeightedRoles())
+        {
+            rolesForDate.add(role.getRole());
+        }
+
+       return rolesForDate;
+    }
     
     public PwcgRoleCategory selectSquadronPrimaryRoleCategory(Date date) throws PWCGException 
     {

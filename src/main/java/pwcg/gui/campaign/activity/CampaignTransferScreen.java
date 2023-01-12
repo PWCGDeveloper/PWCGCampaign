@@ -31,11 +31,12 @@ import pwcg.campaign.TransferHandler;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.squadron.SquadronRoleFinder;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -200,39 +201,8 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         cbService.setSelectedItem(playerService.getName());
 
         Squadron playerSquadron = squadronMemberToTransfer.determineSquadron();        
-
-        if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_BOMB))
-        {
-            cbRole.setSelectedItem(PwcgRole.ROLE_BOMB);
-        }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_DIVE_BOMB))
-        {
-            cbRole.setSelectedItem(PwcgRole.ROLE_DIVE_BOMB);
-        }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_ATTACK))
-        {
-            cbRole.setSelectedItem(PwcgRole.ROLE_ATTACK);
-        }
-        if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_SEA_PLANE))
-        {
-            cbRole.setSelectedItem(PwcgRole.ROLE_SEA_PLANE);
-        }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_STRAT_BOMB))
-        {
-            cbRole.setSelectedItem(PwcgRole.ROLE_STRAT_BOMB);
-        }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_RECON))
-        {
-            cbRole.setSelectedItem(PwcgRole.ROLE_RECON);
-        }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_SEA_PLANE))
-        {
-            cbRole.setSelectedItem(PwcgRole.ROLE_SEA_PLANE);
-        }
-        else
-        {
-            cbRole.setSelectedItem(PwcgRole.ROLE_FIGHTER);
-        }                
+        PwcgRoleCategory roleCategory = playerSquadron.determineSquadronPrimaryRoleCategory(campaign.getDate());
+        cbRole.setSelectedItem(roleCategory.getRoleCategoryDescription());
     }
 
     private GridBagConstraints initializeGridbagConstraints()
@@ -253,14 +223,12 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         JLabel lRole = PWCGLabelFactory.makeTransparentLabel(roleText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
 
         cbRole = new JComboBox<String>();
-        cbRole.addItem(PwcgRole.ROLE_FIGHTER.getRoleDescription());
-        cbRole.addItem(PwcgRole.ROLE_STRATEGIC_INTERCEPT.getRoleDescription());
-        cbRole.addItem(PwcgRole.ROLE_DIVE_BOMB.getRoleDescription());
-        cbRole.addItem(PwcgRole.ROLE_ATTACK.getRoleDescription());
-        cbRole.addItem(PwcgRole.ROLE_BOMB.getRoleDescription());
-        cbRole.addItem(PwcgRole.ROLE_STRAT_BOMB.getRoleDescription());
-        cbRole.addItem(PwcgRole.ROLE_RECON.getRoleDescription());
-        cbRole.addItem(PwcgRole.ROLE_SEA_PLANE.getRoleDescription());
+        for  (PwcgRoleCategory roleCategoryForService : SquadronRoleFinder.getRoleCategoriesForService(service, campaign.getDate()))
+        {
+            cbRole.addItem(roleCategoryForService.getRoleCategoryDescription());
+        }
+        
+        
         cbRole.setOpaque(false);
         cbRole.setBackground(buttonBG);
         cbRole.setSelectedIndex(0);
@@ -412,16 +380,14 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 				
 		List<Squadron> squadronList = squadManager.getPlayerFlyableSquadronsByService(service, campaign.getDate());
 		
-        String roleDesc = (String)cbRole.getSelectedItem();
-        PwcgRole role = PwcgRole.getRoleFromDescription(roleDesc);
-        
+        String roleCategoryDesc = (String)cbRole.getSelectedItem();
 		for (int i = 0; i < squadronList.size(); ++i)
 		{
 			Squadron squad = squadronList.get(i);
 			Date campaignDate = campaign.getDate();
 			if(squad.getSquadronId() != squadronMemberToTransfer.getSquadronId())
 			{
-			    if (squad.determineSquadronPrimaryRoleCategory(campaignDate) == role.getRoleCategory())
+			    if (squad.determineSquadronPrimaryRoleCategory(campaignDate).getRoleCategoryDescription().equals(roleCategoryDesc))
 			    {
 			        String display = squad.determineDisplayName(campaign.getDate());
 			        CampaignAces aces =  PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(campaignDate);

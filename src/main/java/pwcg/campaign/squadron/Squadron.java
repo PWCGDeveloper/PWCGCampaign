@@ -845,6 +845,11 @@ public class Squadron
     {
         return squadronRoles.selectSquadronPrimaryRoleCategory(date);
     }
+    
+    public List<PwcgRole> getSquadronRolesForDate(Date date) throws PWCGException
+    {
+        return squadronRoles.getRolesForDate(date);
+    }
 
     public boolean isStrategicOnly(Date date) throws PWCGException
     {
