@@ -36,9 +36,6 @@ public class TransportWaypointFactory
 
         List<McuWaypoint> targetWaypoints = createTargetWaypoints();
         missionPointSet.addWaypoints(targetWaypoints);
-        
-        McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight, toAirfield);
-        missionPointSet.addWaypoint(approachWaypoint);
 
         return missionPointSet;
     }

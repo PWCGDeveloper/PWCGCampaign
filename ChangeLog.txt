@@ -6,6 +6,8 @@ Improvements to campaign generation
 If parked is selected and the map ios Normandy and the campaign is not coop, no runway starts
 - Parked starts will not work in Normandy
 - I left the option available to coop as they might be able to pull it off with no AI in the flight.
+Cleaned up transfer screen.  Transfers to transport now work.
+Fixed transport missions such that they are now one way.
 
 14.1.3
 Fixed error in tactical code config that could cause mission generation to fail.

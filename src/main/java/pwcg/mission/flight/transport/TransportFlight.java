@@ -53,7 +53,7 @@ public class TransportFlight extends Flight implements IFlight
         IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(missionWaypoints);
         
-        IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(this);
+        IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEnd(this, arrivalAirfield);
         this.getWaypointPackage().addMissionPointSet(flightEnd);        
     }
  

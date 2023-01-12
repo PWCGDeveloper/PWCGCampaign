@@ -26,7 +26,7 @@ public enum WaypointAction
 	WP_ACTION_TARGET_EGRESS("Target Egress", true, false),
 	
     WP_ACTION_ATTACK("Attack", false, true),
-	WP_ACTION_MOVE_TO("Move To", false, false);
+	WP_ACTION_MOVE_TO("Move To", true, false);
 
     private String waypointAction;
     private boolean editable;
