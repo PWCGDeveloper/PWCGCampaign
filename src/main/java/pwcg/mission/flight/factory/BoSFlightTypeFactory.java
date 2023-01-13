@@ -7,6 +7,8 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PwcgMapGroundUnitLimitation;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -126,6 +128,11 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
     
     private FlightTypes getTransportFlightType(Squadron squadron) throws PWCGException
     {
+        if (PWCGContext.getInstance().getMap(campaign.getCampaignMap()).isLimited(campaign.getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
+        {
+            return FlightTypes.TRANSPORT;
+        }
+        
         int currentIndex = 0;
         if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {

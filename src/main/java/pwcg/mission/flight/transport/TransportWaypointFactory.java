@@ -10,7 +10,6 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.end.ApproachWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointRouteSet;
 import pwcg.mission.mcu.McuWaypoint;
