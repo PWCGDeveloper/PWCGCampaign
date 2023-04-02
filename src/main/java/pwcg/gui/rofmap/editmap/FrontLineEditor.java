@@ -5,8 +5,11 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.ICountry;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -39,7 +42,7 @@ public class FrontLineEditor
             point.y = e.getY();
             Coordinate coordinate = mapPanel.pointToCoordinate(point);
 
-            FrontLinePoint frontFrontLinePoint = makeFrontLinePoint(coordinate, FrontLinePoint.ALLIED_FRONT_LINE);
+            FrontLinePoint frontFrontLinePoint = makeFrontLinePoint(coordinate, FrontLinePoint.AXIS_FRONT_LINE, Country.GERMANY);
 
             userFrontLines.add(frontFrontLinePoint);
         }
@@ -116,7 +119,7 @@ public class FrontLineEditor
         double distance = MathUtils.calcDist(selectedFrontPointRight.getPosition(), selectedFrontPointLeft.getPosition());
         Coordinate frontCoordinate = MathUtils.calcNextCoord( mapIdentifier, selectedFrontPointRight.getPosition(), angle, distance / 2);
 
-        FrontLinePoint newFrontFrontLinePoint = makeFrontLinePoint(frontCoordinate, selectedFrontPointRight.getName());
+        FrontLinePoint newFrontFrontLinePoint = makeFrontLinePoint(frontCoordinate, selectedFrontPointRight.getName(),selectedFrontPointRight.getCountry().getCountry());
         userFrontLines.add(selectedFrontPointIndex+1, newFrontFrontLinePoint);
     }
 
@@ -176,11 +179,13 @@ public class FrontLineEditor
         return LOCATION_INDEX_NOT_FOUND;
     }
 
-    private FrontLinePoint makeFrontLinePoint(Coordinate coordinate, String name)
+    private FrontLinePoint makeFrontLinePoint(Coordinate coordinate, String name, Country country)
     {
+        ICountry icountry = CountryFactory.makeCountryByCountry(country);
         FrontLinePoint frontFrontLinePoint = new FrontLinePoint();
         frontFrontLinePoint.setPosition(coordinate);
         frontFrontLinePoint.setName(name);
+        frontFrontLinePoint.setCountry(icountry);
         return frontFrontLinePoint;
     }
 

@@ -1,21 +1,9 @@
-WWI
-New map
-- Map image
-- Airfields
-- Objects
-- Front lines
-- Squadrons
-- Add Snipe
-
-Bugs:
-Moscow map can start June 1941.  Should be October.
-Soviet aircraft mentioned in German pilot log book over England.
-Verify call signs
-- Correct nation
-- In the mission, switch AI to a different call sign if there is a conflict
-- Verify mission file format
-FC fuel air start resets to 60%
-(On Pilot board) Clicking on all Top Aces: All, German pilot has RAF log book
+Map images
+Front lines
+Structures
+Airfields
+Squadrons (use RoF as a source)
+Blank skins and tactical codes
 
 
 Features

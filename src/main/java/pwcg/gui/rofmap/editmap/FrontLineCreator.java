@@ -35,8 +35,8 @@ public class FrontLineCreator
     
     private List<FrontLinePoint> createAlliedLinesWestFront(List<FrontLinePoint> userFrontLines) throws PWCGException
     {
-        List<FrontLinePoint> axisLines = reduceLinesToSide(userFrontLines, Side.ALLIED);
-        List<FrontLinePoint> alliedLines = createLines(axisLines, 90, FrontLinePoint.AXIS_FRONT_LINE);
+        List<FrontLinePoint> axisLines = reduceLinesToSide(userFrontLines, Side.AXIS);
+        List<FrontLinePoint> alliedLines = createLines(axisLines, 270, FrontLinePoint.ALLIED_FRONT_LINE);
         List<FrontLinePoint> allFrontLines = new ArrayList<>();
         allFrontLines.addAll(alliedLines);
         allFrontLines.addAll(axisLines);

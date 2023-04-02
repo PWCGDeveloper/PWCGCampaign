@@ -191,7 +191,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         }
         else if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            addToMapGrid(mapGrid, FrontMapIdentifier.ARRAS_MAP);
+            addToMapGrid(mapGrid, FrontMapIdentifier.WESTERN_FRONT_MAP);
         }
         else
         {

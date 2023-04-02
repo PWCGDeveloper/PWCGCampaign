@@ -34,6 +34,8 @@ import pwcg.testutils.TestMissionBuilderUtility;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PlayerFlightFCTypeGASTest 
 {    
+    private int MAX_WWI_FIGHTER_DISTANCE = 75000;
+
     private Campaign campaign;    
 
     @BeforeAll
@@ -56,7 +58,7 @@ public class PlayerFlightFCTypeGASTest
 
         assert(flight.getFlightType() == FlightTypes.BALLOON_BUST);
         
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -75,7 +77,7 @@ public class PlayerFlightFCTypeGASTest
 
         assert(flight.getFlightType() == FlightTypes.BALLOON_DEFENSE);
         
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -95,7 +97,7 @@ public class PlayerFlightFCTypeGASTest
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.INTERCEPT);
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();

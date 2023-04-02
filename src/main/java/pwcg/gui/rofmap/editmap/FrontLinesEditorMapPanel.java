@@ -35,11 +35,12 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapPanelBase;
+import pwcg.gui.utils.MapPointInfoPopup;
 
 public class FrontLinesEditorMapPanel extends MapPanelBase
 {
-	public static int DISPLAY_AIRFIELDS = 0;
-    public static int DISPLAY_CITIES = 0;
+	public static int FRONT_EDIT_DISPLAY_AIRFIELDS = 0;
+    public static int FRONT_EDIT_DISPLAY_CITIES = 1;
 
     public static int EDIT_MODE_NONE = 0;
 
@@ -53,7 +54,7 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
 	
 	private ICountry country;
     private int editMode = EDIT_MODE_NONE;
-    private Boolean[] whatToDisplay = new Boolean[8];
+    private Boolean[] whatToDisplayFrontEditor = new Boolean[8];
 
     private FrontLineEditor frontLineEditor = null;
     private MapLocationEditor mapLocationEditor = null;
@@ -62,7 +63,7 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
 	public FrontLinesEditorMapPanel(MapGUI parent, FrontMapIdentifier mapIdentifier) throws PWCGException  
 	{
 		super(parent);
-		country = CountryFactory.makeMapReferenceCountry(mapIdentifier, Side.ALLIED);
+		country = CountryFactory.makeMapReferenceCountry(mapIdentifier, Side.AXIS);
         mapLocationEditor = new MapLocationEditor(this);
         super.initializeMap(mapIdentifier);
 	}
@@ -90,13 +91,13 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
 			
 			g.setColor(Color.black);
 			
-			if (whatToDisplay[0] == null)
+			if (whatToDisplayFrontEditor[0] == null)
 			{
 			    return;
 			}
 			
 	          
-            if (whatToDisplay[DISPLAY_CITIES])
+            if (whatToDisplayFrontEditor[FRONT_EDIT_DISPLAY_CITIES])
             {
                 GroupManager groupManager =  PWCGContext.getInstance().getMap(mapIdentifier).getGroupManager();
                 TownFinder townFinder = groupManager.getTownFinder();
@@ -107,7 +108,7 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
                 }
             }
 
-			if (whatToDisplay[DISPLAY_AIRFIELDS])
+			if (whatToDisplayFrontEditor[FRONT_EDIT_DISPLAY_AIRFIELDS])
 			{
 		        AirfieldManager airfieldData =  PWCGContext.getInstance().getMap(mapIdentifier).getAirfieldManager();
 		        Map<String, Airfield> allAF = airfieldData.getAllAirfields();
@@ -286,6 +287,9 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
             Point clickPoint = new Point();
             clickPoint.x = e.getX();
             clickPoint.y = e.getY();
+            Coordinate coordinate = pointToCoordinate(clickPoint);
+            MapPointInfoPopup menu = new MapPointInfoPopup(this, coordinate);
+            menu.show(e.getComponent(), e.getX(), e.getY());
         }
         catch (Exception exp)
         {
@@ -303,7 +307,7 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
 
 	public void setWhatToDisplay(int displayItem, boolean displayIt)
 	{
-		this.whatToDisplay[displayItem] = displayIt;
+		this.whatToDisplayFrontEditor[displayItem] = displayIt;
 	    		
 		repaintMap();
 	}

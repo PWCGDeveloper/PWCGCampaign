@@ -342,7 +342,7 @@ public abstract class PWCGMap
     public static List<FrontMapIdentifier> getWWIAllMaps ()
     {
         List<FrontMapIdentifier> maps = new ArrayList<>();
-        maps.add(FrontMapIdentifier.ARRAS_MAP);
+        maps.add(FrontMapIdentifier.WESTERN_FRONT_MAP);
         return maps;
     }   
 }

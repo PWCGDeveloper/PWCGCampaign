@@ -6,8 +6,6 @@ import java.util.List;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
-import pwcg.campaign.context.FrontMapIdentifier;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.LocationIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.LocationSet;
@@ -17,20 +15,18 @@ import pwcg.core.utils.PWCGLogger;
 public class FrontLineWriter
 {
     private List<FrontLinePoint> userFrontLines = new ArrayList<>();
-    private FrontMapIdentifier mapIdentifier;
         
-    public FrontLineWriter(FrontMapIdentifier mapIdentifier, List<FrontLinePoint> userFrontLines)
+    public FrontLineWriter(List<FrontLinePoint> userFrontLines)
     {
-        this.mapIdentifier = mapIdentifier;
         this.userFrontLines = userFrontLines;
     }
 
-    public void finished()
+    public void finished(String directory)
     {
         try
         {
             setFrontOrientation();
-            writeFront();
+            writeFront(directory);
         }
         catch (Exception exp)
         {
@@ -93,14 +89,12 @@ public class FrontLineWriter
         return closestEnemyFrontLinePoint;
     }
 
-    private void writeFront() throws PWCGException, IOException
-    {
-        String outputPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + PWCGContext.getInstance().getMap(mapIdentifier).getMapName() + "\\";      
-        
+    private void writeFront(String directory) throws PWCGException, IOException
+    {        
         LocationSet locationSet = new LocationSet("FrontLines");
         frontLinePointToLocationSet(locationSet, userFrontLines);
         
-        LocationIOJson.writeJson(outputPath, "FrontLines", locationSet);
+        LocationIOJson.writeJson(directory, "FrontLines", locationSet);
     }
 
 

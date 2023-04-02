@@ -44,7 +44,7 @@ public class MapLocationEditor
                 city.setOrientation(new Orientation());
                 cities.addLocation(city);
                 
-                LocationIOJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + "Arras" + "\\", "MapLocations.json", cities);
+                LocationIOJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + "WesternFront" + "\\", "MapLocations.json", cities);
             }
 
         }

@@ -26,7 +26,7 @@ public class FCDeploy extends DeployBase
         directoriesToCopy.put("RNAS", null);
 
         // Maps
-        directoriesToCopy.put("Arras", null);
+        directoriesToCopy.put("WesternFront", null);
 
 		// Moving Front Dates
     	directoriesToCopy.put("19170601", null);

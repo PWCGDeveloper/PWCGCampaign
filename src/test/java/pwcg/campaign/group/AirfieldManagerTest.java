@@ -36,7 +36,7 @@ public class AirfieldManagerTest
         Mockito.when(mission.getWeather()).thenReturn(weather);
         Mockito.when(weather.getWindDirection()).thenReturn(90);        
 
-        AirfieldManager airfieldManager = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.ARRAS_MAP).getAirfieldManager();
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.WESTERN_FRONT_MAP).getAirfieldManager();
         for (Airfield airfield : airfieldManager.getAllAirfields().values())
         {
             Assertions.assertTrue (airfield.getTakeoffLocation(mission) != null);

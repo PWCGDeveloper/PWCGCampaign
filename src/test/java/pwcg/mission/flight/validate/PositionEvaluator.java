@@ -13,7 +13,7 @@ import pwcg.mission.mcu.McuWaypoint;
 public class PositionEvaluator
 {
 
-    public static void evaluateAiFlight(Mission mission) throws PWCGException
+    public static void evaluateAiFlight(Mission mission, int maxDisatance) throws PWCGException
     {
         Coordinate missionCenter = mission.getMissionBorders().getCenter();
 
@@ -25,7 +25,7 @@ public class PositionEvaluator
             if (shouldEvaluateDistanceToTarget(aiFlight))
             {
                 double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getTargetDefinition().getPosition());
-                if (distanceMissioNCenterToTarget > 150000)
+                if (distanceMissioNCenterToTarget > maxDisatance)
                 {
                     failed = true;
                 }

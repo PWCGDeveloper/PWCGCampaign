@@ -8,7 +8,7 @@ import pwcg.product.bos.map.kuban.KubanMap;
 import pwcg.product.bos.map.moscow.MoscowMap;
 import pwcg.product.bos.map.normandy.NormandyMap;
 import pwcg.product.bos.map.stalingrad.StalingradMap;
-import pwcg.product.fc.map.arras.ArrasMap;
+import pwcg.product.fc.map.westernfront.WesternFrontMap;
 
 public class PWCGMapFactory
 {
@@ -51,9 +51,9 @@ public class PWCGMapFactory
             map = new East1945Map();
             map.configure();
         }
-        if (frontMapIdentifier == FrontMapIdentifier.ARRAS_MAP)
+        if (frontMapIdentifier == FrontMapIdentifier.WESTERN_FRONT_MAP)
         {
-            map = new ArrasMap();
+            map = new WesternFrontMap();
             map.configure();
         }
 

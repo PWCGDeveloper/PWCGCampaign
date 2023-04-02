@@ -20,9 +20,9 @@ public class RoFAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
 	}
 
 	@Test
-	public void airfieldCheckArrasTest() throws PWCGException 
+	public void airfieldCheckWesternFrontTest() throws PWCGException 
 	{
         RoFAirfieldInEnemyTerritory airfieldFInder = new RoFAirfieldInEnemyTerritory();
-        airfieldFInder.findEnemy(FrontMapIdentifier.ARRAS_MAP, DateUtils.getDateYYYYMMDD("19160101"), DateUtils.getDateYYYYMMDD("19181111"));
+        airfieldFInder.findEnemy(FrontMapIdentifier.WESTERN_FRONT_MAP, DateUtils.getDateYYYYMMDD("19160101"), DateUtils.getDateYYYYMMDD("19181111"));
 	}
 }

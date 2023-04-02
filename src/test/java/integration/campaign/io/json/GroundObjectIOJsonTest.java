@@ -16,10 +16,10 @@ import pwcg.core.exception.PWCGException;
 public class GroundObjectIOJsonTest
 {
     @Test
-    public void readJsonArrasTest() throws PWCGException
+    public void readJsonWesternFrontTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        String mapName = "Arras";
+        String mapName = "WesternFront";
         validateGroundStructures(mapName);
     }
     

@@ -222,7 +222,7 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
         }
         else if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            addToMapGrid(mapGrid, FrontMapIdentifier.ARRAS_MAP);
+            addToMapGrid(mapGrid, FrontMapIdentifier.WESTERN_FRONT_MAP);
         }
         else
         {
@@ -295,8 +295,9 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
 
     private void writeData() throws PWCGException 
     {
-        FrontLineWriter frontLineWriter = new FrontLineWriter(mapIdentifier, frontLineCreator.getUserCreatedFrontLines());
-        frontLineWriter.finished();
+        FrontLineWriter frontLineWriter = new FrontLineWriter(frontLineCreator.getUserCreatedFrontLines());
+        String outputPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + PWCGContext.getInstance().getMap(mapIdentifier).getMapName() + "\\";      
+        frontLineWriter.finished(outputPath);
     }
 
     @Override
@@ -381,8 +382,8 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
                 }
             }
             
-            editorMapPanel.setWhatToDisplay(FrontLinesEditorMapPanel.DISPLAY_AIRFIELDS, displayAirfields.isSelected());
-            editorMapPanel.setWhatToDisplay(FrontLinesEditorMapPanel.DISPLAY_CITIES, displayCities.isSelected());
+            editorMapPanel.setWhatToDisplay(FrontLinesEditorMapPanel.FRONT_EDIT_DISPLAY_AIRFIELDS, displayAirfields.isSelected());
+            editorMapPanel.setWhatToDisplay(FrontLinesEditorMapPanel.FRONT_EDIT_DISPLAY_CITIES, displayCities.isSelected());
         }
         catch (Exception e)
         {

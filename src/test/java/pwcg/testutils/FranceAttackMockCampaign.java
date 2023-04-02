@@ -57,7 +57,7 @@ public class FranceAttackMockCampaign
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(date);
-        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.ARRAS_MAP);
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.WESTERN_FRONT_MAP);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(missionGroundUnitResourceManager);
         

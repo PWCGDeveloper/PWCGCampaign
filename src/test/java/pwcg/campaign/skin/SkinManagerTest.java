@@ -21,7 +21,6 @@ import pwcg.core.utils.DateUtils;
 public class SkinManagerTest
 {
     private SkinManager skinManager;
-    
 
     @BeforeAll
     public void setupSuite() throws PWCGException
@@ -38,22 +37,22 @@ public class SkinManagerTest
         ICountry iCountry = CountryFactory.makeCountryByCountry(Country.GERMANY);
 
         testSkins = skinManager.getLooseSkinByPlane(planeType);
-        Assertions.assertTrue (testSkins.size() > 0);
-        
+        Assertions.assertTrue(testSkins.size() > 0);
+
         testSkins = skinManager.getPersonalSkinsByPlaneCountryDateInUse(planeType, iCountry.getCountryName(), DateUtils.getDateYYYYMMDD("19420401"));
-        Assertions.assertTrue (testSkins.size() > 0);
-        
+        Assertions.assertTrue(testSkins.size() > 0);
+
         testSkins = skinManager.getSkinsByPlaneSquadron(planeType, 20111051);
-        Assertions.assertTrue (testSkins.size() == 0);
-        
+        Assertions.assertTrue(testSkins.size() == 0);
+
         testSkins = skinManager.getSkinsByPlaneSquadron(planeType, 20111052);
-        Assertions.assertTrue (testSkins.size() > 0);
-        
+        Assertions.assertTrue(testSkins.size() > 0);
+
         testSkins = skinManager.getSkinsByPlaneCountry(planeType, iCountry.getCountryName());
-        Assertions.assertTrue (testSkins.size() > 0);
-        
+        Assertions.assertTrue(testSkins.size() > 0);
+
         testSkins = skinManager.getSkinsByPlaneSquadronDateInUse(planeType, 20111052, DateUtils.getDateYYYYMMDD("19420401"));
-        Assertions.assertTrue (testSkins.size() > 0);
+        Assertions.assertTrue(testSkins.size() > 0);
     }
 
     @Test
@@ -61,7 +60,7 @@ public class SkinManagerTest
     {
         List<String> hasNoBlanks = new ArrayList<>();
         hasNoBlanks.add("bf109g6late");
-        
+
         for (String planeName : skinManager.getAllSkinsByPlane().keySet())
         {
             boolean baseForPlane = false;
@@ -70,26 +69,26 @@ public class SkinManagerTest
             {
                 if (skin.getSkinName().toLowerCase().contains("blank"))
                 {
-                    Assertions.assertEquals (-2, skin.getSquadId());
-                    Assertions.assertEquals (true, skin.isUseTacticalCodes());
+                    Assertions.assertEquals(-2, skin.getSquadId());
+                    Assertions.assertEquals(true, skin.isUseTacticalCodes());
                     blankForPlane = true;
                 }
                 else if (skin.getSkinName().toLowerCase().equals(planeName.toLowerCase()))
                 {
-                    Assertions.assertEquals (-2, skin.getSquadId());
-                    Assertions.assertEquals (true, skin.isUseTacticalCodes());
+                    Assertions.assertEquals(-2, skin.getSquadId());
+                    Assertions.assertEquals(true, skin.isUseTacticalCodes());
                     baseForPlane = true;
                 }
                 else
                 {
-                    Assertions.assertNotEquals (-2, skin.getSquadId());
+                    Assertions.assertNotEquals(-2, skin.getSquadId());
                 }
             }
-            
-            Assertions.assertTrue (baseForPlane);
+
+            Assertions.assertTrue(baseForPlane);
             if (!hasNoBlanks.contains(planeName))
             {
-                Assertions.assertTrue (blankForPlane);
+                Assertions.assertTrue(blankForPlane);
             }
         }
     }
@@ -99,14 +98,14 @@ public class SkinManagerTest
     {
         List<String> hasNoBlanks = new ArrayList<>();
         hasNoBlanks.add("bf109g6late");
-        
+
         for (String planeName : skinManager.getAllSkinsByPlane().keySet())
         {
             Date today = DateUtils.getBeginningOfGame();
             while (today.before(DateUtils.getEndOfWar()))
             {
                 List<Skin> factorySkins = skinManager.getSkinsByPlaneSquadronDateInUse(planeName, -2, today);
-                Assertions.assertFalse (factorySkins.isEmpty());
+                Assertions.assertFalse(factorySkins.isEmpty());
                 today = DateUtils.advanceTimeDays(today, 1);
             }
         }
@@ -119,7 +118,19 @@ public class SkinManagerTest
         {
             for (Skin skin : skinManager.getSkinsForPlane(planeName).getAllUsedByPWCG())
             {
-                Assertions.assertTrue (skin.getStartDate().before(skin.getEndDate()));
+                Assertions.assertTrue(skin.getStartDate().before(skin.getEndDate()));
+            }
+        }
+    }
+
+    @Test
+    public void validateFileNamneSetting() throws PWCGException
+    {
+        for (String planeName : skinManager.getAllSkinsByPlane().keySet())
+        {
+            for (Skin skin : skinManager.getSkinsForPlane(planeName).getAllUsedByPWCG())
+            {
+                Assertions.assertTrue(skin.getStartDate().before(skin.getEndDate()));
             }
         }
     }

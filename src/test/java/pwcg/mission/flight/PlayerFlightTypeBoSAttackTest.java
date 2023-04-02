@@ -31,6 +31,8 @@ import pwcg.testutils.TestMissionBuilderUtility;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PlayerFlightTypeBoSAttackTest
 {
+    private int MAX_ATTACK_DISTANCE = 150000;
+
     private Campaign campaign;    
     
     @BeforeAll
@@ -63,7 +65,7 @@ public class PlayerFlightTypeBoSAttackTest
         
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_ATTACK_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();

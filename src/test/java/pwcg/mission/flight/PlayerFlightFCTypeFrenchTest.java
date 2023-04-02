@@ -35,6 +35,8 @@ import pwcg.testutils.TestMissionBuilderUtility;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PlayerFlightFCTypeFrenchTest 
 {    
+    private int MAX_WWI_FIGHTER_DISTANCE = 75000;
+
     private Campaign campaign;    
 
     @BeforeAll
@@ -55,7 +57,7 @@ public class PlayerFlightFCTypeFrenchTest
         Assertions.assertTrue (targetMissionPoint != null);
         PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
 
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.PATROL);
@@ -78,7 +80,7 @@ public class PlayerFlightFCTypeFrenchTest
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.OFFENSIVE);
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission,MAX_WWI_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -98,7 +100,7 @@ public class PlayerFlightFCTypeFrenchTest
 		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(mission.getFlights());
 		escortFlightValidator.validateEscortFlight();
         assert(flight.getFlightType() == FlightTypes.ESCORT);
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();

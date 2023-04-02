@@ -18,7 +18,7 @@ public class ShippingLaneIOJsonTest
     public void readJsonChannelTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        ShippingLanes shippingLanes = ShippingLaneIOJson.readJson("Arras");
+        ShippingLanes shippingLanes = ShippingLaneIOJson.readJson("WesternFront");
         Assertions.assertTrue (shippingLanes.getAlliedShippingLanes().size() == 0);
         Assertions.assertTrue (shippingLanes.getAxisShippingLanes().size() == 0);
     }

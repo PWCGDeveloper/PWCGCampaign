@@ -22,7 +22,7 @@ public class BehindEnemyLinesTest
     
 	private BehindEnemyLines behindEnemyLines;
 	private Coordinate referenceCoordinateOnAlliedLines =  new Coordinate(128000.0, 0.0,80933.0);
-	private FrontMapIdentifier mapId = FrontMapIdentifier.ARRAS_MAP;
+	private FrontMapIdentifier mapId = FrontMapIdentifier.WESTERN_FRONT_MAP;
 	
     @BeforeEach
     public void setupTest() throws PWCGException

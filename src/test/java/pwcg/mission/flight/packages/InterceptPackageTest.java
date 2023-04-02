@@ -74,7 +74,7 @@ public class InterceptPackageTest extends PwcgTestBase
             for (MissionPoint opposingWaypoint : opposingTargetWaypoints)
             {
                 double distanceFromBalloon = MathUtils.calcDist(waypoint.getPosition(), opposingWaypoint.getPosition());
-                if (distanceFromBalloon < 20000)
+                if (distanceFromBalloon < 30000)
                 {
                     interceptIsCloseToTarget = true;
                 }

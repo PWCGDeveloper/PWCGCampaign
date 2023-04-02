@@ -31,6 +31,8 @@ import pwcg.testutils.TestMissionBuilderUtility;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PlayerFlightTypeBoSDiveBombTest
 {
+    private int MAX_DIVE_BOMBER_DISTANCE = 180000;
+
     private Campaign campaign;    
 
     @BeforeAll
@@ -57,7 +59,7 @@ public class PlayerFlightTypeBoSDiveBombTest
         validateTargetDefinition(flight.getTargetDefinition());
         Assertions.assertTrue (flight.getFlightType() == FlightTypes.DIVE_BOMB);
         
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_DIVE_BOMBER_DISTANCE);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         

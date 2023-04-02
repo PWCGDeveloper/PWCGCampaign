@@ -360,6 +360,7 @@ public abstract class GroundUnit implements IGroundUnit
     public List<GroundUnitElement> getGroundElements()
     {
         List<GroundUnitElement> groundElementsCopy = new ArrayList<>(); 
+        groundElementsCopy.addAll(groundElements);
         return groundElementsCopy;
     }
 

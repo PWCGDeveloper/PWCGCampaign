@@ -39,7 +39,7 @@ public class ClaimResolverCoopTest
         PWCGContext.setProduct(PWCGProduct.FC);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
-        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.ARRAS_MAP);
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.WESTERN_FRONT_MAP);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);
         Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);

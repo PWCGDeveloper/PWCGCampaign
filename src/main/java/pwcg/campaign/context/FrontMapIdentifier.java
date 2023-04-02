@@ -5,11 +5,15 @@ import java.util.Map;
 
 public enum FrontMapIdentifier
 {
-    NO_MAP("No Map", PWCGFront.ANY_THEATRE), MOSCOW_MAP("Moscow", PWCGFront.WWII_EASTERN_FRONT), STALINGRAD_MAP("Stalingrad",
-            PWCGFront.WWII_EASTERN_FRONT), KUBAN_MAP("Kuban", PWCGFront.WWII_EASTERN_FRONT), EAST1944_MAP("East1944",
-                    PWCGFront.WWII_EASTERN_FRONT), EAST1945_MAP("East1945", PWCGFront.WWII_EASTERN_FRONT), NORMANDY_MAP("Normandy",
-                            PWCGFront.WWII_WESTERN_FRONT), BODENPLATTE_MAP("Bodenplatte",
-                                    PWCGFront.WWII_WESTERN_FRONT), ARRAS_MAP("Arras", PWCGFront.WWI_WESTERN_FRONT);
+    NO_MAP("No Map", PWCGFront.ANY_THEATRE), 
+    MOSCOW_MAP("Moscow", PWCGFront.WWII_EASTERN_FRONT), 
+    STALINGRAD_MAP("Stalingrad", PWCGFront.WWII_EASTERN_FRONT), 
+    KUBAN_MAP("Kuban", PWCGFront.WWII_EASTERN_FRONT), 
+    EAST1944_MAP("East1944", PWCGFront.WWII_EASTERN_FRONT), 
+    EAST1945_MAP("East1945", PWCGFront.WWII_EASTERN_FRONT), 
+    NORMANDY_MAP("Normandy", PWCGFront.WWII_WESTERN_FRONT), 
+    BODENPLATTE_MAP("Bodenplatte", PWCGFront.WWII_WESTERN_FRONT), 
+    WESTERN_FRONT_MAP("WesternFront", PWCGFront.WWI_WESTERN_FRONT);
 
     private String mapName = "";
     private PWCGFront front;
@@ -42,7 +46,7 @@ public enum FrontMapIdentifier
         frontNameIdentifierMap.put(NORMANDY_MAP.getMapName(), NORMANDY_MAP);
         frontNameIdentifierMap.put(BODENPLATTE_MAP.getMapName(), BODENPLATTE_MAP);
 
-        frontNameIdentifierMap.put(ARRAS_MAP.getMapName(), ARRAS_MAP);
+        frontNameIdentifierMap.put(WESTERN_FRONT_MAP.getMapName(), WESTERN_FRONT_MAP);
 
         return frontNameIdentifierMap.get(name);
     }
@@ -50,7 +54,7 @@ public enum FrontMapIdentifier
 
     public static PWCGProduct getProductForMap(FrontMapIdentifier map)
     {
-        if (map == ARRAS_MAP)
+        if (map == WESTERN_FRONT_MAP)
         {
             return PWCGProduct.FC;
         }

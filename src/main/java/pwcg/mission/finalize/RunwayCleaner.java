@@ -7,7 +7,6 @@ import pwcg.mission.Mission;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitElement;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.mcu.McuSpawn;
 
 public class RunwayCleaner
 {

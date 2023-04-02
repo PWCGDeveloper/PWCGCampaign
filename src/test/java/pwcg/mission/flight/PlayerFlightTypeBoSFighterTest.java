@@ -41,6 +41,8 @@ import pwcg.testutils.TestMissionBuilderUtility;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PlayerFlightTypeBoSFighterTest 
 {    
+    private int MAX_FIGHTER_DISTANCE = 150000;
+    
     private Campaign campaign;
 
     @BeforeAll
@@ -67,7 +69,7 @@ public class PlayerFlightTypeBoSFighterTest
         FlightActivateValidator.validate(flight);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -94,7 +96,7 @@ public class PlayerFlightTypeBoSFighterTest
         FlightActivateValidator.validate(flight);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -124,7 +126,7 @@ public class PlayerFlightTypeBoSFighterTest
         
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -152,7 +154,7 @@ public class PlayerFlightTypeBoSFighterTest
         FlightActivateValidator.validate(flight);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -178,7 +180,7 @@ public class PlayerFlightTypeBoSFighterTest
 		escortFlightValidator.validateEscortFlight();
         assert(flight.getFlightType() == FlightTypes.ESCORT);
         FlightActivateValidator.validate(flight);
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_FIGHTER_DISTANCE);
 
         List<IFlight> playerEscortedFlight = mission.getFlights().getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORTED);
         assert(playerEscortedFlight != null);        
@@ -210,7 +212,7 @@ public class PlayerFlightTypeBoSFighterTest
         FlightActivateValidator.validate(flight);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission);
+        PositionEvaluator.evaluateAiFlight(mission, MAX_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();

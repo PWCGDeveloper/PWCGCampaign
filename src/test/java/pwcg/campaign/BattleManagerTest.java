@@ -36,14 +36,14 @@ public class BattleManagerTest
     public void getBattleTest () throws PWCGException
     {   
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171121"));
-        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.ARRAS_MAP);
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.WESTERN_FRONT_MAP);
         Mockito.when(campaign.getReferencePlayer()).thenReturn(referencePlayer);
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MissionBoxMaxDistanceFromBaseKey)).thenReturn(60);
         
         Mockito.when(referencePlayer.getSquadronId()).thenReturn(302056);
 
-    	BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.ARRAS_MAP).getBattleManager();    	
+    	BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.WESTERN_FRONT_MAP).getBattleManager();    	
     	Battle battle = battleManager.getBattleForCampaign(campaign, new Coordinate(80000, 0, 80000));
         Assertions.assertTrue (battle.getName().equals("Cambrai"));
         Assertions.assertTrue (battle.getAggressorcountry() == Country.BRITAIN);
@@ -55,7 +55,7 @@ public class BattleManagerTest
     {        
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171231"));
 
-        BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.ARRAS_MAP).getBattleManager();
+        BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.WESTERN_FRONT_MAP).getBattleManager();
         Battle battle = battleManager.getBattleForCampaign(campaign, new Coordinate(80000, 0, 80000));    	
         Assertions.assertNull (battle);
     }
@@ -64,14 +64,14 @@ public class BattleManagerTest
     public void getBattleTestCoordinatesWrong () throws PWCGException
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171121"));
-        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.ARRAS_MAP);
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.WESTERN_FRONT_MAP);
         Mockito.when(campaign.getReferencePlayer()).thenReturn(referencePlayer);
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MissionBoxMinDistanceFromBaseKey)).thenReturn(20);
         
         Mockito.when(referencePlayer.getSquadronId()).thenReturn(302056);
 
-        BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.ARRAS_MAP).getBattleManager();        
+        BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.WESTERN_FRONT_MAP).getBattleManager();        
         Battle battle = battleManager.getBattleForCampaign(campaign, new Coordinate(40000, 0, 40000));
         Assertions.assertNull (battle);
     }    
