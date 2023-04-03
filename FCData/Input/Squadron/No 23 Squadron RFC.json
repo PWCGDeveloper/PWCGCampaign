@@ -1,9 +1,9 @@
 {
   "country": "BRITAIN",
-  "squadronId": 302012,
-  "name": "No 12 Squadron RFC",
-  "fileName": "No 12 Squadron RFC.json",
-  "skill": 25,
+  "squadronId": 302023,
+  "name": "No 23 Squadron RFC",
+  "fileName": "No 23 Squadron RFC.json",
+  "skill": 60,
   "planeAssignments": [
     {
       "archType": "aircodh4",

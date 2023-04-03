@@ -1,0 +1,46 @@
+{
+	"country": "GERMANY",
+	"squadronId": 401050,
+	"name": "Jasta 50",
+	"fileName": "Jasta 50.json",
+	"skill": 45,
+	"planeAssignments": [
+		{
+			"archType": "albatrosd",
+			"squadronIntroduction": "19180101",
+			"squadronWithdrawal": "19180901"
+		},
+		{
+			"archType": "fokkerd7",
+			"squadronIntroduction": "19180801",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Lomme"
+	},
+	"skins": [
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 40101,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"endDate": "19181201",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		
+	}
+}

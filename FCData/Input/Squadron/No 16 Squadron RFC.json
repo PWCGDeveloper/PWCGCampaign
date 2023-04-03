@@ -1,39 +1,24 @@
 {
-	"country": "USA",
-	"squadronId": 303001,
-	"name": "1st Aero",
-	"fileName": "1st Aero.json",
-	"skill": 20,
+	"country": "BRITAIN",
+	"squadronId": 302016,
+	"name": "No 16 Squadron RFC",
+	"fileName": "No 16 Squadron RFC.json",
+	"skill": 25,
 	"planeAssignments": [
 		{
-			"archType": "breguet14",
+			"archType": "aircodh4",
 			"squadronIntroduction": "19170601",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Brabant en Argonne"
+		"19170601": "St.Omer"
 	},
-	"skins": [
-		{
-			"skinName": "breguet14_skin_02",
-			"planeType": "breguet14",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 303001,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
+	"skins": [],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
-	"serviceId": 30301,
+	"serviceId": 30201,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

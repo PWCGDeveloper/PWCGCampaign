@@ -1,9 +1,9 @@
 {
   "country": "FRANCE",
-  "squadronId": 301103,
-  "name": "Esc 103",
-  "fileName": "Esc 103.json",
-  "skill": 90,
+  "squadronId": 301062,
+  "name": "Esc 62",
+  "fileName": "Esc 62.json",
+  "skill": 75,
   "planeAssignments": [
     {
       "archType": "spad",
@@ -16,11 +16,11 @@
   },
   "skins": [
     {
-      "skinName": "PC_Spad13_SPA103_Generic",
+      "skinName": "PC_Spad13_SPA3_Generic1",
       "planeType": "spad13",
       "startDate": "19170601",
       "endDate": "19181201",
-      "squadId": 301103,
+      "squadId": 301062,
       "country": "FRANCE",
       "category": "Squadron",
       "definedInGame": false

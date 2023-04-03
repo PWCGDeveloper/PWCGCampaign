@@ -1,0 +1,74 @@
+{
+	"country": "BRITAIN",
+	"squadronId": 302210,
+	"name": "No 10 Squadron RNAS",
+	"fileName": "No 10 Squadron RNAS.json",
+	"skill": 70,
+	"planeAssignments": [
+		{
+			"archType": "soptriplane",
+			"squadronIntroduction": "19170301",
+			"squadronWithdrawal": "19170901"
+		},
+		{
+			"archType": "sopcamel",
+			"squadronIntroduction": "19170901",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "St.Omer"
+	},
+	"skins": [
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 30202,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"endDate": "19180406",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19170901",
+				"endDate": "19180406",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"endDate": "19181201",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 30
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		
+	}
+}

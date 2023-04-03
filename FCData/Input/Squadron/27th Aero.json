@@ -1,18 +1,18 @@
 {
   "country": "USA",
-  "squadronId": 303094,
-  "name": "94th Aero",
-  "fileName": "94th Aero.json",
+  "squadronId": 303027,
+  "name": "27th Aero",
+  "fileName": "27th Aero.json",
   "skill": 65,
   "planeAssignments": [
     {
       "archType": "nieuport28",
       "squadronIntroduction": "19180301",
-      "squadronWithdrawal": "19180701"
+      "squadronWithdrawal": "19180801"
     },
     {
       "archType": "spad",
-      "squadronIntroduction": "19180601",
+      "squadronIntroduction": "19180715",
       "squadronWithdrawal": "19181201"
     }
   ],
@@ -20,16 +20,6 @@
     "19180301": "Brabant en Argonne"
   },
   "skins": [
-    {
-      "skinName": "Spad13_US94_Default",
-      "planeType": "spad13",
-      "startDate": "19180301",
-      "endDate": "19181201",
-      "squadId": 303094,
-      "country": "USA",
-      "category": "Squadron",
-      "definedInGame": false
-    }
   ],
   "squadHistory": {
     "squadHistoryEntries": []

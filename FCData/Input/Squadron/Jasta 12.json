@@ -1,35 +1,30 @@
 {
 	"country": "GERMANY",
-	"squadronId": 401003,
-	"name": "Boghol 3",
-	"fileName": "Boghol 3.json",
+	"squadronId": 401012,
+	"name": "Jasta 12",
+	"fileName": "Jasta 12.json",
 	"skill": 80,
 	"planeAssignments": [
 		{
-			"archType": "gotha",
+			"archType": "albatrosd",
 			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19180101"
+		},
+		{
+			"archType": "fokkerdr1",
+			"squadronIntroduction": "19180104",
+			"squadronWithdrawal": "19180610"
+		},
+		{
+			"archType": "fokkerd7",
+			"squadronIntroduction": "19180605",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
 		"19170601": "Lomme"
 	},
-	"skins": [
-		{
-			"skinName": "gothac5_default",
-			"planeType": "gothac5",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19180424",
-			"squadId": 401003,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
+	"skins": [],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
@@ -41,7 +36,7 @@
 				"endDate": "19181201",
 				"weightedRoles": [
 					{
-						"role": "ROLE_STRAT_BOMB",
+						"role": "ROLE_FIGHTER",
 						"weight": 100
 					}
 				]

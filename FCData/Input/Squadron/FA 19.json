@@ -1,27 +1,27 @@
 {
 	"country": "GERMANY",
-	"squadronId": 401003,
-	"name": "Boghol 3",
-	"fileName": "Boghol 3.json",
-	"skill": 80,
+	"squadronId": 401219,
+	"name": "FA 19",
+	"fileName": "FA 19.json",
+	"skill": 25,
 	"planeAssignments": [
 		{
-			"archType": "gotha",
+			"archType": "dfw",
 			"squadronIntroduction": "19170601",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Lomme"
+		"19170601": "Iwuy"
 	},
 	"skins": [
 		{
-			"skinName": "gothac5_default",
-			"planeType": "gothac5",
+			"skinName": "dfwc5_default",
+			"planeType": "dfwc5",
 			"archTypes": [],
 			"startDate": "19170601",
-			"endDate": "19180424",
-			"squadId": 401003,
+			"endDate": "19181201",
+			"squadId": -1,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": true,
@@ -41,8 +41,16 @@
 				"endDate": "19181201",
 				"weightedRoles": [
 					{
-						"role": "ROLE_STRAT_BOMB",
-						"weight": 100
+						"role": "ROLE_RECON",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_ARTILLERY_SPOT",
+						"weight": 10
 					}
 				]
 			}
