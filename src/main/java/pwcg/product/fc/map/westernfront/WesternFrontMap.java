@@ -73,17 +73,25 @@ public class WesternFrontMap extends PWCGMap
     {
         this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19170601"), DateUtils.getDateYYYYMMDD("19181111"));
         this.frontDatesForMap.addFrontDate("19170601");
-        this.frontDatesForMap.addFrontDate("19180329");
-        this.frontDatesForMap.addFrontDate("19180404");
-        this.frontDatesForMap.addFrontDate("19180429");
-        this.frontDatesForMap.addFrontDate("19180531");
-        this.frontDatesForMap.addFrontDate("19180604");
-        this.frontDatesForMap.addFrontDate("19180612");
-        this.frontDatesForMap.addFrontDate("19180918");
-        this.frontDatesForMap.addFrontDate("19180925");
-        this.frontDatesForMap.addFrontDate("19181004");
-        this.frontDatesForMap.addFrontDate("19181015");
-        this.frontDatesForMap.addFrontDate("19181101");
+        this.frontDatesForMap.addFrontDate("19170607"); // Messines start
+        this.frontDatesForMap.addFrontDate("19170621"); // Messines end
+        this.frontDatesForMap.addFrontDate("19170720"); // Paschendale prep
+        this.frontDatesForMap.addFrontDate("19171020"); // La Malmaison prep
+        this.frontDatesForMap.addFrontDate("19171030"); // La Malmaison end
+        this.frontDatesForMap.addFrontDate("19171115"); // Paschendale end and Cambrai prep
+        this.frontDatesForMap.addFrontDate("19171215"); // Cambrai end
+        this.frontDatesForMap.addFrontDate("19180310"); // Kaiserschlacht phase 1 prep
+        this.frontDatesForMap.addFrontDate("19180329"); // Kaiserschlacht phase 1 mid
+        this.frontDatesForMap.addFrontDate("19180404"); // Kaiserschlacht phase 1 mid
+        this.frontDatesForMap.addFrontDate("19180429"); // Kaiserschlacht phase 1 mid
+        this.frontDatesForMap.addFrontDate("19180531"); // Kaiserschlacht phase 1 end
+        this.frontDatesForMap.addFrontDate("19180604"); // Kaiserschlacht phase 2 start
+        this.frontDatesForMap.addFrontDate("19180612"); // Kaiserschlacht phase 2 end
+        this.frontDatesForMap.addFrontDate("19180918"); // 100 days start
+        this.frontDatesForMap.addFrontDate("19180925"); // 100 days mid
+        this.frontDatesForMap.addFrontDate("19181004"); // 100 days mid
+        this.frontDatesForMap.addFrontDate("19181015"); // 100 days mid
+        this.frontDatesForMap.addFrontDate("19181101"); // 100 days end
     }
 
     @Override

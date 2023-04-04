@@ -1,63 +1,74 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 302084,
-  "name": "No 84 Squadron RFC",
-  "fileName": "No 84 Squadron RFC.json",
-  "skill": 25,
-  "planeAssignments": [
-    {
-      "archType": "se5",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170601": "St.Omer"
-  },
-  "skins": [
-    {
-      "skinName": "SE5a_RFC84_Default",
-      "planeType": "se5a",
-      "startDate": "19170601",
-      "endDate": "19181201",
-      "squadId": 302084,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    }  
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30201,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19180406",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 100
-          }
-        ]
-      },
-	  {
-        "startDate": "19180407",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 90
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 10
-          }
-	    ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "BRITAIN",
+	"squadronId": 302084,
+	"name": "No 84 Squadron RFC",
+	"fileName": "No 84 Squadron RFC.json",
+	"skill": 25,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "se5",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Braizieux",
+		"19170621": "Sombrin",
+		"19171115": "Savy Berlette",
+		"19181004": "La Tergette",
+		"19181015": "Fromelles"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "SE5a_RFC84_Default",
+			"planeType": "se5a",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 302084,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

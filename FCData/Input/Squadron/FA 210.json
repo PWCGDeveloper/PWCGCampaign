@@ -4,6 +4,9 @@
 	"name": "FA 210",
 	"fileName": "FA 210.json",
 	"skill": 25,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "dfw",
@@ -12,33 +15,12 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Iwuy"
+		"19170601": "Jametz"
 	},
-	"skins": [
-		{
-			"skinName": "dfwc5_default",
-			"planeType": "dfwc5",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": -1,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 40101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -57,7 +39,27 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "dfwc5_default",
+			"planeType": "dfwc5",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "BLACK"
+		}
+	]
 }

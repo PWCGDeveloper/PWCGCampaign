@@ -1,148 +1,184 @@
 {
-  "battles": [
-    {
-      "name": "Cambrai",
-      "neCorner": {
-        "xPos": 90000.0,
-        "yPos": 0.0,
-        "zPos": 100000.0
-      },
-      "swCorner": {
-        "xPos": 50000.0,
-        "yPos": 0.0,
-        "zPos": 50000.0
-      },
-      "aggressorcountry": "BRITAIN",
-      "defendercountry": "GERMANY",
-      "startDate": "19171120",
-      "stopDate": "19171208",
-      "map": "ARRAS_MAP"
-    },
-    {
-      "name": "Kaiserschlacht Phase 1",
-      "neCorner": {
-        "xPos": 220000.0,
-        "yPos": 0.0,
-        "zPos": 112000.0
-      },
-      "swCorner": {
-        "xPos": 110000.0,
-        "yPos": 0.0,
-        "zPos": 20000.0
-      },
-      "aggressorcountry": "GERMANY",
-      "defendercountry": "BRITAIN",
-      "startDate": "19180321",
-      "stopDate": "19180604",
-      "map": "ARRAS_MAP"
-    },
-    {
-      "name": "Kaiserschlacht Phase 2",
-      "neCorner": {
-        "xPos": 170000.0,
-        "yPos": 0.0,
-        "zPos": 90000.0
-      },
-      "swCorner": {
-        "xPos": 110000.0,
-        "yPos": 0.0,
-        "zPos": 20000.0
-      },
-      "aggressorcountry": "GERMANY",
-      "defendercountry": "BRITAIN",
-      "startDate": "19180429",
-      "stopDate": "19180717",
-      "map": "ARRAS_MAP"
-    },
-    {
-      "name": "100 Days Offensive Phase 1",
-      "neCorner": {
-        "xPos": 220000.0,
-        "yPos": 0.0,
-        "zPos": 112000.0
-      },
-      "swCorner": {
-        "xPos": 110000.0,
-        "yPos": 0.0,
-        "zPos": 20000.0
-      },
-      "aggressorcountry": "BRITAIN",
-      "defendercountry": "GERMANY",
-      "startDate": "19180718",
-      "stopDate": "19181005",
-      "map": "ARRAS_MAP"
-    },
-    {
-      "name": "100 Days Offensive Phase 2",
-      "neCorner": {
-        "xPos": 280000.0,
-        "yPos": 0.0,
-        "zPos": 130000.0
-      },
-      "swCorner": {
-        "xPos": 110000.0,
-        "yPos": 0.0,
-        "zPos": 20000.0
-      },
-      "aggressorcountry": "BRITAIN",
-      "defendercountry": "GERMANY",
-      "startDate": "19181005",
-      "stopDate": "19181015",
-      "map": "ARRAS_MAP"
-    },
-    {
-      "name": "Marne",
-      "neCorner": {
-        "xPos": 150000.0,
-        "yPos": 0.0,
-        "zPos": 112000.0
-      },
-      "swCorner": {
-        "xPos": 120000.0,
-        "yPos": 0.0,
-        "zPos": 12000.0
-      },
-      "aggressorcountry": "FRANCE",
-      "defendercountry": "GERMANY",
-      "startDate": "19180715",
-      "stopDate": "19180806",
-      "map": "ARRAS_MAP"
-    },
-    {
-      "name": "St Mihiel",
-      "neCorner": {
-        "xPos": 80000.0,
-        "yPos": 0.0,
-        "zPos": 350000.0
-      },
-      "swCorner": {
-        "xPos": 18000.0,
-        "yPos": 0.0,
-        "zPos": 250000.0
-      },
-      "aggressorcountry": "USA",
-      "defendercountry": "GERMANY",
-      "startDate": "19180912",
-      "stopDate": "19180919",
-      "map": "ARRAS_MAP"
-    },
-    {
-      "name": "Argonne Forest",
-      "neCorner": {
-        "xPos": 80000.0,
-        "yPos": 0.0,
-        "zPos": 350000.0
-      },
-      "swCorner": {
-        "xPos": 18000.0,
-        "yPos": 0.0,
-        "zPos": 250000.0
-      },
-      "aggressorcountry": "USA",
-      "defendercountry": "GERMANY",
-      "startDate": "19180926",
-      "stopDate": "19181111",
-      "map": "ARRAS_MAP"
-    }
-  ]
+	"battles": [
+        {
+            "name": "Messines",
+            "neCorner": {
+                "xPos": 303000,
+                "yPos": 0.0,
+                "zPos": 115000
+            },
+            "swCorner": {
+                "xPos": 273000,
+                "yPos": 0.0,
+                "zPos": 81000
+            },
+            "aggressorcountry": "BRITAIN",
+            "defendercountry": "GERMANY",
+            "startDate": "19170607",
+            "stopDate": "19170614",
+            "map": "WESTERN_FRONT_MAP"
+        },
+        {
+            "name": "Passchendaele",
+            "neCorner": {
+                "xPos": 303000,
+                "yPos": 0.0,
+                "zPos": 115000
+            },
+            "swCorner": {
+                "xPos": 273000,
+                "yPos": 0.0,
+                "zPos": 81000
+            },
+            "aggressorcountry": "BRITAIN",
+            "defendercountry": "GERMANY",
+            "startDate": "19170731",
+            "stopDate": "19171110",
+            "map": "WESTERN_FRONT_MAP"
+        },
+        {
+            "name": "La Malmaison",
+            "neCorner": {
+                "xPos": 200000.0,
+                "yPos": 0.0,
+                "zPos": 100000.0
+            },
+            "swCorner": {
+                "xPos": 183000.0,
+                "yPos": 0.0,
+                "zPos": 72000.0
+            },
+            "aggressorcountry": "FRANCE",
+            "defendercountry": "GERMANY",
+            "startDate": "19171023",
+            "stopDate": "19171027",
+            "map": "WESTERN_FRONT_MAP"
+        },
+        {
+            "name": "Cambrai",
+            "neCorner": {
+                "xPos": 225000.0,
+                "yPos": 0.0,
+                "zPos": 105000.0
+            },
+            "swCorner": {
+                "xPos": 210000.0,
+                "yPos": 0.0,
+                "zPos": 71000.0
+            },
+            "aggressorcountry": "BRITAIN",
+            "defendercountry": "GERMANY",
+            "startDate": "19171120",
+            "stopDate": "19171208",
+            "map": "WESTERN_FRONT_MAP"
+        },
+		{
+			"name": "Kaiserschlacht Phase 1",
+			"neCorner": {
+				"xPos": 230000.0,
+				"yPos": 0.0,
+				"zPos": 112000.0
+			},
+			"swCorner": {
+				"xPos": 203000.0,
+				"yPos": 0.0,
+				"zPos": 72000.0
+			},
+			"aggressorcountry": "GERMANY",
+			"defendercountry": "BRITAIN",
+			"startDate": "19180321",
+			"stopDate": "19180604",
+			"map": "WESTERN_FRONT_MAP"
+		},
+		{
+			"name": "Kaiserschlacht Phase 2",
+			"neCorner": {
+				"xPos": 190000.0,
+				"yPos": 0.0,
+				"zPos": 90000.0
+			},
+            "swCorner": {
+                "xPos": 160000.0,
+                "yPos": 0.0,
+                "zPos": 72000.0
+            },
+			"aggressorcountry": "GERMANY",
+			"defendercountry": "BRITAIN",
+			"startDate": "19180429",
+			"stopDate": "19180717",
+			"map": "WESTERN_FRONT_MAP"
+		},
+		{
+			"name": "100 Days Offensive Phase 1",
+            "neCorner": {
+                "xPos": 230000.0,
+                "yPos": 0.0,
+                "zPos": 110000.0
+            },
+			"swCorner": {
+				"xPos": 175000.0,
+				"yPos": 0.0,
+				"zPos": 65000.0
+			},
+			"aggressorcountry": "BRITAIN",
+			"defendercountry": "GERMANY",
+			"startDate": "19180718",
+			"stopDate": "19181005",
+			"map": "WESTERN_FRONT_MAP"
+		},
+		{
+			"name": "100 Days Offensive Phase 2",
+            "neCorner": {
+                "xPos": 230000.0,
+                "yPos": 0.0,
+                "zPos": 130000.0
+            },
+            "swCorner": {
+                "xPos": 175000.0,
+                "yPos": 0.0,
+                "zPos": 85000.0
+            },
+			"aggressorcountry": "BRITAIN",
+			"defendercountry": "GERMANY",
+			"startDate": "19181005",
+			"stopDate": "19181015",
+			"map": "WESTERN_FRONT_MAP"
+		},
+		{
+			"name": "St Mihiel",
+			"neCorner": {
+				"xPos": 103000.0,
+				"yPos": 0.0,
+				"zPos": 312000.0
+			},
+			"swCorner": {
+				"xPos": 73000.0,
+				"yPos": 0.0,
+				"zPos": 281000.0
+			},
+			"aggressorcountry": "USA",
+			"defendercountry": "GERMANY",
+			"startDate": "19180912",
+			"stopDate": "19180919",
+			"map": "WESTERN_FRONT_MAP"
+		},
+		{
+			"name": "Argonne Forest",
+			"neCorner": {
+				"xPos": 143000.0,
+				"yPos": 0.0,
+				"zPos": 312000.0
+			},
+			"swCorner": {
+				"xPos": 93000.0,
+				"yPos": 0.0,
+				"zPos": 252000.0
+			},
+			"aggressorcountry": "USA",
+			"defendercountry": "GERMANY",
+			"startDate": "19180926",
+			"stopDate": "19181111",
+			"map": "WESTERN_FRONT_MAP"
+		}
+	]
 }

@@ -1,63 +1,73 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 302019,
-  "name": "No 19 Squadron RFC",
-  "fileName": "No 19 Squadron RFC.json",
-  "skill": 45,
-  "planeAssignments": [
-    {
-      "archType": "sopdolphin",
-      "squadronIntroduction": "19170801",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170801": "St.Omer"
-  },
-  "skins": [
-     {
-      "skinName": "Dolphin_RFC19_Default",
-      "planeType": "sopdolphin",
-      "startDate": "19170801",
-      "endDate": "19181201",
-      "squadId": 302019,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-   ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30201,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19180406",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 100
-          }
-        ]
-      },
-	  {
-        "startDate": "19180407",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 90
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 10
-          }
-	    ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "BRITAIN",
+	"squadronId": 302019,
+	"name": "No 19 Squadron RFC",
+	"fileName": "No 19 Squadron RFC.json",
+	"skill": 45,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "sopdolphin",
+			"squadronIntroduction": "19170801",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170801": "St.Omer",
+		"19181004": "Mont St Eloi",
+		"19181015": "Velu",
+		"19181101": "Houplin"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "Dolphin_RFC19_Default",
+			"planeType": "sopdolphin",
+			"archTypes": [],
+			"startDate": "19170801",
+			"endDate": "19181201",
+			"squadId": 302019,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

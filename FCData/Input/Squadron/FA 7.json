@@ -4,6 +4,9 @@
 	"name": "FA 7",
 	"fileName": "FA 7.json",
 	"skill": 25,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "dfw",
@@ -12,7 +15,39 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Iwuy"
+		"19170601": "Moislains",
+		"19170607": "Coutiches",
+		"19180429": "La Petrie",
+		"19181101": "Mounchin"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_ARTILLERY_SPOT",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
@@ -57,35 +92,5 @@
 			"useTacticalCodes": false,
 			"tacticalCodeColor": "BLACK"
 		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 40101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19170601",
-				"endDate": "19181201",
-				"weightedRoles": [
-					{
-						"role": "ROLE_RECON",
-						"weight": 40
-					},
-					{
-						"role": "ROLE_BOMB",
-						"weight": 30
-					},
-					{
-						"role": "ROLE_ARTILLERY_SPOT",
-						"weight": 10
-					}
-				]
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	]
 }

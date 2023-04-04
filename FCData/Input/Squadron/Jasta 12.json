@@ -4,6 +4,9 @@
 	"name": "Jasta 12",
 	"fileName": "Jasta 12.json",
 	"skill": 80,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "albatrosd",
@@ -22,18 +25,13 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Lomme"
+		"19170601": "Sivry",
+		"19171020": "Mars La Tour"
 	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 40101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -44,7 +42,12 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": []
 }

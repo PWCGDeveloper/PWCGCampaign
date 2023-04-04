@@ -4,6 +4,9 @@
 	"name": "Jasta 50",
 	"fileName": "Jasta 50.json",
 	"skill": 45,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "albatrosd",
@@ -17,19 +20,13 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Lomme"
+		"19170601": "Lomme",
+		"19180310": "Bellevue Ferme"
 	},
-	"skins": [
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 40101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -40,7 +37,12 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": []
 }

@@ -1,39 +1,45 @@
 {
-  "country": "GERMANY",
-  "squadronId": 401034,
-  "name": "Jasta 34b",
-  "fileName": "Jasta 34b.json",
-  "skill": 60,
-  "planeAssignments": [
-    {
-      "archType": "pfalz",
-      "squadronIntroduction": "19180101",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19180101": "Lomme"
-  },
-  "skins": [
-],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 40101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19180101",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 100
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "GERMANY",
+	"squadronId": 401034,
+	"name": "Jasta 34b",
+	"fileName": "Jasta 34b.json",
+	"skill": 60,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "pfalz",
+			"squadronIntroduction": "19180101",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19180101": "Lomme",
+		"19180310": "La Brayelle",
+		"19181004": "Epinoy",
+		"19181101": "Awoingt"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19180101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": []
 }

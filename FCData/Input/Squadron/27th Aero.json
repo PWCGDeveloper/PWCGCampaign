@@ -1,44 +1,45 @@
 {
-  "country": "USA",
-  "squadronId": 303027,
-  "name": "27th Aero",
-  "fileName": "27th Aero.json",
-  "skill": 65,
-  "planeAssignments": [
-    {
-      "archType": "nieuport28",
-      "squadronIntroduction": "19180301",
-      "squadronWithdrawal": "19180801"
-    },
-    {
-      "archType": "spad",
-      "squadronIntroduction": "19180715",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19180301": "Brabant en Argonne"
-  },
-  "skins": [
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30301,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19180301",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 100
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "USA",
+	"squadronId": 303027,
+	"name": "27th Aero",
+	"fileName": "27th Aero.json",
+	"skill": 65,
+	"planeAssignments": [
+		{
+			"archType": "nieuport28",
+			"squadronIntroduction": "19180301",
+			"squadronWithdrawal": "19180801"
+		},
+		{
+			"archType": "spad",
+			"squadronIntroduction": "19180715",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19180301": "Lemmes"
+	},
+	"skins": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 30301,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19180301",
+				"endDate": "19181201",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		
+	}
 }

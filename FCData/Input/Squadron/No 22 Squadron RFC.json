@@ -1,67 +1,82 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 302022,
-  "name": "No 22 Squadron RFC",
-  "fileName": "No 22 Squadron RFC.json",
-  "skill": 60,
-  "planeAssignments": [
-    {
-      "archType": "bristolf2b",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170601": "St.Omer"
-  },
-  "skins": [
-    {
-      "skinName": "F2b_RFC22_Default",
-      "planeType": "bristolf2bf2",
-      "startDate": "19170601",
-      "endDate": "19181201",
-      "squadId": 302022,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "F2b_F3_RFC22_Default",
-      "planeType": "bristolf2bf3",
-      "startDate": "19170601",
-      "endDate": "19181201",
-      "squadId": 302022,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    }  
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30201,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 40
-          },
-          {
-            "role": "ROLE_BOMB",
-            "weight": 30
-          },
-          {
-            "role": "ROLE_ARTILLERY_SPOT",
-            "weight": 10
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "BRITAIN",
+	"squadronId": 302022,
+	"name": "No 22 Squadron RFC",
+	"fileName": "No 22 Squadron RFC.json",
+	"skill": 60,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "bristolf2b",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Bryas",
+		"19181004": "Savy Berlette",
+		"19181015": "La Tergette",
+		"19181101": "Velu"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_ARTILLERY_SPOT",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "F2b_RFC22_Default",
+			"planeType": "bristolf2bf2",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 302022,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		},
+		{
+			"skinName": "F2b_F3_RFC22_Default",
+			"planeType": "bristolf2bf3",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 302022,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

@@ -1,67 +1,78 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 302046,
-  "name": "No 46 Squadron RFC",
-  "fileName": "No 46 Squadron RFC.json",
-  "skill": 59,
-  "planeAssignments": [
-    {
-      "archType": "sopcamel",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170601": "St.Omer"
-  },
-  "skins": [
-    {
-      "skinName": "SC_RFC46_Default",
-      "planeType": "sopcamel",
-      "startDate": "19170601",
-      "endDate": "19181201",
-      "squadId": 302046,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30201,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19180406",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 80
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 20
-          }
-        ]
-      },
-      {
-        "startDate": "19180407",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 60
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 40
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "BRITAIN",
+	"squadronId": 302046,
+	"name": "No 46 Squadron RFC",
+	"fileName": "No 46 Squadron RFC.json",
+	"skill": 59,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "sopcamel",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Mont St Eloi",
+		"19170621": "Braizieux",
+		"19171020": "Lealvillers",
+		"19171115": "Mont St Eloi",
+		"19181004": "Bullecourt"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 80
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 20
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 60
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 40
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "SC_RFC46_Default",
+			"planeType": "sopcamel",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 302046,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

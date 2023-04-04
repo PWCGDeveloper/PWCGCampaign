@@ -1,67 +1,75 @@
 {
-  "country": "BELGIUM",
-  "squadronId": 304011,
-  "name": "11eme Esc de Chasse",
-  "fileName": "11eme Esc de Chasse.json",
-  "skill": 40,
-  "planeAssignments": [
-    {
-      "archType": "sopcamel",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170601": "St.Omer"
-  },
-  "skins": [
-    {
-      "skinName": "SC_BMA11_B5747_Sc11",
-      "planeType": "sopcamel",
-      "startDate": "19170601",
-      "endDate": "19181201",
-      "squadId": 304011,
-      "country": "BELGIUM",
-      "category": "Squadron",
-      "definedInGame": false
-    }	
-],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30401,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19180406",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 90
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 10
-          }
-        ]
-      },
-      {
-        "startDate": "19180407",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 80
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 20
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "BELGIUM",
+	"squadronId": 304011,
+	"name": "11eme Esc de Chasse",
+	"fileName": "11eme Esc de Chasse.json",
+	"skill": 40,
+	"serviceId": 30401,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "sopcamel",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "StMarie Cappel",
+		"19181101": "St.Marguerite"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 80
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 20
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "SC_BMA11_B5747_Sc11",
+			"planeType": "sopcamel",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 304011,
+			"country": "BELGIUM",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

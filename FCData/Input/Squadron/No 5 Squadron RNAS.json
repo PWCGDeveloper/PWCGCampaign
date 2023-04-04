@@ -1,38 +1,43 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 302205,
-  "name": "No 5 Squadron RNAS",
-  "fileName": "No 5 Squadron RNAS.json",
-  "skill": 25,
-  "planeAssignments": [
-    {
-      "archType": "aircodh4",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170601": "St.Omer"
-  },
-  "skins": [],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30202,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_BOMB",
-            "weight": 100
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "BRITAIN",
+	"squadronId": 302205,
+	"name": "No 5 Squadron RNAS",
+	"fileName": "No 5 Squadron RNAS.json",
+	"skill": 25,
+	"serviceId": 30202,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "aircodh4",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Reclinghem",
+		"19181004": "La Gorgue"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_BOMB",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": []
 }

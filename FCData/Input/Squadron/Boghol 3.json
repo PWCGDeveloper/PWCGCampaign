@@ -4,6 +4,9 @@
 	"name": "Boghol 3",
 	"fileName": "Boghol 3.json",
 	"skill": 80,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "gotha",
@@ -12,7 +15,28 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Lomme"
+		"19170601": "Mounchin"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRAT_BOMB",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
@@ -29,27 +53,5 @@
 			"useTacticalCodes": false,
 			"tacticalCodeColor": "BLACK"
 		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 40101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19170601",
-				"endDate": "19181201",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRAT_BOMB",
-						"weight": 100
-					}
-				]
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	]
 }

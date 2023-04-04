@@ -1,67 +1,80 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 302104,
-  "name": "No 4 Squadron AFC",
-  "fileName": "No 4 Squadron AFC.json",
-  "skill": 65,
-  "planeAssignments": [
-    {
-      "archType": "sopcamel",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170601": "St.Omer"
-  },
-  "skins": [
-    {
-      "skinName": "SC_AFC4_ default_PreMay1918",
-      "planeType": "sopcamel",
-      "startDate": "19170601",
-      "endDate": "19180501",
-      "squadId": 302104,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30201,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19180406",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 80
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 20
-          }
-        ]
-      },
-      {
-        "startDate": "19180407",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 60
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 40
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "BRITAIN",
+	"squadronId": 302104,
+	"name": "No 4 Squadron AFC",
+	"fileName": "No 4 Squadron AFC.json",
+	"skill": 65,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "sopcamel",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Lealvillers",
+		"19170621": "Mont St Eloi",
+		"19171215": "Lealvillers",
+		"19180329": "Marieux",
+		"19181004": "Lechelle",
+		"19181015": "Hermies, Cambrai",
+		"19181101": "Guisnain"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 80
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 20
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 60
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 40
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "SC_AFC4_ default_PreMay1918",
+			"planeType": "sopcamel",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19180501",
+			"squadId": 302104,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

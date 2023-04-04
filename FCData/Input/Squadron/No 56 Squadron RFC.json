@@ -1,83 +1,101 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 302056,
-  "name": "No 56 Squadron RFC",
-  "fileName": "No 56 Squadron RFC.json",
-  "skill": 100,
-  "planeAssignments": [
-    {
-      "archType": "se5",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170601": "St.Omer"
-  },
-  "skins": [
-    {
-      "skinName": "SE5a_RFC56_Default_26AUG17",
-      "planeType": "se5a",
-      "startDate": "19170601",
-      "endDate": "19170924",
-      "squadId": 302056,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "SE5a_RFC56_Default_25SEP17",
-      "planeType": "se5a",
-      "startDate": "19170925",
-      "endDate": "19180321",
-      "squadId": 302056,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    },	
-    {
-      "skinName": "SE5a_RFC56_Default_22MAR18",
-      "planeType": "se5a",
-      "startDate": "19180322",
-      "endDate": "19181201",
-      "squadId": 302056,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    }	
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30201,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19180406",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 100
-          }
-        ]
-      },
-	  {
-        "startDate": "19180407",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 90
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 10
-          }
-	    ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "BRITAIN",
+	"squadronId": 302056,
+	"name": "No 56 Squadron RFC",
+	"fileName": "No 56 Squadron RFC.json",
+	"skill": 100,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "se5",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Sombrin",
+		"19170621": "Savy Berlette",
+		"19181004": "La Tergette",
+		"19181015": "Fromelles"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "SE5a_RFC56_Default_26AUG17",
+			"planeType": "se5a",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19170924",
+			"squadId": 302056,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		},
+		{
+			"skinName": "SE5a_RFC56_Default_25SEP17",
+			"planeType": "se5a",
+			"archTypes": [],
+			"startDate": "19170925",
+			"endDate": "19180321",
+			"squadId": 302056,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		},
+		{
+			"skinName": "SE5a_RFC56_Default_22MAR18",
+			"planeType": "se5a",
+			"archTypes": [],
+			"startDate": "19180322",
+			"endDate": "19181201",
+			"squadId": 302056,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

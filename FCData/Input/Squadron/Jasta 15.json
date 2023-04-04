@@ -4,6 +4,9 @@
 	"name": "Jasta 15",
 	"fileName": "Jasta 15.json",
 	"skill": 80,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "albatrosd",
@@ -22,18 +25,19 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Lomme"
+		"19170601": "Assevilers",
+		"19170607": "Lechelle",
+		"19171115": "St.Marguerite",
+		"19180429": "Bailleul",
+		"19180531": "Bailleul",
+		"19180918": "St.Marguerite",
+		"19181004": "Halluin",
+		"19181101": "Marcke"
 	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 40101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -44,7 +48,12 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": []
 }

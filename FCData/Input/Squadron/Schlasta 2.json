@@ -1,38 +1,48 @@
 {
-  "country": "GERMANY",
-  "squadronId": 401102,
-  "name": "Schlasta 2",
-  "fileName": "Schlasta 2.json",
-  "skill": 25,
-  "planeAssignments": [
-    {
-      "archType": "halberstadtcl",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170801": "Lomme"
-  },
-  "skins": [],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 40101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 100
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "GERMANY",
+	"squadronId": 401102,
+	"name": "Schlasta 2",
+	"fileName": "Schlasta 2.json",
+	"skill": 25,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "halberstadtcl",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170801": "Coutiches",
+		"19171020": "Beaucamp",
+		"19180310": "Moislains NE",
+		"19180531": "Velu",
+		"19180925": "Moislains NE",
+		"19181004": "Gouy",
+		"19181101": "Beauvois en Cambrai"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": []
 }

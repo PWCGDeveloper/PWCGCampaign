@@ -4,6 +4,9 @@
 	"name": "No 9 Squadron RNAS",
 	"fileName": "No 9 Squadron RNAS.json",
 	"skill": 70,
+	"serviceId": 30202,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "soptriplane",
@@ -17,29 +20,15 @@
 		}
 	],
 	"airfields": {
-		"19170601": "St.Omer"
+		"19170601": "Bailleul",
+		"19180429": "StMarie Cappel",
+		"19180531": "StMarie Cappel",
+		"19181015": "Lomme"
 	},
-	"skins": [
-		{
-			"skinName": "SC_RAF209_Default",
-			"planeType": "sopcamel",
-			"startDate": "19180401",
-			"endDate": "19181201",
-			"squadId": 302209,
-			"country": "BRITAIN",
-			"category": "Squadron",
-			"definedInGame": false
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 30202,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19180406",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -49,7 +38,6 @@
 			},
 			{
 				"startDate": "19170901",
-				"endDate": "19180406",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -63,7 +51,6 @@
 			},
 			{
 				"startDate": "19180407",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -78,7 +65,27 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "SC_RAF209_Default",
+			"planeType": "sopcamel",
+			"archTypes": [],
+			"startDate": "19180401",
+			"endDate": "19181201",
+			"squadId": 302209,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

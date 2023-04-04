@@ -4,6 +4,9 @@
 	"name": "Esc 19",
 	"fileName": "Esc 19.json",
 	"skill": 30,
+	"serviceId": 30101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "breguet14",
@@ -12,33 +15,13 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Brabant en Argonne"
+		"19170601": "Rembercourt",
+		"19171020": "Dommartin les Toul"
 	},
-	"skins": [
-		{
-			"skinName": "breguet14_skin_04",
-			"planeType": "breguet14",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 301019,
-			"country": "France",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 30101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -57,7 +40,27 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "breguet14_skin_04",
+			"planeType": "breguet14",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 301019,
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "BLACK"
+		}
+	]
 }

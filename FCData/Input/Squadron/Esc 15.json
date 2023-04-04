@@ -1,49 +1,57 @@
 {
-  "country": "FRANCE",
-  "squadronId": 301015,
-  "name": "Esc 15",
-  "fileName": "Esc 15.json",
-  "skill": 60,
-  "planeAssignments": [
-    {
-      "archType": "spad",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170601": "Brabant en Argonne"
-  },
-  "skins": [
-    {
-      "skinName": "PC_Spad13_SPA3_Generic1",
-      "planeType": "spad13",
-      "startDate": "19170601",
-      "endDate": "19181201",
-      "squadId": 301015,
-      "country": "FRANCE",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 100
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "FRANCE",
+	"squadronId": 301015,
+	"name": "Esc 15",
+	"fileName": "Esc 15.json",
+	"skill": 60,
+	"serviceId": 30101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "spad",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Lemmes"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "PC_Spad13_SPA3_Generic1",
+			"planeType": "spad13",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 301015,
+			"country": "FRANCE",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

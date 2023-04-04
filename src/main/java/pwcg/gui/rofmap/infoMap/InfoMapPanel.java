@@ -439,7 +439,6 @@ public class InfoMapPanel extends MapPanelBase
         for (Squadron squadron : allSquadrons)
         {
             PwcgRoleCategory squadronPrimaryRole = squadron.determineSquadronPrimaryRoleCategory(parent.getMapDate());
-
             if ((whatToDisplay[DISPLAY_FIGHTER] == true && squadronPrimaryRole == PwcgRoleCategory.FIGHTER)    || 
                 (whatToDisplay[DISPLAY_BOMBER] == true && squadronPrimaryRole == PwcgRoleCategory.BOMBER)      || 
                 (whatToDisplay[DISPLAY_BOMBER] == true && squadronPrimaryRole == PwcgRoleCategory.TRANSPORT)   || 

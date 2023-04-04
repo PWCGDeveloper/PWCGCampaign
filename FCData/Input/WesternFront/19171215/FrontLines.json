@@ -1,0 +1,6165 @@
+{
+  "locationSetName": "FrontLines",
+  "locations": [
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 311555.0,
+        "yPos": 0.0,
+        "zPos": 95390.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 308048.0,
+        "yPos": 0.0,
+        "zPos": 97453.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 306810.0,
+        "yPos": 0.0,
+        "zPos": 99928.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 305469.0,
+        "yPos": 0.0,
+        "zPos": 102300.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 302064.0,
+        "yPos": 0.0,
+        "zPos": 100959.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 299485.0,
+        "yPos": 0.0,
+        "zPos": 99515.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 296906.0,
+        "yPos": 0.0,
+        "zPos": 98175.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 292986.0,
+        "yPos": 0.0,
+        "zPos": 96525.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 291129.0,
+        "yPos": 0.0,
+        "zPos": 95390.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 289169.0,
+        "yPos": 0.0,
+        "zPos": 94359.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 286796.0,
+        "yPos": 0.0,
+        "zPos": 93121.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 284526.0,
+        "yPos": 0.0,
+        "zPos": 91781.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 282463.0,
+        "yPos": 0.0,
+        "zPos": 90853.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 280503.0,
+        "yPos": 0.0,
+        "zPos": 89925.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 277924.0,
+        "yPos": 0.0,
+        "zPos": 89100.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 275242.0,
+        "yPos": 0.0,
+        "zPos": 88275.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 273178.0,
+        "yPos": 0.0,
+        "zPos": 88275.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 271012.0,
+        "yPos": 0.0,
+        "zPos": 88275.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 268433.0,
+        "yPos": 0.0,
+        "zPos": 89409.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 265750.0,
+        "yPos": 0.0,
+        "zPos": 90440.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 263481.0,
+        "yPos": 0.0,
+        "zPos": 90440.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 261211.0,
+        "yPos": 0.0,
+        "zPos": 90337.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 258219.0,
+        "yPos": 0.0,
+        "zPos": 88687.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 254918.0,
+        "yPos": 0.0,
+        "zPos": 89512.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 251617.0,
+        "yPos": 0.0,
+        "zPos": 90234.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 249038.0,
+        "yPos": 0.0,
+        "zPos": 91781.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 246356.0,
+        "yPos": 0.0,
+        "zPos": 93328.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 243983.0,
+        "yPos": 0.0,
+        "zPos": 93843.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 241610.0,
+        "yPos": 0.0,
+        "zPos": 94256.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 237793.0,
+        "yPos": 0.0,
+        "zPos": 92400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 235936.0,
+        "yPos": 0.0,
+        "zPos": 90853.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 233976.0,
+        "yPos": 0.0,
+        "zPos": 89203.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 231809.0,
+        "yPos": 0.0,
+        "zPos": 87862.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 229643.0,
+        "yPos": 0.0,
+        "zPos": 86418.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 227477.0,
+        "yPos": 0.0,
+        "zPos": 84768.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 225310.0,
+        "yPos": 0.0,
+        "zPos": 83118.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 222628.0,
+        "yPos": 0.0,
+        "zPos": 80128.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 220049.0,
+        "yPos": 0.0,
+        "zPos": 80128.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 217470.0,
+        "yPos": 0.0,
+        "zPos": 80025.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 214375.0,
+        "yPos": 0.0,
+        "zPos": 80437.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 211280.0,
+        "yPos": 0.0,
+        "zPos": 80850.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 208804.0,
+        "yPos": 0.0,
+        "zPos": 81365.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 206225.0,
+        "yPos": 0.0,
+        "zPos": 81984.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 203749.0,
+        "yPos": 0.0,
+        "zPos": 81881.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 201170.0,
+        "yPos": 0.0,
+        "zPos": 81675.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 198178.0,
+        "yPos": 0.0,
+        "zPos": 81262.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 195186.0,
+        "yPos": 0.0,
+        "zPos": 80850.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 193020.0,
+        "yPos": 0.0,
+        "zPos": 80128.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 190853.0,
+        "yPos": 0.0,
+        "zPos": 79303.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 188274.0,
+        "yPos": 0.0,
+        "zPos": 79200.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 185592.0,
+        "yPos": 0.0,
+        "zPos": 79200.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 180743.0,
+        "yPos": 0.0,
+        "zPos": 78993.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 176720.0,
+        "yPos": 0.0,
+        "zPos": 80231.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 174141.0,
+        "yPos": 0.0,
+        "zPos": 81571.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 171458.0,
+        "yPos": 0.0,
+        "zPos": 82912.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 169601.0,
+        "yPos": 0.0,
+        "zPos": 84871.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 167641.0,
+        "yPos": 0.0,
+        "zPos": 86831.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 165681.0,
+        "yPos": 0.0,
+        "zPos": 88790.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 163721.0,
+        "yPos": 0.0,
+        "zPos": 90750.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 161967.0,
+        "yPos": 0.0,
+        "zPos": 94050.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 160110.0,
+        "yPos": 0.0,
+        "zPos": 97350.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 159285.0,
+        "yPos": 0.0,
+        "zPos": 100134.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 158357.0,
+        "yPos": 0.0,
+        "zPos": 102918.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 158563.0,
+        "yPos": 0.0,
+        "zPos": 105806.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 158769.0,
+        "yPos": 0.0,
+        "zPos": 108693.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 159594.0,
+        "yPos": 0.0,
+        "zPos": 111684.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 160317.0,
+        "yPos": 0.0,
+        "zPos": 114675.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 160523.0,
+        "yPos": 0.0,
+        "zPos": 117459.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 160729.0,
+        "yPos": 0.0,
+        "zPos": 120243.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 159698.0,
+        "yPos": 0.0,
+        "zPos": 124265.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 156809.0,
+        "yPos": 0.0,
+        "zPos": 127256.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 153817.0,
+        "yPos": 0.0,
+        "zPos": 129525.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 150929.0,
+        "yPos": 0.0,
+        "zPos": 132309.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 150207.0,
+        "yPos": 0.0,
+        "zPos": 134578.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 149381.0,
+        "yPos": 0.0,
+        "zPos": 136950.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 148453.0,
+        "yPos": 0.0,
+        "zPos": 139425.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 147524.0,
+        "yPos": 0.0,
+        "zPos": 141900.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 146802.0,
+        "yPos": 0.0,
+        "zPos": 146850.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 144326.0,
+        "yPos": 0.0,
+        "zPos": 149840.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 142779.0,
+        "yPos": 0.0,
+        "zPos": 153759.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 140922.0,
+        "yPos": 0.0,
+        "zPos": 157368.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 140715.0,
+        "yPos": 0.0,
+        "zPos": 162215.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 141128.0,
+        "yPos": 0.0,
+        "zPos": 164587.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 141438.0,
+        "yPos": 0.0,
+        "zPos": 166959.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 141025.0,
+        "yPos": 0.0,
+        "zPos": 170878.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 140096.0,
+        "yPos": 0.0,
+        "zPos": 174487.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 138446.0,
+        "yPos": 0.0,
+        "zPos": 175931.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 136795.0,
+        "yPos": 0.0,
+        "zPos": 177375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 135557.0,
+        "yPos": 0.0,
+        "zPos": 180056.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 134319.0,
+        "yPos": 0.0,
+        "zPos": 182737.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 132359.0,
+        "yPos": 0.0,
+        "zPos": 185625.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 129367.0,
+        "yPos": 0.0,
+        "zPos": 188100.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 127407.0,
+        "yPos": 0.0,
+        "zPos": 191503.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 126066.0,
+        "yPos": 0.0,
+        "zPos": 195215.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 125447.0,
+        "yPos": 0.0,
+        "zPos": 199443.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 124003.0,
+        "yPos": 0.0,
+        "zPos": 203981.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 121630.0,
+        "yPos": 0.0,
+        "zPos": 207075.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 120083.0,
+        "yPos": 0.0,
+        "zPos": 210787.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 119257.0,
+        "yPos": 0.0,
+        "zPos": 212953.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 118329.0,
+        "yPos": 0.0,
+        "zPos": 215118.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 117710.0,
+        "yPos": 0.0,
+        "zPos": 217284.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 116988.0,
+        "yPos": 0.0,
+        "zPos": 219450.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 114924.0,
+        "yPos": 0.0,
+        "zPos": 223265.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 113480.0,
+        "yPos": 0.0,
+        "zPos": 227390.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 113171.0,
+        "yPos": 0.0,
+        "zPos": 229865.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 112861.0,
+        "yPos": 0.0,
+        "zPos": 232340.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 112964.0,
+        "yPos": 0.0,
+        "zPos": 234918.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 113067.0,
+        "yPos": 0.0,
+        "zPos": 237600.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 113893.0,
+        "yPos": 0.0,
+        "zPos": 240487.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 114718.0,
+        "yPos": 0.0,
+        "zPos": 243375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 115337.0,
+        "yPos": 0.0,
+        "zPos": 245850.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 115853.0,
+        "yPos": 0.0,
+        "zPos": 248325.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 115647.0,
+        "yPos": 0.0,
+        "zPos": 250490.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 115337.0,
+        "yPos": 0.0,
+        "zPos": 252656.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 115028.0,
+        "yPos": 0.0,
+        "zPos": 256678.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 115956.0,
+        "yPos": 0.0,
+        "zPos": 259256.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 116988.0,
+        "yPos": 0.0,
+        "zPos": 261731.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 117916.0,
+        "yPos": 0.0,
+        "zPos": 264103.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 118948.0,
+        "yPos": 0.0,
+        "zPos": 266475.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 119567.0,
+        "yPos": 0.0,
+        "zPos": 270600.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 119464.0,
+        "yPos": 0.0,
+        "zPos": 274725.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 119257.0,
+        "yPos": 0.0,
+        "zPos": 276993.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 119051.0,
+        "yPos": 0.0,
+        "zPos": 279262.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 117813.0,
+        "yPos": 0.0,
+        "zPos": 282459.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 115337.0,
+        "yPos": 0.0,
+        "zPos": 285862.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 113067.0,
+        "yPos": 0.0,
+        "zPos": 288543.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 111210.0,
+        "yPos": 0.0,
+        "zPos": 289884.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 109354.0,
+        "yPos": 0.0,
+        "zPos": 291225.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 106878.0,
+        "yPos": 0.0,
+        "zPos": 291431.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 104402.0,
+        "yPos": 0.0,
+        "zPos": 291740.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 102235.0,
+        "yPos": 0.0,
+        "zPos": 290709.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 100069.0,
+        "yPos": 0.0,
+        "zPos": 289575.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 96974.0,
+        "yPos": 0.0,
+        "zPos": 289265.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 93879.0,
+        "yPos": 0.0,
+        "zPos": 288956.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 90784.0,
+        "yPos": 0.0,
+        "zPos": 288337.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 87586.0,
+        "yPos": 0.0,
+        "zPos": 287718.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 84904.0,
+        "yPos": 0.0,
+        "zPos": 288131.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 82325.0,
+        "yPos": 0.0,
+        "zPos": 288440.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 81499.0,
+        "yPos": 0.0,
+        "zPos": 290400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 80674.0,
+        "yPos": 0.0,
+        "zPos": 292359.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 79539.0,
+        "yPos": 0.0,
+        "zPos": 295556.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 79745.0,
+        "yPos": 0.0,
+        "zPos": 298134.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 79952.0,
+        "yPos": 0.0,
+        "zPos": 300609.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 80983.0,
+        "yPos": 0.0,
+        "zPos": 302981.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 82015.0,
+        "yPos": 0.0,
+        "zPos": 305250.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 82737.0,
+        "yPos": 0.0,
+        "zPos": 307312.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 83356.0,
+        "yPos": 0.0,
+        "zPos": 309375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 83666.0,
+        "yPos": 0.0,
+        "zPos": 311540.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 83975.0,
+        "yPos": 0.0,
+        "zPos": 313706.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 84800.0,
+        "yPos": 0.0,
+        "zPos": 315562.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 85626.0,
+        "yPos": 0.0,
+        "zPos": 317418.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 86245.0,
+        "yPos": 0.0,
+        "zPos": 319687.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 86967.0,
+        "yPos": 0.0,
+        "zPos": 321956.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 87380.0,
+        "yPos": 0.0,
+        "zPos": 324431.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 87792.0,
+        "yPos": 0.0,
+        "zPos": 326803.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 87070.0,
+        "yPos": 0.0,
+        "zPos": 328762.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 86245.0,
+        "yPos": 0.0,
+        "zPos": 330618.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 85626.0,
+        "yPos": 0.0,
+        "zPos": 332371.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 84904.0,
+        "yPos": 0.0,
+        "zPos": 334125.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 82118.0,
+        "yPos": 0.0,
+        "zPos": 336703.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 79952.0,
+        "yPos": 0.0,
+        "zPos": 338250.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 77682.0,
+        "yPos": 0.0,
+        "zPos": 339693.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 75413.0,
+        "yPos": 0.0,
+        "zPos": 340931.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 73040.0,
+        "yPos": 0.0,
+        "zPos": 342168.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 71286.0,
+        "yPos": 0.0,
+        "zPos": 343715.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 69429.0,
+        "yPos": 0.0,
+        "zPos": 345262.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 68604.0,
+        "yPos": 0.0,
+        "zPos": 347118.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 67675.0,
+        "yPos": 0.0,
+        "zPos": 348975.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 66850.0,
+        "yPos": 0.0,
+        "zPos": 351346.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 66025.0,
+        "yPos": 0.0,
+        "zPos": 353718.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 65199.0,
+        "yPos": 0.0,
+        "zPos": 355884.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 64374.0,
+        "yPos": 0.0,
+        "zPos": 358050.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 63652.0,
+        "yPos": 0.0,
+        "zPos": 360318.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 62930.0,
+        "yPos": 0.0,
+        "zPos": 362484.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 62001.0,
+        "yPos": 0.0,
+        "zPos": 364237.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 60970.0,
+        "yPos": 0.0,
+        "zPos": 365887.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 59835.0,
+        "yPos": 0.0,
+        "zPos": 368259.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 58700.0,
+        "yPos": 0.0,
+        "zPos": 370631.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 56946.0,
+        "yPos": 0.0,
+        "zPos": 372590.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 55192.0,
+        "yPos": 0.0,
+        "zPos": 374550.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 53542.0,
+        "yPos": 0.0,
+        "zPos": 376612.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 51891.0,
+        "yPos": 0.0,
+        "zPos": 378675.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 50034.0,
+        "yPos": 0.0,
+        "zPos": 381046.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "BRITAIN"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 48177.0,
+        "yPos": 0.0,
+        "zPos": 383418.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 312071.0,
+        "yPos": 0.0,
+        "zPos": 105290.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 310524.0,
+        "yPos": 0.0,
+        "zPos": 107456.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 308873.0,
+        "yPos": 0.0,
+        "zPos": 109518.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 305262.0,
+        "yPos": 0.0,
+        "zPos": 108487.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 302993.0,
+        "yPos": 0.0,
+        "zPos": 106837.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 300723.0,
+        "yPos": 0.0,
+        "zPos": 105187.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 298660.0,
+        "yPos": 0.0,
+        "zPos": 104671.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 296597.0,
+        "yPos": 0.0,
+        "zPos": 104053.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 294017.0,
+        "yPos": 0.0,
+        "zPos": 103434.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 291335.0,
+        "yPos": 0.0,
+        "zPos": 102815.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 288653.0,
+        "yPos": 0.0,
+        "zPos": 102815.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 285971.0,
+        "yPos": 0.0,
+        "zPos": 102815.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 283907.0,
+        "yPos": 0.0,
+        "zPos": 101578.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 281741.0,
+        "yPos": 0.0,
+        "zPos": 100237.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 280193.0,
+        "yPos": 0.0,
+        "zPos": 98071.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 278749.0,
+        "yPos": 0.0,
+        "zPos": 95906.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 276789.0,
+        "yPos": 0.0,
+        "zPos": 94668.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 274932.0,
+        "yPos": 0.0,
+        "zPos": 93328.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 272869.0,
+        "yPos": 0.0,
+        "zPos": 93431.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 270702.0,
+        "yPos": 0.0,
+        "zPos": 93534.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 268123.0,
+        "yPos": 0.0,
+        "zPos": 94050.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 265544.0,
+        "yPos": 0.0,
+        "zPos": 94462.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 262965.0,
+        "yPos": 0.0,
+        "zPos": 94565.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 260386.0,
+        "yPos": 0.0,
+        "zPos": 94668.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 258116.0,
+        "yPos": 0.0,
+        "zPos": 95493.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 255744.0,
+        "yPos": 0.0,
+        "zPos": 96215.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 253371.0,
+        "yPos": 0.0,
+        "zPos": 97556.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 250998.0,
+        "yPos": 0.0,
+        "zPos": 98793.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 247594.0,
+        "yPos": 0.0,
+        "zPos": 100031.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 245118.0,
+        "yPos": 0.0,
+        "zPos": 100546.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 242642.0,
+        "yPos": 0.0,
+        "zPos": 101062.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 240166.0,
+        "yPos": 0.0,
+        "zPos": 100237.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 237587.0,
+        "yPos": 0.0,
+        "zPos": 99412.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 235111.0,
+        "yPos": 0.0,
+        "zPos": 98793.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 232532.0,
+        "yPos": 0.0,
+        "zPos": 98175.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 230159.0,
+        "yPos": 0.0,
+        "zPos": 96112.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 227683.0,
+        "yPos": 0.0,
+        "zPos": 94050.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 225001.0,
+        "yPos": 0.0,
+        "zPos": 92400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 222318.0,
+        "yPos": 0.0,
+        "zPos": 90750.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 219842.0,
+        "yPos": 0.0,
+        "zPos": 89409.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 217366.0,
+        "yPos": 0.0,
+        "zPos": 88068.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 213859.0,
+        "yPos": 0.0,
+        "zPos": 87346.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 210248.0,
+        "yPos": 0.0,
+        "zPos": 86625.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 207256.0,
+        "yPos": 0.0,
+        "zPos": 86831.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 204574.0,
+        "yPos": 0.0,
+        "zPos": 86831.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 202511.0,
+        "yPos": 0.0,
+        "zPos": 87346.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 200448.0,
+        "yPos": 0.0,
+        "zPos": 87862.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 198281.0,
+        "yPos": 0.0,
+        "zPos": 88171.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 196011.0,
+        "yPos": 0.0,
+        "zPos": 88378.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 193639.0,
+        "yPos": 0.0,
+        "zPos": 87346.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 191266.0,
+        "yPos": 0.0,
+        "zPos": 86212.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 188068.0,
+        "yPos": 0.0,
+        "zPos": 86109.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 184870.0,
+        "yPos": 0.0,
+        "zPos": 85903.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 182703.0,
+        "yPos": 0.0,
+        "zPos": 86315.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 180537.0,
+        "yPos": 0.0,
+        "zPos": 86728.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 177855.0,
+        "yPos": 0.0,
+        "zPos": 87862.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 175069.0,
+        "yPos": 0.0,
+        "zPos": 89100.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 173212.0,
+        "yPos": 0.0,
+        "zPos": 90337.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 171252.0,
+        "yPos": 0.0,
+        "zPos": 91678.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 169705.0,
+        "yPos": 0.0,
+        "zPos": 94050.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 168157.0,
+        "yPos": 0.0,
+        "zPos": 96318.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 166919.0,
+        "yPos": 0.0,
+        "zPos": 99206.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 165784.0,
+        "yPos": 0.0,
+        "zPos": 101990.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 165784.0,
+        "yPos": 0.0,
+        "zPos": 104465.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 165784.0,
+        "yPos": 0.0,
+        "zPos": 106837.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 166506.0,
+        "yPos": 0.0,
+        "zPos": 109209.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 167332.0,
+        "yPos": 0.0,
+        "zPos": 111581.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 167744.0,
+        "yPos": 0.0,
+        "zPos": 114056.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 168260.0,
+        "yPos": 0.0,
+        "zPos": 116428.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 168467.0,
+        "yPos": 0.0,
+        "zPos": 118903.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 168570.0,
+        "yPos": 0.0,
+        "zPos": 121275.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 168157.0,
+        "yPos": 0.0,
+        "zPos": 123543.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 167744.0,
+        "yPos": 0.0,
+        "zPos": 125812.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 166300.0,
+        "yPos": 0.0,
+        "zPos": 129834.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 164650.0,
+        "yPos": 0.0,
+        "zPos": 131278.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 162999.0,
+        "yPos": 0.0,
+        "zPos": 132825.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 160936.0,
+        "yPos": 0.0,
+        "zPos": 134062.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 158769.0,
+        "yPos": 0.0,
+        "zPos": 135403.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 157222.0,
+        "yPos": 0.0,
+        "zPos": 137671.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 155777.0,
+        "yPos": 0.0,
+        "zPos": 139940.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 154952.0,
+        "yPos": 0.0,
+        "zPos": 142621.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 154127.0,
+        "yPos": 0.0,
+        "zPos": 145303.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 154024.0,
+        "yPos": 0.0,
+        "zPos": 147468.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 153920.0,
+        "yPos": 0.0,
+        "zPos": 149634.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 153095.0,
+        "yPos": 0.0,
+        "zPos": 151800.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 152167.0,
+        "yPos": 0.0,
+        "zPos": 153965.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 150413.0,
+        "yPos": 0.0,
+        "zPos": 157368.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 150516.0,
+        "yPos": 0.0,
+        "zPos": 161700.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 150207.0,
+        "yPos": 0.0,
+        "zPos": 163968.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 149794.0,
+        "yPos": 0.0,
+        "zPos": 166340.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 149588.0,
+        "yPos": 0.0,
+        "zPos": 168815.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 149278.0,
+        "yPos": 0.0,
+        "zPos": 171187.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 148350.0,
+        "yPos": 0.0,
+        "zPos": 173043.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 147318.0,
+        "yPos": 0.0,
+        "zPos": 174900.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 145255.0,
+        "yPos": 0.0,
+        "zPos": 176550.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 143191.0,
+        "yPos": 0.0,
+        "zPos": 178200.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 140303.0,
+        "yPos": 0.0,
+        "zPos": 180675.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 139787.0,
+        "yPos": 0.0,
+        "zPos": 182428.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 139271.0,
+        "yPos": 0.0,
+        "zPos": 184284.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 137930.0,
+        "yPos": 0.0,
+        "zPos": 186140.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 136589.0,
+        "yPos": 0.0,
+        "zPos": 187893.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 135970.0,
+        "yPos": 0.0,
+        "zPos": 191400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 136279.0,
+        "yPos": 0.0,
+        "zPos": 195215.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 134422.0,
+        "yPos": 0.0,
+        "zPos": 197690.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 132153.0,
+        "yPos": 0.0,
+        "zPos": 198928.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 129780.0,
+        "yPos": 0.0,
+        "zPos": 200165.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 127820.0,
+        "yPos": 0.0,
+        "zPos": 203568.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 127510.0,
+        "yPos": 0.0,
+        "zPos": 207075.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 127304.0,
+        "yPos": 0.0,
+        "zPos": 211303.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 126272.0,
+        "yPos": 0.0,
+        "zPos": 216150.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 125241.0,
+        "yPos": 0.0,
+        "zPos": 218625.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 124209.0,
+        "yPos": 0.0,
+        "zPos": 221203.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 121527.0,
+        "yPos": 0.0,
+        "zPos": 224709.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 120186.0,
+        "yPos": 0.0,
+        "zPos": 226771.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 118741.0,
+        "yPos": 0.0,
+        "zPos": 228834.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 118329.0,
+        "yPos": 0.0,
+        "zPos": 231412.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 117813.0,
+        "yPos": 0.0,
+        "zPos": 233990.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 118432.0,
+        "yPos": 0.0,
+        "zPos": 236568.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 118948.0,
+        "yPos": 0.0,
+        "zPos": 239250.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 119257.0,
+        "yPos": 0.0,
+        "zPos": 243375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 119360.0,
+        "yPos": 0.0,
+        "zPos": 245643.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 119464.0,
+        "yPos": 0.0,
+        "zPos": 248015.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 119464.0,
+        "yPos": 0.0,
+        "zPos": 251521.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 119464.0,
+        "yPos": 0.0,
+        "zPos": 255028.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 121114.0,
+        "yPos": 0.0,
+        "zPos": 259565.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 122043.0,
+        "yPos": 0.0,
+        "zPos": 262246.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 122971.0,
+        "yPos": 0.0,
+        "zPos": 264825.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 124622.0,
+        "yPos": 0.0,
+        "zPos": 266887.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 126169.0,
+        "yPos": 0.0,
+        "zPos": 268950.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 127201.0,
+        "yPos": 0.0,
+        "zPos": 271321.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 128233.0,
+        "yPos": 0.0,
+        "zPos": 273693.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 128233.0,
+        "yPos": 0.0,
+        "zPos": 276271.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 128129.0,
+        "yPos": 0.0,
+        "zPos": 278850.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 127098.0,
+        "yPos": 0.0,
+        "zPos": 281531.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 126066.0,
+        "yPos": 0.0,
+        "zPos": 284315.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 125653.0,
+        "yPos": 0.0,
+        "zPos": 286378.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 125241.0,
+        "yPos": 0.0,
+        "zPos": 288337.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 123797.0,
+        "yPos": 0.0,
+        "zPos": 289987.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 122352.0,
+        "yPos": 0.0,
+        "zPos": 291534.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 121836.0,
+        "yPos": 0.0,
+        "zPos": 293906.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 121217.0,
+        "yPos": 0.0,
+        "zPos": 296278.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 119257.0,
+        "yPos": 0.0,
+        "zPos": 296793.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 117194.0,
+        "yPos": 0.0,
+        "zPos": 297309.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 115543.0,
+        "yPos": 0.0,
+        "zPos": 296278.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 113067.0,
+        "yPos": 0.0,
+        "zPos": 295556.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 110901.0,
+        "yPos": 0.0,
+        "zPos": 295556.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 108012.0,
+        "yPos": 0.0,
+        "zPos": 296175.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 105640.0,
+        "yPos": 0.0,
+        "zPos": 296587.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 103783.0,
+        "yPos": 0.0,
+        "zPos": 295659.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 101307.0,
+        "yPos": 0.0,
+        "zPos": 294525.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 99140.0,
+        "yPos": 0.0,
+        "zPos": 293184.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 96045.0,
+        "yPos": 0.0,
+        "zPos": 293081.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 93054.0,
+        "yPos": 0.0,
+        "zPos": 292875.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 90371.0,
+        "yPos": 0.0,
+        "zPos": 292875.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 87792.0,
+        "yPos": 0.0,
+        "zPos": 292875.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 86142.0,
+        "yPos": 0.0,
+        "zPos": 293700.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 84491.0,
+        "yPos": 0.0,
+        "zPos": 294628.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 83872.0,
+        "yPos": 0.0,
+        "zPos": 296587.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 83150.0,
+        "yPos": 0.0,
+        "zPos": 298443.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 83769.0,
+        "yPos": 0.0,
+        "zPos": 300506.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 84388.0,
+        "yPos": 0.0,
+        "zPos": 302568.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 84800.0,
+        "yPos": 0.0,
+        "zPos": 304631.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 85213.0,
+        "yPos": 0.0,
+        "zPos": 306590.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 85729.0,
+        "yPos": 0.0,
+        "zPos": 309065.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 86142.0,
+        "yPos": 0.0,
+        "zPos": 311437.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 87070.0,
+        "yPos": 0.0,
+        "zPos": 313396.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 87895.0,
+        "yPos": 0.0,
+        "zPos": 315253.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 88514.0,
+        "yPos": 0.0,
+        "zPos": 318243.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 89133.0,
+        "yPos": 0.0,
+        "zPos": 321131.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 89856.0,
+        "yPos": 0.0,
+        "zPos": 323503.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 90578.0,
+        "yPos": 0.0,
+        "zPos": 325875.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 90578.0,
+        "yPos": 0.0,
+        "zPos": 328865.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 90578.0,
+        "yPos": 0.0,
+        "zPos": 331856.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 88824.0,
+        "yPos": 0.0,
+        "zPos": 333815.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 87070.0,
+        "yPos": 0.0,
+        "zPos": 335775.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 85626.0,
+        "yPos": 0.0,
+        "zPos": 337321.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 84078.0,
+        "yPos": 0.0,
+        "zPos": 338765.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 81706.0,
+        "yPos": 0.0,
+        "zPos": 340518.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 79230.0,
+        "yPos": 0.0,
+        "zPos": 342375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 77269.0,
+        "yPos": 0.0,
+        "zPos": 343303.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 75309.0,
+        "yPos": 0.0,
+        "zPos": 344334.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 73762.0,
+        "yPos": 0.0,
+        "zPos": 345778.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 72111.0,
+        "yPos": 0.0,
+        "zPos": 347325.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 71080.0,
+        "yPos": 0.0,
+        "zPos": 349387.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 70048.0,
+        "yPos": 0.0,
+        "zPos": 351450.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 69326.0,
+        "yPos": 0.0,
+        "zPos": 354028.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 68501.0,
+        "yPos": 0.0,
+        "zPos": 356709.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 67263.0,
+        "yPos": 0.0,
+        "zPos": 359700.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 65921.0,
+        "yPos": 0.0,
+        "zPos": 362587.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 65302.0,
+        "yPos": 0.0,
+        "zPos": 364443.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 64580.0,
+        "yPos": 0.0,
+        "zPos": 366300.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 63549.0,
+        "yPos": 0.0,
+        "zPos": 368568.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 62517.0,
+        "yPos": 0.0,
+        "zPos": 370837.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 59422.0,
+        "yPos": 0.0,
+        "zPos": 373828.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 57359.0,
+        "yPos": 0.0,
+        "zPos": 376509.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 56224.0,
+        "yPos": 0.0,
+        "zPos": 378365.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 55089.0,
+        "yPos": 0.0,
+        "zPos": 380118.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 53232.0,
+        "yPos": 0.0,
+        "zPos": 382078.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 51375.0,
+        "yPos": 0.0,
+        "zPos": 383934.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 50137.0,
+        "yPos": 0.0,
+        "zPos": 385378.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 48796.0,
+        "yPos": 0.0,
+        "zPos": 386925.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

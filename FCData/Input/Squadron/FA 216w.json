@@ -1,20 +1,52 @@
 {
-  "country": "GERMANY",
-  "squadronId": 401416,
-  "name": "FA 216w",
-  "fileName": "FA 216w.json",
-  "skill": 25,
-  "planeAssignments": [
-    {
-      "archType": "dfw",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170601": "Orchies"
-  },
-  "skins": [
+	"country": "GERMANY",
+	"squadronId": 401416,
+	"name": "FA 216w",
+	"fileName": "FA 216w.json",
+	"skill": 25,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "dfw",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Doncourt"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_ARTILLERY_SPOT",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
 		{
 			"skinName": "dfwc5_skin_03",
 			"planeType": "dfwc5",
@@ -43,33 +75,5 @@
 			"useTacticalCodes": false,
 			"tacticalCodeColor": "BLACK"
 		}
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 40101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 40
-          },
-          {
-            "role": "ROLE_BOMB",
-            "weight": 30
-          },
-          {
-            "role": "ROLE_ARTILLERY_SPOT",
-            "weight": 10
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	]
 }

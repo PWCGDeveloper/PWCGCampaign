@@ -4,6 +4,9 @@
 	"name": "Jasta 36",
 	"fileName": "Jasta 36.json",
 	"skill": 55,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "albatrosd",
@@ -17,19 +20,18 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Lomme"
+		"19170601": "Chassonge Ferme,Stenay/Verdun",
+		"19171020": "Bellevue Ferme",
+		"19171215": "Lomme",
+		"19180429": "Fromelles",
+		"19180531": "Fromelles",
+		"19181004": "Helesmes",
+		"19181101": "Fenain"
 	},
-	"skins": [
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 40101,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -40,7 +42,12 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": []
 }

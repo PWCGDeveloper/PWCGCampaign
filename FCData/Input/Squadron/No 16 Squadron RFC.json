@@ -4,6 +4,9 @@
 	"name": "No 16 Squadron RFC",
 	"fileName": "No 16 Squadron RFC.json",
 	"skill": 25,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "aircodh4",
@@ -12,18 +15,14 @@
 		}
 	],
 	"airfields": {
-		"19170601": "St.Omer"
+		"19170601": "Serny",
+		"19181004": "Filescamp Farm",
+		"19181015": "Beugnatre"
 	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 30201,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -42,7 +41,12 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": []
 }

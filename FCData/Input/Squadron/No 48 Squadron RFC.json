@@ -4,6 +4,9 @@
 	"name": "No 48 Squadron RFC",
 	"fileName": "No 48 Squadron RFC.json",
 	"skill": 45,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "bristolf2b",
@@ -12,39 +15,15 @@
 		}
 	],
 	"airfields": {
-		"19170601": "St.Omer"
+		"19170601": "Vert Galant",
+		"19180329": "Valheureux",
+		"19181004": "Braizieux",
+		"19181015": "Lechelle"
 	},
-	"skins": [
-		{
-			"skinName": "bristolf2bf2_skin_03",
-			"planeType": "bristolf2bf2",
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 302048,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "bristolf2bf3_skin_04",
-			"planeType": "bristolf2bf3",
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 302048,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 30201,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -66,7 +45,6 @@
 			},
 			{
 				"startDate": "19180407",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -89,7 +67,41 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "bristolf2bf2_skin_03",
+			"planeType": "bristolf2bf2",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 302048,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		},
+		{
+			"skinName": "bristolf2bf3_skin_04",
+			"planeType": "bristolf2bf3",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 302048,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

@@ -4,6 +4,9 @@
 	"name": "No 100 Squadron RFC",
 	"fileName": "No 100 Squadron RFC.json",
 	"skill": 70,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "handleypage",
@@ -12,29 +15,12 @@
 		}
 	],
 	"airfields": {
-		"19170601": "St.Omer"
+		"19170601": "Ruisseauville"
 	},
-	"skins": [
-		{
-			"skinName": "handleypage_skin_03",
-			"planeType": "handleypage",
-			"startDate": "19170601",
-			"endDate": "19171014",
-			"squadId": 302100,
-			"country": "BRITAIN",
-			"category": "Squadron",
-			"definedInGame": false
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 30201,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_STRAT_BOMB",
@@ -45,7 +31,27 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "handleypage_skin_03",
+			"planeType": "handleypage",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19171014",
+			"squadId": 302100,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }

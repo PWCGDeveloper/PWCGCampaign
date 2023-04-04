@@ -4,6 +4,9 @@
 	"name": "No 10 Squadron RNAS",
 	"fileName": "No 10 Squadron RNAS.json",
 	"skill": 70,
+	"serviceId": 30202,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "soptriplane",
@@ -17,19 +20,16 @@
 		}
 	],
 	"airfields": {
-		"19170601": "St.Omer"
+		"19170601": "La Gorgue",
+		"19180429": "Estree Blanche",
+		"19180531": "Estree Blanche",
+		"19181004": "Fromelles",
+		"19181101": "St.Marguerite"
 	},
-	"skins": [
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 30202,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19170601",
-				"endDate": "19180406",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -39,7 +39,6 @@
 			},
 			{
 				"startDate": "19170901",
-				"endDate": "19180406",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -53,7 +52,6 @@
 			},
 			{
 				"startDate": "19180407",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -68,7 +66,12 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": []
 }

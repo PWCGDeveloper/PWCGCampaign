@@ -1,77 +1,94 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 302020,
-  "name": "No 20 Squadron RFC",
-  "fileName": "No 20 Squadron RFC.json",
-  "skill": 60,
-  "planeAssignments": [
-    {
-      "archType": "bristolf2b",
-      "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    }
-  ],
-  "airfields": {
-    "19170601": "St.Omer"
-  },
-  "skins": [
-    {
-      "skinName": "bristolf2bf2_skin_04",
-      "planeType": "bristolf2bf2",
-      "startDate": "19170601",
-      "endDate": "19171014",
-      "squadId": 302020,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "bristolf2bf2_skin_05",
-      "planeType": "bristolf2bf2",
-      "startDate": "19171015",
-      "endDate": "19181201",
-      "squadId": 302020,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "bristolf2bf3_skin_05",
-      "planeType": "bristolf2bf3",
-      "startDate": "19170601",
-      "endDate": "19181201",
-      "squadId": 302020,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 30201,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19170601",
-        "endDate": "19181201",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 40
-          },
-          {
-            "role": "ROLE_BOMB",
-            "weight": 30
-          },
-          {
-            "role": "ROLE_ARTILLERY_SPOT",
-            "weight": 10
-          }
-        ]
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {}
+	"country": "BRITAIN",
+	"squadronId": 302020,
+	"name": "No 20 Squadron RFC",
+	"fileName": "No 20 Squadron RFC.json",
+	"skill": 60,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "bristolf2b",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170601": "Clairmarais",
+		"19181004": "Bailleul"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19170601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_ARTILLERY_SPOT",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "bristolf2bf2_skin_04",
+			"planeType": "bristolf2bf2",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19171014",
+			"squadId": 302020,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		},
+		{
+			"skinName": "bristolf2bf2_skin_05",
+			"planeType": "bristolf2bf2",
+			"archTypes": [],
+			"startDate": "19171015",
+			"endDate": "19181201",
+			"squadId": 302020,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		},
+		{
+			"skinName": "bristolf2bf3_skin_05",
+			"planeType": "bristolf2bf3",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19181201",
+			"squadId": 302020,
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": false,
+			"tacticalCodeColor": "NONE"
+		}
+	]
 }
