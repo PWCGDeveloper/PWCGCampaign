@@ -2,7 +2,9 @@ package pwcg.campaign.resupply.personnel;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
+import pwcg.campaign.personnel.SquadronMemberNationalityConverter;
 import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.ServiceResupplyNeed;
@@ -39,7 +41,9 @@ public class TransferHandler
             ISquadronNeed selectedSquadronNeed = serviceTransferNeed.chooseNeedySquadron();
             if (serviceReplacements.hasReplacements())
             {
-                SquadronMember replacement = serviceReplacements.findReplacement();        
+                SquadronMember replacement = serviceReplacements.findReplacement();
+                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(selectedSquadronNeed.getSquadronId());
+                SquadronMemberNationalityConverter.convertIfNeeded(campaign,squadron,replacement);
                 TransferRecord transferRecord = new TransferRecord(replacement, Squadron.REPLACEMENT, selectedSquadronNeed.getSquadronId());
                 squadronTransferData.addTransferRecord(transferRecord);
                 serviceTransferNeed.noteResupply(selectedSquadronNeed);

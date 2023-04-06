@@ -55,11 +55,6 @@ public class PWCGStringValidator
 
         char[] chars = text.toCharArray();
         
-        if (!isPureAscii(text))
-        {
-            return false;
-        }
-
         for (char c : chars)
         {
             if (!Character.isLetter(c) && !(c == ' ') && !(c == '-') && !(c == '.'))

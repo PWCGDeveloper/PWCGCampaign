@@ -5,10 +5,7 @@ import java.util.List;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.CampaignEquipmentIOJson;
 import pwcg.campaign.io.json.CampaignPersonnelIOJson;
-import pwcg.campaign.personnel.SquadronMemberFemaleGenerator;
-import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronMemberReplacementFactory;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.personnel.*;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
@@ -76,6 +73,7 @@ public class EmergencyResupplyHandler
             SquadronMember replacement = replacementFactory.createAIReplacementPilot();
             replacement.setSquadronId(squadronPersonnel.getSquadron().getSquadronId());
             SquadronMember convertedReplacement = SquadronMemberFemaleGenerator.convertToFemale(campaign, squadronPersonnel.getSquadron().getSquadronId(), replacement);
+            SquadronMemberNationalityConverter.convertIfNeeded(campaign, squadronPersonnel.getSquadron(), convertedReplacement);
             squadronPersonnel.addSquadronMember(convertedReplacement);
         }
     }

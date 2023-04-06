@@ -55,6 +55,8 @@ public class Ace extends SquadronMember
         getSkins().addAll(historicalAceNow.getSkins());
         setCountry(historicalAce.getCountry());
         setRank(historicalAceNow.getRank());
+        setName(historicalAceNow.getName());
+        setPicName(historicalAceNow.getPicName());
 
         for (Victory historicalVictory : historicalAceNow.getSquadronMemberVictories().getAirToAirVictories())
         {

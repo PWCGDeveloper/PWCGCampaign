@@ -117,8 +117,8 @@ public class BriefingFlightCrewPlaneUpdater
             aiLevel = AiSkillLevel.PLAYER;
         }
 
-        plane.setName(crewPlane.getPilot().getNameAndRank());
-        plane.setDesc(crewPlane.getPilot().getNameAndRank());
+        plane.setName(crewPlane.getPilot().getGameFriendlyNameAndRank());
+        plane.setDesc(crewPlane.getPilot().getGameFriendlyNameAndRank());
         plane.setAiLevel(aiLevel);
     }
 
