@@ -9,6 +9,7 @@ import java.util.Map;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.PwcgMapGroundUnitLimitation;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -143,8 +144,11 @@ public class MissionGroundUnitBuilder
 
     private void createrRadarsForMission() throws PWCGException
     {
-        MissionRadarBuilder radarBuilder = new MissionRadarBuilder(mission);
-        missionRadars = radarBuilder.buildRadarsForMission();
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
+        {
+            MissionRadarBuilder radarBuilder = new MissionRadarBuilder(mission);
+            missionRadars = radarBuilder.buildRadarsForMission();
+        }
     }
 
     public void write(BufferedWriter writer) throws PWCGException

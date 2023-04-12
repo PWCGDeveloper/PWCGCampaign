@@ -6,7 +6,7 @@
 	"skill": 25,
 	"serviceId": 30401,
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "WHITE",
 	"planeAssignments": [
 		{
 			"archType": "breguet14",
@@ -48,19 +48,19 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-		{
-			"skinName": "breguet14_skin_03",
-			"planeType": "breguet14",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 304003,
-			"country": "Belgium",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
+        {
+            "skinName": "BR14_EME3",
+            "planeType": "breguet14",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "Belgium",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        }
 	]
 }

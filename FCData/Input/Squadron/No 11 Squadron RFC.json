@@ -9,7 +9,7 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
-			"archType": "aircodh4",
+			"archType": "bristolf2b",
 			"squadronIntroduction": "19170601",
 			"squadronWithdrawal": "19181201"
 		}
@@ -45,9 +45,40 @@
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
-	"callsigns": {},
+	"callsigns": {
+		
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": []
 	},
-	"skins": []
+	"skins": [
+		{
+			"skinName": "BF2B_No11",
+			"planeType": "bristolf2bf2",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_TWO"
+		},
+		{
+			"skinName": "BF2BF3_No11",
+			"planeType": "bristolf2bf3",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_TWO"
+		}
+	]
 }

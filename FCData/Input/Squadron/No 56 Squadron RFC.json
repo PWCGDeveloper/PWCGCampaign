@@ -61,13 +61,13 @@
 			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19170924",
-			"squadId": 302056,
 			"country": "BRITAIN",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "SE5a_RFC56_Default_25SEP17",
@@ -75,13 +75,13 @@
 			"archTypes": [],
 			"startDate": "19170925",
 			"endDate": "19180321",
-			"squadId": 302056,
 			"country": "BRITAIN",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "SE5a_RFC56_Default_22MAR18",
@@ -89,13 +89,13 @@
 			"archTypes": [],
 			"startDate": "19180322",
 			"endDate": "19181201",
-			"squadId": 302056,
 			"country": "BRITAIN",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		}
 	]
 }

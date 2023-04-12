@@ -80,7 +80,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
 	    	int alliedPersonnelLosses = 0;
 	    	for (SquadronMember lostPilot : aarContext.getPersonnelLosses().getSquadMembersLostAndInjured().values())
 	    	{
-	    		if (lostPilot.determineCountry(campaign.getDate()).getSide() == Side.ALLIED)
+	    		if (lostPilot.determineCountry().getSide() == Side.ALLIED)
 	    		{
 	    			++alliedPersonnelLosses;	    			
 	    			++totalAlliedPersonnelLosses;	    			

@@ -4,6 +4,8 @@
 	"name": "94th Aero",
 	"fileName": "94th Aero.json",
 	"skill": 65,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "nieuport28",
@@ -19,18 +21,6 @@
 	"airfields": {
 		"19180301": "Lemmes"
 	},
-	"skins": [
-		{
-			"skinName": "Spad13_US94_Default",
-			"planeType": "spad13",
-			"startDate": "19180301",
-			"endDate": "19181201",
-			"squadId": 303094,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": false
-		}
-	],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
@@ -50,7 +40,49 @@
 		]
 	},
 	"conversionPeriods": [],
-	"callsigns": {
-		
-	}
+    "callsigns": [],
+    "skins": [
+		{
+			"skinName": "N28_94Aero",
+			"planeType": "nieuport28",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+        {
+            "skinName": "SP7LATE_94thAero_Default",
+            "planeType": "spad7late",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "USA",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        },
+        {
+            "skinName": "SP13_94thAero_Default",
+            "planeType": "spad13",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "USA",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        }
+	]
 }

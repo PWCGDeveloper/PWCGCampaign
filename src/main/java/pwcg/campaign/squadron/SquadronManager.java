@@ -36,6 +36,7 @@ public class SquadronManager
 		for (Squadron squadron : squadrons)
 		{
 			squadronMap.put(squadron.getSquadronId(), squadron);
+			squadron.initializeSkins();
 		}
 	}
 

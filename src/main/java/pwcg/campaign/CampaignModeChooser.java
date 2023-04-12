@@ -25,7 +25,7 @@ public class CampaignModeChooser
         
         for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
-            if (player.determineCountry(campaign.getDate()).getSide() == Side.ALLIED)
+            if (player.determineCountry().getSide() == Side.ALLIED)
             {
                 isAllied = true;
             }

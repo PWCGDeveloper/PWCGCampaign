@@ -57,19 +57,19 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-		{
-			"skinName": "SC_BMA11_B5747_Sc11",
-			"planeType": "sopcamel",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 304011,
-			"country": "BELGIUM",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
-		}
+        {
+            "skinName": "SOPCAM_11EME_Default",
+            "planeType": "sopcamel",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        }
 	]
 }

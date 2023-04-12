@@ -44,7 +44,7 @@ public class BattleManagerTest
         Mockito.when(referencePlayer.getSquadronId()).thenReturn(302056);
 
     	BattleManager battleManager = PWCGContext.getInstance().getMap(FrontMapIdentifier.WESTERN_FRONT_MAP).getBattleManager();    	
-    	Battle battle = battleManager.getBattleForCampaign(campaign, new Coordinate(80000, 0, 80000));
+    	Battle battle = battleManager.getBattleForCampaign(campaign, new Coordinate(220000.0, 0, 75000));
         Assertions.assertTrue (battle.getName().equals("Cambrai"));
         Assertions.assertTrue (battle.getAggressorcountry() == Country.BRITAIN);
         Assertions.assertTrue (battle.getDefendercountry() == Country.GERMANY);

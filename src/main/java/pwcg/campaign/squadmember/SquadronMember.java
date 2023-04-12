@@ -311,7 +311,7 @@ public class SquadronMember implements Cloneable
         return false;
     }
 
-    public ICountry determineCountry(Date date) throws PWCGException
+    public ICountry determineCountry() throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadron = squadronManager.getSquadron(squadronId);

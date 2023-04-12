@@ -58,19 +58,19 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-		{
-			"skinName": "SC_RFC65_Default",
-			"planeType": "sopcamel",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 302065,
-			"country": "BRITAIN",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
-		}
+        {
+            "skinName": "SOPCAM_RFC65_Default",
+            "planeType": "sopcamel",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_THREE"
+        }
 	]
 }

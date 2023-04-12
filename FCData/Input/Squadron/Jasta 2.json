@@ -62,13 +62,13 @@
 			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19171001",
-			"squadId": 401002,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "AD5_J2_Default_OCT17",
@@ -76,13 +76,13 @@
 			"archTypes": [],
 			"startDate": "19171002",
 			"endDate": "19171201",
-			"squadId": 401002,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "AD5_J2_Default_DEC17",
@@ -90,13 +90,13 @@
 			"archTypes": [],
 			"startDate": "19171202",
 			"endDate": "19180415",
-			"squadId": 401002,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "AD5_J2_Default_APR18",
@@ -104,13 +104,13 @@
 			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
-			"squadId": 401002,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "FDR1_J2_Default_A_Early",
@@ -118,13 +118,13 @@
 			"archTypes": [],
 			"startDate": "19171101",
 			"endDate": "19180415",
-			"squadId": 401002,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "FDR1_J2_Default_A_Late",
@@ -132,13 +132,13 @@
 			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
-			"squadId": 401002,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "FD7_J2_default_4K_Adams_Lozenge",
@@ -146,13 +146,13 @@
 			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
-			"squadId": 401002,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "FD7F_J2_default_4K_Adams_lozenge",
@@ -160,13 +160,13 @@
 			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
-			"squadId": 401002,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
 		}
 	]
 }

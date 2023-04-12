@@ -68,7 +68,7 @@ public class SquadronTransferFinder
             return false;
         }
         
-        if (squadronMember.determineCountry(campaign.getDate()).getCountryCode() != possibleSquadron.getCountry().getCountryCode())
+        if (squadronMember.determineCountry().getCountryCode() != possibleSquadron.getCountry().getCountryCode())
         {
             return false;
         }

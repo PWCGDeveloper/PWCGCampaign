@@ -140,7 +140,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         else
         {
             SquadronMember referencePlayer = campaign.findReferencePlayer();
-            return referencePlayer.determineCountry(campaign.getDate()).getSide();
+            return referencePlayer.determineCountry().getSide();
         }
     }
 

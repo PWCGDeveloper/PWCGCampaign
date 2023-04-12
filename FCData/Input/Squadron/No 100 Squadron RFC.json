@@ -40,18 +40,32 @@
 	},
 	"skins": [
 		{
-			"skinName": "handleypage_skin_03",
-			"planeType": "handleypage",
+			"skinName": "handleypage400_Default",
+			"planeType": "handleypage400",
 			"archTypes": [],
 			"startDate": "19170601",
-			"endDate": "19171014",
-			"squadId": 302100,
+			"endDate": "19180301",
 			"country": "BRITAIN",
 			"category": "Squadron",
-			"definedInGame": false,
+			"definedInGame": true,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
-		}
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+		},
+        {
+            "skinName": "handleypage400_01",
+            "planeType": "handleypage400",
+            "archTypes": [],
+            "startDate": "19180201",
+            "endDate": "19181201",
+            "country": "BRITAIN",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        }
 	]
 }

@@ -9,6 +9,7 @@ import java.util.TreeMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.Block;
+import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.io.json.LocationIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.LocationSet;
@@ -79,7 +80,7 @@ public class CityNameBuilder
 			reader.close();
 			
             List<PWCGLocation> locations = new ArrayList<>(cityLocations.values());
-            LocationSet cities = new LocationSet("MapLocations");
+            LocationSet cities = new LocationSet(GroupManager.TOWN_LOCATION_FILE_NAME);
             cities.setLocations(locations);
             
             LocationIOJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "MapLocations.json", cities);

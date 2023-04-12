@@ -21,6 +21,7 @@ import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryDat
 import pwcg.aar.outofmission.phase2.awards.CampaignAwardsGenerator;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronMemberFilter;
@@ -121,19 +122,19 @@ public class CampaignAwardsGeneratorTest
     @Test
     public void testPromotionAwardedForVictoriesAndMissionsFlown () throws PWCGException
     {     
-        SquadronMembers nonPlayerSquadronMembers = SquadronMemberFilter.filterActiveAINoWounded(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        SquadronMembers nonPlayerSquadronMembers = SquadronMemberFilter.filterActiveAINoWounded(campaign.getPersonnelManager().getAllCampaignMembersForCountry(Country.GERMANY), campaign.getDate());
 
-        Map<Integer, SquadronMember> squadronMembersInjured = new HashMap<>();
-        squadronMembersInjured.put(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(1));
-        squadronMembersInjured.put(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(2));
-        squadronMembersInjured.put(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(3));
+        Map<Integer, SquadronMember> squadronMembersToBeEvaluated = new HashMap<>();
+        squadronMembersToBeEvaluated.put(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(1));
+        squadronMembersToBeEvaluated.put(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(2));
+        squadronMembersToBeEvaluated.put(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(3));
         
         CampaignPersonnelTestHelper.addVictories(nonPlayerSquadronMembers.getSquadronMemberList().get(3), campaign.getDate(), 20);
         nonPlayerSquadronMembers.getSquadronMemberList().get(3).setRank("Leutnant");
         nonPlayerSquadronMembers.getSquadronMemberList().get(3).setMissionFlown(150);
 
         CampaignAwardsGenerator awardsGenerator = new CampaignAwardsGenerator(campaign, aarContext);
-        AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards(new ArrayList<>(squadronMembersInjured.values()));
+        AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards(new ArrayList<>(squadronMembersToBeEvaluated.values()));
                 
         Assertions.assertTrue (campaignMemberAwards.getPromotions().size() == 1);
         Assertions.assertTrue (campaignMemberAwards.getPromotions().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber()));

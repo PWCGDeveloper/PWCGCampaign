@@ -23,6 +23,7 @@ public class Skin implements Cloneable
     private boolean definedInGame = false;
     private boolean winter = false;
     private boolean useTacticalCodes = false;
+    private TacticalCodeType tacticalCodeType = TacticalCodeType.PATTERN_UNDEFINED;
     private TacticalCodeColor tacticalCodeColor = TacticalCodeColor.NONE;
 	
     public static int FACTORY_GENERIC = -2;
@@ -190,4 +191,12 @@ public class Skin implements Cloneable
 
         return tacticalCodeColor;
     }
+
+    public TacticalCodeType getTacticalCodeType()
+    {
+        return tacticalCodeType;
+    }
+    
 }
+
+

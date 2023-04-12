@@ -5,7 +5,7 @@
 	"fileName": "Esc 31.json",
 	"skill": 45,
 	"serviceId": 30101,
-	"tacticalCodeStyle": -1,
+	"tacticalCodeStyle": 3,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
@@ -39,20 +39,62 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": []
 	},
-	"skins": [
-		{
-			"skinName": "PC_Spad13_SPA3_Generic1",
-			"planeType": "spad13",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 301031,
-			"country": "FRANCE",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
-		}
-	]
+    "skins": [
+        {
+            "skinName": "SP7EARLY_ESC31_Default",
+            "planeType": "spad7early",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "USA",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        },
+        {
+            "skinName": "SP7Late_Buff_ESC31_Default",
+            "planeType": "spad7late",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19171201",
+            "country": "USA",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        },
+        {
+            "skinName": "SP7Late_Camo_ESC31_Default",
+            "planeType": "spad7late",
+            "archTypes": [],
+            "startDate": "19171115",
+            "endDate": "19181201",
+            "country": "USA",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        },
+        {
+            "skinName": "SP13_ESC31_Default",
+            "planeType": "spad13",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "USA",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        }
+    ]
 }

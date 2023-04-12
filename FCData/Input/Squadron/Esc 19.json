@@ -5,7 +5,7 @@
 	"fileName": "Esc 19.json",
 	"skill": 30,
 	"serviceId": 30101,
-	"tacticalCodeStyle": -1,
+	"tacticalCodeStyle": 2,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
@@ -47,20 +47,34 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": []
 	},
-	"skins": [
-		{
-			"skinName": "breguet14_skin_04",
-			"planeType": "breguet14",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 301019,
-			"country": "France",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	]
+    "skins": [
+        {
+            "skinName": "BR14_ESC19_JUL1917",
+            "planeType": "breguet14",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "France",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        },
+        {
+            "skinName": "BR14_ESC19_JAN1918",
+            "planeType": "breguet14",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "France",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        }
+    ]
 }

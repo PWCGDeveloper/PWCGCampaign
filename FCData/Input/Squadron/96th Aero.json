@@ -1,9 +1,11 @@
 {
 	"country": "USA",
-	"squadronId": 303090,
-	"name": "90th Aero",
-	"fileName": "90th Aero.json",
+	"squadronId": 303096,
+	"name": "96th Aero",
+	"fileName": "96th Aero.json",
 	"skill": 20,
+    "tacticalCodeStyle": -1,
+    "squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
 		{
 			"archType": "breguet14",
@@ -14,22 +16,6 @@
 	"airfields": {
 		"19180301": "Lemmes"
 	},
-	"skins": [
-		{
-			"skinName": "breguet14_skin_02",
-			"planeType": "breguet14",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 303001,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
-	],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
@@ -59,5 +45,21 @@
 	"conversionPeriods": [],
 	"callsigns": {
 		
-	}
+	},
+    "skins": [
+        {
+            "skinName": "BR14_Aero96",
+            "planeType": "breguet14",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "USA",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        }
+    ]
 }

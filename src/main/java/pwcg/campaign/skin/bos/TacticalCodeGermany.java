@@ -1,6 +1,7 @@
-package pwcg.campaign.skin;
+package pwcg.campaign.skin.bos;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.skin.TacticalCode;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.plane.PlaneMcu;

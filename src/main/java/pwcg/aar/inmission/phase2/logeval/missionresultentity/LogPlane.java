@@ -53,7 +53,7 @@ public class LogPlane extends LogAIEntity
         this.planeSerialNumber = plane.getSerialNumber();
 
         super.setId(""+super.getSequenceNum());
-        super.setCountry(squadronMember.determineCountry(campaign.getDate()));
+        super.setCountry(squadronMember.determineCountry());
         super.setName(squadronMember.getNameAndRank());
         super.setVehicleType(plane.getDisplayName());
         super.setRoleCategory(plane.determinePrimaryRoleCategory());

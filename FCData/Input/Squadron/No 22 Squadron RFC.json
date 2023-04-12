@@ -50,33 +50,33 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-		{
-			"skinName": "F2b_RFC22_Default",
-			"planeType": "bristolf2bf2",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 302022,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
-		},
-		{
-			"skinName": "F2b_F3_RFC22_Default",
-			"planeType": "bristolf2bf3",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19181201",
-			"squadId": 302022,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
-		}
+        {
+            "skinName": "BF2B_No22",
+            "planeType": "bristolf2bf2",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "BRITAIN",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_TWO"
+        },
+        {
+            "skinName": "BF2BF3_No22",
+            "planeType": "bristolf2bf3",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "BRITAIN",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_TWO"
+        }
 	]
 }

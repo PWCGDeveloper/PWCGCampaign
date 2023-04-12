@@ -3,22 +3,27 @@
 	"squadronId": 302023,
 	"name": "No 23 Squadron RFC",
 	"fileName": "No 23 Squadron RFC.json",
-	"skill": 60,
+	"skill": 45,
 	"serviceId": 30201,
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
-			"archType": "aircodh4",
+			"archType": "spad",
 			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		},
+		{
+			"archType": "sopdolphin",
+			"squadronIntroduction": "19180101",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Estree Blanche",
-		"19171115": "Bryas",
-		"19181004": "Sombrin",
-		"19181015": "La Tergette"
+		"19170801": "St.Omer",
+		"19181004": "Mont St Eloi",
+		"19181015": "Velu",
+		"19181101": "Houplin"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -26,15 +31,20 @@
 				"startDate": "19170601",
 				"weightedRoles": [
 					{
-						"role": "ROLE_RECON",
-						"weight": 40
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
 					},
 					{
-						"role": "ROLE_BOMB",
-						"weight": 30
-					},
-					{
-						"role": "ROLE_ARTILLERY_SPOT",
+						"role": "ROLE_ATTACK",
 						"weight": 10
 					}
 				]
@@ -45,9 +55,68 @@
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
-	"callsigns": {},
+	"callsigns": {
+		
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": []
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "SP7EARLY_No23Sq_Default",
+            "planeType": "spad7early",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "USA",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        },
+        {
+            "skinName": "SP7LATE_No23Sq_Default",
+            "planeType": "spad7late",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "USA",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        },
+        {
+            "skinName": "SP13_No23Sq_Default",
+            "planeType": "spad13",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "USA",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+        },
+        {
+            "skinName": "Dolphin_RFC23_Default",
+            "planeType": "sopdolphin",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_TWO"
+        }
+	]
 }

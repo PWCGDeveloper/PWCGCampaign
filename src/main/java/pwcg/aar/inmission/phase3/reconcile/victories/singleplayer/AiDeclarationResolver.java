@@ -114,7 +114,7 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
         SquadronMembers squadronMembersInMissionOtherThanPlayer = getAiMissionSquadronMembers();
         for (SquadronMember pilotVictor: squadronMembersInMissionOtherThanPlayer.getSquadronMemberList())
         {
-            if (pilotVictor.determineCountry(campaign.getDate()).getSide() != victimCountry.getSide())
+            if (pilotVictor.determineCountry().getSide() != victimCountry.getSide())
             {
                 if (pilotVictor != null)
                 {

@@ -42,5 +42,62 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": []
 	},
-	"skins": []
+	"skins": [
+        {
+            "skinName": "CL2_Sch24b_Early",
+            "planeType": "halberstadtcl2",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19171101",
+            "country": "Germany",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        {
+            "skinName": "CL2_Sch24b_Late",
+            "planeType": "halberstadtcl2",
+            "archTypes": [],
+            "startDate": "19171002",
+            "endDate": "19180415",
+            "country": "Germany",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        {
+            "skinName": "CL2AU_Sch24b_Early",
+            "planeType": "halberstadtcl2au",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19171101",
+            "country": "Germany",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        {
+            "skinName": "CL2AU_Sch24b_Late",
+            "planeType": "halberstadtcl2au",
+            "archTypes": [],
+            "startDate": "19171002",
+            "endDate": "19180415",
+            "country": "Germany",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "RED",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        }
+	]
 }

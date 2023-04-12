@@ -55,19 +55,19 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-		{
-			"skinName": "Dolphin_RFC19_Default",
-			"planeType": "sopdolphin",
-			"archTypes": [],
-			"startDate": "19170801",
-			"endDate": "19181201",
-			"squadId": 302019,
-			"country": "BRITAIN",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
-		}
+        {
+            "skinName": "Dolphin_RFC19_Default",
+            "planeType": "sopdolphin",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_TWO"
+        }
 	]
 }

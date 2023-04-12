@@ -65,8 +65,8 @@ public class MissionLogEventsBuilder
         {
             if (pilot.getSquadronId() != player.getSquadronId())
             {
-                Side playerSide = player.determineCountry(campaign.getDate()).getSide();
-                Side pilotSide = pilot.determineCountry(campaign.getDate()).getSide();
+                Side playerSide = player.determineCountry().getSide();
+                Side pilotSide = pilot.determineCountry().getSide();
                 if (playerSide == pilotSide)
                 {
                     friendlyPilotFromDifferentSquadron = pilot;
@@ -96,7 +96,7 @@ public class MissionLogEventsBuilder
                     makeNextId(),
                     planeType.getDisplayName(),
                     pilot.getNameAndRank(),
-                    pilot.determineCountry(campaign.getDate()),
+                    pilot.determineCountry(),
                     "-1",
                     new Coordinate(500000, 0, 50000));
             

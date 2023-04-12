@@ -4,8 +4,11 @@
   "name": "102nd Transport Air Regiment",
   "fileName": "102nd Transport Air Regiment.json",
   "skill": 30,
+  "serviceId": 10101,
   "unitIdCode": "",
   "subUnitIdCode": "",
+  "tacticalCodeStyle": 1,
+  "squadronTacticalCodeColorOverride": "NONE",
   "planeAssignments": [
     {
       "archType": "c47",
@@ -57,26 +60,6 @@
     "19450401": "ef_Kelz",
     "19450501": "ef_PetitBrogel"
   },
-  "skins": [
-    {
-      "skinName": "c47a_skin_07",
-      "planeType": "c47a",
-      "archTypes": [],
-      "startDate": "19400801",
-      "endDate": "19450601",
-      "squadId": 10112102,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": true,
-      "winter": false,
-      "useTacticalCodes": false,
-      "tacticalCodeColor": "BLACK"
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 10101,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
@@ -90,6 +73,13 @@
       }
     ]
   },
+  "conversionPeriods": [],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "callsigns": {
+    "19390901": "PELICAN"
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -98,8 +88,5 @@
       }
     ]
   },
-  "conversionPeriods": [],
-  "callsigns": {
-    "19410801": "PELICAN"
-  }
+  "skins": []
 }

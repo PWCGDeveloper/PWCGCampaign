@@ -1,14 +1,12 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -99,11 +97,11 @@ public class AiDeclarationResolutionFuzzyTest
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
         Mockito.when(aiSquadMember1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        Mockito.when(aiSquadMember1.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
+        Mockito.when(aiSquadMember1.determineCountry()).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictorOne);
 
         Mockito.when(aiSquadMember2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2);
-        Mockito.when(aiSquadMember2.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
+        Mockito.when(aiSquadMember2.determineCountry()).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2)).thenReturn(aiVictorTwo);
         
         List<Squadron> playerSquadronsInMission = new ArrayList<>();
@@ -207,8 +205,8 @@ public class AiDeclarationResolutionFuzzyTest
         campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
         campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember2);
 
-        Mockito.when(aiSquadMember1.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        Mockito.when(aiSquadMember2.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        Mockito.when(aiSquadMember1.determineCountry()).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        Mockito.when(aiSquadMember2.determineCountry()).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));
 
         aiVictorOne.setCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         aiVictorTwo.setCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));

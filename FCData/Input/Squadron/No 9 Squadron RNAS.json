@@ -73,19 +73,33 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-		{
-			"skinName": "SC_RAF209_Default",
-			"planeType": "sopcamel",
-			"archTypes": [],
-			"startDate": "19180401",
-			"endDate": "19181201",
-			"squadId": 302209,
-			"country": "BRITAIN",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
-		}
+        {
+            "skinName": "SopTri_Default",
+            "planeType": "soptriplane",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        {
+            "skinName": "SOPCAM_9RNAS_Default",
+            "planeType": "sopcamel",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        }
 	]
 }

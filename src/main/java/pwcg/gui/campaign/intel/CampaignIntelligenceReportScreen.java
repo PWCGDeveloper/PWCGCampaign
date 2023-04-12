@@ -42,7 +42,7 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
         try 
         {
             SquadronMember referencePlayer = campaign.findReferencePlayer();
-            side = referencePlayer.determineCountry(campaign.getDate()).getSide();
+            side = referencePlayer.determineCountry().getSide();
         }
         catch (Exception  e)
         {
@@ -136,13 +136,13 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
             else if (action.contains("Friendly"))
             {
                 SquadronMember referencePlayer = campaign.findReferencePlayer();
-                side = referencePlayer.determineCountry(campaign.getDate()).getSide();
+                side = referencePlayer.determineCountry().getSide();
                 makeContent();
             }
             else if (action.contains("Enemy"))
             {
                 SquadronMember referencePlayer = campaign.findReferencePlayer();
-                side = referencePlayer.determineCountry(campaign.getDate()).getSide().getOppositeSide();
+                side = referencePlayer.determineCountry().getSide().getOppositeSide();
                 makeContent();
             }
         }

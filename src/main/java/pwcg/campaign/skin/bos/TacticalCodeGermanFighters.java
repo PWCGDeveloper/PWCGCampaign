@@ -1,4 +1,4 @@
-package pwcg.campaign.skin;
+package pwcg.campaign.skin.bos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.skin.TacticalCodeColor;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.plane.PlaneMcu;

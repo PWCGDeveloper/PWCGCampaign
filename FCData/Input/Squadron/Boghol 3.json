@@ -6,7 +6,7 @@
 	"skill": 80,
 	"serviceId": 40101,
 	"tacticalCodeStyle": -1,
-	"squadronTacticalCodeColorOverride": "NONE",
+	"squadronTacticalCodeColorOverride": "BLUE",
 	"planeAssignments": [
 		{
 			"archType": "gotha",
@@ -41,17 +41,31 @@
 	"skins": [
 		{
 			"skinName": "gothac5_default",
-			"planeType": "gothac5",
+			"planeType": "gothag5",
 			"archTypes": [],
 			"startDate": "19170601",
-			"endDate": "19180424",
-			"squadId": 401003,
+			"endDate": "19180510",
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": true,
 			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "BLACK"
-		}
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+		},
+        {
+            "skinName": "gothac5_003",
+            "planeType": "gothag5",
+            "archTypes": [],
+            "startDate": "19180424",
+            "endDate": "19181201",
+            "country": "Germany",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        }
 	]
 }

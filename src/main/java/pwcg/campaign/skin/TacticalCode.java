@@ -14,6 +14,7 @@ public abstract class TacticalCode
     
     public abstract TacticalCode buildTacticalCode(Campaign campaign, PlaneMcu plane, Squadron squadron) throws PWCGException;
 
+
     public void createExplicitCodes(List<String> codes, List<TacticalCodeColor> colors)
     {
         for (int i = 0; i < codes.size(); ++i)

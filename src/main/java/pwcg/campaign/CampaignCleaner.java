@@ -253,7 +253,7 @@ public class CampaignCleaner
                         String medalName = "Wound Badge" + medal.getMedalName().substring(afterIndex);
                         medal.setMedalName(medalName);
                     }
-                    convertMedal(squadronMember, squadronMember.determineCountry(medal.getMedalDate()), medal);
+                    convertMedal(squadronMember, squadronMember.determineCountry(), medal);
                 }
             }
         }

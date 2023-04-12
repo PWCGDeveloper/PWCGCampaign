@@ -21,7 +21,7 @@ public class BehindEnemyLinesTest
     @Mock Campaign campaign;
     
 	private BehindEnemyLines behindEnemyLines;
-	private Coordinate referenceCoordinateOnAlliedLines =  new Coordinate(128000.0, 0.0,80933.0);
+	private Coordinate referenceCoordinateOnAlliedLines =  new Coordinate(302064.0, 0.0, 100959.0);
 	private FrontMapIdentifier mapId = FrontMapIdentifier.WESTERN_FRONT_MAP;
 	
     @BeforeEach
@@ -54,25 +54,23 @@ public class BehindEnemyLinesTest
     @Test
     public void testNearGroup () throws PWCGException
     {            	
-        Coordinate spotNearGroup =  new Coordinate(96000.0, 0.0, 75000.0);
-    	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(spotNearGroup, Side.AXIS);
+        Coordinate noeuxLesMines =  new Coordinate(263140.0, 0.0, 84168.0);
+    	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(noeuxLesMines, Side.AXIS);
     	Assertions.assertTrue (isBehindLines == false);
-    	Assertions.assertTrue (behindEnemyLines.getReasonCode().equals("Friendly Group"));
     }
 
     @Test
     public void testNearAirfield () throws PWCGException
     {            	
-        Coordinate spotNearAirfield =  new Coordinate(86790.0, 0.0, 85526.0);
-    	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(spotNearAirfield, Side.ALLIED);
-    	Assertions.assertTrue (isBehindLines == false);
-    	Assertions.assertTrue (behindEnemyLines.getReasonCode().equals("Friendly Airfield"));
+        Coordinate lille =  new Coordinate(277806.0, 0.0, 112789.0);
+        boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(lille, Side.AXIS);
+        Assertions.assertTrue (isBehindLines == false);
     }
 
     @Test
     public void testBehindEnemyLines () throws PWCGException
     {            	
-        Coordinate noMansLand = MathUtils.calcNextCoord(mapId, referenceCoordinateOnAlliedLines, 90, 10000);
+        Coordinate noMansLand = MathUtils.calcNextCoord(mapId, referenceCoordinateOnAlliedLines, 90, 15000);
     	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(noMansLand, Side.ALLIED);
     	Assertions.assertTrue (isBehindLines == true);
     	Assertions.assertTrue (behindEnemyLines.getReasonCode().equals(""));

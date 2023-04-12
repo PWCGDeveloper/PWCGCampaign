@@ -62,19 +62,19 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-		{
-			"skinName": "SC_AFC4_ default_PreMay1918",
-			"planeType": "sopcamel",
-			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19180501",
-			"squadId": 302104,
-			"country": "BRITAIN",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": false,
-			"tacticalCodeColor": "NONE"
-		}
+        {
+            "skinName": "SOPCAM_AFC4_Default",
+            "planeType": "sopcamel",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "Britain",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_TWO"
+        }
 	]
 }

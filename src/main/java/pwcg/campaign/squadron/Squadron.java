@@ -882,6 +882,14 @@ public class Squadron
     {
         return tacticalCodeStyle;
     }
+
+    public void initializeSkins()
+    {
+        for (Skin skin : skins)
+        {
+            skin.setSquadId(this.squadronId);
+        }
+    }
     
     
 }

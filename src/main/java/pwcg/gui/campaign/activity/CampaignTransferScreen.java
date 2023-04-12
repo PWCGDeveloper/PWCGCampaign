@@ -268,7 +268,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         cbService = new JComboBox<String>();
         
         List<ArmedService> services = null;
-        if (squadronMemberToTransfer.determineCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
+        if (squadronMemberToTransfer.determineCountry().getSideNoNeutral() == Side.ALLIED)
         {
             services = ArmedServiceFactory.createServiceManager().getAlliedServices(campaign.getDate());
         }

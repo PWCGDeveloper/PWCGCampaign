@@ -92,7 +92,7 @@ public class AiDeclarationResolutionRandomTest
         Mockito.when(aiSquadMember.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
 
         ICountry victorCountry = CountryFactory.makeCountryByCountry(Country.GERMANY);
-        Mockito.when(aiSquadMember.determineCountry(campaign.getDate())).thenReturn(victorCountry);
+        Mockito.when(aiSquadMember.determineCountry()).thenReturn(victorCountry);
         
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
