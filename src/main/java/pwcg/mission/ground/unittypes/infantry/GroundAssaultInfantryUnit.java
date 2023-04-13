@@ -38,15 +38,15 @@ public class GroundAssaultInfantryUnit extends GroundUnit
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            return GroundUnitNumberCalculator.calcNumUnits(10, 20);
+            return GroundUnitNumberCalculator.calcNumUnits(5, 10);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            return GroundUnitNumberCalculator.calcNumUnits(20, 30);
+            return GroundUnitNumberCalculator.calcNumUnits(10, 15);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
         {
-            return GroundUnitNumberCalculator.calcNumUnits(30, 40);
+            return GroundUnitNumberCalculator.calcNumUnits(15, 20);
         }
         
         throw new PWCGException ("No unit size provided for ground unit");

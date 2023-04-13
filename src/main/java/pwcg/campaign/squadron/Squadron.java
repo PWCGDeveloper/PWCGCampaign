@@ -888,6 +888,7 @@ public class Squadron
         for (Skin skin : skins)
         {
             skin.setSquadId(this.squadronId);
+            skin.setCountry(this.getCountry().getCountryName());
         }
     }
     
