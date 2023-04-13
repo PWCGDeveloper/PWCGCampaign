@@ -82,7 +82,7 @@ public class SkinFilter
         
         for (Skin skin : skins)
         {
-            if (skin.getSkinName().equals(skinName))
+            if (skin.getSkinName().equalsIgnoreCase(skinName))
             {
                 filteredSkins.add(skin);
             }
