@@ -37,7 +37,7 @@ public class SkinFilter
         
         for (Skin skin : skins)
         {
-            if (skin.getCountry().equals(countryName))
+            if (skin.getCountry().equalsIgnoreCase(countryName))
             {
                 filteredSkins.add(skin);
             }
