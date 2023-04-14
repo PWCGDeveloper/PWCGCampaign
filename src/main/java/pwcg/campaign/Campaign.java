@@ -318,8 +318,9 @@ public class Campaign
     {
         campaignData.setDate(date);
         PWCGContext.getInstance().getMap(this.getCampaignMap()).configureForDate(this);
+        PWCGContext.getInstance().getMap(this.getCampaignMap()).getGroupManager().resetLocationCountry();
         campaignMap = this.determineCampaignMap();
-    }
+   }
 
     public SerialNumber getSerialNumber()
     {

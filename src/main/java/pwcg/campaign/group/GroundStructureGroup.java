@@ -3,6 +3,7 @@ package pwcg.campaign.group;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.core.location.PWCGLocation;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 
 public class GroundStructureGroup
@@ -81,6 +82,34 @@ public class GroundStructureGroup
 
         standaloneBlocks = newStandaloneBlocks;
         airfieldBlocks = newAirfieldBlocks;
+    }
+
+    public void resetCountry()
+    {
+        for (PWCGLocation railroadStation : railroadStations)
+        {
+            railroadStation.resetCountry();
+        }
+
+        for (PWCGLocation standaloneBlock : standaloneBlocks)
+        {
+            standaloneBlock.resetCountry();
+        }
+
+        for (PWCGLocation bridge : bridges)
+        {
+            bridge.resetCountry();
+        }
+
+        for (PWCGLocation airfieldBlock : airfieldBlocks)
+        {
+            airfieldBlock.resetCountry();
+        }
+
+        for (PWCGLocation nonScriptedObject : nonScriptedGround)
+        {
+            nonScriptedObject.resetCountry();
+        }
     }
 
 }

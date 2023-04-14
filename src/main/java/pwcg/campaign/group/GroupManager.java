@@ -32,6 +32,11 @@ public class GroupManager
 	public GroupManager ()
 	{
 	}
+	
+	public void resetLocationCountry() 
+	{
+        groundStructureGroup.resetCountry();
+	}
 
 	public void configure(String mapName) throws PWCGException 
 	{

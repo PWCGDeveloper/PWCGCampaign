@@ -12,6 +12,7 @@ public class PWCGLocation
 	protected String name = "";
 	protected Coordinate position = new Coordinate();
 	protected Orientation orientation = new Orientation();
+	protected transient ICountry country = null;
 	
 	public void setFromLocation(PWCGLocation referenceLocation)
 	{
@@ -59,8 +60,17 @@ public class PWCGLocation
 		this.orientation = orientation;
 	}
 
+    public void resetCountry()
+    {
+        this.country = null;
+    }
+
 	public ICountry getCountry(FrontMapIdentifier mapIdentifier, Date date) throws PWCGException
 	{
-		return CountryDesignator.determineCountry(mapIdentifier, position, date);
+	    if (country == null)
+	    {
+	        country = CountryDesignator.determineCountry(mapIdentifier, position, date);
+	    }
+	    return country;
 	}
 }
