@@ -44,6 +44,8 @@ public class Campaign
     private CampaignPersonnelManager personnelManager;
     private CampaignEquipmentManager equipmentManager;
     private SquadronMoveEvent squadronMoveEvent;
+    
+    private FrontMapIdentifier campaignMap = FrontMapIdentifier.NO_MAP;
 
     public Campaign()
     {
@@ -316,6 +318,7 @@ public class Campaign
     {
         campaignData.setDate(date);
         PWCGContext.getInstance().getMap(this.getCampaignMap()).configureForDate(this);
+        campaignMap = this.determineCampaignMap();
     }
 
     public SerialNumber getSerialNumber()
@@ -389,6 +392,15 @@ public class Campaign
     }
     
     public FrontMapIdentifier getCampaignMap() throws PWCGException
+    {
+        if (campaignMap == FrontMapIdentifier.NO_MAP) 
+        {
+            campaignMap = determineCampaignMap();
+        }
+        return campaignMap;
+    }
+
+    private FrontMapIdentifier determineCampaignMap() throws PWCGException
     {
         FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(this);
         mapIdentifier = StalingradMapResolver.resolveStalingradMap(this.getDate(), mapIdentifier);
