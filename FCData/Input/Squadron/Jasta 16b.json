@@ -8,11 +8,16 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "pfalz",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19180710"
-		},
+        {
+            "archType": "albatrosd",
+            "squadronIntroduction": "19170601",
+            "squadronWithdrawal": "19171101"
+        },
+        {
+            "archType": "pfalz",
+            "squadronIntroduction": "19170701",
+            "squadronWithdrawal": "19180710"
+        },
 		{
 			"archType": "fokkerdr1",
 			"squadronIntroduction": "19180201",
@@ -67,6 +72,48 @@
 	},
 	"skins": [
         {
+            "skinName": "AD5_J16b_Default_May17",
+            "planeType": "albatrosd5",
+            "archTypes": [],
+            "startDate": "19170601",
+            "endDate": "19171015",
+            "country": "Germany",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        {
+            "skinName": "AD5_J16b_Default_Oct17",
+            "planeType": "albatrosd5",
+            "archTypes": [],
+            "startDate": "19171001",
+            "endDate": "19180505",
+            "country": "Germany",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        {
+            "skinName": "AD5_J16b_Default_APR18",
+            "planeType": "albatrosd5",
+            "archTypes": [],
+            "startDate": "19180424",
+            "endDate": "19181201",
+            "country": "Germany",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "BLACK",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        {
             "skinName": "PD3a_J16_JUL17",
             "planeType": "pfalzd3a",
             "archTypes": [],
@@ -99,7 +146,7 @@
 			"planeType": "pfalzd3a",
 			"archTypes": [],
 			"startDate": "19180424",
-			"endDate": "19180501",
+			"endDate": "19181201",
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
@@ -141,7 +188,7 @@
 			"planeType": "fokkerd7",
 			"archTypes": [],
 			"startDate": "19180416",
-			"endDate": "19180901",
+			"endDate": "19181201",
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
@@ -154,7 +201,7 @@
             "planeType": "fokkerd7",
             "archTypes": [],
             "startDate": "19180416",
-            "endDate": "19180901",
+            "endDate": "19181201",
             "country": "Germany",
             "category": "Squadron",
             "definedInGame": false,
@@ -167,7 +214,7 @@
             "planeType": "fokkerd7f",
             "archTypes": [],
             "startDate": "19180416",
-            "endDate": "19180901",
+            "endDate": "19181201",
             "country": "Germany",
             "category": "Squadron",
             "definedInGame": false,
@@ -180,7 +227,7 @@
             "planeType": "fokkerd7f",
             "archTypes": [],
             "startDate": "19180416",
-            "endDate": "19180901",
+            "endDate": "19181201",
             "country": "Germany",
             "category": "Squadron",
             "definedInGame": false,

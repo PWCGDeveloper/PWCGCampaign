@@ -8,9 +8,14 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "albatrosd",
+            "squadronIntroduction": "19170601",
+            "squadronWithdrawal": "19180720"
+        },
 		{
 			"archType": "pfalz",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "1917001",
 			"squadronWithdrawal": "19180720"
 		},
 		{
