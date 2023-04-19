@@ -31,39 +31,39 @@ public class LogLineParser
 
     public void parseLogLine(String line) throws PWCGException
     {
-        if (line.contains(AType.ATYPE2.getAtypeLogIdentifier()))
+        try
         {
-            parseDamagedEvent(line);
+            if (line.contains(AType.ATYPE2.getAtypeLogIdentifier()))
+            {
+                parseDamagedEvent(line);
+            }
+            else if (line.contains(AType.ATYPE3.getAtypeLogIdentifier()))
+            {
+                parseDestroyedEvent(line);
+            }
+            else if (line.contains(AType.ATYPE6.getAtypeLogIdentifier()))
+            {
+                parseLandingEvent(line);
+            }
+            else if (line.contains(AType.ATYPE12.getAtypeLogIdentifier()))
+            {
+                parseSpawnEvent(line);
+            }
+            else if (line.contains(AType.ATYPE18.getAtypeLogIdentifier()))
+            {
+                parseBailoutEvent(line);
+            }
         }
-        else if (line.contains(AType.ATYPE3.getAtypeLogIdentifier()))
+        catch (Exception e)
         {
-            parseDestroyedEvent(line);
-        }
-        else if (line.contains(AType.ATYPE6.getAtypeLogIdentifier()))
-        {
-            parseLandingEvent(line);
-        }
-        else if (line.contains(AType.ATYPE12.getAtypeLogIdentifier()))
-        {
-            parseSpawnEvent(line);
-        }
-        else if (line.contains(AType.ATYPE18.getAtypeLogIdentifier()))
-        {
-            parseBailoutEvent(line);
+            PWCGLogger.log(PWCGLogger.LogLevel.ERROR, "Mangled damage found: " + line);
         }
     }
 
     private void parseDamagedEvent(String line) throws PWCGException
     {
-        try
-        {
-            IAType2 atype2 = LogEventFactory.createAType2(line);
-            logEventData.addDamageEvent(atype2);
-        }
-        catch (Exception e)
-        {
-            PWCGLogger.log(PWCGLogger.LogLevel.ERROR, "Mangled damage log found: " + line);
-        }
+        IAType2 atype2 = LogEventFactory.createAType2(line);
+        logEventData.addDamageEvent(atype2);
     }
 
     private void parseDestroyedEvent(String line) throws PWCGException
@@ -82,6 +82,12 @@ public class LogLineParser
     {
         IAType12 atype12 = LogEventFactory.createAType12(line);
         mapSpawnToMissionArtifactType(atype12);
+    }
+
+    private void parseBailoutEvent(String line) throws PWCGException
+    {
+        IAType18 atype18 = LogEventFactory.createAType18(line);
+        logEventData.addBailoutEvent(atype18);
     }
 
     private void mapSpawnToMissionArtifactType(IAType12 atype12)
@@ -112,12 +118,6 @@ public class LogLineParser
             return false;
         }
         return true;
-    }
-
-    private void parseBailoutEvent(String line) throws PWCGException
-    {
-        IAType18 atype18 = LogEventFactory.createAType18(line);
-        logEventData.addBailoutEvent(atype18);
     }
 }
 
