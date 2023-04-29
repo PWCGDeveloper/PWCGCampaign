@@ -11,8 +11,13 @@
 		{
 			"archType": "sopcamel",
 			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19181201"
-		}
+			"squadronWithdrawal": "19181009"
+		},
+        {
+            "archType": "sopsnipe",
+            "squadronIntroduction": "19181010",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
 		"19170601": "Lealvillers",

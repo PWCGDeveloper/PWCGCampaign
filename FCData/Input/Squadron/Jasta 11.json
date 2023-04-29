@@ -22,7 +22,12 @@
 			"archType": "fokkerd7",
 			"squadronIntroduction": "19180605",
 			"squadronWithdrawal": "19181201"
-		}
+		},
+        {
+            "archType": "schuckertdiv",
+            "squadronIntroduction": "19181015",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
 		"19170601": "La Brayelle",
@@ -145,7 +150,7 @@
 			"planeType": "fokkerd7f",
 			"archTypes": [],
 			"startDate": "19180416",
-			"endDate": "19180901",
+			"endDate": "19181201",
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,

@@ -1,22 +1,21 @@
 {
-	"type": "bf109g6late",
+	"type": "bf109g6as",
 	"archType": "bf109",
 	"side": "AXIS",
 	"primaryUsedBy": [
 		"GERMANY"
 	],
 	"stockModifications": [
-		"ERLA_CANOPY",
-		"MW50"
+		"ASM"
 	],
-	"displayName": "Bf 109 G-6 Late",
-	"script": "LuaScripts\\WorldObjects\\Planes\\bf109g6late.txt",
-	"model": "graphics\\planes\\bf109g6late\\bf109g6late.mgm",
+	"displayName": "Bf 109 G-6AS",
+	"script": "LuaScripts\\WorldObjects\\Planes\\bf109g6as.txt",
+	"model": "graphics\\planes\\bf109g6as\\bf109g6as.mgm",
 	"desc": "",
 	"cruisingSpeed": 360,
-	"climbOutRate": 1300,
-	"goodness": 60,
-	"range": 600,
+	"climbOutRate": 1400,
+	"goodness":63,
+	"range":600,
 	"isFlyable": true,
 	"isNovice": false,
 	"planeSize": "PLANE_SIZE_SMALL",
@@ -24,7 +23,7 @@
 		"FIGHTER",
 		"ATTACK"
 	],
-	"introduction": "19440101",
+	"introduction": "19440515",
 	"endProduction": "19441001",
 	"withdrawal": "19450601"
 }

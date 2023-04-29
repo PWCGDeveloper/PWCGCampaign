@@ -134,6 +134,7 @@ public enum PayloadElement
     LB_14_BOOST(PayloadElementCategory.MODIFICATION, "14 lb. Boost", 100),
     LB_25_BOOST(PayloadElementCategory.MODIFICATION, "25 lb. Boost", 100),
     MW50(PayloadElementCategory.MODIFICATION, "MW50", 0),
+    ASM(PayloadElementCategory.MODIFICATION, "ASM Supercharger", 0),
     PBP_1A(PayloadElementCategory.MODIFICATION, "PBP 1A", 100),
     AIR_FILTER(PayloadElementCategory.MODIFICATION, "Air Filter", 10),
     FOUR_PLADE_PROP(PayloadElementCategory.MODIFICATION, "Four Blade Propellor", 10),

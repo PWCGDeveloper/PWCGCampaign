@@ -1,0 +1,31 @@
+{
+	"type": "schuckertdiv",
+	"archType": "schuckertdiv",
+	"side": "AXIS",
+	"displayName": "Siemens-Schuckert D.IV",
+	"script": "LuaScripts\\WorldObjects\\Planes\\schuckertdiv.txt",
+	"model": "graphics\\planes\\schuckertdiv\\schuckertdiv.mgm",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+		"COCKPIT_LIGHT",
+        "AMMO_COUNTER",
+        "SPEED_GUAGE",
+        "ATTITUDE_GUAGE"
+	],
+	"desc": "",
+	"cruisingSpeed": 130,
+	"climbOutRate": 350,
+	"goodness": 85,
+	"range": 200,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER"
+	],
+	"introduction": "19180815",
+	"endProduction": "19181201",
+	"withdrawal": "19181201"
+}

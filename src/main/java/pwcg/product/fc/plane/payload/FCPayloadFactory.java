@@ -46,6 +46,10 @@ public class FCPayloadFactory implements IPayloadFactory
         {
             return new FokkerD8Payload(planeType, date);
         }
+        else if (attributeMapping == FCPlaneAttributeMapping.SSWD4)
+        {
+            return new SSWD4Payload(planeType, date);
+        }
         else if (attributeMapping == FCPlaneAttributeMapping.DFWCV)
         {
             return new DFWCVPayload(planeType, date);
@@ -69,6 +73,10 @@ public class FCPayloadFactory implements IPayloadFactory
         else if (attributeMapping == FCPlaneAttributeMapping.CAMEL)
         {
             return new SopwithCamelPayload(planeType, date);
+        }
+        else if (attributeMapping == FCPlaneAttributeMapping.SNIPE)
+        {
+            return new SopwithSnipePayload(planeType, date);
         }
         else if (attributeMapping == FCPlaneAttributeMapping.TRIPE)
         {

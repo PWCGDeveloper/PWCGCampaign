@@ -1,0 +1,29 @@
+{
+	"type": "spitfiremkxive",
+	"archType": "spitfireGriffon",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [
+		"MIRROR"
+	],
+	"displayName": "Spitfire Mk.XIVe",
+	"script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkxive.txt",
+	"model": "graphics\\planes\\spitfiremkixe\\spitfiremkxive.mgm",
+	"desc": "",
+	"cruisingSpeed": 380,
+	"climbOutRate": 2000,
+	"goodness": 85,
+	"range": 600,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER",
+		"ATTACK"
+	],
+	"introduction": "19450201",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

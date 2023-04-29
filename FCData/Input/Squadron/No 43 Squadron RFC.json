@@ -11,6 +11,11 @@
 		{
 			"archType": "sopcamel",
 			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19180919"
+		},
+		{
+			"archType": "sopsnipe",
+			"squadronIntroduction": "19180920",
 			"squadronWithdrawal": "19181201"
 		}
 	],
@@ -55,24 +60,26 @@
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
-	"callsigns": {},
+	"callsigns": {
+		
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": []
 	},
 	"skins": [
-        {
-            "skinName": "SOPCAM_RFC43_Default",
-            "planeType": "sopcamel",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_THREE"
-        }
+		{
+			"skinName": "SOPCAM_RFC43_Default",
+			"planeType": "sopcamel",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		}
 	]
 }

@@ -1,0 +1,29 @@
+{
+	"type": "sopsnipe",
+	"archType": "sopsnipe",
+	"side": "ALLIED",
+	"displayName": "Sopwith Snipe",
+	"script": "LuaScripts\\WorldObjects\\Planes\\sopsnipe.txt",
+	"model": "graphics\\planes\\sopsnipe\\sopsnipe.mgm",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [
+		"COCKPIT_LIGHT"
+	],
+	"desc": "",
+	"cruisingSpeed": 160,
+	"climbOutRate": 280,
+	"goodness": 80,
+	"range": 250,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER",
+		"ATTACK"
+	],
+	"introduction": "19180915",
+	"endProduction": "19181201",
+	"withdrawal": "19181111"
+}

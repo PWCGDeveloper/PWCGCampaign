@@ -22,7 +22,12 @@
 			"archType": "fokkerd7",
 			"squadronIntroduction": "19180605",
 			"squadronWithdrawal": "19181201"
-		}
+		},
+        {
+            "archType": "schuckertdiv",
+            "squadronIntroduction": "19180915",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
 		"19170601": "Sivry",
@@ -153,7 +158,7 @@
             "planeType": "fokkerd7f",
             "archTypes": [],
             "startDate": "19180416",
-            "endDate": "19180901",
+            "endDate": "19181201",
             "country": "Germany",
             "category": "Squadron",
             "definedInGame": false,
@@ -167,7 +172,7 @@
             "planeType": "fokkerd7f",
             "archTypes": [],
             "startDate": "19180416",
-            "endDate": "19180901",
+            "endDate": "19181201",
             "country": "Germany",
             "category": "Squadron",
             "definedInGame": false,
@@ -175,6 +180,20 @@
             "useTacticalCodes": true,
             "tacticalCodeColor": "WHITE",
             "tacticalCodeType": "CODE_POSITION_ONE"
-        }
+        },
+        {
+            "skinName": "schuckertdiv_skin_01",
+            "planeType": "schuckertdiv",
+            "archTypes": [],
+            "startDate": "19180815",
+            "endDate": "19181201",
+            "country": "Germany",
+            "category": "Squadron",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        }        
 	]
 }

@@ -20,6 +20,7 @@ import pwcg.product.bos.plane.payload.aircraft.Bf109F4Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109G14Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109G2Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109G4Payload;
+import pwcg.product.bos.plane.payload.aircraft.Bf109G6ASPayload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109G6LatePayload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109G6Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109K4Payload;
@@ -62,6 +63,7 @@ import pwcg.product.bos.plane.payload.aircraft.Pe2S35Payload;
 import pwcg.product.bos.plane.payload.aircraft.Pe2S87Payload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkIXePayload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkVbPayload;
+import pwcg.product.bos.plane.payload.aircraft.SpitfireMkXIVEPayload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkXIVPayload;
 import pwcg.product.bos.plane.payload.aircraft.TempestMKVS2Payload;
 import pwcg.product.bos.plane.payload.aircraft.TyphoonMkIbPayload;
@@ -106,6 +108,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.BF109_G6_LATE)
         {
             return new Bf109G6LatePayload(planeType, date);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.BF109_G6_AS)
+        {
+            return new Bf109G6ASPayload(planeType, date);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.BF109_G14)
         {
@@ -292,6 +298,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKXIV)
         {
             return new SpitfireMkXIVPayload(planeType, date);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKXIVE)
+        {
+            return new SpitfireMkXIVEPayload(planeType, date);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.TEMPEST_MKVS2)
         {

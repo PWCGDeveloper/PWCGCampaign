@@ -29,6 +29,7 @@ import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.options.MapSeasonalParameters.Season;
@@ -230,6 +231,18 @@ public class Campaign
 
     public boolean isValidCampaignForProduct() throws PWCGException
     {
+        if (campaignData.getProduct() == null || campaignData.getProduct() == PWCGProduct.NONE)
+        {
+            if (campaignData.getDate().after(DateUtils.getDateYYYYMMDD("19390101")))
+            {
+                campaignData.setProduct(PWCGProduct.BOS);
+            }
+            else
+            {
+                campaignData.setProduct(PWCGProduct.FC);
+            }
+        }
+        
         if (campaignData.getProduct() == PWCGContext.getProduct())
         {
             return true;
