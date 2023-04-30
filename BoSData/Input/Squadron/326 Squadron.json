@@ -17,8 +17,8 @@
 		}
 	],
 	"airfields": {
-        "19430301": "Manston",
-        "19440101": "Deanland",
+		"19430301": "Manston",
+		"19440101": "Deanland",
 		"19440627": "B-4 Beny sur Mer",
 		"19440901": "Deurne",
 		"19440925": "Eindhoven",
@@ -101,5 +101,30 @@
 			}
 		]
 	},
-	"skins": []
+	"skins": [
+		{
+			"skinName": "spitfiremkvb_skin_01",
+			"planeType": "spitfiremkvb",
+			"startDate": "19390901",
+			"endDate": "19420210",
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "spitfiremkvb_skin_02",
+			"planeType": "spitfiremkvb",
+			"startDate": "19420201",
+			"endDate": "19450501",
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "SKY"
+		}
+	]
 }
