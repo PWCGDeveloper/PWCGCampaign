@@ -152,6 +152,12 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
             JPanel squadronPanel = createSquadronInfoPanel ();
             this.add(squadronPanel, BorderLayout.SOUTH);
             
+            List<CoopUser> coopUsers = CoopUserManager.getIntance().getAllCoopUsers();            
+            if (!coopUsers.isEmpty())
+            {
+                this.setCoopUser();
+            }
+
             evaluateUI();
 		}
 		catch (Exception e)
@@ -695,9 +701,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
 			}
 			else if (ae.getActionCommand().equalsIgnoreCase("CoopUserChanged"))
 			{
-		        String coopUserFromDropDown = (String)cbCoopUser.getSelectedItem();
-                coopUserNameTextBox.setText(coopUserFromDropDown);
-		        parent.getNewPilotGeneratorDO().setCoopUser(coopUserFromDropDown);
+		        setCoopUser();
 			}
             else if (ae.getActionCommand().equalsIgnoreCase("SquadronChanged"))
             {
@@ -729,4 +733,12 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
+
+
+    private void setCoopUser()
+    {
+        String coopUserFromDropDown = (String)cbCoopUser.getSelectedItem();
+        coopUserNameTextBox.setText(coopUserFromDropDown);
+        parent.getNewPilotGeneratorDO().setCoopUser(coopUserFromDropDown);
+    }
 }
