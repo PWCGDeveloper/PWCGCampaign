@@ -85,10 +85,10 @@ public class CargoRouteSkirmishBuilder
     public Skirmish buildSkirmishForShippingEncounter() throws PWCGException
     {
         ShipEncounterZone shipEncounterZone = ShipEncounterZoneManager.getShipEncounterZone(campaign, participatingPlayers);
-        Side playerSide = participatingPlayers.getMissionPlayerSides().get(0);
-
         if (shipEncounterZone != null)
         {
+            Side playerSide = participatingPlayers.getMissionPlayerSides().get(0);
+
             return new Skirmish(
                     shipEncounterZone.getName(),
                     shipEncounterZone.getEncounterPoint(), 

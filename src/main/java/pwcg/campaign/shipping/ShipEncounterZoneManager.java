@@ -14,14 +14,19 @@ public class ShipEncounterZoneManager
 {
     public static ShipEncounterZone getShipEncounterZone (Campaign campaign, MissionHumanParticipants participatingPlayers) throws PWCGException
     {
+        ShipEncounterZone shipEncounterZone = null;
+        
         Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(participatingPlayers.getAllParticipatingPlayers().get(0).getSquadronId());
         Coordinate playerSquadronPosition = squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getPosition();
-        ShipEncounterZone shipEncounterZone = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getShippingLaneManager().getNearbyEncounterZone(campaign, playerSquadronPosition);
-        
-        if (shipEncounterZone != null)
+        ShippingLaneManager shippingLaneManager = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getShippingLaneManager();
+        if (shippingLaneManager != null)
         {
-            Coordinate encounterPoint = getInRangeEncounterPosition(campaign, shipEncounterZone, playerSquadronPosition);
-            shipEncounterZone.setEncounterPoint(encounterPoint);;
+            shipEncounterZone =  shippingLaneManager.getNearbyEncounterZone(campaign, playerSquadronPosition);        
+            if (shipEncounterZone != null)
+            {
+                Coordinate encounterPoint = getInRangeEncounterPosition(campaign, shipEncounterZone, playerSquadronPosition);
+                shipEncounterZone.setEncounterPoint(encounterPoint);;
+            }
         }
         
         return shipEncounterZone;
