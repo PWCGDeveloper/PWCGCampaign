@@ -29,7 +29,7 @@ public class PlayerPilotBuilder
     private void persistCampaignAndCoopUser(String coopUser, SquadronMember newSquadronMember) throws PWCGException
     {
         campaign.write();        
-        campaign.open(campaign.getCampaignData().getName());
+        campaign.reopen();
         if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
             createCoopUserAndPersona(campaign, newSquadronMember, coopUser);

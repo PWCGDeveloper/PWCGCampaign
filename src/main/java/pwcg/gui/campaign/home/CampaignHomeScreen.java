@@ -70,6 +70,8 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
 
     public void refreshInformation() throws PWCGException
     {
+        campaign.reopen();
+
         MusicManager.playCampaignTheme(determineCampaignSideForMusic());
         this.add(BorderLayout.WEST, makeLeftPanel());
         

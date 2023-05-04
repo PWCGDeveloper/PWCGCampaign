@@ -63,6 +63,11 @@ public class Campaign
         campaignLogs = new CampaignLogs();
     }
     
+    public boolean reopen() throws PWCGException
+    {
+        return open(this.getName());
+    }
+    
     public boolean open(String campaignName) throws PWCGException
     {
         campaignData.setName(campaignName);

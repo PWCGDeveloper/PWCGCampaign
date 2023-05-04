@@ -497,6 +497,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
     {
         transferPlayer();
         campaign.write();
+        campaign.reopen();
         parentScreen.refreshInformation();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }

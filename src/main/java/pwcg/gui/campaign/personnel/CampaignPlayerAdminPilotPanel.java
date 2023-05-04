@@ -260,6 +260,8 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
     @Override
     public void refreshInformation() throws PWCGException
     {
+        campaign.reopen();
+
         this.remove(centerPanel);
         this.add(makeDisplay(), BorderLayout.CENTER);
         

@@ -301,7 +301,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
             int result = ConfirmDialog.areYouSure("Confirm Retire " + pilot.getNameAndRank());
             if (result == JOptionPane.YES_OPTION)
             {
-                ChangePilotStatus(pilot, SquadronMemberStatus.STATUS_RETIRED);
+                changePilotStatus(pilot, SquadronMemberStatus.STATUS_RETIRED);
             }
         }
     }
@@ -314,20 +314,19 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
             int result = ConfirmDialog.areYouSure("Confirm Reactivation of " + pilot.getNameAndRank());
             if (result == JOptionPane.YES_OPTION)
             {
-                ChangePilotStatus(pilot, SquadronMemberStatus.STATUS_ACTIVE);
+                changePilotStatus(pilot, SquadronMemberStatus.STATUS_ACTIVE);
             }
         }
     }
 
-    private void ChangePilotStatus(SquadronMember pilot, int status) throws PWCGException, PWCGUserException
+    private void changePilotStatus(SquadronMember pilot, int status) throws PWCGException, PWCGUserException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
         pilot.setPilotActiveStatus(status, campaign.getDate(), null);
         campaign.write();
 
         loadCoopRecords();
-        updateCoopUserRecordsForUserSelection();
-        refreshInformation();
+        refreshLocal();
     }
     
     private void nextPage() throws PWCGException
@@ -357,14 +356,26 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         refresh();
     }
 
+    private void refreshLocal() throws PWCGException
+    {
+        refreshInformation();
+    }
+    
     public void refreshInformation() throws PWCGException
     {
+        campaign.reopen();
+        for (SquadronMember sm : campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList()) 
+        {
+            System.out.println("PLayer: " + sm.getName());
+        }
+
         CampaignPlayerAdminPilotPanel personaInfoPanel = personaInfoPanels.get(selectedPilotPanel);                
         personaInfoPanel.refreshInformation();
         
         makeRightPanel();
         this.add(personaActionsPanel, BorderLayout.EAST);
 
+        updateCoopUserRecordsForUserSelection();
         refresh();
     }
 

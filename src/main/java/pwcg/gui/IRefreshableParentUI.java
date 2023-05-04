@@ -6,7 +6,7 @@ import pwcg.core.exception.PWCGException;
 
 public interface IRefreshableParentUI
 {
-    void refreshInformation() throws PWCGException;
+    public void refreshInformation() throws PWCGException;
 
     JPanel getScreen();
 }
