@@ -27,8 +27,8 @@ public class PlayerScrambleFlight extends Flight implements IFlight
     
     private void createWaypoints() throws PWCGException
     {
-        List<IMissionPointSet> interceptMissionSets = InterceptAtTargetPattern.generateInterceptSegments(this);
-        for (IMissionPointSet interceptMissionSet : interceptMissionSets)
+        List<IMissionPointSet> scrambleMissionSets = InterceptAtTargetPattern.generateInterceptSegments(this);
+        for (IMissionPointSet interceptMissionSet : scrambleMissionSets)
         {
             this.getWaypointPackage().addMissionPointSet(interceptMissionSet);
         }

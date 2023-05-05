@@ -1,3 +1,9 @@
+15.1.0
+Added Bf109-G6 AS, Spitfire Mk XIVe, Sopwith Snipe and SSW D.IV
+Fixed issues around adding a coop user
+Fixed briefing issues for coop missions
+
+
 14.1.4
 Another attempt at sweeping the runway clean.
 Improvements to campaign generation

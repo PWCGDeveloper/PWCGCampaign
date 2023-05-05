@@ -1,5 +1,7 @@
 package pwcg.mission.flight.validate;
 
+import org.junit.jupiter.api.Assertions;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -9,7 +11,7 @@ public class PatrolFlightValidator
 {
     public void validatePatrolFlight(IFlight flight) throws PWCGException
     {
-        assert(flight.getWaypointPackage().getAllWaypoints().size() > 0);
+        Assertions.assertTrue(flight.getWaypointPackage().getAllWaypoints().size() > 0);
         validateWaypointLinkage(flight);
         validateWaypointTypes(flight);
     }
@@ -19,10 +21,11 @@ public class PatrolFlightValidator
         McuWaypoint prevWaypoint = null;
         for (McuWaypoint waypoint : flight.getWaypointPackage().getAllWaypoints())
         {
+            Assertions.assertTrue(waypoint.getPosition().getYPos() > 1.0);
             if (prevWaypoint != null)
             {
                 boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(prevWaypoint.getTargets(), waypoint.getIndex());
-                assert(isNextWaypointLinked);
+                Assertions.assertTrue(isNextWaypointLinked);
             }
             
             prevWaypoint = waypoint;
@@ -43,6 +46,6 @@ public class PatrolFlightValidator
             }
         }
         
-        assert(patrolFound);
+        Assertions.assertTrue(patrolFound);
     }
 }

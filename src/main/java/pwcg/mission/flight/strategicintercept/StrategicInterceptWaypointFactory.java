@@ -65,11 +65,12 @@ public class StrategicInterceptWaypointFactory
     private McuWaypoint createInterceptFirstWP(McuWaypoint playerIngressWaypoint) throws PWCGException
     {
         Coordinate coord = createInterceptFirstWPCoordinates();
+        coord.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint interceptWP = WaypointFactory.createPatrolWaypointType();
         interceptWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
         interceptWP.setSpeed(flight.getFlightCruisingSpeed());
-        interceptWP.setPosition(coord);    
+        interceptWP.setPosition(coord);
         interceptWP.setTargetWaypoint(true);
         
         double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getPosition());
@@ -81,6 +82,7 @@ public class StrategicInterceptWaypointFactory
     private McuWaypoint createInterceptStartPatternWP(double angleToPointBetweenIngressaAndEgress) throws PWCGException
     {
         Coordinate coord = createStartPatternCoordinate(angleToPointBetweenIngressaAndEgress);
+        coord.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint interceptWP = WaypointFactory.createPatrolWaypointType();
         interceptWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
