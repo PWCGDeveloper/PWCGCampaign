@@ -32,6 +32,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DirectoryReader;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -208,7 +209,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PaperPart.jpg";
-        ImageResizingPanel debriefTextPanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel debriefTextPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 		debriefTextPanel.setLayout(new BorderLayout());
 		debriefTextPanel.setOpaque(false);
 		debriefTextPanel.setBackground(buttonBG);

@@ -32,14 +32,12 @@ public class ChalkboardSelector extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
-    private Campaign campaign;
     private CampaignHomeScreen campaignHome;
     private ButtonGroup buttonGroup = new ButtonGroup();
 
     public ChalkboardSelector(CampaignHomeScreen campaignHome)
     {
         this.campaignHome = campaignHome;
-        this.campaign = campaignHome.getCampaign();
         
         setLayout(new BorderLayout());
         setOpaque(false);
@@ -133,19 +131,19 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         }
         catch (PWCGUserException ue)
         {
-            campaign.setCurrentMission(null);
+            CampaignHomeContext.getCampaign().setCurrentMission(null);
             PWCGLogger.logException(ue);
             ErrorDialog.userError(ue.getMessage());
         }
         catch (Exception e)
         {
-            campaign.setCurrentMission(null);
+            CampaignHomeContext.getCampaign().setCurrentMission(null);
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
         catch (Throwable t)
         {
-            campaign.setCurrentMission(null);
+            CampaignHomeContext.getCampaign().setCurrentMission(null);
             PWCGLogger.logException(t);
             ErrorDialog.internalError(t.getMessage());
         }
@@ -154,11 +152,11 @@ public class ChalkboardSelector extends JPanel implements ActionListener
     public void createEquipmentContext() throws PWCGException 
     {       
         CampaignEquipmentChalkBoardPanelSet equipmentChalkboardDisplay = new CampaignEquipmentChalkBoardPanelSet(campaignHome.getChalkboardSelector());
-        equipmentChalkboardDisplay.makeEquipmentPanel(campaignHome.getCampaign());
+        equipmentChalkboardDisplay.makeEquipmentPanel(CampaignHomeContext.getCampaign());
         
         List<SquadronMember> squadronMembers = makePilotList();
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getSquadronId());
+        SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome, squadronMembers, referencePlayer.getSquadronId());
 
         campaignHome.createNewContext(equipmentChalkboardDisplay, squadronPanel);
     }    
@@ -168,24 +166,25 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         List<SquadronMember> squadronMembers = makePilotList();
         JPanel chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, squadronMembers);
         
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getSquadronId());
+        SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome, squadronMembers, referencePlayer.getSquadronId());
 
         campaignHome.createNewContext(chalkboardPanel, squadronPanel);
     }
 
     public void createPlayerPilotsContext() throws PWCGException 
     {
-        List<SquadronMember> playerPilots = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+        List<SquadronMember> playerPilots = CampaignHomeContext.getCampaign().getPersonnelManager().getAllPlayers().getSquadronMemberList();
         JPanel chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, playerPilots);
         
-        JPanel playerPilotPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaign, campaignHome, playerPilots);
+        JPanel playerPilotPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaignHome, playerPilots);
 
         campaignHome.createNewContext(chalkboardPanel, playerPilotPanel);
     }
     
     private List<SquadronMember> makePilotList() throws PWCGException 
     {
+        Campaign campaign = CampaignHomeContext.getCampaign();
         SquadronMember referencePlayer = campaign.findReferencePlayer();
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
@@ -194,13 +193,13 @@ public class ChalkboardSelector extends JPanel implements ActionListener
 
     private void createTopAceContext(TopAcesListType topAcesListType) throws PWCGException 
     {
-        TopAcesListBuilder topAcesListBuilder = new TopAcesListBuilder(campaign);
+        TopAcesListBuilder topAcesListBuilder = new TopAcesListBuilder(CampaignHomeContext.getCampaign());
         List<SquadronMember> acesToDisplay = topAcesListBuilder.getTopTenAces(topAcesListType);
         
         CampaignHomeTopAcesCenterPanel topAceListChalkboard = new CampaignHomeTopAcesCenterPanel(campaignHome);
         topAceListChalkboard.makePanel(acesToDisplay);
         
-        JPanel topAcesListPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaign, campaignHome, acesToDisplay);
+        JPanel topAcesListPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaignHome, acesToDisplay);
 
         campaignHome.createNewContext(topAceListChalkboard, topAcesListPanel);
     }

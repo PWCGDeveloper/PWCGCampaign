@@ -36,19 +36,20 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
 
     private PwcgMainScreen parent;
     private PwcgThreePanelUI pwcgThreePanel;
-    private Campaign campaign;
     private boolean needContextRefresh = false;
     private ChalkboardSelector chalkboardSelector;
 
     public CampaignHomeScreen(PwcgMainScreen parent, Campaign campaign) throws PWCGException
     {
         super();
+        
+        CampaignHomeContext.setCampaign(campaign);
+        
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         this.pwcgThreePanel = new PwcgThreePanelUI(this);
         this.parent = parent;
-        this.campaign = campaign;
         this.makePanel();
     }
 
@@ -57,7 +58,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignHomeScreen);
-            this.setThemedImageFromName(campaign, imagePath);
+            this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
             
             refreshInformation();
         }
@@ -70,8 +71,6 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
 
     public void refreshInformation() throws PWCGException
     {
-        campaign.reopen();
-
         MusicManager.playCampaignTheme(determineCampaignSideForMusic());
         this.add(BorderLayout.WEST, makeLeftPanel());
         
@@ -106,8 +105,8 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
     private JPanel makeDefaultRightPanel() throws PWCGException
     {
         List<SquadronMember> squadronMembers = makePilotList();
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        return CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaign, this, squadronMembers, referencePlayer.getSquadronId());
+        SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
+        return CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(this, squadronMembers, referencePlayer.getSquadronId());
     }
 
     private void createSelectorPanel() throws PWCGException
@@ -118,6 +117,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
 
     private List<SquadronMember> makePilotList() throws PWCGException 
     {
+        Campaign campaign = CampaignHomeContext.getCampaign();
         SquadronMember referencePlayer = campaign.findReferencePlayer();
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
@@ -127,6 +127,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
 
     private Side determineCampaignSideForMusic() throws PWCGException
     {
+        Campaign campaign = CampaignHomeContext.getCampaign();
         if (campaign.isCoop())
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
@@ -154,32 +155,32 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
 
             if (action.equalsIgnoreCase("CampMainMenu"))
             {
-                campaign.write();
+                CampaignHomeContext.writeCampaign();
                 parent.refresh();
 
                 return;
             }
             else
             {
-                CampaignHomeAction homeGUIAction = new CampaignHomeAction(this, campaign);
+                CampaignHomeAction homeGUIAction = new CampaignHomeAction(this);
                 homeGUIAction.actionPerformed(ae);
             }
         }
         catch (PWCGUserException ue)
         {
-            campaign.setCurrentMission(null);
+            CampaignHomeContext.getCampaign().setCurrentMission(null);
             PWCGLogger.logException(ue);
             ErrorDialog.userError(ue.getMessage());
         }
         catch (Exception e)
         {
-            campaign.setCurrentMission(null);
+            CampaignHomeContext.getCampaign().setCurrentMission(null);
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
         catch (Throwable t)
         {
-            campaign.setCurrentMission(null);
+            CampaignHomeContext.getCampaign().setCurrentMission(null);
             PWCGLogger.logException(t);
             ErrorDialog.internalError(t.getMessage());
         }
@@ -187,18 +188,13 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
 
     public void campaignTimePassedForLeave(int timePassedDays) throws PWCGException
     {
-        campaign.setCurrentMission(null);
-        AARCoordinator.getInstance().submitLeave(campaign, timePassedDays);
-        AARReportMainPanel eventDisplay = new AARReportMainPanel(campaign, this, EventPanelReason.EVENT_PANEL_REASON_LEAVE);
+        CampaignHomeContext.getCampaign().setCurrentMission(null);
+        AARCoordinator.getInstance().submitLeave(CampaignHomeContext.getCampaign(), timePassedDays);
+        AARReportMainPanel eventDisplay = new AARReportMainPanel(CampaignHomeContext.getCampaign(), this, EventPanelReason.EVENT_PANEL_REASON_LEAVE);
         eventDisplay.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
     }
 
-    public Campaign getCampaign()
-    {
-        return campaign;
-    }
-    
     public void createNewContext(JPanel centerPanel, JPanel rightPanel) throws PWCGException
     {        
         pwcgThreePanel.setCenterPanel(centerPanel);

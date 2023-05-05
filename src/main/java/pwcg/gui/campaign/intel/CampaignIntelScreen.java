@@ -9,13 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.EmergencyResupplyHandler;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ConfirmDialog;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.intelmap.IntelMapGUI;
@@ -29,21 +29,17 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
 {
     private static final long serialVersionUID = 1L;
 
-    private Campaign campaign;
-
-    public CampaignIntelScreen(Campaign campaign)
+    public CampaignIntelScreen()
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
-
-        this.campaign = campaign;
     }
 
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSimpleConfigurationScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
@@ -118,7 +114,7 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
 
     private void showIntelReport() throws PWCGException 
     {
-        CampaignIntelligenceReportScreen intelligence = new CampaignIntelligenceReportScreen(campaign);
+        CampaignIntelligenceReportScreen intelligence = new CampaignIntelligenceReportScreen();
         intelligence.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(intelligence);
@@ -126,7 +122,7 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
 
     private void showEquipmentDepotReport() throws PWCGException 
     {
-        CampaignEquipmentDepotScreen depot = new CampaignEquipmentDepotScreen(campaign);
+        CampaignEquipmentDepotScreen depot = new CampaignEquipmentDepotScreen();
         depot.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(depot);
@@ -134,7 +130,7 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
     
     private void showIntelMap() throws PWCGException 
     {
-        IntelMapGUI map = new IntelMapGUI(campaign);
+        IntelMapGUI map = new IntelMapGUI();
         map.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(map);
     }
@@ -146,7 +142,7 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
         {
             try
             {
-                EmergencyResupplyHandler resupplyHandler = new EmergencyResupplyHandler(campaign);
+                EmergencyResupplyHandler resupplyHandler = new EmergencyResupplyHandler(CampaignHomeContext.getCampaign());
                 resupplyHandler.emergencyResupply();
             }
             catch (PWCGException e)

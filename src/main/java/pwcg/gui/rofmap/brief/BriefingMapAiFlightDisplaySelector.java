@@ -27,7 +27,7 @@ import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 
-public class BriefingMapSquadronSelector implements ActionListener
+public class BriefingMapAiFlightDisplaySelector implements ActionListener
 {
     private static final int NO_SQUADRONS = -2;
     private static final int ALL_SQUADRONS = -1;
@@ -35,14 +35,15 @@ public class BriefingMapSquadronSelector implements ActionListener
     private Mission mission;
     private IBriefingSquadronSelectedCallback squadronsSelectedCallback;
     private Map<Integer, JCheckBox> squadronCheckBoxes = new HashMap<>();
-    private Map<Integer, String> selectedSquadrons = new HashMap<>();
+    private Map<Integer, String> selectedAiFlights = new HashMap<>();
     private BriefingData briefingContext;
 
-    public BriefingMapSquadronSelector(Mission mission, IBriefingSquadronSelectedCallback squadronsSelected,BriefingData briefingContext)
+    public BriefingMapAiFlightDisplaySelector(Mission mission, IBriefingSquadronSelectedCallback squadronsSelected,BriefingData briefingContext, Map<Integer, String> selectedAiFlights)
     {
         this.mission = mission;
         this.squadronsSelectedCallback = squadronsSelected;
         this.briefingContext = briefingContext;
+        this.selectedAiFlights = selectedAiFlights;
     }
 
     public JPanel makeComboBox() throws PWCGException
@@ -80,6 +81,11 @@ public class BriefingMapSquadronSelector implements ActionListener
                 JCheckBox checkBox = makeCheckBox(squadron.determineDisplayName(mission.getCampaign().getDate()), "" + squadron.getSquadronId());
                 squadronCheckBoxes.put(squadron.getSquadronId(), checkBox);
                 squadronSelectorGrid.add(checkBox);
+                
+                if (selectedAiFlights.containsKey(squadron.getSquadronId()))
+                {
+                    checkBox.setSelected(true);
+                }
             }
         }
     }
@@ -122,7 +128,7 @@ public class BriefingMapSquadronSelector implements ActionListener
                     checkBox.setSelected(true);
                 }
 
-                selectedSquadrons.clear();
+                selectedAiFlights.clear();
                 for (int squadronIdFromCheckBox : squadronCheckBoxes.keySet())
                 {
                     addSquadronToSelected(squadronIdFromCheckBox);
@@ -130,21 +136,21 @@ public class BriefingMapSquadronSelector implements ActionListener
             }
             else if (squadronId == NO_SQUADRONS)
             {
-                selectedSquadrons.clear();
+                selectedAiFlights.clear();
                 for (JCheckBox checkBox : squadronCheckBoxes.values())
                 {
                     checkBox.setSelected(false);
                 }
             }
-            else if (selectedSquadrons.containsKey(squadronId))
+            else if (selectedAiFlights.containsKey(squadronId))
             {
-                selectedSquadrons.remove(squadronId);
+                selectedAiFlights.remove(squadronId);
             }
             else
             {
                 addSquadronToSelected(squadronId);
             }
-            squadronsSelectedCallback.squadronsSelectedChanged(selectedSquadrons);
+            squadronsSelectedCallback.squadronsSelectedChanged(selectedAiFlights);
         }
         catch (PWCGException e)
         {
@@ -155,6 +161,6 @@ public class BriefingMapSquadronSelector implements ActionListener
     {
         IFlight flight = mission.getFlights().getAiFlightForSquadron(squadronId);
         Squadron squadron = flight.getSquadron();
-        selectedSquadrons.put(squadronId, squadron.determineDisplayName(mission.getCampaign().getDate()));
+        selectedAiFlights.put(squadronId, squadron.determineDisplayName(mission.getCampaign().getDate()));
     }
 }

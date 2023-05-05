@@ -81,10 +81,10 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
     private JLabel lPlayerName;
     private JLabel lRegion;
 
-    private CampaignNewPilotScreen parent;
+    private NewPilotScreen parent;
     private Campaign campaign;
 
-	public NewPilotDataEntryGUI(Campaign campaign, CampaignNewPilotScreen parent) 
+	public NewPilotDataEntryGUI(Campaign campaign, NewPilotScreen parent) 
 	{
         this.setLayout(new BorderLayout());
         this.setOpaque(false);

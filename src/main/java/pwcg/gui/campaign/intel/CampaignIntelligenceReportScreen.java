@@ -10,7 +10,6 @@ import edu.cmu.relativelayout.Binding;
 import edu.cmu.relativelayout.BindingFactory;
 import edu.cmu.relativelayout.RelativeConstraints;
 import edu.cmu.relativelayout.RelativeLayout;
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -18,6 +17,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 
@@ -25,23 +25,21 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 {
     private static final long serialVersionUID = 1L;
 
-	private Campaign campaign;
 	private CampaignIntelligenceSquadronDetailsPanel squadronDetailsRightPanel;
 	private Side side;
 	private JPanel contentPanel;
 	
-	public CampaignIntelligenceReportScreen(Campaign campaign)
+	public CampaignIntelligenceReportScreen()
 	{
         super();
         this.setLayout(new RelativeLayout());
         this.setOpaque(false);
 
-        this.campaign = campaign;
         this.setOpaque(false);
         
         try 
         {
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
+            SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
             side = referencePlayer.determineCountry().getSide();
         }
         catch (Exception  e)
@@ -53,7 +51,7 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignIntelligenceReportScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         JPanel navPanel  = makeNavigatePanel();
         JPanel contentPanels  = makeContentPanels();
@@ -102,14 +100,14 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 
     private JPanel makeCenterPanel() throws PWCGException  
     {
-        CampaignIntelligenceSquadronListPanel squadronSelectionCenterPanel = new CampaignIntelligenceSquadronListPanel(campaign, this,side);
+        CampaignIntelligenceSquadronListPanel squadronSelectionCenterPanel = new CampaignIntelligenceSquadronListPanel(this,side);
         squadronSelectionCenterPanel.makePanel();
         return squadronSelectionCenterPanel;
     }
 
     private JPanel makeRightPanel() throws PWCGException  
     {
-        squadronDetailsRightPanel = new CampaignIntelligenceSquadronDetailsPanel(campaign);
+        squadronDetailsRightPanel = new CampaignIntelligenceSquadronDetailsPanel();
         squadronDetailsRightPanel.makePanel();
         return squadronDetailsRightPanel;
     }
@@ -122,7 +120,7 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 
             if (action.equalsIgnoreCase("IntelFinished"))
             {
-                campaign.write();                
+                CampaignHomeContext.writeCampaign();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.contains("SquadronSelected"))
@@ -135,13 +133,13 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
             }
             else if (action.contains("Friendly"))
             {
-                SquadronMember referencePlayer = campaign.findReferencePlayer();
+                SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
                 side = referencePlayer.determineCountry().getSide();
                 makeContent();
             }
             else if (action.contains("Enemy"))
             {
-                SquadronMember referencePlayer = campaign.findReferencePlayer();
+                SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
                 side = referencePlayer.determineCountry().getSide().getOppositeSide();
                 makeContent();
             }

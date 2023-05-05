@@ -68,7 +68,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
     public void makePanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "Chalkboard.png";
-        JPanel briefingPilotPanel = new ImageResizingPanel(briefingContext.getCampaign(), imagePath);
+        JPanel briefingPilotPanel = new ImageResizingPanel(briefingContext.getCampaign().getReferenceService(), imagePath);
         briefingPilotPanel.setLayout(new BorderLayout());
         briefingPilotPanel.setOpaque(false);
         briefingPilotPanel.setBorder(BorderFactory.createEmptyBorder(75,100,50,50));

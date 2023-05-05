@@ -8,13 +8,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.sound.ProceedWithMission;
@@ -30,22 +30,19 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
     private static final long serialVersionUID = 1L;
     private CampaignHomeScreen campaignHome = null;
 
-    private Campaign campaign;
-
-    public CampaignActivityScreen(Campaign campaign, CampaignHomeScreen campaignHome)
+    public CampaignActivityScreen(CampaignHomeScreen campaignHome)
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.campaign = campaign;
         this.campaignHome = campaignHome;
     }
 
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSimpleConfigurationScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
@@ -66,7 +63,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
 
         buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
-        if (campaign.isCampaignActive())
+        if (CampaignHomeContext.getCampaign().isCampaignActive())
         {
             JButton leaveButton = PWCGButtonFactory.makeTranslucentMenuButton("Leave", "CampFlowLeave", "Request leave", this);
             buttonPanel.add(leaveButton);
@@ -140,17 +137,17 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
 
     private void showTransfer() throws PWCGException 
     {
-        boolean shouldProceed = ProceedWithMission.shouldProceedWithMission(campaign, "Existing mission results detected.  Transferring will prevent an AAR.  Proceed?");
+        boolean shouldProceed = ProceedWithMission.shouldProceedWithMission(CampaignHomeContext.getCampaign(), "Existing mission results detected.  Transferring will prevent an AAR.  Proceed?");
         if (!shouldProceed)
         {
             return;
         }
         
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
         
         boolean passTime = true;
-        CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaign, referencePlayer, campaignHome, passTime);
+        CampaignTransferScreen transferDisplay = new CampaignTransferScreen(referencePlayer, campaignHome, passTime);
 
         transferDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
@@ -158,7 +155,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
 
     private void showLeavePage() throws PWCGException 
     {
-        boolean shouldProceed = ProceedWithMission.shouldProceedWithMission(campaign, "Existing mission results detected.  Taking leave will prevent an AAR.  Proceed?");
+        boolean shouldProceed = ProceedWithMission.shouldProceedWithMission(CampaignHomeContext.getCampaign(), "Existing mission results detected.  Taking leave will prevent an AAR.  Proceed?");
         if (!shouldProceed)
         {
             return;
@@ -176,7 +173,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignJournalScreen journalDisplay = new CampaignJournalScreen(campaign);
+        CampaignJournalScreen journalDisplay = new CampaignJournalScreen();
         journalDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(journalDisplay);
@@ -186,7 +183,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
 
-        EquipmentRequestScreen equipmentRequestScreen = new EquipmentRequestScreen(campaign);
+        EquipmentRequestScreen equipmentRequestScreen = new EquipmentRequestScreen();
         equipmentRequestScreen.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(equipmentRequestScreen);
@@ -196,8 +193,8 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        CampaignSquadronLogScreen logDisplay = new CampaignSquadronLogScreen(campaign, referencePlayer.getSquadronId());
+        SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
+        CampaignSquadronLogScreen logDisplay = new CampaignSquadronLogScreen(referencePlayer.getSquadronId());
         logDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(logDisplay);
@@ -207,7 +204,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignNewsStandScreen newsDisplay = new CampaignNewsStandScreen(campaign);
+        CampaignNewsStandScreen newsDisplay = new CampaignNewsStandScreen();
         newsDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(newsDisplay);
@@ -215,17 +212,17 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
 
     private boolean isDisplayTransferButton() throws PWCGException
     {
-        if (!campaign.isCampaignActive())
+        if (!CampaignHomeContext.getCampaign().isCampaignActive())
         {
             return false;
         }
 
-        if (!campaign.isCampaignCanFly())
+        if (!CampaignHomeContext.getCampaign().isCampaignCanFly())
         {
             return false;
         }
 
-        if (campaign.isCoop())
+        if (CampaignHomeContext.getCampaign().isCoop())
         {
             return false;
         }

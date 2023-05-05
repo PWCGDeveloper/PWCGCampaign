@@ -1,10 +1,10 @@
 package pwcg.gui.campaign.config;
 
-import pwcg.campaign.Campaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.CommonUIActions;
 
@@ -18,11 +18,8 @@ public class CampaignConfigurationSimpleGUIController
     
     static public final String CAMPAIGN_TYPE = "Campaign Type";
     
-    private Campaign campaign;
-
-    public CampaignConfigurationSimpleGUIController(Campaign campaign)
+    public CampaignConfigurationSimpleGUIController()
     {
-        this.campaign = campaign;
     }
     
 	public void setSimpleConfig(String action)
@@ -51,15 +48,15 @@ public class CampaignConfigurationSimpleGUIController
             }           
             else if (action.equalsIgnoreCase(CommonUIActions.ACTION_ACCEPT))
 			{
-				acceptSimpleConfigChanges(campaign);
+				acceptSimpleConfigChanges();
 			}
 			else if (action.equalsIgnoreCase(CommonUIActions.ACTION_RESET))
 			{
-				resetConfigurationToDefault(campaign);
+				resetConfigurationToDefault();
 			}
 			if (action.equalsIgnoreCase(CommonUIActions.ACTION_CANCEL))
 			{
-				cancelSimpleConfigChanges(campaign);
+				cancelSimpleConfigChanges();
 			}
 		}
 		catch (Exception e)
@@ -71,7 +68,7 @@ public class CampaignConfigurationSimpleGUIController
 
     private void setAirDensity(String action) throws PWCGException
     {
-        ConfigSimple configSetSimpleConfig = new ConfigSimple(campaign);
+        ConfigSimple configSetSimpleConfig = new ConfigSimple(CampaignHomeContext.getCampaign());
         if (action.contains(ConfigSimple.CONFIG_LEVEL_LOW))
         {					
         	configSetSimpleConfig.setAirLow();
@@ -88,7 +85,7 @@ public class CampaignConfigurationSimpleGUIController
 
     private void setGroundDensity(String action) throws PWCGException
     {
-        ConfigSimple configSetSimpleConfig = new ConfigSimple(campaign);
+        ConfigSimple configSetSimpleConfig = new ConfigSimple(CampaignHomeContext.getCampaign());
         if (action.contains(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             configSetSimpleConfig.setGroundLow();
@@ -105,7 +102,7 @@ public class CampaignConfigurationSimpleGUIController
 
     private void setAADensity(String action) throws PWCGException
     {
-        ConfigSimple configSetSimpleConfig = new ConfigSimple(campaign);
+        ConfigSimple configSetSimpleConfig = new ConfigSimple(CampaignHomeContext.getCampaign());
         if (action.contains(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             configSetSimpleConfig.setAALow();
@@ -122,7 +119,7 @@ public class CampaignConfigurationSimpleGUIController
 
     private void setCpuAllowanceDensity(String action) throws PWCGException
     {
-        ConfigSimple configSetSimpleConfig = new ConfigSimple(campaign);
+        ConfigSimple configSetSimpleConfig = new ConfigSimple(CampaignHomeContext.getCampaign());
         if (action.contains(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             configSetSimpleConfig.setCpuAllowanceLow();
@@ -139,7 +136,7 @@ public class CampaignConfigurationSimpleGUIController
 
     private void setStructureDensity(String action) throws PWCGException
     {
-        ConfigSimple configSetSimpleConfig = new ConfigSimple(campaign);
+        ConfigSimple configSetSimpleConfig = new ConfigSimple(CampaignHomeContext.getCampaign());
         if (action.contains(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             configSetSimpleConfig.setStructureLow();;
@@ -154,21 +151,21 @@ public class CampaignConfigurationSimpleGUIController
         }
     }
 
-    private void acceptSimpleConfigChanges(Campaign campaign) throws PWCGException
+    private void acceptSimpleConfigChanges() throws PWCGException
     {
-        campaign.getCampaignConfigManager().write();
+        CampaignHomeContext.getCampaign().getCampaignConfigManager().write();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 
-    private void resetConfigurationToDefault(Campaign campaign) throws PWCGException
+    private void resetConfigurationToDefault() throws PWCGException
     {
-        campaign.getCampaignConfigManager().reset();
+        CampaignHomeContext.getCampaign().getCampaignConfigManager().reset();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 
-    private void cancelSimpleConfigChanges(Campaign campaign) throws PWCGException
+    private void cancelSimpleConfigChanges() throws PWCGException
     {
-        campaign.getCampaignConfigManager().readConfig();
+        CampaignHomeContext.getCampaign().getCampaignConfigManager().readConfig();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 

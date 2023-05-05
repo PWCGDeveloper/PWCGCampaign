@@ -13,13 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
@@ -39,24 +39,22 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 	private JPanel rightpage = null;
     private int pageNum = 1;
     private PilotLogPages pilotLogPages;
-    private Campaign campaign;
     private JPanel centerPanel = null;
 
-    public CampaignPilotLogScreen(Campaign campaign, SquadronMember pilot)
+    public CampaignPilotLogScreen(SquadronMember pilot)
     {
         super();
         this.setLayout(new BorderLayout());
 
         this.pilot = pilot;  
-        this.campaign = campaign;  
     }
 	
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignPilotLogScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
-        pilotLogPages = new PilotLogPages(campaign, pilot);
+        pilotLogPages = new PilotLogPages(pilot);
         pilotLogPages.makePages();
         
 		this.add(BorderLayout.WEST, makeNavigationPanel());
@@ -84,7 +82,7 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 	private JPanel  makeLogCenterPanel() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenPilotLog);
-        ImageResizingPanel campaignPilotLogPanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel campaignPilotLogPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         campaignPilotLogPanel.setLayout(new GridLayout(0,2));
         campaignPilotLogPanel.setOpaque(false);
 
@@ -246,7 +244,7 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
             
             if (action.equalsIgnoreCase("PilotLogFinished"))
             {
-                campaign.write();                
+                CampaignHomeContext.writeCampaign();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("Next Page"))

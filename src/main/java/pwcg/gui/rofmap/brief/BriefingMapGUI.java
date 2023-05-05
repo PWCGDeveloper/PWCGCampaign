@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JButton;
@@ -37,8 +38,12 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Mission mission;
     private BriefingData briefingData;
-    private BriefingFlightChooser briefingFlightChooser;
+    private BriefingPlayerFlightChooser briefingFlightChooser;
     private BriefingMapPanel mapPanel;
+    private JPanel centerPanel;
+    private JPanel navPanel;
+    private JPanel navPanelAiSquadronPanel;
+    private Map<Integer, String> selectedAiFlights = new HashMap<>();
 
 	public BriefingMapGUI(Campaign campaign, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper) throws PWCGException  
 	{
@@ -56,18 +61,14 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 	{
 		try
 		{
-            briefingFlightChooser = new BriefingFlightChooser(mission, this);
-            briefingFlightChooser.createBriefingSquadronSelectPanel();
+            briefingFlightChooser = new BriefingPlayerFlightChooser(mission, this);
+            briefingFlightChooser.createBriefingPlayerSquadronSelectPanel();
 
 			Color bg = ColorMap.MAP_BACKGROUND;
 			setOpaque(false);
 			setBackground(bg);
 			
-            this.add(BorderLayout.WEST, makeNavPanel());           
-            this.add(BorderLayout.CENTER, createCenterPanel());
-            
-            Point initialPosition = findCenterPosition();
-            centerMapAt(initialPosition);
+			buildAllPanels();            
 		}
 		catch (Exception e)
 		{
@@ -76,13 +77,11 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 		}
 	}
 
-    private JPanel createCenterPanel() throws PWCGException
+    private void createCenterPanel() throws PWCGException
     {
-        JPanel briefingMapCenterPanel = new JPanel(new BorderLayout());
+        centerPanel = new JPanel(new BorderLayout());
         createMapPanel();
-        briefingMapCenterPanel.add(mapScroll.getMapScrollPane(), BorderLayout.CENTER);
-
-        return briefingMapCenterPanel;
+        centerPanel.add(mapScroll.getMapScrollPane(), BorderLayout.CENTER);
     }
 
     private void createMapPanel() throws PWCGException
@@ -102,30 +101,30 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         flightMapper.mapRequestedFlights();
     }
 
-    private Point findCenterPosition()
+    private void centerMapAtActiveFlight()
     {
-        Coordinate initialPosition = briefingData.getActiveBriefingFlight().getBriefingFlightParameters().getBriefingMapMapPoints().get(0).getPosition();
-        Point mapPoint = mapPanel.coordinateToPoint(initialPosition);
-        return mapPoint;
+        Coordinate activeFlightPositionPosition = briefingData.getActiveBriefingFlight().getBriefingFlightParameters().getBriefingMapMapPoints().get(0).getPosition();
+        Point mapPoint = mapPanel.coordinateToPoint(activeFlightPositionPosition);
+        centerMapAt(mapPoint);
     }
 
-    private JPanel makeNavPanel() throws PWCGException 
+    private void makeNavPanel() throws PWCGException 
     {
-        JPanel leftPanel = new JPanel(new BorderLayout());
-        leftPanel.setOpaque(false);
+	    navPanel = new JPanel(new BorderLayout());
+	    navPanel.setOpaque(false);
 
-        JPanel buttonPanel = makeButtonPanel();
-        leftPanel.add(buttonPanel, BorderLayout.NORTH);
-        leftPanel.add(briefingFlightChooser.getFlightChooserPanel(), BorderLayout.CENTER);
-        return leftPanel;
-    }
-    
-	private JPanel makeButtonPanel() throws PWCGException 
-	{
-		JPanel buttonPanel = new JPanel(new BorderLayout());
-		buttonPanel.setOpaque(false);
+		JPanel buttonGrid = buildMenuButtons();
+		navPanel.add(buttonGrid, BorderLayout.NORTH);
+		
+        buildFriendlySquadronSelect();
+        navPanel.add(navPanelAiSquadronPanel, BorderLayout.CENTER);
+		
+        navPanel.add(briefingFlightChooser.getFlightChooserPanel(), BorderLayout.SOUTH);        
+	}
 
-		JPanel buttonGrid = new JPanel();
+    private JPanel buildMenuButtons() throws PWCGException
+    {
+        JPanel buttonGrid = new JPanel();
 		buttonGrid.setLayout(new GridLayout(0,1));
 		buttonGrid.setOpaque(false);
 	    
@@ -150,15 +149,14 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
         buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
+        return buttonGrid;
+    }
 
-		buttonPanel.add(buttonGrid, BorderLayout.NORTH);
-		
-        BriefingMapSquadronSelector squadronSelector = new BriefingMapSquadronSelector(mission, this, briefingData);
-        JPanel friendlySquadronSelectorPanel = squadronSelector.makeComboBox();
-		buttonPanel.add(friendlySquadronSelectorPanel, BorderLayout.CENTER);
-		
-		return buttonPanel;
-	}
+    private void buildFriendlySquadronSelect() throws PWCGException
+    {
+        BriefingMapAiFlightDisplaySelector squadronSelector = new BriefingMapAiFlightDisplaySelector(mission, this, briefingData, selectedAiFlights);
+        navPanelAiSquadronPanel = squadronSelector.makeComboBox();
+    }
 
     private JButton makeButton(String buttonText, String command, String toolTipText) throws PWCGException
     {
@@ -224,14 +222,33 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         }
         
         briefingData.changeSelectedFlight(squadron.getSquadronId());
-        refreshAllPanels();           
+        buildAllPanels();           
 
     }
 
-    private void refreshAllPanels() throws PWCGException
+    private void buildAllPanels() throws PWCGException
     {
-        this.add(BorderLayout.CENTER, createCenterPanel());
-        this.add(BorderLayout.WEST, makeNavPanel());
+        if (navPanel == null)
+        {
+            makeNavPanel();
+            this.add(BorderLayout.WEST, navPanel);           
+        }
+        else
+        {
+            navPanel.remove(navPanelAiSquadronPanel);
+            buildFriendlySquadronSelect();
+            navPanel.add(navPanelAiSquadronPanel, BorderLayout.CENTER);            
+        }
+        
+        if (centerPanel != null)
+        {
+            this.remove(centerPanel);
+        }
+        createCenterPanel();
+        this.add(BorderLayout.CENTER, centerPanel);
+
+        refreshMapScreen();
+        centerMapAtActiveFlight();
     }
     
     private boolean isChangedSquadronSameSide(Squadron before, Squadron after) throws PWCGException
@@ -246,8 +263,9 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     @Override
     public void squadronsSelectedChanged(Map<Integer, String> aiFlightsToDisplay) throws PWCGException
     {
+        selectedAiFlights = aiFlightsToDisplay;
         briefingData.setAiFlightsToDisplay(aiFlightsToDisplay);
-        this.add(BorderLayout.CENTER, createCenterPanel());
+        buildAllPanels();
         
         refreshMapScreen();
     }

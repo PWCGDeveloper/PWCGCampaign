@@ -16,7 +16,6 @@ import edu.cmu.relativelayout.Binding;
 import edu.cmu.relativelayout.BindingFactory;
 import edu.cmu.relativelayout.RelativeConstraints;
 import edu.cmu.relativelayout.RelativeLayout;
-import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -25,6 +24,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -40,16 +40,14 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
     private static final long serialVersionUID = 1L;
     private JComboBox<String> squadronMemberSelector;
     private CampaignHomeScreen campaignHomeGui;
-    private Campaign campaign;
     private Map<String, SquadronMember> coopSquadronMembersInCampaign = new HashMap<>();
 
-    public CampaignReferencePilotSelectorScreen(Campaign campaign,CampaignHomeScreen campaignHomeGui)
+    public CampaignReferencePilotSelectorScreen(CampaignHomeScreen campaignHomeGui)
     {
         super();
         this.setLayout(new RelativeLayout());
         this.setOpaque(false);
 
-        this.campaign = campaign;
         this.campaignHomeGui = campaignHomeGui;
     }
     
@@ -58,7 +56,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignReferencePilotSelectorScreen);
-            this.setThemedImageFromName(campaign, imagePath);
+            this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
             
             Binding navPanelBinding = BindingFactory.getBindingFactory().directLeftEdge();
             RelativeConstraints navPanelConstraints = new RelativeConstraints();
@@ -87,7 +85,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         squadronMemberSelector.setBackground(ColorMap.PAPER_BACKGROUND);
         squadronMemberSelector.setFont(font);
         
-        SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
+        SquadronMembers players = CampaignHomeContext.getCampaign().getPersonnelManager().getAllActivePlayers();
         for (SquadronMember player : players.getSquadronMemberList())
         {
             if (player.getPilotActiveStatus() >= SquadronMemberStatus.STATUS_CAPTURED)
@@ -118,7 +116,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         gridPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel centerPanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel centerPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         centerPanel.setLayout(new BorderLayout());
         centerPanel.add(gridPanel, BorderLayout.NORTH);
         this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
@@ -159,8 +157,8 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
                 SquadronMember referencePlayer = coopSquadronMembersInCampaign.get(squadronMemberSelector.getSelectedItem());
                 if (referencePlayer != null)
                 {
-                    campaign.getCampaignData().setReferencePlayerSerialNumber(referencePlayer.getSerialNumber());
-                    campaign.write();
+                    CampaignHomeContext.getCampaign().getCampaignData().setReferencePlayerSerialNumber(referencePlayer.getSerialNumber());
+                    CampaignHomeContext.writeCampaign();
                 }
                 
                 campaignHomeGui.refreshInformation();

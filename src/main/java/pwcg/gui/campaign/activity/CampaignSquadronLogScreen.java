@@ -19,6 +19,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -43,15 +44,13 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 	private int pageNum = 0;
 	private Map<Integer, StringBuffer> pages = new TreeMap<>();
 
-	public CampaignSquadronLogScreen (Campaign campaign, int logsForSquadronId)
+	public CampaignSquadronLogScreen (int logsForSquadronId)
 	{        
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         this.logsForSquadronId = logsForSquadronId;
-
-		this.campaign = campaign;
 	}
 
 	public void makeVisible(boolean visible) 
@@ -61,7 +60,7 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSquadronLogScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         CampaignSquadronLogSummaryPageBuilder summaryPageBuilder = new CampaignSquadronLogSummaryPageBuilder(campaign, logsForSquadronId);
         Map<Integer, StringBuffer> summaryPages = summaryPageBuilder.buildSummaryPage();
@@ -103,7 +102,7 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 	private JPanel  makeLogCenterPanel() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenSquadronLog);
-        ImageResizingPanel logCenterPanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel logCenterPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         logCenterPanel.setLayout(new BorderLayout());
         logCenterPanel.setOpaque(false);
         

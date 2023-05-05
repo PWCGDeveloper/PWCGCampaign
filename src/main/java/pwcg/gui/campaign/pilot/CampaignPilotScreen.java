@@ -15,7 +15,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.PictureManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.CountryFactory;
@@ -27,6 +26,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -51,7 +51,6 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 
     private SquadronMember pilot;
 	private Squadron squad;
-    private Campaign campaign;
     private CampaignHomeScreen parent;
 
     protected String changePilotPictureAction = "";
@@ -60,7 +59,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
     protected String openLogBookAction = "";
     protected JPanel centerPanel;
 
-    public CampaignPilotScreen(Campaign campaign, Squadron squad, SquadronMember pilot, CampaignHomeScreen parent)
+    public CampaignPilotScreen(Squadron squad, SquadronMember pilot, CampaignHomeScreen parent)
     {
         super();
         this.setLayout(new BorderLayout());
@@ -68,7 +67,6 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
         this.pilot = pilot;
         this.squad = squad;
         this.parent = parent;
-        this.campaign = campaign;
 
         changePilotPictureAction = "Change Picture";
 		openMedalBoxAction = "Open Medal Box:";
@@ -78,7 +76,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignPilotScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         this.add(BorderLayout.WEST, makenavigationPanel());
         centerPanel = makeCenterPanel();
@@ -123,7 +121,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 		pilotLogPanel.setOpaque(false);
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotLogBook.png";
-        ImageScaledPanel pilotLogBorderPanel = new ImageScaledPanel(pilot.determineService(campaign.getDate()), imagePath, 0.75);
+        ImageScaledPanel pilotLogBorderPanel = new ImageScaledPanel(pilot.determineService(CampaignHomeContext.getCampaign().getDate()), imagePath, 0.75);
 		pilotLogBorderPanel.setLayout(new BorderLayout());
 		pilotLogBorderPanel.setOpaque(false);
 
@@ -172,7 +170,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
         JPanel pilotPicPanel = new JPanel(new BorderLayout());
         pilotPicPanel.setOpaque(false);
         
-        PWCGJButton planeButton = makePlanePicture(campaign.getDate());
+        PWCGJButton planeButton = makePlanePicture(CampaignHomeContext.getCampaign().getDate());
         PWCGJButton pilotButton = makePilotPicture();
         
         pilotPicPanel.add(pilotButton, BorderLayout.WEST);
@@ -292,15 +290,15 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
         String pilotSerialNumberString = action.substring(index + 1);
         Integer serialNumber = Integer.valueOf(pilotSerialNumberString);
 
-        SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
+        SquadronMember pilot = CampaignHomeContext.getCampaign().getPersonnelManager().getAnyCampaignMember(serialNumber);
         if (pilot == null)
         {
-            pilot = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(serialNumber);
+            pilot = CampaignHomeContext.getCampaign().getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(serialNumber);
         }
         
         if (pilot != null)
         {
-            CampaignPilotLogScreen pilotLogPanel = new CampaignPilotLogScreen(campaign, pilot);
+            CampaignPilotLogScreen pilotLogPanel = new CampaignPilotLogScreen(pilot);
             pilotLogPanel.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotLogPanel);
@@ -309,10 +307,10 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 
     private void openMedalBox(String action) throws PWCGException 
     {
-        SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
+        SquadronMember pilot = UIUtils.getPilotFromAction(CampaignHomeContext.getCampaign(), action);
         if (pilot != null)
         {
-            CampaignMedalScreen pilotMedalPanel = new CampaignMedalScreen(campaign, pilot);
+            CampaignMedalScreen pilotMedalPanel = new CampaignMedalScreen(pilot);
             pilotMedalPanel.makePanels();
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotMedalPanel);
         }

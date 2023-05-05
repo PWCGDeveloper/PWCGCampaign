@@ -20,6 +20,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.activity.CampaignLeaveScreen;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
@@ -45,15 +46,12 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
     private CampaignHomeScreen campaignHome = null;
     private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
 
-    private Campaign campaign;
-
-    public CampaignMissionScreen(Campaign campaign, CampaignHomeScreen campaignHome)
+    public CampaignMissionScreen(CampaignHomeScreen campaignHome)
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.campaign = campaign;
         this.campaignHome = campaignHome;
         campaignHomeGuiBriefingWrapper = new CampaignHomeGuiBriefingWrapper(campaignHome);
     }
@@ -61,7 +59,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSimpleConfigurationScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
@@ -115,13 +113,13 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
             String action = ae.getActionCommand();
             if (action.equalsIgnoreCase(CAMP_MISSION) || action.equalsIgnoreCase(CAMP_MISSION_ROLE))
             {
-                boolean shouldProceed = ProceedWithMission.shouldProceedWithMission(campaign, "Existing mission results detected.  Creating a mission will prevent an AAR.  Proceed?");
+                boolean shouldProceed = ProceedWithMission.shouldProceedWithMission(CampaignHomeContext.getCampaign(), "Existing mission results detected.  Creating a mission will prevent an AAR.  Proceed?");
                 if (!shouldProceed)
                 {
                     return;
                 }
                 
-                if (campaign.isCoop() && campaign.getCurrentMission() == null)
+                if (CampaignHomeContext.getCampaign().isCoop() && CampaignHomeContext.getCampaign().getCurrentMission() == null)
                 {
                     createCoopMission(action);
                 }
@@ -171,7 +169,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
             overrideRole = true;
         }
 
-        BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, missionChoice, campaignHomeGuiBriefingWrapper, overrideRole);
+        BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(missionChoice, campaignHomeGuiBriefingWrapper, overrideRole);
         coopPersonaChooser.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(coopPersonaChooser);
     }
@@ -179,15 +177,15 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
     private void generateMission(boolean isLoneWolf) throws PWCGException
     {
         Map<Integer, PwcgRole> squadronRoleOverride = new HashMap<>();
-        MissionHumanParticipants participatingPlayers = MissionGeneratorHelper.buildParticipatingPlayersSinglePlayer(campaign);
-        MissionGeneratorHelper.showBriefingMap(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers, squadronRoleOverride);
+        MissionHumanParticipants participatingPlayers = MissionGeneratorHelper.buildParticipatingPlayersSinglePlayer(CampaignHomeContext.getCampaign());
+        MissionGeneratorHelper.showBriefingMap(CampaignHomeContext.getCampaign(), campaignHomeGuiBriefingWrapper, participatingPlayers, squadronRoleOverride);
     }
 
     private void generateMissionWithRoleOverride() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        MissionHumanParticipants participatingPlayers = MissionGeneratorHelper.buildParticipatingPlayersSinglePlayer(campaign);
-        BriefingRoleChooser briefingRoleChooser = new BriefingRoleChooser(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers);
+        MissionHumanParticipants participatingPlayers = MissionGeneratorHelper.buildParticipatingPlayersSinglePlayer(CampaignHomeContext.getCampaign());
+        BriefingRoleChooser briefingRoleChooser = new BriefingRoleChooser(campaignHomeGuiBriefingWrapper, participatingPlayers);
         briefingRoleChooser.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingRoleChooser);
     }
@@ -198,9 +196,9 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
         
         try
         {
-            AARCoordinator.getInstance().aarPreliminary(campaign);
+            AARCoordinator.getInstance().aarPreliminary(CampaignHomeContext.getCampaign());
             
-            DebriefMissionDescriptionScreen combatReportDisplay = new DebriefMissionDescriptionScreen(campaign, campaignHome);
+            DebriefMissionDescriptionScreen combatReportDisplay = new DebriefMissionDescriptionScreen(CampaignHomeContext.getCampaign(), campaignHome);
             combatReportDisplay.makePanels();
             CampaignGuiContextManager.getInstance().pushToContextStack(combatReportDisplay);
         }
@@ -222,6 +220,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 
     private boolean isDisplayMissionButton() throws PWCGException
     {
+        Campaign campaign = CampaignHomeContext.getCampaign();
         if (!campaign.isCampaignActive())
         {
             return false;
@@ -247,8 +246,8 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 
     private boolean isDisplayLeaveButton() throws PWCGException
     {
-        if (campaign.findReferencePlayer().getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED ||
-            campaign.findReferencePlayer().getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        if (CampaignHomeContext.getCampaign().findReferencePlayer().getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED ||
+            CampaignHomeContext.getCampaign().findReferencePlayer().getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
             return true;
         }
@@ -258,7 +257,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 
     private boolean isDisplayAARButton() throws PWCGException
     {
-        if (!campaign.isCampaignActive())
+        if (!CampaignHomeContext.getCampaign().isCampaignActive())
         {
             return false;
         }

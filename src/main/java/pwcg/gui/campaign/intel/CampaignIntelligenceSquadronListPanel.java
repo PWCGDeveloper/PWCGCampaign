@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PwcgRoleCategory;
@@ -18,6 +17,7 @@ import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -28,13 +28,11 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
 {
     private static final long serialVersionUID = 1L;
 
-    private Campaign campaign;
     private CampaignIntelligenceReportScreen parent;
     private Side side;
 
-	public CampaignIntelligenceSquadronListPanel(Campaign campaign, CampaignIntelligenceReportScreen parent, Side side)
+	public CampaignIntelligenceSquadronListPanel(CampaignIntelligenceReportScreen parent, Side side)
 	{
-        this.campaign = campaign;
         this.parent = parent;
         this.side = side;
 	}
@@ -57,7 +55,7 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
         squadronListPanel.setOpaque(false);
         squadronListPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        squadronListPanel.setThemedImageFromName(campaign, imagePath);
+        squadronListPanel.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         squadronListPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
  
         JPanel squadronListGrid = makeSquadronGrid(); 
@@ -107,16 +105,16 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
         List<Squadron> squadrons = getSquadronsForIntel(roleCategory);
         for (Squadron squadron : squadrons)
         {
-            if (SquadronViability.isSquadronViable(squadron, campaign))
+            if (SquadronViability.isSquadronViable(squadron, CampaignHomeContext.getCampaign()))
             {
                 JButton squadronSelectButton = PWCGButtonFactory.makePaperButton(
-                        squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), "Detailed information for squadron", parent);
+                        squadron.determineDisplayName(CampaignHomeContext.getCampaign().getDate()), "SquadronSelected:" + squadron.getSquadronId(), "Detailed information for squadron", parent);
                 squadronRoleGrid.add(squadronSelectButton);                
             }
             else
             {
                 JButton squadronSelectButton = PWCGButtonFactory.makeRedPaperButton(
-                        squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), "Detailed information for squadron", parent);
+                        squadron.determineDisplayName(CampaignHomeContext.getCampaign().getDate()), "SquadronSelected:" + squadron.getSquadronId(), "Detailed information for squadron", parent);
                 squadronRoleGrid.add(squadronSelectButton);
             }
         }
@@ -135,7 +133,8 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
     {
         List<Squadron> squadronsWithPrimaryRole = new ArrayList<>();
 
-        List<Squadron> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(campaign.getCampaignMap(), campaign.getDate());
+        List<Squadron> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(
+                CampaignHomeContext.getCampaign().getCampaignMap(), CampaignHomeContext.getCampaign().getDate());
         for (Squadron squadron : squadronsForMap)
         {
             if (includeSquadron(squadron, roleCategory))
@@ -149,7 +148,7 @@ public class CampaignIntelligenceSquadronListPanel extends JPanel
     
     private boolean includeSquadron(Squadron squadron, PwcgRoleCategory roleCategory) throws PWCGException
     {
-        if (squadron.determineSquadronPrimaryRoleCategory(campaign.getDate()) != roleCategory)
+        if (squadron.determineSquadronPrimaryRoleCategory(CampaignHomeContext.getCampaign().getDate()) != roleCategory)
         {
             return false;
         }

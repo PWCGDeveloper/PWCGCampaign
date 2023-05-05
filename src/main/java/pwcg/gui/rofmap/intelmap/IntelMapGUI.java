@@ -15,13 +15,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -38,15 +38,12 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 {
     private static String MAP_DELIMITER = "Map: ";
 	private static final long serialVersionUID = 1L;
-
-    private Campaign campaign = null;
     private JPanel rightPanel;
 
-	public IntelMapGUI(Campaign campaign) throws PWCGException  
+	public IntelMapGUI() throws PWCGException  
 	{
-		super(campaign.getCampaignMap(), campaign.getDate());
+		super(CampaignHomeContext.getCampaign().getCampaignMap(), CampaignHomeContext.getCampaign().getDate());
 		setLayout(new BorderLayout());
-		this.campaign = campaign;
 	}
 
 	public void makePanels() 
@@ -75,11 +72,11 @@ public class IntelMapGUI extends MapGUI implements ActionListener
     {
         JPanel intelMapCenterPanel = new JPanel(new BorderLayout());
 
-        IntelMapPanel mapPanel = new IntelMapPanel(this, campaign);
+        IntelMapPanel mapPanel = new IntelMapPanel(this);
         mapScroll = new MapScroll(mapPanel);  
         mapPanel.setData();
 
-        makeMapPanelPoints(campaign.getDate());
+        makeMapPanelPoints(CampaignHomeContext.getCampaign().getDate());
         
         centerIntelMap();
         
@@ -188,7 +185,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadId);
 		if (squadron != null)
 		{
-			squadronText = squadron.determineSquadronDescription(campaign);
+			squadronText = squadron.determineSquadronDescription(CampaignHomeContext.getCampaign());
 		}
 
 		Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();

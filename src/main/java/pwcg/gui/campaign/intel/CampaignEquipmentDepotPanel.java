@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.ArmedService;
-import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
@@ -19,6 +18,7 @@ import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 
@@ -26,13 +26,11 @@ public class CampaignEquipmentDepotPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	
-    protected Campaign campaign;
     protected ArmedService service;
     
-	public CampaignEquipmentDepotPanel(Campaign campaign, ArmedService service) throws PWCGException  
+	public CampaignEquipmentDepotPanel(ArmedService service) throws PWCGException  
 	{
         super();
-        this.campaign = campaign;
         this.service = service;
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
@@ -83,9 +81,9 @@ public class CampaignEquipmentDepotPanel extends JPanel
         depoStatusBuffer.append("\n");
         
         String dateText = InternationalizationManager.getTranslation("Date");
-        depoStatusBuffer.append(dateText + ": " + DateUtils.getDateString(campaign.getDate()) + "\n");
+        depoStatusBuffer.append(dateText + ": " + DateUtils.getDateString(CampaignHomeContext.getCampaign().getDate()) + "\n");
         
-        EquipmentDepot aircraftOnInventory = campaign.getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
+        EquipmentDepot aircraftOnInventory = CampaignHomeContext.getCampaign().getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
         String replacementDateText = InternationalizationManager.getTranslation("Last Replacement Date");
         depoStatusBuffer.append(replacementDateText + ": " + DateUtils.getDateString(aircraftOnInventory.getLastReplacementDate()) + "\n");
 
@@ -160,7 +158,7 @@ public class CampaignEquipmentDepotPanel extends JPanel
     
     private List<EquippedPlane> getDepotAircraftForRole(PwcgRoleCategory roleCategory) throws PWCGException
     {
-        EquipmentDepot equipmentDepot = campaign.getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
+        EquipmentDepot equipmentDepot = CampaignHomeContext.getCampaign().getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
         return equipmentDepot.getDepotAircraftForRole(roleCategory);
     }
 }

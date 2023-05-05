@@ -17,7 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import pwcg.aar.ui.events.model.LeaveEvent;
-import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
@@ -27,6 +26,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -45,7 +45,6 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
     private static final long serialVersionUID = 1L;
 
     private CampaignHomeScreen parent = null;
-    private Campaign campaign = null;
     private JTextField tLeaveTime;
     private int gridRow = 1;
 
@@ -56,7 +55,6 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         this.setOpaque(false);
 
         this.parent = parent;
-        this.campaign = parent.getCampaign();
     }
 
     public void makeVisible(boolean visible)
@@ -66,7 +64,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
     public void makePanels() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignLeaveScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         GridBagConstraints constraints = initializeGridbagConstraints();
 
@@ -126,7 +124,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
     private JPanel makeLeaveLetterPanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel leaveLetterPanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel leaveLetterPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         leaveLetterPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
 
         leaveLetterPanel.setLayout(new BorderLayout());
@@ -167,14 +165,14 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         constraints.gridx = 1;
         constraints.gridheight = 1;
 
-        for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        for (SquadronMember player : CampaignHomeContext.getCampaign().getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
             if (player.getRecoveryDate() != null)
             {
                 constraints.gridy = gridRow;
                 ++gridRow;
 
-                int daysToHeal = DateUtils.daysDifference(campaign.getDate(), player.getRecoveryDate()) + 1;
+                int daysToHeal = DateUtils.daysDifference(CampaignHomeContext.getCampaign().getDate(), player.getRecoveryDate()) + 1;
                 String requires = " " + InternationalizationManager.getTranslation("requires") + " ";
                 String daysToRecover = " " + InternationalizationManager.getTranslation("days to recover from his wounds");
                 String playerWoundHealTimeDesc = player.getNameAndRank() + requires + daysToHeal + daysToRecover;
@@ -269,8 +267,12 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         if (leaveTimeDays > 0)
         {
             boolean isNewsWorthy = false;
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
-            LeaveEvent leaveEvent = new LeaveEvent(campaign, leaveTimeDays, referencePlayer.getSquadronId(), referencePlayer.getSerialNumber(), campaign.getDate(),
+            SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
+            LeaveEvent leaveEvent = new LeaveEvent(
+                    CampaignHomeContext.getCampaign(), leaveTimeDays, 
+                    referencePlayer.getSquadronId(), 
+                    referencePlayer.getSerialNumber(), 
+                    CampaignHomeContext.getCampaign().getDate(),
                     isNewsWorthy);
             parent.campaignTimePassedForLeave(leaveEvent.getLeaveTime());
         }

@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.CoopUserManager;
@@ -25,6 +24,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.mission.MissionGeneratorHelper;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -45,18 +45,16 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     private JPanel coopPersonaErrorPanel;
     private List<String> errorMessages = new ArrayList<>();
     private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
-    private Campaign campaign;
     private JButton missionButton;
     private boolean overrideRole;
     private MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
-    public BriefingCoopPersonaChooser(Campaign campaign, String missionChoice, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, boolean overrideRole)
+    public BriefingCoopPersonaChooser(String missionChoice, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, boolean overrideRole)
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.campaign = campaign;
         this.campaignHomeGuiBriefingWrapper = campaignHomeGuiBriefingWrapper;
         this.overrideRole = overrideRole;
     }
@@ -66,9 +64,9 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingCoopPersonaChooser);
-            this.setThemedImageFromName(campaign, imagePath);
+            this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
-        	coopPersonaAccept = new CoopPersonaChooserPanel(campaign, this);
+        	coopPersonaAccept = new CoopPersonaChooserPanel(this);
             coopPersonaAccept.makePanels();
             this.add(BorderLayout.CENTER, coopPersonaAccept);
             this.add(BorderLayout.WEST, makeNavigatePanel());
@@ -124,7 +122,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     	Map <String, Integer> coopPersonasByCoopUser = new HashMap<>();
     	for (Integer coopPersona : selectedCoopPersonas)
     	{
-    	    CoopUser coopUser = coopUserManager.getCoopUserForSquadronMember(campaign.getName(), coopPersona);
+    	    CoopUser coopUser = coopUserManager.getCoopUserForSquadronMember(CampaignHomeContext.getCampaign().getName(), coopPersona);
             if (coopPersonasByCoopUser.containsKey(coopUser.getUsername()))
             {
                 errorMessages.add("More than one pilot in mission for player " + coopUser.getUsername());
@@ -135,7 +133,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     		}
     	}
     	
-    	SquadronMember referencePlayer = campaign.findReferencePlayer();
+    	SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
         boolean referencePlayerIncluded = false;
         for (int coopPersona : selectedCoopPersonas)
         {
@@ -216,7 +214,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
             }
             else if (action.equalsIgnoreCase("ScrubMission"))
             {
-                MissionGeneratorHelper.scrubMission(campaign, campaignHomeGuiBriefingWrapper);
+                MissionGeneratorHelper.scrubMission(CampaignHomeContext.getCampaign(), campaignHomeGuiBriefingWrapper);
             }
         }
         catch (Throwable e)
@@ -231,7 +229,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
         Map<Integer, PwcgRole> squadronRoleOverride = new HashMap<>();
         List<SquadronMember> selectedCoopPersonas = coopPersonaAccept.getAcceptedSquadronMembers();
         participatingPlayers.addSquadronMembers(selectedCoopPersonas);            	
-        MissionGeneratorHelper.showBriefingMap(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers, squadronRoleOverride);
+        MissionGeneratorHelper.showBriefingMap(CampaignHomeContext.getCampaign(), campaignHomeGuiBriefingWrapper, participatingPlayers, squadronRoleOverride);
     }
 
 
@@ -240,7 +238,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
         SoundManager.getInstance().playSound("Typewriter.WAV");
         List<SquadronMember> selectedCoopPersonas = coopPersonaAccept.getAcceptedSquadronMembers();
         participatingPlayers.addSquadronMembers(selectedCoopPersonas);              
-        BriefingRoleChooser briefingRoleChooser = new BriefingRoleChooser(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers);
+        BriefingRoleChooser briefingRoleChooser = new BriefingRoleChooser(campaignHomeGuiBriefingWrapper, participatingPlayers);
         briefingRoleChooser.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingRoleChooser);
     }

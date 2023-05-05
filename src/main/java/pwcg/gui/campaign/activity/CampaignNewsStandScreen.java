@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
@@ -27,6 +26,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -37,25 +37,23 @@ import pwcg.gui.utils.PWCGLabelFactory;
 public class CampaignNewsStandScreen extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
-    private Campaign campaign;
     private List<Newspaper> newspaperToDate = new ArrayList<Newspaper>();
     private PwcgThreePanelUI pwcgThreePanel;
     private ButtonGroup buttonGroup = new ButtonGroup();
 
-    public CampaignNewsStandScreen(Campaign campaign)
+    public CampaignNewsStandScreen()
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.campaign = campaign;
         this.pwcgThreePanel = new PwcgThreePanelUI(this);
     }
 
     public void makePanels() throws PWCGException 
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignNewsScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         pwcgThreePanel.setLeftPanel(makeNewsLeftPanel());
         pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());
@@ -111,8 +109,8 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
 
     private void addNewspapersButtonPanel(JPanel buttonPanel) throws PWCGException
     {
-        ICountry playerCountry = CountryFactory.makeCountryByCountry(campaign.getReferencePlayer().getCountry());
-        newspaperToDate = PWCGContext.getInstance().getNewspaperManager().getNewpapersToDate(playerCountry.getSide(), campaign.getDate());
+        ICountry playerCountry = CountryFactory.makeCountryByCountry(CampaignHomeContext.getCampaign().getReferencePlayer().getCountry());
+        newspaperToDate = PWCGContext.getInstance().getNewspaperManager().getNewpapersToDate(playerCountry.getSide(), CampaignHomeContext.getCampaign().getDate());
         for (Newspaper newspaper : newspaperToDate)
         {
             buttonPanel.add(makeNewspaperRadioButton(newspaper));

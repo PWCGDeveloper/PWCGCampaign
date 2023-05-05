@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.plane.PlaneType;
@@ -31,6 +30,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -45,7 +45,6 @@ public class CampaignSkinConfigurationPilotPanel extends ImageResizingPanel impl
 
     public static String NO_SKIN = "None";
 
-    private Campaign campaign;
     private CampaignSkinConfigurationScreen parent;
 
     private JPanel skinsPlanePanel = null;
@@ -60,17 +59,16 @@ public class CampaignSkinConfigurationPilotPanel extends ImageResizingPanel impl
     private ButtonGroup aircraftButtonGroup = new ButtonGroup();
     List<ButtonModel> aircraftButtonModels = new ArrayList<>();
 
-    public CampaignSkinConfigurationPilotPanel(Campaign campaign, CampaignSkinConfigurationScreen parent) throws PWCGException
+    public CampaignSkinConfigurationPilotPanel(CampaignSkinConfigurationScreen parent) throws PWCGException
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(30, 30, 50, 70));
 
-        this.campaign = campaign;
         this.parent = parent;
     }
 
@@ -229,10 +227,10 @@ public class CampaignSkinConfigurationPilotPanel extends ImageResizingPanel impl
         JLabel label = PWCGLabelFactory.makeTransparentLabel(labelText, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
         aircraftButtonGrid.add(label);
 
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
         Squadron squad = referencePlayer.determineSquadron();
 
-        List<PlaneType> squadronPlanes = squad.determineCurrentAircraftList(campaign.getDate());
+        List<PlaneType> squadronPlanes = squad.determineCurrentAircraftList(CampaignHomeContext.getCampaign().getDate());
 
         List<PlaneType> squadronPlanesByBest = PlaneSorter.sortPlanesByGoodness(squadronPlanes);
 

@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import pwcg.campaign.ArmedService;
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.core.exception.PWCGException;
@@ -23,6 +22,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -35,21 +35,18 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 {
     private static final long serialVersionUID = 1L;
 	private JTabbedPane tabs = new JTabbedPane();
-	private Campaign campaign;
 
-	public CampaignEquipmentDepotScreen(Campaign campaign)
+	public CampaignEquipmentDepotScreen()
 	{
         super();
         this.setLayout(new GridBagLayout());
         this.setOpaque(false);
-
-        this.campaign = campaign;
 	}
 
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignEquipmentDepotScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         
         GridBagConstraints constraints = initializeGridbagConstraints();
 
@@ -93,7 +90,7 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
         equipmentDepotPanel.setOpaque(false);
         equipmentDepotPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        equipmentDepotPanel.setThemedImageFromName(campaign, imagePath);
+        equipmentDepotPanel.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         equipmentDepotPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
         
         Color tabBG = ColorMap.PAPER_BACKGROUND;
@@ -101,10 +98,10 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
         tabs.setOpaque(false);
         
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
-        List<ArmedService> allArmedServices = serviceManager.getAllActiveArmedServices(campaign.getDate());
+        List<ArmedService> allArmedServices = serviceManager.getAllActiveArmedServices(CampaignHomeContext.getCampaign().getDate());
         for (ArmedService service : allArmedServices)
         {
-            CampaignEquipmentDepotPanel serviceEquipmentDepoTab = new CampaignEquipmentDepotPanel(campaign, service);
+            CampaignEquipmentDepotPanel serviceEquipmentDepoTab = new CampaignEquipmentDepotPanel(service);
             serviceEquipmentDepoTab.makePanel();
             tabs.addTab(service.getName(), serviceEquipmentDepoTab);      
         }
@@ -129,7 +126,7 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 
             if (action.equalsIgnoreCase("EquipmentDepoFinished"))
             {
-                campaign.write();                
+                CampaignHomeContext.writeCampaign();                
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
         }

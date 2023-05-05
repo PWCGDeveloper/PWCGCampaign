@@ -10,7 +10,6 @@ import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -23,6 +22,7 @@ import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageToDisplaySizer;
@@ -32,14 +32,12 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
 {
     private static final long serialVersionUID = 1L;
 
-    private Campaign campaign;
     private JTextArea squadronIntelHeaderText;
     private JTextArea squadronIntelPersonnelText;
     private JTextArea squadronIntelEquipmentText;
 
-    public CampaignIntelligenceSquadronDetailsPanel(Campaign campaign)
+    public CampaignIntelligenceSquadronDetailsPanel()
     {
-        this.campaign = campaign;
     }
 
     public void makePanel() throws PWCGException
@@ -74,7 +72,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
         squadronDetailsPanel.setOpaque(false);
         squadronDetailsPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        squadronDetailsPanel.setThemedImageFromName(campaign, imagePath);
+        squadronDetailsPanel.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         squadronDetailsPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         JPanel squadronDetailsHeaderPanel = formSquadronIntelHeader();
@@ -147,11 +145,11 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
 
         StringBuffer intelBuffer = new StringBuffer("");
         intelBuffer.append("\n");
-        intelBuffer.append("        "  + squadron.determineDisplayName(campaign.getDate()));          
+        intelBuffer.append("        "  + squadron.determineDisplayName(CampaignHomeContext.getCampaign().getDate()));          
         intelBuffer.append("\n");
-        intelBuffer.append("        " + stationedAtText + ": " + squadron.determineCurrentAirfieldName(campaign.getDate()));          
+        intelBuffer.append("        " + stationedAtText + ": " + squadron.determineCurrentAirfieldName(CampaignHomeContext.getCampaign().getDate()));          
         intelBuffer.append("\n");
-        intelBuffer.append("        " + callSignText + ": " + squadron.determineCurrentCallsign(campaign.getDate()));
+        intelBuffer.append("        " + callSignText + ": " + squadron.determineCurrentCallsign(CampaignHomeContext.getCampaign().getDate()));
         intelBuffer.append("\n");
         return intelBuffer.toString();
     }
@@ -178,9 +176,10 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
         intelBuffer.append("\n        " + personnelText + "\n");        
         intelBuffer.append("        ----------------------------------------\n");          
 
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
-        SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        List<SquadronMember> sortedPilots = activeSquadronMembers.sortPilots(campaign.getDate());
+        SquadronPersonnel squadronPersonnel = CampaignHomeContext.getCampaign().getPersonnelManager().getSquadronPersonnel(squadronId);
+        SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
+                squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), CampaignHomeContext.getCampaign().getDate());
+        List<SquadronMember> sortedPilots = activeSquadronMembers.sortPilots(CampaignHomeContext.getCampaign().getDate());
         for (SquadronMember squadronMember : sortedPilots)
         {
             intelBuffer.append("            " + squadronMember.getNameAndRank());          
@@ -199,7 +198,7 @@ public class CampaignIntelligenceSquadronDetailsPanel extends JPanel
 
         intelBuffer.append("\n        " + aircraftInventoryText + "\n");        
         intelBuffer.append("        ----------------------------------------\n");          
-        Map<Integer, EquippedPlane> aircraftOnInventory = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId()).getActiveEquippedPlanes();
+        Map<Integer, EquippedPlane> aircraftOnInventory = CampaignHomeContext.getCampaign().getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId()).getActiveEquippedPlanes();
         List<EquippedPlane> sortedAircraftOnInventory = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(aircraftOnInventory.values()));
         for (int i = 0; i < sortedAircraftOnInventory.size(); ++i)
         {

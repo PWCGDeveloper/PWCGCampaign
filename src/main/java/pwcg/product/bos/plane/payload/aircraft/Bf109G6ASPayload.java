@@ -24,6 +24,7 @@ public class Bf109G6ASPayload extends Bf109Payload implements IPlanePayload
         setAvailablePayload(-2, "1000000", PayloadElement.MW50);
         setAvailablePayload(-1, "10000", PayloadElement.ASM);
         
+        setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "1001", PayloadElement.SC250_X1);
         setAvailablePayload(2, "101", PayloadElement.MG151_20_GUNPOD);
         setAvailablePayload(3, "10001", PayloadElement.BR21_X2);

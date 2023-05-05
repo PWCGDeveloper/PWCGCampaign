@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
@@ -49,7 +50,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = ContextSpecificImages.imagesMisc() + "Document.png";
-        this.setThemedImageFromName(mission.getCampaign(), imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
 		editorPanel = new JPanel();
 		editorPanel.setLayout(new BorderLayout());

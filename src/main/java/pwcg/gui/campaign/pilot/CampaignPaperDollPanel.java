@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
@@ -15,6 +14,7 @@ import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.image.ImageRetriever;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -23,15 +23,12 @@ import pwcg.gui.utils.PwcgBorderFactory;
 public class CampaignPaperDollPanel extends ImageResizingPanel
 {
     private static final long serialVersionUID = 1L;
-    private Campaign campaign;
     private SquadronMember pilot;
 
-    public CampaignPaperDollPanel(Campaign campaign, SquadronMember pilot)
+    public CampaignPaperDollPanel(SquadronMember pilot)
     {
         super();
         this.setLayout(new BorderLayout());
-
-        this.campaign = campaign;
         this.pilot = pilot;
     }
 
@@ -116,7 +113,7 @@ public class CampaignPaperDollPanel extends ImageResizingPanel
     private BufferedImage addMedals(String paperDollDirectory, BufferedImage paperDoll, List<Medal> medals) throws PWCGException
     {
         ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
-        IMedalManager medalManager = MedalManagerFactory.createMedalManager(country, campaign);
+        IMedalManager medalManager = MedalManagerFactory.createMedalManager(country, CampaignHomeContext.getCampaign());
         List<Medal> highestOrderMedals = medalManager.getMedalsWithHighestOrderOnly(pilot.getMedals());
         for (Medal medal : highestOrderMedals)
         {

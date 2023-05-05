@@ -13,7 +13,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.factory.CountryFactory;
@@ -25,6 +24,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
@@ -42,18 +42,16 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 
     private CampaignMedalScreen campaignMedalScreen;
     private int medalsPerRow = 5;
-    private Campaign campaign;
 	private SquadronMember pilot;
 	private Map<String, Medal> medals = new HashMap<>();
 
-	public CampaignPilotMedalBox(CampaignMedalScreen campaignMedalScreen, Campaign campaign, SquadronMember pilot)
+	public CampaignPilotMedalBox(CampaignMedalScreen campaignMedalScreen, SquadronMember pilot)
 	{
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         this.campaignMedalScreen = campaignMedalScreen;
-        this.campaign = campaign;
         this.pilot = pilot;
         this.medalsPerRow = calcMedalsPerRow();
 	}
@@ -63,7 +61,7 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
         SoundManager.getInstance().playSound("MedalCaseOpen.WAV");
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenMedalBox);
-        this.setThemedImageFromName(campaign, imagePath);        
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);        
         this.setBorder(PwcgBorderFactory.createMedalBoxBorder());
 
 	    this.add(BorderLayout.CENTER, makeCenterPanel());
@@ -109,7 +107,7 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 		Color bg = ColorMap.PAPER_BACKGROUND;
 
         ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
-        IMedalManager medalManager = MedalManagerFactory.createMedalManager(country, campaign);
+        IMedalManager medalManager = MedalManagerFactory.createMedalManager(country, CampaignHomeContext.getCampaign());
         List<Medal> highestOrderMedals = medalManager.getMedalsWithHighestOrderOnly(pilot.getMedals());
         for (Medal medal : highestOrderMedals)
 		{

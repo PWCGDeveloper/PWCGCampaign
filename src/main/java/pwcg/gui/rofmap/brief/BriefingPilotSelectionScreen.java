@@ -27,6 +27,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.mission.MissionGeneratorHelper;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
@@ -52,7 +53,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     private BriefingPilotChalkboard pilotPanel;
     private BriefingData briefingData;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
-    private BriefingFlightChooser briefingFlightChooser;
+    private BriefingPlayerFlightChooser briefingFlightChooser;
     private int selectedPilotSerialNumber = -1;
 
     public BriefingPilotSelectionScreen(CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper)
@@ -72,10 +73,10 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingPilotSelectionScreen);
-            this.setThemedImageFromName(campaign, imagePath);
+            this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
-            briefingFlightChooser = new BriefingFlightChooser(mission, this);
-            briefingFlightChooser.createBriefingSquadronSelectPanel();
+            briefingFlightChooser = new BriefingPlayerFlightChooser(mission, this);
+            briefingFlightChooser.createBriefingPlayerSquadronSelectPanel();
 
             this.add(BorderLayout.WEST, makeLeftPanel());
             this.add(BorderLayout.CENTER, createCenterPanel());

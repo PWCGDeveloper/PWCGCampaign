@@ -15,7 +15,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
 import pwcg.campaign.io.json.CombatReportIOJson;
 import pwcg.core.exception.PWCGException;
@@ -24,6 +23,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
@@ -37,8 +37,6 @@ import pwcg.gui.utils.PageTurner;
 public class CampaignJournalScreen extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
-
-    private Campaign campaign = null;
     
     private JPanel journalPagesGridPanel = new JPanel();
     private JPanel pageTurnerPanel = null;
@@ -55,13 +53,11 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
 
     private List<CampaignJournalGUI> activeCampaignJournals  = new ArrayList<CampaignJournalGUI>();
 
-    public CampaignJournalScreen(Campaign campaign) throws PWCGException
+    public CampaignJournalScreen() throws PWCGException
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
-
-        this.campaign = campaign;
     }
 
     public void makeVisible(boolean visible) 
@@ -71,7 +67,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
     public void makePanels() throws PWCGException  
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignJournalScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         calculateLinesPerPage();
         getJournalEntries();
@@ -103,7 +99,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
 
 	private void loadCombatReportsForCampagn() throws PWCGException
 	{
-        journalReports = CombatReportIOJson.readJson(campaign, campaign.findReferencePlayer().getSerialNumber());
+        journalReports = CombatReportIOJson.readJson(CampaignHomeContext.getCampaign(), CampaignHomeContext.getCampaign().findReferencePlayer().getSerialNumber());
 	}
 
 	private void mapCombatReportsToPages()
@@ -143,7 +139,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenJournal);
         
-        ImageResizingPanel journalCenterPanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel journalCenterPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         journalCenterPanel.setLayout(new BorderLayout());
         journalCenterPanel.setOpaque(false);
         
@@ -325,7 +321,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
             if (action.equalsIgnoreCase("JournalFinished"))
             {
                 saveNarrativeChanges();
-                campaign.write();                
+                CampaignHomeContext.writeCampaign();                
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("FirstPage"))
@@ -450,7 +446,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
     {
         for (CampaignJournalGUI activeCampaignJournal : activeCampaignJournals)
         {
-            activeCampaignJournal.writeCombatReport(campaign);
+            activeCampaignJournal.writeCombatReport(CampaignHomeContext.getCampaign());
         }        
     }
 }

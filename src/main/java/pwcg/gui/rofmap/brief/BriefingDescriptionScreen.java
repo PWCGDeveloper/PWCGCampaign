@@ -15,6 +15,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.mission.MissionGeneratorHelper;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
@@ -33,7 +34,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
 	private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Mission mission;
     private BriefingData briefingData;
-    private BriefingFlightChooser briefingFlightChooser;
+    private BriefingPlayerFlightChooser briefingFlightChooser;
     private BriefingDescriptionChalkboard briefingChalkboard;
     
 	public BriefingDescriptionScreen(CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, Mission mission) throws PWCGException 
@@ -56,10 +57,10 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
 		try
 		{
 	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingDescriptionScreen);
-            this.setThemedImageFromName(mission.getCampaign(), imagePath);
+            this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
-            briefingFlightChooser = new BriefingFlightChooser(mission, this);
-            briefingFlightChooser.createBriefingSquadronSelectPanel();
+            briefingFlightChooser = new BriefingPlayerFlightChooser(mission, this);
+            briefingFlightChooser.createBriefingPlayerSquadronSelectPanel();
 
 			this.removeAll();
 			this.add(BorderLayout.WEST, makeLeftPanel());

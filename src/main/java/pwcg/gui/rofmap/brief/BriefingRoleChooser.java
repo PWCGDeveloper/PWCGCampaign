@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -24,6 +23,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.mission.MissionGeneratorHelper;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -39,13 +39,11 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
 {
     private static final long serialVersionUID = 1L;
     
-    private Campaign campaign;
     private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private MissionHumanParticipants participatingPlayers;
     private Map<Integer, JComboBox<String>> squadronToRoleMapping = new HashMap<>();
 
     public BriefingRoleChooser(
-            Campaign campaign, 
             CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, 
             MissionHumanParticipants participatingPlayers)
     {
@@ -53,7 +51,6 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.campaign = campaign;
         this.campaignHomeGuiBriefingWrapper = campaignHomeGuiBriefingWrapper;
         this.participatingPlayers = participatingPlayers;
     }
@@ -63,7 +60,7 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingRoleChooser);
-            this.setThemedImageFromName(campaign, imagePath);
+            this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
             this.add(BorderLayout.WEST, makeNavigatePanel());
             this.add(BorderLayout.CENTER, makeCenterPanel());
@@ -98,7 +95,7 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
     private JPanel makeCenterPanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel roleSelectionPanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel roleSelectionPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         roleSelectionPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
 
         roleSelectionPanel.setLayout(new BorderLayout());
@@ -129,7 +126,7 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
         Font font = PWCGMonitorFonts.getPrimaryFont();
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
         JLabel squadronNameLabel = PWCGLabelFactory.makeTransparentLabel(
-                squadron.determineDisplayName(campaign.getDate()), ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+                squadron.determineDisplayName(CampaignHomeContext.getCampaign().getDate()), ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         return squadronNameLabel;
     }
 
@@ -140,7 +137,7 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
 
         roleSelector.addItem(PwcgRole.ROLE_NONE.getRoleDescription());
 
-        for (SquadronRoleWeight weightedRoles : squadron.getSquadronRoles().selectRoleSetByDate(campaign.getDate()).getWeightedRoles())
+        for (SquadronRoleWeight weightedRoles : squadron.getSquadronRoles().selectRoleSetByDate(CampaignHomeContext.getCampaign().getDate()).getWeightedRoles())
         {
             roleSelector.addItem(weightedRoles.getRole().getRoleDescription());
         }
@@ -162,11 +159,11 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
             if (action.equalsIgnoreCase("CreateMission"))
             {
                 Map<Integer, PwcgRole> squadronRoleOverride = buildRoleOverrideMap();
-                MissionGeneratorHelper.showBriefingMap(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers, squadronRoleOverride);
+                MissionGeneratorHelper.showBriefingMap(CampaignHomeContext.getCampaign(), campaignHomeGuiBriefingWrapper, participatingPlayers, squadronRoleOverride);
             }
             else if (action.equalsIgnoreCase("ScrubMission"))
             {
-                MissionGeneratorHelper.scrubMission(campaign, campaignHomeGuiBriefingWrapper);
+                MissionGeneratorHelper.scrubMission(CampaignHomeContext.getCampaign(), campaignHomeGuiBriefingWrapper);
             }
         }
         catch (Throwable e)

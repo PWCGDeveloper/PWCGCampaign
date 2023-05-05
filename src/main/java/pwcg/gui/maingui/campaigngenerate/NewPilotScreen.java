@@ -24,7 +24,7 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
-public class CampaignNewPilotScreen extends ImageResizingPanel implements ActionListener
+public class NewPilotScreen extends ImageResizingPanel implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
     private NewPilotState newPilotState;
     private IRefreshableParentUI parentScreen;
 
-    public CampaignNewPilotScreen(Campaign campaign, IRefreshableParentUI parentScreen)
+    public NewPilotScreen(Campaign campaign, IRefreshableParentUI parentScreen)
     {
         super();
         this.setLayout(new BorderLayout());
@@ -51,7 +51,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignNewPilotScreen);
-            this.setThemedImageFromName(campaign, imagePath);
+            this.setThemedImageFromName(campaign.getReferenceService(), imagePath);
 
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, SpacerPanelFactory.makeSpacerPercentPanel(20));

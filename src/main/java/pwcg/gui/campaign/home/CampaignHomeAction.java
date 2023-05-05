@@ -2,7 +2,6 @@ package pwcg.gui.campaign.home;
 
 import java.awt.event.ActionEvent;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -23,13 +22,11 @@ import pwcg.gui.utils.UIUtils;
 public class CampaignHomeAction
 {
     private CampaignHomeScreen campaignHome = null;
-    private Campaign campaign = null;
 
-    public CampaignHomeAction(CampaignHomeScreen parent, Campaign campaign) 
+    public CampaignHomeAction(CampaignHomeScreen parent) 
     {
         super();
         this.campaignHome = parent;
-        this.campaign = campaign;
     }
     
 
@@ -41,7 +38,7 @@ public class CampaignHomeAction
             
             if (action.equalsIgnoreCase("CampError"))
             {
-                PWCGErrorBundler errorBundler = new PWCGErrorBundler(campaignHome.getCampaign());
+                PWCGErrorBundler errorBundler = new PWCGErrorBundler(CampaignHomeContext.getCampaign());
                 errorBundler.bundleDebuggingData();
                 ErrorDialog.internalError("Error during AAR process - please post " + errorBundler.getTargetErrorFileName() + ".zip");
             }
@@ -72,19 +69,19 @@ public class CampaignHomeAction
         }
         catch (PWCGUserException ue)
         {
-            campaign.setCurrentMission(null);
+            CampaignHomeContext.getCampaign().setCurrentMission(null);
             PWCGLogger.logException(ue);
             ErrorDialog.userError(ue.getMessage());
         }
         catch (Exception e)
         {
-            campaign.setCurrentMission(null);
+            CampaignHomeContext.getCampaign().setCurrentMission(null);
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
         catch (Throwable t)
         {
-            campaign.setCurrentMission(null);
+            CampaignHomeContext.getCampaign().setCurrentMission(null);
             PWCGLogger.logException(t);
             ErrorDialog.internalError(t.getMessage());
         }
@@ -92,7 +89,7 @@ public class CampaignHomeAction
 
     private void showPilot(String action) throws PWCGException 
     {
-        SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
+        SquadronMember pilot = UIUtils.getPilotFromAction(CampaignHomeContext.getCampaign(), action);
         if (pilot != null)
         {
             Squadron squad = pilot.determineSquadron();
@@ -101,7 +98,7 @@ public class CampaignHomeAction
                 Ace ace = (Ace)pilot;
                 squad =  ace.determineSquadron();;
             }
-            CampaignPilotScreen pilotPanel = new CampaignPilotScreen(campaign, squad, pilot, campaignHome);
+            CampaignPilotScreen pilotPanel = new CampaignPilotScreen(squad, pilot, campaignHome);
             pilotPanel.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotPanel);
@@ -110,35 +107,35 @@ public class CampaignHomeAction
 
     private void showCampaignMissionActions() throws PWCGException
     {
-        CampaignMissionScreen missionGUI = new CampaignMissionScreen(campaign, campaignHome);
+        CampaignMissionScreen missionGUI = new CampaignMissionScreen(campaignHome);
         missionGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(missionGUI);        
     }
     
     private void showCampaignPersonnelActions() throws PWCGException
     {
-        CampaignPersonnelScreen personnelGUI = new CampaignPersonnelScreen(campaign, campaignHome);
+        CampaignPersonnelScreen personnelGUI = new CampaignPersonnelScreen(campaignHome);
         personnelGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(personnelGUI);        
     }
     
     private void showCampaignActivities() throws PWCGException
     {
-        CampaignActivityScreen activityGUI = new CampaignActivityScreen(campaign, campaignHome);
+        CampaignActivityScreen activityGUI = new CampaignActivityScreen(campaignHome);
         activityGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(activityGUI);        
     }
 
     private void showIntel() throws PWCGException
     {
-        CampaignIntelScreen intelGUI = new CampaignIntelScreen(campaign);
+        CampaignIntelScreen intelGUI = new CampaignIntelScreen();
         intelGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(intelGUI);
     }
 
     private void showConfig() throws PWCGException
     {
-        CampaignConfigurationScreen configGUI = new CampaignConfigurationScreen(campaign);
+        CampaignConfigurationScreen configGUI = new CampaignConfigurationScreen();
         configGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(configGUI);
     }

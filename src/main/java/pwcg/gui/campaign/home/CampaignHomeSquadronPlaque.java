@@ -3,12 +3,12 @@ package pwcg.gui.campaign.home;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.Date;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
@@ -26,23 +26,21 @@ import pwcg.gui.utils.PwcgBorderFactory;
 public class CampaignHomeSquadronPlaque extends JPanel
 {
     private static final long serialVersionUID = 1L;
-
-    private Campaign campaign;
     
-    public CampaignHomeSquadronPlaque(Campaign campaign)  
+    public CampaignHomeSquadronPlaque()  
     {
         super();
         this.setLayout(new BorderLayout());
-        this.setOpaque(false);
-        
-        this.campaign = campaign;
+        this.setOpaque(false);        
     }
 
 
     public void makeDescPanel(int squadronId) throws PWCGException 
     {
+        Date campaignDate = CampaignHomeContext.getCampaign().getDate();
+        
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignHomeSquadronPlaque);
-        ImageResizingPanel plaquePanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel plaquePanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         plaquePanel.setLayout(new BorderLayout());
         plaquePanel.setBorder(PwcgBorderFactory.createPlaqueBackgroundBorder());
 
@@ -62,26 +60,26 @@ public class CampaignHomeSquadronPlaque extends JPanel
         JLabel lAssignedTo = PWCGLabelFactory.makeTransparentLabel(assignedToString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
         descGridPanel.add(lAssignedTo);
 
-        String squadString = spacing + squadron.determineDisplayName(campaign.getDate());
+        String squadString = spacing + squadron.determineDisplayName(campaignDate);
         JLabel lSquad = PWCGLabelFactory.makeTransparentLabel(squadString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
         descGridPanel.add(lSquad);
 
         String airfieldAtString = InternationalizationManager.getTranslation("Stationed at");
-        airfieldAtString += " " + squadron.determineCurrentAirfieldName(campaign.getDate());
+        airfieldAtString += " " + squadron.determineCurrentAirfieldName(campaignDate);
         JLabel lAirfieldAt = PWCGLabelFactory.makeTransparentLabel(airfieldAtString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
         descGridPanel.add(lAirfieldAt);
 
-        String airfieldString = spacing + squadron.determineCurrentAirfieldName(campaign.getDate());
+        String airfieldString = spacing + squadron.determineCurrentAirfieldName(campaignDate);
         JLabel lAirfield = PWCGLabelFactory.makeTransparentLabel(airfieldString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
         descGridPanel.add(lAirfield);
         
 
-        String dateString = spacing + DateUtils.getDateString(campaign.getDate());
+        String dateString = spacing + DateUtils.getDateString(campaignDate);
         JLabel lDate = PWCGLabelFactory.makeTransparentLabel(dateString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
         descGridPanel.add(lDate);
 
 
-        PlaneType aircraftType = squadron.determineBestPlane(campaign.getDate());
+        PlaneType aircraftType = squadron.determineBestPlane(campaignDate);
         if (aircraftType != null)
         {
             String aircraftString = spacing + InternationalizationManager.getTranslation("Flying the");

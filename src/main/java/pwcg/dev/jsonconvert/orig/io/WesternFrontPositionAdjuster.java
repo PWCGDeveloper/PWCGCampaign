@@ -58,8 +58,7 @@ public class WesternFrontPositionAdjuster
             modifiedFrontLines.add(mapPoint);
         }
     
-        // Avoiding an accidental run and overwrite
-        //writeData(dateString, modifiedFrontLines);
+        writeData(dateString, modifiedFrontLines);
     }
 
     private Coordinate recalculateX(FrontLinePoint mapPoint) throws PWCGException
@@ -104,8 +103,13 @@ public class WesternFrontPositionAdjuster
 
     private void writeData(String datePath, List<FrontLinePoint> modifiedFrontLines) throws PWCGException 
     {
-        FrontLineWriter frontLineWriter = new FrontLineWriter(modifiedFrontLines);
-        String outputPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + PWCGContext.getInstance().getMap(FrontMapIdentifier.WESTERN_FRONT_MAP).getMapName() + "\\" + datePath + "\\";      
-        frontLineWriter.finished(outputPath);
+        // Avoiding an accidental run and overwrite
+        boolean writeData = false;
+        if (writeData)
+        {
+            FrontLineWriter frontLineWriter = new FrontLineWriter(modifiedFrontLines);
+            String outputPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + PWCGContext.getInstance().getMap(FrontMapIdentifier.WESTERN_FRONT_MAP).getMapName() + "\\" + datePath + "\\";      
+            frontLineWriter.finished(outputPath);
+        }
     }
 }

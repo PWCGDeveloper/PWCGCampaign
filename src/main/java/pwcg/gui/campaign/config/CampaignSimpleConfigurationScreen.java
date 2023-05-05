@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import pwcg.campaign.Campaign;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -20,6 +19,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.CommonUIActions;
@@ -57,21 +57,17 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
     private ButtonModel structureMedButtonModel = null;
     private ButtonModel structureHighButtonModel = null;
 
-    private Campaign campaign;
-
-    public CampaignSimpleConfigurationScreen(Campaign campaign)
+    public CampaignSimpleConfigurationScreen()
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
-
-        this.campaign = campaign;
     }
 
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSimpleConfigurationScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
 	    this.add(BorderLayout.CENTER, makeConfigControlPanel());
@@ -82,7 +78,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
 
 	private void initializeButtons() throws PWCGException 
 	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = CampaignHomeContext.getCampaign().getCampaignConfigManager();
 		
 		String currentAirSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAirKey);
 		if (currentAirSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
@@ -189,8 +185,8 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         JPanel structureButtonPanel = createStructureConfigPanel();
         
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel simpleConfigButtonPanel = new ImageResizingPanel(campaign, imagePath);
-        simpleConfigButtonPanel.setThemedImageFromName(campaign, imagePath);
+        ImageResizingPanel simpleConfigButtonPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
+        simpleConfigButtonPanel.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         simpleConfigButtonPanel.setLayout(new GridLayout(0,1));
         simpleConfigButtonPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
@@ -373,7 +369,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
 		try
 		{
 	        String action = ae.getActionCommand();
-	        CampaignConfigurationSimpleGUIController controller = new CampaignConfigurationSimpleGUIController(campaign);
+	        CampaignConfigurationSimpleGUIController controller = new CampaignConfigurationSimpleGUIController();
 	        controller.setSimpleConfig(action);
 		}
 		catch (Exception e)

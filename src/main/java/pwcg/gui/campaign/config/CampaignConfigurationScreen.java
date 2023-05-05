@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -25,21 +25,17 @@ public class CampaignConfigurationScreen extends ImageResizingPanel implements A
 {
     private static final long serialVersionUID = 1L;
 
-    private Campaign campaign;
-
-    public CampaignConfigurationScreen(Campaign campaign)
+    public CampaignConfigurationScreen()
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
-
-        this.campaign = campaign;
     }
 
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSimpleConfigurationScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
@@ -98,14 +94,14 @@ public class CampaignConfigurationScreen extends ImageResizingPanel implements A
 
     private void showSimpleConfig() throws PWCGException 
     {
-        CampaignSimpleConfigurationScreen simpleConfigGUI = new CampaignSimpleConfigurationScreen(campaign);
+        CampaignSimpleConfigurationScreen simpleConfigGUI = new CampaignSimpleConfigurationScreen();
         simpleConfigGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(simpleConfigGUI);
     }
 
     private void showAdvancedConfig() throws PWCGException 
     {
-        CampaignAdvancedConfigurationScreen simpleConfigGUI = new CampaignAdvancedConfigurationScreen(campaign);
+        CampaignAdvancedConfigurationScreen simpleConfigGUI = new CampaignAdvancedConfigurationScreen();
         simpleConfigGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(simpleConfigGUI);
     }

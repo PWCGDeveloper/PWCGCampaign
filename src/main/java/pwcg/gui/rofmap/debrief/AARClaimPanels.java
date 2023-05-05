@@ -24,6 +24,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -49,7 +50,7 @@ public class AARClaimPanels extends ImageResizingPanel
     public void makePanels() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(30,30,100,120));
 
         this.add(makeTabbedClaimsPanel(), BorderLayout.CENTER);

@@ -18,6 +18,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.IRefreshableParentUI;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -74,7 +75,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
 	public void makePanels() throws PWCGException  
 	{        
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.AARReportMainPanel);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         makeAarEventPanels();            
 

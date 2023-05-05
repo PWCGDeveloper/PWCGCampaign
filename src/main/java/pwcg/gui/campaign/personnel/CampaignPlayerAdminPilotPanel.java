@@ -22,7 +22,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopDisplayRecord;
@@ -32,6 +31,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.IRefreshableParentUI;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -51,14 +51,12 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
     private List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
 
     private IRefreshableParentUI parentScreen;
-    private Campaign campaign;
 
-    public CampaignPlayerAdminPilotPanel(Campaign campaign, IRefreshableParentUI parentScreen, List<CoopDisplayRecord> coopDisplayRecords)
+    public CampaignPlayerAdminPilotPanel(IRefreshableParentUI parentScreen, List<CoopDisplayRecord> coopDisplayRecords)
     {
         super();
         this.setLayout(new BorderLayout());
 
-        this.campaign = campaign;
         this.parentScreen = parentScreen;
         this.coopDisplayRecords = coopDisplayRecords;
     }
@@ -68,7 +66,7 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BlankDocument);
-            this.setThemedImageFromName(campaign, imagePath);
+            this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
             this.add(makeDisplay(), BorderLayout.CENTER);
         }
         catch (Throwable e)
@@ -141,7 +139,7 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
             constraints.gridheight = 1;
             recordListPanel.add(squadronNameLabel, constraints);
             
-            if (campaign.isCoop())
+            if (CampaignHomeContext.getCampaign().isCoop())
             {
                 constraints.weightx = 0.01;
                 constraints.weighty = 0.1;
@@ -260,8 +258,6 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
     @Override
     public void refreshInformation() throws PWCGException
     {
-        campaign.reopen();
-
         this.remove(centerPanel);
         this.add(makeDisplay(), BorderLayout.CENTER);
         

@@ -30,8 +30,9 @@ public class CoopUserManager
         return instance;
     }
 
-    private void init() throws PWCGException
+    public void init() throws PWCGException
     {
+        coopUsers.clear();
         List<CoopUser> coopUsersList = CoopUserIOJson.readCoopUsers();
         for (CoopUser coopUser : coopUsersList)
         {

@@ -8,15 +8,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
+import pwcg.gui.maingui.campaigngenerate.NewPilotScreen;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -29,22 +29,19 @@ public class CampaignPersonnelScreen extends ImageResizingPanel implements Actio
     private static final long serialVersionUID = 1L;
     private CampaignHomeScreen campaignHome = null;
 
-    private Campaign campaign;
-
-    public CampaignPersonnelScreen(Campaign campaign, CampaignHomeScreen campaignHome)
+    public CampaignPersonnelScreen(CampaignHomeScreen campaignHome)
     {
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.campaign = campaign;
         this.campaignHome = campaignHome;
     }
 
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSimpleConfigurationScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
@@ -71,7 +68,7 @@ public class CampaignPersonnelScreen extends ImageResizingPanel implements Actio
         JButton referencePilotButton = PWCGButtonFactory.makeTranslucentMenuButton("Reference Pilot", "CampChangeReferencePilot", "Change the reference pilot for the UI", this);
         buttonPanel.add(referencePilotButton);
 
-        if (campaign.isCampaignActive())
+        if (CampaignHomeContext.getCampaign().isCampaignActive())
         {
             JButton skinManagementButton = PWCGButtonFactory.makeTranslucentMenuButton("Skin Management", "CampSkinManager", "Manage skins for the squadron", this);
             buttonPanel.add(skinManagementButton);
@@ -118,14 +115,14 @@ public class CampaignPersonnelScreen extends ImageResizingPanel implements Actio
     private void showAddHumanPilot() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, campaignHome);
+        NewPilotScreen addPilotDisplay = new NewPilotScreen(CampaignHomeContext.getCampaign(), campaignHome);
         addPilotDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
     }
 
     private void showChangeReferencePilot() throws PWCGException
     {
-        CampaignReferencePilotSelectorScreen referencePilotSelector = new CampaignReferencePilotSelectorScreen(campaign, campaignHome);
+        CampaignReferencePilotSelectorScreen referencePilotSelector = new CampaignReferencePilotSelectorScreen(campaignHome);
         referencePilotSelector.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(referencePilotSelector);
     }
@@ -134,7 +131,7 @@ public class CampaignPersonnelScreen extends ImageResizingPanel implements Actio
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignPlayerAdminScreen adminCoopPilotDisplay = new CampaignPlayerAdminScreen(campaign);
+        CampaignPlayerAdminScreen adminCoopPilotDisplay = new CampaignPlayerAdminScreen();
         adminCoopPilotDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopPilotDisplay);
@@ -144,7 +141,7 @@ public class CampaignPersonnelScreen extends ImageResizingPanel implements Actio
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
         
-        CampaignSkinConfigurationScreen skinDisplay = new CampaignSkinConfigurationScreen(campaign);
+        CampaignSkinConfigurationScreen skinDisplay = new CampaignSkinConfigurationScreen();
         skinDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(skinDisplay);

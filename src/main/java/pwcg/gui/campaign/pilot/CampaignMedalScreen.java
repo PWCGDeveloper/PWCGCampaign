@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalText;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -20,6 +19,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
@@ -33,23 +33,21 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 {
     private static final long serialVersionUID = 1L;
 
-    private Campaign campaign;
     private SquadronMember pilot;
     private JTextArea medalTextArea;
 
-    public CampaignMedalScreen(Campaign campaign, SquadronMember pilot)
+    public CampaignMedalScreen(SquadronMember pilot)
     {
         super();
         this.setLayout(new BorderLayout());
 
-        this.campaign = campaign;
         this.pilot = pilot;
 	}
 
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignMedalScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         this.add(BorderLayout.WEST, makeNavigationPanel());
         this.add(BorderLayout.CENTER, makeCenterPanel());     
@@ -139,7 +137,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 
 	private JPanel makeMedalBox() throws PWCGException 
 	{
-		CampaignPilotMedalBox medalBoxPanel = new CampaignPilotMedalBox(this, campaign, pilot);
+		CampaignPilotMedalBox medalBoxPanel = new CampaignPilotMedalBox(this, pilot);
 		medalBoxPanel.makePanels();
 
         JPanel pilotMedalBoxPanel = new JPanel(new BorderLayout());
@@ -179,7 +177,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
     private JPanel formMedalTextPanel(Medal medal) throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel medalTextPanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel medalTextPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         medalTextPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
 
         String medalText = MedalText.getTextForMedal(pilot, medal);
@@ -214,7 +212,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 
     private JPanel makePaperDollPanel() throws PWCGException
     {
-        CampaignPaperDollPanel paperDollPanel = new CampaignPaperDollPanel(campaign, pilot);
+        CampaignPaperDollPanel paperDollPanel = new CampaignPaperDollPanel(pilot);
         paperDollPanel.makePaperDollPanel();
         return paperDollPanel;
     }

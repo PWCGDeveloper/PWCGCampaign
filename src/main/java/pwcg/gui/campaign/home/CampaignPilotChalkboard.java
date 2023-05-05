@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
@@ -25,21 +24,18 @@ import pwcg.gui.utils.PwcgBorderFactory;
 public class CampaignPilotChalkboard extends ImageResizingPanel
 {    
     private static final long serialVersionUID = 1L;
-    private Campaign campaign;
 
-    public CampaignPilotChalkboard(Campaign campaign)
+    public CampaignPilotChalkboard()
     {
         super();
         this.setLayout(new BorderLayout());
-        this.setOpaque(false);
-        
-        this.campaign = campaign;
+        this.setOpaque(false);        
     }
     
     public void makePanels(List<SquadronMember> sortedPilots) throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignPilotChalkboard);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         this.setBorder(PwcgBorderFactory.createCampaignHomeChalkboardBoxBorder());        
 
         JPanel equipmentPanel = createPilotListPanel(sortedPilots);

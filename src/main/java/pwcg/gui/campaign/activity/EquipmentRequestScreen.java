@@ -21,7 +21,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
@@ -37,6 +36,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -50,24 +50,21 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
 {
     private static final long serialVersionUID = 1L;
 
-    private Campaign campaign = null;
     private Map<Integer, JCheckBox> aircraftRetireChecklist = new TreeMap<>();
     private Map<Integer, JCheckBox> aircraftChangeChecklist = new TreeMap<>();
     private JComboBox<String> replacementAircraftTypeSelector;
 
-    public EquipmentRequestScreen(Campaign campaign)
+    public EquipmentRequestScreen()
     {
         super();
         this.setLayout(new GridBagLayout());
         this.setOpaque(false);
-
-        this.campaign = campaign;
     }
 
     public void makePanels() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignLeaveScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         GridBagConstraints constraints = initializeGridbagConstraints();
 
@@ -107,7 +104,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     private JPanel makeCenterPanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel equipmentManagementPanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel equipmentManagementPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         equipmentManagementPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         JPanel equipmentSelectionPanel = makeEquipmentSelectionPanel();
@@ -144,8 +141,8 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         equipmentRetirementSelectionPanel.setLayout(new GridLayout(0, 1));
         equipmentRetirementSelectionPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        SquadronMember referencePlayer = campaign.getReferencePlayer();
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
+        SquadronMember referencePlayer = CampaignHomeContext.getCampaign().getReferencePlayer();
+        Equipment equipment = CampaignHomeContext.getCampaign().getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
 
         JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Retire (Requested Planes)");
         equipmentRetirementSelectionPanel.add(titleLabel);
@@ -194,8 +191,8 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         equipmentChangeSelectionGrid.setLayout(new GridLayout(0, 1));
         equipmentChangeSelectionGrid.setAlignmentX(Component.LEFT_ALIGNMENT);
         
-        SquadronMember referencePlayer = campaign.getReferencePlayer();
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
+        SquadronMember referencePlayer = CampaignHomeContext.getCampaign().getReferencePlayer();
+        Equipment equipment = CampaignHomeContext.getCampaign().getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
 
         JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Change (Assigned Planes)");
         equipmentChangeSelectionGrid.add(titleLabel);
@@ -228,11 +225,11 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     private JPanel makeReplacementAircraftSelectionPanel() throws PWCGException
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        SquadronMember referencePlayer = campaign.getReferencePlayer();
+        SquadronMember referencePlayer = CampaignHomeContext.getCampaign().getReferencePlayer();
         ICountry country = CountryFactory.makeCountryByCountry(referencePlayer.getCountry());
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
-        PwcgRoleCategory roleCategory = squadron.getSquadronRoles().selectSquadronPrimaryRoleCategory(campaign.getDate());
-        List<PlaneType> availablePlaneTypes = planeTypeFactory.getAvailablePlaneTypes(country, roleCategory, campaign.getDate());        
+        PwcgRoleCategory roleCategory = squadron.getSquadronRoles().selectSquadronPrimaryRoleCategory(CampaignHomeContext.getCampaign().getDate());
+        List<PlaneType> availablePlaneTypes = planeTypeFactory.getAvailablePlaneTypes(country, roleCategory, CampaignHomeContext.getCampaign().getDate());        
 
         replacementAircraftTypeSelector = new JComboBox<String>();
         replacementAircraftTypeSelector.setOpaque(false);
@@ -309,7 +306,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
             
             if (action.equalsIgnoreCase("Finished"))
             {
-                campaign.write();                
+                CampaignHomeContext.writeCampaign();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("ChangeEquipment"))
@@ -328,7 +325,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     {
         changeRequestedPlanes();        
         retireRequestedPlanes();        
-        campaign.write();
+        CampaignHomeContext.writeCampaign();
         updateEquipmentChangeUI();
     }
 
@@ -348,10 +345,10 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         {
             String planeTypeToChangeTo = (String) replacementAircraftTypeSelector.getSelectedItem();
             
-            SquadronMember referencePlayer = campaign.getReferencePlayer();
+            SquadronMember referencePlayer = CampaignHomeContext.getCampaign().getReferencePlayer();
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
     
-            campaign.getEquipmentManager().actOnEquipmentRequest(squadron, serialNumbersOfChangedPlanes, planeTypeToChangeTo);
+            CampaignHomeContext.getCampaign().getEquipmentManager().actOnEquipmentRequest(squadron, serialNumbersOfChangedPlanes, planeTypeToChangeTo);
         }
     }
 
@@ -365,7 +362,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
                 continue;
             }
             
-            campaign.getEquipmentManager().destroyPlane(serialNumber, campaign.getDate());
+            CampaignHomeContext.getCampaign().getEquipmentManager().destroyPlane(serialNumber, CampaignHomeContext.getCampaign().getDate());
         }
     }
 

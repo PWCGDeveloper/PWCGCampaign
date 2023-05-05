@@ -17,6 +17,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
@@ -34,20 +35,20 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
 	private CampaignHomeScreen home = null;
     private AARClaimPanels aarClaimPanel = null;
 
-	public AARInitiationScreen(CampaignHomeScreen home)  
+	public AARInitiationScreen(CampaignHomeScreen home, Campaign campaign)  
 	{
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-		this.campaign = home.getCampaign();
+		this.campaign = campaign;
         this.home = home;
 	}
 
     public void makePanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.AARInitiationScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         this.add(makeNavigationPanel(), BorderLayout.WEST);
         this.add(makeCenterPanel(), BorderLayout.CENTER);

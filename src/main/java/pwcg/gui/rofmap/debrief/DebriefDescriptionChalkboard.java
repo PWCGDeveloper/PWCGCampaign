@@ -13,6 +13,7 @@ import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -42,7 +43,7 @@ public class DebriefDescriptionChalkboard extends ImageResizingPanel
     public void makePanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "Chalkboard.png";
-        JPanel briefingPanel = new ImageResizingPanel(campaign, imagePath);
+        JPanel briefingPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
         briefingPanel.setLayout(new BorderLayout());
         briefingPanel.setOpaque(false);
         briefingPanel.setBorder(BorderFactory.createEmptyBorder(75,100,50,50));

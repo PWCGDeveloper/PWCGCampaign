@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSet;
@@ -26,6 +25,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.config.ConfigurationParametersGUI;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -43,22 +43,20 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
     private Map<String, ConfigurationParametersGUI> configurationGUIs = new HashMap<String, ConfigurationParametersGUI>();
     private PwcgThreePanelUI pwcgThreePanel;
 	private ButtonGroup buttonGroup = new ButtonGroup();
-	private Campaign campaign;
 
-	public CampaignAdvancedConfigurationScreen(Campaign campaign)
+	public CampaignAdvancedConfigurationScreen()
 	{
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-	    this.campaign = campaign;
 	    this.pwcgThreePanel = new PwcgThreePanelUI(this);
 	}
 	
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignAdvancedConfigurationScreen);
-        this.setThemedImageFromName(campaign, imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
         pwcgThreePanel.setLeftPanel(makeNavigatePanel());
         pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());
@@ -91,7 +89,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 	public JPanel makeBlankCenterPanel() throws PWCGException 
 	{		
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel blankPanel = new ImageResizingPanel(campaign, imagePath);
+        ImageResizingPanel blankPanel = new ImageResizingPanel(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 		blankPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 		blankPanel.setLayout(new BorderLayout());
 		return blankPanel;
@@ -149,7 +147,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 
 	ConfigurationParametersGUI createConfigPanel(String action) throws PWCGException 
 	{
-	    ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+	    ConfigManagerCampaign configManager = CampaignHomeContext.getCampaign().getCampaignConfigManager();
 
 		ConfigSet configSet = null;
 
@@ -224,14 +222,14 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 					configUI.recordChanges();
 				}
 				
-				campaign.getCampaignConfigManager().write();
+				CampaignHomeContext.getCampaign().getCampaignConfigManager().write();
 				PWCGContext.getInstance().configurePwcgMaps();
 		        CampaignGuiContextManager.getInstance().popFromContextStack();
 				return;
 			}
 			else if (action.equalsIgnoreCase("Cancel"))
 			{
-			    campaign.getCampaignConfigManager().readConfig();
+			    CampaignHomeContext.getCampaign().getCampaignConfigManager().readConfig();
 		        CampaignGuiContextManager.getInstance().popFromContextStack();
 				return;
 			}

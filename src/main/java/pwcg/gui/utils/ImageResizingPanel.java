@@ -9,7 +9,7 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
-import pwcg.campaign.Campaign;
+import pwcg.campaign.ArmedService;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.image.ImageCache;
@@ -37,12 +37,12 @@ public class ImageResizingPanel extends JPanel
         }
     }
 
-    public ImageResizingPanel(Campaign campaign, String imagePath)
+    public ImageResizingPanel(ArmedService service, String imagePath)
     {
         this.imagePath = imagePath;
         if (!imagePath.isEmpty())
         {
-            setThemedImageFromName(campaign, imagePath);
+            setThemedImageFromName(service, imagePath);
         }
     }
 
@@ -78,13 +78,13 @@ public class ImageResizingPanel extends JPanel
         this.image = image;
     }
 
-    public void setThemedImageFromName(Campaign campaign, String imagePath)
+    public void setThemedImageFromName(ArmedService service, String imagePath)
 	{
 		try 
 		{
             if (imagePath != "")
             {
-    			image = ImageCache.getInstance().getBufferedImageByTheme(imagePath, campaign.getReferenceService());
+    			image = ImageCache.getInstance().getBufferedImageByTheme(imagePath, service);
     			if (image == null)
     			{
     	                PWCGLogger.log(LogLevel.ERROR, "Request to load null resizing image: " + imagePath);

@@ -34,10 +34,10 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 
 	private static final long serialVersionUID = 1L;
 	
-    private CampaignNewPilotScreen parent = null;
+    private NewPilotScreen parent = null;
     private Campaign campaign = null;
 
-	public PilotGenerationInfoGUI(CampaignNewPilotScreen parent, Campaign campaign)
+	public PilotGenerationInfoGUI(NewPilotScreen parent, Campaign campaign)
 	{
 		super();
         this.setLayout(new BorderLayout());

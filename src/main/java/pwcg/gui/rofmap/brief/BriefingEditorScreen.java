@@ -13,6 +13,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.mission.MissionGeneratorHelper;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
@@ -48,7 +49,7 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingEditorEditorScreen);
-        this.setThemedImageFromName(mission.getCampaign(), imagePath);
+        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
 		editorPanel = new BriefingEditorPanel();
 		editorPanel.makePanels();

@@ -19,6 +19,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.sound.SoundManager;
@@ -51,7 +52,7 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
 		try
 		{
 	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.DebriefMissionDescriptionScreen);
-	        this.setThemedImageFromName(campaign, imagePath);
+	        this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
 
 			this.removeAll();	
 			this.add(BorderLayout.WEST, makeButtonPanel());
@@ -144,7 +145,7 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
         
-        AARInitiationScreen combatReportDisplay = new AARInitiationScreen(homeGui);
+        AARInitiationScreen combatReportDisplay = new AARInitiationScreen(homeGui, campaign);
         combatReportDisplay.makePanel();
         CampaignGuiContextManager.getInstance().pushToContextStack(combatReportDisplay);
     }
