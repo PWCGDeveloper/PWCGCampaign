@@ -123,20 +123,21 @@ public class CampaignAwardsGeneratorTest
     public void testPromotionAwardedForVictoriesAndMissionsFlown () throws PWCGException
     {     
         SquadronMembers nonPlayerSquadronMembers = SquadronMemberFilter.filterActiveAINoWounded(campaign.getPersonnelManager().getAllCampaignMembersForCountry(Country.GERMANY), campaign.getDate());
+        SquadronMembers germanPlayerSquadronMembers = SquadronMemberFilter.filterActiveAIForSquadron(nonPlayerSquadronMembers.getSquadronMemberCollection(), campaign.getDate(), 401016);
 
         Map<Integer, SquadronMember> squadronMembersToBeEvaluated = new HashMap<>();
-        squadronMembersToBeEvaluated.put(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(1));
-        squadronMembersToBeEvaluated.put(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(2));
-        squadronMembersToBeEvaluated.put(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(3));
+        squadronMembersToBeEvaluated.put(germanPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber(), germanPlayerSquadronMembers.getSquadronMemberList().get(1));
+        squadronMembersToBeEvaluated.put(germanPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber(), germanPlayerSquadronMembers.getSquadronMemberList().get(2));
+        squadronMembersToBeEvaluated.put(germanPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber(), germanPlayerSquadronMembers.getSquadronMemberList().get(3));
         
-        CampaignPersonnelTestHelper.addVictories(nonPlayerSquadronMembers.getSquadronMemberList().get(3), campaign.getDate(), 20);
-        nonPlayerSquadronMembers.getSquadronMemberList().get(3).setRank("Leutnant");
-        nonPlayerSquadronMembers.getSquadronMemberList().get(3).setMissionFlown(150);
+        CampaignPersonnelTestHelper.addVictories(germanPlayerSquadronMembers.getSquadronMemberList().get(3), campaign.getDate(), 31);
+        germanPlayerSquadronMembers.getSquadronMemberList().get(3).setRank("Leutnant");
+        germanPlayerSquadronMembers.getSquadronMemberList().get(3).setMissionFlown(150);
 
         CampaignAwardsGenerator awardsGenerator = new CampaignAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards(new ArrayList<>(squadronMembersToBeEvaluated.values()));
                 
         Assertions.assertTrue (campaignMemberAwards.getPromotions().size() == 1);
-        Assertions.assertTrue (campaignMemberAwards.getPromotions().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber()));
+        Assertions.assertTrue (campaignMemberAwards.getPromotions().containsKey(germanPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber()));
     }
 }

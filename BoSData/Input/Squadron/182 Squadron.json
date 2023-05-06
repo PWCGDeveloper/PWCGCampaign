@@ -157,8 +157,8 @@
 	},
 	"skins": [
         {
-            "skinName": "hurricanemkii_skin_03",
-            "planeType": "spitfiremkvb",
+            "skinName": "hurricanemkii_blank_03",
+            "planeType": "hurricanemkii",
             "startDate": "19390901",
             "endDate": "19420215",
             "country": "Britain",
@@ -169,8 +169,8 @@
             "tacticalCodeColor": "WHITE"
         },
         {
-            "skinName": "hurricanemkii_skin_04",
-            "planeType": "spitfiremkvb",
+            "skinName": "hurricanemkii_blank_04",
+            "planeType": "hurricanemkii",
             "startDate": "19420201",
             "endDate": "19450501",
             "country": "Britain",

@@ -1,0 +1,18 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"bf109g6as_default": {
+			"skinName": "bf109g6as",
+			"planeType": "bf109g6as",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"winter": true
+		}
+	}
+}

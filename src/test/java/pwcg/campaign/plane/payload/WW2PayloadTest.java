@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
@@ -55,6 +56,7 @@ public class WW2PayloadTest
 
         Mockito.when(flight.getCampaign()).thenReturn(campaign);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
+        Mockito.when(campaign.getCampaignMap()).thenReturn(FrontMapIdentifier.STALINGRAD_MAP);
     }
 
     @Test

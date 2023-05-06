@@ -60,6 +60,8 @@ public class SkinManagerTest
     {
         List<String> hasNoBlanks = new ArrayList<>();
         hasNoBlanks.add("bf109g6late");
+        hasNoBlanks.add("bf109g6as");
+        hasNoBlanks.add("spitfiremkxive");
 
         for (String planeName : skinManager.getAllSkinsByPlane().keySet())
         {

@@ -160,6 +160,30 @@
             "winter": false,
             "useTacticalCodes": true,
             "tacticalCodeColor": "SKY"
+        },
+        {
+            "skinName": "spitfiremkxiv_default",
+            "planeType": "spitfiremkxiv",
+            "startDate": "19420301",
+            "endDate": "19450501",
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
+        },
+        {
+            "skinName": "spitfiremkxive_default",
+            "planeType": "spitfiremkxive",
+            "startDate": "19420301",
+            "endDate": "19450501",
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
         }
 	]
 }

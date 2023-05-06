@@ -89,7 +89,7 @@ public class PlaneTypeFactoryTest
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         List<PlaneType> planeTypes =  planeTypeFactory.createPlaneTypesForArchType("bf109");
-        assert(planeTypes.size() == 8);
+        assert(planeTypes.size() == 9);
         for (PlaneType planeType : planeTypes)
         {
             assert(planeType.getArchType().equals("bf109"));
