@@ -11,6 +11,11 @@ import pwcg.core.exception.PWCGException;
 
 public class AARPlayerStatusAdjuster
 {
+    public static final int MAX_INJURY_NONE = 1;
+    public static final int MAX_INJURY_WOUNDED = 2;
+    public static final int MAX_INJURY_SERIOUSLY_WOUNDED = 3;
+    public static final int MAX_INJURY_DEAD = 4;
+    
     private Campaign campaign;
     
     public AARPlayerStatusAdjuster(Campaign campaign)
@@ -24,17 +29,19 @@ public class AARPlayerStatusAdjuster
     	{
     		return;
     	}
+        
+        adjustPlayerInjury(playerCrewMember);
     	
     	int maxPlayerInjury = getConfiguredMaxPlayerInjury();
-        if (maxPlayerInjury == 1)
+        if (maxPlayerInjury == MAX_INJURY_NONE)
         {
             playerIsNeverInjured(playerCrewMember);
         }
-        else if (maxPlayerInjury == 2)
+        else if (maxPlayerInjury == MAX_INJURY_WOUNDED)
         {
             playerIsLightlyWounded(playerCrewMember);
         }
-        else if (maxPlayerInjury == 3)
+        else if (maxPlayerInjury == MAX_INJURY_SERIOUSLY_WOUNDED)
         {
             playerIsBadlyWounded(playerCrewMember);
         }
@@ -44,7 +51,33 @@ public class AARPlayerStatusAdjuster
         }
     }
 
-	private void playerIsNeverInjured(LogPilot playerCrewMember)
+	private void adjustPlayerInjury(LogPilot playerCrewMember) throws PWCGException
+    {
+	    int playerInjuryAdjustment = getConfiguredPlayerInjuryAdjustment();
+        int playerStatus = playerCrewMember.getStatus();
+	    for (int statusAdjustment = 0; statusAdjustment < playerInjuryAdjustment; ++statusAdjustment)
+	    {
+            if (playerStatus == SquadronMemberStatus.STATUS_ACTIVE)
+            {
+                break;
+            }
+            else if (playerStatus < SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+            {
+                playerStatus = SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED;
+            }
+            else if (playerStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+            {
+                playerStatus = SquadronMemberStatus.STATUS_WOUNDED;
+            }
+            else if (playerStatus == SquadronMemberStatus.STATUS_WOUNDED)
+            {
+                playerStatus = SquadronMemberStatus.STATUS_ACTIVE;
+            }
+	    }
+        playerCrewMember.setStatus(playerStatus);
+    }
+
+    private void playerIsNeverInjured(LogPilot playerCrewMember)
 	{
 		playerCrewMember.setStatus(SquadronMemberStatus.STATUS_ACTIVE);
 	}
@@ -65,10 +98,17 @@ public class AARPlayerStatusAdjuster
 		}
 	}
 
-	private int getConfiguredMaxPlayerInjury() throws PWCGException
-	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+    private int getConfiguredMaxPlayerInjury() throws PWCGException
+    {
+        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         int maxPlayerInjury = configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryKey);
-		return maxPlayerInjury;
-	}
+        return maxPlayerInjury;
+    }
+
+    private int getConfiguredPlayerInjuryAdjustment() throws PWCGException
+    {
+        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+        int playerInjuryAdjustment = configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryAdjustKey);
+        return playerInjuryAdjustment;
+    }
 }

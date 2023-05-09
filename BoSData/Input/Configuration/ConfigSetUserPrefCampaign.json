@@ -6,11 +6,16 @@
 			"label": "Number of Missions Credited",
 			"help": "Number of missions credited for each actually flown"
 		},
-		"PilotInjury": {
-			"value": "3",
-			"label": "Select Max Pilot Injury",
-			"help": "1 \u003d No Injury, 2 \u003d Minor Wound, 3 \u003d Major Wound 4 \u003d Death"
-		},
+        "PilotInjury": {
+            "value": "3",
+            "label": "Select Max Pilot Injury",
+            "help": "1 \u003d No Injury, 2 \u003d Minor Wound, 3 \u003d Major Wound 4 \u003d Death"
+        },
+        "PilotInjuryAdjust": {
+            "value": "0",
+            "label": "Select Adjustment To Pilot Injury",
+            "help": "Use a negative number to reduce pilot injury. "
+        },
 		"DetailedVictoryDescription": {
 			"value": "1",
 			"label": "Use detailed victory description",

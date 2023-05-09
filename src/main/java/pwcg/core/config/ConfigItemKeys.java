@@ -14,6 +14,7 @@ public class ConfigItemKeys
     public static final String InternationalizationFileKey = "InternationalizationFile";
 
     public static final String PilotInjuryKey = "PilotInjury";
+    public static final String PilotInjuryAdjustKey = "PilotInjuryAdjust";
     public static final String DetailedVictoryDescriptionKey = "DetailedVictoryDescription";
 	public static final String SimpleConfigAirKey = "SimpleConfigAir";
     public static final String SimpleConfigGroundKey = "SimpleConfigGround";

@@ -11,6 +11,11 @@
 			"label": "Select Max Pilot Injury",
 			"help": "1: No Injury, 2: Minor Wound, 3: Major Wound, 4: Death"
 		},
+        "PilotInjuryAdjust": {
+            "value": "0",
+            "label": "Select Adjustment To Pilot Injury",
+            "help": "Use a negative number to reduce pilot injury. "
+        },
 		"DetailedVictoryDescription": {
 			"value": "1",
 			"label": "Use detailed victory description",
