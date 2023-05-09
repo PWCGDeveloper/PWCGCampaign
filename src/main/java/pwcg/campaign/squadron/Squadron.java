@@ -891,6 +891,18 @@ public class Squadron
             skin.setCountry(this.getCountry().getCountryName());
         }
     }
+
+    public boolean isRarePlane(Date date) throws PWCGException
+    {
+        for (PlaneType planeType : determineCurrentAircraftList(date))
+        {
+            if (planeType.isRare())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     
     
 }

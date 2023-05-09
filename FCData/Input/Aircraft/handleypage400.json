@@ -15,7 +15,8 @@
 	"climbOutRate": 80,
 	"goodness": 80,
 	"range": 1000,
-	"isFlyable": true,
+    "isFlyable": true,
+    "isRare": true,
 	"isNovice": true,
 	"roleCategories": [
 		"STRATEGIC_BOMBER"

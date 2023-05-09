@@ -37,6 +37,7 @@ public class PlaneType implements Cloneable
     protected int range = 400;
     protected boolean isFlyable = false;
     protected boolean isNovice = false;
+    protected boolean isRare = false;
     protected PlaneSize planeSize = PlaneSize.PLANE_SIZE_SMALL;
     protected ArrayList<PwcgRoleCategory> roleCategories = new ArrayList<>();
     protected Date introduction;
@@ -376,4 +377,11 @@ public class PlaneType implements Cloneable
     {
         return isNovice;
     }
+
+    public boolean isRare()
+    {
+        return isRare;
+    }
+    
+    
 }

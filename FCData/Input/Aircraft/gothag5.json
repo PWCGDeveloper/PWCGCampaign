@@ -16,6 +16,7 @@
 	"goodness": 80,
 	"range": 1000,
 	"isFlyable": true,
+    "isRare": true,
 	"isNovice": true,
 	"roleCategories": [
 		"STRATEGIC_BOMBER"

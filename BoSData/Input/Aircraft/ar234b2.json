@@ -18,7 +18,8 @@
 	"climbOutRate": 1000,
 	"goodness": 87,
 	"range": 800,
-	"isFlyable": true,
+    "isFlyable": true,
+    "isRare": true,
 	"isNovice": false,
 	"planeSize": "PLANE_SIZE_MEDIUM",
 	"roleCategories": [

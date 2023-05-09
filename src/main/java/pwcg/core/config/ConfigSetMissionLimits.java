@@ -17,9 +17,7 @@ public class ConfigSetMissionLimits
         configSet.addConfigItem(ConfigItemKeys.AiFighterFlightsForGroundCampaignMaxKey, new ConfigItem("1"));
         configSet.addConfigItem(ConfigItemKeys.AiFighterFlightsForFighterCampaignMaxKey, new ConfigItem("3"));        
 		
-		configSet.addConfigItem(ConfigItemKeys.OddsOfAceFlyingKey, new ConfigItem("40"));		
-		configSet.addConfigItem(ConfigItemKeys.InitialSquadronSearchRadiusKey, new ConfigItem("50000"));
-		configSet.addConfigItem(ConfigItemKeys.MaxSquadronSearchRadiusKey, new ConfigItem("120000"));
+        configSet.addConfigItem(ConfigItemKeys.OddsOfRareAircraftFlyingKey, new ConfigItem("10"));       
 		
         configSet.addConfigItem(ConfigItemKeys.AllowAirStartsKey, new ConfigItem("0"));
         configSet.addConfigItem(ConfigItemKeys.GenerateClimbWPKey, new ConfigItem("1"));
@@ -30,7 +28,6 @@ public class ConfigSetMissionLimits
         configSet.addConfigItem(ConfigItemKeys.IsVirtualDiveBombEscortedOddsKey, new ConfigItem("30"));
         configSet.addConfigItem(ConfigItemKeys.IsVirtualTransportEscortedOddsKey, new ConfigItem("20"));
 		
-        configSet.addConfigItem(ConfigItemKeys.TimeOnArtillerySpotKey, new ConfigItem("5"));
         configSet.addConfigItem(ConfigItemKeys.MaxSmokeInMissionKey, new ConfigItem("100"));
         configSet.addConfigItem(ConfigItemKeys.MaxSmokeInAreaKey, new ConfigItem("3"));
         configSet.addConfigItem(ConfigItemKeys.GroundUnitSpawnDistanceKey, new ConfigItem("10000"));

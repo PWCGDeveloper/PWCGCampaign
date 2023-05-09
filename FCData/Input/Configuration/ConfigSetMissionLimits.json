@@ -51,11 +51,6 @@
 			"label": "Generate Climb WPs",
 			"help": "Generate WPs to gain altitude - set to 1 for more climb WPs"
 		},
-		"InitialSquadronSearchRadius": {
-			"value": "60000",
-			"label": "Initial Squadron Search Radius",
-			"help": "Initial radius to search for squadrons to include in mission (in meters)"
-		},
 		"MaxVirtualEscortedFlight": {
 			"value": "2",
 			"label": "Max Virtual Escorts",
@@ -81,11 +76,6 @@
 			"label": "Odds dive transport mission is escorted",
 			"help": "Odds of a virtual transport mission being escorted - It's WWI.  DOn't worry about this one"
 		},
-		"MaxSquadronSearchRadius": {
-			"value": "120000",
-			"label": "Max Squadron Search Radius",
-			"help": "Maximum radius to search for squadrons to include in mission (in meters)"
-		},
 		"MaxSmokeInMission": {
 			"value": "0",
 			"label": "Maximum amount of smoke in mission",
@@ -96,11 +86,11 @@
 			"label": "Maximum amount of smoke in an area",
 			"help": "Maximum number of smoke instances in a 3km radius"
 		},
-		"OddsOfAceFlying": {
-			"value": "40",
-			"label": "Odds Of Ace Flying",
-			"help": "Odds that a historical ace in a squadron will be in a flight"
-		},
+        "OddsOfRareAircraftFlying": {
+            "value": "10",
+            "label": "Odds Of Rare Aircraft Flying",
+            "help": "Odds that a historically rare will generate a flight"
+        },
 		"TimeOnArtillerySpot": {
 			"value": "5",
 			"label": "Artillery Spot Time",

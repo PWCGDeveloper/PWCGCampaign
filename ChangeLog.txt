@@ -1,5 +1,11 @@
 15.1.1
 Removed coop check that disabled cold start for coops.
+Added Ultra Low ground to eliminate trains and trucks.
+- Good for WWI where you are not really roaming the countrside
+Added rare plane flight odds
+- Gotha, HP, Arado
+- Limits frequency of mission generation for certain rare planes
+- Controllable through advanced config: Mission Limits section
 
 15.1.0
 Added Bf109-G6 AS, Spitfire Mk XIVe, Sopwith Snipe and SSW D.IV

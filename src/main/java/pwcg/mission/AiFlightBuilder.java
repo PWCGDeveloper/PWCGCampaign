@@ -8,7 +8,9 @@ import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
+import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -50,10 +52,31 @@ public class AiFlightBuilder
             List<IFlight> flights = buildFlight(flightType, squadron);
             for (IFlight flight : flights)
             {
-                missionFlights.add(flight);
+                if (!cancelBecauseRare(flight))
+                {
+                    missionFlights.add(flight);
+                }
             }
         }
         return missionFlights;
+    }
+
+    private boolean cancelBecauseRare(IFlight flight) throws PWCGException
+    {
+        if (flight.getSquadron().isRarePlane(campaign.getDate()))
+        {
+            int rarePlaneOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.OddsOfRareAircraftFlyingKey);
+            int roll = RandomNumberGenerator.getRandom(100);
+            if (roll < rarePlaneOdds)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private FlightTypes determineFlightType(Squadron squadron) throws PWCGException 

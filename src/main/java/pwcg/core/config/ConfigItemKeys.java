@@ -137,10 +137,8 @@ public class ConfigItemKeys
 	public static final String AiFighterFlightsForGroundCampaignMaxKey = "AiFighterFlightsForGroundCampaignMax";
 	public static final String AiFighterFlightsForFighterCampaignMaxKey = "AiFighterFlightsForFighterCampaignMax";
 
-	public static final String InitialSquadronSearchRadiusKey = "InitialSquadronSearchRadius";
-	public static final String MaxSquadronSearchRadiusKey = "MaxSquadronSearchRadius";
-	public static final String OddsOfAceFlyingKey = "OddsOfAceFlying";
-
+    public static final String OddsOfRareAircraftFlyingKey = "OddsOfRareAircraftFlying";
+	
 	public static final String AllowAirStartsKey = "AllowAirStarts";
 	public static final String GenerateClimbWPKey = "GenerateClimbWP";
 
