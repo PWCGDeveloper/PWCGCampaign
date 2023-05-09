@@ -1,8 +1,12 @@
+15.1.1
+Removed coop check that disabled cold start for coops.
+
 15.1.0
 Added Bf109-G6 AS, Spitfire Mk XIVe, Sopwith Snipe and SSW D.IV
 Fixed issues around adding a coop user
 Fixed briefing issues for coop missions
 Fixed zero altitude scramble anad strategic intercept missions
+Fixed issue that could have neutral targets chosen
 
 
 14.1.4

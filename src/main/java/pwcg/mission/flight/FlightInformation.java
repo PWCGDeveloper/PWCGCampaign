@@ -152,7 +152,7 @@ public class FlightInformation
             ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
             if (configManager.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey) == 2)
             {
-                if (campaign.getCampaignMap() != FrontMapIdentifier.NORMANDY_MAP && !campaign.isCoop())
+                if (campaign.getCampaignMap() != FrontMapIdentifier.NORMANDY_MAP && campaign.getCampaignMap() != FrontMapIdentifier.WESTERN_FRONT_MAP)
                 {
                     parkedStart = true;
                 }

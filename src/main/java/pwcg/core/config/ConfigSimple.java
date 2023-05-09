@@ -5,6 +5,7 @@ import pwcg.core.exception.PWCGException;
 
 public class ConfigSimple
 {
+    public static String CONFIG_LEVEL_ULTRA_LOW = "Ultra Low";
     public static String CONFIG_LEVEL_LOW = "Low";
     public static String CONFIG_LEVEL_MED = "Med";
     public static String CONFIG_LEVEL_HIGH = "High";
@@ -74,6 +75,11 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "6");
         setParamForSimpleConfigChange(ConfigItemKeys.TransportMinimumKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.TransportAdditionalKey, "5");
+    }
+
+    public void setGroundUltraLow() throws PWCGException 
+    {
+        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigGroundKey, ConfigSimple.CONFIG_LEVEL_ULTRA_LOW);
     }
 
     public void setGroundLow() throws PWCGException 

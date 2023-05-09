@@ -15,7 +15,7 @@ public class AssaultBattleSizeGenerator
         BattleSize battleSize = BattleSize.BATTLE_SIZE_TINY;      
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW) || currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;      
         }

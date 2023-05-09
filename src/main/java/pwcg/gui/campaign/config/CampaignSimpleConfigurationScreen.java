@@ -38,6 +38,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
 	private ButtonModel airHighButtonModel = null;
 
     private ButtonGroup groundButtonGroup = new ButtonGroup();
+    private ButtonModel groundUltraLowButtonModel = null;
     private ButtonModel groundLowButtonModel = null;
     private ButtonModel groundMedButtonModel = null;
     private ButtonModel groundHighButtonModel = null;
@@ -95,7 +96,12 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
 		}
         
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            groundButtonGroup.setSelected(groundUltraLowButtonModel, true);
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             groundButtonGroup.setSelected(groundLowButtonModel, true);
         }
@@ -244,11 +250,16 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
 		
         JLabel groundDensityLabel = PWCGLabelFactory.makePaperLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_GROUND_DENSITY);
 		groundDensityGrid.add(groundDensityLabel);
-
-		JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Ground Density", "Fewer AI ground units", null, ColorMap.PAPER_FOREGROUND, false, this);
-		groundDensityGrid.add(lowDensity);
-		groundLowButtonModel = lowDensity.getModel();
-		groundButtonGroup.add(lowDensity);
+        
+        JRadioButton ultraLowDensity = PWCGButtonFactory.makeRadioButton("Ultra Low", "Ultra Low Ground Density", "No trucks or trains", null, ColorMap.PAPER_FOREGROUND, false, this);
+        groundDensityGrid.add(ultraLowDensity);
+        groundUltraLowButtonModel = ultraLowDensity.getModel();
+        groundButtonGroup.add(ultraLowDensity);
+        
+        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Ground Density", "Fewer AI ground units", null, ColorMap.PAPER_FOREGROUND, false, this);
+        groundDensityGrid.add(lowDensity);
+        groundLowButtonModel = lowDensity.getModel();
+        groundButtonGroup.add(lowDensity);
 
 		JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Ground Density", "Medium numbers of AI ground units", null, ColorMap.PAPER_FOREGROUND, false, this);		
 		groundDensityGrid.add(medDensity);

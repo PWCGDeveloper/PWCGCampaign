@@ -104,7 +104,7 @@ public class MissionBalloonBuilder
         int numBalloonsPerSide = 1;      
         ConfigManagerCampaign configManager = mission.getCampaign().getCampaignConfigManager();
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW) || currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             numBalloonsPerSide = 1;      
         }

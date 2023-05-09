@@ -11,6 +11,9 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.PwcgMapGroundUnitLimitation;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -50,11 +53,18 @@ public class MissionGroundUnitBuilder
     public void generateGroundUnitsForMission() throws PWCGException 
     {
         generateBattle();
-        generateTrains();
-        generateTrucks();
-        generateDrifters();
+        
+        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+        if (!currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            generateTrains();
+            generateTrucks();
+            generateDrifters();
+            generateShips();
+        }
+        
         generateBalloons();
-        generateShips();
         createAAAForMission();
         createrRadarsForMission();
     }

@@ -126,7 +126,11 @@ public class AirfieldHotSpotTranslator
 
     private int getNumAAAForPlayerAirfield(String currentGroundSetting)
     {
-        int numAAHotSpots = 4;
+        int numAAHotSpots = 3;
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            numAAHotSpots = 3;
+        }
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             numAAHotSpots = 4;
@@ -144,7 +148,11 @@ public class AirfieldHotSpotTranslator
 
     private int getNumAAAForAiAirfield(String currentGroundSetting)
     {
-        int numAAHotSpots = 2;
+        int numAAHotSpots = 1;
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            numAAHotSpots = 0;
+        }
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             numAAHotSpots = 2;

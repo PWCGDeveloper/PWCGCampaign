@@ -25,6 +25,10 @@ public enum GroundUnitSize
         {
             return GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM;
         }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            return GroundUnitSize.GROUND_UNIT_SIZE_LOW;
+        }
         else
         {
             return GroundUnitSize.GROUND_UNIT_SIZE_LOW;

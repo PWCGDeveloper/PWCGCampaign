@@ -82,7 +82,11 @@ public class MissionBattleBuilder implements IBattleBuilder
         int maxBattles = 1;
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            maxBattles = 1;
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             maxBattles = 1;
         }

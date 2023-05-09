@@ -67,7 +67,7 @@ public class AAAManager
         List<GroundUnitCollection> allAAA = new ArrayList<>();
                 
         String currentGroundSetting = campaign.getCampaignConfigManager().getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (!currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (!currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW) || !currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             AAABridgeBuilder aaaBridgeBuilder = new AAABridgeBuilder(campaign);
             List<GroundUnitCollection> bridgeAAA = aaaBridgeBuilder.createAAAForBridges();

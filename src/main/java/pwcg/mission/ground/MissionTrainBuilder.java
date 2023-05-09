@@ -116,7 +116,7 @@ public class MissionTrainBuilder extends MissionUnitBuilder
 
 	private int getMaxTrains() throws PWCGException
 	{
-		int maxTrains = 3;
+		int maxTrains = 2;
         
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
