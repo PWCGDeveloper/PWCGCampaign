@@ -14,7 +14,7 @@
         "PilotInjuryAdjust": {
             "value": "0",
             "label": "Select Adjustment To Pilot Injury",
-            "help": "Use a negative number to reduce pilot injury. "
+            "help": "Use a number (1-4) to reduce pilot injury by increments. "
         },
 		"DetailedVictoryDescription": {
 			"value": "1",
