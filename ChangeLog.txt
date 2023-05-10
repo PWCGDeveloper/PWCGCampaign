@@ -10,6 +10,7 @@ Added Adjustment To Pilot Injury config
 - Allows incremental downgrade of injuries suffered by player
 - Number 0-4.  Every number causes injury downgrade from dead-> seriously wounded -> wounded - just ducky
 - Controllable through advanced config: Campaign Preferences section
+Fixed FC airfield Beugnatre 
 
 15.1.0
 Added Bf109-G6 AS, Spitfire Mk XIVe, Sopwith Snipe and SSW D.IV
