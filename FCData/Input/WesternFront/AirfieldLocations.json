@@ -976,20 +976,20 @@
             "zPos": 100702.0
           },
           "endPos": {
-            "xPos": 223991.0,
+            "xPos": 223873.0,
             "yPos": 106.0,
-            "zPos": 100413.0
+            "zPos": 100312.0
           },
           "parkingLocation": {
             "name": "",
             "position": {
-              "xPos": 223658.0,
+              "xPos": 223867.0,
               "yPos": 0.0,
-              "zPos": 100702.0
+              "zPos": 100763.0
             },
             "orientation": {
               "xOri": 0.0,
-              "yOri": 139.0,
+              "yOri": 290.0,
               "zOri": 0.0
             }
           },
@@ -1005,7 +1005,7 @@
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 319.0,
+        "yOri": 290.0,
         "zOri": 0.0
       }
     },
