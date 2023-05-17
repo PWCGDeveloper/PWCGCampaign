@@ -6,26 +6,19 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightPlanes;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
-import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.BaseFlightMcu;
-import pwcg.mission.mcu.McuCheckZone;
-import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.EscortMcuSequence;
 
 // Ingress -> Rendezvous WP -> Cover Timer -> Cover -> force Complete Timer -> Egress Wp
-public class MissionPointEscortForPlayerWaypointSet extends MissionPointSetMultipleWaypointSet implements IMissionPointSet
+public class MissionPointEscortForAiWaypointSet extends MissionPointSetMultipleWaypointSet implements IMissionPointSet
 {
     private EscortMcuSequence escortSequence;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
-    private McuTimer rendezvousCheckZoneTimer = null;
-    private McuCheckZone rendezvousCheckZone = null;
     
-    public MissionPointEscortForPlayerWaypointSet()
+    public MissionPointEscortForAiWaypointSet()
     {
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ESCORT;
     }
@@ -69,26 +62,6 @@ public class MissionPointEscortForPlayerWaypointSet extends MissionPointSetMulti
         return missionPoints;
     }
     
-
-    private void createRendezvousCheckZone(IFlight escortedFlight) throws PWCGException 
-    {                
-        rendezvousCheckZone = new McuCheckZone("CheckZone Balloon Winch");
-        rendezvousCheckZone.setZone(5000);
-        rendezvousCheckZone.triggerCheckZoneByFlight(escortedFlight);
-
-        McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getWaypointPackage().getAllWaypoints(), 
-                WaypointType.RENDEZVOUS_WAYPOINT.getName());
-
-        rendezvousCheckZone.setDesc("Rendezvous Check Zone");
-        rendezvousCheckZone.setPosition(rendezvousWP.getPosition().copy());
-        
-        // Make the winch down CZ Timer
-        rendezvousCheckZoneTimer = new McuTimer();
-        rendezvousCheckZoneTimer.setName("Rendezvous Check Zone Timer");
-        rendezvousCheckZoneTimer.setDesc("Rendezvous Check Zone Timer");
-        rendezvousCheckZoneTimer.setPosition(rendezvousWP.getPosition().copy());
-    }
-
     @Override
     public void finalizeMissionPointSet(FlightPlanes flightPlanes) throws PWCGException
     {
@@ -97,10 +70,9 @@ public class MissionPointEscortForPlayerWaypointSet extends MissionPointSetMulti
         escortSequence.finalize();
     }
 
-    public void setEscortSequence(EscortMcuSequence coverSequence) throws PWCGException
+    public void setCoverSequence(EscortMcuSequence coverSequence)
     {
         this.escortSequence = coverSequence;
-        createRendezvousCheckZone(escortSequence.getEscortedFlight());
     }
 
     @Override
@@ -118,20 +90,22 @@ public class MissionPointEscortForPlayerWaypointSet extends MissionPointSetMulti
     @Override
     public void write(BufferedWriter writer) throws PWCGException
     {
+        validate();
+        
         super.write(writer);
-        rendezvousCheckZoneTimer.write(writer);
-        rendezvousCheckZone.write(writer);
         escortSequence.write(writer);
     }
 
     private void linkEscortSequenceToWaypoints() throws PWCGException
     {
         McuWaypoint lastWaypointBefore = super.getLastWaypointBefore();
-        lastWaypointBefore.setTarget(rendezvousCheckZoneTimer.getIndex());
-        rendezvousCheckZoneTimer.setTimerTarget(rendezvousCheckZone.getIndex());
-        
+        lastWaypointBefore.setTarget(escortSequence.getCoverEntry());
         McuWaypoint firstWaypointAfter = super.getFirstWaypointAfter();
         escortSequence.setLinkToNextTarget(firstWaypointAfter.getIndex());
+    }
+
+    private void validate() throws PWCGException
+    {
     }
 
     @Override
@@ -154,16 +128,4 @@ public class MissionPointEscortForPlayerWaypointSet extends MissionPointSetMulti
     {
         return escortSequence;
     }
-
-    public McuTimer getRendezvousCheckZoneTimer()
-    {
-        return rendezvousCheckZoneTimer;
-    }
-
-    public McuCheckZone getRendezvousCheckZone()
-    {
-        return rendezvousCheckZone;
-    }
-    
-    
 }

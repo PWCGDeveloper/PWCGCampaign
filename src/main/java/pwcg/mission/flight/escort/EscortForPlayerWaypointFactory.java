@@ -8,8 +8,7 @@ import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointEscortWaypointSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointEscortWaypointSet.EscortSequenceConnect;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointEscortForPlayerWaypointSet;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.EscortMcuSequence;
 
@@ -17,7 +16,7 @@ public class EscortForPlayerWaypointFactory
 {
     private IFlight escortFlight;
     private IFlight playerFlightThatNeedsEscort;
-    private MissionPointEscortWaypointSet missionPointSet;
+    private MissionPointEscortForPlayerWaypointSet missionPointSet;
     
     public EscortForPlayerWaypointFactory(IFlight escortFlight, IFlight playerFlightThatNeedsEscort)
     {
@@ -27,7 +26,7 @@ public class EscortForPlayerWaypointFactory
 
     public IMissionPointSet createWaypoints() throws PWCGException
     {
-        missionPointSet = new MissionPointEscortWaypointSet(EscortSequenceConnect.DO_NOT_CONNECT_ESCORT_SEQUENCE);
+        missionPointSet = new MissionPointEscortForPlayerWaypointSet();
         
         McuWaypoint rendezvousWaypoint = createRendezvousWaypoint();
         McuWaypoint airStartWaypoint = AirStartWaypointFactory.createAirStart(playerFlightThatNeedsEscort, AirStartPattern.AIR_START_NEAR_WAYPOINT, rendezvousWaypoint);
@@ -36,7 +35,7 @@ public class EscortForPlayerWaypointFactory
 
         EscortMcuSequence escortSequence = new EscortMcuSequence(playerFlightThatNeedsEscort, escortFlight);
         escortSequence.createEscortSequence();
-        missionPointSet.setCoverSequence(escortSequence);
+        missionPointSet.setEscortSequence(escortSequence);
        
         McuWaypoint rtbWP = ReturnToBaseWaypoint.createReturnToBaseWaypoint(escortFlight);
         missionPointSet.addWaypointAfter(rtbWP);

@@ -45,13 +45,14 @@ public class EscortMcuSequence
 
     public void createCover() throws PWCGException 
     {
-        PlaneMcu flightLeader = escortFlight.getFlightPlanes().getFlightLeader();
+        PlaneMcu escortFlightLeader = escortFlight.getFlightPlanes().getFlightLeader();
+        PlaneMcu escortedFlightLeader = escortedFlight.getFlightPlanes().getFlightLeader();
         Coordinate rendevousPosition = getCoverPosition();
         
         cover  = new McuCover();
         cover.setPosition(rendevousPosition);
-        cover.setObject(flightLeader.getLinkTrId());
-        cover.setCoverTarget(escortedFlight.getFlightPlanes().getFlightLeader().getLinkTrId());
+        cover.setObject(escortFlightLeader.getLinkTrId());
+        cover.setCoverTarget(escortedFlightLeader.getLinkTrId());
 
         coverTimer  = new McuTimer();
         coverTimer.setName("Cover Timer");
@@ -99,11 +100,15 @@ public class EscortMcuSequence
     
     private void createTargetAssociations()
     {
-        McuWaypoint rtbWP = WaypointGeneratorUtils.findWaypointByType(escortFlight.getWaypointPackage().getAllWaypoints(), 
-                WaypointType.EGRESS_WAYPOINT.getName());
-
         coverTimer.setTimerTarget(cover.getIndex());        
         
+        createStopCoverTargetAssociations();
+    }
+
+    private void createStopCoverTargetAssociations()
+    {
+        McuWaypoint rtbWP = WaypointGeneratorUtils.findWaypointByType(escortFlight.getWaypointPackage().getAllWaypoints(), 
+                WaypointType.EGRESS_WAYPOINT.getName());
         forceCompleteTimer.setTimerTarget(forceComplete.getIndex());
         forceCompleteTimer.setTimerTarget(escortCompleteTimer.getIndex());
         escortCompleteTimer.setTimerTarget(rtbWP.getIndex());

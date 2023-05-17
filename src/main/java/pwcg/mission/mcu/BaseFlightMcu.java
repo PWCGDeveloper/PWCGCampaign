@@ -112,6 +112,30 @@ public class BaseFlightMcu extends BaseMcu
 	    
 		return targetList;
 	}
+    
+    public boolean isTarget(String searchFor) 
+    {
+        for (String target : targets)
+        {
+            if (target.equals(searchFor))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean isObject(String searchFor) 
+    {
+        for (String obj : objects)
+        {
+            if (obj.equals(searchFor))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 	
 	protected void setTarget(int target) 
 	{
