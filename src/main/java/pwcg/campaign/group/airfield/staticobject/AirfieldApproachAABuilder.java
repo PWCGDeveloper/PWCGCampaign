@@ -47,6 +47,14 @@ public class AirfieldApproachAABuilder
             return airfieldApproachAA;
         }
         
+        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+        String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            return airfieldApproachAA;
+        }
+
+
         PWCGLocation landingPosition = airfield.getLandingLocation(mission);
         double aaProgressionAngle = airfield.getTakeoffLocation(mission).getOrientation().getyOri();
         Coordinate aaStartPosition = MathUtils.calcNextCoord(mapIdentifier, landingPosition.getPosition(), aaProgressionAngle, 500.0);
@@ -81,6 +89,10 @@ public class AirfieldApproachAABuilder
         int numAAGunPairs = 2;
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            numAAGunPairs = 1;
+        }
         if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             numAAGunPairs = 2;

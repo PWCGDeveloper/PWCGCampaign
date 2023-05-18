@@ -97,6 +97,11 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigGroundKey, ConfigSimple.CONFIG_LEVEL_HIGH);
     }
     
+    public void setAAUltraLow() throws PWCGException
+    {
+        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAAKey, ConfigSimple.CONFIG_LEVEL_ULTRA_LOW);        
+    }
+    
     public void setAALow() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAAKey, ConfigSimple.CONFIG_LEVEL_LOW);

@@ -102,6 +102,7 @@ public class CampaignPersonnelScreen extends ImageResizingPanel implements Actio
             }
             else if (action.equals(CommonUIActions.FINISHED))
             {
+                campaignHome.refreshInformation();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
 		}

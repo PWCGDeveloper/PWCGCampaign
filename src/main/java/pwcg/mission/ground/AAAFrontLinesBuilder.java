@@ -86,7 +86,11 @@ public class AAAFrontLinesBuilder
 	{
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
-        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            return 8000;
+        }
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             return 6000;
         }

@@ -104,64 +104,65 @@ public class AirfieldHotSpotTranslator
 
     private int determineNumAAAHotSpots() throws PWCGException
     {
-        int numAAHotSpots = 4;
+        int numAAHotSpots = 1;
 
         IFlight flight = mission.getFlights().getFlightForAirfield(airfield);
         if (flight != null)
         {
             ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
-            String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+            String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
     
             if (flight.isPlayerFlight())
             {
-                numAAHotSpots = getNumAAAForPlayerAirfield(currentGroundSetting);
+                numAAHotSpots = getNumAAAForPlayerAirfield(currentAASetting);
             }
             else
             {
-                numAAHotSpots = getNumAAAForAiAirfield(currentGroundSetting);
+                numAAHotSpots = getNumAAAForAiAirfield(currentAASetting);
             }
         }
         return numAAHotSpots;
     }
 
-    private int getNumAAAForPlayerAirfield(String currentGroundSetting)
+    
+    private int getNumAAAForPlayerAirfield(String currentAASetting)
     {
-        int numAAHotSpots = 3;
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        int numAAHotSpots = 2;
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
         {
-            numAAHotSpots = 3;
+            numAAHotSpots = 2;
         }
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             numAAHotSpots = 4;
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
             numAAHotSpots = 6;
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
             numAAHotSpots = 8;
         }
         return numAAHotSpots;
     }
 
-    private int getNumAAAForAiAirfield(String currentGroundSetting)
+    private int getNumAAAForAiAirfield(String currentAASetting)
     {
         int numAAHotSpots = 1;
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
         {
             numAAHotSpots = 0;
         }
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             numAAHotSpots = 2;
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
             numAAHotSpots = 3;
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
             numAAHotSpots = 4;
         }

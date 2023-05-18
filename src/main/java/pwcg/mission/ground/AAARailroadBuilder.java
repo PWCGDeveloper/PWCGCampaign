@@ -8,6 +8,9 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -17,7 +20,7 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
-public class AAARailroadBuilder 
+public class AAARailroadBuilder implements buildRailroadAAA 
 {
 	private Campaign campaign;
 	private List<GroundUnitCollection> railroadAAA = new ArrayList<>();
@@ -30,6 +33,18 @@ public class AAARailroadBuilder
 
 	public List<GroundUnitCollection> createAAAForRailroads() throws PWCGException
 	{
+        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+        String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
+        if (!currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            createRailroadAAA();
+        }
+		
+		return railroadAAA;
+	}
+
+    private void createRailroadAAA() throws PWCGException
+    {
         GroupManager groupData = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
 
 		for (Block railroadStation : groupData.getRailroadList())
@@ -41,9 +56,7 @@ public class AAARailroadBuilder
                 createRailroadAAAArtillery(railroadStation);
 	        }
 		}
-		
-		return railroadAAA;
-	}
+    }
 
     private void createRailroadAAAMG(Block railroadStation) throws PWCGException
     {

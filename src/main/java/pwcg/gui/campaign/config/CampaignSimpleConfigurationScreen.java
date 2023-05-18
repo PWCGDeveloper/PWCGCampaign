@@ -44,6 +44,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
     private ButtonModel groundHighButtonModel = null;
 
     private ButtonGroup aaButtonGroup = new ButtonGroup();
+    private ButtonModel aaUltraLowButtonModel = null;
     private ButtonModel aaLowButtonModel = null;
     private ButtonModel aaMedButtonModel = null;
     private ButtonModel aaHighButtonModel = null;
@@ -115,7 +116,11 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         }
         
         String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
-        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            aaButtonGroup.setSelected(aaUltraLowButtonModel, true);
+        }
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             aaButtonGroup.setSelected(aaLowButtonModel, true);
         }
@@ -288,7 +293,12 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         
         JLabel aaDensityLabel = PWCGLabelFactory.makePaperLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_AA_DENSITY);
         aaDensityGrid.add(aaDensityLabel);
-
+        
+        JRadioButton ultraLowDensity = PWCGButtonFactory.makeRadioButton("Ultra Low", "Ultra Low AA Density", "Fewer AA units", null, ColorMap.PAPER_FOREGROUND, false, this);     
+        aaDensityGrid.add(ultraLowDensity);
+        aaUltraLowButtonModel = ultraLowDensity.getModel();
+        aaButtonGroup.add(ultraLowDensity);
+        
         JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low AA Density", "Fewer AA units", null, ColorMap.PAPER_FOREGROUND, false, this);     
         aaDensityGrid.add(lowDensity);
         aaLowButtonModel = lowDensity.getModel();

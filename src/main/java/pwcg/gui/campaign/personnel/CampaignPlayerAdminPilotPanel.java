@@ -50,9 +50,9 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
     private JPanel centerPanel;
     private List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
 
-    private IRefreshableParentUI parentScreen;
+    private CampaignPlayerAdminScreen parentScreen;
 
-    public CampaignPlayerAdminPilotPanel(IRefreshableParentUI parentScreen, List<CoopDisplayRecord> coopDisplayRecords)
+    public CampaignPlayerAdminPilotPanel(CampaignPlayerAdminScreen parentScreen, List<CoopDisplayRecord> coopDisplayRecords)
     {
         super();
         this.setLayout(new BorderLayout());
@@ -216,7 +216,7 @@ public class CampaignPlayerAdminPilotPanel extends ImageResizingPanel implements
         try
         {
             selectedPilotSerialNumber = Integer.valueOf(ae.getActionCommand());
-            parentScreen.refreshInformation();
+            parentScreen.refreshPilotActions();
         }
         catch (Throwable e)
         {

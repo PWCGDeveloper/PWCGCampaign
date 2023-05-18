@@ -8,6 +8,9 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -20,7 +23,8 @@ import pwcg.mission.target.TargetType;
 public class AAABridgeBuilder 
 {
 	private Campaign campaign;
-	
+	private List<GroundUnitCollection> bridgeAAA = new ArrayList<>();
+
 	public AAABridgeBuilder(Campaign campaign) throws PWCGException
 	{
 		this.campaign = campaign;
@@ -28,7 +32,18 @@ public class AAABridgeBuilder
 
 	public List<GroundUnitCollection> createAAAForBridges() throws PWCGException
 	{
-		List<GroundUnitCollection> bridgeAAA = new ArrayList<>();
+        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+        String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
+        if (!currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            buildBridgeAAA();
+        }
+
+        return bridgeAAA;
+	}
+
+    private void buildBridgeAAA() throws PWCGException
+    {
         GroupManager groupData = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getGroupManager();
 
 		for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
@@ -46,7 +61,5 @@ public class AAABridgeBuilder
 	            bridgeAAA.add(aaaArty);
 	        }
 		}
-		
-		return bridgeAAA;
-	}
+    }
 }

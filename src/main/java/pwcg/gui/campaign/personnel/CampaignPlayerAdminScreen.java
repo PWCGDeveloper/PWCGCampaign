@@ -370,6 +370,17 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         refresh();
     }
 
+    public void refreshPilotActions() throws PWCGException
+    {
+        CampaignPlayerAdminPilotPanel personaInfoPanel = personaInfoPanels.get(selectedPilotPanel);
+        personaInfoPanel.refreshInformation();
+
+        makeRightPanel();
+        this.add(personaActionsPanel, BorderLayout.EAST);
+
+        refresh();
+    }
+
     private SquadronMember getSquadronMemberForSelectedPilot() throws PWCGException
     {
         CampaignPlayerAdminPilotPanel personaInfoPanel = personaInfoPanels.get(selectedPilotPanel);

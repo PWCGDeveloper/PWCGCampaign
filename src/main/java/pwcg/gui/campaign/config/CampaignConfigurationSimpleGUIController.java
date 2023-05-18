@@ -107,7 +107,11 @@ public class CampaignConfigurationSimpleGUIController
     private void setAADensity(String action) throws PWCGException
     {
         ConfigSimple configSetSimpleConfig = new ConfigSimple(CampaignHomeContext.getCampaign());
-        if (action.contains(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (action.contains(ConfigSimple.CONFIG_LEVEL_ULTRA_LOW))
+        {
+            configSetSimpleConfig.setAAUltraLow();
+        }
+        else if (action.contains(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             configSetSimpleConfig.setAALow();
         }

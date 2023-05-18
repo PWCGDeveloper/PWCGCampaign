@@ -1,7 +1,14 @@
 15.1.1
-Removed coop check that disabled cold start for coops.
 Added Ultra Low ground to eliminate trains and trucks.
 - Good for WWI where you are not really roaming the countrside
+- reduced infantry
+Added Ultra AAA to reduce the gobs of AAA  in PWCG missions.
+- PWCG puts over 400 AAA units on the map at medium AA levels,so ultra low isn't really a tiny number
+- No AAA around bridges
+- No AAA around railroad stations
+- No AAA on airfield approaches
+- reduced AAA on airfields
+- slightly reduced AAA on front lines
 Added rare plane flight odds config
 - Gotha, HP, Arado
 - Limits frequency of mission generation for certain rare planes
@@ -11,6 +18,10 @@ Added Adjustment To Pilot Injury config
 - Number 0-4.  Every number causes injury downgrade from dead-> seriously wounded -> wounded - just ducky
 - Controllable through advanced config: Campaign Preferences section
 Fixed FC airfield Beugnatre 
+Fixed escorts for players using check zones
+Fixed cold start disabled for coops.
+Fixed inability to work with coop pilots (transfer, activate, etc.)
+
 
 15.1.0
 Added Bf109-G6 AS, Spitfire Mk XIVe, Sopwith Snipe and SSW D.IV

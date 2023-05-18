@@ -58,6 +58,8 @@ public class AARPlayerStatusEvaluatorTest
     @BeforeEach
     public void setupTest() throws PWCGException
     {        
+        Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
+        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryAdjustKey)).thenReturn(0);
     }
 
     @Test
@@ -114,9 +116,8 @@ public class AARPlayerStatusEvaluatorTest
 
     private AARPilotStatusEvaluator makeEvaluator(int maxPlayerInjury) throws PWCGException
     {
-        Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryKey)).thenReturn(maxPlayerInjury);
-        		
+
         AARPilotStatusEvaluator aarPilotStatusEvaluator = new AARPilotStatusEvaluator(campaign, destroyedStatusEvaluator, logEventData, aarVehicleBuilder);
         aarPilotStatusEvaluator.setAarPilotStatusCapturedEvaluator(aarPilotStatusCapturedEvaluator);
         aarPilotStatusEvaluator.setAarPilotStatusWoundedEvaluator(aarPilotStatusWoundedEvaluator);
