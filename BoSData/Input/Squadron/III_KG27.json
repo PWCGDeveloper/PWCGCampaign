@@ -120,12 +120,12 @@
 	},
 	"skins": [
 		{
-			"skinName": "he111h6_west_I_KG27",
+			"skinName": "he111h6_west_III_KG27",
 			"planeType": "he111h6",
 			"startDate": "19390901",
 			"endDate": "19411001",
-			"squadId": 20132053,
-			"country": "20133027",
+			"squadId": 20133027,
+			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": false,
 			"winter": false,
@@ -133,7 +133,7 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "he111h6_east_I_KG27",
+			"skinName": "he111h6_east_III_KG27",
 			"planeType": "he111h6",
 			"startDate": "19411001",
 			"endDate": "19420601",
@@ -146,12 +146,12 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "he111h6_camo_I_KG27",
+			"skinName": "he111h6_camo_III_KG27",
 			"planeType": "he111h6",
 			"startDate": "19420601",
 			"endDate": "19450601",
-			"squadId": 20132053,
-			"country": "20133027",
+			"squadId": 20133027,
+			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": false,
 			"winter": false,
@@ -159,12 +159,12 @@
 			"tacticalCodeColor": "RED"
 		},
         {
-            "skinName": "he111h16_west_I_KG27",
+            "skinName": "he111h16_west_III_KG27",
             "planeType": "he111h16",
             "startDate": "19390901",
             "endDate": "19411001",
-            "squadId": 20132053,
-            "country": "20133027",
+            "squadId": 20133027,
+            "country": "Germany",
             "category": "Configured",
             "definedInGame": false,
             "winter": false,
@@ -172,7 +172,7 @@
             "tacticalCodeColor": "RED"
         },
         {
-            "skinName": "he111h16_east_I_KG27",
+            "skinName": "he111h16_east_III_KG27",
             "planeType": "he111h16",
             "startDate": "19411001",
             "endDate": "19420601",
@@ -185,12 +185,12 @@
             "tacticalCodeColor": "RED"
         },
         {
-            "skinName": "he111h16_camo_I_KG27",
+            "skinName": "he111h16_camo_III_KG27",
             "planeType": "he111h16",
             "startDate": "19420601",
             "endDate": "19450601",
-            "squadId": 20132053,
-            "country": "20133027",
+            "squadId": 20133027,
+            "country": "Germany",
             "category": "Configured",
             "definedInGame": false,
             "winter": false,
