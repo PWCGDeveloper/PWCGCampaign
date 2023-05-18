@@ -1,5 +1,7 @@
 package pwcg.mission.flight.validate;
 
+import org.junit.jupiter.api.Assertions;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -87,19 +89,15 @@ public class BombingAirStartFlightValidator
 
     private void validateWaypointTypes(IFlight flight)  throws PWCGException
     {
-        boolean targetFinalFound = false;
-
         WaypointPriorityValidator.validateWaypointTypes(flight);
 
-        for (McuWaypoint waypoint : flight.getWaypointPackage().getAllWaypoints())
-        {
-            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_FINAL))
-            {
-                targetFinalFound = true;
-            }
-        }
+        McuWaypoint targetAppoachWaypoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_TARGET_APPROACH);
+        McuWaypoint targetFinalWaypoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_TARGET_FINAL);
+        McuWaypoint targetEgressWaypoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_TARGET_EGRESS);
         
-        assert(targetFinalFound);
+        Assertions.assertNotNull(targetAppoachWaypoint);
+        Assertions.assertNotNull(targetFinalWaypoint);
+        Assertions.assertNotNull(targetEgressWaypoint);
     }
         
     public void verifyActivateLinkedToFormation(IFlight flight) throws PWCGException

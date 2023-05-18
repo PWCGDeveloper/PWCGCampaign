@@ -1,6 +1,11 @@
+Remove excess AAA from cities
+Bombers dive to target
+When flight lead WPs disappear after first WP
+When not flight lead, formation doesn't climb
+
+
 
 Features
-Make infantry optional
 Night bombing and intercepts
 Map Split
 - Map image Invasion

@@ -1,17 +1,23 @@
 package pwcg.mission.flight.validate;
 
+import org.junit.jupiter.api.Assertions;
+
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class GroundAttackFlightValidator 
 {
 	public void validateGroundAttackFlight(IFlight flight) throws PWCGException
 	{
-		assert(flight.getWaypointPackage().getAllWaypoints().size() > 0);
+		Assertions.assertTrue(flight.getWaypointPackage().getAllWaypoints().size() > 0);
 		validateWaypointLinkage(flight);
 		validateWaypointTypes(flight);
+		validateAttackAreaMcu(flight);
 	}
 
 	private void validateWaypointLinkage(IFlight attackFlight) throws PWCGException 
@@ -24,11 +30,11 @@ public class GroundAttackFlightValidator
 				boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(prevWaypoint.getTargets(), waypoint.getIndex());
 				if (!waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_EGRESS))
 				{
-					assert(isNextWaypointLinked);
+					Assertions.assertTrue(isNextWaypointLinked);
 				}
 				else
 				{
-					assert(!isNextWaypointLinked);
+					Assertions.assertTrue(!isNextWaypointLinked);
 				}
 			}
 			
@@ -38,30 +44,22 @@ public class GroundAttackFlightValidator
 
 	private void validateWaypointTypes(IFlight attackFlight)  throws PWCGException
 	{
-		boolean attackIngressFound = false;
-		boolean attackFinalFound = false;
-		boolean attackEgressFound = false;
-		
 		WaypointPriorityValidator.validateWaypointTypes(attackFlight);
 
-        for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getAllWaypoints())
-        {
-            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_APPROACH))
-            {
-                attackIngressFound = true;
-            }
-            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_FINAL))
-            {
-                attackFinalFound = true;
-            }
-            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_EGRESS))
-            {
-                attackEgressFound = true;
-            }
-        }
+        McuWaypoint targetAppoachWaypoint = attackFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_TARGET_APPROACH);
+        McuWaypoint targetFinalWaypoint = attackFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_TARGET_FINAL);
+        McuWaypoint targetEgressWaypoint = attackFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_TARGET_EGRESS);
 		
-		assert(attackIngressFound);
-		assert(attackFinalFound);
-		assert(attackEgressFound);
+		Assertions.assertNotNull(targetAppoachWaypoint);
+		Assertions.assertNotNull(targetFinalWaypoint);
+		Assertions.assertNotNull(targetEgressWaypoint);
+	}
+	
+	private void validateAttackAreaMcu (IFlight flight) throws PWCGException
+	{
+        McuWaypoint targetFinalWaypoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_TARGET_FINAL);
+        MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
+        Coordinate attackPosition = attackMissionPoint.getAttackSequence().getAttackAreaMcu().getPosition();
+        Assertions.assertEquals(targetFinalWaypoint.getPosition().getYPos(), attackPosition.getYPos());
 	}
 }
