@@ -1,4 +1,8 @@
 15.1.1
+Squadron skin sixes (thanks Stonehouse)
+Fixed incorrect speed on climb waypoints
+
+15.1.1
 Added Ultra Low ground to eliminate trains and trucks.
 - Good for WWI where you are not really roaming the countrside
 - reduced infantry

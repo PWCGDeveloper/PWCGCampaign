@@ -20,7 +20,6 @@ public class CircleWaypointPattern
     private Campaign campaign;
     private List<McuWaypoint> circleWPs = new ArrayList<McuWaypoint>();
     private IFlight flight;
-    private int waypointSpeed = 250;
     private int wpTriggerArea = 1000;
     private WaypointType wpType;
     private WaypointAction wpAction;
@@ -76,7 +75,7 @@ public class CircleWaypointPattern
         circleCoords.setYPos(lastWP.getPosition().getYPos() + deltaAlt);
 
         nextCircleWP.setPosition(circleCoords);
-                
+
         circleWPs.add(nextCircleWP);
         
         if (++legCount < legsInCircle)
@@ -93,9 +92,31 @@ public class CircleWaypointPattern
         nextCircleWP.setDesc(flight.getSquadron().determineDisplayName(campaign.getDate()), wpType.getName());
         nextCircleWP.setWpAction(wpAction);
 
-        nextCircleWP.setSpeed(waypointSpeed - 20);
+        int climbSpeed = calculateClimbSpeed(flight.getFlightCruisingSpeed());
+        nextCircleWP.setSpeed(climbSpeed);
         nextCircleWP.setPriority(WaypointPriority.PRIORITY_LOW);
         return nextCircleWP;
+    }
+    
+    
+    private int calculateClimbSpeed(int cruisingSpeed)
+    {
+        if (cruisingSpeed < 100)
+        {
+            return cruisingSpeed - 10;
+        }
+        else if (cruisingSpeed < 150)
+        {
+            return cruisingSpeed - 20;
+        }
+        else if (cruisingSpeed < 250)
+        {
+            return cruisingSpeed - 30;
+        }
+        else
+        {
+            return cruisingSpeed - 40;
+        }
     }
 
     private double getNextCircleWPAngle(McuWaypoint lastCircleWP) throws PWCGException
