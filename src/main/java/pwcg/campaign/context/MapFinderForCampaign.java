@@ -20,6 +20,12 @@ public class MapFinderForCampaign
         FrontMapIdentifier mapIdentifier = FrontMapIdentifier.NO_MAP;
         if (campaign != null)
         {
+            mapIdentifier = findMapByReferencePlayer(campaign);
+            if (mapIdentifier != FrontMapIdentifier.NO_MAP)
+            {
+                return mapIdentifier;
+            }
+            
             mapIdentifier = findMapByActivePlayer(campaign);
             if (mapIdentifier != FrontMapIdentifier.NO_MAP)
             {
@@ -49,6 +55,13 @@ public class MapFinderForCampaign
             return mapIdentifier;
         }
         
+        return mapIdentifier;
+    }
+
+    private static FrontMapIdentifier findMapByReferencePlayer(Campaign campaign) throws PWCGException
+    {
+        SquadronMember player = campaign.getReferencePlayer();
+        FrontMapIdentifier mapIdentifier = findMapByPlayer(campaign, player);
         return mapIdentifier;
     }
 
@@ -86,13 +99,20 @@ public class MapFinderForCampaign
         FrontMapIdentifier mapIdentifier = FrontMapIdentifier.NO_MAP;
         for (SquadronMember player : players)
         {
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            mapIdentifier = findMapForSquadeonAndDate(squadron, campaign.getDate());
+            mapIdentifier = findMapByPlayer(campaign, player);
             if (mapIdentifier != FrontMapIdentifier.NO_MAP)
             {
                 break;
             }
         }
+        return mapIdentifier;
+    }
+
+    private static FrontMapIdentifier findMapByPlayer(Campaign campaign, SquadronMember player) throws PWCGException
+    {
+        FrontMapIdentifier mapIdentifier = FrontMapIdentifier.NO_MAP;
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+        mapIdentifier = findMapForSquadeonAndDate(squadron, campaign.getDate());
         return mapIdentifier;
     }
 }
