@@ -46,30 +46,30 @@ public class GermanMedalManager extends FCMedalManager
         super(campaign);
 
 		
-        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                             "PB.jpg"));
-        medals.put(IRON_CROSS_2, new Medal ("Iron Cross 2nd Class",                     "IC2.jpg"));
-		medals.put(IRON_CROSS_1, new Medal ("Iron Cross 1st Class", 					"IC1.jpg"));
-		medals.put(ORDER_HOUSE_HOHENZOLLERN, new Medal ("House Order of Hohenzollern", 	"HH.jpg"));
-		medals.put(POUR_LE_MERIT, new Medal ("Pour Le Merit", 							"PLM.jpg"));
-		medals.put(ORDER_RED_EAGLE, new Medal ("Order of the Red Eagle", 				"ore.jpg"));
+        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                             "pilot_badge.png"));
+        medals.put(IRON_CROSS_2, new Medal ("Iron Cross 2nd Class",                     "iron_cross_2.png"));
+		medals.put(IRON_CROSS_1, new Medal ("Iron Cross 1st Class", 					"iron_cross_1.png"));
+		medals.put(ORDER_HOUSE_HOHENZOLLERN, new Medal ("House Order of Hohenzollern", 	"house_hohenzollern.png"));
+		medals.put(POUR_LE_MERIT, new Medal ("Pour Le Merit", 							"pour_le_merit.png"));
+		medals.put(ORDER_RED_EAGLE, new Medal ("Order of the Red Eagle", 				"order_red_eagle.png"));
 		
-        medals.put(B_PILOTS_BADGE, new Medal ("Bavarian Pilots Badge",                "B_PB.jpg"));
-		medals.put(B_MEDAL_BRAVERY, new Medal ("Medal for Bravery", 		        "B_MB.jpg"));
-		medals.put(B_MILITARY_MERIT, new Medal ("Bavarian Order of Military Merit",          "B_OMM.jpg"));
-		medals.put(B_MAX_JOSEPH, new Medal ("Military Order of Maximillian Joseph", "B_MOoMJ.jpg"));
+        medals.put(B_PILOTS_BADGE, new Medal ("Bavarian Pilots Badge",                  "bav_pilot_badge.png"));
+		medals.put(B_MEDAL_BRAVERY, new Medal ("Medal for Bravery", 		            "bav_medal_bravery.png"));
+		medals.put(B_MILITARY_MERIT, new Medal ("Bavarian Order of Military Merit",     "bav_order_military_merit.png"));
+		medals.put(B_MAX_JOSEPH, new Medal ("Military Order of Maximillian Joseph",     "bav_order_max_josephj.png"));
 		
-		medals.put(W_MILITARY_MERIT, new Medal ("Wurttemberg Order of Military Merit", 	"W_OMM.jpg"));
-		medals.put(W_FREDRICH_ORDER, new Medal ("Freidrich Order", 			"W_FO.jpg"));
+		medals.put(W_MILITARY_MERIT, new Medal ("Wurttemberg Order of Military Merit", 	"wurt_order_military_merit.png"));
+		medals.put(W_FREDRICH_ORDER, new Medal ("Freidrich Order", 			            "wurt_freidrich_order.png"));
 
-		medals.put(S_WAR_MERIT_CROSS, new Medal ("War Merit Cross", 					"S_WMC.jpg"));
-		medals.put(S_ORDER_ALBERT, new Medal ("Order of Albert", 						"S_OA.jpg"));
-		medals.put(S_MILITARY_ORDER_ST_HENRY, new Medal ("Military Order of St. Henry", "S_MOSH.jpg"));
+		medals.put(S_WAR_MERIT_CROSS, new Medal ("War Merit Cross", 					"sax_war_merit_cross.png"));
+		medals.put(S_ORDER_ALBERT, new Medal ("Order of Albert", 						"sax_order_albert.png"));
+		medals.put(S_MILITARY_ORDER_ST_HENRY, new Medal ("Military Order of St. Henry", "sax_military_order_st_henry.png"));
 
-		medals.put(P_WAR_MERIT_MEDAL, new Medal ("War Merit Medal", 			"P_WMM.jpg"));
-		medals.put(P_MILITARY_MERIT_CROSS, new Medal ("Military Merit Cross", 	"P_MMC.jpg"));
+		medals.put(P_WAR_MERIT_MEDAL, new Medal ("War Merit Medal", 			"pru_war_merit_medal.png"));
+		medals.put(P_MILITARY_MERIT_CROSS, new Medal ("Military Merit Cross", 	"pru_gold_military_merit_cross.png"));
         
-        medals.put(WOUND_BADGE_BLACK, new Medal (GERMAN_WOUND_BADGE + "(Black)",       "BWB.jpg"));
-        medals.put(WOUND_BADGE_SILVER, new Medal (GERMAN_WOUND_BADGE + "(Silver)",     "SWB.jpg"));
+        medals.put(WOUND_BADGE_BLACK, new Medal (GERMAN_WOUND_BADGE + "(Black)",       "wound_badge_black.png"));
+        medals.put(WOUND_BADGE_SILVER, new Medal (GERMAN_WOUND_BADGE + "(Silver)",     "wound_badge_silver.png"));
 	} 
 
 	public Medal awardWoundedAward(SquadronMember pilot, ArmedService service) 

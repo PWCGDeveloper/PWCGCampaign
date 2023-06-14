@@ -23,12 +23,12 @@ public class AmericanMedalManager extends FCMedalManager
     {
         super(campaign);
 	        
-        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                 "us_pb.jpg"));
-		medals.put(DISTINGUISHED_SERVICE_MEDAL, new Medal ("Distinguished Service Medal",	"DSM.jpg"));
-		medals.put(DISTINGUISHED_FLYING_CROSS, new Medal ("Distinguished Service Cross",	"DSC.jpg"));
-		medals.put(MEDAL_OF_HONOR, new Medal ("Medal of Honor",								"MoH.jpg"));
+        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                 "us_pilot_badge.png"));
+		medals.put(DISTINGUISHED_SERVICE_MEDAL, new Medal ("Distinguished Service Medal",	"us_distinguished_service_medal.png"));
+		medals.put(DISTINGUISHED_FLYING_CROSS, new Medal ("Distinguished Service Cross",	"us_distinguished_service_cross.png"));
+		medals.put(MEDAL_OF_HONOR, new Medal ("Medal of Honor",								"us_medal_of_honor.png"));
 		
-		medals.put(WOUND_CHEVRON, new Medal ("Wound Chevron", 							"WoundChev.jpg"));
+		medals.put(WOUND_CHEVRON, new Medal ("Wound Chevron", 							     "us_wound_chevron.png"));
 	} 
 
     protected Medal awardWings(SquadronMember pilot) 

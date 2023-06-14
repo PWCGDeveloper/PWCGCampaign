@@ -40,32 +40,33 @@ public class BelgianMedalManager extends FCMedalManager
 	BelgianMedalManager (Campaign campaign)
     {
         super(campaign);
+        
 
-        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                     "belpb.jpg"));
-		medals.put(MILITARY_MEDAL, new Medal ("Medaille Militaire", 							"MM.jpg"));
-		medals.put(CROIX_DE_GUERRE, new Medal (CROIX_DE_GUERRE_NAME, 							"CdG.jpg"));
-		medals.put(CROIX_DE_GUERRE_BRONZE_STAR, new Medal (CROIX_DE_GUERRE_NAME + " with Bronze Star", 	"cdg_bronze_star.jpg"));
-		medals.put(CROIX_DE_GUERRE_SILVER_STAR, new Medal (CROIX_DE_GUERRE_NAME + " with Silver Star", 	"cdg _silver_star.jpg"));
-		medals.put(CROIX_DE_GUERRE_GILT_STAR, new Medal (CROIX_DE_GUERRE_NAME + " with Gilt Star", 		"cdg_gilt_star.jpg"));
-		medals.put(CROIX_DE_GUERRE_BRONZE_PALM, new Medal (CROIX_DE_GUERRE_NAME + " with Bronze Palm", 	"cdg_bronze_palm.jpg"));
-		medals.put(CROIX_DE_GUERRE_SILVER_PALM, new Medal (CROIX_DE_GUERRE_NAME + " with Silver Palm", 	"cdg_silver_palm.jpg"));
-		medals.put(MEDAILLE_DE_HONNEUR, new Medal ("Medaille d' Honneur", 						"MdH.jpg"));
-		medals.put(LEGION_DE_HONNEUR, new Medal ("Legion d' Honneur", 							"LdH.jpg"));
-		
-		medals.put(DFC, new Medal (DISTINGUISHED_FLYING_CROSS_NAME, 					"dfc.jpg"));
-		medals.put(DFC_BAR_1, new Medal (DISTINGUISHED_FLYING_CROSS_NAME + " With Bar", 	"dfc_bar.jpg"));
-		medals.put(DFC_BAR_2, new Medal (DISTINGUISHED_FLYING_CROSS_NAME + " With 2 Bars", 	"dfc_bar2.jpg"));
-		medals.put(DSO, new Medal (DISTINGUISHED_SERVICE_ORDER_NAME, 					"dso.jpg"));
-		medals.put(DSO_BAR, new Medal (DISTINGUISHED_SERVICE_ORDER_NAME + " With Bar", 		"dso_bar.jpg"));
-		medals.put(DSC, new Medal ("Distinguished Service Cross", 					"dsc.jpg"));
-		medals.put(VC, new Medal ("Victoria Cross", 								"vc.jpg"));
-		medals.put(MC, new Medal ("Military Cross", 								"mc.jpg"));
+        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                             "bel_pilot_badge.png"));
+        medals.put(MILITARY_MEDAL, new Medal ("Medaille Militaire",                                     "fr_medaille_militaire.png"));
+        medals.put(CROIX_DE_GUERRE, new Medal (CROIX_DE_GUERRE_NAME,                                    "fr_croix_de_guerre.png"));
+        medals.put(CROIX_DE_GUERRE_BRONZE_STAR, new Medal (CROIX_DE_GUERRE_NAME + " with Bronze Star",  "fr_croix_de_guerre_bronze_star.png"));
+        medals.put(CROIX_DE_GUERRE_SILVER_STAR, new Medal (CROIX_DE_GUERRE_NAME + " with Silver Star",  "fr_croix_de_guerre_silver_star.png"));
+        medals.put(CROIX_DE_GUERRE_GILT_STAR, new Medal (CROIX_DE_GUERRE_NAME + " with Gilt Star",      "fr_croix_de_guerre_gilt_star.png"));
+        medals.put(CROIX_DE_GUERRE_BRONZE_PALM, new Medal (CROIX_DE_GUERRE_NAME + " with Bronze Palm",  "fr_croix_de_guerre_bronze_palm.png"));
+        medals.put(CROIX_DE_GUERRE_SILVER_PALM, new Medal (CROIX_DE_GUERRE_NAME + " with Silver Palm",  "fr_croix_de_guerre_silver_palm.png"));
+        medals.put(MEDAILLE_DE_HONNEUR, new Medal ("Medaille d' Honneur",                               "fr_medaille_d_honneur.png"));
+        medals.put(LEGION_DE_HONNEUR, new Medal ("Legion d' Honneur",                                   "fr_legion_d_honneur.png"));
+        
+        medals.put(DFC, new Medal (DISTINGUISHED_FLYING_CROSS_NAME,                                     "gb_distinguished_flying_cross.png"));
+        medals.put(DFC_BAR_1, new Medal (DISTINGUISHED_FLYING_CROSS_NAME + " With Bar",                 "gb_distinguished_flying_cross_bar.png"));
+        medals.put(DFC_BAR_2, new Medal (DISTINGUISHED_FLYING_CROSS_NAME + " With 2 Bars",              "gb_distinguished_flying_cross_2_bars.png"));
+        medals.put(DSO, new Medal (DISTINGUISHED_SERVICE_ORDER_NAME,                                    "gb_distinguished_service_order.png"));
+        medals.put(DSO_BAR, new Medal (DISTINGUISHED_SERVICE_ORDER_NAME + " With Bar",                  "gb_distinguished_service_order_bar.png"));
+        medals.put(DSC, new Medal ("Distinguished Service Cross",                                       "gb_dsc.png"));
+        medals.put(VC, new Medal ("Victoria Cross",                                                     "gb_victoria_cross.png"));
+        medals.put(MC, new Medal ("Military Cross",                                                     "gb_military_cross.png"));
 
-		medals.put(BEL_CROIX_DE_GUERRE, new Medal ("Bel Croix de Guerre", 			"belcdg.jpg"));
-		medals.put(BEL_ORDRE_DE_LA_COURONNE, new Medal ("Ordre de la Couronne", "belCouronne.jpg"));
-		medals.put(BEL_ORDRE_DE_LEOPOLD, new Medal ("Ordre de Leopold", 		"belLeopold.jpg"));
-		
-		medals.put(BEL_WOUND_BADGE, new Medal ("Belgium Wound Badge", 		"BelgiumWoundBadge.jpg"));
+        medals.put(BEL_CROIX_DE_GUERRE, new Medal ("Bel. Croix de Guerre",                                   "bel_croix_de_guerre.png"));
+        medals.put(BEL_ORDRE_DE_LA_COURONNE, new Medal ("Ordre de la Couronne",                         "bel_couronne.png"));
+        medals.put(BEL_ORDRE_DE_LEOPOLD, new Medal ("Ordre de Leopold",                                 "bel_order_of_leopold.png"));
+
+        medals.put(BEL_WOUND_BADGE, new Medal ("Belgium Wound Badge", 		"bel_wound_badge.png"));
 	} 
 
     protected Medal awardWings(SquadronMember pilot) 
@@ -84,35 +85,36 @@ public class BelgianMedalManager extends FCMedalManager
 
 	public Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
 	{
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 2) && !hasMedal(pilot, medals.get(MILITARY_MEDAL)))
+	    int pilotVictories = pilot.getSquadronMemberVictories().getAirToAirVictoryCount();
+		if ((pilotVictories >= 2) && !hasMedal(pilot, medals.get(MILITARY_MEDAL)))
 		{
 			return medals.get(MILITARY_MEDAL);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 3) && !hasMedal(pilot, medals.get(BEL_CROIX_DE_GUERRE)))
+		if ((pilotVictories >= 3) && !hasMedal(pilot, medals.get(BEL_CROIX_DE_GUERRE)))
 		{
 			return medals.get(BEL_CROIX_DE_GUERRE);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 5) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE)))
+		if ((pilotVictories >= 5) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE)))
 		{
 			return medals.get(CROIX_DE_GUERRE);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 7) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_BRONZE_STAR)))
+		if ((pilotVictories >= 7) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_BRONZE_STAR)))
 		{
 			return medals.get(CROIX_DE_GUERRE_BRONZE_STAR);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 8) && !hasMedal(pilot, medals.get(BEL_ORDRE_DE_LA_COURONNE)))
+		if ((pilotVictories >= 8) && !hasMedal(pilot, medals.get(BEL_ORDRE_DE_LA_COURONNE)))
 		{
 			return medals.get(BEL_ORDRE_DE_LA_COURONNE);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 10) && !hasMedal(pilot, medals.get(MEDAILLE_DE_HONNEUR)))
+		if ((pilotVictories >= 10) && !hasMedal(pilot, medals.get(MEDAILLE_DE_HONNEUR)))
 		{
 			return medals.get(MEDAILLE_DE_HONNEUR);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 12) && !hasMedal(pilot, medals.get(BEL_ORDRE_DE_LEOPOLD)))
+		if ((pilotVictories >= 12) && !hasMedal(pilot, medals.get(BEL_ORDRE_DE_LEOPOLD)))
 		{
 			return medals.get(BEL_ORDRE_DE_LEOPOLD);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 30) && !hasMedal(pilot, medals.get(LEGION_DE_HONNEUR)))
+		if ((pilotVictories >= 30) && !hasMedal(pilot, medals.get(LEGION_DE_HONNEUR)))
 		{
 			return medals.get(LEGION_DE_HONNEUR);
 		}
