@@ -155,9 +155,45 @@
             "tacticalCodeColor": "WHITE"
         },
         {
-            "skinName": "hurricanemkii_blank_04",
+            "skinName": "hurricanemkii_blank_04#1",
             "planeType": "hurricanemkii",
             "startDate": "19420201",
+            "endDate": "19450501",
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
+        },
+        {
+            "skinName": "spitfiremkvb_skin_01",
+            "planeType": "spitfiremkvb",
+            "startDate": "19390901",
+            "endDate": "19420315",
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE"
+        },
+        {
+            "skinName": "spitfiremkvb_skin_02",
+            "planeType": "spitfiremkvb",
+            "startDate": "19420201",
+            "endDate": "19450501",
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "SKY"
+        },
+        {
+            "skinName": "spitfiremkixe_default",
+            "planeType": "spitfiremkxiv",
+            "startDate": "19390901",
             "endDate": "19450501",
             "country": "Britain",
             "category": "Configured",
