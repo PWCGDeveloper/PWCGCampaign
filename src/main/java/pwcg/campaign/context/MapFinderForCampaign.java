@@ -58,11 +58,19 @@ public class MapFinderForCampaign
         return mapIdentifier;
     }
 
-    private static FrontMapIdentifier findMapByReferencePlayer(Campaign campaign) throws PWCGException
+    private static FrontMapIdentifier findMapByReferencePlayer(Campaign campaign)
     {
-        SquadronMember player = campaign.getReferencePlayer();
-        FrontMapIdentifier mapIdentifier = findMapByPlayer(campaign, player);
-        return mapIdentifier;
+        try 
+        {
+            SquadronMember player = campaign.getReferencePlayer();
+            FrontMapIdentifier mapIdentifier = findMapByPlayer(campaign, player);
+            return mapIdentifier;
+        }
+        catch (PWCGException e) 
+        {
+            // This is unfortunately normal.  There will be nor eference player on campaign create.
+            return FrontMapIdentifier.NO_MAP;
+        }
     }
 
     private static FrontMapIdentifier findMapByActivePlayer(Campaign campaign) throws PWCGException
