@@ -93,14 +93,6 @@ public class GroupManager
         bridgeFinder = new BridgeFinder(groundStructureGroup.getBridges());
         railroadStationFinder = new RailroadStationFinder(groundStructureGroup.getRailroadStations());
     }
-	
-    public List<ScriptedFixedPosition> getAllFixedPosition() 
-    {
-        List<ScriptedFixedPosition>fixedPositions = new ArrayList<ScriptedFixedPosition>();
-        fixedPositions.addAll(groundStructureGroup.getRailroadStations());
-        fixedPositions.addAll(groundStructureGroup.getBridges());
-        return fixedPositions;
-    }
 
 	public List<Block> getRailroadList() 
 	{

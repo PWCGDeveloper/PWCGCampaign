@@ -42,7 +42,6 @@ jar {
   	}
 }
 
-
 task copyJar(type: Exec) {
     workingDir "$projectDir"
     commandLine 'cmd', '/c', ' cp build/libs/PWCG.jar D:/PWCG/Deploy/PWCG.jar'

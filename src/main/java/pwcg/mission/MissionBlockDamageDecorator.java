@@ -9,6 +9,7 @@ import java.util.Map;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.NoMansLand;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.Bridge;
@@ -20,7 +21,7 @@ import pwcg.core.utils.MathUtils;
 
 public class MissionBlockDamageDecorator
 {
-    private static final int DISTANCE_TO_FRONT_LINE_FOR_DAMAGE = 20000;
+    private static final int DISTANCE_TO_FRONT_LINE_FOR_DAMAGE = 15000;
     private static final int SAFE_DISTANCE_TO_AIRFIELD = 3000;
 
     private Campaign campaign;
@@ -35,13 +36,21 @@ public class MissionBlockDamageDecorator
         List<ScriptedFixedPosition> fixedPositionCloseToFront = new ArrayList<>();
         for (ScriptedFixedPosition fixedPosition : fixedPositions)
         {
-            if (isCloseToFront(fixedPosition, date))
+            double distanceToFront = isCloseToFront(fixedPosition, date);
+            if (distanceToFront < DISTANCE_TO_FRONT_LINE_FOR_DAMAGE)
             {
                 if (!isCloseToAirfield(fixedPosition))
                 {
                     if (!(fixedPosition instanceof Bridge))
                     {
-                        damageFixedPositionsCloseToFront(fixedPosition);
+                        if (isInNoMansLand(fixedPosition))
+                        {
+                            damageFixedPositionsInNoMansLand(fixedPosition);                            
+                        }
+                        else
+                        {
+                            damageFixedPositionsCloseToFront(fixedPosition, distanceToFront);
+                        }
                         fixedPositionCloseToFront.add(fixedPosition);
                     }
                 }
@@ -51,23 +60,30 @@ public class MissionBlockDamageDecorator
         return fixedPositionCloseToFront;
     }
     
-    private boolean isCloseToFront(ScriptedFixedPosition fixedPosition,Date date) throws PWCGException
+    private boolean isInNoMansLand(ScriptedFixedPosition fixedPosition) throws PWCGException
+    {
+        return NoMansLand.inNoMansLand(campaign, fixedPosition.getPosition());
+    }
+
+    private double isCloseToFront(ScriptedFixedPosition fixedPosition,Date date) throws PWCGException
     {
         FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getFrontLinesForMap(date);
         
         Coordinate closestAllied = frontLinesForMap.findClosestFrontCoordinateForSide(fixedPosition.getPosition(), Side.ALLIED);
-        if (MathUtils.calcDist(fixedPosition.getPosition(), closestAllied) < DISTANCE_TO_FRONT_LINE_FOR_DAMAGE)
+        double distanceAllied = MathUtils.calcDist(fixedPosition.getPosition(), closestAllied);
+        if (distanceAllied < DISTANCE_TO_FRONT_LINE_FOR_DAMAGE)
         {
-            return true;
+            return distanceAllied;
         }
         
         Coordinate closestAxis = frontLinesForMap.findClosestFrontCoordinateForSide(fixedPosition.getPosition(), Side.AXIS);
-        if (MathUtils.calcDist(fixedPosition.getPosition(), closestAxis) < DISTANCE_TO_FRONT_LINE_FOR_DAMAGE)
+        double distanceAxis = MathUtils.calcDist(fixedPosition.getPosition(), closestAxis);
+        if (distanceAxis < DISTANCE_TO_FRONT_LINE_FOR_DAMAGE)
         {
-            return true;
+            return distanceAxis;
         }
 
-        return false;
+        return DISTANCE_TO_FRONT_LINE_FOR_DAMAGE + 1000000.0;
     }
     
     private boolean isCloseToAirfield(ScriptedFixedPosition fixedPosition) throws PWCGException
@@ -83,13 +99,31 @@ public class MissionBlockDamageDecorator
         return false;
     }
 
-    private void damageFixedPositionsCloseToFront(ScriptedFixedPosition fixedPosition) throws PWCGException
+    private void damageFixedPositionsCloseToFront(ScriptedFixedPosition fixedPosition, double distanceToFront) throws PWCGException
     {
-        Map<Integer, Double> damaged = new HashMap<>();;
-        for (int i = 0; i < 10; ++i)
+        if(distanceToFront > DISTANCE_TO_FRONT_LINE_FOR_DAMAGE)
         {
-            damaged.put(i, 0.6);
+            distanceToFront = DISTANCE_TO_FRONT_LINE_FOR_DAMAGE;
         }
+        
+        double distanceToFrontInverted = DISTANCE_TO_FRONT_LINE_FOR_DAMAGE - distanceToFront;
+        
+        double damageLevel = distanceToFrontInverted / DISTANCE_TO_FRONT_LINE_FOR_DAMAGE;
+        damageLevel = Math.round(damageLevel * 10.0) / 10.0;
+        if (damageLevel > 1.0)
+        {
+            damageLevel = 1.0;
+        }
+                
+        Map<Integer, Double> damaged = new HashMap<>();
+        damaged.put(-1, damageLevel);
         fixedPosition.setDamaged(damaged);
     }
+
+    private void damageFixedPositionsInNoMansLand(ScriptedFixedPosition fixedPosition) throws PWCGException
+    {
+        Map<Integer, Double> damaged = new HashMap<>();
+        damaged.put(-1, 1.0);
+        fixedPosition.setDamaged(damaged);
+    }    
 }

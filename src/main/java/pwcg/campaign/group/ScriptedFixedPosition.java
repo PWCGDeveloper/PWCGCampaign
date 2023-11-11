@@ -1,10 +1,14 @@
 package pwcg.campaign.group;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.mission.mcu.McuTREntity;
@@ -25,20 +29,52 @@ public class ScriptedFixedPosition extends FixedPosition implements Cloneable, I
 
     public ScriptedFixedPosition clone(ScriptedFixedPosition clone)
     {
-        clone.name = this.name;
-        clone.position = this.position.copy();
+        super.clone(clone);
 
-        clone.index = this.index;
-        clone.linkTrId = this.linkTrId;
-        clone.orientation = this.orientation.copy();
         clone.model = this.model;
         clone.script = this.script;
-        clone.desc = this.desc;
         clone.durability = this.durability;
-        clone.damageReport = this.damageReport;
-        clone.damageThreshold = this.damageThreshold;
+        clone.deleteAfterDeath = this.deleteAfterDeath;
+        
+        clone.damaged = new HashMap<>();
+        clone.damaged.putAll(this.damaged);
 
         return clone;
+    }
+
+    public void write(BufferedWriter writer) throws PWCGException, PWCGException
+    {
+        try
+        {
+            super.write(writer);
+            
+            writer.write("  Script = \"" + script + "\";");
+            writer.newLine();
+            writer.write("  DeleteAfterDeath = " + deleteAfterDeath + ";");
+            writer.newLine();
+            writer.write("  Durability = " + durability + ";");
+            writer.newLine();
+            if (!damaged.isEmpty())
+            {
+                writer.write("  Damaged");
+                writer.newLine();
+                writer.write("  {");
+                writer.newLine();
+                for (int damagedIndex : damaged.keySet())
+                {
+                    double damageValue = damaged.get(damagedIndex);
+                    writer.write("    " + damagedIndex + " = " + damageValue + ";");
+                    writer.newLine();
+                }
+                writer.write("  }");
+                writer.newLine();
+            }            
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGException(e.getMessage());
+        }
     }
 
     public void buildEntity()

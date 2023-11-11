@@ -54,6 +54,7 @@ public class MissionBlocks
 
     public void adjustBlockDamageAndSmoke() throws PWCGException
     {
+
         if (PWCGContext.getInstance().getMap(campaign.getCampaignMap()).isLimited(mission.getCampaign().getDate(), PwcgMapGroundUnitLimitation.LIMITATION_BATTLE))
         {
             return;
@@ -63,12 +64,25 @@ public class MissionBlocks
         {
             return;
         }
-
         adjustBlockDurability();
         List<ScriptedFixedPosition> damagedStructures = adjustBlockDamage();
         createBlockSmoke(damagedStructures);
     }
-    
+
+    public void removeExtraStructures(Coordinate truckCoordinates, int keepRadius)
+    {
+        List<ScriptedFixedPosition> structuresToKeep = new ArrayList<>();
+        for (ScriptedFixedPosition structureForMission : structuresForMission)
+        {
+            double distance = MathUtils.calcDist(truckCoordinates, structureForMission.getPosition());
+            if (distance < keepRadius)
+            {
+                structuresToKeep.add(structureForMission);
+            }
+        }
+        structuresForMission = structuresToKeep;    
+    }
+
     private void createBlockSmoke(List<ScriptedFixedPosition> damagedStructures) throws PWCGException
     {
         MissionBlockSmoke missionBlockSmoke = new MissionBlockSmoke(mission);      
@@ -92,19 +106,5 @@ public class MissionBlocks
                 fixedPosition.setDurability(blockDefinition.getDurability());
             }
         }
-    }
-
-    public void removeExtraStructures(Coordinate truckCoordinates, int keepRadius)
-    {
-        List<ScriptedFixedPosition> structuresToKeep = new ArrayList<>();
-        for (ScriptedFixedPosition structureForMission : structuresForMission)
-        {
-            double distance = MathUtils.calcDist(truckCoordinates, structureForMission.getPosition());
-            if (distance < keepRadius)
-            {
-                structuresToKeep.add(structureForMission);
-            }
-        }
-        structuresForMission = structuresToKeep;    
     }
 }
