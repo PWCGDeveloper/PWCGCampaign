@@ -1,0 +1,33 @@
+{
+	"type": "nieuport11",
+	"archType": "nieuport",
+	"side": "ALLIED",
+	"displayName": "Nieuport 11.C1",
+	"script": "LuaScripts\\WorldObjects\\Planes\\nieuport11.txt",
+	"model": "graphics\\planes\\nieuport11\\nieuport11.mgm",
+	"primaryUsedBy": [
+		"FRANCE"
+	],
+	"stockModifications": [
+        "SPEED_GUAGE",
+        "ALTITUDE_GUAGE",
+        "COMPASS_GUAGE",
+        "CLOCK_GUAGE",
+        "COCKPIT_LIGHT"
+	],
+	
+	"desc": "",
+	"cruisingSpeed": 100,
+	"climbOutRate": 100,
+	"goodness": 35,
+	"range": 100,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER"
+	],
+	"introduction": "19160101",
+	"endProduction": "19160901",
+	"withdrawal": "19161001"
+}

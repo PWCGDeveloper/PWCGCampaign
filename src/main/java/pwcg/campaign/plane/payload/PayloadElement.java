@@ -152,7 +152,7 @@ public enum PayloadElement
     SPEED_GUAGE(PayloadElementCategory.MODIFICATION, "Speed guage", 0),
     TEMPERATURE_GUAGE(PayloadElementCategory.MODIFICATION, "Temperature Guage", 0),
     IRON_SIGHT(PayloadElementCategory.MODIFICATION, "Iron SIght", 0),
-    LE_CHRETIAN_SIGHT(PayloadElementCategory.MODIFICATION, "Le Chretian SIght", 0),
+    LE_CHRETIAN_SIGHT(PayloadElementCategory.MODIFICATION, "Le Chretian Sight", 0),
     ALDIS_SIGHT(PayloadElementCategory.MODIFICATION, "Aldis SIght", 0),
     DAY_SIGHT(PayloadElementCategory.MODIFICATION, "Day SIght", 0),
     NIGHT_SIGHT(PayloadElementCategory.MODIFICATION, "Night SIght", 0),
@@ -160,6 +160,7 @@ public enum PayloadElement
     DUST_DEFLECTOR(PayloadElementCategory.MODIFICATION, "Dust Deflector", 0),
 
     TWIN_FRONT(PayloadElementCategory.WEAPON, "Twin Front Guns", 50),
+    TWIN_LEWIS(PayloadElementCategory.WEAPON, "Twin Lewis Guns", 50),
     LEWIS_TOP(PayloadElementCategory.WEAPON, "Lewis Gun Top", 50),
     LEWIS_WING(PayloadElementCategory.WEAPON, "Lewis Gun Wing", 50),
     DAVIS_GUN(PayloadElementCategory.WEAPON, "Davis Gun", 50),

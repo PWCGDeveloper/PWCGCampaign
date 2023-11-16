@@ -1,0 +1,30 @@
+{
+	"type": "halberstadtd2",
+	"archType": "halberstadtd",
+	"side": "AXIS",
+	"displayName": "Halberstadt D.II",
+	"script": "LuaScripts\\WorldObjects\\Planes\\halberstadtd2.txt",
+	"model": "graphics\\planes\\halberstadtd2\\halberstadtd2.mgm",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+		"COCKPIT_LIGHT",
+		"TEMPERATURE_GUAGE",
+		"SPEED_GUAGE"
+	],
+	"desc": "",
+	"cruisingSpeed": 110,
+	"climbOutRate": 120,
+	"goodness": 45,
+	"range": 200,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER"
+	],
+	"introduction": "19160601",
+	"endProduction": "19170101",
+	"withdrawal": "19170401"
+}

@@ -1,0 +1,32 @@
+{
+	"type": "albatrosd2",
+	"archType": "albatrosd",
+	"side": "AXIS",
+	"displayName": "Albatros D.II",
+	"script": "LuaScripts\\WorldObjects\\Planes\\albatrosd2.txt",
+	"model": "graphics\\planes\\albatrosd2\\albatrosd2.mgm",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+		"COCKPIT_LIGHT",
+		"TEMPERATURE_GUAGE",
+		"CLOCK_GUAGE",
+		"ATTITUDE_GUAGE",
+		"SPEED_GUAGE"
+	],	
+	"desc": "",
+	"cruisingSpeed": 120,
+	"climbOutRate": 200,
+	"goodness": 45,
+	"range": 400,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER"
+	],
+	"introduction": "19161001",
+	"endProduction": "19170401",
+	"withdrawal": "19170501"
+}
