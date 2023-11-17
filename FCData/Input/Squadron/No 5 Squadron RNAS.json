@@ -8,20 +8,31 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160401",
+            "squadronWithdrawal": "19170105"
+        },
+        {
+            "archType": "sopstrutter",
+            "squadronIntroduction": "19170101",
+            "squadronWithdrawal": "19170705"
+        },
 		{
 			"archType": "aircodh4",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170701",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Reclinghem",
+        "19160401": "Reclinghem",
+        "19170601": "Reclinghem",
 		"19181004": "La Gorgue"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_BOMB",

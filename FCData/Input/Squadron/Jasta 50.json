@@ -20,13 +20,13 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Lomme",
+        "19180101": "Lomme",
 		"19180310": "Bellevue Ferme"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

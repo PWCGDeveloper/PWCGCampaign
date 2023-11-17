@@ -8,14 +8,20 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19160620"
+        },
 		{
 			"archType": "dfw",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19160615",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Helesmes",
+        "19160101": "Helesmes",
+        "19170601": "Helesmes",
 		"19180429": "Lomme",
 		"19180531": "Lomme",
 		"19181004": "Emerchicourt",
@@ -24,7 +30,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

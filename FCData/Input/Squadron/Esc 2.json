@@ -8,19 +8,25 @@
 	"tacticalCodeStyle": 3,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19170315"
+        },
 		{
-			"archType": "breguet14",
-			"squadronIntroduction": "19170601",
+			"archType": "sopstrutter",
+			"squadronIntroduction": "19170301",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Pretz en Argonne"
+        "19160101": "Pretz en Argonne",
+        "19170601": "Pretz en Argonne"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

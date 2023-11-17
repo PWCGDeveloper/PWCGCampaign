@@ -10,12 +10,12 @@
 	"planeAssignments": [
 		{
 			"archType": "bristolf2b",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170801",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Vert Galant",
+        "19170801": "Vert Galant",
 		"19180329": "Valheureux",
 		"19181004": "Braizieux",
 		"19181015": "Lechelle"
@@ -23,7 +23,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

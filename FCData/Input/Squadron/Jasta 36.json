@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "albatrosd",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170401",
 			"squadronWithdrawal": "19180901"
 		},
 		{
@@ -20,7 +20,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Chassonge Ferme,Stenay/Verdun",
+        "19170401": "Chassonge Ferme,Stenay/Verdun",
+        "19170601": "Chassonge Ferme,Stenay/Verdun",
 		"19171020": "Bellevue Ferme",
 		"19171215": "Lomme",
 		"19180429": "Fromelles",
@@ -31,7 +32,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

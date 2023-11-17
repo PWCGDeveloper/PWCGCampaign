@@ -8,20 +8,31 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "sopcamel",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19181201"
-		}
+        {
+            "archType": "nieuport",
+            "squadronIntroduction": "19160801",
+            "squadronWithdrawal": "19170501"
+        },
+        {
+            "archType": "hanriot",
+            "squadronIntroduction": "19170401",
+            "squadronWithdrawal": "19180101"
+        },
+        {
+            "archType": "sopcamel",
+            "squadronIntroduction": "19171001",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
-		"19170601": "StMarie Cappel",
+        "19160801": "StMarie Cappel",
+        "19170601": "StMarie Cappel",
 		"19181101": "St.Marguerite"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

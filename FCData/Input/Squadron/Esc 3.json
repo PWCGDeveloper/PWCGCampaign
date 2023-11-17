@@ -8,20 +8,26 @@
 	"tacticalCodeStyle": 2,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "nieuport",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19161120"
+        },
 		{
 			"archType": "spad",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19161115",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Villers Bretonneux",
+        "19160101": "Villers Bretonneux",
+        "19170601": "Villers Bretonneux",
 		"19171030": "Vadelaincourt"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

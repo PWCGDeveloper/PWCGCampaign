@@ -10,7 +10,7 @@
 	"planeAssignments": [
         {
             "archType": "albatrosd",
-            "squadronIntroduction": "19170601",
+            "squadronIntroduction": "19170101",
             "squadronWithdrawal": "19170901"
         },
 		{
@@ -20,13 +20,14 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Mars La Tour",
+        "19170101": "Mars La Tour",
+        "19170601": "Mars La Tour",
 		"19171020": "Sivry"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

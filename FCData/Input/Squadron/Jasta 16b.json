@@ -9,8 +9,18 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
         {
+            "archType": "fokkere",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19160815"
+        },
+        {
+            "archType": "halberstadtd",
+            "squadronIntroduction": "19160710",
+            "squadronWithdrawal": "19161215"
+        },
+        {
             "archType": "albatrosd",
-            "squadronIntroduction": "19170601",
+            "squadronIntroduction": "19161002",
             "squadronWithdrawal": "19171101"
         },
         {
@@ -35,7 +45,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Houplin",
+        "19160101": "Houplin",
+        "19170601": "Houplin",
 		"19170607": "Lomme",
 		"19170621": "Beugnatre",
 		"19170720": "La Brayelle",
@@ -50,7 +61,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

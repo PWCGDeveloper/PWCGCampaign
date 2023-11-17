@@ -8,6 +8,16 @@
 	"tacticalCodeStyle": 1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19170115"
+        },
+        {
+            "archType": "sopstrutter",
+            "squadronIntroduction": "19170101",
+            "squadronWithdrawal": "19170701"
+        },
 		{
 			"archType": "breguet14",
 			"squadronIntroduction": "19170601",
@@ -15,7 +25,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Dommartin les Toul",
+        "19160101": "Dommartin les Toul",
+        "19170601": "Dommartin les Toul",
 		"19171020": "Marieux",
 		"19171030": "Allonville",
 		"19180329": "Bertangles",
@@ -25,7 +36,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

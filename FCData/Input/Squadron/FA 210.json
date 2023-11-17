@@ -8,19 +8,30 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19160510"
+        },
+        {
+            "archType": "rolc2a",
+            "squadronIntroduction": "19160501",
+            "squadronWithdrawal": "19170210"
+        },
 		{
 			"archType": "dfw",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170201",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Jametz"
+        "19160101": "Jametz",
+        "19170601": "Jametz"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

@@ -8,6 +8,11 @@
 	"tacticalCodeStyle": 1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "nieuport",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19170615"
+        },
 		{
 			"archType": "spad",
 			"squadronIntroduction": "19170601",
@@ -15,7 +20,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Senard en Argonne",
+        "19160101": "Senard en Argonne",
+        "19170601": "Senard en Argonne",
 		"19171020": "Villers Bretonneu 2",
 		"19180329": "Allonville",
 		"19181004": "Foucaucourt en Santerre",
@@ -25,7 +31,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

@@ -10,7 +10,7 @@
 	"planeAssignments": [
         {
             "archType": "albatrosd",
-            "squadronIntroduction": "19170601",
+            "squadronIntroduction": "19170401",
             "squadronWithdrawal": "19180801"
         },
 		{
@@ -30,7 +30,8 @@
         }
 	],
 	"airfields": {
-		"19180101": "Lomme",
+        "19170401": "Lomme",
+        "19180101": "Lomme",
 		"19180310": "La Brayelle",
 		"19181004": "Epinoy",
 		"19181101": "Awoingt"
@@ -38,7 +39,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19180101",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

@@ -8,6 +8,16 @@
 	"tacticalCodeStyle": 2,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19170215"
+        },
+        {
+            "archType": "re8",
+            "squadronIntroduction": "19170201",
+            "squadronWithdrawal": "19170701"
+        },
 		{
 			"archType": "breguet14",
 			"squadronIntroduction": "19170601",
@@ -15,13 +25,14 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Rembercourt",
+        "19160101": "Rembercourt",
+        "19170601": "Rembercourt",
 		"19171020": "Dommartin les Toul"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

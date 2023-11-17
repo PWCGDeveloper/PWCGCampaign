@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "albatrosd",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170101",
 			"squadronWithdrawal": "19180501"
 		},
 		{
@@ -25,7 +25,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Assevilers",
+        "19170101": "Assevilers",
+        "19170601": "Assevilers",
 		"19170607": "Lechelle",
 		"19171115": "St.Marguerite",
 		"19180429": "Bailleul",
@@ -37,7 +38,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

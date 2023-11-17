@@ -10,14 +10,12 @@
 	"planeAssignments": [
 		{
 			"archType": "se5",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19180401",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Marieux",
-		"19170720": "Savy Berlette",
-		"19171115": "Sombrin",
+		"19180401": "Sombrin",
 		"19181004": "Beugnatre",
 		"19181015": "Velu",
 		"19181101": "Hermies, Cambrai"
@@ -25,7 +23,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

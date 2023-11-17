@@ -5,11 +5,21 @@
 	"fileName": "Jasta 5.json",
 	"skill": 90,
 	"planeAssignments": [
-		{
-			"archType": "albatrosd",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19180615"
-		},
+        {
+            "archType": "fokkere",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19160812"
+        },
+        {
+            "archType": "halberstadtd",
+            "squadronIntroduction": "19160710",
+            "squadronWithdrawal": "19161020"
+        },
+        {
+            "archType": "albatrosd",
+            "squadronIntroduction": "19160925",
+            "squadronWithdrawal": "19180701"
+        },
 		{
 			"archType": "fokkerd7",
 			"squadronIntroduction": "19180601",
@@ -17,7 +27,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Lommet"
+        "19160101": "Lommet",
+        "19170601": "Lommet"
 	},
 	"skins": [
 		{
@@ -93,7 +104,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"endDate": "19181201",
 				"weightedRoles": [
 					{

@@ -8,19 +8,30 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "dfw",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19181201"
-		}
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19160710"
+        },
+        {
+            "archType": "rolc2a",
+            "squadronIntroduction": "19160701",
+            "squadronWithdrawal": "19160910"
+        },
+        {
+            "archType": "dfw",
+            "squadronIntroduction": "19160901",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
-		"19170601": "Hivry Circourt"
+        "19160101": "Hivry Circourt",
+        "19170601": "Hivry Circourt"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

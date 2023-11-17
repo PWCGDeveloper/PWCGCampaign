@@ -8,19 +8,30 @@
 	"tacticalCodeStyle": 3,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "breguet14",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19181201"
-		}
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19170215"
+        },
+        {
+            "archType": "re8",
+            "squadronIntroduction": "19170201",
+            "squadronWithdrawal": "19170701"
+        },
+        {
+            "archType": "breguet14",
+            "squadronIntroduction": "19170601",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
-		"19170601": "Belrain"
+        "19160101": "Belrain",
+        "19170601": "Belrain"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

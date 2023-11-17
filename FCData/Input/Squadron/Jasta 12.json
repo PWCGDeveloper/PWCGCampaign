@@ -8,9 +8,19 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fokkere",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19160920"
+        },
+        {
+            "archType": "halberstadtd",
+            "squadronIntroduction": "19160915",
+            "squadronWithdrawal": "19161215"
+        },
 		{
 			"archType": "albatrosd",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19161210",
 			"squadronWithdrawal": "19180101"
 		},
 		{
@@ -30,13 +40,14 @@
         }
 	],
 	"airfields": {
-		"19170601": "Sivry",
+        "19160101": "Sivry",
+        "19170601": "Sivry",
 		"19171020": "Mars La Tour"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

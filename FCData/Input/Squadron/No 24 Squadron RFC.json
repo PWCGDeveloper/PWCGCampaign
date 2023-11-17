@@ -8,14 +8,25 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "se5",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19181201"
-		}
+        {
+            "archType": "dh2",
+            "squadronIntroduction": "19160801",
+            "squadronWithdrawal": "19170605"
+        },
+        {
+            "archType": "soppup",
+            "squadronIntroduction": "19170601",
+            "squadronWithdrawal": "19171105"
+        },
+        {
+            "archType": "se5",
+            "squadronIntroduction": "19171201",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
-		"19170601": "Savy Berlette",
+        "19160801": "Savy Berlette",
+        "19170601": "Savy Berlette",
 		"19171115": "Lealvillers",
 		"19171215": "La Tergette",
 		"19181004": "Lagnicourt",
@@ -24,7 +35,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

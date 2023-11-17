@@ -10,13 +10,12 @@
 	"planeAssignments": [
 		{
 			"archType": "se5",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170901",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Braizieux",
-		"19170621": "Sombrin",
+		"19170901": "Sombrin",
 		"19171115": "Savy Berlette",
 		"19181004": "La Tergette",
 		"19181015": "Fromelles"
@@ -24,7 +23,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

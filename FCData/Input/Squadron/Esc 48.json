@@ -8,14 +8,20 @@
 	"tacticalCodeStyle": 4,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "nieuport",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19161205"
+        },
 		{
 			"archType": "spad",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19161201",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Souilly",
+        "19160101": "Souilly",
+        "19170601": "Souilly",
 		"19171030": "Beaucourt",
 		"19180329": "Allonville",
 		"19181004": "Assevilers",
@@ -24,7 +30,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

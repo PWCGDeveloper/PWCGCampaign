@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "albatrosd",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170201",
 			"squadronWithdrawal": "19180801"
 		},
 		{
@@ -20,7 +20,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Lechelle",
+        "19170201": "Lechelle",
+        "19170601": "Lechelle",
 		"19170607": "Phalempin",
 		"19181004": "Beaucamp",
 		"19181101": "Coutiches"
@@ -28,7 +29,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

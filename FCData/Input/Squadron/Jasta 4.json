@@ -8,11 +8,21 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "albatrosd",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19180701"
-		},
+        {
+            "archType": "fokkere",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19160801"
+        },
+        {
+            "archType": "halberstadtd",
+            "squadronIntroduction": "19160810",
+            "squadronWithdrawal": "19161025"
+        },
+        {
+            "archType": "albatrosd",
+            "squadronIntroduction": "19160922",
+            "squadronWithdrawal": "19180701"
+        },
 		{
 			"archType": "pfalz",
 			"squadronIntroduction": "19170801",
@@ -30,7 +40,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "La Neuville",
+        "19160101": "La Neuville",
+        "19170601": "La Neuville",
 		"19171115": "Lagnicourt",
 		"19171215": "La Brayelle",
 		"19180310": "Cappy",
@@ -40,7 +51,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

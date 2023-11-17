@@ -8,21 +8,32 @@
 	"tacticalCodeStyle": 4,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19170115"
+        },
+        {
+            "archType": "sopstrutter",
+            "squadronIntroduction": "19170110",
+            "squadronWithdrawal": "19170510"
+        },
 		{
 			"archType": "breguet14",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170501",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Bertangles",
+        "19160101": "Bertangles",
+        "19170601": "Bertangles",
 		"19181004": "Cappy SW",
 		"19181101": "Moislains"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

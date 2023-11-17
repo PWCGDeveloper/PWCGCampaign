@@ -8,11 +8,16 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "soptriplane",
-			"squadronIntroduction": "19170301",
-			"squadronWithdrawal": "19170901"
-		},
+        {
+            "archType": "nieuport",
+            "squadronIntroduction": "19160401",
+            "squadronWithdrawal": "19170305"
+        },
+        {
+            "archType": "soptriplane",
+            "squadronIntroduction": "19170301",
+            "squadronWithdrawal": "19170905"
+        },
 		{
 			"archType": "sopcamel",
 			"squadronIntroduction": "19170901",
@@ -20,7 +25,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Bailleul",
+        "19160401": "Bailleul",
+        "19170601": "Bailleul",
 		"19180429": "StMarie Cappel",
 		"19180531": "StMarie Cappel",
 		"19181015": "Lomme"
@@ -28,7 +34,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

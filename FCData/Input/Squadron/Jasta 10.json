@@ -9,9 +9,14 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
         {
+            "archType": "fokkere",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19161001"
+        },
+        {
             "archType": "albatrosd",
-            "squadronIntroduction": "19170601",
-            "squadronWithdrawal": " 19171101"
+            "squadronIntroduction": "19160916",
+            "squadronWithdrawal": "19171101"
         },
 		{
 			"archType": "pfalz",
@@ -30,7 +35,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Bullecourt",
+        "19160101": "Bullecourt",
+        "19170601": "Bullecourt",
 		"19170621": "Assevilers",
 		"19170720": "Bullecourt",
 		"19181004": "Masny",
@@ -40,7 +46,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

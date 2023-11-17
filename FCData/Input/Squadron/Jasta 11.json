@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "albatrosd",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19161001",
 			"squadronWithdrawal": "19180101"
 		},
 		{
@@ -30,7 +30,8 @@
         }
 	],
 	"airfields": {
-		"19170601": "La Brayelle",
+        "19161001": "La Brayelle",
+        "19170601": "La Brayelle",
 		"19170720": "Houplin",
 		"19171115": "Pronville",
 		"19171215": "Lagnicourt",
@@ -45,7 +46,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

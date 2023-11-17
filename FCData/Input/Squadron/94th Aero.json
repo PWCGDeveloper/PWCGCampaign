@@ -28,7 +28,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19180301",
+                "startDate": "19160101",
 				"endDate": "19181201",
 				"weightedRoles": [
 					{

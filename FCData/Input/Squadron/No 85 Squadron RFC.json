@@ -10,18 +10,18 @@
 	"planeAssignments": [
 		{
 			"archType": "se5",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170901",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Filescamp Farm",
+		"19170901": "Filescamp Farm",
 		"19181004": "La Gorgue"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

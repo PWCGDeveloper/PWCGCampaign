@@ -8,14 +8,20 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19170215"
+        },
 		{
-			"archType": "aircodh4",
-			"squadronIntroduction": "19170601",
+			"archType": "re8",
+			"squadronIntroduction": "19170210",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Fienvillers",
+        "19160101": "Fienvillers",
+        "19170601": "Fienvillers",
 		"19170720": "Marieux",
 		"19171030": "Marieux",
 		"19181004": "Lealvillers",
@@ -24,7 +30,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

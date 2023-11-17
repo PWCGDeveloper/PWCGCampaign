@@ -9,13 +9,19 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
+			"archType": "fe2b",
+			"squadronIntroduction": "19160601",
+			"squadronWithdrawal": "19170601"
+		},
+		{
 			"archType": "bristolf2b",
 			"squadronIntroduction": "19170601",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Valheureux",
+        "19160601": "Valheureux",
+        "19170601": "Valheureux",
 		"19180329": "Fienvillers",
 		"19181004": "Villers Bretonneu 2",
 		"19181015": "Lechelle"
@@ -23,7 +29,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

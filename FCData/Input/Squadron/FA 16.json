@@ -8,14 +8,20 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "dfw",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19181201"
-		}
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19160810"
+        },
+        {
+            "archType": "dfw",
+            "squadronIntroduction": "19160801",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
-		"19170601": "Hermies, Cambrai",
+        "19160101": "Hermies, Cambrai",
+        "19170601": "Hermies, Cambrai",
 		"19170621": "Moislains",
 		"19181004": "Cauroir",
 		"19181101": "Escaufort"
@@ -23,7 +29,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

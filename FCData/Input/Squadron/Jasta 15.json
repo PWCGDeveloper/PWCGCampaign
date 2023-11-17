@@ -8,6 +8,21 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fokkere",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19160915"
+        },
+        {
+            "archType": "halberstadtd",
+            "squadronIntroduction": "19160901",
+            "squadronWithdrawal": "19161215"
+        },
+        {
+            "archType": "albatrosd",
+            "squadronIntroduction": "19161120",
+            "squadronWithdrawal": "19180101"
+        },
 		{
 			"archType": "albatrosd",
 			"squadronIntroduction": "19170601",
@@ -25,7 +40,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Assevilers",
+        "19160101": "Assevilers",
+        "19170601": "Assevilers",
 		"19170607": "Lechelle",
 		"19171115": "St.Marguerite",
 		"19180429": "Bailleul",
@@ -37,7 +53,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

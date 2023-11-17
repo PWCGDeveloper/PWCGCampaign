@@ -9,8 +9,18 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
         {
+            "archType": "fokkere",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19160920"
+        },
+        {
+            "archType": "halberstadtd",
+            "squadronIntroduction": "19160815",
+            "squadronWithdrawal": "19161101"
+        },
+        {
             "archType": "albatrosd",
-            "squadronIntroduction": "19170601",
+            "squadronIntroduction": "19160926",
             "squadronWithdrawal": "19180720"
         },
 		{
@@ -30,13 +40,14 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Bellevue Ferme",
+        "19160101": "Bellevue Ferme",
+        "19170601": "Bellevue Ferme",
 		"19171020": "Chassonge Ferme,Stenay/Verdun"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

@@ -8,20 +8,31 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "WHITE",
 	"planeAssignments": [
-		{
-			"archType": "breguet14",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19181201"
-		}
+        {
+            "archType": "fe2",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19170215"
+        },
+        {
+            "archType": "sopstrutter",
+            "squadronIntroduction": "19170201",
+            "squadronWithdrawal": "19170701"
+        },
+        {
+            "archType": "breguet14",
+            "squadronIntroduction": "19170601",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
-		"19170601": "Hoog Huys",
+        "19160101": "Hoog Huys",
+        "19170601": "Hoog Huys",
 		"19181101": "Bailleul"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

@@ -8,14 +8,20 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160401",
+            "squadronWithdrawal": "19170705"
+        },
 		{
 			"archType": "bristolf2b",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170701",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Bryas",
+        "19160401": "Bryas",
+        "19170601": "Bryas",
 		"19181004": "Savy Berlette",
 		"19181015": "La Tergette",
 		"19181101": "Velu"
@@ -23,7 +29,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

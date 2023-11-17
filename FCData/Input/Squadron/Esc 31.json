@@ -8,20 +8,26 @@
 	"tacticalCodeStyle": 3,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "nieuport",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19170305"
+        },
 		{
 			"archType": "spad",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170301",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Froides",
+        "19160101": "Froides",
+        "19170601": "Froides",
 		"19171020": "Gengoult"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

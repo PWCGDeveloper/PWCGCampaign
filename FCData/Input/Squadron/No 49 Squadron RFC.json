@@ -10,18 +10,18 @@
 	"planeAssignments": [
 		{
 			"archType": "aircodh4",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19171101",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "St.Omer",
+		"19171101": "St.Omer",
 		"19181004": "Fromelles"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

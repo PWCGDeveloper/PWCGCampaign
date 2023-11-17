@@ -8,14 +8,20 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "halberstadtcl",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19181201"
-		}
+        {
+            "archType": "rolc2a",
+            "squadronIntroduction": "19161201",
+            "squadronWithdrawal": "19170610"
+        },
+        {
+            "archType": "halberstadtcl",
+            "squadronIntroduction": "19170601",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
-		"19170801": "Coutiches",
+        "19161201": "Coutiches",
+        "19170801": "Coutiches",
 		"19171020": "Beaucamp",
 		"19180310": "Moislains NE",
 		"19180531": "Velu",
@@ -26,7 +32,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_ATTACK",

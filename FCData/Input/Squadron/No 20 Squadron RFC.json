@@ -8,6 +8,11 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
+        {
+            "archType": "fe2b",
+            "squadronIntroduction": "19160101",
+            "squadronWithdrawal": "19170605"
+        },
 		{
 			"archType": "bristolf2b",
 			"squadronIntroduction": "19170601",
@@ -15,13 +20,14 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Clairmarais",
+        "19160101": "Clairmarais",
+        "19170601": "Clairmarais",
 		"19181004": "Bailleul"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

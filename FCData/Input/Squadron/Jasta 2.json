@@ -8,11 +8,16 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "albatrosd",
-			"squadronIntroduction": "19170601",
-			"squadronWithdrawal": "19180715"
-		},
+        {
+            "archType": "halberstadtd",
+            "squadronIntroduction": "19160901",
+            "squadronWithdrawal": "19161101"
+        },
+        {
+            "archType": "albatrosd",
+            "squadronIntroduction": "19160917",
+            "squadronWithdrawal": "19180715"
+        },
 		{
 			"archType": "fokkerdr1",
 			"squadronIntroduction": "19171215",
@@ -25,7 +30,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "St.Marguerite",
+        "19160901": "St.Marguerite",
+        "19170601": "St.Marguerite",
 		"19170720": "Lomme",
 		"19171115": "La Neuville",
 		"19180310": "Velu",
@@ -37,7 +43,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

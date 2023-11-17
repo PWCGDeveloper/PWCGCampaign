@@ -15,12 +15,12 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Ruisseauville"
+        "19170601": "Ruisseauville"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_STRAT_BOMB",

@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "spad",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170201",
 			"squadronWithdrawal": "19181201"
 		},
 		{
@@ -20,7 +20,8 @@
 		}
 	],
 	"airfields": {
-		"19170801": "St.Omer",
+        "19170201": "St.Omer",
+        "19170801": "St.Omer",
 		"19181004": "Mont St Eloi",
 		"19181015": "Velu",
 		"19181101": "Houplin"
@@ -28,7 +29,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

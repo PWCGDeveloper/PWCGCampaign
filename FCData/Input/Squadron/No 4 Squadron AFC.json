@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "sopcamel",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19171201",
 			"squadronWithdrawal": "19181009"
 		},
         {
@@ -20,7 +20,8 @@
         }
 	],
 	"airfields": {
-		"19170601": "Lealvillers",
+        "19171201": "Lealvillers",
+        "19170601": "Lealvillers",
 		"19170621": "Mont St Eloi",
 		"19171215": "Lealvillers",
 		"19180329": "Marieux",
@@ -31,7 +32,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "sopcamel",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170801",
 			"squadronWithdrawal": "19180919"
 		},
 		{
@@ -20,7 +20,7 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Le Hameau",
+        "19170801": "Le Hameau",
 		"19170621": "Lealvillers",
 		"19170720": "La Tergette",
 		"19181004": "Velu",
@@ -29,7 +29,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",

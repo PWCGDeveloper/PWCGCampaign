@@ -10,17 +10,18 @@
 	"planeAssignments": [
 		{
 			"archType": "dfw",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19161201",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Doncourt"
+        "19161201": "Doncourt",
+        "19170601": "Doncourt"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",

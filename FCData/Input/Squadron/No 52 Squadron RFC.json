@@ -9,13 +9,19 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
-			"archType": "aircodh4",
+			"archType": "fe2b",
+			"squadronIntroduction": "19161101",
+			"squadronWithdrawal": "19170601"
+		},
+		{
+			"archType": "re8",
 			"squadronIntroduction": "19170601",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19170601": "Estree Blanche",
+        "19161101": "Estree Blanche",
+        "19170601": "Estree Blanche",
 		"19171115": "Bryas",
 		"19181004": "Sombrin",
 		"19181015": "La Tergette"
@@ -23,7 +29,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -45,24 +51,26 @@
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
-	"callsigns": {},
+	"callsigns": {
+		
+	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": []
 	},
 	"skins": [
-        {
-            "skinName": "DH4_No52_Default",
-            "planeType": "aircodh4",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        }
+		{
+			"skinName": "DH4_No52_Default",
+			"planeType": "aircodh4",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
 	]
 }

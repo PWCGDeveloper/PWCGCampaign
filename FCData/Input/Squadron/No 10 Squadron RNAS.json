@@ -8,11 +8,16 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-		{
-			"archType": "soptriplane",
-			"squadronIntroduction": "19170301",
-			"squadronWithdrawal": "19170901"
-		},
+        {
+            "archType": "nieuport",
+            "squadronIntroduction": "19160401",
+            "squadronWithdrawal": "19170205"
+        },
+        {
+            "archType": "soptriplane",
+            "squadronIntroduction": "19170201",
+            "squadronWithdrawal": "19170901"
+        },
 		{
 			"archType": "sopcamel",
 			"squadronIntroduction": "19170901",
@@ -20,7 +25,8 @@
 		}
 	],
 	"airfields": {
-		"19170601": "La Gorgue",
+        "19160401": "La Gorgue",
+        "19170601": "La Gorgue",
 		"19180429": "Estree Blanche",
 		"19180531": "Estree Blanche",
 		"19181004": "Fromelles",
@@ -29,7 +35,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170601",
+                "startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
