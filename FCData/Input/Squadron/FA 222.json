@@ -9,20 +9,15 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
         {
-            "archType": "fe2b",
+            "archType": "albatrosc",
             "squadronIntroduction": "19160101",
-            "squadronWithdrawal": "19160525"
+            "squadronWithdrawal": "19160710"
         },
         {
-            "archType": "rolc2a",
-            "squadronIntroduction": "19160520",
-            "squadronWithdrawal": "19170410"
-        },
-		{
-			"archType": "dfw",
-			"squadronIntroduction": "19170401",
-			"squadronWithdrawal": "19181201"
-		}
+            "archType": "dfw",
+            "squadronIntroduction": "19160705",
+            "squadronWithdrawal": "19181201"
+        }
 	],
 	"airfields": {
         "19160101": "Ennemain",

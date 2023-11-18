@@ -1,0 +1,27 @@
+{
+	"type": "albatrosd3",
+	"substituteType": "albatrosd5",
+	"archType": "albatrosd",
+	"side": "AXIS",
+	"displayName": "Albatros D.III",
+	"script": "LuaScripts\\WorldObjects\\Planes\\albatrosd3.txt",
+	"model": "graphics\\planes\\albatrosd3\\albatrosd3.mgm",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 130,
+	"climbOutRate": 220,
+	"goodness": 50,
+	"range": 400,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER"
+	],
+	"introduction": "19170201",
+	"endProduction": "19170701",
+	"withdrawal": "19170901"
+}

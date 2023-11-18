@@ -1,0 +1,28 @@
+{
+	"type": "farmanf40",
+	"substituteType": "fe2b",
+	"archType": "farmanf40",
+	"side": "ALLIED",
+	"displayName": "Dorand AR",
+	"script": "LuaScripts\\WorldObjects\\Planes\\farmanf40.txt",
+	"model": "graphics\\planes\\farmanf40\\farmanf40.mgm",
+	"primaryUsedBy": [
+		"FRANCE"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 90,
+	"climbOutRate": 80,
+	"goodness": 25,
+	"range": 700,
+	"isFlyable": true,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"RECON",
+		"BOMBER"
+	],
+	"introduction": "19150801",
+	"endProduction": "19170201",
+	"withdrawal": "19170401"
+}

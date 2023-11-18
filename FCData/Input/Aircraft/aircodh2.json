@@ -1,0 +1,27 @@
+{
+	"type": "aircodh2",
+	"substituteType": "nieuport11",
+	"archType": "aircodh2",
+	"side": "ALLIED",
+	"displayName": "Airco D.H.2",
+	"script": "LuaScripts\\WorldObjects\\Planes\\aircodh2.txt",
+	"model": "graphics\\planes\\aircodh2\\aircodh2.mgm",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 100,
+	"climbOutRate": 100,
+	"goodness": 32,
+	"range": 200,
+	"isFlyable": true,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER"
+	],
+	"introduction": "19150801",
+	"endProduction": "19170101",
+	"withdrawal": "19170401"
+}

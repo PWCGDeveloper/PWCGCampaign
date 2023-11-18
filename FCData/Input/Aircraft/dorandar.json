@@ -1,0 +1,28 @@
+{
+	"type": "dorandar",
+	"substituteType": "fe2b",
+	"archType": "dorandar",
+	"side": "ALLIED",
+	"displayName": "Dorand AR",
+	"script": "LuaScripts\\WorldObjects\\Planes\\dorandar.txt",
+	"model": "graphics\\planes\\dorandar\\dorandar.mgm",
+	"primaryUsedBy": [
+		"FRANCE"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 100,
+	"climbOutRate": 110,
+	"goodness": 47,
+	"range": 700,
+	"isFlyable": true,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"RECON",
+		"BOMBER"
+	],
+	"introduction": "19161101",
+	"endProduction": "19181201",
+	"withdrawal": "19181201"
+}

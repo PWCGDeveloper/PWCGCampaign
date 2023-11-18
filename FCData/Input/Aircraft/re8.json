@@ -1,0 +1,28 @@
+{
+	"type": "re8",
+	"substituteType": "fe2b",
+	"archType": "re8",
+	"side": "ALLIED",
+	"displayName": "R.E.8",
+	"script": "LuaScripts\\WorldObjects\\Planes\\re8.txt",
+	"model": "graphics\\planes\\re8\\re8.mgm",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 100,
+	"climbOutRate": 110,
+	"goodness": 48,
+	"range": 700,
+	"isFlyable": true,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"RECON",
+		"BOMBER"
+	],
+	"introduction": "19161101",
+	"endProduction": "19181201",
+	"withdrawal": "19181201"
+}

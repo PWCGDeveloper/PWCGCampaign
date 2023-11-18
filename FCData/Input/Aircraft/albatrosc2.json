@@ -1,0 +1,29 @@
+{
+	"type": "albatrosc2",
+    "substituteType": "fe2b",
+	"archType": "albatrosc",
+	"side": "AXIS",
+	"displayName": "Albatros C.II",
+	"script": "LuaScripts\\WorldObjects\\Planes\\albatrosc2.txt",
+	"model": "graphics\\planes\\albatrosc2\\albatrosc2.mgm",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+	],
+	"desc": "",
+	"cruisingSpeed": 90,
+	"climbOutRate": 80,
+	"goodness": 24,
+	"range": 700,
+	"isFlyable": true,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"RECON",
+		"BOMBER"
+	],
+	"introduction": "19150801",
+	"endProduction": "19160901",
+	"withdrawal": "19160801"
+}

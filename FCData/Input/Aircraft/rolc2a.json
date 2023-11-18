@@ -1,0 +1,29 @@
+{
+	"type": "rolc2a",
+    "substituteType": "fe2b",
+	"archType": "rolc2a",
+	"side": "AXIS",
+	"displayName": "Roland C.IIa",
+	"script": "LuaScripts\\WorldObjects\\Planes\\rolc2a.txt",
+	"model": "graphics\\planes\\rolc2a\\rolc2a.mgm",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+	],
+	"desc": "",
+	"cruisingSpeed": 110,
+	"climbOutRate": 110,
+	"goodness": 49,
+	"range": 700,
+	"isFlyable": true,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"RECON",
+		"BOMBER"
+	],
+	"introduction": "19160601",
+	"endProduction": "19170701",
+	"withdrawal": "19170701"
+}

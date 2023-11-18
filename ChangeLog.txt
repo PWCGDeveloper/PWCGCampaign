@@ -5,23 +5,27 @@ Added planes
 - Nieuport 17
 - Nieuport 17 GBR
 - Hanriot HD 1
-- Sopwith Snipe
+- FE2B
 - Halberstadt D2
 - Albatros D2
 - Siemens Schuckert D.IV
-- FE2B
+- Sopwith Snipe
+
 Stand ins
 - DH2 = Nieuport 11
 - Sopwith Pup = Hanriot HD 1
 - Sopwith Strutter = FE2
 - RE8 = FE2
--  Early German 2 seater that we will never get = FE2B
+
+  Farman F.40 = FE2
+  Dorand AR = re8
+
+- Albatros C.II = FE2B
 - Fokker E.III = Halberstadt D2
 - Albatros D.III = Albatros D.II
 - Roland C.II = DFW.CVa
 
 
-15.1.2
 Rework all FC medals
 - New images
 - Corrections to medal manager

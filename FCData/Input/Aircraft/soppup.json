@@ -1,0 +1,26 @@
+{
+	"type": "soppup",
+	"substituteType": "hanriothd1",
+	"archType": "soppup",
+	"side": "ALLIED",
+	"displayName": "Sopwith Pup",
+	"script": "LuaScripts\\WorldObjects\\Planes\\soppup.txt",
+	"model": "graphics\\planes\\soppup\\soppup.mgm",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 110,
+	"climbOutRate": 120,
+	"goodness": 48,
+	"range": 200,"isFlyable":true,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER"
+	],
+	"introduction": "19161001",
+	"endProduction": "19170701",
+	"withdrawal": "19170901"
+}

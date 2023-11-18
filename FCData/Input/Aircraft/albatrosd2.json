@@ -18,7 +18,7 @@
 	"desc": "",
 	"cruisingSpeed": 120,
 	"climbOutRate": 200,
-	"goodness": 45,
+	"goodness": 52,
 	"range": 400,
 	"isFlyable": true,
 	"isNovice": false,

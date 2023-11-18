@@ -1,0 +1,27 @@
+{
+	"type": "fe2b",
+	"archType": "fe2",
+	"side": "ALLIED",
+	"displayName": "F.E.2b",
+	"script": "LuaScripts\\WorldObjects\\Planes\\fe2b.txt",
+	"model": "graphics\\planes\\fe2b\\fe2b.mgm",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 90,
+	"climbOutRate": 80,
+	"goodness": 27,
+	"range": 700,
+	"isFlyable": true,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"RECON",
+		"BOMBER"
+	],
+	"introduction": "19150801",
+	"endProduction": "19170501",
+	"withdrawal": "19170601"
+}

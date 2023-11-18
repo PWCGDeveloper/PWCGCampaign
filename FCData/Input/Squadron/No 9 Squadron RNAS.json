@@ -11,16 +11,21 @@
         {
             "archType": "nieuport",
             "squadronIntroduction": "19160401",
-            "squadronWithdrawal": "19170305"
+            "squadronWithdrawal": "19161105"
+        },
+        {
+            "archType": "soppup",
+            "squadronIntroduction": "19161101",
+            "squadronWithdrawal": "19170310"
         },
         {
             "archType": "soptriplane",
             "squadronIntroduction": "19170301",
-            "squadronWithdrawal": "19170905"
+            "squadronWithdrawal": "19170801"
         },
 		{
 			"archType": "sopcamel",
-			"squadronIntroduction": "19170901",
+			"squadronIntroduction": "19170801",
 			"squadronWithdrawal": "19181201"
 		}
 	],

@@ -1,0 +1,27 @@
+{
+	"type": "fokkere3",
+	"substituteType": "halberstadtd2",
+	"archType": "fokkere",
+	"side": "AXIS",
+	"displayName": "Fokker E.III",
+	"script": "LuaScripts\\WorldObjects\\Planes\\fokkere3.txt",
+	"model": "graphics\\planes\\fokkere3\\fokkere3.mgm",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 100,
+	"climbOutRate": 100,
+	"goodness": 30,
+	"range": 200,
+	"isFlyable": true,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER"
+	],
+	"introduction": "19150801",
+	"endProduction": "19160701",
+	"withdrawal": "19161001"
+}

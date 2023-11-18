@@ -9,7 +9,7 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
         {
-            "archType": "fe2b",
+            "archType": "fe2",
             "squadronIntroduction": "19160401",
             "squadronWithdrawal": "19170705"
         },

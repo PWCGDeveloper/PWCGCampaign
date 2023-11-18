@@ -9,7 +9,7 @@
 	"squadronTacticalCodeColorOverride": "WHITE",
 	"planeAssignments": [
         {
-            "archType": "fe2",
+            "archType": "farmanf40",
             "squadronIntroduction": "19160101",
             "squadronWithdrawal": "19170215"
         },

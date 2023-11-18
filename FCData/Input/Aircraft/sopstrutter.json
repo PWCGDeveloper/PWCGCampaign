@@ -1,0 +1,28 @@
+{
+	"type": "sopstrutter",
+	"substituteType": "fe2b",
+	"archType": "sopstrutter",
+	"side": "ALLIED",
+	"displayName": "Sopwith Strutter",
+	"script": "LuaScripts\\WorldObjects\\Planes\\sopstrutter.txt",
+	"model": "graphics\\planes\\sopstrutter\\sopstrutter.mgm",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 100,
+	"climbOutRate": 110,
+	"goodness": 55,
+	"range": 700,
+	"isFlyable": true,
+	"isNovice": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roleCategories": [
+		"RECON",
+		"BOMBER"
+	],
+	"introduction": "19161001",
+	"endProduction": "19181201",
+	"withdrawal": "19181201"
+}
