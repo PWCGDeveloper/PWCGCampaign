@@ -26,6 +26,7 @@ public class PlaneType implements Cloneable
     public static final String BALLOON = "Balloon";
 
     protected String type = "";
+    protected String substituteType = "";
     protected String archType = "";
     protected String displayName = "";
     protected String script = "";
@@ -63,6 +64,7 @@ public class PlaneType implements Cloneable
     public void copyTemplate(PlaneType planeType)
     {
         planeType.type = this.type;
+        planeType.substituteType = this.substituteType;
         planeType.archType = this.archType;
         planeType.displayName = this.displayName;
         planeType.script = this.script;
@@ -107,6 +109,20 @@ public class PlaneType implements Cloneable
     public void setType(String type)
     {
         this.type = type;
+    }
+
+    public String getSubstituteType()
+    {
+        if (substituteType == null)
+        {
+            substituteType = "";
+        }
+        return substituteType;
+    }
+
+    public void setSubstituteType(String substituteType)
+    {
+        this.substituteType = substituteType;
     }
 
     public String getArchType()

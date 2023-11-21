@@ -17,113 +17,81 @@ public class FCPayloadFactory implements IPayloadFactory
 	{
 		PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeName);
 		FCPlaneAttributeMapping attributeMapping = FCPlaneAttributeFactory.createPlaneAttributeMap(planeTypeName);
-	    
-        if (attributeMapping == FCPlaneAttributeMapping.ALBATROSD5)
-        {
+		
+		switch (attributeMapping) 
+		{
+        case ALBATROSD2:
+            return new AlbatrosD2Payload(planeType, date);
+        case ALBATROSD5:
             return new AlbatrosD5Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.PFALZD3A)
-        {
+        case PFALZD3A:
             return new PfalzD3Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.PFALZD12)
-        {
+        case PFALZD12:
             return new PfalzD12Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.FOKKERDR1)
-        {
+        case FOKKERDR1:
             return new FokkerDRIPayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.FOKKERD7)
-        {
+        case FOKKERD7:
             return new FokkerD7Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.FOKKERD7F)
-        {
+        case FOKKERD7F:
             return new FokkerD7FPayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.FOKKERD8)
-        {
+        case FOKKERD8:
             return new FokkerD8Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.SSWD4)
-        {
+        case SSWD4:
             return new SSWD4Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.DFWCV)
-        {
+        case DFWCV:
             return new DFWCVPayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.GOTHAGV)
-        {
+        case GOTHAGV:
             return new GothaGVPayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.HALBERSTADTCLII)
-        {
+        case HALBERSTADTD2:
+            return new HalberstadtD2Payload(planeType, date);
+        case HALBERSTADTCLII:
             return new Halberstadtcl2Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.HALBERSTADTCLIIAU)
-        {
+        case HALBERSTADTCLIIAU:
             return new Halberstadtcl2auPayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.SE5A)
-        {
+ 
+        case SE5A:
             return new Se5aPayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.CAMEL)
-        {
+        case CAMEL:
             return new SopwithCamelPayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.SNIPE)
-        {
+        case SNIPE:
             return new SopwithSnipePayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.TRIPE)
-        {
+        case TRIPE:
             return new SopwithTriplanePayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.DOLPHIN)
-        {
+        case DOLPHIN:
             return new DolphinPayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.NIEUPORT28)
-        {
-            return new Nieuport28Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.SPAD7EARLY)
-        {
-            return new Spad7EarlyPayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.SPAD7LATE)
-        {
-            return new Spad7LatePayload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.SPAD13)
-        {
-            return new Spad13Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.DH4)
-        {
+        case FE2B:
+            return new FE2BPayload(planeType, date);
+        case DH4:
             return new AircoDH4Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.BREGUET14)
-        {
-            return new Breguet14Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.BRISTOLF2BF2)
-        {
+        case BRISTOLF2BF2:
             return new BristolF2B2Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.BRISTOLF2BF3)
-        {
+        case BRISTOLF2BF3:
             return new BristolF2B3Payload(planeType, date);
-        }
-        else if (attributeMapping == FCPlaneAttributeMapping.HANDLEYPAGE400)
-        {
+        case HANDLEYPAGE400:
             return new HandleyPage400Payload(planeType, date);
+
+        case NIEUPORT11:
+            return new Nieuport11Payload(planeType, date);
+        case NIEUPORT17:
+            return new Nieuport17Payload(planeType, date);
+        case NIEUPORT17GBR:
+            return new Nieuport17GBRPayload(planeType, date);
+        case NIEUPORT28:
+            return new Nieuport28Payload(planeType, date);
+        case HANRIOTHD1:
+            return new HanriotHD1Payload(planeType, date);
+        case SPAD7EARLY:
+            return new Spad7EarlyPayload(planeType, date);
+        case SPAD7LATE:
+            return new Spad7LatePayload(planeType, date);
+        case SPAD13:
+            return new Spad13Payload(planeType, date);
+        case BREGUET14:
+            return new Breguet14Payload(planeType, date);
+        default:
+            throw new PWCGException ("No payload for plane " + planeTypeName);
         }
 
-        throw new PWCGException ("No payload for plane " + planeTypeName);
 	}
 
     @Override

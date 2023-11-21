@@ -232,7 +232,7 @@ public class PlaneTypeFactory
 
         if (planeTypesForArchType.isEmpty())
         {
-            planeTypesForArchType = createOlderPlaneTypesForArchType(planeArchType, date);
+            planeTypesForArchType = createPlaneTypesForArchType(planeArchType, date);
         }
         
         if (planeTypesForArchType.isEmpty())
@@ -243,7 +243,7 @@ public class PlaneTypeFactory
         return planeTypesForArchType;
     }
 
-    public List<PlaneType> createOlderPlaneTypesForArchType(String planeArchType, Date date) throws PWCGException
+    public List<PlaneType> createPlaneTypesForArchType(String planeArchType, Date date) throws PWCGException
     {
         List<PlaneType> planeTypesForArchType = new ArrayList<>();
         for (PlaneType thisPlane : planeTypes.values())
@@ -259,7 +259,7 @@ public class PlaneTypeFactory
         
         if (planeTypesForArchType.isEmpty())
         {
-            throw new PWCGException("No older planes found for archtype " + planeArchType);
+            throw new PWCGException("No active planes found for archtype " + planeArchType + ".  Plane assigned to squadron outside of its intro/withdrawal");
         }
         
         return planeTypesForArchType;

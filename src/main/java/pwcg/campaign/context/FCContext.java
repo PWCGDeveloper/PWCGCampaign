@@ -8,6 +8,17 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
 {
     protected FCContext()
     {
+        campaignStartDates.add("01/07/1916");
+        campaignStartDates.add("01/08/1916");
+        campaignStartDates.add("01/09/1916");
+        campaignStartDates.add("01/10/1916");
+        campaignStartDates.add("01/11/1916");
+        campaignStartDates.add("01/12/1916");
+        campaignStartDates.add("01/01/1917");
+        campaignStartDates.add("01/02/1917");
+        campaignStartDates.add("01/03/1917");
+        campaignStartDates.add("01/04/1917");
+        campaignStartDates.add("01/05/1917");
         campaignStartDates.add("01/06/1917");
         campaignStartDates.add("01/07/1917");
         campaignStartDates.add("01/08/1917");

@@ -12,6 +12,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.skin.Skin;
@@ -98,14 +100,15 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     public PlaneMcu(Campaign campaign, ICountry country, EquippedPlane equippedPlane, SquadronMember pilot) throws PWCGException
     {
         super();
+
         equippedPlane.copyTemplate(this);
+        setDataForInGameType(equippedPlane);
 
         this.campaign = campaign;
         this.pilot = pilot;
-        this.setName(pilot.getNameAndRank());
-        this.setDesc(pilot.getNameAndRank());
+        this.name = pilot.getNameAndRank();
         this.setCountry(country);
-        startInAir = FlightStartPosition.START_IN_AIR;
+        this.startInAir = FlightStartPosition.START_IN_AIR;
 
         this.index = IndexGenerator.getInstance().getNextIndex();
         this.entity = new McuTREntity(index);
@@ -113,6 +116,25 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         fighterAttackCommand = new FighterAttackCommand(this.linkTrId);
         
         setDeleteAfterDeath();
+    }
+
+    private void setDataForInGameType(EquippedPlane equippedPlane) throws PWCGException
+    {
+        PlaneType actualPlaneType = null;
+        if (equippedPlane.getSubstituteType().isEmpty())
+        {
+            actualPlaneType = equippedPlane;
+        }
+        else
+        {
+            PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+            actualPlaneType = planeTypeFactory.createPlaneTypeByType(equippedPlane.getSubstituteType());        
+        }
+        
+        this.type = actualPlaneType.getType();
+        this.desc = actualPlaneType.getDesc();
+        this.model = actualPlaneType.getModel();
+        this.script = actualPlaneType.getScript();
     }
 
     private void setDeleteAfterDeath() throws PWCGException
@@ -134,7 +156,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     private void copyTemplate(PlaneMcu plane)
     {
         super.copyTemplate(plane);
-
+        
         plane.name = this.name;
         plane.position = this.position;
         plane.orientation = this.orientation;
@@ -204,7 +226,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     public IPlanePayload buildPlanePayload(IFlight flight, Date date) throws PWCGException
     {
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        payload = payloadFactory.createPlanePayload(this.getType(), date);
+        payload = payloadFactory.createPlanePayload(type, date);
         payload.createWeaponsPayload(flight);
         return payload.copy();
     }
@@ -212,7 +234,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     public IPlanePayload buildStandardPlanePayload(Date date) throws PWCGException
     {
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        payload = payloadFactory.createPlanePayload(this.getType(), date);
+        payload = payloadFactory.createPlanePayload(type, date);
         payload.createStandardWeaponsPayload();
         return payload.copy();
     }
@@ -293,7 +315,12 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             writer.write("{");
             writer.newLine();
 
-            super.write(writer);
+            writer.write("  Script = \"" + script + "\";");
+            writer.newLine();
+            writer.write("  Model = \"" + model + "\";");
+            writer.newLine();
+            writer.write("  Desc = \"" + desc + "\";");
+            writer.newLine();
 
             writer.write("  Name = \"\u0001" + name + "\";");
             writer.newLine();
@@ -310,7 +337,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             String skinName = "";
             if (skin != null)
             {
-                skinName = getType() + "\\" + skin.getSkinName();
+                skinName = type + "\\" + skin.getSkinName();
                 skinName = skinName.toLowerCase();
                 if (!skinName.contains(".dds"))
                 {
@@ -389,11 +416,11 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     {
         if (skin == null)
         {
-            PWCGLogger.log(LogLevel.INFO, "No skin designasated for plane " + this.getType());
+            PWCGLogger.log(LogLevel.INFO, "No skin designasated for plane " + type);
             return;
         }
         
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(this.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
         if (skin.isUseTacticalCodes())
         {
             TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, this);
@@ -600,7 +627,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     public void setCountry(ICountry country)
     {
         this.country = country;
-        this.setSide(country.getSide());
+        this.side = country.getSide();
     }
 
     public double getFuel()
@@ -726,5 +753,5 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     public int getFighterAttackTarget()
     {
         return fighterAttackCommand.getFighterAttackTarget();
-    }
+    }    
 }

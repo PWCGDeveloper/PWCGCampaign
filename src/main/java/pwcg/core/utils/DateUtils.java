@@ -268,7 +268,7 @@ public class DateUtils
     {
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            return DateUtils.getDateYYYYMMDD("19170601");            
+            return DateUtils.getDateYYYYMMDD("19160701");            
         }
         else
         {              
