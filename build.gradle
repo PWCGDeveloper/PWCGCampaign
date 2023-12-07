@@ -27,7 +27,7 @@ dependencies {
 	testImplementation('org.junit.jupiter:junit-jupiter')
 	testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.12.2'
 	testImplementation group: 'org.mockito', name: 'mockito-inline', version: '3.12.2'
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.2')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.4.2')
 }
 
 jar {
@@ -40,6 +40,18 @@ jar {
 	from {
     	configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
   	}
+}
+
+test {
+    if (System.properties['test.profile'] != 'integration') {
+        useJUnitPlatform()
+        maxParallelForks = Runtime.runtime.availableProcessors()
+        exclude '**/*integration*'
+    } 
+    else {
+        useJUnitPlatform()
+        exclude '**/*pwcg/*'
+    }
 }
 
 task copyJar(type: Exec) {

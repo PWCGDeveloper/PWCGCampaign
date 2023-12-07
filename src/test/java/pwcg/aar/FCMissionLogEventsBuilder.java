@@ -25,7 +25,7 @@ import pwcg.core.logfiles.event.AType3;
 import pwcg.core.logfiles.event.IAType12;
 import pwcg.core.utils.RandomNumberGenerator;
 
-public class MissionLogEventsBuilder
+public class FCMissionLogEventsBuilder
 {
     private Campaign campaign;
     private AARPreliminaryData preliminaryData;
@@ -35,9 +35,9 @@ public class MissionLogEventsBuilder
     private List<String> destroyedPlanes = new ArrayList<>();
     private SquadronMember squadronMate;
     private SquadronMember friendlyPilotFromDifferentSquadron;
-    private ExpectedResults expectedResults;
+    private AARTestExpectedResults expectedResults;
 
-    public MissionLogEventsBuilder(Campaign campaign, AARPreliminaryData preliminaryData, ExpectedResults expectedResults)
+    public FCMissionLogEventsBuilder(Campaign campaign, AARPreliminaryData preliminaryData, AARTestExpectedResults expectedResults)
     {
         this.campaign = campaign;
         this.preliminaryData = preliminaryData;
@@ -159,10 +159,10 @@ public class MissionLogEventsBuilder
         String playerPlaneId = serialNumberToPlaneId.get(player.getSerialNumber());
         IAType12 playerPlane = logEventData.getVehicle(playerPlaneId);
 
-        IAType12 playerVictoryPlane1 = getPlaneVictimByType("LaGG-3 ser.29");
+        IAType12 playerVictoryPlane1 = getPlaneVictimByType("Nieuport 17.C1");
         AType3 playerVictoryPlaneEvent1 = new AType3(playerPlane.getId(), playerVictoryPlane1.getId(), crashLocation);
 
-        IAType12 playerVictoryPlane2 = getPlaneVictimByType("Il-2 mod.1941");
+        IAType12 playerVictoryPlane2 = getPlaneVictimByType("Farman F.40");
         AType3 playerVictoryPlaneEvent2 = new AType3(playerPlane.getId(), playerVictoryPlane2.getId(), crashLocation);
 
         IAType12 playerVictoryVehicle = getGroundVictim();
@@ -185,7 +185,7 @@ public class MissionLogEventsBuilder
         String friendlyPilotPlaneId = serialNumberToPlaneId.get(friendlyPilotFromDifferentSquadron.getSerialNumber());
         IAType12 friendlyPilotPlane = logEventData.getVehicle(friendlyPilotPlaneId);
         
-        IAType12 enemyPlaneLost = getPlaneVictimByType("Il-2 mod.1941");
+        IAType12 enemyPlaneLost = getPlaneVictimByType("Farman F.40");
         AType3 enemyPlaneLostEvent = new AType3(friendlyPilotPlane.getId(), enemyPlaneLost.getId(), crashLocation);
 
         IAType12 enemyVehicleLost = getGroundVictim();
@@ -205,7 +205,24 @@ public class MissionLogEventsBuilder
         String squadronMatePlaneId = serialNumberToPlaneId.get(squadronMate.getSerialNumber());
         IAType12 squadronMatePlane = logEventData.getVehicle(squadronMatePlaneId);
 
-        IAType12 enemyVictoryPlane = getPlaneVictimByType("LaGG-3 ser.29");
+        IAType12 enemyVictoryPlane = getPlaneVictimByType("Nieuport 17.C1");
+        if (enemyVictoryPlane == null)
+        {
+            enemyVictoryPlane = getPlaneVictimByType("Airco D.H.2");
+        }
+        if (enemyVictoryPlane == null)
+        {
+            enemyVictoryPlane = getPlaneVictimByType("Nieuport 11.C1");
+        }
+        if (enemyVictoryPlane == null)
+        {
+            enemyVictoryPlane = getPlaneVictimByType("Nieuport 11.C1");
+        }
+        if (enemyVictoryPlane == null)
+        {
+            throw new PWCGException("failed to find spawn of any viable allied fighter type");
+        }
+
         AType3 squadronMatePlaneDestroyedEvent = new AType3(enemyVictoryPlane.getId(), squadronMatePlane.getId(), crashLocation);
 
         logEventData.addDestroyedEvent(squadronMatePlaneDestroyedEvent);
@@ -227,7 +244,7 @@ public class MissionLogEventsBuilder
             }
         }
         
-        throw new PWCGException("failed to find spawn for type " + type);
+        return null;
     }
     
     private void killPilot(String planeId) throws PWCGException

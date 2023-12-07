@@ -119,7 +119,6 @@ public class TestMissionEntityGenerator
     private void makePwcgMissionPlaneFighter(String pilotName, Integer pilotSerialNumber, Integer planeSerialNumber, IAType12 plane) throws PWCGException
     {
         PwcgGeneratedMissionPlaneData pwcgMissionPlane = new PwcgGeneratedMissionPlaneData();
-        pwcgMissionPlane.setAircraftType(plane.getType());
         pwcgMissionPlane.setPilotSerialNumber(pilotSerialNumber);
         pwcgMissionPlane.setPlaneSerialNumber(planeSerialNumber);
         missionPlanes.put(pilotSerialNumber, pwcgMissionPlane);

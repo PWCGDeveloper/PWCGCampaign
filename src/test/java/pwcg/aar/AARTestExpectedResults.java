@@ -8,7 +8,7 @@ import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 
-public class ExpectedResults
+public class AARTestExpectedResults
 {
     private Campaign campaign;
     private int squadronMemberPilotSerialNumber;
@@ -19,7 +19,7 @@ public class ExpectedResults
     private int squadronMemberGroundVictories = 0;
     private int enemyAirVictories = 0;
 
-    public ExpectedResults (Campaign campaign)
+    public AARTestExpectedResults (Campaign campaign)
     {
         this.campaign = campaign;
     }

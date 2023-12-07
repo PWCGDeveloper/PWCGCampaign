@@ -1,6 +1,8 @@
 package pwcg.mission.ground.builder;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -15,6 +17,8 @@ import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.unittypes.infantry.AssaultGroundUnitFactory;
+import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleRequestDefinition;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.AssaultDefinition;
 import pwcg.mission.target.AssaultDefinitionGenerator;
@@ -55,7 +59,9 @@ public class AssaultSegmentBuilder
     private void createAssault() throws PWCGException
     {
         assaultingInfantry();
-        assaultingTanks();
+        if (isTankAVailable(assaultDefinition.getAssaultingCountry().getCountry())) {
+            assaultingTanks();
+        }
         assaultingMachineGun();
         assaultingMachineGunFlares();
         if (assaultDefinition.getBattleSize() == BattleSize.BATTLE_SIZE_ASSAULT || assaultDefinition.getBattleSize() == BattleSize.BATTLE_SIZE_OFFENSIVE)
@@ -65,6 +71,14 @@ public class AssaultSegmentBuilder
             assaultingAAAArty();
         }
     }
+
+    private boolean isTankAVailable(Country country)  throws PWCGException
+    {
+        VehicleRequestDefinition tankRequestDefinition = new VehicleRequestDefinition(
+                country, mission.getCampaign().getDate(), VehicleClass.Tank);
+        return PWCGContext.getInstance().getVehicleDefinitionManager().isVehicleTypeAvailable(tankRequestDefinition);
+    }
+
 
     private void assaultingInfantry() throws PWCGException
     {
@@ -203,13 +217,18 @@ public class AssaultSegmentBuilder
 
     private void defendingATCapability() throws PWCGException
     {
-        int roll = RandomNumberGenerator.getRandom(100);
-        if (roll < 20)
-        {
-            defendingTanks();
+        if (isTankAVailable(assaultDefinition.getDefendingCountry().getCountry())) {
+            int roll = RandomNumberGenerator.getRandom(100);
+            if (roll < 20)
+            {
+                defendingTanks();
+            }
+            else
+            {
+                defendingATGuns();
+            }
         }
-        else
-        {
+        else {
             defendingATGuns();
         }
     }

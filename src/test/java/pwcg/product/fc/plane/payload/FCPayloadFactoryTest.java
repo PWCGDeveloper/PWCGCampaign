@@ -1,5 +1,8 @@
 package pwcg.product.fc.plane.payload;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,6 +22,18 @@ import pwcg.product.fc.plane.FCPlaneAttributeMapping;
 @ExtendWith(MockitoExtension.class)
 public class FCPayloadFactoryTest
 {	
+    private static final List<String> substitutedTypes = Arrays.asList(
+            "fokkere3",
+            "albatrosd3",
+            "albatrosc2",
+            "rolc2a",
+            "farmanf40",
+            "dorandar",
+            "aircodh2",
+            "soppup",
+            "sopstrutter",
+            "re8");
+    
 	public FCPayloadFactoryTest() throws PWCGException
 	{
     	PWCGContext.setProduct(PWCGProduct.FC);      
@@ -32,7 +47,15 @@ public class FCPayloadFactoryTest
 
 		for (PlaneType bosPlaneType : planeTypeFactory.getAllPlanes())
 		{
-		    System.out.println(bosPlaneType.getType());
+	        System.out.println(bosPlaneType.getType());
+
+	        if (!bosPlaneType.getSubstituteType().isEmpty()) 
+		    {
+		        Assertions.assertTrue(substitutedTypes.contains(bosPlaneType.getType()));
+		        continue;
+		    }
+		        
+            Assertions.assertFalse(substitutedTypes.contains(bosPlaneType.getType()));
 		    
 			IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19180501"));
 			assert(payload != null);

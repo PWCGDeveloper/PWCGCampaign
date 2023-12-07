@@ -23,13 +23,13 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.data.MissionHeader;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 
-public class TestPreliminaryDataBuilder
+public class TestPreliminaryDataBuilderFC
 {
     private Campaign campaign;
     private AARPreliminaryData preliminaryData = new AARPreliminaryData();
     private List<Squadron> squadronsInMission = new ArrayList<>();
 
-    public TestPreliminaryDataBuilder (Campaign campaign, List<Squadron> squadronsInMission)
+    public TestPreliminaryDataBuilderFC (Campaign campaign, List<Squadron> squadronsInMission)
     {
         this.campaign = campaign;
         this.squadronsInMission = squadronsInMission;
@@ -76,9 +76,10 @@ public class TestPreliminaryDataBuilder
     private void makeClaimData()
     {
         List<String> enemyPlaneTypesInMission = new ArrayList<>();
-        enemyPlaneTypesInMission.add("pe2s35");
-        enemyPlaneTypesInMission.add("yak1s69");
-        enemyPlaneTypesInMission.add("il2m41");
+        enemyPlaneTypesInMission.add("farmanf40");
+        enemyPlaneTypesInMission.add("nieuport17");
+        enemyPlaneTypesInMission.add("dh2");
+        enemyPlaneTypesInMission.add("fe2b");
         
         AARClaimPanelData claimPanelData = new AARClaimPanelData();
         claimPanelData.setEnemyPlaneTypesInMission(enemyPlaneTypesInMission);
@@ -106,13 +107,13 @@ public class TestPreliminaryDataBuilder
         missionHeader.setMissionFileName("Test Campaign Patrol 01-11-1941");
         
         missionHeader.setAirfield("My Airfield");
-        missionHeader.setDate("10411101");
-        missionHeader.setSquadron("I/JG51");
-        missionHeader.setAircraftType("Bf109 F-2");
+        missionHeader.setDate("19160901");
+        missionHeader.setSquadron("Jasta 4");
+        missionHeader.setAircraftType("halberstadtd2");
 
         
         missionHeader.setDuty("PATROL");
-        missionHeader.setAltitude(3000); 
+        missionHeader.setAltitude(2000); 
         
         missionHeader.setMapName(PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getMapName()); 
 
@@ -135,7 +136,6 @@ public class TestPreliminaryDataBuilder
             EquippedPlane equippedPlane = planesForSquadron.get(planeIndex);
 
             PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
-            missionPlaneData.setAircraftType(equippedPlane.getType());
             missionPlaneData.setSquadronId(squadronMember.getSquadronId());
             missionPlaneData.setPilotName(squadronMember.getName());
             missionPlaneData.setPilotSerialNumber(squadronMember.getSerialNumber());

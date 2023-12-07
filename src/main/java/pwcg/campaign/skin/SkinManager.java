@@ -36,7 +36,7 @@ public class SkinManager
         }
         else
         {
-            PWCGLogger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDateInUse: Invalid plane " + planeName);
+            PWCGLogger.log(LogLevel.ERROR, "getSquadronSkinsByPlaneSquadronDate: Invalid plane " + planeName);
         }
         
         return skinsForSquadron;
@@ -72,12 +72,12 @@ public class SkinManager
         }
         else
         {
-            PWCGLogger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDateInUse: Invalid plane " + planeName);
+            PWCGLogger.log(LogLevel.ERROR, "getSkinsByPlaneSquadronDateInUse: Invalid plane " + planeName);
         }
         
         if (skinsForSquadronPlaneDate.isEmpty())
         {
-            PWCGLogger.log(LogLevel.DEBUG, "getSkinsBySquadronPlaneDateInUse: No skins " + planeName);
+            PWCGLogger.log(LogLevel.DEBUG, "getSkinsByPlaneSquadronDateInUse: No skins " + planeName);
         }
 		
 		return skinsForSquadronPlaneDate;

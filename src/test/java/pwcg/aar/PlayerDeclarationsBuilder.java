@@ -13,15 +13,15 @@ public class PlayerDeclarationsBuilder
     {
     }
     
-    public Map<Integer, PlayerDeclarations> makePlayerDeclarations(SquadronMember player)
+    public Map<Integer, PlayerDeclarations> makePlayerDeclarations(SquadronMember player, String playerShotDownPlane1, String playerShotDownPlane2)
     {
         Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
         PlayerDeclarations playerDeclarationSet = new PlayerDeclarations();
         PlayerVictoryDeclaration victoryDeclaration1 = new PlayerVictoryDeclaration();
-        victoryDeclaration1.setAircraftType("yak1s69");
+        victoryDeclaration1.setAircraftType(playerShotDownPlane1);
 
         PlayerVictoryDeclaration victoryDeclaration2 = new PlayerVictoryDeclaration();
-        victoryDeclaration2.setAircraftType("il2m41");
+        victoryDeclaration2.setAircraftType(playerShotDownPlane2);
         
         playerDeclarationSet.addDeclaration(victoryDeclaration1);
         playerDeclarationSet.addDeclaration(victoryDeclaration2);

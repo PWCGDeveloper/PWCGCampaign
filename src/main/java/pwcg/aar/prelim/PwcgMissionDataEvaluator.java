@@ -8,6 +8,7 @@ import java.util.Set;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -44,7 +45,8 @@ public class PwcgMissionDataEvaluator
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(missionPlane.getSquadronId());            
             if (squadron.determineSquadronCountry(campaign.getDate()).getSide() == side)
             {
-                uniquePlanesForSide.add(missionPlane.getAircraftType());
+                PlaneType plane = campaign.getEquipmentManager().getAnyPlaneWithPreference(missionPlane.getPlaneSerialNumber());
+                uniquePlanesForSide.add(plane.getType());
             }
         }
 

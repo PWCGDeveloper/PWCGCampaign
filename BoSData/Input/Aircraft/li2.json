@@ -1,15 +1,14 @@
 {
-	"type": "c47a",
-	"archType": "c47",
+	"type": "li2",
+	"archType": "li2",
 	"side": "ALLIED",
 	"primaryUsedBy": [
-		"USA",
-		"BRITAIN"
+		"RUSSIA"
 	],
 	"stockModifications": [],
-	"displayName": "C-47A",
-	"script": "LuaScripts\\WorldObjects\\Planes\\c47a.txt",
-	"model": "graphics\\planes\\c47a\\c47a.mgm",
+	"displayName": "Li-2",
+	"script": "LuaScripts\\WorldObjects\\Planes\\li2.txt",
+	"model": "graphics\\planes\\li2\\li2.mgm",
 	"desc": "",
 	"cruisingSpeed": 200,
 	"climbOutRate": 500,

@@ -1,0 +1,18 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"li2_default": {
+			"skinName": "li2",
+			"planeType": "li2",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE"
+		}
+	}
+}

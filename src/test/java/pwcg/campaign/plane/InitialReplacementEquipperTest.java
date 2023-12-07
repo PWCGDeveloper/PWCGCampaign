@@ -142,7 +142,7 @@ public class InitialReplacementEquipperTest
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
         assert(equipment.getAvailableDepotPlanes().size() == 90);
         
-        boolean c47 = false;
+        boolean li2 = false;
         boolean hurricane = false;
         boolean i16Found = false;
         boolean mig3 = false;
@@ -157,9 +157,9 @@ public class InitialReplacementEquipperTest
             {
                 i16Found = true;
             }
-            else if (replacementPlane.getType().equals("c47a"))
+            else if (replacementPlane.getType().equals("li2"))
             {
-                c47 = true;
+                li2 = true;
             }
             else if (replacementPlane.getType().equals("hurricanemkii"))
             {
@@ -188,7 +188,7 @@ public class InitialReplacementEquipperTest
         }
         
         assert(hurricane);
-        assert(c47);
+        assert(li2);
         assert(i16Found);
         assert(mig3);
         assert(lagg3);
@@ -210,7 +210,7 @@ public class InitialReplacementEquipperTest
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
         assert(equipment.getAvailableDepotPlanes().size() == 175);
         
-        boolean c47 = false;
+        boolean li2 = false;
         boolean hurricane = false;
         boolean i16Found = false;
         boolean mig3 = false;
@@ -226,9 +226,9 @@ public class InitialReplacementEquipperTest
             {
                 i16Found = true;
             }
-            else if (replacementPlane.getType().equals("c47a"))
+            else if (replacementPlane.getType().equals("li2"))
             {
-                c47 = true;
+                li2 = true;
             }
             else if (replacementPlane.getType().equals("hurricanemkii"))
             {
@@ -261,7 +261,7 @@ public class InitialReplacementEquipperTest
         }
         
         assert(hurricane);
-        assert(c47);
+        assert(li2);
         assert(i16Found);
         assert(mig3);
         assert(lagg3);

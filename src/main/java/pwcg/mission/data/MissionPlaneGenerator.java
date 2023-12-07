@@ -66,7 +66,6 @@ public class MissionPlaneGenerator
         missionPlaneData.setPilotSerialNumber(plane.getPilot().getSerialNumber());
         missionPlaneData.setPlaneSerialNumber(plane.getSerialNumber());
         missionPlaneData.setSquadronId(squadron.getSquadronId());
-        missionPlaneData.setAircraftType(plane.getType());
         
         missionPlanes.add(missionPlaneData);
     }

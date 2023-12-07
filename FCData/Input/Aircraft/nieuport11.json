@@ -6,7 +6,8 @@
 	"script": "LuaScripts\\WorldObjects\\Planes\\nieuport11.txt",
 	"model": "graphics\\planes\\nieuport11\\nieuport11.mgm",
 	"primaryUsedBy": [
-		"FRANCE"
+        "FRANCE",
+        "BRITAIN"
 	],
 	"stockModifications": [
         "SPEED_GUAGE",

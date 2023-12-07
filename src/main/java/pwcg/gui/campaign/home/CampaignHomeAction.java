@@ -2,6 +2,7 @@ package pwcg.gui.campaign.home;
 
 import java.awt.event.ActionEvent;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -22,11 +23,13 @@ import pwcg.gui.utils.UIUtils;
 public class CampaignHomeAction
 {
     private CampaignHomeScreen campaignHome = null;
+    private Campaign campaign = null;
 
-    public CampaignHomeAction(CampaignHomeScreen parent) 
+    public CampaignHomeAction(Campaign campaign, CampaignHomeScreen parent) 
     {
         super();
         this.campaignHome = parent;
+        this.campaign = campaign;
     }
     
 
@@ -121,7 +124,7 @@ public class CampaignHomeAction
     
     private void showCampaignActivities() throws PWCGException
     {
-        CampaignActivityScreen activityGUI = new CampaignActivityScreen(campaignHome);
+        CampaignActivityScreen activityGUI = new CampaignActivityScreen(campaign, campaignHome);
         activityGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(activityGUI);        
     }

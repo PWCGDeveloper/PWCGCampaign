@@ -19,23 +19,16 @@ public class FE2BPayload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
-        setAvailablePayload(-8, "1000000000", PayloadElement.RADIO);
-        setAvailablePayload(-7, "100000000", PayloadElement.CAMERA);
-
-        setAvailablePayload(-6, "1000000", PayloadElement.COCKPIT_LIGHT);
-        setAvailablePayload(-5, "100000", PayloadElement.FUEL_GUAGE);
+        setAvailablePayload(-6, "10000000", PayloadElement.RADIO);
+        setAvailablePayload(-5, "1000000", PayloadElement.CAMERA);
         
-        setAvailablePayload(-4, "10000", PayloadElement.ALDIS_SIGHT);
-        setAvailablePayload(-3, "1000", PayloadElement.TWIN_GUN_TURRET);
-        setAvailablePayload(-2, "100", PayloadElement.LEWIS_TOP);
-        setAvailablePayload(-1, "10", PayloadElement.TWIN_FRONT);
+        setAvailablePayload(-4, "10000", PayloadElement.COCKPIT_LIGHT);
+        setAvailablePayload(-3, "1000", PayloadElement.CLOCK_GUAGE);
+        setAvailablePayload(-2, "100", PayloadElement.FUEL_GUAGE);
+        setAvailablePayload(-1, "10", PayloadElement.TWIN_GUN_TURRET);
         
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(4, "10000001", PayloadElement.COOPER_BOMBS);
-        setAvailablePayload(8, "10000001", PayloadElement.COOPER_BOMBS, PayloadElement.LB112_X2);
-        setAvailablePayload(12, "10000001", PayloadElement.LB112_X2);
-        setAvailablePayload(16, "10000001", PayloadElement.LB112_X4);
-        setAvailablePayload(20, "10000001", PayloadElement.LB230_X2);
+        setAvailablePayload(1, "10000001", PayloadElement.COOPER_BOMBS);
     }
 
     @Override
@@ -66,7 +59,7 @@ public class FE2BPayload extends PlanePayload implements IPlanePayload
 
     protected int selectPayload(IFlight flight)
     {
-        return 12;
+        return 1;
     }
 
     protected int selectReconPayload(IFlight flight)

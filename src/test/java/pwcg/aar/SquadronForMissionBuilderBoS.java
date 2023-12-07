@@ -8,13 +8,13 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
-public class SquadronForMissionBuilder
+public class SquadronForMissionBuilderBoS
 {
     Campaign campaign;
     List<Squadron> squadronsInMission = new ArrayList<>();
 
 
-    public SquadronForMissionBuilder (Campaign campaign)
+    public SquadronForMissionBuilderBoS (Campaign campaign)
     {
         this.campaign = campaign;
     }

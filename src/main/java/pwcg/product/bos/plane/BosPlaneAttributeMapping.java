@@ -39,6 +39,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     MIG3_S24("mig3s24", "static_mig3", "static_mig3_net"),
     LAGG3_S29("lagg3s29", "static_lagg3", "static_lagg3_net", "static_lagg3_w1", "static_lagg3_w2"),
     LA5_S8("la5s8", "static_lagg3", "static_lagg3_net"),
+    LA5_S38("la5s38", "static_lagg3", "static_lagg3_net"),
     LA5N_S2("la5fns2", "static_lagg3", "static_lagg3_net"),
     
     YAK1_S69("yak1s69", "static_yak1_open", "static_yak1", "static_yak1_net"),
@@ -63,6 +64,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     MOSQUITO_FB_MKVI_S2("mosquitofbmkvis2", "static_a20raf"),
 
     U2_VS("u2vs", "static_u2vs"),
+    LI2("li2", "static_a20b"),
     IL2_M41("il2m41", "static_il2", "static_il2_net"),
     IL2_M42("il2m42", "static_il2", "static_il2_net"),
     IL2_M43("il2m43", "static_il2", "static_il2_net"),

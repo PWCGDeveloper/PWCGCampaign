@@ -2,7 +2,7 @@
 	"type": "schuckertdiv",
 	"archType": "schuckertdiv",
 	"side": "AXIS",
-	"displayName": "Siemens-Schuckert D.IV",
+	"displayName": "SSW D.IV",
 	"script": "LuaScripts\\WorldObjects\\Planes\\schuckertdiv.txt",
 	"model": "graphics\\planes\\schuckertdiv\\schuckertdiv.mgm",
 	"primaryUsedBy": [

@@ -16,6 +16,12 @@ public class FCPayloadFactory implements IPayloadFactory
 	public IPlanePayload createPlanePayload(String planeTypeName, Date date) throws PWCGException 
 	{
 		PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeName);
+		if (!planeType.getSubstituteType().isEmpty())
+		{
+		    planeTypeName = planeType.getSubstituteType();
+		}
+
+		
 		FCPlaneAttributeMapping attributeMapping = FCPlaneAttributeFactory.createPlaneAttributeMap(planeTypeName);
 		
 		switch (attributeMapping) 

@@ -45,8 +45,10 @@ import pwcg.product.bos.plane.payload.aircraft.Ju87D3Payload;
 import pwcg.product.bos.plane.payload.aircraft.Ju88A4Payload;
 import pwcg.product.bos.plane.payload.aircraft.Ju88C6Payload;
 import pwcg.product.bos.plane.payload.aircraft.La5FNS2Payload;
+import pwcg.product.bos.plane.payload.aircraft.La5S38Payload;
 import pwcg.product.bos.plane.payload.aircraft.La5S8Payload;
 import pwcg.product.bos.plane.payload.aircraft.Lagg3S29Payload;
+import pwcg.product.bos.plane.payload.aircraft.Li2Payload;
 import pwcg.product.bos.plane.payload.aircraft.Ma202Ser8Payload;
 import pwcg.product.bos.plane.payload.aircraft.Me262APayload;
 import pwcg.product.bos.plane.payload.aircraft.Me410A1Payload;
@@ -199,6 +201,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         {
             return new U2VSPayload(planeType, date);
         }
+        else if (attributeMapping == BosPlaneAttributeMapping.LI2)
+        {
+            return new Li2Payload(planeType, date);
+        }
         else if (attributeMapping == BosPlaneAttributeMapping.I16_T24)
         {
             return new I16Type24Payload(planeType, date);
@@ -222,6 +228,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.LA5_S8)
         {
             return new La5S8Payload(planeType, date);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.LA5_S38)
+        {
+            return new La5S38Payload(planeType, date);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.LA5N_S2)
         {

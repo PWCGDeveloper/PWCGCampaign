@@ -178,7 +178,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         plane.aiRTBDecision = this.aiRTBDecision;
         plane.deleteAfterDeath = this.deleteAfterDeath;
         plane.wingmanCommands = this.wingmanCommands;
-        plane.skin = this.skin;
         if (payload != null)
         {
             plane.payload = this.payload.copy();
@@ -521,6 +520,10 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         if (newSkin != null)
         {
             this.skin = newSkin;
+        }
+        else
+        {
+            System.out.print("Null skin for aircraft");
         }
     }
 

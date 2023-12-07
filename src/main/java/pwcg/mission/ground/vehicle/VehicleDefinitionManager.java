@@ -95,7 +95,20 @@ public class VehicleDefinitionManager
         }        
         return false;
     }
+
+    public boolean isVehicleTypeAvailable(VehicleRequestDefinition requestDefinition)  throws PWCGException
+    {
+        for (VehicleDefinition definition : allVehiclesDefinitions)
+        {
+            if (definition.shouldUse(requestDefinition))
+            {
+                return true;
+            }
+        }
         
+        return false;
+    }
+
     public VehicleDefinition getVehicleDefinitionForRequest(VehicleRequestDefinition requestDefinition) throws PWCGException
     {
         List<VehicleDefinition> matchingDefinitions = new ArrayList<>();

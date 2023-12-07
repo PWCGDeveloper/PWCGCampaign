@@ -3,7 +3,7 @@
 	"substituteType": "fe2b",
 	"archType": "farmanf40",
 	"side": "ALLIED",
-	"displayName": "Dorand AR",
+	"displayName": "Farman F.40",
 	"script": "LuaScripts\\WorldObjects\\Planes\\farmanf40.txt",
 	"model": "graphics\\planes\\farmanf40\\farmanf40.mgm",
 	"primaryUsedBy": [

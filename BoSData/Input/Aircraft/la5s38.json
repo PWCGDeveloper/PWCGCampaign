@@ -1,0 +1,31 @@
+{
+	"type": "la5s38",
+	"archType": "lagg",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [
+		"MIRROR",
+		"RPK10",
+		"LANDING_LIGHTS"
+	],
+	"displayName": "La-5 ser.38",
+	"script": "LuaScripts\\WorldObjects\\Planes\\la5s38.txt",
+	"model": "graphics\\planes\\la5s38\\la5s38.mgm",
+	"desc": "",
+	"cruisingSpeed": 350,
+	"climbOutRate": 1300,
+	"goodness": 61,
+	"range": 650,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER",
+		"ATTACK"
+	],
+	"introduction": "19431201",
+	"endProduction": "19441001",
+	"withdrawal": "19450301"
+}

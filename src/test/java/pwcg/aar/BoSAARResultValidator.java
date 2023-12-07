@@ -6,12 +6,12 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-public class AARResultValidator
+public class BoSAARResultValidator
 {
     Campaign campaign;
-    ExpectedResults expectedResults;
+    AARTestExpectedResults expectedResults;
 
-    public AARResultValidator (ExpectedResults expectedResults)
+    public BoSAARResultValidator (AARTestExpectedResults expectedResults)
     {
         this.campaign = expectedResults.getCampaign();
         this.expectedResults = expectedResults;

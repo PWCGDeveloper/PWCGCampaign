@@ -62,6 +62,7 @@ public class SkinManagerTest
         hasNoBlanks.add("bf109g6late");
         hasNoBlanks.add("bf109g6as");
         hasNoBlanks.add("spitfiremkxive");
+        hasNoBlanks.add("li2");
 
         for (String planeName : skinManager.getAllSkinsByPlane().keySet())
         {
@@ -106,7 +107,7 @@ public class SkinManagerTest
             Date today = DateUtils.getBeginningOfGame();
             while (today.before(DateUtils.getEndOfWar()))
             {
-                List<Skin> factorySkins = skinManager.getSkinsByPlaneSquadronDateInUse(planeName, -2, today);
+                List<Skin> factorySkins = skinManager.getSkinsByPlaneSquadronDateInUse(planeName, Skin.FACTORY_GENERIC, today);
                 Assertions.assertFalse(factorySkins.isEmpty());
                 today = DateUtils.advanceTimeDays(today, 1);
             }

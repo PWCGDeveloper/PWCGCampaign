@@ -6,7 +6,8 @@
 	"script": "LuaScripts\\WorldObjects\\Planes\\nieuport17gbr.txt",
 	"model": "graphics\\planes\\nieuport17gbr\\nieuport17gbr.mgm",
 	"primaryUsedBy": [
-		"BRITAIN"
+        "FRANCE",
+        "BRITAIN"
 	],
 	"stockModifications": [
         "SIDE_SLIP_GUAGE",

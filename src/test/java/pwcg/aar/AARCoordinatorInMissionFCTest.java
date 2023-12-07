@@ -17,15 +17,15 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.logfiles.LogEventData;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class AARCoordinatorInMissionTest
+public class AARCoordinatorInMissionFCTest
 {
     private Campaign campaign;    
     private static AARCoordinator aarCoordinator;
-    private static ExpectedResults expectedResults;
+    private static AARTestExpectedResults expectedResults;
     private static int playerMissionsFlown = 0;
 
     private List<Squadron> squadronsInMission = new ArrayList<>();
@@ -34,9 +34,9 @@ public class AARCoordinatorInMissionTest
     @BeforeAll
     public void setupSuite() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-        expectedResults = new ExpectedResults(campaign);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JASTA_04_PROFILE);
+        expectedResults = new AARTestExpectedResults(campaign);
         aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.reset(campaign);
         
@@ -55,7 +55,7 @@ public class AARCoordinatorInMissionTest
         aarCoordinator.performMissionAAR(playerDeclarations);
         expectedResults.buildExpectedResultsFromAARContext(aarCoordinator.getAarContext());
         
-        AARResultValidator resultValidator = new AARResultValidator(expectedResults);
+        FCAARResultValidator resultValidator = new FCAARResultValidator(expectedResults);
         resultValidator.validateInMission(playerMissionsFlown, 2);
     }
 
@@ -69,13 +69,13 @@ public class AARCoordinatorInMissionTest
 
     private void makeSquadronsInMission() throws PWCGException
     {
-        SquadronForMissionBuilder squadronForMissionBuilder = new SquadronForMissionBuilder(campaign);
+        SquadronForMissionBuilderFC squadronForMissionBuilder = new SquadronForMissionBuilderFC(campaign);
         squadronsInMission = squadronForMissionBuilder.makeSquadronsInMission();
     }
 
     private void makePreliminary() throws PWCGException
     {
-        TestPreliminaryDataBuilder preliminaryDataBuilder = new TestPreliminaryDataBuilder(campaign, squadronsInMission);
+        TestPreliminaryDataBuilderFC preliminaryDataBuilder = new TestPreliminaryDataBuilderFC(campaign, squadronsInMission);
         AARPreliminaryData preliminaryData = preliminaryDataBuilder.makePreliminaryForTestMission();
         aarCoordinator.getAarContext().setPreliminaryData(preliminaryData);
     }
@@ -84,12 +84,12 @@ public class AARCoordinatorInMissionTest
     {
         SquadronMember player = campaign.getPersonnelManager().getFlyingPlayers().getSquadronMemberList().get(0);
         PlayerDeclarationsBuilder  declarationsBuilder = new PlayerDeclarationsBuilder();
-        playerDeclarations = declarationsBuilder.makePlayerDeclarations(player);
+        playerDeclarations = declarationsBuilder.makePlayerDeclarations(player, "Nieuport 17.C1", "Farman F.40");
     }
 
     private void makeMissionLogEvents() throws PWCGException
     {
-        MissionLogEventsBuilder missionLogEventsBuilder = new MissionLogEventsBuilder(campaign, 
+        FCMissionLogEventsBuilder missionLogEventsBuilder = new FCMissionLogEventsBuilder(campaign, 
                 aarCoordinator.getAarContext().getPreliminaryData(), expectedResults);
         LogEventData missionLogRawData = missionLogEventsBuilder.makeLogEvents();
         aarCoordinator.getAarContext().setLogEventData(missionLogRawData);

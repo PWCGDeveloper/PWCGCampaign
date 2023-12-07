@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -29,10 +30,13 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
 {
     private static final long serialVersionUID = 1L;
     private CampaignHomeScreen campaignHome = null;
+    private Campaign campaign = null;
 
-    public CampaignActivityScreen(CampaignHomeScreen campaignHome)
+    public CampaignActivityScreen(Campaign campaign, CampaignHomeScreen campaignHome)
     {
         super();
+        
+        this.campaign = campaign;
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -194,7 +198,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
         SquadronMember referencePlayer = CampaignHomeContext.getCampaign().findReferencePlayer();
-        CampaignSquadronLogScreen logDisplay = new CampaignSquadronLogScreen(referencePlayer.getSquadronId());
+        CampaignSquadronLogScreen logDisplay = new CampaignSquadronLogScreen(campaign, referencePlayer.getSquadronId());
         logDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(logDisplay);

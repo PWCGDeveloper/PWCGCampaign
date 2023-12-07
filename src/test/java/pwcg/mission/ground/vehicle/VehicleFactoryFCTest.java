@@ -22,8 +22,8 @@ public class VehicleFactoryFCTest
     @Test
     public void vehicleCreateTest() throws PWCGException
     {
-        createVehicles(CountryFactory.makeCountryByCountry(Country.FRANCE), DateUtils.getDateYYYYMMDD("19170801"));
-        createVehicles(CountryFactory.makeCountryByCountry(Country.GERMANY), DateUtils.getDateYYYYMMDD("19170801"));
+        createVehicles(CountryFactory.makeCountryByCountry(Country.FRANCE), DateUtils.getDateYYYYMMDD("19180801"));
+        createVehicles(CountryFactory.makeCountryByCountry(Country.GERMANY), DateUtils.getDateYYYYMMDD("19180501"));
         createVehicles(CountryFactory.makeCountryByCountry(Country.BRITAIN), DateUtils.getDateYYYYMMDD("19170801"));
         createVehicles(CountryFactory.makeCountryByCountry(Country.USA), DateUtils.getDateYYYYMMDD("19180501"));
     }

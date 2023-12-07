@@ -2,7 +2,6 @@ package pwcg.mission.data;
 
 public class PwcgGeneratedMissionPlaneData
 {
-    private String aircraftType;
     private Integer squadronId;
     private Integer pilotSerialNumber;
     private Integer planeSerialNumber;
@@ -10,16 +9,6 @@ public class PwcgGeneratedMissionPlaneData
 
     public PwcgGeneratedMissionPlaneData ()
     {
-    }
-
-    public String getAircraftType()
-    {
-        return aircraftType;
-    }
-
-    public void setAircraftType(String aircraftType)
-    {
-        this.aircraftType = aircraftType;
     }
 
     public Integer getSquadronId()

@@ -82,7 +82,9 @@ public class WesternFrontMap extends PWCGMap
     @Override
     protected void configureTransitionDates() throws PWCGException
     {
-        this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19170601"), DateUtils.getDateYYYYMMDD("19181111"));
+        // This controls the available start dates for campaign generation
+        this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19160701"), DateUtils.getDateYYYYMMDD("19181111"));
+        
         this.frontDatesForMap.addFrontDate("19160701"); // Somme
         this.frontDatesForMap.addFrontDate("19170607"); // Messines start
         this.frontDatesForMap.addFrontDate("19170621"); // Messines end

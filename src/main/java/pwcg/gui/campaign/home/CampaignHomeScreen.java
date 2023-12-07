@@ -38,6 +38,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
     private PwcgThreePanelUI pwcgThreePanel;
     private boolean needContextRefresh = false;
     private ChalkboardSelector chalkboardSelector;
+    private Campaign campaign = null;
 
     public CampaignHomeScreen(PwcgMainScreen parent, Campaign campaign) throws PWCGException
     {
@@ -48,10 +49,12 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
+        this.campaign = campaign;
         this.pwcgThreePanel = new PwcgThreePanelUI(this);
         this.parent = parent;
         this.makePanel();
     }
+
 
     public void makePanel()
     {
@@ -162,7 +165,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
             }
             else
             {
-                CampaignHomeAction homeGUIAction = new CampaignHomeAction(this);
+                CampaignHomeAction homeGUIAction = new CampaignHomeAction(campaign, this);
                 homeGUIAction.actionPerformed(ae);
             }
         }

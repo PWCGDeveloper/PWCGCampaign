@@ -44,9 +44,10 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 	private int pageNum = 0;
 	private Map<Integer, StringBuffer> pages = new TreeMap<>();
 
-	public CampaignSquadronLogScreen (int logsForSquadronId)
+	public CampaignSquadronLogScreen (Campaign campaign, int logsForSquadronId)
 	{        
         super();
+        this.campaign = campaign;
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
