@@ -1,4 +1,4 @@
-16.0.0
+15.2.0
 Brings date back to July 1916
 Added planes
 - Nieuport 11
@@ -30,6 +30,8 @@ Rework all FC medals
 - New images
 - Corrections to medal manager
 Fixed issue with map identification
+
+Fixed broken squadron logs
 
 
 15.1.1
