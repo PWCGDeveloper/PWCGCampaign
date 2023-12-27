@@ -1,0 +1,27 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"farmanf40": {
+			"skinName": "farmanf40",
+			"planeType": "farmanf40",
+			"startDate": "19160101",
+			"endDate": "19180424",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"fe2b_belgian": {
+			"skinName": "fe2b_belgian",
+			"planeType": "farmanf40",
+			"startDate": "19160101",
+			"endDate": "19180424",
+			"squadId": -2,
+			"country": "BELGIUM",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		}
+	}
+}

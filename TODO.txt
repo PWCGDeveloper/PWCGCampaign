@@ -1,3 +1,31 @@
+FC3:
+Map
+- Map images - X
+- Map seasons - X
+- Update groups for new map -X
+- Airfields.json  -X
+- Battles.json
+- GroundStructures.json -X
+- MapLocations.json -X
+- railroads.ini -X
+- roads.ini -X
+- roadsystem.ini -X
+- StaticGroundStructures.json -X
+-
+- New airfield take off positions  -X
+
+Add new squadrons from ROF
+Redo airfield assignments for existing and new squadrons.
+Add RE8 -X
+
+
+
+Skins for FC:
+French RE8 (not yet) 
+Belgian RE8 (not yet) 
+
+
+
 Remove excess AAA from cities
 Bombers dive to target
 When flight lead WPs disappear after first WP

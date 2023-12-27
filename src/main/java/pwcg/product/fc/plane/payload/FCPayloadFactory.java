@@ -67,6 +67,8 @@ public class FCPayloadFactory implements IPayloadFactory
             return new DolphinPayload(planeType, date);
         case FE2B:
             return new FE2BPayload(planeType, date);
+        case RE8:
+            return new RE8Payload(planeType, date);
         case DH4:
             return new AircoDH4Payload(planeType, date);
         case BRISTOLF2BF2:

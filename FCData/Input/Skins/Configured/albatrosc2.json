@@ -1,0 +1,17 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"albatrosc2": {
+			"skinName": "albatrosc2",
+			"planeType": "albatrosc2",
+			"startDate": "19160101",
+			"endDate": "19180424",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		}
+	}
+}
+}

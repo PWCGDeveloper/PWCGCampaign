@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.Block;
 import pwcg.campaign.group.airfield.AirfieldDescriptor;
 import pwcg.campaign.group.airfield.AirfieldDescriptorSet;
 import pwcg.campaign.group.airfield.Runway;
 import pwcg.campaign.io.json.AirfieldDescriptorIOJson;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
@@ -22,9 +25,8 @@ import pwcg.mission.flight.plane.PlaneMcu;
 public class AirfieldBuilderWesternFront 
 {    
     TreeMap<String, PWCGLocation> airfieldLocations = new TreeMap<>();
-    TreeMap<String, List<Runway>> airfieldRunways = new TreeMap<>();
+    List<Runway> airfieldRunways = new ArrayList<>();
     TreeMap<String, AirfieldDescriptor> airfields = new TreeMap<>();
-    AirfieldDescriptorSet airfieldDescriptorSet = new AirfieldDescriptorSet();
     
     public static void main(String[] args) throws Exception
     {
@@ -34,90 +36,43 @@ public class AirfieldBuilderWesternFront
         jsonConverter.getAirfieldNames("WesternFront");
     }
 
-    private void getAirfieldNames (String mapName) throws Exception 
+    public void getAirfieldNames (String mapName) throws Exception 
     {
-        String filename = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\WesternFrontAirfields.Mission";     
-        readRunwayLocations(filename);
+        String filename = "D:\\PWCG\\WesternFrontData\\WesternFroneMapFC3Airfields.Mission";     
+        readAirfields(filename);
+        readRunwayLocations(filename);        
         buildBoSAirfields();
         writeAirfields(mapName);
     }
+    
 
-    private void buildBoSAirfields() throws Exception
+    private void readAirfields (String filename) throws PWCGException 
     {
-        for (String airfieldName : airfieldLocations.keySet())
-        {
-            if (!airfieldRunways.containsKey(airfieldName))
-            {
-                throw new Exception ("Airfield has no runway " + airfieldName);
-            }
-            List<Runway> runways = airfieldRunways.get(airfieldName);
-
-            AirfieldDescriptor airfield = new AirfieldDescriptor();
-            airfield.setName(airfieldName);
-            airfield.setPosition(runways.get(0).getStartPos());
-            airfield.setOrientation(new Orientation(runways.get(0).getHeading()));
-            airfield.setName(airfieldName);
-            airfield.setRunways(runways);
-            
-            airfields.put(airfieldName, airfield);
-        }
-    }
-
-    private void readRunwayLocations (String fileName) throws PWCGException 
-    {
-        int airfieldId = 1;
         try 
         {           
-            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            BufferedReader reader = new BufferedReader(new FileReader(filename));
             String line;
-            PWCGLocation runwayStart = null;
-            PWCGLocation runwayEnd = null;
-            int lineNumber = 0;
             while ((line = reader.readLine()) != null) 
             {
                 line = line.trim();
-                if (line.startsWith(DevIOConstants.PLANE))
+                if (line.startsWith(DevIOConstants.GROUP))
                 {
-                    PlaneMcu planeThatMarksRunway = PlaneIO.readBlock(reader);
-                    String markerPlaneName = planeThatMarksRunway.getScript().toLowerCase();
-                    if (markerPlaneName.contains("he111"))
+                    String groupName = GroupIO.readGroupName(reader);
+                    
+                    // Skip  outer group
+                    if (groupName.equalsIgnoreCase("Airfields"))
                     {
-                        if (runwayStart != null)
-                        {
-                            throw new PWCGException("Start misplaced at " + lineNumber);
-                        }
-                        runwayStart = getPositionFromPlane(planeThatMarksRunway);
+                        continue;
                     }
-                    else if (markerPlaneName.contains("fw190"))
-                    {
-                        if (runwayEnd != null)
-                        {
-                            throw new PWCGException("End misplaced at " + lineNumber);
-                        }
-                        runwayEnd = getPositionFromPlane(planeThatMarksRunway);
-                    }
-                    else
-                    {
-                        throw new PWCGException("Unexpected plane marker at " + lineNumber);
-                    }
+                    
+                    Block block = GroupIO.readBlock(reader);
+                    PWCGLocation airfieldBlockLocation = new PWCGLocation();
+                    airfieldBlockLocation.setName(groupName);
+                    airfieldBlockLocation.setPosition(block.getPosition());
+                    airfieldLocations.put(groupName, airfieldBlockLocation);
+                    
+                    System.out.println("Add airfield " + groupName);
                 }
-
-                if (runwayStart != null && runwayEnd != null)
-                {
-                    PWCGLocation airfieldLocation = new PWCGLocation();
-                    airfieldLocation.setName("WesternFrontAirfield" + airfieldId);
-                    airfieldLocation.setPosition(runwayStart.getPosition());
-                    double angle = MathUtils.calcAngle(runwayStart.getPosition(), runwayEnd.getPosition());
-                    Orientation orientation = new Orientation(angle);
-                    airfieldLocation.setOrientation(orientation);
-                    airfieldLocations.put(airfieldLocation.getName(), airfieldLocation);
-                    ++airfieldId;
-
-                    findAirfieldForRunway(runwayStart, runwayEnd);
-                    runwayStart = null;
-                    runwayEnd = null;
-                }
-                ++lineNumber;
             }
             
             reader.close();
@@ -129,44 +84,119 @@ public class AirfieldBuilderWesternFront
         }
     }
 
-    private PWCGLocation getPositionFromPlane(PlaneMcu planeThatMarksRunway)
+    private void readRunwayLocations (String fileName) throws PWCGException 
     {
-        PWCGLocation runwayStart;
-        runwayStart = new PWCGLocation();
-        runwayStart.setPosition(planeThatMarksRunway.getPosition().copy());
-        runwayStart.setOrientation(planeThatMarksRunway.getOrientation().copy());
-        return runwayStart;
+        try 
+        {           
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            String line;
+            while ((line = reader.readLine()) != null) 
+            {
+                line = line.trim();
+                PlaneMcu planeThatMarksRunway = null;
+                if (line.startsWith(DevIOConstants.PLANE))
+                {
+                    planeThatMarksRunway = PlaneIO.readBlock(reader);
+                }
+
+                if (planeThatMarksRunway != null)
+                {
+                    Coordinate runwayStart = planeThatMarksRunway.getPosition();
+                    Double runwayOrientation = planeThatMarksRunway.getOrientation().getyOri();
+                    int runwayOrientationInt = (int) Math.round(runwayOrientation);
+                    runwayOrientation = Double.valueOf(runwayOrientationInt);
+                    
+                    Coordinate endPosition = MathUtils.calcNextCoord(
+                            FrontMapIdentifier.WESTERN_FRONT_MAP, runwayStart, runwayOrientation, 200.0);
+
+                    Runway runway = new Runway();
+                    runway.setStartPos(runwayStart);
+                    runway.setEndPos(endPosition);
+                    runway.setTaxiToStart(new ArrayList<>());
+                    runway.setTaxiFromEnd(new ArrayList<>());
+                    
+                    double parkingPositionAngle = MathUtils.adjustAngle(runwayOrientation, 270);
+                    Coordinate parkingPosition = MathUtils.calcNextCoord(
+                            FrontMapIdentifier.WESTERN_FRONT_MAP, runwayStart, parkingPositionAngle, 40.0);
+                    PWCGLocation runwayParking = new PWCGLocation();
+                    runwayParking.setName("Parking");
+                    runwayParking.setOrientation(new Orientation(parkingPositionAngle));
+                    runwayParking.setPosition(parkingPosition);
+
+                    runway.setParkingLocation(runwayParking);
+                    
+                    airfieldRunways.add(runway);
+
+                    System.out.println("Add runway at " + runway.getStartPos().toString());
+                }
+            }
+            
+            reader.close();
+        } 
+        catch (Exception e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGException(e.getMessage());
+        }
+    }
+
+    private void buildBoSAirfields() throws Exception
+    {
+        for (String airfieldName : airfieldLocations.keySet())
+        {
+            Runway runway = findRunwayForAirfield(airfieldName);
+            if (runway == null)
+            {
+                throw new Exception ("Airfield has no runway " + airfieldName);
+            }
+            
+            List<Runway> runways = new ArrayList<>();
+            runways.add(runway);
+
+            AirfieldDescriptor airfield = new AirfieldDescriptor();
+            airfield.setName(airfieldName);
+            airfield.setPosition(runways.get(0).getStartPos());
+            
+            Double runwayOrientation = runways.get(0).getHeading();
+            int runwayOrientationInt = (int) Math.round(runwayOrientation);
+            runwayOrientation = Double.valueOf(runwayOrientationInt);
+
+            airfield.setOrientation(new Orientation(runwayOrientation));
+            airfield.setRunways(runways);
+            
+            airfields.put(airfieldName, airfield);
+        }
     }
     
-    private void findAirfieldForRunway(PWCGLocation runwayStart, PWCGLocation runwayEnd)
+    private Runway findRunwayForAirfield(String airfieldName) throws PWCGException
     {
+        PWCGLocation airfieldLocation = airfieldLocations.get(airfieldName);
+        
         double closestDistance = 1000000000.0;
-        PWCGLocation closestAirfield = null;
-        for (PWCGLocation airfieldLocation : airfieldLocations.values())
+        Runway closestRunway = null;
+        for (Runway runway : airfieldRunways)
         {
-            double distance = MathUtils.calcDist(runwayStart.getPosition(), airfieldLocation.getPosition());
+            double distance = MathUtils.calcDist(airfieldLocation.getPosition(), runway.getStartPos());
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                closestAirfield = airfieldLocation;
+                closestRunway = runway;
             }
         }
         
-        if (!airfieldRunways.containsKey(closestAirfield.getName()))
+        if (closestDistance > 5000.0)
         {
-            List<Runway> airfieldRunwayList = new ArrayList<>();
-            airfieldRunways.put(closestAirfield.getName(), airfieldRunwayList);
+            throw new PWCGException("No runway found for airfield " + airfieldName);
         }
+
+        System.out.println("Found runway for " + airfieldName + " at distance " + closestDistance);
         
-        List<Runway> airfieldRunwayList = airfieldRunways.get(closestAirfield.getName());
-        Runway runway = new Runway();
-        runway.setStartPos(runwayStart.getPosition().copy());
-        runway.setEndPos(runwayEnd.getPosition().copy());
-        airfieldRunwayList.add(runway);
+        return closestRunway;
     }
 
     private void writeAirfields(String mapName) throws PWCGException
     {
+        AirfieldDescriptorSet airfieldDescriptorSet = new AirfieldDescriptorSet();
         List<AirfieldDescriptor> locations = new ArrayList<>(airfields.values());
         airfieldDescriptorSet = new AirfieldDescriptorSet();
         airfieldDescriptorSet.setLocationSetName("Airfields");

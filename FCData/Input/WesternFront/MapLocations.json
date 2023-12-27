@@ -54,6 +54,19 @@
       }
     },
     {
+      "name": "Ailly-sur-Noye",
+      "position": {
+        "xPos": 183065.0,
+        "yPos": 0.0,
+        "zPos": 61718.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 112.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Airaines",
       "position": {
         "xPos": 206435.0,
@@ -110,7 +123,7 @@
       "position": {
         "xPos": 129508.0,
         "yPos": 0.0,
-        "zPos": 299144.0
+        "zPos": 299145.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -123,11 +136,24 @@
       "position": {
         "xPos": 197853.0,
         "yPos": 0.0,
-        "zPos": 56775.0
+        "zPos": 56776.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 290.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Amifontaine",
+      "position": {
+        "xPos": 151952.0,
+        "yPos": 0.0,
+        "zPos": 173433.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 53.0,
         "zOri": 0.0
       }
     },
@@ -141,6 +167,32 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 89.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Anglure",
+      "position": {
+        "xPos": 52936.0,
+        "yPos": 0.0,
+        "zPos": 165753.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 66.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Arcy-Ste-Restitue",
+      "position": {
+        "xPos": 126475.0,
+        "yPos": 0.0,
+        "zPos": 141014.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 65.0,
         "zOri": 0.0
       }
     },
@@ -171,6 +223,19 @@
       }
     },
     {
+      "name": "Asfeld",
+      "position": {
+        "xPos": 150974.0,
+        "yPos": 0.0,
+        "zPos": 188126.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 199.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Assevilers",
       "position": {
         "xPos": 200576.0,
@@ -180,6 +245,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 25.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Attigny",
+      "position": {
+        "xPos": 151591.0,
+        "yPos": 0.0,
+        "zPos": 220880.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 290.0,
         "zOri": 0.0
       }
     },
@@ -201,7 +279,7 @@
       "position": {
         "xPos": 191946.0,
         "yPos": 0.0,
-        "zPos": 75332.0
+        "zPos": 75333.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -210,15 +288,54 @@
       }
     },
     {
+      "name": "Auberive",
+      "position": {
+        "xPos": 120325.0,
+        "yPos": 0.0,
+        "zPos": 210062.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 87.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Auchel",
       "position": {
         "xPos": 267962.0,
         "yPos": 0.0,
-        "zPos": 69687.0
+        "zPos": 69688.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 315.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Aussonvillers",
+      "position": {
+        "xPos": 162803.0,
+        "yPos": 0.0,
+        "zPos": 62151.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 241.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Autremencourt",
+      "position": {
+        "xPos": 177506.0,
+        "yPos": 0.0,
+        "zPos": 165975.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
         "zOri": 0.0
       }
     },
@@ -249,6 +366,19 @@
       }
     },
     {
+      "name": "Avrechy",
+      "position": {
+        "xPos": 148618.0,
+        "yPos": 0.0,
+        "zPos": 64829.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 280.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Awoingt",
       "position": {
         "xPos": 226920.0,
@@ -266,11 +396,24 @@
       "position": {
         "xPos": 292396.0,
         "yPos": 0.0,
-        "zPos": 89183.0
+        "zPos": 89184.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Balatre",
+      "position": {
+        "xPos": 177409.0,
+        "yPos": 0.0,
+        "zPos": 97023.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 338.0,
         "zOri": 0.0
       }
     },
@@ -292,7 +435,7 @@
       "position": {
         "xPos": 221476.0,
         "yPos": 0.0,
-        "zPos": 96878.0
+        "zPos": 96879.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -331,7 +474,7 @@
       "position": {
         "xPos": 80832.0,
         "yPos": 0.0,
-        "zPos": 281126.0
+        "zPos": 281127.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -344,11 +487,37 @@
       "position": {
         "xPos": 307762.0,
         "yPos": 0.0,
-        "zPos": 130630.0
+        "zPos": 130631.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 189.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Baye",
+      "position": {
+        "xPos": 83365.0,
+        "yPos": 0.0,
+        "zPos": 162302.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 288.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bazancourt",
+      "position": {
+        "xPos": 139476.0,
+        "yPos": 0.0,
+        "zPos": 192340.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.0,
         "zOri": 0.0
       }
     },
@@ -392,6 +561,19 @@
       }
     },
     {
+      "name": "Beauvais",
+      "position": {
+        "xPos": 148209.0,
+        "yPos": 0.0,
+        "zPos": 40681.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 32.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Beauvalt",
       "position": {
         "xPos": 221085.0,
@@ -431,6 +613,19 @@
       }
     },
     {
+      "name": "Beine",
+      "position": {
+        "xPos": 124672.0,
+        "yPos": 0.0,
+        "zPos": 195453.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 293.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Bellevue Ferme",
       "position": {
         "xPos": 129788.0,
@@ -461,11 +656,24 @@
       "position": {
         "xPos": 82479.0,
         "yPos": 0.0,
-        "zPos": 273001.0
+        "zPos": 273002.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 259.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bergeres-les-Vertus",
+      "position": {
+        "xPos": 85124.0,
+        "yPos": 0.0,
+        "zPos": 180004.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 72.0,
         "zOri": 0.0
       }
     },
@@ -509,11 +717,50 @@
       }
     },
     {
+      "name": "Besme",
+      "position": {
+        "xPos": 159041.0,
+        "yPos": 0.0,
+        "zPos": 118661.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 291.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Besny-et-Loisy",
+      "position": {
+        "xPos": 164811.0,
+        "yPos": 0.0,
+        "zPos": 149184.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Betheniville",
+      "position": {
+        "xPos": 131265.0,
+        "yPos": 0.0,
+        "zPos": 205863.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 30.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Bethune",
       "position": {
         "xPos": 268461.0,
         "yPos": 0.0,
-        "zPos": 82776.0
+        "zPos": 82777.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -526,11 +773,24 @@
       "position": {
         "xPos": 223811.0,
         "yPos": 0.0,
-        "zPos": 99785.0
+        "zPos": 99786.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Beugneux",
+      "position": {
+        "xPos": 124741.0,
+        "yPos": 0.0,
+        "zPos": 136930.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 319.0,
         "zOri": 0.0
       }
     },
@@ -544,6 +804,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bezu-le-Guery",
+      "position": {
+        "xPos": 101437.0,
+        "yPos": 0.0,
+        "zPos": 123199.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 257.0,
         "zOri": 0.0
       }
     },
@@ -574,6 +847,45 @@
       }
     },
     {
+      "name": "Blaise",
+      "position": {
+        "xPos": 62091.0,
+        "yPos": 0.0,
+        "zPos": 222133.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 86.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Blandy",
+      "position": {
+        "xPos": 50511.0,
+        "yPos": 0.0,
+        "zPos": 89182.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 294.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Blerancourt",
+      "position": {
+        "xPos": 156306.0,
+        "yPos": 0.0,
+        "zPos": 118049.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 51.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Bois-Bernard",
       "position": {
         "xPos": 251954.0,
@@ -596,6 +908,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 122.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Boncourt",
+      "position": {
+        "xPos": 166784.0,
+        "yPos": 0.0,
+        "zPos": 174469.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 201.0,
         "zOri": 0.0
       }
     },
@@ -630,11 +955,24 @@
       "position": {
         "xPos": 230087.0,
         "yPos": 0.0,
-        "zPos": 116004.0
+        "zPos": 116005.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 285.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bouvancourt",
+      "position": {
+        "xPos": 135072.0,
+        "yPos": 0.0,
+        "zPos": 167013.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.0,
         "zOri": 0.0
       }
     },
@@ -652,11 +990,24 @@
       }
     },
     {
+      "name": "Bouy",
+      "position": {
+        "xPos": 108092.0,
+        "yPos": 0.0,
+        "zPos": 204662.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 321.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Boves",
       "position": {
         "xPos": 194189.0,
         "yPos": 0.0,
-        "zPos": 63845.0
+        "zPos": 63846.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -691,6 +1042,19 @@
       }
     },
     {
+      "name": "Braine",
+      "position": {
+        "xPos": 136814.0,
+        "yPos": 0.0,
+        "zPos": 145393.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 336.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Braizieux",
       "position": {
         "xPos": 209643.0,
@@ -700,6 +1064,45 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 101.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Brecy",
+      "position": {
+        "xPos": 115247.0,
+        "yPos": 0.0,
+        "zPos": 136881.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 62.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Breteuil",
+      "position": {
+        "xPos": 170329.0,
+        "yPos": 0.0,
+        "zPos": 56000.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 27.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Breuil le Sec",
+      "position": {
+        "xPos": 141130.0,
+        "yPos": 0.0,
+        "zPos": 67467.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
         "zOri": 0.0
       }
     },
@@ -734,7 +1137,7 @@
       "position": {
         "xPos": 136609.0,
         "yPos": 0.0,
-        "zPos": 264914.0
+        "zPos": 264915.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -773,7 +1176,7 @@
       "position": {
         "xPos": 242353.0,
         "yPos": 0.0,
-        "zPos": 118823.0
+        "zPos": 118824.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -838,7 +1241,7 @@
       "position": {
         "xPos": 118223.0,
         "yPos": 0.0,
-        "zPos": 303653.0
+        "zPos": 303654.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -938,6 +1341,45 @@
       }
     },
     {
+      "name": "Cernon",
+      "position": {
+        "xPos": 80573.0,
+        "yPos": 0.0,
+        "zPos": 204346.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 94.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chalons sur Marne",
+      "position": {
+        "xPos": 93163.0,
+        "yPos": 0.0,
+        "zPos": 206320.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 143.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chalons sur Vesle",
+      "position": {
+        "xPos": 131081.0,
+        "yPos": 0.0,
+        "zPos": 172880.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 299.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Chambley",
       "position": {
         "xPos": 102929.0,
@@ -947,6 +1389,71 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 94.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chambry",
+      "position": {
+        "xPos": 164008.0,
+        "yPos": 0.0,
+        "zPos": 154093.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 124.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chamery",
+      "position": {
+        "xPos": 118537.0,
+        "yPos": 0.0,
+        "zPos": 178054.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 100.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Champaubert",
+      "position": {
+        "xPos": 85057.0,
+        "yPos": 0.0,
+        "zPos": 162951.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 290.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Champcouelle",
+      "position": {
+        "xPos": 61918.0,
+        "yPos": 0.0,
+        "zPos": 137270.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Champien",
+      "position": {
+        "xPos": 176188.0,
+        "yPos": 0.0,
+        "zPos": 98140.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 145.0,
         "zOri": 0.0
       }
     },
@@ -977,6 +1484,19 @@
       }
     },
     {
+      "name": "Charmes",
+      "position": {
+        "xPos": 172500.0,
+        "yPos": 0.0,
+        "zPos": 134981.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 260.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Chassonge Ferme",
       "position": {
         "xPos": 138226.0,
@@ -986,6 +1506,45 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 300.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chateau-Porcien",
+      "position": {
+        "xPos": 157682.0,
+        "yPos": 0.0,
+        "zPos": 197156.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 78.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chateau-Thierry",
+      "position": {
+        "xPos": 103810.0,
+        "yPos": 0.0,
+        "zPos": 135844.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 254.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chauconin",
+      "position": {
+        "xPos": 96772.0,
+        "yPos": 0.0,
+        "zPos": 95325.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 322.0,
         "zOri": 0.0
       }
     },
@@ -1016,11 +1575,24 @@
       }
     },
     {
+      "name": "Chery-les-Pouilly",
+      "position": {
+        "xPos": 171975.0,
+        "yPos": 0.0,
+        "zPos": 150353.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 69.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Chocques",
       "position": {
         "xPos": 270293.0,
         "yPos": 0.0,
-        "zPos": 78917.0
+        "zPos": 78918.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1042,6 +1614,19 @@
       }
     },
     {
+      "name": "Clermont",
+      "position": {
+        "xPos": 141933.0,
+        "yPos": 0.0,
+        "zPos": 64112.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 221.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Clermont en Argonne",
       "position": {
         "xPos": 110597.0,
@@ -1051,6 +1636,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 141.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Coincy",
+      "position": {
+        "xPos": 116404.0,
+        "yPos": 0.0,
+        "zPos": 136520.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 156.0,
         "zOri": 0.0
       }
     },
@@ -1072,11 +1670,37 @@
       "position": {
         "xPos": 72494.0,
         "yPos": 0.0,
-        "zPos": 295848.0
+        "zPos": 295849.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 350.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Compiegne",
+      "position": {
+        "xPos": 144981.0,
+        "yPos": 0.0,
+        "zPos": 94164.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 57.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Conde-sur-Marne",
+      "position": {
+        "xPos": 103647.0,
+        "yPos": 0.0,
+        "zPos": 191931.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 24.0,
         "zOri": 0.0
       }
     },
@@ -1107,11 +1731,37 @@
       }
     },
     {
+      "name": "Corbeny",
+      "position": {
+        "xPos": 150147.0,
+        "yPos": 0.0,
+        "zPos": 166411.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 50.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Corbeville",
+      "position": {
+        "xPos": 81213.0,
+        "yPos": 0.0,
+        "zPos": 107794.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Corbie",
       "position": {
         "xPos": 200153.0,
         "yPos": 0.0,
-        "zPos": 72795.0
+        "zPos": 72796.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1120,11 +1770,50 @@
       }
     },
     {
+      "name": "Coucy-les-Eppes",
+      "position": {
+        "xPos": 160111.0,
+        "yPos": 0.0,
+        "zPos": 162415.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 194.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Coupeville",
+      "position": {
+        "xPos": 88288.0,
+        "yPos": 0.0,
+        "zPos": 224918.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 146.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Coupru",
+      "position": {
+        "xPos": 102809.0,
+        "yPos": 0.0,
+        "zPos": 126689.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Courcelles-les-Lens",
       "position": {
         "xPos": 254562.0,
         "yPos": 0.0,
-        "zPos": 110800.0
+        "zPos": 110801.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1133,15 +1822,93 @@
       }
     },
     {
+      "name": "Courcy",
+      "position": {
+        "xPos": 133529.0,
+        "yPos": 0.0,
+        "zPos": 180176.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 171.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Courrieres",
       "position": {
         "xPos": 260627.0,
         "yPos": 0.0,
-        "zPos": 104493.0
+        "zPos": 104494.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 235.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Courtisols",
+      "position": {
+        "xPos": 96945.0,
+        "yPos": 0.0,
+        "zPos": 216005.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 181.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Cramaille",
+      "position": {
+        "xPos": 122745.0,
+        "yPos": 0.0,
+        "zPos": 139843.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 33.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Crecy-La-Chapelle",
+      "position": {
+        "xPos": 83418.0,
+        "yPos": 0.0,
+        "zPos": 99577.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 179.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Creil",
+      "position": {
+        "xPos": 128074.0,
+        "yPos": 0.0,
+        "zPos": 68705.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 243.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Crepy-en-Valois",
+      "position": {
+        "xPos": 124159.0,
+        "yPos": 0.0,
+        "zPos": 98103.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 121.0,
         "zOri": 0.0
       }
     },
@@ -1163,7 +1930,7 @@
       "position": {
         "xPos": 304685.0,
         "yPos": 0.0,
-        "zPos": 127808.0
+        "zPos": 127809.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1172,11 +1939,24 @@
       }
     },
     {
+      "name": "Cuirieux",
+      "position": {
+        "xPos": 174576.0,
+        "yPos": 0.0,
+        "zPos": 166391.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 220.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Cysoing",
       "position": {
         "xPos": 273163.0,
         "yPos": 0.0,
-        "zPos": 123727.0
+        "zPos": 123728.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1202,7 +1982,7 @@
       "position": {
         "xPos": 88636.0,
         "yPos": 0.0,
-        "zPos": 353771.0
+        "zPos": 353772.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1224,11 +2004,24 @@
       }
     },
     {
+      "name": "Dizy-le-Gros",
+      "position": {
+        "xPos": 168169.0,
+        "yPos": 0.0,
+        "zPos": 180925.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 266.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Dombasle-en-Argonne",
       "position": {
         "xPos": 114698.0,
         "yPos": 0.0,
-        "zPos": 266114.0
+        "zPos": 266115.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1241,7 +2034,7 @@
       "position": {
         "xPos": 79593.0,
         "yPos": 0.0,
-        "zPos": 320841.0
+        "zPos": 320842.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1306,7 +2099,7 @@
       "position": {
         "xPos": 251929.0,
         "yPos": 0.0,
-        "zPos": 114042.0
+        "zPos": 114043.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1341,11 +2134,24 @@
       }
     },
     {
+      "name": "Dugny",
+      "position": {
+        "xPos": 95404.0,
+        "yPos": 0.0,
+        "zPos": 63670.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 121.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Dun-sur-Meuse",
       "position": {
         "xPos": 142587.0,
         "yPos": 0.0,
-        "zPos": 265465.0
+        "zPos": 265466.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1367,11 +2173,24 @@
       }
     },
     {
+      "name": "Ecuvilly",
+      "position": {
+        "xPos": 171418.0,
+        "yPos": 0.0,
+        "zPos": 100521.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 252.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Emerchicourt",
       "position": {
         "xPos": 244200.0,
         "yPos": 0.0,
-        "zPos": 125571.0
+        "zPos": 125572.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1384,11 +2203,24 @@
       "position": {
         "xPos": 192950.0,
         "yPos": 0.0,
-        "zPos": 106583.0
+        "zPos": 106584.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 69.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Epagny",
+      "position": {
+        "xPos": 150138.0,
+        "yPos": 0.0,
+        "zPos": 125339.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 121.0,
         "zOri": 0.0
       }
     },
@@ -1406,11 +2238,24 @@
       }
     },
     {
+      "name": "Epernay",
+      "position": {
+        "xPos": 103001.0,
+        "yPos": 0.0,
+        "zPos": 176421.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 326.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Epinoy",
       "position": {
         "xPos": 235962.0,
         "yPos": 0.0,
-        "zPos": 120106.0
+        "zPos": 120107.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1419,11 +2264,37 @@
       }
     },
     {
+      "name": "Eppeville",
+      "position": {
+        "xPos": 181115.0,
+        "yPos": 0.0,
+        "zPos": 112023.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 193.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ercheu",
+      "position": {
+        "xPos": 175967.0,
+        "yPos": 0.0,
+        "zPos": 102179.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 202.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Erchin",
       "position": {
         "xPos": 244693.0,
         "yPos": 0.0,
-        "zPos": 120418.0
+        "zPos": 120419.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1462,7 +2333,7 @@
       "position": {
         "xPos": 221433.0,
         "yPos": 0.0,
-        "zPos": 130111.0
+        "zPos": 130112.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1480,6 +2351,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Esquennoy",
+      "position": {
+        "xPos": 172647.0,
+        "yPos": 0.0,
+        "zPos": 54335.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 238.0,
         "zOri": 0.0
       }
     },
@@ -1523,6 +2407,19 @@
       }
     },
     {
+      "name": "Estrees-Saint-Denis",
+      "position": {
+        "xPos": 146691.0,
+        "yPos": 0.0,
+        "zPos": 80994.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 289.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Eswars",
       "position": {
         "xPos": 234000.0,
@@ -1540,7 +2437,7 @@
       "position": {
         "xPos": 122688.0,
         "yPos": 0.0,
-        "zPos": 298111.0
+        "zPos": 298112.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1579,11 +2476,37 @@
       "position": {
         "xPos": 209173.0,
         "yPos": 0.0,
-        "zPos": 155099.0
+        "zPos": 155100.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 350.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Fagnieres",
+      "position": {
+        "xPos": 93530.0,
+        "yPos": 0.0,
+        "zPos": 203081.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 162.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Faissault",
+      "position": {
+        "xPos": 165795.0,
+        "yPos": 0.0,
+        "zPos": 216010.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 177.0,
         "zOri": 0.0
       }
     },
@@ -1601,15 +2524,54 @@
       }
     },
     {
+      "name": "Fay St. Quentin",
+      "position": {
+        "xPos": 150136.0,
+        "yPos": 0.0,
+        "zPos": 52989.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 273.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Ferme",
       "position": {
         "xPos": 244708.0,
         "yPos": 0.0,
-        "zPos": 78326.0
+        "zPos": 78327.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 89.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ferrieres",
+      "position": {
+        "xPos": 164834.0,
+        "yPos": 0.0,
+        "zPos": 72163.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 207.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Festieux",
+      "position": {
+        "xPos": 156147.0,
+        "yPos": 0.0,
+        "zPos": 161780.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 239.0,
         "zOri": 0.0
       }
     },
@@ -1623,6 +2585,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 142.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Fismes",
+      "position": {
+        "xPos": 132732.0,
+        "yPos": 0.0,
+        "zPos": 156122.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 12.0,
         "zOri": 0.0
       }
     },
@@ -1670,7 +2645,7 @@
       "position": {
         "xPos": 175923.0,
         "yPos": 0.0,
-        "zPos": 274144.0
+        "zPos": 274145.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1683,7 +2658,7 @@
       "position": {
         "xPos": 227142.0,
         "yPos": 0.0,
-        "zPos": 81562.0
+        "zPos": 81563.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1709,7 +2684,7 @@
       "position": {
         "xPos": 196046.0,
         "yPos": 0.0,
-        "zPos": 138849.0
+        "zPos": 138850.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1735,7 +2710,7 @@
       "position": {
         "xPos": 200901.0,
         "yPos": 0.0,
-        "zPos": 134597.0
+        "zPos": 134598.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1796,6 +2771,19 @@
       }
     },
     {
+      "name": "Fouquerolles",
+      "position": {
+        "xPos": 150646.0,
+        "yPos": 0.0,
+        "zPos": 50329.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 342.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Frasnoy-le-Grand",
       "position": {
         "xPos": 204086.0,
@@ -1813,7 +2801,7 @@
       "position": {
         "xPos": 222321.0,
         "yPos": 0.0,
-        "zPos": 100121.0
+        "zPos": 100122.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1839,7 +2827,7 @@
       "position": {
         "xPos": 110535.0,
         "yPos": 0.0,
-        "zPos": 297915.0
+        "zPos": 297916.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1852,7 +2840,7 @@
       "position": {
         "xPos": 154378.0,
         "yPos": 0.0,
-        "zPos": 298482.0
+        "zPos": 298483.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1891,7 +2879,7 @@
       "position": {
         "xPos": 106207.0,
         "yPos": 0.0,
-        "zPos": 262264.0
+        "zPos": 262265.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1943,7 +2931,7 @@
       "position": {
         "xPos": 223003.0,
         "yPos": 0.0,
-        "zPos": 54341.0
+        "zPos": 54342.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1969,7 +2957,7 @@
       "position": {
         "xPos": 118826.0,
         "yPos": 0.0,
-        "zPos": 318526.0
+        "zPos": 318527.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -1995,7 +2983,7 @@
       "position": {
         "xPos": 93333.0,
         "yPos": 0.0,
-        "zPos": 244205.0
+        "zPos": 244206.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2017,6 +3005,19 @@
       }
     },
     {
+      "name": "Golancourt",
+      "position": {
+        "xPos": 176963.0,
+        "yPos": 0.0,
+        "zPos": 111877.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 101.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Gonnelieu",
       "position": {
         "xPos": 216004.0,
@@ -2026,6 +3027,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 243.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gourgancon",
+      "position": {
+        "xPos": 64321.0,
+        "yPos": 0.0,
+        "zPos": 180671.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 203.0,
         "zOri": 0.0
       }
     },
@@ -2073,7 +3087,7 @@
       "position": {
         "xPos": 136646.0,
         "yPos": 0.0,
-        "zPos": 240922.0
+        "zPos": 240923.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2095,15 +3109,67 @@
       }
     },
     {
-      "name": "Ground",
+      "name": "Grivesnes",
       "position": {
-        "xPos": 243262.0,
+        "xPos": 175767.0,
         "yPos": 0.0,
-        "zPos": 92215.0
+        "zPos": 69970.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 281.0,
+        "yOri": 241.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ground",
+      "position": {
+        "xPos": 241978.0,
+        "yPos": 0.0,
+        "zPos": 92563.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 320.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Guignicourt",
+      "position": {
+        "xPos": 146861.0,
+        "yPos": 0.0,
+        "zPos": 177132.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Guiscard",
+      "position": {
+        "xPos": 172201.0,
+        "yPos": 0.0,
+        "zPos": 111140.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 97.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Guise",
+      "position": {
+        "xPos": 198756.0,
+        "yPos": 0.0,
+        "zPos": 153163.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 157.0,
         "zOri": 0.0
       }
     },
@@ -2138,7 +3204,7 @@
       "position": {
         "xPos": 182166.0,
         "yPos": 0.0,
-        "zPos": 112425.0
+        "zPos": 112426.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2164,7 +3230,7 @@
       "position": {
         "xPos": 200031.0,
         "yPos": 0.0,
-        "zPos": 73565.0
+        "zPos": 73566.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2177,7 +3243,7 @@
       "position": {
         "xPos": 199659.0,
         "yPos": 0.0,
-        "zPos": 112259.0
+        "zPos": 112260.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2225,11 +3291,24 @@
       }
     },
     {
+      "name": "Hauvine",
+      "position": {
+        "xPos": 131669.0,
+        "yPos": 0.0,
+        "zPos": 208702.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 341.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Havrincourt",
       "position": {
         "xPos": 222338.0,
         "yPos": 0.0,
-        "zPos": 114146.0
+        "zPos": 114147.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2255,7 +3334,7 @@
       "position": {
         "xPos": 291036.0,
         "yPos": 0.0,
-        "zPos": 74840.0
+        "zPos": 74841.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2294,7 +3373,7 @@
       "position": {
         "xPos": 256503.0,
         "yPos": 0.0,
-        "zPos": 104881.0
+        "zPos": 104882.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2303,11 +3382,24 @@
       }
     },
     {
+      "name": "Herbisse",
+      "position": {
+        "xPos": 57830.0,
+        "yPos": 0.0,
+        "zPos": 187494.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 146.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Herlin-le-Sec",
       "position": {
         "xPos": 250494.0,
         "yPos": 0.0,
-        "zPos": 60381.0
+        "zPos": 60382.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2342,11 +3434,24 @@
       }
     },
     {
+      "name": "Hetomesnil",
+      "position": {
+        "xPos": 170345.0,
+        "yPos": 0.0,
+        "zPos": 36703.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 30.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Heudicourt",
       "position": {
         "xPos": 91968.0,
         "yPos": 0.0,
-        "zPos": 303773.0
+        "zPos": 303774.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2372,11 +3477,24 @@
       "position": {
         "xPos": 138532.0,
         "yPos": 0.0,
-        "zPos": 307215.0
+        "zPos": 307216.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 164.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hombleux",
+      "position": {
+        "xPos": 181374.0,
+        "yPos": 0.0,
+        "zPos": 106478.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
         "zOri": 0.0
       }
     },
@@ -2411,7 +3529,7 @@
       "position": {
         "xPos": 235583.0,
         "yPos": 0.0,
-        "zPos": 130648.0
+        "zPos": 130649.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2472,11 +3590,24 @@
       }
     },
     {
+      "name": "Juniville",
+      "position": {
+        "xPos": 143258.0,
+        "yPos": 0.0,
+        "zPos": 206833.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 195.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Kemmel",
       "position": {
         "xPos": 297624.0,
         "yPos": 0.0,
-        "zPos": 96348.0
+        "zPos": 96349.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2489,7 +3620,7 @@
       "position": {
         "xPos": 301123.0,
         "yPos": 0.0,
-        "zPos": 127438.0
+        "zPos": 127439.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2502,7 +3633,7 @@
       "position": {
         "xPos": 210045.0,
         "yPos": 0.0,
-        "zPos": 125436.0
+        "zPos": 125437.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2515,7 +3646,7 @@
       "position": {
         "xPos": 232638.0,
         "yPos": 0.0,
-        "zPos": 78119.0
+        "zPos": 78120.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2524,15 +3655,67 @@
       }
     },
     {
+      "name": "La Cense Des Pres",
+      "position": {
+        "xPos": 80186.0,
+        "yPos": 0.0,
+        "zPos": 224315.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 115.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "La Chesne",
       "position": {
         "xPos": 155924.0,
         "yPos": 0.0,
-        "zPos": 234929.0
+        "zPos": 234930.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 16.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "La Fere en Tardenois",
+      "position": {
+        "xPos": 120476.0,
+        "yPos": 0.0,
+        "zPos": 142933.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 113.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "La Ferte-Chevresis",
+      "position": {
+        "xPos": 181053.0,
+        "yPos": 0.0,
+        "zPos": 143959.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "La Ferte-Gaucher",
+      "position": {
+        "xPos": 74354.0,
+        "yPos": 0.0,
+        "zPos": 127914.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.0,
         "zOri": 0.0
       }
     },
@@ -2554,7 +3737,7 @@
       "position": {
         "xPos": 233346.0,
         "yPos": 0.0,
-        "zPos": 76167.0
+        "zPos": 76168.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2589,6 +3772,19 @@
       }
     },
     {
+      "name": "La Selve",
+      "position": {
+        "xPos": 161845.0,
+        "yPos": 0.0,
+        "zPos": 179253.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 7.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Labeuville",
       "position": {
         "xPos": 110395.0,
@@ -2619,11 +3815,37 @@
       "position": {
         "xPos": 104109.0,
         "yPos": 0.0,
-        "zPos": 312252.0
+        "zPos": 312253.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 52.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lagny-le-Sec",
+      "position": {
+        "xPos": 108363.0,
+        "yPos": 0.0,
+        "zPos": 87408.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 106.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Laon",
+      "position": {
+        "xPos": 161595.0,
+        "yPos": 0.0,
+        "zPos": 152346.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 357.0,
         "zOri": 0.0
       }
     },
@@ -2667,6 +3889,45 @@
       }
     },
     {
+      "name": "Le Mesnil-sur-Oger",
+      "position": {
+        "xPos": 92904.0,
+        "yPos": 0.0,
+        "zPos": 181279.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 155.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Plessis-Belleville",
+      "position": {
+        "xPos": 109565.0,
+        "yPos": 0.0,
+        "zPos": 88369.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 129.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Le Thour",
+      "position": {
+        "xPos": 158009.0,
+        "yPos": 0.0,
+        "zPos": 185885.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Lealvillers",
       "position": {
         "xPos": 217990.0,
@@ -2693,6 +3954,19 @@
       }
     },
     {
+      "name": "Leffincourt",
+      "position": {
+        "xPos": 141378.0,
+        "yPos": 0.0,
+        "zPos": 219236.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 203.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Lemmes",
       "position": {
         "xPos": 107468.0,
@@ -2710,7 +3984,7 @@
       "position": {
         "xPos": 257640.0,
         "yPos": 0.0,
-        "zPos": 95273.0
+        "zPos": 95274.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2732,6 +4006,19 @@
       }
     },
     {
+      "name": "Les Greves",
+      "position": {
+        "xPos": 49646.0,
+        "yPos": 0.0,
+        "zPos": 165661.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 3.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Les Islettes",
       "position": {
         "xPos": 111327.0,
@@ -2741,6 +4028,32 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 81.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lhery",
+      "position": {
+        "xPos": 121842.0,
+        "yPos": 0.0,
+        "zPos": 162227.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 285.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Liesse-Notre-Dame",
+      "position": {
+        "xPos": 165875.0,
+        "yPos": 0.0,
+        "zPos": 164727.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 87.0,
         "zOri": 0.0
       }
     },
@@ -2775,7 +4088,7 @@
       "position": {
         "xPos": 273412.0,
         "yPos": 0.0,
-        "zPos": 71280.0
+        "zPos": 71281.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2814,11 +4127,50 @@
       "position": {
         "xPos": 142469.0,
         "yPos": 0.0,
-        "zPos": 235915.0
+        "zPos": 235916.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 316.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lormaison",
+      "position": {
+        "xPos": 129366.0,
+        "yPos": 0.0,
+        "zPos": 42932.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 57.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Louan",
+      "position": {
+        "xPos": 57218.0,
+        "yPos": 0.0,
+        "zPos": 140662.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 281.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Louvres",
+      "position": {
+        "xPos": 105190.0,
+        "yPos": 0.0,
+        "zPos": 70846.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 299.0,
         "zOri": 0.0
       }
     },
@@ -2849,11 +4201,50 @@
       }
     },
     {
+      "name": "Mailly-le-Camp",
+      "position": {
+        "xPos": 62301.0,
+        "yPos": 0.0,
+        "zPos": 193927.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 211.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Maimbeville",
+      "position": {
+        "xPos": 145420.0,
+        "yPos": 0.0,
+        "zPos": 71749.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 160.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Maizy",
+      "position": {
+        "xPos": 139694.0,
+        "yPos": 0.0,
+        "zPos": 160231.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 43.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Malancourt",
       "position": {
         "xPos": 125574.0,
         "yPos": 0.0,
-        "zPos": 265202.0
+        "zPos": 265203.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -2879,11 +4270,24 @@
       "position": {
         "xPos": 56288.0,
         "yPos": 0.0,
-        "zPos": 344543.0
+        "zPos": 344544.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 303.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Marchais",
+      "position": {
+        "xPos": 163137.0,
+        "yPos": 0.0,
+        "zPos": 166268.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 66.0,
         "zOri": 0.0
       }
     },
@@ -2953,15 +4357,54 @@
       }
     },
     {
+      "name": "Marle",
+      "position": {
+        "xPos": 180511.0,
+        "yPos": 0.0,
+        "zPos": 163317.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 125.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Marly-la-Ville",
+      "position": {
+        "xPos": 107889.0,
+        "yPos": 0.0,
+        "zPos": 70002.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 243.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Mars-La-Tour",
       "position": {
         "xPos": 110398.0,
         "yPos": 0.0,
-        "zPos": 317266.0
+        "zPos": 317267.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 53.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Marson",
+      "position": {
+        "xPos": 88285.0,
+        "yPos": 0.0,
+        "zPos": 217173.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 359.0,
         "zOri": 0.0
       }
     },
@@ -2988,6 +4431,45 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 287.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Matougues",
+      "position": {
+        "xPos": 97759.0,
+        "yPos": 0.0,
+        "zPos": 196985.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 203.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mauperthuis",
+      "position": {
+        "xPos": 73126.0,
+        "yPos": 0.0,
+        "zPos": 109252.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 130.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Meaux",
+      "position": {
+        "xPos": 94643.0,
+        "yPos": 0.0,
+        "zPos": 97306.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
         "zOri": 0.0
       }
     },
@@ -3022,7 +4504,7 @@
       "position": {
         "xPos": 140090.0,
         "yPos": 0.0,
-        "zPos": 312247.0
+        "zPos": 312248.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3074,11 +4556,24 @@
       "position": {
         "xPos": 109366.0,
         "yPos": 0.0,
-        "zPos": 336359.0
+        "zPos": 336360.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 260.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mitry-Mory",
+      "position": {
+        "xPos": 97814.0,
+        "yPos": 0.0,
+        "zPos": 78135.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 123.0,
         "zOri": 0.0
       }
     },
@@ -3113,7 +4608,7 @@
       "position": {
         "xPos": 74653.0,
         "yPos": 0.0,
-        "zPos": 357372.0
+        "zPos": 357373.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3126,7 +4621,7 @@
       "position": {
         "xPos": 229879.0,
         "yPos": 0.0,
-        "zPos": 82978.0
+        "zPos": 82979.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3191,7 +4686,7 @@
       "position": {
         "xPos": 248535.0,
         "yPos": 0.0,
-        "zPos": 87213.0
+        "zPos": 87214.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3200,11 +4695,24 @@
       }
     },
     {
+      "name": "Mont-l*Eveque",
+      "position": {
+        "xPos": 120801.0,
+        "yPos": 0.0,
+        "zPos": 79589.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 8.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Montagne Fayel",
       "position": {
         "xPos": 202047.0,
         "yPos": 0.0,
-        "zPos": 34675.0
+        "zPos": 34676.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3226,6 +4734,32 @@
       }
     },
     {
+      "name": "Montcornet",
+      "position": {
+        "xPos": 175480.0,
+        "yPos": 0.0,
+        "zPos": 179903.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 336.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Montdidier",
+      "position": {
+        "xPos": 170891.0,
+        "yPos": 0.0,
+        "zPos": 75871.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 160.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Montfaucon-d Argonne",
       "position": {
         "xPos": 129666.0,
@@ -3239,11 +4773,37 @@
       }
     },
     {
+      "name": "Montgobert",
+      "position": {
+        "xPos": 134242.0,
+        "yPos": 0.0,
+        "zPos": 114246.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 186.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Montmirail",
+      "position": {
+        "xPos": 84304.0,
+        "yPos": 0.0,
+        "zPos": 146136.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 168.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Montoy",
       "position": {
         "xPos": 113531.0,
         "yPos": 0.0,
-        "zPos": 343368.0
+        "zPos": 343369.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3256,7 +4816,7 @@
       "position": {
         "xPos": 87250.0,
         "yPos": 0.0,
-        "zPos": 305440.0
+        "zPos": 305441.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3282,7 +4842,7 @@
       "position": {
         "xPos": 93440.0,
         "yPos": 0.0,
-        "zPos": 371670.0
+        "zPos": 371671.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3304,6 +4864,32 @@
       }
     },
     {
+      "name": "Mourmelon-le-grand",
+      "position": {
+        "xPos": 113489.0,
+        "yPos": 0.0,
+        "zPos": 206031.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 171.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mourmelon-le-petit",
+      "position": {
+        "xPos": 112873.0,
+        "yPos": 0.0,
+        "zPos": 201798.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 226.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Mouzon",
       "position": {
         "xPos": 166676.0,
@@ -3313,6 +4899,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 35.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Muizon",
+      "position": {
+        "xPos": 129177.0,
+        "yPos": 0.0,
+        "zPos": 171103.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 343.0,
         "zOri": 0.0
       }
     },
@@ -3330,11 +4929,24 @@
       }
     },
     {
+      "name": "Nanteuil-le-Haudouin",
+      "position": {
+        "xPos": 115409.0,
+        "yPos": 0.0,
+        "zPos": 94182.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 357.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Nantillois",
       "position": {
         "xPos": 132007.0,
         "yPos": 0.0,
-        "zPos": 262309.0
+        "zPos": 262310.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3347,11 +4959,37 @@
       "position": {
         "xPos": 183825.0,
         "yPos": 0.0,
-        "zPos": 100505.0
+        "zPos": 100506.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 295.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Nesles-la-Montagne",
+      "position": {
+        "xPos": 100259.0,
+        "yPos": 0.0,
+        "zPos": 138228.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 292.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Neuflize",
+      "position": {
+        "xPos": 144301.0,
+        "yPos": 0.0,
+        "zPos": 201683.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 5.0,
         "zOri": 0.0
       }
     },
@@ -3369,11 +5007,24 @@
       }
     },
     {
+      "name": "Nizy-le-Comte",
+      "position": {
+        "xPos": 161230.0,
+        "yPos": 0.0,
+        "zPos": 183139.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 96.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Noeux-les-Mines",
       "position": {
         "xPos": 263140.0,
         "yPos": 0.0,
-        "zPos": 84168.0
+        "zPos": 84169.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3425,7 +5076,7 @@
       "position": {
         "xPos": 53962.0,
         "yPos": 0.0,
-        "zPos": 323230.0
+        "zPos": 323231.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3438,7 +5089,7 @@
       "position": {
         "xPos": 262170.0,
         "yPos": 0.0,
-        "zPos": 125152.0
+        "zPos": 125153.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3451,7 +5102,7 @@
       "position": {
         "xPos": 191863.0,
         "yPos": 0.0,
-        "zPos": 143144.0
+        "zPos": 143145.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3529,7 +5180,7 @@
       "position": {
         "xPos": 202661.0,
         "yPos": 0.0,
-        "zPos": 103207.0
+        "zPos": 103208.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3577,6 +5228,19 @@
       }
     },
     {
+      "name": "Pierre Morains",
+      "position": {
+        "xPos": 80700.0,
+        "yPos": 0.0,
+        "zPos": 181017.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 292.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Pierrefitte-sur-Aire",
       "position": {
         "xPos": 87393.0,
@@ -3590,11 +5254,37 @@
       }
     },
     {
+      "name": "Pierrefonds",
+      "position": {
+        "xPos": 137977.0,
+        "yPos": 0.0,
+        "zPos": 106378.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 240.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Pomacle",
+      "position": {
+        "xPos": 137839.0,
+        "yPos": 0.0,
+        "zPos": 191260.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 296.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Pontru",
       "position": {
         "xPos": 199821.0,
         "yPos": 0.0,
-        "zPos": 123374.0
+        "zPos": 123375.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3620,7 +5310,7 @@
       "position": {
         "xPos": 94012.0,
         "yPos": 0.0,
-        "zPos": 262978.0
+        "zPos": 262979.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3633,11 +5323,24 @@
       "position": {
         "xPos": 229961.0,
         "yPos": 0.0,
-        "zPos": 108062.0
+        "zPos": 108063.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 122.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Prosnes",
+      "position": {
+        "xPos": 120098.0,
+        "yPos": 0.0,
+        "zPos": 200125.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 303.0,
         "zOri": 0.0
       }
     },
@@ -3681,6 +5384,19 @@
       }
     },
     {
+      "name": "Quinquempoix",
+      "position": {
+        "xPos": 160474.0,
+        "yPos": 0.0,
+        "zPos": 64843.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 271.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Rancourt",
       "position": {
         "xPos": 79490.0,
@@ -3694,15 +5410,41 @@
       }
     },
     {
+      "name": "Raray",
+      "position": {
+        "xPos": 127538.0,
+        "yPos": 0.0,
+        "zPos": 85815.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 178.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Raucourt",
       "position": {
         "xPos": 93194.0,
         "yPos": 0.0,
-        "zPos": 340827.0
+        "zPos": 340828.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 91.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ravenel",
+      "position": {
+        "xPos": 155977.0,
+        "yPos": 0.0,
+        "zPos": 70865.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 291.0,
         "zOri": 0.0
       }
     },
@@ -3720,11 +5462,37 @@
       }
     },
     {
+      "name": "Reims",
+      "position": {
+        "xPos": 126886.0,
+        "yPos": 0.0,
+        "zPos": 181544.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 240.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Remaucourt",
+      "position": {
+        "xPos": 165755.0,
+        "yPos": 0.0,
+        "zPos": 195780.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 241.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Rembercourt",
       "position": {
         "xPos": 90660.0,
         "yPos": 0.0,
-        "zPos": 265293.0
+        "zPos": 265294.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3759,6 +5527,58 @@
       }
     },
     {
+      "name": "Ressons-l*Abbaye",
+      "position": {
+        "xPos": 133272.0,
+        "yPos": 0.0,
+        "zPos": 40627.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 86.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ressons-sur-Matz",
+      "position": {
+        "xPos": 159103.0,
+        "yPos": 0.0,
+        "zPos": 88400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rethel",
+      "position": {
+        "xPos": 155443.0,
+        "yPos": 0.0,
+        "zPos": 205796.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ribecourt",
+      "position": {
+        "xPos": 155059.0,
+        "yPos": 0.0,
+        "zPos": 101125.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 319.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Riencourt",
       "position": {
         "xPos": 232176.0,
@@ -3785,11 +5605,24 @@
       }
     },
     {
+      "name": "Rocourt-St.-Martin",
+      "position": {
+        "xPos": 115427.0,
+        "yPos": 0.0,
+        "zPos": 134923.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 108.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Roisel",
       "position": {
         "xPos": 204133.0,
         "yPos": 0.0,
-        "zPos": 114889.0
+        "zPos": 114890.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3798,11 +5631,37 @@
       }
     },
     {
+      "name": "Roissy",
+      "position": {
+        "xPos": 99738.0,
+        "yPos": 0.0,
+        "zPos": 71453.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 110.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Romain",
+      "position": {
+        "xPos": 135402.0,
+        "yPos": 0.0,
+        "zPos": 162725.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 164.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Rombas",
       "position": {
         "xPos": 128239.0,
         "yPos": 0.0,
-        "zPos": 331339.0
+        "zPos": 331340.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3841,7 +5700,7 @@
       "position": {
         "xPos": 188508.0,
         "yPos": 0.0,
-        "zPos": 86727.0
+        "zPos": 86728.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3850,11 +5709,24 @@
       }
     },
     {
+      "name": "Rosnay",
+      "position": {
+        "xPos": 127274.0,
+        "yPos": 0.0,
+        "zPos": 169640.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 87.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Roubaix",
       "position": {
         "xPos": 288044.0,
         "yPos": 0.0,
-        "zPos": 121117.0
+        "zPos": 121118.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3880,11 +5752,37 @@
       "position": {
         "xPos": 188741.0,
         "yPos": 0.0,
-        "zPos": 120389.0
+        "zPos": 120390.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 233.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Roye",
+      "position": {
+        "xPos": 176984.0,
+        "yPos": 0.0,
+        "zPos": 92326.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rozoy-sur-Serre",
+      "position": {
+        "xPos": 177212.0,
+        "yPos": 0.0,
+        "zPos": 188456.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 145.0,
         "zOri": 0.0
       }
     },
@@ -3915,11 +5813,24 @@
       }
     },
     {
+      "name": "Sacy le Grand",
+      "position": {
+        "xPos": 138765.0,
+        "yPos": 0.0,
+        "zPos": 74335.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 175.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Sailly",
       "position": {
         "xPos": 242065.0,
         "yPos": 0.0,
-        "zPos": 106726.0
+        "zPos": 106727.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3958,7 +5869,7 @@
       "position": {
         "xPos": 58650.0,
         "yPos": 0.0,
-        "zPos": 249173.0
+        "zPos": 249174.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -3980,11 +5891,50 @@
       }
     },
     {
+      "name": "Saint-Hilaire-Le-Grand",
+      "position": {
+        "xPos": 117907.0,
+        "yPos": 0.0,
+        "zPos": 212734.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 193.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Hilaire-le-Petite",
+      "position": {
+        "xPos": 127927.0,
+        "yPos": 0.0,
+        "zPos": 207877.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 251.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Saint-Just-en-Chaussee",
+      "position": {
+        "xPos": 155307.0,
+        "yPos": 0.0,
+        "zPos": 66001.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 236.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Saint-Leger",
       "position": {
         "xPos": 228550.0,
         "yPos": 0.0,
-        "zPos": 96385.0
+        "zPos": 96386.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4006,11 +5956,24 @@
       }
     },
     {
+      "name": "Saint-Remy-sur-Bussy",
+      "position": {
+        "xPos": 104968.0,
+        "yPos": 0.0,
+        "zPos": 221582.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 359.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Sainte-Menehould",
       "position": {
         "xPos": 109102.0,
         "yPos": 0.0,
-        "zPos": 244945.0
+        "zPos": 244946.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4019,11 +5982,24 @@
       }
     },
     {
+      "name": "Saints",
+      "position": {
+        "xPos": 72316.0,
+        "yPos": 0.0,
+        "zPos": 110055.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 116.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Sampigny",
       "position": {
         "xPos": 79903.0,
         "yPos": 0.0,
-        "zPos": 289894.0
+        "zPos": 289895.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4045,6 +6021,19 @@
       }
     },
     {
+      "name": "Saponay",
+      "position": {
+        "xPos": 121971.0,
+        "yPos": 0.0,
+        "zPos": 141549.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 173.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Saulty",
       "position": {
         "xPos": 234437.0,
@@ -4062,7 +6051,7 @@
       "position": {
         "xPos": 249371.0,
         "yPos": 0.0,
-        "zPos": 76591.0
+        "zPos": 76592.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4101,7 +6090,7 @@
       "position": {
         "xPos": 176439.0,
         "yPos": 0.0,
-        "zPos": 247847.0
+        "zPos": 247848.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4119,6 +6108,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 252.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Senlis",
+      "position": {
+        "xPos": 122080.0,
+        "yPos": 0.0,
+        "zPos": 76431.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 134.0,
         "zOri": 0.0
       }
     },
@@ -4188,6 +6190,45 @@
       }
     },
     {
+      "name": "Sezanne",
+      "position": {
+        "xPos": 68042.0,
+        "yPos": 0.0,
+        "zPos": 158019.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Signy-l*Abbaye",
+      "position": {
+        "xPos": 176053.0,
+        "yPos": 0.0,
+        "zPos": 209648.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sissonne",
+      "position": {
+        "xPos": 161640.0,
+        "yPos": 0.0,
+        "zPos": 172284.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 16.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Sivry",
       "position": {
         "xPos": 133836.0,
@@ -4210,6 +6251,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 207.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Soissons",
+      "position": {
+        "xPos": 140677.0,
+        "yPos": 0.0,
+        "zPos": 130283.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
         "zOri": 0.0
       }
     },
@@ -4253,15 +6307,80 @@
       }
     },
     {
+      "name": "Somme Vesle",
+      "position": {
+        "xPos": 98328.0,
+        "yPos": 0.0,
+        "zPos": 223046.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 214.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Somme-Tourbe",
       "position": {
         "xPos": 109612.0,
         "yPos": 0.0,
-        "zPos": 228696.0
+        "zPos": 228697.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 46.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sommepy-Tahure",
+      "position": {
+        "xPos": 126219.0,
+        "yPos": 0.0,
+        "zPos": 219821.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 134.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sommereux",
+      "position": {
+        "xPos": 175729.0,
+        "yPos": 0.0,
+        "zPos": 35306.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 262.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sommesous",
+      "position": {
+        "xPos": 69188.0,
+        "yPos": 0.0,
+        "zPos": 194055.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 188.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Soude Ste Croix",
+      "position": {
+        "xPos": 69068.0,
+        "yPos": 0.0,
+        "zPos": 201818.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 175.0,
         "zOri": 0.0
       }
     },
@@ -4305,15 +6424,41 @@
       }
     },
     {
+      "name": "St.Loup-en-Champagne",
+      "position": {
+        "xPos": 149059.0,
+        "yPos": 0.0,
+        "zPos": 195557.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 14.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "St.Marie Cappel",
       "position": {
         "xPos": 298073.0,
         "yPos": 0.0,
-        "zPos": 75151.0
+        "zPos": 75152.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 202.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "St.Remy-le-Petit",
+      "position": {
+        "xPos": 144437.0,
+        "yPos": 0.0,
+        "zPos": 196650.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 166.0,
         "zOri": 0.0
       }
     },
@@ -4335,7 +6480,7 @@
       "position": {
         "xPos": 253096.0,
         "yPos": 0.0,
-        "zPos": 60600.0
+        "zPos": 60601.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4348,7 +6493,7 @@
       "position": {
         "xPos": 191744.0,
         "yPos": 0.0,
-        "zPos": 129613.0
+        "zPos": 129614.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4361,11 +6506,24 @@
       "position": {
         "xPos": 153565.0,
         "yPos": 0.0,
-        "zPos": 265372.0
+        "zPos": 265373.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 248.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Suippes",
+      "position": {
+        "xPos": 112844.0,
+        "yPos": 0.0,
+        "zPos": 218034.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 122.0,
         "zOri": 0.0
       }
     },
@@ -4387,7 +6545,7 @@
       "position": {
         "xPos": 211746.0,
         "yPos": 0.0,
-        "zPos": 58623.0
+        "zPos": 58624.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4409,6 +6567,19 @@
       }
     },
     {
+      "name": "Tergnier",
+      "position": {
+        "xPos": 171515.0,
+        "yPos": 0.0,
+        "zPos": 128278.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 246.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Thiaucourt",
       "position": {
         "xPos": 95051.0,
@@ -4422,11 +6593,24 @@
       }
     },
     {
+      "name": "Thibie",
+      "position": {
+        "xPos": 90763.0,
+        "yPos": 0.0,
+        "zPos": 195142.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 159.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Thillot",
       "position": {
         "xPos": 102446.0,
         "yPos": 0.0,
-        "zPos": 302361.0
+        "zPos": 302362.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4439,37 +6623,11 @@
       "position": {
         "xPos": 139619.0,
         "yPos": 0.0,
-        "zPos": 337978.0
+        "zPos": 337979.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 225.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Thionville Steelworks",
-      "position": {
-        "xPos": 136786.0,
-        "yPos": 0.0,
-        "zPos": 329446.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 21.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Thionville Steelworks East",
-      "position": {
-        "xPos": 138151.0,
-        "yPos": 0.0,
-        "zPos": 335493.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 136.0,
         "zOri": 0.0
       }
     },
@@ -4500,11 +6658,37 @@
       }
     },
     {
+      "name": "Tille",
+      "position": {
+        "xPos": 151599.0,
+        "yPos": 0.0,
+        "zPos": 42880.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 119.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tilloy-et-Bellay",
+      "position": {
+        "xPos": 100578.0,
+        "yPos": 0.0,
+        "zPos": 223989.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 324.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Tincques",
       "position": {
         "xPos": 249851.0,
         "yPos": 0.0,
-        "zPos": 71609.0
+        "zPos": 71610.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4526,11 +6710,37 @@
       }
     },
     {
+      "name": "Toulis",
+      "position": {
+        "xPos": 176536.0,
+        "yPos": 0.0,
+        "zPos": 161091.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 58.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Touquin",
+      "position": {
+        "xPos": 69391.0,
+        "yPos": 0.0,
+        "zPos": 106790.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Tourcoing",
       "position": {
         "xPos": 290254.0,
         "yPos": 0.0,
-        "zPos": 120033.0
+        "zPos": 120034.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4543,7 +6753,7 @@
       "position": {
         "xPos": 277002.0,
         "yPos": 0.0,
-        "zPos": 136583.0
+        "zPos": 136584.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4552,11 +6762,50 @@
       }
     },
     {
+      "name": "Trecon",
+      "position": {
+        "xPos": 84000.0,
+        "yPos": 0.0,
+        "zPos": 185303.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 288.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tricot",
+      "position": {
+        "xPos": 161062.0,
+        "yPos": 0.0,
+        "zPos": 77541.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 219.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Trosly-Breuil",
+      "position": {
+        "xPos": 143514.0,
+        "yPos": 0.0,
+        "zPos": 106020.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 181.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Troyon",
       "position": {
         "xPos": 99809.0,
         "yPos": 0.0,
-        "zPos": 285996.0
+        "zPos": 285997.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4569,7 +6818,7 @@
       "position": {
         "xPos": 190261.0,
         "yPos": 0.0,
-        "zPos": 112666.0
+        "zPos": 112667.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4587,6 +6836,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 117.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vailly-sur-Aisne",
+      "position": {
+        "xPos": 143728.0,
+        "yPos": 0.0,
+        "zPos": 144829.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 162.0,
         "zOri": 0.0
       }
     },
@@ -4634,11 +6896,24 @@
       "position": {
         "xPos": 123954.0,
         "yPos": 0.0,
-        "zPos": 254986.0
+        "zPos": 254987.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 121.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vauciennes",
+      "position": {
+        "xPos": 124816.0,
+        "yPos": 0.0,
+        "zPos": 108825.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 69.0,
         "zOri": 0.0
       }
     },
@@ -4652,6 +6927,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 83.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vaudemange",
+      "position": {
+        "xPos": 108512.0,
+        "yPos": 0.0,
+        "zPos": 196134.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
         "zOri": 0.0
       }
     },
@@ -4673,11 +6961,24 @@
       "position": {
         "xPos": 129938.0,
         "yPos": 0.0,
-        "zPos": 236976.0
+        "zPos": 236977.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 188.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vaux-les-Rubigny",
+      "position": {
+        "xPos": 176485.0,
+        "yPos": 0.0,
+        "zPos": 191913.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
         "zOri": 0.0
       }
     },
@@ -4691,6 +6992,19 @@
       "orientation": {
         "xOri": 0.0,
         "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vauxcere",
+      "position": {
+        "xPos": 134945.0,
+        "yPos": 0.0,
+        "zPos": 152880.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 315.0,
         "zOri": 0.0
       }
     },
@@ -4773,11 +7087,37 @@
       }
     },
     {
+      "name": "Verzenay",
+      "position": {
+        "xPos": 118660.0,
+        "yPos": 0.0,
+        "zPos": 190771.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 71.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vez",
+      "position": {
+        "xPos": 128547.0,
+        "yPos": 0.0,
+        "zPos": 105491.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 334.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Vienne-le-Chateau",
       "position": {
         "xPos": 119783.0,
         "yPos": 0.0,
-        "zPos": 244060.0
+        "zPos": 244061.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4790,7 +7130,7 @@
       "position": {
         "xPos": 226945.0,
         "yPos": 0.0,
-        "zPos": 140832.0
+        "zPos": 140833.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4812,6 +7152,45 @@
       }
     },
     {
+      "name": "Villacoublay",
+      "position": {
+        "xPos": 75431.0,
+        "yPos": 0.0,
+        "zPos": 47114.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 190.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ville-Savoye",
+      "position": {
+        "xPos": 130609.0,
+        "yPos": 0.0,
+        "zPos": 153807.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 204.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ville-en-Tardenois",
+      "position": {
+        "xPos": 117388.0,
+        "yPos": 0.0,
+        "zPos": 164887.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 124.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Villers Bretonneu",
       "position": {
         "xPos": 195818.0,
@@ -4825,15 +7204,54 @@
       }
     },
     {
+      "name": "Villers St. George",
+      "position": {
+        "xPos": 59822.0,
+        "yPos": 0.0,
+        "zPos": 136241.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 114.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Villers en Lieu",
       "position": {
         "xPos": 61582.0,
         "yPos": 0.0,
-        "zPos": 245506.0
+        "zPos": 245507.0
       },
       "orientation": {
         "xOri": 0.0,
         "yOri": 102.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Villers-Cotterets",
+      "position": {
+        "xPos": 126725.0,
+        "yPos": 0.0,
+        "zPos": 113536.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 267.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Villers-Marmery",
+      "position": {
+        "xPos": 114062.0,
+        "yPos": 0.0,
+        "zPos": 195214.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.0,
         "zOri": 0.0
       }
     },
@@ -4877,6 +7295,32 @@
       }
     },
     {
+      "name": "Villeselve",
+      "position": {
+        "xPos": 175977.0,
+        "yPos": 0.0,
+        "zPos": 115802.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 141.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Villeseneux",
+      "position": {
+        "xPos": 80733.0,
+        "yPos": 0.0,
+        "zPos": 189649.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 315.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Villotte",
       "position": {
         "xPos": 83604.0,
@@ -4894,7 +7338,7 @@
       "position": {
         "xPos": 237449.0,
         "yPos": 0.0,
-        "zPos": 103898.0
+        "zPos": 103899.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4907,7 +7351,7 @@
       "position": {
         "xPos": 129643.0,
         "yPos": 0.0,
-        "zPos": 331930.0
+        "zPos": 331931.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4916,11 +7360,37 @@
       }
     },
     {
+      "name": "Vitry-le-Francois",
+      "position": {
+        "xPos": 68111.0,
+        "yPos": 0.0,
+        "zPos": 222572.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 194.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vivaise",
+      "position": {
+        "xPos": 166954.0,
+        "yPos": 0.0,
+        "zPos": 147805.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 269.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Vlamertinge",
       "position": {
         "xPos": 305002.0,
         "yPos": 0.0,
-        "zPos": 96406.0
+        "zPos": 96407.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4929,11 +7399,24 @@
       }
     },
     {
+      "name": "Voisins",
+      "position": {
+        "xPos": 79938.0,
+        "yPos": 0.0,
+        "zPos": 108786.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 349.0,
+        "zOri": 0.0
+      }
+    },
+    {
       "name": "Vouziers",
       "position": {
         "xPos": 142543.0,
         "yPos": 0.0,
-        "zPos": 230172.0
+        "zPos": 230173.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -4946,7 +7429,7 @@
       "position": {
         "xPos": 264307.0,
         "yPos": 0.0,
-        "zPos": 109468.0
+        "zPos": 109469.0
       },
       "orientation": {
         "xOri": 0.0,
@@ -5063,7 +7546,7 @@
       "position": {
         "xPos": 297838.0,
         "yPos": 0.0,
-        "zPos": 114380.0
+        "zPos": 114381.0
       },
       "orientation": {
         "xOri": 0.0,

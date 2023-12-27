@@ -1,13 +1,14 @@
 {
 	"type": "re8",
-	"substituteType": "fe2b",
 	"archType": "re8",
 	"side": "ALLIED",
 	"displayName": "R.E.8",
 	"script": "LuaScripts\\WorldObjects\\Planes\\re8.txt",
 	"model": "graphics\\planes\\re8\\re8.mgm",
 	"primaryUsedBy": [
-		"BRITAIN"
+        "BRITAIN",
+        "FRANCE",
+        "BELGIUM"
 	],
 	"stockModifications": [],
 	"desc": "",

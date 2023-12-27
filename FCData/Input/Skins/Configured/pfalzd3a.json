@@ -7,7 +7,7 @@
             "startDate": "19170101",
             "endDate": "19180415",
             "squadId": 401007,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -17,7 +17,7 @@
             "startDate": "19180416",
             "endDate": "19181201",
             "squadId": 401007,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },		
@@ -27,7 +27,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401010,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -37,7 +37,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401010,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -47,7 +47,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401010,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -57,7 +57,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401010,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -67,7 +67,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401010,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -77,7 +77,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401010,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -87,7 +87,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401010,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -97,7 +97,7 @@
             "startDate": "19170101",
             "endDate": "19180415",
             "squadId": 401010,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -107,7 +107,7 @@
             "startDate": "19180416",
             "endDate": "19181201",
             "squadId": 401010,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -117,7 +117,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401016,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -127,7 +127,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401016,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -137,7 +137,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401016,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -147,7 +147,7 @@
             "startDate": "19170101",
             "endDate": "19181201",
             "squadId": 401016,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -157,7 +157,7 @@
             "startDate": "19180401",
             "endDate": "19180601",
             "squadId": 401016,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },
@@ -167,7 +167,7 @@
             "startDate": "19180602",
             "endDate": "19181201",
             "squadId": 401016,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": false
         },		
@@ -177,7 +177,7 @@
             "startDate": "19170801",
             "endDate": "19180415",
             "squadId": -1,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": true
         },		
@@ -187,7 +187,7 @@
             "startDate": "19180416",
             "endDate": "19180601",
             "squadId": -1,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": true
         },		
@@ -197,7 +197,7 @@
             "startDate": "19180602",
             "endDate": "19181201",
             "squadId": -1,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": true
         },		
@@ -207,7 +207,7 @@
             "startDate": "19170801",
             "endDate": "19181201",
             "squadId": -1,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": true
         },		
@@ -217,7 +217,7 @@
             "startDate": "19170801",
             "endDate": "19180415",
             "squadId": -1,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": true
         },		
@@ -227,7 +227,7 @@
             "startDate": "19180416",
             "endDate": "19181201",
             "squadId": -1,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": true
         },		
@@ -237,7 +237,7 @@
             "startDate": "19170801",
             "endDate": "19180415",
             "squadId": -1,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": true
         },		
@@ -247,7 +247,7 @@
             "startDate": "19180416",
             "endDate": "19181201",
             "squadId": -1,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": true
 		},		
@@ -257,7 +257,7 @@
             "startDate": "19180401",
             "endDate": "19181201",
             "squadId": -1,
-            "country": "Germany",
+            "country": "GERMANY",
             "category": "Configured",
             "definedInGame": true			
         }    }

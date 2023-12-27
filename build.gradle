@@ -42,17 +42,6 @@ jar {
   	}
 }
 
-test {
-    if (System.properties['test.profile'] != 'integration') {
-        useJUnitPlatform()
-        maxParallelForks = Runtime.runtime.availableProcessors()
-        exclude '**/*integration*'
-    } 
-    else {
-        useJUnitPlatform()
-        exclude '**/*pwcg/*'
-    }
-}
 
 task copyJar(type: Exec) {
     workingDir "$projectDir"
@@ -67,17 +56,17 @@ task deploy(type:JavaExec) {
 
 task buildBoS(type: Exec) {
     workingDir "$projectDir"
-    commandLine 'cmd', '/c', 'D:/Utils/launch4j/launch4jc.exe D:/PWCG/Launch4JConfigs/BosLaunchConfig.xml'
+    commandLine 'cmd', '/c', 'D:/Utils/launch4j/launch4jc.exe D:/PWCG/Deploy/Launch4JConfigs/BosLaunchConfig.xml'
 }
 
 task zipBoS(type: Exec) {
     workingDir "$projectDir"
-    commandLine 'cmd', '/c', ' D:/Utils/7Zip/7-zip/7z.exe a -tzip D:/PWCG/Deploy/PWCGBoS.zip D:/PWCG/Deploy/PWCGBoS'
+    commandLine 'cmd', '/c', 'D:/Utils/7Zip/7-zip/7z.exe a -tzip D:/PWCG/Deploy/PWCGBoS.zip D:/PWCG/Deploy/PWCGBoS'
 }
 
 task buildFC(type: Exec) {
     workingDir "$projectDir"
-    commandLine 'cmd', '/c', 'D:/Utils/launch4j/launch4jc.exe D:/PWCG/Launch4JConfigs/FCLaunchConfig.xml'
+    commandLine 'cmd', '/c', 'D:/Utils/launch4j/launch4jc.exe D:/PWCG/Deploy/Launch4JConfigs/FCLaunchConfig.xml'
 }
 
 task zipFC(type: Exec) {

@@ -6,7 +6,9 @@
 	"script": "LuaScripts\\WorldObjects\\Planes\\fe2b.txt",
 	"model": "graphics\\planes\\fe2b\\fe2b.mgm",
 	"primaryUsedBy": [
-		"BRITAIN"
+		"BRITAIN",
+		"FRANCE",
+		"BELGIUM"
 	],
 	"stockModifications": [],
 	"desc": "",

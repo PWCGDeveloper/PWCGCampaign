@@ -14,9 +14,9 @@ public class WesternFrontMapSeason extends MapSeasonBase implements IMapSeason
 
 	protected void makeWinter()
 	{
-		winter.setHeightMap("graphics\\landscape_westernfront_sp\\height.hini");
-    	winter.setTextureMap("graphics\\landscape_westernfront_sp\\textures.tini");
-    	winter.setForrestMap("graphics\\landscape_westernfront_sp\\trees\\woods.wds");
+		winter.setHeightMap("graphics\\landscape_westernfront_wi\\height.hini");
+    	winter.setTextureMap("graphics\\landscape_westernfront_wi\\textures.tini");
+    	winter.setForrestMap("graphics\\landscape_westernfront_wi\\trees\\woods.wds");
     	winter.setGuiMap("western_front-spring");
     	winter.setSeasonAbbreviation(MapSeasonalParameters.WINTER_ABREV);
     	winter.setSeason(MapSeasonalParameters.WINTER_STRING);
@@ -28,15 +28,15 @@ public class WesternFrontMapSeason extends MapSeasonBase implements IMapSeason
         spring.setTextureMap("graphics\\landscape_westernfront_sp\\textures.tini");
         spring.setForrestMap("graphics\\landscape_westernfront_sp\\trees\\woods.wds");
         spring.setGuiMap("western_front-spring");
-    	spring.setSeasonAbbreviation(MapSeasonalParameters.SUMMER_ABREV);
-    	spring.setSeason(MapSeasonalParameters.SUMMER_STRING);
+    	spring.setSeasonAbbreviation(MapSeasonalParameters.SPRING_ABREV);
+    	spring.setSeason(MapSeasonalParameters.SPRING_STRING);
 	}
 
 	protected void makeSummer()
 	{
-	    summer.setHeightMap("graphics\\landscape_westernfront_sp\\height.hini");
-	    summer.setTextureMap("graphics\\landscape_westernfront_sp\\textures.tini");
-        summer.setForrestMap("graphics\\landscape_westernfront_sp\\trees\\woods.wds");
+	    summer.setHeightMap("graphics\\landscape_westernfront_su\\height.hini");
+	    summer.setTextureMap("graphics\\landscape_westernfront_su\\textures.tini");
+        summer.setForrestMap("graphics\\landscape_westernfront_su\\trees\\woods.wds");
         summer.setGuiMap("western_front-spring");
     	summer.setSeasonAbbreviation(MapSeasonalParameters.SUMMER_ABREV);
     	summer.setSeason(MapSeasonalParameters.SUMMER_STRING);
@@ -44,11 +44,11 @@ public class WesternFrontMapSeason extends MapSeasonBase implements IMapSeason
 
 	protected void makeAutumn()
 	{
-	    autumn.setHeightMap("graphics\\landscape_westernfront_sp\\height.hini");
-        autumn.setTextureMap("graphics\\landscape_westernfront_sp\\textures.tini");
-        autumn.setForrestMap("graphics\\landscape_westernfront_sp\\trees\\woods.wds");
+	    autumn.setHeightMap("graphics\\landscape_westernfront_au\\height.hini");
+        autumn.setTextureMap("graphics\\landscape_westernfront_au\\textures.tini");
+        autumn.setForrestMap("graphics\\landscape_westernfront_au\\trees\\woods.wds");
         autumn.setGuiMap("western_front-spring");
-    	autumn.setSeasonAbbreviation(MapSeasonalParameters.SUMMER_ABREV);
-    	autumn.setSeason(MapSeasonalParameters.SUMMER_STRING);
+    	autumn.setSeasonAbbreviation(MapSeasonalParameters.AUTUMN_ABREV);
+    	autumn.setSeason(MapSeasonalParameters.AUTUMN_STRING);
 	}
 }

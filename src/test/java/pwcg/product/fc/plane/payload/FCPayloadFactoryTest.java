@@ -31,8 +31,7 @@ public class FCPayloadFactoryTest
             "dorandar",
             "aircodh2",
             "soppup",
-            "sopstrutter",
-            "re8");
+            "sopstrutter");
     
 	public FCPayloadFactoryTest() throws PWCGException
 	{

@@ -1,0 +1,45 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+        "nieuport11_default": {
+            "skinName": "nieuport11_default",
+            "planeType": "nieuport11",
+            "startDate": "19160101",
+            "endDate": "19181201",
+            "squadId": -2,
+            "country": "FRANCE",
+            "category": "Configured",
+            "definedInGame": true
+        },
+        "nieuport11_blank_01": {
+            "skinName": "nieuport11_blank_01",
+            "planeType": "nieuport11",
+            "startDate": "19160101",
+            "endDate": "19181201",
+            "squadId": -2,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": true
+        },
+        "nieuport11_blank_02": {
+            "skinName": "nieuport11_blank_02",
+            "planeType": "nieuport11",
+            "startDate": "19160101",
+            "endDate": "19181201",
+            "squadId": -2,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": true
+        },
+        "nieuport11_blank_03": {
+            "skinName": "nieuport11_blank_03",
+            "planeType": "nieuport11",
+            "startDate": "19160101",
+            "endDate": "19181201",
+            "squadId": -2,
+            "country": "BELGIUM",
+            "category": "Configured",
+            "definedInGame": true
+        }
+    }
+}
