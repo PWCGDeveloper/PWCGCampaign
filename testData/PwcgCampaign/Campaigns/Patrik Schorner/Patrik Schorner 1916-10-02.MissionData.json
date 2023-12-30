@@ -10,7 +10,7 @@
     "duty": "BALLOON_DEFENSE",
     "altitude": 2289
   },
-  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-10-02\n\nWeather Report\nLight cloud cover, medium altitude.\nCloud layer is 2753 meters.\nWind speed is 1 M/S.\nWind direction is 241.\n\nPrimary Objective\nDefend our balloon near Roye.\n\n\n",
+  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre\nDate  1916-10-02\n\nWeather Report\nLight cloud cover, medium altitude.\nCloud layer is 2753 meters.\nWind speed is 1 M/S.\nWind direction is 241.\n\nPrimary Objective\nDefend our balloon near Roye.\n\n\n",
   "missionPlanes": [
     {
       "aircraftType": "albatrosd2",

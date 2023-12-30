@@ -1,0 +1,110 @@
+{
+	"country": "FRANCE",
+	"squadronId": 301066,
+	"name": "Esc 66",
+	"fileName": "Esc 66.json",
+	"skill": 30,
+	"serviceId": 30101,
+	"tacticalCodeStyle": 4,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "farmanf40",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19161210"
+		},
+		{
+			"archType": "dorandar",
+			"squadronIntroduction": "19161201",
+			"squadronWithdrawal": "19171025"
+		},
+		{
+			"archType": "breguet14",
+			"squadronIntroduction": "19171015",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19160101": "Malzeville",
+		"19161201": "Froides",
+		"19170101": "Quinquempoix",
+		"19170201": "Malzeville",
+		"19170401": "Auve",
+		"19170618": "Froides",
+		"19170904": "Somme Vesle",
+		"19180114": "Auve",
+		"19180209": "Vauxcere",
+		"19180321": "Grivesnes",
+		"19180409": "Fere en Tardenois",
+		"19180518": "Froides",
+		"19180628": "Auve",
+		"19180710": "La Mellette",
+		"19180806": "Froides",
+		"19181015": "Auve"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_ARTILLERY_SPOT",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [
+	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+		]
+	},
+	"callsigns": {
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+		]
+	},
+	"skins": [
+		{
+			"skinName": "BR14_ESC66_JUL1917",
+			"planeType": "breguet14",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLUE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "BR14_ESC66_JAN1918",
+			"planeType": "breguet14",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLUE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
+	]
+}

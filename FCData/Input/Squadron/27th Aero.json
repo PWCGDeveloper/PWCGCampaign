@@ -19,16 +19,20 @@
 		}
 	],
 	"airfields": {
-		"19180301": "Lemmes"
+		"19180529": "Dommartin les Toul",
+		"19180628": "Ferme de Corbeaulieu",
+		"19180709": "Courcy",
+		"19180828": "Souilly"
 	},
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
 	"serviceId": 30301,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"endDate": "19181201",
 				"weightedRoles": [
 					{
@@ -39,52 +43,55 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"callsigns": {
-		
 	},
-    "skins": [
-        {
-            "skinName": "N28_27Aero",
-            "planeType": "nieuport28",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        },
-        {
-            "skinName": "SP7LATE_27thAero_Default",
-            "planeType": "spad7late",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        },
-        {
-            "skinName": "SP13_27thAero_Default",
-            "planeType": "spad13",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        }
-    ]
+	"skins": [
+		{
+			"skinName": "N28_27Aero",
+			"planeType": "nieuport28",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP7LATE_27thAero_Default",
+			"planeType": "spad7late",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP13_27thAero_Default",
+			"planeType": "spad13",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
+	]
 }

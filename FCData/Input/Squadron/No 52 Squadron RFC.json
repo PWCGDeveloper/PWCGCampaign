@@ -20,11 +20,20 @@
 		}
 	],
 	"airfields": {
-        "19161101": "Estree Blanche",
-        "19170601": "Estree Blanche",
-		"19171115": "Bryas",
-		"19181004": "Sombrin",
-		"19181015": "La Tergette"
+		"19161101": "Allonville",
+		"19161215": "Cachy",
+		"19170615": "Mont St Eloi",
+		"19171206": "Le Hameau",
+		"19180104": "Marieux",
+		"19180324": "Lealvillers",
+		"19180415": "Grivesnes",
+		"19180503": "Mont de Soissons",
+		"19180505": "Auve",
+		"19180527": "Vauxcere",
+		"19180529": "Auve",
+		"19180630": "Le Hameau",
+		"19180804": "Le Hameau",
+		"19180824": "Savy Berlette"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -47,21 +56,24 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
 	"callsigns": {
-		
 	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "DH4_No52_Default",
 			"planeType": "aircodh4",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "Britain",

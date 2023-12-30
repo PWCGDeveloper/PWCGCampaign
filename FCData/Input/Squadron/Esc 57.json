@@ -1,0 +1,124 @@
+{
+	"country": "FRANCE",
+	"squadronId": 301057,
+	"name": "Esc 57",
+	"fileName": "Esc 57.json",
+	"skill": 75,
+	"serviceId": 30101,
+	"tacticalCodeStyle": 4,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "nieuport",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170115"
+		},
+		{
+			"archType": "spad",
+			"squadronIntroduction": "19170101",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19160101": "Savy Berlette",
+		"19160320": "Lemmes",
+		"19161125": "Vadelaincourt",
+		"19170408": "Lhery",
+		"19170710": "Bailleul",
+		"19170915": "Fere en Tardenois",
+		"19180331": "Ravenel",
+		"19180529": "Tilloy",
+		"19180611": "Vauxcere",
+		"19180628": "Somme Vesle",
+		"19180724": "La Noblette",
+		"19180923": "Ferme Cravancon",
+		"19181105": "Auve"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [
+	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+		]
+	},
+	"callsigns": {
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+		]
+	},
+	"skins": [
+		{
+			"skinName": "SP7EARLY_ESC57_Default",
+			"planeType": "spad7early",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLUE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP7Late_Buff_ESC57_Default",
+			"planeType": "spad7late",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19171115",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLUE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP7Late_Camo_ESC57_Default",
+			"planeType": "spad7late",
+			"archTypes": [
+			],
+			"startDate": "19171101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLUE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP13_ESC57_Default",
+			"planeType": "spad13",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLUE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
+	]
+}

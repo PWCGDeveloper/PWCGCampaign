@@ -1,0 +1,116 @@
+{
+	"country": "GERMANY",
+	"squadronId": 401113,
+	"name": "Schlasta 13",
+	"fileName": "Schlasta 13.json",
+	"skill": 25,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "rolc2a",
+			"squadronIntroduction": "19170101",
+			"squadronWithdrawal": "19170610"
+		},
+		{
+			"archType": "halberstadtcl",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19171201": "Lagnicourt",
+		"19180409": "Moislains",
+		"19180526": "Vivaise",
+		"19180823": "Bellevue Ferme",
+		"19180912": "Sivry"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [
+	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+		]
+	},
+	"callsigns": {
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+		]
+	},
+	"skins": [
+		{
+			"skinName": "CL2_Sch13_Early",
+			"planeType": "halberstadtcl2",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19171101",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "CL2_Sch13_Late",
+			"planeType": "halberstadtcl2",
+			"archTypes": [
+			],
+			"startDate": "19171002",
+			"endDate": "19180415",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "CL2AU_Sch13_Early",
+			"planeType": "halberstadtcl2au",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19171101",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "CL2AU_Sch13_Late",
+			"planeType": "halberstadtcl2au",
+			"archTypes": [
+			],
+			"startDate": "19171002",
+			"endDate": "19180415",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+	]
+}

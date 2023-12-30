@@ -1,0 +1,71 @@
+{
+	"country": "USA",
+	"squadronId": 303088,
+	"name": "88th Aero",
+	"fileName": "88th Aero.json",
+	"skill": 20,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "RED",
+	"planeAssignments": [
+		{
+			"archType": "breguet14",
+			"squadronIntroduction": "19180601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19180601": "Froides",
+		"19180706": "Muizon",
+		"19180908": "Muizon",
+		"19180912": "Souilly",
+		"19181102": "Julvecourt"
+	},
+	"squadHistory": {
+		"squadHistoryEntries": [
+		]
+	},
+	"serviceId": 30301,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"endDate": "19181201",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_ARTILLERY_SPOT",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [
+	],
+	"callsigns": {
+	},
+	"skins": [
+		{
+			"skinName": "BR14_Aero88",
+			"planeType": "breguet14",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
+	]
+}

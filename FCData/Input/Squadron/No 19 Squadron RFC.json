@@ -20,11 +20,17 @@
 		}
 	],
 	"airfields": {
-        "19160701": "St.Omer",
-        "19170801": "St.Omer",
-		"19181004": "Mont St Eloi",
-		"19181015": "Velu",
-		"19181101": "Houplin"
+		"19160801": "Filescamp Ferme",
+		"19170402": "Allonville",
+		"19170531": "Allonville",
+		"19170814": "Droglandt",
+		"19170905": "Bailleul",
+		"19171225": "Bailleul",
+		"19180213": "Bailleul",
+		"19180323": "Bailleul",
+		"19180331": "Filescamp Ferme",
+		"19180817": "Bailleul",
+		"19180923": "Savy Berlette"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -52,21 +58,24 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
 	"callsigns": {
-		
 	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "Dolphin_RFC19_Default",
 			"planeType": "sopdolphin",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "Britain",

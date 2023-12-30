@@ -19,16 +19,21 @@
 		}
 	],
 	"airfields": {
-		"19180301": "Lemmes"
+		"19180401": "Malzeville",
+		"19180602": "Dommartin les Toul",
+		"19180628": "Villesavoye",
+		"19180709": "Maizy",
+		"19180826": "Brabant en Argonne"
 	},
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
 	"serviceId": 30301,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"endDate": "19181201",
 				"weightedRoles": [
 					{
@@ -39,13 +44,16 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
-    "callsigns": [],
-    "skins": [
+	"conversionPeriods": [
+	],
+	"callsigns": [
+	],
+	"skins": [
 		{
 			"skinName": "N28_94Aero",
 			"planeType": "nieuport28",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "USA",
@@ -56,33 +64,35 @@
 			"tacticalCodeColor": "RED",
 			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
 		},
-        {
-            "skinName": "SP7LATE_94thAero_Default",
-            "planeType": "spad7late",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "RED",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        },
-        {
-            "skinName": "SP13_94thAero_Default",
-            "planeType": "spad13",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "RED",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        }
+		{
+			"skinName": "SP7LATE_94thAero_Default",
+			"planeType": "spad7late",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP13_94thAero_Default",
+			"planeType": "spad13",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
 	]
 }

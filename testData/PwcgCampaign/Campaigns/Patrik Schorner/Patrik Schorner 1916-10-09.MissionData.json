@@ -10,7 +10,7 @@
     "duty": "PATROL",
     "altitude": 2607
   },
-  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-10-09\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 3548 meters.\nWind speed is 2 M/S.\nWind direction is 265.\n\nPrimary Objective\nPatrol airspace  near Ecuvilly.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre\nDate  1916-10-09\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 3548 meters.\nWind speed is 2 M/S.\nWind direction is 265.\n\nPrimary Objective\nPatrol airspace  near Ecuvilly.  Engage any enemy aircraft that you encounter.\n\n\n",
   "missionPlanes": [
     {
       "aircraftType": "albatrosd2",

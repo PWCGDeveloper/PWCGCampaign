@@ -4,8 +4,8 @@
 	"name": "1st Aero",
 	"fileName": "1st Aero.json",
 	"skill": 20,
-    "tacticalCodeStyle": -1,
-    "squadronTacticalCodeColorOverride": "NONE",
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "breguet14",
@@ -14,16 +14,23 @@
 		}
 	],
 	"airfields": {
-		"19180301": "Lemmes"
+		"19180408": "Souilly",
+		"19180629": "Lhery",
+		"19180705": "Vauxcere",
+		"19180802": "Grivesnes",
+		"19180810": "Vauxcere",
+		"19180820": "Dommartin les Toul",
+		"19180920": "Senard en Argonne"
 	},
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
 	"serviceId": 30301,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"endDate": "19181201",
 				"weightedRoles": [
 					{
@@ -42,24 +49,25 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"callsigns": {
-		
 	},
-    "skins": [
-        {
-            "skinName": "BR14_Aero1",
-            "planeType": "breguet14",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "USA",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        }
-    ]
+	"skins": [
+		{
+			"skinName": "BR14_Aero1",
+			"planeType": "breguet14",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
+	]
 }

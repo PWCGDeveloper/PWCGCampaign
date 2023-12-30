@@ -20,21 +20,24 @@
 		}
 	],
 	"airfields": {
-        "19161201": "Lomme",
-        "19170601": "Lomme",
-		"19170607": "Houplin",
-		"19170621": "Bullecourt",
-		"19170720": "Assevilers",
-		"19180404": "Warfusee",
-		"19180531": "Warfusee",
-		"19180925": "Assevilers",
-		"19181004": "Noyelles",
-		"19181101": "Reumont"
+		"19161201": "Velu",
+		"19170516": "Bellevue Ferme",
+		"19170616": "Vivaise",
+		"19170916": "Bellevue Ferme",
+		"19171116": "Chambry Laon",
+		"19180320": "Bonneuil Ferme",
+		"19180323": "Falvy, Peronne",
+		"19180330": "Ham",
+		"19180409": "Champien",
+		"19180512": "Bullecourt",
+		"19180711": "Leffincourt",
+		"19180808": "Beugnatre",
+		"19180820": "Villeselve"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -44,97 +47,107 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "AD5_J22_Default_MAY17",
 			"planeType": "albatrosd5",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19171001",
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "RED",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "AD5_J22_Default_OCT17",
 			"planeType": "albatrosd5",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19171002",
 			"endDate": "19180415",
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "RED",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "AD5_J22_Default_APR18",
 			"planeType": "albatrosd5",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19180416",
 			"endDate": "19181201",
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "RED",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "FD7_J22_Default_5_Color_Loz",
 			"planeType": "fokkerd7",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19180416",
 			"endDate": "19181201",
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "FD7F_J22_Default_4_Color_Loz_Open",
 			"planeType": "fokkerd7f",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19180416",
 			"endDate": "19181201",
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "FD7F_J22_Default_4_Color_Loz",
 			"planeType": "fokkerd7f",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19180902",
 			"endDate": "19181201",
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		}
 	]
 }

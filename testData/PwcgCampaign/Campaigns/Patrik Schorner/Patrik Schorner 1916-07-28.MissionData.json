@@ -10,7 +10,7 @@
     "duty": "PATROL",
     "altitude": 3965
   },
-  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-07-28\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2347 meters.\nWind speed is 2 M/S.\nWind direction is 324.\n\nPrimary Objective\nPatrol airspace  near Roye.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre\nDate  1916-07-28\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2347 meters.\nWind speed is 2 M/S.\nWind direction is 324.\n\nPrimary Objective\nPatrol airspace  near Roye.  Engage any enemy aircraft that you encounter.\n\n\n",
   "missionPlanes": [
     {
       "aircraftType": "halberstadtd2",

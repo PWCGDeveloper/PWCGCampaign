@@ -10,7 +10,7 @@
     "duty": "INTERCEPT",
     "altitude": 2284
   },
-  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-08-04\n\nWeather Report\nLight cloud cover, medium altitude.\nCloud layer is 2988 meters.\nWind speed is 0 M/S.\nWind direction is 181.\n\nPrimary Objective\nIntercept enemy aircraft near Hombleux.\n\n\n",
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre\nDate  1916-08-04\n\nWeather Report\nLight cloud cover, medium altitude.\nCloud layer is 2988 meters.\nWind speed is 0 M/S.\nWind direction is 181.\n\nPrimary Objective\nIntercept enemy aircraft near Hombleux.\n\n\n",
   "missionPlanes": [
     {
       "aircraftType": "halberstadtd2",

@@ -10,7 +10,7 @@
     "duty": "OFFENSIVE",
     "altitude": 3474
   },
-  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-10-08\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 3600 meters.\nWind speed is 0 M/S.\nWind direction is 336.\n\nPrimary Objective\nPenetrate enemy airspace near Noyon.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre\nDate  1916-10-08\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 3600 meters.\nWind speed is 0 M/S.\nWind direction is 336.\n\nPrimary Objective\nPenetrate enemy airspace near Noyon.  Engage any enemy aircraft that you encounter.\n\n\n",
   "missionPlanes": [
     {
       "aircraftType": "albatrosd2",

@@ -8,27 +8,29 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "albatrosc",
-            "squadronIntroduction": "19160101",
-            "squadronWithdrawal": "19160730"
-        },
-        {
-            "archType": "dfw",
-            "squadronIntroduction": "19160725",
-            "squadronWithdrawal": "19181201"
-        }
+		{
+			"archType": "albatrosc",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19160730"
+		},
+		{
+			"archType": "dfw",
+			"squadronIntroduction": "19160725",
+			"squadronWithdrawal": "19181201"
+		}
 	],
 	"airfields": {
-        "19160101": "Guisnain",
-        "19170601": "Guisnain",
-		"19181004": "Fenain",
-		"19181101": "Avesnes le Sec Est"
+		"19150801": "Saint Loup Nord",
+		"19160812": "Chery les Pouilly Nord",
+		"19171113": "La Selve",
+		"19180725": "Saint Loup Nord",
+		"19180903": "Bellevue Ferme",
+		"19181015": "Marville"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -46,42 +48,48 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
-        {
-            "skinName": "DFWCV_FA44_JUL17",
-            "planeType": "dfwc5",
-            "archTypes": [],
-            "startDate": "19161001",
-            "endDate": "19180510",
-            "country": "Germany",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        },
-        {
-            "skinName": "DFWCV_FA44_APR18",
-            "planeType": "dfwc5",
-            "archTypes": [],
-            "startDate": "19180505",
-            "endDate": "19181201",
-            "country": "Germany",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        }
+		{
+			"skinName": "DFWCV_FA44_JUL17",
+			"planeType": "dfwc5",
+			"archTypes": [
+			],
+			"startDate": "19161001",
+			"endDate": "19180510",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "DFWCV_FA44_APR18",
+			"planeType": "dfwc5",
+			"archTypes": [
+			],
+			"startDate": "19180505",
+			"endDate": "19181201",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
 	]
 }

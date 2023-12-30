@@ -10,7 +10,7 @@
     "duty": "PATROL",
     "altitude": 1797
   },
-  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-08-05\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 1636 meters.\nWind speed is 2 M/S.\nWind direction is 188.\n\nPrimary Objective\nPatrol airspace  near Rosieres-en-Santerre.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre\nDate  1916-08-05\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 1636 meters.\nWind speed is 2 M/S.\nWind direction is 188.\n\nPrimary Objective\nPatrol airspace  near Rosieres-en-Santerre.  Engage any enemy aircraft that you encounter.\n\n\n",
   "missionPlanes": [
     {
       "aircraftType": "halberstadtd2",
@@ -97,7 +97,7 @@
       "squadronName": "FA 16",
       "crew": {
         "pilot": "Johann Ackner",
-        "observer": "Engelbert Hess",
+        "observer": "Channelbert Hess",
         "pilotRank": "Kmdr",
         "observerRank": "Ltn"
       }
@@ -106,7 +106,7 @@
       "aircraftType": "dfwc5",
       "squadronName": "FA 16",
       "crew": {
-        "pilot": "Engelbert Schwarzer",
+        "pilot": "Channelbert Schwarzer",
         "observer": "Till Schmetterling",
         "pilotRank": "Ltn",
         "observerRank": "Ltn"

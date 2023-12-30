@@ -10,7 +10,7 @@
     "duty": "BALLOON_DEFENSE",
     "altitude": 2000
   },
-  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-09-01\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 4451 meters.\nWind speed is 1 M/S.\nWind direction is 222.\n\nPrimary Objective\nDefend our balloon near Ecuvilly.\n\n\n",
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre\nDate  1916-09-01\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 4451 meters.\nWind speed is 1 M/S.\nWind direction is 222.\n\nPrimary Objective\nDefend our balloon near Ecuvilly.\n\n\n",
   "missionPlanes": [
     {
       "aircraftType": "halberstadtd2",

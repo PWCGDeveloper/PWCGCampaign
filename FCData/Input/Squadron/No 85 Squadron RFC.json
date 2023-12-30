@@ -15,13 +15,15 @@
 		}
 	],
 	"airfields": {
-		"19170901": "Filescamp Farm",
-		"19181004": "La Gorgue"
+		"19180401": "Bailleul",
+		"19180611": "Bryas",
+		"19180813": "Warfusee",
+		"19180905": "Savy Berlette"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -44,28 +46,33 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "SE5a_RFC85_Default",
 			"planeType": "se5a",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170601",
 			"endDate": "19181201",
 			"country": "BRITAIN",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		}
 	]
 }

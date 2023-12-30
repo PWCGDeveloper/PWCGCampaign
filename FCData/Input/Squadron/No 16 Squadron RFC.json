@@ -8,11 +8,11 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "fe2",
-            "squadronIntroduction": "19160101",
-            "squadronWithdrawal": "19170520"
-        },
+		{
+			"archType": "fe2",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170520"
+		},
 		{
 			"archType": "re8",
 			"squadronIntroduction": "19170515",
@@ -20,15 +20,13 @@
 		}
 	],
 	"airfields": {
-        "19160101": "Serny",
-        "19170601": "Serny",
-		"19181004": "Filescamp Farm",
-		"19181015": "Beugnatre"
+		"19160101": "La Gorgue",
+		"19160831": "Bruay"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -46,28 +44,33 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
-        {
-            "skinName": "DH4_No16_Default",
-            "planeType": "aircodh4",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "BRITAIN",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        }
+		{
+			"skinName": "DH4_No16_Default",
+			"planeType": "aircodh4",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
 	]
 }

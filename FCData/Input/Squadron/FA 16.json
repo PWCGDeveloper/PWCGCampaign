@@ -8,28 +8,28 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "albatrosc",
-            "squadronIntroduction": "19160101",
-            "squadronWithdrawal": "19160810"
-        },
-        {
-            "archType": "dfw",
-            "squadronIntroduction": "19160801",
-            "squadronWithdrawal": "19181201"
-        }
+		{
+			"archType": "albatrosc",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19160810"
+		},
+		{
+			"archType": "dfw",
+			"squadronIntroduction": "19160801",
+			"squadronWithdrawal": "19181201"
+		}
 	],
 	"airfields": {
-        "19160101": "Hermies, Cambrai",
-        "19170601": "Hermies, Cambrai",
-		"19170621": "Moislains",
-		"19181004": "Cauroir",
-		"19181101": "Escaufort"
+		"19160101": "Clastres",
+		"19160212": "Rumbeke",
+		"19160310": "Hermies, Cambrai",
+		"19160812": "Chambry Laon",
+		"19180825": "Liesse"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -47,56 +47,63 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
-        {
-            "skinName": "DFWCV_FA16_JUL17",
-            "planeType": "dfwc5",
-            "archTypes": [],
-            "startDate": "19161001",
-            "endDate": "19171115",
-            "country": "Germany",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        },
-        {
-            "skinName": "DFWCV_FA16_OCT17",
-            "planeType": "dfwc5",
-            "archTypes": [],
-            "startDate": "19171015",
-            "endDate": "19180510",
-            "country": "Germany",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        },
-        {
-            "skinName": "DFWCV_FA16_APR18",
-            "planeType": "dfwc5",
-            "archTypes": [],
-            "startDate": "19180502",
-            "endDate": "19181201",
-            "country": "Germany",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        }
+		{
+			"skinName": "DFWCV_FA16_JUL17",
+			"planeType": "dfwc5",
+			"archTypes": [
+			],
+			"startDate": "19161001",
+			"endDate": "19171115",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "DFWCV_FA16_OCT17",
+			"planeType": "dfwc5",
+			"archTypes": [
+			],
+			"startDate": "19171015",
+			"endDate": "19180510",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "DFWCV_FA16_APR18",
+			"planeType": "dfwc5",
+			"archTypes": [
+			],
+			"startDate": "19180502",
+			"endDate": "19181201",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
 	]
 }

@@ -20,16 +20,18 @@
 		}
 	],
 	"airfields": {
-        "19170801": "Le Hameau",
-		"19170621": "Lealvillers",
-		"19170720": "La Tergette",
-		"19181004": "Velu",
-		"19181015": "Pronville"
+		"19170801": "Mont St Eloi",
+		"19180115": "La Gorgue",
+		"19180603": "Grivesnes",
+		"19180621": "La Gorgue",
+		"19180712": "Vauxcere",
+		"19180727": "Marieux",
+		"19181006": "Auchel"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -56,21 +58,24 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
 	"callsigns": {
-		
 	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "SOPCAM_RFC43_Default",
 			"planeType": "sopcamel",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "Britain",

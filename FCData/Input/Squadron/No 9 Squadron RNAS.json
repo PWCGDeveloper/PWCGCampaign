@@ -8,21 +8,21 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "nieuport",
-            "squadronIntroduction": "19160401",
-            "squadronWithdrawal": "19161105"
-        },
-        {
-            "archType": "soppup",
-            "squadronIntroduction": "19161101",
-            "squadronWithdrawal": "19170310"
-        },
-        {
-            "archType": "soptriplane",
-            "squadronIntroduction": "19170301",
-            "squadronWithdrawal": "19170801"
-        },
+		{
+			"archType": "nieuport",
+			"squadronIntroduction": "19160401",
+			"squadronWithdrawal": "19161105"
+		},
+		{
+			"archType": "soppup",
+			"squadronIntroduction": "19161101",
+			"squadronWithdrawal": "19170310"
+		},
+		{
+			"archType": "soptriplane",
+			"squadronIntroduction": "19170301",
+			"squadronWithdrawal": "19170801"
+		},
 		{
 			"archType": "sopcamel",
 			"squadronIntroduction": "19170801",
@@ -30,16 +30,19 @@
 		}
 	],
 	"airfields": {
-        "19160401": "Bailleul",
-        "19170601": "Bailleul",
-		"19180429": "StMarie Cappel",
-		"19180531": "StMarie Cappel",
-		"19181015": "Lomme"
+		"19170201": "Droglandt",
+		"19170515": "La Lovie",
+		"19170615": "Villers Bretonneux",
+		"19170710": "La Lovie",
+		"19180321": "Bailleul",
+		"19180323": "La Gorgue",
+		"19180407": "Allonville",
+		"19180814": "Le Hameau"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -75,42 +78,48 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
-        {
-            "skinName": "SopTri_Default",
-            "planeType": "soptriplane",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        },
-        {
-            "skinName": "SOPCAM_9RNAS_Default",
-            "planeType": "sopcamel",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        }
+		{
+			"skinName": "SopTri_Default",
+			"planeType": "soptriplane",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "SOPCAM_9RNAS_Default",
+			"planeType": "sopcamel",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
 	]
 }

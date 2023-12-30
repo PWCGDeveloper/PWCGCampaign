@@ -10,7 +10,7 @@
     "duty": "OFFENSIVE",
     "altitude": 3528
   },
-  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-07-27\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2246 meters.\nWind speed is 1 M/S.\nWind direction is 215.\n\nPrimary Objective\nPenetrate enemy airspace at the specified airfields near Montdidier.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre\nDate  1916-07-27\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2246 meters.\nWind speed is 1 M/S.\nWind direction is 215.\n\nPrimary Objective\nPenetrate enemy airspace at the specified airfields near Montdidier.  Engage any enemy aircraft that you encounter.\n\n\n",
   "missionPlanes": [
     {
       "aircraftType": "halberstadtd2",

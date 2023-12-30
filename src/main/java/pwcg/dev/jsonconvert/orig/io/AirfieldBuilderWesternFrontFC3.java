@@ -30,10 +30,17 @@ public class AirfieldBuilderWesternFrontFC3
     
     public static void main(String[] args) throws Exception
     {
-        PWCGContext.setProduct(PWCGProduct.FC);
-
-        AirfieldBuilderWesternFront jsonConverter = new AirfieldBuilderWesternFront();
-        jsonConverter.getAirfieldNames("WesternFront");
+        
+        try
+        {
+            PWCGContext.setProduct(PWCGProduct.FC);
+            AirfieldBuilderWesternFrontFC3 jsonConverter = new AirfieldBuilderWesternFrontFC3();
+            jsonConverter.getAirfieldNames("WesternFront");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public void getAirfieldNames (String mapName) throws Exception 
@@ -42,7 +49,7 @@ public class AirfieldBuilderWesternFrontFC3
         readAirfields(filename);
         readRunwayLocations(filename);        
         buildBoSAirfields();
-        // writeAirfields(mapName);
+        writeAirfields(mapName);
     }
     
 
@@ -99,11 +106,11 @@ public class AirfieldBuilderWesternFrontFC3
 
                 if (planeThatMarksRunway != null)
                 {
-                    Coordinate runwayStart = planeThatMarksRunway.getPosition();
-                    double runwayOrientation = planeThatMarksRunway.getOrientation().getyOri();
+                    Coordinate runwayStart = trimCoordinate(planeThatMarksRunway.getPosition());
+                    double runwayOrientation = trimOrientation(planeThatMarksRunway.getOrientation().getyOri());
                     
-                    Coordinate endPosition = MathUtils.calcNextCoord(
-                            FrontMapIdentifier.WESTERN_FRONT_MAP, runwayStart, runwayOrientation, 200.0);
+                    Coordinate endPosition = trimCoordinate(MathUtils.calcNextCoord(
+                            FrontMapIdentifier.WESTERN_FRONT_MAP, runwayStart, runwayOrientation, 200.0));
 
                     Runway runway = new Runway();
                     runway.setStartPos(runwayStart);
@@ -111,9 +118,11 @@ public class AirfieldBuilderWesternFrontFC3
                     runway.setTaxiToStart(new ArrayList<>());
                     runway.setTaxiFromEnd(new ArrayList<>());
                     
-                    double parkingPositionAngle = MathUtils.adjustAngle(runwayOrientation, 270);
-                    Coordinate parkingPosition = MathUtils.calcNextCoord(
-                            FrontMapIdentifier.WESTERN_FRONT_MAP, runwayStart, parkingPositionAngle, 40.0);
+                    double parkingPositionAngle = trimOrientation(MathUtils.adjustAngle(runwayOrientation, 270));
+                    
+                    
+                    Coordinate parkingPosition = trimCoordinate(MathUtils.calcNextCoord(
+                            FrontMapIdentifier.WESTERN_FRONT_MAP, runwayStart, parkingPositionAngle, 40.0));
                     PWCGLocation runwayParking = new PWCGLocation();
                     runwayParking.setName("Parking");
                     runwayParking.setOrientation(new Orientation(parkingPositionAngle));
@@ -133,6 +142,22 @@ public class AirfieldBuilderWesternFrontFC3
             throw new PWCGException(e.getMessage());
         }
     }
+    
+    private double trimOrientation(double getyOri)
+    {
+        int y = Double.valueOf(getyOri).intValue();
+        return y;
+    }
+
+    private Coordinate trimCoordinate(Coordinate coordinate)
+    {
+        int x = Double.valueOf(coordinate.getXPos()).intValue();
+        int y = Double.valueOf(coordinate.getYPos()).intValue();
+        int z = Double.valueOf(coordinate.getZPos()).intValue();
+
+        Coordinate newCoordinate = new Coordinate(x, y, z);
+        return newCoordinate;
+    }
 
     private void buildBoSAirfields() throws Exception
     {
@@ -150,7 +175,7 @@ public class AirfieldBuilderWesternFrontFC3
             AirfieldDescriptor airfield = new AirfieldDescriptor();
             airfield.setName(airfieldName);
             airfield.setPosition(runways.get(0).getStartPos());
-            airfield.setOrientation(new Orientation(runways.get(0).getHeading()));
+            airfield.setOrientation(new Orientation(trimOrientation(runways.get(0).getHeading())));
             airfield.setRunways(runways);
             
             airfields.put(airfieldName, airfield);

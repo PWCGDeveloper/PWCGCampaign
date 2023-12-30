@@ -15,15 +15,13 @@
 		}
 	],
 	"airfields": {
-		"19180401": "Sombrin",
-		"19181004": "Beugnatre",
-		"19181015": "Velu",
-		"19181101": "Hermies, Cambrai"
+		"19180401": "Bailleul",
+		"19180409": "La Lovie"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -46,28 +44,33 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "SE5a_RFC74_Default",
 			"planeType": "se5a",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170601",
 			"endDate": "19181201",
 			"country": "BRITAIN",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		}
 	]
 }

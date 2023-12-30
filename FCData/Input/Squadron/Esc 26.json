@@ -8,30 +8,34 @@
 	"tacticalCodeStyle": 1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "nieuport",
-            "squadronIntroduction": "19160101",
-            "squadronWithdrawal": "19170615"
-        },
+		{
+			"archType": "nieuport",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170210"
+		},
 		{
 			"archType": "spad",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19170205",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-        "19160101": "Senard en Argonne",
-        "19170601": "Senard en Argonne",
-		"19171020": "Villers Bretonneu 2",
-		"19180329": "Allonville",
-		"19181004": "Foucaucourt en Santerre",
-		"19181015": "Moislains",
-		"19181101": "Moislains NE"
+		"19160101": "Brabant en Argonne",
+		"19170326": "Ferme de Corbeaulieu",
+		"19171111": "Vauxcere",
+		"19180113": "Beauze sur Aire",
+		"19180307": "Lhery",
+		"19180328": "Ferme Cravancon",
+		"19180607": "Grivesnes",
+		"19180715": "Muizon",
+		"19180729": "Grivesnes",
+		"19180910": "Froides",
+		"19180919": "La Noblette"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -41,70 +45,78 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
-    "skins": [
-        {
-            "skinName": "SP7EARLY_ESC26_Default",
-            "planeType": "spad7early",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "France",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        },
-        {
-            "skinName": "SP7Late_Buff_ESC26_Default",
-            "planeType": "spad7late",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19171201",
-            "country": "France",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        },
-        {
-            "skinName": "SP7Late_Camo_ESC26_Default",
-            "planeType": "spad7late",
-            "archTypes": [],
-            "startDate": "19171115",
-            "endDate": "19181201",
-            "country": "France",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        },
-        {
-            "skinName": "SP13_ESC26_Default",
-            "planeType": "spad13",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "France",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        }
-    ]
+	"skins": [
+		{
+			"skinName": "SP7EARLY_ESC26_Default",
+			"planeType": "spad7early",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP7Late_Buff_ESC26_Default",
+			"planeType": "spad7late",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19171201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP7Late_Camo_ESC26_Default",
+			"planeType": "spad7late",
+			"archTypes": [
+			],
+			"startDate": "19171115",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP13_ESC26_Default",
+			"planeType": "spad13",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
+	]
 }

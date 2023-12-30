@@ -8,30 +8,39 @@
 	"tacticalCodeStyle": 3,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "farmanf40",
-            "squadronIntroduction": "19160101",
-            "squadronWithdrawal": "19170215"
-        },
-        {
-            "archType": "dorandar",
-            "squadronIntroduction": "19170201",
-            "squadronWithdrawal": "19170701"
-        },
-        {
-            "archType": "breguet14",
-            "squadronIntroduction": "19170601",
-            "squadronWithdrawal": "19181201"
-        }
+		{
+			"archType": "farmanf40",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170215"
+		},
+		{
+			"archType": "dorandar",
+			"squadronIntroduction": "19170201",
+			"squadronWithdrawal": "19170701"
+		},
+		{
+			"archType": "breguet14",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
 	],
 	"airfields": {
-        "19160101": "Belrain",
-        "19170601": "Belrain"
+		"19160101": "Auve",
+		"19160503": "Tilloy",
+		"19160519": "Julvecourt",
+		"19160828": "Froides",
+		"19161207": "Lemmes",
+		"19170103": "Vadelaincourt",
+		"19170127": "Lemmes",
+		"19170701": "Vadelaincourt",
+		"19170922": "Auve",
+		"19171005": "Froides",
+		"19180609": "Grivesnes"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -49,21 +58,24 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
 	"callsigns": {
-		
 	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "BR14_ESC13_JUL1917",
 			"planeType": "breguet14",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "France",
@@ -77,7 +89,8 @@
 		{
 			"skinName": "BR14_ESC13_JAN1918",
 			"planeType": "breguet14",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "France",

@@ -8,16 +8,16 @@
 	"tacticalCodeStyle": 2,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "farmanf40",
-            "squadronIntroduction": "19160101",
-            "squadronWithdrawal": "19170215"
-        },
-        {
-            "archType": "dorandar",
-            "squadronIntroduction": "19170201",
-            "squadronWithdrawal": "19170701"
-        },
+		{
+			"archType": "farmanf40",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170215"
+		},
+		{
+			"archType": "dorandar",
+			"squadronIntroduction": "19170201",
+			"squadronWithdrawal": "19170701"
+		},
 		{
 			"archType": "breguet14",
 			"squadronIntroduction": "19170601",
@@ -25,14 +25,24 @@
 		}
 	],
 	"airfields": {
-        "19160101": "Rembercourt",
-        "19170601": "Rembercourt",
-		"19171020": "Dommartin les Toul"
+		"19160101": "Vauxcere",
+		"19160301": "Julvecourt",
+		"19160418": "Ferme de Corbeaulieu",
+		"19161017": "Vauxcere",
+		"19170629": "Froides",
+		"19170704": "Vadelaincourt",
+		"19170912": "Auve",
+		"19170924": "Froides",
+		"19180310": "Julvecourt",
+		"19180506": "Vauxcere",
+		"19180930": "Vauxcere",
+		"19181001": "Auve",
+		"19181021": "La Cheppe"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -50,42 +60,48 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
-    "skins": [
-        {
-            "skinName": "BR14_ESC19_JUL1917",
-            "planeType": "breguet14",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "France",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "RED",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        },
-        {
-            "skinName": "BR14_ESC19_JAN1918",
-            "planeType": "breguet14",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "France",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "RED",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        }
-    ]
+	"skins": [
+		{
+			"skinName": "BR14_ESC19_JUL1917",
+			"planeType": "breguet14",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "BR14_ESC19_JAN1918",
+			"planeType": "breguet14",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
+	]
 }

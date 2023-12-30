@@ -8,34 +8,34 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "aircodh2",
-            "squadronIntroduction": "19160801",
-            "squadronWithdrawal": "19170505"
-        },
-        {
-            "archType": "soppup",
-            "squadronIntroduction": "19170501",
-            "squadronWithdrawal": "19171105"
-        },
-        {
-            "archType": "se5",
-            "squadronIntroduction": "19171101",
-            "squadronWithdrawal": "19181201"
-        }
+		{
+			"archType": "aircodh2",
+			"squadronIntroduction": "19160801",
+			"squadronWithdrawal": "19170505"
+		},
+		{
+			"archType": "soppup",
+			"squadronIntroduction": "19170501",
+			"squadronWithdrawal": "19171105"
+		},
+		{
+			"archType": "se5",
+			"squadronIntroduction": "19171101",
+			"squadronWithdrawal": "19181201"
+		}
 	],
 	"airfields": {
-        "19160801": "Savy Berlette",
-        "19170601": "Savy Berlette",
-		"19171115": "Lealvillers",
-		"19171215": "La Tergette",
-		"19181004": "Lagnicourt",
-		"19181101": "La Brayelle"
+		"19160801": "Lealvillers",
+		"19170708": "Droglandt",
+		"19180329": "Villers Bretonneux",
+		"19180603": "Grivesnes",
+		"19180621": "Mont St Eloi",
+		"19180718": "Muizon"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -58,42 +58,48 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "SE5a_RFC24_Default_E",
 			"planeType": "se5a",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170601",
 			"endDate": "19180321",
 			"country": "BRITAIN",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_THREE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
 		},
 		{
 			"skinName": "SE5a_RFC24_Default_L",
 			"planeType": "se5a",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19180322",
 			"endDate": "19181201",
 			"country": "BRITAIN",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_THREE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
 		}
 	]
 }

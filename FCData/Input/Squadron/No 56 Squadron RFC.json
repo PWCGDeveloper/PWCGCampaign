@@ -15,15 +15,17 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Sombrin",
-		"19170621": "Savy Berlette",
-		"19181004": "La Tergette",
-		"19181015": "Fromelles"
+		"19170601": "Allonville",
+		"19170705": "La Gorgue",
+		"19171120": "Villers Bretonneux",
+		"19180121": "Allonville",
+		"19180325": "Lealvillers",
+		"19181029": "La Tergette"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -46,56 +48,63 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "SE5a_RFC56_Default_26AUG17",
 			"planeType": "se5a",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170601",
 			"endDate": "19170924",
 			"country": "BRITAIN",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "SE5a_RFC56_Default_25SEP17",
 			"planeType": "se5a",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170925",
 			"endDate": "19180321",
 			"country": "BRITAIN",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		{
 			"skinName": "SE5a_RFC56_Default_22MAR18",
 			"planeType": "se5a",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19180322",
 			"endDate": "19181201",
 			"country": "BRITAIN",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		}
 	]
 }

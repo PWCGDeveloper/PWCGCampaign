@@ -8,11 +8,11 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "fe2",
-            "squadronIntroduction": "19160401",
-            "squadronWithdrawal": "19170705"
-        },
+		{
+			"archType": "fe2",
+			"squadronIntroduction": "19160401",
+			"squadronWithdrawal": "19170705"
+		},
 		{
 			"archType": "bristolf2b",
 			"squadronIntroduction": "19170701",
@@ -20,16 +20,17 @@
 		}
 	],
 	"airfields": {
-        "19160401": "Bryas",
-        "19170601": "Bryas",
-		"19181004": "Savy Berlette",
-		"19181015": "La Tergette",
-		"19181101": "Velu"
+		"19160401": "Grivesnes",
+		"19170501": "Marieux",
+		"19170703": "Le Hameau",
+		"19180115": "Auchel",
+		"19180321": "Bryas",
+		"19181025": "Auchel"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -47,42 +48,48 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
-        {
-            "skinName": "BF2B_No22",
-            "planeType": "bristolf2bf2",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "BRITAIN",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_TWO"
-        },
-        {
-            "skinName": "BF2BF3_No22",
-            "planeType": "bristolf2bf3",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "BRITAIN",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_TWO"
-        }
+		{
+			"skinName": "BF2B_No22",
+			"planeType": "bristolf2bf2",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_TWO"
+		},
+		{
+			"skinName": "BF2BF3_No22",
+			"planeType": "bristolf2bf3",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_TWO"
+		}
 	]
 }

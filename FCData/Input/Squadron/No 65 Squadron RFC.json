@@ -15,14 +15,19 @@
 		}
 	],
 	"airfields": {
-		"19170601": "Le Hameau",
-		"19181004": "Mont St Eloi",
-		"19181015": "Lagnicourt"
+		"19171001": "La Lovie",
+		"19180217": "Bailleul",
+		"19180321": "Droglandt",
+		"19180324": "Bailleul",
+		"19180326": "Auchel",
+		"19180406": "Villers Bretonneux",
+		"19180812": "La Gorgue",
+		"19180816": "Bailleul"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -49,28 +54,33 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
-        {
-            "skinName": "SOPCAM_RFC65_Default",
-            "planeType": "sopcamel",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_THREE"
-        }
+		{
+			"skinName": "SOPCAM_RFC65_Default",
+			"planeType": "sopcamel",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		}
 	]
 }

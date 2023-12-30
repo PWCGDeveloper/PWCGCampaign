@@ -20,11 +20,10 @@
 		}
 	],
 	"airfields": {
-        "19160601": "Valheureux",
-        "19170601": "Valheureux",
-		"19180329": "Fienvillers",
-		"19181004": "Villers Bretonneu 2",
-		"19181015": "Lechelle"
+		"19160601": "Savy Berlette",
+		"19180707": "Allonville",
+		"19180919": "Marieux",
+		"19181101": "Mont St Eloi"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -47,21 +46,24 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
 	"callsigns": {
-		
 	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "BF2B_No11",
 			"planeType": "bristolf2bf2",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "BRITAIN",
@@ -75,7 +77,8 @@
 		{
 			"skinName": "BF2BF3_No11",
 			"planeType": "bristolf2bf3",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "BRITAIN",

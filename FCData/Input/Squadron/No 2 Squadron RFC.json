@@ -8,11 +8,11 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "fe2",
-            "squadronIntroduction": "19160101",
-            "squadronWithdrawal": "19170110"
-        },
+		{
+			"archType": "fe2",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170110"
+		},
 		{
 			"archType": "re8",
 			"squadronIntroduction": "19170101",
@@ -20,15 +20,15 @@
 		}
 	],
 	"airfields": {
-        "19160101": "Boffles",
-        "19170601": "Boffles",
-		"19181004": "Le Hameau",
-		"19181015": "Mont St Eloi"
+		"19160101": "Savy Berlette",
+		"19180609": "Conteville",
+		"19181020": "Mont St Eloi",
+		"19181026": "Lealvillers"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -46,28 +46,33 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
-        {
-            "skinName": "DH4_Default",
-            "planeType": "aircodh4",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "BRITAIN",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_THREE"
-        }
+		{
+			"skinName": "DH4_Default",
+			"planeType": "aircodh4",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "BRITAIN",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		}
 	]
 }

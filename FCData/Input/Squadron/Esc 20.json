@@ -26,12 +26,21 @@
 	],
 	"airfields": {
 		"19160101": "Erize la Petite",
-		"19170601": "Erize la Petite"
+		"19170615": "Vauxcere",
+		"19170813": "Arcy Sainte Restitue",
+		"19180128": "Marieux",
+		"19180405": "La Tergette",
+		"19180503": "Treizennes",
+		"19180513": "Vauxcere",
+		"19180708": "Muizon",
+		"19180721": "Vauxcere",
+		"19180903": "Villers Bretonneu 2",
+		"19181014": "Muizon"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -49,21 +58,24 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
 	"callsigns": {
-		
 	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
 		{
 			"skinName": "BR14_ESC20_JUL1917",
 			"planeType": "breguet14",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "France",
@@ -77,7 +89,8 @@
 		{
 			"skinName": "BR14_ESC20_JAN1918",
 			"planeType": "breguet14",
-			"archTypes": [],
+			"archTypes": [
+			],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "France",

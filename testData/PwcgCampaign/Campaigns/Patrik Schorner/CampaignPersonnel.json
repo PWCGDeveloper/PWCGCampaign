@@ -1525,7 +1525,7 @@
         },
         {
           "date": "19161118",
-          "location": "Maizy,N Fismes",
+          "location": "Maizy",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
@@ -1886,7 +1886,7 @@
             "airOrGround": 1,
             "type": "fe2b",
             "squadron": "Esc 227",
-            "pilot": "Hyacinthe Mengel",
+            "pilot": "Hyacinthe MChannel",
             "pilotStatus": 0,
             "observer": "Robert Demoulin",
             "observerStatus": 0
@@ -4394,7 +4394,7 @@
         },
         {
           "date": "19161119",
-          "location": "Maizy,N Fismes",
+          "location": "Maizy",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
@@ -4661,7 +4661,7 @@
         },
         {
           "date": "19160705",
-          "location": "Maizy,N Fismes",
+          "location": "Maizy",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
@@ -5381,7 +5381,7 @@
         },
         {
           "date": "19161018",
-          "location": "Maizy,N Fismes",
+          "location": "Maizy",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
@@ -6091,7 +6091,7 @@
             "airOrGround": 1,
             "type": "fe2b",
             "squadron": "Esc 8",
-            "pilot": "Cpl Jean-Jacques Mengel",
+            "pilot": "Cpl Jean-Jacques MChannel",
             "pilotStatus": -6,
             "observer": "S/Lt Frederic Labialle",
             "observerStatus": -6
@@ -7849,7 +7849,7 @@
         },
         {
           "date": "19161009",
-          "location": "La Targette",
+          "location": "La Tergette",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
@@ -8363,7 +8363,7 @@
         },
         {
           "date": "19161127",
-          "location": "Maizy,N Fismes",
+          "location": "Maizy",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
@@ -9136,7 +9136,7 @@
         },
         {
           "date": "19160805",
-          "location": "La Targette",
+          "location": "La Tergette",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
@@ -11262,7 +11262,7 @@
             "airOrGround": 1,
             "type": "nieuport17brit",
             "squadron": "Esc N.57",
-            "pilot": "Cpl Jerome Mengel",
+            "pilot": "Cpl Jerome MChannel",
             "pilotStatus": -6,
             "observer": "",
             "observerStatus": 0
@@ -12167,7 +12167,7 @@
         },
         {
           "date": "19161110",
-          "location": "Maizy,N Fismes",
+          "location": "Maizy",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,

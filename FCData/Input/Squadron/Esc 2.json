@@ -20,8 +20,17 @@
 		}
 	],
 	"airfields": {
-        "19160101": "Pretz en Argonne",
-        "19170601": "Pretz en Argonne"
+        "19160101": "Julvecourt",
+        "19160401": "Arcy Sainte Restitue",
+        "19160801": "Auve",
+        "19161016": "Cachy",
+        "19161206": "Vauxcere",
+        "19161226": "Rosnay",
+        "19171208": "Grivesnes",
+        "19180408": "Allonville",
+        "19180602": "Auve",
+        "19180921": "La Mellette",
+        "19181021": "Rosnay"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

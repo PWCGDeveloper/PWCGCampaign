@@ -13,26 +13,21 @@
 			"squadronIntroduction": "19171201",
 			"squadronWithdrawal": "19181009"
 		},
-        {
-            "archType": "sopsnipe",
-            "squadronIntroduction": "19181010",
-            "squadronWithdrawal": "19181201"
-        }
+		{
+			"archType": "sopsnipe",
+			"squadronIntroduction": "19181010",
+			"squadronWithdrawal": "19181201"
+		}
 	],
 	"airfields": {
-        "19171201": "Lealvillers",
-        "19170601": "Lealvillers",
-		"19170621": "Mont St Eloi",
-		"19171215": "Lealvillers",
-		"19180329": "Marieux",
-		"19181004": "Lechelle",
-		"19181015": "Hermies, Cambrai",
-		"19181101": "Guisnain"
+		"19171201": "Auchel",
+		"19180630": "La Gorgue",
+		"19181020": "Auchel"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -59,28 +54,33 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
 	"skins": [
-        {
-            "skinName": "SOPCAM_AFC4_Default",
-            "planeType": "sopcamel",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "Britain",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_TWO"
-        }
+		{
+			"skinName": "SOPCAM_AFC4_Default",
+			"planeType": "sopcamel",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_TWO"
+		}
 	]
 }

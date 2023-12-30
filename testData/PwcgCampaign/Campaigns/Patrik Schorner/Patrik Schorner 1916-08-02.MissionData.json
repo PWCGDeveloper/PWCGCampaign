@@ -10,7 +10,7 @@
     "duty": "PATROL",
     "altitude": 4064
   },
-  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-08-02\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2450 meters.\nWind speed is 2 M/S.\nWind direction is 295.\n\nPrimary Objective\nPatrol airspace  near Noyon.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre\nDate  1916-08-02\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2450 meters.\nWind speed is 2 M/S.\nWind direction is 295.\n\nPrimary Objective\nPatrol airspace  near Noyon.  Engage any enemy aircraft that you encounter.\n\n\n",
   "missionPlanes": [
     {
       "aircraftType": "halberstadtd2",
@@ -87,7 +87,7 @@
       "squadronName": "FA 44",
       "crew": {
         "pilot": "Maxim Zimmermann",
-        "observer": "Klemens Stengel",
+        "observer": "Klemens StChannel",
         "pilotRank": "Fw",
         "observerRank": "Ltn"
       }

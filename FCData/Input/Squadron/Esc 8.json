@@ -8,16 +8,16 @@
 	"tacticalCodeStyle": 3,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "farmanf40",
-            "squadronIntroduction": "19160101",
-            "squadronWithdrawal": "19170610"
-        },
-        {
-            "archType": "dorandar",
-            "squadronIntroduction": "19170601",
-            "squadronWithdrawal": "19180210"
-        },
+		{
+			"archType": "farmanf40",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170610"
+		},
+		{
+			"archType": "dorandar",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19180210"
+		},
 		{
 			"archType": "breguet14",
 			"squadronIntroduction": "19180201",
@@ -25,14 +25,28 @@
 		}
 	],
 	"airfields": {
-        "19160101": "Lisle en Barrois",
-        "19170601": "Lisle en Barrois",
-		"19171020": "Beauze sur Aire"
+		"19160101": "Tilloy",
+		"19160503": "Villers Bretonneu 2",
+		"19160620": "Vadelaincourt",
+		"19170201": "Somme Vesle",
+		"19170301": "Grivesnes",
+		"19170419": "Vauxcere",
+		"19170903": "Mont de Soissons",
+		"19180309": "Vauxcere",
+		"19180315": "Mont de Soissons",
+		"19180527": "Ferme Cravancon",
+		"19180601": "Vauxcere",
+		"19180729": "Vauxcere",
+		"19180813": "Muizon",
+		"19180823": "Vauxcere",
+		"19180830": "La Mellette",
+		"19180921": "Vauxcere",
+		"19180926": "La Cheppe"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -50,42 +64,48 @@
 			}
 		]
 	},
-	"conversionPeriods": [],
+	"conversionPeriods": [
+	],
 	"squadHistory": {
-		"squadHistoryEntries": []
+		"squadHistoryEntries": [
+		]
 	},
-	"callsigns": {},
+	"callsigns": {
+	},
 	"nightMissionOdds": {
-		"nightMissionPeriods": []
+		"nightMissionPeriods": [
+		]
 	},
-    "skins": [
-        {
-            "skinName": "BR14_ESC8_JUL1917",
-            "planeType": "breguet14",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "France",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        },
-        {
-            "skinName": "BR14_ESC8_JAN1918",
-            "planeType": "breguet14",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "France",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        }
-    ]
+	"skins": [
+		{
+			"skinName": "BR14_ESC8_JUL1917",
+			"planeType": "breguet14",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "BR14_ESC8_JAN1918",
+			"planeType": "breguet14",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
+	]
 }

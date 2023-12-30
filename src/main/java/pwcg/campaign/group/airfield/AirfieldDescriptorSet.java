@@ -2,11 +2,13 @@ package pwcg.campaign.group.airfield;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class AirfieldDescriptorSet
 {
     private String locationSetName = "";
-    private List<AirfieldDescriptor> locations = new ArrayList<>();
+    private Map<String, AirfieldDescriptor> locations = new TreeMap<>();
 
     public String getLocationSetName()
     {
@@ -20,12 +22,15 @@ public class AirfieldDescriptorSet
 
     public List<AirfieldDescriptor> getLocations()
     {
-        return locations;
+        return new ArrayList<AirfieldDescriptor>(locations.values());
     }
 
     public void setLocations(List<AirfieldDescriptor> locations)
     {
-        this.locations = locations;
+        for (AirfieldDescriptor airfield : locations)
+        {
+            this.locations.put(airfield.getName(), airfield);
+        }
     }
 
 }
