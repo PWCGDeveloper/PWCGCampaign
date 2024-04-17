@@ -10,7 +10,7 @@
 	],
 	"displayName": "Spitfire Mk.XIVe",
 	"script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkxive.txt",
-	"model": "graphics\\planes\\spitfiremkixe\\spitfiremkxive.mgm",
+	"model": "graphics\\planes\\spitfiremkxive\\spitfiremkxive.mgm",
 	"desc": "",
 	"cruisingSpeed": 380,
 	"climbOutRate": 2000,
