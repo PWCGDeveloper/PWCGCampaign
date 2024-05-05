@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -57,7 +58,8 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
 		try
 		{
 	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingDescriptionScreen);
-            this.setThemedImageFromName(CampaignHomeContext.getCampaign().getReferenceService(), imagePath);
+	        ArmedService service = CampaignHomeContext.getCampaign().getReferenceService();
+            this.setThemedImageFromName(service, imagePath);
 
             briefingFlightChooser = new BriefingPlayerFlightChooser(mission, this);
             briefingFlightChooser.createBriefingPlayerSquadronSelectPanel();

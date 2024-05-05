@@ -16,9 +16,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.MissionSkinChecker;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

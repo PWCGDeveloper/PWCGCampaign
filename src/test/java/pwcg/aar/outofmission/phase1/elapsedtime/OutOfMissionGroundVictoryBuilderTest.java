@@ -20,8 +20,8 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @ExtendWith(MockitoExtension.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

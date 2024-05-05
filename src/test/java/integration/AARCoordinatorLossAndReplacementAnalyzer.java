@@ -20,8 +20,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 public class AARCoordinatorLossAndReplacementAnalyzer
 {

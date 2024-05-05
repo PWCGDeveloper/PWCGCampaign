@@ -13,8 +13,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.MissionSquadronRegistry;
 import pwcg.mission.flight.escort.EscortSquadronSelector;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @ExtendWith(MockitoExtension.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

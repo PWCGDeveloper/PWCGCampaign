@@ -39,9 +39,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.logfiles.LogFileSet;
 import pwcg.product.fc.country.FCCountry;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.CampaignPersonnelTestHelper;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)

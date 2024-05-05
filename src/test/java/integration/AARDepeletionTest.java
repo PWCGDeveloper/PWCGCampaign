@@ -14,8 +14,8 @@ import pwcg.campaign.squadron.SquadronViability;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @Tag("BOS")
 public class AARDepeletionTest

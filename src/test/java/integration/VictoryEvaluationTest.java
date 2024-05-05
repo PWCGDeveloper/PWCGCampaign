@@ -42,8 +42,8 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.io.MissionFileNameBuilder;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @Tag("BOS")

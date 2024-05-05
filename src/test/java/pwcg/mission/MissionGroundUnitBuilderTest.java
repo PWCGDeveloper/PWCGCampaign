@@ -21,8 +21,8 @@ import pwcg.mission.ground.MissionTrainBuilder;
 import pwcg.mission.ground.MissionTruckConvoyBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 import pwcg.testutils.TestMissionFlightTypeBuilder;
 

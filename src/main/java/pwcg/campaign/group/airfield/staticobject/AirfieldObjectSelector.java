@@ -27,7 +27,7 @@ public class AirfieldObjectSelector
         
         ICountry groundObjectCountry = PWCGContext.getInstance().getMap(mapIdentifier).getGroundCountryForMapBySide(airfieldCountry.getSide());
                 
-        IVehicle airfieldObject = StaticObjectFactory.createStaticObject(groundObjectCountry, date, VehicleClass.StaticAirfield);        
+        IVehicle airfieldObject = StaticObjectFactory.createStaticObject(groundObjectCountry, date, VehicleClass.StaticAirfield);  
         airfieldObject.setPosition(hotSpot.getPosition().copy());
         airfieldObject.setOrientation(objectOrientation);
         airfieldObject.populateEntity();

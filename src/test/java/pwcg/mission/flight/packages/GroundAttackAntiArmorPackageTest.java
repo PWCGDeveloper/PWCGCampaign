@@ -24,9 +24,9 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.target.TargetType;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TargetVicinityValidator;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

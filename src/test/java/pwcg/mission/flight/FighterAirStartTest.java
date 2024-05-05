@@ -22,8 +22,8 @@ import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.mcu.group.virtual.VirtualWaypointPackageValidator;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

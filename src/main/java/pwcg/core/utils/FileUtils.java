@@ -50,13 +50,16 @@ public class FileUtils
     public static boolean findInDirectory(String directoryName, String lookForFileName) throws PWCGException
     {
         File directory = new File(directoryName);
-        lookForFileName = lookForFileName.toLowerCase();
-        for (String fileName : directory.list())
+        if (directory != null)
         {
-            fileName = fileName.toLowerCase();
-            if (fileName.contains(lookForFileName))
+            lookForFileName = lookForFileName.toLowerCase();
+            for (String fileName : directory.list())
             {
-                return true;
+                fileName = fileName.toLowerCase();
+                if (fileName.contains(lookForFileName))
+                {
+                    return true;
+                }
             }
         }
         return false;

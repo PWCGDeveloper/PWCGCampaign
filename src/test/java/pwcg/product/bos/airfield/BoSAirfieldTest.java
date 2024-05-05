@@ -21,8 +21,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.options.MissionWeather;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @ExtendWith(MockitoExtension.class)
 public class BoSAirfieldTest

@@ -1,0 +1,19 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"dorandar": {
+			"skinName": "DorandAR",
+			"planeType": "re8",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		}
+	}
+}

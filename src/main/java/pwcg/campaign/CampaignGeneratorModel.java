@@ -144,9 +144,9 @@ public class CampaignGeneratorModel
             throw new PWCGUserException ("Invalid date - must be between start and end of war");
         }
 
-        if (getCampaignName() == null || getCampaignName().length() == 0)
+        if (!CampaignNameValidator.validateCampaignName(campaignName))
         {
-            throw new PWCGUserException ("Invalid name - no campaign name provided");
+            throw new PWCGUserException ("Campaign anme must be 5 characters long and start with a letter");
         }
 
         if (getPlayerName() == null || getPlayerName().length() == 0)

@@ -34,9 +34,9 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronMemberPicker;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @ExtendWith(MockitoExtension.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

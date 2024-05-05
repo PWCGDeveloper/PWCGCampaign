@@ -19,8 +19,8 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 public class AARCoordinatorCampaignUpdateIntegrityValidator
 {

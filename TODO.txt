@@ -1,30 +1,57 @@
+
+===
+Missing profile pictures for Li2 and La 5 S 38
+
+
+===
+Trying to do a paratroop mission with C-47s but they seem always start with canisters instead of paratroopers.
+
+
+===
+Cant see the new Spitfire C model. Flying an RAF campaign in Normandy, August 44 with 41 squadron. 
+Requesting an equipment change does not show the C model. Tried an an existing Bodenplate campaign and its not there either. 
+Is it not available in Normandy or Bodenplatte? 
+
+
+===
+When you change fronts, missions won't generate and you can't create that 
+front's new pilots unless you exit and then restart the campaign from the main menu.  
+No problem, you just need to know to take that step.
+
+===
+Schlachtgeschwader 1 (ww2.dk) Add HS 129
+
+===
+FC coop campaign on German side;  
+create campaign, create initial pilot linked to me (host);  
+go to create additional pilots for coop users.  Receive error on attempt to add:
+
+ 
+
+java.lang.NullPointerException: Cannot invoke "String.equalsIgnoreCase(String)
+" because the return value of "pwcg.campaign.squadmember.SquadronMember.getPlayerRegion()" is null
+
+
+
+
 FC3:
 Map
-- Map images - X
-- Map seasons - X
-- Update groups for new map -X
-- Airfields.json  -X
 - Battles.json
-- GroundStructures.json -X
-- MapLocations.json -X
-- railroads.ini -X
-- roads.ini -X
-- roadsystem.ini -X
-- StaticGroundStructures.json -X
--
-- New airfield take off positions  -X
-
-Add new squadrons from ROF
-Redo airfield assignments for existing and new squadrons.
-Add RE8 -X
-
-
 
 Skins for FC:
 French RE8 (not yet) 
 Belgian RE8 (not yet) 
+Squadron skins for FE2b
+Squadron skins for RE8
+
+BoS
+Add IAR as axis plane
+Add Spitfire IXc
 
 
+Stop Line ==========================================================
+
+Later:
 
 Remove excess AAA from cities
 Bombers dive to target

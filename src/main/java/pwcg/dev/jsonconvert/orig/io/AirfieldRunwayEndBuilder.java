@@ -4,9 +4,9 @@ import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.AirfieldDescriptor;
-import pwcg.campaign.group.airfield.AirfieldDescriptorSet;
+import pwcg.campaign.group.airfield.AirfieldDescriptorMapSet;
 import pwcg.campaign.group.airfield.Runway;
-import pwcg.campaign.io.json.AirfieldDescriptorIOJson;
+import pwcg.campaign.io.json.AirfieldDescriptorIOMapJson;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 
@@ -18,7 +18,7 @@ public class AirfieldRunwayEndBuilder
         {
             PWCGContext.setProduct(PWCGProduct.BOS);
             String mapName = PWCGContext.getInstance().getMap(FrontMapIdentifier.NORMANDY_MAP).getMapName();
-            AirfieldDescriptorSet airfieldDescriptorSet = AirfieldDescriptorIOJson.readJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + 
+            AirfieldDescriptorMapSet airfieldDescriptorSet = AirfieldDescriptorIOMapJson.readJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + 
                     mapName + "\\", "AirfieldLocations");
             for (AirfieldDescriptor airfieldDescriptor : airfieldDescriptorSet.getLocations())
             {
@@ -31,7 +31,7 @@ public class AirfieldRunwayEndBuilder
                 }
             }
 
-            AirfieldDescriptorIOJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "AirfieldLocations.json", airfieldDescriptorSet);
+            AirfieldDescriptorIOMapJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "AirfieldLocations.json", airfieldDescriptorSet);
         }
         catch (Exception e)
         {

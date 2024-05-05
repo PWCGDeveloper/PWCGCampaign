@@ -15,7 +15,7 @@ public abstract class DeployBase
     protected HashMap<String, Object> directoriesToCopy = new HashMap<String, Object>();
     protected HashMap<String, Object> unwantedFiles = new HashMap<String, Object>();
 
-    protected String sourceRootDir = "D:\\PWCG\\workspacePwcg\\PWCGCampaign";
+    protected String sourceRootDir = "D:\\PWCG\\workspacePwcg2023\\PWCGCampaign";
     protected String deployDir = "D:\\PWCG\\Deploy";
     protected String targetDir = "D:\\PWCG\\Deploy\\PWCGCampaign";
     protected String targetFinalDir = "";

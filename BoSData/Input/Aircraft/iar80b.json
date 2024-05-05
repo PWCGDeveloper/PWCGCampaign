@@ -1,0 +1,27 @@
+{
+	"type": "iar80b",
+	"archType": "iar",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "I.A.R. 80-B",
+	"script": "LuaScripts\\WorldObjects\\Planes\\iar80b.txt",
+	"model": "graphics\\planes\\iar80b\\iar80b.mgm",
+	"desc": "",
+	"cruisingSpeed": 360,
+	"climbOutRate": 1000,
+	"goodness": 29,
+	"range": 600,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"ATTACK",
+		"FIGHTER"
+	],
+	"introduction": "19410601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

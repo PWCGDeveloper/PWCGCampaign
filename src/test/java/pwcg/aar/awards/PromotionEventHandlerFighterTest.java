@@ -27,8 +27,8 @@ import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.fc.country.FCServiceManager;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.VictoryMaker;
 
 @ExtendWith(MockitoExtension.class)

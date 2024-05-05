@@ -10,9 +10,9 @@ import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.AirfieldDescriptor;
-import pwcg.campaign.group.airfield.AirfieldDescriptorSet;
+import pwcg.campaign.group.airfield.AirfieldDescriptorMapSet;
 import pwcg.campaign.group.airfield.Runway;
-import pwcg.campaign.io.json.AirfieldDescriptorIOJson;
+import pwcg.campaign.io.json.AirfieldDescriptorIOMapJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -109,10 +109,10 @@ public class AirfieldBuilder
 
     private void writeAirfields(String mapName) throws PWCGException
     {
-        AirfieldDescriptorSet airfieldDescriptorSet = new AirfieldDescriptorSet();
+        AirfieldDescriptorMapSet airfieldDescriptorSet = new AirfieldDescriptorMapSet();
         airfieldDescriptorSet.setLocationSetName("Airfields");
         airfieldDescriptorSet.setLocations(new ArrayList<>(airfields.values()));
-        AirfieldDescriptorIOJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "AirfieldLocations2.json", airfieldDescriptorSet);
+        AirfieldDescriptorIOMapJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "AirfieldLocations2.json", airfieldDescriptorSet);
     }
     
     

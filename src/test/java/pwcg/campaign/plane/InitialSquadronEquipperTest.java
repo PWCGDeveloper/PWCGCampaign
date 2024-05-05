@@ -12,8 +12,8 @@ import pwcg.campaign.resupply.depot.EquipmentWeightCalculator;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @ExtendWith(MockitoExtension.class)
 public class InitialSquadronEquipperTest

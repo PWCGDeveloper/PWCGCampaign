@@ -21,9 +21,9 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.PwcgTestBase;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 public class StrategicInterceptPackageTest extends PwcgTestBase

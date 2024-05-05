@@ -18,9 +18,9 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.CampaignPersonnelTestHelper;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @ExtendWith(MockitoExtension.class)
 public class OutOfMissionAirVictoryBuilderTest

@@ -1,0 +1,18 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"spitfiremkxivc_default": {
+			"skinName": "spitfiremkixc",
+			"planeType": "spitfiremkixc",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "SKY",
+			"winter": false
+		}
+	}
+}

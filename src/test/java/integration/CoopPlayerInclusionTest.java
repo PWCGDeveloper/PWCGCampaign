@@ -24,8 +24,8 @@ import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CoopPlayerInclusionTest

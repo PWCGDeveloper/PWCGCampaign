@@ -243,8 +243,8 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
 	            campaignMode = CampaignMode.CAMPAIGN_MODE_COOP;;
 	            coopGroup.setSelected(coopCooperativeButtonModel, true);
 	        }
-
-	        setCampaignProfileData();
+            
+            setCampaignProfileData();
             
             revalidate();
             repaint();

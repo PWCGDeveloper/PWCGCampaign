@@ -37,6 +37,8 @@ import pwcg.product.bos.plane.payload.aircraft.He111H6Payload;
 import pwcg.product.bos.plane.payload.aircraft.Hs129B2Payload;
 import pwcg.product.bos.plane.payload.aircraft.HurricaneMkIIPayload;
 import pwcg.product.bos.plane.payload.aircraft.I16Type24Payload;
+import pwcg.product.bos.plane.payload.aircraft.IAR80aPayload;
+import pwcg.product.bos.plane.payload.aircraft.IAR80bPayload;
 import pwcg.product.bos.plane.payload.aircraft.IL2M41Payload;
 import pwcg.product.bos.plane.payload.aircraft.IL2M42Payload;
 import pwcg.product.bos.plane.payload.aircraft.IL2M43Payload;
@@ -63,6 +65,7 @@ import pwcg.product.bos.plane.payload.aircraft.P51B5Payload;
 import pwcg.product.bos.plane.payload.aircraft.P51D15Payload;
 import pwcg.product.bos.plane.payload.aircraft.Pe2S35Payload;
 import pwcg.product.bos.plane.payload.aircraft.Pe2S87Payload;
+import pwcg.product.bos.plane.payload.aircraft.SpitfireMkIXcPayload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkIXePayload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkVbPayload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkXIVEPayload;
@@ -154,6 +157,14 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.FW190_D9)
         {
             return new Fw190D9Payload(planeType, date);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.IAR80A)
+        {
+            return new IAR80aPayload(planeType, date);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.IAR80B)
+        {
+            return new IAR80bPayload(planeType, date);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.HE111_H6)
         {
@@ -300,6 +311,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKVB)
         {
             return new SpitfireMkVbPayload(planeType, date);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKIXC)
+        {
+            return new SpitfireMkIXcPayload(planeType, date);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKIXE)
         {

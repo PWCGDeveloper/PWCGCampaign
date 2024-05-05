@@ -31,7 +31,7 @@ public class BoSStaticPlane extends Block implements IStaticPlane
         this.setModel(model);
         this.setScript(script);
         this.setDesc(staticPlaneName);
-        this.setDurability(25000);
+        this.setDurability(1000);
         this.setDamageReport(50);
         this.setDamageThreshold(1);
         this.setDeleteAfterDeath(0);

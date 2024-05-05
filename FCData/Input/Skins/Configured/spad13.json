@@ -9,7 +9,7 @@
             "squadId": 303094,
             "country": "USA",
             "category": "Configured",
-            "definedInGame": false
+            "definedInGame": true
         },
         "PC_Spad13_SPA3_Generic2": {
             "skinName": "PC_Spad13_SPA3_Generic2",

@@ -1,7 +1,7 @@
 {
   "locationSetName": "Airfields",
-  "locations": [
-    {
+  "locations": {
+    "A-1 Saint Pierre du Mont": {
       "runways": [
         {
           "startPos": {
@@ -30,7 +30,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-10 Carentan": {
       "runways": [
         {
           "startPos": {
@@ -59,7 +59,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-11 Saint Lambert": {
       "runways": [
         {
           "startPos": {
@@ -88,7 +88,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-12 Lignerolles": {
       "runways": [
         {
           "startPos": {
@@ -117,7 +117,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-13 Tour en Bessin": {
       "runways": [
         {
           "startPos": {
@@ -146,7 +146,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-14 Cretteville": {
       "runways": [
         {
           "startPos": {
@@ -175,7 +175,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-16 Brucheville": {
       "runways": [
         {
           "startPos": {
@@ -204,7 +204,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-17 Meautis": {
       "runways": [
         {
           "startPos": {
@@ -233,7 +233,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-19 La Vielle": {
       "runways": [
         {
           "startPos": {
@@ -262,7 +262,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-2 Criqueville": {
       "runways": [
         {
           "startPos": {
@@ -291,7 +291,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-28 Pontorson": {
       "runways": [
         {
           "startPos": {
@@ -320,7 +320,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-3 Cardonville": {
       "runways": [
         {
           "startPos": {
@@ -349,7 +349,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-4 Deux Jumeaux": {
       "runways": [
         {
           "startPos": {
@@ -378,7 +378,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-5 Chippelle": {
       "runways": [
         {
           "startPos": {
@@ -407,7 +407,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-6 Beuzeville": {
       "runways": [
         {
           "startPos": {
@@ -436,7 +436,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-7 Azeville": {
       "runways": [
         {
           "startPos": {
@@ -465,7 +465,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "A-8 Picauville": {
       "runways": [
         {
           "startPos": {
@@ -494,7 +494,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Abbeville Drucat": {
       "runways": [
         {
           "startPos": {
@@ -523,7 +523,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Apuldram": {
       "runways": [
         {
           "startPos": {
@@ -552,7 +552,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Ashford": {
       "runways": [
         {
           "startPos": {
@@ -581,7 +581,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-10 Plumetot": {
       "runways": [
         {
           "startPos": {
@@ -610,7 +610,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-11 Longues": {
       "runways": [
         {
           "startPos": {
@@ -639,7 +639,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-12 Ellon": {
       "runways": [
         {
           "startPos": {
@@ -668,7 +668,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-17 Carpiquet": {
       "runways": [
         {
           "startPos": {
@@ -697,7 +697,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-18 Cristot": {
       "runways": [
         {
           "startPos": {
@@ -726,7 +726,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-19 Lingevres": {
       "runways": [
         {
           "startPos": {
@@ -755,7 +755,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-2 Bazenville": {
       "runways": [
         {
           "startPos": {
@@ -784,7 +784,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-4 Beny sur Mer": {
       "runways": [
         {
           "startPos": {
@@ -813,7 +813,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-5 Camilly": {
       "runways": [
         {
           "startPos": {
@@ -842,7 +842,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-6 Coulombs": {
       "runways": [
         {
           "startPos": {
@@ -871,7 +871,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-7 Martragny": {
       "runways": [
         {
           "startPos": {
@@ -900,7 +900,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B-9 Lantheuil": {
       "runways": [
         {
           "startPos": {
@@ -929,7 +929,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "B3 Saint Croix sur Mer": {
       "runways": [
         {
           "startPos": {
@@ -958,7 +958,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Beaulieu": {
       "runways": [
         {
           "startPos": {
@@ -987,7 +987,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Beaumont le Roger": {
       "runways": [
         {
           "startPos": {
@@ -1016,7 +1016,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Beauvais Tille": {
       "runways": [
         {
           "startPos": {
@@ -1045,7 +1045,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Berck sur Mer": {
       "runways": [
         {
           "startPos": {
@@ -1074,7 +1074,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Bisterne": {
       "runways": [
         {
           "startPos": {
@@ -1103,7 +1103,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Blackbushe": {
       "runways": [
         {
           "startPos": {
@@ -1132,7 +1132,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Bognor": {
       "runways": [
         {
           "startPos": {
@@ -1161,7 +1161,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Boulogne Alprech": {
       "runways": [
         {
           "startPos": {
@@ -1190,7 +1190,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Brenzett": {
       "runways": [
         {
           "startPos": {
@@ -1219,7 +1219,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Calais Coquelles": {
       "runways": [
         {
           "startPos": {
@@ -1248,7 +1248,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Chailey": {
       "runways": [
         {
           "startPos": {
@@ -1277,7 +1277,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Chaumont en Vexin": {
       "runways": [
         {
           "startPos": {
@@ -1306,7 +1306,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Chilbolton": {
       "runways": [
         {
           "startPos": {
@@ -1335,7 +1335,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Clais Marck": {
       "runways": [
         {
           "startPos": {
@@ -1364,7 +1364,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Coolham": {
       "runways": [
         {
           "startPos": {
@@ -1393,7 +1393,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Cormeilles en Vexin": {
       "runways": [
         {
           "startPos": {
@@ -1422,7 +1422,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Crecy en Ponthieu": {
       "runways": [
         {
           "startPos": {
@@ -1451,7 +1451,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Deanland": {
       "runways": [
         {
           "startPos": {
@@ -1480,7 +1480,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Dieppe Saint Aubin": {
       "runways": [
         {
           "startPos": {
@@ -1509,7 +1509,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Dreux": {
       "runways": [
         {
           "startPos": {
@@ -1538,7 +1538,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Dunkerque Mardyck": {
       "runways": [
         {
           "startPos": {
@@ -1567,7 +1567,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Dunsfold": {
       "runways": [
         {
           "startPos": {
@@ -1596,7 +1596,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Evreux Fauville": {
       "runways": [
         {
           "startPos": {
@@ -1625,7 +1625,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Evreux Huest": {
       "runways": [
         {
           "startPos": {
@@ -1654,7 +1654,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Ford": {
       "runways": [
         {
           "startPos": {
@@ -1683,7 +1683,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Friston": {
       "runways": [
         {
           "startPos": {
@@ -1712,7 +1712,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Funtington": {
       "runways": [
         {
           "startPos": {
@@ -1741,7 +1741,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Guyancourt": {
       "runways": [
         {
           "startPos": {
@@ -1770,7 +1770,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Hawkinge": {
       "runways": [
         {
           "startPos": {
@@ -1799,7 +1799,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Headcorn": {
       "runways": [
         {
           "startPos": {
@@ -1828,7 +1828,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "High Halden": {
       "runways": [
         {
           "startPos": {
@@ -1857,7 +1857,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Highcliffe": {
       "runways": [
         {
           "startPos": {
@@ -1886,7 +1886,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Holmsley South": {
       "runways": [
         {
           "startPos": {
@@ -1915,7 +1915,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Horne": {
       "runways": [
         {
           "startPos": {
@@ -1944,7 +1944,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Huen": {
       "runways": [
         {
           "startPos": {
@@ -1973,7 +1973,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Ibsley": {
       "runways": [
         {
           "startPos": {
@@ -2002,7 +2002,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Kingsnorth": {
       "runways": [
         {
           "startPos": {
@@ -2031,7 +2031,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Lasham": {
       "runways": [
         {
           "startPos": {
@@ -2060,7 +2060,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Lashenden": {
       "runways": [
         {
           "startPos": {
@@ -2089,7 +2089,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Les Mesnuls": {
       "runways": [
         {
           "startPos": {
@@ -2118,7 +2118,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Lonrai": {
       "runways": [
         {
           "startPos": {
@@ -2147,7 +2147,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Lymington": {
       "runways": [
         {
           "startPos": {
@@ -2176,7 +2176,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Lympne": {
       "runways": [
         {
           "startPos": {
@@ -2205,7 +2205,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Manston": {
       "runways": [
         {
           "startPos": {
@@ -2234,152 +2234,7 @@
         "zOri": 0.0
       }
     },
-    {
-      "runways": [
-        {
-          "startPos": {
-            "xPos": 298916.0,
-            "yPos": 7.0,
-            "zPos": 70139.0
-          },
-          "endPos": {
-            "xPos": 297756.8890084531,
-            "yPos": 0.0,
-            "zPos": 70449.58285412303
-          },
-          "taxiToStart": [],
-          "taxiFromEnd": []
-        }
-      ],
-      "name": "Needs Oar Point",
-      "position": {
-        "xPos": 298916.0,
-        "yPos": 0.0,
-        "zPos": 70139.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 165.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "runways": [
-        {
-          "startPos": {
-            "xPos": 327763.0,
-            "yPos": 2.0,
-            "zPos": 235898.0
-          },
-          "endPos": {
-            "xPos": 328867.6058241429,
-            "yPos": 0.0,
-            "zPos": 235429.12264581287
-          },
-          "taxiToStart": [],
-          "taxiFromEnd": []
-        }
-      ],
-      "name": "Newchurch",
-      "position": {
-        "xPos": 327763.0,
-        "yPos": 0.0,
-        "zPos": 235898.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 337.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "runways": [
-        {
-          "startPos": {
-            "xPos": 60782.0,
-            "yPos": 131.0,
-            "zPos": 280375.0
-          },
-          "endPos": {
-            "xPos": 61537.184469259795,
-            "yPos": 0.0,
-            "zPos": 281307.5751537484
-          },
-          "taxiToStart": [],
-          "taxiFromEnd": []
-        }
-      ],
-      "name": "Nogent le Roi",
-      "position": {
-        "xPos": 60782.0,
-        "yPos": 0.0,
-        "zPos": 280375.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 51.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "runways": [
-        {
-          "startPos": {
-            "xPos": 159034.0,
-            "yPos": 92.0,
-            "zPos": 177266.0
-          },
-          "endPos": {
-            "xPos": 159992.36261205675,
-            "yPos": 0.0,
-            "zPos": 177988.17802778244
-          },
-          "taxiToStart": [],
-          "taxiFromEnd": []
-        }
-      ],
-      "name": "Octeville sur Mer",
-      "position": {
-        "xPos": 159034.0,
-        "yPos": 0.0,
-        "zPos": 177266.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 37.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "runways": [
-        {
-          "startPos": {
-            "xPos": 35011.0,
-            "yPos": 151.0,
-            "zPos": 316644.0
-          },
-          "endPos": {
-            "xPos": 35219.37781320032,
-            "yPos": 0.0,
-            "zPos": 315462.2306963854
-          },
-          "taxiToStart": [],
-          "taxiFromEnd": []
-        }
-      ],
-      "name": "Oysonville",
-      "position": {
-        "xPos": 35011.0,
-        "yPos": 0.0,
-        "zPos": 316644.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 280.0,
-        "zOri": 0.0
-      }
-    },
-    {
+    "Maupertus": {
       "runways": [
         {
           "startPos": {
@@ -2408,7 +2263,152 @@
         "zOri": 0.0
       }
     },
-    {
+    "Needs Oar Point": {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 298916.0,
+            "yPos": 7.0,
+            "zPos": 70139.0
+          },
+          "endPos": {
+            "xPos": 297756.8890084531,
+            "yPos": 0.0,
+            "zPos": 70449.58285412303
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Needs Oar Point",
+      "position": {
+        "xPos": 298916.0,
+        "yPos": 0.0,
+        "zPos": 70139.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 165.0,
+        "zOri": 0.0
+      }
+    },
+    "Newchurch": {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 327763.0,
+            "yPos": 2.0,
+            "zPos": 235898.0
+          },
+          "endPos": {
+            "xPos": 328867.6058241429,
+            "yPos": 0.0,
+            "zPos": 235429.12264581287
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Newchurch",
+      "position": {
+        "xPos": 327763.0,
+        "yPos": 0.0,
+        "zPos": 235898.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 337.0,
+        "zOri": 0.0
+      }
+    },
+    "Nogent le Roi": {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 60782.0,
+            "yPos": 131.0,
+            "zPos": 280375.0
+          },
+          "endPos": {
+            "xPos": 61537.184469259795,
+            "yPos": 0.0,
+            "zPos": 281307.5751537484
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Nogent le Roi",
+      "position": {
+        "xPos": 60782.0,
+        "yPos": 0.0,
+        "zPos": 280375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 51.0,
+        "zOri": 0.0
+      }
+    },
+    "Octeville sur Mer": {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 159034.0,
+            "yPos": 92.0,
+            "zPos": 177266.0
+          },
+          "endPos": {
+            "xPos": 159992.36261205675,
+            "yPos": 0.0,
+            "zPos": 177988.17802778244
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Octeville sur Mer",
+      "position": {
+        "xPos": 159034.0,
+        "yPos": 0.0,
+        "zPos": 177266.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.0,
+        "zOri": 0.0
+      }
+    },
+    "Oysonville": {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 35011.0,
+            "yPos": 151.0,
+            "zPos": 316644.0
+          },
+          "endPos": {
+            "xPos": 35219.37781320032,
+            "yPos": 0.0,
+            "zPos": 315462.2306963854
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "Oysonville",
+      "position": {
+        "xPos": 35011.0,
+        "yPos": 0.0,
+        "zPos": 316644.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 280.0,
+        "zOri": 0.0
+      }
+    },
+    "Poix Nord": {
       "runways": [
         {
           "startPos": {
@@ -2437,7 +2437,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Saint Andre de lEure": {
       "runways": [
         {
           "startPos": {
@@ -2466,7 +2466,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Saint Omer": {
       "runways": [
         {
           "startPos": {
@@ -2495,7 +2495,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Selsey": {
       "runways": [
         {
           "startPos": {
@@ -2524,7 +2524,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Sours": {
       "runways": [
         {
           "startPos": {
@@ -2553,7 +2553,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Staplehurst": {
       "runways": [
         {
           "startPos": {
@@ -2582,7 +2582,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Tangmere": {
       "runways": [
         {
           "startPos": {
@@ -2611,7 +2611,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Thorney Island": {
       "runways": [
         {
           "startPos": {
@@ -2640,7 +2640,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Thruxton": {
       "runways": [
         {
           "startPos": {
@@ -2669,7 +2669,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Triqueville": {
       "runways": [
         {
           "startPos": {
@@ -2698,7 +2698,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Velizy Villacoublay": {
       "runways": [
         {
           "startPos": {
@@ -2727,7 +2727,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Westhampnett": {
       "runways": [
         {
           "startPos": {
@@ -2756,7 +2756,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Winkton": {
       "runways": [
         {
           "startPos": {
@@ -2785,7 +2785,7 @@
         "zOri": 0.0
       }
     },
-    {
+    "Woodchurch": {
       "runways": [
         {
           "startPos": {
@@ -2814,5 +2814,5 @@
         "zOri": 0.0
       }
     }
-  ]
+  }
 }

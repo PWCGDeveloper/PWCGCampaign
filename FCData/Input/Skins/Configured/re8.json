@@ -1,0 +1,47 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"re8_default": {
+			"skinName": "re8_default",
+			"planeType": "re8",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BRITAIN",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		},
+		"dorandar": {
+			"skinName": "DorandAR",
+			"planeType": "re8",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		},
+		"re8_belgian": {
+			"skinName": "re8_skin_03",
+			"planeType": "re8",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BELGIUM",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		}
+	}
+}

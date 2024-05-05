@@ -27,8 +27,8 @@ import pwcg.mission.mcu.group.virtual.VirtualWaypointPackageValidator;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @ExtendWith(MockitoExtension.class)

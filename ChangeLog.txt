@@ -1,3 +1,22 @@
+16.0.0
+FC:
+Added western front map with seasons
+Expanded FC squadrons available
+Rearranged all FC squadron assignments to fit expanded map (and be more accurate)
+Added RE8
+- Strutter and Dorand AR are RE8s.
+BoS:
+- Added Li2
+- Added La5 S.38
+- Added Spitfire Mx.IXc
+- Added IAR as a possible replacement plane
+Bugs:
+- Fixed autumn season for FC map
+- Fixed cannot add a pilot to SP campaigns
+- Fixed iconic missions from the main screen
+- Fixed Squadron Logs
+- Fixed static planes damage too high
+
 15.2.0
 Brings date back to July 1916
 Added planes

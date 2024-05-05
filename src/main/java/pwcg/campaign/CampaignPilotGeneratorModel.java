@@ -3,9 +3,9 @@ package pwcg.campaign;
 public class CampaignPilotGeneratorModel
 {
     private ArmedService service;
-    private String playerName;
-    private String playerRank;
-    private String playerRegion;
+    private String playerName = "";
+    private String playerRank = "";
+    private String playerRegion = "";
 
     public ArmedService getService()
     {

@@ -16,6 +16,7 @@ import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignInitialWriter;
 import pwcg.campaign.CampaignMode;
+import pwcg.campaign.CampaignNameValidator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -152,7 +153,14 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
             }
             else if (action.equalsIgnoreCase("Complete"))
             {
-                proceedToCampaignPilotInput();
+                if (CampaignNameValidator.validateCampaignName(campaignGeneratorDO.getCampaignName()))
+                {
+                    proceedToCampaignPilotInput();
+                }
+                else
+                {
+                    ErrorDialog.userError("Campaign name must be at least 5 characters long and begin with a letter");
+                }
             }
             else if (action.equalsIgnoreCase("Create Campaign"))
             {

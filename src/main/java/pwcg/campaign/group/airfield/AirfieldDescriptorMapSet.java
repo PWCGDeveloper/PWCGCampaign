@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class AirfieldDescriptorSet
+public class AirfieldDescriptorMapSet
 {
     private String locationSetName = "";
     private Map<String, AirfieldDescriptor> locations = new TreeMap<>();

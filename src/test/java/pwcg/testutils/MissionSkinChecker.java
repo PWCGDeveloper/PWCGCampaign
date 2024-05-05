@@ -11,19 +11,24 @@ public class MissionSkinChecker
     {
         for (IFlight flight : mission.getFlights().getAllAerialFlights())
         {
-            for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
-            {
-                if (plane.getSkin() == null || plane.getSkin().getSkinName().isEmpty())
-                {
-                    throw new PWCGException("No skin for plane " + plane.getType() + " in flight type " + flight.getFlightType());
-                }
-                else
-                {
-                    System.out.println(plane.getSkin().getSkinName());
-                }
-            }
+            checkFlightSkins(flight);
         }
         
         return false;
+    }
+
+    private static void checkFlightSkins(IFlight flight) throws PWCGException
+    {
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+        {
+            if (plane.getSkin() == null || plane.getSkin().getSkinName().isEmpty())
+            {
+                throw new PWCGException("No skin for plane " + plane.getType() + " in flight type " + flight.getFlightType());
+            }
+            else
+            {
+                System.out.println(plane.getSkin().getSkinName());
+            }
+        }
     }
 }

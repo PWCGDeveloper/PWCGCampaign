@@ -18,10 +18,10 @@ import pwcg.mission.MissionProfile;
 import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.MissionFlightValidator;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.FlightTypeFinder;
 import pwcg.testutils.GroundUnitTypeFinder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 public class NormandyFlightTest

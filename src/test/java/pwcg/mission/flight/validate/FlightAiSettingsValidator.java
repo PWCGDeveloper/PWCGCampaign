@@ -20,8 +20,8 @@ import pwcg.mission.flight.groundattack.GroundAttackFlight;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @ExtendWith(MockitoExtension.class)

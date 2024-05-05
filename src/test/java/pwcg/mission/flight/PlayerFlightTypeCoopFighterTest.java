@@ -21,8 +21,8 @@ import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

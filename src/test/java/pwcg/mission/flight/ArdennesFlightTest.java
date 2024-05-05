@@ -19,8 +19,8 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.target.AssaultDefinition;
 import pwcg.mission.utils.MissionFlightValidator;
 import pwcg.mission.utils.MissionInformationUtils;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

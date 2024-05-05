@@ -11,8 +11,8 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSet;
 import pwcg.core.exception.PWCGException;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 public class ConfigManagerCampaignTest
 {

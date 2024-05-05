@@ -17,8 +17,8 @@ import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.BombingAirStartFlightValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

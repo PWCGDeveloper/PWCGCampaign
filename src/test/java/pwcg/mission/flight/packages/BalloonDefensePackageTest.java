@@ -23,9 +23,9 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.unittypes.infantry.BalloonUnit;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.PwcgTestBase;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 public class BalloonDefensePackageTest extends PwcgTestBase

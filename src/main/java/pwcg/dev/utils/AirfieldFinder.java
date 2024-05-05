@@ -1,6 +1,5 @@
 package pwcg.dev.utils;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.core.utils.DateUtils;
 
 public class AirfieldFinder
 {
@@ -20,7 +18,6 @@ public class AirfieldFinder
         try
         {
             PWCGContext.setProduct(PWCGProduct.FC);
-        	Date date = DateUtils.getDateYYYYMMDD("19180101");
             PWCGContext.getInstance(); 
 
             AirfieldManager airfieldManager = new AirfieldManager();
@@ -29,13 +26,6 @@ public class AirfieldFinder
             List<Squadron> squadrons = SquadronIOJson.readJson(); 
             HashSet<String> airfields = new HashSet<>();
             HashSet<String> missingAirfields = new HashSet<>();
-            
-//            int count = 1;
-//            for (Airfield airfield : airfieldManager.getAllAirfields().values())
-//            {
-//                System.out.println(count + " " + airfield.getName());
-//                ++count;
-//            }
             
             for (Squadron squadron : squadrons)
             {

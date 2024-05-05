@@ -23,9 +23,9 @@ import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.target.TargetType;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.PwcgTestBase;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 public class RaiderAttackPackageTest extends PwcgTestBase

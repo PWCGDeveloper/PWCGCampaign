@@ -22,6 +22,10 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     FW190_A6("fw190a6", "static_fw190a8", "static_bf109_net"),
     FW190_A8("fw190a8", "static_fw190a8", "static_bf109_net"),
     FW190_D9("fw190d9", "static_fw190d9", "static_bf109_net"),
+    
+    IAR80A("iar80a", "static_bf109_net"),
+    IAR80B("iar80b", "static_bf109_net"),
+    
     ME262_A("me262a", "static_me262a", "static_bf109_net"),
         
     Ma202_SER8("mc202s8", "static_bf109_net"),
@@ -56,6 +60,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     P51_D15("p51d15", "static_p51d15"),
     HURRICANE_MKII("hurricanemkii", "static_lagg3_net"),
     SPITFIRE_MKVB("spitfiremkvb", "static_spitfiremkixe"),
+    SPITFIRE_MKIXC("spitfiremkixc", "static_spitfiremkixe"),
     SPITFIRE_MKIXE("spitfiremkixe", "static_spitfiremkixe"),
     SPITFIRE_MKXIV("spitfiremkxiv", "static_spitfiremkixe"),
     SPITFIRE_MKXIVE("spitfiremkxive", "static_spitfiremkixe"),

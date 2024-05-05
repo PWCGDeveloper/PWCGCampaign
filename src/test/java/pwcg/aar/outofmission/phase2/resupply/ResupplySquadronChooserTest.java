@@ -16,8 +16,8 @@ import pwcg.campaign.resupply.equipment.SquadronEquipmentNeed;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ResupplySquadronChooserTest

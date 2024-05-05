@@ -6,8 +6,6 @@ import java.util.List;
 
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 public class FlightPlanes
@@ -135,15 +133,6 @@ public class FlightPlanes
             planeLinkIds.add(plane.getLinkTrId());
         }
         return planeLinkIds;        
-    }
-    
-    public void setPlanePosition(Integer planeLinkTrId, Coordinate planeCoords, Orientation planeOrientation, int startingPoint)
-    {
-        PlaneMcu plane = this.getPlaneByLinkTrId(planeLinkTrId);
-        plane.setPosition(planeCoords);
-        plane.setOrientation(planeOrientation);
-        plane.setStartInAir(startingPoint);
-        plane.populateEntity(flight, getFlightLeader());
     }
 
 

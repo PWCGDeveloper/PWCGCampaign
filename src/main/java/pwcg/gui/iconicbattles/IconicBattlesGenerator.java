@@ -23,6 +23,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.campaign.home.CampaignHomeContext;
 import pwcg.gui.dialogs.HelpDialog;
 import pwcg.gui.rofmap.brief.BriefingDescriptionScreen;
 import pwcg.gui.rofmap.brief.CampaignHomeGuiBriefingWrapper;
@@ -85,7 +86,8 @@ public class IconicBattlesGenerator
     {
         CampaignGeneratorModel model = makeCampaignModelForProfile();        
         CampaignGenerator generator = new CampaignGenerator(model);
-        Campaign campaign = generator.generate(PWCGContext.getProduct());          
+        Campaign campaign = generator.generate(PWCGContext.getProduct());   
+        CampaignHomeContext.setCampaign(campaign);
         return campaign;
     }
 

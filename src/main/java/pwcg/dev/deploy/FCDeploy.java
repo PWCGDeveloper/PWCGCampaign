@@ -6,7 +6,7 @@ public class FCDeploy extends DeployBase
 {
     public FCDeploy()
     {
-        sourceRootDir = "D:\\PWCG\\workspacePwcg\\PWCGCampaign";
+        sourceRootDir = "D:\\PWCG\\workspacePwcg2023\\PWCGCampaign";
         deployDir = "D:\\PWCG\\Deploy";
         targetDir = "D:\\PWCG\\Deploy\\PWCGCampaign";
         targetFinalDir = "D:\\PWCG\\Deploy\\PWCGFC";

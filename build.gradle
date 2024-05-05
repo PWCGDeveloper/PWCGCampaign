@@ -23,14 +23,16 @@ dependencies {
     implementation(files("RelativeLayout/RelativeLayout-v1.0.jar"))
     implementation(files("RelativeLayout/Jama-1.0.2.jar"))
 
-	testImplementation(platform('org.junit:junit-bom:5.8.1'))
+	testImplementation(platform('org.junit:junit-bom:5.10.0'))
 	testImplementation('org.junit.jupiter:junit-jupiter')
 	testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.12.2'
 	testImplementation group: 'org.mockito', name: 'mockito-inline', version: '3.12.2'
-    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.4.2')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.10.0')
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 jar {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     archiveFileName = "PWCG.jar"
     
  	manifest {
@@ -41,7 +43,6 @@ jar {
     	configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
   	}
 }
-
 
 task copyJar(type: Exec) {
     workingDir "$projectDir"

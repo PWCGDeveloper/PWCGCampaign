@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.io.json.AirfieldDescriptorIOJson;
+import pwcg.campaign.io.json.AirfieldDescriptorIOMapJson;
 import pwcg.core.exception.PWCGException;
 
 public class AirfieldConfiguration
@@ -19,7 +19,7 @@ public class AirfieldConfiguration
         airfields.clear();
 
         String pwcgInputDir = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapIdentifier.getMapName() + "\\";
-        AirfieldDescriptorSet airfieldDescriptors = AirfieldDescriptorIOJson.readJson(pwcgInputDir, AIRFIELD_LOCATION_FILE_NAME);
+        AirfieldDescriptorMapSet airfieldDescriptors = AirfieldDescriptorIOMapJson.readJson(pwcgInputDir, AIRFIELD_LOCATION_FILE_NAME);
         for (AirfieldDescriptor desc : airfieldDescriptors.getLocations())
         {
             Airfield field = new Airfield();

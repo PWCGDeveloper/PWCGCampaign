@@ -737,8 +737,11 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
 
     private void setCoopUser()
     {
-        String coopUserFromDropDown = (String)cbCoopUser.getSelectedItem();
-        coopUserNameTextBox.setText(coopUserFromDropDown);
-        parent.getNewPilotGeneratorDO().setCoopUser(coopUserFromDropDown);
+        if (cbCoopUser != null)
+        {
+            String coopUserFromDropDown = (String)cbCoopUser.getSelectedItem();
+            coopUserNameTextBox.setText(coopUserFromDropDown);
+            parent.getNewPilotGeneratorDO().setCoopUser(coopUserFromDropDown);
+        }
     }
 }

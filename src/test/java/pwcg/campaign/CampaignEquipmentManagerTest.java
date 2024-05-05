@@ -16,8 +16,8 @@ import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CampaignEquipmentManagerTest

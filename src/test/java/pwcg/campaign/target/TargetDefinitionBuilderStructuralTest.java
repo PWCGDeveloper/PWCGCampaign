@@ -19,8 +19,8 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderStructural;
 import pwcg.mission.target.TargetType;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

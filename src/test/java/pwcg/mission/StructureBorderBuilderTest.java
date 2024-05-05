@@ -17,8 +17,8 @@ import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.testutils.TestCampaignFactoryBuilder;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestCampaignFactoryBuilder;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class StructureBorderBuilderTest
