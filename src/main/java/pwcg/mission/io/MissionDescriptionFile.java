@@ -21,28 +21,32 @@ public class MissionDescriptionFile
 	{
 		try
         {
-            String filename = MissionFileNameBuilder.buildMissionFileName(campaign);
-            String filePath = getMissionFilePath(campaign, filename) + ".eng";
-            OutputStream ostream = new FileOutputStream(filePath);
-            OutputStreamWriter writer = new OutputStreamWriter(ostream, "UTF-16LE");
-            
-            writer.write("\uFEFF");
-            writer.write("0:" + missionDescription.getTitle() + "\r\n");
+            String[] languageFileExtensions = { ".chs", ".eng", ".fra", ".ger", ".rus", ".spa" };
+            for (String languageFileExtension : languageFileExtensions)
+	    {
+                String filename = MissionFileNameBuilder.buildMissionFileName(campaign);
+                String filePath = getMissionFilePath(campaign, filename) + languageFileExtension;
+                OutputStream ostream = new FileOutputStream(filePath);
+                OutputStreamWriter writer = new OutputStreamWriter(ostream, "UTF-16LE");
+                
+                writer.write("\uFEFF");
+                writer.write("0:" + missionDescription.getTitle() + "\r\n");
 
-            writer.write("1:" + missionDescription.getHtml() + "\r\n");
+                writer.write("1:" + missionDescription.getHtml() + "\r\n");
 
-            writer.write("2:" + missionDescription.getAuthor() + "\r\n");
-            
-            Map <Integer, String> subtitles = MissionStringHandler.getInstance().getMissionText();
-            for (int key : subtitles.keySet())
-            {
-            	String text = subtitles.get(key);
-            	writer.write(key + ":" + text + "\r\n");
+                writer.write("2:" + missionDescription.getAuthor() + "\r\n");
+                
+                Map <Integer, String> subtitles = MissionStringHandler.getInstance().getMissionText();
+                for (int key : subtitles.keySet())
+                {
+                    String text = subtitles.get(key);
+                    writer.write(key + ":" + text + "\r\n");
+                }
+                
+                
+                writer.flush();
+                writer.close();
             }
-            
-            
-            writer.flush();
-            writer.close();
         }
         catch (PWCGException e)
         {
