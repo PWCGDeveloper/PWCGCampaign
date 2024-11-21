@@ -83,7 +83,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Philipp Delbruck",
@@ -93,7 +93,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Erwin Eisenstein",
@@ -103,7 +103,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Gebhard Altenau",
@@ -113,7 +113,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Poldi Koler",

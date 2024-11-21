@@ -19,6 +19,11 @@
 			"squadronWithdrawal": "19170701"
 		},
 		{
+			"archType": "sopstrutterb",
+			"squadronIntroduction": "19170101",
+			"squadronWithdrawal": "19170701"
+		},
+		{
 			"archType": "breguet14",
 			"squadronIntroduction": "19170601",
 			"squadronWithdrawal": "19181201"
@@ -44,16 +49,8 @@
 				"startDate": "19160101",
 				"weightedRoles": [
 					{
-						"role": "ROLE_RECON",
-						"weight": 40
-					},
-					{
 						"role": "ROLE_BOMB",
-						"weight": 30
-					},
-					{
-						"role": "ROLE_ARTILLERY_SPOT",
-						"weight": 10
+						"weight": 100
 					}
 				]
 			}

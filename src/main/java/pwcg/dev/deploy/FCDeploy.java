@@ -29,7 +29,7 @@ public class FCDeploy extends DeployBase
         directoriesToCopy.put("WesternFront", null);
 
 		// Moving Front Dates
-        directoriesToCopy.put("19160701", null);
+        directoriesToCopy.put("19160101", null);
         directoriesToCopy.put("19170607", null);
         directoriesToCopy.put("19170621", null);
         directoriesToCopy.put("19170720", null);

@@ -93,7 +93,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Hartmut Waldstein",
@@ -103,7 +103,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Anton Wohlermann",
@@ -113,7 +113,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Gustav Nesler",

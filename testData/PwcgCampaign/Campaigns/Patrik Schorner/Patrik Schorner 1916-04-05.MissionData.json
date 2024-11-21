@@ -13,7 +13,7 @@
   "missionDescription": "Mission:\nAircraft  Roland C.IIa\nSquadron  FA 15\nAirbase  Pukov\nDate  1916-04-05\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2142 meters.\nWind speed is 1 M/S.\nWind direction is 63.\n\nPrimary Objective\nSpot artillery against the transport and road facilities  near Factory\n\n\n",
   "missionPlanes": [
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "FA 15",
       "crew": {
         "pilot": "Patrik Schorner",

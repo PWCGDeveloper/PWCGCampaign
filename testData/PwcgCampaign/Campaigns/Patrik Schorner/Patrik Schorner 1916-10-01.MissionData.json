@@ -93,7 +93,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 18",
       "crew": {
         "pilot": "Heinrich Heiner",
@@ -103,7 +103,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 18",
       "crew": {
         "pilot": "Dietrich Kranefuss",
@@ -113,7 +113,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 18",
       "crew": {
         "pilot": "Elias Abicht",
@@ -123,7 +123,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 18",
       "crew": {
         "pilot": "Hugbert Speckmann",

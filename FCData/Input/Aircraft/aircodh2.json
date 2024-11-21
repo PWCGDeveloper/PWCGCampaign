@@ -1,6 +1,5 @@
 {
 	"type": "aircodh2",
-	"substituteType": "nieuport11",
 	"archType": "aircodh2",
 	"side": "ALLIED",
 	"displayName": "Airco D.H.2",
@@ -9,7 +8,10 @@
 	"primaryUsedBy": [
 		"BRITAIN"
 	],
-	"stockModifications": [],
+	"stockModifications": [
+		"COCKPIT_LIGHT",
+		"FUEL_GUAGE"
+	],	
 	"desc": "",
 	"cruisingSpeed": 100,
 	"climbOutRate": 100,

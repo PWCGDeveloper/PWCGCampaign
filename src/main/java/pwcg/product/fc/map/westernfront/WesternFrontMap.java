@@ -21,7 +21,7 @@ public class WesternFrontMap extends PWCGMap
     static
     { 
         missionSpacingMyDate = new TreeMap<>(); 
-        missionSpacingMyDate.put("19160701", 5); 
+        missionSpacingMyDate.put("19160101", 5); 
         missionSpacingMyDate.put("19160801", 6); 
         missionSpacingMyDate.put("19160901", 6); 
         missionSpacingMyDate.put("19161001", 6); 
@@ -83,9 +83,9 @@ public class WesternFrontMap extends PWCGMap
     protected void configureTransitionDates() throws PWCGException
     {
         // This controls the available start dates for campaign generation
-        this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19160701"), DateUtils.getDateYYYYMMDD("19181111"));
+        this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19160101"), DateUtils.getDateYYYYMMDD("19181111"));
         
-        this.frontDatesForMap.addFrontDate("19160701"); // Somme
+        this.frontDatesForMap.addFrontDate("19160101"); // Somme
         this.frontDatesForMap.addFrontDate("19170607"); // Messines start
         this.frontDatesForMap.addFrontDate("19170621"); // Messines end
         this.frontDatesForMap.addFrontDate("19170720"); // Paschendale prep

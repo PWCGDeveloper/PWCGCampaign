@@ -1,6 +1,5 @@
 {
 	"type": "albatrosd3",
-	"substituteType": "albatrosd5",
 	"archType": "albatrosd",
 	"side": "AXIS",
 	"displayName": "Albatros D.III",
@@ -9,7 +8,14 @@
 	"primaryUsedBy": [
 		"GERMANY"
 	],
-	"stockModifications": [],
+	"stockModifications": [
+		"COCKPIT_LIGHT",
+		"TEMPERATURE_GUAGE",
+		"CLOCK_GUAGE",
+		"ATTITUDE_GUAGE",
+		"SPEED_GUAGE",
+		"AMMO_COUNTER"
+	],	
 	"desc": "",
 	"cruisingSpeed": 130,
 	"climbOutRate": 220,

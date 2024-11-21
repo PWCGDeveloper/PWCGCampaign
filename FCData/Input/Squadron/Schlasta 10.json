@@ -9,7 +9,7 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
-			"archType": "rolc2a",
+			"archType": "rolandc2a",
 			"squadronIntroduction": "19170101",
 			"squadronWithdrawal": "19170610"
 		},

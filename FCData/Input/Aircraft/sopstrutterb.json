@@ -1,12 +1,12 @@
 {
-	"type": "sopstrutter",
-	"archType": "sopstrutter",
+	"type": "sopstrutterb",
+	"archType": "sopstrutterb",
 	"side": "ALLIED",
-	"displayName": "Sopwith Strutter",
-	"script": "LuaScripts\\WorldObjects\\Planes\\sopstrutter.txt",
-	"model": "graphics\\planes\\sopstrutter\\sopstrutter.mgm",
+	"displayName": "Sopwith Strutter B",
+	"script": "LuaScripts\\WorldObjects\\Planes\\sopstrutterb.txt",
+	"model": "graphics\\planes\\sopstrutterb\\sopstrutterb.mgm",
 	"primaryUsedBy": [
-		"BRITAIN"
+		"FRANCE"
 	],
 	"stockModifications": [],
 	"desc": "",
@@ -18,7 +18,6 @@
 	"isNovice": true,
 	"planeSize": "PLANE_SIZE_MEDIUM",
 	"roleCategories": [
-		"RECON",
 		"BOMBER"
 	],
 	"introduction": "19161001",

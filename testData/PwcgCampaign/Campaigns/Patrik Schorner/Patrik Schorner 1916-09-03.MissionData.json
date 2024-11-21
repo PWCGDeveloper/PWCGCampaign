@@ -53,7 +53,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 18",
       "crew": {
         "pilot": "Rikard Wurffel",
@@ -63,7 +63,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 18",
       "crew": {
         "pilot": "Gebhard Kapsner",

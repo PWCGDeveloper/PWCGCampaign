@@ -93,7 +93,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Johann Stocker",
@@ -103,7 +103,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Rupert Sauer",
@@ -113,7 +113,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Wendall Spitz",

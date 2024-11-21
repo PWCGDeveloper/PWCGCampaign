@@ -1,6 +1,5 @@
 {
 	"type": "fokkere3",
-	"substituteType": "halberstadtd2",
 	"archType": "fokkere",
 	"side": "AXIS",
 	"displayName": "Fokker E.III",
@@ -9,7 +8,11 @@
 	"primaryUsedBy": [
 		"GERMANY"
 	],
-	"stockModifications": [],
+	"stockModifications": [
+		"COCKPIT_LIGHT",
+		"CLOCK_GUAGE",
+		"SPEED_GUAGE"
+	],	
 	"desc": "",
 	"cruisingSpeed": 100,
 	"climbOutRate": 100,

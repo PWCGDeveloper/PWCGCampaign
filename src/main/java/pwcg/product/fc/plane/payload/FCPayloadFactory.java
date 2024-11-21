@@ -26,8 +26,12 @@ public class FCPayloadFactory implements IPayloadFactory
 		
 		switch (attributeMapping) 
 		{
+        case FOKKERE3:
+            return new FokkerE3Payload(planeType, date);
         case ALBATROSD2:
             return new AlbatrosD2Payload(planeType, date);
+        case ALBATROSD3:
+            return new AlbatrosD3Payload(planeType, date);
         case ALBATROSD5:
             return new AlbatrosD5Payload(planeType, date);
         case PFALZD3A:
@@ -54,17 +58,27 @@ public class FCPayloadFactory implements IPayloadFactory
             return new Halberstadtcl2Payload(planeType, date);
         case HALBERSTADTCLIIAU:
             return new Halberstadtcl2auPayload(planeType, date);
+        case ROLANDC2A:
+            return new RolandC2aPayload(planeType, date);
  
-        case SE5A:
-            return new Se5aPayload(planeType, date);
+        case DH2:
+            return new AircoDH2Payload(planeType, date);
+        case PUP:
+            return new SopwithPupPayload(planeType, date);
+        case TRIPE:
+            return new SopwithTriplanePayload(planeType, date);
         case CAMEL:
             return new SopwithCamelPayload(planeType, date);
         case SNIPE:
             return new SopwithSnipePayload(planeType, date);
-        case TRIPE:
-            return new SopwithTriplanePayload(planeType, date);
         case DOLPHIN:
             return new DolphinPayload(planeType, date);
+        case STRUTTER:
+            return new SopwithStrutterPayload(planeType, date);
+        case STRUTTERB:
+            return new SopwithStrutterBPayload(planeType, date);
+        case SE5A:
+            return new Se5aPayload(planeType, date);
         case FE2B:
             return new FE2BPayload(planeType, date);
         case RE8:

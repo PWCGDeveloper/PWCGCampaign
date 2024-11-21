@@ -1,16 +1,18 @@
 {
-	"type": "rolc2a",
-    "substituteType": "fe2b",
-	"archType": "rolc2a",
+	"type": "rolandc2a",
+	"archType": "rolandc2a",
 	"side": "AXIS",
 	"displayName": "Roland C.IIa",
-	"script": "LuaScripts\\WorldObjects\\Planes\\rolc2a.txt",
-	"model": "graphics\\planes\\rolc2a\\rolc2a.mgm",
+	"script": "LuaScripts\\WorldObjects\\Planes\\rolandc2a.txt",
+	"model": "graphics\\planes\\rolandc2a\\rolandc2a.mgm",
 	"primaryUsedBy": [
 		"GERMANY"
 	],
 	"stockModifications": [
-	],
+		"COCKPIT_LIGHT",
+		"CLOCK_GUAGE",
+		"GUAGE_SET"
+	],	
 	"desc": "",
 	"cruisingSpeed": 110,
 	"climbOutRate": 110,

@@ -73,7 +73,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Mathias Heineken",
@@ -83,7 +83,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Theodor Braunwald",

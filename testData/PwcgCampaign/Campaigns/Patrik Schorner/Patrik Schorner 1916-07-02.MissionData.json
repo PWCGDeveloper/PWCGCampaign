@@ -93,7 +93,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Gotthold Neisser",
@@ -103,7 +103,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 2",
       "crew": {
         "pilot": "Adolf Rahner",

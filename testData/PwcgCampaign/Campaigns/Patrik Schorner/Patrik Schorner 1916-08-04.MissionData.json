@@ -73,7 +73,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 12",
       "crew": {
         "pilot": "Konrad Frohlich",
@@ -83,7 +83,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 12",
       "crew": {
         "pilot": "Reinhard Kruger",
@@ -93,7 +93,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 12",
       "crew": {
         "pilot": "Theodor Furtwaengler",
@@ -103,7 +103,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 12",
       "crew": {
         "pilot": "Reinhard Krauszer",

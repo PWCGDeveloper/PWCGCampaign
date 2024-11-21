@@ -1,6 +1,5 @@
 {
 	"type": "soppup",
-	"substituteType": "nieuport17",
 	"archType": "soppup",
 	"side": "ALLIED",
 	"displayName": "Sopwith Pup",
@@ -9,7 +8,9 @@
 	"primaryUsedBy": [
 		"BRITAIN"
 	],
-	"stockModifications": [],
+	"stockModifications": [
+		"COCKPIT_LIGHT"
+	],	
 	"desc": "",
 	"cruisingSpeed": 110,
 	"climbOutRate": 120,

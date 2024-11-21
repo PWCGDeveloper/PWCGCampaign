@@ -53,7 +53,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Lenz Behm Canal",
@@ -63,7 +63,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Sigwalt Guns",
@@ -73,7 +73,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Thomas Zehetner",
@@ -83,7 +83,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Timo Klostermann",

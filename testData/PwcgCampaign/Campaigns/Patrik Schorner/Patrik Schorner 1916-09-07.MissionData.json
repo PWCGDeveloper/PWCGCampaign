@@ -93,7 +93,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Helge Stockert",
@@ -103,7 +103,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Friedhelm Neuer",
@@ -113,7 +113,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Heinrich Sauerbrunn",
@@ -123,7 +123,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 13",
       "crew": {
         "pilot": "Manfred Henschel",

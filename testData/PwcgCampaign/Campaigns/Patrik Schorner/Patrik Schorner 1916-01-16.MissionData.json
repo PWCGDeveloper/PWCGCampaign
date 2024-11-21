@@ -23,7 +23,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 12",
       "crew": {
         "pilot": "Herbert Ganz",
@@ -33,7 +33,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 12",
       "crew": {
         "pilot": "Mathias Ehman",
@@ -43,7 +43,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 12",
       "crew": {
         "pilot": "Wenzel Spiess",
@@ -53,7 +53,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "Schlasta 12",
       "crew": {
         "pilot": "Urs Kummer",

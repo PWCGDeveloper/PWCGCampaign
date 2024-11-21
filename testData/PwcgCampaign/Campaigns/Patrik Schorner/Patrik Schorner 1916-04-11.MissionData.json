@@ -13,7 +13,7 @@
   "missionDescription": "Mission:\nAircraft  Roland C.IIa\nSquadron  FA 15\nAirbase  Pukov\nDate  1916-04-11\n\nWeather Report\nMostly clear, some high altitude clouds.\nCloud layer is 4770 meters.\nWind speed is 1 M/S.\nWind direction is 230.\n\nPrimary Objective\nAttack assaulting enemy troops  near Factory\n\n\n",
   "missionPlanes": [
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "FA 15",
       "crew": {
         "pilot": "Patrik Schorner",
@@ -23,7 +23,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "FA 15",
       "crew": {
         "pilot": "Lukas Westerman",
@@ -33,7 +33,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "FA 15",
       "crew": {
         "pilot": "Nikolaus Fechter",
@@ -43,7 +43,7 @@
       }
     },
     {
-      "aircraftType": "rolc2a",
+      "aircraftType": "rolandc2a",
       "squadronName": "FA 15",
       "crew": {
         "pilot": "Christian Welser",
