@@ -31,6 +31,9 @@ public class ConfigSetMissionLimits
         configSet.addConfigItem(ConfigItemKeys.MaxSmokeInMissionKey, new ConfigItem("100"));
         configSet.addConfigItem(ConfigItemKeys.MaxSmokeInAreaKey, new ConfigItem("3"));
         configSet.addConfigItem(ConfigItemKeys.GroundUnitSpawnDistanceKey, new ConfigItem("10000"));
+        
+        configSet.addConfigItem(ConfigItemKeys.TimeOnArtillerySpotKey, new ConfigItem("8"));
+        
 
         return configSet;
 	}

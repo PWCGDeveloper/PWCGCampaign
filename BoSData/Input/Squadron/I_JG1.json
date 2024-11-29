@@ -24,6 +24,11 @@
             "archType": "fw190d",
             "squadronIntroduction": "19441215",
             "squadronWithdrawal": "19450601"
+        },
+        {
+            "archType": "ta152",
+            "squadronIntroduction": "19450301",
+            "squadronWithdrawal": "19450601"
         }
 	],
 	"airfields": {
@@ -134,6 +139,19 @@
 					{
 						"role": "ROLE_TANK_BUSTER",
 						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19450201",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 50
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 50
 					}
 				]
 			}

@@ -1,0 +1,2 @@
+VictoryEvaluationTest
+NormandyFlightTest

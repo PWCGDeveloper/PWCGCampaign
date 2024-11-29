@@ -11,7 +11,7 @@
   "squadronTacticalCodeColorOverride": "NONE",
   "planeAssignments": [
     {
-      "archType": "c47",
+      "archType": "li2",
       "squadronIntroduction": "19410801",
       "squadronWithdrawal": "19450601"
     }

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CoopUserIOJson;
@@ -37,6 +38,7 @@ public class CoopUserAddRemoveTest
     @BeforeAll
     public void setupSuite() throws PWCGException
     {
+        PWCGContext.setProduct(PWCGProduct.BOS);
         coopCampaign = TestCampaignFactoryBuilder.makeCampaignOnDisk(this.getClass().getCanonicalName(), SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
     }
 

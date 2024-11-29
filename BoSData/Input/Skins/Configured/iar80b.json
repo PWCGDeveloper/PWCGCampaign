@@ -1,0 +1,31 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"iar80b_default": {
+			"skinName": "iar80b",
+			"planeType": "iar80b",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "SKY",
+			"winter": false
+		},
+		"iar80b_blank_01": {
+			"skinName": "iar80a",
+			"planeType": "iar80a",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "SKY",
+			"winter": false
+		}
+	}
+}

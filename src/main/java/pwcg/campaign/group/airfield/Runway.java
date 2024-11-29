@@ -13,6 +13,7 @@ public class Runway
     private Coordinate startPos;
     private Coordinate endPos;
     private PWCGLocation parkingLocation;
+    private RunwaySize runwaySize = RunwaySize.LARGE;
 
     private List<Coordinate> taxiToStart = new ArrayList<>();
     private List<Coordinate> taxiFromEnd = new ArrayList<>();
@@ -103,6 +104,14 @@ public class Runway
     {
         return parkingLocation;
     }
-    
-    
+
+    public RunwaySize getRunwaySize()
+    {
+        return runwaySize;
+    }
+
+    public void setRunwaySize(RunwaySize runwaySize)
+    {
+        this.runwaySize = runwaySize;
+    }
 }

@@ -58,7 +58,7 @@ public class PlayerFlightFCTypeGASTest
 
         assert(flight.getFlightType() == FlightTypes.BALLOON_BUST);
         
-        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_WWI_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -77,7 +77,7 @@ public class PlayerFlightFCTypeGASTest
 
         assert(flight.getFlightType() == FlightTypes.BALLOON_DEFENSE);
         
-        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_WWI_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -97,7 +97,7 @@ public class PlayerFlightFCTypeGASTest
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.INTERCEPT);
-        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_WWI_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();

@@ -106,6 +106,18 @@
 	],
 	"squadHistory": {
 		"squadHistoryEntries": [
+			{
+				"date": "19150801",
+				"squadName": "KEK Avillers",
+				"armedServiceName": "Deutsche Luftstreitkrafte",
+				"skill": 70
+			},
+			{
+				"date": "19160801",
+				"squadName": "Jasta 5",
+				"armedServiceName": "Deutsche Luftstreitkrafte",
+				"skill": 90
+			}
 		]
 	},
 	"serviceId": 40101,

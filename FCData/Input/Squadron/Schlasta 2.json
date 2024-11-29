@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "rolandc2a",
-			"squadronIntroduction": "19161201",
+			"squadronIntroduction": "19160601",
 			"squadronWithdrawal": "19170610"
 		},
 		{
@@ -20,8 +20,7 @@
 		}
 	],
 	"airfields": {
-		"19160701": "Eppeville",
-		"19161121": "Bonneuil Ferme",
+		"19160601": "Bonneuil Ferme",
 		"19170508": "Moislains",
 		"19180114": "La Neuville",
 		"19180323": "La Neuville",

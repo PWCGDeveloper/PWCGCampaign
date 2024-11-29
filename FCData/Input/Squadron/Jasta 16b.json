@@ -48,7 +48,7 @@
 		"19160101": "Balatre",
 		"19170507": "Balatre",
 		"19170606": "Bellevue Ferme",
-		"19171021": "Besny et Loisy",
+		"19171021": "Besny et Loizy",
 		"19171124": "Bellevue Ferme",
 		"19180207": "Rumbeke",
 		"19180315": "Pronville",
@@ -72,6 +72,18 @@
 	],
 	"squadHistory": {
 		"squadHistoryEntries": [
+			{
+				"date": "19150801",
+				"squadName": "KEK Ensisheim",
+				"armedServiceName": "Deutsche Luftstreitkrafte",
+				"skill": 70
+			},
+			{
+				"date": "19160801",
+				"squadName": "Jasta 16b",
+				"armedServiceName": "Deutsche Luftstreitkrafte",
+				"skill": 90
+			}
 		]
 	},
 	"callsigns": {

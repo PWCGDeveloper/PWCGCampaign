@@ -23,7 +23,7 @@ public class WrongCountrySkinTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(WrongCountrySkinTest.class.getCanonicalName(), SquadronTestProfile.RAF_BOB_PROFILE);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19410901"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19410901"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -58,7 +58,7 @@ public class WrongCountrySkinTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(WrongCountrySkinTest.class.getCanonicalName(), SquadronTestProfile.RAF_BOB_PROFILE);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19431001"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19431001"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();

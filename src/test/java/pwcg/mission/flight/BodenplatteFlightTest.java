@@ -32,7 +32,7 @@ public class BodenplatteFlightTest
     public void hasSkirmishAndAirfieldAttackForGermanTest() throws PWCGException
     {        
         Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_26_PROFILE_WEST);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19450101"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19450101"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -49,7 +49,7 @@ public class BodenplatteFlightTest
     public void hasAttackNearOphovenTest() throws PWCGException
     {        
         Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_354_BODENPLATTE_PROFILE);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19450101"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19450101"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -74,7 +74,7 @@ public class BodenplatteFlightTest
     public void hasAttackNearVolkelTest() throws PWCGException
     {        
         Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.RAF_326_BODENPLATTE_PROFILE);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19450101"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19450101"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();

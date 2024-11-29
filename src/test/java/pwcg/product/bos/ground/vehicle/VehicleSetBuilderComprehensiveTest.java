@@ -33,7 +33,7 @@ public class VehicleSetBuilderComprehensiveTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19411103"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19411103"));
     }
 
     @Test

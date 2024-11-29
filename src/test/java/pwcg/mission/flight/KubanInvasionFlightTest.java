@@ -36,7 +36,7 @@ public class KubanInvasionFlightTest
     @Test
     public void hasDiveBombKerchInvasionTest() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19431101"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19431101"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -55,7 +55,7 @@ public class KubanInvasionFlightTest
     @Test
     public void hasShippingTargetTest() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19431110"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19431110"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -80,7 +80,7 @@ public class KubanInvasionFlightTest
     private void noSkirmish(Date date) throws PWCGException
     {
         Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.STG77_KUBAN_PROFILE);
-        campaign.setDate(date);
+        campaign.setDateWithMapUpdate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();

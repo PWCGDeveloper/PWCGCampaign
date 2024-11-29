@@ -66,6 +66,18 @@
 	],
 	"squadHistory": {
 		"squadHistoryEntries": [
+			{
+				"date": "19150801",
+				"squadName": "KEK Bantheville",
+				"armedServiceName": "Deutsche Luftstreitkrafte",
+				"skill": 70
+			},
+			{
+				"date": "19160801",
+				"squadName": "Jasta 7",
+				"armedServiceName": "Deutsche Luftstreitkrafte",
+				"skill": 90
+			}
 		]
 	},
 	"callsigns": {

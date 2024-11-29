@@ -59,6 +59,7 @@ public class TacticalCodeFranceWWI extends TacticalCode
     {
         codes.add("%20");
         codes.add("%20");
+        codes.add("%20");
     }
 
     private void initializeColors(PlaneMcu plane) throws PWCGException
@@ -94,7 +95,11 @@ public class TacticalCodeFranceWWI extends TacticalCode
         }
         else if (plane.getSkin().getTacticalCodeType() == TacticalCodeType.CODE_POSITION_THREE)
         {
-            throw new PWCGException("Invalid code type: WWI France does not support position 3");
+            if (codes.size() < 3)
+            {
+                throw new PWCGException("Attempt to use British position 3 when only 2 positions are available");
+            }
+            codes.set(2, plane.getAircraftIdCode().substring(0,1));
         }
         else if (plane.getSkin().getTacticalCodeType() == TacticalCodeType.CODE_POSITION_ONE_AND_TWO)
         {

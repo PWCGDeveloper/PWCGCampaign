@@ -37,7 +37,7 @@ public class PlunderInvasionFlightTest
     @Test
     public void plunderHasGroundAttackTest() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19450323"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19450323"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -62,7 +62,7 @@ public class PlunderInvasionFlightTest
 
     private void noSkirmish(Date date) throws PWCGException
     {
-        campaign.setDate(date);
+        campaign.setDateWithMapUpdate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();

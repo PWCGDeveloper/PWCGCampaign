@@ -19,16 +19,16 @@ dependencies {
 	implementation group: 'com.fasterxml', name: 'jackson-xml-databind', version: '0.6.2'
 	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.0.1'
 	implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
-	implementation group: 'net.bytebuddy', name: 'byte-buddy', version: '1.10.9'
+	implementation group: 'net.bytebuddy', name: 'byte-buddy', version: '1.14.7'
     implementation(files("RelativeLayout/RelativeLayout-v1.0.jar"))
     implementation(files("RelativeLayout/Jama-1.0.2.jar"))
 
-	testImplementation(platform('org.junit:junit-bom:5.10.0'))
+	testImplementation(platform('org.junit:junit-bom:5.11.0'))
 	testImplementation('org.junit.jupiter:junit-jupiter')
-	testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.12.2'
-	testImplementation group: 'org.mockito', name: 'mockito-inline', version: '3.12.2'
-    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.10.0')
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '5.11.0'
+	testImplementation group: 'org.mockito', name: 'mockito-inline', version: '5.2.0'
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.11.0')
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.3'
 }
 
 jar {
@@ -42,6 +42,18 @@ jar {
 	from {
     	configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
   	}
+}
+
+test {
+    if (System.properties['test.profile'] != 'integration') {
+        useJUnitPlatform()
+        maxParallelForks = Runtime.runtime.availableProcessors()
+        exclude '**/*integration*'
+    } 
+    else {
+        useJUnitPlatform()
+        exclude '**/*pwcg/*'
+    }
 }
 
 task copyJar(type: Exec) {

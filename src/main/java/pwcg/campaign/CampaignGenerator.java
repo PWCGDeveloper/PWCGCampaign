@@ -1,7 +1,9 @@
 package pwcg.campaign;
 
+import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapFinderForCampaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -40,8 +42,11 @@ public class CampaignGenerator
 	{
 		campaign = new Campaign(product);
         campaign.initializeCampaignConfigs();
-        campaign.getCampaignData().setInitialMap(MapFinderForCampaign.findMapForSquadeonAndDate(generatorModel.getCampaignSquadron(), generatorModel.getCampaignDate()));
-        campaign.setDate(generatorModel.getCampaignDate());
+        Date campaignDate = generatorModel.getCampaignDate();
+        Squadron squadron = generatorModel.getCampaignSquadron();
+        FrontMapIdentifier initialMap = MapFinderForCampaign.findMapForSquadeonAndDate(squadron, campaignDate);
+        campaign.getCampaignData().setInitialMap(initialMap);
+        campaign.setDateWithMapUpdate(generatorModel.getCampaignDate());
         campaign.getCampaignData().setName(generatorModel.getCampaignName());
         campaign.getCampaignData().setCampaignMode(generatorModel.getCampaignMode());
 	}

@@ -35,7 +35,7 @@ import pwcg.testutils.TestMissionBuilderUtility;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PlayerFlightFCTypeRFCTest 
 {    
-    private int MAX_WWI_FIGHTER_DISTANCE = 75000;
+    private int MAX_WWI_BOMBER_DISTANCE = 125000;
 
     private Campaign campaign;    
 
@@ -64,7 +64,7 @@ public class PlayerFlightFCTypeRFCTest
         
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_WWI_BOMBER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -88,7 +88,7 @@ public class PlayerFlightFCTypeRFCTest
         
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_WWI_BOMBER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -114,7 +114,7 @@ public class PlayerFlightFCTypeRFCTest
 
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_WWI_BOMBER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();

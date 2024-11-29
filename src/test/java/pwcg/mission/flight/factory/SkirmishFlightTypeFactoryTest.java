@@ -52,7 +52,7 @@ public class SkirmishFlightTypeFactoryTest
 
     private void verifyParaDropOnDate(Date date) throws PWCGException
     {
-        campaign.setDate(date);
+        campaign.setDateWithMapUpdate(date);
         
         
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
@@ -68,7 +68,7 @@ public class SkirmishFlightTypeFactoryTest
 
     private void verifyCargoDropsOnDate(Date date) throws PWCGException
     {
-        campaign.setDate(date);
+        campaign.setDateWithMapUpdate(date);
         
         
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);

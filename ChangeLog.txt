@@ -1,3 +1,13 @@
+16.1.0
+Added FC4 planes.  Fokker E.III, DH2, Roland C2a, Strutter and Strutter B, Albatros D.III, Pup
+Moved campaign back to January 1916
+Added KEK to Jasta transition
+Bugs:
+Fixed error that could cause campaign not to generate (triplane misconfigured around April 1917)
+Fixed "position 3" error
+Fixed name of No 32 Squadron
+Fixed tank victories assigned during campaign initialization before late 1917.
+
 16.0.0
 FC:
 Added western front map with seasons

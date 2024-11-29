@@ -77,7 +77,7 @@ public class MissionBorderBuilderTest
     public void buildBorderForSkirmishTest() throws PWCGException
     {
         Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_362_PROFILE);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19440917"));
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         for (SquadronMember player: campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())

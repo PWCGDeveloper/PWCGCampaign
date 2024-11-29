@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "rolandc2a",
-			"squadronIntroduction": "19170101",
+			"squadronIntroduction": "19161001",
 			"squadronWithdrawal": "19170610"
 		},
 		{
@@ -20,7 +20,7 @@
 		}
 	],
 	"airfields": {
-		"19171201": "Lagnicourt",
+		"19161001": "Lagnicourt",
 		"19180409": "Moislains",
 		"19180526": "Vivaise",
 		"19180823": "Bellevue Ferme",
@@ -57,7 +57,7 @@
 			"planeType": "halberstadtcl2",
 			"archTypes": [
 			],
-			"startDate": "19170101",
+			"startDate": "19170601",
 			"endDate": "19171101",
 			"country": "Germany",
 			"category": "Squadron",

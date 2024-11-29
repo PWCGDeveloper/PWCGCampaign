@@ -34,7 +34,7 @@ public class SkirmishBuilderTest
     @Test
     public void testNoSkirmish() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19441010"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19441010"));
 
         List<Skirmish> skirmishes = PWCGContext.getInstance().getMap(campaign.getCampaignMap()).getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         Assertions.assertTrue (skirmishes.size() == 0);
@@ -43,7 +43,7 @@ public class SkirmishBuilderTest
     @Test
     public void singlePlayerSkirmishArnhemStartTest() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19440917"));
 
         Skirmish skirmish =createMissionAtSkirmish(campaign);
         Assertions.assertTrue (skirmish != null);
@@ -52,7 +52,7 @@ public class SkirmishBuilderTest
     @Test
     public void singlePlayerSkirmishArnhemEndTest() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19440928"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19440928"));
 
         Skirmish skirmish =createMissionAtSkirmish(campaign);
         Assertions.assertTrue (skirmish != null);

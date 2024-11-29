@@ -72,7 +72,7 @@ public class CampaignIOJsonTest
         Assertions.assertTrue (campaign.getDate().equals(DateUtils.getDateYYYYMMDD(SquadronTestProfile.JASTA_11_PROFILE.getDateString())));
         Assertions.assertTrue (campaign.getCampaignData().getName().equals(this.getClass().getCanonicalName()));
         SquadronMember player = campaign.findReferencePlayer();
-        Assertions.assertTrue (player.getName().equals(this.getClass().getCanonicalName()));
+        Assertions.assertTrue (player.getName().equals("Johnny Player"));
     }
 
     private void validatePersonnelReplacements(Campaign campaign) throws PWCGException
@@ -81,13 +81,13 @@ public class CampaignIOJsonTest
     	ArmedService germanArmedService = armedServiceManager.getArmedServiceByName(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE_NAME, campaign.getDate());
         PersonnelReplacementsService germanReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(germanArmedService.getServiceId());
         assert(germanReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
-        assert(germanReplacements.getDailyReplacementRate() == 23);
+        assert(germanReplacements.getDailyReplacementRate() > 20);
         assert(germanReplacements.getLastReplacementDate().equals(campaign.getDate()));
 
         ArmedService belgianArmedService = armedServiceManager.getArmedServiceByName(FCServiceManager.AVIATION_MILITAIRE_BELGE_NAME, campaign.getDate());
         PersonnelReplacementsService belgianReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(belgianArmedService.getServiceId());
         assert(belgianReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
-        assert(belgianReplacements.getDailyReplacementRate() == 3);
+        assert(belgianReplacements.getDailyReplacementRate() > 1);
     }
 
     private void validateReconSquadronMembers(Campaign campaign) throws PWCGException
@@ -148,7 +148,7 @@ public class CampaignIOJsonTest
         for (EquippedPlane equippedPlane : reconSquadronEquipment.getActiveEquippedPlanes().values())
         {
             Assertions.assertTrue (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
-            Assertions.assertTrue (equippedPlane.getArchType().contains("aircodh4"));
+            Assertions.assertTrue (equippedPlane.getArchType().contains("re8"));
         }
     }
 

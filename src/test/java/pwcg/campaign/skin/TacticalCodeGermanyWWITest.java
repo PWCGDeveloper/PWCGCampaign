@@ -117,11 +117,8 @@ public class TacticalCodeGermanyWWITest
         Mockito.when(plane.getType()).thenReturn("fokkerd7");
         Mockito.when(skin.isUseTacticalCodes()).thenReturn(true);
         Mockito.when(skin.getTacticalCodeType()).thenReturn(TacticalCodeType.CODE_POSITION_THREE);
-
-        PWCGException  exception = Assertions.assertThrows(PWCGException.class, () -> {
-            TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
-        });
-        Assertions.assertEquals("Invalid code type: WWI Germany does not support position 3", exception.getMessage());
+        TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
+        Assertions.assertNull(tacticalCode);
     }
     
     @Test
@@ -135,11 +132,7 @@ public class TacticalCodeGermanyWWITest
         Mockito.when(plane.getSkin()).thenReturn(skin);
         Mockito.when(plane.getType()).thenReturn("fokkerd7");
         Mockito.when(skin.isUseTacticalCodes()).thenReturn(true);
-        Mockito.when(skin.getTacticalCodeType()).thenReturn(TacticalCodeType.CODE_POSITION_ONE_AND_TWO);
-
-        PWCGException  exception = Assertions.assertThrows(PWCGException.class, () -> {
-            TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
-        });
-        Assertions.assertEquals("Invalid code type: WWI Germany does not support position 1 and 2", exception.getMessage());
+        TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
+        Assertions.assertNull(tacticalCode);
     }
 }

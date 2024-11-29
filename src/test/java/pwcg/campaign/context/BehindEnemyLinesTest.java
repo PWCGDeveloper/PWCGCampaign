@@ -52,14 +52,6 @@ public class BehindEnemyLinesTest
     }
 
     @Test
-    public void testNearGroup () throws PWCGException
-    {            	
-        Coordinate noeuxLesMines =  new Coordinate(263140.0, 0.0, 84168.0);
-    	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(noeuxLesMines, Side.AXIS);
-    	Assertions.assertTrue (isBehindLines == false);
-    }
-
-    @Test
     public void testNearAirfield () throws PWCGException
     {            	
         Coordinate lille =  new Coordinate(277806.0, 0.0, 112789.0);

@@ -51,7 +51,7 @@ public class ArdennesFlightTest
 
     private void verifyAntiArmorOnDate(Campaign campaign, Date date, Side attackingSide) throws PWCGException
     {
-        campaign.setDate(date);
+        campaign.setDateWithMapUpdate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -73,7 +73,7 @@ public class ArdennesFlightTest
 
     private void verifyCargoDropsOnDate(Campaign campaign, Date date) throws PWCGException
     {
-        campaign.setDate(date);
+        campaign.setDateWithMapUpdate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -98,7 +98,7 @@ public class ArdennesFlightTest
 
     private void noSkirmish(Date date) throws PWCGException
     {
-        fg362Campaign.setDate(date);
+        fg362Campaign.setDateWithMapUpdate(date);
         MissionGenerator missionGenerator = new MissionGenerator(fg362Campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(fg362Campaign));
         mission.finalizeMission();

@@ -36,7 +36,7 @@ public class CampaignUpdateNewSquadronStafferTest
     public void testSquadronAdded() throws PWCGException
     {
         Date newDate = DateUtils.getDateYYYYMMDD("19420801");
-        campaign.setDate(newDate);
+        campaign.setDateWithMapUpdate(newDate);
         
         CampaignUpdateNewSquadronStaffer newSquadronStaffer = new CampaignUpdateNewSquadronStaffer(campaign);
         List<Integer> squadronsAdded = newSquadronStaffer.staffNewSquadrons();

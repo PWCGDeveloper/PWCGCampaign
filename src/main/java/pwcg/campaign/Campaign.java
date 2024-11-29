@@ -332,7 +332,12 @@ public class Campaign
         return campaignData.getDate();
     }
 
-    public void setDate(Date date) throws PWCGException
+    public void setDateNoMapUpdate(Date date) throws PWCGException
+    {
+        campaignData.setDate(date);
+   }
+
+    public void setDateWithMapUpdate(Date date) throws PWCGException
     {
         campaignData.setDate(date);
         PWCGContext.getInstance().getMap(this.getCampaignMap()).configureForDate(this);

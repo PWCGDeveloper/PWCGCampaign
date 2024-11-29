@@ -70,6 +70,7 @@ import pwcg.product.bos.plane.payload.aircraft.SpitfireMkIXePayload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkVbPayload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkXIVEPayload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkXIVPayload;
+import pwcg.product.bos.plane.payload.aircraft.Ta152H1Payload;
 import pwcg.product.bos.plane.payload.aircraft.TempestMKVS2Payload;
 import pwcg.product.bos.plane.payload.aircraft.TyphoonMkIbPayload;
 import pwcg.product.bos.plane.payload.aircraft.U2VSPayload;
@@ -157,6 +158,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.FW190_D9)
         {
             return new Fw190D9Payload(planeType, date);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.TA152_H1)
+        {
+            return new Ta152H1Payload(planeType, date);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.IAR80A)
         {

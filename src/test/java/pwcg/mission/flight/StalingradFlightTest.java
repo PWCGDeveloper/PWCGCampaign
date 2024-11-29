@@ -37,7 +37,7 @@ public class StalingradFlightTest
     @Test
     public void hasCityTargetTest() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19420824"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19420824"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -53,7 +53,7 @@ public class StalingradFlightTest
     @Test
     public void hasDrifterTargetTest() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19420910"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19420910"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -69,7 +69,7 @@ public class StalingradFlightTest
     @Test
     public void hasGroundAttackTest() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19421114"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19421114"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -82,7 +82,7 @@ public class StalingradFlightTest
     @Test
     public void hasCargoDropTest() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19421220"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19421220"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
@@ -103,7 +103,7 @@ public class StalingradFlightTest
 
     private void noSkirmish(Date date) throws PWCGException
     {
-        campaign.setDate(date);
+        campaign.setDateWithMapUpdate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();

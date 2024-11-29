@@ -40,7 +40,7 @@ public class MissionCenterBuilderSkirmishTest
     public void singlePlayerMissionBoxArnhemEarlyTest() throws PWCGException
     {
         Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_362_PROFILE);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19440917"));
 
         createMissionAtSkirmish(campaign);
     }
@@ -49,7 +49,7 @@ public class MissionCenterBuilderSkirmishTest
     public void singlePlayerMissionBoxArnhemLateTest() throws PWCGException
     {
         Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.FG_362_PROFILE);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19440928"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19440928"));
 
         createMissionAtSkirmish(campaign);
     }

@@ -35,7 +35,7 @@
 		}
 	],
 	"airfields": {
-		"19160901": "Douai",
+		"19160701": "Douai",
 		"19161028": "Sivry",
 		"19161212": "Chassonge Ferme,Stenay/Verdun",
 		"19170223": "Leffincourt",
@@ -48,7 +48,7 @@
 		"19180403": "Balatre",
 		"19180412": "Cappy",
 		"19180414": "Lomme",
-		"19180521": "Besny et Loisy",
+		"19180521": "Besny et Loizy",
 		"19180526": "Puisieux Ferme Laon",
 		"19180729": "Puisieux Ferme Laon",
 		"19180810": "Falvy, Peronne",
@@ -73,6 +73,18 @@
 	],
 	"squadHistory": {
 		"squadHistoryEntries": [
+			{
+				"date": "19150801",
+				"squadName": "KEK 3",
+				"armedServiceName": "Deutsche Luftstreitkrafte",
+				"skill": 70
+			},
+			{
+				"date": "19160801",
+				"squadName": "Jasta 10",
+				"armedServiceName": "Deutsche Luftstreitkrafte",
+				"skill": 85
+			}
 		]
 	},
 	"callsigns": {

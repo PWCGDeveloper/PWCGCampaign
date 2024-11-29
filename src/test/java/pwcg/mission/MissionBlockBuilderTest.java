@@ -26,7 +26,7 @@ public class MissionBlockBuilderTest
     {
 
         Campaign campaign = TestCampaignFactoryBuilder.makeCampaign(this.getClass().getCanonicalName(), SquadronTestProfile.JG_26_PROFILE_WEST);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19450101"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19450101"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();

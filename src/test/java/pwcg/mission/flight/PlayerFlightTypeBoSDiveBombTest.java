@@ -59,7 +59,7 @@ public class PlayerFlightTypeBoSDiveBombTest
         validateTargetDefinition(flight.getTargetDefinition());
         Assertions.assertTrue (flight.getFlightType() == FlightTypes.DIVE_BOMB);
         
-        PositionEvaluator.evaluateAiFlight(mission, MAX_DIVE_BOMBER_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_DIVE_BOMBER_DISTANCE);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         

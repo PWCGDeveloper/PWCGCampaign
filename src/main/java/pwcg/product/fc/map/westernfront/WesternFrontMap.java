@@ -85,7 +85,7 @@ public class WesternFrontMap extends PWCGMap
         // This controls the available start dates for campaign generation
         this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19160101"), DateUtils.getDateYYYYMMDD("19181111"));
         
-        this.frontDatesForMap.addFrontDate("19160101"); // Somme
+        this.frontDatesForMap.addFrontDate("19160101"); // Start
         this.frontDatesForMap.addFrontDate("19170607"); // Messines start
         this.frontDatesForMap.addFrontDate("19170621"); // Messines end
         this.frontDatesForMap.addFrontDate("19170720"); // Paschendale prep

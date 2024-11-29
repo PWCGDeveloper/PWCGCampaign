@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "aircodh2",
-			"squadronIntroduction": "19160801",
+			"squadronIntroduction": "19160101",
 			"squadronWithdrawal": "19170405"
 		},
 		{
@@ -25,7 +25,7 @@
 		}
 	],
 	"airfields": {
-		"19160801": "Allonville",
+		"19160101": "Allonville",
 		"19170417": "Villers Bretonneux",
 		"19170710": "Allonville",
 		"19170923": "La Lovie",

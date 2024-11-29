@@ -65,7 +65,7 @@ public class PlayerFlightTypeBoSAttackTest
         
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission, MAX_ATTACK_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_ATTACK_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();

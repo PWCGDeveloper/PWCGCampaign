@@ -1,0 +1,31 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"ta152h1_default": {
+			"skinName": "ta152h1",
+			"planeType": "ta152h1",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "SKY",
+			"winter": false
+		},
+		"ta152h1_blank_01": {
+			"skinName": "ta152h1",
+			"planeType": "ta152h1",
+			"startDate": "19390901",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "SKY",
+			"winter": false
+		}
+	}
+}

@@ -175,7 +175,7 @@
             "tacticalCodeColor": "SKY"
         },
         {
-            "skinName": "spitfiremkvb_skin_01",
+            "skinName": "spitfiremkvb_blank_01",
             "planeType": "spitfiremkvb",
             "startDate": "19390901",
             "endDate": "19420315",
@@ -187,7 +187,7 @@
             "tacticalCodeColor": "WHITE"
         },
         {
-            "skinName": "spitfiremkvb_skin_02",
+            "skinName": "spitfiremkvb_blank_02",
             "planeType": "spitfiremkvb",
             "startDate": "19420201",
             "endDate": "19450501",

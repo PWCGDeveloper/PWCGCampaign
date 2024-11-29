@@ -1,0 +1,28 @@
+{
+	"type": "ta152h1",
+	"archType": "ta152",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+		"GYRO_GUNSIGHT"
+	],
+	"displayName": "TA 152 H-1",
+	"script": "LuaScripts\\WorldObjects\\Planes\\ta152h1.txt",
+	"model": "graphics\\planes\\fw190a8\\ta152h1.mgm",
+	"desc": "",
+	"cruisingSpeed": 360,
+	"climbOutRate": 1400,
+	"goodness": 95,
+	"range": 700,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roleCategories": [
+		"FIGHTER"
+	],
+	"introduction": "19450301",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
+}

@@ -69,7 +69,7 @@ public class PlayerFlightTypeBoSBombTest
         
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission, MAX_BOMBER_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_BOMBER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
@@ -96,7 +96,7 @@ public class PlayerFlightTypeBoSBombTest
         
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission, MAX_BOMBER_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_BOMBER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();

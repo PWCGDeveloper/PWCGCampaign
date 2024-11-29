@@ -74,11 +74,8 @@ public class TacticalCodeUSAWWITest
         Mockito.when(plane.getSkin()).thenReturn(skin);
         Mockito.when(skin.isUseTacticalCodes()).thenReturn(true);
         Mockito.when(skin.getTacticalCodeType()).thenReturn(TacticalCodeType.CODE_POSITION_ONE);
-
-        PWCGException  exception = Assertions.assertThrows(PWCGException.class, () -> {
-            TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
-        });
-        Assertions.assertEquals("Invalid code type: WWI USA does not support position 1", exception.getMessage());
+        TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
+        Assertions.assertNull(tacticalCode);
     }
     
     @Test
@@ -92,11 +89,8 @@ public class TacticalCodeUSAWWITest
         Mockito.when(plane.getSkin()).thenReturn(skin);
         Mockito.when(skin.isUseTacticalCodes()).thenReturn(true);
         Mockito.when(skin.getTacticalCodeType()).thenReturn(TacticalCodeType.CODE_POSITION_TWO);
-
-        PWCGException  exception = Assertions.assertThrows(PWCGException.class, () -> {
-            TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
-        });
-        Assertions.assertEquals("Invalid code type: WWI USA does not support position 2", exception.getMessage());
+        TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
+        Assertions.assertNull(tacticalCode);
     }
     
     @Test
@@ -110,10 +104,7 @@ public class TacticalCodeUSAWWITest
         Mockito.when(plane.getSkin()).thenReturn(skin);
         Mockito.when(skin.isUseTacticalCodes()).thenReturn(true);
         Mockito.when(skin.getTacticalCodeType()).thenReturn(TacticalCodeType.CODE_POSITION_THREE);
-
-        PWCGException  exception = Assertions.assertThrows(PWCGException.class, () -> {
-            TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
-        });
-        Assertions.assertEquals("Invalid code type: WWI USA does not support position 3", exception.getMessage());
+        TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
+        Assertions.assertNull(tacticalCode);
     }
 }

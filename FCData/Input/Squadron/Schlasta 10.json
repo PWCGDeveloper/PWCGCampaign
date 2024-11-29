@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "rolandc2a",
-			"squadronIntroduction": "19170101",
+			"squadronIntroduction": "19160701",
 			"squadronWithdrawal": "19170610"
 		},
 		{
@@ -20,7 +20,7 @@
 		}
 	],
 	"airfields": {
-		"19170101": "Sivry",
+		"19160601": "Sivry",
 		"19171101": "Moislains"
 	},
 	"squadronRoles": {
@@ -54,7 +54,7 @@
 			"planeType": "halberstadtcl2",
 			"archTypes": [
 			],
-			"startDate": "19170101",
+			"startDate": "19170601",
 			"endDate": "19171101",
 			"country": "Germany",
 			"category": "Squadron",

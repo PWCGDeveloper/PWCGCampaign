@@ -8,6 +8,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.IWeight;
 import pwcg.core.utils.WeightCalculator;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -39,10 +40,17 @@ public class GroundVictimGenerator
         List<IWeight> possibleVictimTypes = new ArrayList<>();
         for (VehicleClass vehicleClass : VehicleClass.values()) 
         {
-            if (vehicleClass.getWeight() > 0)
+            if (vehicleClass.getWeight() <= 0)
             {
-                possibleVictimTypes.add(vehicleClass);
+                continue;
             }
+            
+            if (vehicleClass == VehicleClass.Tank && campaign.getDate().before(DateUtils.getDateYYYYMMDD("19171001")))
+            {
+                continue;
+            }
+                
+            possibleVictimTypes.add(vehicleClass);
         }
         
         WeightCalculator weightCalculator = new WeightCalculator(possibleVictimTypes);

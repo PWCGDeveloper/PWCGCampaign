@@ -44,7 +44,7 @@ public class KubanShippingZoneTest
     @Test
     public void hasDiveBombShippingZoneTest() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19431009"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19431009"));
         
         MissionHumanParticipants playerParticipants = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
                 
@@ -96,7 +96,7 @@ public class KubanShippingZoneTest
 
     private void noSkirmish(Date date) throws PWCGException
     {
-        campaign.setDate(date);
+        campaign.setDateWithMapUpdate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();

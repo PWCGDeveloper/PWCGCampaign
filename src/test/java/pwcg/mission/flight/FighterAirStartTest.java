@@ -29,7 +29,7 @@ import pwcg.testutils.TestMissionBuilderUtility;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class FighterAirStartTest 
 {    
-    private int MAX_WWI_FIGHTER_DISTANCE = 75000;
+    private int MAX_WWII_FIGHTER_DISTANCE = 300000;
 
     private Campaign campaign;    
     
@@ -60,7 +60,7 @@ public class FighterAirStartTest
         
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
-        PositionEvaluator.evaluateAiFlight(mission, MAX_WWI_FIGHTER_DISTANCE);
+        PositionEvaluator.evaluatePlayerFlightDistance(mission, MAX_WWII_FIGHTER_DISTANCE);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();

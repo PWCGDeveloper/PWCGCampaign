@@ -66,6 +66,11 @@ public class SkinManagerTest
 
         for (String planeName : skinManager.getAllSkinsByPlane().keySet())
         {
+            if (planeName.equals("spitfiremkixc"))
+            {
+                System.out.println("Missing blank for plane is " + planeName);
+            }
+            
             boolean baseForPlane = false;
             boolean blankForPlane = false;
             for (Skin skin : skinManager.getSkinsForPlane(planeName).getConfiguredSkins().getSkins().values())
@@ -91,6 +96,10 @@ public class SkinManagerTest
             Assertions.assertTrue(baseForPlane);
             if (!hasNoBlanks.contains(planeName))
             {
+                if (!blankForPlane) 
+                {
+                    System.out.println("Missing blank for plane is " + planeName);
+                }
                 Assertions.assertTrue(blankForPlane);
             }
         }

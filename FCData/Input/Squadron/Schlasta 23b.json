@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "rolandc2a",
-			"squadronIntroduction": "19170201",
+			"squadronIntroduction": "19160901",
 			"squadronWithdrawal": "19170610"
 		},
 		{
@@ -20,7 +20,7 @@
 		}
 	],
 	"airfields": {
-		"19171101": "La Petrie",
+		"19160901": "La Petrie",
 		"19180317": "Moislains",
 		"19180404": "La Neuville",
 		"19180526": "Eppeville"

@@ -1,8 +1,8 @@
 {
 	"country": "BRITAIN",
 	"squadronId": 302024,
-	"name": "No 24 Squadron RFC",
-	"fileName": "No 24 Squadron RFC.json",
+	"name": "No 32 Squadron RFC",
+	"fileName": "No 32 Squadron RFC.json",
 	"skill": 85,
 	"serviceId": 30201,
 	"tacticalCodeStyle": -1,
@@ -10,7 +10,7 @@
 	"planeAssignments": [
 		{
 			"archType": "aircodh2",
-			"squadronIntroduction": "19160801",
+			"squadronIntroduction": "19160401",
 			"squadronWithdrawal": "19170505"
 		},
 		{
@@ -25,7 +25,7 @@
 		}
 	],
 	"airfields": {
-		"19160801": "Lealvillers",
+		"19160401": "Lealvillers",
 		"19170708": "Droglandt",
 		"19180329": "Villers Bretonneux",
 		"19180603": "Grivesnes",

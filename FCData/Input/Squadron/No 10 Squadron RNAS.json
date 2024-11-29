@@ -15,7 +15,7 @@
 		},
 		{
 			"archType": "soptriplane",
-			"squadronIntroduction": "19170401",
+			"squadronIntroduction": "19170501",
 			"squadronWithdrawal": "19170901"
 		},
 		{
@@ -25,7 +25,7 @@
 		}
 	],
 	"airfields": {
-		"19170301": "La Lovie",
+		"19170101": "La Lovie",
 		"19170325": "Bailleul",
 		"19170515": "Droglandt",
 		"19171004": "La Lovie",

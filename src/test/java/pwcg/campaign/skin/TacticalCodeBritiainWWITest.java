@@ -138,10 +138,9 @@ public class TacticalCodeBritiainWWITest
         Mockito.when(skin.isUseTacticalCodes()).thenReturn(true);
         Mockito.when(skin.getTacticalCodeType()).thenReturn(TacticalCodeType.CODE_POSITION_ONE_AND_TWO);
 
-        PWCGException  exception = Assertions.assertThrows(PWCGException.class, () -> {
-            TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
-        });
-        Assertions.assertEquals("Only British SPAD suppoorted for position 1 and 2", exception.getMessage());
+        TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
+
+        Assertions.assertNull(tacticalCode);
     }
     
     @Test
@@ -156,11 +155,10 @@ public class TacticalCodeBritiainWWITest
         Mockito.when(plane.getType()).thenReturn("sopdolphin");
         Mockito.when(skin.isUseTacticalCodes()).thenReturn(true);
         Mockito.when(skin.getTacticalCodeType()).thenReturn(TacticalCodeType.CODE_POSITION_THREE);
+        
+        TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
 
-        PWCGException  exception = Assertions.assertThrows(PWCGException.class, () -> {
-            TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
-        });
-        Assertions.assertEquals("Attempt to use British position 3 when only 2 positions are available", exception.getMessage());
+        Assertions.assertNull(tacticalCode);
     }
     
     @Test
@@ -176,9 +174,8 @@ public class TacticalCodeBritiainWWITest
         Mockito.when(skin.isUseTacticalCodes()).thenReturn(true);
         Mockito.when(skin.getTacticalCodeType()).thenReturn(TacticalCodeType.CODE_POSITION_TWO);
 
-        PWCGException  exception = Assertions.assertThrows(PWCGException.class, () -> {
-            TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
-        });
-        Assertions.assertEquals("Cannot use British position 2 with an Airco DH4", exception.getMessage());
+        TacticalCode tacticalCode = TacticalCodeBuilder.buildTacticalCode(campaign, squadron, plane);
+
+        Assertions.assertNull(tacticalCode);
     }
 }

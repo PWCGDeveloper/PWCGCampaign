@@ -34,7 +34,7 @@ public class SkirmishManagerTest
     @Test
     public void verifyArnhemParaDropSkirmishes() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19440917"));
         
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
         skirmishManager.initialize();
@@ -53,7 +53,7 @@ public class SkirmishManagerTest
     @Test
     public void verifyArnhemCargoDropSkirmishes() throws PWCGException
     {
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19440921"));
+        campaign.setDateWithMapUpdate(DateUtils.getDateYYYYMMDD("19440921"));
         
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
         skirmishManager.initialize();

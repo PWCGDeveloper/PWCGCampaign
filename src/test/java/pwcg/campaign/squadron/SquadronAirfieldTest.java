@@ -28,7 +28,7 @@ public class SquadronAirfieldTest
         {
             testSquadronAirfieldValidity();
             Date nextDay = DateUtils.advanceTimeDays(campaign.getDate(), 1); 
-            campaign.setDate(nextDay);
+            campaign.setDateWithMapUpdate(nextDay);
         }
     }
     

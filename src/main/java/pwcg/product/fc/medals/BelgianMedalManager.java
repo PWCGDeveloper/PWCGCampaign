@@ -62,7 +62,7 @@ public class BelgianMedalManager extends FCMedalManager
         medals.put(VC, new Medal ("Victoria Cross",                                                     "gb_victoria_cross.png"));
         medals.put(MC, new Medal ("Military Cross",                                                     "gb_military_cross.png"));
 
-        medals.put(BEL_CROIX_DE_GUERRE, new Medal ("Bel. Croix de Guerre",                                   "bel_croix_de_guerre.png"));
+        medals.put(BEL_CROIX_DE_GUERRE, new Medal ("Bel Croix de Guerre",                               "bel_croix_de_guerre.png"));
         medals.put(BEL_ORDRE_DE_LA_COURONNE, new Medal ("Ordre de la Couronne",                         "bel_couronne.png"));
         medals.put(BEL_ORDRE_DE_LEOPOLD, new Medal ("Ordre de Leopold",                                 "bel_order_of_leopold.png"));
 
