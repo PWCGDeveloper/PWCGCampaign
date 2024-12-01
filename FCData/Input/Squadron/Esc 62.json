@@ -21,10 +21,10 @@
 	],
 	"airfields": {
 		"19160801": "Grivesnes",
-		"19170115": "Mont de Soissons",
-		"19180407": "Vauxcere",
-		"19180831": "Chalons sur Vesle",
-		"19181027": "Bryas"
+		"19170101": "Mont de Soissons",
+		"19180401": "Vauxcere",
+		"19180901": "Chalons sur Vesle",
+		"19181001": "Bryas"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

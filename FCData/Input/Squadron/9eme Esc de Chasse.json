@@ -1,0 +1,86 @@
+{
+	"country": "BELGIUM",
+	"squadronId": 304009,
+	"name": "9eme Esc de Chasse",
+	"fileName": "9eme Esc de Chasse.json",
+	"skill": 40,
+	"serviceId": 30401,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+        {
+            "archType": "nieuport",
+            "squadronIntroduction": "19160801",
+            "squadronWithdrawal": "19170501"
+        },
+        {
+            "archType": "hanriot",
+            "squadronIntroduction": "19170401",
+            "squadronWithdrawal": "19180101"
+        },
+        {
+            "archType": "sopcamel",
+            "squadronIntroduction": "19171001",
+            "squadronWithdrawal": "19181201"
+        }
+	],
+	"airfields": {
+        "19160801": "St Marie Cappel",
+        "19170601": "St Marie Cappel",
+		"19181101": "St Marguerite"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+                "startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 80
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 20
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+        {
+            "skinName": "SOPCAM_9EME_Default",
+            "planeType": "sopcamel",
+            "archTypes": [],
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "country": "Belgium",
+            "category": "Squadron",
+            "definedInGame": false,
+            "winter": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "tacticalCodeType": "CODE_POSITION_ONE"
+        }
+	]
+}

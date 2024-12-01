@@ -21,21 +21,17 @@
 	],
 	"airfields": {
 		"19170101": "Villers Bretonneux",
-		"19170129": "Brabant en Argonne",
-		"19170321": "Ferme de Corbeaulieu",
-		"19170712": "Bailleul",
-		"19170812": "Bailleul",
-		"19170927": "Bailleul",
-		"19171112": "Ferme Cravancon",
-		"19180112": "Beauze sur Aire",
-		"19180307": "Lhery",
-		"19180328": "Grivesnes",
-		"19180408": "Grivesnes",
-		"19180717": "Muizon",
-		"19180728": "Grivesnes",
-		"19180903": "Quinquempoix",
-		"19180910": "Froides",
-		"19180919": "La Noblette"
+		"19170201": "Brabant en Argonne",
+		"19170401": "Ferme de Corbeaulieu",
+		"19170701": "Bailleul",
+		"19171101": "Ferme Cravancon",
+		"19180101": "Beauze sur Aire",
+		"19180301": "Lhery",
+		"19180401": "Grivesnes",
+		"19180701": "Muizon",
+		"19180801": "Grivesnes",
+		"19180901": "Quinquempoix",
+		"19181001": "La Noblette"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

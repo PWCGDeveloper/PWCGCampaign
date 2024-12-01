@@ -25,7 +25,7 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Allonville",
+		"19160101": "Hesdigneul",
 		"19170417": "Villers Bretonneux",
 		"19170710": "Allonville",
 		"19170923": "La Lovie",
@@ -62,48 +62,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "SE5a_RFC24_Default_E",
 			"planeType": "se5a",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19180321",
-			"country": "BRITAIN",
+			"squadId": 302024,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_THREE"
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
 			"skinName": "SE5a_RFC24_Default_L",
 			"planeType": "se5a",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180322",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302024,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_THREE"
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

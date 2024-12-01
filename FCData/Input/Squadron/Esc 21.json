@@ -25,25 +25,22 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Villers Bretonneu 2",
-		"19160119": "Allonville",
+		"19160101": "Villers Bretonneux",
+		"19160201": "Marieux",
 		"19160301": "Vauxcere",
-		"19160611": "Grivesnes",
+		"19160601": "Grivesnes",
 		"19161101": "Allonville",
-		"19170106": "Villesavoye",
-		"19170120": "La Mellette",
-		"19170407": "Villers Bretonneu 2",
-		"19170725": "Vauxcere",
-		"19180228": "Grivesnes",
-		"19180315": "Vauxcere",
-		"19180330": "Mont de Soissons",
-		"19180408": "Vauxcere",
-		"19180414": "Grivesnes",
-		"19180427": "Allonville",
-		"19180825": "Ravenel",
-		"19180917": "Ferme de Corbeaulieu",
-		"19181009": "Grivesnes",
-		"19181030": "Vauxcere"
+		"19170101": "Villesavoye",
+		"19170201": "La Mellette",
+		"19170401": "Villers Bretonneu 2",
+		"19170701": "Vauxcere",
+		"19180301": "Grivesnes",
+		"19180401": "Mont de Soissons",
+		"19180501": "Allonville",
+		"19180801": "Ravenel",
+		"19180901": "Ferme de Corbeaulieu",
+		"19181001": "Grivesnes",
+		"19181101": "Vauxcere"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -66,48 +63,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BR14_ESC21_JUL1917",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301021,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLUE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "BLUE"
 		},
 		{
 			"skinName": "BR14_ESC21_JAN1918",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301021,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLUE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "BLUE"
 		}
 	]
 }

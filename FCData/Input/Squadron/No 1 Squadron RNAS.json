@@ -1,0 +1,116 @@
+{
+	"country": "BRITAIN",
+	"squadronId": 302201,
+	"name": "No 1 Squadron RNAS",
+	"fileName": "No 1 Squadron RNAS.json",
+	"skill": 70,
+	"serviceId": 30202,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "nieuport",
+			"squadronIntroduction": "19160201",
+			"squadronWithdrawal": "19170501"
+		},
+		{
+			"archType": "soptriplane",
+			"squadronIntroduction": "19170501",
+			"squadronWithdrawal": "19170801"
+		},
+		{
+			"archType": "sopcamel",
+			"squadronIntroduction": "19170801",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19160201": "Bailleul",
+		"19170515": "La Lovie",
+		"19170615": "Villers Bretonneux",
+		"19170710": "La Lovie",
+		"19180321": "Bailleul",
+		"19180323": "La Gorgue",
+		"19180407": "Allonville",
+		"19180814": "Le Hameau"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19170901",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 30
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "SopTri_Default",
+			"planeType": "soptriplane",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"squadId": 302201,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "SOPCAM_9RNAS_Default",
+			"planeType": "sopcamel",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"squadId": 302201,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
+		}
+	]
+}

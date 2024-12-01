@@ -9,13 +9,13 @@
 	"planeAssignments": [
 		{
 			"archType": "breguet14",
-			"squadronIntroduction": "19170601",
+			"squadronIntroduction": "19180601",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19180526": "Ferme de Rosnay",
-		"19180923": "Courcy"
+		"19180601": "Ferme de Rosnay",
+		"19181001": "Courcy"
 	},
 	"squadHistory": {
 		"squadHistoryEntries": [

@@ -1,0 +1,163 @@
+{
+	"country": "GERMANY",
+	"squadronId": 401035,
+	"name": "Jasta 35b",
+	"fileName": "Jasta 35b.json",
+	"skill": 60,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "albatrosd",
+			"squadronIntroduction": "19170401",
+			"squadronWithdrawal": "19180801"
+		},
+		{
+			"archType": "pfalz",
+			"squadronIntroduction": "19171101",
+			"squadronWithdrawal": "19180715"
+		},
+		{
+			"archType": "fokkerd7",
+			"squadronIntroduction": "19180705",
+			"squadronWithdrawal": "19180820"
+		},
+		{
+			"archType": "pfalz",
+			"squadronIntroduction": "19180801",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170401": "Mars La Tour",
+		"19171014": "Puisieux Ferme Laon",
+		"19171122": "Chassonge Ferme,Stenay/Verdun",
+		"19180316": "Pronville",
+		"19180327": "Balatre",
+		"19180418": "Falvy, Peronne",
+		"19180801": "Cappy",
+		"19180811": "Falvy, Peronne",
+		"19180829": "Houplin",
+		"19180905": "Pronville",
+		"19181001": "Houplin",
+		"19181007": "Falvy, Peronne"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [
+	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+		]
+	},
+	"callsigns": {
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+		]
+	},
+	"skins": [
+		{
+			"skinName": "AD5_J35b_Default_May17",
+			"planeType": "albatrosd5",
+			"archTypes": [
+			],
+			"startDate": "19170601",
+			"endDate": "19171010",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "AD5_J35b_Default_Oct17",
+			"planeType": "albatrosd5",
+			"archTypes": [
+			],
+			"startDate": "19171001",
+			"endDate": "19180510",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "AD5_J35b_Default_APR18",
+			"planeType": "albatrosd5",
+			"archTypes": [
+			],
+			"startDate": "19180424",
+			"endDate": "19181201",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "PD3a_J35b_JUL17",
+			"planeType": "pfalzd3a",
+			"archTypes": [
+			],
+			"startDate": "19170601",
+			"endDate": "19180415",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "PD3a_J35b_APR18",
+			"planeType": "pfalzd3a",
+			"archTypes": [
+			],
+			"startDate": "19180502",
+			"endDate": "19181201",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		{
+			"skinName": "PD12_J35b_Default",
+			"planeType": "pfalzd12",
+			"archTypes": [
+			],
+			"startDate": "19180502",
+			"endDate": "19181201",
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+	]
+}

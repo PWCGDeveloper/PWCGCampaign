@@ -1,0 +1,105 @@
+{
+	"country": "GERMANY",
+	"squadronId": 401215,
+	"name": "FA 15",
+	"fileName": "FA 15.json",
+	"skill": 25,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "albatrosc",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19160810"
+		},
+		{
+			"archType": "dfw",
+			"squadronIntroduction": "19160801",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19160101": "Boncourt",
+		"19160301": "Lagnicourt",
+		"19160310": "Hermies, Cambrai",
+		"19160812": "Chambry Laon",
+		"19180825": "Liesse"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_ARTILLERY_SPOT",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "DFWCV_FA15_JUL17",
+			"planeType": "dfwc5",
+			"archTypes": [],
+			"startDate": "19161001",
+			"endDate": "19171115",
+			"squadId": 401215,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "DFWCV_FA15_OCT17",
+			"planeType": "dfwc5",
+			"archTypes": [],
+			"startDate": "19171015",
+			"endDate": "19180510",
+			"squadId": 401215,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "DFWCV_FA15_APR18",
+			"planeType": "dfwc5",
+			"archTypes": [],
+			"startDate": "19180502",
+			"endDate": "19181201",
+			"squadId": 401215,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		}
+	]
+}

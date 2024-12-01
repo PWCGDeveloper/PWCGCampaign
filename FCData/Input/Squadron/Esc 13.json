@@ -26,16 +26,15 @@
 	],
 	"airfields": {
 		"19160101": "Auve",
-		"19160503": "Tilloy",
-		"19160519": "Julvecourt",
-		"19160828": "Froides",
-		"19161207": "Lemmes",
-		"19170103": "Vadelaincourt",
-		"19170127": "Lemmes",
+		"19160201": "Bouleuse",
+		"19160501": "Tilloy",
+		"19160601": "Julvecourt",
+		"19160901": "Froides",
+		"19161201": "Lemmes",
+		"19170101": "Vadelaincourt",
+		"19170201": "Lemmes",
 		"19170701": "Vadelaincourt",
-		"19170922": "Auve",
-		"19171005": "Froides",
-		"19180609": "Grivesnes"
+		"19171001": "Froides"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -58,48 +57,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BR14_ESC13_JUL1917",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301013,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "BR14_ESC13_JAN1918",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301013,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

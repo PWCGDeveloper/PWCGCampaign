@@ -15,10 +15,9 @@
 	],
 	"airfields": {
 		"19180601": "Froides",
-		"19180706": "Muizon",
-		"19180908": "Muizon",
-		"19180912": "Souilly",
-		"19181102": "Julvecourt"
+		"19180701": "Muizon",
+		"19180901": "Souilly",
+		"19181101": "Julvecourt"
 	},
 	"squadHistory": {
 		"squadHistoryEntries": [

@@ -16,6 +16,7 @@ public class InfoMapSquadronMover
         if (squadronIdToMove > 0)
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronIdToMove);
+            System.out.println("Move squadron " + squadron.getFileName() + " to airfield "  + targetAirfield + " on " + assignmentDate);
             if (squadron != null)
             {
                 squadron.assignAirfield(assignmentDate, targetAirfield);

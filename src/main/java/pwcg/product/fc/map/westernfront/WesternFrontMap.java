@@ -21,7 +21,7 @@ public class WesternFrontMap extends PWCGMap
     static
     { 
         missionSpacingMyDate = new TreeMap<>(); 
-        missionSpacingMyDate.put("19160101", 5); 
+        missionSpacingMyDate.put("19160101", 7); 
         missionSpacingMyDate.put("19160801", 6); 
         missionSpacingMyDate.put("19160901", 6); 
         missionSpacingMyDate.put("19161001", 6); 
@@ -86,25 +86,14 @@ public class WesternFrontMap extends PWCGMap
         this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19160101"), DateUtils.getDateYYYYMMDD("19181111"));
         
         this.frontDatesForMap.addFrontDate("19160101"); // Start
-        this.frontDatesForMap.addFrontDate("19170607"); // Messines start
-        this.frontDatesForMap.addFrontDate("19170621"); // Messines end
-        this.frontDatesForMap.addFrontDate("19170720"); // Paschendale prep
-        this.frontDatesForMap.addFrontDate("19171020"); // La Malmaison prep
-        this.frontDatesForMap.addFrontDate("19171030"); // La Malmaison end
-        this.frontDatesForMap.addFrontDate("19171115"); // Paschendale end and Cambrai prep
-        this.frontDatesForMap.addFrontDate("19171215"); // Cambrai end
-        this.frontDatesForMap.addFrontDate("19180310"); // Kaiserschlacht phase 1 prep
-        this.frontDatesForMap.addFrontDate("19180329"); // Kaiserschlacht phase 1 mid
-        this.frontDatesForMap.addFrontDate("19180404"); // Kaiserschlacht phase 1 mid
-        this.frontDatesForMap.addFrontDate("19180429"); // Kaiserschlacht phase 1 mid
-        this.frontDatesForMap.addFrontDate("19180531"); // Kaiserschlacht phase 1 end
-        this.frontDatesForMap.addFrontDate("19180604"); // Kaiserschlacht phase 2 start
-        this.frontDatesForMap.addFrontDate("19180612"); // Kaiserschlacht phase 2 end
-        this.frontDatesForMap.addFrontDate("19180918"); // 100 days start
-        this.frontDatesForMap.addFrontDate("19180925"); // 100 days mid
-        this.frontDatesForMap.addFrontDate("19181004"); // 100 days mid
-        this.frontDatesForMap.addFrontDate("19181015"); // 100 days mid
-        this.frontDatesForMap.addFrontDate("19181101"); // 100 days end
+        this.frontDatesForMap.addFrontDate("19180301"); // Kaiserschlacht phase 1
+        this.frontDatesForMap.addFrontDate("19180401"); // Kaiserschlacht phase 1
+        this.frontDatesForMap.addFrontDate("19180501"); // Kaiserschlacht phase 1
+        this.frontDatesForMap.addFrontDate("19180601"); // Kaiserschlacht phase 2
+        this.frontDatesForMap.addFrontDate("19180701"); // Kaiserschlacht phase 2
+        this.frontDatesForMap.addFrontDate("19180901"); // 100 days
+        this.frontDatesForMap.addFrontDate("19181001"); // 100 days
+        this.frontDatesForMap.addFrontDate("19181101"); // 100 days
     }
 
     @Override

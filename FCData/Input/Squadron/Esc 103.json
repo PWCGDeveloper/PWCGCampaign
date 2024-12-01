@@ -20,9 +20,8 @@
 		}
 	],
 	"airfields": {
-        "19160101": "Beaucourt",
-        "19170601": "Beaucourt",
-		"19171030": "Julvecourt"
+        "19160101": "Julvecourt",
+		"19171030": "Beaucourt"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

@@ -30,18 +30,17 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Grivesnes",
-		"19160516": "Beauze sur Aire",
-		"19160913": "Cachy",
-		"19161110": "La Mellette",
-		"19170214": "Vauxcere",
-		"19170504": "La Mellette",
-		"19171209": "Vauxcere",
-		"19180127": "Arcy Sainte Restitue",
-		"19180428": "Somme Vesle",
-		"19180515": "Vauxcere",
-		"19180730": "Vauxcere",
-		"19180925": "Ferme de Corbeaulieu"
+		"19160101": "Pretz en Argonne",
+		"19160501": "Beauze sur Aire",
+		"19160901": "Cachy",
+		"19161101": "La Mellette",
+		"19170201": "Vauxcere",
+		"19170501": "La Mellette",
+		"19171201": "Vauxcere",
+		"19180201": "Arcy Sainte Restitue",
+		"19180501": "Somme Vesle",
+		"19180801": "Vauxcere",
+		"19181001": "Ferme de Corbeaulieu"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -56,48 +55,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BR14_ESC17_JUL1917",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301017,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "BR14_ESC17_JAN1918",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301017,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

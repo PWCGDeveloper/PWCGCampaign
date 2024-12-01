@@ -1,0 +1,97 @@
+{
+	"country": "USA",
+	"squadronId": 303095,
+	"name": "95th Aero",
+	"fileName": "95th Aero.json",
+	"skill": 65,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "RED",
+	"planeAssignments": [
+		{
+			"archType": "nieuport28",
+			"squadronIntroduction": "19180501",
+			"squadronWithdrawal": "19180701"
+		},
+		{
+			"archType": "spad",
+			"squadronIntroduction": "19180601",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19180501": "Malzeville",
+		"19180602": "Dommartin les Toul",
+		"19180701": "Villesavoye",
+		"19180901": "Brabant en Argonne"
+	},
+	"squadHistory": {
+		"squadHistoryEntries": [
+		]
+	},
+	"serviceId": 30301,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"endDate": "19181201",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [
+	],
+	"callsigns": [
+	],
+	"skins": [
+		{
+			"skinName": "N28_95Aero",
+			"planeType": "nieuport28",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP7LATE_95thAero_Default",
+			"planeType": "spad7late",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP13_95thAero_Default",
+			"planeType": "spad13",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
+	]
+}

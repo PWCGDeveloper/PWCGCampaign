@@ -30,15 +30,14 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Dommartin les Toul",
-		"19161205": "Vauxcere",
-		"19170206": "Quinquempoix",
-		"19170414": "Auve",
-		"19170526": "Grivesnes",
-		"19170712": "La Mellette",
-		"19180118": "Souilly",
-		"19180714": "Quinquempoix",
-		"19180806": "Vauxcere"
+		"19160101": "Cachy",
+		"19161201": "Vauxcere",
+		"19170401": "Auve",
+		"19170601": "Grivesnes",
+		"19170701": "La Mellette",
+		"19180101": "Souilly",
+		"19180701": "Quinquempoix",
+		"19180801": "Vauxcere"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -53,48 +52,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BR14_ESC29_JUL1917",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301029,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLUE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "BLUE"
 		},
 		{
 			"skinName": "BR14_ESC29_JAN1918",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301029,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLUE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "BLUE"
 		}
 	]
 }

@@ -20,7 +20,7 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Droglandt",
+		"19160101": "Treizennes",
 		"19160801": "Mont St Eloi",
 		"19170119": "Filescamp Ferme",
 		"19170415": "Droglandt",
@@ -49,48 +49,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BF2B_No20",
 			"planeType": "bristolf2bf2",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302020,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_TWO"
+			"tacticalCodeType": "CODE_POSITION_TWO",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
 			"skinName": "BF2BF3_No20",
 			"planeType": "bristolf2bf3",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302020,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_TWO"
+			"tacticalCodeType": "CODE_POSITION_TWO",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

@@ -4,6 +4,9 @@
 	"name": "Jasta 5",
 	"fileName": "Jasta 5.json",
 	"skill": 90,
+	"serviceId": 40101,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "fokkere",
@@ -27,7 +30,7 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Mars La Tour",
+		"19160101": "Avillers St.Croix",
 		"19160821": "Bellevue Ferme",
 		"19160926": "Bellevue Ferme",
 		"19160930": "Falvy, Peronne",
@@ -37,73 +40,20 @@
 		"19180825": "Moislains",
 		"19181001": "Beaucamp"
 	},
-	"skins": [
-		{
-			"skinName": "AD5_J5_Default_MAY17",
-			"planeType": "albatrosd5",
-			"startDate": "19170101",
-			"endDate": "19171001",
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
-		},
-		{
-			"skinName": "AD5_J5_Default_OCT17",
-			"planeType": "albatrosd5",
-			"startDate": "19171002",
-			"endDate": "19180415",
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
-		},
-		{
-			"skinName": "AD5_J5_Default_APR18",
-			"planeType": "albatrosd5",
-			"startDate": "19180416",
-			"endDate": "19181201",
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
-		},
-		{
-			"skinName": "FD7_J5_Standard_fok",
-			"planeType": "fokkerd7",
-			"startDate": "19180416",
-			"endDate": "19181201",
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
-		},
-		{
-			"skinName": "FD7F_J5_Standard",
-			"planeType": "fokkerd7f",
-			"startDate": "19180416",
-			"endDate": "19181201",
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
-		}
-	],
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
 	"squadHistory": {
 		"squadHistoryEntries": [
 			{
@@ -120,23 +70,85 @@
 			}
 		]
 	},
-	"serviceId": 40101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19160101",
-				"endDate": "19181201",
-				"weightedRoles": [
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 100
-					}
-				]
-			}
-		]
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
 	},
-	"conversionPeriods": [
-	],
-	"callsigns": {
-	}
+	"skins": [
+		{
+			"skinName": "AD5_J5_Default_MAY17",
+			"planeType": "albatrosd5",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19171001",
+			"squadId": 401005,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "AD5_J5_Default_OCT17",
+			"planeType": "albatrosd5",
+			"archTypes": [],
+			"startDate": "19171002",
+			"endDate": "19180415",
+			"squadId": 401005,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "AD5_J5_Default_APR18",
+			"planeType": "albatrosd5",
+			"archTypes": [],
+			"startDate": "19180416",
+			"endDate": "19181201",
+			"squadId": 401005,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "FD7_J5_Standard_fok",
+			"planeType": "fokkerd7",
+			"archTypes": [],
+			"startDate": "19180416",
+			"endDate": "19181201",
+			"squadId": 401005,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "FD7F_J5_Standard",
+			"planeType": "fokkerd7f",
+			"archTypes": [],
+			"startDate": "19180416",
+			"endDate": "19181201",
+			"squadId": 401005,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		}
+	]
 }

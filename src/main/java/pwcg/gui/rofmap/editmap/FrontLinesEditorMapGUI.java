@@ -242,7 +242,7 @@ public class FrontLinesEditorMapGUI extends MapGUI implements ActionListener
         cbDate.removeAll();        
 
         CampaignTransitionDates campaignTransitionDates = new CampaignTransitionDates(mapIdentifier);
-        List<String> newDateStrings = campaignTransitionDates.getCampaignTransitionDates();
+        List<String> newDateStrings = campaignTransitionDates.getCampaignTransitionDateStrings();
         
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>((String[])newDateStrings.toArray( new String[newDateStrings.size()] ));
         

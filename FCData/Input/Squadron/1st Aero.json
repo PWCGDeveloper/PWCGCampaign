@@ -14,13 +14,11 @@
 		}
 	],
 	"airfields": {
-		"19180408": "Souilly",
-		"19180629": "Lhery",
-		"19180705": "Vauxcere",
-		"19180802": "Grivesnes",
-		"19180810": "Vauxcere",
-		"19180820": "Dommartin les Toul",
-		"19180920": "Senard en Argonne"
+		"19180401": "Souilly",
+		"19180701": "Vauxcere",
+		"19180801": "Grivesnes",
+		"19180901": "Dommartin les Toul",
+		"19181001": "Senard en Argonne"
 	},
 	"squadHistory": {
 		"squadHistoryEntries": [

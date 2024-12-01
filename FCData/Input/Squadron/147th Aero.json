@@ -14,9 +14,8 @@
 		}
 	],
 	"airfields": {
-		"19180701": "Maizy",
-		"19180709": "Chalons sur Vesle",
-		"19180828": "Lemmes"
+		"19180701": "Chalons sur Vesle",
+		"19180901": "Lemmes"
 	},
 	"squadHistory": {
 		"squadHistoryEntries": [

@@ -20,7 +20,7 @@
 		}
 	],
 	"airfields": {
-		"19160101": "La Gorgue",
+		"19160101": "Bruay",
 		"19160831": "Bruay"
 	},
 	"squadronRoles": {
@@ -44,33 +44,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "DH4_No16_Default",
 			"planeType": "aircodh4",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302016,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

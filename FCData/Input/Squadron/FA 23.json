@@ -20,7 +20,7 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Eppeville",
+		"19160101": "Ham",
 		"19180918": "Balatre"
 	},
 	"squadronRoles": {
@@ -44,48 +44,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "DFWCV_FA23_JUL17",
 			"planeType": "dfwc5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19161001",
 			"endDate": "19180510",
+			"squadId": 401223,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
 			"skinName": "DFWCV_FA23_APR18",
 			"planeType": "dfwc5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180505",
 			"endDate": "19181201",
+			"squadId": 401223,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

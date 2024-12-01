@@ -20,7 +20,7 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Lomme",
+		"19160101": "Wasquehal",
 		"19170406": "Chery les Pouilly Sud",
 		"19170613": "Epinoy",
 		"19170825": "Rumbeke",
@@ -50,63 +50,59 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "DFWCV_FA210_JUL17",
 			"planeType": "dfwc5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19161001",
 			"endDate": "19171120",
+			"squadId": 401422,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "DFWCV_FA210_OCT17",
 			"planeType": "dfwc5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19171020",
 			"endDate": "19180510",
+			"squadId": 401422,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "DFWCV_FA210_APR18",
 			"planeType": "dfwc5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180505",
 			"endDate": "19181201",
+			"squadId": 401422,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "RED"
 		}
 	]
 }

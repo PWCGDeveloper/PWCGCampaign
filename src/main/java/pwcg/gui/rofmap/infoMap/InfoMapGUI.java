@@ -6,8 +6,10 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TreeMap;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -210,9 +212,24 @@ public class InfoMapGUI extends MapGUI implements ActionListener
     {
         cbDate.removeAll();        
         CampaignTransitionDates campaignTransitionDates = new CampaignTransitionDates(mapIdentifier);
-        List<String> newDateStrings = campaignTransitionDates.getCampaignTransitionDates();
+        TreeMap<Date, Date> squadronMoveDates = campaignTransitionDates.getCampaignTransitionDates();
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            Date startDate = DateUtils.getBeginningOfGame();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(startDate.getTime());
+            for (int i = 0; i < 34; ++i)
+            {
+                calendar.add(Calendar.MONTH, 1);
+                calendar.set(Calendar.DATE, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+                Date nextMonthFirstDay = calendar.getTime();
+                squadronMoveDates.put(nextMonthFirstDay, nextMonthFirstDay);
+            }
+        }
         
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>((String[])newDateStrings.toArray( new String[newDateStrings.size()] ));
+        List<String> squadronMoveDateStrings = campaignTransitionDates.convertMapDatesToStrings(squadronMoveDates, DateUtils.getBeginningOfGame(), DateUtils.getEndOfWar());
+        
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>((String[])squadronMoveDateStrings.toArray( new String[squadronMoveDateStrings.size()] ));
         
         cbDate.setModel(model);
 

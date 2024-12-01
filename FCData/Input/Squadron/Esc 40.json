@@ -25,16 +25,15 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Lemmes",
-		"19160729": "Auve",
-		"19161022": "Ferme de Rosnay",
-		"19161218": "Allonville",
-		"19170104": "Grivesnes",
-		"19170208": "Belrain",
-		"19170709": "Villers Bretonneu 2",
-		"19180613": "Fere en Tardenois",
-		"19181008": "Villers Bretonneu 2",
-		"19181020": "Lhery"
+		"19160101": "Julvecourt",
+		"19160801": "Auve",
+		"19161001": "Ferme de Rosnay",
+		"19161201": "Allonville",
+		"19170101": "Grivesnes",
+		"19170201": "Belrain",
+		"19170701": "Villers Bretonneu 2",
+		"19180601": "Fere en Tardenois",
+		"19181001": "Villers Bretonneu 2"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -57,48 +56,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BR14_ESC40_JUL1917",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301040,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLUE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "BLUE"
 		},
 		{
 			"skinName": "BR14_ESC40_JAN1918",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301040,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLUE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "BLUE"
 		}
 	]
 }

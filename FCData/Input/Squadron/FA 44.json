@@ -21,6 +21,7 @@
 	],
 	"airfields": {
 		"19150801": "Saint Loup Nord",
+		"19160101": "Chassonge Ferme,Stenay/Verdun",
 		"19160812": "Chery les Pouilly Nord",
 		"19171113": "La Selve",
 		"19180725": "Saint Loup Nord",
@@ -48,48 +49,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "DFWCV_FA44_JUL17",
 			"planeType": "dfwc5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19161001",
 			"endDate": "19180510",
+			"squadId": 401244,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "DFWCV_FA44_APR18",
 			"planeType": "dfwc5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180505",
 			"endDate": "19181201",
+			"squadId": 401244,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		}
 	]
 }

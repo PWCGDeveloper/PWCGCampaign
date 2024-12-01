@@ -1,0 +1,106 @@
+{
+	"country": "BRITAIN",
+	"squadronId": 302029,
+	"name": "No 29 Squadron RFC",
+	"fileName": "No 29 Squadron RFC.json",
+	"skill": 65,
+	"serviceId": 30201,
+	"tacticalCodeStyle": -1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "aircodh2",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170405"
+		},
+		{
+			"archType": "nieuport",
+			"squadronIntroduction": "19170301",
+			"squadronWithdrawal": "19171105"
+		},
+		{
+			"archType": "se5",
+			"squadronIntroduction": "19171001",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19160101": "Bailleul",
+		"19160201": "Filescamp Ferme",
+		"19170417": "Villers Bretonneux",
+		"19170710": "Allonville",
+		"19170923": "La Lovie",
+		"19171124": "Marieux",
+		"19171230": "Lealvillers",
+		"19180322": "Grivesnes",
+		"19180326": "Allonville",
+		"19180328": "Auchel",
+		"19180814": "Villers Bretonneux"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19180407",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "SE5a_RFC29_Default_E",
+			"planeType": "se5a",
+			"archTypes": [],
+			"startDate": "19170601",
+			"endDate": "19180321",
+			"squadId": 302029,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "SE5a_RFC29_Default_L",
+			"planeType": "se5a",
+			"archTypes": [],
+			"startDate": "19180322",
+			"endDate": "19181201",
+			"squadId": 302029,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
+		}
+	]
+}

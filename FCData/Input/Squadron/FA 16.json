@@ -20,9 +20,8 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Clastres",
-		"19160212": "Rumbeke",
-		"19160310": "Hermies, Cambrai",
+		"19160101": "Jametz",
+		"19160601": "Hermies, Cambrai",
 		"19160812": "Chambry Laon",
 		"19180825": "Liesse"
 	},
@@ -47,63 +46,59 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "DFWCV_FA16_JUL17",
 			"planeType": "dfwc5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19161001",
 			"endDate": "19171115",
+			"squadId": 401216,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
 			"skinName": "DFWCV_FA16_OCT17",
 			"planeType": "dfwc5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19171015",
 			"endDate": "19180510",
+			"squadId": 401216,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "DFWCV_FA16_APR18",
 			"planeType": "dfwc5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180502",
 			"endDate": "19181201",
+			"squadId": 401216,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		}
 	]
 }

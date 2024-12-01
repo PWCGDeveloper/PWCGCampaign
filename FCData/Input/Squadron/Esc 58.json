@@ -1,0 +1,104 @@
+{
+	"country": "FRANCE",
+	"squadronId": 301058,
+	"name": "Esc 58",
+	"fileName": "Esc 58.json",
+	"skill": 30,
+	"serviceId": 30101,
+	"tacticalCodeStyle": 4,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "farmanf40",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170315"
+		},
+		{
+			"archType": "dorandar",
+			"squadronIntroduction": "19170301",
+			"squadronWithdrawal": "19180315"
+		},
+		{
+			"archType": "breguet14",
+			"squadronIntroduction": "19180301",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19160101": "Givry en Argonne",
+		"19160201": "Grivesnes",
+		"19160601": "Villers Bretonneux",
+		"19170201": "Auve",
+		"19170401": "Ferme de Rosnay",
+		"19170801": "Auve",
+		"19170901": "Ferme de Corbeaulieu",
+		"19171201": "Villers Bretonneu 2",
+		"19180201": "Ferme de Corbeaulieu",
+		"19180401": "Lhery",
+		"19180501": "Villers Bretonneu 2",
+		"19180601": "Grivesnes",
+		"19180701": "Vauxcere",
+		"19180801": "Grivesnes"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 30
+					},
+					{
+						"role": "ROLE_ARTILLERY_SPOT",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
+	"skins": [
+		{
+			"skinName": "BR14_ESC58_JUL1917",
+			"planeType": "breguet14",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"squadId": 301058,
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "BLUE"
+		},
+		{
+			"skinName": "BR14_ESC58_JAN1918",
+			"planeType": "breguet14",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"squadId": 301058,
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "BLUE"
+		}
+	]
+}

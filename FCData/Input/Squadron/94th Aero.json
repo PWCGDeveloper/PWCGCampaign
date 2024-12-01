@@ -20,10 +20,9 @@
 	],
 	"airfields": {
 		"19180401": "Malzeville",
-		"19180602": "Dommartin les Toul",
-		"19180628": "Villesavoye",
-		"19180709": "Maizy",
-		"19180826": "Brabant en Argonne"
+		"19180601": "Dommartin les Toul",
+		"19180701": "Maizy",
+		"19180901": "Brabant en Argonne"
 	},
 	"squadHistory": {
 		"squadHistoryEntries": [

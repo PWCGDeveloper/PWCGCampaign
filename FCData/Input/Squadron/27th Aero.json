@@ -19,10 +19,9 @@
 		}
 	],
 	"airfields": {
-		"19180529": "Dommartin les Toul",
-		"19180628": "Ferme de Corbeaulieu",
-		"19180709": "Courcy",
-		"19180828": "Souilly"
+		"19180601": "Dommartin les Toul",
+		"19180701": "Courcy",
+		"19180901": "Souilly"
 	},
 	"squadHistory": {
 		"squadHistoryEntries": [

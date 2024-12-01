@@ -1,0 +1,127 @@
+{
+	"country": "FRANCE",
+	"squadronId": 301081,
+	"name": "Esc 81",
+	"fileName": "Esc 81.json",
+	"skill": 55,
+	"serviceId": 30101,
+	"tacticalCodeStyle": 1,
+	"squadronTacticalCodeColorOverride": "NONE",
+	"planeAssignments": [
+		{
+			"archType": "nieuport",
+			"squadronIntroduction": "19170201",
+			"squadronWithdrawal": "19170505"
+		},
+		{
+			"archType": "spad",
+			"squadronIntroduction": "19170501",
+			"squadronWithdrawal": "19181201"
+		}
+	],
+	"airfields": {
+		"19170201": "Ravenel",
+		"19170331": "Mont de Soissons",
+		"19170412": "Ferme de Corbeaulieu",
+		"19170513": "Ferme Cravancon",
+		"19170717": "Bailleul",
+		"19170813": "Senard en Argonne",
+		"19170827": "Ferme Cravancon",
+		"19171209": "La Noblette",
+		"19180226": "Ferme de Rosnay",
+		"19180402": "Ravenel",
+		"19180530": "Maizy",
+		"19180610": "Ravenel",
+		"19180709": "Muizon",
+		"19180724": "Ferme Cravancon",
+		"19180905": "Julvecourt",
+		"19181031": "Auve"
+	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [
+	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+		]
+	},
+	"callsigns": {
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+		]
+	},
+	"skins": [
+		{
+			"skinName": "SP7EARLY_ESC81_Default",
+			"planeType": "spad7early",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP7Late_Buff_ESC81_Default",
+			"planeType": "spad7late",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19171201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP7Late_Camo_ESC81_Default",
+			"planeType": "spad7late",
+			"archTypes": [
+			],
+			"startDate": "19171115",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		},
+		{
+			"skinName": "SP13_ESC81_Default",
+			"planeType": "spad13",
+			"archTypes": [
+			],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+		}
+	]
+}

@@ -8,31 +8,32 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "WHITE",
 	"planeAssignments": [
-        {
-            "archType": "farmanf40",
-            "squadronIntroduction": "19160101",
-            "squadronWithdrawal": "19170215"
-        },
-        {
-            "archType": "sopstrutter",
-            "squadronIntroduction": "19170201",
-            "squadronWithdrawal": "19170701"
-        },
-        {
-            "archType": "breguet14",
-            "squadronIntroduction": "19170601",
-            "squadronWithdrawal": "19181201"
-        }
+		{
+			"archType": "farmanf40",
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170215"
+		},
+		{
+			"archType": "sopstrutter",
+			"squadronIntroduction": "19170201",
+			"squadronWithdrawal": "19170701"
+		},
+		{
+			"archType": "breguet14",
+			"squadronIntroduction": "19170601",
+			"squadronWithdrawal": "19181201"
+		}
 	],
 	"airfields": {
-        "19160101": "Hoog Huys",
-        "19170601": "Hoog Huys",
+		"19160101": "St Marie Cappel",
+		"19160201": "Airfields New",
+		"19170601": "Hoog Huys",
 		"19181101": "Bailleul"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -59,19 +60,20 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-        {
-            "skinName": "BR14_EME3",
-            "planeType": "breguet14",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "Belgium",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "RED",
-            "tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
-        }
+		{
+			"skinName": "BR14_EME3",
+			"planeType": "breguet14",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"squadId": 304003,
+			"country": "Belgium",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
+		}
 	]
 }

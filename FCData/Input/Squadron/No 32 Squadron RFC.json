@@ -1,36 +1,40 @@
 {
 	"country": "BRITAIN",
-	"squadronId": 302024,
+	"squadronId": 302032,
 	"name": "No 32 Squadron RFC",
 	"fileName": "No 32 Squadron RFC.json",
-	"skill": 85,
+	"skill": 65,
 	"serviceId": 30201,
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
 			"archType": "aircodh2",
-			"squadronIntroduction": "19160401",
-			"squadronWithdrawal": "19170505"
+			"squadronIntroduction": "19160101",
+			"squadronWithdrawal": "19170405"
 		},
 		{
 			"archType": "soppup",
-			"squadronIntroduction": "19170501",
+			"squadronIntroduction": "19170301",
 			"squadronWithdrawal": "19171105"
 		},
 		{
 			"archType": "se5",
-			"squadronIntroduction": "19171101",
+			"squadronIntroduction": "19171001",
 			"squadronWithdrawal": "19181201"
 		}
 	],
 	"airfields": {
-		"19160401": "Lealvillers",
-		"19170708": "Droglandt",
-		"19180329": "Villers Bretonneux",
-		"19180603": "Grivesnes",
-		"19180621": "Mont St Eloi",
-		"19180718": "Muizon"
+		"19160101": "Lealvillers",
+		"19170417": "Villers Bretonneux",
+		"19170710": "Allonville",
+		"19170923": "La Lovie",
+		"19171124": "Marieux",
+		"19171230": "Lealvillers",
+		"19180322": "Grivesnes",
+		"19180326": "Allonville",
+		"19180328": "Auchel",
+		"19180814": "Villers Bretonneux"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -58,48 +62,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
-			"skinName": "SE5a_RFC24_Default_E",
+			"skinName": "SE5a_RFC32_Default_E",
 			"planeType": "se5a",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19180321",
-			"country": "BRITAIN",
+			"squadId": 302032,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_THREE"
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SE5a_RFC24_Default_L",
+			"skinName": "SE5a_RFC32_Default_L",
 			"planeType": "se5a",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180322",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302032,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_THREE"
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

@@ -50,17 +50,17 @@ public class SquadronReducer
 
     public static List<Squadron> reduceToCurrentMap(FrontMapIdentifier mapIdentifier, List<Squadron> squadrons, Date date) throws PWCGException 
     {
-        List<Squadron> squadronsForMap = new ArrayList<>();
+        Map<Integer, Squadron> squadronsForMap = new TreeMap<>();
         for (Squadron squadron : squadrons)
         {
             Airfield field = squadron.determineCurrentAirfieldCurrentMap(mapIdentifier, date);
             if (field != null)
             {
-                squadronsForMap.add(squadron);
+                squadronsForMap.put(squadron.getSquadronId(), squadron);
             }
         }
 
-        return squadronsForMap;
+        return new ArrayList<Squadron>(squadronsForMap.values());
     }
     
     public static List<Squadron> reduceToService(List<Squadron> squadrons, Date date, ArmedService service) throws PWCGException 

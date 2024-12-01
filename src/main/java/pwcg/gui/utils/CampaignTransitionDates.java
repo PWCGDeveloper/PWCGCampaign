@@ -23,7 +23,7 @@ public class CampaignTransitionDates
         this.mapIdentifier = mapIdentifier;
     }
 
-    public List<String> getCampaignTransitionDates() throws PWCGException, PWCGException
+    public List<String> getCampaignTransitionDateStrings() throws PWCGException, PWCGException
     {
          Map<Date, Date> sortedDates = new TreeMap<Date, Date>();
 
@@ -35,13 +35,28 @@ public class CampaignTransitionDates
         
         addMovingFrontDates(sortedDates);
         
-        List<String> campaignTransitionDates = createNewStartDates(sortedDates, mapStart, mapEnd);
+        List<String> campaignTransitionDates = convertMapDatesToStrings(sortedDates, mapStart, mapEnd);
         
         return campaignTransitionDates;
     }
 
+    public TreeMap<Date, Date> getCampaignTransitionDates() throws PWCGException, PWCGException
+    {
+        TreeMap<Date, Date> sortedDates = new TreeMap<Date, Date>();
 
-    private List<String> createNewStartDates(Map<Date, Date> sortedDates, Date mapStart, Date mapEnd)
+        Date mapStart = PWCGContext.getInstance().getMap(mapIdentifier).getFrontDatesForMap().getEarliestMapDate();
+        sortedDates.put(mapStart, mapStart);
+
+        Date mapEnd = PWCGContext.getInstance().getMap(mapIdentifier).getFrontDatesForMap().getLatestMapDate();
+        sortedDates.put(mapEnd, mapEnd);
+        
+        addMovingFrontDates(sortedDates);
+                
+        return sortedDates;
+    }
+
+
+    public List<String> convertMapDatesToStrings(Map<Date, Date> sortedDates, Date mapStart, Date mapEnd)
     {
         List<String> newDates = new ArrayList<String>();
         for (Date date : sortedDates.values()) 

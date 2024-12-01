@@ -25,19 +25,17 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Vauxcere",
+		"19160101": "Bonne Maison",
 		"19160301": "Julvecourt",
-		"19160418": "Ferme de Corbeaulieu",
-		"19161017": "Vauxcere",
-		"19170629": "Froides",
-		"19170704": "Vadelaincourt",
-		"19170912": "Auve",
-		"19170924": "Froides",
-		"19180310": "Julvecourt",
-		"19180506": "Vauxcere",
-		"19180930": "Vauxcere",
+		"19160501": "Ferme de Corbeaulieu",
+		"19161001": "Vauxcere",
+		"19170701": "Froides",
+		"19170901": "Auve",
+		"19171001": "Froides",
+		"19180301": "Julvecourt",
+		"19180501": "Vauxcere",
 		"19181001": "Auve",
-		"19181021": "La Cheppe"
+		"19181101": "La Cheppe"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -60,48 +58,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BR14_ESC19_JUL1917",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301019,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "BR14_ESC19_JAN1918",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301019,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		}
 	]
 }
