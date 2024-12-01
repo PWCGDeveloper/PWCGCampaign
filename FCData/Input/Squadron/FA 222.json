@@ -21,13 +21,13 @@
 	],
 	"airfields": {
 		"19160101": "Wasquehal",
-		"19170406": "Chery les Pouilly Sud",
-		"19170613": "Epinoy",
-		"19170825": "Rumbeke",
-		"19171115": "Hermies, Cambrai",
-		"19180321": "Bonneuil Ferme",
+		"19170401": "Chery les Pouilly Sud",
+		"19170601": "Epinoy",
+		"19170801": "Rumbeke",
+		"19171101": "Hermies, Cambrai",
+		"19180301": "Bonneuil Ferme",
 		"19180801": "Mesnil Bruntel",
-		"19180921": "Bellevue Ferme"
+		"19180901": "Bellevue Ferme"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

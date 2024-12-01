@@ -26,18 +26,16 @@
 	],
 	"airfields": {
 		"19160101": "Lhery",
+		"19160301": "Ferme de Alger",
 		"19160801": "La Cheppe",
-		"19170227": "Ferme de Rosnay",
-		"19170726": "Tilloy",
-		"19170821": "Vauxcere",
-		"19171207": "Ferme de Corbeaulieu",
-		"19171228": "Vadelaincourt",
-		"19180318": "Beauze sur Aire",
-		"19180404": "Grivesnes",
-		"19180906": "Auve",
-		"19180911": "Grivesnes",
-		"19181014": "Ferme de Rosnay",
-		"19181021": "La Cheppe"
+		"19170201": "Ferme de Rosnay",
+		"19170701": "Tilloy",
+		"19170801": "Vauxcere",
+		"19171201": "Vadelaincourt",
+		"19180301": "Beauze sur Aire",
+		"19180401": "Grivesnes",
+		"19180901": "Grivesnes",
+		"19181001": "La Cheppe"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

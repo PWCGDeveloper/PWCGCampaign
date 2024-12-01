@@ -26,17 +26,13 @@
 	],
 	"airfields": {
 		"19170101": "Rumbeke",
-		"19170613": "La Petrie",
-		"19170702": "La Neuville",
-		"19171124": "Houplin",
-		"19171129": "Douai",
-		"19171202": "Houplin",
-		"19171214": "Douai",
-		"19180320": "Douai",
-		"19180408": "La Neuville",
-		"19180412": "Pronville",
-		"19180430": "Beaucamp",
-		"19180614": "Mars La Tour"
+		"19170601": "La Petrie",
+		"19170701": "La Neuville",
+		"19171101": "Douai",
+		"19171201": "Douai",
+		"19180301": "Douai",
+		"19180401": "Beaucamp",
+		"19180601": "Mars La Tour"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -51,123 +47,119 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "AD5_J18_Default_MAY17",
 			"planeType": "albatrosd5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19171001",
+			"squadId": 401018,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "AD5_J18_Default_Oct17",
 			"planeType": "albatrosd5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19171002",
 			"endDate": "19180415",
+			"squadId": 401018,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "AD5_J18_Default_APR18",
 			"planeType": "albatrosd5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
+			"squadId": 401018,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "PD3a_J18_JUL17",
 			"planeType": "pfalzd3a",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19180415",
+			"squadId": 401018,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "PD3a_J18_APR18",
 			"planeType": "pfalzd3a",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180502",
 			"endDate": "19181201",
+			"squadId": 401018,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "FD7_J18_Default",
 			"planeType": "fokkerd7",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
+			"squadId": 401018,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "FD7F_J18_Default",
 			"planeType": "fokkerd7f",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
+			"squadId": 401018,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		}
 	]
 }

@@ -2,7 +2,7 @@
 	"country": "BRITAIN",
 	"squadronId": 302003,
 	"name": "No 3 Squadron AFC",
-	"fileName": "No 3 Squadron RFC.json",
+	"fileName": "No 3 Squadron AFC.json",
 	"skill": 25,
 	"serviceId": 30201,
 	"tacticalCodeStyle": -1,
@@ -16,8 +16,7 @@
 	],
 	"airfields": {
 		"19170901": "Conteville",
-		"19181020": "Mont St Eloi",
-		"19181026": "Lealvillers"
+		"19181001": "Lealvillers"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -40,33 +39,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "DH4_Default",
 			"planeType": "aircodh4",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302003,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_THREE"
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

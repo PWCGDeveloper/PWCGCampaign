@@ -21,8 +21,8 @@
 	],
 	"airfields": {
 		"19171201": "Auchel",
-		"19180630": "La Gorgue",
-		"19181020": "Auchel"
+		"19180601": "La Gorgue",
+		"19181001": "Auchel"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -54,33 +54,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "SOPCAM_AFC4_Default",
 			"planeType": "sopcamel",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 302104,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_TWO"
+			"tacticalCodeType": "CODE_POSITION_TWO",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

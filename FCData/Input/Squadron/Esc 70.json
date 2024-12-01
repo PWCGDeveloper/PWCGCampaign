@@ -21,21 +21,22 @@
 	],
 	"airfields": {
 		"19160101": "Gengoult",
+		"19160301": "Beauze sur Aire",
 		"19161201": "Froides",
 		"19170101": "Quinquempoix",
 		"19170201": "Lhery",
 		"19170401": "Auve",
-		"19170618": "Froides",
-		"19170904": "Somme Vesle",
-		"19180114": "Auve",
-		"19180209": "Vauxcere",
-		"19180321": "Grivesnes",
-		"19180409": "Fere en Tardenois",
-		"19180518": "Froides",
-		"19180628": "Auve",
-		"19180710": "La Mellette",
-		"19180806": "Froides",
-		"19181015": "Auve"
+		"19170601": "Froides",
+		"19170901": "Somme Vesle",
+		"19180101": "Auve",
+		"19180201": "Vauxcere",
+		"19180301": "Grivesnes",
+		"19180401": "Fere en Tardenois",
+		"19180501": "Froides",
+		"19180601": "Auve",
+		"19180701": "La Mellette",
+		"19180801": "Froides",
+		"19181001": "Auve"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

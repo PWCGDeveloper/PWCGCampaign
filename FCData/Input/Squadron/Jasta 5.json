@@ -31,13 +31,13 @@
 	],
 	"airfields": {
 		"19160101": "Avillers St.Croix",
-		"19160821": "Bellevue Ferme",
-		"19160926": "Bellevue Ferme",
-		"19160930": "Falvy, Peronne",
-		"19170311": "Beugnatre",
-		"19180423": "Cappy",
-		"19180728": "Moislains",
-		"19180825": "Moislains",
+		"19160301": "Marchais",
+		"19160801": "Bellevue Ferme",
+		"19160901": "Falvy, Peronne",
+		"19170301": "Beugnatre",
+		"19180401": "Cappy",
+		"19180701": "Moislains",
+		"19180801": "Moislains",
 		"19181001": "Beaucamp"
 	},
 	"squadronRoles": {

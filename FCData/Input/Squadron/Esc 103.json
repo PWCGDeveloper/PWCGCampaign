@@ -20,13 +20,13 @@
 		}
 	],
 	"airfields": {
-        "19160101": "Julvecourt",
-		"19171030": "Beaucourt"
+		"19160101": "Julvecourt",
+		"19171001": "Beaucourt"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -40,9 +40,7 @@
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},
-	"callsigns": {
-		
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
 		"nightMissionPeriods": []
 	},
@@ -53,13 +51,14 @@
 			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301103,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "SP7Late_Buff_ESC103_Default",
@@ -67,13 +66,14 @@
 			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19171015",
+			"squadId": 301103,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "SP7Late_Camo_ESC103_Default",
@@ -81,13 +81,14 @@
 			"archTypes": [],
 			"startDate": "19171001",
 			"endDate": "19181201",
+			"squadId": 301103,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "SP13_ESC103_Default",
@@ -95,13 +96,14 @@
 			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 301103,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		}
 	]
 }

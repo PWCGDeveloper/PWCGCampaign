@@ -16,13 +16,11 @@
 	],
 	"airfields": {
 		"19170801": "Treizennes",
-		"19170915": "La Lovie",
-		"19171222": "Cachy",
-		"19180324": "Allonville",
-		"19180328": "Savy Berlette",
-		"19180803": "Allonville",
-		"19180826": "Filescamp Ferme",
-		"19180930": "Bailleul"
+		"19170901": "La Lovie",
+		"19171201": "Cachy",
+		"19180301": "Savy Berlette",
+		"19180801": "Filescamp Ferme",
+		"19180901": "Bailleul"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -70,48 +68,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BF2B_No48",
 			"planeType": "bristolf2bf2",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302048,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_TWO"
+			"tacticalCodeType": "CODE_POSITION_TWO",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
 			"skinName": "BF2BF3_No48",
 			"planeType": "bristolf2bf3",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302048,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_TWO"
+			"tacticalCodeType": "CODE_POSITION_TWO",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

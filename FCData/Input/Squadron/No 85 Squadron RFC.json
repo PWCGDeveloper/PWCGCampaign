@@ -16,9 +16,9 @@
 	],
 	"airfields": {
 		"19180401": "Bailleul",
-		"19180611": "Bryas",
-		"19180813": "Warfusee",
-		"19180905": "Savy Berlette"
+		"19180601": "Bryas",
+		"19180801": "Warfusee",
+		"19180901": "Savy Berlette"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -46,33 +46,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "SE5a_RFC85_Default",
 			"planeType": "se5a",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302085,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

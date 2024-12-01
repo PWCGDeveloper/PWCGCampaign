@@ -24,8 +24,8 @@
 		"19161101": "Clastres",
 		"19170201": "Helesmes",
 		"19180401": "Douai",
-		"19180806": "Hermies, Cambrai",
-		"19180913": "Sivry"
+		"19180801": "Hermies, Cambrai",
+		"19180901": "Sivry"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -40,78 +40,74 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "CL2_Sch24b_Early",
 			"planeType": "halberstadtcl2",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19171101",
+			"squadId": 401124,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "CL2_Sch24b_Late",
 			"planeType": "halberstadtcl2",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19171002",
 			"endDate": "19180415",
+			"squadId": 401124,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "CL2AU_Sch24b_Early",
 			"planeType": "halberstadtcl2au",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19171101",
+			"squadId": 401124,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "CL2AU_Sch24b_Late",
 			"planeType": "halberstadtcl2au",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19171002",
 			"endDate": "19180415",
+			"squadId": 401124,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "RED"
 		}
 	]
 }

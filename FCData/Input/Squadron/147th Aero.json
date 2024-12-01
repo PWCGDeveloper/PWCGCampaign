@@ -4,6 +4,7 @@
 	"name": "147th Aero",
 	"fileName": "147th Aero.json",
 	"skill": 55,
+	"serviceId": 30301,
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
@@ -17,16 +18,10 @@
 		"19180701": "Chalons sur Vesle",
 		"19180901": "Lemmes"
 	},
-	"squadHistory": {
-		"squadHistoryEntries": [
-		]
-	},
-	"serviceId": 30301,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19160101",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -36,55 +31,59 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
-	"callsigns": {
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "N28_147Aero",
 			"planeType": "nieuport28",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 303047,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
 			"skinName": "SP7LATE_147thAero_Default",
 			"planeType": "spad7late",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 303047,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
 			"skinName": "SP13_147thAero_Default",
 			"planeType": "spad13",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 303047,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

@@ -8,6 +8,7 @@ import java.util.TreeMap;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -66,6 +67,8 @@ public class SquadronAifieldFirstOfMonth
                 String airfieldName = squadToCheck.getAirfields().get(airfieldDate);
                 PWCGLogger.log(LogLevel.DEBUG, "    " + airfieldDate + "   " + airfieldName);
             }
+            
+            SquadronIOJson.writeJson(squadToCheck);
          }        
     }
 }

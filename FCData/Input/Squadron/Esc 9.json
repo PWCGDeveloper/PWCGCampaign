@@ -26,11 +26,11 @@
 	],
 	"airfields": {
 		"19160101": "Ferme Cravancon",
-		"19170730": "Arcy Sainte Restitue",
+		"19170701": "Arcy Sainte Restitue",
 		"19171001": "Vauxcere",
-		"19180315": "Mont de Soissons",
-		"19180715": "Vauxcere",
-		"19181023": "Vauxcere",
+		"19180301": "Mont de Soissons",
+		"19180701": "Vauxcere",
+		"19181001": "Vauxcere",
 		"19181101": "Remmenecourt"
 	},
 	"squadronRoles": {

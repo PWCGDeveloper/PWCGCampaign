@@ -26,22 +26,19 @@
 	],
 	"airfields": {
 		"19160101": "Allonville",
-		"19160503": "Villers Bretonneu 2",
-		"19160620": "Vadelaincourt",
+		"19160301": "Bonne Maison",
+		"19160501": "Villers Bretonneu 2",
+		"19160601": "Vadelaincourt",
 		"19170201": "Somme Vesle",
 		"19170301": "Grivesnes",
-		"19170419": "Vauxcere",
-		"19170903": "Mont de Soissons",
-		"19180309": "Vauxcere",
-		"19180315": "Mont de Soissons",
-		"19180527": "Ferme Cravancon",
+		"19170401": "Vauxcere",
+		"19170901": "Mont de Soissons",
+		"19180301": "Mont de Soissons",
+		"19180501": "Ferme Cravancon",
 		"19180601": "Vauxcere",
-		"19180729": "Vauxcere",
-		"19180813": "Muizon",
-		"19180823": "Vauxcere",
-		"19180830": "La Mellette",
-		"19180921": "Vauxcere",
-		"19180926": "La Cheppe"
+		"19180701": "Vauxcere",
+		"19180801": "La Mellette",
+		"19180901": "La Cheppe"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

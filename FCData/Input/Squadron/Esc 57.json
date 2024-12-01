@@ -21,18 +21,17 @@
 	],
 	"airfields": {
 		"19160101": "Braizieux",
-		"19160320": "Lemmes",
-		"19161125": "Vadelaincourt",
-		"19170408": "Lhery",
-		"19170710": "Bailleul",
-		"19170915": "Fere en Tardenois",
-		"19180331": "Ravenel",
-		"19180529": "Tilloy",
-		"19180611": "Vauxcere",
-		"19180628": "Somme Vesle",
-		"19180724": "La Noblette",
-		"19180923": "Ferme Cravancon",
-		"19181105": "Auve"
+		"19160301": "Beaucourt",
+		"19161101": "Vadelaincourt",
+		"19170401": "Lhery",
+		"19170701": "Bailleul",
+		"19170901": "Fere en Tardenois",
+		"19180301": "Ravenel",
+		"19180501": "Tilloy",
+		"19180601": "Somme Vesle",
+		"19180701": "La Noblette",
+		"19180901": "Ferme Cravancon",
+		"19181101": "Auve"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

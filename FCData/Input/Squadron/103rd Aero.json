@@ -4,6 +4,7 @@
 	"name": "103rd Aero",
 	"fileName": "103rd Aero.json",
 	"skill": 65,
+	"serviceId": 30301,
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
@@ -25,12 +26,26 @@
 		"19180701": "Maizy",
 		"19180901": "Brabant en Argonne"
 	},
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19160101",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 100
+					}
+				]
+			}
+		]
+	},
+	"conversionPeriods": [],
 	"squadHistory": {
 		"squadHistoryEntries": [
 			{
 				"date": "19160101",
 				"squadName": "Esc 124 Lafayette",
-				"armedServiceName": "l'Aviation Militaire",
+				"armedServiceName": "l\u0027Aviation Militaire",
 				"skill": 70
 			},
 			{
@@ -41,85 +56,70 @@
 			}
 		]
 	},
-	"serviceId": 30301,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19160101",
-				"endDate": "19181201",
-				"weightedRoles": [
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 100
-					}
-				]
-			}
-		]
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
 	},
-	"conversionPeriods": [
-	],
-	"callsigns": [
-	],
 	"skins": [
 		{
 			"skinName": "N11_Esc_124_Lafayette",
 			"planeType": "nieuport11",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19160101",
 			"endDate": "19181201",
+			"squadId": 303103,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "N17_Esc_124_Lafayette",
 			"planeType": "nieuport17",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19160101",
 			"endDate": "19181201",
+			"squadId": 303103,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "SP7_Esc_124_Lafayette",
 			"planeType": "spad7",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19160101",
 			"endDate": "19181201",
+			"squadId": 303103,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "SP13_103rdAero_Default",
 			"planeType": "spad13",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180201",
 			"endDate": "19181201",
+			"squadId": 303103,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		}
 	]
 }

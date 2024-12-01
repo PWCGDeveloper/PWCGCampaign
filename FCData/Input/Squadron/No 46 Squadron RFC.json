@@ -20,14 +20,13 @@
 		}
 	],
 	"airfields": {
-		"19170501": "Filescamp Ferme",
-		"19170512": "La Gorgue",
-		"19170706": "Bruay",
-		"19170830": "St Marie Cappel",
-		"19170907": "Mont St Eloi",
-		"19180516": "Allonville",
-		"19180617": "La Gorgue",
-		"19180814": "Grivesnes"
+		"19170501": "La Gorgue",
+		"19170701": "Bruay",
+		"19170801": "St Marie Cappel",
+		"19170901": "Mont St Eloi",
+		"19180501": "Allonville",
+		"19180601": "La Gorgue",
+		"19180801": "Grivesnes"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -59,33 +58,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "SOPCAM_RFC46_Default",
 			"planeType": "sopcamel",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 302046,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

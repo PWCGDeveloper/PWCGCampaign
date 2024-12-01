@@ -26,15 +26,13 @@
 	],
 	"airfields": {
 		"19160101": "Hesdigneul",
-		"19170417": "Villers Bretonneux",
-		"19170710": "Allonville",
-		"19170923": "La Lovie",
-		"19171124": "Marieux",
-		"19171230": "Lealvillers",
-		"19180322": "Grivesnes",
-		"19180326": "Allonville",
-		"19180328": "Auchel",
-		"19180814": "Villers Bretonneux"
+		"19170401": "Villers Bretonneux",
+		"19170701": "Allonville",
+		"19170901": "La Lovie",
+		"19171101": "Marieux",
+		"19171201": "Lealvillers",
+		"19180301": "Auchel",
+		"19180801": "Villers Bretonneux"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

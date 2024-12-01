@@ -26,13 +26,12 @@
 	],
 	"airfields": {
 		"19160201": "Bailleul",
-		"19170515": "La Lovie",
-		"19170615": "Villers Bretonneux",
-		"19170710": "La Lovie",
-		"19180321": "Bailleul",
-		"19180323": "La Gorgue",
-		"19180407": "Allonville",
-		"19180814": "Le Hameau"
+		"19170501": "La Lovie",
+		"19170601": "Villers Bretonneux",
+		"19170701": "La Lovie",
+		"19180301": "La Gorgue",
+		"19180401": "Allonville",
+		"19180801": "Le Hameau"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

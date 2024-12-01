@@ -8,16 +8,16 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "fe2",
-            "squadronIntroduction": "19160401",
-            "squadronWithdrawal": "19170105"
-        },
-        {
-            "archType": "sopstrutter",
-            "squadronIntroduction": "19170101",
-            "squadronWithdrawal": "19170705"
-        },
+		{
+			"archType": "fe2",
+			"squadronIntroduction": "19160401",
+			"squadronWithdrawal": "19170105"
+		},
+		{
+			"archType": "sopstrutter",
+			"squadronIntroduction": "19170101",
+			"squadronWithdrawal": "19170705"
+		},
 		{
 			"archType": "aircodh4",
 			"squadronIntroduction": "19170701",
@@ -25,9 +25,9 @@
 		}
 	],
 	"airfields": {
-        "19160401": "Reclinghem",
-        "19170601": "Reclinghem",
-		"19181004": "La Gorgue"
+		"19160401": "Reclinghem",
+		"19170601": "Reclinghem",
+		"19181001": "La Gorgue"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -59,19 +59,20 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-        {
-            "skinName": "DH4_Default",
-            "planeType": "aircodh4",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "BRITAIN",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_THREE"
-        }
+		{
+			"skinName": "DH4_Default",
+			"planeType": "aircodh4",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"squadId": 302205,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
+		}
 	]
 }

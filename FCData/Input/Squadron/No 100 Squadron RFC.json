@@ -15,12 +15,12 @@
 		}
 	],
 	"airfields": {
-        "19170601": "Ruisseauville"
+		"19170601": "Ruisseauville"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_STRAT_BOMB",
@@ -45,27 +45,29 @@
 			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19180301",
-			"country": "BRITAIN",
+			"squadId": 302100,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": true,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		},
-        {
-            "skinName": "handleypage400_01",
-            "planeType": "handleypage400",
-            "archTypes": [],
-            "startDate": "19180201",
-            "endDate": "19181201",
-            "country": "BRITAIN",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        }
+		{
+			"skinName": "handleypage400_01",
+			"planeType": "handleypage400",
+			"archTypes": [],
+			"startDate": "19180201",
+			"endDate": "19181201",
+			"squadId": 302100,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
+		}
 	]
 }

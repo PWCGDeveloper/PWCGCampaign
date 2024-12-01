@@ -21,16 +21,15 @@
 	],
 	"airfields": {
 		"19160801": "Filescamp Ferme",
-		"19170402": "Allonville",
-		"19170531": "Allonville",
-		"19170814": "Droglandt",
-		"19170905": "Bailleul",
-		"19171225": "Bailleul",
-		"19180213": "Bailleul",
-		"19180323": "Bailleul",
-		"19180331": "Filescamp Ferme",
-		"19180817": "Bailleul",
-		"19180923": "Savy Berlette"
+		"19170401": "Allonville",
+		"19170501": "Allonville",
+		"19170801": "Droglandt",
+		"19170901": "Bailleul",
+		"19171201": "Bailleul",
+		"19180201": "Bailleul",
+		"19180301": "Filescamp Ferme",
+		"19180801": "Bailleul",
+		"19180901": "Savy Berlette"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -58,33 +57,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "Dolphin_RFC19_Default",
 			"planeType": "sopdolphin",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 302019,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_TWO"
+			"tacticalCodeType": "CODE_POSITION_TWO",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

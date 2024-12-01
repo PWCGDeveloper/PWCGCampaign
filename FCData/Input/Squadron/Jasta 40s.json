@@ -2,7 +2,7 @@
 	"country": "GERMANY",
 	"squadronId": 401044,
 	"name": "Jasta 44s",
-	"fileName": "Jasta 44s.json",
+	"fileName": "Jasta 40s.json",
 	"skill": 75,
 	"serviceId": 40101,
 	"tacticalCodeStyle": -1,
@@ -26,18 +26,15 @@
 	],
 	"airfields": {
 		"19161201": "Velu",
-		"19170516": "Bellevue Ferme",
-		"19170616": "Vivaise",
-		"19170916": "Bellevue Ferme",
-		"19171116": "Chambry Laon",
-		"19180320": "Bonneuil Ferme",
-		"19180323": "Falvy, Peronne",
-		"19180330": "Ham",
-		"19180409": "Champien",
-		"19180512": "Bullecourt",
-		"19180711": "Leffincourt",
-		"19180808": "Beugnatre",
-		"19180820": "Villeselve"
+		"19170501": "Bellevue Ferme",
+		"19170601": "Vivaise",
+		"19170901": "Bellevue Ferme",
+		"19171101": "Chambry Laon",
+		"19180301": "Ham",
+		"19180401": "Champien",
+		"19180501": "Bullecourt",
+		"19180701": "Leffincourt",
+		"19180801": "Villeselve"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -52,107 +49,104 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "AD5_J44_Default_MAY17",
 			"planeType": "albatrosd5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19171001",
+			"squadId": 401044,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "AD5_J44_Default_OCT17",
 			"planeType": "albatrosd5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19171002",
 			"endDate": "19180415",
+			"squadId": 401044,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "AD5_J44_Default_APR18",
 			"planeType": "albatrosd5",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
+			"squadId": 401044,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "FD7_J44_Default_5_Color_Loz",
 			"planeType": "fokkerd7",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
+			"squadId": 401044,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
 			"skinName": "FD7F_J44_Default_4_Color_Loz_Open",
 			"planeType": "fokkerd7f",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
-		},
-		{
-			"skinName": "FD7F_J44_Default_4_Color_Loz",
-			"planeType": "fokkerd7f",
-			"archTypes": [
-			],
-			"startDate": "19180902",
-			"endDate": "19181201",
+			"squadId": 401044,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "FD7F_J44_Default_4_Color_Loz",
+			"planeType": "fokkerd7f",
+			"archTypes": [],
+			"startDate": "19180902",
+			"endDate": "19181201",
+			"squadId": 401044,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

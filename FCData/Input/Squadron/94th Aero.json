@@ -4,6 +4,7 @@
 	"name": "94th Aero",
 	"fileName": "94th Aero.json",
 	"skill": 65,
+	"serviceId": 30301,
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
@@ -24,16 +25,10 @@
 		"19180701": "Maizy",
 		"19180901": "Brabant en Argonne"
 	},
-	"squadHistory": {
-		"squadHistoryEntries": [
-		]
-	},
-	"serviceId": 30301,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19160101",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -43,55 +38,59 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
-	"callsigns": [
-	],
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
+	},
 	"skins": [
 		{
 			"skinName": "N28_94Aero",
 			"planeType": "nieuport28",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 303094,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "SP7LATE_94thAero_Default",
 			"planeType": "spad7late",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 303094,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "SP13_94thAero_Default",
 			"planeType": "spad13",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 303094,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		}
 	]
 }

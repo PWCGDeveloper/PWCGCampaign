@@ -4,6 +4,7 @@
 	"name": "88th Aero",
 	"fileName": "88th Aero.json",
 	"skill": 20,
+	"serviceId": 30301,
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
@@ -19,16 +20,10 @@
 		"19180901": "Souilly",
 		"19181101": "Julvecourt"
 	},
-	"squadHistory": {
-		"squadHistoryEntries": [
-		]
-	},
-	"serviceId": 30301,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19160101",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -46,25 +41,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
-	"callsigns": {
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BR14_Aero88",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 303088,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "RED",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
 		}
 	]
 }

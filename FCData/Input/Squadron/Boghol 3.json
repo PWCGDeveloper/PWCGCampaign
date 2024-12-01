@@ -20,7 +20,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_STRAT_BOMB",
@@ -45,27 +45,29 @@
 			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19180510",
+			"squadId": 401003,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": true,
 			"winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "BLACK",
-            "tacticalCodeType": "CODE_POSITION_ONE"
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
 		},
-        {
-            "skinName": "gothac5_003",
-            "planeType": "gothag5",
-            "archTypes": [],
-            "startDate": "19180424",
-            "endDate": "19181201",
-            "country": "Germany",
-            "category": "Squadron",
-            "definedInGame": true,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        }
+		{
+			"skinName": "gothac5_003",
+			"planeType": "gothag5",
+			"archTypes": [],
+			"startDate": "19180424",
+			"endDate": "19181201",
+			"squadId": 401003,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
+		}
 	]
 }

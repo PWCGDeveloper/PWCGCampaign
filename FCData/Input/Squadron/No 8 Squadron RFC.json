@@ -21,15 +21,14 @@
 	],
 	"airfields": {
 		"19160501": "Droglandt",
-		"19161026": "Lealvillers",
-		"19170207": "La Lovie",
-		"19170328": "Auchel",
-		"19170516": "La Tergette",
-		"19180228": "La Lovie",
-		"19180329": "La Lovie",
-		"19180402": "La Gorgue",
-		"19180408": "Auchel",
-		"19180730": "Mont St Eloi"
+		"19161001": "Lealvillers",
+		"19170201": "La Lovie",
+		"19170301": "Auchel",
+		"19170501": "La Tergette",
+		"19180201": "La Lovie",
+		"19180301": "La Lovie",
+		"19180401": "Auchel",
+		"19180701": "Mont St Eloi"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -52,18 +51,13 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
-	"skins": [
-	]
+	"skins": []
 }

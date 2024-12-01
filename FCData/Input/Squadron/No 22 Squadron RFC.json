@@ -22,10 +22,10 @@
 	"airfields": {
 		"19160401": "Grivesnes",
 		"19170501": "Marieux",
-		"19170703": "Le Hameau",
-		"19180115": "Auchel",
-		"19180321": "Bryas",
-		"19181025": "Auchel"
+		"19170701": "Le Hameau",
+		"19180101": "Auchel",
+		"19180301": "Bryas",
+		"19181001": "Auchel"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -48,48 +48,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BF2B_No22",
 			"planeType": "bristolf2bf2",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302022,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_TWO"
+			"tacticalCodeType": "CODE_POSITION_TWO",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
 			"skinName": "BF2BF3_No22",
 			"planeType": "bristolf2bf3",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302022,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_TWO"
+			"tacticalCodeType": "CODE_POSITION_TWO",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

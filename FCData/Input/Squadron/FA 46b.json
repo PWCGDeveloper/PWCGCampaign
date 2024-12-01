@@ -22,9 +22,10 @@
 	"airfields": {
 		"19150801": "Lagnicourt",
 		"19160101": "Hermies, Cambrai",
-		"19160202": "Bellevue Ferme",
-		"19170402": "Lagnicourt",
-		"19170712": "Bellevue Ferme"
+		"19160201": "Hivry Circourt",
+		"19160301": "Ferme Marimbois",
+		"19170401": "Lagnicourt",
+		"19170701": "Bellevue Ferme"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

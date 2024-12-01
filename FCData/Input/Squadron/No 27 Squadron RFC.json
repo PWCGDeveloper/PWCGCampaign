@@ -20,12 +20,10 @@
 		}
 	],
 	"airfields": {
-		"19160301": "Hoog Huys",
+		"19160301": "Braizieux",
 		"19170401": "Le Hameau",
-		"19171011": "Filescamp Ferme",
-		"19180306": "Villers Bretonneux",
-		"19180324": "Allonville",
-		"19180329": "Filescamp Ferme"
+		"19171001": "Filescamp Ferme",
+		"19180301": "Filescamp Ferme"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -65,18 +63,13 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
-	"skins": [
-	]
+	"skins": []
 }

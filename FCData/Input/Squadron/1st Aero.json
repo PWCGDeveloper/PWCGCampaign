@@ -4,6 +4,7 @@
 	"name": "1st Aero",
 	"fileName": "1st Aero.json",
 	"skill": 20,
+	"serviceId": 30301,
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
@@ -20,16 +21,10 @@
 		"19180901": "Dommartin les Toul",
 		"19181001": "Senard en Argonne"
 	},
-	"squadHistory": {
-		"squadHistoryEntries": [
-		]
-	},
-	"serviceId": 30301,
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
 				"startDate": "19160101",
-				"endDate": "19181201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -47,25 +42,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
-	"callsigns": {
+	"conversionPeriods": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"callsigns": {},
+	"nightMissionOdds": {
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "BR14_Aero1",
 			"planeType": "breguet14",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 303001,
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO"
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

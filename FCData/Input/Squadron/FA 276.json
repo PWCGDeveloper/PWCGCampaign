@@ -21,9 +21,9 @@
 	],
 	"airfields": {
 		"19160101": "Douai",
-		"19170502": "Rumbeke",
-		"19180327": "Erchin",
-		"19180912": "Helesmes"
+		"19170501": "Rumbeke",
+		"19180301": "Erchin",
+		"19180901": "Helesmes"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

@@ -21,8 +21,9 @@
 	],
 	"airfields": {
 		"19160101": "Puxieux",
-		"19170525": "Pronville",
-		"19180729": "Rumbeke"
+		"19160301": "Saint Loup Sud",
+		"19170501": "Pronville",
+		"19180701": "Rumbeke"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

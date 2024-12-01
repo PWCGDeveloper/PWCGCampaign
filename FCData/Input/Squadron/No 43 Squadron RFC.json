@@ -21,12 +21,10 @@
 	],
 	"airfields": {
 		"19170801": "Mont St Eloi",
-		"19180115": "La Gorgue",
-		"19180603": "Grivesnes",
-		"19180621": "La Gorgue",
-		"19180712": "Vauxcere",
-		"19180727": "Marieux",
-		"19181006": "Auchel"
+		"19180101": "La Gorgue",
+		"19180601": "La Gorgue",
+		"19180701": "Marieux",
+		"19181001": "Auchel"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -58,33 +56,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "SOPCAM_RFC43_Default",
 			"planeType": "sopcamel",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 302043,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_THREE"
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

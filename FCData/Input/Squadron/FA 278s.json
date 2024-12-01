@@ -21,13 +21,13 @@
 	],
 	"airfields": {
 		"19160101": "Ferme Constantine",
-		"19160821": "Neuflize",
-		"19170315": "Chambry Laon",
-		"19170615": "Metz Frescaty",
-		"19180520": "Bonneuil Ferme",
-		"19180705": "Besny et Loizy",
-		"19180825": "Jametz",
-		"19181005": "Bellevue Ferme"
+		"19160801": "Neuflize",
+		"19170301": "Chambry Laon",
+		"19170601": "Metz Frescaty",
+		"19180501": "Bonneuil Ferme",
+		"19180701": "Besny et Loizy",
+		"19180801": "Jametz",
+		"19181001": "Bellevue Ferme"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

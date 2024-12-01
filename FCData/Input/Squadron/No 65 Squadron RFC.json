@@ -16,13 +16,10 @@
 	],
 	"airfields": {
 		"19171001": "La Lovie",
-		"19180217": "Bailleul",
-		"19180321": "Droglandt",
-		"19180324": "Bailleul",
-		"19180326": "Auchel",
-		"19180406": "Villers Bretonneux",
-		"19180812": "La Gorgue",
-		"19180816": "Bailleul"
+		"19180201": "Bailleul",
+		"19180301": "Auchel",
+		"19180401": "Villers Bretonneux",
+		"19180801": "Bailleul"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -54,33 +51,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "SOPCAM_RFC65_Default",
 			"planeType": "sopcamel",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 302065,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_THREE"
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

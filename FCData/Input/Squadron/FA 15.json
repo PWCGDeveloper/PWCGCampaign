@@ -21,10 +21,9 @@
 	],
 	"airfields": {
 		"19160101": "Boncourt",
-		"19160301": "Lagnicourt",
-		"19160310": "Hermies, Cambrai",
-		"19160812": "Chambry Laon",
-		"19180825": "Liesse"
+		"19160301": "Assevilers",
+		"19160801": "Chambry Laon",
+		"19180801": "Liesse"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

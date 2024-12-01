@@ -8,31 +8,31 @@
 	"tacticalCodeStyle": -1,
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
-        {
-            "archType": "nieuport",
-            "squadronIntroduction": "19160801",
-            "squadronWithdrawal": "19170501"
-        },
-        {
-            "archType": "hanriot",
-            "squadronIntroduction": "19170401",
-            "squadronWithdrawal": "19180101"
-        },
-        {
-            "archType": "sopcamel",
-            "squadronIntroduction": "19171001",
-            "squadronWithdrawal": "19181201"
-        }
+		{
+			"archType": "nieuport",
+			"squadronIntroduction": "19160801",
+			"squadronWithdrawal": "19170501"
+		},
+		{
+			"archType": "hanriot",
+			"squadronIntroduction": "19170401",
+			"squadronWithdrawal": "19180101"
+		},
+		{
+			"archType": "sopcamel",
+			"squadronIntroduction": "19171001",
+			"squadronWithdrawal": "19181201"
+		}
 	],
 	"airfields": {
-        "19160801": "St Marie Cappel",
-        "19170601": "St Marie Cappel",
+		"19160801": "St Marie Cappel",
+		"19170601": "St Marie Cappel",
 		"19181101": "St Marguerite"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-                "startDate": "19160101",
+				"startDate": "19160101",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -68,19 +68,20 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-        {
-            "skinName": "SOPCAM_11EME_Default",
-            "planeType": "sopcamel",
-            "archTypes": [],
-            "startDate": "19170101",
-            "endDate": "19181201",
-            "country": "Belgium",
-            "category": "Squadron",
-            "definedInGame": false,
-            "winter": false,
-            "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "tacticalCodeType": "CODE_POSITION_ONE"
-        }
+		{
+			"skinName": "SOPCAM_11EME_Default",
+			"planeType": "sopcamel",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"squadId": 304011,
+			"country": "Belgium",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
+		}
 	]
 }

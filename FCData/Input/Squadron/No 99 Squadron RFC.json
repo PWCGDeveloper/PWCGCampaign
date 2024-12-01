@@ -16,9 +16,9 @@
 	],
 	"airfields": {
 		"19180401": "Lealvillers",
-		"19180621": "Le Hameau",
-		"19180715": "Vauxcere",
-		"19180804": "Le Hameau"
+		"19180601": "Le Hameau",
+		"19180701": "Vauxcere",
+		"19180801": "Le Hameau"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -41,33 +41,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "DH4_No99_Default",
 			"planeType": "aircodh4",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302099,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

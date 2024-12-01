@@ -22,11 +22,12 @@
 	"airfields": {
 		"19150801": "Saint Loup Nord",
 		"19160101": "Chassonge Ferme,Stenay/Verdun",
-		"19160812": "Chery les Pouilly Nord",
-		"19171113": "La Selve",
-		"19180725": "Saint Loup Nord",
-		"19180903": "Bellevue Ferme",
-		"19181015": "Marville"
+		"19160301": "Leffincourt",
+		"19160801": "Chery les Pouilly Nord",
+		"19171101": "La Selve",
+		"19180701": "Saint Loup Nord",
+		"19180901": "Bellevue Ferme",
+		"19181001": "Marville"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

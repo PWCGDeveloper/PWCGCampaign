@@ -26,13 +26,11 @@
 	],
 	"airfields": {
 		"19170101": "La Lovie",
-		"19170325": "Bailleul",
-		"19170515": "Droglandt",
-		"19171004": "La Lovie",
-		"19180401": "Lealvillers",
-		"19180409": "Allonville",
-		"19180427": "La Lovie",
-		"19180722": "Bailleul"
+		"19170301": "Bailleul",
+		"19170501": "Droglandt",
+		"19171001": "La Lovie",
+		"19180401": "La Lovie",
+		"19180701": "Bailleul"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -73,48 +71,44 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "SopTri_Default",
 			"planeType": "soptriplane",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 302210,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		},
 		{
 			"skinName": "SOPCAM_10RNAS_Default",
 			"planeType": "sopcamel",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
+			"squadId": 302210,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_ONE"
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

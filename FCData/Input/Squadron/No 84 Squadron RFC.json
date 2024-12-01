@@ -16,10 +16,9 @@
 	],
 	"airfields": {
 		"19171001": "Lealvillers",
-		"19171112": "Le Hameau",
-		"19171229": "Villers Bretonneux",
-		"19180323": "Lealvillers",
-		"19180328": "Bruay"
+		"19171101": "Le Hameau",
+		"19171201": "Villers Bretonneux",
+		"19180301": "Bruay"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -47,33 +46,29 @@
 			}
 		]
 	},
-	"conversionPeriods": [
-	],
+	"conversionPeriods": [],
 	"squadHistory": {
-		"squadHistoryEntries": [
-		]
+		"squadHistoryEntries": []
 	},
-	"callsigns": {
-	},
+	"callsigns": {},
 	"nightMissionOdds": {
-		"nightMissionPeriods": [
-		]
+		"nightMissionPeriods": []
 	},
 	"skins": [
 		{
 			"skinName": "SE5a_RFC84_Default",
 			"planeType": "se5a",
-			"archTypes": [
-			],
+			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19181201",
-			"country": "BRITAIN",
+			"squadId": 302084,
+			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": false,
 			"useTacticalCodes": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_THREE"
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }
