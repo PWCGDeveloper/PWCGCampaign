@@ -25,7 +25,7 @@
 		}
 	],
 	"airfields": {
-		"19160101": "Auve",
+		"19160101": "La Cheppe",
 		"19160201": "Bouleuse",
 		"19160301": "Bouleuse",
 		"19160501": "Tilloy",
@@ -37,7 +37,8 @@
 		"19170401": "Pretz en Argonne",
 		"19170701": "Vadelaincourt",
 		"19170901": "Froides",
-		"19171001": "Froides"
+		"19171001": "Froides",
+		"19171201": "Beauze sur Aire"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

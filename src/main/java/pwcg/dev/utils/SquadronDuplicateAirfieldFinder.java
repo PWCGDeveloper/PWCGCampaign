@@ -8,6 +8,7 @@ import java.util.TreeMap;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -66,9 +67,10 @@ public class SquadronDuplicateAirfieldFinder
                                     duplicateAirfieldUsage.put(squadToCheckAirfieldDate, duplicates);
                                 }
                                 List<String> duplicates = duplicateAirfieldUsage.get(squadToCheckAirfieldDate);
+                                Airfield airfield = PWCGContext.getInstance().getAirfieldAllMaps(squadToCheckAirfield);
                                         
                                 String message =  "    Duplicate airfield use found " + squadToCheck.getFileName() + " and " + otherSquad.getFileName()
-                                + " share airfield " + squadToCheckAirfield + " on " + squadToCheckAirfieldDate;
+                                + " share airfield " + squadToCheckAirfield + " at " + airfield.getPosition().toString()+ " on " + squadToCheckAirfieldDate;
                                 
                                 duplicates.add(message);
                             }
