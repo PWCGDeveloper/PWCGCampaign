@@ -23,7 +23,13 @@
 		"19160501": "Lhery",
 		"19160601": "Froides",
 		"19170401": "Souilly",
-		"19170601": "Saizerais"
+		"19170601": "Saizerais",
+		"19180201": "Malzeville",
+		"19180401": "Nancy Malzeville",
+		"19180601": "Malzeville",
+		"19180701": "Vauxcere",
+		"19180801": "Villesavoye",
+		"19180901": "Lemmes"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
@@ -91,8 +97,23 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "SP7_Esc_124_Lafayette",
-			"planeType": "spad7",
+			"skinName": "SP7E_Esc_124_Lafayette",
+			"planeType": "spad7early",
+			"archTypes": [],
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": 303103,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
+		},
+		{
+			"skinName": "SP7L_Esc_124_Lafayette",
+			"planeType": "spad7late",
 			"archTypes": [],
 			"startDate": "19160101",
 			"endDate": "19181201",

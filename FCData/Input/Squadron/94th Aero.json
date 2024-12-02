@@ -19,7 +19,13 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {},
+	"airfields": {
+		"19180401": "Saizerais",
+		"19180601": "Saizerais",
+		"19180701": "Muizon",
+		"19180801": "Vauxcere",
+		"19180901": "Ancemont"
+	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

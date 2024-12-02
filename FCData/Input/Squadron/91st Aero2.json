@@ -14,7 +14,13 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {},
+	"airfields": {
+		"19180601": "Froides",
+		"19180701": "Fere en Tardenois",
+		"19180901": "Pretz en Argonne",
+		"19181001": "Julvecourt",
+		"19181101": "Erize la Petite"
+	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

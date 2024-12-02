@@ -14,7 +14,14 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {},
+	"airfields": {
+		"19180401": "Toul Aerodrom",
+		"19180601": "Gengoult",
+		"19180701": "Fouvry",
+		"19180901": "Julvecourt",
+		"19181001": "Souilly",
+		"19181101": "Souilly"
+	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

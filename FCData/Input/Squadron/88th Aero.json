@@ -14,7 +14,13 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {},
+	"airfields": {
+		"19180601": "Vacon",
+		"19180701": "Ville en Tardenois",
+		"19180901": "Erize la Petite",
+		"19181001": "Erize la Petite",
+		"19181101": "Julvecourt"
+	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

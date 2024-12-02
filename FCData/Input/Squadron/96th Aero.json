@@ -14,7 +14,11 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {},
+	"airfields": {
+		"19180601": "Rosnay",
+		"19180901": "Souilly",
+		"19181001": "Pretz en Argonne"
+	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

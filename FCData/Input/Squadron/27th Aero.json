@@ -19,7 +19,12 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {},
+	"airfields": {
+		"19180601": "Nancy Malzeville",
+		"19180701": "Ferme de Corbeaulieu",
+		"19180801": "Muizon",
+		"19180901": "Brabant en Argonne"
+	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

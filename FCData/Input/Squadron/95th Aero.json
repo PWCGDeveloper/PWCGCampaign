@@ -19,7 +19,13 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {},
+	"airfields": {
+		"19180501": "Malzeville",
+		"19180601": "Dommartin les Toul",
+		"19180701": "Villesavoye",
+		"19180801": "Ferme de Rosnay",
+		"19180901": "Froides"
+	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

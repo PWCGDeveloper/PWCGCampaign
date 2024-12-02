@@ -14,7 +14,11 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {},
+	"airfields": {
+		"19180701": "Chalons sur Vesle",
+		"19180801": "Chalons sur Vesle",
+		"19180901": "Vadelaincourt"
+	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
