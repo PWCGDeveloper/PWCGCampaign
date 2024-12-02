@@ -22,8 +22,9 @@
 	"airfields": {
 		"19160701": "Avillers St.Croix",
 		"19170401": "Balatre",
-		"19170901": "Mesnil Bruntel",
-		"19171101": "Moislains"
+		"19170701": "Mesnil NE",
+		"19170901": "Mons en Chaussee",
+		"19171101": "Mesnil Bruntel"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
