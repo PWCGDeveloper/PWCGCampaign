@@ -14,10 +14,7 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {
-		"19180601": "Ferme de Rosnay",
-		"19181001": "Courcy"
-	},
+	"airfields": {},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

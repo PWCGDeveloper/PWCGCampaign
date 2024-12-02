@@ -14,12 +14,7 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {
-		"19180401": "Lealvillers",
-		"19180601": "Le Hameau",
-		"19180701": "Vauxcere",
-		"19180801": "Le Hameau"
-	},
+	"airfields": {},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

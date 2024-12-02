@@ -14,12 +14,7 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {
-		"19180601": "Froides",
-		"19180701": "Muizon",
-		"19180901": "Souilly",
-		"19181101": "Julvecourt"
-	},
+	"airfields": {},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

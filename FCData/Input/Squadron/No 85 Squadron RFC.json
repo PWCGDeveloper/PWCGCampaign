@@ -14,12 +14,7 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {
-		"19180401": "Bailleul",
-		"19180601": "Bryas",
-		"19180801": "Warfusee",
-		"19180901": "Savy Berlette"
-	},
+	"airfields": {},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

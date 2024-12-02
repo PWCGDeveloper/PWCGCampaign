@@ -20,10 +20,7 @@
 		}
 	],
 	"airfields": {
-		"19180101": "Marchais",
-		"19180801": "Sissonne",
-		"19180901": "Chassonge Ferme,Stenay/Verdun",
-		"19181001": "Marville"
+		"19180101": "Marchais"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

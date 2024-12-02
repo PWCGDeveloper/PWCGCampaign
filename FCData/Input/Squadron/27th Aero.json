@@ -19,11 +19,7 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {
-		"19180601": "Dommartin les Toul",
-		"19180701": "Courcy",
-		"19180901": "Souilly"
-	},
+	"airfields": {},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

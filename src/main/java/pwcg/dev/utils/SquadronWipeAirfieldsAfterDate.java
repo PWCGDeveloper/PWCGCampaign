@@ -11,10 +11,11 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
-public class SquadronAifieldFirstOfMonth
+public class SquadronWipeAirfieldsAfterDate
 {
     static public void main(String[] args)
     {
@@ -22,8 +23,8 @@ public class SquadronAifieldFirstOfMonth
 
         try
         {
-            SquadronAifieldFirstOfMonth finder = new SquadronAifieldFirstOfMonth(PWCGProduct.FC);
-            finder.setAirfieldToFirstOfMonth();
+            SquadronWipeAirfieldsAfterDate finder = new SquadronWipeAirfieldsAfterDate(PWCGProduct.FC);
+            finder.findDuplicateAirfieldUse();
         }
         catch (Exception e)
         {
@@ -31,12 +32,12 @@ public class SquadronAifieldFirstOfMonth
         }
     }
 
-    public SquadronAifieldFirstOfMonth(PWCGProduct product) throws PWCGException
+    public SquadronWipeAirfieldsAfterDate(PWCGProduct product) throws PWCGException
     {
         PWCGContext.setProduct(product);
     }
 
-    private void setAirfieldToFirstOfMonth() throws PWCGException
+    private void findDuplicateAirfieldUse() throws PWCGException
     {
         List<Squadron> allSq = PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
         for (Squadron squadToCheck : allSq)
@@ -45,18 +46,10 @@ public class SquadronAifieldFirstOfMonth
             for (Date airfieldDate : squadToCheck.getAirfields().keySet())
             {
                 String airfieldName = squadToCheck.getAirfields().get(airfieldDate);
-                
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTimeInMillis(airfieldDate.getTime());
-                if (calendar.get(Calendar.DAY_OF_MONTH) == 1)
+                Date wipeDate = DateUtils.getDateDashDelimitedYYYYMMDD("1918-04-01");
+                if (airfieldDate.before(wipeDate))
                 {
                     airfields.put(airfieldDate, airfieldName);
-                }
-                else
-                {
-                    calendar.set(Calendar.DAY_OF_MONTH, 1);
-                    Date newDate = new Date(calendar.getTimeInMillis());
-                    airfields.put(newDate, airfieldName);
                 }
             }
             

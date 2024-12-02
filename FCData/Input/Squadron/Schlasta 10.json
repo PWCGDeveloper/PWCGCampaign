@@ -22,7 +22,9 @@
 	"airfields": {
 		"19160701": "Bellevue Ferme",
 		"19160901": "Giraumont",
-		"19171101": "Moislains"
+		"19171101": "Moislains",
+		"19181001": "Gouy",
+		"19181101": "Busigny"
 	},
 	"squadronRoles": {
 		"squadronRolePeriods": [

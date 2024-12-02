@@ -19,12 +19,7 @@
 			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {
-		"19180401": "Malzeville",
-		"19180601": "Dommartin les Toul",
-		"19180701": "Maizy",
-		"19180901": "Brabant en Argonne"
-	},
+	"airfields": {},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{

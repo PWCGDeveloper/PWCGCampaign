@@ -14,25 +14,7 @@
 			"squadronWithdrawal": "19481201"
 		}
 	],
-	"airfields": {
-		"19460101": "Lhery",
-		"19460201": "Souilly",
-		"19460501": "Lemmes",
-		"19470101": "Grivesnes",
-		"19470201": "Ravenel",
-		"19470301": "Mont de Soissons",
-		"19470401": "Ferme de Corbeaulieu",
-		"19470501": "Ferme Cravancon",
-		"19470701": "Bailleul",
-		"19470801": "Ferme Cravancon",
-		"19471201": "La Noblette",
-		"19480201": "Ferme de Rosnay",
-		"19480401": "Ravenel",
-		"19480501": "Maizy",
-		"19480601": "Ravenel",
-		"19480701": "Ferme Cravancon",
-		"19481001": "Auve"
-	},
+	"airfields": {},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
