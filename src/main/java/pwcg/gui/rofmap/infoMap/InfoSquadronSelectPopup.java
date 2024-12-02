@@ -20,7 +20,8 @@ public class InfoSquadronSelectPopup extends JPopupMenu
             for (Squadron squadron : squadronsAtBase)
             {
                 String squadronName = squadron.determineDisplayName(date);
-                JMenuItem squadronMenuItem = new JMenuItem("Select Squadron:"+squadron.getSquadronId()+":"+squadronName);
+                String airfieldName = squadron.determineCurrentAirfieldName(date);
+                JMenuItem squadronMenuItem = new JMenuItem("Select Squadron:" + squadron.getSquadronId() + ":" + squadronName + ":" + airfieldName);
                 squadronMenuItem.addActionListener(parent);
                 add(squadronMenuItem);
             }
