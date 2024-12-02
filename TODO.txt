@@ -1,7 +1,14 @@
 
-===
-Missing profile pictures for Li2 and La 5 S 38
+FC4:
+Skins
 
+Fokker E.III
+Albatros D.III
+Roland C2a
+Sopwith Pup
+DH2
+Sopwith Strutter
+Sopwith Strutter B
 
 ===
 Trying to do a paratroop mission with C-47s but they seem always start with canisters instead of paratroopers.

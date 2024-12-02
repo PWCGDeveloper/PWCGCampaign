@@ -1,3 +1,13 @@
+17.0.0
+Incorporation of FC IV
+- Added many squadrons
+- Defined squadron placements across the map for the whole war
+- Added new airfields and structures
+- Redefined takeoff position for all airfields
+
+16.1.1
+Added Ta152H1
+
 16.1.0
 Added FC4 planes.  Fokker E.III, DH2, Roland C2a, Strutter and Strutter B, Albatros D.III, Pup
 Moved campaign back to January 1916

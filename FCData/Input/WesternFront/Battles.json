@@ -1,6 +1,42 @@
 {
 	"battles": [
         {
+            "name": "Verdun",
+            "neCorner": {
+                "xPos": 130000,
+                "yPos": 0.0,
+                "zPos": 315000
+            },
+            "swCorner": {
+                "xPos": 75000,
+                "yPos": 0.0,
+                "zPos": 250000
+            },
+            "aggressorcountry": "GERMANY",
+            "defendercountry": "FRANCE",
+            "startDate": "19160101",
+            "stopDate": "19160601",
+            "map": "WESTERN_FRONT_MAP"
+        },
+        {
+            "name": "Somme",
+            "neCorner": {
+                "xPos": 260000,
+                "yPos": 0.0,
+                "zPos": 135000
+            },
+            "swCorner": {
+                "xPos": 190000,
+                "yPos": 0.0,
+                "zPos": 50000
+            },
+            "aggressorcountry": "BRITAIN",
+            "defendercountry": "FRANCE",
+            "startDate": "19160701",
+            "stopDate": "19161101",
+            "map": "WESTERN_FRONT_MAP"
+        },
+        {
             "name": "Messines",
             "neCorner": {
                 "xPos": 303000,
