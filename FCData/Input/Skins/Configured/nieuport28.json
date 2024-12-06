@@ -1,0 +1,17 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+        "nieuport28": {
+            "skinName": "nieuport28",
+            "planeType": "nieuport28",
+            "startDate": "19160101",
+            "endDate": "19181201",
+            "squadId": -2,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+        }
+    }
+}

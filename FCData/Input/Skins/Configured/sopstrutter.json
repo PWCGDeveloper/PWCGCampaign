@@ -1,0 +1,65 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"sopstrutter": {
+			"skinName": "sopstrutter",
+			"planeType": "sopstrutter",
+			"startDate": "19170801",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"sopstrutter_blank_01": {
+			"skinName": "sopstrutter_blank_01",
+			"planeType": "sopstrutter",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BRITAIN",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"sopstrutter_blank_02": {
+			"skinName": "sopstrutter_blank_02",
+			"planeType": "sopstrutter",
+			"startDate": "19160101",
+			"endDate": "19171001",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"sopstrutter_blank_06": {
+			"skinName": "sopstrutter_blank_06",
+			"planeType": "sopstrutter",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BELGIUM",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"sopstrutter_blank_08": {
+			"skinName": "sopstrutter_blank_08",
+			"planeType": "sopstrutter",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLUE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

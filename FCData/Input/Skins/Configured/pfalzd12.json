@@ -1,0 +1,29 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"pfalzd12": {
+			"skinName": "pfalzd12",
+			"planeType": "pfalzd12",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"pfalzd12_blank_01": {
+			"skinName": "pfalzd12_blank_01",
+			"planeType": "pfalzd12",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

@@ -1,15 +1,17 @@
 {
     "skinSetType": "SKIN_CONFIGURED",
     "skins": {
-        "nieuport17_default": {
-            "skinName": "nieuport17_default",
+        "nieuport17": {
+            "skinName": "nieuport17",
             "planeType": "nieuport17",
             "startDate": "19160101",
             "endDate": "19181201",
             "squadId": -2,
             "country": "FRANCE",
             "category": "Configured",
-            "definedInGame": true
+            "definedInGame": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
         },
         "nieuport17_blank_01": {
             "skinName": "nieuport17_blank_02",
@@ -19,7 +21,9 @@
             "squadId": -2,
             "country": "BRITAIN",
             "category": "Configured",
-            "definedInGame": true
+            "definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
         },
         "nieuport17_blank_02": {
             "skinName": "nieuport17_blank_03",
@@ -29,7 +33,9 @@
             "squadId": -2,
             "country": "BRITAIN",
             "category": "Configured",
-            "definedInGame": true
+            "definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
         },
         "nieuport17_blank_04": {
             "skinName": "nieuport17_blank_04",
@@ -39,7 +45,9 @@
             "squadId": -2,
             "country": "BELGIUM",
             "category": "Configured",
-            "definedInGame": true
+            "definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
         }
     }
 }

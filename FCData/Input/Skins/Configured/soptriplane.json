@@ -1,5 +1,17 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
+		"soptriplane": {
+			"skinName": "soptriplane",
+			"planeType": "soptriplane",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BRITAIN",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
 	}
 }

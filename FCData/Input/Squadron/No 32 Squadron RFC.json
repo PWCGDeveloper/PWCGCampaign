@@ -73,6 +73,18 @@
 	},
 	"skins": [
 		{
+            "skinName": "aircodh2_tangreen",
+            "planeType": "aircodh2",
+            "startDate": "19160101",
+            "endDate": "19181201",
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+		{
 			"skinName": "SE5a_RFC32_Default_E",
 			"planeType": "se5a",
 			"archTypes": [],

@@ -23,12 +23,6 @@ public class SquadronPlaneLister
         try
 		{
 			SquadronPlaneLister finder = new SquadronPlaneLister(PWCGProduct.FC);
-			
-			Date startDate = DateUtils.getBeginningOfWar();
-			Date endDate = DateUtils.getEndOfWar();
-			
-			finder.findPlane("fe2", startDate, endDate);
-			
 			finder.printPlanes();
 		}
 		catch (Exception e)
@@ -42,33 +36,6 @@ public class SquadronPlaneLister
     }
 
 
-
-    
-    private void findPlane(String planeId, Date startDate, Date endDate) throws PWCGException  
-    {       
-        List<Squadron> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
-        PWCGLogger.log(LogLevel.DEBUG, "PlaneType Id: " + planeId);
-        for (Squadron squad : allSq)
-        {
-            boolean hasPlane = false;
-            for (SquadronPlaneAssignment planeAssignment : squad.getPlaneAssignments())
-            {
-                if (planeAssignment.getArchType().equals(planeId))
-                {
-                    if (!planeAssignment.getSquadronWithdrawal().before(endDate))
-                    {
-                        hasPlane = true;
-                    }
-                }
-            }
-
-            if (hasPlane)
-            {
-                PWCGLogger.log(LogLevel.DEBUG, "" + squad.getSquadronId());
-            }
-        }
-    }
-    
     private void printPlanes() throws PWCGException  
     {       
         List<Squadron> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();

@@ -1,0 +1,17 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"hanriothd1": {
+			"skinName": "hanriothd1",
+			"planeType": "hanriothd1",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BELGIUM",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

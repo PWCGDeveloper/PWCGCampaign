@@ -1,0 +1,53 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"spad7early": {
+			"skinName": "spad7early",
+			"planeType": "spad7early",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"spad7early_blank_01": {
+			"skinName": "spad7early_blank_01",
+			"planeType": "spad7early",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"spad7early_blank_02": {
+			"skinName": "spad7early_blank_02",
+			"planeType": "spad7early",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"spad7early_blank_04": {
+			"skinName": "spad7early_blank_04",
+			"planeType": "spad7early",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BRITAIN",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

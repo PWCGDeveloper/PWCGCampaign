@@ -1,0 +1,17 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"fokkerd8": {
+			"skinName": "fokkerd8",
+			"planeType": "fokkerd8",
+			"startDate": "19160101",
+			"endDate": "19180715",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

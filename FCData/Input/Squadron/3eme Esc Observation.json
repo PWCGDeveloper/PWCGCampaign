@@ -64,6 +64,21 @@
 	},
 	"skins": [
 		{
+			"skinName": "sopstrutter_blank_07",
+			"planeType": "sopstrutter",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"squadId": 304003,
+			"country": "Belgium",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
+		},
+		{
 			"skinName": "BR14_EME3",
 			"planeType": "breguet14",
 			"archTypes": [],

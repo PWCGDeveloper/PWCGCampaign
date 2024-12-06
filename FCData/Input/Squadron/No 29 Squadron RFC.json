@@ -72,12 +72,23 @@
 	},
 	"skins": [
 		{
+            "skinName": "aircodh2_green",
+            "planeType": "aircodh2",
+            "startDate": "19160101",
+            "endDate": "19181201",
+            "country": "Britain",
+            "category": "Configured",
+            "definedInGame": false,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+		{
 			"skinName": "SE5a_RFC29_Default_E",
 			"planeType": "se5a",
 			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19180321",
-			"squadId": 302029,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,

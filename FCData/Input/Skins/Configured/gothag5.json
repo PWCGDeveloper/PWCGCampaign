@@ -1,5 +1,29 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
+		"gothag5": {
+			"skinName": "gothag5",
+			"planeType": "gothag5",
+			"startDate": "19160101",
+			"endDate": "119181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"gothag5_blank_01": {
+			"skinName": "gothag5_blank_01",
+			"planeType": "gothag5",
+			"startDate": "19160101",
+			"endDate": "119181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
 	}
 }

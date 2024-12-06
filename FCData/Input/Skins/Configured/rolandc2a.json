@@ -1,0 +1,77 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"rolandc2a": {
+			"skinName": "rolandc2a",
+			"planeType": "rolandc2a",
+			"startDate": "19160101",
+			"endDate": "119181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"rolandc2a_blank_01": {
+			"skinName": "rolandc2a_blank_01",
+			"planeType": "rolandc2a",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"rolandc2a_blank_02": {
+			"skinName": "rolandc2a_blank_02",
+			"planeType": "rolandc2a",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"rolandc2a_blank_03": {
+			"skinName": "rolandc2a_blank_03",
+			"planeType": "rolandc2a",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"rolandc2a_blank_04": {
+			"skinName": "rolandc2a_blank_04",
+			"planeType": "rolandc2a",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"rolandc2a_blank_05": {
+			"skinName": "rolandc2a_blank_05",
+			"planeType": "rolandc2a",
+			"startDate": "19160401",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

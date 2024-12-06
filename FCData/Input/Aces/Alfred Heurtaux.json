@@ -43,16 +43,6 @@
   "skill": 4,
   "commonSense": 0,
   "skins": [
-    {
-      "skinName": "S7E_SPA3_NO11",
-      "planeType": "spad7early",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    }
   ],
   "victories": [
     {

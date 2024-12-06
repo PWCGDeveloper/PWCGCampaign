@@ -1,54 +1,29 @@
 {
     "skinSetType": "SKIN_CONFIGURED",
     "skins": {
-        "CL2_au_Sch27_Late No2 BRUNHILDE": {
-            "skinName": "CL2_au_Sch27_Late No2 BRUNHILDE",
+        "halberstadtcl2au": {
+            "skinName": "halberstadtcl2au",
             "planeType": "halberstadtcl2au",
-            "startDate": "19180416",
-            "endDate": "19181201",
-            "squadId": -1,
-            "country": "GERMANY",
-            "category": "Configured",
-            "definedInGame": true
+            "startDate": "19160101",
+            "endDate": "19180425",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
         },
-        "CL2_au_Sch27_Late No3 MELANIE": {
-            "skinName": "CL2_au_Sch27_Late No3 MELANIE",
+        "halberstadtcl2au_blank_01": {
+            "skinName": "halberstadtcl2au_blank_01",
             "planeType": "halberstadtcl2au",
-            "startDate": "19180416",
+            "startDate": "19180423",
             "endDate": "19181201",
-            "squadId": -1,
-            "country": "GERMANY",
-            "category": "Configured",
-            "definedInGame": true
-        },
-        "CL2_au_Sch27_Late No4 DORA": {
-            "skinName": "CL2_au_Sch27_Late No4 DORA",
-            "planeType": "halberstadtcl2au",
-            "startDate": "19180416",
-            "endDate": "19181201",
-            "squadId": -1,
-            "country": "GERMANY",
-            "category": "Configured",
-            "definedInGame": true
-        },
-        "CL2_au_Sch27_Late No5 THEA": {
-            "skinName": "CL2_au_Sch27_Late No5 THEA",
-            "planeType": "halberstadtcl2au",
-            "startDate": "19180416",
-            "endDate": "19181201",
-            "squadId": -1,
-            "country": "GERMANY",
-            "category": "Configured",
-            "definedInGame": true
-        },
-        "CL2_au_Sch27_Late No7 RIA": {
-            "skinName": "CL2_au_Sch27_Late No7 RIA",
-            "planeType": "halberstadtcl2au",
-            "startDate": "19180416",
-            "endDate": "19181201",
-            "squadId": -1,
-            "country": "GERMANY",
-            "category": "Configured",
-            "definedInGame": true			
-        }    }
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+        }
+    }
 }

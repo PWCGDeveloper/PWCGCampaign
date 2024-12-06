@@ -1,0 +1,17 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"schuckertdiv": {
+			"skinName": "schuckertdiv",
+			"planeType": "schuckertdiv",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

@@ -1,55 +1,29 @@
 {
     "skinSetType": "SKIN_CONFIGURED",
     "skins": {
-        "nieuport17gbr_default": {
-            "skinName": "nieuport17gbr_default",
-            "planeType": "nieuport17gbr",
+        "nieuport28": {
+            "skinName": "nieuport28",
+            "planeType": "nieuport28",
             "startDate": "19160101",
             "endDate": "19181201",
             "squadId": -2,
-            "country": "BRITAIN",
+            "country": "USA",
             "category": "Configured",
-            "definedInGame": true
+            "definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
         },
-        "nieuport17gbr_blank_01": {
-            "skinName": "nieuport17gbr_blank_01",
-            "planeType": "nieuport17gbr",
-            "startDate": "19160101",
-            "endDate": "19181201",
-            "squadId": -2,
-            "country": "BRITAIN",
-            "category": "Configured",
-            "definedInGame": true
-        },
-        "nieuport17gbr_blank_02": {
-            "skinName": "nieuport17gbr_blank_02",
-            "planeType": "nieuport17gbr",
+        "nieuport28_blank_01": {
+            "skinName": "nieuport28_blank_01",
+            "planeType": "nieuport28",
             "startDate": "19160101",
             "endDate": "19181201",
             "squadId": -2,
             "country": "FRANCE",
             "category": "Configured",
-            "definedInGame": true
-        },
-        "nieuport17gbr_blank_03": {
-            "skinName": "nieuport17gbr_blank_03",
-            "planeType": "nieuport17gbr",
-            "startDate": "19160101",
-            "endDate": "19181201",
-            "squadId": -2,
-            "country": "FRANCE",
-            "category": "Configured",
-            "definedInGame": true
-        },
-        "nieuport17gbr_belgian": {
-            "skinName": "nieuport17gbr_belgian",
-            "planeType": "nieuport17gbr",
-            "startDate": "19160101",
-            "endDate": "19181201",
-            "squadId": -2,
-            "country": "FRANCE",
-            "category": "Configured",
-            "definedInGame": false
+            "definedInGame": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
         }
     }
 }

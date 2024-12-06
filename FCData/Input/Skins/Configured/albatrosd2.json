@@ -1,0 +1,53 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"albatrosd2": {
+			"skinName": "albatrosd2",
+			"planeType": "albatrosd2",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"albatrosd2_blank_01": {
+			"skinName": "albatrosd2_blank_01",
+			"planeType": "albatrosd2",
+			"startDate": "19160101",
+			"endDate": "19160801",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+ 		"albatrosd2_blank_02": {
+			"skinName": "albatrosd2_blank_02",
+			"planeType": "albatrosd2",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+ 		"albatrosd2_blank_03": {
+			"skinName": "albatrosd2_blank_03",
+			"planeType": "albatrosd2",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

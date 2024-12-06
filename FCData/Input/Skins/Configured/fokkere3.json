@@ -1,0 +1,29 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"fokkere3": {
+			"skinName": "fokkere3",
+			"planeType": "fokkere3",
+			"startDate": "19160101",
+			"endDate": "119181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"fokkere3_blank_01": {
+			"skinName": "fokkere3_blank_01",
+			"planeType": "fokkere3",
+			"startDate": "19160401",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

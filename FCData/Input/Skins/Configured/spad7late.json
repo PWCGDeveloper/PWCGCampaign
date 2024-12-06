@@ -1,0 +1,77 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"spad7late": {
+			"skinName": "spad7late",
+			"planeType": "spad7late",
+			"startDate": "19160101",
+			"endDate": "19171001",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"spad7late_blank_01": {
+			"skinName": "spad7late_blank_01",
+			"planeType": "spad7late",
+			"startDate": "19160101",
+			"endDate": "19171001",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"spad7late_blank_02": {
+			"skinName": "spad7late_blank_02",
+			"planeType": "spad7late",
+			"startDate": "19160101",
+			"endDate": "19171001",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLUE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"spad7late_blank_03": {
+			"skinName": "spad7late_blank_03",
+			"planeType": "spad7late",
+			"startDate": "19170901",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"spad7late_blank_05": {
+			"skinName": "spad7late_blank_05",
+			"planeType": "spad7late",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BRITAIN",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"spad7late_blank_06": {
+			"skinName": "spad7late_blank_06",
+			"planeType": "spad7late",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

@@ -10,7 +10,8 @@
 			"country": "FRANCE",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		"fe2b_belgian": {
 			"skinName": "fe2b_belgian",
@@ -21,7 +22,8 @@
 			"country": "BELGIUM",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		}
 	}
 }

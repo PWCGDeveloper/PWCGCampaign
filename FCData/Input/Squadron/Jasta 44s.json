@@ -58,7 +58,52 @@
 	},
 	"skins": [
 		{
-			"skinName": "AD5_J40_Default_MAY17",
+		    "skinName": "AlbD3_Jasta44s_Early",
+			"planeType": "albatrosd3",
+			"archTypes": [],
+			"startDate": "19160101",
+			"endDate": "19170501",
+			"squadId": 401002,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "AlbD3_Jasta44s_Mid",
+			"planeType": "albatrosd3",
+			"archTypes": [],
+			"startDate": "19170401",
+			"endDate": "19170901",
+			"squadId": 401002,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "AlbD3_Jasta44s_Late",
+			"planeType": "albatrosd3",
+			"archTypes": [],
+			"startDate": "19170801",
+			"endDate": "19181201",
+			"squadId": 401002,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "AD5_J44_Default_MAY17",
 			"planeType": "albatrosd5",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -73,7 +118,7 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "AD5_J40_Default_OCT17",
+			"skinName": "AD5_J44_Default_OCT17",
 			"planeType": "albatrosd5",
 			"archTypes": [],
 			"startDate": "19171002",
@@ -88,7 +133,7 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "AD5_J40_Default_APR18",
+			"skinName": "AD5_J44_Default_APR18",
 			"planeType": "albatrosd5",
 			"archTypes": [],
 			"startDate": "19180416",
@@ -103,7 +148,7 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "FD7_J40_Default_5_Color_Loz",
+			"skinName": "FD7_J44_Default_5_Color_Loz",
 			"planeType": "fokkerd7",
 			"archTypes": [],
 			"startDate": "19180416",
@@ -118,7 +163,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "FD7F_J40_Default_4_Color_Loz_Open",
+			"skinName": "FD7F_J44_Default_4_Color_Loz_Open",
 			"planeType": "fokkerd7f",
 			"archTypes": [],
 			"startDate": "19180416",
@@ -133,7 +178,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "FD7F_J40_Default_4_Color_Loz",
+			"skinName": "FD7F_J44_Default_4_Color_Loz",
 			"planeType": "fokkerd7f",
 			"archTypes": [],
 			"startDate": "19180902",

@@ -1,8 +1,8 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"fe2b_default": {
-			"skinName": "fe2b_default",
+		"fe2b": {
+			"skinName": "fe2b",
 			"planeType": "fe2b",
 			"startDate": "19160101",
 			"endDate": "19181201",
@@ -10,7 +10,8 @@
 			"country": "BRITAIN",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		"farmanf40": {
 			"skinName": "farmanf40",
@@ -21,7 +22,8 @@
 			"country": "FRANCE",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		"albatrosc2": {
 			"skinName": "albatrosc2",
@@ -32,7 +34,8 @@
 			"country": "GERMANY",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
 		"fe2b_belgian": {
 			"skinName": "fe2b_belgian",
@@ -43,7 +46,8 @@
 			"country": "BELGIUM",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		}
 	}
 }

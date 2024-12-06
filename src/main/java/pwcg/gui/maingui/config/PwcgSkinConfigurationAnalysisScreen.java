@@ -237,6 +237,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
 			}
             if (ae.getActionCommand().equalsIgnoreCase("DisplayMissing"))
             {
+                skinAnalyzer.analyze();
                 displayMissingSkinsForSelectedPlanes();
             }
             if (ae.getActionCommand().equalsIgnoreCase("DisplayConfig"))

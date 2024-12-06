@@ -1,6 +1,6 @@
 {
 	"country": "GERMANY",
-	"squadronId": 40109,
+	"squadronId": 401009,
 	"name": "Jasta 9",
 	"fileName": "Jasta 9.json",
 	"skill": 55,
@@ -58,6 +58,51 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
+		{
+		    "skinName": "AlbD3_Jasta9_Early",
+			"planeType": "albatrosd3",
+			"archTypes": [],
+			"startDate": "19160101",
+			"endDate": "19170501",
+			"squadId": 401002,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "AlbD3_Jasta9_Mid",
+			"planeType": "albatrosd3",
+			"archTypes": [],
+			"startDate": "19170401",
+			"endDate": "19170901",
+			"squadId": 401002,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "AlbD3_Jasta9_Late",
+			"planeType": "albatrosd3",
+			"archTypes": [],
+			"startDate": "19170801",
+			"endDate": "19181201",
+			"squadId": 401002,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "BLACK"
+		},
 		{
 			"skinName": "AD5_J9_Default_MAY17",
 			"planeType": "albatrosd5",

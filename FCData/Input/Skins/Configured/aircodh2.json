@@ -1,0 +1,41 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"aircodh2": {
+			"skinName": "aircodh2",
+			"planeType": "aircodh2",
+			"startDate": "19160401",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BRITAIN",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"aircodh2_blank_01": {
+			"skinName": "aircodh2_blank_01",
+			"planeType": "aircodh2",
+			"startDate": "19160101",
+			"endDate": "19160801",
+			"squadId": -2,
+			"country": "BRITAIN",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+ 		"aircodh2_green": {
+			"skinName": "aircodh2_green",
+			"planeType": "aircodh2",
+			"startDate": "19161201",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BRITAIN",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

@@ -10,8 +10,8 @@
 			"country": "GERMANY",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
 		}
 	}
-}
 }

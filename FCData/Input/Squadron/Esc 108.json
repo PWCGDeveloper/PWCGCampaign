@@ -70,6 +70,62 @@
 	},
 	"skins": [
 		{
+			"skinName": "sopstrutter_esc108_early",
+			"planeType": "sopstrutter",
+			"archTypes": [],
+			"startDate": "19160101",
+			"endDate": "19171101",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
+		},
+		{
+			"skinName": "sopstrutter_esc108_late",
+			"planeType": "sopstrutter",
+			"archTypes": [],
+			"startDate": "19170901",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
+		},
+		{
+			"skinName": "sopstrutterb_esc108_early",
+			"planeType": "sopstrutterb",
+			"archTypes": [],
+			"startDate": "19160101",
+			"endDate": "19171101",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
+		},
+		{
+			"skinName": "sopstrutterb_esc108_late",
+			"planeType": "sopstrutterb",
+			"archTypes": [],
+			"startDate": "19170901",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
+		},
+		{
 			"skinName": "BR14_ESC108_JUL1917",
 			"planeType": "breguet14",
 			"archTypes": [],
@@ -82,7 +138,7 @@
 			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
-			"tacticalCodeColor": "BLUE"
+			"tacticalCodeColor": "RED"
 		},
 		{
 			"skinName": "BR14_ESC108_JAN1918",
@@ -97,7 +153,7 @@
 			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
-			"tacticalCodeColor": "BLUE"
+			"tacticalCodeColor": "RED"
 		}
 	]
 }

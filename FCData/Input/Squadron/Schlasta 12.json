@@ -52,6 +52,19 @@
 	},
 	"skins": [
 		{
+            "skinName": "rolandc2a_blank_04",
+            "planeType": "rolandc2a",
+            "startDate": "19160101",
+            "endDate": "19181201",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "useTacticalCodes": true,
+            "tacticalCodeColor": "WHITE",
+            "winter": false
+        },
+		{
 			"skinName": "CL2_Sch12_Early",
 			"planeType": "halberstadtcl2",
 			"archTypes": [],

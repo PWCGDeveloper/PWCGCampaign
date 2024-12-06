@@ -1,129 +1,89 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"skins": {
-
-			"dfwc5_default": {
-				"skinName": "dfwc5_default",
-				"planeType": "dfwc5",
-				"startDate": "19160101",
-				"endDate": "19180424",
-				"squadId": -2,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": false
-			},
-			"dfwc5_skin_01": {
-				"skinName": "dfwc5_skin_01",
-				"planeType": "dfwc5",
-				"startDate": "19160101",
-				"endDate": "19180424",
-				"squadId": -1,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": true
-			},
-			"dfwc5_skin_02": {
-				"skinName": "dfwc5_skin_02",
-				"planeType": "dfwc5",
-				"startDate": "19160101",
-				"endDate": "19180424",
-				"squadId": -1,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": false
-			},
-			"dfwc5_skin_03": {
-				"skinName": "dfwc5_skin_03",
-				"planeType": "dfwc5",
-				"startDate": "19160101",
-				"endDate": "19180424",
-				"squadId": -1,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": false
-			},
-			"dfwc5_skin_04": {
-				"skinName": "dfwc5_skin_04",
-				"planeType": "dfwc5",
-				"startDate": "19180424",
-				"endDate": "19181201",
-				"squadId": -1,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": false
-			},
-			"dfwc5_skin_05": {
-				"skinName": "dfwc5_skin_05",
-				"planeType": "dfwc5",
-				"startDate": "19180424",
-				"endDate": "19181201",
-				"squadId": -2,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": false
-			},
-			"dfwc5_skin_06": {
-				"skinName": "dfwc5_skin_06",
-				"planeType": "dfwc5",
-				"startDate": "19180424",
-				"endDate": "19181201",
-				"squadId": -1,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": true
-			},
-			"dfwc5_skin_07": {
-				"skinName": "dfwc5_skin_07",
-				"planeType": "dfwc5",
-				"startDate": "19180424",
-				"endDate": "19180424",
-				"squadId": -1,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": false
-			},
-			"dfwc5_skin_08": {
-				"skinName": "dfwc5_skin_08",
-				"planeType": "dfwc5",
-				"startDate": "19160101",
-				"endDate": "19180424",
-				"squadId": -1,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": false
-			},
-			"dfwc5_skin_09": {
-				"skinName": "dfwc5_skin_09",
-				"planeType": "dfwc5",
-				"startDate": "19160101",
-				"endDate": "19180424",
-				"squadId": -1,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": false
-			},
-			"dfwc5_skin_10": {
-				"skinName": "dfwc5_skin_10",
-				"planeType": "dfwc5",
-				"startDate": "19180424",
-				"endDate": "19181201",
-				"squadId": -1,
-				"country": "GERMANY",
-				"category": "Configured",
-				"definedInGame": true,
-				"winter": false
-			}
+		"dfwc5_default": {
+			"skinName": "dfwc5_default",
+			"planeType": "dfwc5",
+			"startDate": "19160101",
+			"endDate": "19180424",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		},
+		"dfwc5_blank_01": {
+			"skinName": "dfwc5_blank_01",
+			"planeType": "dfwc5",
+			"startDate": "19170901",
+			"endDate": "19180424",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		},
+		"dfwc5_blank_02": {
+			"skinName": "dfwc5_blank_02",
+			"planeType": "dfwc5",
+			"startDate": "19160101",
+			"endDate": "19180424",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		},
+		"dfwc5_blank_03": {
+			"skinName": "dfwc5_blank_03",
+			"planeType": "dfwc5",
+			"startDate": "19160101",
+			"endDate": "19180424",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		},
+		"dfwc5_blank_04": {
+			"skinName": "dfwc5_blank_04",
+			"planeType": "dfwc5",
+			"startDate": "19180423",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		},
+		"dfwc5_blank_05": {
+			"skinName": "dfwc5_blank_05",
+			"planeType": "dfwc5",
+			"startDate": "19170901",
+			"endDate": "19180424",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+		},
+		"dfwc5_blank_06": {
+			"skinName": "dfwc5_blank_06",
+			"planeType": "dfwc5",
+			"startDate": "19180423",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
 		}
 	}
 }

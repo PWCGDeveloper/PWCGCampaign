@@ -1,0 +1,57 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+        "breguet14": {
+            "skinName": "breguet14",
+            "planeType": "breguet14",
+            "startDate": "19170801",
+            "endDate": "19181201",
+			"squadId": -2,
+            "country": "FRANCE",
+            "category": "Configured",
+            "definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+        },	
+        "breguet14_skin_01": {
+            "skinName": "breguet14_skin_01",
+            "planeType": "breguet14",
+            "startDate": "19160101",
+            "endDate": "19171001",
+			"squadId": -2,
+            "country": "FRANCE",
+            "category": "Configured",
+            "definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+        },	
+        "breguet14_skin_02": {
+            "skinName": "breguet14_skin_02",
+            "planeType": "breguet14",
+            "startDate": "19170801",
+            "endDate": "19181201",
+			"squadId": -2,
+            "country": "USA",
+            "category": "Configured",
+            "definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLUE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+        },	
+        "breguet14_skin_03": {
+            "skinName": "breguet14_skin_03",
+            "planeType": "breguet14",
+            "startDate": "19170801",
+            "endDate": "19181201",
+			"squadId": -2,
+            "country": "BELGIUM",
+            "category": "Configured",
+            "definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_THREE"
+        }
+	}
+}

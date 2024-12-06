@@ -1,14 +1,19 @@
 
 FC4:
 Skins
+	Fokker E.III		 - No need.  Everyone uses the default
+	Albatros D.III		 - done
+	Roland C2a			 - done using in game skins
+	Sopwith Pup			 - No need.  Everyone uses the default
+	DH2					 - done
+	Sopwith Strutter 	 - done
+	Sopwith Strutter B	 - done
 
-Fokker E.III
-Albatros D.III
-Roland C2a
-Sopwith Pup
-DH2
-Sopwith Strutter
-Sopwith Strutter B
+
+Skins for newly added squadrons
+Missing skins check
+
+
 
 ===
 Trying to do a paratroop mission with C-47s but they seem always start with canisters instead of paratroopers.

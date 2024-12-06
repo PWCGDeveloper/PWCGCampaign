@@ -1,0 +1,77 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+		"sopstrutterb": {
+			"skinName": "sopstrutterb",
+			"planeType": "sopstrutterb",
+			"startDate": "19170801",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "RED",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"sopstrutterb_blank_01": {
+			"skinName": "sopstrutterb_blank_01",
+			"planeType": "sopstrutterb",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BRITAIN",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"sopstrutterb_blank_02": {
+			"skinName": "sopstrutterb_blank_02",
+			"planeType": "sopstrutterb",
+			"startDate": "19160101",
+			"endDate": "19171001",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"sopstrutterb_blank_03": {
+			"skinName": "sopstrutterb_blank_03",
+			"planeType": "sopstrutterb",
+			"startDate": "19170801",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "FRANCE",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"sopstrutterb_blank_05": {
+			"skinName": "sopstrutterb_blank_05",
+			"planeType": "sopstrutterb",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "BELGIUM",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"sopstrutterb_blank_07": {
+			"skinName": "sopstrutterb_blank_07",
+			"planeType": "sopstrutterb",
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLUE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+    }
+}

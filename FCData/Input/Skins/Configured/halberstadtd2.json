@@ -1,0 +1,77 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+        "halberstadtd2": {
+            "skinName": "halberstadtd2",
+            "planeType": "halberstadtd2",
+            "startDate": "19160801",
+            "endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        "halberstadtd2_blank_01": {
+            "skinName": "halberstadtd2_blank_01",
+            "planeType": "halberstadtd2",
+            "startDate": "19160101",
+            "endDate": "19160901",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        "halberstadtd2_blank_02": {
+            "skinName": "halberstadtd2_blank_02",
+            "planeType": "halberstadtd2",
+            "startDate": "19160101",
+            "endDate": "19160901",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        "halberstadtd2_blank_03": {
+            "skinName": "halberstadtd2_blank_03",
+            "planeType": "halberstadtd2",
+            "startDate": "19160101",
+            "endDate": "19160901",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        "halberstadtd2_blank_04": {
+            "skinName": "halberstadtd2_blank_04",
+            "planeType": "halberstadtd2",
+            "startDate": "19160801",
+            "endDate": "19160901",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+        },
+        "halberstadtd2_blank_05": {
+            "skinName": "halberstadtd2_blank_05",
+            "planeType": "halberstadtd2",
+            "startDate": "19160801",
+            "endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "BLACK",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+        }
+    }
+}

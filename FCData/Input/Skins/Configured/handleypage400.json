@@ -1,5 +1,17 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
+		"handleypage400": {
+			"skinName": "handleypage400",
+			"planeType": "handleypage400",
+			"startDate": "19160101",
+			"endDate": "119181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
 	}
 }

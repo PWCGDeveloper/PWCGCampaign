@@ -10,7 +10,6 @@
 			"country": "BRITAIN",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_THREE"
@@ -24,7 +23,6 @@
 			"country": "FRANCE",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeColor": "BLACK",
 			"tacticalCodeType": "CODE_POSITION_THREE"
@@ -38,7 +36,6 @@
 			"country": "BELGIUM",
 			"category": "Configured",
 			"definedInGame": true,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_THREE"
