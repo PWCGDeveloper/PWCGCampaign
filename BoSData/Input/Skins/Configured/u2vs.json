@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "u2vs_default": {
+        "u2vs": {
             "skinName": "u2vs",
             "planeType": "u2vs",
             "startDate": "19390901",

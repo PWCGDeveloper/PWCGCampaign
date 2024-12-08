@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "hs129b2_default": {
+        "hs129b2": {
             "skinName": "hs129b2",
             "planeType": "hs129b2",
             "startDate": "19390901",

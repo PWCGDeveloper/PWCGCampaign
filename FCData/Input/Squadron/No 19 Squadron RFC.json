@@ -68,7 +68,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "Dolphin_RFC19_Default",
+			"skinName": "Dolphin_RFC19",
 			"planeType": "sopdolphin",
 			"archTypes": [],
 			"startDate": "19170101",

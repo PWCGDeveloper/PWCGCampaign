@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"yak9s1_default": {
+		"yak9s1": {
 			"skinName": "yak9s1",
 			"planeType": "yak9s1",
 			"startDate": "19390901",

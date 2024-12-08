@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "mc202s8_default": {
+        "mc202s8": {
             "skinName": "mc202s8",
             "planeType": "mc202s8",
             "startDate": "19390901",

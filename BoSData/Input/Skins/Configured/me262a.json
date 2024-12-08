@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "me262a_default": {
+        "me262a": {
             "skinName": "me262a",
             "planeType": "me262a",
             "startDate": "19390901",

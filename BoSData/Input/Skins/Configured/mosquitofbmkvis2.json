@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"mosquitofbmkvis2_default": {
+		"mosquitofbmkvis2": {
 			"skinName": "mosquitofbmkvis2",
 			"planeType": "mosquitofbmkvis2",
 			"startDate": "19390901",

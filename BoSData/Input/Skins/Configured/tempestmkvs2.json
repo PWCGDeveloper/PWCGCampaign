@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "tempestmkvs2_default": {
+        "tempestmkvs2": {
             "skinName": "tempestmkvs2",
             "planeType": "tempestmkvs2",
             "startDate": "19390901",

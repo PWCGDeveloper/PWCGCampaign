@@ -64,7 +64,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "SOPCAM_AFC4_Default",
+			"skinName": "SOPCAM_AFC4",
 			"planeType": "sopcamel",
 			"archTypes": [],
 			"startDate": "19170101",

@@ -65,7 +65,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "SP7EARLY_No23Sq_Default",
+			"skinName": "SP7EARLY_No23Sq",
 			"planeType": "spad7early",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -80,7 +80,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SP7LATE_No23Sq_Default",
+			"skinName": "SP7LATE_No23Sq",
 			"planeType": "spad7late",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -95,7 +95,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SP13_No23Sq_Default",
+			"skinName": "SP13_No23Sq",
 			"planeType": "spad13",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -110,7 +110,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "Dolphin_RFC23_Default",
+			"skinName": "Dolphin_RFC23",
 			"planeType": "sopdolphin",
 			"archTypes": [],
 			"startDate": "19170101",

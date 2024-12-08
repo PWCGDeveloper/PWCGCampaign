@@ -83,7 +83,7 @@
             "winter": false
         },
 		{
-			"skinName": "SE5a_RFC24_Default_E",
+			"skinName": "SE5a_RFC24_E",
 			"planeType": "se5a",
 			"archTypes": [],
 			"startDate": "19170601",
@@ -98,7 +98,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SE5a_RFC24_Default_L",
+			"skinName": "SE5a_RFC24_L",
 			"planeType": "se5a",
 			"archTypes": [],
 			"startDate": "19180322",

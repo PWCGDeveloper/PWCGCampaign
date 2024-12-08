@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"ta152h1_default": {
+		"ta152h1": {
 			"skinName": "ta152h1",
 			"planeType": "ta152h1",
 			"startDate": "19390901",

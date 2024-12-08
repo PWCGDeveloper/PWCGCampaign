@@ -59,7 +59,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "SE5a_RFC56_Default_26AUG17",
+			"skinName": "SE5a_RFC56_26AUG17",
 			"planeType": "se5a",
 			"archTypes": [],
 			"startDate": "19170601",
@@ -74,7 +74,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SE5a_RFC56_Default_25SEP17",
+			"skinName": "SE5a_RFC56_25SEP17",
 			"planeType": "se5a",
 			"archTypes": [],
 			"startDate": "19170925",
@@ -89,7 +89,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SE5a_RFC56_Default_22MAR18",
+			"skinName": "SE5a_RFC56_22MAR18",
 			"planeType": "se5a",
 			"archTypes": [],
 			"startDate": "19180322",

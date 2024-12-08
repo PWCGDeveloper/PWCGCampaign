@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "il2m41_default": {
+        "il2m41": {
             "skinName": "il2m41",
             "planeType": "il2m41",
             "startDate": "19390901",

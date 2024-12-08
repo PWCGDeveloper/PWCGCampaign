@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"bf110e2_default": {
+		"bf110e2": {
 			"skinName": "bf110e2",
 			"planeType": "bf110e2",
 			"startDate": "19390901",

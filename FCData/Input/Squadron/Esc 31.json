@@ -55,7 +55,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "SP7EARLY_ESC31_Default",
+			"skinName": "SP7EARLY_ESC31",
 			"planeType": "spad7early",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -70,7 +70,7 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "SP7Late_Buff_ESC31_Default",
+			"skinName": "SP7Late_Buff_ESC31",
 			"planeType": "spad7late",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -85,7 +85,7 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "SP7Late_Camo_ESC31_Default",
+			"skinName": "SP7Late_Camo_ESC31",
 			"planeType": "spad7late",
 			"archTypes": [],
 			"startDate": "19171115",
@@ -100,7 +100,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SP13_ESC31_Default",
+			"skinName": "SP13_ESC31",
 			"planeType": "spad13",
 			"archTypes": [],
 			"startDate": "19170101",

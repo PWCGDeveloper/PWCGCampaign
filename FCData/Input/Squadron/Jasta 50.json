@@ -90,7 +90,7 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "AD5_J50_Default_MAY17",
+			"skinName": "AD5_J50_MAY17",
 			"planeType": "albatrosd5",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -105,7 +105,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "AD5_J50_Default_Oct17",
+			"skinName": "AD5_J50_Oct17",
 			"planeType": "albatrosd5",
 			"archTypes": [],
 			"startDate": "19171002",
@@ -120,7 +120,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "AD5_J50_Default_APR18",
+			"skinName": "AD5_J50_APR18",
 			"planeType": "albatrosd5",
 			"archTypes": [],
 			"startDate": "19180416",
@@ -135,7 +135,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "FD7_J50_Default_4_Color_Loz",
+			"skinName": "FD7_J50_4_Color_Loz",
 			"planeType": "fokkerd7",
 			"archTypes": [],
 			"startDate": "19180416",
@@ -150,7 +150,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "FD7_J50_Default_5_Color_Loz",
+			"skinName": "FD7_J50_5_Color_Loz",
 			"planeType": "fokkerd7",
 			"archTypes": [],
 			"startDate": "19180416",

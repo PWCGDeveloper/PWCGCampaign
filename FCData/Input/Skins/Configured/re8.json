@@ -1,8 +1,8 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"re8_default": {
-			"skinName": "re8_default",
+		"re8": {
+			"skinName": "re8",
 			"planeType": "re8",
 			"startDate": "19160101",
 			"endDate": "19181201",

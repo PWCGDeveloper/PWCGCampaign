@@ -1,7 +1,7 @@
 {
     "skinSetType": "SKIN_CONFIGURED",
     "skins": {
-        "hurricanemkii_default": {
+        "hurricanemkii": {
             "skinName": "hurricanemkii",
             "planeType": "hurricanemkii",
             "startDate": "19390901",

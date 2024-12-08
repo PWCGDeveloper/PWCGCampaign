@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "p38j25_default": {
+        "p38j25": {
             "skinName": "p38j25",
             "planeType": "p38j25",
             "startDate": "19390901",

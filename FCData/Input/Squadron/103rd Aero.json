@@ -97,7 +97,7 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "SP7E_Esc_124_Lafayette",
+			"skinName": "SP7EARLY_ESC124",
 			"planeType": "spad7early",
 			"archTypes": [],
 			"startDate": "19160101",
@@ -112,7 +112,7 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "SP7L_Esc_124_Lafayette",
+			"skinName": "SP7LATE_BUFF_ESC124",
 			"planeType": "spad7late",
 			"archTypes": [],
 			"startDate": "19160101",
@@ -127,7 +127,22 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "SP13_103rdAero_Default",
+			"skinName": "SP7LATE_CAMO_ESC124",
+			"planeType": "spad7late",
+			"archTypes": [],
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": 303103,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
+		},
+		{
+			"skinName": "SP13_103rdAero",
 			"planeType": "spad13",
 			"archTypes": [],
 			"startDate": "19180201",

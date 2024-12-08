@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"p47d22_default": {
+		"p47d22": {
 			"skinName": "p47d22",
 			"planeType": "p47d22",
             "startDate": "19390901",

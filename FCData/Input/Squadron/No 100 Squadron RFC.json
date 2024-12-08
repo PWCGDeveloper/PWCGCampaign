@@ -40,7 +40,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "handleypage400_Default",
+			"skinName": "handleypage400",
 			"planeType": "handleypage400",
 			"archTypes": [],
 			"startDate": "19170601",

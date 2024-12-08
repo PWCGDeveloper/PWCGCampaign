@@ -63,22 +63,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SP7LATE_27thAero_Default",
-			"planeType": "spad7late",
-			"archTypes": [],
-			"startDate": "19170101",
-			"endDate": "19181201",
-			"squadId": 303027,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
-			"tacticalCodeColor": "WHITE"
-		},
-		{
-			"skinName": "SP13_27thAero_Default",
+			"skinName": "SP13_27thAero",
 			"planeType": "spad13",
 			"archTypes": [],
 			"startDate": "19170101",

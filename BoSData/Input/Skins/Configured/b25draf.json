@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "b25draf_default": {
+        "b25draf": {
             "skinName": "b25draf",
             "planeType": "b25draf",
             "startDate": "19390901",

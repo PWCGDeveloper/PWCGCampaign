@@ -44,7 +44,7 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "Dolphin_RFC19_Default",
+      "skinName": "Dolphin_RFC19",
       "planeType": "sopdolphin",
       "startDate": "19140801",
       "endDate": "19181201",

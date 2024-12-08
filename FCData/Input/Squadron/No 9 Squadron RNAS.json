@@ -88,7 +88,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "SopTri_Default",
+			"skinName": "SopTri",
 			"planeType": "soptriplane",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -103,7 +103,7 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SOPCAM_9RNAS_Default",
+			"skinName": "SOPCAM_9RNAS",
 			"planeType": "sopcamel",
 			"archTypes": [],
 			"startDate": "19170101",

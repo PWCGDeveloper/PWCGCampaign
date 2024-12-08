@@ -66,7 +66,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "SOPCAM_RFC43_Default",
+			"skinName": "SOPCAM_RFC43",
 			"planeType": "sopcamel",
 			"archTypes": [],
 			"startDate": "19170101",

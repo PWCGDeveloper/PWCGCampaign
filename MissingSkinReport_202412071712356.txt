@@ -1,0 +1,16 @@
+
+Plane: SPAD 7.C1 150hp
+    Skin Name:SP7EARLY_ESC49
+    Skin Category:Squadron
+    Skin Name:SP7EARLY_ESC67
+    Skin Category:Squadron
+    Skin Name:SP7EARLY_ESC81
+    Skin Category:Squadron
+    Skin Name:SP7EARLY_ESC90
+    Skin Category:Squadron
+    Skin Name:SP7EARLY_ESC91
+    Skin Category:Squadron
+    Skin Name:SP7EARLY_ESC94
+    Skin Category:Squadron
+    Skin Name:SP7E_Esc_124_Lafayette
+    Skin Category:Squadron

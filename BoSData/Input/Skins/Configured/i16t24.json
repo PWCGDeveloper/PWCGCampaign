@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "i16t24_default": {
+        "i16t24": {
             "skinName": "i16t24",
             "planeType": "i16t24",
             "startDate": "19390901",

@@ -1,8 +1,8 @@
 {
 	"country": "FRANCE",
-	"squadronId": 301094,
-	"name": "Esc 94",
-	"fileName": "Esc 94.json",
+	"squadronId": 301083,
+	"name": "Esc 83",
+	"fileName": "Esc 83.json",
 	"skill": 75,
 	"serviceId": 30101,
 	"tacticalCodeStyle": 1,
@@ -10,15 +10,24 @@
 	"planeAssignments": [
 		{
 			"archType": "spad",
-			"squadronIntroduction": "19470401",
-			"squadronWithdrawal": "19481201"
+			"squadronIntroduction": "19170401",
+			"squadronWithdrawal": "19181201"
 		}
 	],
-	"airfields": {},
+	"airfields": {
+		"19170401": "Ferme de Corbeaulieu",
+		"19170501": "Mont de Soissons",
+		"19170701": "Bouy",
+		"19170801": "Ferme de Alger",
+		"19171201": "Grivesnes",
+		"19180201": "Auve",
+		"19180301": "Froides",
+		"19180901": "La Noblette"
+	},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19470401",
+				"startDate": "19170401",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -38,12 +47,11 @@
 	},
 	"skins": [
 		{
-			"skinName": "SP7EARLY_ESC94_Default",
+			"skinName": "SP7EARLY_ESC83",
 			"planeType": "spad7early",
 			"archTypes": [],
-			"startDate": "19470101",
-			"endDate": "19481201",
-			"squadId": 301094,
+			"startDate": "19170101",
+			"endDate": "19181201",
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
@@ -53,12 +61,11 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "SP7Late_Buff_ESC94_Default",
+			"skinName": "SP7Late_Buff_ESC83",
 			"planeType": "spad7late",
 			"archTypes": [],
-			"startDate": "19470101",
-			"endDate": "19471201",
-			"squadId": 301094,
+			"startDate": "19170101",
+			"endDate": "19171201",
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
@@ -68,12 +75,11 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "SP7Late_Camo_ESC94_Default",
+			"skinName": "SP7Late_Camo_ESC83",
 			"planeType": "spad7late",
 			"archTypes": [],
-			"startDate": "19471115",
-			"endDate": "19481201",
-			"squadId": 301094,
+			"startDate": "19171115",
+			"endDate": "19181201",
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
@@ -83,12 +89,11 @@
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SP13_ESC94_Default",
+			"skinName": "SP13_ESC83",
 			"planeType": "spad13",
 			"archTypes": [],
-			"startDate": "19470101",
-			"endDate": "19481201",
-			"squadId": 301094,
+			"startDate": "19170101",
+			"endDate": "19181201",
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,

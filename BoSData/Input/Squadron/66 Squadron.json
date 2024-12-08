@@ -186,7 +186,7 @@
             "tacticalCodeColor": "SKY"
         },
         {
-            "skinName": "spitfiremkixe_default",
+            "skinName": "spitfiremkixe",
             "planeType": "spitfiremkxiv",
             "startDate": "19390901",
             "endDate": "19450501",
@@ -198,7 +198,7 @@
             "tacticalCodeColor": "SKY"
         },
         {
-            "skinName": "spitfiremkxiv_default",
+            "skinName": "spitfiremkxiv",
             "planeType": "spitfiremkxiv",
             "startDate": "19420301",
             "endDate": "19450501",
@@ -210,7 +210,7 @@
             "tacticalCodeColor": "SKY"
         },
         {
-            "skinName": "spitfiremkxive_default",
+            "skinName": "spitfiremkxive",
             "planeType": "spitfiremkxive",
             "startDate": "19420301",
             "endDate": "19450501",

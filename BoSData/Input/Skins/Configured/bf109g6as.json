@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"bf109g6as_default": {
+		"bf109g6as": {
 			"skinName": "bf109g6as",
 			"planeType": "bf109g6as",
 			"startDate": "19390901",

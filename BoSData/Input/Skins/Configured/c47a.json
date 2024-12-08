@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "c47a_default": {
+        "c47a": {
             "skinName": "c47a",
             "planeType": "c47a",
             "startDate": "19390901",

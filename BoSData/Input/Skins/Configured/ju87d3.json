@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "ju87d3_default": {
+        "ju87d3": {
             "skinName": "ju87d3",
             "planeType": "ju87d3",
             "startDate": "19390901",

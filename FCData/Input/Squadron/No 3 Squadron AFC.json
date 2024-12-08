@@ -51,7 +51,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "DH4_Default",
+			"skinName": "DH4",
 			"planeType": "aircodh4",
 			"archTypes": [],
 			"startDate": "19170101",

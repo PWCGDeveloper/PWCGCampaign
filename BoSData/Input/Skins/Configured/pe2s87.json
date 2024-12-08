@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "pe2s87_default": {
+        "pe2s87": {
             "skinName": "pe2s87",
             "planeType": "pe2s87",
             "startDate": "19390901",

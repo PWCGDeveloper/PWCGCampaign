@@ -1,8 +1,8 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"dfwc5_default": {
-			"skinName": "dfwc5_default",
+		"dfwc5": {
+			"skinName": "dfwc5",
 			"planeType": "dfwc5",
 			"startDate": "19160101",
 			"endDate": "19180424",

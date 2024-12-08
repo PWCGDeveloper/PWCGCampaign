@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "p40e1_default": {
+        "p40e1": {
             "skinName": "p40e1",
             "planeType": "p40e1",
             "startDate": "19390901",

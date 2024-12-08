@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "fw190a3_default": {
+        "fw190a3": {
             "skinName": "fw190a3",
             "planeType": "fw190a3",
             "startDate": "19390901",

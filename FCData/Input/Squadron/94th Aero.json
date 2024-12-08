@@ -64,7 +64,7 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "SP7LATE_94thAero_Default",
+			"skinName": "SP7LATE_94thAero",
 			"planeType": "spad7late",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -79,7 +79,7 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "SP13_94thAero_Default",
+			"skinName": "SP13_94thAero",
 			"planeType": "spad13",
 			"archTypes": [],
 			"startDate": "19170101",

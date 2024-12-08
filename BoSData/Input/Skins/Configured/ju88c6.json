@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "ju88c6_default": {
+        "ju88c6": {
             "skinName": "ju88c6",
             "planeType": "ju88c6",
             "startDate": "19390901",

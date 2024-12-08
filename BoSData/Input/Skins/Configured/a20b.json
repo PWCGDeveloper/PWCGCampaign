@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "a20b_default": {
+        "a20b": {
             "skinName": "a20b",
             "planeType": "a20b",
             "startDate": "19390901",

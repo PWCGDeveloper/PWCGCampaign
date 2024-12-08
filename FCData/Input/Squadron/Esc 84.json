@@ -1,8 +1,8 @@
 {
 	"country": "FRANCE",
-	"squadronId": 301090,
-	"name": "Esc 90",
-	"fileName": "Esc 90.json",
+	"squadronId": 301084,
+	"name": "Esc 84",
+	"fileName": "Esc 84.json",
 	"skill": 75,
 	"serviceId": 30101,
 	"tacticalCodeStyle": 1,
@@ -10,25 +10,15 @@
 	"planeAssignments": [
 		{
 			"archType": "spad",
-			"squadronIntroduction": "19170401",
-			"squadronWithdrawal": "19181201"
+			"squadronIntroduction": "19470401",
+			"squadronWithdrawal": "19481201"
 		}
 	],
-	"airfields": {
-		"19170401": "Beaucourt",
-		"19170501": "Saconin Breuil",
-		"19170701": "Ferme de Alger",
-		"19170801": "Ferme de Corbeaulieu",
-		"19171201": "Senard en Argonne",
-		"19180201": "Ferme de Rosnay",
-		"19180701": "Lemmes",
-		"19180901": "Vauxcere",
-		"19181001": "Nancy Malzeville"
-	},
+	"airfields": {},
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170401",
+				"startDate": "19470401",
 				"weightedRoles": [
 					{
 						"role": "ROLE_FIGHTER",
@@ -48,12 +38,11 @@
 	},
 	"skins": [
 		{
-			"skinName": "SP7EARLY_ESC90_Default",
+			"skinName": "SP7EARLY_ESC84",
 			"planeType": "spad7early",
 			"archTypes": [],
-			"startDate": "19170101",
-			"endDate": "19181201",
-			"squadId": 301090,
+			"startDate": "19470101",
+			"endDate": "19481201",
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
@@ -63,46 +52,40 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "SP7Late_Buff_ESC90_Default",
+			"skinName": "SP7Late_Buff_ESC84",
 			"planeType": "spad7late",
 			"archTypes": [],
-			"startDate": "19170101",
-			"endDate": "19171201",
-			"squadId": 301090,
+			"startDate": "19470101",
+			"endDate": "19471201",
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "SP7Late_Camo_ESC90_Default",
+			"skinName": "SP7Late_Camo_ESC84",
 			"planeType": "spad7late",
 			"archTypes": [],
-			"startDate": "19171115",
-			"endDate": "19181201",
-			"squadId": 301090,
+			"startDate": "19471115",
+			"endDate": "19481201",
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "SP13_ESC90_Default",
+			"skinName": "SP13_ESC84",
 			"planeType": "spad13",
 			"archTypes": [],
-			"startDate": "19170101",
-			"endDate": "19181201",
-			"squadId": 301090,
+			"startDate": "19470101",
+			"endDate": "19481201",
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
 			"tacticalCodeColor": "WHITE"

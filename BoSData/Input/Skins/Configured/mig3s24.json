@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "mig3s24_default": {
+        "mig3s24": {
             "skinName": "mig3s24",
             "planeType": "mig3s24",
             "startDate": "19390901",

@@ -105,7 +105,7 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "AD5_J34b_Default_May17",
+			"skinName": "AD5_J34b_May17",
 			"planeType": "albatrosd5",
 			"archTypes": [],
 			"startDate": "19170601",
@@ -120,7 +120,7 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "AD5_J34b_Default_Oct17",
+			"skinName": "AD5_J34b_Oct17",
 			"planeType": "albatrosd5",
 			"archTypes": [],
 			"startDate": "19171001",
@@ -135,7 +135,7 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "AD5_J34b_Default_APR18",
+			"skinName": "AD5_J34b_APR18",
 			"planeType": "albatrosd5",
 			"archTypes": [],
 			"startDate": "19180424",
@@ -180,7 +180,7 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "PD12_J34b_Default",
+			"skinName": "PD12_J34b",
 			"planeType": "pfalzd12",
 			"archTypes": [],
 			"startDate": "19180502",

@@ -51,7 +51,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "SE5a_RFC85_Default",
+			"skinName": "SE5a_RFC85",
 			"planeType": "se5a",
 			"archTypes": [],
 			"startDate": "19170601",

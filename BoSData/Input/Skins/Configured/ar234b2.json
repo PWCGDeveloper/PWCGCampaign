@@ -1,7 +1,7 @@
 {
   "skinSetType": "SKIN_CONFIGURED",
   "skins": {
-        "ar234b2_default": {
+        "ar234b2": {
             "skinName": "ar234b2",
             "planeType": "ar234b2",
             "startDate": "19390901",

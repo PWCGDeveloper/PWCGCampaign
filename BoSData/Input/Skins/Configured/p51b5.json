@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-        "p51b5_default": {
+        "p51b5": {
             "skinName": "p51b5",
             "planeType": "p51b5",
             "startDate": "19390901",

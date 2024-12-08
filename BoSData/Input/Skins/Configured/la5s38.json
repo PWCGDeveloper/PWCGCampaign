@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"la5s38_default": {
+		"la5s38": {
 			"skinName": "la5s38",
 			"planeType": "la5s38",
 			"startDate": "19440301",

@@ -1,7 +1,7 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"iar80b_default": {
+		"iar80b": {
 			"skinName": "iar80b",
 			"planeType": "iar80b",
 			"startDate": "19390901",
