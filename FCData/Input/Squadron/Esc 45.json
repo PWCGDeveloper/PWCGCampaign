@@ -68,22 +68,20 @@
 	},
 	"skins": [
 		{
-			"skinName": "BR14_ESC45_JUL1917",
-			"planeType": "breguet14",
+			"skinName": "DorandAR_Esc45",
+			"planeType": "dorandar",
 			"archTypes": [],
-			"startDate": "19170101",
+			"startDate": "18160101",
 			"endDate": "19181201",
-			"squadId": 301045,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
-			"tacticalCodeColor": "BLUE"
+			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "BR14_ESC45_JAN1918",
+			"skinName": "BR14_ESC45_Buff",
 			"planeType": "breguet14",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -95,7 +93,22 @@
 			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
-			"tacticalCodeColor": "BLUE"
+			"tacticalCodeColor": "BLACK"
+		},
+		{
+			"skinName": "BR14_ESC45_Camo",
+			"planeType": "breguet14",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"squadId": 301045,
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
 		}
 	]
 }

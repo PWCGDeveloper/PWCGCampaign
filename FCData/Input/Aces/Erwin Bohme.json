@@ -54,38 +54,7 @@
   "aiSkillLevel": "ACE",
   "skill": 4,
   "commonSense": 0,
-  "skins": [
-    {
-      "skinName": "FE3_BOHME",
-      "planeType": "fokkere3",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD2L_J5_BOHME",
-      "planeType": "albatrosd2late",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD5_J2_Bohme_historical",
-      "planeType": "albatrosd5",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    }
-  ],
+  "skins": [],
   "victories": [
     {
       "date": "19160802",
@@ -93,21 +62,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Nieuport 12",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -116,21 +87,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Sopwith Strutter",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -139,21 +112,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "F.E.2b",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -162,21 +137,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "F.E.2b",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -185,21 +162,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Sopwith Strutter",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -208,21 +187,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "F.E.8",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -231,21 +212,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Morane Parasol",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -254,21 +237,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "B.E.2c",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -277,21 +262,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "D.H.2",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -300,21 +287,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "D.H.2",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -323,21 +312,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "B.E.2e",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -346,21 +337,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "D.H.2",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -369,21 +362,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Nieuport 17",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -392,21 +387,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "R.E.8",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -415,21 +412,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "R.E.8",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -438,21 +437,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Bristol F.2b",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -461,21 +462,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Nieuport 27",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -484,21 +487,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Sopwith Pup",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -507,21 +512,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Nieuport 27",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -530,21 +537,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Nieuport 17",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -553,21 +562,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "S.E.5a",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -576,21 +587,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Sopwith Camel",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -599,21 +612,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Nieuport 17",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     },
     {
@@ -622,21 +637,23 @@
       "crashedInSight": false,
       "victim": {
         "airOrGround": 1,
+        "name": "",
         "type": "Sopwith Camel",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       },
       "victor": {
         "airOrGround": 3,
+        "name": "",
         "type": "",
         "squadronName": "",
-        "pilot": 0,
+        "pilotSerialNumber": 0,
+        "pilotName": "Unknown",
         "pilotStatus": 0,
-        "observer": 0,
-        "observerStatus": 0
+        "isGunner": false
       }
     }
   ],
@@ -664,7 +681,5 @@
     }
   ],
   "playerRegion": "",
-  "isPlayer": false,
-  "squadronId": -1,
-  "squadronMemberRole": "PILOT"
+  "squadronId": -1
 }

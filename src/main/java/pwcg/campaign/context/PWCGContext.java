@@ -42,6 +42,20 @@ public class PWCGContext
         return null;
     }
 
+    public static IPWCGContextManager rebuild() 
+    {
+        try
+        {
+            return rebuildContext(product);
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.logException(e);
+        }
+        
+        return null;
+    }
+
 
     public static PWCGProduct getProduct()
     {
@@ -86,4 +100,28 @@ public class PWCGContext
             throw new PWCGException("No product defined");
         }
     }
+    
+
+    private static IPWCGContextManager rebuildContext(PWCGProduct product) throws PWCGException
+    {
+        if (product == PWCGProduct.BOS)
+        {
+            PWCGContext.bosContextManager = new BoSContext();
+            PWCGContext.bosContextManager.initialize();
+            
+            return PWCGContext.bosContextManager;
+        }
+        else if (product == PWCGProduct.FC)
+        {
+            PWCGContext.fcContextManager = new FCContext();
+            PWCGContext.fcContextManager.initialize();
+            
+            return PWCGContext.fcContextManager;
+        }
+        else
+        {
+            throw new PWCGException("No product defined");
+        }
+    }
+
 }

@@ -25,7 +25,7 @@ public class SquadronPlaneFinder
 			Date startDate = DateUtils.getBeginningOfWar();
 			Date endDate = DateUtils.getEndOfWar();
 			
-			finder.findPlane("sopstrutter", startDate, endDate);
+			finder.findPlane("dorandar", startDate, endDate);
 		}
 		catch (Exception e)
 		{

@@ -1,8 +1,8 @@
 {
 	"country": "FRANCE",
-	"squadronId": 301066,
-	"name": "Esc 66",
-	"fileName": "Esc 70.json",
+	"squadronId": 301111,
+	"name": "Esc 111",
+	"fileName": "Esc 111.json",
 	"skill": 30,
 	"serviceId": 30101,
 	"tacticalCodeStyle": 4,
@@ -66,34 +66,17 @@
 	},
 	"skins": [
 		{
-			"skinName": "BR14_ESC66_JUL1917",
-			"planeType": "breguet14",
+			"skinName": "DorandAR_Esc111",
+			"planeType": "dorandar",
 			"archTypes": [],
-			"startDate": "19170101",
+			"startDate": "18160101",
 			"endDate": "19181201",
-			"squadId": 301066,
 			"country": "France",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
-			"tacticalCodeColor": "BLUE"
-		},
-		{
-			"skinName": "BR14_ESC66_JAN1918",
-			"planeType": "breguet14",
-			"archTypes": [],
-			"startDate": "19170101",
-			"endDate": "19181201",
-			"squadId": 301066,
-			"country": "France",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
-			"tacticalCodeColor": "BLUE"
+			"tacticalCodeColor": "BLACK"
 		}
 	]
 }

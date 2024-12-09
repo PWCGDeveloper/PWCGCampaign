@@ -10,6 +10,8 @@
             "country": "BRITAIN",
             "category": "Configured",
 			"tacticalCodeColor": "WHITE",
+            "definedInGame": true,
+			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_THREE"
         },
         "bristolf2bf2_skin_02": {
@@ -20,6 +22,8 @@
             "squadId": -2,
             "country": "BRITAIN",
             "category": "Configured",
+            "definedInGame": true,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_THREE"
         }

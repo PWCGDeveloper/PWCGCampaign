@@ -1,0 +1,50 @@
+
+Plane: Breguet 14.B2
+    Skin Name:BR14_Aero88
+
+    Skin Name:BR14_Aero91
+
+    Skin Name:BR14_ESC107_JAN1918
+
+    Skin Name:BR14_ESC107_JUL1917
+
+    Skin Name:BR14_ESC108_JAN1918
+
+    Skin Name:BR14_ESC108_JUL1917
+
+    Skin Name:BR14_ESC21_JAN1918
+
+    Skin Name:BR14_ESC21_JUL1917
+
+    Skin Name:BR14_ESC227_JAN1918
+
+    Skin Name:BR14_ESC227_JUL1917
+
+    Skin Name:BR14_ESC29_JAN1918
+
+    Skin Name:BR14_ESC29_JUL1917
+
+    Skin Name:BR14_ESC40_JAN1918
+
+    Skin Name:BR14_ESC40_JUL1917
+
+    Skin Name:BR14_ESC45_JAN1918
+
+    Skin Name:BR14_ESC45_JUL1917
+
+    Skin Name:BR14_ESC52_JAN1918
+
+    Skin Name:BR14_ESC52_JUL1917
+
+    Skin Name:BR14_ESC58_JAN1918
+
+    Skin Name:BR14_ESC58_JUL1917
+
+    Skin Name:BR14_ESC64_JAN1918
+
+    Skin Name:BR14_ESC64_JUL1917
+
+    Skin Name:BR14_ESC66_JAN1918
+
+    Skin Name:BR14_ESC66_JUL1917
+

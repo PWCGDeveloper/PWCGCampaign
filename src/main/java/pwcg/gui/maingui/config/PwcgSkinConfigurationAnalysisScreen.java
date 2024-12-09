@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MissingSkin;
 import pwcg.core.utils.PWCGLogger;
@@ -67,9 +68,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgSkinConfigurationAnalysisScreen);
             this.setImageFromName(imagePath);
-            
-            skinAnalyzer.analyze();
-            
+                        
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, makeCenterPanel());
         }
@@ -176,13 +175,24 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
         return planeListOuterPanel;
 	}
 
-    private TreeMap<String, PlaneType> sortPlanesByType(List<PlaneType> planes)
+    private TreeMap<String, PlaneType> sortPlanesByType(List<PlaneType> planes) throws PWCGException
     {
         TreeMap<String, PlaneType> planeMap = new TreeMap<String, PlaneType>();
-        for (int i = 0; i < planes.size(); ++i)
+        for (PlaneType planeType :  planes)
         {
-            PlaneType plane = planes.get(i);
-            planeMap.put(plane.getType(), plane);
+            PlaneType actualPlaneType = null;
+            if (planeType.getSubstituteType().isEmpty())
+            {
+                actualPlaneType = planeType;
+            }
+            else
+            {
+                PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+                actualPlaneType = planeTypeFactory.createPlaneTypeByType(planeType.getSubstituteType());        
+            }
+
+            
+            planeMap.put(actualPlaneType.getType(), actualPlaneType);
         }
         return planeMap;
     }
@@ -237,6 +247,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
 			}
             if (ae.getActionCommand().equalsIgnoreCase("DisplayMissing"))
             {
+                PWCGContext.rebuild();
                 skinAnalyzer.analyze();
                 displayMissingSkinsForSelectedPlanes();
             }

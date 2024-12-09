@@ -9,6 +9,7 @@
             "squadId": 303094,
             "country": "USA",
             "category": "Configured",
+			"definedInGame": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_ONE"
         },

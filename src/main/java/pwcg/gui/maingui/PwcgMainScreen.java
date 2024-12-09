@@ -60,7 +60,7 @@ import pwcg.gui.utils.ToolTipManager;
 public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
-    private static final String VERSION = "16.1.1";
+    private static final String VERSION = "17.0.0 Beta";
 
     private PwcgThreePanelUI pwcgThreePanel;
 	private List<JButton> campaignButtonList = new ArrayList<JButton>();

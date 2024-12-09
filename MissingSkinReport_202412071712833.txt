@@ -1,6 +1,0 @@
-
-Plane: SPAD 7.C1 150hp
-    Skin Name:SP7EARLY_ESC80
-    Skin Name:SP7EARLY_ESC82
-    Skin Name:SP7EARLY_ESC83
-    Skin Name:SP7EARLY_ESC84

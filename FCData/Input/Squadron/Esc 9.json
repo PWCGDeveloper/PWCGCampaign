@@ -119,7 +119,7 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "BR14_ESC9_JUL1917",
+			"skinName": "BR14_ESC9_Buff",
 			"planeType": "breguet14",
 			"archTypes": [],
 			"startDate": "19170101",
@@ -134,7 +134,7 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "BR14_ESC9_JAN1918",
+			"skinName": "BR14_ESC9_Camo",
 			"planeType": "breguet14",
 			"archTypes": [],
 			"startDate": "19170101",
