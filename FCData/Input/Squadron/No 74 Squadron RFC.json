@@ -56,11 +56,9 @@
 			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19181201",
-			"squadId": 302074,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
 			"tacticalCodeColor": "WHITE"

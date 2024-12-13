@@ -75,5 +75,19 @@
 	"nightMissionOdds": {
 		"nightMissionPeriods": []
 	},
-	"skins": []
+	"skins": [
+		{
+			"skinName": "DH4_RFC25",
+			"planeType": "aircodh4",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
+		}
+	]
 }

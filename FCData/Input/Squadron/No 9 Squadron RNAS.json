@@ -88,7 +88,22 @@
 	},
 	"skins": [
 		{
-			"skinName": "SopTri",
+			"skinName": "SOPPUP_9RNAS",
+			"planeType": "soptriplane",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"squadId": 302209,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "SOPTRI_9RNAS",
 			"planeType": "soptriplane",
 			"archTypes": [],
 			"startDate": "19170101",

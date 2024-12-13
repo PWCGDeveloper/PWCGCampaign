@@ -57,16 +57,14 @@
 	},
 	"skins": [
 		{
-			"skinName": "DH4_No16",
+			"skinName": "DH4_RFC16",
 			"planeType": "aircodh4",
 			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"squadId": 302016,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
 			"tacticalCodeColor": "WHITE"

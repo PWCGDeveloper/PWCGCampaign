@@ -63,20 +63,5 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
-		{
-			"skinName": "DH4_No52",
-			"planeType": "aircodh4",
-			"archTypes": [],
-			"startDate": "19170101",
-			"endDate": "19181201",
-			"squadId": 302052,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeType": "CODE_POSITION_ONE",
-			"tacticalCodeColor": "WHITE"
-		}
 	]
 }

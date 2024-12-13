@@ -83,31 +83,14 @@
             "winter": false
         },
 		{
-			"skinName": "SE5a_RFC24_E",
+			"skinName": "SE5a_RFC24",
 			"planeType": "se5a",
 			"archTypes": [],
-			"startDate": "19170601",
-			"endDate": "19180321",
-			"squadId": 302024,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": false,
-			"useTacticalCodes": true,
-			"tacticalCodeType": "CODE_POSITION_THREE",
-			"tacticalCodeColor": "WHITE"
-		},
-		{
-			"skinName": "SE5a_RFC24_L",
-			"planeType": "se5a",
-			"archTypes": [],
-			"startDate": "19180322",
+			"startDate": "19170101",
 			"endDate": "19181201",
-			"squadId": 302024,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_THREE",
 			"tacticalCodeColor": "WHITE"
