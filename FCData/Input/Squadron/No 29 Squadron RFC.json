@@ -84,7 +84,7 @@
             "winter": false
         },
 		{
-			"skinName": "SE5a",
+			"skinName": "SE5a_RFC24",
 			"planeType": "se5a",
 			"archTypes": [],
 			"startDate": "19170101",

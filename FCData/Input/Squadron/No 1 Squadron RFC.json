@@ -66,14 +66,14 @@
 	},
 	"skins": [
 		{
-			"skinName": "SE5a",
+			"skinName": "SE5a_RFC1",
 			"planeType": "se5a",
 			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "Britain",
 			"category": "Squadron",
-			"definedInGame": true,
+			"definedInGame": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_THREE",
 			"tacticalCodeColor": "WHITE"

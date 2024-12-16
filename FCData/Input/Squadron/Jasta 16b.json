@@ -230,7 +230,7 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "FDr1_J16b_SEP17",
+			"skinName": "FDr1_J16b_Early",
 			"planeType": "fokkerdr1",
 			"archTypes": [],
 			"startDate": "19171101",
@@ -245,7 +245,7 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "FDr1_J16b_APR18",
+			"skinName": "FDr1_J16b_Late",
 			"planeType": "fokkerdr1",
 			"archTypes": [],
 			"startDate": "19180416",
@@ -260,31 +260,27 @@
 			"tacticalCodeColor": "BLACK"
 		},
 		{
-			"skinName": "FD7_J16b_4_Color_Loz",
+			"skinName": "FD7_J16b_4_Color",
 			"planeType": "fokkerd7",
 			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
-			"squadId": 401016,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": false,
 			"tacticalCodeType": "PATTERN_UNDEFINED",
 			"tacticalCodeColor": "WHITE"
 		},
 		{
-			"skinName": "FD7_J16b_5_Color_Loz",
+			"skinName": "FD7_J16b_5_Color",
 			"planeType": "fokkerd7",
 			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
-			"squadId": 401016,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": false,
 			"tacticalCodeType": "PATTERN_UNDEFINED",
 			"tacticalCodeColor": "WHITE"
@@ -295,11 +291,9 @@
 			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
-			"squadId": 401016,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": false,
 			"tacticalCodeType": "PATTERN_UNDEFINED",
 			"tacticalCodeColor": "WHITE"
@@ -310,14 +304,25 @@
 			"archTypes": [],
 			"startDate": "19180416",
 			"endDate": "19181201",
-			"squadId": 401016,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": false,
 			"tacticalCodeType": "PATTERN_UNDEFINED",
 			"tacticalCodeColor": "WHITE"
-		}
+		},
+	{
+		"skinName": "PD12_J16b",
+		"planeType": "pfalzd12",
+		"archTypes": [],
+		"startDate": "19180502",
+		"endDate": "19181201",
+		"country": "Germany",
+		"category": "Squadron",
+		"definedInGame": false,
+		"useTacticalCodes": true,
+		"tacticalCodeType": "CODE_POSITION_ONE",
+		"tacticalCodeColor": "WHITE"
+	}
 	]
 }

@@ -58,7 +58,6 @@ public class SkinAnalyzer
 		for (PlaneType plane : PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes())
 		{
 			SkinsForPlane skinsForPlane = PWCGContext.getInstance().getSkinManager().getSkinsForPlane(plane.getType());
-		
 			for (Skin skin : skinsForPlane.getSquadronSkins().getSkins().values())
 			{
                 if (isSkinMissing(skin))

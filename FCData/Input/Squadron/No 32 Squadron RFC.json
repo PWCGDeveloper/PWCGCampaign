@@ -85,14 +85,14 @@
             "winter": false
         },
 		{
-			"skinName": "SE5a",
+			"skinName": "se5a",
 			"planeType": "se5a",
 			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
 			"country": "Britain",
 			"category": "Squadron",
-			"definedInGame": false,
+			"definedInGame": true,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_THREE",
 			"tacticalCodeColor": "WHITE"

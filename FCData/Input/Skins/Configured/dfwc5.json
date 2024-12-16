@@ -1,68 +1,34 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"dfwc5": {
-			"skinName": "dfwc5",
-			"planeType": "dfwc5",
-			"startDate": "19160101",
-			"endDate": "19180424",
-			"squadId": -2,
-			"country": "GERMANY",
-			"category": "Configured",
-			"definedInGame": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_THREE"
-		},
-		"dfwc5_blank_01": {
-			"skinName": "dfwc5_blank_01",
-			"planeType": "dfwc5",
-			"startDate": "19170901",
-			"endDate": "19180424",
-			"squadId": -2,
-			"country": "GERMANY",
-			"category": "Configured",
-			"definedInGame": true,
-			"tacticalCodeColor": "BLACK",
-			"tacticalCodeType": "CODE_POSITION_THREE"
-		},
 		"dfwc5_blank_02": {
 			"skinName": "dfwc5_blank_02",
 			"planeType": "dfwc5",
 			"startDate": "19160101",
-			"endDate": "19180424",
+			"endDate": "19170501",
 			"squadId": -2,
 			"country": "GERMANY",
 			"category": "Configured",
 			"definedInGame": true,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_THREE"
 		},
-		"dfwc5_blank_03": {
-			"skinName": "dfwc5_blank_03",
+		"dfwc5": {
+			"skinName": "dfwc5",
 			"planeType": "dfwc5",
-			"startDate": "19160101",
-			"endDate": "19180424",
+			"startDate": "19170401",
+			"endDate": "19170901",
 			"squadId": -2,
 			"country": "GERMANY",
 			"category": "Configured",
 			"definedInGame": true,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_THREE"
 		},
-		"dfwc5_blank_04": {
-			"skinName": "dfwc5_blank_04",
-			"planeType": "dfwc5",
-			"startDate": "19180423",
-			"endDate": "19181201",
-			"squadId": -2,
-			"country": "GERMANY",
-			"category": "Configured",
-			"definedInGame": true,
-			"tacticalCodeColor": "WHITE",
-			"tacticalCodeType": "CODE_POSITION_THREE"
-		},
-		"dfwc5_blank_05": {
-			"skinName": "dfwc5_blank_05",
+		"dfwc5_blank_01": {
+			"skinName": "dfwdfwc5_blank_01",
 			"planeType": "dfwc5",
 			"startDate": "19170901",
 			"endDate": "19180424",
@@ -70,6 +36,7 @@
 			"country": "GERMANY",
 			"category": "Configured",
 			"definedInGame": true,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_THREE"
 		},
@@ -82,6 +49,7 @@
 			"country": "GERMANY",
 			"category": "Configured",
 			"definedInGame": true,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_THREE"
 		}

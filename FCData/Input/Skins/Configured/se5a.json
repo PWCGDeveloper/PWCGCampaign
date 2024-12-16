@@ -10,6 +10,7 @@
 			"country": "BRITAIN",
 			"category": "Configured",
 			"definedInGame": true,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_ONE"
 		}

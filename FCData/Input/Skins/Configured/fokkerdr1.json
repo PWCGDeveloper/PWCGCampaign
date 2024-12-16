@@ -1,20 +1,46 @@
 {
     "skinSetType": "SKIN_CONFIGURED",
     "skins": {
-		"fokkerdr1": {
-			"skinName": "fokkerdr1",
+		"FDR1_Early_V1": {
+			"skinName": "FDR1_Early_V1",
 			"planeType": "fokkerdr1",
 			"startDate": "19160101",
 			"endDate": "19180428",
 			"squadId": -2,
 			"country": "GERMANY",
 			"category": "Configured",
-			"definedInGame": true,
+			"definedInGame": false,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_ONE"
 		},
-		"fokkerdr1_blank_01": {
-			"skinName": "fokkerdr1_blank_01",
+		"FDR1_Early_V2": {
+			"skinName": "FDR1_Early_V2",
+			"planeType": "fokkerdr1",
+			"startDate": "19160101",
+			"endDate": "19180428",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": false,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		},
+		"FDR1_Late_V1": {
+			"skinName": "FDR1_Late_V1",
+			"planeType": "fokkerdr1",
+			"startDate": "19180423",
+			"endDate": "19181201",
+			"squadId": -2,
+			"country": "GERMANY",
+			"category": "Configured",
+			"definedInGame": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		}
+		"FDR1_Late_V2": {
+			"skinName": "FDR1_Late_V2",
 			"planeType": "fokkerdr1",
 			"startDate": "19180423",
 			"endDate": "19181201",
