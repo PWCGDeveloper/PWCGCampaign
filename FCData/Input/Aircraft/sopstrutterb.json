@@ -16,6 +16,7 @@
 	"range": 700,
 	"isFlyable": true,
 	"isNovice": true,
+	"isRotary": true,
 	"planeSize": "PLANE_SIZE_MEDIUM",
 	"roleCategories": [
 		"BOMBER"

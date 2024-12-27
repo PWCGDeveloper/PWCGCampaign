@@ -1,6 +1,6 @@
 {
 	"type": "nieuport11",
-	"archType": "nieuport",
+	"archType": "nieuport11",
 	"side": "ALLIED",
 	"displayName": "Nieuport 11.C1",
 	"script": "LuaScripts\\WorldObjects\\Planes\\nieuport11.txt",
@@ -24,11 +24,12 @@
 	"range": 100,
 	"isFlyable": true,
 	"isNovice": false,
+	"isRotary": true,
 	"planeSize": "PLANE_SIZE_SMALL",
 	"roleCategories": [
 		"FIGHTER"
 	],
 	"introduction": "19160101",
-	"endProduction": "19160901",
+	"endProduction": "19160801",
 	"withdrawal": "19161001"
 }

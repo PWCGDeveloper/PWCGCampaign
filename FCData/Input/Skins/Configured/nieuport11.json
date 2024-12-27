@@ -5,11 +5,12 @@
             "skinName": "nieuport11",
             "planeType": "nieuport11",
             "startDate": "19160101",
-            "endDate": "19181201",
+            "endDate": "19160501",
             "squadId": -2,
             "country": "FRANCE",
             "category": "Configured",
             "definedInGame": true,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "RED",
 			"tacticalCodeType": "CODE_POSITION_ONE"
         },
@@ -22,7 +23,8 @@
             "country": "BRITAIN",
             "category": "Configured",
             "definedInGame": true,
-			"tacticalCodeColor": "WHITE",
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "BLACK",
 			"tacticalCodeType": "CODE_POSITION_ONE"
         },
         "nieuport11_blank_02": {
@@ -34,6 +36,7 @@
             "country": "BRITAIN",
             "category": "Configured",
             "definedInGame": true,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_ONE"
         },
@@ -46,8 +49,35 @@
             "country": "BELGIUM",
             "category": "Configured",
             "definedInGame": true,
+			"useTacticalCodes": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_ONE"
-        }
+        },
+		"nieuport11_blank_04": {
+		     "skinName": "nieuport11_blank_04",
+		     "planeType": "nieuport11",
+		     "startDate": "19160301",
+		     "endDate": "19181201",
+		     "squadId": -2,
+		     "country": "FRANCE",
+		     "category": "Configured",
+		     "definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		 },
+		 "nieuport11_blank_05": {
+		     "skinName": "nieuport11_blank_05",
+		     "planeType": "nieuport11",
+		     "startDate": "19160401",
+		     "endDate": "19181201",
+		     "squadId": -2,
+		     "country": "FRANCE",
+		     "category": "Configured",
+		     "definedInGame": true,
+			"useTacticalCodes": true,
+			"tacticalCodeColor": "WHITE",
+			"tacticalCodeType": "CODE_POSITION_ONE"
+		 }
     }
 }

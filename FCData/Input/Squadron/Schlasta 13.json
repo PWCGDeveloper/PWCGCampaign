@@ -57,19 +57,15 @@
             "planeType": "rolandc2a",
             "startDate": "19160101",
             "endDate": "19181201",
-            "squadId": -2,
             "country": "Germany",
-            "category": "Configured",
+            "category": "Squadron",
             "definedInGame": true,
             "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "winter": false
+            "tacticalCodeColor": "RED"
         },
 		{
 			"skinName": "CL2_Sch13_Early",
 			"planeType": "halberstadtcl2",
-			"archTypes": [
-			],
 			"startDate": "19170601",
 			"endDate": "19171101",
 			"country": "Germany",
@@ -83,8 +79,6 @@
 		{
 			"skinName": "CL2_Sch13_Late",
 			"planeType": "halberstadtcl2",
-			"archTypes": [
-			],
 			"startDate": "19171002",
 			"endDate": "19180415",
 			"country": "Germany",
@@ -98,8 +92,6 @@
 		{
 			"skinName": "CL2AU_Sch13_Early",
 			"planeType": "halberstadtcl2au",
-			"archTypes": [
-			],
 			"startDate": "19170101",
 			"endDate": "19171101",
 			"country": "Germany",
@@ -113,8 +105,6 @@
 		{
 			"skinName": "CL2AU_Sch13_Late",
 			"planeType": "halberstadtcl2au",
-			"archTypes": [
-			],
 			"startDate": "19171002",
 			"endDate": "19180415",
 			"country": "Germany",

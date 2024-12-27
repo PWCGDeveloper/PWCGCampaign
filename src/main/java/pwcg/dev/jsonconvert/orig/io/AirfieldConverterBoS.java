@@ -34,7 +34,7 @@ public class AirfieldConverterBoS
 
     private void convertFile(String mapName) throws PWCGException
     {
-        String filePath = "D:\\PWCG\\workspacePWCG2023\\PWCGCampaign\\BoSData\\Input\\" + mapName + "\\";
+        String filePath = "C:\\PWCG\\workspacePWCG2023\\PWCGCampaign\\BoSData\\Input\\" + mapName + "\\";
         AirfieldDescriptorListSet listAirfields = AirfieldDescriptorIOListJson.readJson(filePath, "AirfieldLocations");
         
         AirfieldDescriptorMapSet mapSet = new AirfieldDescriptorMapSet();

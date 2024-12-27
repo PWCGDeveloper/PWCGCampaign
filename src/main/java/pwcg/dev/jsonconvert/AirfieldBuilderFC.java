@@ -37,13 +37,13 @@ public class AirfieldBuilderFC
         String filename = "";
         try
         {
-            filename = "D:\\PWCG\\WesternFrontData\\WesternFrontAirfieldsMarked1.Mission";     
+            filename = "C:\\PWCG\\WesternFrontData\\WesternFrontAirfieldsMarked1.Mission";     
             readRunwayLocations(filename);
-            filename = "D:\\PWCG\\WesternFrontData\\WesternFrontAirfieldsMarked2.Mission";     
+            filename = "C:\\PWCG\\WesternFrontData\\WesternFrontAirfieldsMarked2.Mission";     
             readRunwayLocations(filename);
-            filename = "D:\\PWCG\\WesternFrontData\\WesternFrontAirfieldsMarked3.Mission";     
+            filename = "C:\\PWCG\\WesternFrontData\\WesternFrontAirfieldsMarked3.Mission";     
             readRunwayLocations(filename);
-            filename = "D:\\PWCG\\WesternFrontData\\WesternFrontAirfieldsMarked4.Mission";     
+            filename = "C:\\PWCG\\WesternFrontData\\WesternFrontAirfieldsMarked4.Mission";     
             readRunwayLocations(filename);
             writeAirfields(mapName);
         }

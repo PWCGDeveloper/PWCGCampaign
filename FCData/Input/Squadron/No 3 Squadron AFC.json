@@ -51,16 +51,14 @@
 	},
 	"skins": [
 		{
-			"skinName": "aircodh4",
-			"planeType": "aircodh4",
+			"skinName": "RE8_3RFC",
+			"planeType": "re8",
 			"archTypes": [],
-			"startDate": "19170101",
+			"startDate": "19160101",
 			"endDate": "19181201",
-			"squadId": 302003,
 			"country": "Britain",
 			"category": "Squadron",
-			"definedInGame": true,
-			"winter": false,
+			"definedInGame": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_THREE",
 			"tacticalCodeColor": "WHITE"

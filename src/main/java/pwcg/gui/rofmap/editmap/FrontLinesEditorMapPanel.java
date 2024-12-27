@@ -376,6 +376,6 @@ public class FrontLinesEditorMapPanel extends MapPanelBase
 
     public void writeFile(Graphics g) throws IOException
     {
-        ImageIO.write(image, "jpg", new File("D:\\PWCG\\MAPFILE.jpg"));
+        ImageIO.write(image, "jpg", new File("C:\\PWCG\\MAPFILE.jpg"));
     }
 }

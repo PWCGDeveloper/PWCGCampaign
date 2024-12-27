@@ -83,6 +83,18 @@
             "winter": false
         },
 		{
+			"skinName": "SOPPUP_24RFC",
+			"planeType": "soppup",
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
+		},
+		{
 			"skinName": "SE5a_RFC24",
 			"planeType": "se5a",
 			"archTypes": [],

@@ -67,16 +67,25 @@
 	},
 	"skins": [
 		{
-			"skinName": "SOPCAM_RFC46",
-			"planeType": "sopcamel",
-			"archTypes": [],
+			"skinName": "SOPPUP_46RFC",
+			"planeType": "soppup",
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"squadId": 302046,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE",
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "SOPCAM_RFC46",
+			"planeType": "sopcamel",
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
 			"tacticalCodeColor": "WHITE"

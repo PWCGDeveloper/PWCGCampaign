@@ -28,7 +28,7 @@ public class BargeBuilder
 
     private void getShippingLanes (String mapName) throws Exception 
     {
-        String filename = "D:\\PWCG\\NormandyData\\NormandyPWCGData.Mission";     
+        String filename = "C:\\PWCG\\NormandyData\\NormandyPWCGData.Mission";     
         readShippingLaneLocations(filename);
         writeShippingLanes(mapName);
     }

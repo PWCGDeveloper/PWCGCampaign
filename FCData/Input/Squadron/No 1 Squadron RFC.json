@@ -9,9 +9,14 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
-			"archType": "nieuport",
-			"squadronIntroduction": "19160101",
-			"squadronWithdrawal": "19171105"
+			"archType": "nieuport11",
+			"squadronIntroduction": "19160501",
+			"squadronWithdrawal": "19160615"
+		},
+		{
+			"archType": "nieuport17gbr",
+			"squadronIntroduction": "19160601",
+			"squadronWithdrawal": "19170701"
 		},
 		{
 			"archType": "se5",
@@ -65,6 +70,19 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
+		{
+			"skinName": "N17GBR_1RFC",
+			"planeType": "nieuport17gbr",
+			"archTypes": [],
+			"startDate": "19161101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
+		},
 		{
 			"skinName": "SE5a_RFC1",
 			"planeType": "se5a",

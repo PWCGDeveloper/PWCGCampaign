@@ -12,7 +12,7 @@ import pwcg.core.logfiles.event.GreatBattlesFileParseUtils;
 
 public class WeaponsModAvailabilityReader
 {
-    private static String MAP_DIR = "D:\\PWCG\\GTP\\unzip\\scg\\scripts";
+    private static String MAP_DIR = "C:\\PWCG\\GTP\\unzip\\scg\\scripts";
     private static String MOSCOW_MAP_FILE = "13planes-to-missions.cfg";
     private static String STALINGRAD_MAP_FILE = "14planes-to-missions.cfg";
     private static String KUBAN_MAP_FILE = "15planes-to-missions.cfg";

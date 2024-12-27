@@ -38,7 +38,7 @@
 			"definedInGame": true,
 			"tacticalCodeColor": "WHITE",
 			"tacticalCodeType": "CODE_POSITION_ONE"
-		}
+		},
 		"FDR1_Late_V2": {
 			"skinName": "FDR1_Late_V2",
 			"planeType": "fokkerdr1",

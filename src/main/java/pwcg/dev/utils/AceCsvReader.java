@@ -29,7 +29,7 @@ public class AceCsvReader
         try
         {
             AceCsvReader aceCsvReader = new AceCsvReader();
-            aceCsvReader.reaceAceFile("D:\\PWCG\\Aces\\Hermann Graf.txt");
+            aceCsvReader.reaceAceFile("C:\\PWCG\\Aces\\Hermann Graf.txt");
         }
         catch (Exception e)
         {

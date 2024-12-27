@@ -1,0 +1,18 @@
+
+Plane: Sopwith Triplane
+    Skin Name:SOPPUP_10RNAS
+    Skin Category:Squadron
+    Skin Name:SOPPUP_9RNAS
+    Skin Category:Squadron
+Because Sopwith Pup?
+
+Plane: Nieuport 11.C1
+    Skin Name:N11_Esc_124_Lafayette
+    Skin Category:Squadron
+Probably need N11 for all
+
+
+Plane: Nieuport 17.C1
+    Skin Name:N17_Esc_124_Lafayette
+    Skin Category:Squadron
+Probably need N17 for all

@@ -29,7 +29,7 @@ public class CityNameBuilder
 
     private void getCityNames (String mapName) throws PWCGException 
     {
-        String filename = "D:\\Temp\\Normandy_Cities.Group";     
+        String filename = "C:\\Temp\\Normandy_Cities.Group";     
         readGroundObjectsFromFile(filename, mapName);
 
     }

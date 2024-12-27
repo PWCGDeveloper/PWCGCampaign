@@ -18,6 +18,7 @@
 	"range": 250,
 	"isFlyable": true,
 	"isNovice": false,
+	"isRotary": true,
 	"planeSize": "PLANE_SIZE_SMALL",
 	"roleCategories": [
 		"FIGHTER",

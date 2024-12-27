@@ -9,9 +9,14 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
-			"archType": "nieuport",
+			"archType": "nieuport11",
 			"squadronIntroduction": "19160201",
-			"squadronWithdrawal": "19170501"
+			"squadronWithdrawal": "19160615"
+		},
+		{
+			"archType": "nieuport17gbr",
+			"squadronIntroduction": "19160601",
+			"squadronWithdrawal": "19170701"
 		},
 		{
 			"archType": "soptriplane",
@@ -83,6 +88,19 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
+		{
+			"skinName": "N17GBR_1RNAS",
+			"planeType": "nieuport17gbr",
+			"archTypes": [],
+			"startDate": "19161101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
+		},
 		{
 			"skinName": "SOPTRI_1RNAS",
 			"planeType": "soptriplane",

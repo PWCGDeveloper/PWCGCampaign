@@ -63,5 +63,18 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
+		{
+			"skinName": "RE8_52RFC",
+			"planeType": "re8",
+			"archTypes": [],
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_THREE",
+			"tacticalCodeColor": "WHITE"
+		}
 	]
 }

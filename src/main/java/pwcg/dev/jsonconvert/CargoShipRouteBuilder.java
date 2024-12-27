@@ -34,7 +34,7 @@ public class CargoShipRouteBuilder
 
     private void getCargoRoutes (String mapName) throws Exception 
     {
-        String filename = "D:\\PWCG\\NormandyData\\NormandyPWCGData.Mission";     
+        String filename = "C:\\PWCG\\NormandyData\\NormandyPWCGData.Mission";     
         readCargoRouteLocations(filename);
         writeCargoRoutes(mapName);
     }

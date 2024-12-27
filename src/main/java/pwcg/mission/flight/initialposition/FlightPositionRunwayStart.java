@@ -34,7 +34,11 @@ public class FlightPositionRunwayStart
 
             plane.populateEntity(flight, flightLeader);
             
-            int startOnRunwayVal = FlightStartPosition.START_ON_RUNWAY;
+            int startOnRunwayVal = FlightStartPosition.START_ENGINE_WARM;
+            if (plane.isRotary())
+            {
+            	startOnRunwayVal = FlightStartPosition.START_ENGINE_COLD;
+            }
             plane.setStartInAir(startOnRunwayVal);
         }
     }

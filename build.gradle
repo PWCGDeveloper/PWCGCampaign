@@ -44,21 +44,10 @@ jar {
   	}
 }
 
-test {
-    if (System.properties['test.profile'] != 'integration') {
-        useJUnitPlatform()
-        maxParallelForks = Runtime.runtime.availableProcessors()
-        exclude '**/*integration*'
-    } 
-    else {
-        useJUnitPlatform()
-        exclude '**/*pwcg/*'
-    }
-}
 
 task copyJar(type: Exec) {
     workingDir "$projectDir"
-    commandLine 'cmd', '/c', ' cp build/libs/PWCG.jar D:/PWCG/Deploy/PWCG.jar'
+    commandLine 'cmd', '/c', ' cp build/libs/PWCG.jar C:/PWCG/Deploy/PWCG.jar'
 }
 
 
@@ -69,22 +58,22 @@ task deploy(type:JavaExec) {
 
 task buildBoS(type: Exec) {
     workingDir "$projectDir"
-    commandLine 'cmd', '/c', 'D:/Utils/launch4j/launch4jc.exe D:/PWCG/Deploy/Launch4JConfigs/BosLaunchConfig.xml'
+    commandLine 'cmd', '/c', 'C:/Utils/launch4j/launch4jc.exe C:/PWCG/Deploy/Launch4JConfigs/BosLaunchConfig.xml'
 }
 
 task zipBoS(type: Exec) {
     workingDir "$projectDir"
-    commandLine 'cmd', '/c', 'D:/Utils/7Zip/7-zip/7z.exe a -tzip D:/PWCG/Deploy/PWCGBoS.zip D:/PWCG/Deploy/PWCGBoS'
+    commandLine 'cmd', '/c', 'C:/Utils/7Zip/7-zip/7z.exe a -tzip C:/PWCG/Deploy/PWCGBoS.zip C:/PWCG/Deploy/PWCGBoS'
 }
 
 task buildFC(type: Exec) {
     workingDir "$projectDir"
-    commandLine 'cmd', '/c', 'D:/Utils/launch4j/launch4jc.exe D:/PWCG/Deploy/Launch4JConfigs/FCLaunchConfig.xml'
+    commandLine 'cmd', '/c', 'C:/Utils/launch4j/launch4jc.exe C:/PWCG/Deploy/Launch4JConfigs/FCLaunchConfig.xml'
 }
 
 task zipFC(type: Exec) {
     workingDir "$projectDir"
-    commandLine 'cmd', '/c', ' D:/Utils/7Zip/7-zip/7z.exe a -tzip D:/PWCG/Deploy/PWCGFC.zip D:/PWCG/Deploy/PWCGFC'
+    commandLine 'cmd', '/c', ' C:/Utils/7Zip/7-zip/7z.exe a -tzip C:/PWCG/Deploy/PWCGFC.zip C:/PWCG/Deploy/PWCGFC'
 }
 
 tasks.named("build") { finalizedBy("copyJar") }

@@ -9,9 +9,14 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
-			"archType": "nieuport",
+			"archType": "nieuport11",
 			"squadronIntroduction": "19160401",
-			"squadronWithdrawal": "19161105"
+			"squadronWithdrawal": "19160801"
+		},
+		{
+			"archType": "nieuport17gbr",
+			"squadronIntroduction": "19160701",
+			"squadronWithdrawal": "19161101"
 		},
 		{
 			"archType": "soppup",
@@ -88,16 +93,26 @@
 	},
 	"skins": [
 		{
-			"skinName": "SOPPUP_9RNAS",
-			"planeType": "soptriplane",
+			"skinName": "N17GBR_9RNAS",
+			"planeType": "nieuport17gbr",
 			"archTypes": [],
-			"startDate": "19170101",
+			"startDate": "19161101",
 			"endDate": "19181201",
-			"squadId": 302209,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
+		},
+		{
+			"skinName": "SOPPUP_9RNAS",
+			"planeType": "soppup",
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
 			"tacticalCodeColor": "WHITE"
@@ -105,14 +120,11 @@
 		{
 			"skinName": "SOPTRI_9RNAS",
 			"planeType": "soptriplane",
-			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"squadId": 302209,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
 			"tacticalCodeColor": "WHITE"
@@ -120,14 +132,11 @@
 		{
 			"skinName": "SOPCAM_9RNAS",
 			"planeType": "sopcamel",
-			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",
-			"squadId": 302209,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
 			"tacticalCodeColor": "WHITE"

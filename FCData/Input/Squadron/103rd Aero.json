@@ -9,8 +9,13 @@
 	"squadronTacticalCodeColorOverride": "RED",
 	"planeAssignments": [
 		{
-			"archType": "nieuport",
+			"archType": "nieuport17gbr",
 			"squadronIntroduction": "19160501",
+			"squadronWithdrawal": "19160801"
+		},
+		{
+			"archType": "nieuport17",
+			"squadronIntroduction": "19160701",
 			"squadronWithdrawal": "19170601"
 		},
 		{
@@ -67,7 +72,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "N11_Esc_124_Lafayette",
+			"skinName": "N11_Esc124",
 			"planeType": "nieuport11",
 			"archTypes": [],
 			"startDate": "19160101",
@@ -82,7 +87,22 @@
 			"tacticalCodeColor": "RED"
 		},
 		{
-			"skinName": "N17_Esc_124_Lafayette",
+			"skinName": "N17GBR_Esc124",
+			"planeType": "nieuport17gbr",
+			"archTypes": [],
+			"startDate": "19160101",
+			"endDate": "19181201",
+			"squadId": 303103,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
+		},
+		{
+			"skinName": "N17_Esc124",
 			"planeType": "nieuport17",
 			"archTypes": [],
 			"startDate": "19160101",

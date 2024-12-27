@@ -56,13 +56,11 @@
             "planeType": "rolandc2a",
             "startDate": "19160101",
             "endDate": "19181201",
-            "squadId": -2,
             "country": "Germany",
-            "category": "Configured",
+            "category": "Squadron",
             "definedInGame": true,
             "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "winter": false
+            "tacticalCodeColor": "RED"
         },
 		{
 			"skinName": "CL2_Sch12_Early",
@@ -70,11 +68,9 @@
 			"archTypes": [],
 			"startDate": "19170601",
 			"endDate": "19171101",
-			"squadId": 401112,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
 			"tacticalCodeColor": "RED"
@@ -85,11 +81,9 @@
 			"archTypes": [],
 			"startDate": "19171002",
 			"endDate": "19180415",
-			"squadId": 401112,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
 			"tacticalCodeColor": "RED"
@@ -100,11 +94,9 @@
 			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19171101",
-			"squadId": 401112,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
 			"tacticalCodeColor": "RED"
@@ -115,11 +107,9 @@
 			"archTypes": [],
 			"startDate": "19171002",
 			"endDate": "19180415",
-			"squadId": 401112,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
 			"tacticalCodeColor": "RED"

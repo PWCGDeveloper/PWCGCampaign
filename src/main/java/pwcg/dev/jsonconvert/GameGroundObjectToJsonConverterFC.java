@@ -16,8 +16,8 @@ import pwcg.dev.jsonconvert.orig.io.GroundObjectsFileReader;
 
 public class GameGroundObjectToJsonConverterFC
 {
-    private static final String inputDirectory = "D:\\PWCG\\MapObjects\\FC\\";
-    private static final String outputDirectory = "D:\\PWCG\\workspacePWCG\\PWCGCampaign\\FCData\\Input\\";
+    private static final String inputDirectory = "C:\\PWCG\\MapObjects\\FC\\";
+    private static final String outputDirectory = "C:\\PWCG\\workspacePWCG\\PWCGCampaign\\FCData\\Input\\";
 
     private Map<String, GroundObjectsFileReader> readers = new HashMap<>();
     

@@ -6,7 +6,7 @@ public class BoSDeploy extends DeployBase
 {
 	public BoSDeploy()
 	{
-        targetFinalDir = "D:\\PWCG\\Deploy\\PWCGBoS";
+        targetFinalDir = "C:\\PWCG\\Deploy\\PWCGBoS";
 	}
 
     @Override

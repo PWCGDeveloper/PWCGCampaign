@@ -15,8 +15,10 @@
 	"cruisingSpeed": 110,
 	"climbOutRate": 120,
 	"goodness": 48,
-	"range": 200,"isFlyable":true,
+	"range": 200,
+	"isFlyable":true,
 	"isNovice": true,
+	"isRotary": true,
 	"planeSize": "PLANE_SIZE_SMALL",
 	"roleCategories": [
 		"FIGHTER"

@@ -9,9 +9,9 @@
 	"squadronTacticalCodeColorOverride": "NONE",
 	"planeAssignments": [
 		{
-			"archType": "nieuport",
+			"archType": "nieuport17",
 			"squadronIntroduction": "19160801",
-			"squadronWithdrawal": "19170105"
+			"squadronWithdrawal": "19170101"
 		},
 		{
 			"archType": "spad",
@@ -55,6 +55,19 @@
 		"nightMissionPeriods": []
 	},
 	"skins": [
+		{
+			"skinName": "N17_ESC65",
+			"planeType": "nieuport17",
+			"archTypes": [],
+			"startDate": "19170101",
+			"endDate": "19181201",
+			"country": "France",
+			"category": "Squadron",
+			"definedInGame": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "RED"
+		},
 		{
 			"skinName": "SP7EARLY_ESC65",
 			"planeType": "spad7early",

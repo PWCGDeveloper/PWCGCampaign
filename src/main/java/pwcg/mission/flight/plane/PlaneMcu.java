@@ -108,7 +108,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.pilot = pilot;
         this.name = pilot.getNameAndRank();
         this.setCountry(country);
-        this.startInAir = FlightStartPosition.START_IN_AIR;
+        this.startInAir = FlightStartPosition.START_ENGINE_RUNNING;
 
         this.index = IndexGenerator.getInstance().getNextIndex();
         this.entity = new McuTREntity(index);
@@ -435,7 +435,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
 
     public boolean getStartInAir()
     {
-        int startInAirVal = FlightStartPosition.START_IN_AIR;
+        int startInAirVal = FlightStartPosition.START_ENGINE_RUNNING;
         if (startInAir == startInAirVal)
         {
             return true;

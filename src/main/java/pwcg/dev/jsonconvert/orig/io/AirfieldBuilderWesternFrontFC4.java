@@ -46,7 +46,7 @@ public class AirfieldBuilderWesternFrontFC4
 
     public void getAirfieldNames (String mapName) throws Exception 
     {
-        String filename = "D:\\PWCG\\WesternFrontData\\WesternFroneMapFC4Airfields.Mission";     
+        String filename = "C:\\PWCG\\WesternFrontData\\WesternFroneMapFC4Airfields.Mission";     
         readAirfields(filename);
         readRunwayLocations(filename);        
         buildBoSAirfields();

@@ -36,7 +36,7 @@ public class NormandyAmphibiousAssaultBuilder
 
     private void buildAmphibiousAssaults (String mapName) throws Exception 
     {
-        String filename = "D:\\PWCG\\NormandyData\\NormandyPWCGData.Mission";     
+        String filename = "C:\\PWCG\\NormandyData\\NormandyPWCGData.Mission";     
         initializeAmphibiousAssaults();
         readAmphibiousAssaults(filename);
         writeAmphibiousAssaults(mapName);

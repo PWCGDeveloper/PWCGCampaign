@@ -14,8 +14,8 @@
 			"squadronWithdrawal": "19170405"
 		},
 		{
-			"archType": "nieuport",
-			"squadronIntroduction": "19170301",
+			"archType": "nieuport17gbr",
+			"squadronIntroduction": "19170401",
 			"squadronWithdrawal": "19171105"
 		},
 		{
@@ -83,6 +83,19 @@
             "tacticalCodeColor": "WHITE",
             "winter": false
         },
+		{
+			"skinName": "N17GBR_29RFC",
+			"planeType": "nieuport17gbr",
+			"archTypes": [],
+			"startDate": "19161101",
+			"endDate": "19181201",
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"useTacticalCodes": true,
+			"tacticalCodeType": "CODE_POSITION_ONE_AND_TWO",
+			"tacticalCodeColor": "WHITE"
+		},
 		{
 			"skinName": "SE5a_RFC24",
 			"planeType": "se5a",

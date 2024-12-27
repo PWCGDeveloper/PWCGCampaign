@@ -29,7 +29,7 @@ public class CityNameBuilderFC
 
     private void getCityNames (String mapName) throws PWCGException 
     {
-        String filename = "D:\\PWCG\\WesternFrontData\\WesternFrontCitiesFC4.Mission";     
+        String filename = "C:\\PWCG\\WesternFrontData\\WesternFrontCitiesFC4.Mission";     
         readGroundObjectsFromFile(filename, mapName);
 
     }

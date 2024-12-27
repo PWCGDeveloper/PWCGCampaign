@@ -34,7 +34,7 @@ public class FlightPositionParkedStart
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             Coordinate planeCoords = MathUtils.calcNextCoord(flight.getCampaign().getCampaignMap(), parkingLocation.getPosition(), offsetAngle, planeSpacing * i);
-            int startParkedVal = FlightStartPosition.START_PARKED;
+            int startParkedVal = FlightStartPosition.START_ENGINE_COLD;
 
             setPlanePosition(flightLeader, parkingLocation, plane, planeCoords, startParkedVal);
             ++i;

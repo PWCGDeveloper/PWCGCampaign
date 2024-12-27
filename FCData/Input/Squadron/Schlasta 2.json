@@ -56,73 +56,59 @@
             "planeType": "rolandc2a",
             "startDate": "19160101",
             "endDate": "19181201",
-            "squadId": -2,
             "country": "Germany",
             "category": "Configured",
             "definedInGame": true,
             "useTacticalCodes": true,
-            "tacticalCodeColor": "WHITE",
-            "winter": false
+            "tacticalCodeColor": "BLACK"
         },
 		{
 			"skinName": "CL2_Sch2_Early",
 			"planeType": "halberstadtcl2",
-			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19171101",
-			"squadId": 401102,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
-			"tacticalCodeColor": "RED"
+			"tacticalCodeColor": "REBLACKD"
 		},
 		{
 			"skinName": "CL2_Sch2_Late",
 			"planeType": "halberstadtcl2",
-			"archTypes": [],
 			"startDate": "19171002",
 			"endDate": "19180415",
-			"squadId": 401102,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
-			"tacticalCodeColor": "RED"
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "CL2AU_Sch2_Early",
 			"planeType": "halberstadtcl2au",
-			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19171101",
-			"squadId": 401102,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
-			"tacticalCodeColor": "RED"
+			"tacticalCodeColor": "BLACK"
 		},
 		{
 			"skinName": "CL2AU_Sch2_Late",
 			"planeType": "halberstadtcl2au",
-			"archTypes": [],
 			"startDate": "19171002",
 			"endDate": "19180415",
-			"squadId": 401102,
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false,
-			"winter": false,
 			"useTacticalCodes": true,
 			"tacticalCodeType": "CODE_POSITION_ONE",
-			"tacticalCodeColor": "RED"
+			"tacticalCodeColor": "BLACK"
 		}
 	]
 }

@@ -28,8 +28,8 @@ public class FindTheObject
     
     public void findObjects() throws Exception 
     {
-        read("D:\\PWCG\\Bugs\\Objects\\WesternFront_ALL.Group", groups);
-        read("D:\\PWCG\\Bugs\\Objects\\UniqueObjects.txt", objectsFromMission);
+        read("C:\\PWCG\\Bugs\\Objects\\WesternFront_ALL.Group", groups);
+        read("C:\\PWCG\\Bugs\\Objects\\UniqueObjects.txt", objectsFromMission);
         
         for (String objectFromMission : objectsFromMission)
         {

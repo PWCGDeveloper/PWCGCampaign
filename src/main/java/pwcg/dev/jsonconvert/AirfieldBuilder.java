@@ -36,7 +36,7 @@ public class AirfieldBuilder
 
     private void getAirfieldNames (String mapName) throws Exception 
     {
-        String filename = "D:\\PWCG\\Normandy\\NormandyPWCGData.Mission";     
+        String filename = "C:\\PWCG\\Normandy\\NormandyPWCGData.Mission";     
         readRunwayLocations(filename);
         writeAirfields(mapName);
     }

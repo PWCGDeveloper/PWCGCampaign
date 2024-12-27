@@ -39,11 +39,12 @@ public class PlaneType implements Cloneable
     protected boolean isFlyable = false;
     protected boolean isNovice = false;
     protected boolean isRare = false;
+    protected boolean isRotary = false;
     protected PlaneSize planeSize = PlaneSize.PLANE_SIZE_SMALL;
     protected ArrayList<PwcgRoleCategory> roleCategories = new ArrayList<>();
     protected Date introduction;
     protected Date withdrawal;
-    protected Date endProduction;;
+    protected Date endProduction;
     protected Side side = null;
     protected List<Country> primaryUsedBy = new ArrayList<>();
     protected List<PayloadElement> stockModifications = new ArrayList<>();
@@ -78,6 +79,7 @@ public class PlaneType implements Cloneable
 
         planeType.isFlyable = this.isFlyable;
         planeType.isNovice = this.isNovice;
+        planeType.isRotary = this.isRotary;
         planeType.planeSize = this.planeSize;
 
         planeType.roleCategories = new ArrayList<>();
@@ -311,7 +313,15 @@ public class PlaneType implements Cloneable
         this.isFlyable = isFlyable;
     }
 
-    public ArrayList<PwcgRoleCategory> getRoleCategories()
+    public boolean isRotary() {
+		return isRotary;
+	}
+
+	public void setRotary(boolean isRotary) {
+		this.isRotary = isRotary;
+	}
+
+	public ArrayList<PwcgRoleCategory> getRoleCategories()
     {
         return roleCategories;
     }

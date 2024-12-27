@@ -1,6 +1,6 @@
 {
 	"type": "nieuport17gbr",
-	"archType": "nieuport",
+	"archType": "nieuport17gbr",
 	"side": "ALLIED",
 	"displayName": "Nieuport 17.C1 GBR",
 	"script": "LuaScripts\\WorldObjects\\Planes\\nieuport17gbr.txt",
@@ -22,11 +22,12 @@
 	"range": 100,
 	"isFlyable": true,
 	"isNovice": false,
+	"isRotary": true,
 	"planeSize": "PLANE_SIZE_SMALL",
 	"roleCategories": [
 		"FIGHTER"
 	],
-	"introduction": "19160801",
-	"endProduction": "19170401",
-	"withdrawal": "19170601"
+	"introduction": "19160301",
+	"endProduction": "19170801",
+	"withdrawal": "19171001"
 }

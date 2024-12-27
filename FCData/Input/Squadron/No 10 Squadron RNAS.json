@@ -84,7 +84,7 @@
 	"skins": [
 		{
 			"skinName": "SOPPUP_10RNAS",
-			"planeType": "soptriplane",
+			"planeType": "soppup",
 			"archTypes": [],
 			"startDate": "19170101",
 			"endDate": "19181201",

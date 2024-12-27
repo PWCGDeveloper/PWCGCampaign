@@ -13,7 +13,7 @@ import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 
 public class PlaneModSetReader
 {
-    private static String PLANES_DIR = "D:\\PWCG\\GTP\\unzip\\luascripts\\worldobjects\\planes";
+    private static String PLANES_DIR = "C:\\PWCG\\GTP\\unzip\\luascripts\\worldobjects\\planes";
 
     private Map <String, List<PlaneMod>> planeMods =  new TreeMap<>();
     String currentPlane = "";
