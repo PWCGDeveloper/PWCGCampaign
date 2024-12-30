@@ -1,3 +1,9 @@
+17.1.0
+Added recon missions with photos
+Bugs:
+Fixed issue that would cause patrols to be only one WP in previously unaccessible areas.
+Added more time to mission start.
+
 17.0.0
 Incorporation of FC IV
 - Added many squadrons

@@ -1,6 +1,5 @@
 package pwcg.dev.utils;
 
-import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
@@ -10,7 +9,6 @@ import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 

@@ -24,10 +24,19 @@ public class ReconPackage implements IFlightPackage
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.RECON);
         TargetDefinition targetDefinition = buildTargetDefintion(flightInformation);
 
-        ReconFlight reconFlight = new ReconFlight (flightInformation, targetDefinition);
-        reconFlight.createFlight();
-
-        packageFlights.add(reconFlight);
+        if (flightBuildInformation.isPlayerFlight() && !flightBuildInformation.getMission().getCampaign().isCoop())
+        {
+        	PlayerReconFlight reconFlight = new PlayerReconFlight (flightInformation, targetDefinition);
+        	reconFlight.createFlight();
+            packageFlights.add(reconFlight);        	
+        }
+        else
+        {
+        	ReconFlight reconFlight = new ReconFlight (flightInformation, targetDefinition);
+        	reconFlight.createFlight();
+            packageFlights.add(reconFlight);
+        }
+        
         return packageFlights;
     }
 

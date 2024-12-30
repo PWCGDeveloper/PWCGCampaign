@@ -1,34 +1,26 @@
 package pwcg.mission.flight.recon;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
+import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.target.TargetDefinition;
 
-public class ReconFlight extends Flight implements IFlight
+public class PlayerReconFlight extends ReconFlight
 {
-	private ReconFlightTypes reconFlightType = ReconFlightTypes.RECON_FLIGHT_FRONT;
-    
-    public static enum ReconFlightTypes
-    {
-        RECON_FLIGHT_FRONT,
-        RECON_FLIGHT_TRANSPORT,
-        RECON_FLIGHT_AIRFIELD,
-    }
+    private ReconFlightTypes reconFlightType = ReconFlightTypes.RECON_FLIGHT_FRONT;
 
-    public ReconFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
+    public PlayerReconFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
     {
         super(flightInformation, targetDefinition);
     }
-
+    
     public void createFlight() throws PWCGException
     {
         initialize(this);
@@ -48,29 +40,31 @@ public class ReconFlight extends Flight implements IFlight
         IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_NEAR_WAYPOINT, ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(flightBegin);
 
-        IMissionPointSet missionWaypoints = createReconMissionPointSet(ingressWaypoint);
+        IMissionPointSet missionWaypoints = createPlayerReconMissionPointSet(ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(missionWaypoints);
         
         IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(this);
         this.getWaypointPackage().addMissionPointSet(flightEnd);        
     }
 
-    public IMissionPointSet createReconMissionPointSet(McuWaypoint ingressWaypoint) throws PWCGException
+    public IMissionPointSet createPlayerReconMissionPointSet(McuWaypoint ingressWaypoint) throws PWCGException
     {
+        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(this, ingressWaypoint.getPosition());
+
         if (reconFlightType == ReconFlightTypes.RECON_FLIGHT_TRANSPORT)
         {
             ReconTransportWaypointsFactory waypoints = new ReconTransportWaypointsFactory(this);
-            return waypoints.createWaypoints(ingressWaypoint);
+            return waypoints.createPlayerWaypoints(ingressWaypoint, egressWaypoint);
         }
         else if (reconFlightType == ReconFlightTypes.RECON_FLIGHT_AIRFIELD)
         {
-            ReconAirfieldWaypointsFactory waypoints = new ReconAirfieldWaypointsFactory(this);
-            return waypoints.createWaypoints(ingressWaypoint);
+        	ReconAirfieldWaypointsFactory waypoints = new ReconAirfieldWaypointsFactory(this);
+            return waypoints.createPlayerWaypoints(ingressWaypoint, egressWaypoint);
         }
         else
         {
             ReconFrontWaypointsFactory waypoints = new ReconFrontWaypointsFactory(this);
-            return waypoints.createWaypoints(ingressWaypoint);
+            return waypoints.createPlayerWaypoints(ingressWaypoint, egressWaypoint);
         }       
     }
 
@@ -78,4 +72,5 @@ public class ReconFlight extends Flight implements IFlight
     {
         return reconFlightType;
     }
+	
 }

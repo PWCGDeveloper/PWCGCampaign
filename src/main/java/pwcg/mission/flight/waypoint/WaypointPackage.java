@@ -286,4 +286,10 @@ public class WaypointPackage implements IWaypointPackage
             landingMissionPoint.setLandOnPlane(planeIndex);
         }        
     }
+
+    @Override
+	public List<IMissionPointSet> getMissionPointSets() {
+		return missionPointSets;
+	}
+    
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.AirfieldDescriptor;
 import pwcg.campaign.group.airfield.AirfieldDescriptorListSet;
 import pwcg.campaign.group.airfield.AirfieldDescriptorMapSet;
@@ -42,15 +41,5 @@ public class AirfieldConverterBoS
         mapSet.setLocations(listAirfields.getLocations());
         
         AirfieldDescriptorIOMapJson.writeJson(filePath, "AirfieldLocations.json", mapSet);
-    }
-
-    private void writeAirfields(String mapName) throws PWCGException
-    {
-        AirfieldDescriptorMapSet airfieldDescriptorSet = new AirfieldDescriptorMapSet();
-        List<AirfieldDescriptor> locations = new ArrayList<>(airfields.values());
-        airfieldDescriptorSet = new AirfieldDescriptorMapSet();
-        airfieldDescriptorSet.setLocationSetName("Airfields");
-        airfieldDescriptorSet.setLocations(locations);
-        AirfieldDescriptorIOMapJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "AirfieldLocations", airfieldDescriptorSet);
     }
 }
