@@ -29,7 +29,8 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypointSet implements IMissionPointSet
 {
-    private IFlight flight;
+    private static final int TAKEOFF_DELAY = 15;
+	private IFlight flight;
     private Campaign campaign;
     private IMissionPointSet flightActivate;
     private McuTakeoff takeoffMcu = null;
@@ -146,6 +147,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
 
         int takeoffDelay = getStartDelay();
         formationTimer = McuFactory.createTimer(flight, "Formation", takeoffDelay);
+        formationTimer.setTime(TAKEOFF_DELAY);
     }
     
     private void createAttack() throws PWCGException

@@ -41,7 +41,7 @@ public class ArtillerySpotPackage implements IFlightPackage
 		IFlight artySpot = null;
 		if (flightInformation.isPlayerFlight())
 		{
-		    throw new PWCGException("Player artillery spot not supported");
+            artySpot = createPlayerFlight(selectedTarget.getPosition());
 		}
 		else
 		{
@@ -57,13 +57,18 @@ public class ArtillerySpotPackage implements IFlightPackage
         return selectedTarget;
     }
 
+    private IFlight createPlayerFlight(Coordinate targetCoordinates) throws PWCGException
+    {
+        PlayerArtillerySpotFlight artySpotPlayer = new PlayerArtillerySpotFlight (flightInformation, targetDefinition);
+        artySpotPlayer.createFlight();
+        return artySpotPlayer;
+    }
+
     private IFlight createAiFlight(Coordinate targetCoordinates) throws PWCGException
     {
-        IFlight artySpot;        
         ArtillerySpotFlight artySpotAI = new ArtillerySpotFlight (flightInformation, targetDefinition);
         artySpotAI.createFlight();
-        artySpot = artySpotAI;
-        return artySpot;
+        return artySpotAI;
     }
 
     private TargetDefinition buildTargetDefintion() throws PWCGException

@@ -31,9 +31,13 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
     public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight, PwcgRole missionRole) throws PWCGException
     {
         FlightTypes flightType = FlightTypes.ANY;
-        if (missionRole == PwcgRole.ROLE_BOMB || missionRole == PwcgRole.ROLE_ARTILLERY_SPOT)
+        if (missionRole == PwcgRole.ROLE_BOMB)
         {
             flightType = getBomberFlightType(squadron);
+        }
+        else if (missionRole == PwcgRole.ROLE_ARTILLERY_SPOT)
+        {
+            flightType = FlightTypes.ARTILLERY_SPOT;
         }
         else if (missionRole == PwcgRole.ROLE_FIGHTER)
         {

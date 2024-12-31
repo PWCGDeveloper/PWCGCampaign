@@ -51,4 +51,10 @@ public class McuActivate extends BaseFlightMcu
 		return output.toString();
 
 	}
+	
+
+    public void setActivateTarget(int target)
+    {
+        super.setTarget(target);
+    }
 }
