@@ -48,7 +48,7 @@ public class BriefingFlightParametersBuilder
 		     {
 		    	 addAttackPoint(playerFlight.getTargetDefinition().getPosition());
 		     }
-		     
+		     		     
 		     prevWaypoint = waypoint;
 		}
 	}

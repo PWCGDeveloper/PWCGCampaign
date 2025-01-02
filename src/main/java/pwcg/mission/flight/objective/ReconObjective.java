@@ -1,12 +1,12 @@
 package pwcg.mission.flight.objective;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.recon.ReconFlight;
+import pwcg.mission.flight.recon.IReconFlight;
 import pwcg.mission.flight.recon.ReconFlight.ReconFlightTypes;
 
 public class ReconObjective
 {
-    static String getMissionObjective(ReconFlight flight) throws PWCGException 
+    static String getMissionObjective(IReconFlight flight) throws PWCGException 
     {
         String objective = "";
 

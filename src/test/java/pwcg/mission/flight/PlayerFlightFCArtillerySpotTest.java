@@ -20,7 +20,6 @@ import pwcg.mission.flight.artySpot.PlayerArtillerySpotFlight;
 import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointPlayerReconSet;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestCampaignFactoryBuilder;

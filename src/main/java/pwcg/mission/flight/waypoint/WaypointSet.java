@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuWaypoint;
@@ -55,22 +54,16 @@ public class WaypointSet
     public void updateWaypointFromBriefing(BriefingMapPoint waypointFromBriefing) throws PWCGException
     {
         McuWaypoint waypoint = this.getWaypointById(waypointFromBriefing.getWaypointID());
-        Coordinate waypointPosition = waypointFromBriefing.getPosition();
-        waypointPosition.setYPos(waypointFromBriefing.getAltitude());
-        waypoint.setSpeed(waypointFromBriefing.getCruisingSpeed());
-        waypoint.setPosition(waypointPosition);
-    }
+        waypoint.updateFromBriefing(waypointFromBriefing);
+     }
 
     public long addWaypointFromBriefing(BriefingMapPoint waypointFromBriefing, long waypointIdBefore) throws PWCGException
     {
         McuWaypoint waypoint = this.getWaypointById(waypointIdBefore);
         McuWaypoint newWaypoint = waypoint.copy();
+        newWaypoint.updateFromBriefing(waypointFromBriefing);
         
-        Coordinate newPosition = waypointFromBriefing.getPosition();
-        newPosition.setYPos(waypointFromBriefing.getAltitude());
-        newWaypoint.setSpeed(waypointFromBriefing.getCruisingSpeed());
-        newWaypoint.setPosition(newPosition);
-        int indexToInsertAfter = getWaypointIndex(waypointIdBefore);
+         int indexToInsertAfter = getWaypointIndex(waypointIdBefore);
         waypoints.add(indexToInsertAfter+1, newWaypoint);
         
         return waypoint.getWaypointID();

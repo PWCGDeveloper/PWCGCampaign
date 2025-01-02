@@ -42,7 +42,7 @@ public class ReconFrontWaypointsFactory
         List<McuWaypoint> waypoints = waypointBuilder.createTargetWaypoints(ingressWaypoint.getPosition());
         for (McuWaypoint waypoint : waypoints)
         {
-        	ReconPlayerWaypoint reconPlayerWaypoint = ReconPlayerWaypointBuilder.buildReconPlayerWaypoint(waypoint);
+        	ReconPlayerWaypoint reconPlayerWaypoint = ReconPlayerWaypointBuilder.buildReconPlayerWaypoint(flight.getCampaign(), waypoint);
         	missionPointSet.addReconPlayerWaypoint(reconPlayerWaypoint);
         }		
 		

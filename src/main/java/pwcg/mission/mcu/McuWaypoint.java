@@ -4,8 +4,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
+import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.WaypointType;
@@ -185,5 +187,12 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
         PWCGLogger.log(LogLevel.DEBUG, "    " + desc);
         PWCGLogger.log(LogLevel.DEBUG, "    " + position.getXPos() + "   " + position.getZPos() + "   " + position.getYPos());
     }
+
+	public void updateFromBriefing(BriefingMapPoint waypointFromBriefing) {
+		Coordinate waypointPosition = waypointFromBriefing.getPosition();
+		waypointPosition.setYPos(waypointFromBriefing.getAltitude());
+		this.setSpeed(waypointFromBriefing.getCruisingSpeed());
+		this.setPosition(waypointPosition);		
+	}
 
 }

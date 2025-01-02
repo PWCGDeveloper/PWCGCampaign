@@ -21,6 +21,7 @@ import pwcg.mission.flight.recon.ReconPlayerWaypoint;
 import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightBeginTakeoff;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointPlayerReconSet;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.SquadronTestProfile;
@@ -48,36 +49,63 @@ public class PlayerFlightFCReconTest
         PlayerReconFlight flight = (PlayerReconFlight) mission.getFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         
-        McuWaypoint ingressMissionPoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_INGRESS);
-        Assertions.assertTrue (ingressMissionPoint != null);
+        McuWaypoint ingressWaypoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_INGRESS);
+        Assertions.assertTrue (ingressWaypoint != null);
+        Assertions.assertEquals(
+        		ingressWaypoint.getObjects().get(0), 
+        		Integer.valueOf(flight.getFlightPlanes().getFlightLeader().getLinkTrId()).toString());
+        
         McuWaypoint reconMissionPoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_RECON);
         Assertions.assertTrue (reconMissionPoint != null);
+        
         McuWaypoint egressMissionPoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS);
         Assertions.assertTrue (egressMissionPoint != null);
-        
+        Assertions.assertEquals(
+        		egressMissionPoint.getObjects().get(0), 
+        		Integer.valueOf(flight.getFlightPlanes().getFlightLeader().getLinkTrId()).toString());
+
         PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
 
         Assertions.assertEquals(FlightTypes.RECON, flight.getFlightType());        
         
         List<IMissionPointSet> missionPointSets = flight.getWaypointPackage().getMissionPointSets();
     	MissionPointPlayerReconSet reconSet = null;
+    	McuWaypoint lastClimbWP = null;
         for (IMissionPointSet missionPointSet : missionPointSets)
         {
+        	if (missionPointSet instanceof MissionPointFlightBeginTakeoff)
+        	{
+        		MissionPointFlightBeginTakeoff climbSet = (MissionPointFlightBeginTakeoff)missionPointSet;
+        		for (McuWaypoint waypoint : climbSet.getAllWaypoints())
+        		{
+        			if (waypoint.getWpAction() == WaypointAction.WP_ACTION_CLIMB)
+        			{
+        				lastClimbWP = waypoint;
+        			}
+        		}
+        	}
+ 
+        	
         	if (missionPointSet instanceof MissionPointPlayerReconSet)
         	{
+               	
+                Assertions.assertEquals(
+                		lastClimbWP.getTargets().get(0), 
+                		Integer.valueOf(ingressWaypoint.getIndex()).toString());
+
             	reconSet = (MissionPointPlayerReconSet)missionPointSet;
 
             	// Verify reference into recon WP list
-        		ReconPlayerWaypoint firstReconPlayerWaypoint = reconSet.getReconPlayerWaypoints().getFirst();
+        		ReconPlayerWaypoint firstReconPlayerWaypoint = reconSet.getReconPlayerWaypoints().get(0);
                 Assertions.assertEquals(
-                		ingressMissionPoint.getTargets().getFirst(), 
+                		ingressWaypoint.getTargets().get(0), 
                 		Integer.valueOf(firstReconPlayerWaypoint.getEntryTimer().getIndex()).toString());
 
         		// Verify reference out of recon WP list
-                ReconPlayerWaypoint lastReconPlayerWaypoint = reconSet.getReconPlayerWaypoints().getLast();
+                ReconPlayerWaypoint lastReconPlayerWaypoint = reconSet.getReconPlayerWaypoints().get(reconSet.getReconPlayerWaypoints().size()-1);
                 Assertions.assertEquals(
                 		Integer.valueOf(egressMissionPoint.getIndex()).toString(), 
-                		lastReconPlayerWaypoint.getExitTimer().getTargets().getFirst());
+                		lastReconPlayerWaypoint.getExitTimer().getTargets().get(0));
         		
                 // Verify internal recon WP construction
                 ReconPlayerWaypoint prevReconPlayerWaypoint = null;
@@ -86,25 +114,31 @@ public class PlayerFlightFCReconTest
                 	// Entry timer connected to WP
                     Assertions.assertEquals(
                     		Integer.valueOf(reconPlayerWaypoint.getWaypoint().getIndex()).toString(),
-                    		reconPlayerWaypoint.getEntryTimer().getTargets().getFirst());
+                    		reconPlayerWaypoint.getEntryTimer().getTargets().get(0));
                     
                 	// WP connected to Media
                     Assertions.assertEquals(
                     		Integer.valueOf(reconPlayerWaypoint.getPhotoMedia().getIndex()).toString(),
-                    		reconPlayerWaypoint.getWaypoint().getTargets().getFirst());
+                    		reconPlayerWaypoint.getWaypoint().getTargets().get(0));
                     
                 	// Media connected to Exit Timer
                     Assertions.assertEquals(
                     		reconPlayerWaypoint.getExitTimer().getIndex(),
-                    		reconPlayerWaypoint.getPhotoMedia().getEventList().getFirst().getTarId());
+                    		reconPlayerWaypoint.getPhotoMedia().getEventList().get(0).getTarId());
                     
                 	if (prevReconPlayerWaypoint != null)
                 	{               		
                 		// Verify reference to next recon WP
                         Assertions.assertEquals(
                         		Integer.valueOf(reconPlayerWaypoint.getEntryTimer().getIndex()).toString(),
-                        		prevReconPlayerWaypoint.getExitTimer().getTargets().getFirst());
+                        		prevReconPlayerWaypoint.getExitTimer().getTargets().get(0));
                 	}
+                	
+            		// Verify object association to flight leader
+                    Assertions.assertEquals(
+                    		reconPlayerWaypoint.getWaypoint().getObjects().get(0), 
+                    		Integer.valueOf(flight.getFlightPlanes().getFlightLeader().getLinkTrId()).toString());
+
                 	prevReconPlayerWaypoint = reconPlayerWaypoint;
                 }
         	}        	

@@ -108,4 +108,17 @@ public class BriefingMapPointFactory
         briefingMapPoint.setIsWaypoint(false);
         return briefingMapPoint;
     }
+
+	public static BriefingMapPoint createReconPoint(Coordinate photoPosition) {
+	       BriefingMapPoint briefingMapPoint = new BriefingMapPoint(McuWaypoint.NO_WAYPOINT_ID);
+	        briefingMapPoint.setDesc("Photo");
+	        briefingMapPoint.setPosition(photoPosition.copy());
+	        briefingMapPoint.setAltitude(Double.valueOf(photoPosition.getYPos()).intValue());
+	        briefingMapPoint.setCruisingSpeed(0);
+	        briefingMapPoint.setDistanceToNextPoint(0);
+	        briefingMapPoint.setIsEditable(false);
+	        briefingMapPoint.setIsTarget(true);
+	        briefingMapPoint.setIsWaypoint(false);
+	        return briefingMapPoint;
+	}
 }

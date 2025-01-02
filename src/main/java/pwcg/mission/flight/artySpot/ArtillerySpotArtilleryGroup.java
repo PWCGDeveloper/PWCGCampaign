@@ -62,7 +62,7 @@ public class ArtillerySpotArtilleryGroup
 
     public int getLeadIndex() 
     {
-        return artilleryBattery.getVehicles().getFirst().getEntity().getIndex();
+        return artilleryBattery.getVehicles().get(0).getEntity().getIndex();
     }
 
 	public void write(BufferedWriter writer) throws PWCGException {

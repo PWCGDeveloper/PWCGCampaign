@@ -6,7 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
-import pwcg.mission.flight.recon.ReconFlight;
+import pwcg.mission.flight.recon.IReconFlight;
 import pwcg.mission.flight.transport.TransportFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
@@ -79,7 +79,7 @@ public class MissionObjectiveFactory
         }
         else if (flight.getFlightType() == FlightTypes.RECON)
         {
-            return ReconObjective.getMissionObjective((ReconFlight) flight);
+            return ReconObjective.getMissionObjective((IReconFlight) flight);
         }
         else if (flight.getFlightType() == FlightTypes.SCRAMBLE)
         {

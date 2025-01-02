@@ -17,98 +17,112 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.options.MissionWeather;
 
 public class FCMissionAltitudeGenerator implements IMissionAltitudeGenerator
-{
+{	
     public int determineFlightAltitude(Campaign campaign, FlightTypes flightType, MissionWeather missionWeather) throws PWCGException 
     {
-        int altitude = determineDefaultFlightAltitude(campaign);
+		int altitude = determineDefaultFlightAltitude(campaign);
         altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
 
-        if (flightType == FlightTypes.LOW_ALT_CAP  || 
-            flightType == FlightTypes.LOW_ALT_PATROL)
-        {
-            altitude = determineLowAltitudePatrolAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+        try {
+	        if (flightType == FlightTypes.LOW_ALT_CAP  || 
+	            flightType == FlightTypes.LOW_ALT_PATROL)
+	        {
+	            altitude = determineLowAltitudePatrolAltitude();
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.LOW_ALT_BOMB)
+	        {
+	            altitude = determineLowAltitudeBombingAltitude();
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.GROUND_ATTACK || flightType == FlightTypes.GROUND_HUNT)
+	        {
+	            altitude = determineGroundAttackAltitude();
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.RAID)
+	        {
+	            altitude = determineRaidAltitude();
+	        }
+	        else if (flightType == FlightTypes.ARTILLERY_SPOT)
+	        {
+	            altitude = determineArtillerySpotAltitude(campaign);
+	        }
+	        else if (flightType == FlightTypes.RECON)
+	        {
+	            altitude = determineReconAltitude(campaign);
+	        }
+	        else if (flightType == FlightTypes.BOMB)
+	        {
+	            altitude = determineHighAltitudeBombingAltitude(campaign);
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.PARATROOP_DROP || flightType == FlightTypes.CARGO_DROP)
+	        {
+	            altitude = determineParaDropFlightAltitude(campaign);
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.SCRAMBLE)
+	        {
+	            altitude = determineScrambleFlightAltitude();
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.TRANSPORT)
+	        {
+	            altitude = determineTransportFlightAltitude();
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.SPY_EXTRACT)
+	        {
+	            altitude = determineSpyExtractFlightAltitude();
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.SPY_EXTRACT)
+	        {
+	            altitude = determineSpyExtractFlightAltitude();
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.CONTACT_PATROL)
+	        {
+	            altitude = determineContactPatrolFlightAltitude();
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.ARTILLERY_SPOT)
+	        {
+	            altitude = determineArtillerySpotFlightAltitude();
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.ESCORT)
+	        {
+	            altitude = determineHighAltitudeBombingAltitude(campaign) + 200;
+	            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
+	        }
+	        else if (flightType == FlightTypes.STRATEGIC_BOMB)
+	        {
+	            altitude = determineStrategicAltitudeBombingAltitude();
+	        }
+	        else if (flightType == FlightTypes.DIVE_BOMB)
+	        {
+	            altitude = determineDiveBombFlightAltitude();
+	        }
+	        else if (flightType == FlightTypes.BALLOON_BUST)
+	        {
+	            altitude = determineBalloonBustAltitude();
+	        }
+	        else if (flightType == FlightTypes.BALLOON_DEFENSE)
+	        {
+	            altitude = determineBalloonDefenseAltitude();
+	        }
         }
-        else if (flightType == FlightTypes.LOW_ALT_BOMB)
+        catch (Exception e)
         {
-            altitude = determineLowAltitudeBombingAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.GROUND_ATTACK || flightType == FlightTypes.GROUND_HUNT)
-        {
-            altitude = determineGroundAttackAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.RAID)
-        {
-            altitude = determineRaidAltitude();
-        }
-        else if (flightType == FlightTypes.BOMB)
-        {
-            altitude = determineHighAltitudeBombingAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.PARATROOP_DROP || flightType == FlightTypes.CARGO_DROP)
-        {
-            altitude = determineParaDropFlightAltitude(campaign);
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.SCRAMBLE)
-        {
-            altitude = determineScrambleFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.TRANSPORT)
-        {
-            altitude = determineTransportFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.SPY_EXTRACT)
-        {
-            altitude = determineSpyExtractFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.SPY_EXTRACT)
-        {
-            altitude = determineSpyExtractFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.CONTACT_PATROL)
-        {
-            altitude = determineContactPatrolFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.ARTILLERY_SPOT)
-        {
-            altitude = determineArtillerySpotFlightAltitude();
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.ESCORT)
-        {
-            altitude = determineHighAltitudeBombingAltitude() + 200;
-            altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
-        }
-        else if (flightType == FlightTypes.STRATEGIC_BOMB)
-        {
-            altitude = determineStrategicAltitudeBombingAltitude();
-        }
-        else if (flightType == FlightTypes.DIVE_BOMB)
-        {
-            altitude = determineDiveBombFlightAltitude();
-        }
-        else if (flightType == FlightTypes.BALLOON_BUST)
-        {
-            altitude = determineBalloonBustAltitude();
-        }
-        else if (flightType == FlightTypes.BALLOON_DEFENSE)
-        {
-            altitude = determineBalloonDefenseAltitude();
+        	altitude = determineDefaultFlightAltitude(campaign);
         }
 
         return altitude;
     }
 
-    private int determineDefaultFlightAltitude(Campaign campaign) throws PWCGException 
+	private int determineDefaultFlightAltitude(Campaign campaign) throws PWCGException 
     {
         int altitude = 2500;
 
@@ -156,10 +170,45 @@ public class FCMissionAltitudeGenerator implements IMissionAltitudeGenerator
         return altitude;
     }
 
-    private int determineHighAltitudeBombingAltitude()
+    private int determineArtillerySpotAltitude(Campaign campaign) throws PWCGException {
+        int altitude = 1000;
+        if (campaign.getDate().before(DateUtils.getDateYYYYMMDD("19170101")))
+        {
+        	altitude = 500;
+        }
+        int randomAlt = RandomNumberGenerator.getRandom(500);
+        altitude += randomAlt;
+        return altitude;
+	}
+    
+    
+	private int determineReconAltitude(Campaign campaign) throws PWCGException {
+        int altitude = 3000;
+        int randomAlt = RandomNumberGenerator.getRandom(1000);
+        if (campaign.getDate().before(DateUtils.getDateYYYYMMDD("19170101")))
+        {
+            altitude = 2000;
+            randomAlt = RandomNumberGenerator.getRandom(1000);
+        }
+        else if (campaign.getDate().before(DateUtils.getDateYYYYMMDD("19180101")))
+        {
+            altitude = 1200;
+            randomAlt = RandomNumberGenerator.getRandom(500);
+        }
+        altitude += randomAlt;
+        return altitude;
+	}
+
+
+    private int determineHighAltitudeBombingAltitude(Campaign campaign) throws PWCGException
     {
         int altitude = 2000;
         int randomAlt = RandomNumberGenerator.getRandom(2000);
+        if (campaign.getDate().before(DateUtils.getDateYYYYMMDD("19170101")))
+        {
+        	altitude = 1000;
+            randomAlt = RandomNumberGenerator.getRandom(500);
+        }
         altitude = altitude + randomAlt;            
         return altitude;
     }

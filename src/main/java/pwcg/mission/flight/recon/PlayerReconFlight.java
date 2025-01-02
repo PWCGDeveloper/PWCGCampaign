@@ -1,7 +1,9 @@
 package pwcg.mission.flight.recon;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.recon.ReconFlight.ReconFlightTypes;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
@@ -12,7 +14,7 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.target.TargetDefinition;
 
-public class PlayerReconFlight extends ReconFlight
+public class PlayerReconFlight extends Flight implements IReconFlight
 {
     private ReconFlightTypes reconFlightType = ReconFlightTypes.RECON_FLIGHT_FRONT;
 
