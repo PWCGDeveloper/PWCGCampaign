@@ -8,15 +8,15 @@ import pwcg.mission.mcu.McuMedia;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class ReconPlayerWaypointBuilder {
+public class PlayerReconWaypointBuilder {
 
-	public static ReconPlayerWaypoint buildReconPlayerWaypoint(Campaign campaign, McuWaypoint waypoint) throws PWCGException
+	public static PlayerReconWaypoint buildReconPlayerWaypoint(Campaign campaign, McuWaypoint waypoint) throws PWCGException
 	{		
 		McuTimer entryTimer = buildEntryTimer(waypoint);
 		McuTimer exitTimer  = buildExitTimer(waypoint);
 		McuMedia photoMedia  = buildPhotoMedia(waypoint);
 		
-		ReconPlayerWaypoint reconPlayerWaypoint = new ReconPlayerWaypoint();
+		PlayerReconWaypoint reconPlayerWaypoint = new PlayerReconWaypoint();
 		reconPlayerWaypoint.setWaypoint(waypoint);
 		reconPlayerWaypoint.setEntryTimer(entryTimer);
 		reconPlayerWaypoint.setExitTimer(exitTimer);

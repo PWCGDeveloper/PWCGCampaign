@@ -9,8 +9,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.IGroundUnit;
@@ -24,12 +24,12 @@ public class ArtillerySpotArtilleryGroup
 	
 	private IGroundUnit artilleryBattery;
 	private FlightInformation flightInformation;
-	private Flight artillerySpotFlight;
+	private IFlight artillerySpotFlight;
 	
-	public ArtillerySpotArtilleryGroup (FlightInformation flightInformation, Flight artillerySpotFlight)
+	public ArtillerySpotArtilleryGroup (IFlight artillerySpotFlight)
 	{
-		this.flightInformation = flightInformation;
 		this.artillerySpotFlight = artillerySpotFlight;
+		this.flightInformation = artillerySpotFlight.getFlightInformation();
 	}
 	
 	public void build() throws PWCGException 

@@ -41,7 +41,7 @@ public class ArtillerySpotMedia
         stopMediaTimer.setTime(2);
 
         startMedia = new McuMedia(McuMedia.MEDIA_TYPE_START);
-        startMedia.setConfig("swf\\artcorrection.gfx");
+        startMedia.setConfig("swf\\extensions\\artcorrection");
         startMedia.setName("GridMediaStart");        
         startMedia.setDesc("Grid Media Start");      
         startMedia.setExpandTime(3);

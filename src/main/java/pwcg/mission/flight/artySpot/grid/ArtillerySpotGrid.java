@@ -15,7 +15,7 @@ import pwcg.mission.flight.artySpot.ArtillerySpotArtilleryGroup;
 public class ArtillerySpotGrid 
 {
 	public static final int GRID_ELEMENTS = 8;
-	public static final int GRID_SIZE_METERS = 300;
+	public static final int GRID_SIZE_METERS = 200;
 	
 	private ArtillerySpotGridElement[][] gridElements = new ArtillerySpotGridElement[GRID_ELEMENTS][GRID_ELEMENTS];
 	
@@ -76,9 +76,6 @@ public class ArtillerySpotGrid
         artySpotMapGrid.create(this);
 	}
 
-    /**
-     * Create the 64 grid elements
-     */
     private void createElements(ArtillerySpotArtilleryGroup friendlyArtillery) 
     {
         for (int columnIndex = 0; columnIndex < GRID_ELEMENTS; ++columnIndex)
@@ -142,57 +139,36 @@ public class ArtillerySpotGrid
         }
 	}
 
-    /**
-     * @return the gridElements
-     */
     public ArtillerySpotGridElement[][] getGridElements()
     {
         return this.gridElements;
     }
 
-    /**
-     * @return the placementAngle
-     */
     public double getPlacementAngle()
     {
         return this.placementAngle;
     }
 
-    /**
-     * @return the artySpotMapGrid
-     */
     public ArtillerySpotMapGrid getArtySpotMapGrid()
     {
         return this.artySpotMapGrid;
     }
 
-    /**
-     * @return the artillerySpotMedia
-     */
     public ArtillerySpotMedia getArtillerySpotMedia()
     {
         return this.artillerySpotMedia;
     }
 
-    /**
-     * @return the artillerySpotActivateSet
-     */
     public ArtillerySpotActivateSet getArtillerySpotActivateSet()
     {
         return this.artillerySpotActivateSet;
     }
 
-    /**
-     * @return the artillerySpotMasterTrigger
-     */
     public ArtillerySpotMasterTrigger getArtillerySpotMasterTrigger()
     {
         return this.artillerySpotMasterTrigger;
     }
 
-    /**
-     * @return the artillerySpotForceComplete
-     */
     public ArtillerySpotForceComplete getArtillerySpotForceComplete()
     {
         return this.artillerySpotForceComplete;

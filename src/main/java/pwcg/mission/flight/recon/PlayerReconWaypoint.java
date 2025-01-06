@@ -7,7 +7,7 @@ import pwcg.mission.mcu.McuMedia;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class ReconPlayerWaypoint {
+public class PlayerReconWaypoint {
 
 	private McuWaypoint waypoint;
 	private McuTimer entryTimer;

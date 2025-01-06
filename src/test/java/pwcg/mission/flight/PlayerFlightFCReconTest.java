@@ -17,7 +17,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.recon.PlayerReconFlight;
-import pwcg.mission.flight.recon.ReconPlayerWaypoint;
+import pwcg.mission.flight.recon.PlayerReconWaypoint;
 import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
@@ -96,20 +96,20 @@ public class PlayerFlightFCReconTest
             	reconSet = (MissionPointPlayerReconSet)missionPointSet;
 
             	// Verify reference into recon WP list
-        		ReconPlayerWaypoint firstReconPlayerWaypoint = reconSet.getReconPlayerWaypoints().get(0);
+        		PlayerReconWaypoint firstReconPlayerWaypoint = reconSet.getReconPlayerWaypoints().get(0);
                 Assertions.assertEquals(
                 		ingressWaypoint.getTargets().get(0), 
                 		Integer.valueOf(firstReconPlayerWaypoint.getEntryTimer().getIndex()).toString());
 
         		// Verify reference out of recon WP list
-                ReconPlayerWaypoint lastReconPlayerWaypoint = reconSet.getReconPlayerWaypoints().get(reconSet.getReconPlayerWaypoints().size()-1);
+                PlayerReconWaypoint lastReconPlayerWaypoint = reconSet.getReconPlayerWaypoints().get(reconSet.getReconPlayerWaypoints().size()-1);
                 Assertions.assertEquals(
                 		Integer.valueOf(egressMissionPoint.getIndex()).toString(), 
                 		lastReconPlayerWaypoint.getExitTimer().getTargets().get(0));
         		
                 // Verify internal recon WP construction
-                ReconPlayerWaypoint prevReconPlayerWaypoint = null;
-                for (ReconPlayerWaypoint reconPlayerWaypoint : reconSet.getReconPlayerWaypoints())
+                PlayerReconWaypoint prevReconPlayerWaypoint = null;
+                for (PlayerReconWaypoint reconPlayerWaypoint : reconSet.getReconPlayerWaypoints())
                 {
                 	// Entry timer connected to WP
                     Assertions.assertEquals(

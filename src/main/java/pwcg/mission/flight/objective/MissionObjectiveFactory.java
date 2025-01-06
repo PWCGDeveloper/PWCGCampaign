@@ -17,7 +17,7 @@ public class MissionObjectiveFactory
     {
         if (flight.getFlightType() == FlightTypes.ARTILLERY_SPOT)
         {
-            return GroundAttackObjective.getMissionObjective(flight);
+            return ArtillerySpotObjective.getMissionObjective(flight);
         }
         else if (flight.getFlightType() == FlightTypes.BALLOON_BUST)
         {

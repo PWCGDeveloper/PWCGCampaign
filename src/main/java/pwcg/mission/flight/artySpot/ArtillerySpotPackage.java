@@ -20,10 +20,6 @@ public class ArtillerySpotPackage implements IFlightPackage
     private TargetDefinition targetDefinition;
     private List<IFlight> packageFlights = new ArrayList<>();
 
-    public ArtillerySpotPackage()
-    {
-    }
-
     @Override
     public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {

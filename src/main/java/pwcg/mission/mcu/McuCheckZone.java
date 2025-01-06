@@ -14,9 +14,13 @@ import pwcg.mission.flight.plane.PlaneMcu;
 
 public class McuCheckZone extends BaseFlightMcu
 {
+	public static final int CLOSER = 1;
+	public static final int FURTHER = 0;
+	
+	
     private int zone = 15000;
 	private int cylinder = 1;
-	private int closer = 1;
+	private int closer = CLOSER;
 	private List<Coalition> triggerCoalitions = new ArrayList<Coalition>();
 	private List<Coalition> vehicleCoalitions = new ArrayList<Coalition>();
 	

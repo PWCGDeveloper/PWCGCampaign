@@ -8,7 +8,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.flight.recon.ReconPlayerWaypoint;
+import pwcg.mission.flight.recon.PlayerReconWaypoint;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuEvent;
@@ -18,7 +18,7 @@ import pwcg.mission.mcu.McuWaypoint;
 public class MissionPointPlayerReconSet implements IMissionPointSet{
 	private McuWaypoint ingressWaypoint;
 	private McuWaypoint egressWaypoint;
-    private List<ReconPlayerWaypoint> reconPlayerWaypoints = new ArrayList<>();
+    private List<PlayerReconWaypoint> reconPlayerWaypoints = new ArrayList<>();
     private boolean linkToNextTarget = true;
 
     public MissionPointPlayerReconSet (McuWaypoint ingressWaypoint, McuWaypoint egressWaypoint)
@@ -27,7 +27,7 @@ public class MissionPointPlayerReconSet implements IMissionPointSet{
     	this.egressWaypoint = egressWaypoint;
     }
     
-    public void addReconPlayerWaypoint(ReconPlayerWaypoint reconPlayerWaypoint)
+    public void addReconPlayerWaypoint(PlayerReconWaypoint reconPlayerWaypoint)
     {
     	reconPlayerWaypoints.add(reconPlayerWaypoint);
     }
@@ -37,7 +37,7 @@ public class MissionPointPlayerReconSet implements IMissionPointSet{
 	{
 		List<McuWaypoint> waypoints = new ArrayList<>();
 		waypoints.add(ingressWaypoint);
-		for (ReconPlayerWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
+		for (PlayerReconWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
 		{
 			waypoints.add(reconPlayerWaypoint.getWaypoint());
 		}
@@ -75,7 +75,7 @@ public class MissionPointPlayerReconSet implements IMissionPointSet{
 			return ingressWaypoint;
 		}
 		
-		for (ReconPlayerWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
+		for (PlayerReconWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
 		{
 			if (reconPlayerWaypoint.getWaypoint().getWaypointID() == waypointId)
 			{
@@ -94,7 +94,7 @@ public class MissionPointPlayerReconSet implements IMissionPointSet{
 	@Override
 	public void write(BufferedWriter writer) throws PWCGException {
 		ingressWaypoint.write(writer);
-		for (ReconPlayerWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
+		for (PlayerReconWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
 		{
 			reconPlayerWaypoint.write(writer);
 		}
@@ -118,7 +118,7 @@ public class MissionPointPlayerReconSet implements IMissionPointSet{
 		MissionPoint ingressMissionPoint = new MissionPoint(ingressWaypoint.getPosition(), WaypointAction.WP_ACTION_INGRESS);
 		allMissionPoints.add(ingressMissionPoint);
 
-		for (ReconPlayerWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
+		for (PlayerReconWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
 		{
 			MissionPoint missionPoint = new MissionPoint(reconPlayerWaypoint.getPhotoMedia().getPosition(), WaypointAction.WP_ACTION_RECON);
 			allMissionPoints.add(missionPoint);
@@ -134,7 +134,7 @@ public class MissionPointPlayerReconSet implements IMissionPointSet{
 	public List<BaseFlightMcu> getAllFlightPoints() {
 		List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
 		allFlightPoints.add(ingressWaypoint);
-		for (ReconPlayerWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
+		for (PlayerReconWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
 		{
 			McuMedia waypoint = reconPlayerWaypoint.getPhotoMedia();
 			allFlightPoints.add(waypoint);		
@@ -148,12 +148,12 @@ public class MissionPointPlayerReconSet implements IMissionPointSet{
 	@Override
 	public void finalizeMissionPointSet(FlightPlanes flightPlanes) throws PWCGException {
 		
-		ReconPlayerWaypoint firstReconPlayerWaypoint = reconPlayerWaypoints.get(0);
+		PlayerReconWaypoint firstReconPlayerWaypoint = reconPlayerWaypoints.get(0);
 		ingressWaypoint.setTarget(firstReconPlayerWaypoint.getEntryTimer().getIndex());
 
 
-		ReconPlayerWaypoint previousReconPlayerWaypoint = null;
-		for (ReconPlayerWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
+		PlayerReconWaypoint previousReconPlayerWaypoint = null;
+		for (PlayerReconWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
 		{
 			reconPlayerWaypoint.getEntryTimer().setTimerTarget(reconPlayerWaypoint.getWaypoint().getIndex());
 			
@@ -170,7 +170,7 @@ public class MissionPointPlayerReconSet implements IMissionPointSet{
 			previousReconPlayerWaypoint = reconPlayerWaypoint;
 		}
 		
-		ReconPlayerWaypoint lastReconPlayerWaypoint = reconPlayerWaypoints.get(reconPlayerWaypoints.size()-1);
+		PlayerReconWaypoint lastReconPlayerWaypoint = reconPlayerWaypoints.get(reconPlayerWaypoints.size()-1);
 		lastReconPlayerWaypoint.getExitTimer().setTimerTarget(egressWaypoint.getIndex());
 		
         createObjectAssociations(flightPlanes.getFlightLeader());
@@ -179,7 +179,7 @@ public class MissionPointPlayerReconSet implements IMissionPointSet{
     private void createObjectAssociations(PlaneMcu plane)
     {
     	ingressWaypoint.setObject(plane.getLinkTrId());
-		for (ReconPlayerWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
+		for (PlayerReconWaypoint reconPlayerWaypoint : reconPlayerWaypoints)
 		{
 			reconPlayerWaypoint.getWaypoint().setObject(plane.getLinkTrId());
 		}
@@ -249,11 +249,11 @@ public class MissionPointPlayerReconSet implements IMissionPointSet{
 		this.egressWaypoint = egressWaypoint;
 	}
 
-	public List<ReconPlayerWaypoint> getReconPlayerWaypoints() {
+	public List<PlayerReconWaypoint> getReconPlayerWaypoints() {
 		return reconPlayerWaypoints;
 	}
 
-	public void setReconPlayerWaypoints(List<ReconPlayerWaypoint> reconPlayerWaypoints) {
+	public void setReconPlayerWaypoints(List<PlayerReconWaypoint> reconPlayerWaypoints) {
 		this.reconPlayerWaypoints = reconPlayerWaypoints;
 	}
 

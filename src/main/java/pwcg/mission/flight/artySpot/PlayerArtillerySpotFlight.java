@@ -18,9 +18,6 @@ import pwcg.mission.target.TargetDefinition;
 
 public class PlayerArtillerySpotFlight extends Flight implements IFlight
 {
-	private ArtillerySpotGrid artySpotGrid = null;
-	private ArtillerySpotArtilleryGroup friendlyArtillery;
-	
     public PlayerArtillerySpotFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
     {
         super(flightInformation, targetDefinition);
@@ -28,12 +25,6 @@ public class PlayerArtillerySpotFlight extends Flight implements IFlight
 
     public void createFlight() throws PWCGException
     {
-    	friendlyArtillery = new ArtillerySpotArtilleryGroup(this.getFlightInformation(), this);
-    	friendlyArtillery.build();
-    	
-		artySpotGrid = new ArtillerySpotGrid(this.getFlightInformation());
-		artySpotGrid.create(friendlyArtillery, this.getTargetDefinition().getPosition().copy());
-
         initialize(this);
         setFlightPayload();
         createWaypoints();
@@ -54,7 +45,7 @@ public class PlayerArtillerySpotFlight extends Flight implements IFlight
         IMissionPointSet flightRendezvous = MissionPointSetFactory.createFlightRendezvous(this, ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(flightRendezvous);
 
-        ArtillerySpotWaypointFactory missionWaypointFactory = new ArtillerySpotWaypointFactory(this);
+        PlayerArtillerySpotWaypointFactory missionWaypointFactory = new PlayerArtillerySpotWaypointFactory(this);
         IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(missionWaypoints);
         
@@ -65,7 +56,6 @@ public class PlayerArtillerySpotFlight extends Flight implements IFlight
 
     public void write(BufferedWriter writer) throws PWCGException 
     {
-    	friendlyArtillery.write(writer);
-    	artySpotGrid.write(writer);
-    }
+    	super.write(writer);
+     }
 }
