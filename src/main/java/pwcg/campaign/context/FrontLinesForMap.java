@@ -87,28 +87,21 @@ public class FrontLinesForMap
         return frontLines.indexOf(closestPosition);
     }
 
-    public double findClosestFriendlyPositionAngle(Coordinate source, Side side) throws PWCGException 
+    public double findClosestFriendlyPositionAngle(Coordinate referenceLocation, Side side) throws PWCGException 
     {
-        List<FrontLinePoint>frontLines = findAllFrontLinesForSide(side);
-
-        int closestPositionIndex = findIndexForClosestPosition(source, side);
-        int nextPositionIndex = closestPositionIndex + 1;
-        
+        FrontLinePoint closestFrontLinePoint = findClosestFrontPositionForSide(referenceLocation, side);
         double angle = MathUtils.calcAngle(
-                        frontLines.get(closestPositionIndex).getPosition(), 
-                        frontLines.get(nextPositionIndex).getPosition());
+        		referenceLocation, 
+        		closestFrontLinePoint.getPosition());
 
         return angle;
     }
 
     public double findClosestFriendlyPositionDistance(Coordinate referenceLocation, Side side) throws PWCGException 
     {
-        PositionFinder<FrontLinePoint> positionFinder = new PositionFinder<FrontLinePoint>();
-        List<FrontLinePoint>frontLines = findAllFrontLinesForSide(side);
-        FrontLinePoint closestFrontLinePoint = positionFinder.selectClosestPosition(frontLines, referenceLocation);
+        FrontLinePoint closestFrontLinePoint = findClosestFrontPositionForSide(referenceLocation, side);
         return MathUtils.calcDist(referenceLocation, closestFrontLinePoint.getPosition());
     }
-
 
     public double findClosestEnemyPositionAngle(Coordinate source, Side side) throws PWCGException 
     {

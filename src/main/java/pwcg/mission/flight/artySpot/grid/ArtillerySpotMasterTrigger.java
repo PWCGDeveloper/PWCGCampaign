@@ -13,7 +13,7 @@ public class ArtillerySpotMasterTrigger
 
     public void create (Coordinate gridPosition) throws PWCGException 
     {
-        masterTriggerTimerTimer.setName("MasterActivateTimer");
+        masterTriggerTimerTimer.setName("ASG Master Activate Timer");
         masterTriggerTimerTimer.setTime(1);
         masterTriggerTimerTimer.setPosition(gridPosition.copy());
     }

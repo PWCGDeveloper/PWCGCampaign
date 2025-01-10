@@ -6,7 +6,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.artySpot.grid.ArtillerySpotGrid;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;

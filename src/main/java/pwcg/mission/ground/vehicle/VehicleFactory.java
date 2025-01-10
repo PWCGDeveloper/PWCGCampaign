@@ -1,6 +1,8 @@
 package pwcg.mission.ground.vehicle;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
@@ -15,6 +17,19 @@ public class VehicleFactory
         VehicleDefinition vehicleDefinition = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionForRequest(requestDefinition);
         IVehicle vehicle = createVehicleFromDefinition(country, date, vehicleDefinition);
         return vehicle;
+    }
+
+    public static List<IVehicle> createVehicles(ICountry country, Date date, VehicleClass vehicleClass, int numVehicles) throws PWCGException
+    {
+        VehicleRequestDefinition requestDefinition = new VehicleRequestDefinition(country.getCountry(), date, vehicleClass);
+        VehicleDefinition vehicleDefinition = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionForRequest(requestDefinition);
+        List<IVehicle> vehicles = new ArrayList<>();
+        for (int i = 0; i < numVehicles; ++i)
+        {
+        	IVehicle vehicle = createVehicleFromDefinition(country, date, vehicleDefinition);
+        	vehicles.add(vehicle);
+        }
+        return vehicles;
     }
 
     public static IVehicle createVehicleFromDefinition(ICountry country, Date date, VehicleDefinition vehicleDefinition) throws PWCGException

@@ -6,7 +6,6 @@ import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointPlayerArtillerySpotSet;
 import pwcg.mission.mcu.McuWaypoint;
@@ -22,9 +21,8 @@ public class PlayerArtillerySpotWaypointFactory
 
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
         McuWaypoint artillerySpotWaypoint = createTargetWaypoints(ingressWaypoint.getPosition());
-        MissionPointPlayerArtillerySpotSet missionPointSet = new MissionPointPlayerArtillerySpotSet(ingressWaypoint, egressWaypoint, artillerySpotWaypoint);    	 
+        MissionPointPlayerArtillerySpotSet missionPointSet = new MissionPointPlayerArtillerySpotSet(flight, ingressWaypoint, artillerySpotWaypoint);    	 
         missionPointSet.create();
         return missionPointSet;
     }

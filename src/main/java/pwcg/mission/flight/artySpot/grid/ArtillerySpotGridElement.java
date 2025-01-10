@@ -17,7 +17,7 @@ public class ArtillerySpotGridElement
 {
 	private McuTimer elementRowtriggerTimer = new McuTimer();
     private McuTimer elementColumnTriggerTimer = new McuTimer();
-	private McuAttackArea attackArea = new McuAttackArea(AttackAreaType.GROUND_TARGETS);
+	private McuAttackArea attackArea = new McuAttackArea(AttackAreaType.INDIRECT);
 	private McuSubtitle fireSubtitle = new McuSubtitle();
 
 	public ArtillerySpotGridElement ()
@@ -48,7 +48,10 @@ public class ArtillerySpotGridElement
         elementColumnTriggerTimer.setTimerTarget(deactivate.getMasterDeactivateTimer().getIndex());
 
 		// Link the attack area to the main gun
-        attackArea.setObject(friendlyArtillery.getLeadIndex());
+       	for (int artilleryId : friendlyArtillery.getArtilleryIds())
+    	{
+       		attackArea.setObject(artilleryId);
+    	}
 		
 		attackArea.setAttackRadius(ArtillerySpotGrid.GRID_SIZE_METERS);
 		attackArea.setPriority(WaypointPriority.PRIORITY_HIGH);

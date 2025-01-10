@@ -51,7 +51,10 @@ public class ArtillerySpotForceComplete
 
     private void forceArtilleryComplete(ArtillerySpotArtilleryGroup friendlyArtillery)
     {
-        forceComplete.setObject(friendlyArtillery.getLeadIndex());
+    	for (int artilleryId : friendlyArtillery.getArtilleryIds())
+    	{
+    		forceComplete.setObject(artilleryId);
+    	}
     }
 
     public McuTimer getForceCompleteTimer()

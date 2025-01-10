@@ -32,26 +32,26 @@ public class ArtillerySpotMedia
         Coordinate mediaPosition = MathUtils.calcNextCoord(campaign.getCampaignMap(), gridPosition, 0, 2000);
    
         // Timer values
-        startMediaTimer.setName("Spot Start Media Timer");
+        startMediaTimer.setName("ASG Start Media Timer");
         startMediaTimer.setPosition(mediaPosition);
         startMediaTimer.setTime(3);
 
-        stopMediaTimer.setName("Spot Stop Media Timer");
+        stopMediaTimer.setName("ASG Stop Media Timer");
         stopMediaTimer.setPosition(mediaPosition);
         stopMediaTimer.setTime(2);
 
         startMedia = new McuMedia(McuMedia.MEDIA_TYPE_START);
         startMedia.setConfig("swf\\extensions\\artcorrection");
-        startMedia.setName("GridMediaStart");        
-        startMedia.setDesc("Grid Media Start");      
+        startMedia.setName("ASG Media Start");        
+        startMedia.setDesc("ASG Media Start");      
         startMedia.setExpandTime(3);
         startMedia.setFadeTime(3);
         startMedia.setPosition(mediaPosition);
 
         stopMedia = new McuMedia(McuMedia.MEDIA_TYPE_STOP);
         stopMedia.setConfig("");
-        stopMedia.setName("GridMediaStop");     
-        stopMedia.setDesc("Grid Media Stop");       
+        stopMedia.setName("ASG Media Stop");     
+        stopMedia.setDesc("ASG Media Stop");       
         stopMedia.setExpandTime(1);
         stopMedia.setFadeTime(1);
         stopMedia.setPosition(mediaPosition);
