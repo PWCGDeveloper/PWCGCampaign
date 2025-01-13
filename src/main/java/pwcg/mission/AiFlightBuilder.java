@@ -10,7 +10,9 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -88,11 +90,20 @@ public class AiFlightBuilder
         return flightType;
     }
 
-    private List<IFlight> buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
+    private List<IFlight> buildFlight(FlightTypes flightType, Squadron squadron)
     {
-        FlightFactory flightFactory = new FlightFactory(campaign);
-        List<IFlight> flights = flightFactory.buildFlight(mission, squadron, flightType, NecessaryFlightType.NONE);
-        return flights;        
+    	try
+    	{
+    		FlightFactory flightFactory = new FlightFactory(campaign);
+    		List<IFlight> flights = flightFactory.buildFlight(mission, squadron, flightType, NecessaryFlightType.NONE);
+    		return flights;        
+    	}
+    	catch(PWCGException e)
+    	{
+            PWCGLogger.log(LogLevel.ERROR, "Failed to create AI flight of type " + flightType + " for squadron " + squadron.getFileName());
+            PWCGLogger.logException(e);
+    		return new ArrayList<>();
+    	}
     }
 
     

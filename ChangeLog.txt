@@ -1,8 +1,10 @@
 17.1.0
 Added recon missions with photos
+Added player artillery spot with grid
 Bugs:
 Fixed issue that would cause patrols to be only one WP in previously unaccessible areas.
 Added more time to mission start.
+Made PWCG more resistant to failures in AI flight generation.
 
 17.0.0
 Incorporation of FC IV
