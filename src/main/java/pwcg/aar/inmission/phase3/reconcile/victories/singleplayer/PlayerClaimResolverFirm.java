@@ -1,6 +1,9 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogEntityPlaneResolver;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
@@ -22,29 +25,27 @@ public class PlayerClaimResolverFirm
         {
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                if (resultVictory.getVictor() instanceof LogPlane)
-                {
-                    if (PlayerVictoryResolver.isPlayerVictory(player, resultVictory.getVictor()))
-                    {
-                        if (resultVictory.getVictim() instanceof LogPlane)
-                        {
-                            LogPlane victimPlane = (LogPlane)resultVictory.getVictim();
-                            PlaneType shotDownPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(victimPlane.getVehicleType());
-                            PlaneType claimedPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
-            
-                            if (shotDownPlane == null || claimedPlane == null)
-                            {
-                                PWCGLogger.log(LogLevel.ERROR, 
-                                                "resolveAsFirmVictory: No plane found for claimed type " + playerDeclaration.getAircraftType() );
+                LogPlane victoriousPlane = LogEntityPlaneResolver.getPlaneForEntity(resultVictory.getVictor());
+            	if (PlayerVictoryResolver.isPlayerVictory(player, victoriousPlane))
+            	{
+            		if (resultVictory.getVictim() instanceof LogPlane)
+            		{
+            			LogPlane victimPlane = (LogPlane)resultVictory.getVictim();
+            			PlaneType shotDownPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(victimPlane.getVehicleType());
+            			PlaneType claimedPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+            			
+            			if (shotDownPlane == null || claimedPlane == null)
+            			{
+            				PWCGLogger.log(LogLevel.ERROR, 
+            						"resolveAsFirmVictory: No plane found for claimed type " + playerDeclaration.getAircraftType() );
                                 
-                            }
-                            else if (shotDownPlane.getType().equals(claimedPlane.getType()))
-                            {
-                                shotDownPlaneDisplayName = claimPlaneNameFinder.getShotDownPlaneDisplayName(playerDeclaration, resultVictory);
-                            }
-                        }
-                    }
-                }
+            			}
+            			else if (shotDownPlane.getType().equals(claimedPlane.getType()))
+            			{
+            				shotDownPlaneDisplayName = claimPlaneNameFinder.getShotDownPlaneDisplayName(playerDeclaration, resultVictory);
+            			}
+            		}
+            	}
             }
         }
         
@@ -52,14 +53,16 @@ public class PlayerClaimResolverFirm
     }
         
 
-    public String getShotDownPlaneDisplayNameAsFirmNotExact(SquadronMember player, PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
+
+	public String getShotDownPlaneDisplayNameAsFirmNotExact(SquadronMember player, PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
     {
         String shotDownPlaneDisplayName = "";
         if (!resultVictory.isConfirmed())
         {
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                if (PlayerVictoryResolver.isPlayerVictory(player, resultVictory.getVictor()))
+                LogPlane victoriousPlane = LogEntityPlaneResolver.getPlaneForEntity(resultVictory.getVictor());
+                if (PlayerVictoryResolver.isPlayerVictory(player, victoriousPlane))
                 {
                     PwcgRoleCategory victimApproximateRole = resultVictory.getVictim().getRoleCategory();
                     

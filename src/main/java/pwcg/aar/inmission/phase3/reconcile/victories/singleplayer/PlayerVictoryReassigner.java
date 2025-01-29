@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogEntityPlaneResolver;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
@@ -38,7 +39,8 @@ class PlayerVictoryReassigner
             {
                 LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
                 SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getPilotSerialNumber());
-                if (PlayerVictoryResolver.isPlayerVictory(squadronMember, resultVictory.getVictor()))
+                LogPlane victoriousPlane = LogEntityPlaneResolver.getPlaneForEntity(resultVictory.getVictor());
+                if (PlayerVictoryResolver.isPlayerVictory(squadronMember, victoriousPlane))
                 {
                     LogUnknown markedForAssignment = new LogUnknown();
                     markedForAssignment.setUnknownVictoryAssignment(UnknownVictoryAssignments.RANDOM_ASSIGNMENT);

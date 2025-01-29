@@ -1,3 +1,8 @@
+17.1.1
+Bugs:
+Fixed issue that could cause planes not to be available in equipment requests.
+Fixed issue that would cause claims to be denied if they were scored by a gunner
+
 17.1.0
 Added recon missions with photos
 Added player artillery spot with grid

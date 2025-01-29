@@ -3,6 +3,7 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogEntityPlaneResolver;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
@@ -113,7 +114,8 @@ public class PlayerDeclarationResolution
                 if (resultVictory.getVictor() instanceof LogPlane)
                 {
                     SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
-                    if (PlayerVictoryResolver.isPlayerVictory(squadronMember, resultVictory.getVictor()))
+                    LogPlane victoriousPlane = LogEntityPlaneResolver.getPlaneForEntity(resultVictory.getVictor());
+                    if (PlayerVictoryResolver.isPlayerVictory(squadronMember, victoriousPlane))
                     {
                         generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, resultVictory.getVictim().getVehicleType());
                     }

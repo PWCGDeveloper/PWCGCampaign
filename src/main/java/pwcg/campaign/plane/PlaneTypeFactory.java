@@ -179,7 +179,7 @@ public class PlaneTypeFactory
 
     public List<PlaneType> getAvailablePlaneTypes(ICountry country, PwcgRoleCategory roleCategory, Date date) throws PWCGException
     {
-        Map<Integer, PlaneType> availablePlaneTypes = new TreeMap<>();
+        Map<String, PlaneType> availablePlaneTypes = new TreeMap<>();
         for (PlaneType thisPlane : planeTypes.values())
         {
             if (thisPlane.isUsedBy(country))
@@ -188,7 +188,7 @@ public class PlaneTypeFactory
                 {
                     if (DateUtils.isDateInRange(date, thisPlane.getIntroduction(), thisPlane.getWithdrawal()))
                     {
-                        availablePlaneTypes.put(thisPlane.getGoodness(), thisPlane);
+                        availablePlaneTypes.put(thisPlane.getDesc(), thisPlane);
                     }
                 }
             }

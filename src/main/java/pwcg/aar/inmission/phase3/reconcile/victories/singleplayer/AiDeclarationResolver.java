@@ -5,6 +5,7 @@ import java.util.Map;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogEntityPlaneResolver;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
@@ -63,7 +64,8 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
             SquadronMember squadronMemberVictor = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getPilotSerialNumber());
             if (squadronMemberVictor != null)
             {
-                if (!PlayerVictoryResolver.isPlayerVictory(squadronMemberVictor, resultVictory.getVictor()))
+                LogPlane victoriousPlane = LogEntityPlaneResolver.getPlaneForEntity(resultVictory.getVictor());
+                if (!PlayerVictoryResolver.isPlayerVictory(squadronMemberVictor, victoriousPlane))
                 {
                     if (!resultVictory.isConfirmed())
                     {
