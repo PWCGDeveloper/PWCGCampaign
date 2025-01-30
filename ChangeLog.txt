@@ -2,6 +2,9 @@
 Bugs:
 Fixed issue that could cause planes not to be available in equipment requests.
 Fixed issue that would cause claims to be denied if they were scored by a gunner
+Fixed Nieuport 17 skin designations
+Fixed too early N17 for Esc 102
+
 
 17.1.0
 Added recon missions with photos

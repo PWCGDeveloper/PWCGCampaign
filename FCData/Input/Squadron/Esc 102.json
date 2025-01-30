@@ -9,8 +9,13 @@
 	"squadronTacticalCodeColorOverride": "BLACK",
 	"planeAssignments": [
 		{
-			"archType": "nieuport17",
+			"archType": "nieuport17gbr",
 			"squadronIntroduction": "19160601",
+			"squadronWithdrawal": "19170501"
+		},
+		{
+			"archType": "nieuport17",
+			"squadronIntroduction": "19160701",
 			"squadronWithdrawal": "19170501"
 		},
 		{
