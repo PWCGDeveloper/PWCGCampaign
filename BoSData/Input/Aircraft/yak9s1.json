@@ -12,7 +12,7 @@
 	],
 	"displayName": "Yak-9 ser.1",
 	"script": "LuaScripts\\WorldObjects\\Planes\\yak9s1.txt",
-	"model": "graphics\\planes\\yak7bs36\\yak9s1.mgm",
+	"model": "graphics\\planes\\yak9s1\\yak9s1.mgm",
 	"desc": "",
 	"cruisingSpeed": 350,
 	"climbOutRate": 1300,

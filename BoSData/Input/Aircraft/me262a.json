@@ -12,7 +12,7 @@
 	],
 	"displayName": "Me 262 A",
 	"script": "LuaScripts\\WorldObjects\\Planes\\me262a.txt",
-	"model": "graphics\\planes\\fw190a3\\me262a.mgm",
+	"model": "graphics\\planes\\me262a\\me262a.mgm",
 	"desc": "",
 	"cruisingSpeed": 430,
 	"climbOutRate": 1100,

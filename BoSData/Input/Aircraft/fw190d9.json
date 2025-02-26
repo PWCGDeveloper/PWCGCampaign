@@ -11,7 +11,7 @@
 	],
 	"displayName": "Fw 190 D-9",
 	"script": "LuaScripts\\WorldObjects\\Planes\\fw190d9.txt",
-	"model": "graphics\\planes\\fw190a8\\fw190d9.mgm",
+	"model": "graphics\\planes\\fw190d9\\fw190d9.mgm",
 	"desc": "",
 	"cruisingSpeed": 360,
 	"climbOutRate": 1100,
